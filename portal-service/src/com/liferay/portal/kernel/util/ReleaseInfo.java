@@ -77,6 +77,8 @@ public class ReleaseInfo {
 
 	public static final int RELEASE_6_1_10_BUILD_NUMBER = 6110;
 
+	public static final int RELEASE_6_1_20_BUILD_NUMBER = 6120;
+
 	public static final Date getBuildDate() {
 		DateFormat df = DateFormat.getDateInstance(DateFormat.LONG);
 
@@ -146,9 +148,9 @@ public class ReleaseInfo {
 
 	private static final String _VENDOR = "Liferay, Inc.";
 
-	private static final String _VERSION = "6.1.10";
+	private static final String _VERSION = "6.1.20";
 
-	private static final String _VERSION_DISPLAY_NAME = "6.1.10 EE";
+	private static final String _VERSION_DISPLAY_NAME = "6.1.20 EE";
 
 	private static String _releaseInfo;
 	private static String _serverInfo;
