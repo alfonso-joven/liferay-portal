@@ -128,13 +128,13 @@ public class ReleaseInfo {
 		return _VERSION;
 	}
 
-	private static final String _BUILD = "6110";
+	private static final String _BUILD = "6120";
 
 	private static final int _BUILD_NUMBER = Integer.parseInt(_BUILD);
 
 	private static final String _CODE_NAME = "Paton";
 
-	private static final String _DATE = "July 20, 2012";
+	private static final String _DATE = "July 23, 2012";
 
 	private static final String _NAME = "Liferay Portal Community Edition";
 
