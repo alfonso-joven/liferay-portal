@@ -3,6 +3,8 @@ AUI.add(
 	function(A) {
 		var AObject = A.Object;
 		var Lang = A.Lang;
+		var Util = Liferay.Util;
+
 		var UA = A.UA;
 
 		var formatSelectorNS = A.Node.formatSelectorNS;
@@ -49,9 +51,17 @@ AUI.add(
 
 		var EXPAND_FOLDER = 'expandFolder';
 
+		var FIRST_PAGE_LINK_LABEL = '&lt;&lt;';
+
+		var LAST_PAGE_LINK_LABEL = '&gt;&gt;';
+
 		var MESSAGE_TYPE_ERROR = 'error';
 
+		var NEXT_PAGE_LINK_LABEL = '&gt;';
+
 		var PARENT_NODE = 'parentNode';
+
+		var PREV_PAGE_LINK_LABEL = '&lt;';
 
 		var ROWS_PER_PAGE = 'rowsPerPage';
 
@@ -61,9 +71,17 @@ AUI.add(
 
 		var STR_BLANK = '';
 
+		var STR_CHANGE_REQUEST = 'changeRequest';
+
 		var STR_CLICK = 'click';
 
 		var STR_DATA = 'data';
+
+		var STR_DIRECTION = 'direction';
+
+		var STR_DIRECTION_LEFT = 'left';
+
+		var STR_DIRECTION_RIGHT = 'right';
 
 		var STR_DRAG_NODE = 'dragNode';
 
@@ -81,7 +99,11 @@ AUI.add(
 
 		var STR_FOLDER_START = 'folderStart';
 
+		var STR_SUCCESS = 'success';
+
 		var STR_TOGGLE_ACTIONS_BUTTON = 'toggleActionsButton';
+
+		var STR_REPOSITORY_ID = 'repositoryId';
 
 		var STR_ROW_IDS_FILE_SHORTCUT_CHECKBOX = 'rowIdsDLFileShortcutCheckbox';
 
@@ -89,9 +111,9 @@ AUI.add(
 
 		var STR_ROW_IDS_FILE_ENTRY_CHECKBOX = 'rowIdsFileEntryCheckbox';
 
-		var STRUTS_ACTION = 'struts_action';
+		var STR_SYNC_NOTIFICATION = 'syncNotification';
 
-		var SRC_DISPLAY_STYLE_BUTTONS = 0;
+		var STRUTS_ACTION = 'struts_action';
 
 		var SRC_ENTRIES_PAGINATOR = 1;
 
@@ -118,8 +140,6 @@ AUI.add(
 		var VIEW_ENTRIES_PAGE = 'viewEntriesPage';
 
 		var VIEW_FOLDERS = 'viewFolders';
-
-		Liferay.DL_DISPLAY_STYLE_BUTTONS = SRC_DISPLAY_STYLE_BUTTONS;
 
 		Liferay.DL_ENTRIES_PAGINATOR = SRC_ENTRIES_PAGINATOR;
 
@@ -168,15 +188,15 @@ AUI.add(
 						instance._portletMessageContainer = A.Node.create(TPL_MESSAGE_RESPONSE);
 
 						instance._displayStyle = instance.ns('displayStyle');
-						instance._folderId = instance.ns('folderId');
+						instance._folderId = instance.ns(STR_FOLDER_ID);
 
 						var liferaySyncMessage = new Liferay.Message(
 							{
-								boundingBox: instance.byId('syncNotification'),
+								boundingBox: instance.byId(STR_SYNC_NOTIFICATION),
 								contentBox: instance.byId('syncNotificationContent'),
 								id: instance.NS + 'show-sync-message',
 								trigger: A.one('#' + instance.ns('showSyncMessageIcon')),
-								visible: instance.byId('syncNotification').test(':visible')
+								visible: instance.byId(STR_SYNC_NOTIFICATION).test(':visible')
 							}
 						).render();
 
@@ -190,18 +210,18 @@ AUI.add(
 							{
 								circular: false,
 								containers: '.document-entries-paginator',
-								firstPageLinkLabel: '&lt;&lt;',
-								lastPageLinkLabel: '&gt;&gt;',
-								nextPageLinkLabel: '&gt;',
+								firstPageLinkLabel: FIRST_PAGE_LINK_LABEL,
+								lastPageLinkLabel: LAST_PAGE_LINK_LABEL,
+								nextPageLinkLabel: NEXT_PAGE_LINK_LABEL,
 								page: entryPage,
-								prevPageLinkLabel: '&lt;',
+								prevPageLinkLabel: PREV_PAGE_LINK_LABEL,
 								rowsPerPage: config.entryRowsPerPage,
 								rowsPerPageOptions: config.entryRowsPerPageOptions,
 								total: config.entriesTotal
 							}
 						).render();
 
-						entryPaginator.on('changeRequest', instance._onEntryPaginatorChangeRequest, instance);
+						entryPaginator.on(STR_CHANGE_REQUEST, instance._onEntryPaginatorChangeRequest, instance);
 
 						var folderPage = 0;
 
@@ -214,18 +234,18 @@ AUI.add(
 								alwaysVisible: false,
 								circular: false,
 								containers: '.folder-paginator',
-								firstPageLinkLabel: '&lt;&lt;',
-								lastPageLinkLabel: '&gt;&gt;',
-								nextPageLinkLabel: '&gt;',
+								firstPageLinkLabel: FIRST_PAGE_LINK_LABEL,
+								lastPageLinkLabel: LAST_PAGE_LINK_LABEL,
+								nextPageLinkLabel: NEXT_PAGE_LINK_LABEL,
 								page: folderPage,
-								prevPageLinkLabel: '&lt;',
+								prevPageLinkLabel: PREV_PAGE_LINK_LABEL,
 								rowsPerPage: config.folderRowsPerPage,
 								rowsPerPageOptions: config.folderRowsPerPageOptions,
 								total: config.foldersTotal
 							}
 						).render();
 
-						folderPaginator.on('changeRequest', instance._onFolderPaginatorChangeRequest, instance);
+						folderPaginator.on(STR_CHANGE_REQUEST, instance._onFolderPaginatorChangeRequest, instance);
 
 						var eventHandles = [
 							Liferay.after(instance._eventDataRequest, instance._afterDataRequest, instance),
@@ -373,12 +393,12 @@ AUI.add(
 
 						var sendIOResponse = A.bind(instance._sendIOResponse, instance, ioRequest);
 
-						ioRequest.after(['failure', 'success'], sendIOResponse);
+						ioRequest.after(['failure', STR_SUCCESS], sendIOResponse);
 
 						ioRequest.set(STR_DATA, data);
 
 						if (src === SRC_SEARCH) {
-							var repositoryId = event.requestParams[instance.NS + 'repositoryId'];
+							var repositoryId = event.requestParams[instance.NS + STR_REPOSITORY_ID];
 
 							var repositoriesData = instance._repositoriesData;
 
@@ -449,13 +469,13 @@ AUI.add(
 						var dataViewEntries = item.attr(DATA_VIEW_ENTRIES);
 						var dataViewFolders = item.attr(DATA_VIEW_FOLDERS);
 
-						var direction = 'left';
+						var direction = STR_DIRECTION_LEFT;
 
 						if (item.attr(DATA_DIRECTION_RIGHT)) {
-							direction = 'right';
+							direction = STR_DIRECTION_RIGHT;
 						}
 
-						instance._listView.set('direction', direction);
+						instance._listView.set(STR_DIRECTION, direction);
 
 						var config = instance._config;
 
@@ -743,24 +763,21 @@ AUI.add(
 					_onDataRequest: function(event) {
 						var instance = this;
 
-						var src = event.src;
+						var selectedEntries;
 
-						if (src === SRC_DISPLAY_STYLE_BUTTONS || src === SRC_ENTRIES_PAGINATOR) {
-							var selectedEntries;
+						var entriesSelector = CSS_DOCUMENT_DISPLAY_STYLE_SELECTED + ' :checkbox';
 
-							var entriesSelector = CSS_DOCUMENT_DISPLAY_STYLE_SELECTED + ' :checkbox';
-
-							if (instance._getDisplayStyle(DISPLAY_STYLE_LIST)) {
-								entriesSelector = 'td > :checkbox:checked';
-							}
-
-							selectedEntries = instance._entriesContainer.all(entriesSelector);
-
-							if (selectedEntries.size()) {
-								instance._selectedEntries = selectedEntries.val();
-							}
+						if (instance._getDisplayStyle(DISPLAY_STYLE_LIST)) {
+							entriesSelector = 'td > :checkbox:checked';
 						}
-						else if (src === SRC_SEARCH) {
+
+						selectedEntries = instance._entriesContainer.all(entriesSelector);
+
+						if (selectedEntries.size()) {
+							instance._selectedEntries = selectedEntries.val();
+						}
+
+						if (event.src === SRC_SEARCH) {
 							instance._entryPaginator.setState(
 								{
 									page: 1
@@ -811,13 +828,13 @@ AUI.add(
 							requestParams[instance.ns(VIEW_FOLDERS)] = viewFolders;
 						}
 
-						var direction = 'left';
+						var direction = STR_DIRECTION_LEFT;
 
 						if (event.currentTarget.attr(DATA_DIRECTION_RIGHT)) {
-							direction = 'right';
+							direction = STR_DIRECTION_RIGHT;
 						}
 
-						instance._listView.set('direction', direction);
+						instance._listView.set(STR_DIRECTION, direction);
 
 						Liferay.fire(
 							instance._eventDataRequest,
@@ -834,7 +851,7 @@ AUI.add(
 
 						WIN[instance.ns(STR_TOGGLE_ACTIONS_BUTTON)]();
 
-						Liferay.Util.checkAllBox(
+						Util.checkAllBox(
 							instance._entriesContainer,
 							[
 								instance.ns(STR_ROW_IDS_FILE_ENTRY_CHECKBOX),
@@ -1142,9 +1159,9 @@ AUI.add(
 
 						var allRowsIdCheckbox = instance.ns(allRowIds + 'Checkbox');
 
-						var folderIds = Liferay.Util.listCheckedExcept(form, allRowsIdCheckbox, instance.ns(rowIds + 'FolderCheckbox'));
-						var fileEntryIds = Liferay.Util.listCheckedExcept(form, allRowsIdCheckbox, instance.ns(rowIds + 'FileEntryCheckbox'));
-						var fileShortcutIds = Liferay.Util.listCheckedExcept(form, allRowsIdCheckbox, instance.ns(rowIds + 'DLFileShortcutCheckbox'));
+						var folderIds = Util.listCheckedExcept(form, allRowsIdCheckbox, instance.ns(rowIds + 'FolderCheckbox'));
+						var fileEntryIds = Util.listCheckedExcept(form, allRowsIdCheckbox, instance.ns(rowIds + 'FileEntryCheckbox'));
+						var fileShortcutIds = Util.listCheckedExcept(form, allRowsIdCheckbox, instance.ns(rowIds + 'DLFileShortcutCheckbox'));
 
 						form.get(instance.ns('folderIds')).val(folderIds);
 						form.get(instance.ns('fileEntryIds')).val(fileEntryIds);
@@ -1262,8 +1279,6 @@ AUI.add(
 							entriesContainer.setContent(entries);
 
 							instance._initDropTargets();
-
-							instance._updateSelectedEntriesStatus();
 						}
 					},
 
@@ -1328,7 +1343,7 @@ AUI.add(
 
 						var repositoryId;
 
-						var repositoryIdNode = instance.one('#' + instance.ns('repositoryId'), content);
+						var repositoryIdNode = instance.one('#' + instance.ns(STR_REPOSITORY_ID), content);
 
 						if (repositoryIdNode) {
 							repositoryId = repositoryIdNode.val();
@@ -1404,17 +1419,20 @@ AUI.add(
 
 							repositorySearchResultsContainer.append(repositorySearchResults);
 						}
+
+						instance._updateSelectedEntriesStatus();
 					},
 
 					_sendIOResponse: function(ioRequest, event) {
 						var instance = this;
 
 						var data = ioRequest.get(STR_DATA);
+
 						var reponseData = ioRequest.get('responseData');
 
 						var eventType = instance._eventDataRetrieveSuccess;
 
-						if (event.type.indexOf('success') == -1) {
+						if (event.type.indexOf(STR_SUCCESS) == -1) {
 							eventType = instance._dataRetrieveFailure;
 						}
 
@@ -1468,9 +1486,9 @@ AUI.add(
 
 						var selectAllCheckbox = instance._selectAllCheckbox;
 
-						Liferay.Util.checkAll(documentContainer, instance.ns(STR_ROW_IDS_FOLDER_CHECKBOX), selectAllCheckbox, CSS_RESULT_ROW);
-						Liferay.Util.checkAll(documentContainer, instance.ns(STR_ROW_IDS_FILE_ENTRY_CHECKBOX), selectAllCheckbox, CSS_RESULT_ROW);
-						Liferay.Util.checkAll(documentContainer, instance.ns(STR_ROW_IDS_FILE_SHORTCUT_CHECKBOX), selectAllCheckbox, CSS_RESULT_ROW);
+						Util.checkAll(documentContainer, instance.ns(STR_ROW_IDS_FOLDER_CHECKBOX), selectAllCheckbox, CSS_RESULT_ROW);
+						Util.checkAll(documentContainer, instance.ns(STR_ROW_IDS_FILE_ENTRY_CHECKBOX), selectAllCheckbox, CSS_RESULT_ROW);
+						Util.checkAll(documentContainer, instance.ns(STR_ROW_IDS_FILE_SHORTCUT_CHECKBOX), selectAllCheckbox, CSS_RESULT_ROW);
 
 						WIN[instance.ns(STR_TOGGLE_ACTIONS_BUTTON)]();
 
@@ -1511,7 +1529,7 @@ AUI.add(
 
 								selectElement.attr(ATTR_CHECKED, !selectElement.attr(ATTR_CHECKED));
 
-								Liferay.Util.updateCheckboxValue(selectElement);
+								Util.updateCheckboxValue(selectElement);
 							}
 						}
 
@@ -1567,6 +1585,16 @@ AUI.add(
 							);
 
 							selectedEntries.length = 0;
+
+							Util.checkAllBox(
+								instance._entriesContainer,
+								[
+									instance.ns(STR_ROW_IDS_FILE_ENTRY_CHECKBOX),
+									instance.ns(STR_ROW_IDS_FILE_SHORTCUT_CHECKBOX),
+									instance.ns(STR_ROW_IDS_FOLDER_CHECKBOX)
+								],
+								instance._selectAllCheckbox
+							);
 						}
 					},
 
