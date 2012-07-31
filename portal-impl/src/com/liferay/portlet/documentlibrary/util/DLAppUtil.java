@@ -86,23 +86,19 @@ public class DLAppUtil {
 	public static boolean portletHasFocus(
 		LiferayPortletRequest liferayPortletRequest) {
 
-		if (!(liferayPortletRequest instanceof PortletRequestImpl)) {
-			return true;
+		if (liferayPortletRequest instanceof PortletRequestImpl) {
+			PortletRequestImpl portletRequestImpl =
+				(PortletRequestImpl) liferayPortletRequest;
+			HttpServletRequest originalHttpServletRequest =
+				portletRequestImpl.getOriginalHttpServletRequest();
+			String pPId = originalHttpServletRequest.getParameter("p_p_id");
+
+			if (!pPId.equals(portletRequestImpl.getPortletName())) {
+				return false;
+			}
 		}
 
-		PortletRequestImpl portletRequestImpl =
-			(PortletRequestImpl)liferayPortletRequest;
-
-		HttpServletRequest originalHttpServletRequest =
-			portletRequestImpl.getOriginalHttpServletRequest();
-
-		String portletId = originalHttpServletRequest.getParameter("p_p_id");
-
-		if (portletId.equals(portletRequestImpl.getPortletName())) {
-			return true;
-		}
-
-		return false;
+		return true;
 	}
 
 }
