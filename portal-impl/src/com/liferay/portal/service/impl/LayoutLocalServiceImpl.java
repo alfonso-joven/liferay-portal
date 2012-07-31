@@ -1420,8 +1420,10 @@ public class LayoutLocalServiceImpl extends LayoutLocalServiceBaseImpl {
 			Map<String, String[]> parameterMap, InputStream is)
 		throws PortalException, SystemException {
 
+		File file = null;
+
 		try {
-			File file = FileUtil.createTempFile("lar");
+			file = FileUtil.createTempFile("lar");
 
 			FileUtil.write(file, is);
 
@@ -1429,6 +1431,9 @@ public class LayoutLocalServiceImpl extends LayoutLocalServiceBaseImpl {
 		}
 		catch (IOException ioe) {
 			throw new SystemException(ioe);
+		}
+		finally {
+			FileUtil.delete(file);
 		}
 	}
 
@@ -1499,8 +1504,10 @@ public class LayoutLocalServiceImpl extends LayoutLocalServiceBaseImpl {
 			Map<String, String[]> parameterMap, InputStream is)
 		throws PortalException, SystemException {
 
+		File file = null;
+
 		try {
-			File file = FileUtil.createTempFile("lar");
+			file = FileUtil.createTempFile("lar");
 
 			FileUtil.write(file, is);
 
@@ -1509,6 +1516,9 @@ public class LayoutLocalServiceImpl extends LayoutLocalServiceBaseImpl {
 		}
 		catch (IOException ioe) {
 			throw new SystemException(ioe);
+		}
+		finally {
+			FileUtil.delete(file);
 		}
 	}
 
