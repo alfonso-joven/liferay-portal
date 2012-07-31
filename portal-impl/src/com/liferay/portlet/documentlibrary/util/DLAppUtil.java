@@ -14,19 +14,15 @@
 
 package com.liferay.portlet.documentlibrary.util;
 
-import com.liferay.portal.kernel.portlet.LiferayPortletRequest;
 import com.liferay.portal.kernel.repository.model.FileVersion;
 import com.liferay.portal.kernel.util.ContentTypes;
 import com.liferay.portal.kernel.util.FileUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.MimeTypesUtil;
 import com.liferay.portal.kernel.util.Validator;
-import com.liferay.portlet.PortletRequestImpl;
 
 import java.io.File;
 import java.io.InputStream;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author Alexander Chow
@@ -81,24 +77,6 @@ public class DLAppUtil {
 			previousFileVersion.getVersion());
 
 		return (currentVersion - previousVersion) >= 1;
-	}
-
-	public static boolean portletHasFocus(
-		LiferayPortletRequest liferayPortletRequest) {
-
-		if (liferayPortletRequest instanceof PortletRequestImpl) {
-			PortletRequestImpl portletRequestImpl =
-				(PortletRequestImpl) liferayPortletRequest;
-			HttpServletRequest originalHttpServletRequest =
-				portletRequestImpl.getOriginalHttpServletRequest();
-			String pPId = originalHttpServletRequest.getParameter("p_p_id");
-
-			if (!pPId.equals(portletRequestImpl.getPortletName())) {
-				return false;
-			}
-		}
-
-		return true;
 	}
 
 }

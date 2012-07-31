@@ -967,7 +967,5 @@ request.setAttribute("view_file_entry.jsp-fileEntry", fileEntry);
 </aui:script>
 
 <%
-if (DLAppUtil.portletHasFocus(liferayPortletRequest)) {
-	DLUtil.addPortletBreadcrumbEntries(fileEntry, request, renderResponse);
-}
+DLUtil.addPortletBreadcrumbEntries(fileEntry, request, renderResponse);
 %>
