@@ -220,7 +220,7 @@ int mountFoldersCount = DLAppServiceUtil.getMountFoldersCount(scopeGroupId, DLFo
 </c:if>
 
 <%
-if (searchFolderId > 0) {
+if ((searchFolderId > 0) && DLAppUtil.portletHasFocus(liferayPortletRequest)) {
 	DLUtil.addPortletBreadcrumbEntries(searchFolderId, request, renderResponse);
 }
 

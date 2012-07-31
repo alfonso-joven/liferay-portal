@@ -196,10 +196,12 @@ request.setAttribute("view.jsp-useAssetEntryQuery", String.valueOf(useAssetEntry
 
 		<%
 		if (folder != null) {
-			DLUtil.addPortletBreadcrumbEntries(folder, request, renderResponse);
+			if (DLAppUtil.portletHasFocus(liferayPortletRequest)) {
+				DLUtil.addPortletBreadcrumbEntries(folder, request, renderResponse);
 
-			PortalUtil.setPageSubtitle(folder.getName(), request);
-			PortalUtil.setPageDescription(folder.getDescription(), request);
+				PortalUtil.setPageSubtitle(folder.getName(), request);
+				PortalUtil.setPageDescription(folder.getDescription(), request);
+			}
 		}
 		%>
 
