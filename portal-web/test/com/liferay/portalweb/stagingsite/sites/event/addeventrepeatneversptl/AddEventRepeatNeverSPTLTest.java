@@ -106,6 +106,26 @@ public class AddEventRepeatNeverSPTLTest extends BaseTestCase {
 
 					try {
 						if (selenium.isElementPresent(
+									"//select[@id='_88_schedulerStartDateYear']")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
+
+				selenium.select("//select[@id='_88_schedulerStartDateYear']",
+					RuntimeVariables.replace("label=2017"));
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isElementPresent(
 									"//input[@id='_88_recurrenceTypeNever']")) {
 							break;
 						}
