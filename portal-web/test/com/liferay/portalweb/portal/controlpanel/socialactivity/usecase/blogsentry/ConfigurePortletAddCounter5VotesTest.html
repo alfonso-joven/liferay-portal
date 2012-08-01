@@ -91,12 +91,17 @@
 <tr>
 	<td>select</td>
 	<td>//select[@id='_86_displayActivityCounterName5']</td>
-	<td>User's Votes</td>
+	<td>Votes by User</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Save']</td>
 	<td>Save</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//div[@class='portlet-msg-success']</td>
+	<td>You have successfully updated the setup.</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -106,7 +111,7 @@
 <tr>
 	<td>assertSelectedLabel</td>
 	<td>//select[@id='_86_displayActivityCounterName5']</td>
-	<td>User's Votes</td>
+	<td>Votes by User</td>
 </tr>
 <tr>
 	<td>selectFrame</td>

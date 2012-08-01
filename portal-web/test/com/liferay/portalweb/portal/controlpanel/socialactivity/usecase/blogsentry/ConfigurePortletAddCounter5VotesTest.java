@@ -151,15 +151,32 @@ public class ConfigurePortletAddCounter5VotesTest extends BaseTestCase {
 		}
 
 		selenium.select("//select[@id='_86_displayActivityCounterName5']",
-			RuntimeVariables.replace("User's Votes"));
+			RuntimeVariables.replace("Votes by User"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
 		loadRequiredJavaScriptModules();
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isVisible("//div[@class='portlet-msg-success']")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
 		assertEquals(RuntimeVariables.replace(
 				"You have successfully updated the setup."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
-		assertEquals("User's Votes",
+		assertEquals("Votes by User",
 			selenium.getSelectedLabel(
 				"//select[@id='_86_displayActivityCounterName5']"));
 		selenium.selectFrame("relative=top");
