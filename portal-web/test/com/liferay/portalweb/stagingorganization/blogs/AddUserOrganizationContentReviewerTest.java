@@ -217,6 +217,7 @@ public class AddUserOrganizationContentReviewerTest extends BaseTestCase {
 					RuntimeVariables.replace("Select"));
 				Thread.sleep(5000);
 				selenium.selectWindow("name=organization");
+				Thread.sleep(5000);
 				selenium.type("//input[@name='_125_keywords']",
 					RuntimeVariables.replace("Selenium"));
 				selenium.clickAt("//input[@value='Search']",
@@ -283,6 +284,7 @@ public class AddUserOrganizationContentReviewerTest extends BaseTestCase {
 					RuntimeVariables.replace("Select"));
 				Thread.sleep(5000);
 				selenium.selectWindow("name=role");
+				Thread.sleep(5000);
 
 				for (int second = 0;; second++) {
 					if (second >= 90) {

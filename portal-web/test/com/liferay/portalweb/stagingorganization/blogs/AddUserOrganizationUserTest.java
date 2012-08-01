@@ -215,6 +215,7 @@ public class AddUserOrganizationUserTest extends BaseTestCase {
 					RuntimeVariables.replace("Select"));
 				Thread.sleep(5000);
 				selenium.selectWindow("name=organization");
+				Thread.sleep(5000);
 				selenium.type("//input[@name='_125_keywords']",
 					RuntimeVariables.replace("Selenium"));
 				selenium.clickAt("//input[@value='Search']",

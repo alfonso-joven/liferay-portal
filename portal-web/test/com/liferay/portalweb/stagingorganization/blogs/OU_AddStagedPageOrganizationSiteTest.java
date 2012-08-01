@@ -48,6 +48,26 @@ public class OU_AddStagedPageOrganizationSiteTest extends BaseTestCase {
 			}
 
 			try {
+				if (selenium.isVisible(
+							"//a[@class='menu-button']/span[contains(.,'Add')]	")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
+		selenium.clickAt("//a[@class='menu-button']/span[contains(.,'Add')]	",
+			RuntimeVariables.replace("Add"));
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
 				if (selenium.isElementPresent("//a[@id='addPage']")) {
 					break;
 				}
