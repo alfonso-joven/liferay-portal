@@ -195,7 +195,7 @@ request.setAttribute("view.jsp-useAssetEntryQuery", String.valueOf(useAssetEntry
 		</aui:layout>
 
 		<%
-		if (folder != null) {
+		if ((folder != null) && portletDisplay.isFocused()) {
 			DLUtil.addPortletBreadcrumbEntries(folder, request, renderResponse);
 
 			PortalUtil.setPageSubtitle(folder.getName(), request);

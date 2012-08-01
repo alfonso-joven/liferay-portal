@@ -426,6 +426,12 @@ String customCSSClassName = PortletConfigurationUtil.getPortletCustomCSSClassNam
 
 portletDisplay.setCustomCSSClassName(customCSSClassName);
 
+// Portlet focused
+
+boolean focused = portletId.equals(originalRequest.getParameter("p_p_id"));
+
+portletDisplay.setFocused(focused);
+
 // Portlet icon
 
 String portletIcon = null;
