@@ -50,7 +50,8 @@ public class AddPortletKBSrTest extends BaseTestCase {
 
 		assertEquals(RuntimeVariables.replace("Add"),
 			selenium.getText("//li[@id='_145_addContent']/a/span"));
-		selenium.mouseOver("//li[@id='_145_addContent']/a/span");
+		selenium.clickAt("//li[@id='_145_addContent']/a/span",
+			RuntimeVariables.replace("Add"));
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -107,8 +108,12 @@ public class AddPortletKBSrTest extends BaseTestCase {
 			Thread.sleep(1000);
 		}
 
-		selenium.typeKeys("//input[@id='layout_configuration_content']",
+		selenium.type("//input[@id='layout_configuration_content']",
 			RuntimeVariables.replace("k"));
+		selenium.keyDown("//input[@id='layout_configuration_content']",
+			RuntimeVariables.replace("\\13"));
+		selenium.keyUp("//input[@id='layout_configuration_content']",
+			RuntimeVariables.replace("\\13"));
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {

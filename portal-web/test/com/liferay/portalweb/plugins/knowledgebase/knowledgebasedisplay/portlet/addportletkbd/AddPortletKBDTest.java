@@ -24,6 +24,23 @@ public class AddPortletKBDTest extends BaseTestCase {
 	public void testAddPortletKBD() throws Exception {
 		selenium.open("/web/guest/home/");
 		loadRequiredJavaScriptModules();
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isVisible("link=Knowledge Base Display Test Page")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
 		selenium.clickAt("link=Knowledge Base Display Test Page",
 			RuntimeVariables.replace("Knowledge Base Display Test Page"));
 		selenium.waitForPageToLoad("30000");
@@ -50,7 +67,8 @@ public class AddPortletKBDTest extends BaseTestCase {
 
 		assertEquals(RuntimeVariables.replace("Add"),
 			selenium.getText("//li[@id='_145_addContent']/a/span"));
-		selenium.mouseOver("//li[@id='_145_addContent']/a/span");
+		selenium.clickAt("//li[@id='_145_addContent']/a/span",
+			RuntimeVariables.replace("Add"));
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -107,8 +125,12 @@ public class AddPortletKBDTest extends BaseTestCase {
 			Thread.sleep(1000);
 		}
 
-		selenium.typeKeys("//input[@id='layout_configuration_content']",
+		selenium.type("//input[@id='layout_configuration_content']",
 			RuntimeVariables.replace("k"));
+		selenium.keyDown("//input[@id='layout_configuration_content']",
+			RuntimeVariables.replace("\\13"));
+		selenium.keyUp("//input[@id='layout_configuration_content']",
+			RuntimeVariables.replace("\\13"));
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -116,7 +138,7 @@ public class AddPortletKBDTest extends BaseTestCase {
 			}
 
 			try {
-				if (selenium.isVisible(
+				if (selenium.isElementPresent(
 							"//div[@title='Knowledge Base (Display)']/p/a")) {
 					break;
 				}
