@@ -24,29 +24,15 @@ public class ImportLARTest extends BaseTestCase {
 	public void testImportLAR() throws Exception {
 		selenium.open("/web/guest/home/");
 		loadRequiredJavaScriptModules();
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isVisible("link=Breadcrumb Test Page")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
 		selenium.clickAt("link=Breadcrumb Test Page",
 			RuntimeVariables.replace("Breadcrumb Test Page"));
 		selenium.waitForPageToLoad("30000");
 		loadRequiredJavaScriptModules();
 		Thread.sleep(5000);
-		selenium.clickAt("//strong/a", RuntimeVariables.replace("Options"));
+		assertEquals(RuntimeVariables.replace("Options"),
+			selenium.getText("//span[@title='Options']/ul/li/strong/a"));
+		selenium.clickAt("//span[@title='Options']/ul/li/strong/a",
+			RuntimeVariables.replace("Options"));
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -55,7 +41,7 @@ public class ImportLARTest extends BaseTestCase {
 
 			try {
 				if (selenium.isVisible(
-							"//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a")) {
+							"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Export / Import')]/a")) {
 					break;
 				}
 			}
@@ -67,15 +53,15 @@ public class ImportLARTest extends BaseTestCase {
 
 		assertEquals(RuntimeVariables.replace("Export / Import"),
 			selenium.getText(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a"));
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Export / Import')]/a"));
 		selenium.click(RuntimeVariables.replace(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a"));
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Export / Import')]/a"));
 		selenium.waitForPageToLoad("30000");
 		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Import", RuntimeVariables.replace("Import"));
 		selenium.waitForPageToLoad("30000");
 		loadRequiredJavaScriptModules();
-		selenium.type("_86_importFileName",
+		selenium.type("//input[@id='_86_importFileName']",
 			RuntimeVariables.replace(
 				"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\portlet\\breadcrumb\\lar\\importlar\\dependencies\\Breadcrumb-Selenium.portlet.lar"));
 		selenium.clickAt("//input[@value='Import']",
