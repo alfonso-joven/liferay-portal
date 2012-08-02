@@ -15,6 +15,7 @@
 package com.liferay.portalweb.plugins.suntouripc;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
+import com.liferay.portalweb.portal.util.TearDownPageTest;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -30,7 +31,7 @@ public class SunTourIPCTests extends BaseTestSuite {
 		testSuite.addTestSuite(AddPortletTourListingsTest.class);
 		testSuite.addTestSuite(AddPortletTourMapTest.class);
 		testSuite.addTestSuite(AddPortletTourWeatherTest.class);
-		testSuite.addTestSuite(DeletePageTest.class);
+		testSuite.addTestSuite(TearDownPageTest.class);
 
 		return testSuite;
 	}
