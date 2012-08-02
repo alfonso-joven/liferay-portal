@@ -69,6 +69,25 @@ public class UserSN_ViewWebContentAssignedUserTest extends BaseTestCase {
 		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("There are no completed tasks."),
 			selenium.getText("//div[@class='portlet-msg-info']"));
-		assertTrue(selenium.isElementNotPresent("link=My Submissions"));
+		selenium.clickAt("link=My Submissions",
+			RuntimeVariables.replace("My Submissions"));
+		selenium.waitForPageToLoad("30000");
+		loadRequiredJavaScriptModules();
+		selenium.click(RuntimeVariables.replace("link=Pending"));
+		selenium.waitForPageToLoad("30000");
+		loadRequiredJavaScriptModules();
+		assertEquals(RuntimeVariables.replace("My Submissions"),
+			selenium.getText("//span[@class='portlet-title-text']"));
+		assertEquals(RuntimeVariables.replace(
+				"There are no pending publications requested by me."),
+			selenium.getText("//div[@class='portlet-msg-info']"));
+		selenium.clickAt("link=Completed", RuntimeVariables.replace("Completed"));
+		selenium.waitForPageToLoad("30000");
+		loadRequiredJavaScriptModules();
+		assertEquals(RuntimeVariables.replace("My Submissions"),
+			selenium.getText("//span[@class='portlet-title-text']"));
+		assertEquals(RuntimeVariables.replace(
+				"There are no completed publications requested by me."),
+			selenium.getText("//div[@class='portlet-msg-info']"));
 	}
 }

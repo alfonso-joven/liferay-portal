@@ -74,9 +74,39 @@
 	<td>There are no completed tasks.</td>
 </tr>
 <tr>
-	<td>assertElementNotPresent</td>
+	<td>clickAtAndWait</td>
 	<td>link=My Submissions</td>
 	<td>My Submissions</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Pending</td>
+	<td>Pending</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@class='portlet-title-text']</td>
+	<td>My Submissions</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='portlet-msg-info']</td>
+	<td>There are no pending publications requested by me.</td>
+</tr>
+<tr>
+	<td>clickAtAndWait</td>
+	<td>link=Completed</td>
+	<td>Completed</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@class='portlet-title-text']</td>
+	<td>My Submissions</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='portlet-msg-info']</td>
+	<td>There are no completed publications requested by me.</td>
 </tr>
 </tbody></table>
 </body>

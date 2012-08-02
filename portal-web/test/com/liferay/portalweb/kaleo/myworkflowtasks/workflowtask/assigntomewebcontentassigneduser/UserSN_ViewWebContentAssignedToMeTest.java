@@ -46,6 +46,31 @@ public class UserSN_ViewWebContentAssignedToMeTest extends BaseTestCase {
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
 		loadRequiredJavaScriptModules();
-		assertTrue(selenium.isElementNotPresent("link=My Workflow Tasks"));
+		selenium.clickAt("link=My Workflow Tasks",
+			RuntimeVariables.replace("My Workflow Tasks"));
+		selenium.waitForPageToLoad("30000");
+		loadRequiredJavaScriptModules();
+		selenium.click(RuntimeVariables.replace("link=Pending"));
+		selenium.waitForPageToLoad("30000");
+		loadRequiredJavaScriptModules();
+		assertEquals(RuntimeVariables.replace("My Workflow Tasks"),
+			selenium.getText("//span[@class='portlet-title-text']"));
+		assertEquals(RuntimeVariables.replace("Assigned to Me"),
+			selenium.getText("//div[@id='workflowMyTasksPanel']/div/div"));
+		assertEquals(RuntimeVariables.replace(
+				"There are no pending tasks assigned to you."),
+			selenium.getText("xpath=(//div[@class='portlet-msg-info'])[1]"));
+		assertEquals(RuntimeVariables.replace("Assigned to My Roles"),
+			selenium.getText("//div[@id='workflowMyRolesTasksPanel']/div/div"));
+		assertEquals(RuntimeVariables.replace(
+				"There are no pending tasks assigned to your roles."),
+			selenium.getText("xpath=(//div[@class='portlet-msg-info'])[2]"));
+		selenium.clickAt("link=Completed", RuntimeVariables.replace("Completed"));
+		selenium.waitForPageToLoad("30000");
+		loadRequiredJavaScriptModules();
+		assertEquals(RuntimeVariables.replace("My Workflow Tasks"),
+			selenium.getText("//span[@class='portlet-title-text']"));
+		assertEquals(RuntimeVariables.replace("There are no completed tasks."),
+			selenium.getText("//div[@class='portlet-msg-info']"));
 	}
 }
