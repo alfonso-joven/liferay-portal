@@ -75,7 +75,7 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//section[@id='portlet_128']/div/div/div/div[2]/h1/span</td>
+	<td>//h1[@class='header-title']/span</td>
 	<td>Roles Orgrole Name</td>
 </tr>
 <tr>
@@ -94,17 +94,17 @@
 	<td>Organization</td>
 </tr>
 <tr>
-	<td>assertChecked</td>
-	<td>//input[@value='com.liferay.portal.model.OrganizationMANAGE_USERS']</td>
-	<td>Manage Users</td>
-</tr>
-<tr>
-	<td>uncheck</td>
-	<td>//input[@value='com.liferay.portal.model.OrganizationMANAGE_USERS']</td>
-	<td>Manage Users</td>
-</tr>
-<tr>
 	<td>assertNotChecked</td>
+	<td>//input[@value='com.liferay.portal.model.OrganizationMANAGE_USERS']</td>
+	<td>Manage Users</td>
+</tr>
+<tr>
+	<td>check</td>
+	<td>//input[@value='com.liferay.portal.model.OrganizationMANAGE_USERS']</td>
+	<td>Manage Users</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
 	<td>//input[@value='com.liferay.portal.model.OrganizationMANAGE_USERS']</td>
 	<td>Manage Users</td>
 </tr>
@@ -120,8 +120,18 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='portlet-msg-info']</td>
-	<td>This role does not have any permissions.</td>
+	<td>//td/a</td>
+	<td>Users and Organizations</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[3]/td[2]</td>
+	<td>Organization</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[3]/td[3]</td>
+	<td>Manage Users</td>
 </tr>
 </tbody>
 </table>

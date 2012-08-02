@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.portalweb.permissionscp.organizations.organization.vieworganization.orgrole;
+package com.liferay.portalweb.permissions.organizations.organization.vieworganization.orgrole;
 
 import com.liferay.portalweb.portal.BaseTestCase;
 import com.liferay.portalweb.portal.util.RuntimeVariables;
@@ -88,8 +88,7 @@ public class RemoveOrgRoleOrganizationsManageUsersTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Roles Orgrole Name"),
-			selenium.getText(
-				"//section[@id='portlet_128']/div/div/div/div[2]/h1/span"));
+			selenium.getText("//h1[@class='header-title']/span"));
 		selenium.select("//select[@id='_128_add-permissions']",
 			RuntimeVariables.replace("Organization Administration"));
 
