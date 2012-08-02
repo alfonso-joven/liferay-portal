@@ -107,8 +107,8 @@ public class AddDMFolderDocumentTxtSATest extends BaseTestCase {
 			RuntimeVariables.replace("DM Document Title"));
 		selenium.type("//textarea[@id='_20_description']",
 			RuntimeVariables.replace("DM Document Description"));
-		selenium.clickAt("//input[@value='Publish']",
-			RuntimeVariables.replace("Publish"));
+		selenium.clickAt("//input[@value='Submit for Publication']",
+			RuntimeVariables.replace("Submit for Publication"));
 		selenium.waitForPageToLoad("30000");
 		loadRequiredJavaScriptModules();
 

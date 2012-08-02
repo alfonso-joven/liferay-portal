@@ -61,7 +61,7 @@ public class CheckoutDMDocumentTxtTest extends BaseTestCase {
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertEquals(RuntimeVariables.replace(
-				"You now have an indefinite lock on this document. No one else can edit this document until you unlock it. This lock will never expire."),
+				"You now have a lock on this document. No one else can edit this document until you unlock it. This lock will automatically expire in 1 day."),
 			selenium.getText(
 				"//div[@class='portlet-msg-lock portlet-msg-success']"));
 	}

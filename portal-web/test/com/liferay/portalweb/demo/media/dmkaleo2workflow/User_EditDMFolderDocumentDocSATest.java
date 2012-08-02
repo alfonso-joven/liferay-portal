@@ -122,7 +122,7 @@ public class User_EditDMFolderDocumentDocSATest extends BaseTestCase {
 			selenium.getText("//h3[contains(@class,'version')]"));
 		assertEquals(RuntimeVariables.replace("Last Updated by userfn userln"),
 			selenium.getText("//div[contains(@class,'lfr-asset-author')]"));
-		assertEquals(RuntimeVariables.replace("Status: Pending (Review)"),
+		assertEquals(RuntimeVariables.replace("Status: Pending (Update)"),
 			selenium.getText("//span[@class='workflow-status']"));
 		assertEquals(RuntimeVariables.replace("DM Document Description"),
 			selenium.getText("//blockquote[@class='lfr-asset-description']"));
