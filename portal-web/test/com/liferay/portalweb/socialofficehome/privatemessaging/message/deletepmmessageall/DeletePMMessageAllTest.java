@@ -139,9 +139,25 @@ public class DeletePMMessageAllTest extends BaseTestCase {
 						"//tr[4]/td[1]/span/span/span/input[2]"));
 				assertFalse(selenium.isChecked(
 						"//tr[5]/td[1]/span/span/span/input[2]"));
-				assertEquals(RuntimeVariables.replace("All"),
-					selenium.getText("//span[@class='select-all']"));
-				selenium.clickAt("//span[@class='select-all']",
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isVisible(
+									"//input[@id='_1_WAR_privatemessagingportlet_checkAll']")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
+
+				selenium.clickAt("//input[@id='_1_WAR_privatemessagingportlet_checkAll']",
 					RuntimeVariables.replace("All"));
 				assertTrue(selenium.isChecked("//td[1]/span/span/span/input[2]"));
 				assertTrue(selenium.isChecked(

@@ -43,23 +43,23 @@ public class MessageTestPlan extends BaseTestSuite {
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
 
-		testSuite.addTest(AddPMMessageTests.suite());
-		testSuite.addTest(AddPMMessageAttachmentTests.suite());
-		testSuite.addTest(AddPMMessageMultipleTests.suite());
-		testSuite.addTest(BackToMessagesPMMessageDetailsTests.suite());
-		testSuite.addTest(DeletePMMessageTests.suite());
+//		testSuite.addTest(AddPMMessageTests.suite());
+//		testSuite.addTest(AddPMMessageAttachmentTests.suite());
+//		testSuite.addTest(AddPMMessageMultipleTests.suite());
+//		testSuite.addTest(BackToMessagesPMMessageDetailsTests.suite());
+//		testSuite.addTest(DeletePMMessageTests.suite());
 		testSuite.addTest(DeletePMMessageAllTests.suite());
-		testSuite.addTest(DeletePMMessageDetailsTests.suite());
+//		testSuite.addTest(DeletePMMessageDetailsTests.suite());
 		//testSuite.addTest(Gmail_ViewPMMessageTests.suite());
 		testSuite.addTest(MarkAsUnreadPMMessageAllTests.suite());
 		testSuite.addTest(SelectAllPMMessageTests.suite());
 		testSuite.addTest(SelectNonePMMessageTests.suite());
-		testSuite.addTest(SOUs_AddPMMessageReplyTests.suite());
-		testSuite.addTest(SOUs_AddPMMessageReplyAttachmentTests.suite());
-		testSuite.addTest(SOUs_DeletePMMessageTests.suite());
-		testSuite.addTest(SOUs_MarkAsUnreadPMMessageTests.suite());
-		testSuite.addTest(SOUs_MarkAsUnreadPMMessageDetailsTests.suite());
-		testSuite.addTest(ViewPMMessageTests.suite());
+//		testSuite.addTest(SOUs_AddPMMessageReplyTests.suite());
+//		testSuite.addTest(SOUs_AddPMMessageReplyAttachmentTests.suite());
+//		testSuite.addTest(SOUs_DeletePMMessageTests.suite());
+//		testSuite.addTest(SOUs_MarkAsUnreadPMMessageTests.suite());
+//		testSuite.addTest(SOUs_MarkAsUnreadPMMessageDetailsTests.suite());
+//		testSuite.addTest(ViewPMMessageTests.suite());
 
 		return testSuite;
 	}
