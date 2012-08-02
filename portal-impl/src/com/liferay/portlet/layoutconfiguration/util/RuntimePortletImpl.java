@@ -319,11 +319,9 @@ public class RuntimePortletImpl implements RuntimePortlet {
 		RuntimeLogic actionURLLogic = new ActionURLLogic(renderResponse);
 		RuntimeLogic renderURLLogic = new RenderURLLogic(renderResponse);
 
-		content = RuntimePortletUtil.processXML(request, content, portletLogic);
-		content = RuntimePortletUtil.processXML(
-			request, content, actionURLLogic);
-		content = RuntimePortletUtil.processXML(
-			request, content, renderURLLogic);
+		content = processXML(request, content, portletLogic);
+		content = processXML(request, content, actionURLLogic);
+		content = processXML(request, content, renderURLLogic);
 
 		return content;
 	}
@@ -602,6 +600,6 @@ public class RuntimePortletImpl implements RuntimePortlet {
 		}
 	}
 
-	private static Log _log = LogFactoryUtil.getLog(RuntimePortletUtil.class);
+	private static Log _log = LogFactoryUtil.getLog(RuntimePortletImpl.class);
 
 }
