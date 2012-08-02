@@ -140,7 +140,9 @@ public class SelectBirthdayTest extends BaseTestCase {
 
 		assertEquals(RuntimeVariables.replace("March 1986"),
 			selenium.getText("//div[@class='aui-calendar-title']"));
-		selenium.clickAt("link=Prev", RuntimeVariables.replace("Prev"));
+		assertEquals(RuntimeVariables.replace("Next"),
+			selenium.getText("link=Next"));
+		selenium.clickAt("link=Next", RuntimeVariables.replace("Next"));
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -162,7 +164,7 @@ public class SelectBirthdayTest extends BaseTestCase {
 
 		assertEquals(RuntimeVariables.replace("April 1986"),
 			selenium.getText("//div[@class='aui-calendar-title']"));
-		selenium.clickAt("link=Prev", RuntimeVariables.replace("Prev"));
+		selenium.clickAt("link=Next", RuntimeVariables.replace("Next"));
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
