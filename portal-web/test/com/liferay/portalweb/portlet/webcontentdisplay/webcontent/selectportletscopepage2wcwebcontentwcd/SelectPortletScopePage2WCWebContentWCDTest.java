@@ -58,6 +58,24 @@ public class SelectPortletScopePage2WCWebContentWCDTest extends BaseTestCase {
 			}
 
 			try {
+				if (selenium.isVisible("//iframe")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
+		selenium.selectFrame("//iframe");
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
 				if (selenium.isVisible("link=WC WebContent Title")) {
 					break;
 				}
@@ -114,5 +132,6 @@ public class SelectPortletScopePage2WCWebContentWCDTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"You have successfully updated the setup."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
+		selenium.selectFrame("relative=top");
 	}
 }

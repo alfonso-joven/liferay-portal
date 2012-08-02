@@ -29,34 +29,14 @@ public class TearDownPortletSetupTest extends BaseTestCase {
 			case 1:
 				selenium.open("/web/guest/home/");
 				loadRequiredJavaScriptModules();
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isVisible(
-									"link=Web Content Display Test Page")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
 				selenium.clickAt("link=Web Content Display Test Page",
 					RuntimeVariables.replace("Web Content Display Test Page"));
 				selenium.waitForPageToLoad("30000");
 				loadRequiredJavaScriptModules();
-				assertEquals(RuntimeVariables.replace(""),
-					selenium.getText("//img[@alt='Select Web Content']"));
-				assertEquals(RuntimeVariables.replace("Options"),
-					selenium.getText("//strong/a"));
 				Thread.sleep(5000);
-				selenium.clickAt("//strong/a",
+				assertEquals(RuntimeVariables.replace("Options"),
+					selenium.getText("//span[@title='Options']/ul/li/strong/a"));
+				selenium.clickAt("//span[@title='Options']/ul/li/strong/a",
 					RuntimeVariables.replace("Options"));
 
 				for (int second = 0;; second++) {
@@ -66,7 +46,7 @@ public class TearDownPortletSetupTest extends BaseTestCase {
 
 					try {
 						if (selenium.isVisible(
-									"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a")) {
+									"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a")) {
 							break;
 						}
 					}
@@ -78,9 +58,44 @@ public class TearDownPortletSetupTest extends BaseTestCase {
 
 				assertEquals(RuntimeVariables.replace("Configuration"),
 					selenium.getText(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a"));
-				selenium.click(
-					"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a");
+						"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a"));
+				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a",
+					RuntimeVariables.replace("Configuration"));
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isVisible("//iframe")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
+
+				selenium.selectFrame("//iframe");
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isElementPresent(
+									"//script[contains(@src,'/liferay/navigation_interaction.js')]")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
 
 				for (int second = 0;; second++) {
 					if (second >= 90) {
@@ -101,11 +116,11 @@ public class TearDownPortletSetupTest extends BaseTestCase {
 				selenium.clickAt("link=Setup", RuntimeVariables.replace("Setup"));
 				selenium.waitForPageToLoad("30000");
 				loadRequiredJavaScriptModules();
-				assertTrue(selenium.isElementPresent(
+				assertTrue(selenium.isVisible(
 						"//input[@id='_86_showAvailableLocalesCheckbox']"));
 
 				boolean showAvailableLocalesChecked = selenium.isChecked(
-						"_86_showAvailableLocalesCheckbox");
+						"//input[@id='_86_showAvailableLocalesCheckbox']");
 
 				if (!showAvailableLocalesChecked) {
 					label = 2;
@@ -113,15 +128,19 @@ public class TearDownPortletSetupTest extends BaseTestCase {
 					continue;
 				}
 
+				assertTrue(selenium.isChecked(
+						"//input[@id='_86_showAvailableLocalesCheckbox']"));
 				selenium.clickAt("//input[@id='_86_showAvailableLocalesCheckbox']",
-					RuntimeVariables.replace(""));
+					RuntimeVariables.replace("Show Available Locales"));
+				assertFalse(selenium.isChecked(
+						"//input[@id='_86_showAvailableLocalesCheckbox']"));
 
 			case 2:
-				assertTrue(selenium.isElementPresent(
+				assertTrue(selenium.isVisible(
 						"//input[@id='_86_enablePrintCheckbox']"));
 
 				boolean enablePrintChecked = selenium.isChecked(
-						"_86_enablePrintCheckbox");
+						"//input[@id='_86_enablePrintCheckbox']");
 
 				if (!enablePrintChecked) {
 					label = 3;
@@ -129,15 +148,19 @@ public class TearDownPortletSetupTest extends BaseTestCase {
 					continue;
 				}
 
+				assertTrue(selenium.isChecked(
+						"//input[@id='_86_enablePrintCheckbox']"));
 				selenium.clickAt("//input[@id='_86_enablePrintCheckbox']",
-					RuntimeVariables.replace(""));
+					RuntimeVariables.replace("Enable Print"));
+				assertFalse(selenium.isChecked(
+						"//input[@id='_86_enablePrintCheckbox']"));
 
 			case 3:
-				assertTrue(selenium.isElementPresent(
+				assertTrue(selenium.isVisible(
 						"//input[@id='_86_enableRatingsCheckbox']"));
 
 				boolean enableRatingsChecked = selenium.isChecked(
-						"_86_enableRatingsCheckbox");
+						"//input[@id='_86_enableRatingsCheckbox']");
 
 				if (!enableRatingsChecked) {
 					label = 4;
@@ -145,15 +168,19 @@ public class TearDownPortletSetupTest extends BaseTestCase {
 					continue;
 				}
 
+				assertTrue(selenium.isChecked(
+						"//input[@id='_86_enableRatingsCheckbox']"));
 				selenium.clickAt("//input[@id='_86_enableRatingsCheckbox']",
-					RuntimeVariables.replace(""));
+					RuntimeVariables.replace("Enable Ratings"));
+				assertFalse(selenium.isChecked(
+						"//input[@id='_86_enableRatingsCheckbox']"));
 
 			case 4:
 				assertTrue(selenium.isElementPresent(
 						"//input[@id='_86_enableCommentsCheckbox']"));
 
 				boolean enableCommentsChecked = selenium.isChecked(
-						"_86_enableCommentsCheckbox");
+						"//input[@id='_86_enableCommentsCheckbox']");
 
 				if (!enableCommentsChecked) {
 					label = 5;
@@ -161,15 +188,19 @@ public class TearDownPortletSetupTest extends BaseTestCase {
 					continue;
 				}
 
+				assertTrue(selenium.isChecked(
+						"//input[@id='_86_enableCommentsCheckbox']"));
 				selenium.clickAt("//input[@id='_86_enableCommentsCheckbox']",
-					RuntimeVariables.replace(""));
+					RuntimeVariables.replace("Enable Comments"));
+				assertFalse(selenium.isChecked(
+						"//input[@id='_86_enableCommentsCheckbox']"));
 
 			case 5:
-				assertTrue(selenium.isElementPresent(
+				assertTrue(selenium.isVisible(
 						"//input[@id='_86_enableCommentRatingsCheckbox']"));
 
 				boolean enableCommentRatingsChecked = selenium.isChecked(
-						"_86_enableCommentRatingsCheckbox");
+						"//input[@id='_86_enableCommentRatingsCheckbox']");
 
 				if (!enableCommentRatingsChecked) {
 					label = 6;
@@ -177,8 +208,12 @@ public class TearDownPortletSetupTest extends BaseTestCase {
 					continue;
 				}
 
+				assertTrue(selenium.isChecked(
+						"//input[@id='_86_enableCommentRatingsCheckbox']"));
 				selenium.clickAt("//input[@id='_86_enableCommentRatingsCheckbox']",
-					RuntimeVariables.replace(""));
+					RuntimeVariables.replace("Enable Comment Ratings"));
+				assertFalse(selenium.isChecked(
+						"//input[@id='_86_enableCommentRatingsCheckbox']"));
 
 			case 6:
 				selenium.clickAt("//input[@value='Save']",
@@ -188,6 +223,17 @@ public class TearDownPortletSetupTest extends BaseTestCase {
 				assertEquals(RuntimeVariables.replace(
 						"You have successfully updated the setup."),
 					selenium.getText("//div[@class='portlet-msg-success']"));
+				assertFalse(selenium.isChecked(
+						"//input[@id='_86_showAvailableLocalesCheckbox']"));
+				assertFalse(selenium.isChecked(
+						"//input[@id='_86_enablePrintCheckbox']"));
+				assertFalse(selenium.isChecked(
+						"//input[@id='_86_enableRatingsCheckbox']"));
+				assertFalse(selenium.isChecked(
+						"//input[@id='_86_enableCommentsCheckbox']"));
+				assertFalse(selenium.isChecked(
+						"//input[@id='_86_enableCommentRatingsCheckbox']"));
+				selenium.selectFrame("relative=top");
 
 			case 100:
 				label = -1;

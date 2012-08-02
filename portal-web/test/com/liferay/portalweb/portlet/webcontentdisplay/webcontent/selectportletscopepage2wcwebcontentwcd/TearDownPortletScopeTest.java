@@ -29,12 +29,124 @@ public class TearDownPortletScopeTest extends BaseTestCase {
 			case 1:
 				selenium.open("/web/guest/home/");
 				loadRequiredJavaScriptModules();
+				selenium.clickAt("link=Welcome",
+					RuntimeVariables.replace("Welcome"));
+				selenium.waitForPageToLoad("30000");
+				loadRequiredJavaScriptModules();
+
+				boolean pageDefaultPresent = selenium.isElementPresent(
+						"link=Web Content Display Test Page");
+
+				if (!pageDefaultPresent) {
+					label = 2;
+
+					continue;
+				}
+
+				selenium.clickAt("link=Web Content Display Test Page",
+					RuntimeVariables.replace("Web Content Display Test Page"));
+				selenium.waitForPageToLoad("30000");
+				loadRequiredJavaScriptModules();
+				Thread.sleep(5000);
+				assertEquals(RuntimeVariables.replace("Options"),
+					selenium.getText("//span[@title='Options']/ul/li/strong/a"));
+				selenium.clickAt("//span[@title='Options']/ul/li/strong/a",
+					RuntimeVariables.replace("Options"));
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isVisible(
+									"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
+
+				assertEquals(RuntimeVariables.replace("Configuration"),
+					selenium.getText(
+						"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a"));
+				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a",
+					RuntimeVariables.replace("Configuration"));
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isVisible("//iframe")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
+
+				selenium.selectFrame("//iframe");
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isElementPresent(
+									"//script[contains(@src,'/liferay/navigation_interaction.js')]")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isVisible("link=Scope")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
+
+				selenium.clickAt("link=Scope", RuntimeVariables.replace("Scope"));
+				selenium.waitForPageToLoad("30000");
+				loadRequiredJavaScriptModules();
+				selenium.select("//select[@id='_86_scopeType']",
+					RuntimeVariables.replace("Default"));
+				selenium.clickAt("//input[@value='Save']",
+					RuntimeVariables.replace("Save"));
+				selenium.waitForPageToLoad("30000");
+				loadRequiredJavaScriptModules();
+				assertEquals("Default",
+					selenium.getSelectedLabel("//select[@id='_86_scopeType']"));
+				selenium.selectFrame("relative=top");
+
+			case 2:
 
 				boolean page1Present = selenium.isElementPresent(
 						"link=Web Content Display Test Page1");
 
 				if (!page1Present) {
-					label = 2;
+					label = 3;
 
 					continue;
 				}
@@ -43,10 +155,10 @@ public class TearDownPortletScopeTest extends BaseTestCase {
 					RuntimeVariables.replace("Web Content Display Test Page1"));
 				selenium.waitForPageToLoad("30000");
 				loadRequiredJavaScriptModules();
-				assertEquals(RuntimeVariables.replace("Options"),
-					selenium.getText("//strong/a"));
 				Thread.sleep(5000);
-				selenium.clickAt("//strong/a",
+				assertEquals(RuntimeVariables.replace("Options"),
+					selenium.getText("//span[@title='Options']/ul/li/strong/a"));
+				selenium.clickAt("//span[@title='Options']/ul/li/strong/a",
 					RuntimeVariables.replace("Options"));
 
 				for (int second = 0;; second++) {
@@ -56,7 +168,7 @@ public class TearDownPortletScopeTest extends BaseTestCase {
 
 					try {
 						if (selenium.isVisible(
-									"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a")) {
+									"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a")) {
 							break;
 						}
 					}
@@ -68,9 +180,44 @@ public class TearDownPortletScopeTest extends BaseTestCase {
 
 				assertEquals(RuntimeVariables.replace("Configuration"),
 					selenium.getText(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a"));
-				selenium.click(
-					"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a");
+						"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a"));
+				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a",
+					RuntimeVariables.replace("Configuration"));
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isVisible("//iframe")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
+
+				selenium.selectFrame("//iframe");
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isElementPresent(
+									"//script[contains(@src,'/liferay/navigation_interaction.js')]")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
 
 				for (int second = 0;; second++) {
 					if (second >= 90) {
@@ -92,19 +239,22 @@ public class TearDownPortletScopeTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				loadRequiredJavaScriptModules();
 				selenium.select("//select[@id='_86_scopeType']",
-					RuntimeVariables.replace("label=Default"));
+					RuntimeVariables.replace("Default"));
 				selenium.clickAt("//input[@value='Save']",
 					RuntimeVariables.replace("Save"));
 				selenium.waitForPageToLoad("30000");
 				loadRequiredJavaScriptModules();
+				assertEquals("Default",
+					selenium.getSelectedLabel("//select[@id='_86_scopeType']"));
+				selenium.selectFrame("relative=top");
 
-			case 2:
+			case 3:
 
 				boolean page2Present = selenium.isElementPresent(
 						"link=Web Content Display Test Page2");
 
 				if (!page2Present) {
-					label = 3;
+					label = 4;
 
 					continue;
 				}
@@ -113,10 +263,10 @@ public class TearDownPortletScopeTest extends BaseTestCase {
 					RuntimeVariables.replace("Web Content Display Test Page2"));
 				selenium.waitForPageToLoad("30000");
 				loadRequiredJavaScriptModules();
-				assertEquals(RuntimeVariables.replace("Options"),
-					selenium.getText("//strong/a"));
 				Thread.sleep(5000);
-				selenium.clickAt("//strong/a",
+				assertEquals(RuntimeVariables.replace("Options"),
+					selenium.getText("//span[@title='Options']/ul/li/strong/a"));
+				selenium.clickAt("//span[@title='Options']/ul/li/strong/a",
 					RuntimeVariables.replace("Options"));
 
 				for (int second = 0;; second++) {
@@ -126,7 +276,7 @@ public class TearDownPortletScopeTest extends BaseTestCase {
 
 					try {
 						if (selenium.isVisible(
-									"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a")) {
+									"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a")) {
 							break;
 						}
 					}
@@ -138,9 +288,44 @@ public class TearDownPortletScopeTest extends BaseTestCase {
 
 				assertEquals(RuntimeVariables.replace("Configuration"),
 					selenium.getText(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a"));
-				selenium.click(
-					"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a");
+						"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a"));
+				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a",
+					RuntimeVariables.replace("Configuration"));
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isVisible("//iframe")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
+
+				selenium.selectFrame("//iframe");
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isElementPresent(
+									"//script[contains(@src,'/liferay/navigation_interaction.js')]")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
 
 				for (int second = 0;; second++) {
 					if (second >= 90) {
@@ -162,19 +347,22 @@ public class TearDownPortletScopeTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				loadRequiredJavaScriptModules();
 				selenium.select("//select[@id='_86_scopeType']",
-					RuntimeVariables.replace("label=Default"));
+					RuntimeVariables.replace("Default"));
 				selenium.clickAt("//input[@value='Save']",
 					RuntimeVariables.replace("Save"));
 				selenium.waitForPageToLoad("30000");
 				loadRequiredJavaScriptModules();
+				assertEquals("Default",
+					selenium.getSelectedLabel("//select[@id='_86_scopeType']"));
+				selenium.selectFrame("relative=top");
 
-			case 3:
+			case 4:
 
 				boolean page3Present = selenium.isElementPresent(
 						"link=Web Content Display Test Page3");
 
 				if (!page3Present) {
-					label = 4;
+					label = 5;
 
 					continue;
 				}
@@ -183,10 +371,10 @@ public class TearDownPortletScopeTest extends BaseTestCase {
 					RuntimeVariables.replace("Web Content Display Test Page3"));
 				selenium.waitForPageToLoad("30000");
 				loadRequiredJavaScriptModules();
-				assertEquals(RuntimeVariables.replace("Options"),
-					selenium.getText("//strong/a"));
 				Thread.sleep(5000);
-				selenium.clickAt("//strong/a",
+				assertEquals(RuntimeVariables.replace("Options"),
+					selenium.getText("//span[@title='Options']/ul/li/strong/a"));
+				selenium.clickAt("//span[@title='Options']/ul/li/strong/a",
 					RuntimeVariables.replace("Options"));
 
 				for (int second = 0;; second++) {
@@ -196,7 +384,7 @@ public class TearDownPortletScopeTest extends BaseTestCase {
 
 					try {
 						if (selenium.isVisible(
-									"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a")) {
+									"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a")) {
 							break;
 						}
 					}
@@ -208,9 +396,44 @@ public class TearDownPortletScopeTest extends BaseTestCase {
 
 				assertEquals(RuntimeVariables.replace("Configuration"),
 					selenium.getText(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a"));
-				selenium.click(
-					"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a");
+						"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a"));
+				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a",
+					RuntimeVariables.replace("Configuration"));
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isVisible("//iframe")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
+
+				selenium.selectFrame("//iframe");
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isElementPresent(
+									"//script[contains(@src,'/liferay/navigation_interaction.js')]")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
 
 				for (int second = 0;; second++) {
 					if (second >= 90) {
@@ -232,13 +455,16 @@ public class TearDownPortletScopeTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				loadRequiredJavaScriptModules();
 				selenium.select("//select[@id='_86_scopeType']",
-					RuntimeVariables.replace("label=Default"));
+					RuntimeVariables.replace("Default"));
 				selenium.clickAt("//input[@value='Save']",
 					RuntimeVariables.replace("Save"));
 				selenium.waitForPageToLoad("30000");
 				loadRequiredJavaScriptModules();
+				assertEquals("Default",
+					selenium.getSelectedLabel("//select[@id='_86_scopeType']"));
+				selenium.selectFrame("relative=top");
 
-			case 4:
+			case 5:
 			case 100:
 				label = -1;
 			}
