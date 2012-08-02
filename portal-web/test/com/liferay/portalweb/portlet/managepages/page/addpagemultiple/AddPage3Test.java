@@ -39,6 +39,27 @@ public class AddPage3Test extends BaseTestCase {
 
 					try {
 						if (selenium.isElementPresent(
+									"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
+
+				assertEquals(RuntimeVariables.replace("Manage"),
+					selenium.getText("//li[@id='_145_manageContent']/a/span"));
+				selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isVisible(
 									"//li[contains(@class,'manage-page')]/a")) {
 							break;
 						}
@@ -49,8 +70,46 @@ public class AddPage3Test extends BaseTestCase {
 					Thread.sleep(1000);
 				}
 
+				assertEquals(RuntimeVariables.replace("Page"),
+					selenium.getText("//li[contains(@class,'manage-page')]/a"));
 				selenium.clickAt("//li[contains(@class,'manage-page')]/a",
-					RuntimeVariables.replace("Manage Pages"));
+					RuntimeVariables.replace("Page"));
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isVisible(
+									"//iframe[@id='manageContentDialog']")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
+
+				selenium.selectFrame("//iframe[@id='manageContentDialog']");
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isElementPresent(
+									"//script[contains(@src,'/aui/aui-paginator/aui-paginator-min.js')]")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
 
 				for (int second = 0;; second++) {
 					if (second >= 90) {
@@ -198,25 +257,9 @@ public class AddPage3Test extends BaseTestCase {
 					selenium.getText("//li/ul/li[3]/div/div[3]/a"));
 				assertEquals(RuntimeVariables.replace("Manage Pages Test Page3"),
 					selenium.getText("//li/ul/li[4]/div/div[3]/a"));
+				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
 				loadRequiredJavaScriptModules();
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isVisible("link=Manage Pages Test Page3")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
 				selenium.clickAt("link=Manage Pages Test Page3",
 					RuntimeVariables.replace("Manage Pages Test Page3"));
 				selenium.waitForPageToLoad("30000");

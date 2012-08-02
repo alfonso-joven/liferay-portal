@@ -39,7 +39,7 @@ public class TearDownPageMPTest extends BaseTestCase {
 
 					try {
 						if (selenium.isElementPresent(
-									"//div[@id='_145_manageContentContainer']")) {
+									"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
 							break;
 						}
 					}
@@ -93,6 +93,23 @@ public class TearDownPageMPTest extends BaseTestCase {
 				}
 
 				selenium.selectFrame("//iframe[@id='manageContentDialog']");
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isElementPresent(
+									"//script[contains(@src,'/aui/aui-paginator/aui-paginator-min.js')]")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
 
 				for (int second = 0;; second++) {
 					if (second >= 90) {
@@ -398,9 +415,6 @@ public class TearDownPageMPTest extends BaseTestCase {
 
 					continue;
 				}
-
-				selenium.clickAt("xPath=(//a[contains(@id,'layoutsTree_layout')])[2]",
-					RuntimeVariables.replace("Page Name"));
 
 				for (int second = 0;; second++) {
 					if (second >= 90) {
