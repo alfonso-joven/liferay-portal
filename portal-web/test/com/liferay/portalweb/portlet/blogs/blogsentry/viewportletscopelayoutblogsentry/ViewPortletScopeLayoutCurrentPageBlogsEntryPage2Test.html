@@ -15,13 +15,13 @@
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>link=Blogs2 Test2 Page2</td>
-	<td>Blogs2 Test2 Page2</td>
+	<td>link=Blogs Test Page2</td>
+	<td>Blogs Test Page2</td>
 </tr>
 <tr>
 	<td>assertText</td>
 	<td>//span[@class='portlet-title-text']</td>
-	<td>Blogs (Blogs2 Test2 Page2)</td>
+	<td>Blogs (Blogs Test Page2)</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -34,9 +34,14 @@
 	<td>Blogs Entry Content</td>
 </tr>
 <tr>
+	<td>assertText</td>
+	<td>//strong/a</td>
+	<td>Options</td>
+</tr>
+<tr>
 	<td>clickAt</td>
 	<td>//strong/a</td>
-	<td>Options Icon</td>
+	<td>Options</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
@@ -44,9 +49,24 @@
 	<td>Configuration</td>
 </tr>
 <tr>
+	<td>assertText</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a</td>
+	<td>Configuration</td>
+</tr>
+<tr>
 	<td>click</td>
 	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a</td>
 	<td>Configuration</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//iframe[@id='_33_configurationIframeDialog']</td>
+	<td>Blogs - Configuration</td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>//iframe[@id='_33_configurationIframeDialog']</td>
+	<td>Blogs - Configuration</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
@@ -66,7 +86,12 @@
 <tr>
 	<td>assertSelectedLabel</td>
 	<td>//select[@id='_86_scopeLayoutUuid']</td>
-	<td>Current Page (Blogs2 Test2 Page2)</td>
+	<td>Current Page (Blogs Test Page2)</td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>relative=top</td>
+	<td>top</td>
 </tr>
 </tbody></table>
 </body>

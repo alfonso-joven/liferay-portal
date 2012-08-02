@@ -74,10 +74,10 @@ public class ViewPortletScopePage2BlogsEntryCPTest extends BaseTestCase {
 		}
 
 		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a",
-			RuntimeVariables.replace("Blogs2 Test2 Page2"));
+			RuntimeVariables.replace("Blogs Test Page2"));
 		selenium.waitForPageToLoad("30000");
 		loadRequiredJavaScriptModules();
-		assertEquals(RuntimeVariables.replace("Scope: Blogs2 Test2 Page2"),
+		assertEquals(RuntimeVariables.replace("Scope: Blogs Test Page2"),
 			selenium.getText(
 				"//div[@id='panel-manage-content']/div[2]/div/span/ul/li/strong/a"));
 		selenium.clickAt("link=Blogs", RuntimeVariables.replace("Blogs"));

@@ -15,13 +15,13 @@
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>link=Blogs Test Page</td>
-	<td>Blogs Test Page</td>
+	<td>link=Blogs Test Page1</td>
+	<td>Blogs Test Page1</td>
 </tr>
 <tr>
 	<td>assertText</td>
 	<td>//span[@class='portlet-title-text']</td>
-	<td>Blogs (Blogs2 Test2 Page2)</td>
+	<td>Blogs (Blogs Test Page2)</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -39,12 +39,22 @@
 	<td></td>
 </tr>
 <tr>
+	<td>assertText</td>
+	<td>//strong/a</td>
+	<td>Options</td>
+</tr>
+<tr>
 	<td>clickAt</td>
 	<td>//strong/a</td>
-	<td>Options Icon</td>
+	<td>Options</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a</td>
+	<td>Configuration</td>
+</tr>
+<tr>
+	<td>assertText</td>
 	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a</td>
 	<td>Configuration</td>
 </tr>
@@ -81,7 +91,7 @@
 <tr>
 	<td>assertSelectedLabel</td>
 	<td>//select[@id='_86_scopeLayoutUuid']</td>
-	<td>Blogs2 Test2 Page2</td>
+	<td>Blogs Test Page2</td>
 </tr>
 <tr>
 	<td>selectFrame</td>

@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.portalweb.portlet.blogs.blogsentry.addportletscopelayoutblogsentry;
+package com.liferay.portalweb.portlet.blogs.portlet.addportletblogs;
 
 import com.liferay.portalweb.portal.BaseTestCase;
 import com.liferay.portalweb.portal.util.RuntimeVariables;
@@ -20,8 +20,8 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 /**
  * @author Brian Wing Shun Chan
  */
-public class AddPageBlogs1Test extends BaseTestCase {
-	public void testAddPageBlogs1() throws Exception {
+public class AddPageBlogs2Test extends BaseTestCase {
+	public void testAddPageBlogs2() throws Exception {
 		selenium.open("/web/guest/home/");
 		loadRequiredJavaScriptModules();
 		selenium.clickAt("//div[@id='dockbar']",
@@ -85,7 +85,7 @@ public class AddPageBlogs1Test extends BaseTestCase {
 		}
 
 		selenium.type("//input[@type='text']",
-			RuntimeVariables.replace("Blogs Test Page"));
+			RuntimeVariables.replace("Blogs Test Page2"));
 		selenium.clickAt("//button[@id='save']",
 			RuntimeVariables.replace("Save"));
 
@@ -95,7 +95,7 @@ public class AddPageBlogs1Test extends BaseTestCase {
 			}
 
 			try {
-				if (selenium.isVisible("link=Blogs Test Page")) {
+				if (selenium.isVisible("link=Blogs Test Page2")) {
 					break;
 				}
 			}
@@ -105,8 +105,8 @@ public class AddPageBlogs1Test extends BaseTestCase {
 			Thread.sleep(1000);
 		}
 
-		selenium.clickAt("link=Blogs Test Page",
-			RuntimeVariables.replace("Blogs Test Page"));
+		selenium.clickAt("link=Blogs Test Page2",
+			RuntimeVariables.replace("Blogs Test Page2"));
 		selenium.waitForPageToLoad("30000");
 		loadRequiredJavaScriptModules();
 	}

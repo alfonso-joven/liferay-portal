@@ -25,8 +25,8 @@ public class ConfigurePortletScopeLayoutPage2Page1Test extends BaseTestCase {
 		throws Exception {
 		selenium.open("/web/guest/home/");
 		loadRequiredJavaScriptModules();
-		selenium.clickAt("link=Blogs Test Page",
-			RuntimeVariables.replace("Blogs Test Page"));
+		selenium.clickAt("link=Blogs Test Page1",
+			RuntimeVariables.replace("Blogs Test Page1"));
 		selenium.waitForPageToLoad("30000");
 		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Blogs"),
@@ -133,7 +133,7 @@ public class ConfigurePortletScopeLayoutPage2Page1Test extends BaseTestCase {
 		}
 
 		selenium.select("//select[@id='_86_scopeLayoutUuid']",
-			RuntimeVariables.replace("Blogs2 Test2 Page2"));
+			RuntimeVariables.replace("Blogs Test Page2"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 
@@ -159,16 +159,16 @@ public class ConfigurePortletScopeLayoutPage2Page1Test extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"You have successfully updated the setup."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
-		assertEquals("Blogs2 Test2 Page2",
+		assertEquals("Blogs Test Page2",
 			selenium.getSelectedLabel("//select[@id='_86_scopeLayoutUuid']"));
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
 		loadRequiredJavaScriptModules();
-		selenium.clickAt("link=Blogs Test Page",
-			RuntimeVariables.replace("Blogs Test Page"));
+		selenium.clickAt("link=Blogs Test Page1",
+			RuntimeVariables.replace("Blogs Test Page1"));
 		selenium.waitForPageToLoad("30000");
 		loadRequiredJavaScriptModules();
-		assertEquals(RuntimeVariables.replace("Blogs (Blogs2 Test2 Page2)"),
+		assertEquals(RuntimeVariables.replace("Blogs (Blogs Test Page2)"),
 			selenium.getText("//span[@class='portlet-title-text']"));
 	}
 }

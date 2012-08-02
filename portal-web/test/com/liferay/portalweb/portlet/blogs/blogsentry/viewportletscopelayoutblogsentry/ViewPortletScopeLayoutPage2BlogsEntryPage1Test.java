@@ -25,18 +25,20 @@ public class ViewPortletScopeLayoutPage2BlogsEntryPage1Test extends BaseTestCase
 		throws Exception {
 		selenium.open("/web/guest/home/");
 		loadRequiredJavaScriptModules();
-		selenium.clickAt("link=Blogs Test Page",
-			RuntimeVariables.replace("Blogs Test Page"));
+		selenium.clickAt("link=Blogs Test Page1",
+			RuntimeVariables.replace("Blogs Test Page1"));
 		selenium.waitForPageToLoad("30000");
 		loadRequiredJavaScriptModules();
-		assertEquals(RuntimeVariables.replace("Blogs (Blogs2 Test2 Page2)"),
+		assertEquals(RuntimeVariables.replace("Blogs (Blogs Test Page2)"),
 			selenium.getText("//span[@class='portlet-title-text']"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry Title"),
 			selenium.getText("//div[@class='entry-title']/h2/a"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry Content"),
 			selenium.getText("//div[@class='entry-body']/p"));
 		Thread.sleep(5000);
-		selenium.clickAt("//strong/a", RuntimeVariables.replace("Options Icon"));
+		assertEquals(RuntimeVariables.replace("Options"),
+			selenium.getText("//strong/a"));
+		selenium.clickAt("//strong/a", RuntimeVariables.replace("Options"));
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -55,6 +57,9 @@ public class ViewPortletScopeLayoutPage2BlogsEntryPage1Test extends BaseTestCase
 			Thread.sleep(1000);
 		}
 
+		assertEquals(RuntimeVariables.replace("Configuration"),
+			selenium.getText(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a"));
 		selenium.click("//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a");
 
 		for (int second = 0;; second++) {
@@ -112,7 +117,7 @@ public class ViewPortletScopeLayoutPage2BlogsEntryPage1Test extends BaseTestCase
 			Thread.sleep(1000);
 		}
 
-		assertEquals("Blogs2 Test2 Page2",
+		assertEquals("Blogs Test Page2",
 			selenium.getSelectedLabel("//select[@id='_86_scopeLayoutUuid']"));
 		selenium.selectFrame("relative=top");
 	}
