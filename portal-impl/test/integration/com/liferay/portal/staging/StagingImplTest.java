@@ -31,7 +31,6 @@ import com.liferay.portal.test.TransactionalExecutionTestListener;
 import com.liferay.portal.util.PortletKeys;
 import com.liferay.portal.util.TestPropsValues;
 import com.liferay.portlet.journal.model.JournalArticle;
-import com.liferay.portlet.journal.model.JournalFolderConstants;
 import com.liferay.portlet.journal.service.JournalArticleLocalServiceUtil;
 import com.liferay.portlet.polls.model.PollsChoice;
 import com.liferay.portlet.polls.model.PollsQuestion;
@@ -100,12 +99,10 @@ public class StagingImplTest {
 		sb.append("</root>");
 
 		return JournalArticleLocalServiceUtil.addArticle(
-			TestPropsValues.getUserId(), groupId,
-			JournalFolderConstants.DEFAULT_PARENT_FOLDER_ID, 0, 0,
-			StringPool.BLANK, true, 1, titleMap, descriptionMap, sb.toString(),
-			"general", null, null, null, 1, 1, 1965, 0, 0, 0, 0, 0, 0, 0, true,
-			0, 0, 0, 0, 0, true, false, false, null, null, null, null,
-			serviceContext);
+			TestPropsValues.getUserId(), groupId, 0, 0, StringPool.BLANK, true,
+			1, titleMap, descriptionMap, sb.toString(), "general", null, null,
+			null, 1, 1, 1965, 0, 0, 0, 0, 0, 0, 0, true, 0, 0, 0, 0, 0, true,
+			false, false, null, null, null, null, serviceContext);
 	}
 
 	protected PollsChoice addPollsChoice(String name, String description) {
@@ -289,9 +286,8 @@ public class StagingImplTest {
 
 		return JournalArticleLocalServiceUtil.updateArticle(
 			journalArticle.getUserId(), journalArticle.getGroupId(),
-			journalArticle.getFolderId(), journalArticle.getArticleId(),
-			journalArticle.getVersion(), titleMap,
-			journalArticle.getDescriptionMap(), content,
+			journalArticle.getArticleId(), journalArticle.getVersion(),
+			titleMap, journalArticle.getDescriptionMap(), content,
 			journalArticle.getLayoutUuid(),
 			ServiceTestUtil.getServiceContext());
 	}
