@@ -119,10 +119,14 @@ public class AssertNoTagsInSelectTagsTest extends BaseTestCase {
 				selenium.clickAt("//button[@id='select']",
 					RuntimeVariables.replace("Select"));
 				Thread.sleep(5000);
-				assertTrue(selenium.isElementNotPresent("//label[1]/input"));
-				assertTrue(selenium.isElementNotPresent("//label[2]/input"));
-				assertTrue(selenium.isElementNotPresent("//label[3]/input"));
-				assertTrue(selenium.isElementNotPresent("//label[4]/input"));
+				assertTrue(selenium.isElementNotPresent(
+						"xpath=(//div[@class='lfr-tags-selector-list']/fieldset//label)[1]"));
+				assertTrue(selenium.isElementNotPresent(
+						"xpath=(//div[@class='lfr-tags-selector-list']/fieldset//label)[2]"));
+				assertTrue(selenium.isElementNotPresent(
+						"xpath=(//div[@class='lfr-tags-selector-list']/fieldset//label)[3]"));
+				assertTrue(selenium.isElementNotPresent(
+						"xpath=(//div[@class='lfr-tags-selector-list']/fieldset//label)[4]"));
 				selenium.clickAt("//button[@id='closethick']",
 					RuntimeVariables.replace("Close"));
 				selenium.clickAt("//input[@value='Cancel']",
