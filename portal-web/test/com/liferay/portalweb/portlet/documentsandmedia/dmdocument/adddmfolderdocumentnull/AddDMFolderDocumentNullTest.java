@@ -113,7 +113,7 @@ public class AddDMFolderDocumentNullTest extends BaseTestCase {
 
 			try {
 				if (selenium.isVisible(
-							"//label[@class='aui-form-validator-stack-error']/div")) {
+							"xPath=(//div[@class='portlet-msg-error'])[1]")) {
 					break;
 				}
 			}
@@ -124,8 +124,7 @@ public class AddDMFolderDocumentNullTest extends BaseTestCase {
 		}
 
 		assertEquals(RuntimeVariables.replace(
-				"You must specify a file or a title."),
-			selenium.getText(
-				"//label[@class='aui-form-validator-stack-error']/div"));
+				"Please enter a file with a valid file name."),
+			selenium.getText("xPath=(//div[@class='portlet-msg-error'])[2]"));
 	}
 }
