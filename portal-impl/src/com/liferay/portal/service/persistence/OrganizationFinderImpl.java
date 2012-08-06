@@ -627,7 +627,8 @@ public class OrganizationFinderImpl
 				sql, "[$WHERE$]", getWhere("orgGroupPermission"));
 			sql = StringUtil.replace(
 				sql, "[$PARENT_ORGANIZATION_ID_COMPARATOR$]",
-				parentOrganizationIdComparator);
+				parentOrganizationIdComparator.equals(StringPool.EQUAL) ?
+				StringPool.EQUAL : StringPool.NOT_EQUAL);
 			sql = CustomSQLUtil.replaceAndOperator(sql, andOperator);
 
 			sb.setIndex(0);
@@ -785,7 +786,8 @@ public class OrganizationFinderImpl
 				sql, "[$WHERE$]", getWhere("orgGroupPermission"));
 			sql = StringUtil.replace(
 				sql, "[$PARENT_ORGANIZATION_ID_COMPARATOR$]",
-				parentOrganizationIdComparator);
+				parentOrganizationIdComparator.equals(StringPool.EQUAL) ?
+				StringPool.EQUAL : StringPool.NOT_EQUAL);
 			sql = CustomSQLUtil.replaceAndOperator(sql, andOperator);
 
 			sb.setIndex(0);
