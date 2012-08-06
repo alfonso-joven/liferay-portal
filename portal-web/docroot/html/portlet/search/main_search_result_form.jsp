@@ -25,6 +25,7 @@ String className = document.get(Field.ENTRY_CLASS_NAME);
 
 String entryTitle = null;
 String entrySummary = null;
+String returnToFullPageURL = (String)request.getAttribute("search.jsp-returnToFullPageURL");
 PortletURL viewFullContentURL = null;
 String viewURL = null;
 
@@ -57,6 +58,10 @@ if (assetRendererFactory != null) {
 		viewFullContentURL.setParameter("urlTitle", assetRenderer.getUrlTitle());
 	}
 
+	if (Validator.isNotNull(returnToFullPageURL)) {
+		viewFullContentURL.setParameter("returnToFullPageURL", returnToFullPageURL);
+	}
+
 	if (viewInContext) {
 		String viewFullContentURLString = viewFullContentURL.toString();
 
@@ -75,6 +80,10 @@ else {
 	String portletId = document.get(Field.PORTLET_ID);
 
 	viewFullContentURL = _getViewFullContentURL(request, themeDisplay, portletId, document);
+
+	if (Validator.isNotNull(returnToFullPageURL)) {
+		viewFullContentURL.setParameter("returnToFullPageURL", returnToFullPageURL);
+	}
 
 	viewURL = viewFullContentURL.toString();
 
