@@ -189,7 +189,7 @@ public class EditFieldBooleanShowLabelTest extends BaseTestCase {
 			Thread.sleep(1000);
 		}
 
-		selenium.clickAt("//div[@class='aui-celleditor-element']/label[2]/input",
+		selenium.clickAt("//div[contains(@class,'aui-celleditor-element')]/label[2]/input",
 			RuntimeVariables.replace("No"));
 		selenium.clickAt("//button[@type='submit']",
 			RuntimeVariables.replace("Save"));

@@ -189,7 +189,7 @@ public class EditFieldBooleanPredefinedValueTest extends BaseTestCase {
 			Thread.sleep(1000);
 		}
 
-		selenium.clickAt("//div[@class='aui-celleditor-element']/label[1]/input",
+		selenium.clickAt("//div[contains(@class,'aui-celleditor-element')]/label[1]/input",
 			RuntimeVariables.replace("cell editor"));
 		selenium.clickAt("//button[@type='submit']",
 			RuntimeVariables.replace("Save"));

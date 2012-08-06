@@ -188,7 +188,7 @@ public class EditFieldBooleanTipTest extends BaseTestCase {
 			Thread.sleep(1000);
 		}
 
-		selenium.type("//textarea[@class='aui-celleditor-element']",
+		selenium.type("//textarea[contains(@class,'aui-celleditor-element')]",
 			RuntimeVariables.replace("Boolean Field Tip Edited"));
 		selenium.clickAt("//button[@type='submit']",
 			RuntimeVariables.replace("Save"));

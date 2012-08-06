@@ -187,7 +187,7 @@ public class EditFieldBooleanFieldLabelTest extends BaseTestCase {
 			Thread.sleep(1000);
 		}
 
-		selenium.type("//input[@class='aui-celleditor-element']",
+		selenium.type("//input[contains(@class,'aui-celleditor-element')]",
 			RuntimeVariables.replace("Boolean Field Label Edited"));
 		selenium.clickAt("//button[@type='submit']",
 			RuntimeVariables.replace("Save"));
