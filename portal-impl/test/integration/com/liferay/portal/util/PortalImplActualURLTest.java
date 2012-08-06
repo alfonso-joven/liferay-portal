@@ -102,10 +102,10 @@ public class PortalImplActualURLTest {
 		ServiceContext serviceContext = ServiceTestUtil.getServiceContext();
 
 		Group group = GroupLocalServiceUtil.addGroup(
-			TestPropsValues.getUserId(), GroupConstants.DEFAULT_PARENT_GROUP_ID,
-			StringPool.BLANK, 0, "Test " + ServiceTestUtil.nextInt(),
-			StringPool.BLANK, GroupConstants.TYPE_SITE_OPEN, StringPool.BLANK,
-			true, true, serviceContext);
+			TestPropsValues.getUserId(), StringPool.BLANK, 0,
+			"Test " + ServiceTestUtil.nextInt(), StringPool.BLANK,
+			GroupConstants.TYPE_SITE_OPEN, StringPool.BLANK, true, true,
+			serviceContext);
 
 		LayoutLocalServiceUtil.addLayout(
 			TestPropsValues.getUserId(), group.getGroupId(), false,
@@ -149,7 +149,7 @@ public class PortalImplActualURLTest {
 		sb.append("</static-content></root>");
 
 		JournalArticleLocalServiceUtil.addArticle(
-			TestPropsValues.getUserId(), group.getGroupId(), 0, 0, 0,
+			TestPropsValues.getUserId(), group.getGroupId(), 0, 0,
 			StringPool.BLANK, true, 1, titleMap, new HashMap<Locale, String>(),
 			sb.toString(), "general", null, null, layout.getUuid(), 1, 1, 1965,
 			0, 0, 0, 0, 0, 0, 0, true, 0, 0, 0, 0, 0, true, false, false, null,
