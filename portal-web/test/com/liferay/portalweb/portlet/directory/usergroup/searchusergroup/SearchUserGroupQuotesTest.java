@@ -49,7 +49,7 @@ public class SearchUserGroupQuotesTest extends BaseTestCase {
 			RuntimeVariables.replace("User Groups"));
 		selenium.waitForPageToLoad("30000");
 		loadRequiredJavaScriptModules();
-		selenium.type("//input[@id='_11_name']",
+		selenium.type("//input[@id='_11_keywords']",
 			RuntimeVariables.replace("\"User Group Name\""));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
@@ -59,7 +59,7 @@ public class SearchUserGroupQuotesTest extends BaseTestCase {
 			selenium.getText("//tr[3]/td[1]"));
 		assertEquals(RuntimeVariables.replace("User Group Description"),
 			selenium.getText("//tr[3]/td[2]"));
-		selenium.type("//input[@id='_11_name']",
+		selenium.type("//input[@id='_11_keywords']",
 			RuntimeVariables.replace("\"User1 Group1 Name1\""));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
