@@ -83,7 +83,10 @@ public class SearchUserTest extends BaseTestCase {
 				loadRequiredJavaScriptModules();
 				selenium.type("//input[@name='_11_keywords']",
 					RuntimeVariables.replace(""));
-				assertFalse(selenium.isTextPresent("userfn"));
+				assertFalse(selenium.isPartialText(
+						"//div[@id='_11_usersSearchContainer']", "userfn"));
+				assertEquals(RuntimeVariables.replace("No users were found."),
+					selenium.getText("//div[@class='portlet-msg-info']"));
 
 			case 100:
 				label = -1;

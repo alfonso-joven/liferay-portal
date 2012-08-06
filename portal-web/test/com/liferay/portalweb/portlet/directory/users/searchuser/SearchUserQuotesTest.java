@@ -83,7 +83,10 @@ public class SearchUserQuotesTest extends BaseTestCase {
 					RuntimeVariables.replace("Search"));
 				selenium.waitForPageToLoad("30000");
 				loadRequiredJavaScriptModules();
-				assertFalse(selenium.isTextPresent("userfn"));
+				assertFalse(selenium.isPartialText(
+						"//div[@id='_11_usersSearchContainer']", "userfn"));
+				assertEquals(RuntimeVariables.replace("No users were found."),
+					selenium.getText("//div[@class='portlet-msg-info']"));
 
 			case 100:
 				label = -1;
