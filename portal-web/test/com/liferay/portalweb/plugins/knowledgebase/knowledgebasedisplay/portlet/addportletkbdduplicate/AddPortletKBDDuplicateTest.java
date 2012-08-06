@@ -24,23 +24,6 @@ public class AddPortletKBDDuplicateTest extends BaseTestCase {
 	public void testAddPortletKBDDuplicate() throws Exception {
 		selenium.open("/web/guest/home/");
 		loadRequiredJavaScriptModules();
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isVisible("link=Knowledge Base Display Test Page")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
 		selenium.clickAt("link=Knowledge Base Display Test Page",
 			RuntimeVariables.replace("Knowledge Base Display Test Page"));
 		selenium.waitForPageToLoad("30000");

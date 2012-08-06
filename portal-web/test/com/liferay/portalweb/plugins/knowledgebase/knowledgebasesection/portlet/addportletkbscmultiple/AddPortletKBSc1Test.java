@@ -24,23 +24,6 @@ public class AddPortletKBSc1Test extends BaseTestCase {
 	public void testAddPortletKBSc1() throws Exception {
 		selenium.open("/web/guest/home/");
 		loadRequiredJavaScriptModules();
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isVisible("link=Knowledge Base Section Test Page")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
 		selenium.clickAt("link=Knowledge Base Section Test Page",
 			RuntimeVariables.replace("Knowledge Base Section Test Page"));
 		selenium.waitForPageToLoad("30000");
