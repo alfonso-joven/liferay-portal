@@ -24,23 +24,6 @@ public class AddPortletTourMapTest extends BaseTestCase {
 	public void testAddPortletTourMap() throws Exception {
 		selenium.open("/web/guest/home/");
 		loadRequiredJavaScriptModules();
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isVisible("link=Sun Tour IPC Test Page")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
 		selenium.clickAt("link=Sun Tour IPC Test Page",
 			RuntimeVariables.replace("Sun Tour IPC Test Page"));
 		selenium.waitForPageToLoad("30000");
