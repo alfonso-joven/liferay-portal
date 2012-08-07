@@ -83,6 +83,7 @@ import com.liferay.portal.kernel.util.UnicodeProperties;
 import com.liferay.portal.kernel.util.UniqueList;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.kernel.xml.QName;
+import com.liferay.portal.model.AuditedModel;
 import com.liferay.portal.model.BaseModel;
 import com.liferay.portal.model.ClassName;
 import com.liferay.portal.model.ColorScheme;
@@ -4302,6 +4303,28 @@ public class PortalImpl implements Portal {
 
 	public long getUserId(PortletRequest portletRequest) {
 		return getUserId(getHttpServletRequest(portletRequest));
+	}
+
+	public String getUserName(AuditedModel auditedModel) {
+		if (!(auditedModel instanceof BaseModel)) {
+			return StringPool.BLANK;
+		}
+
+		BaseModel<?> baseModel = (BaseModel<?>)auditedModel;
+
+		String userName = auditedModel.getUserName();
+
+		if (baseModel.isEscapedModel()) {
+			userName = HtmlUtil.unescape(userName);
+		}
+
+		userName = getUserName(auditedModel.getUserId(), userName);
+
+		if (baseModel.isEscapedModel()) {
+			userName = HtmlUtil.escape(userName);
+		}
+
+		return userName;
 	}
 
 	public String getUserName(long userId, String defaultUserName) {
