@@ -77,8 +77,8 @@ public class ViewActionResponseNormalStateMiscTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Add"),
-			selenium.getText("//span[3]/span/ul/li/strong/a/span"));
-		selenium.clickAt("//span[3]/span/ul/li/strong/a/span",
+			selenium.getText("//span[3]/span/ul/li/strong/a"));
+		selenium.clickAt("//span[3]/span/ul/li/strong/a",
 			RuntimeVariables.replace("Add"));
 
 		for (int second = 0;; second++) {
