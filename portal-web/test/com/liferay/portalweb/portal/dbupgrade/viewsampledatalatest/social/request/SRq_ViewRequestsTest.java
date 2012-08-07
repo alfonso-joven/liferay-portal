@@ -45,11 +45,17 @@ public class SRq_ViewRequestsTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace(
+				"socialrequestfn2 socialrequestmn2 socialrequestln2"),
+			selenium.getText(
+				"//div[@class='taglib-user-display display-style-2']/a/span[2]"));
+		assertEquals(RuntimeVariables.replace(
 				"socialrequestfn2 socialrequestmn2 socialrequestln2 wants to be your friend."),
-			selenium.getText("//td[2]/div"));
+			selenium.getText("//div[@class='request-title']"));
 		assertEquals(RuntimeVariables.replace("Confirm"),
-			selenium.getText("//td[2]/ul/li[1]/a/span"));
+			selenium.getText(
+				"//ul[@class='lfr-component taglib-icon-list']/li/a/span[contains(.,'Confirm')]"));
 		assertEquals(RuntimeVariables.replace("Ignore"),
-			selenium.getText("//td[2]/ul/li[2]/a/span"));
+			selenium.getText(
+				"//ul[@class='lfr-component taglib-icon-list']/li/a/span[contains(.,'Ignore')]"));
 	}
 }
