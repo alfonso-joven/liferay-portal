@@ -345,12 +345,12 @@ public class LayoutAction extends Action {
 			List<LayoutTypePortlet> layoutTypePortlets =
 				new ArrayList<LayoutTypePortlet>(1);
 
-			 LayoutTypePortlet layoutTypePortlet =
-				 (LayoutTypePortlet)requestLayout.getLayoutType();
+			LayoutTypePortlet layoutTypePortlet =
+				(LayoutTypePortlet)requestLayout.getLayoutType();
 
-			 layoutTypePortlets.add(layoutTypePortlet);
+			layoutTypePortlets.add(layoutTypePortlet);
 
-			 return layoutTypePortlets;
+			return layoutTypePortlets;
 		}
 
 		return Collections.emptyList();
