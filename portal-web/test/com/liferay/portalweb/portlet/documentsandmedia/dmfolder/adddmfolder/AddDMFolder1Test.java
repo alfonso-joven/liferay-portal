@@ -39,7 +39,7 @@ public class AddDMFolder1Test extends BaseTestCase {
 
 			try {
 				if (selenium.isVisible(
-							"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a")) {
+							"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Folder')]/a")) {
 					break;
 				}
 			}
@@ -51,8 +51,8 @@ public class AddDMFolder1Test extends BaseTestCase {
 
 		assertEquals(RuntimeVariables.replace("Folder"),
 			selenium.getText(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a"));
-		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a",
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Folder')]/a"));
+		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Folder')]/a",
 			RuntimeVariables.replace("Folder"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_20_name']",

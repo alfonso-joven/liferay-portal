@@ -14,14 +14,19 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForVisible</td>
+	<td>clickAtAndWait</td>
 	<td>link=Documents and Media Test Page</td>
 	<td>Documents and Media Test Page</td>
 </tr>
 <tr>
-	<td>clickAtAndWait</td>
-	<td>link=Documents and Media Test Page</td>
-	<td>Documents and Media Test Page</td>
+	<td>pause</td>
+	<td>5000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//button[@title='Icon View']</td>
+	<td>Icon View</td>
 </tr>
 <tr>
 	<td>clickAt</td>
@@ -30,8 +35,23 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//button[@title='Icon View' and contains(@class,'aui-buttonitem-focused')]</td>
-	<td>Icon View</td>
+	<td>//div[@class='aui-loadingmask-message']</td>
+	<td>Loading Message</td>
+</tr>
+<tr>
+	<td>waitForNotVisible</td>
+	<td>//div[@class='aui-loadingmask-message']</td>
+	<td>Loading Message</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//button[contains(@class,'aui-state-active') and @title='Icon View']</td>
+	<td>Icon View Selected</td>
+</tr>
+<tr>
+	<td>assertVisible</td>
+	<td>//button[contains(@class,'aui-state-active') and @title='Icon View']</td>
+	<td>Icon View Selected</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -52,6 +72,11 @@
 	<td>assertText</td>
 	<td>//div[@class='document-library-breadcrumb']/ul/li[2]/span/a</td>
 	<td>DM Folder Name</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//button[@title='List View']</td>
+	<td>List View</td>
 </tr>
 <tr>
 	<td>clickAt</td>

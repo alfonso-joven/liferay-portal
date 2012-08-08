@@ -23,23 +23,6 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class ViewDMPortletShowFolderSearchTest extends BaseTestCase {
 	public void testViewDMPortletShowFolderSearch() throws Exception {
 		selenium.open("/web/guest/home/");
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isVisible("link=Documents and Media Test Page")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
 		selenium.clickAt("link=Documents and Media Test Page",
 			RuntimeVariables.replace("Documents and Media Test Page"));
 		selenium.waitForPageToLoad("30000");

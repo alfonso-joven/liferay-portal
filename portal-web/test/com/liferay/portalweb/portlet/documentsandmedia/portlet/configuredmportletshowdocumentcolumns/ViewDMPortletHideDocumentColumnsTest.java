@@ -24,6 +24,10 @@ public class ViewDMPortletHideDocumentColumnsTest extends BaseTestCase {
 	public void testViewDMPortletHideDocumentColumns()
 		throws Exception {
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("link=Documents and Media Test Page",
+			RuntimeVariables.replace("Documents and Media Test Page"));
+		selenium.waitForPageToLoad("30000");
+		Thread.sleep(5000);
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -31,7 +35,7 @@ public class ViewDMPortletHideDocumentColumnsTest extends BaseTestCase {
 			}
 
 			try {
-				if (selenium.isVisible("link=Documents and Media Test Page")) {
+				if (selenium.isVisible("//button[@title='Icon View']")) {
 					break;
 				}
 			}
@@ -41,9 +45,6 @@ public class ViewDMPortletHideDocumentColumnsTest extends BaseTestCase {
 			Thread.sleep(1000);
 		}
 
-		selenium.clickAt("link=Documents and Media Test Page",
-			RuntimeVariables.replace("Documents and Media Test Page"));
-		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//button[@title='Icon View']",
 			RuntimeVariables.replace("Icon View"));
 
@@ -54,7 +55,7 @@ public class ViewDMPortletHideDocumentColumnsTest extends BaseTestCase {
 
 			try {
 				if (selenium.isVisible(
-							"//button[@title='Icon View' and contains(@class,'aui-buttonitem-focused')]")) {
+							"//div[@class='aui-loadingmask-message']")) {
 					break;
 				}
 			}
@@ -64,6 +65,42 @@ public class ViewDMPortletHideDocumentColumnsTest extends BaseTestCase {
 			Thread.sleep(1000);
 		}
 
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (!selenium.isVisible(
+							"//div[@class='aui-loadingmask-message']")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isVisible(
+							"//button[contains(@class,'aui-state-active') and @title='Icon View']")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
+		assertTrue(selenium.isVisible(
+				"//button[contains(@class,'aui-state-active') and @title='Icon View']"));
 		assertEquals(RuntimeVariables.replace("DM Folder Name"),
 			selenium.getText(
 				"//a[contains(@class,'document-link')]/span[@class='entry-title']"));
@@ -91,6 +128,23 @@ public class ViewDMPortletHideDocumentColumnsTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("DM Folder Name"),
 			selenium.getText(
 				"//div[@class='document-library-breadcrumb']/ul/li[2]/span/a"));
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isVisible("//button[@title='List View']")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
 		selenium.clickAt("//button[@title='List View']",
 			RuntimeVariables.replace("List View"));
 

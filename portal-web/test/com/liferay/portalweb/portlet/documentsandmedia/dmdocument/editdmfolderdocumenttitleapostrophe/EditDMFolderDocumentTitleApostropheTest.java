@@ -24,23 +24,6 @@ public class EditDMFolderDocumentTitleApostropheTest extends BaseTestCase {
 	public void testEditDMFolderDocumentTitleApostrophe()
 		throws Exception {
 		selenium.open("/web/guest/home/");
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isVisible("link=Documents and Media Test Page")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
 		selenium.clickAt("link=Documents and Media Test Page",
 			RuntimeVariables.replace("Documents and Media Test Page"));
 		selenium.waitForPageToLoad("30000");
@@ -107,23 +90,6 @@ public class EditDMFolderDocumentTitleApostropheTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("'"),
 			selenium.getText("//h2[@class='document-title']"));
 		selenium.open("/web/guest/home/");
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isVisible("link=Documents and Media Test Page")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
 		selenium.clickAt("link=Documents and Media Test Page",
 			RuntimeVariables.replace("Documents and Media Test Page"));
 		selenium.waitForPageToLoad("30000");

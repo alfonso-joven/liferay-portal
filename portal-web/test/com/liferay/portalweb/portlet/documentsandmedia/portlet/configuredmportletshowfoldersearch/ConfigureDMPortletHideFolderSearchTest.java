@@ -29,24 +29,6 @@ public class ConfigureDMPortletHideFolderSearchTest extends BaseTestCase {
 			switch (label) {
 			case 1:
 				selenium.open("/web/guest/home/");
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isVisible(
-									"link=Documents and Media Test Page")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
 				selenium.clickAt("link=Documents and Media Test Page",
 					RuntimeVariables.replace("Documents and Media Test Page"));
 				selenium.waitForPageToLoad("30000");
@@ -55,7 +37,6 @@ public class ConfigureDMPortletHideFolderSearchTest extends BaseTestCase {
 					selenium.getText("//span[@title='Options']/ul/li/strong/a"));
 				selenium.clickAt("//span[@title='Options']/ul/li/strong/a",
 					RuntimeVariables.replace("Options"));
-				Thread.sleep(5000);
 
 				for (int second = 0;; second++) {
 					if (second >= 90) {
@@ -64,7 +45,7 @@ public class ConfigureDMPortletHideFolderSearchTest extends BaseTestCase {
 
 					try {
 						if (selenium.isVisible(
-									"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a")) {
+									"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a")) {
 							break;
 						}
 					}
@@ -76,8 +57,8 @@ public class ConfigureDMPortletHideFolderSearchTest extends BaseTestCase {
 
 				assertEquals(RuntimeVariables.replace("Configuration"),
 					selenium.getText(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a"));
-				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a",
+						"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a"));
+				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a",
 					RuntimeVariables.replace("Configuration"));
 
 				for (int second = 0;; second++) {
@@ -86,7 +67,8 @@ public class ConfigureDMPortletHideFolderSearchTest extends BaseTestCase {
 					}
 
 					try {
-						if (selenium.isVisible("//iframe")) {
+						if (selenium.isVisible(
+									"//iframe[@id='_20_configurationIframeDialog']")) {
 							break;
 						}
 					}
@@ -96,7 +78,25 @@ public class ConfigureDMPortletHideFolderSearchTest extends BaseTestCase {
 					Thread.sleep(1000);
 				}
 
-				selenium.selectFrame("//iframe");
+				selenium.selectFrame(
+					"//iframe[@id='_20_configurationIframeDialog']");
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isElementPresent(
+									"//script[contains(@src,'/liferay/navigation_interaction.js')]")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
 
 				for (int second = 0;; second++) {
 					if (second >= 90) {

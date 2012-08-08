@@ -23,31 +23,14 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class ConfigureDMPortletRemoveFolderTest extends BaseTestCase {
 	public void testConfigureDMPortletRemoveFolder() throws Exception {
 		selenium.open("/web/guest/home/");
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isVisible("link=Documents and Media Test Page")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
 		selenium.clickAt("link=Documents and Media Test Page",
 			RuntimeVariables.replace("Documents and Media Test Page"));
 		selenium.waitForPageToLoad("30000");
 		Thread.sleep(5000);
 		assertEquals(RuntimeVariables.replace("Options"),
-			selenium.getText("//strong/a"));
-		selenium.clickAt("//strong/a", RuntimeVariables.replace("Options"));
-		Thread.sleep(5000);
+			selenium.getText("//span[@title='Options']/ul/li/strong/a"));
+		selenium.clickAt("//span[@title='Options']/ul/li/strong/a",
+			RuntimeVariables.replace("Options"));
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -56,7 +39,7 @@ public class ConfigureDMPortletRemoveFolderTest extends BaseTestCase {
 
 			try {
 				if (selenium.isVisible(
-							"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a")) {
+							"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a")) {
 					break;
 				}
 			}
@@ -68,10 +51,45 @@ public class ConfigureDMPortletRemoveFolderTest extends BaseTestCase {
 
 		assertEquals(RuntimeVariables.replace("Configuration"),
 			selenium.getText(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a"));
-		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a",
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a"));
+		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a",
 			RuntimeVariables.replace("Configuration"));
-		Thread.sleep(5000);
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isVisible(
+							"//iframe[@id='_20_configurationIframeDialog']")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
+		selenium.selectFrame("//iframe[@id='_20_configurationIframeDialog']");
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isElementPresent(
+							"//script[contains(@src,'/liferay/navigation_interaction.js')]")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -135,5 +153,6 @@ public class ConfigureDMPortletRemoveFolderTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"You have successfully updated the setup."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
+		selenium.selectFrame("relative=top");
 	}
 }

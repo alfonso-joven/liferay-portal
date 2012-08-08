@@ -23,23 +23,6 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class EditDMFolderDocumentTitleColonTest extends BaseTestCase {
 	public void testEditDMFolderDocumentTitleColon() throws Exception {
 		selenium.open("/web/guest/home/");
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isVisible("link=Documents and Media Test Page")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
 		selenium.clickAt("link=Documents and Media Test Page",
 			RuntimeVariables.replace("Documents and Media Test Page"));
 		selenium.waitForPageToLoad("30000");
@@ -83,13 +66,6 @@ public class EditDMFolderDocumentTitleColonTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace(
-				"Your request failed to complete."),
-			selenium.getText("xPath=(//div[@class='portlet-msg-error'])[1]"));
-		assertEquals(RuntimeVariables.replace(
-				"Please enter a file with a valid file name."),
-			selenium.getText("xPath=(//div[@class='portlet-msg-error'])[2]"));
-		selenium.open("/web/guest/home/");
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -97,7 +73,8 @@ public class EditDMFolderDocumentTitleColonTest extends BaseTestCase {
 			}
 
 			try {
-				if (selenium.isVisible("link=Documents and Media Test Page")) {
+				if (selenium.isVisible(
+							"xPath=(//div[@class='portlet-msg-error'])[1]")) {
 					break;
 				}
 			}
@@ -107,6 +84,13 @@ public class EditDMFolderDocumentTitleColonTest extends BaseTestCase {
 			Thread.sleep(1000);
 		}
 
+		assertEquals(RuntimeVariables.replace(
+				"Your request failed to complete."),
+			selenium.getText("xPath=(//div[@class='portlet-msg-error'])[1]"));
+		assertEquals(RuntimeVariables.replace(
+				"Please enter a file with a valid file name."),
+			selenium.getText("xPath=(//div[@class='portlet-msg-error'])[2]"));
+		selenium.open("/web/guest/home/");
 		selenium.clickAt("link=Documents and Media Test Page",
 			RuntimeVariables.replace("Documents and Media Test Page"));
 		selenium.waitForPageToLoad("30000");
