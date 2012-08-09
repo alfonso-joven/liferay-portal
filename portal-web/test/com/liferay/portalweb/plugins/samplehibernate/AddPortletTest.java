@@ -23,11 +23,9 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class AddPortletTest extends BaseTestCase {
 	public void testAddPortlet() throws Exception {
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Sample Hibernate Test Page",
 			RuntimeVariables.replace("Sample Hibernate Test Page"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("//div[@id='dockbar']",
 			RuntimeVariables.replace("Dockbar"));
 

@@ -24,11 +24,9 @@ public class ViewConfigurePortletScopeDefaultTest extends BaseTestCase {
 	public void testViewConfigurePortletScopeDefault()
 		throws Exception {
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Web Content Display Test Page",
 			RuntimeVariables.replace("Web Content Display Test Page"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		Thread.sleep(5000);
 		assertEquals(RuntimeVariables.replace("Options"),
 			selenium.getText("//span[@title='Options']/ul/li/strong/a"));
@@ -111,16 +109,13 @@ public class ViewConfigurePortletScopeDefaultTest extends BaseTestCase {
 
 		selenium.clickAt("link=Scope", RuntimeVariables.replace("Scope"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals("Default",
 			selenium.getSelectedLabel("//select[@id='_86_scopeType']"));
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Web Content Display Test Page",
 			RuntimeVariables.replace("Web Content Display Test Page"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Web Content Display"),
 			selenium.getText("//span[@class='portlet-title-text']"));
 	}

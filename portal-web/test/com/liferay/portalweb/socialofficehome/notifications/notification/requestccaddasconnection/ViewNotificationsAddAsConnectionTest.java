@@ -24,7 +24,6 @@ public class ViewNotificationsAddAsConnectionTest extends BaseTestCase {
 	public void testViewNotificationsAddAsConnection()
 		throws Exception {
 		selenium.open("/user/joebloggs/so/dashboard/");
-		loadRequiredJavaScriptModules();
 		assertTrue(selenium.isElementPresent(
 				"//li[@id='_145_notificationsMenu']"));
 		assertEquals(RuntimeVariables.replace("1"),

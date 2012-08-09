@@ -23,31 +23,25 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class AddBlogsEntry2TrackbackTest extends BaseTestCase {
 	public void testAddBlogsEntry2Trackback() throws Exception {
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Blogs Test Page",
 			RuntimeVariables.replace("Blogs Test Page"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Blogs Entry1 Title"),
 			selenium.getText("//div[@class='entry-title']/h2/a"));
 		selenium.clickAt("//div[@class='entry-title']/h2/a",
 			RuntimeVariables.replace("Blogs Entry1 Title"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 
 		String trackback = selenium.getValue(
 				"//div[@class='lfr-panel-content']/input");
 		RuntimeVariables.setValue("trackback", trackback);
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Blogs Test Page",
 			RuntimeVariables.replace("Blogs Test Page"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("//input[@value='Add Blog Entry']",
 			RuntimeVariables.replace("Add Blog Entry"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		selenium.type("//input[@id='_33_title']",
 			RuntimeVariables.replace("Blogs Entry2 Title"));
 
@@ -172,7 +166,6 @@ public class AddBlogsEntry2TrackbackTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));

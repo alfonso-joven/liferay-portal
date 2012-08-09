@@ -28,11 +28,9 @@ public class TearDownBlogsEntryTest extends BaseTestCase {
 			switch (label) {
 			case 1:
 				selenium.open("/web/guest/home/");
-				loadRequiredJavaScriptModules();
 				selenium.clickAt("link=Blogs Permissions Page",
 					RuntimeVariables.replace("Blogs Permissions Page"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 
 				boolean blogsEntry1Present = selenium.isElementPresent(
 						"link=Delete");
@@ -45,7 +43,6 @@ public class TearDownBlogsEntryTest extends BaseTestCase {
 
 				selenium.click(RuntimeVariables.replace("link=Delete"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 
@@ -60,7 +57,6 @@ public class TearDownBlogsEntryTest extends BaseTestCase {
 
 				selenium.click(RuntimeVariables.replace("link=Delete"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 
@@ -75,7 +71,6 @@ public class TearDownBlogsEntryTest extends BaseTestCase {
 
 				selenium.click(RuntimeVariables.replace("link=Delete"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 
@@ -90,7 +85,6 @@ public class TearDownBlogsEntryTest extends BaseTestCase {
 
 				selenium.click(RuntimeVariables.replace("link=Delete"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 
@@ -105,7 +99,6 @@ public class TearDownBlogsEntryTest extends BaseTestCase {
 
 				selenium.click(RuntimeVariables.replace("link=Delete"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 

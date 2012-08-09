@@ -23,7 +23,6 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class ViewConfigurePortletScopePage2Test extends BaseTestCase {
 	public void testViewConfigurePortletScopePage2() throws Exception {
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -44,7 +43,6 @@ public class ViewConfigurePortletScopePage2Test extends BaseTestCase {
 		selenium.clickAt("link=Web Content Display Test Page3",
 			RuntimeVariables.replace("Web Content Display Test Page3"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		Thread.sleep(5000);
 		assertEquals(RuntimeVariables.replace("Options"),
 			selenium.getText("//span[@title='Options']/ul/li/strong/a"));
@@ -127,14 +125,12 @@ public class ViewConfigurePortletScopePage2Test extends BaseTestCase {
 
 		selenium.clickAt("link=Scope", RuntimeVariables.replace("Scope"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals("Select Page",
 			selenium.getSelectedLabel("//select[@id='_86_scopeType']"));
 		assertEquals("Web Content Display Test Page2",
 			selenium.getSelectedLabel("//select[@id='_86_scopeLayoutUuid']"));
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -155,7 +151,6 @@ public class ViewConfigurePortletScopePage2Test extends BaseTestCase {
 		selenium.clickAt("link=Web Content Display Test Page3",
 			RuntimeVariables.replace("Web Content Display Test Page3"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace(
 				"Web Content Display (Web Content Display Test Page2)"),
 			selenium.getText("//span[@class='portlet-title-text']"));

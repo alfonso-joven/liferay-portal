@@ -23,11 +23,9 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class SA_AddPortletScopeSiteTest extends BaseTestCase {
 	public void testSA_AddPortletScopeSite() throws Exception {
 		selenium.open("/web/scope-site/scope-site-test-page/");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Scope Site Test Page",
 			RuntimeVariables.replace("Scope Site Test Page"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("//div[@id='dockbar']",
 			RuntimeVariables.replace("Dockbar"));
 

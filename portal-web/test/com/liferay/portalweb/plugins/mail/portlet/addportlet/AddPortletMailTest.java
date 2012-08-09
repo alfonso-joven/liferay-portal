@@ -23,11 +23,9 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class AddPortletMailTest extends BaseTestCase {
 	public void testAddPortletMail() throws Exception {
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Mail Test Page",
 			RuntimeVariables.replace("Mail Test Page"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("//div[@id='dockbar']",
 			RuntimeVariables.replace("Dockbar"));
 

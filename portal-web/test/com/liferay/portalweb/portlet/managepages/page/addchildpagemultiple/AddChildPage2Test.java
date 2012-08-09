@@ -28,7 +28,6 @@ public class AddChildPage2Test extends BaseTestCase {
 			switch (label) {
 			case 1:
 				selenium.open("/web/guest/home/");
-				loadRequiredJavaScriptModules();
 				selenium.clickAt("//div[@id='dockbar']",
 					RuntimeVariables.replace("Dockbar"));
 
@@ -236,7 +235,6 @@ public class AddChildPage2Test extends BaseTestCase {
 				selenium.clickAt("//input[@value='Add Page']",
 					RuntimeVariables.replace("Add Page"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				assertEquals(RuntimeVariables.replace(
 						"Your request completed successfully. The page will be refreshed when you close this dialog. Alternatively you can hide this dialog."),
 					selenium.getText("//div[@class='portlet-msg-success']"));
@@ -316,7 +314,6 @@ public class AddChildPage2Test extends BaseTestCase {
 					selenium.getText("//li[2]/ul/li[2]/div/div[3]/a"));
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				loadRequiredJavaScriptModules();
 				selenium.mouseOver("link=Manage Pages Test Page");
 
 				for (int second = 0;; second++) {
@@ -340,7 +337,6 @@ public class AddChildPage2Test extends BaseTestCase {
 				selenium.clickAt("link=Child Test Page2",
 					RuntimeVariables.replace("Child Test Page2"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				assertEquals(RuntimeVariables.replace("Child Test Page2"),
 					selenium.getText("//nav/ul/li[3]/span/a"));
 

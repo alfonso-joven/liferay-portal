@@ -23,11 +23,9 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class ViewDeleteRecordDDLDTest extends BaseTestCase {
 	public void testViewDeleteRecordDDLD() throws Exception {
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Dynamic Data List Display Test Page",
 			RuntimeVariables.replace("Dynamic Data List Display Test Page"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("No records were found."),
 			selenium.getText("//div[@class='portlet-msg-info']"));
 	}

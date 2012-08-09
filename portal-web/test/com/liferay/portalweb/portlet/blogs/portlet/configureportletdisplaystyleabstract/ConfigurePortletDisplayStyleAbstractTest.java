@@ -24,11 +24,9 @@ public class ConfigurePortletDisplayStyleAbstractTest extends BaseTestCase {
 	public void testConfigurePortletDisplayStyleAbstract()
 		throws Exception {
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Blogs Test Page",
 			RuntimeVariables.replace("Blogs Test Page"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		Thread.sleep(5000);
 
 		for (int second = 0;; second++) {

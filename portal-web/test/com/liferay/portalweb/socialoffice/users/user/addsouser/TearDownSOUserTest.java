@@ -28,7 +28,6 @@ public class TearDownSOUserTest extends BaseTestCase {
 			switch (label) {
 			case 1:
 				selenium.open("/web/guest/home/");
-				loadRequiredJavaScriptModules();
 
 				for (int second = 0;; second++) {
 					if (second >= 90) {
@@ -70,15 +69,12 @@ public class TearDownSOUserTest extends BaseTestCase {
 				selenium.clickAt("link=Control Panel",
 					RuntimeVariables.replace("Control Panel"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				selenium.clickAt("link=Users and Organizations",
 					RuntimeVariables.replace("Users and Organizations"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				selenium.clickAt("link=Search All Users",
 					RuntimeVariables.replace("Search All Users"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 
 				boolean basicVisible = selenium.isVisible("link=\u00ab Basic");
 
@@ -113,7 +109,6 @@ public class TearDownSOUserTest extends BaseTestCase {
 				selenium.clickAt("//input[@value='Search']",
 					RuntimeVariables.replace("Search"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 
 				boolean usersPresent = selenium.isElementPresent(
 						"//input[@name='_125_allRowIds']");
@@ -132,7 +127,6 @@ public class TearDownSOUserTest extends BaseTestCase {
 				selenium.clickAt("//input[@value='Deactivate']",
 					RuntimeVariables.replace("Deactivate"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to deactivate the selected users[\\s\\S]$"));
 
@@ -159,7 +153,6 @@ public class TearDownSOUserTest extends BaseTestCase {
 
 			case 3:
 				selenium.open("/web/guest/home/");
-				loadRequiredJavaScriptModules();
 
 				for (int second = 0;; second++) {
 					if (second >= 90) {
@@ -201,15 +194,12 @@ public class TearDownSOUserTest extends BaseTestCase {
 				selenium.clickAt("link=Control Panel",
 					RuntimeVariables.replace("Control Panel"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				selenium.clickAt("link=Users and Organizations",
 					RuntimeVariables.replace("Users and Organizations"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				selenium.clickAt("link=Search All Users",
 					RuntimeVariables.replace("Search All Users"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				selenium.clickAt("link=Advanced \u00bb",
 					RuntimeVariables.replace("Advanced"));
 
@@ -234,7 +224,6 @@ public class TearDownSOUserTest extends BaseTestCase {
 				selenium.clickAt("//input[@value='Search']",
 					RuntimeVariables.replace("Search"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 
 				boolean usersNotDeleted = selenium.isElementPresent(
 						"//input[@name='_125_allRowIds']");
@@ -253,7 +242,6 @@ public class TearDownSOUserTest extends BaseTestCase {
 				selenium.clickAt("//input[@value='Delete']",
 					RuntimeVariables.replace("Delete"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to permanently delete the selected users[\\s\\S]$"));
 

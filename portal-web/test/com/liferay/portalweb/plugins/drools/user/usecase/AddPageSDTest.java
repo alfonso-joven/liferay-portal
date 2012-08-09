@@ -23,7 +23,6 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class AddPageSDTest extends BaseTestCase {
 	public void testAddPageSD() throws Exception {
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("//div[@id='dockbar']",
 			RuntimeVariables.replace("Dockbar"));
 
@@ -107,6 +106,5 @@ public class AddPageSDTest extends BaseTestCase {
 
 		selenium.click(RuntimeVariables.replace("link=Sample Drools Test Page"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 	}
 }

@@ -23,11 +23,9 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class Member_AssertPermissionsTest extends BaseTestCase {
 	public void testMember_AssertPermissions() throws Exception {
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Documents and Media Test Page",
 			RuntimeVariables.replace("Documents and Media Test Page"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		Thread.sleep(5000);
 		assertEquals(RuntimeVariables.replace("Options"),
 			selenium.getText("//span[@title='Options']/ul/li/strong/a"));
@@ -97,7 +95,6 @@ public class Member_AssertPermissionsTest extends BaseTestCase {
 		selenium.clickAt("//ul[@class='aui-tabview-list']/li[2]/span/a",
 			RuntimeVariables.replace("Permissions"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Role"),
 			selenium.getText(
 				"//tr[@class='portlet-section-header results-header']/th[1]"));
@@ -119,7 +116,6 @@ public class Member_AssertPermissionsTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));

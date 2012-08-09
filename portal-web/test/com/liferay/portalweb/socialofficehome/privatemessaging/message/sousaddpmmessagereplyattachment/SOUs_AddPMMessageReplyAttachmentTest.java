@@ -24,7 +24,6 @@ public class SOUs_AddPMMessageReplyAttachmentTest extends BaseTestCase {
 	public void testSOUs_AddPMMessageReplyAttachment()
 		throws Exception {
 		selenium.open("/user/socialoffice01/so/dashboard");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -70,7 +69,6 @@ public class SOUs_AddPMMessageReplyAttachmentTest extends BaseTestCase {
 		selenium.clickAt("//span[@class='dismiss-notifications']/a",
 			RuntimeVariables.replace("Mark as Read"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -114,7 +112,6 @@ public class SOUs_AddPMMessageReplyAttachmentTest extends BaseTestCase {
 		selenium.clickAt("//nav/ul/li[contains(.,'Messages')]/a/span",
 			RuntimeVariables.replace("Messages"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Private Messaging"),
 			selenium.getText("//span[@class='portlet-title-default']"));
 		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
@@ -128,7 +125,6 @@ public class SOUs_AddPMMessageReplyAttachmentTest extends BaseTestCase {
 		selenium.clickAt("//div[@class='subject']",
 			RuntimeVariables.replace("Message Subject"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Message Subject"),
 			selenium.getText("//h1[@class='header-title']/span"));
 		assertEquals(RuntimeVariables.replace("Between Joe Bloggs And you"),

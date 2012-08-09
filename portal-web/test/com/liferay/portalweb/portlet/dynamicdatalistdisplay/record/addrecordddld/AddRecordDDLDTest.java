@@ -24,17 +24,14 @@ public class AddRecordDDLDTest extends BaseTestCase {
 	public void testAddRecordDDLD() throws Exception {
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Dynamic Data List Display Test Page",
 			RuntimeVariables.replace("Dynamic Data List Display Test Page"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("List Name"),
 			selenium.getText("//h1[@class='header-title']/span"));
 		selenium.clickAt("//input[@value='Add Record']",
 			RuntimeVariables.replace("Add Record"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Boolean"),
 			selenium.getText(
 				"//div[@class='aui-fieldset-content ']/div[1]/span/span/label"));
@@ -174,7 +171,6 @@ public class AddRecordDDLDTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));

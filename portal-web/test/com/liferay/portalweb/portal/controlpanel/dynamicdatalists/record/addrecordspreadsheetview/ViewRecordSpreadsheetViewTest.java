@@ -23,7 +23,6 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class ViewRecordSpreadsheetViewTest extends BaseTestCase {
 	public void testViewRecordSpreadsheetView() throws Exception {
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -47,23 +46,19 @@ public class ViewRecordSpreadsheetViewTest extends BaseTestCase {
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Dynamic Data Lists",
 			RuntimeVariables.replace("Dynamic Data Lists"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		selenium.type("//input[@name='_167_keywords']",
 			RuntimeVariables.replace("List Name"));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("List Name"),
 			selenium.getText("//tr[3]/td[2]/a"));
 		selenium.clickAt("//tr[3]/td[2]/a",
 			RuntimeVariables.replace("List Name"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Boolean"),
 			selenium.getText("//tr[1]/th[1]"));
 		assertEquals(RuntimeVariables.replace("true"),
@@ -135,7 +130,6 @@ public class ViewRecordSpreadsheetViewTest extends BaseTestCase {
 		selenium.click(RuntimeVariables.replace(
 				"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Boolean true"),
 			selenium.getText("//div[@class='aui-fieldset-content ']/div[1]"));
 		assertEquals(RuntimeVariables.replace("Date"),
@@ -164,7 +158,6 @@ public class ViewRecordSpreadsheetViewTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Text Box Text\nBox"),
 			selenium.getText("//div[@class='aui-fieldset-content ']/div[11]"));
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -188,17 +181,14 @@ public class ViewRecordSpreadsheetViewTest extends BaseTestCase {
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Dynamic Data Lists",
 			RuntimeVariables.replace("Dynamic Data Lists"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		selenium.type("//input[@name='_167_keywords']",
 			RuntimeVariables.replace("List Name"));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("List Name"),
 			selenium.getText("//tr[3]/td[2]/a"));
 		Thread.sleep(5000);
@@ -230,7 +220,6 @@ public class ViewRecordSpreadsheetViewTest extends BaseTestCase {
 		selenium.click(RuntimeVariables.replace(
 				"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("True"),
 			selenium.getText("//td[1]/div"));
 		assertTrue(selenium.isPartialText("//td[2]/div", "-10"));

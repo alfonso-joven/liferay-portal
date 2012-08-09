@@ -23,11 +23,9 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class AddDMFolderDocumentNullTest extends BaseTestCase {
 	public void testAddDMFolderDocumentNull() throws Exception {
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Documents and Media Test Page",
 			RuntimeVariables.replace("Documents and Media Test Page"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("DM Folder Name"),
 			selenium.getText(
 				"//a[contains(@class,'document-link')]/span[@class='entry-title']"));
@@ -83,7 +81,6 @@ public class AddDMFolderDocumentNullTest extends BaseTestCase {
 		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Basic Document')]/a",
 			RuntimeVariables.replace("Basic Document"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		selenium.type("//input[@id='_20_file']", RuntimeVariables.replace(""));
 		selenium.type("//input[@id='_20_title']", RuntimeVariables.replace(""));
 		selenium.clickAt("//input[@value='Publish']",

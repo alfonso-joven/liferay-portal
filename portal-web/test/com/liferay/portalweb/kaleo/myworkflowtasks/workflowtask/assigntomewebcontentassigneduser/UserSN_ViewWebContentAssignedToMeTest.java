@@ -24,7 +24,6 @@ public class UserSN_ViewWebContentAssignedToMeTest extends BaseTestCase {
 	public void testUserSN_ViewWebContentAssignedToMe()
 		throws Exception {
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -45,14 +44,11 @@ public class UserSN_ViewWebContentAssignedToMeTest extends BaseTestCase {
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=My Workflow Tasks",
 			RuntimeVariables.replace("My Workflow Tasks"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		selenium.click(RuntimeVariables.replace("link=Pending"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("My Workflow Tasks"),
 			selenium.getText("//span[@class='portlet-title-text']"));
 		assertEquals(RuntimeVariables.replace("Assigned to Me"),
@@ -67,7 +63,6 @@ public class UserSN_ViewWebContentAssignedToMeTest extends BaseTestCase {
 			selenium.getText("xpath=(//div[@class='portlet-msg-info'])[2]"));
 		selenium.clickAt("link=Completed", RuntimeVariables.replace("Completed"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("My Workflow Tasks"),
 			selenium.getText("//span[@class='portlet-title-text']"));
 		assertEquals(RuntimeVariables.replace("There are no completed tasks."),

@@ -24,7 +24,6 @@ public class ViewPortletAvailableBookmarksEntryAPTest extends BaseTestCase {
 	public void testViewPortletAvailableBookmarksEntryAP()
 		throws Exception {
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -45,7 +44,6 @@ public class ViewPortletAvailableBookmarksEntryAPTest extends BaseTestCase {
 		selenium.clickAt("link=Asset Publisher Test Page",
 			RuntimeVariables.replace("Asset Publisher Test Page"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertFalse(selenium.isTextPresent("BM Folder Bookmark Name"));
 	}
 }

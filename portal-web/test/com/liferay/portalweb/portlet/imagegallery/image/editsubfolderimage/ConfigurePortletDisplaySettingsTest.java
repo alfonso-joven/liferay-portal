@@ -28,11 +28,9 @@ public class ConfigurePortletDisplaySettingsTest extends BaseTestCase {
 			switch (label) {
 			case 1:
 				selenium.open("/web/guest/home/");
-				loadRequiredJavaScriptModules();
 				selenium.clickAt("link=Image Gallery Test Page",
 					RuntimeVariables.replace("Image Gallery Test Page"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				Thread.sleep(5000);
 				assertEquals(RuntimeVariables.replace("Options"),
 					selenium.getText("//span[@title='Options']/ul/li/strong/a"));
@@ -186,17 +184,14 @@ public class ConfigurePortletDisplaySettingsTest extends BaseTestCase {
 				selenium.clickAt("//input[@value='Save']",
 					RuntimeVariables.replace("Save"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				assertEquals(RuntimeVariables.replace(
 						"You have successfully updated the setup."),
 					selenium.getText("//div[@class='portlet-msg-success']"));
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				loadRequiredJavaScriptModules();
 				selenium.clickAt("link=Image Gallery Test Page",
 					RuntimeVariables.replace("Image Gallery Test Page"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				assertTrue(selenium.isVisible("//input[@id='_31_keywords1']"));
 				assertTrue(selenium.isVisible(
 						"//ul[@class='top-links-navigation']"));

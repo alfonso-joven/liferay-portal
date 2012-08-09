@@ -24,7 +24,6 @@ public class ViewSelectScopePage2WebContentListDefaultTest extends BaseTestCase 
 	public void testViewSelectScopePage2WebContentListDefault()
 		throws Exception {
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -45,7 +44,6 @@ public class ViewSelectScopePage2WebContentListDefaultTest extends BaseTestCase 
 		selenium.clickAt("link=Web Content Display Test Page1",
 			RuntimeVariables.replace("Web Content Display Test Page1"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		Thread.sleep(5000);
 		assertEquals(RuntimeVariables.replace("Options"),
 			selenium.getText("//span[@title='Options']/ul/li/strong/a"));
@@ -128,7 +126,6 @@ public class ViewSelectScopePage2WebContentListDefaultTest extends BaseTestCase 
 
 		selenium.clickAt("link=Setup", RuntimeVariables.replace("Setup"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertTrue(selenium.isPartialText(
 				"xPath=(//div[@class='portlet-msg-info'])[1]",
 				"Please select a web content from the list below."));

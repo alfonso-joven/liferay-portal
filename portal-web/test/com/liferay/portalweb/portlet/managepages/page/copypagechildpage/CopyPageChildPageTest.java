@@ -28,15 +28,12 @@ public class CopyPageChildPageTest extends BaseTestCase {
 			switch (label) {
 			case 1:
 				selenium.open("/web/guest/home/");
-				loadRequiredJavaScriptModules();
 				selenium.clickAt("link=Manage Pages Test Page",
 					RuntimeVariables.replace("Manage Pages Test Page"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				selenium.clickAt("link=Child Test Page",
 					RuntimeVariables.replace("Child Test Page"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				assertEquals(RuntimeVariables.replace("Child Test Page"),
 					selenium.getText("//nav/ul/li[3]/span/a"));
 				assertTrue(selenium.isElementNotPresent(
@@ -46,7 +43,6 @@ public class CopyPageChildPageTest extends BaseTestCase {
 				assertFalse(selenium.isTextPresent("Sign In"));
 				assertFalse(selenium.isTextPresent("Hello World"));
 				selenium.open("/web/guest/home/");
-				loadRequiredJavaScriptModules();
 				selenium.clickAt("//div[@id='dockbar']",
 					RuntimeVariables.replace("Dockbar"));
 
@@ -290,17 +286,14 @@ public class CopyPageChildPageTest extends BaseTestCase {
 				selenium.clickAt("//input[@value='Copy']",
 					RuntimeVariables.replace("Copy"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				assertEquals(RuntimeVariables.replace(
 						"Your request completed successfully. The page will be refreshed when you close this dialog. Alternatively you can hide this dialog."),
 					selenium.getText("//div[@class='portlet-msg-success']"));
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				loadRequiredJavaScriptModules();
 				selenium.clickAt("link=Child Test Page",
 					RuntimeVariables.replace("Child Test Page"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				assertEquals(RuntimeVariables.replace("Child Test Page"),
 					selenium.getText("//nav/ul/li[3]/span/a"));
 				assertEquals(RuntimeVariables.replace("Sign In"),

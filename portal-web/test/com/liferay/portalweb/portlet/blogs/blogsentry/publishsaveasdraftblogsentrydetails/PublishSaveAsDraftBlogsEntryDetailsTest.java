@@ -24,11 +24,9 @@ public class PublishSaveAsDraftBlogsEntryDetailsTest extends BaseTestCase {
 	public void testPublishSaveAsDraftBlogsEntryDetails()
 		throws Exception {
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Blogs Test Page",
 			RuntimeVariables.replace("Blogs Test Page"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Draft"),
 			selenium.getText("//div[@class='entry-content']/h3"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry Title"),
@@ -39,12 +37,10 @@ public class PublishSaveAsDraftBlogsEntryDetailsTest extends BaseTestCase {
 			selenium.getText("//span/a/span"));
 		selenium.click(RuntimeVariables.replace("//span/a/span"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		Thread.sleep(5000);
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));

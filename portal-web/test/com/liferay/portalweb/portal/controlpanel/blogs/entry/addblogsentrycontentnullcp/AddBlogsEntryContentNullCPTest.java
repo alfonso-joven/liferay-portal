@@ -23,7 +23,6 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class AddBlogsEntryContentNullCPTest extends BaseTestCase {
 	public void testAddBlogsEntryContentNullCP() throws Exception {
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -43,13 +42,10 @@ public class AddBlogsEntryContentNullCPTest extends BaseTestCase {
 
 		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Blogs", RuntimeVariables.replace(""));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Add", RuntimeVariables.replace("Add"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		selenium.type("//input[@id='_161_title']",
 			RuntimeVariables.replace("Blogs Entry Title"));
 		assertEquals(RuntimeVariables.replace("Source"),
@@ -121,12 +117,10 @@ public class AddBlogsEntryContentNullCPTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace(""));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace(
 				"Your request failed to complete."),
 			selenium.getText("//div[@class='portlet-msg-error']"));
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -146,10 +140,8 @@ public class AddBlogsEntryContentNullCPTest extends BaseTestCase {
 
 		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Blogs", RuntimeVariables.replace(""));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertFalse(selenium.isTextPresent("Blogs Entry Title"));
 	}
 }

@@ -23,7 +23,6 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class AddPage2BlogsEntry6Test extends BaseTestCase {
 	public void testAddPage2BlogsEntry6() throws Exception {
 		selenium.open("/web/blogs-page-scope-community/");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -44,7 +43,6 @@ public class AddPage2BlogsEntry6Test extends BaseTestCase {
 		selenium.clickAt("link=Blogs Test Page2",
 			RuntimeVariables.replace("Blogs Test Page2"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -69,7 +67,6 @@ public class AddPage2BlogsEntry6Test extends BaseTestCase {
 		selenium.clickAt("//input[@value='Add Blog Entry']",
 			RuntimeVariables.replace("Add Blog Entry"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		selenium.type("//input[@id='_33_title']",
 			RuntimeVariables.replace("Blogs Entry6 Title"));
 
@@ -192,7 +189,6 @@ public class AddPage2BlogsEntry6Test extends BaseTestCase {
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
@@ -201,7 +197,6 @@ public class AddPage2BlogsEntry6Test extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Blogs Entry6 Content"),
 			selenium.getText("xPath=(//div[@class='entry-body'])[1]/p"));
 		selenium.open("/web/blogs-page-scope-community/");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -222,7 +217,6 @@ public class AddPage2BlogsEntry6Test extends BaseTestCase {
 		selenium.clickAt("link=Blogs Test Page1",
 			RuntimeVariables.replace("Blogs Test Page1"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		Thread.sleep(5000);
 
 		for (int second = 0;; second++) {
@@ -256,7 +250,6 @@ public class AddPage2BlogsEntry6Test extends BaseTestCase {
 		assertFalse(selenium.isTextPresent("Blogs Entry2 Title"));
 		assertFalse(selenium.isTextPresent("Blogs Entry2 Content"));
 		selenium.open("/web/blogs-page-scope-community/");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -277,7 +270,6 @@ public class AddPage2BlogsEntry6Test extends BaseTestCase {
 		selenium.clickAt("link=Blogs Test Page2",
 			RuntimeVariables.replace("Blogs Test Page2"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -304,7 +296,6 @@ public class AddPage2BlogsEntry6Test extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Blogs Entry6 Content"),
 			selenium.getText("xPath=(//div[@class='entry-body'])[1]/p"));
 		selenium.open("/web/blogs-page-scope-community/");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -325,7 +316,6 @@ public class AddPage2BlogsEntry6Test extends BaseTestCase {
 		selenium.clickAt("link=Blogs Test Page3",
 			RuntimeVariables.replace("Blogs Test Page3"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {

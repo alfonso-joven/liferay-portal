@@ -29,15 +29,12 @@ public class TearDownDataDefinitionTest extends BaseTestCase {
 			case 1:
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				loadRequiredJavaScriptModules();
 				selenium.clickAt("link=Control Panel",
 					RuntimeVariables.replace("Control Panel"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				selenium.clickAt("link=Dynamic Data Lists",
 					RuntimeVariables.replace("Dynamic Data Lists"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 
 				for (int second = 0;; second++) {
 					if (second >= 90) {
@@ -117,7 +114,6 @@ public class TearDownDataDefinitionTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//div[@class='lfr-component lfr-menu-list']/ul/li[5]/a"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 				Thread.sleep(5000);
@@ -159,7 +155,6 @@ public class TearDownDataDefinitionTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//div[@class='lfr-component lfr-menu-list']/ul/li[5]/a"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 				Thread.sleep(5000);
@@ -201,7 +196,6 @@ public class TearDownDataDefinitionTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//div[@class='lfr-component lfr-menu-list']/ul/li[5]/a"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 				Thread.sleep(5000);
@@ -243,7 +237,6 @@ public class TearDownDataDefinitionTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//div[@class='lfr-component lfr-menu-list']/ul/li[5]/a"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 				Thread.sleep(5000);
@@ -285,7 +278,6 @@ public class TearDownDataDefinitionTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//div[@class='lfr-component lfr-menu-list']/ul/li[5]/a"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 

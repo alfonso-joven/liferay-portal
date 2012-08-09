@@ -25,7 +25,6 @@ public class SOUs_ViewConnectionEditMBViewableByConnectionsTest
 	public void testSOUs_ViewConnectionEditMBViewableByConnections()
 		throws Exception {
 		selenium.open("/user/socialoffice01/so/dashboard");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Microblogs Status Update"),
 			selenium.getText("//span[@class='portlet-title-default']"));
 		assertTrue(selenium.isElementPresent(
@@ -38,7 +37,6 @@ public class SOUs_ViewConnectionEditMBViewableByConnectionsTest
 		selenium.clickAt("link=Connections",
 			RuntimeVariables.replace("Connections"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Microblogs PostEdit"),
 			selenium.getText("//div[@class='activity-title']"));
 
@@ -62,7 +60,6 @@ public class SOUs_ViewConnectionEditMBViewableByConnectionsTest
 		selenium.clickAt("//nav/ul/li[contains(.,'Microblogs')]/a/span",
 			RuntimeVariables.replace("Microblogs"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
 			selenium.getText("//div[@class='user-name']/span"));
 		assertEquals(RuntimeVariables.replace("Microblogs PostEdit"),

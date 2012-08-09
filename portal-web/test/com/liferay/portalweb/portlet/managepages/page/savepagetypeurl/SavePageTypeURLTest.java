@@ -28,7 +28,6 @@ public class SavePageTypeURLTest extends BaseTestCase {
 			switch (label) {
 			case 1:
 				selenium.open("/web/guest/home/");
-				loadRequiredJavaScriptModules();
 				selenium.clickAt("//div[@id='dockbar']",
 					RuntimeVariables.replace("Dockbar"));
 
@@ -233,17 +232,14 @@ public class SavePageTypeURLTest extends BaseTestCase {
 				selenium.clickAt("//input[@value='Save']",
 					RuntimeVariables.replace("Save"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				assertEquals(RuntimeVariables.replace(
 						"Your request completed successfully. The page will be refreshed when you close this dialog. Alternatively you can hide this dialog."),
 					selenium.getText("//div[@class='portlet-msg-success']"));
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				loadRequiredJavaScriptModules();
 				selenium.clickAt("link=Manage Pages Test Page",
 					RuntimeVariables.replace("Manage Pages Test Page"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				assertTrue(selenium.isElementPresent("//img[@alt='Liferay']"));
 				assertTrue(selenium.isElementNotPresent(
 						"link=Manage Pages Test Page"));

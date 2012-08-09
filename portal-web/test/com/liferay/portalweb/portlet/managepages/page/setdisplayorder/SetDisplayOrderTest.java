@@ -28,7 +28,6 @@ public class SetDisplayOrderTest extends BaseTestCase {
 			switch (label) {
 			case 1:
 				selenium.open("/web/guest/home/");
-				loadRequiredJavaScriptModules();
 				selenium.mouseOver("link=Manage Pages Test Page");
 				assertEquals(RuntimeVariables.replace("Child Test Page1"),
 					selenium.getText("//li[2]/ul/li[1]"));
@@ -309,7 +308,6 @@ public class SetDisplayOrderTest extends BaseTestCase {
 					selenium.getText("//li[2]/ul/li[3]/div/div[3]/a"));
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				loadRequiredJavaScriptModules();
 				selenium.mouseOver("link=Manage Pages Test Page");
 				assertEquals(RuntimeVariables.replace("Child Test Page2"),
 					selenium.getText("//li[2]/ul/li[1]"));

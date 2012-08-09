@@ -24,11 +24,9 @@ public class ViewPortletDisplayStyleAbstractBlogsEntryTest extends BaseTestCase 
 	public void testViewPortletDisplayStyleAbstractBlogsEntry()
 		throws Exception {
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Blogs Test Page",
 			RuntimeVariables.replace("Blogs Test Page"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Blogs Entry Title"),
 			selenium.getText("//div[@class='entry-title']/h2/a"));
 		assertEquals(RuntimeVariables.replace(
@@ -37,7 +35,6 @@ public class ViewPortletDisplayStyleAbstractBlogsEntryTest extends BaseTestCase 
 		selenium.clickAt("//div[@class='entry-body']/a",
 			RuntimeVariables.replace("Read More About Blogs Entry Title \u00bb"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Blogs Entry Title"),
 			selenium.getText("//h1[@class='header-title']/span"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry Content"),

@@ -24,7 +24,6 @@ public class PermissionsPage2BlogsEntry8GuestViewOffTest extends BaseTestCase {
 	public void testPermissionsPage2BlogsEntry8GuestViewOff()
 		throws Exception {
 		selenium.open("/web/blogs-page-scope-community/");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -45,7 +44,6 @@ public class PermissionsPage2BlogsEntry8GuestViewOffTest extends BaseTestCase {
 		selenium.clickAt("link=Blogs Test Page2",
 			RuntimeVariables.replace("Blogs Test Page2"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -105,7 +103,6 @@ public class PermissionsPage2BlogsEntry8GuestViewOffTest extends BaseTestCase {
 
 		selenium.click(RuntimeVariables.replace("//input[@value='Search']"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -129,13 +126,11 @@ public class PermissionsPage2BlogsEntry8GuestViewOffTest extends BaseTestCase {
 		selenium.clickAt("//td[2]/a",
 			RuntimeVariables.replace("Blogs Entry8 Title"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Permissions"),
 			selenium.getText("//span/a/span[.='Permissions']"));
 		selenium.clickAt("//span/a/span[.='Permissions']",
 			RuntimeVariables.replace("Permissions"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertTrue(selenium.isChecked("//input[@name='16_ACTION_VIEW']"));
 		selenium.clickAt("//input[@name='16_ACTION_VIEW']",
 			RuntimeVariables.replace("Guest View"));
@@ -143,7 +138,6 @@ public class PermissionsPage2BlogsEntry8GuestViewOffTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));

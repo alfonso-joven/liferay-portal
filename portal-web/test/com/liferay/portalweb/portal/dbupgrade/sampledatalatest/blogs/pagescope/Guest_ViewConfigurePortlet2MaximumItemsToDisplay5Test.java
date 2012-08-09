@@ -25,11 +25,9 @@ public class Guest_ViewConfigurePortlet2MaximumItemsToDisplay5Test
 	public void testGuest_ViewConfigurePortlet2MaximumItemsToDisplay5()
 		throws Exception {
 		selenium.open("/web/blogs-page-scope-community/");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Blogs Test Page2",
 			RuntimeVariables.replace("Blogs Test Page2"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -86,7 +84,6 @@ public class Guest_ViewConfigurePortlet2MaximumItemsToDisplay5Test
 		selenium.select("//select[@name='_33_page']",
 			RuntimeVariables.replace("label=2"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -125,7 +122,6 @@ public class Guest_ViewConfigurePortlet2MaximumItemsToDisplay5Test
 		selenium.select("//select[@name='_33_page']",
 			RuntimeVariables.replace("label=1"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Blogs Entry7 Title"),
 			selenium.getText("xPath=(//div[@class='entry-title']/h2/a)[1]"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry7 Content"),
@@ -160,7 +156,6 @@ public class Guest_ViewConfigurePortlet2MaximumItemsToDisplay5Test
 			selenium.getText("//a[@class='last']"));
 		selenium.clickAt("//a[@class='next']", RuntimeVariables.replace("Next"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -199,7 +194,6 @@ public class Guest_ViewConfigurePortlet2MaximumItemsToDisplay5Test
 		selenium.clickAt("//a[@class='previous']",
 			RuntimeVariables.replace("Previous"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Blogs Entry7 Title"),
 			selenium.getText("xPath=(//div[@class='entry-title']/h2/a)[1]"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry7 Content"),
@@ -234,7 +228,6 @@ public class Guest_ViewConfigurePortlet2MaximumItemsToDisplay5Test
 			selenium.getText("//a[@class='last']"));
 		selenium.clickAt("//a[@class='last']", RuntimeVariables.replace("Last"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -273,7 +266,6 @@ public class Guest_ViewConfigurePortlet2MaximumItemsToDisplay5Test
 		selenium.clickAt("//a[@class='first']",
 			RuntimeVariables.replace("First"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Blogs Entry7 Title"),
 			selenium.getText("xPath=(//div[@class='entry-title']/h2/a)[1]"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry7 Content"),
@@ -307,11 +299,9 @@ public class Guest_ViewConfigurePortlet2MaximumItemsToDisplay5Test
 		assertEquals(RuntimeVariables.replace("Last"),
 			selenium.getText("//a[@class='last']"));
 		selenium.open("/web/blogs-page-scope-community/");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Blogs Test Page3",
 			RuntimeVariables.replace("Blogs Test Page3"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -368,7 +358,6 @@ public class Guest_ViewConfigurePortlet2MaximumItemsToDisplay5Test
 		selenium.select("//select[@name='_33_page']",
 			RuntimeVariables.replace("label=2"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -407,7 +396,6 @@ public class Guest_ViewConfigurePortlet2MaximumItemsToDisplay5Test
 		selenium.select("//select[@name='_33_page']",
 			RuntimeVariables.replace("label=1"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Blogs Entry7 Title"),
 			selenium.getText("xPath=(//div[@class='entry-title']/h2/a)[1]"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry7 Content"),
@@ -442,7 +430,6 @@ public class Guest_ViewConfigurePortlet2MaximumItemsToDisplay5Test
 			selenium.getText("//a[@class='last']"));
 		selenium.clickAt("//a[@class='next']", RuntimeVariables.replace("Next"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -481,7 +468,6 @@ public class Guest_ViewConfigurePortlet2MaximumItemsToDisplay5Test
 		selenium.clickAt("//a[@class='previous']",
 			RuntimeVariables.replace("Previous"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Blogs Entry7 Title"),
 			selenium.getText("xPath=(//div[@class='entry-title']/h2/a)[1]"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry7 Content"),
@@ -516,7 +502,6 @@ public class Guest_ViewConfigurePortlet2MaximumItemsToDisplay5Test
 			selenium.getText("//a[@class='last']"));
 		selenium.clickAt("//a[@class='last']", RuntimeVariables.replace("Last"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -555,7 +540,6 @@ public class Guest_ViewConfigurePortlet2MaximumItemsToDisplay5Test
 		selenium.clickAt("//a[@class='first']",
 			RuntimeVariables.replace("First"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Blogs Entry7 Title"),
 			selenium.getText("xPath=(//div[@class='entry-title']/h2/a)[1]"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry7 Content"),

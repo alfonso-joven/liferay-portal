@@ -24,7 +24,6 @@ public class ViewMoveDMFolderDocumentCommentToFolderTest extends BaseTestCase {
 	public void testViewMoveDMFolderDocumentCommentToFolder()
 		throws Exception {
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -45,7 +44,6 @@ public class ViewMoveDMFolderDocumentCommentToFolderTest extends BaseTestCase {
 		selenium.clickAt("link=Documents and Media Test Page",
 			RuntimeVariables.replace("Documents and Media Test Page"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("DM Folder1 Name"),
 			selenium.getText(
 				"//a[contains(@class,'document-link')]/span[@class='entry-title']"));
@@ -53,7 +51,6 @@ public class ViewMoveDMFolderDocumentCommentToFolderTest extends BaseTestCase {
 			RuntimeVariables.replace("DM Folder1 Name"));
 		assertFalse(selenium.isTextPresent("DM Folder1 Document Title"));
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -74,7 +71,6 @@ public class ViewMoveDMFolderDocumentCommentToFolderTest extends BaseTestCase {
 		selenium.clickAt("link=Documents and Media Test Page",
 			RuntimeVariables.replace("Documents and Media Test Page"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		Thread.sleep(5000);
 		assertEquals(RuntimeVariables.replace("DM Folder2 Name"),
 			selenium.getText(

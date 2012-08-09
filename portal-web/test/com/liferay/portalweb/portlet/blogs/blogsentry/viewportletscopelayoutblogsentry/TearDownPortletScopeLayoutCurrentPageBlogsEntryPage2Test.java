@@ -30,11 +30,9 @@ public class TearDownPortletScopeLayoutCurrentPageBlogsEntryPage2Test
 			switch (label) {
 			case 1:
 				selenium.open("/web/guest/home/");
-				loadRequiredJavaScriptModules();
 				selenium.clickAt("link=Blogs Test Page2",
 					RuntimeVariables.replace("Blogs Test Page2"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 
 				boolean blogsEntry1Present = selenium.isElementPresent(
 						"link=Delete");
@@ -47,7 +45,6 @@ public class TearDownPortletScopeLayoutCurrentPageBlogsEntryPage2Test
 
 				selenium.click(RuntimeVariables.replace("link=Delete"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 
@@ -64,7 +61,6 @@ public class TearDownPortletScopeLayoutCurrentPageBlogsEntryPage2Test
 
 				selenium.click(RuntimeVariables.replace("link=Delete"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 
@@ -81,7 +77,6 @@ public class TearDownPortletScopeLayoutCurrentPageBlogsEntryPage2Test
 
 				selenium.click(RuntimeVariables.replace("link=Delete"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 
@@ -98,7 +93,6 @@ public class TearDownPortletScopeLayoutCurrentPageBlogsEntryPage2Test
 
 				selenium.click(RuntimeVariables.replace("link=Delete"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 
@@ -115,7 +109,6 @@ public class TearDownPortletScopeLayoutCurrentPageBlogsEntryPage2Test
 
 				selenium.click(RuntimeVariables.replace("link=Delete"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 

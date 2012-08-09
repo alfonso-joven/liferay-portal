@@ -24,7 +24,6 @@ public class AddMicroblogsContent151CharacterTest extends BaseTestCase {
 	public void testAddMicroblogsContent151Character()
 		throws Exception {
 		selenium.open("/user/joebloggs/so/dashboard");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -46,7 +45,6 @@ public class AddMicroblogsContent151CharacterTest extends BaseTestCase {
 		selenium.clickAt("//nav/ul/li[contains(.,'Microblogs')]/a/span",
 			RuntimeVariables.replace("Microblogs"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Microblogs"),
 			selenium.getText("//span[@class='portlet-title-default']"));
 		assertTrue(selenium.isElementPresent(
@@ -103,7 +101,6 @@ public class AddMicroblogsContent151CharacterTest extends BaseTestCase {
 			RuntimeVariables.replace("Post"));
 		Thread.sleep(5000);
 		selenium.open("/user/joebloggs/so/dashboard");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Microblogs Status Update"),
 			selenium.getText("//span[@class='portlet-title-default']"));
 		assertTrue(selenium.isElementPresent(
@@ -132,7 +129,6 @@ public class AddMicroblogsContent151CharacterTest extends BaseTestCase {
 		selenium.clickAt("//nav/ul/li[contains(.,'Microblogs')]/a/span",
 			RuntimeVariables.replace("Microblogs"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace(
 				"You do not have any microblog entries."),
 			selenium.getText("//div[@class='portlet-msg-info']"));

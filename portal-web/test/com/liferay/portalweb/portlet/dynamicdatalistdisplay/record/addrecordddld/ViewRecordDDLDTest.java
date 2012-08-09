@@ -24,11 +24,9 @@ public class ViewRecordDDLDTest extends BaseTestCase {
 	public void testViewRecordDDLD() throws Exception {
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Dynamic Data List Display Test Page",
 			RuntimeVariables.replace("Dynamic Data List Display Test Page"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Boolean"),
 			selenium.getText("//tr[1]/th[1]"));
 		assertEquals(RuntimeVariables.replace("true"),
@@ -102,7 +100,6 @@ public class ViewRecordDDLDTest extends BaseTestCase {
 		selenium.click(RuntimeVariables.replace(
 				"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Boolean true"),
 			selenium.getText("//div[@class='aui-fieldset-content ']/div[1]"));
 		assertEquals(RuntimeVariables.replace("Date 1/2/03"),

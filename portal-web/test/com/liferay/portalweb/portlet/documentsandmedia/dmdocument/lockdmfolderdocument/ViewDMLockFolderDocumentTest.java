@@ -23,11 +23,9 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class ViewDMLockFolderDocumentTest extends BaseTestCase {
 	public void testViewDMLockFolderDocument() throws Exception {
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Documents and Media Test Page",
 			RuntimeVariables.replace("Documents and Media Test Page"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("DM Folder Name"),
 			selenium.getText(
 				"//a[contains(@class,'document-link')]/span[@class='entry-title']"));
@@ -62,7 +60,6 @@ public class ViewDMLockFolderDocumentTest extends BaseTestCase {
 		selenium.clickAt("//a[contains(@class,'document-link')]/span[@class='entry-title']",
 			RuntimeVariables.replace("DM Folder Document Title (Draft)"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace(
 				"You now have a lock on this document. No one else can edit this document until you unlock it. This lock will automatically expire in 1 day."),
 			selenium.getText(
@@ -71,7 +68,6 @@ public class ViewDMLockFolderDocumentTest extends BaseTestCase {
 			selenium.getText("//button[2]"));
 		selenium.clickAt("//button[2]", RuntimeVariables.replace("Edit"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace(
 				"You now have a lock on this document. No one else can edit this document until you unlock it. This lock will automatically expire in 1 day."),
 			selenium.getText("//div[@class='portlet-msg-success']"));

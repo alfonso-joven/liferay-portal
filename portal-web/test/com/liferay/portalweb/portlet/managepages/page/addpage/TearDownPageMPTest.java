@@ -28,7 +28,6 @@ public class TearDownPageMPTest extends BaseTestCase {
 			switch (label) {
 			case 1:
 				selenium.open("/web/guest/home/");
-				loadRequiredJavaScriptModules();
 				selenium.clickAt("//div[@id='dockbar']",
 					RuntimeVariables.replace("Dockbar"));
 
@@ -261,7 +260,6 @@ public class TearDownPageMPTest extends BaseTestCase {
 					selenium.getText("//span[.='Delete']"));
 				selenium.click(RuntimeVariables.replace("//span[.='Delete']"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete the selected page[\\s\\S]$"));
 
@@ -385,7 +383,6 @@ public class TearDownPageMPTest extends BaseTestCase {
 					selenium.getText("//span[.='Delete']"));
 				selenium.click(RuntimeVariables.replace("//span[.='Delete']"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete the selected page[\\s\\S]$"));
 
@@ -506,7 +503,6 @@ public class TearDownPageMPTest extends BaseTestCase {
 					selenium.getText("//span[.='Delete']"));
 				selenium.click(RuntimeVariables.replace("//span[.='Delete']"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete the selected page[\\s\\S]$"));
 
@@ -630,7 +626,6 @@ public class TearDownPageMPTest extends BaseTestCase {
 					selenium.getText("//span[.='Delete']"));
 				selenium.click(RuntimeVariables.replace("//span[.='Delete']"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete the selected page[\\s\\S]$"));
 
@@ -754,7 +749,6 @@ public class TearDownPageMPTest extends BaseTestCase {
 					selenium.getText("//span[.='Delete']"));
 				selenium.click(RuntimeVariables.replace("//span[.='Delete']"));
 				selenium.waitForPageToLoad("30000");
-				loadRequiredJavaScriptModules();
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete the selected page[\\s\\S]$"));
 

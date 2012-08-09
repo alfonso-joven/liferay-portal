@@ -23,7 +23,6 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class AddDMFolder1DocumentCommentTest extends BaseTestCase {
 	public void testAddDMFolder1DocumentComment() throws Exception {
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -44,7 +43,6 @@ public class AddDMFolder1DocumentCommentTest extends BaseTestCase {
 		selenium.clickAt("link=Documents and Media Test Page",
 			RuntimeVariables.replace("Documents and Media Test Page"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("DM Folder1 Name"),
 			selenium.getText(
 				"//a[contains(@class,'document-link')]/span[@class='entry-title']"));
@@ -77,7 +75,6 @@ public class AddDMFolder1DocumentCommentTest extends BaseTestCase {
 		selenium.clickAt("//a[contains(@class,'document-link')]/span[@class='entry-title']",
 			RuntimeVariables.replace("DM Folder1 Document Title"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Be the first."),
 			selenium.getText("//fieldset/div/a"));
 		selenium.clickAt("//fieldset/div/a",

@@ -24,11 +24,9 @@ public class ConfigurePortletScopeLayoutPage2Page1Test extends BaseTestCase {
 	public void testConfigurePortletScopeLayoutPage2Page1()
 		throws Exception {
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Blogs Test Page1",
 			RuntimeVariables.replace("Blogs Test Page1"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Blogs"),
 			selenium.getText("//span[@class='portlet-title-text']"));
 		Thread.sleep(5000);
@@ -95,7 +93,6 @@ public class ConfigurePortletScopeLayoutPage2Page1Test extends BaseTestCase {
 
 		selenium.clickAt("link=Scope", RuntimeVariables.replace("Scope"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -163,11 +160,9 @@ public class ConfigurePortletScopeLayoutPage2Page1Test extends BaseTestCase {
 			selenium.getSelectedLabel("//select[@id='_86_scopeLayoutUuid']"));
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Blogs Test Page1",
 			RuntimeVariables.replace("Blogs Test Page1"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Blogs (Blogs Test Page2)"),
 			selenium.getText("//span[@class='portlet-title-text']"));
 	}

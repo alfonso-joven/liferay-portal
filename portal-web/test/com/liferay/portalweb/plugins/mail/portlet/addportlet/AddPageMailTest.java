@@ -23,7 +23,6 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class AddPageMailTest extends BaseTestCase {
 	public void testAddPageMail() throws Exception {
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("//div[@id='dockbar']",
 			RuntimeVariables.replace("Dockbar"));
 
@@ -108,6 +107,5 @@ public class AddPageMailTest extends BaseTestCase {
 		selenium.clickAt("link=Mail Test Page",
 			RuntimeVariables.replace("Mail Test Page"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 	}
 }

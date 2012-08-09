@@ -24,11 +24,9 @@ public class Member_AssertCannotAccessOptionsTest extends BaseTestCase {
 	public void testMember_AssertCannotAccessOptions()
 		throws Exception {
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Documents and Media Test Page",
 			RuntimeVariables.replace("Documents and Media Test Page"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertTrue(selenium.isElementNotPresent("//span[@title='Options']"));
 	}
 }
