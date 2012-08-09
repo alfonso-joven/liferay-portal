@@ -1066,7 +1066,7 @@ public interface Portal {
 
 	public long getUserId(PortletRequest portletRequest);
 
-	public String getUserName(BaseModel baseModel);
+	public String getUserName(BaseModel<?> baseModel);
 
 	public String getUserName(long userId, String defaultUserName);
 
