@@ -35,6 +35,7 @@ import com.liferay.portal.kernel.util.HttpUtil;
 import com.liferay.portal.kernel.util.PropertiesUtil;
 import com.liferay.portal.kernel.util.PropsKeys;
 import com.liferay.portal.kernel.util.ServerDetector;
+import com.liferay.portal.kernel.util.StreamUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
@@ -266,6 +267,33 @@ public class BaseDeployer implements AutoDeployer, Deployer {
 
 		DeployUtil.copyDependencyXml(
 			fileName, targetDir, fileName, filterMap, overwrite);
+	}
+
+	public void copyDtds(File srcFile, PluginPackage pluginPackage)
+		throws Exception {
+
+		File portalLog4jXml = new File(
+			srcFile.getAbsolutePath() +
+				"/WEB-INF/classes/META-INF/portal-log4j.xml");
+
+		if (portalLog4jXml.exists()) {
+			InputStream is = null;
+
+			try {
+				ClassLoader classLoader = getClass().getClassLoader();
+
+				is = classLoader.getResourceAsStream("META-INF/log4j.dtd");
+
+				File file = new File(
+					srcFile.getAbsolutePath() +
+						"/WEB-INF/classes/META-INF/log4j.dtd");
+
+				FileUtil.write(file, is);
+			}
+			finally {
+				StreamUtil.cleanUp(is);
+			}
+		}
 	}
 
 	public void copyJars(File srcFile, PluginPackage pluginPackage)
@@ -565,6 +593,7 @@ public class BaseDeployer implements AutoDeployer, Deployer {
 
 		processPluginPackageProperties(srcFile, displayName, pluginPackage);
 
+		copyDtds(srcFile, pluginPackage);
 		copyJars(srcFile, pluginPackage);
 		copyProperties(srcFile, pluginPackage);
 		copyTlds(srcFile, pluginPackage);
