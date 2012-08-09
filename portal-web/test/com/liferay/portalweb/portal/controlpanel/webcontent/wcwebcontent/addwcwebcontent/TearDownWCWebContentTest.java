@@ -28,26 +28,6 @@ public class TearDownWCWebContentTest extends BaseTestCase {
 			switch (label) {
 			case 1:
 				selenium.open("/web/guest/home/");
-				selenium.clickAt("//div[@id='dockbar']",
-					RuntimeVariables.replace("Dockbar"));
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isElementPresent(
-									"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
 				assertEquals(RuntimeVariables.replace("Go to"),
 					selenium.getText("//li[@id='_145_mySites']/a/span"));
 				selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -76,7 +56,7 @@ public class TearDownWCWebContentTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 
 				boolean webContentPresent = selenium.isElementPresent(
-						"//span[@title='Actions']/ul/li/strong/a/span");
+						"//input[@name='_15_rowIds']");
 
 				if (!webContentPresent) {
 					label = 2;
@@ -111,15 +91,8 @@ public class TearDownWCWebContentTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete the selected web content[\\s\\S]$"));
-				assertEquals(RuntimeVariables.replace(
-						"Your request completed successfully."),
-					selenium.getText("//div[@class='portlet-msg-success']"));
 
 			case 2:
-				assertEquals(RuntimeVariables.replace(
-						"No Web Content was found."),
-					selenium.getText("//div[@class='portlet-msg-info']"));
-
 			case 100:
 				label = -1;
 			}
