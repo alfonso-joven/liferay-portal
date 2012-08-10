@@ -1307,7 +1307,8 @@ public class LayoutLocalServiceImpl extends LayoutLocalServiceBaseImpl {
 			layoutSetPrototypeLocalService.getLayoutSetPrototype(
 				layoutSetPrototypeId);
 
-		return hasLayoutSetPrototypeLayout(layoutSetPrototype, layoutUuid);
+		return layoutLocalServiceHelper.hasLayoutSetPrototypeLayout(
+			layoutSetPrototype, layoutUuid);
 	}
 
 	public boolean hasLayoutSetPrototypeLayout(
