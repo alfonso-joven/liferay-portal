@@ -246,13 +246,12 @@ public class BlogsEntryServiceImpl extends BlogsEntryServiceBaseImpl {
 
 		Group group = groupPersistence.findByPrimaryKey(groupId);
 
-		String name = HtmlUtil.escape(group.getDescriptiveName());
-		String description = name;
+		String name = group.getDescriptiveName();
 		List<BlogsEntry> blogsEntries = getGroupEntries(
 			groupId, displayDate, status, max);
 
 		return exportToRSS(
-			name, description, type, version, displayStyle, feedURL, entryURL,
+			name, name, type, version, displayStyle, feedURL, entryURL,
 			blogsEntries, themeDisplay);
 	}
 
@@ -398,8 +397,7 @@ public class BlogsEntryServiceImpl extends BlogsEntryServiceBaseImpl {
 		syndFeed.setEntries(syndEntries);
 
 		for (BlogsEntry entry : blogsEntries) {
-			String author = HtmlUtil.escape(
-				PortalUtil.getUserName(entry.getUserId(), entry.getUserName()));
+			String author = PortalUtil.getUserName(entry);
 
 			StringBundler link = new StringBundler(4);
 

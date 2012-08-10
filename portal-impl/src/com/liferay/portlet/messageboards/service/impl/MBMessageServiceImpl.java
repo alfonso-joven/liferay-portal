@@ -681,14 +681,8 @@ public class MBMessageServiceImpl extends MBMessageServiceBaseImpl {
 
 		syndFeed.setEntries(syndEntries);
 
-		Iterator<MBMessage> itr = messages.iterator();
-
-		while (itr.hasNext()) {
-			MBMessage message = itr.next();
-
-			String author = HtmlUtil.escape(
-				PortalUtil.getUserName(
-					message.getUserId(), message.getUserName()));
+		for (MBMessage message : messages) {
+			String author = PortalUtil.getUserName(message);
 
 			String value = null;
 

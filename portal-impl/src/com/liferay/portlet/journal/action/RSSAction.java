@@ -20,7 +20,6 @@ import com.liferay.portal.kernel.language.LanguageUtil;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.util.ContentTypes;
-import com.liferay.portal.kernel.util.HtmlUtil;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
@@ -61,7 +60,6 @@ import com.sun.syndication.io.FeedException;
 import java.io.OutputStream;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.portlet.PortletConfig;
@@ -129,14 +127,8 @@ public class RSSAction extends PortletAction {
 			_log.debug("Syndicating " + articles.size() + " articles");
 		}
 
-		Iterator<JournalArticle> itr = articles.iterator();
-
-		while (itr.hasNext()) {
-			JournalArticle article = itr.next();
-
-			String author = HtmlUtil.escape(
-				PortalUtil.getUserName(
-					article.getUserId(), article.getUserName()));
+		for (JournalArticle article : articles) {
+			String author = PortalUtil.getUserName(article);
 			String link = getEntryURL(
 				resourceRequest, feed, article, layout, themeDisplay);
 
