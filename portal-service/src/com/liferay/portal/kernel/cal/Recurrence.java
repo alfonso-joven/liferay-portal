@@ -550,9 +550,10 @@ public class Recurrence implements Serializable {
 	 * Method setFrequency
 	 */
 	public void setFrequency(int freq) {
-		if ((frequency != DAILY) && (frequency != WEEKLY)
-			&& (frequency != MONTHLY) && (frequency != YEARLY)
-			&& (frequency != NO_RECURRENCE)) {
+		if ((frequency != DAILY) && (frequency != WEEKLY) &&
+			(frequency != MONTHLY) && (frequency != YEARLY) &&
+			(frequency != NO_RECURRENCE)) {
+
 			throw new IllegalArgumentException("Invalid frequency");
 		}
 
@@ -700,8 +701,8 @@ public class Recurrence implements Serializable {
 
 		// Roll back to the first day of the week
 
-		int delta = tempCal.getFirstDayOfWeek()
-					- tempCal.get(Calendar.DAY_OF_WEEK);
+		int delta =
+			tempCal.getFirstDayOfWeek() - tempCal.get(Calendar.DAY_OF_WEEK);
 
 		if (delta > 0) {
 			delta -= 7;
@@ -727,8 +728,9 @@ public class Recurrence implements Serializable {
 	protected static void reduce_constant_length_field(
 		int field, Calendar start, Calendar candidate) {
 
-		if ((start.getMaximum(field) != start.getLeastMaximum(field))
-			|| (start.getMinimum(field) != start.getGreatestMinimum(field))) {
+		if ((start.getMaximum(field) != start.getLeastMaximum(field)) ||
+			(start.getMinimum(field) != start.getGreatestMinimum(field))) {
+
 			throw new IllegalArgumentException("Not a constant length field");
 		}
 
@@ -774,9 +776,10 @@ public class Recurrence implements Serializable {
 	protected static void reduce_day_of_year(
 		Calendar start, Calendar candidate) {
 
-		if ((start.get(Calendar.MONTH) > candidate.get(Calendar.MONTH))
-			|| ((start.get(Calendar.MONTH) == candidate.get(Calendar.MONTH))
-				&& (start.get(Calendar.DATE) > candidate.get(Calendar.DATE)))) {
+		if ((start.get(Calendar.MONTH) > candidate.get(Calendar.MONTH)) ||
+			((start.get(Calendar.MONTH) == candidate.get(Calendar.MONTH)) &&
+			 (start.get(Calendar.DATE) > candidate.get(Calendar.DATE)))) {
+
 			candidate.add(Calendar.YEAR, -1);
 		}
 
@@ -802,8 +805,8 @@ public class Recurrence implements Serializable {
 	protected boolean candidateIsInRecurrence(
 		Calendar candidate, boolean debug) {
 
-		if ((until != null)
-			&& (candidate.getTime().getTime() > until.getTime().getTime())) {
+		if ((until != null) &&
+			(candidate.getTime().getTime() > until.getTime().getTime())) {
 
 			// After "until"
 
@@ -856,8 +859,9 @@ public class Recurrence implements Serializable {
 	 * @return int
 	 */
 	protected int getMinimumInterval() {
-		if ((frequency == DAILY) || (byDay != null) || (byMonthDay != null)
-			|| (byYearDay != null)) {
+		if ((frequency == DAILY) || (byDay != null) || (byMonthDay != null) ||
+			(byYearDay != null)) {
+
 			return DAILY;
 		}
 		else if ((frequency == WEEKLY) || (byWeekNo != null)) {
@@ -1045,8 +1049,8 @@ public class Recurrence implements Serializable {
 			/* position < 0 */
 
 			int negativeCandidatePosition =
-				((candidate.getActualMaximum(field) - candidate.get(field)) / 7)
-				+ 1;
+				((candidate.getActualMaximum(field) - candidate.get(field)) /
+					7) + 1;
 
 			return (-position == negativeCandidatePosition);
 		}
