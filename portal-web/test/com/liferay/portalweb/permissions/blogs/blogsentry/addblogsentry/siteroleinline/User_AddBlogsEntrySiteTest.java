@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.portalweb.permissions.blogs.blogsentry.addblogsentry.orgroleinline;
+package com.liferay.portalweb.permissions.blogs.blogsentry.addblogsentry.siteroleinline;
 
 import com.liferay.portalweb.portal.BaseTestCase;
 import com.liferay.portalweb.portal.util.RuntimeVariables;
@@ -20,9 +20,9 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 /**
  * @author Brian Wing Shun Chan
  */
-public class User_AddBlogsEntryOrganizationTest extends BaseTestCase {
-	public void testUser_AddBlogsEntryOrganization() throws Exception {
-		selenium.open("/web/organization-name/");
+public class User_AddBlogsEntrySiteTest extends BaseTestCase {
+	public void testUser_AddBlogsEntrySite() throws Exception {
+		selenium.open("/web/site-name/");
 		selenium.clickAt("link=Blogs Test Page",
 			RuntimeVariables.replace("Blogs Test Page"));
 		selenium.waitForPageToLoad("30000");

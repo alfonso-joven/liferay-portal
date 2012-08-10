@@ -24,15 +24,12 @@ public class RemoveOrgRoleInlineBlogsAddEntryTest extends BaseTestCase {
 	public void testRemoveOrgRoleInlineBlogsAddEntry()
 		throws Exception {
 		selenium.open("/web/organization-name/");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Blogs Test Page",
 			RuntimeVariables.replace("Blogs Test Page"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("//input[@value='Permissions']",
 			RuntimeVariables.replace("Permissions"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertTrue(selenium.isChecked(
 				"//input[@id='roles-orgrole-name_ACTION_ADD_ENTRY']"));
 		selenium.uncheck("//input[@id='roles-orgrole-name_ACTION_ADD_ENTRY']");
@@ -41,7 +38,6 @@ public class RemoveOrgRoleInlineBlogsAddEntryTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));

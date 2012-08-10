@@ -17,8 +17,8 @@ package com.liferay.portalweb.permissions.blogs.blogsentry.addblogsentry.orgrole
 import com.liferay.portalweb.portal.BaseTestSuite;
 import com.liferay.portalweb.portal.controlpanel.organizations.organization.addorganization.AddOrganizationTest;
 import com.liferay.portalweb.portal.controlpanel.organizations.organization.addorganization.TearDownOrganizationTest;
+import com.liferay.portalweb.portal.controlpanel.organizations.organization.assignmembersorganizationuser.AssignMembersOrganizationUserTest;
 import com.liferay.portalweb.portal.controlpanel.organizations.organization.editorganizationsite.EditOrganizationSiteTest;
-import com.liferay.portalweb.portal.controlpanel.organizations.organizationpage.addorganizationpublicpage.AddOrganizationPublicPageTest;
 import com.liferay.portalweb.portal.controlpanel.roles.role.addorgrole.AddOrgRoleTest;
 import com.liferay.portalweb.portal.controlpanel.roles.role.addregrole.TearDownRoleTest;
 import com.liferay.portalweb.portal.controlpanel.roles.role.assignmembersorgroleuser.AssignMembersOrgRoleUserTest;
@@ -28,8 +28,8 @@ import com.liferay.portalweb.portal.controlpanel.users.user.edituserpassword.Edi
 import com.liferay.portalweb.portal.controlpanel.users.user.signin.SignInTest;
 import com.liferay.portalweb.portal.controlpanel.users.user.signin.SignOutTest;
 import com.liferay.portalweb.portal.controlpanel.users.user.signin.User_SignInTest;
-import com.liferay.portalweb.portlet.blogs.portlet.addportletblogs.AddPageBlogsTest;
-import com.liferay.portalweb.portlet.blogs.portlet.addportletblogs.AddPortletBlogsTest;
+import com.liferay.portalweb.portlet.blogs.portlet.addportletblogsorganization.AddPageBlogsOrganizationTest;
+import com.liferay.portalweb.portlet.blogs.portlet.addportletblogsorganization.AddPortletBlogsOrganizationTest;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -44,36 +44,33 @@ public class OrgRoleInlineTests extends BaseTestSuite {
 		testSuite.addTestSuite(EditUserPasswordTest.class);
 		testSuite.addTestSuite(AddOrganizationTest.class);
 		testSuite.addTestSuite(EditOrganizationSiteTest.class);
-		testSuite.addTestSuite(AddOrganizationPublicPageTest.class);
-		testSuite.addTestSuite(AssignUsersOrganizationTest.class);
-		testSuite.addTestSuite(AddOrgRoleTest.class);
-		testSuite.addTestSuite(AssignMembersOrgRoleUserTest.class);
 		testSuite.addTestSuite(AddPageBlogsOrganizationTest.class);
 		testSuite.addTestSuite(AddPortletBlogsOrganizationTest.class);
-		testSuite.addTestSuite(AddPageBlogsTest.class);
-		testSuite.addTestSuite(AddPortletBlogsTest.class);
+		testSuite.addTestSuite(AssignMembersOrganizationUserTest.class);
+		testSuite.addTestSuite(AddOrgRoleTest.class);
+		testSuite.addTestSuite(AssignMembersOrgRoleUserTest.class);
 		testSuite.addTestSuite(SignOutTest.class);
 		testSuite.addTestSuite(User_SignInTest.class);
-		testSuite.addTestSuite(User_AddBlogsEntryNoTest.class);
+		testSuite.addTestSuite(User_AddBlogsEntryNoOrganizationTest.class);
 		testSuite.addTestSuite(SignOutTest.class);
 		testSuite.addTestSuite(SignInTest.class);
 		testSuite.addTestSuite(DefineOrgRoleInlineBlogsAddEntryTest.class);
 		testSuite.addTestSuite(SignOutTest.class);
 		testSuite.addTestSuite(User_SignInTest.class);
-		testSuite.addTestSuite(User_AddBlogsEntryTest.class);
-		testSuite.addTestSuite(User_ViewBlogsEntryTest.class);
+		testSuite.addTestSuite(User_AddBlogsEntryOrganizationTest.class);
+		testSuite.addTestSuite(User_ViewBlogsEntryOrganizationTest.class);
 		testSuite.addTestSuite(SignOutTest.class);
 		testSuite.addTestSuite(SignInTest.class);
-		testSuite.addTestSuite(ViewBlogsEntryTest.class);
+		testSuite.addTestSuite(ViewBlogsEntryOrganizationTest.class);
 		testSuite.addTestSuite(RemoveOrgRoleInlineBlogsAddEntryTest.class);
 		testSuite.addTestSuite(SignOutTest.class);
 		testSuite.addTestSuite(User_SignInTest.class);
-		testSuite.addTestSuite(User_AddBlogsEntryNoTest.class);
+		testSuite.addTestSuite(User_AddBlogsEntryNoOrganizationTest.class);
 		testSuite.addTestSuite(SignOutTest.class);
 		testSuite.addTestSuite(SignInTest.class);
 		testSuite.addTestSuite(TearDownUserTest.class);
-		testSuite.addTestSuite(TearDownRoleTest.class);
 		testSuite.addTestSuite(TearDownOrganizationTest.class);
+		testSuite.addTestSuite(TearDownRoleTest.class);
 
 		return testSuite;
 	}

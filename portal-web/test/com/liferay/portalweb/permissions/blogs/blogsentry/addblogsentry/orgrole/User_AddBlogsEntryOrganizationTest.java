@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.portalweb.permissions.blogs.blogsentry.addblogsentry.orgroleinline;
+package com.liferay.portalweb.permissions.blogs.blogsentry.addblogsentry.orgrole;
 
 import com.liferay.portalweb.portal.BaseTestCase;
 import com.liferay.portalweb.portal.util.RuntimeVariables;

@@ -24,15 +24,12 @@ public class RemoveSiteRoleInlineBlogsAddEntryTest extends BaseTestCase {
 	public void testRemoveSiteRoleInlineBlogsAddEntry()
 		throws Exception {
 		selenium.open("/web/site-name/");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Blogs Test Page",
 			RuntimeVariables.replace("Blogs Test Page"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("//input[@value='Permissions']",
 			RuntimeVariables.replace("Permissions"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertTrue(selenium.isChecked(
 				"//input[@id='roles-siterole-name_ACTION_ADD_ENTRY']"));
 		selenium.uncheck("//input[@id='roles-siterole-name_ACTION_ADD_ENTRY']");
@@ -41,7 +38,6 @@ public class RemoveSiteRoleInlineBlogsAddEntryTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));

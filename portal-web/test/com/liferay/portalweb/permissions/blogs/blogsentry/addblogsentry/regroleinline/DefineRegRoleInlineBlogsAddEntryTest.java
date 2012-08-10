@@ -24,15 +24,12 @@ public class DefineRegRoleInlineBlogsAddEntryTest extends BaseTestCase {
 	public void testDefineRegRoleInlineBlogsAddEntry()
 		throws Exception {
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Blogs Test Page",
 			RuntimeVariables.replace("Blogs Test Page"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("//input[@value='Permissions']",
 			RuntimeVariables.replace("Permissions"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertFalse(selenium.isChecked(
 				"//input[@id='roles-regrole-name_ACTION_ADD_ENTRY']"));
 		selenium.check("//input[@id='roles-regrole-name_ACTION_ADD_ENTRY']");
@@ -41,7 +38,6 @@ public class DefineRegRoleInlineBlogsAddEntryTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));

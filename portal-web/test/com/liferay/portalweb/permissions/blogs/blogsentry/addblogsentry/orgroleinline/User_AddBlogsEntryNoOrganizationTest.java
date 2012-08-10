@@ -24,11 +24,9 @@ public class User_AddBlogsEntryNoOrganizationTest extends BaseTestCase {
 	public void testUser_AddBlogsEntryNoOrganization()
 		throws Exception {
 		selenium.open("/web/organization-name/");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Blogs Test Page",
 			RuntimeVariables.replace("Blogs Test Page"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertTrue(selenium.isElementNotPresent(
 				"//input[@value='Add Blog Entry']"));
 	}

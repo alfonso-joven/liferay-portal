@@ -24,7 +24,6 @@ public class RemoveRegRoleContentBlogsAddEntryTest extends BaseTestCase {
 	public void testRemoveRegRoleContentBlogsAddEntry()
 		throws Exception {
 		selenium.open("/web/guest/home/");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -48,16 +47,13 @@ public class RemoveRegRoleContentBlogsAddEntryTest extends BaseTestCase {
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Roles", RuntimeVariables.replace("Roles"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		selenium.type("//input[@id='_128_keywords']",
 			RuntimeVariables.replace("Regrole"));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Roles Regrole Name"),
 			selenium.getText(
 				"//td[@id='_128_ocerSearchContainer_col-name_row-1']/a"));
@@ -67,11 +63,9 @@ public class RemoveRegRoleContentBlogsAddEntryTest extends BaseTestCase {
 		selenium.clickAt("//td[@id='_128_ocerSearchContainer_col-name_row-1']/a",
 			RuntimeVariables.replace("Roles Regrole Name"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		selenium.clickAt("link=Define Permissions",
 			RuntimeVariables.replace("Define Permissions"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("Roles Regrole Name"),
 			selenium.getText("//h1[@class='header-title']"));
 		assertEquals(RuntimeVariables.replace("Summary"),
@@ -94,7 +88,6 @@ public class RemoveRegRoleContentBlogsAddEntryTest extends BaseTestCase {
 		selenium.clickAt("//a[@id='_128_ocerSearchContainer_1_menu_delete']/span",
 			RuntimeVariables.replace("Delete"));
 		selenium.waitForPageToLoad("30000");
-		loadRequiredJavaScriptModules();
 		assertEquals(RuntimeVariables.replace("The permission was deleted."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertEquals(RuntimeVariables.replace(

@@ -27,6 +27,8 @@ import com.liferay.portalweb.portal.controlpanel.users.user.edituserpassword.Edi
 import com.liferay.portalweb.portal.controlpanel.users.user.signin.SignInTest;
 import com.liferay.portalweb.portal.controlpanel.users.user.signin.SignOutTest;
 import com.liferay.portalweb.portal.controlpanel.users.user.signin.User_SignInTest;
+import com.liferay.portalweb.portlet.blogs.portlet.addportletblogssite.AddPageBlogsSiteTest;
+import com.liferay.portalweb.portlet.blogs.portlet.addportletblogssite.AddPortletBlogsSiteTest;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -40,34 +42,33 @@ public class SiteRoleInlineTests extends BaseTestSuite {
 		testSuite.addTestSuite(AddUserTest.class);
 		testSuite.addTestSuite(EditUserPasswordTest.class);
 		testSuite.addTestSuite(AddSiteTest.class);
-		testSuite.addTestSuite(AddSitePublicPageTest.class);
+		testSuite.addTestSuite(AddPageBlogsSiteTest.class);
+		testSuite.addTestSuite(AddPortletBlogsSiteTest.class);
 		testSuite.addTestSuite(AddMembersSiteUserTest.class);
 		testSuite.addTestSuite(AddSiteRoleTest.class);
 		testSuite.addTestSuite(AssignMembersSiteRoleUserTest.class);
-		testSuite.addTestSuite(AddPageBlogsSiteTest.class);
-		testSuite.addTestSuite(AddPortletBlogsSiteTest.class);
 		testSuite.addTestSuite(SignOutTest.class);
 		testSuite.addTestSuite(User_SignInTest.class);
-		testSuite.addTestSuite(User_AddBlogsEntryNoTest.class);
+		testSuite.addTestSuite(User_AddBlogsEntryNoSiteTest.class);
 		testSuite.addTestSuite(SignOutTest.class);
 		testSuite.addTestSuite(SignInTest.class);
 		testSuite.addTestSuite(DefineSiteRoleInlineBlogsAddEntryTest.class);
 		testSuite.addTestSuite(SignOutTest.class);
 		testSuite.addTestSuite(User_SignInTest.class);
-		testSuite.addTestSuite(User_AddBlogsEntryTest.class);
-		testSuite.addTestSuite(User_ViewBlogsEntryTest.class);
+		testSuite.addTestSuite(User_AddBlogsEntrySiteTest.class);
+		testSuite.addTestSuite(User_ViewBlogsEntrySiteTest.class);
 		testSuite.addTestSuite(SignOutTest.class);
 		testSuite.addTestSuite(SignInTest.class);
-		testSuite.addTestSuite(ViewBlogsEntryTest.class);
+		testSuite.addTestSuite(ViewBlogsEntrySiteTest.class);
 		testSuite.addTestSuite(RemoveSiteRoleInlineBlogsAddEntryTest.class);
 		testSuite.addTestSuite(SignOutTest.class);
 		testSuite.addTestSuite(User_SignInTest.class);
-		testSuite.addTestSuite(User_AddBlogsEntryNoTest.class);
+		testSuite.addTestSuite(User_AddBlogsEntryNoSiteTest.class);
 		testSuite.addTestSuite(SignOutTest.class);
 		testSuite.addTestSuite(SignInTest.class);
 		testSuite.addTestSuite(TearDownUserTest.class);
-		testSuite.addTestSuite(TearDownRoleTest.class);
 		testSuite.addTestSuite(TearDownSiteTest.class);
+		testSuite.addTestSuite(TearDownRoleTest.class);
 
 		return testSuite;
 	}

@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.portalweb.permissions.blogs.blogsentry.addblogsentry.regrole;
+package com.liferay.portalweb.permissions.blogs.blogsentry.addblogsentry.siterole;
 
 import com.liferay.portalweb.portal.BaseTestCase;
 import com.liferay.portalweb.portal.util.RuntimeVariables;
@@ -20,9 +20,9 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 /**
  * @author Brian Wing Shun Chan
  */
-public class User_AddBlogsEntryNoTest extends BaseTestCase {
-	public void testUser_AddBlogsEntryNo() throws Exception {
-		selenium.open("/web/guest/home/");
+public class User_AddBlogsEntryNoSiteTest extends BaseTestCase {
+	public void testUser_AddBlogsEntryNoSite() throws Exception {
+		selenium.open("/web/site-name/");
 		selenium.clickAt("link=Blogs Test Page",
 			RuntimeVariables.replace("Blogs Test Page"));
 		selenium.waitForPageToLoad("30000");
