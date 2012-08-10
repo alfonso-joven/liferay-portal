@@ -22,7 +22,7 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
  */
 public class ViewRepostActivitiesProfileTest extends BaseTestCase {
 	public void testViewRepostActivitiesProfile() throws Exception {
-		selenium.open("/web/joebloggs");
+		selenium.open("/web/joebloggs/so/profile");
 		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
@@ -31,7 +31,8 @@ public class ViewRepostActivitiesProfileTest extends BaseTestCase {
 			}
 
 			try {
-				if (selenium.isVisible("//div[@class='lfr-contact-name']/a")) {
+				if (selenium.isVisible(
+							"xpath=(//div[@class='lfr-contact-name']/a)[2]")) {
 					break;
 				}
 			}
@@ -42,7 +43,7 @@ public class ViewRepostActivitiesProfileTest extends BaseTestCase {
 		}
 
 		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
-			selenium.getText("//div[@class='lfr-contact-name']/a"));
+			selenium.getText("xpath=(//div[@class='lfr-contact-name']/a)[2]"));
 		assertEquals(RuntimeVariables.replace(
 				"Reposted From Joe: Microblogs Post"),
 			selenium.getText("//div[@class='activity-title']"));
