@@ -34,8 +34,8 @@ public class SpringCompatibilityTest {
 
 		try {
 			AbstractAutowireCapableBeanFactoryClass = Class.forName(
-				"org.springframework.beans.factory.support."
-				+ "AbstractAutowireCapableBeanFactory");
+				"org.springframework.beans.factory.support." +
+					"AbstractAutowireCapableBeanFactory");
 		}
 		catch (Exception e) {
 			Assert.fail(e.getMessage());
