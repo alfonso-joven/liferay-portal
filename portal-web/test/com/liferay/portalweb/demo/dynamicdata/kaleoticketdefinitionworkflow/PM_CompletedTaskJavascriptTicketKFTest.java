@@ -24,7 +24,6 @@ public class PM_CompletedTaskJavascriptTicketKFTest extends BaseTestCase {
 	public void testPM_CompletedTaskJavascriptTicketKF()
 		throws Exception {
 		selenium.open("/web/guest/home/");
-		selenium.open("/web/guest/home/");
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {

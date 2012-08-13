@@ -23,7 +23,6 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class PM_CompletedTaskKaleoTicketKFTest extends BaseTestCase {
 	public void testPM_CompletedTaskKaleoTicketKF() throws Exception {
 		selenium.open("/web/guest/home/");
-		selenium.open("/web/guest/home/");
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -61,7 +60,7 @@ public class PM_CompletedTaskKaleoTicketKFTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"Description A user is unable to deploy the Kaleo Designer portlet"),
 			selenium.getText("//div[@class='lfr-panel-content']/div[5]"));
-		assertEquals(RuntimeVariables.replace("Attachments test.txt"),
+		assertEquals(RuntimeVariables.replace("Attachments Document_1.txt"),
 			selenium.getText("//div[@class='lfr-panel-content']/div[6]"));
 		assertEquals(RuntimeVariables.replace("Tested Revision 95200"),
 			selenium.getText("//div[@class='lfr-panel-content']/div[7]"));

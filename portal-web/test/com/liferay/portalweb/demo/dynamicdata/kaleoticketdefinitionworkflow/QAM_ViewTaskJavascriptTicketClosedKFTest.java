@@ -24,7 +24,6 @@ public class QAM_ViewTaskJavascriptTicketClosedKFTest extends BaseTestCase {
 	public void testQAM_ViewTaskJavascriptTicketClosedKF()
 		throws Exception {
 		selenium.open("/web/guest/home/");
-		selenium.open("/web/guest/home/");
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {

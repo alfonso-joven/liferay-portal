@@ -83,9 +83,8 @@ public class AddTaskKaleoTicketKFTest extends BaseTestCase {
 		selenium.type("//textarea[@id='_1_WAR_kaleoformsportlet_description']",
 			RuntimeVariables.replace(
 				"A user is unable to deploy the Kaleo Designer portlet"));
-		selenium.type("//input[@id='_1_WAR_kaleoformsportlet_attachments']",
-			RuntimeVariables.replace(
-				"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\demo\\dynamicdata\\kaleoticketdefinitionworkflow\\dependencies\\test.txt"));
+		selenium.uploadCommonFile("//input[@id='_1_WAR_kaleoformsportlet_attachments']",
+			RuntimeVariables.replace("Document_1.txt"));
 		selenium.select("//select[@id='_1_WAR_kaleoformsportlet_status']",
 			RuntimeVariables.replace("Open"));
 		selenium.clickAt("//input[@value='Save']",
