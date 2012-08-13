@@ -77,18 +77,17 @@ public class AddWikiFrontPageAttachmentTest extends BaseTestCase {
 			selenium.getText("//a[contains(@class,'use-fallback')]"));
 		selenium.clickAt("//a[contains(@class,'use-fallback')]",
 			RuntimeVariables.replace("Use the classic uploader."));
-		selenium.type("//input[@id='_36_file1']",
-			RuntimeVariables.replace(
-				"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\portal\\dbupgrade\\sampledatalatest\\wiki\\usecase\\dependencies\\Wiki_Attachment.jpg"));
+		selenium.uploadCommonFile("//input[@id='_36_file1']",
+			RuntimeVariables.replace("Document_1.jpg"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
-		assertEquals(RuntimeVariables.replace("Wiki_Attachment.jpg"),
+		assertEquals(RuntimeVariables.replace("Document_1.jpg"),
 			selenium.getText("//td[1]/a"));
-		assertEquals(RuntimeVariables.replace("3.1k"),
+		assertEquals(RuntimeVariables.replace("12.9k"),
 			selenium.getText("//td[2]/a"));
 		selenium.open("/web/wiki-use-case-community/");
 

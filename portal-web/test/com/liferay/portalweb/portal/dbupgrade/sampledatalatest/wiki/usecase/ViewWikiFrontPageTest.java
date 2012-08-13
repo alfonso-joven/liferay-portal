@@ -58,7 +58,6 @@ public class ViewWikiFrontPageTest extends BaseTestCase {
 			selenium.getText("//tr[2]/td"));
 		assertEquals(RuntimeVariables.replace("1.1"),
 			selenium.getText("//tr[3]/td"));
-		assertTrue(selenium.isPartialText("//tr[4]/td", "Joe Bloggs"));
 		assertTrue(selenium.isPartialText("//tr[5]/td", "Joe Bloggs"));
 		assertTrue(selenium.isVisible("//tr[6]/td"));
 		selenium.clickAt("link=History", RuntimeVariables.replace("History"));
@@ -82,8 +81,6 @@ public class ViewWikiFrontPageTest extends BaseTestCase {
 			selenium.getText("//tr[4]/td[3]/a"));
 		assertEquals(RuntimeVariables.replace("1.0 (Minor Edit)"),
 			selenium.getText("//tr[4]/td[4]/a"));
-		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
-			selenium.getText("//tr[4]/td[5]/a"));
 		assertTrue(selenium.isElementPresent("//tr[4]/td[6]/a"));
 		assertEquals(RuntimeVariables.replace("New"),
 			selenium.getText("//tr[4]/td[7]"));

@@ -48,9 +48,9 @@ public class ViewWikiFrontPageAttachmentTest extends BaseTestCase {
 		selenium.clickAt("//div[7]/div[1]/span[2]/a/span",
 			RuntimeVariables.replace("1 Attachment"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Wiki_Attachment.jpg"),
+		assertEquals(RuntimeVariables.replace("Document_1.jpg"),
 			selenium.getText("//td[1]/a"));
-		assertEquals(RuntimeVariables.replace("3.1k"),
+		assertEquals(RuntimeVariables.replace("12.9k"),
 			selenium.getText("//td[2]/a"));
 	}
 }
