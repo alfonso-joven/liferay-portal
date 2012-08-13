@@ -87,7 +87,7 @@ public class AssignRoleStagingAdminUserTest extends BaseTestCase {
 			}
 
 			try {
-				if (selenium.isVisible("//tr[6]/td/a")) {
+				if (selenium.isVisible("//tr[5]/td/a")) {
 					break;
 				}
 			}
@@ -98,8 +98,8 @@ public class AssignRoleStagingAdminUserTest extends BaseTestCase {
 		}
 
 		assertEquals(RuntimeVariables.replace("Staging Admin"),
-			selenium.getText("//tr[6]/td/a"));
-		selenium.clickAt("//tr[6]/td/a",
+			selenium.getText("//tr[5]/td/a"));
+		selenium.clickAt("//tr[5]/td/a",
 			RuntimeVariables.replace("Staging Admin"));
 		Thread.sleep(5000);
 		selenium.selectWindow("null");
