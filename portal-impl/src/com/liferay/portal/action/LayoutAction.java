@@ -550,8 +550,6 @@ public class LayoutAction extends Action {
 
 		long scopeGroupId = getScopeGroupId(request, layout, portletId);
 
-		Layout layoutTypePortletLayout = layoutTypePortlet.getLayout();
-
 		PortletPreferences portletPreferences =
 			PortletPreferencesFactoryUtil.getPortletSetup(
 				scopeGroupId, layout, portletId, null);
