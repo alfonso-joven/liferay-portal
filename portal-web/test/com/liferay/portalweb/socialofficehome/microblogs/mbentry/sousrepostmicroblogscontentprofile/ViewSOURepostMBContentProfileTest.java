@@ -23,7 +23,6 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class ViewSOURepostMBContentProfileTest extends BaseTestCase {
 	public void testViewSOURepostMBContentProfile() throws Exception {
 		selenium.open("/web/socialoffice01/so/profile");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -65,7 +64,6 @@ public class ViewSOURepostMBContentProfileTest extends BaseTestCase {
 				"Reposted From Joe: Microblogs Post"),
 			selenium.getText("//div[@class='activity-title']"));
 		selenium.open("/web/socialoffice01/so/microblogs");
-		loadRequiredJavaScriptModules();
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
