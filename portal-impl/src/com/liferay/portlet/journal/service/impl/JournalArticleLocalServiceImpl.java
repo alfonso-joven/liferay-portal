@@ -2479,12 +2479,6 @@ public class JournalArticleLocalServiceImpl
 					}
 				}
 
-				// Expando
-
-				ExpandoBridge expandoBridge = article.getExpandoBridge();
-
-				expandoBridge.setAttributes(serviceContext);
-
 				// Indexer
 
 				Indexer indexer = IndexerRegistryUtil.nullSafeGetIndexer(
