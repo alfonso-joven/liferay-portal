@@ -64,6 +64,7 @@ import com.liferay.portlet.asset.model.AssetRendererFactory;
 import com.liferay.portlet.expando.model.CustomAttributesDisplay;
 import com.liferay.portlet.social.model.SocialActivityInterpreter;
 import com.liferay.portlet.social.model.SocialRequestInterpreter;
+import com.liferay.util.bridges.alloy.AlloyPortlet;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -934,7 +935,9 @@ public class PortletImpl extends PortletBaseImpl {
 	 * @return the indexer instances of the portlet
 	 */
 	public List<Indexer> getIndexerInstances() {
-		if (getIndexerClasses().isEmpty()) {
+		if (getIndexerClasses().isEmpty() &&
+			!getPortletClass().equals(AlloyPortlet.class.getName())) {
+
 			return Collections.emptyList();
 		}
 
