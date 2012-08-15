@@ -20,6 +20,7 @@ import com.liferay.portalweb.portlet.assetpublisher.blogsentry.deleteblogsentry2
 import com.liferay.portalweb.portlet.assetpublisher.blogsentry.deleteblogsentryap.DeleteBlogsEntryAPTests;
 import com.liferay.portalweb.portlet.assetpublisher.blogsentry.rateblogsentryap.RateBlogsEntryAPTests;
 import com.liferay.portalweb.portlet.assetpublisher.blogsentry.selectexistingblogsentryapactions.SelectExistingBlogsEntryAPActionsTests;
+import com.liferay.portalweb.portlet.assetpublisher.blogsentry.viewblogsentryorderbycolumnratingsap.ViewBlogsEntryOrderByColumnRatingsAPTests;
 import com.liferay.portalweb.portlet.assetpublisher.blogsentry.viewblogsentryviewcountap.ViewBlogsEntryViewCountAPTests;
 import com.liferay.portalweb.portlet.assetpublisher.blogsentry.viewconfigureportletabstractsblogsentryap.ViewConfigurePortletAbstractsBlogsEntryAPTests;
 import com.liferay.portalweb.portlet.assetpublisher.blogsentry.viewconfigureportletavailableblogsentryap.ViewConfigurePortletAvailableBlogsEntryAPTests;
@@ -55,6 +56,7 @@ public class BlogsEntryTestPlan extends BaseTestSuite {
 		testSuite.addTest(
 			ViewConfigurePortletTitleListBlogsEntryAPTests.suite());
 		testSuite.addTest(ViewBlogsEntryViewCountAPTests.suite());
+		testSuite.addTest(ViewBlogsEntryOrderByColumnRatingsAPTests.suite());
 
 		return testSuite;
 	}
