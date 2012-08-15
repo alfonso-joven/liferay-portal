@@ -33,6 +33,10 @@ JSONArray scriptJSONArray = null;
 if (Validator.isNotNull(script)) {
 	scriptJSONArray = DDMXSDUtil.getJSONArray(script);
 }
+
+if (scriptJSONArray != null) {
+	scriptJSONArray = _addStructureFieldAttributes(structure, scriptJSONArray);
+}
 %>
 
 <portlet:actionURL var="editStructureURL">
@@ -159,3 +163,39 @@ if (Validator.isNotNull(script)) {
 		window.parent['<%= HtmlUtil.escapeJS(saveCallback) %>']('<%= structureId %>', '<%= HtmlUtil.escape(structure.getName(locale)) %>');
 	</c:if>
 </aui:script>
+
+<%!
+public JSONArray _addStructureFieldAttributes(DDMStructure structure, JSONArray scriptJSONArray) {
+	for (int i = 0; i < scriptJSONArray.length(); i++) {
+		JSONObject jsonObject = scriptJSONArray.getJSONObject(i);
+
+		String fieldName = jsonObject.getString("name");
+
+		try {
+			jsonObject.put("readOnlyAttributes", _getFieldReadOnlyAttributes(structure, fieldName));
+		}
+		catch (StructureFieldException sfe) {
+		}
+	}
+
+	return scriptJSONArray;
+}
+
+public JSONArray _getFieldReadOnlyAttributes(DDMStructure structure, String fieldName) throws StructureFieldException {
+	JSONArray readOnlyAttributesJSONArray = JSONFactoryUtil.createJSONArray();
+
+	boolean structureHasLinks = false;
+
+	try {
+		structureHasLinks = DDMStorageLinkLocalServiceUtil.getStructureStorageLinksCount(structure.getStructureId()) > 0;
+	}
+	catch (Exception e) {
+	}
+
+	if (structureHasLinks) {
+		readOnlyAttributesJSONArray.put("name");
+	}
+
+	return readOnlyAttributesJSONArray;
+}
+%>
