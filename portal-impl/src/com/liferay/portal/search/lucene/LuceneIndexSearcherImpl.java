@@ -563,11 +563,7 @@ public class LuceneIndexSearcherImpl implements IndexSearcher {
 
 			QueryConfig queryConfig = query.getQueryConfig();
 
-			for (int i = start; i < end; i++) {
-				if (i >= PropsValues.INDEX_SEARCH_LIMIT) {
-					break;
-				}
-
+			for (int i = start; i < start + subsetTotal; i++) {
 				int docId = hitDocs.getDocId(i);
 
 				org.apache.lucene.document.Document document =
@@ -587,9 +583,6 @@ public class LuceneIndexSearcherImpl implements IndexSearcher {
 						document, query, Field.DESCRIPTION, locale, queryTerms);
 					getSnippet(
 						document, query, Field.TITLE, locale, queryTerms);
-				}
-				else {
-					queryTerms = getQueryTerms(query);
 				}
 
 				subsetDocument.addText(Field.SNIPPET, subsetSnippet);
@@ -616,6 +609,10 @@ public class LuceneIndexSearcherImpl implements IndexSearcher {
 					catch (Exception e) {
 					}
 				}
+			}
+
+			if (!queryConfig.isHighlightEnabled()) {
+				queryTerms = getQueryTerms(query);
 			}
 
 			hits.setStart(startTime);
