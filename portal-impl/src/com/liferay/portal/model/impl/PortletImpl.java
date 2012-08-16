@@ -394,7 +394,7 @@ public class PortletImpl extends PortletBaseImpl {
 	 */
 	@Override
 	public int compareTo(Portlet portlet) {
-		return getPortletId().compareTo(portlet.getPortletId());
+		return _portletId.compareTo(portlet.getPortletId());
 	}
 
 	/**
@@ -407,7 +407,7 @@ public class PortletImpl extends PortletBaseImpl {
 	public boolean equals(Object obj) {
 		Portlet portlet = (Portlet)obj;
 
-		return getPortletId().equals(portlet.getPortletId());
+		return _portletId.equals(portlet.getPortletId());
 	}
 
 	/**
@@ -523,7 +523,7 @@ public class PortletImpl extends PortletBaseImpl {
 	 * @return the asset type instances of the portlet
 	 */
 	public List<AssetRendererFactory> getAssetRendererFactoryInstances() {
-		if (getAssetRendererFactoryClasses().isEmpty()) {
+		if (_assetRendererFactoryClasses.isEmpty()) {
 			return null;
 		}
 
@@ -549,7 +549,7 @@ public class PortletImpl extends PortletBaseImpl {
 	 * @return the atom collection adapter instances of the portlet
 	 */
 	public List<AtomCollectionAdapter<?>> getAtomCollectionAdapterInstances() {
-		if (getAtomCollectionAdapterClasses().isEmpty()) {
+		if (_atomCollectionAdapterClasses.isEmpty()) {
 			return null;
 		}
 
@@ -707,7 +707,7 @@ public class PortletImpl extends PortletBaseImpl {
 	 * @return the custom attribute display instances of the portlet
 	 */
 	public List<CustomAttributesDisplay> getCustomAttributesDisplayInstances() {
-		if (getCustomAttributesDisplayClasses().isEmpty()) {
+		if (_customAttributesDisplayClasses.isEmpty()) {
 			return null;
 		}
 
@@ -1793,7 +1793,7 @@ public class PortletImpl extends PortletBaseImpl {
 	 * @return the workflow handler instances of the portlet
 	 */
 	public List<WorkflowHandler> getWorkflowHandlerInstances() {
-		if (getWorkflowHandlerClasses().isEmpty()) {
+		if (_workflowHandlerClasses.isEmpty()) {
 			return null;
 		}
 
