@@ -20,34 +20,16 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 /**
  * @author Brian Wing Shun Chan
  */
-public class RateBlogsEntryFiveStarsAPTest extends BaseTestCase {
-	public void testRateBlogsEntryFiveStarsAP() throws Exception {
+public class RateBlogsEntryFourStarsTest extends BaseTestCase {
+	public void testRateBlogsEntryFourStars() throws Exception {
 		selenium.open("/web/guest/home/");
 		selenium.clickAt("link=Blogs Test Page",
 			RuntimeVariables.replace("Blogs Test Page"));
 		selenium.waitForPageToLoad("30000");
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isVisible(
-							"xPath=(//div[@class='aui-rating-label-element'])[2]")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
 		assertEquals(RuntimeVariables.replace("Average (0 Votes)"),
-			selenium.getText(
-				"xPath=(//div[@class='aui-rating-label-element'])[2]"));
-		selenium.clickAt("//a[5]", RuntimeVariables.replace("5 Stars"));
+			selenium.getText("//div[contains(@id,'ratingScoreContent')]"));
+		selenium.clickAt("//div[contains(@id,'ratingStarContent')]/a[4]",
+			RuntimeVariables.replace("4 Stars"));
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -57,7 +39,7 @@ public class RateBlogsEntryFiveStarsAPTest extends BaseTestCase {
 			try {
 				if (RuntimeVariables.replace("Average (1 Vote)")
 										.equals(selenium.getText(
-								"xPath=(//div[@class='aui-rating-label-element'])[2]"))) {
+								"//div[contains(@id,'ratingScoreContent')]"))) {
 					break;
 				}
 			}
@@ -68,7 +50,6 @@ public class RateBlogsEntryFiveStarsAPTest extends BaseTestCase {
 		}
 
 		assertEquals(RuntimeVariables.replace("Average (1 Vote)"),
-			selenium.getText(
-				"xPath=(//div[@class='aui-rating-label-element'])[2]"));
+			selenium.getText("//div[contains(@id,'ratingScoreContent')]"));
 	}
 }

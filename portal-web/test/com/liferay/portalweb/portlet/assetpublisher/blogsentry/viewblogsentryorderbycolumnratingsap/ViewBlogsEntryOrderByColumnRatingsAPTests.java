@@ -44,9 +44,9 @@ public class ViewBlogsEntryOrderByColumnRatingsAPTests extends BaseTestSuite {
 		testSuite.addTestSuite(ConfigurePortletAPEnableRatingsTest.class);
 		testSuite.addTestSuite(ConfigurePortletAPOrderByColumnRatingsTest.class);
 		testSuite.addTestSuite(AddBlogsEntry1Test.class);
-		testSuite.addTestSuite(RateBlogsEntryFiveStarsAPTest.class);
+		testSuite.addTestSuite(RateBlogsEntryFiveStarsTest.class);
 		testSuite.addTestSuite(AddBlogsEntry2Test.class);
-		testSuite.addTestSuite(RateBlogsEntryFourStarsAPTest.class);
+		testSuite.addTestSuite(RateBlogsEntryFourStarsTest.class);
 		testSuite.addTestSuite(ViewBlogsEntryOrderByColumnRatingsAPTest.class);
 		testSuite.addTestSuite(TearDownBlogsEntryTest.class);
 		testSuite.addTestSuite(TearDownPageTest.class);

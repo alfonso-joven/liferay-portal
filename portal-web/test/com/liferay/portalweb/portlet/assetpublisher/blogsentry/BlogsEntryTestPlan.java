@@ -45,6 +45,8 @@ public class BlogsEntryTestPlan extends BaseTestSuite {
 		testSuite.addTest(DeleteBlogsEntryAPTests.suite());
 		testSuite.addTest(RateBlogsEntryAPTests.suite());
 		testSuite.addTest(SelectExistingBlogsEntryAPActionsTests.suite());
+		testSuite.addTest(ViewBlogsEntryOrderByColumnRatingsAPTests.suite());
+		testSuite.addTest(ViewBlogsEntryViewCountAPTests.suite());
 		testSuite.addTest(
 			ViewConfigurePortletAbstractsBlogsEntryAPTests.suite());
 		testSuite.addTest(
@@ -55,8 +57,6 @@ public class BlogsEntryTestPlan extends BaseTestSuite {
 		testSuite.addTest(ViewConfigurePortletTableBlogsEntryAPTests.suite());
 		testSuite.addTest(
 			ViewConfigurePortletTitleListBlogsEntryAPTests.suite());
-		testSuite.addTest(ViewBlogsEntryViewCountAPTests.suite());
-		testSuite.addTest(ViewBlogsEntryOrderByColumnRatingsAPTests.suite());
 
 		return testSuite;
 	}
