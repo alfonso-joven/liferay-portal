@@ -1116,24 +1116,24 @@ public class WikiPageLocalServiceImpl extends WikiPageLocalServiceBaseImpl {
 
 		WikiPage oldPage = getPage(nodeId, title, version);
 
-		String[] assetTagNames = assetTagLocalService.getTagNames(
-			WikiPage.class.getName(), oldPage.getResourcePrimKey());
-
 		long[] assetCategoryIds = assetCategoryLocalService.getCategoryIds(
 			WikiPage.class.getName(), oldPage.getResourcePrimKey());
 
-		AssetEntry entry = assetEntryLocalService.getEntry(
+		String[] assetTagNames = assetTagLocalService.getTagNames(
+			WikiPage.class.getName(), oldPage.getResourcePrimKey());
+
+		AssetEntry assetEntry = assetEntryLocalService.getEntry(
 			WikiPage.class.getName(), oldPage.getResourcePrimKey());
 
 		List<AssetLink> assetLinks = assetLinkLocalService.getLinks(
-			entry.getEntryId());
+			assetEntry.getEntryId());
 
-		long[] assetLinkIds = StringUtil.split(
+		long[] assetLinkEntryIds = StringUtil.split(
 			ListUtil.toString(assetLinks, AssetLink.ENTRY_ID2_ACCESSOR), 0L);
 
-		serviceContext.setAssetTagNames(assetTagNames);
 		serviceContext.setAssetCategoryIds(assetCategoryIds);
-		serviceContext.setAssetLinkEntryIds(assetLinkIds);
+		serviceContext.setAssetLinkEntryIds(assetLinkEntryIds);
+		serviceContext.setAssetTagNames(assetTagNames);
 
 		return updatePage(
 			userId, nodeId, title, 0, oldPage.getContent(),
@@ -1314,8 +1314,6 @@ public class WikiPageLocalServiceImpl extends WikiPageLocalServiceBaseImpl {
 		wikiNodePersistence.update(node, false);
 
 		// Asset
-
-		String cmd = serviceContext.getCommand();
 
 		updateAsset(
 			userId, page, serviceContext.getAssetCategoryIds(),
