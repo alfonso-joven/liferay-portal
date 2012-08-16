@@ -12,11 +12,11 @@
  * details.
  */
 
-package com.liferay.portalweb.portal.dbupgrade.sampledata611.polls;
+package com.liferay.portalweb.portal.dbupgrade.sampledatalatest.polls;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
-import com.liferay.portalweb.portal.dbupgrade.sampledata611.polls.pollsquestion.PollsQuestionTests;
-import com.liferay.portalweb.portal.dbupgrade.sampledata611.polls.pollsvote.PollsVoteTests;
+import com.liferay.portalweb.portal.dbupgrade.sampledatalatest.polls.pollsquestion.PollsQuestionTests;
+import com.liferay.portalweb.portal.dbupgrade.sampledatalatest.polls.pollsvote.PollsVoteTests;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;

@@ -12,11 +12,10 @@
  * details.
  */
 
-package com.liferay.portalweb.portal.dbupgrade.viewsampledatalatest.polls;
+package com.liferay.portalweb.portal;
 
-import com.liferay.portalweb.portal.BaseTestSuite;
-import com.liferay.portalweb.portal.dbupgrade.viewsampledatalatest.polls.pollsquestion.PollsQuestionTests;
-import com.liferay.portalweb.portal.dbupgrade.viewsampledatalatest.polls.pollsvote.PollsVoteTests;
+import com.liferay.portalweb.portal.dbupgrade.viewsampledatalatest.login.LoginTests;
+import com.liferay.portalweb.portal.dbupgrade.viewsampledatalatest.polls.Polls611LatestTestPlan;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -24,13 +23,16 @@ import junit.framework.TestSuite;
 /**
  * @author Brian Wing Shun Chan
  */
-public class Polls610LatestTestPlan extends BaseTestSuite {
+public class DBUpgradePolls611LatestTestSuite
+	extends BaseTestSuite {
 
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
 
-		testSuite.addTest(PollsQuestionTests.suite());
-		testSuite.addTest(PollsVoteTests.suite());
+		testSuite.addTest(LoginTests.suite());
+		testSuite.addTest(Polls611LatestTestPlan.suite());
+
+		testSuite.addTestSuite(StopSeleniumTest.class);
 
 		return testSuite;
 	}

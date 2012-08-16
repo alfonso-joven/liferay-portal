@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.portalweb.portal.dbupgrade.sampledata610.polls.pollsvote;
+package com.liferay.portalweb.portal.dbupgrade.sampledatalatest.polls.pollsvote;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
 
