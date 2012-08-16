@@ -407,11 +407,14 @@ public class WikiPageLocalServiceImpl extends WikiPageLocalServiceBaseImpl {
 
 		long[] assetCategoryIds = assetCategoryLocalService.getCategoryIds(
 			WikiPage.class.getName(), page.getResourcePrimKey());
+
+		serviceContext.setAssetCategoryIds(assetCategoryIds);
+
+		serviceContext.setAssetLinkEntryIds(null);
+
 		String[] assetTagNames = assetTagLocalService.getTagNames(
 			WikiPage.class.getName(), page.getResourcePrimKey());
 
-		serviceContext.setAssetCategoryIds(assetCategoryIds);
-		serviceContext.setAssetLinkEntryIds(null);
 		serviceContext.setAssetTagNames(assetTagNames);
 
 		updatePage(
@@ -1119,8 +1122,7 @@ public class WikiPageLocalServiceImpl extends WikiPageLocalServiceBaseImpl {
 		long[] assetCategoryIds = assetCategoryLocalService.getCategoryIds(
 			WikiPage.class.getName(), oldPage.getResourcePrimKey());
 
-		String[] assetTagNames = assetTagLocalService.getTagNames(
-			WikiPage.class.getName(), oldPage.getResourcePrimKey());
+		serviceContext.setAssetCategoryIds(assetCategoryIds);
 
 		AssetEntry assetEntry = assetEntryLocalService.getEntry(
 			WikiPage.class.getName(), oldPage.getResourcePrimKey());
@@ -1131,8 +1133,11 @@ public class WikiPageLocalServiceImpl extends WikiPageLocalServiceBaseImpl {
 		long[] assetLinkEntryIds = StringUtil.split(
 			ListUtil.toString(assetLinks, AssetLink.ENTRY_ID2_ACCESSOR), 0L);
 
-		serviceContext.setAssetCategoryIds(assetCategoryIds);
 		serviceContext.setAssetLinkEntryIds(assetLinkEntryIds);
+
+		String[] assetTagNames = assetTagLocalService.getTagNames(
+			WikiPage.class.getName(), oldPage.getResourcePrimKey());
+
 		serviceContext.setAssetTagNames(assetTagNames);
 
 		return updatePage(
