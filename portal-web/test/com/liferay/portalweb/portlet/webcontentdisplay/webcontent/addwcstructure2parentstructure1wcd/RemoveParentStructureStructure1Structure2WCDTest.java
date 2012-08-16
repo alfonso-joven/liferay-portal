@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.portalweb.portlet.webcontentdisplay.webcontent.selectparentwcdstructure;
+package com.liferay.portalweb.portlet.webcontentdisplay.webcontent.addwcstructure2parentstructure1wcd;
 
 import com.liferay.portalweb.portal.BaseTestCase;
 import com.liferay.portalweb.portal.util.RuntimeVariables;
@@ -20,8 +20,10 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 /**
  * @author Brian Wing Shun Chan
  */
-public class RemoveSelectParentWCDStructureTest extends BaseTestCase {
-	public void testRemoveSelectParentWCDStructure() throws Exception {
+public class RemoveParentStructureStructure1Structure2WCDTest
+	extends BaseTestCase {
+	public void testRemoveParentStructureStructure1Structure2WCD()
+		throws Exception {
 		selenium.open("/web/guest/home/");
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
@@ -54,12 +56,12 @@ public class RemoveSelectParentWCDStructureTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.selectWindow("null");
 		assertTrue(selenium.isVisible("//tr[4]/td[2]/a"));
-		assertEquals(RuntimeVariables.replace("WC Structure Name 2"),
+		assertEquals(RuntimeVariables.replace("WC Structure2 Name"),
 			selenium.getText("//tr[4]/td[3]/a"));
-		assertEquals(RuntimeVariables.replace("WC Structure Description 2"),
+		assertEquals(RuntimeVariables.replace("WC Structure2 Description"),
 			selenium.getText("//tr[4]/td[4]/a"));
 		selenium.clickAt("//tr[4]/td[3]/a",
-			RuntimeVariables.replace("WC Structure Name 2"));
+			RuntimeVariables.replace("WC Structure2 Name"));
 		selenium.waitForPageToLoad("30000");
 
 		for (int second = 0;; second++) {
@@ -87,9 +89,9 @@ public class RemoveSelectParentWCDStructureTest extends BaseTestCase {
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertTrue(selenium.isVisible("//tr[4]/td[2]/a"));
-		assertEquals(RuntimeVariables.replace("WC Structure Name 2"),
+		assertEquals(RuntimeVariables.replace("WC Structure2 Name"),
 			selenium.getText("//tr[4]/td[3]/a"));
-		assertEquals(RuntimeVariables.replace("WC Structure Description 2"),
+		assertEquals(RuntimeVariables.replace("WC Structure2 Description"),
 			selenium.getText("//tr[4]/td[4]/a"));
 	}
 }
