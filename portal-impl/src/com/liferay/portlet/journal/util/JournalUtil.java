@@ -64,7 +64,6 @@ import com.liferay.portlet.journal.model.JournalArticle;
 import com.liferay.portlet.journal.model.JournalStructure;
 import com.liferay.portlet.journal.model.JournalStructureConstants;
 import com.liferay.portlet.journal.model.JournalTemplate;
-import com.liferay.portlet.journal.service.JournalArticleImageLocalServiceUtil;
 import com.liferay.portlet.journal.service.JournalArticleLocalServiceUtil;
 import com.liferay.portlet.journal.service.JournalTemplateLocalServiceUtil;
 import com.liferay.portlet.journal.util.comparator.ArticleCreateDateComparator;
@@ -1107,26 +1106,7 @@ public class JournalUtil {
 
 			if (newElement == null) {
 				curElement.detach();
-
-				String type = curElement.attributeValue("type");
-
-				if (type.equals("image")) {
-					_mergeArticleContentDeleteImages(
-						curElement.elements("dynamic-content"));
-				}
 			}
-		}
-	}
-
-	private static void _mergeArticleContentDeleteImages(List<Element> elements)
-		throws Exception {
-
-		for (Element element : elements) {
-			long articleImageId = GetterUtil.getLong(
-				element.attributeValue("id"));
-
-			JournalArticleImageLocalServiceUtil.deleteArticleImage(
-				articleImageId);
 		}
 	}
 
