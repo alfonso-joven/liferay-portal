@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.portalweb.plugins.knowledgebase.knowledgebaseadmin.article.addarticle;
+package com.liferay.portalweb.plugins.knowledgebase.knowledgebaseadmin.kbaarticle.addkbaarticle;
 
 import com.liferay.portalweb.portal.BaseTestCase;
 import com.liferay.portalweb.portal.util.RuntimeVariables;
@@ -20,9 +20,49 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 /**
  * @author Brian Wing Shun Chan
  */
-public class AddArticleTest extends BaseTestCase {
-	public void testAddArticle() throws Exception {
+public class AddKBAArticleTest extends BaseTestCase {
+	public void testAddKBAArticle() throws Exception {
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isElementPresent(
+							"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
+		assertEquals(RuntimeVariables.replace("Go to"),
+			selenium.getText("//li[@id='_145_mySites']/a/span"));
+		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isVisible("link=Control Panel")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
@@ -32,7 +72,7 @@ public class AddArticleTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Add Article']",
 			RuntimeVariables.replace("Add Article"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("//input[@id='_1_WAR_knowledgebaseportlet_title']",
+		selenium.type("//input[contains(@id,'knowledgebaseportlet_title')]",
 			RuntimeVariables.replace("Knowledge Base Admin Article Title"));
 
 		for (int second = 0;; second++) {
@@ -42,7 +82,7 @@ public class AddArticleTest extends BaseTestCase {
 
 			try {
 				if (selenium.isElementPresent(
-							"//span[@id='cke__1_WAR_knowledgebaseportlet_editor']")) {
+							"//span[contains(@id,'knowledgebaseportlet_editor')]")) {
 					break;
 				}
 			}
@@ -80,7 +120,7 @@ public class AddArticleTest extends BaseTestCase {
 
 			try {
 				if (selenium.isVisible(
-							"//td[@id='cke_contents__1_WAR_knowledgebaseportlet_editor']/textarea")) {
+							"//td[contains(@id,'knowledgebaseportlet_editor')]/textarea")) {
 					break;
 				}
 			}
@@ -90,7 +130,7 @@ public class AddArticleTest extends BaseTestCase {
 			Thread.sleep(1000);
 		}
 
-		selenium.type("//td[@id='cke_contents__1_WAR_knowledgebaseportlet_editor']/textarea",
+		selenium.type("//td[contains(@id,'knowledgebaseportlet_editor')]/textarea",
 			RuntimeVariables.replace("Knowledge Base Admin Article Content"));
 		assertEquals(RuntimeVariables.replace("Source"),
 			selenium.getText("//span[.='Source']"));
@@ -104,7 +144,7 @@ public class AddArticleTest extends BaseTestCase {
 
 			try {
 				if (selenium.isElementPresent(
-							"//span[@id='cke__1_WAR_knowledgebaseportlet_editor']")) {
+							"//td[contains(@id,'knowledgebaseportlet_editor')]")) {
 					break;
 				}
 			}
@@ -121,7 +161,7 @@ public class AddArticleTest extends BaseTestCase {
 
 			try {
 				if (selenium.isVisible(
-							"//td[@id='cke_contents__1_WAR_knowledgebaseportlet_editor']/iframe")) {
+							"//td[contains(@id,'knowledgebaseportlet_editor')]/iframe")) {
 					break;
 				}
 			}
@@ -132,7 +172,7 @@ public class AddArticleTest extends BaseTestCase {
 		}
 
 		selenium.selectFrame(
-			"//td[@id='cke_contents__1_WAR_knowledgebaseportlet_editor']/iframe");
+			"//td[contains(@id,'knowledgebaseportlet_editor')]/iframe");
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -183,10 +223,10 @@ public class AddArticleTest extends BaseTestCase {
 			selenium.getText("//tr[3]/td[3]"));
 		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
 			selenium.getText("//tr[3]/td[4]"));
-		assertTrue(selenium.isElementPresent("//tr[3]/td[5]"));
-		assertTrue(selenium.isElementPresent("//tr[3]/td[6]"));
+		assertTrue(selenium.isVisible("//tr[3]/td[5]"));
+		assertTrue(selenium.isVisible("//tr[3]/td[6]"));
 		assertEquals(RuntimeVariables.replace("0 (Approved)"),
 			selenium.getText("//tr[3]/td[7]"));
-		assertTrue(selenium.isElementPresent("//tr[3]/td[8]"));
+		assertTrue(selenium.isVisible("//tr[3]/td[8]"));
 	}
 }
