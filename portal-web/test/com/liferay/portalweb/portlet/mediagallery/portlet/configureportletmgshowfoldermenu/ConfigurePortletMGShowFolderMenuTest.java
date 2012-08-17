@@ -63,6 +63,25 @@ public class ConfigurePortletMGShowFolderMenuTest extends BaseTestCase {
 
 			try {
 				if (selenium.isVisible(
+							"//iframe[@id='_31_configurationIframeDialog']")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
+		selenium.selectFrame("//iframe[@id='_31_configurationIframeDialog']");
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isVisible(
 							"//input[contains(@id,'showFolderMenuCheckbox')]")) {
 					break;
 				}
@@ -87,5 +106,6 @@ public class ConfigurePortletMGShowFolderMenuTest extends BaseTestCase {
 			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertTrue(selenium.isChecked(
 				"//input[contains(@id,'showFolderMenuCheckbox')]"));
+		selenium.selectFrame("relative=top");
 	}
 }
