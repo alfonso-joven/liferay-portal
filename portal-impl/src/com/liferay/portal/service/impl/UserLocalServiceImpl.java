@@ -879,8 +879,8 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 			workflowServiceContext);
 
 		if (serviceContext != null) {
-			String passwordUnencrypted =
-				(String)serviceContext.getAttribute("passwordUnencrypted");
+			String passwordUnencrypted = (String)serviceContext.getAttribute(
+				"passwordUnencrypted");
 
 			if (Validator.isNotNull(passwordUnencrypted)) {
 				user.setPasswordUnencrypted(passwordUnencrypted);
