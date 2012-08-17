@@ -31,6 +31,8 @@ String viewURL = null;
 
 AssetRendererFactory assetRendererFactory = AssetRendererFactoryRegistryUtil.getAssetRendererFactoryByClassName(className);
 
+AssetRenderer assetRenderer = null;
+
 if (assetRendererFactory != null) {
 	long classPK = GetterUtil.getLong(document.get(Field.ENTRY_CLASS_PK));
 
@@ -42,7 +44,7 @@ if (assetRendererFactory != null) {
 
 	AssetEntry assetEntry = AssetEntryLocalServiceUtil.getEntry(className, classPK);
 
-	AssetRenderer assetRenderer = assetRendererFactory.getAssetRenderer(classPK);
+	assetRenderer = assetRendererFactory.getAssetRenderer(classPK);
 
 	viewFullContentURL = _getViewFullContentURL(request, themeDisplay, PortletKeys.ASSET_PUBLISHER, document);
 
@@ -73,9 +75,6 @@ if (assetRendererFactory != null) {
 	else {
 		viewURL = viewFullContentURL.toString();
 	}
-
-	entryTitle = assetRenderer.getTitle(locale);
-	entrySummary = assetRenderer.getSummary(locale);
 }
 else {
 	String portletId = document.get(Field.PORTLET_ID);
@@ -87,22 +86,26 @@ else {
 	}
 
 	viewURL = viewFullContentURL.toString();
+}
 
-	Indexer indexer = IndexerRegistryUtil.getIndexer(className);
+Indexer indexer = IndexerRegistryUtil.getIndexer(className);
 
+if (indexer != null) {
 	String snippet = document.get(Field.SNIPPET);
 
 	Summary summary = indexer.getSummary(document, locale, snippet, viewFullContentURL);
 
-	if (viewInContext) {
-		viewURL = viewFullContentURL.toString();
-	}
-
 	entryTitle = summary.getTitle();
 	entrySummary = summary.getContent();
 }
+else if (assetRenderer != null) {
+	entryTitle = assetRenderer.getTitle(locale);
+	entrySummary = assetRenderer.getSummary(locale);
+}
 
-entrySummary = StringUtil.shorten(entrySummary, 200);
+if ((assetRendererFactory == null) && viewInContext) {
+	viewURL = viewFullContentURL.toString();
+}
 
 viewURL = _checkViewURL(themeDisplay, viewURL, currentURL);
 
