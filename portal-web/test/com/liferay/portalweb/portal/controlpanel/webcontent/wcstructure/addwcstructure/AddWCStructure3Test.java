@@ -20,8 +20,8 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 /**
  * @author Brian Wing Shun Chan
  */
-public class AddStructure3Test extends BaseTestCase {
-	public void testAddStructure3() throws Exception {
+public class AddWCStructure3Test extends BaseTestCase {
+	public void testAddWCStructure3() throws Exception {
 		selenium.open("/web/guest/home/");
 		selenium.clickAt("//div[@id='dockbar']",
 			RuntimeVariables.replace("Dockbar"));

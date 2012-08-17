@@ -20,8 +20,8 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 /**
  * @author Brian Wing Shun Chan
  */
-public class AddStructure2Test extends BaseTestCase {
-	public void testAddStructure2() throws Exception {
+public class AddWCStructure1Test extends BaseTestCase {
+	public void testAddWCStructure1() throws Exception {
 		selenium.open("/web/guest/home/");
 		selenium.clickAt("//div[@id='dockbar']",
 			RuntimeVariables.replace("Dockbar"));
@@ -76,9 +76,9 @@ public class AddStructure2Test extends BaseTestCase {
 			RuntimeVariables.replace("Add Structure"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_15_name_en_US']",
-			RuntimeVariables.replace("WC Structure2 Name"));
+			RuntimeVariables.replace("WC Structure1 Name"));
 		selenium.type("//textarea[@id='_15_description_en_US']",
-			RuntimeVariables.replace("WC Structure2 Description"));
+			RuntimeVariables.replace("WC Structure1 Description"));
 		selenium.clickAt("//input[@value='Add Row']",
 			RuntimeVariables.replace("Add Row"));
 		selenium.waitForPageToLoad("30000");
@@ -162,10 +162,10 @@ public class AddStructure2Test extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
-		assertTrue(selenium.isVisible("//tr[4]/td[2]/a"));
-		assertEquals(RuntimeVariables.replace("WC Structure2 Name"),
-			selenium.getText("//tr[4]/td[3]/a"));
-		assertEquals(RuntimeVariables.replace("WC Structure2 Description"),
-			selenium.getText("//tr[4]/td[4]/a"));
+		assertTrue(selenium.isVisible("//td[2]/a"));
+		assertEquals(RuntimeVariables.replace("WC Structure1 Name"),
+			selenium.getText("//td[3]/a"));
+		assertEquals(RuntimeVariables.replace("WC Structure1 Description"),
+			selenium.getText("//td[4]/a"));
 	}
 }

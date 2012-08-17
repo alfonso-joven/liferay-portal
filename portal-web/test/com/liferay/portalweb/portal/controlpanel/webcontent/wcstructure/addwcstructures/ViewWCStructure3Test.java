@@ -20,9 +20,29 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 /**
  * @author Brian Wing Shun Chan
  */
-public class ViewStructure2Test extends BaseTestCase {
-	public void testViewStructure2() throws Exception {
+public class ViewWCStructure3Test extends BaseTestCase {
+	public void testViewWCStructure3() throws Exception {
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isElementPresent(
+							"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -53,33 +73,33 @@ public class ViewStructure2Test extends BaseTestCase {
 			RuntimeVariables.replace("Structures"));
 		selenium.waitForPageToLoad("30000");
 
-		String structureID = selenium.getText("//tr[4]/td[2]/a");
+		String structureID = selenium.getText("//tr[5]/td[2]/a");
 		RuntimeVariables.setValue("structureID", structureID);
 		assertEquals(RuntimeVariables.replace("${structureID}"),
-			selenium.getText("//tr[4]/td[2]/a"));
-		assertEquals(RuntimeVariables.replace("WC Structure2 Name"),
-			selenium.getText("//tr[4]/td[3]/a"));
-		assertEquals(RuntimeVariables.replace("WC Structure2 Description"),
-			selenium.getText("//tr[4]/td[4]/a"));
-		selenium.clickAt("//tr[4]/td[3]/a",
-			RuntimeVariables.replace("WC Structure2 Name"));
+			selenium.getText("//tr[5]/td[2]/a"));
+		assertEquals(RuntimeVariables.replace("WC Structure3 Name"),
+			selenium.getText("//tr[5]/td[3]/a"));
+		assertEquals(RuntimeVariables.replace("WC Structure3 Description"),
+			selenium.getText("//tr[5]/td[4]/a"));
+		selenium.clickAt("//tr[5]/td[3]/a",
+			RuntimeVariables.replace("WC Structure3Name"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Web Content"),
 			selenium.getText("//span[@class='portlet-title-text']"));
 		assertEquals(RuntimeVariables.replace(
 				"Web Content can be any content you would like to add to a site, such as articles, a FAQ, or a news item. Administrators can manage content, as well as assign user roles and permissions. Users may add, edit, approve, or view content depending on their role. Or disable for all portlets."),
 			selenium.getText("//div[@id='cpContextPanelTemplate']"));
-		assertEquals(RuntimeVariables.replace("WC Structure2 Name"),
+		assertEquals(RuntimeVariables.replace("WC Structure3 Name"),
 			selenium.getText("//h1[@class='header-title']/span"));
 		assertTrue(selenium.isPartialText(
 				"//fieldset/div/div/div[contains(.,'ID')]",
 				RuntimeVariables.getValue("structureID")));
-		assertEquals("WC Structure2 Name",
+		assertEquals("WC Structure3 Name",
 			selenium.getValue("//input[@id='_15_name_en_US']"));
 		assertEquals(RuntimeVariables.replace("Other Languages (0)"),
 			selenium.getText(
 				"//input[@id='_15_name_en_US']/following-sibling::span/a"));
-		assertEquals("WC Structure2 Description",
+		assertEquals("WC Structure3 Description",
 			selenium.getValue("//textarea[@id='_15_description_en_US']"));
 		assertEquals(RuntimeVariables.replace("Other Languages (0)"),
 			selenium.getText(
