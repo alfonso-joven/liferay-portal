@@ -911,11 +911,6 @@
 		</antcall>
 
 		<antcall target="build-test-ant-script">
-			<param name="test.ant.script.command" value="permissions-organizations" />
-			<param name="test.ant.script.suite" value="PermissionsOrganizationsTestSuite" />
-		</antcall>
-
-		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="permissions-document-library" />
 			<param name="test.ant.script.suite" value="PermissionsDocumentLibraryTestSuite" />
 		</antcall>
@@ -926,8 +921,18 @@
 		</antcall>
 
 		<antcall target="build-test-ant-script">
+			<param name="test.ant.script.command" value="permissions-media-gallery" />
+			<param name="test.ant.script.suite" value="PermissionsMediaGalleryTestSuite" />
+		</antcall>
+
+		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="permissions-message-boards" />
 			<param name="test.ant.script.suite" value="PermissionsMessageBoardsTestSuite" />
+		</antcall>
+
+		<antcall target="build-test-ant-script">
+			<param name="test.ant.script.command" value="permissions-organizations" />
+			<param name="test.ant.script.suite" value="PermissionsOrganizationsTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
