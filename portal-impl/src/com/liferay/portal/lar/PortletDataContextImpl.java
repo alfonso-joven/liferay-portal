@@ -349,7 +349,9 @@ public class PortletDataContextImpl implements PortletDataContext {
 			return;
 		}
 
-		if ((messages.size() == 1) && messages.get(0).isRoot()) {
+		MBMessage firstMessage = messages.get(0);
+
+		if ((messages.size() == 1) && firstMessage.isRoot()) {
 			return;
 		}
 
@@ -973,7 +975,9 @@ public class PortletDataContextImpl implements PortletDataContext {
 			return;
 		}
 
-		if ((messages.size() == 1) && messages.get(0).isRoot()) {
+		MBMessage firstMessage = messages.get(0);
+
+		if ((messages.size() == 1) && firstMessage.isRoot()) {
 			return;
 		}
 
