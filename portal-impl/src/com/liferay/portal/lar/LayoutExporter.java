@@ -1129,6 +1129,13 @@ public class LayoutExporter {
 			}
 		}
 
+		Group group = GroupLocalServiceUtil.fetchGroup(
+			portletDataContext.getGroupId());
+
+		if (Validator.isNotNull(group) && group.isLayoutPrototype() && exportPortletSetup) {
+			exportCurPortletSetup = true;
+		}
+
 		if (exportPortletSetupAll) {
 			exportCurPortletSetup = true;
 		}
