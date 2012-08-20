@@ -35,7 +35,7 @@ public class ViewResourceResponseMiscTest extends BaseTestCase {
 			selenium.getText("//p[4]/a[2]"));
 		selenium.clickAt("//p[4]/a[2]",
 			RuntimeVariables.replace("Download File"));
-		selenium.downloadTempFile("Portlet_Response_Resource_Response.png");
+		selenium.downloadTempFile("logo(3).png");
 		selenium.open("/web/guest/home/");
 		selenium.clickAt("link=Documents and Media Test Page",
 			RuntimeVariables.replace("Documents and Media Test Page"));
@@ -69,7 +69,7 @@ public class ViewResourceResponseMiscTest extends BaseTestCase {
 				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Basic Document')]/a"));
 		selenium.waitForPageToLoad("30000");
 		selenium.uploadTempFile("//input[@id='_20_file']",
-			RuntimeVariables.replace("Portlet_Response_Resource_Response.png"));
+			RuntimeVariables.replace("logo(3).png"));
 		selenium.type("//input[@id='_20_title']",
 			RuntimeVariables.replace("Portlet Response (ResourceResponse)"));
 		selenium.type("//textarea[@id='_20_description']",

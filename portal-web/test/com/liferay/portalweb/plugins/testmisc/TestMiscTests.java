@@ -29,13 +29,15 @@ import junit.framework.TestSuite;
 public class TestMiscTests extends BaseTestSuite {
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
-		testSuite.addTestSuite(AddPageTest.class);
-		testSuite.addTestSuite(AddPortletTest.class);
+		testSuite.addTestSuite(AddPageTMTest.class);
+		testSuite.addTestSuite(AddPortletTMTest.class);
 		testSuite.addTestSuite(AddPageDMTest.class);
 		testSuite.addTestSuite(AddPortletDMTest.class);
 		testSuite.addTestSuite(ViewPortletTestMiscTest.class);
 		testSuite.addTestSuite(ViewActionResponseNormalStateMiscTest.class);
+		testSuite.addTestSuite(TearDownDMDocumentTest.class);
 		testSuite.addTestSuite(ViewActionResponseExclusiveStateMiscTest.class);
+		testSuite.addTestSuite(TearDownDMDocumentTest.class);
 		testSuite.addTestSuite(ViewResourceResponseMiscTest.class);
 		testSuite.addTestSuite(TearDownDMDocumentTest.class);
 		testSuite.addTestSuite(TearDownPageTest.class);
