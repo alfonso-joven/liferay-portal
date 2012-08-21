@@ -74,13 +74,13 @@ public class AddPortletBlogsPageTemplateTest extends BaseTestCase {
 		selenium.clickAt("//a[contains(text(),'Test Page Template')]",
 			RuntimeVariables.replace("Test Page Template"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//a[@id='_146_roll']/span",
-			RuntimeVariables.replace("Open Page Template"));
-		Thread.sleep(5000);
-		selenium.selectWindow("title=Test Page Template - Liferay");
-		selenium.clickAt("link=Test Page Template",
-			RuntimeVariables.replace("Test Page Template"));
-		selenium.waitForPageToLoad("30000");
+
+		String pageTemplate = selenium.getAttribute(
+				"//a[@id='_146_roll']/@href");
+		RuntimeVariables.setValue("pageTemplate", pageTemplate);
+		selenium.open(RuntimeVariables.getValue("pageTemplate"));
+		assertEquals(RuntimeVariables.replace("Test Page Template"),
+			selenium.getText("//span[@title='Go to Test Page Template']"));
 		selenium.clickAt("//div[@id='dockbar']",
 			RuntimeVariables.replace("Dockbar"));
 
@@ -203,7 +203,5 @@ public class AddPortletBlogsPageTemplateTest extends BaseTestCase {
 		}
 
 		assertTrue(selenium.isVisible("//section"));
-		selenium.close();
-		selenium.selectWindow("null");
 	}
 }

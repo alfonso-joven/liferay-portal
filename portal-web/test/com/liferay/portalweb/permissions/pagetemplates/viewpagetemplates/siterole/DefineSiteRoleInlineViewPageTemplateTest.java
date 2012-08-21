@@ -75,13 +75,13 @@ public class DefineSiteRoleInlineViewPageTemplateTest extends BaseTestCase {
 		selenium.clickAt("//a[contains(text(),'Test Page Template')]",
 			RuntimeVariables.replace("Test Page Template"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//a[@id='_146_roll']/span",
-			RuntimeVariables.replace("Open Page Template"));
-		Thread.sleep(5000);
-		selenium.selectWindow("Test Page Template - Liferay");
-		selenium.clickAt("link=Test Page Template",
-			RuntimeVariables.replace("Test Page Template"));
-		selenium.waitForPageToLoad("30000");
+
+		String pageTemplate = selenium.getAttribute(
+				"//a[@id='_146_roll']/@href");
+		RuntimeVariables.setValue("pageTemplate", pageTemplate);
+		selenium.open(RuntimeVariables.getValue("pageTemplate"));
+		assertEquals(RuntimeVariables.replace("Test Page Template"),
+			selenium.getText("//span[@title='Go to Test Page Template']"));
 		Thread.sleep(5000);
 		assertEquals(RuntimeVariables.replace("Options"),
 			selenium.getText("//span[@title='Options']/ul/li/strong/a"));
@@ -199,7 +199,5 @@ public class DefineSiteRoleInlineViewPageTemplateTest extends BaseTestCase {
 		assertTrue(selenium.isChecked(
 				"//input[@id='roles-siterole-name_ACTION_VIEW']"));
 		selenium.selectFrame("relative=top");
-		selenium.close();
-		selenium.selectWindow("null");
 	}
 }
