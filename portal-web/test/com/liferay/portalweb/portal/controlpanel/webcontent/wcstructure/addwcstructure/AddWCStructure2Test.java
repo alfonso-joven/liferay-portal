@@ -112,22 +112,22 @@ public class AddWCStructure2Test extends BaseTestCase {
 		selenium.check("//input[@id='_15_structure_el3_repeatable']");
 		assertTrue(selenium.isChecked(
 				"//input[@id='_15_structure_el3_repeatable']"));
-		selenium.clickAt("xpath=(//img[@alt='Add'])[4]",
-			RuntimeVariables.replace(""));
+		selenium.clickAt("xPath=(//img[@alt='Add'])[4]",
+			RuntimeVariables.replace("Add"));
 		selenium.waitForPageToLoad("30000");
 		selenium.select("//select[@id='_15_structure_el4_type']",
 			RuntimeVariables.replace("Text"));
 		selenium.type("//input[@id='_15_structure_el4_name']",
 			RuntimeVariables.replace("Photographer"));
-		selenium.clickAt("xpath=(//img[@alt='Add'])[4]",
-			RuntimeVariables.replace(""));
+		selenium.clickAt("xPath=(//img[@alt='Add'])[4]",
+			RuntimeVariables.replace("Add"));
 		selenium.waitForPageToLoad("30000");
 		selenium.select("//select[@id='_15_structure_el4_type']",
 			RuntimeVariables.replace("Text"));
 		selenium.type("//input[@id='_15_structure_el4_name']",
 			RuntimeVariables.replace("Summary"));
-		selenium.clickAt("xpath=(//img[@alt='Add'])[4]",
-			RuntimeVariables.replace(""));
+		selenium.clickAt("xPath=(//img[@alt='Add'])[4]",
+			RuntimeVariables.replace("Add"));
 		selenium.waitForPageToLoad("30000");
 		selenium.select("//select[@id='_15_structure_el4_type']",
 			RuntimeVariables.replace("Image"));
