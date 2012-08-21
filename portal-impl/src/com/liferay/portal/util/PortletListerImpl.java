@@ -27,12 +27,12 @@ import com.liferay.portal.model.PortletApp;
 import com.liferay.portal.model.PortletCategory;
 import com.liferay.portal.model.User;
 import com.liferay.portal.service.PortletLocalServiceUtil;
+import com.liferay.portal.theme.ThemeDisplay;
 import com.liferay.portal.util.comparator.PortletCategoryComparator;
 import com.liferay.portal.util.comparator.PortletTitleComparator;
 import com.liferay.portlet.PortletConfigFactoryUtil;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Set;
@@ -65,10 +65,10 @@ public class PortletListerImpl implements PortletLister {
 		PortletCategory portletCategory = (PortletCategory)WebAppPool.get(
 			_user.getCompanyId(), WebKeys.PORTLET_CATEGORY);
 
-		List<PortletCategory> categories = ListUtil.fromCollection(
+		List<PortletCategory> portletCategories = ListUtil.fromCollection(
 			portletCategory.getCategories());
 
-		iterateCategories(categories, _nodeId, 0);
+		iteratePortletCategories(portletCategories, _nodeId, 0);
 
 		return new TreeView(_list, _depth);
 	}
@@ -95,21 +95,24 @@ public class PortletListerImpl implements PortletLister {
 		_servletContext = servletContext;
 	}
 
+	public void setThemeDisplay(ThemeDisplay themeDisplay) {
+		_themeDisplay = themeDisplay;
+	}
+
 	public void setUser(User user) {
 		_user = user;
 	}
 
-	protected void iterateCategories(
-			List<PortletCategory> categories, long parentId, int depth)
+	protected void iteratePortletCategories(
+			List<PortletCategory> portletCategories, long parentId, int depth)
 		throws PortalException, SystemException {
 
-		categories = ListUtil.sort(
-			categories, new PortletCategoryComparator(_user.getLocale()));
+		portletCategories = ListUtil.sort(
+			portletCategories,
+			new PortletCategoryComparator(_themeDisplay.getLocale()));
 
-		Iterator<PortletCategory> itr = categories.iterator();
-
-		for (int i = 0; itr.hasNext();) {
-			PortletCategory portletCategory = itr.next();
+		for (int i = 0; i < portletCategories.size(); i++) {
+			PortletCategory portletCategory = portletCategories.get(i);
 
 			if (portletCategory.isHidden()) {
 				continue;
@@ -128,7 +131,7 @@ public class PortletListerImpl implements PortletLister {
 			nodeView.setDepth(depth);
 			nodeView.setLeaf(false);
 
-			if ((i + 1) == categories.size()) {
+			if ((i + 1) == portletCategories.size()) {
 				nodeView.setLs("1");
 			}
 			else {
@@ -146,32 +149,26 @@ public class PortletListerImpl implements PortletLister {
 			List<PortletCategory> subCategories = ListUtil.fromCollection(
 				portletCategory.getCategories());
 
-			iterateCategories(subCategories, nodeId, depth);
+			iteratePortletCategories(subCategories, nodeId, depth);
 
 			if (_iteratePortlets) {
-				_iteratePortlets(
+				iteratePortlets(
 					portletCategory, portletCategory.getPortletIds(), nodeId,
 					depth + 1);
 			}
-
-			i++;
 		}
 	}
 
-	private void _iteratePortlets(
+	protected void iteratePortlets(
 			PortletCategory portletCategory, Set<String> portletIds,
 			int parentNodeId, int depth)
 		throws PortalException, SystemException {
 
 		List<Portlet> portlets = new ArrayList<Portlet>();
 
-		Iterator<String> portletIdsItr = portletIds.iterator();
-
 		String externalPortletCategory = null;
 
-		while (portletIdsItr.hasNext()) {
-			String portletId = portletIdsItr.next();
-
+		for (String portletId : portletIds) {
 			Portlet portlet = PortletLocalServiceUtil.getPortletById(
 				_user.getCompanyId(), portletId);
 
@@ -205,7 +202,8 @@ public class PortletListerImpl implements PortletLister {
 							portlet, _servletContext);
 
 					ResourceBundle resourceBundle =
-						portletConfig.getResourceBundle(_user.getLocale());
+						portletConfig.getResourceBundle(
+							_themeDisplay.getLocale());
 
 					externalPortletCategory = ResourceBundleUtil.getString(
 						resourceBundle, portletCategory.getName());
@@ -214,12 +212,10 @@ public class PortletListerImpl implements PortletLister {
 		}
 
 		portlets = ListUtil.sort(
-			portlets, new PortletTitleComparator(_user.getLocale()));
+			portlets, new PortletTitleComparator(_themeDisplay.getLocale()));
 
-		Iterator<Portlet> portletsItr = portlets.iterator();
-
-		for (int i = 0; portletsItr.hasNext(); i++) {
-			Portlet portlet = portletsItr.next();
+		for (int i = 0; i < portlets.size(); i++) {
+			Portlet portlet = portlets.get(i);
 
 			TreeNodeView nodeView = new TreeNodeView(++_nodeId);
 
@@ -233,7 +229,9 @@ public class PortletListerImpl implements PortletLister {
 				nodeView.setLs("0");
 			}
 
-			nodeView.setName(PortalUtil.getPortletTitle(portlet, _user));
+			nodeView.setName(
+				PortalUtil.getPortletTitle(
+					portlet, _servletContext, _themeDisplay.getLocale()));
 			nodeView.setObjId(portlet.getRootPortletId());
 			nodeView.setParentId(parentNodeId);
 
@@ -249,6 +247,7 @@ public class PortletListerImpl implements PortletLister {
 	private int _nodeId;
 	private String _rootNodeName;
 	private ServletContext _servletContext;
+	private ThemeDisplay _themeDisplay;
 	private User _user;
 
 }
