@@ -56,7 +56,7 @@ public class SharepointFilter extends SecureFilter {
 	}
 
 	protected boolean isWebDAVRequest(String uri) {
-		if (uri.startsWith("/webdav")) {
+		if (uri.startsWith("/api/secure/webdav")) {
 			return true;
 		}
 
