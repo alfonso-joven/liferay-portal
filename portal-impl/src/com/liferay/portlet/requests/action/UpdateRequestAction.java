@@ -100,8 +100,8 @@ public class UpdateRequestAction extends PortletAction {
 		long requestId = ParamUtil.getLong(actionRequest, "requestId");
 		int status = ParamUtil.getInteger(actionRequest, "status");
 
-		SocialRequest request =
-			SocialRequestLocalServiceUtil.fetchSocialRequest(requestId);
+		SocialRequest request = SocialRequestLocalServiceUtil.getSocialRequest(
+			requestId);
 
 		if (!PortalUtil.isOmniadmin(themeDisplay.getUserId()) &&
 			(themeDisplay.getUserId() != request.getReceiverUserId())) {
