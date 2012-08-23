@@ -23,6 +23,26 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class AddTemplateLocalizedTest extends BaseTestCase {
 	public void testAddTemplateLocalized() throws Exception {
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isElementPresent(
+							"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -120,7 +140,7 @@ public class AddTemplateLocalizedTest extends BaseTestCase {
 
 		assertEquals(RuntimeVariables.replace("WC Structure Name"),
 			selenium.getText("//a[@id='_15_structureName']"));
-		selenium.type("//input[@id='_15_xsl']",
+		selenium.uploadFile("//input[@id='_15_xsl']",
 			RuntimeVariables.replace(
 				"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\portal\\controlpanel\\webcontent\\dependencies\\vm_script_localized.xml"));
 		selenium.clickAt("//input[@value='Save']",

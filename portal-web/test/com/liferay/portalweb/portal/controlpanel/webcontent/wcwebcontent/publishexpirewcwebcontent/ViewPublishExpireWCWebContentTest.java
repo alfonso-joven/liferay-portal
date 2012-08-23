@@ -23,6 +23,26 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class ViewPublishExpireWCWebContentTest extends BaseTestCase {
 	public void testViewPublishExpireWCWebContent() throws Exception {
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isElementPresent(
+							"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -104,9 +124,9 @@ public class ViewPublishExpireWCWebContentTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Web Content"),
 			selenium.getText("//span[@class='portlet-title-text']"));
-		assertEquals(RuntimeVariables.replace(
-				"Web Content can be any content you would like to add to a site, such as articles, a FAQ, or a news item. Administrators can manage content, as well as assign user roles and permissions. Users may add, edit, approve, or view content depending on their role. Or disable for all portlets."),
-			selenium.getText("//div[@id='cpContextPanelTemplate']"));
+		assertTrue(selenium.isPartialText(
+				"//div[@id='cpContextPanelTemplate']",
+				"Web Content can be any content you would like to add to a site, such as articles, a FAQ, or a news item. Administrators can manage content, as well as assign user roles and permissions. Users may add, edit, approve, or view content depending on their role."));
 		assertEquals(RuntimeVariables.replace("WC WebContent Title"),
 			selenium.getText("//h1[@class='header-title']/span"));
 		assertTrue(selenium.isPartialText("//span[@class='workflow-id']",
@@ -188,20 +208,20 @@ public class ViewPublishExpireWCWebContentTest extends BaseTestCase {
 		assertTrue(selenium.isChecked("//input[@id='_15_indexableCheckbox']"));
 		assertEquals(RuntimeVariables.replace("WC WebContent Title"),
 			selenium.getText("//span[@class='article-name']"));
-		assertEquals(RuntimeVariables.replace("Content (Modified)"),
-			selenium.getText("//a[@id='_15_contentLink']"));
-		assertEquals(RuntimeVariables.replace("Abstract (Modified)"),
-			selenium.getText("//a[@id='_15_abstractLink']"));
-		assertEquals(RuntimeVariables.replace("Categorization (Modified)"),
-			selenium.getText("//a[@id='_15_categorizationLink']"));
-		assertEquals(RuntimeVariables.replace("Schedule (Modified)"),
-			selenium.getText("//a[@id='_15_scheduleLink']"));
-		assertEquals(RuntimeVariables.replace("Display Page (Modified)"),
-			selenium.getText("//a[@id='_15_displayPageLink']"));
-		assertEquals(RuntimeVariables.replace("Related Assets (Modified)"),
-			selenium.getText("//a[@id='_15_relatedAssetsLink']"));
-		assertEquals(RuntimeVariables.replace("Custom Fields (Modified)"),
-			selenium.getText("//a[@id='_15_customFieldsLink']"));
+		assertTrue(selenium.isPartialText("//a[@id='_15_contentLink']",
+				"Content"));
+		assertTrue(selenium.isPartialText("//a[@id='_15_abstractLink']",
+				"Abstract"));
+		assertTrue(selenium.isPartialText("//a[@id='_15_categorizationLink']",
+				"Categorization"));
+		assertTrue(selenium.isPartialText("//a[@id='_15_scheduleLink']",
+				"Schedule"));
+		assertTrue(selenium.isPartialText("//a[@id='_15_displayPageLink']",
+				"Display Page"));
+		assertTrue(selenium.isPartialText("//a[@id='_15_relatedAssetsLink']",
+				"Related Assets"));
+		assertTrue(selenium.isPartialText("//a[@id='_15_customFieldsLink']",
+				"Custom Fields"));
 		assertEquals(RuntimeVariables.replace(
 				"A new version will be created automatically if this content is modified."),
 			selenium.getText("//div[@class='portlet-msg-info']"));

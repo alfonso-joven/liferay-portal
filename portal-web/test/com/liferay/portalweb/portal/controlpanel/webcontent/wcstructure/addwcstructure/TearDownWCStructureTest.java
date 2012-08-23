@@ -78,6 +78,23 @@ public class TearDownWCStructureTest extends BaseTestCase {
 					RuntimeVariables.replace("Structures"));
 				selenium.waitForPageToLoad("30000");
 
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isVisible(
+									"//input[@value='Add Structure']")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
+
 				boolean structurePresent = selenium.isElementPresent(
 						"//input[@name='_15_rowIds']");
 
@@ -96,9 +113,6 @@ public class TearDownWCStructureTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete the selected structures[\\s\\S]$"));
-				assertEquals(RuntimeVariables.replace(
-						"Your request completed successfully."),
-					selenium.getText("//div[@class='portlet-msg-success']"));
 
 			case 2:
 				assertEquals(RuntimeVariables.replace(

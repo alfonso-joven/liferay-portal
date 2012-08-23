@@ -15,6 +15,8 @@
 package com.liferay.portalweb.portal.controlpanel.webcontent.wcwebcontent.addwcstructurewebcontentlocalized;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
+import com.liferay.portalweb.portal.controlpanel.webcontent.wcstructure.addwcstructure.TearDownWCStructureTest;
+import com.liferay.portalweb.portal.controlpanel.webcontent.wctemplate.addwctemplate.TearDownWCTemplateTest;
 import com.liferay.portalweb.portal.controlpanel.webcontent.wcwebcontent.addwcwebcontent.TearDownWCWebContentTest;
 
 import junit.framework.Test;
@@ -31,8 +33,8 @@ public class AddWCStructureWebContentLocalizedTests extends BaseTestSuite {
 		testSuite.addTestSuite(AddWCStructureWebContentLocalizedTest.class);
 		testSuite.addTestSuite(ViewWebContentLocalizedTest.class);
 		testSuite.addTestSuite(TearDownWCWebContentTest.class);
-		testSuite.addTestSuite(TearDownTemplateTest.class);
-		testSuite.addTestSuite(TearDownStructureTest.class);
+		testSuite.addTestSuite(TearDownWCTemplateTest.class);
+		testSuite.addTestSuite(TearDownWCStructureTest.class);
 
 		return testSuite;
 	}

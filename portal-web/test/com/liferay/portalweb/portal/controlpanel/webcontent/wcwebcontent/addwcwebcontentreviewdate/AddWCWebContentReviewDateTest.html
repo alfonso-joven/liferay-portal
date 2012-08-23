@@ -14,6 +14,16 @@
 	<td></td>
 </tr>
 <tr>
+	<td>clickAt</td>
+	<td>//div[@id='dockbar']</td>
+	<td>Dockbar</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]</td>
+	<td>AUI Editable Min</td>
+</tr>
+<tr>
 	<td>assertText</td>
 	<td>//li[@id='_145_mySites']/a/span</td>
 	<td>Go to</td>
@@ -114,14 +124,19 @@
 	<td>top</td>
 </tr>
 <tr>
-	<td>assertText</td>
+	<td>assertPartialText</td>
 	<td>//a[@id='_15_scheduleLink']</td>
-	<td>Schedule (Modified)</td>
+	<td>Schedule</td>
 </tr>
 <tr>
 	<td>clickAt</td>
 	<td>//a[@id='_15_scheduleLink']</td>
-	<td>Schedule (Modified)</td>
+	<td>Schedule</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//div[@id='_15_schedule' and contains(@class,'selected')]</td>
+	<td>Schedule Form</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
@@ -158,6 +173,7 @@
 	<td>//select[@name='_15_reviewDateAmPm' and @disabled='disabled']</td>
 	<td>Expiration AM PM</td>
 </tr>
+<!--Webdriver Workaround, please do not remove steps between these 2 comments.-->
 <tr>
 	<td>assertChecked</td>
 	<td>//input[@id='_15_neverReviewCheckbox']</td>
@@ -173,6 +189,37 @@
 	<td>//input[@id='_15_neverReviewCheckbox']</td>
 	<td>Never Auto Review</td>
 </tr>
+<tr>
+	<td>clickAt</td>
+	<td>//select[@id='_15_reviewDateMonth']</td>
+	<td>Review Date Month</td>
+</tr>
+<tr>
+	<td>assertNotChecked</td>
+	<td>//input[@id='_15_neverReviewCheckbox']</td>
+	<td>Never Auto Review</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//input[@id='_15_neverReviewCheckbox']</td>
+	<td>Never Auto Review</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//input[@id='_15_neverReviewCheckbox']</td>
+	<td>Never Auto Review</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//input[@id='_15_neverReviewCheckbox']</td>
+	<td>Never Auto Review</td>
+</tr>
+<tr>
+	<td>assertNotChecked</td>
+	<td>//input[@id='_15_neverReviewCheckbox']</td>
+	<td>Never Auto Review</td>
+</tr>
+<!--Webdriver Workaround, please do not remove steps between these 2 comments.-->
 <tr>
 	<td>waitForElementNotPresent</td>
 	<td>//select[@id='_15_reviewDateMonth' and @disabled='disabled']</td>
@@ -269,14 +316,19 @@
 	<td>Text Area</td>
 </tr>
 <tr>
-	<td>assertText</td>
+	<td>assertPartialText</td>
 	<td>//a[@id='_15_scheduleLink']</td>
-	<td>Schedule (Modified)</td>
+	<td>Schedule</td>
 </tr>
 <tr>
 	<td>clickAt</td>
 	<td>//a[@id='_15_scheduleLink']</td>
-	<td>Schedule (Modified)</td>
+	<td>Schedule</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//div[@id='_15_schedule' and contains(@class,'selected')]</td>
+	<td>Schedule Form</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>

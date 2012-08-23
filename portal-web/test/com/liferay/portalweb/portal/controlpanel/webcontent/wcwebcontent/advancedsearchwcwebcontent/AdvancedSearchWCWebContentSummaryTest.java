@@ -29,6 +29,26 @@ public class AdvancedSearchWCWebContentSummaryTest extends BaseTestCase {
 			switch (label) {
 			case 1:
 				selenium.open("/web/guest/home/");
+				selenium.clickAt("//div[@id='dockbar']",
+					RuntimeVariables.replace("Dockbar"));
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isElementPresent(
+									"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
+
 				assertEquals(RuntimeVariables.replace("Go to"),
 					selenium.getText("//li[@id='_145_mySites']/a/span"));
 				selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -57,7 +77,7 @@ public class AdvancedSearchWCWebContentSummaryTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 
 				boolean advancedVisible = selenium.isVisible(
-						"link=Advanced \u00bb");
+						"//a[.='Advanced \u00bb']");
 
 				if (!advancedVisible) {
 					label = 2;
@@ -65,7 +85,7 @@ public class AdvancedSearchWCWebContentSummaryTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("link=Advanced \u00bb",
+				selenium.clickAt("//a[.='Advanced \u00bb']",
 					RuntimeVariables.replace("Advanced \u00bb"));
 
 			case 2:
@@ -103,7 +123,7 @@ public class AdvancedSearchWCWebContentSummaryTest extends BaseTestCase {
 				selenium.type("//input[@id='_15_description']",
 					RuntimeVariables.replace(""));
 				assertFalse(selenium.isTextPresent("WC WebContent Title"));
-				selenium.clickAt("link=\u00ab Basic",
+				selenium.clickAt("//a[.='\u00ab Basic']",
 					RuntimeVariables.replace("\u00ab Basic"));
 
 			case 100:

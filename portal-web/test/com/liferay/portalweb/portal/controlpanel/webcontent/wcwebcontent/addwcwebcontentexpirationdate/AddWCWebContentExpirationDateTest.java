@@ -23,6 +23,26 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class AddWCWebContentExpirationDateTest extends BaseTestCase {
 	public void testAddWCWebContentExpirationDate() throws Exception {
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isElementPresent(
+							"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -172,10 +192,27 @@ public class AddWCWebContentExpirationDateTest extends BaseTestCase {
 		}
 
 		selenium.selectFrame("relative=top");
-		assertEquals(RuntimeVariables.replace("Schedule (Modified)"),
-			selenium.getText("//a[@id='_15_scheduleLink']"));
+		assertTrue(selenium.isPartialText("//a[@id='_15_scheduleLink']",
+				"Schedule"));
 		selenium.clickAt("//a[@id='_15_scheduleLink']",
-			RuntimeVariables.replace("Schedule (Modified)"));
+			RuntimeVariables.replace("Schedule"));
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isVisible(
+							"//div[@id='_15_schedule' and contains(@class,'selected')]")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -206,6 +243,15 @@ public class AddWCWebContentExpirationDateTest extends BaseTestCase {
 				"//select[@name='_15_expirationDateMinute' and @disabled='disabled']"));
 		assertTrue(selenium.isVisible(
 				"//select[@name='_15_expirationDateAmPm' and @disabled='disabled']"));
+		assertTrue(selenium.isChecked("//input[@id='_15_neverExpireCheckbox']"));
+		selenium.clickAt("//input[@id='_15_neverExpireCheckbox']",
+			RuntimeVariables.replace("Never Auto Expire"));
+		assertFalse(selenium.isChecked("//input[@id='_15_neverExpireCheckbox']"));
+		selenium.clickAt("//select[@id='_15_expirationDateMonth']",
+			RuntimeVariables.replace("Expiration Date Month"));
+		assertFalse(selenium.isChecked("//input[@id='_15_neverExpireCheckbox']"));
+		selenium.clickAt("//input[@id='_15_neverExpireCheckbox']",
+			RuntimeVariables.replace("Never Auto Expire"));
 		assertTrue(selenium.isChecked("//input[@id='_15_neverExpireCheckbox']"));
 		selenium.clickAt("//input[@id='_15_neverExpireCheckbox']",
 			RuntimeVariables.replace("Never Auto Expire"));
@@ -283,10 +329,27 @@ public class AddWCWebContentExpirationDateTest extends BaseTestCase {
 			Thread.sleep(1000);
 		}
 
-		assertEquals(RuntimeVariables.replace("Schedule (Modified)"),
-			selenium.getText("//a[@id='_15_scheduleLink']"));
+		assertTrue(selenium.isPartialText("//a[@id='_15_scheduleLink']",
+				"Schedule"));
 		selenium.clickAt("//a[@id='_15_scheduleLink']",
-			RuntimeVariables.replace("Schedule (Modified)"));
+			RuntimeVariables.replace("Schedule"));
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isVisible(
+							"//div[@id='_15_schedule' and contains(@class,'selected')]")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
