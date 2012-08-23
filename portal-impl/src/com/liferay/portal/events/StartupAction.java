@@ -149,6 +149,8 @@ public class StartupAction extends SimpleAction {
 			_log.debug("Upgrade database");
 		}
 
+		enabled = PortalSecurityManagerThreadLocal.isEnabled();
+
 		try {
 			PortalSecurityManagerThreadLocal.setEnabled(false);
 
