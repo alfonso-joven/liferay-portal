@@ -598,6 +598,10 @@ public class GroupServiceImpl extends GroupServiceBaseImpl {
 			int start, int end)
 		throws PortalException, SystemException {
 
+		if (params == null) {
+			params = new String[0];
+		}
+
 		LinkedHashMap<String, Object> paramsObj = MapUtil.toLinkedHashMap(
 			params);
 
@@ -628,6 +632,10 @@ public class GroupServiceImpl extends GroupServiceBaseImpl {
 	public int searchCount(
 			long companyId, String name, String description, String[] params)
 		throws SystemException {
+
+		if (params == null) {
+			params = new String[0];
+		}
 
 		LinkedHashMap<String, Object> paramsObj = MapUtil.toLinkedHashMap(
 			params);
