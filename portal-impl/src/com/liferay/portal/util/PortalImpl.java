@@ -1131,12 +1131,14 @@ public class PortalImpl implements Portal {
 
 		String layoutFriendlyURL = StringPool.BLANK;
 
-		if (forceLayoutInURL ||
-				((groupFriendlyURL.contains(layout.getFriendlyURL()) ||
+		if ((groupFriendlyURL.contains(layout.getFriendlyURL()) ||
 			 groupFriendlyURL.contains(
 				StringPool.SLASH + layout.getLayoutId())) &&
-			(!layout.isFirstParent() || Validator.isNotNull(parametersURL)))) {
+			(!layout.isFirstParent() || Validator.isNotNull(parametersURL))) {
 
+			layoutFriendlyURL = layout.getFriendlyURL();
+		}
+		else if (forceLayoutInURL) {
 			layoutFriendlyURL = layout.getFriendlyURL();
 		}
 
