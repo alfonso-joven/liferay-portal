@@ -29,7 +29,8 @@ public class AssertPrivatePageHostURLTest extends BaseTestCase {
 			case 1:
 				selenium.open("http://www.baker.com:8080/");
 
-				boolean LoggedOut = selenium.isElementPresent("_58_login");
+				boolean LoggedOut = selenium.isElementPresent(
+						"//input[@id='_58_login']");
 
 				if (!LoggedOut) {
 					label = 2;
@@ -57,6 +58,7 @@ public class AssertPrivatePageHostURLTest extends BaseTestCase {
 				selenium.clickAt("link=Private Page",
 					RuntimeVariables.replace("Private Page"));
 				selenium.waitForPageToLoad("30000");
+				Thread.sleep(5000);
 				assertEquals(RuntimeVariables.replace(
 						"http://www.baker.com:8080/private-page"),
 					selenium.getLocation());
