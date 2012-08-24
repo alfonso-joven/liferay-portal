@@ -997,6 +997,11 @@ public class LayoutAction extends Action {
 					url = String.valueOf(request.getRequestURI());
 				}
 
+				response.setHeader(
+					HttpHeaders.CACHE_CONTROL,
+					HttpHeaders.CACHE_CONTROL_NO_CACHE_VALUE);
+				response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+
 				_log.error(
 					"Reject serveResource for " + url + " on " +
 						portlet.getPortletId());
