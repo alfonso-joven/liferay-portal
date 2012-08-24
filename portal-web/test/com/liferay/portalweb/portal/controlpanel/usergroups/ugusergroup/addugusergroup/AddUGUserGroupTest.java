@@ -76,6 +76,25 @@ public class AddUGUserGroupTest extends BaseTestCase {
 		selenium.clickAt("//span[contains(@class,'add-button')]/a",
 			RuntimeVariables.replace("Add"));
 		selenium.waitForPageToLoad("30000");
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (RuntimeVariables.replace("New User Group")
+										.equals(selenium.getText(
+								"//h1[@class='header-title']/span"))) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
 		assertEquals(RuntimeVariables.replace("New User Group"),
 			selenium.getText("//h1[@class='header-title']/span"));
 		selenium.type("//input[@id='_127_name']",
