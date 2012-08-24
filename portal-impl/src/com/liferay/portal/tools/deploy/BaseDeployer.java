@@ -2047,6 +2047,8 @@ public class BaseDeployer implements AutoDeployer, Deployer {
 
 		String content = FileUtil.read(webXml);
 
+		content = WebXMLBuilder.organizeWebXML(content);
+
 		int x = content.indexOf("<display-name>");
 
 		if (x != -1) {
