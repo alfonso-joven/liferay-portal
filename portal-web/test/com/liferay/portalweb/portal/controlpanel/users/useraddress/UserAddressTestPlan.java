@@ -17,7 +17,7 @@ package com.liferay.portalweb.portal.controlpanel.users.useraddress;
 import com.liferay.portalweb.portal.BaseTestSuite;
 import com.liferay.portalweb.portal.controlpanel.users.useraddress.adduseraddress.AddUserAddressTests;
 import com.liferay.portalweb.portal.controlpanel.users.useraddress.adduseraddresscitynull.AddUserAddressCityNullTests;
-import com.liferay.portalweb.portal.controlpanel.users.useraddress.adduseraddressmultiple.AddUserAddressMultipleTests;
+import com.liferay.portalweb.portal.controlpanel.users.useraddress.adduseraddresses.AddUserAddressesTests;
 import com.liferay.portalweb.portal.controlpanel.users.useraddress.adduseraddressstreetnull.AddUserAddressStreetNullTests;
 import com.liferay.portalweb.portal.controlpanel.users.useraddress.adduseraddresszipnull.AddUserAddressZipNullTests;
 import com.liferay.portalweb.portal.controlpanel.users.useraddress.searchuseraddresscp.SearchUserAddressCPTests;
@@ -35,7 +35,7 @@ public class UserAddressTestPlan extends BaseTestSuite {
 
 		testSuite.addTest(AddUserAddressTests.suite());
 		testSuite.addTest(AddUserAddressCityNullTests.suite());
-		testSuite.addTest(AddUserAddressMultipleTests.suite());
+		testSuite.addTest(AddUserAddressesTests.suite());
 		testSuite.addTest(AddUserAddressStreetNullTests.suite());
 		testSuite.addTest(AddUserAddressZipNullTests.suite());
 		testSuite.addTest(SearchUserAddressCPTests.suite());

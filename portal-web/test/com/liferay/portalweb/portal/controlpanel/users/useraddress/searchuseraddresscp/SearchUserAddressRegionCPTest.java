@@ -23,6 +23,8 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class SearchUserAddressRegionCPTest extends BaseTestCase {
 	public void testSearchUserAddressRegionCP() throws Exception {
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -30,7 +32,28 @@ public class SearchUserAddressRegionCPTest extends BaseTestCase {
 			}
 
 			try {
-				if (selenium.isElementPresent("link=Control Panel")) {
+				if (selenium.isElementPresent(
+							"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
+		assertEquals(RuntimeVariables.replace("Go to"),
+			selenium.getText("//li[@id='_145_mySites']/a/span"));
+		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isVisible("link=Control Panel")) {
 					break;
 				}
 			}
@@ -46,28 +69,29 @@ public class SearchUserAddressRegionCPTest extends BaseTestCase {
 		selenium.clickAt("link=Users and Organizations",
 			RuntimeVariables.replace("Users and Organizations"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("//input[@id='_125_keywords']",
+		selenium.clickAt("link=Search All Users",
+			RuntimeVariables.replace("Search All Users"));
+		selenium.waitForPageToLoad("30000");
+		selenium.type("//input[@name='_125_keywords']",
 			RuntimeVariables.replace("California"));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("selen01"),
-			selenium.getText(
-				"//div[2]/div[2]/div/div[1]/div/table/tbody/tr[3]/td[2]/a"));
-		assertEquals(RuntimeVariables.replace("nium01"),
-			selenium.getText(
-				"//div[2]/div[2]/div/div[1]/div/table/tbody/tr[3]/td[3]/a"));
-		assertEquals(RuntimeVariables.replace("selenium01"),
+		assertEquals(RuntimeVariables.replace("userfn"),
+			selenium.getText("//td[2]/a"));
+		assertEquals(RuntimeVariables.replace("userln"),
+			selenium.getText("//td[3]/a"));
+		assertEquals(RuntimeVariables.replace("usersn"),
 			selenium.getText("//td[4]/a"));
-		selenium.type("//input[@id='_125_keywords']",
+		selenium.type("//input[@name='_125_keywords']",
 			RuntimeVariables.replace("California1"));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
-		assertFalse(selenium.isTextPresent("selen01"));
-		assertFalse(selenium.isTextPresent("nium01"));
-		assertFalse(selenium.isTextPresent("selenium01"));
+		assertFalse(selenium.isTextPresent("userfn"));
+		assertFalse(selenium.isTextPresent("userln"));
+		assertFalse(selenium.isTextPresent("usersn"));
 		assertEquals(RuntimeVariables.replace("No users were found."),
-			selenium.getText("xpath=(//div[@class='portlet-msg-info'])[2]"));
+			selenium.getText("//div[@class='portlet-msg-info']"));
 	}
 }

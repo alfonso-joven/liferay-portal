@@ -28,6 +28,8 @@ public class AdvancedSearchUserFirstNameTest extends BaseTestCase {
 			switch (label) {
 			case 1:
 				selenium.open("/web/guest/home/");
+				selenium.clickAt("//div[@id='dockbar']",
+					RuntimeVariables.replace("Dockbar"));
 
 				for (int second = 0;; second++) {
 					if (second >= 90) {
@@ -35,7 +37,28 @@ public class AdvancedSearchUserFirstNameTest extends BaseTestCase {
 					}
 
 					try {
-						if (selenium.isElementPresent("link=Control Panel")) {
+						if (selenium.isElementPresent(
+									"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
+
+				assertEquals(RuntimeVariables.replace("Go to"),
+					selenium.getText("//li[@id='_145_mySites']/a/span"));
+				selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isVisible("link=Control Panel")) {
 							break;
 						}
 					}
@@ -51,14 +74,12 @@ public class AdvancedSearchUserFirstNameTest extends BaseTestCase {
 				selenium.clickAt("link=Users and Organizations",
 					RuntimeVariables.replace("Users and Organizations"));
 				selenium.waitForPageToLoad("30000");
-				assertEquals(RuntimeVariables.replace("Search All Users"),
-					selenium.getText("//a[@id='_125_allUsersLink']"));
-				selenium.clickAt("//a[@id='_125_allUsersLink']",
+				selenium.clickAt("link=Search All Users",
 					RuntimeVariables.replace("Search All Users"));
 				selenium.waitForPageToLoad("30000");
 
 				boolean advanced1Present = selenium.isVisible(
-						"link=Advanced \u00bb");
+						"//a[.='Advanced \u00bb']");
 
 				if (!advanced1Present) {
 					label = 2;
@@ -66,45 +87,60 @@ public class AdvancedSearchUserFirstNameTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("link=Advanced \u00bb",
+				selenium.clickAt("//a[.='Advanced \u00bb']",
 					RuntimeVariables.replace("Advanced \u00bb"));
 
 			case 2:
 				selenium.type("//input[@id='_125_firstName']",
-					RuntimeVariables.replace("Selen*"));
+					RuntimeVariables.replace("userfn"));
 				selenium.clickAt("xPath=(//input[@value='Search'])[2]",
 					RuntimeVariables.replace("Search"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.isTextPresent("selenium01"));
+				assertTrue(selenium.isTextPresent("usersn"));
 				selenium.clickAt("link=Users and Organizations",
 					RuntimeVariables.replace("Users and Organizations"));
 				selenium.waitForPageToLoad("30000");
-				assertEquals(RuntimeVariables.replace("Search All Users"),
-					selenium.getText("//a[@id='_125_allUsersLink']"));
-				selenium.clickAt("//a[@id='_125_allUsersLink']",
+				selenium.clickAt("link=Search All Users",
 					RuntimeVariables.replace("Search All Users"));
 				selenium.waitForPageToLoad("30000");
 
-				boolean advanced2Present = selenium.isVisible(
-						"link=Advanced \u00bb");
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
 
-				if (!advanced2Present) {
+					try {
+						if (selenium.isElementPresent(
+									"//a[.='Advanced \u00bb']")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
+
+				boolean advanced2Visible = selenium.isVisible(
+						"//a[.='Advanced \u00bb']");
+
+				if (!advanced2Visible) {
 					label = 3;
 
 					continue;
 				}
 
-				selenium.clickAt("link=Advanced \u00bb",
+				selenium.clickAt("//a[.='Advanced \u00bb']",
 					RuntimeVariables.replace("Advanced \u00bb"));
 
 			case 3:
 				selenium.type("//input[@id='_125_firstName']",
-					RuntimeVariables.replace("selen1"));
+					RuntimeVariables.replace("userfn1"));
 				selenium.clickAt("xPath=(//input[@value='Search'])[2]",
 					RuntimeVariables.replace("Search"));
 				selenium.waitForPageToLoad("30000");
-				assertFalse(selenium.isTextPresent("selenium01"));
-				selenium.clickAt("link=\u00ab Basic",
+				assertFalse(selenium.isTextPresent("usersn"));
+				selenium.clickAt("//a[.='\u00ab Basic']",
 					RuntimeVariables.replace("\u00ab Basic"));
 
 			case 100:

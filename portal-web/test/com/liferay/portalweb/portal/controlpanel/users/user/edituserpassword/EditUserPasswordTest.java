@@ -74,11 +74,25 @@ public class EditUserPasswordTest extends BaseTestCase {
 				selenium.clickAt("link=Users and Organizations",
 					RuntimeVariables.replace("Users and Organizations"));
 				selenium.waitForPageToLoad("30000");
-				assertEquals(RuntimeVariables.replace("Search All Users"),
-					selenium.getText("//a[@id='_125_allUsersLink']"));
-				selenium.clickAt("//a[@id='_125_allUsersLink']",
+				selenium.clickAt("link=Search All Users",
 					RuntimeVariables.replace("Search All Users"));
 				selenium.waitForPageToLoad("30000");
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isElementPresent("//a[.='\u00ab Basic']")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
 
 				boolean basicVisible = selenium.isVisible(
 						"//a[.='\u00ab Basic']");

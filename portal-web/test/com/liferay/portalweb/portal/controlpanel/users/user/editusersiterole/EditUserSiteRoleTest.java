@@ -23,6 +23,26 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class EditUserSiteRoleTest extends BaseTestCase {
 	public void testEditUserSiteRole() throws Exception {
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isElementPresent(
+							"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -122,7 +142,6 @@ public class EditUserSiteRoleTest extends BaseTestCase {
 		selenium.clickAt("//span[contains(.,'Select')]/a[contains(@href,'openCommunityRoleSelector')]",
 			RuntimeVariables.replace("Select"));
 		Thread.sleep(5000);
-		selenium.waitForPopUp("role", RuntimeVariables.replace("30000"));
 		selenium.selectWindow("title=Users and Organizations");
 
 		for (int second = 0;; second++) {

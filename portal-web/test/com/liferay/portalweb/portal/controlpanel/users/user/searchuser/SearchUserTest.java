@@ -23,6 +23,8 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class SearchUserTest extends BaseTestCase {
 	public void testSearchUser() throws Exception {
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -30,7 +32,28 @@ public class SearchUserTest extends BaseTestCase {
 			}
 
 			try {
-				if (selenium.isElementPresent("link=Control Panel")) {
+				if (selenium.isElementPresent(
+							"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
+		assertEquals(RuntimeVariables.replace("Go to"),
+			selenium.getText("//li[@id='_145_mySites']/a/span"));
+		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isVisible("link=Control Panel")) {
 					break;
 				}
 			}
@@ -47,18 +70,18 @@ public class SearchUserTest extends BaseTestCase {
 			RuntimeVariables.replace("Users and Organizations"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_125_keywords']",
-			RuntimeVariables.replace("selenium*"));
+			RuntimeVariables.replace("user*"));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("selen01"),
+		assertEquals(RuntimeVariables.replace("userfn"),
 			selenium.getText("//td[2]/a"));
-		assertEquals(RuntimeVariables.replace("nium01"),
+		assertEquals(RuntimeVariables.replace("userln"),
 			selenium.getText("//td[3]/a"));
-		assertEquals(RuntimeVariables.replace("selenium01"),
+		assertEquals(RuntimeVariables.replace("usersn"),
 			selenium.getText("//td[4]/a"));
 		selenium.type("//input[@id='_125_keywords']",
-			RuntimeVariables.replace("selenium1"));
+			RuntimeVariables.replace("user1*"));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");

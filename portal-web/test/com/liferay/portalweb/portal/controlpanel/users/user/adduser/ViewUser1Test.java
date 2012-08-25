@@ -28,6 +28,26 @@ public class ViewUser1Test extends BaseTestCase {
 			switch (label) {
 			case 1:
 				selenium.open("/web/guest/home/");
+				selenium.clickAt("//div[@id='dockbar']",
+					RuntimeVariables.replace("Dockbar"));
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isElementPresent(
+									"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
+
 				assertEquals(RuntimeVariables.replace("Go to"),
 					selenium.getText("//li[@id='_145_mySites']/a/span"));
 				selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -58,7 +78,24 @@ public class ViewUser1Test extends BaseTestCase {
 					RuntimeVariables.replace("Search All Users"));
 				selenium.waitForPageToLoad("30000");
 
-				boolean basicVisible = selenium.isVisible("link=\u00ab Basic");
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isElementPresent("//a[.='\u00ab Basic']")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
+
+				boolean basicVisible = selenium.isVisible(
+						"//a[.='\u00ab Basic']");
 
 				if (!basicVisible) {
 					label = 2;
@@ -66,7 +103,7 @@ public class ViewUser1Test extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("link=\u00ab Basic",
+				selenium.clickAt("//a[.='\u00ab Basic']",
 					RuntimeVariables.replace("\u00ab Basic"));
 
 				for (int second = 0;; second++) {
@@ -92,15 +129,12 @@ public class ViewUser1Test extends BaseTestCase {
 					RuntimeVariables.replace("Search"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("userfn1"),
-					selenium.getText(
-						"//tr[contains(.,'userfn1')]/td[@headers='_125_usersSearchContainer_col-first-name']/a"));
+					selenium.getText("//tr[contains(.,'userfn1')]/td[2]/a"));
 				assertEquals(RuntimeVariables.replace("userln1"),
-					selenium.getText(
-						"//tr[contains(.,'userfn1')]/td[@headers='_125_usersSearchContainer_col-last-name']/a"));
+					selenium.getText("//tr[contains(.,'userfn1')]/td[3]/a"));
 				assertEquals(RuntimeVariables.replace("usersn1"),
-					selenium.getText(
-						"//tr[contains(.,'userfn1')]/td[@headers='_125_usersSearchContainer_col-screen-name']/a"));
-				selenium.clickAt("//tr[contains(.,'userfn1')]/td[@headers='_125_usersSearchContainer_col-first-name']/a",
+					selenium.getText("//tr[contains(.,'userfn1')]/td[4]/a"));
+				selenium.clickAt("//tr[contains(.,'userfn1')]/td[2]/a",
 					RuntimeVariables.replace("userfn1"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("userfn1 userln1"),
@@ -124,14 +158,17 @@ public class ViewUser1Test extends BaseTestCase {
 				assertTrue(selenium.isVisible("//img[@class='avatar']"));
 				assertEquals(RuntimeVariables.replace("Change"),
 					selenium.getText("//span[@class='edit-logo-link']/a/span"));
-				assertEquals("0",
-					selenium.getValue("//select[@id='_125_birthdayMonth']"));
+				assertEquals("January",
+					selenium.getSelectedLabel(
+						"//select[@id='_125_birthdayMonth']"));
 				assertEquals("1",
-					selenium.getValue("//select[@id='_125_birthdayDay']"));
+					selenium.getSelectedLabel(
+						"//select[@id='_125_birthdayDay']"));
 				assertEquals("1970",
-					selenium.getValue("//select[@id='_125_birthdayYear']"));
-				assertEquals("true",
-					selenium.getValue("//select[@id='_125_male']"));
+					selenium.getSelectedLabel(
+						"//select[@id='_125_birthdayYear']"));
+				assertEquals("Male",
+					selenium.getSelectedLabel("//select[@id='_125_male']"));
 				assertEquals("",
 					selenium.getValue("//input[@id='_125_jobTitle']"));
 				assertEquals(RuntimeVariables.replace("userfn1 userln1"),

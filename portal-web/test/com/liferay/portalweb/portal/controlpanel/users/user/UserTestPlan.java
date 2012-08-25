@@ -15,6 +15,7 @@
 package com.liferay.portalweb.portal.controlpanel.users.user;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
+import com.liferay.portalweb.portal.controlpanel.users.user.activateuseractions.ActivateUserActionsTests;
 import com.liferay.portalweb.portal.controlpanel.users.user.adduser.AddUserTests;
 import com.liferay.portalweb.portal.controlpanel.users.user.adduserannouncement.AddUserAnnouncementTests;
 import com.liferay.portalweb.portal.controlpanel.users.user.addusercomment.AddUserCommentTests;
@@ -65,10 +66,6 @@ import com.liferay.portalweb.portal.controlpanel.users.user.adduserinstantmessen
 import com.liferay.portalweb.portal.controlpanel.users.user.adduserlastnamenull.AddUserLastNameNullTests;
 import com.liferay.portalweb.portal.controlpanel.users.user.addusermultiple.AddUserMultipleTests;
 import com.liferay.portalweb.portal.controlpanel.users.user.adduseropenid.AddUserOpenIDTests;
-import com.liferay.portalweb.portal.controlpanel.users.user.adduserpassword1null.AddUserPassword1NullTests;
-import com.liferay.portalweb.portal.controlpanel.users.user.adduserpassword2null.AddUserPassword2NullTests;
-import com.liferay.portalweb.portal.controlpanel.users.user.adduserpassworddifferent.AddUserPasswordDifferentTests;
-import com.liferay.portalweb.portal.controlpanel.users.user.adduserpasswordduplicate.AddUserPasswordDuplicateTests;
 import com.liferay.portalweb.portal.controlpanel.users.user.adduserscreennameanonymous.AddUserScreenNameAnonymousTests;
 import com.liferay.portalweb.portal.controlpanel.users.user.adduserscreennamecyrus.AddUserScreenNameCyrusTests;
 import com.liferay.portalweb.portal.controlpanel.users.user.adduserscreennameduplicate.AddUserScreenNameDuplicateTests;
@@ -83,16 +80,22 @@ import com.liferay.portalweb.portal.controlpanel.users.user.addusersocialnetwork
 import com.liferay.portalweb.portal.controlpanel.users.user.advancedsearchuser.AdvancedSearchUserTests;
 import com.liferay.portalweb.portal.controlpanel.users.user.changeuserpassword.ChangeUserPasswordTests;
 import com.liferay.portalweb.portal.controlpanel.users.user.changeuserpasswordinvalid.ChangeUserPasswordInvalidTests;
-import com.liferay.portalweb.portal.controlpanel.users.user.deactivateuser.DeactivateUserTests;
-import com.liferay.portalweb.portal.controlpanel.users.user.deleteuser.DeleteUserTests;
+import com.liferay.portalweb.portal.controlpanel.users.user.deactivateuseractions.DeactivateUserActionsTests;
+import com.liferay.portalweb.portal.controlpanel.users.user.deactivateuserdetails.DeactivateUserDetailsTests;
+import com.liferay.portalweb.portal.controlpanel.users.user.deleteuseractions.DeleteUserActionsTests;
+import com.liferay.portalweb.portal.controlpanel.users.user.deleteuserdetails.DeleteUserDetailsTests;
 import com.liferay.portalweb.portal.controlpanel.users.user.edituserorgrole.EditUserOrgRoleTests;
 import com.liferay.portalweb.portal.controlpanel.users.user.edituserpassword.EditUserPasswordTests;
+import com.liferay.portalweb.portal.controlpanel.users.user.edituserpassword1null.EditUserPassword1NullTests;
+import com.liferay.portalweb.portal.controlpanel.users.user.edituserpassword2null.EditUserPassword2NullTests;
+import com.liferay.portalweb.portal.controlpanel.users.user.edituserpassworddifferent.EditUserPasswordDifferentTests;
+import com.liferay.portalweb.portal.controlpanel.users.user.edituserpasswordduplicate.EditUserPasswordDuplicateTests;
 import com.liferay.portalweb.portal.controlpanel.users.user.edituserregrole.EditUserRegRoleTests;
 import com.liferay.portalweb.portal.controlpanel.users.user.editusersite.EditUserSiteTests;
 import com.liferay.portalweb.portal.controlpanel.users.user.editusersiterole.EditUserSiteRoleTests;
-import com.liferay.portalweb.portal.controlpanel.users.user.restoreuser.RestoreUserTests;
+import com.liferay.portalweb.portal.controlpanel.users.user.restoreuserdetails.RestoreUserDetailsTests;
 import com.liferay.portalweb.portal.controlpanel.users.user.searchuser.SearchUserTests;
-import com.liferay.portalweb.portal.controlpanel.users.user.searchuserfullnamecp.SearchUserFullNameCPTests;
+import com.liferay.portalweb.portal.controlpanel.users.user.searchuserfullname.SearchUserFullNameTests;
 import com.liferay.portalweb.portal.controlpanel.users.user.searchuserquotes.SearchUserQuotesTests;
 import com.liferay.portalweb.portal.controlpanel.users.user.signin.SignInTests;
 
@@ -107,6 +110,7 @@ public class UserTestPlan extends BaseTestSuite {
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
 
+		testSuite.addTest(ActivateUserActionsTests.suite());
 		testSuite.addTest(AddUserTests.suite());
 		testSuite.addTest(AddUserAnnouncementTests.suite());
 		testSuite.addTest(AddUserCommentTests.suite());
@@ -157,10 +161,6 @@ public class UserTestPlan extends BaseTestSuite {
 		testSuite.addTest(AddUserLastNameNullTests.suite());
 		testSuite.addTest(AddUserMultipleTests.suite());
 		testSuite.addTest(AddUserOpenIDTests.suite());
-		testSuite.addTest(AddUserPassword1NullTests.suite());
-		testSuite.addTest(AddUserPassword2NullTests.suite());
-		testSuite.addTest(AddUserPasswordDifferentTests.suite());
-		testSuite.addTest(AddUserPasswordDuplicateTests.suite());
 		testSuite.addTest(AddUserScreenNameAnonymousTests.suite());
 		testSuite.addTest(AddUserScreenNameCyrusTests.suite());
 		testSuite.addTest(AddUserScreenNameDuplicateTests.suite());
@@ -175,16 +175,22 @@ public class UserTestPlan extends BaseTestSuite {
 		testSuite.addTest(AdvancedSearchUserTests.suite());
 		testSuite.addTest(ChangeUserPasswordTests.suite());
 		testSuite.addTest(ChangeUserPasswordInvalidTests.suite());
-		testSuite.addTest(DeactivateUserTests.suite());
-		testSuite.addTest(DeleteUserTests.suite());
+		testSuite.addTest(DeactivateUserActionsTests.suite());
+		testSuite.addTest(DeactivateUserDetailsTests.suite());
+		testSuite.addTest(DeleteUserActionsTests.suite());
+		testSuite.addTest(DeleteUserDetailsTests.suite());
 		testSuite.addTest(EditUserOrgRoleTests.suite());
 		testSuite.addTest(EditUserPasswordTests.suite());
+		testSuite.addTest(EditUserPassword1NullTests.suite());
+		testSuite.addTest(EditUserPassword2NullTests.suite());
+		testSuite.addTest(EditUserPasswordDifferentTests.suite());
+		testSuite.addTest(EditUserPasswordDuplicateTests.suite());
 		testSuite.addTest(EditUserRegRoleTests.suite());
 		testSuite.addTest(EditUserSiteTests.suite());
 		testSuite.addTest(EditUserSiteRoleTests.suite());
-		testSuite.addTest(RestoreUserTests.suite());
+		testSuite.addTest(RestoreUserDetailsTests.suite());
 		testSuite.addTest(SearchUserTests.suite());
-		testSuite.addTest(SearchUserFullNameCPTests.suite());
+		testSuite.addTest(SearchUserFullNameTests.suite());
 		testSuite.addTest(SearchUserQuotesTests.suite());
 		testSuite.addTest(SignInTests.suite());
 

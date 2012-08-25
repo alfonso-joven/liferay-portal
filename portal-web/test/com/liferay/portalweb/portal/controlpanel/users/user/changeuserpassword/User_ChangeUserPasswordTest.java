@@ -23,6 +23,13 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class User_ChangeUserPasswordTest extends BaseTestCase {
 	public void testUser_ChangeUserPassword() throws Exception {
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		assertEquals(RuntimeVariables.replace("userfn userln"),
+			selenium.getText("//li[@id='_145_userAvatar']/span/a[2]"));
+		selenium.clickAt("//li[@id='_145_userAvatar']/span/a[2]",
+			RuntimeVariables.replace("userfn userln"));
+		Thread.sleep(5000);
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -30,7 +37,7 @@ public class User_ChangeUserPasswordTest extends BaseTestCase {
 			}
 
 			try {
-				if (selenium.isVisible("link=selen01 lenn nium01")) {
+				if (selenium.isVisible("//iframe")) {
 					break;
 				}
 			}
@@ -40,9 +47,7 @@ public class User_ChangeUserPasswordTest extends BaseTestCase {
 			Thread.sleep(1000);
 		}
 
-		selenium.clickAt("link=selen01 lenn nium01",
-			RuntimeVariables.replace("selen01 lenn nium01"));
-		Thread.sleep(5000);
+		selenium.selectFrame("//iframe");
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -82,7 +87,7 @@ public class User_ChangeUserPasswordTest extends BaseTestCase {
 		}
 
 		selenium.type("//input[@id='_2_password0']",
-			RuntimeVariables.replace("asdf"));
+			RuntimeVariables.replace("test"));
 		selenium.type("//input[@id='_2_password1']",
 			RuntimeVariables.replace("test2"));
 		selenium.type("//input[@id='_2_password2']",
@@ -110,5 +115,6 @@ public class User_ChangeUserPasswordTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
+		selenium.selectFrame("relative=top");
 	}
 }

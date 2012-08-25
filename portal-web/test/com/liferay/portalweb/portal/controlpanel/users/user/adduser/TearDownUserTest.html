@@ -54,6 +54,11 @@
 	<td>Search All Users</td>
 </tr>
 <tr>
+	<td>waitForElementPresent</td>
+	<td>//a[.='« Basic']</td>
+	<td>« Basic</td>
+</tr>
+<tr>
 	<td>storeVisible</td>
 	<td>//a[.='« Basic']</td>
 	<td>basicVisible</td>
@@ -87,6 +92,11 @@
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Search']</td>
 	<td>Search</td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
 </tr>
 <tr>
 	<td>storeElementPresent</td>
@@ -137,6 +147,11 @@
 	<td>label</td>
 	<td>UsersNotPresent</td>
 	<td></td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>//div[@class='portlet-msg-info']</td>
+	<td>No users were found.</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -190,7 +205,7 @@
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>link=Advanced »</td>
+	<td>//a[.='Advanced »']</td>
 	<td>Advanced</td>
 </tr>
 <tr>
@@ -207,6 +222,11 @@
 	<td>clickAtAndWait</td>
 	<td>xPath=(//input[@value='Search'])[2]</td>
 	<td>Search</td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
 </tr>
 <tr>
 	<td>storeElementPresent</td>
@@ -259,13 +279,18 @@
 	<td></td>
 </tr>
 <tr>
+	<td>waitForText</td>
+	<td>//div[@class='portlet-msg-info']</td>
+	<td>No users were found.</td>
+</tr>
+<tr>
 	<td>assertText</td>
 	<td>//div[@class='portlet-msg-info']</td>
 	<td>No users were found.</td>
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>link=« Basic</td>
+	<td>//a[.='« Basic']</td>
 	<td>Basic</td>
 </tr>
 </tbody></table>
