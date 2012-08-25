@@ -397,16 +397,19 @@
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="control-panel-users" />
+			<param name="test.ant.script.selenium.implementation" value="web-driver" />
 			<param name="test.ant.script.suite" value="ControlPanelUsersTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="control-panel-virtual-hosting" />
+			<param name="test.ant.script.selenium.implementation" value="web-driver" />
 			<param name="test.ant.script.suite" value="ControlPanelVirtualHostingTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="control-panel-web-content" />
+			<param name="test.ant.script.selenium.implementation" value="web-driver" />
 			<param name="test.ant.script.suite" value="ControlPanelWebContentTestSuite" />
 		</antcall>
 
