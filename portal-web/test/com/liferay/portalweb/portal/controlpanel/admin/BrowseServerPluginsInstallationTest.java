@@ -23,6 +23,26 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class BrowseServerPluginsInstallationTest extends BaseTestCase {
 	public void testBrowseServerPluginsInstallation() throws Exception {
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isElementPresent(
+							"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -50,7 +70,7 @@ public class BrowseServerPluginsInstallationTest extends BaseTestCase {
 			RuntimeVariables.replace("Plugins Installation"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
-				"Plugins Installation allows users to install additional plugins from the Liferay repository or install custom plugins. Warning: Plugins Installation will be replaced with Liferay Marketplace in future Liferay releases. Read more about Liferay Marketplace for additional details.Or disable for all portlets."),
+				"Plugins Installation allows users to install additional plugins from the Liferay repository or install custom plugins. Warning: Plugins Installation will be replaced with Liferay Marketplace in future Liferay releases. Read more about Liferay Marketplace for additional details."),
 			selenium.getText("//div[@id='show-portlet-description-136']/div"));
 		selenium.select("//select[@name='_136_page']",
 			RuntimeVariables.replace("4"));
@@ -60,13 +80,13 @@ public class BrowseServerPluginsInstallationTest extends BaseTestCase {
 			RuntimeVariables.replace("Theme Plugins"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
-				"Plugins Installation allows users to install additional plugins from the Liferay repository or install custom plugins. Warning: Plugins Installation will be replaced with Liferay Marketplace in future Liferay releases. Read more about Liferay Marketplace for additional details.Or disable for all portlets."),
+				"Plugins Installation allows users to install additional plugins from the Liferay repository or install custom plugins. Warning: Plugins Installation will be replaced with Liferay Marketplace in future Liferay releases. Read more about Liferay Marketplace for additional details."),
 			selenium.getText("//div[@id='show-portlet-description-136']/div"));
 		selenium.clickAt("link=Layout Template Plugins",
 			RuntimeVariables.replace("Layout Template Plugins"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
-				"Plugins Installation allows users to install additional plugins from the Liferay repository or install custom plugins. Warning: Plugins Installation will be replaced with Liferay Marketplace in future Liferay releases. Read more about Liferay Marketplace for additional details.Or disable for all portlets."),
+				"Plugins Installation allows users to install additional plugins from the Liferay repository or install custom plugins. Warning: Plugins Installation will be replaced with Liferay Marketplace in future Liferay releases. Read more about Liferay Marketplace for additional details."),
 			selenium.getText("//div[@id='show-portlet-description-136']/div"));
 	}
 }
