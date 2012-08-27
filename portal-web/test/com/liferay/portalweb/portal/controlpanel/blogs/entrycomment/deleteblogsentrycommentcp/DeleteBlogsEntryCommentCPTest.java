@@ -58,6 +58,8 @@ public class DeleteBlogsEntryCommentCPTest extends BaseTestCase {
 			selenium.getText("//li[4]/span/a/span"));
 		selenium.clickAt("//li[4]/span/a/span",
 			RuntimeVariables.replace("Delete"));
+		assertTrue(selenium.getConfirmation()
+						   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -80,7 +82,5 @@ public class DeleteBlogsEntryCommentCPTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("0 Comments"),
 			selenium.getText("//span[@class='comments']"));
 		assertFalse(selenium.isTextPresent("Blogs Entry Comment Body"));
-		assertTrue(selenium.getConfirmation()
-						   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 	}
 }

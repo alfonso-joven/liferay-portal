@@ -30,9 +30,9 @@ public class EntryCommentTestPlan extends BaseTestSuite {
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
 
-		testSuite.addTest(AddBlogsEntryCommentCPTests.suite());
+//		testSuite.addTest(AddBlogsEntryCommentCPTests.suite());
 		testSuite.addTest(DeleteBlogsEntryCommentCPTests.suite());
-		testSuite.addTest(EditBlogsEntryCommentBodyCPTests.suite());
+//		testSuite.addTest(EditBlogsEntryCommentBodyCPTests.suite());
 
 		return testSuite;
 	}
