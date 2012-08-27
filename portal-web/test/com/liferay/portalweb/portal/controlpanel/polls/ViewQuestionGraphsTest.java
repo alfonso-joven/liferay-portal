@@ -23,6 +23,26 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class ViewQuestionGraphsTest extends BaseTestCase {
 	public void testViewQuestionGraphs() throws Exception {
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isElementPresent(
+							"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -52,8 +72,8 @@ public class ViewQuestionGraphsTest extends BaseTestCase {
 			RuntimeVariables.replace("Test Poll Question"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Area", RuntimeVariables.replace("Area"));
-		selenium.waitForPopUp("viewChart", RuntimeVariables.replace("30000"));
-		selenium.selectWindow("viewChart");
+		selenium.waitForPopUp("", RuntimeVariables.replace("30000"));
+		selenium.selectWindow("");
 		selenium.close();
 		selenium.selectWindow("null");
 
@@ -75,8 +95,8 @@ public class ViewQuestionGraphsTest extends BaseTestCase {
 
 		selenium.clickAt("link=Horizontal Bar",
 			RuntimeVariables.replace("Horizontal Bar"));
-		selenium.waitForPopUp("viewChart", RuntimeVariables.replace("30000"));
-		selenium.selectWindow("viewChart");
+		selenium.waitForPopUp("", RuntimeVariables.replace("30000"));
+		selenium.selectWindow("");
 		selenium.close();
 		selenium.selectWindow("null");
 
@@ -97,8 +117,8 @@ public class ViewQuestionGraphsTest extends BaseTestCase {
 		}
 
 		selenium.clickAt("link=Line", RuntimeVariables.replace("Line"));
-		selenium.waitForPopUp("viewChart", RuntimeVariables.replace("30000"));
-		selenium.selectWindow("viewChart");
+		selenium.waitForPopUp("", RuntimeVariables.replace("30000"));
+		selenium.selectWindow("");
 		selenium.close();
 		selenium.selectWindow("null");
 
@@ -119,8 +139,8 @@ public class ViewQuestionGraphsTest extends BaseTestCase {
 		}
 
 		selenium.clickAt("link=Pie", RuntimeVariables.replace("Pie"));
-		selenium.waitForPopUp("viewChart", RuntimeVariables.replace("30000"));
-		selenium.selectWindow("viewChart");
+		selenium.waitForPopUp("", RuntimeVariables.replace("30000"));
+		selenium.selectWindow("");
 		selenium.close();
 		selenium.selectWindow("null");
 
@@ -142,8 +162,8 @@ public class ViewQuestionGraphsTest extends BaseTestCase {
 
 		selenium.clickAt("link=Vertical Bar",
 			RuntimeVariables.replace("Vertical Bar"));
-		selenium.waitForPopUp("viewChart", RuntimeVariables.replace("30000"));
-		selenium.selectWindow("viewChart");
+		selenium.waitForPopUp("", RuntimeVariables.replace("30000"));
+		selenium.selectWindow("");
 		selenium.close();
 		selenium.selectWindow("null");
 	}
