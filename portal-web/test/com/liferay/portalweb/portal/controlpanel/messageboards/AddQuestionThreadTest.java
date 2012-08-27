@@ -80,9 +80,8 @@ public class AddQuestionThreadTest extends BaseTestCase {
 		}
 
 		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[@id='cke_34_label' and .='Source']"));
-		selenium.clickAt("//span[@id='cke_34_label' and .='Source']",
-			RuntimeVariables.replace("Source"));
+			selenium.getText("//a[@id='cke_33']"));
+		selenium.clickAt("//a[@id='cke_33']", RuntimeVariables.replace("Source"));
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -104,9 +103,8 @@ public class AddQuestionThreadTest extends BaseTestCase {
 		selenium.type("//td[@id='cke_contents__162_editor']/textarea",
 			RuntimeVariables.replace("What is your favorite color?"));
 		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[@id='cke_34_label' and .='Source']"));
-		selenium.clickAt("//span[@id='cke_34_label' and .='Source']",
-			RuntimeVariables.replace("Source"));
+			selenium.getText("//a[@id='cke_33']"));
+		selenium.clickAt("//a[@id='cke_33']", RuntimeVariables.replace("Source"));
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {

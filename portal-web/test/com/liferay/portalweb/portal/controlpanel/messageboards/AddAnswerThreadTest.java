@@ -73,9 +73,8 @@ public class AddAnswerThreadTest extends BaseTestCase {
 		}
 
 		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[@id='cke_34_label' and .='Source']"));
-		selenium.clickAt("//span[@id='cke_34_label' and .='Source']",
-			RuntimeVariables.replace("Source"));
+			selenium.getText("//a[@id='cke_33']"));
+		selenium.clickAt("//a[@id='cke_33']", RuntimeVariables.replace("Source"));
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -98,9 +97,8 @@ public class AddAnswerThreadTest extends BaseTestCase {
 			RuntimeVariables.replace(
 				"I like green because it is so natural. Obviously."));
 		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[@id='cke_34_label' and .='Source']"));
-		selenium.clickAt("//span[@id='cke_34_label' and .='Source']",
-			RuntimeVariables.replace("Source"));
+			selenium.getText("//a[@id='cke_33']"));
+		selenium.clickAt("//a[@id='cke_33']", RuntimeVariables.replace("Source"));
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {

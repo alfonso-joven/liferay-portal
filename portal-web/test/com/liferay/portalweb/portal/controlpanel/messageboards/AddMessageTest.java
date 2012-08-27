@@ -80,9 +80,8 @@ public class AddMessageTest extends BaseTestCase {
 		}
 
 		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[@id='cke_34_label' and .='Source']"));
-		selenium.clickAt("//span[@id='cke_34_label' and .='Source']",
-			RuntimeVariables.replace("Source"));
+			selenium.getText("//a[@id='cke_33']"));
+		selenium.clickAt("//a[@id='cke_33']", RuntimeVariables.replace("Source"));
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -104,9 +103,8 @@ public class AddMessageTest extends BaseTestCase {
 		selenium.type("//td[@id='cke_contents__162_editor']/textarea",
 			RuntimeVariables.replace("This is a t\u00e9st m\u00e9ssag\u00e9!"));
 		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[@id='cke_34_label' and .='Source']"));
-		selenium.clickAt("//span[@id='cke_34_label' and .='Source']",
-			RuntimeVariables.replace("Source"));
+			selenium.getText("//a[@id='cke_33']"));
+		selenium.clickAt("//a[@id='cke_33']", RuntimeVariables.replace("Source"));
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {

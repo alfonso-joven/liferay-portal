@@ -122,9 +122,8 @@ public class MoveThreadTest extends BaseTestCase {
 				}
 
 				assertEquals(RuntimeVariables.replace("Source"),
-					selenium.getText(
-						"//span[@id='cke_34_label' and .='Source']"));
-				selenium.clickAt("//span[@id='cke_34_label' and .='Source']",
+					selenium.getText("//a[@id='cke_33']"));
+				selenium.clickAt("//a[@id='cke_33']",
 					RuntimeVariables.replace("Source"));
 
 				for (int second = 0;; second++) {
@@ -148,9 +147,8 @@ public class MoveThreadTest extends BaseTestCase {
 					RuntimeVariables.replace(
 						"Trust and paths will be straightened."));
 				assertEquals(RuntimeVariables.replace("Source"),
-					selenium.getText(
-						"//span[@id='cke_34_label' and .='Source']"));
-				selenium.clickAt("//span[@id='cke_34_label' and .='Source']",
+					selenium.getText("//a[@id='cke_33']"));
+				selenium.clickAt("//a[@id='cke_33']",
 					RuntimeVariables.replace("Source"));
 
 				for (int second = 0;; second++) {
@@ -212,9 +210,9 @@ public class MoveThreadTest extends BaseTestCase {
 				selenium.selectFrame("relative=top");
 				selenium.clickAt("//input[@value='Select']",
 					RuntimeVariables.replace("Select"));
-				selenium.waitForPopUp("category",
+				selenium.waitForPopUp("title=Message Boards",
 					RuntimeVariables.replace("30000"));
-				selenium.selectWindow("category");
+				selenium.selectWindow("");
 				Thread.sleep(5000);
 
 				boolean CategoriesPresent = selenium.isElementPresent(
@@ -233,12 +231,28 @@ public class MoveThreadTest extends BaseTestCase {
 			case 2:
 				selenium.click("//input[@value='Choose']");
 				selenium.selectWindow("null");
-				Thread.sleep(5000);
-				assertTrue(selenium.isElementPresent("link=Sujr"));
+				Thread.sleep(30000);
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isElementPresent("link=Sujr ")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
+
 				selenium.clickAt("//input[@value='Move Thread']",
 					RuntimeVariables.replace("Move Thread"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.isElementPresent("link=Sujr"));
+				assertTrue(selenium.isElementPresent("link=Sujr "));
 				assertTrue(selenium.isElementPresent(
 						"link=T\u00e9st M\u00e9ssag\u00e9 to b\u00e9 D\u00e9l\u00e9t\u00e9d"));
 				assertTrue(selenium.isTextPresent(
