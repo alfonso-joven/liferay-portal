@@ -18,7 +18,6 @@ import com.liferay.portalweb.portal.BaseTestSuite;
 import com.liferay.portalweb.portal.controlpanel.usergroups.ugusergroup.addugusergroup.AddUGUserGroupTest;
 import com.liferay.portalweb.portal.controlpanel.usergroups.ugusergroup.addugusergroup.TearDownUGUserGroupTest;
 import com.liferay.portalweb.portal.controlpanel.usergroups.ugusergroup.assignmembersugusergroupuser.AssignMembersUGUserGroupUserTest;
-import com.liferay.portalweb.portal.controlpanel.usergroups.ugusergroup.removemembersugusergroupuser.RemoveMembersUGUserGroupUserTest;
 import com.liferay.portalweb.portal.controlpanel.users.user.adduser.AddUserTest;
 import com.liferay.portalweb.portal.controlpanel.users.user.adduser.TearDownUserTest;
 
@@ -36,9 +35,8 @@ public class DeleteUGUserGroupUserTests extends BaseTestSuite {
 		testSuite.addTestSuite(AssignMembersUGUserGroupUserTest.class);
 		testSuite.addTestSuite(DeleteUGUserGroupUserTest.class);
 		testSuite.addTestSuite(ViewDeleteUGUserGroupUserTest.class);
-		testSuite.addTestSuite(RemoveMembersUGUserGroupUserTest.class);
-		testSuite.addTestSuite(TearDownUGUserGroupTest.class);
 		testSuite.addTestSuite(TearDownUserTest.class);
+		testSuite.addTestSuite(TearDownUGUserGroupTest.class);
 
 		return testSuite;
 	}

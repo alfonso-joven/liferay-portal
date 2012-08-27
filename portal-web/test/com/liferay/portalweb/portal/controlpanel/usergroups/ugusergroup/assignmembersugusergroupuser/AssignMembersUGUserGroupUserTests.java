@@ -17,7 +17,6 @@ package com.liferay.portalweb.portal.controlpanel.usergroups.ugusergroup.assignm
 import com.liferay.portalweb.portal.BaseTestSuite;
 import com.liferay.portalweb.portal.controlpanel.usergroups.ugusergroup.addugusergroup.AddUGUserGroupTest;
 import com.liferay.portalweb.portal.controlpanel.usergroups.ugusergroup.addugusergroup.TearDownUGUserGroupTest;
-import com.liferay.portalweb.portal.controlpanel.usergroups.ugusergroup.removemembersugusergroupuser.RemoveMembersUGUserGroupUserTest;
 import com.liferay.portalweb.portal.controlpanel.users.user.adduser.AddUserTest;
 import com.liferay.portalweb.portal.controlpanel.users.user.adduser.TearDownUserTest;
 
@@ -34,9 +33,8 @@ public class AssignMembersUGUserGroupUserTests extends BaseTestSuite {
 		testSuite.addTestSuite(AddUGUserGroupTest.class);
 		testSuite.addTestSuite(AssignMembersUGUserGroupUserTest.class);
 		testSuite.addTestSuite(ViewAssignMembersUGUserGroupUserTest.class);
-		testSuite.addTestSuite(RemoveMembersUGUserGroupUserTest.class);
-		testSuite.addTestSuite(TearDownUGUserGroupTest.class);
 		testSuite.addTestSuite(TearDownUserTest.class);
+		testSuite.addTestSuite(TearDownUGUserGroupTest.class);
 
 		return testSuite;
 	}

@@ -71,9 +71,9 @@ public class ViewPortletUGCPTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("User Groups"),
 			selenium.getText("//span[@class='portlet-title-text']"));
-		assertEquals(RuntimeVariables.replace(
-				"User groups provide a way to group users independently of the organizations to which they belong. Administrators can define a user group and assign the user group as a member of a site to make all of its users members automatically. Or disable for all portlets."),
-			selenium.getText("//div[@id='show-portlet-description-127']/div"));
+		assertTrue(selenium.isPartialText(
+				"//div[@id='show-portlet-description-127']/div",
+				"User groups provide a way to group users independently of the organizations to which they belong. Administrators can define a user group and assign the user group as a member of a site to make all of its users members automatically."));
 		assertEquals(RuntimeVariables.replace("View All"),
 			selenium.getText("//div[@class='lfr-portlet-toolbar']/span[1]/a"));
 		assertEquals(RuntimeVariables.replace("Add"),

@@ -35,8 +35,8 @@ public class RemoveMembersUGUserGroupUserTests extends BaseTestSuite {
 		testSuite.addTestSuite(AssignMembersUGUserGroupUserTest.class);
 		testSuite.addTestSuite(RemoveMembersUGUserGroupUserTest.class);
 		testSuite.addTestSuite(ViewRemoveMembersUGUserGroupUserTest.class);
-		testSuite.addTestSuite(TearDownUGUserGroupTest.class);
 		testSuite.addTestSuite(TearDownUserTest.class);
+		testSuite.addTestSuite(TearDownUGUserGroupTest.class);
 
 		return testSuite;
 	}
