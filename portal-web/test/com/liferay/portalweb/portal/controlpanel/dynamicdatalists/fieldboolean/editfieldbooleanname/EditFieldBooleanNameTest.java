@@ -161,9 +161,9 @@ public class EditFieldBooleanNameTest extends BaseTestCase {
 
 		assertEquals(RuntimeVariables.replace("Name"),
 			selenium.getText("//tr[4]/td[1]/div"));
-		assertTrue(selenium.isPartialText("//tr[4]/td[2]/div", "checkbox"));
+		assertTrue(selenium.isPartialText("//tr[4]/td[2]/div", "boolean"));
 		selenium.doubleClickAt("//tr[4]/td[2]/div",
-			RuntimeVariables.replace("checkbox"));
+			RuntimeVariables.replace("boolean"));
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
