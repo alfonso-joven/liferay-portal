@@ -24,6 +24,26 @@ public class AddRecordSpreadsheetViewTest extends BaseTestCase {
 	public void testAddRecordSpreadsheetView() throws Exception {
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isElementPresent(
+							"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -109,7 +129,7 @@ public class AddRecordSpreadsheetViewTest extends BaseTestCase {
 			Thread.sleep(1000);
 		}
 
-		selenium.clickAt("//div[contains(@class,'aui-checkboxcelleditor')]",
+		selenium.doubleClickAt("//div[contains(@class,'aui-checkboxcelleditor')]",
 			RuntimeVariables.replace("Checkbox Cell Editor"));
 		assertEquals(RuntimeVariables.replace("True"),
 			selenium.getText(
@@ -442,11 +462,14 @@ public class AddRecordSpreadsheetViewTest extends BaseTestCase {
 				"//div[contains(@class,'aui-dropdowncelleditor-focused')]/form/div[2]/span/span/button[1]"));
 		selenium.clickAt("//div[contains(@class,'aui-dropdowncelleditor-focused')]/form/div[2]/span/span/button[1]",
 			RuntimeVariables.replace("Save"));
+		Thread.sleep(5000);
+		selenium.keyPress("//tbody[@class='yui3-datatable-data']/tr[1]/td[9]",
+			RuntimeVariables.replace("\\9"));
 		assertEquals(RuntimeVariables.replace("Text"),
 			selenium.getText(
 				"//thead[@class='yui3-datatable-columns']/tr/th[10]/div/a"));
-		selenium.doubleClickAt("//tbody[@class='yui3-datatable-data']/tr[1]/td[10]",
-			RuntimeVariables.replace("column 11 row 1"));
+		selenium.keyPress("//tbody[@class='yui3-datatable-data']/tr[1]/td[10]",
+			RuntimeVariables.replace("\\13"));
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -474,11 +497,14 @@ public class AddRecordSpreadsheetViewTest extends BaseTestCase {
 				"//div[contains(@class,'aui-textcelleditor-focused')]/form/div[2]/span/span/button[1]"));
 		selenium.clickAt("//div[contains(@class,'aui-textcelleditor-focused')]/form/div[2]/span/span/button[1]",
 			RuntimeVariables.replace("Save"));
+		Thread.sleep(5000);
+		selenium.keyPress("//tbody[@class='yui3-datatable-data']/tr[1]/td[10]",
+			RuntimeVariables.replace("\\9"));
 		assertEquals(RuntimeVariables.replace("Text Box"),
 			selenium.getText(
 				"//thead[@class='yui3-datatable-columns']/tr/th[11]/div/a"));
-		selenium.doubleClickAt("//tbody[@class='yui3-datatable-data']/tr[1]/td[11]",
-			RuntimeVariables.replace("column 12 row 1"));
+		selenium.keyPress("//tbody[@class='yui3-datatable-data']/tr[1]/td[11]",
+			RuntimeVariables.replace("\\13"));
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
