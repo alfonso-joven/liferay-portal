@@ -14,73 +14,68 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForVisible</td>
-	<td>link=User Statistics Test Page</td>
-	<td>User Statistics Test Page</td>
-</tr>
-<tr>
 	<td>clickAtAndWait</td>
 	<td>link=User Statistics Test Page</td>
 	<td>User Statistics Test Page</td>
 </tr>
 <tr>
 	<td>waitForText</td>
-	<td>xPath=(//span[@class='user-name'])[1]</td>
+	<td>//tr[contains(.,'Joe Bloggs')]//span[@class='user-name']</td>
 	<td>Joe Bloggs</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//span[@class='user-name'])[1]</td>
+	<td>//tr[contains(.,'Joe Bloggs')]//span[@class='user-name']</td>
 	<td>Joe Bloggs</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//div[@class='user-rank'])[1]</td>
+	<td>//tr[contains(.,'Joe Bloggs')]//div[@class='user-rank']</td>
 	<td>Rank: 1</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//div[@class='contribution-score'])[1]</td>
+	<td>//tr[contains(.,'Joe Bloggs')]//div[@class='contribution-score']</td>
 	<td>Contribution Score: 2</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//div[@class='participation-score'])[1]</td>
+	<td>//tr[contains(.,'Joe Bloggs')]//div[@class='participation-score']</td>
 	<td>Participation Score: 28</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='social-counter-user.wikis']</td>
+	<td>//tr[contains(.,'Joe Bloggs')]//div[@class='social-counter-user.wikis']</td>
 	<td>User's Wiki Pages: 1</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='social-counter-user.attachments']</td>
+	<td>//tr[contains(.,'Joe Bloggs')]//div[@class='social-counter-user.attachments']</td>
 	<td>User's Attachments: 2</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//span[@class='user-name'])[2]</td>
+	<td>//tr[contains(.,'userfn userln')]//span[@class='user-name']</td>
 	<td>userfn userln</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//div[@class='user-rank'])[2]</td>
+	<td>//tr[contains(.,'userfn userln')]//div[@class='user-rank']</td>
 	<td>Rank: 2</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//div[@class='contribution-score'])[2]</td>
+	<td>//tr[contains(.,'userfn userln')]//div[@class='contribution-score']</td>
 	<td>Contribution Score: 0</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//div[@class='participation-score'])[2]</td>
-	<td>Participation Score: 10</td>
+	<td>//tr[contains(.,'userfn userln')]//div[@class='participation-score']</td>
+	<td>Participation Score: 12</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='social-counter-user.subscriptions']	</td>
+	<td>//tr[contains(.,'userfn userln')]//div[@class='social-counter-user.subscriptions']	</td>
 	<td>User's Subscriptions: 1</td>
 </tr>
 </tbody></table>

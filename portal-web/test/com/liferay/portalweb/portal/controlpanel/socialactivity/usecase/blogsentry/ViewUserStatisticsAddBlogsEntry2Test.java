@@ -24,23 +24,6 @@ public class ViewUserStatisticsAddBlogsEntry2Test extends BaseTestCase {
 	public void testViewUserStatisticsAddBlogsEntry2()
 		throws Exception {
 		selenium.open("/web/site-name/");
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isVisible("link=User Statistics Test Page")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
 		selenium.clickAt("link=User Statistics Test Page",
 			RuntimeVariables.replace("User Statistics Test Page"));
 		selenium.waitForPageToLoad("30000");
@@ -53,7 +36,7 @@ public class ViewUserStatisticsAddBlogsEntry2Test extends BaseTestCase {
 			try {
 				if (RuntimeVariables.replace("Joe Bloggs")
 										.equals(selenium.getText(
-								"//span[@class='user-name']"))) {
+								"//tr[contains(.,'Joe Bloggs')]//span[@class='user-name']"))) {
 					break;
 				}
 			}
@@ -64,14 +47,19 @@ public class ViewUserStatisticsAddBlogsEntry2Test extends BaseTestCase {
 		}
 
 		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
-			selenium.getText("//span[@class='user-name']"));
+			selenium.getText(
+				"//tr[contains(.,'Joe Bloggs')]//span[@class='user-name']"));
 		assertEquals(RuntimeVariables.replace("Rank: 1"),
-			selenium.getText("//div[@class='user-rank']"));
+			selenium.getText(
+				"//tr[contains(.,'Joe Bloggs')]//div[@class='user-rank']"));
 		assertEquals(RuntimeVariables.replace("Contribution Score: 0"),
-			selenium.getText("//div[@class='contribution-score']"));
+			selenium.getText(
+				"//tr[contains(.,'Joe Bloggs')]//div[@class='contribution-score']"));
 		assertEquals(RuntimeVariables.replace("Participation Score: 5"),
-			selenium.getText("//div[@class='participation-score']"));
+			selenium.getText(
+				"//tr[contains(.,'Joe Bloggs')]//div[@class='participation-score']"));
 		assertEquals(RuntimeVariables.replace("User's Blog Entries: 2"),
-			selenium.getText("//div[@class='social-counter-user.blogs']"));
+			selenium.getText(
+				"//tr[contains(.,'Joe Bloggs')]//div[@class='social-counter-user.blogs']"));
 	}
 }

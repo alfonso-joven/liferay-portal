@@ -24,23 +24,6 @@ public class ViewUserStatisticsEditBlogsEntry2Test extends BaseTestCase {
 	public void testViewUserStatisticsEditBlogsEntry2()
 		throws Exception {
 		selenium.open("/web/site-name/");
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isVisible("link=User Statistics Test Page")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
 		selenium.clickAt("link=User Statistics Test Page",
 			RuntimeVariables.replace("User Statistics Test Page"));
 		selenium.waitForPageToLoad("30000");
@@ -53,7 +36,7 @@ public class ViewUserStatisticsEditBlogsEntry2Test extends BaseTestCase {
 			try {
 				if (RuntimeVariables.replace("Joe Bloggs")
 										.equals(selenium.getText(
-								"xPath=(//span[@class='user-name'])[1]"))) {
+								"//tr[contains(.,'Joe Bloggs')]//span[@class='user-name']"))) {
 					break;
 				}
 			}
@@ -64,31 +47,41 @@ public class ViewUserStatisticsEditBlogsEntry2Test extends BaseTestCase {
 		}
 
 		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
-			selenium.getText("xPath=(//span[@class='user-name'])[1]"));
+			selenium.getText(
+				"//tr[contains(.,'Joe Bloggs')]//span[@class='user-name']"));
 		assertEquals(RuntimeVariables.replace("Rank: 1"),
-			selenium.getText("xPath=(//div[@class='user-rank'])[1]"));
+			selenium.getText(
+				"//tr[contains(.,'Joe Bloggs')]//div[@class='user-rank']"));
 		assertEquals(RuntimeVariables.replace("Contribution Score: 9"),
-			selenium.getText("xPath=(//div[@class='contribution-score'])[1]"));
+			selenium.getText(
+				"//tr[contains(.,'Joe Bloggs')]//div[@class='contribution-score']"));
 		assertEquals(RuntimeVariables.replace("Participation Score: 6"),
-			selenium.getText("xPath=(//div[@class='participation-score'])[1]"));
+			selenium.getText(
+				"//tr[contains(.,'Joe Bloggs')]//div[@class='participation-score']"));
 		assertEquals(RuntimeVariables.replace("User's Blog Entries: 2"),
-			selenium.getText("//div[@class='social-counter-user.blogs']"));
+			selenium.getText(
+				"//tr[contains(.,'Joe Bloggs')]//div[@class='social-counter-user.blogs']"));
 		assertEquals(RuntimeVariables.replace("User's Blog Entry Updates: 1"),
-			selenium.getText("//div[@class='social-counter-user.blog-updates']"));
+			selenium.getText(
+				"//tr[contains(.,'Joe Bloggs')]//div[@class='social-counter-user.blog-updates']"));
 		assertEquals(RuntimeVariables.replace("userfn userln"),
-			selenium.getText("xPath=(//span[@class='user-name'])[2]"));
+			selenium.getText(
+				"//tr[contains(.,'userfn userln')]//span[@class='user-name']"));
 		assertEquals(RuntimeVariables.replace("Rank: 2"),
-			selenium.getText("xPath=(//div[@class='user-rank'])[2]"));
+			selenium.getText(
+				"//tr[contains(.,'userfn userln')]//div[@class='user-rank']"));
 		assertEquals(RuntimeVariables.replace("Contribution Score: 0"),
-			selenium.getText("xPath=(//div[@class='contribution-score'])[2]"));
-		assertEquals(RuntimeVariables.replace("Participation Score: 12"),
-			selenium.getText("xPath=(//div[@class='participation-score'])[2]"));
+			selenium.getText(
+				"//tr[contains(.,'userfn userln')]//div[@class='contribution-score']"));
+		assertEquals(RuntimeVariables.replace("Participation Score: 14"),
+			selenium.getText(
+				"//tr[contains(.,'userfn userln')]//div[@class='participation-score']"));
 		assertTrue(selenium.isElementPresent(
-				"//div[@class='social-counter-user.comments']"));
+				"//tr[contains(.,'userfn userln')]//div[@class='social-counter-user.comments']"));
 		assertTrue(selenium.isElementPresent(
-				"//div[@class='social-counter-user.votes']"));
+				"//tr[contains(.,'userfn userln')]//div[@class='social-counter-user.votes']"));
 		assertEquals(RuntimeVariables.replace("User's Subscriptions: 1"),
 			selenium.getText(
-				"//div[@class='social-counter-user.subscriptions']"));
+				"//tr[contains(.,'userfn userln')]//div[@class='social-counter-user.subscriptions']"));
 	}
 }

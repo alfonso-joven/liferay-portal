@@ -29,23 +29,6 @@ public class ConfigurePortletShowHeaderTextOffTest extends BaseTestCase {
 			switch (label) {
 			case 1:
 				selenium.open("/web/site-name/");
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isVisible("link=User Statistics Test Page")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
 				selenium.clickAt("link=User Statistics Test Page",
 					RuntimeVariables.replace("User Statistics Test Page"));
 				selenium.waitForPageToLoad("30000");

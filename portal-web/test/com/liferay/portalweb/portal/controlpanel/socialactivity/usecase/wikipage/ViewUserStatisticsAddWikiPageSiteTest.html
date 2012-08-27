@@ -14,43 +14,38 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForVisible</td>
-	<td>link=User Statistics Test Page</td>
-	<td>User Statistics Test Page</td>
-</tr>
-<tr>
 	<td>clickAtAndWait</td>
 	<td>link=User Statistics Test Page</td>
 	<td>User Statistics Test Page</td>
 </tr>
 <tr>
 	<td>waitForText</td>
-	<td>//span[@class='user-name']</td>
+	<td>//tr[contains(.,'Joe Bloggs')]//span[@class='user-name']</td>
 	<td>Joe Bloggs</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//span[@class='user-name']</td>
+	<td>//tr[contains(.,'Joe Bloggs')]//span[@class='user-name']</td>
 	<td>Joe Bloggs</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='user-rank']</td>
+	<td>//tr[contains(.,'Joe Bloggs')]//div[@class='user-rank']</td>
 	<td>Rank: 1</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='contribution-score']</td>
+	<td>//tr[contains(.,'Joe Bloggs')]//div[@class='contribution-score']</td>
 	<td>Contribution Score: 0</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='participation-score']</td>
+	<td>//tr[contains(.,'Joe Bloggs')]//div[@class='participation-score']</td>
 	<td>Participation Score: 16</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='social-counter-user.wikis']</td>
+	<td>//tr[contains(.,'Joe Bloggs')]//div[@class='social-counter-user.wikis']</td>
 	<td>User's Wiki Pages: 1</td>
 </tr>
 </tbody></table>

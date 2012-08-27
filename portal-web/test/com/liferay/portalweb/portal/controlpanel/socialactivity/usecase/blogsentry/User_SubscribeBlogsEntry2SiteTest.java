@@ -23,6 +23,9 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class User_SubscribeBlogsEntry2SiteTest extends BaseTestCase {
 	public void testUser_SubscribeBlogsEntry2Site() throws Exception {
 		selenium.open("/web/site-name/");
+		selenium.clickAt("link=Blogs Test Page",
+			RuntimeVariables.replace("Blogs Test Page"));
+		selenium.waitForPageToLoad("30000");
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -30,7 +33,9 @@ public class User_SubscribeBlogsEntry2SiteTest extends BaseTestCase {
 			}
 
 			try {
-				if (selenium.isVisible("link=Blogs Test Page")) {
+				if (RuntimeVariables.replace("Blogs Entry2 Title")
+										.equals(selenium.getText(
+								"//div[@class='entry-title']/h2/a"))) {
 					break;
 				}
 			}
@@ -40,9 +45,6 @@ public class User_SubscribeBlogsEntry2SiteTest extends BaseTestCase {
 			Thread.sleep(1000);
 		}
 
-		selenium.clickAt("link=Blogs Test Page",
-			RuntimeVariables.replace("Blogs Test Page"));
-		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Blogs Entry2 Title"),
 			selenium.getText("//div[@class='entry-title']/h2/a"));
 		selenium.clickAt("//div[@class='entry-title']/h2/a",
