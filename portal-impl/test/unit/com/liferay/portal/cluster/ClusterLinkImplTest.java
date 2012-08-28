@@ -24,8 +24,8 @@ import com.liferay.portal.kernel.util.ReflectionUtil;
 import com.liferay.portal.test.AdviseWith;
 import com.liferay.portal.test.ApsectJMockingNewClassLoaderJUnitTestRunner;
 
-import java.io.DataInput;
-import java.io.DataOutput;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
@@ -48,6 +48,8 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 
+import org.jgroups.ChannelClosedException;
+import org.jgroups.ChannelNotConnectedException;
 import org.jgroups.JChannel;
 import org.jgroups.View;
 import org.jgroups.util.UUID;
@@ -384,7 +386,8 @@ public class ClusterLinkImplTest {
 		clusterLinkImpl.sendMulticastMessage(message, Priority.LEVEL1);
 
 		assertLogger(
-			"Unable to send multicast message " + message, Exception.class);
+			"Unable to send multicast message " + message,
+			ChannelClosedException.class);
 
 		clusterLinkImpl.destroy();
 	}
@@ -416,7 +419,8 @@ public class ClusterLinkImplTest {
 		clusterLinkImpl.sendMulticastMessage(message, Priority.LEVEL1);
 
 		assertLogger(
-			"Unable to send multicast message " + message, Exception.class);
+			"Unable to send multicast message " + message,
+			ChannelNotConnectedException.class);
 
 		clusterLinkImpl.destroy();
 	}
@@ -504,7 +508,8 @@ public class ClusterLinkImplTest {
 			new AddressImpl(new MockAddress()), message, Priority.LEVEL1);
 
 		assertLogger(
-			"Unable to send unicast message " + message, Exception.class);
+			"Unable to send unicast message " + message,
+			ChannelClosedException.class);
 
 		clusterLinkImpl.destroy();
 	}
@@ -537,7 +542,8 @@ public class ClusterLinkImplTest {
 			new AddressImpl(new MockAddress()), message, Priority.LEVEL1);
 
 		assertLogger(
-			"Unable to send unicast message " + message, Exception.class);
+			"Unable to send unicast message " + message,
+			ChannelNotConnectedException.class);
 
 		clusterLinkImpl.destroy();
 	}
@@ -770,10 +776,14 @@ public class ClusterLinkImplTest {
 			return 0;
 		}
 
+		public boolean isMulticastAddress() {
+			return false;
+		}
+
 		public void readExternal(ObjectInput objectInput) {
 		}
 
-		public void readFrom(DataInput dataInput) throws Exception {
+		public void readFrom(DataInputStream dataInputStream) {
 		}
 
 		public int size() {
@@ -783,7 +793,7 @@ public class ClusterLinkImplTest {
 		public void writeExternal(ObjectOutput objectOutput) {
 		}
 
-		public void writeTo(DataOutput dataOutput) throws Exception {
+		public void writeTo(DataOutputStream dataOutputStream) {
 		}
 
 	}
