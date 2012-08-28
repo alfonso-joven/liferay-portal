@@ -3965,9 +3965,8 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 			user.setJobTitle(jobTitle);
 			user.setExpandoBridgeAttributes(serviceContext);
 
-			Date birthday = PortalUtil.getDate(
-				birthdayMonth, birthdayDay, birthdayYear,
-				ContactBirthdayException.class);
+			Date birthday = getBirthday(
+				birthdayMonth, birthdayDay, birthdayYear);
 
 			Contact contact = user.getContact();
 
@@ -4720,9 +4719,7 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 
 		// Contact
 
-		Date birthday = PortalUtil.getDate(
-			birthdayMonth, birthdayDay, birthdayYear,
-			ContactBirthdayException.class);
+		Date birthday = getBirthday(birthdayMonth, birthdayDay, birthdayYear);
 
 		long contactId = user.getContactId();
 
