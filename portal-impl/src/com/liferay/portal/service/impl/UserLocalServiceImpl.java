@@ -701,8 +701,6 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 		String greeting = LanguageUtil.format(
 			locale, "welcome-x", " " + fullName, false);
 
-		Date birthday = getBirthday(birthdayMonth, birthdayDay, birthdayYear);
-
 		User user = userPersistence.create(userId);
 
 		if (serviceContext != null) {
@@ -777,6 +775,8 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 			false, false, false);
 
 		// Contact
+
+		Date birthday = getBirthday(birthdayMonth, birthdayDay, birthdayYear);
 
 		Contact contact = contactPersistence.create(user.getContactId());
 
