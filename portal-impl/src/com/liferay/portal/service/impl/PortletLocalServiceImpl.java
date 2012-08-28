@@ -1187,10 +1187,10 @@ public class PortletLocalServiceImpl extends PortletLocalServiceBaseImpl {
 
 		if (Validator.isNotNull(strutsPath)) {
 			if (_portletIdsByStrutsPath.containsKey(strutsPath)) {
-				String existingPortletId = _portletIdsByStrutsPath.get(
+				String strutsPathPortletId = _portletIdsByStrutsPath.get(
 					strutsPath);
 
-				if (!existingPortletId.equals(portletId)) {
+				if (!strutsPathPortletId.equals(portletId)) {
 					_log.warn("Duplicate struts path " + strutsPath);
 				}
 			}
@@ -1787,7 +1787,6 @@ public class PortletLocalServiceImpl extends PortletLocalServiceBaseImpl {
 
 		Map<String, Set<String>> portletModes =
 			new HashMap<String, Set<String>>();
-
 		Map<String, Set<String>> windowStates =
 			new HashMap<String, Set<String>>();
 
