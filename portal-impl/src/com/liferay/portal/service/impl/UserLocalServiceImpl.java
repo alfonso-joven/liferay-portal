@@ -137,6 +137,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -668,7 +669,8 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 		validate(
 			companyId, userId, autoPassword, password1, password2,
 			autoScreenName, screenName, emailAddress, firstName, middleName,
-			lastName, organizationIds);
+			lastName, birthdayMonth, birthdayDay, birthdayYear,
+			organizationIds);
 
 		if (!autoPassword) {
 			if (Validator.isNull(password1) || Validator.isNull(password2)) {
@@ -3905,7 +3907,7 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 			validate(
 				companyId, user.getUserId(), autoPassword, password1, password2,
 				autoScreenName, screenName, emailAddress, firstName, middleName,
-				lastName, null);
+				lastName, birthdayMonth, birthdayDay, birthdayYear, null);
 
 			if (!autoPassword) {
 				if (Validator.isNull(password1) ||
@@ -4654,7 +4656,7 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 
 		validate(
 			userId, screenName, emailAddress, firstName, middleName, lastName,
-			smsSn);
+			birthdayMonth, birthdayDay, birthdayYear, smsSn);
 
 		if (Validator.isNotNull(newPassword1) ||
 			Validator.isNotNull(newPassword2)) {
@@ -5504,7 +5506,8 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 			long companyId, long userId, boolean autoPassword, String password1,
 			String password2, boolean autoScreenName, String screenName,
 			String emailAddress, String firstName, String middleName,
-			String lastName, long[] organizationIds)
+			String lastName, int birthdayMonth, int birthdayDay,
+			int birthdayYear, long[] organizationIds)
 		throws PortalException, SystemException {
 
 		Company company = companyPersistence.findByPrimaryKey(companyId);
@@ -5545,6 +5548,7 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 		}
 
 		validateFullName(companyId, firstName, middleName, lastName);
+		validateBirthday(birthdayMonth, birthdayDay, birthdayYear);
 
 		if (organizationIds != null) {
 			for (long organizationId : organizationIds) {
@@ -5560,7 +5564,8 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 
 	protected void validate(
 			long userId, String screenName, String emailAddress,
-			String firstName, String middleName, String lastName, String smsSn)
+			String firstName, String middleName, String lastName,
+			int birthdayMonth, int birthdayDay, int birthdayYear, String smsSn)
 		throws PortalException, SystemException {
 
 		User user = userPersistence.findByPrimaryKey(userId);
@@ -5586,8 +5591,20 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 				user.getCompanyId(), firstName, middleName, lastName);
 		}
 
+		validateBirthday(birthdayMonth, birthdayDay, birthdayYear);
+
 		if (Validator.isNotNull(smsSn) && !Validator.isEmailAddress(smsSn)) {
 			throw new UserSmsException();
+		}
+	}
+
+	protected void validateBirthday(int month, int day, int year)
+		throws PortalException, SystemException {
+
+		Calendar calendar = new GregorianCalendar(year, month, day);
+
+		if (calendar.after(new GregorianCalendar())) {
+			throw new ContactBirthdayException();
 		}
 	}
 
