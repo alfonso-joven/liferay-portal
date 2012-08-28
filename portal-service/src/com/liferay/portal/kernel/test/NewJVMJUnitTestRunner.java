@@ -115,7 +115,7 @@ public class NewJVMJUnitTestRunner extends BlockJUnit4ClassRunner {
 		}
 
 		public Serializable call() throws ProcessException {
-			ProcessExecutor.ProcessContext.attach(
+			/*ProcessExecutor.ProcessContext.attach(
 				"Attached " + toString(), 1000,
 				new ProcessExecutor.ShutdownHook() {
 
@@ -149,7 +149,7 @@ public class NewJVMJUnitTestRunner extends BlockJUnit4ClassRunner {
 			}
 			catch (Exception e) {
 				throw new ProcessException(e);
-			}
+			}*/
 
 			return StringPool.BLANK;
 		}
@@ -222,7 +222,7 @@ public class NewJVMJUnitTestRunner extends BlockJUnit4ClassRunner {
 			processCallable = processProcessCallable(
 				processCallable, _testMethodKey);
 
-			Future<String> future = ProcessExecutor.execute(
+			/*Future<String> future = ProcessExecutor.execute(
 				_classPath, _arguments, processCallable);
 
 			try {
@@ -238,7 +238,7 @@ public class NewJVMJUnitTestRunner extends BlockJUnit4ClassRunner {
 				}
 
 				throw cause;
-			}
+			}*/
 		}
 
 		private List<MethodKey> _afterMethodKeys;
