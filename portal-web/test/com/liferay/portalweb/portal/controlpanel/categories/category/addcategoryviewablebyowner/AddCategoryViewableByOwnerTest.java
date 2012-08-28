@@ -73,7 +73,7 @@ public class AddCategoryViewableByOwnerTest extends BaseTestCase {
 		selenium.type("//textarea[@id='_147_description_en_US']",
 			RuntimeVariables.replace("Category Description"));
 		Thread.sleep(5000);
-		selenium.select("//select[@id='_147_inputPermissionsViewRole']",
+		selenium.select("//select[contains(@id,'inputPermissionsViewRole')]",
 			RuntimeVariables.replace("Owner"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
