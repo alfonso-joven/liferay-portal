@@ -60,6 +60,11 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
+	<td>//div[contains(@class,'aui-tree-expanded aui-tree-node-selected')]</td>
+	<td>Category Name Selected</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
 	<td>//li/ul/li/div/div[4]</td>
 	<td>Subcategory Name</td>
 </tr>
@@ -89,6 +94,11 @@
 	<td>Edit</td>
 </tr>
 <tr>
+	<td>waitForElementPresent</td>
+	<td>//script[contains(@src,'/liferay/panel_floating.js')]</td>
+	<td>Panel Floating</td>
+</tr>
+<tr>
 	<td>waitForVisible</td>
 	<td>//input[@id='_147_title_en_US']</td>
 	<td>Name Text Field</td>
@@ -102,11 +112,6 @@
 	<td>type</td>
 	<td>//textarea[@id='_147_description_en_US']</td>
 	<td>Subcategory Description Edit</td>
-</tr>
-<tr>
-	<td>pause</td>
-	<td>5000</td>
-	<td></td>
 </tr>
 <tr>
 	<td>clickAt</td>
@@ -143,7 +148,6 @@
 	<td>//li/ul/li/div/div[4]</td>
 	<td>Subcategory Name Edit</td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

@@ -123,6 +123,50 @@ public class TearDownVocabularyTest extends BaseTestCase {
 						"//input[@name='vocabulary-item-check']"));
 
 			case 2:
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isVisible(
+									"//div[@id='vocabulary-messages']")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
+
+				assertEquals(RuntimeVariables.replace(
+						"There are no vocabularies."),
+					selenium.getText("//div[@id='vocabulary-messages']"));
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isVisible(
+									"//div[@id='vocabulary-category-messages']")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
+
+				assertEquals(RuntimeVariables.replace(
+						"There are no categories."),
+					selenium.getText(
+						"//div[@id='vocabulary-category-messages']"));
+
 			case 100:
 				label = -1;
 			}

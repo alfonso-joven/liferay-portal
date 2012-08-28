@@ -59,6 +59,23 @@ public class AddCategoryViewableBySiteMembersTest extends BaseTestCase {
 			}
 
 			try {
+				if (selenium.isElementPresent(
+							"//script[contains(@src,'/liferay/panel_floating.js')]")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
 				if (selenium.isVisible("//input[@id='_147_title_en_US']")) {
 					break;
 				}
@@ -73,7 +90,6 @@ public class AddCategoryViewableBySiteMembersTest extends BaseTestCase {
 			RuntimeVariables.replace("Category Name"));
 		selenium.type("//textarea[@id='_147_description_en_US']",
 			RuntimeVariables.replace("Category Description"));
-		Thread.sleep(5000);
 		selenium.select("//select[contains(@id,'inputPermissionsViewRole')]",
 			RuntimeVariables.replace("Site Members"));
 		selenium.clickAt("//input[@value='Save']",

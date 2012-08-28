@@ -94,6 +94,23 @@ public class EditSubcategoryTest extends BaseTestCase {
 			}
 
 			try {
+				if (selenium.isVisible(
+							"//div[contains(@class,'aui-tree-expanded aui-tree-node-selected')]")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
 				if (selenium.isVisible("//li/ul/li/div/div[4]")) {
 					break;
 				}
@@ -138,6 +155,23 @@ public class EditSubcategoryTest extends BaseTestCase {
 			}
 
 			try {
+				if (selenium.isElementPresent(
+							"//script[contains(@src,'/liferay/panel_floating.js')]")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
 				if (selenium.isVisible("//input[@id='_147_title_en_US']")) {
 					break;
 				}
@@ -152,7 +186,6 @@ public class EditSubcategoryTest extends BaseTestCase {
 			RuntimeVariables.replace("Subcategory Name Edit"));
 		selenium.type("//textarea[@id='_147_description_en_US']",
 			RuntimeVariables.replace("Subcategory Description Edit"));
-		Thread.sleep(5000);
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 

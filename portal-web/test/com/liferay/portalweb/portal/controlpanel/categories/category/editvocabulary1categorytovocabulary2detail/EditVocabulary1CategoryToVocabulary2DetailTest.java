@@ -100,6 +100,23 @@ public class EditVocabulary1CategoryToVocabulary2DetailTest extends BaseTestCase
 			}
 
 			try {
+				if (selenium.isElementPresent(
+							"//script[contains(@src,'/liferay/panel_floating.js')]")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
 				if (selenium.isVisible("//select[@id='_147_vocabularyId']")) {
 					break;
 				}
@@ -110,7 +127,6 @@ public class EditVocabulary1CategoryToVocabulary2DetailTest extends BaseTestCase
 			Thread.sleep(1000);
 		}
 
-		Thread.sleep(5000);
 		selenium.select("//select[@id='_147_vocabularyId']",
 			RuntimeVariables.replace("Vocabulary2 Name"));
 		selenium.clickAt("//input[@value='Save']",
