@@ -72,6 +72,26 @@ public class NewJVMJUnitTestRunner extends BlockJUnit4ClassRunner {
 		return arguments;
 	}
 
+	protected ServerSocket createServerSocket() {
+		int port = _START_SERVER_PORT;
+
+		while (true) {
+			try {
+				ServerSocket serverSocket = new ServerSocket();
+
+				serverSocket.setReuseAddress(true);
+
+				serverSocket.bind(
+					new InetSocketAddress(InetAddress.getLocalHost(), port));
+
+				return serverSocket;
+			}
+			catch (IOException ioe) {
+				port++;
+			}
+		}
+	}
+
 	@Override
 	protected Statement methodBlock(FrameworkMethod frameworkMethod) {
 		Thread currentThread = Thread.currentThread();
@@ -104,33 +124,15 @@ public class NewJVMJUnitTestRunner extends BlockJUnit4ClassRunner {
 		return processCallable;
 	}
 
-	private ServerSocket _createServerSocket() {
-		int port = _START_SERVER_PORT;
-
-		while (true) {
-			try {
-				ServerSocket serverSocket = new ServerSocket();
-
-				serverSocket.setReuseAddress(true);
-
-				serverSocket.bind(
-					new InetSocketAddress(InetAddress.getLocalHost(), port));
-
-				return serverSocket;
-			}
-			catch (IOException ioe) {
-				port++;
-			}
-		}
-	}
-
-	private static final Log _log = LogFactoryUtil.getLog(
-		NewJVMJUnitTestRunner.class);
-
 	private static final int _HEARTBEAT_MAGIC_MUNBER = 253;
+
 	private static final String _JPDA_OPTIONS =
 		"-agentlib:jdwp=transport=dt_socket,address=8001,server=y,suspend=y";
+
 	private static final int _START_SERVER_PORT = 10234;
+
+	private static Log _log = LogFactoryUtil.getLog(
+		NewJVMJUnitTestRunner.class);
 
 	private String _classPath;
 
@@ -145,13 +147,13 @@ public class NewJVMJUnitTestRunner extends BlockJUnit4ClassRunner {
 					StringPool.POUND).concat(name));
 		}
 
+		@Override
 		public void run() {
 			Socket socket = null;
 
 			try {
 				socket = new Socket(InetAddress.getLocalHost(), _serverPort);
 
-				// Half close Socket
 				socket.shutdownInput();
 
 				OutputStream outputStream = null;
@@ -160,8 +162,6 @@ public class NewJVMJUnitTestRunner extends BlockJUnit4ClassRunner {
 					outputStream = socket.getOutputStream();
 				}
 				catch (IOException ioe) {
-					// Main process terminated too fast
-
 					return;
 				}
 
@@ -173,7 +173,6 @@ public class NewJVMJUnitTestRunner extends BlockJUnit4ClassRunner {
 							sleep(1000);
 						}
 						catch (InterruptedException ie) {
-							// Ignore interruption
 						}
 					}
 				}
@@ -202,8 +201,6 @@ public class NewJVMJUnitTestRunner extends BlockJUnit4ClassRunner {
 			interrupt();
 		}
 
-		// A separate logger is required, as this thread is running in
-		// sub-process, can not access main process' logger
 		private static Log _log = LogFactoryUtil.getLog(
 			HeartbeatClientThread.class);
 
@@ -223,14 +220,13 @@ public class NewJVMJUnitTestRunner extends BlockJUnit4ClassRunner {
 					StringPool.POUND).concat(name));
 		}
 
+		@Override
 		public void run() {
 			try {
 				_socket = _serverSocket.accept();
 
-				// Accept exactly only 1 client Socket
 				_serverSocket.close();
 
-				// Half close Socket
 				_socket.shutdownOutput();
 
 				InputStream inputStream = null;
@@ -239,16 +235,12 @@ public class NewJVMJUnitTestRunner extends BlockJUnit4ClassRunner {
 					inputStream = _socket.getInputStream();
 				}
 				catch (IOException ioe) {
-					// Sub-process terminated too fast
-
 					return;
 				}
 
 				int result = -1;
 
 				while ((result = inputStream.read()) != -1) {
-					// Do some dummy logic to stop JIT striping of this loop as
-					// dead loop
 					if (result != _HEARTBEAT_MAGIC_MUNBER) {
 						inputStream.close();
 
@@ -319,11 +311,18 @@ public class NewJVMJUnitTestRunner extends BlockJUnit4ClassRunner {
 			final HeartbeatClientThread heartbeatClientThread =
 				new HeartbeatClientThread(toString(), _serverPort);
 
-			Runtime.getRuntime().addShutdownHook(new Thread() {
-				public void run() {
-					heartbeatClientThread.shutdown();
+			Runtime runtime = Runtime.getRuntime();
+
+			runtime.addShutdownHook(
+				new Thread() {
+
+					@Override
+					public void run() {
+						heartbeatClientThread.shutdown();
+					}
+
 				}
-			});
+			);
 
 			heartbeatClientThread.start();
 
@@ -415,7 +414,7 @@ public class NewJVMJUnitTestRunner extends BlockJUnit4ClassRunner {
 
 		@Override
 		public void evaluate() throws Throwable {
-			ServerSocket serverSocket = _createServerSocket();
+			ServerSocket serverSocket = createServerSocket();
 
 			ProcessCallable<Serializable> processCallable =
 				new TestProcessCallable(
