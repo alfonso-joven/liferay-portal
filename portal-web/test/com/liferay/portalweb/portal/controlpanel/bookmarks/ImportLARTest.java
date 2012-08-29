@@ -130,7 +130,7 @@ public class ImportLARTest extends BaseTestCase {
 
 		selenium.clickAt("link=Import", RuntimeVariables.replace("Import"));
 		selenium.waitForPageToLoad("30000");
-		selenium.uploadCommonFile("//input[@id='_86_importFileName']",
+		selenium.uploadFile("//input[@id='_86_importFileName']",
 			RuntimeVariables.replace(
 				"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\portal\\controlpanel\\bookmarks\\dependencies\\Selenium-Bookmarks.portlet.lar"));
 		selenium.clickAt("//input[@id='_86_DELETE_PORTLET_DATACheckbox']",
