@@ -91,6 +91,7 @@ import com.liferay.portalweb.portal.controlpanel.users.user.edituserpassword2nul
 import com.liferay.portalweb.portal.controlpanel.users.user.edituserpassworddifferent.EditUserPasswordDifferentTests;
 import com.liferay.portalweb.portal.controlpanel.users.user.edituserpasswordduplicate.EditUserPasswordDuplicateTests;
 import com.liferay.portalweb.portal.controlpanel.users.user.edituserregrole.EditUserRegRoleTests;
+import com.liferay.portalweb.portal.controlpanel.users.user.edituserrolesorgownerorgs.EditUserRolesOrgOwnerOrgsTests;
 import com.liferay.portalweb.portal.controlpanel.users.user.editusersite.EditUserSiteTests;
 import com.liferay.portalweb.portal.controlpanel.users.user.editusersiterole.EditUserSiteRoleTests;
 import com.liferay.portalweb.portal.controlpanel.users.user.restoreuserdetails.RestoreUserDetailsTests;
@@ -186,6 +187,7 @@ public class UserTestPlan extends BaseTestSuite {
 		testSuite.addTest(EditUserPasswordDifferentTests.suite());
 		testSuite.addTest(EditUserPasswordDuplicateTests.suite());
 		testSuite.addTest(EditUserRegRoleTests.suite());
+		testSuite.addTest(EditUserRolesOrgOwnerOrgsTests.suite());
 		testSuite.addTest(EditUserSiteTests.suite());
 		testSuite.addTest(EditUserSiteRoleTests.suite());
 		testSuite.addTest(RestoreUserDetailsTests.suite());
