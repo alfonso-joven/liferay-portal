@@ -23,6 +23,8 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class ImportLARTest extends BaseTestCase {
 	public void testImportLAR() throws Exception {
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -30,7 +32,28 @@ public class ImportLARTest extends BaseTestCase {
 			}
 
 			try {
-				if (selenium.isElementPresent("link=Control Panel")) {
+				if (selenium.isElementPresent(
+							"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
+		assertEquals(RuntimeVariables.replace("Go to"),
+			selenium.getText("//li[@id='_145_mySites']/a/span"));
+		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isVisible("link=Control Panel")) {
 					break;
 				}
 			}
@@ -77,9 +100,9 @@ public class ImportLARTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Import", RuntimeVariables.replace("Import"));
 		selenium.waitForPageToLoad("30000");
-		selenium.uploadCommonFile("//input[@id='_86_importFileName']",
+		selenium.uploadFile("//input[@id='_86_importFileName']",
 			RuntimeVariables.replace(
-				"F:\\liferay-portal\\portal-web\\test\\com\\liferay\\portalweb\\portal\\controlpanel\\messageboards\\dependencies\\Selenium-Message-Boards.portlet.lar"));
+				"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\portal\\controlpanel\\messageboards\\dependencies\\Selenium-Message-Boards.portlet.lar"));
 		assertFalse(selenium.isChecked(
 				"//input[@id='_86_DELETE_PORTLET_DATACheckbox']"));
 		selenium.clickAt("//input[@id='_86_DELETE_PORTLET_DATACheckbox']",

@@ -28,6 +28,8 @@ public class MoveThreadTest extends BaseTestCase {
 			switch (label) {
 			case 1:
 				selenium.open("/web/guest/home/");
+				selenium.clickAt("//div[@id='dockbar']",
+					RuntimeVariables.replace("Dockbar"));
 
 				for (int second = 0;; second++) {
 					if (second >= 90) {
@@ -35,7 +37,28 @@ public class MoveThreadTest extends BaseTestCase {
 					}
 
 					try {
-						if (selenium.isElementPresent("link=Control Panel")) {
+						if (selenium.isElementPresent(
+									"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
+
+				assertEquals(RuntimeVariables.replace("Go to"),
+					selenium.getText("//li[@id='_145_mySites']/a/span"));
+				selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isVisible("link=Control Panel")) {
 							break;
 						}
 					}
@@ -210,10 +233,8 @@ public class MoveThreadTest extends BaseTestCase {
 				selenium.selectFrame("relative=top");
 				selenium.clickAt("//input[@value='Select']",
 					RuntimeVariables.replace("Select"));
-				selenium.waitForPopUp("title=Message Boards",
-					RuntimeVariables.replace("30000"));
-				selenium.selectWindow("");
 				Thread.sleep(5000);
+				selenium.selectWindow("title=Message Boards");
 
 				boolean CategoriesPresent = selenium.isElementPresent(
 						"link=Categories");
@@ -231,7 +252,7 @@ public class MoveThreadTest extends BaseTestCase {
 			case 2:
 				selenium.click("//input[@value='Choose']");
 				selenium.selectWindow("null");
-				Thread.sleep(30000);
+				Thread.sleep(5000);
 
 				for (int second = 0;; second++) {
 					if (second >= 90) {
@@ -239,7 +260,7 @@ public class MoveThreadTest extends BaseTestCase {
 					}
 
 					try {
-						if (selenium.isElementPresent("link=Sujr ")) {
+						if (selenium.isElementPresent("//a[contains(.,'Sujr')]")) {
 							break;
 						}
 					}
@@ -252,7 +273,7 @@ public class MoveThreadTest extends BaseTestCase {
 				selenium.clickAt("//input[@value='Move Thread']",
 					RuntimeVariables.replace("Move Thread"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.isElementPresent("link=Sujr "));
+				assertTrue(selenium.isElementPresent("//a[contains(.,'Sujr')]"));
 				assertTrue(selenium.isElementPresent(
 						"link=T\u00e9st M\u00e9ssag\u00e9 to b\u00e9 D\u00e9l\u00e9t\u00e9d"));
 				assertTrue(selenium.isTextPresent(
