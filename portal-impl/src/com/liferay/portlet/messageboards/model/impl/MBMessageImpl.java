@@ -16,8 +16,6 @@ package com.liferay.portlet.messageboards.model.impl;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
-import com.liferay.portal.kernel.log.Log;
-import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.parsers.bbcode.BBCodeTranslatorUtil;
 import com.liferay.portal.model.CompanyConstants;
 import com.liferay.portlet.asset.service.AssetTagLocalServiceUtil;
@@ -140,8 +138,6 @@ public class MBMessageImpl extends MBMessageBaseImpl {
 	public void setAttachmentsDir(String attachmentsDir) {
 		_attachmentDirs = attachmentsDir;
 	}
-
-	private static Log _log = LogFactoryUtil.getLog(MBMessageImpl.class);
 
 	private String _attachmentDirs;
 
