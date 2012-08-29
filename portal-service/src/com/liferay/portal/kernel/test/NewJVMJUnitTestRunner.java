@@ -69,6 +69,13 @@ public class NewJVMJUnitTestRunner extends BlockJUnit4ClassRunner {
 			arguments.add(_JPDA_OPTIONS);
 		}
 
+		String fileName = System.getProperty(
+			"net.sourceforge.cobertura.datafile");
+
+		if (fileName != null) {
+			arguments.add("-Dnet.sourceforge.cobertura.datafile=" + fileName);
+		}
+
 		return arguments;
 	}
 
