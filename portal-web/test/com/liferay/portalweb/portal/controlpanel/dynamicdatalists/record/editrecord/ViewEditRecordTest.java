@@ -160,8 +160,9 @@ public class ViewEditRecordTest extends BaseTestCase {
 				"Documents and Media Document_1.txt"),
 			selenium.getText("//div[@class='aui-fieldset-content ']/div[4]"));
 		assertTrue(selenium.isPartialText(
-				"//div[@class='aui-fieldset-content ']/div[5]",
-				"File Upload Document_2.txt"));
+				"//div[@class='aui-fieldset-content ']/div[5]", "File Upload"));
+		assertTrue(selenium.isPartialText(
+				"//div[@class='aui-fieldset-content ']/div[5]", "Document_2.txt"));
 		assertEquals(RuntimeVariables.replace("Integer 8910"),
 			selenium.getText("//div[@class='aui-fieldset-content ']/div[6]"));
 		assertEquals(RuntimeVariables.replace("Number 111213"),
@@ -226,6 +227,7 @@ public class ViewEditRecordTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
+		Thread.sleep(5000);
 		assertEquals(RuntimeVariables.replace("List Name"),
 			selenium.getText("//tr[3]/td[2]/a"));
 		assertEquals(RuntimeVariables.replace("Actions"),

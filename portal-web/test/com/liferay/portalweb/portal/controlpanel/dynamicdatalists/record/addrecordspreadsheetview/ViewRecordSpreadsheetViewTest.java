@@ -163,8 +163,9 @@ public class ViewRecordSpreadsheetViewTest extends BaseTestCase {
 				"Documents and Media Document_1.txt"),
 			selenium.getText("//div[@class='aui-fieldset-content ']/div[4]"));
 		assertTrue(selenium.isPartialText(
-				"//div[@class='aui-fieldset-content ']/div[5]",
-				"File Upload Document_2.txt"));
+				"//div[@class='aui-fieldset-content ']/div[5]", "File Upload"));
+		assertTrue(selenium.isPartialText(
+				"//div[@class='aui-fieldset-content ']/div[5]", "Document_2.txt"));
 		assertEquals(RuntimeVariables.replace("Integer 123"),
 			selenium.getText("//div[@class='aui-fieldset-content ']/div[6]"));
 		assertEquals(RuntimeVariables.replace("Number 456"),

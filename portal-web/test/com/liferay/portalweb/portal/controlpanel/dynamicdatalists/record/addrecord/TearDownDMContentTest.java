@@ -74,6 +74,7 @@ public class TearDownDMContentTest extends BaseTestCase {
 				selenium.clickAt("link=Documents and Media",
 					RuntimeVariables.replace("Documents and Media"));
 				selenium.waitForPageToLoad("30000");
+				Thread.sleep(5000);
 
 				boolean documentPresent = selenium.isElementPresent(
 						"//div/div/a/span/img");

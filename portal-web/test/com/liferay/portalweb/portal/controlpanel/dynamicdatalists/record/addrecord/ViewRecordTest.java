@@ -122,6 +122,7 @@ public class ViewRecordTest extends BaseTestCase {
 			selenium.getText("//tr[1]/th[11]"));
 		assertEquals(RuntimeVariables.replace("Text Box"),
 			selenium.getText("//tr[3]/td[11]"));
+		Thread.sleep(5000);
 		assertEquals(RuntimeVariables.replace("Actions"),
 			selenium.getText("//span[@title='Actions']/ul/li/strong/a"));
 		selenium.clickAt("//span[@title='Actions']/ul/li/strong/a",
@@ -160,8 +161,9 @@ public class ViewRecordTest extends BaseTestCase {
 				"Documents and Media Document_1.txt"),
 			selenium.getText("//div[@class='aui-fieldset-content ']/div[4]"));
 		assertTrue(selenium.isPartialText(
-				"//div[@class='aui-fieldset-content ']/div[5]",
-				"File Upload Document_2.txt"));
+				"//div[@class='aui-fieldset-content ']/div[5]", "File Upload"));
+		assertTrue(selenium.isPartialText(
+				"//div[@class='aui-fieldset-content ']/div[5]", "Document_2.txt"));
 		assertEquals(RuntimeVariables.replace("Integer 123"),
 			selenium.getText("//div[@class='aui-fieldset-content ']/div[6]"));
 		assertEquals(RuntimeVariables.replace("Number 456"),

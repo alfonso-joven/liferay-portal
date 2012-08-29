@@ -74,6 +74,7 @@ public class TearDownListTest extends BaseTestCase {
 				selenium.clickAt("link=Dynamic Data Lists",
 					RuntimeVariables.replace("Dynamic Data Lists"));
 				selenium.waitForPageToLoad("30000");
+				Thread.sleep(5000);
 
 				boolean actionsVisible1 = selenium.isElementPresent(
 						"//span[@title='Actions']/ul/li/strong/a");
@@ -114,6 +115,7 @@ public class TearDownListTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+				Thread.sleep(5000);
 
 				boolean actionsVisible2 = selenium.isElementPresent(
 						"//span[@title='Actions']/ul/li/strong/a");
@@ -154,6 +156,7 @@ public class TearDownListTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+				Thread.sleep(5000);
 
 				boolean actionsVisible3 = selenium.isElementPresent(
 						"//span[@title='Actions']/ul/li/strong/a");
@@ -194,6 +197,7 @@ public class TearDownListTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+				Thread.sleep(5000);
 
 				boolean actionsVisible4 = selenium.isElementPresent(
 						"//span[@title='Actions']/ul/li/strong/a");
@@ -234,6 +238,7 @@ public class TearDownListTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+				Thread.sleep(5000);
 
 				boolean actionsVisible5 = selenium.isElementPresent(
 						"//span[@title='Actions']/ul/li/strong/a");

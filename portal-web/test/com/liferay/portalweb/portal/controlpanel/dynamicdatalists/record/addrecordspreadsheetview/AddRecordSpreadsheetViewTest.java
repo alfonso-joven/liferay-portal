@@ -468,8 +468,8 @@ public class AddRecordSpreadsheetViewTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Text"),
 			selenium.getText(
 				"//thead[@class='yui3-datatable-columns']/tr/th[10]/div/a"));
-		selenium.keyPress("//tbody[@class='yui3-datatable-data']/tr[1]/td[10]",
-			RuntimeVariables.replace("\\13"));
+		selenium.doubleClickAt("//tbody[@class='yui3-datatable-data']/tr[1]/td[10]",
+			RuntimeVariables.replace("Text Entry"));
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -503,8 +503,8 @@ public class AddRecordSpreadsheetViewTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Text Box"),
 			selenium.getText(
 				"//thead[@class='yui3-datatable-columns']/tr/th[11]/div/a"));
-		selenium.keyPress("//tbody[@class='yui3-datatable-data']/tr[1]/td[11]",
-			RuntimeVariables.replace("\\13"));
+		selenium.doubleClickAt("//tbody[@class='yui3-datatable-data']/tr[1]/td[11]",
+			RuntimeVariables.replace("Text Cell Entry"));
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
