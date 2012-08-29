@@ -73,6 +73,7 @@ public class TearDownBlogsEntryCPTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				selenium.clickAt("link=Blogs", RuntimeVariables.replace("Blogs"));
 				selenium.waitForPageToLoad("30000");
+				Thread.sleep(5000);
 
 				boolean entry1Present = selenium.isElementPresent(
 						"//input[@name='_161_rowIds']");
@@ -93,6 +94,7 @@ public class TearDownBlogsEntryCPTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete the selected entries[\\s\\S]$"));
+				Thread.sleep(5000);
 
 				boolean entry2Present = selenium.isElementPresent(
 						"//input[@name='_161_rowIds']");
@@ -113,6 +115,7 @@ public class TearDownBlogsEntryCPTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete the selected entries[\\s\\S]$"));
+				Thread.sleep(5000);
 
 				boolean entry3Present = selenium.isElementPresent(
 						"//input[@name='_161_rowIds']");
@@ -133,6 +136,7 @@ public class TearDownBlogsEntryCPTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete the selected entries[\\s\\S]$"));
+				Thread.sleep(5000);
 
 				boolean entry4Present = selenium.isElementPresent(
 						"//input[@name='_161_rowIds']");
@@ -153,6 +157,7 @@ public class TearDownBlogsEntryCPTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete the selected entries[\\s\\S]$"));
+				Thread.sleep(5000);
 
 				boolean entry5Present = selenium.isElementPresent(
 						"//input[@name='_161_rowIds']");
@@ -179,6 +184,9 @@ public class TearDownBlogsEntryCPTest extends BaseTestCase {
 			case 4:
 			case 5:
 			case 6:
+				assertEquals(RuntimeVariables.replace("No entries were found."),
+					selenium.getText("//div[@class='portlet-msg-info']"));
+
 			case 100:
 				label = -1;
 			}
