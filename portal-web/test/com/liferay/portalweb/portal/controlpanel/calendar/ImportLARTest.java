@@ -115,7 +115,7 @@ public class ImportLARTest extends BaseTestCase {
 			Thread.sleep(1000);
 		}
 
-		selenium.uploadCommonFile("//input[@id='_86_importFileName']",
+		selenium.uploadFile("//input[@id='_86_importFileName']",
 			RuntimeVariables.replace(
 				"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\portal\\controlpanel\\calendar\\dependencies\\Selenium-Calendar.portlet.lar"));
 		assertFalse(selenium.isChecked(

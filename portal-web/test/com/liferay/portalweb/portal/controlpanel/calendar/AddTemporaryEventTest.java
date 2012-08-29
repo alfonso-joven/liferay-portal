@@ -200,6 +200,6 @@ public class AddTemporaryEventTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
-		assertTrue(selenium.isElementPresent("Link=Temporary Event"));
+		assertTrue(selenium.isElementPresent("link=Temporary Event"));
 	}
 }

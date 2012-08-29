@@ -202,6 +202,6 @@ public class AddConcertEventTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
-		assertTrue(selenium.isElementPresent("Link=Caedmon's Call Concert!"));
+		assertTrue(selenium.isElementPresent("link=Caedmon's Call Concert!"));
 	}
 }

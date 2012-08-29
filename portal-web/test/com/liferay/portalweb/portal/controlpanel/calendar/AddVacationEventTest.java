@@ -200,6 +200,6 @@ public class AddVacationEventTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
-		assertTrue(selenium.isElementPresent("Link=Off to Yosemite!"));
+		assertTrue(selenium.isElementPresent("link=Off to Yosemite!"));
 	}
 }
