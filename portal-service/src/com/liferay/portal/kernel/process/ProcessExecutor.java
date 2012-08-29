@@ -32,6 +32,9 @@ import java.io.PrintStream;
 import java.io.Serializable;
 import java.io.StreamCorruptedException;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -46,9 +49,25 @@ public class ProcessExecutor {
 			ProcessCallable<T> processCallable, String classPath)
 		throws ProcessException {
 
+		return execute(
+			processCallable, classPath, Collections.<String>emptyList());
+	}
+
+	public static <T extends Serializable> T execute(
+			ProcessCallable<T> processCallable, String classPath,
+			List<String> arguments)
+		throws ProcessException {
+
 		try {
-			ProcessBuilder processBuilder = new ProcessBuilder(
-				"java", "-cp", classPath, ProcessExecutor.class.getName());
+			List<String> commands = new ArrayList<String>(arguments.size() + 4);
+
+			commands.add("java");
+			commands.add("-cp");
+			commands.add(classPath);
+			commands.addAll(arguments);
+			commands.add(ProcessExecutor.class.getName());
+
+			ProcessBuilder processBuilder = new ProcessBuilder(commands);
 
 			Process process = processBuilder.start();
 
