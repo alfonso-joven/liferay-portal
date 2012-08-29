@@ -73,7 +73,25 @@ public class ViewQuestionGraphsTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Area", RuntimeVariables.replace("Area"));
 		selenium.waitForPopUp("", RuntimeVariables.replace("30000"));
-		selenium.selectWindow("");
+		selenium.selectPopUp("");
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isVisible("//body/img")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
+		assertTrue(selenium.isVisible("//body/img"));
 		selenium.close();
 		selenium.selectWindow("null");
 
@@ -96,7 +114,25 @@ public class ViewQuestionGraphsTest extends BaseTestCase {
 		selenium.clickAt("link=Horizontal Bar",
 			RuntimeVariables.replace("Horizontal Bar"));
 		selenium.waitForPopUp("", RuntimeVariables.replace("30000"));
-		selenium.selectWindow("");
+		selenium.selectPopUp("");
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isVisible("//body/img")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
+		assertTrue(selenium.isVisible("//body/img"));
 		selenium.close();
 		selenium.selectWindow("null");
 
@@ -118,7 +154,25 @@ public class ViewQuestionGraphsTest extends BaseTestCase {
 
 		selenium.clickAt("link=Line", RuntimeVariables.replace("Line"));
 		selenium.waitForPopUp("", RuntimeVariables.replace("30000"));
-		selenium.selectWindow("");
+		selenium.selectPopUp("");
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isVisible("//body/img")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
+		assertTrue(selenium.isVisible("//body/img"));
 		selenium.close();
 		selenium.selectWindow("null");
 
@@ -140,7 +194,25 @@ public class ViewQuestionGraphsTest extends BaseTestCase {
 
 		selenium.clickAt("link=Pie", RuntimeVariables.replace("Pie"));
 		selenium.waitForPopUp("", RuntimeVariables.replace("30000"));
-		selenium.selectWindow("");
+		selenium.selectPopUp("");
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isVisible("//body/img")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
+		assertTrue(selenium.isVisible("//body/img"));
 		selenium.close();
 		selenium.selectWindow("null");
 
@@ -163,7 +235,25 @@ public class ViewQuestionGraphsTest extends BaseTestCase {
 		selenium.clickAt("link=Vertical Bar",
 			RuntimeVariables.replace("Vertical Bar"));
 		selenium.waitForPopUp("", RuntimeVariables.replace("30000"));
-		selenium.selectWindow("");
+		selenium.selectPopUp("");
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isVisible("//body/img")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
+		assertTrue(selenium.isVisible("//body/img"));
 		selenium.close();
 		selenium.selectWindow("null");
 	}
