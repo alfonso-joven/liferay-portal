@@ -69,24 +69,17 @@ public class BrowseServerPluginsInstallationTest extends BaseTestCase {
 		selenium.clickAt("link=Plugins Installation",
 			RuntimeVariables.replace("Plugins Installation"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isPartialText(
-				"//div[@id='show-portlet-description-136']/div",
-				"Plugins Installation allows users to install additional plugins from the Liferay repository or install custom plugins. Warning: Plugins Installation will be replaced with Liferay Marketplace in future Liferay releases. Read more about Liferay Marketplace for additional details."));
-		selenium.select("//select[@name='_136_page']",
-			RuntimeVariables.replace("4"));
+		selenium.clickAt("link=Portlet Plugins",
+			RuntimeVariables.replace("Portlet Plugins"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isTextPresent("Wiki"));
+		assertTrue(selenium.isTextPresent("Activities"));
 		selenium.clickAt("link=Theme Plugins",
 			RuntimeVariables.replace("Theme Plugins"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isPartialText(
-				"//div[@id='show-portlet-description-136']/div",
-				"Plugins Installation allows users to install additional plugins from the Liferay repository or install custom plugins. Warning: Plugins Installation will be replaced with Liferay Marketplace in future Liferay releases. Read more about Liferay Marketplace for additional details."));
+		assertTrue(selenium.isTextPresent("Classic"));
 		selenium.clickAt("link=Layout Template Plugins",
 			RuntimeVariables.replace("Layout Template Plugins"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isPartialText(
-				"//div[@id='show-portlet-description-136']/div",
-				"Plugins Installation allows users to install additional plugins from the Liferay repository or install custom plugins. Warning: Plugins Installation will be replaced with Liferay Marketplace in future Liferay releases. Read more about Liferay Marketplace for additional details."));
+		assertTrue(selenium.isTextPresent("Freeform"));
 	}
 }
