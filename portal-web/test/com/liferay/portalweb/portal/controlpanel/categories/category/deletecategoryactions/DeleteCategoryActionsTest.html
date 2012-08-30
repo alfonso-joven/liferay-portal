@@ -14,6 +14,16 @@
 	<td></td>
 </tr>
 <tr>
+	<td>clickAt</td>
+	<td>//div[@id='dockbar']</td>
+	<td>Dockbar</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]</td>
+	<td>AUI Editable Min</td>
+</tr>
+<tr>
 	<td>assertText</td>
 	<td>//li[@id='_145_mySites']/a/span</td>
 	<td>Go to</td>
@@ -54,7 +64,7 @@
 	<td>Entry Check Box</td>
 </tr>
 <tr>
-	<td>assertVisible</td>
+	<td>waitForVisible</td>
 	<td>//div[contains(@class,'aui-tree-node-checked')]/div[@class='aui-tree-node-checkbox-container']</td>
 	<td>Entry Check Box Checked</td>
 </tr>
@@ -84,7 +94,7 @@
 	<td>Delete</td>
 </tr>
 <tr>
-	<td>assertConfirmation</td>
+	<td>waitForConfirmation</td>
 	<td>Are you sure you want to delete the selected categories?</td>
 	<td></td>
 </tr>
@@ -108,7 +118,6 @@
 	<td>//div[@class='lfr-message-response portlet-msg-info']</td>
 	<td>There are no categories.</td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

@@ -23,6 +23,26 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class ViewVocabularyViewableByAnyoneTest extends BaseTestCase {
 	public void testViewVocabularyViewableByAnyone() throws Exception {
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isElementPresent(
+							"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -83,6 +103,24 @@ public class ViewVocabularyViewableByAnyoneTest extends BaseTestCase {
 			}
 
 			try {
+				if (selenium.isVisible("//iframe")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
+		selenium.selectFrame("//iframe");
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
 				if (selenium.isVisible("//tr[3]/td[5]/input")) {
 					break;
 				}
@@ -98,5 +136,6 @@ public class ViewVocabularyViewableByAnyoneTest extends BaseTestCase {
 		assertFalse(selenium.isChecked("//tr[5]/td[5]/input"));
 		assertFalse(selenium.isChecked("//tr[6]/td[5]/input"));
 		assertTrue(selenium.isChecked("//tr[7]/td[5]/input"));
+		selenium.selectFrame("relative=top");
 	}
 }

@@ -23,6 +23,26 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class DeleteSubcategoryActionsTest extends BaseTestCase {
 	public void testDeleteSubcategoryActions() throws Exception {
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isElementPresent(
+							"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -109,8 +129,24 @@ public class DeleteSubcategoryActionsTest extends BaseTestCase {
 				"//li/ul/li/div[contains(@class,'aui-tree-node-checked')]/div[@class='aui-tree-node-checkbox-container']"));
 		selenium.clickAt("xPath=(//div[@class='aui-tree-node-checkbox-container'])[2]",
 			RuntimeVariables.replace("Entry Check Box"));
-		assertTrue(selenium.isVisible(
-				"//li/ul/li/div[contains(@class,'aui-tree-node-checked')]/div[@class='aui-tree-node-checkbox-container']"));
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isVisible(
+							"//li/ul/li/div[contains(@class,'aui-tree-node-checked')]/div[@class='aui-tree-node-checkbox-container']")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
 		assertEquals(RuntimeVariables.replace("Actions"),
 			selenium.getText("//span[@title='Actions']/ul/li/strong/a/span"));
 		selenium.clickAt("//span[@title='Actions']/ul/li/strong/a/span",
@@ -139,8 +175,23 @@ public class DeleteSubcategoryActionsTest extends BaseTestCase {
 				"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a"));
 		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a",
 			RuntimeVariables.replace("Delete"));
-		assertTrue(selenium.getConfirmation()
-						   .matches("^Are you sure you want to delete the selected categories[\\s\\S]$"));
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if ("Are you sure you want to delete the selected categories?".equals(
+							selenium.getConfirmation())) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
