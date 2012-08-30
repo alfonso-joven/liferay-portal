@@ -31,9 +31,8 @@ public class SearchWCWebContentTagWCSTest extends BaseTestCase {
 		selenium.clickAt("//input[@type='image']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isTextPresent("WC WebContent Title"));
-		assertTrue(selenium.isTextPresent("WC WebContent Content"));
-		assertTrue(selenium.isPartialText("//form/div", "Results 1 - 1 of 1."));
+		assertTrue(selenium.isPartialText("//div[@class='search-results']",
+				"Results 1 - 1 of 1."));
 		assertEquals(RuntimeVariables.replace("1."),
 			selenium.getText("//tr[contains(.,'WC WebContent Title')]/td[1]"));
 		assertEquals(RuntimeVariables.replace("WC WebContent Title"),
@@ -55,10 +54,9 @@ public class SearchWCWebContentTagWCSTest extends BaseTestCase {
 		selenium.clickAt("//input[@type='image']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
-		assertFalse(selenium.isTextPresent("WC WebContent Title"));
-		assertFalse(selenium.isTextPresent("WC WebContent Content"));
+		assertTrue(selenium.isPartialText("//div[@class='search-results']",
+				"Results 0 - 0 of 0."));
 		assertFalse(selenium.isTextPresent("Results 1 - 1 of 1."));
-		assertTrue(selenium.isElementNotPresent("1."));
 		assertFalse(selenium.isTextPresent("WC WebContent Title"));
 		assertFalse(selenium.isTextPresent("WC WebContent Content"));
 		assertFalse(selenium.isTextPresent(
