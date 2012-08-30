@@ -42,5 +42,4 @@ public class RoleTestPlan extends BaseTestSuite {
 
 		return testSuite;
 	}
-
 }
