@@ -14,6 +14,16 @@
 	<td></td>
 </tr>
 <tr>
+	<td>clickAt</td>
+	<td>//div[@id='dockbar']</td>
+	<td>Dockbar</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]</td>
+	<td>AUI Editable Min</td>
+</tr>
+<tr>
 	<td>assertText</td>
 	<td>//li[@id='_145_mySites']/a/span</td>
 	<td>Go to</td>
@@ -51,7 +61,7 @@
 <tr>
 	<td>assertText</td>
 	<td>//td[@id='_134_groupsSearchContainer_col-name_row--organization-name']/a</td>
-	<td>Organization Name<br />Belongs to an organization of type Regular Organization.</td>
+	<td>Organization Name Belongs to an organization of type Regular Organization.</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -95,8 +105,13 @@
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>link=Private Pages</td>
+	<td>//a[contains(text(),'Private Pages')]</td>
 	<td>Private Pages</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[2]/span/button</td>
+	<td>Add Page</td>
 </tr>
 <tr>
 	<td>assertText</td>

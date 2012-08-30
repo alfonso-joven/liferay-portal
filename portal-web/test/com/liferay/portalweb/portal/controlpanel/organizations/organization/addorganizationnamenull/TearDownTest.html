@@ -14,6 +14,16 @@
 	<td></td>
 </tr>
 <tr>
+	<td>clickAt</td>
+	<td>//div[@id='dockbar']</td>
+	<td>Dockbar</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]</td>
+	<td>AUI Editable Min</td>
+</tr>
+<tr>
 	<td>assertText</td>
 	<td>//li[@id='_145_mySites']/a/span</td>
 	<td>Go to</td>
@@ -70,18 +80,28 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Assign Users')]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Assign Users')]/a 	</td>
 	<td>Assign Users</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Assign Users')]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Assign Users')]/a 	</td>
 	<td>Assign Users</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Assign Users')]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Assign Users')]/a 	</td>
 	<td>Assign Users</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>eval(selenium.isVisible('//input[@name="_125_allRowIds"]'))</td>
+	<td>noUsersAssigned1</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>!${noUsersAssigned1}</td>
+	<td>noUsersAssigned1</td>
 </tr>
 <tr>
 	<td>clickAt</td>
@@ -92,6 +112,11 @@
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Update Associations']</td>
 	<td>Update Associations</td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>noUsersAssigned1</td>
+	<td></td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -200,18 +225,28 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Assign Users')]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Assign Users')]/a 	</td>
 	<td>Assign Users</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Assign Users')]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Assign Users')]/a 	</td>
 	<td>Assign Users</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Assign Users')]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Assign Users')]/a 	</td>
 	<td>Assign Users</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>eval(selenium.isVisible('//input[@name="_125_allRowIds"]'))</td>
+	<td>noUsersAssigned2</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>!${noUsersAssigned2}</td>
+	<td>noUsersAssigned2</td>
 </tr>
 <tr>
 	<td>clickAt</td>
@@ -222,6 +257,11 @@
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Update Associations']</td>
 	<td>Update Associations</td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>noUsersAssigned2</td>
+	<td></td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -330,18 +370,28 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Assign Users')]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Assign Users')]/a 	</td>
 	<td>Assign Users</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Assign Users')]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Assign Users')]/a 	</td>
 	<td>Assign Users</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Assign Users')]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Assign Users')]/a 	</td>
 	<td>Assign Users</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>eval(selenium.isVisible('//input[@name="_125_allRowIds"]'))</td>
+	<td>noUsersAssigned3</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>!${noUsersAssigned3}</td>
+	<td>noUsersAssigned3</td>
 </tr>
 <tr>
 	<td>clickAt</td>
@@ -352,6 +402,11 @@
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Update Associations']</td>
 	<td>Update Associations</td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>noUsersAssigned3</td>
+	<td></td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -460,18 +515,28 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Assign Users')]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Assign Users')]/a 	</td>
 	<td>Assign Users</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Assign Users')]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Assign Users')]/a 	</td>
 	<td>Assign Users</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Assign Users')]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Assign Users')]/a 	</td>
 	<td>Assign Users</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>eval(selenium.isVisible('//input[@name="_125_allRowIds"]'))</td>
+	<td>noUsersAssigned4</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>!${noUsersAssigned4}</td>
+	<td>noUsersAssigned4</td>
 </tr>
 <tr>
 	<td>clickAt</td>
@@ -482,6 +547,11 @@
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Update Associations']</td>
 	<td>Update Associations</td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>noUsersAssigned4</td>
+	<td></td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -590,18 +660,28 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Assign Users')]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Assign Users')]/a 	</td>
 	<td>Assign Users</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Assign Users')]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Assign Users')]/a 	</td>
 	<td>Assign Users</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Assign Users')]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Assign Users')]/a 	</td>
 	<td>Assign Users</td>
+</tr>
+<tr>
+	<td>store</td>
+	<td>eval(selenium.isVisible('//input[@name="_125_allRowIds"]'))</td>
+	<td>noUsersAssigned5</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>!${noUsersAssigned5}</td>
+	<td>noUsersAssigned5</td>
 </tr>
 <tr>
 	<td>clickAt</td>
@@ -612,6 +692,11 @@
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Update Associations']</td>
 	<td>Update Associations</td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>noUsersAssigned5</td>
+	<td></td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>

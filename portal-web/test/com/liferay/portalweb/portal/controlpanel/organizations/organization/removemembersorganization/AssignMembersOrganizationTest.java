@@ -28,6 +28,26 @@ public class AssignMembersOrganizationTest extends BaseTestCase {
 			switch (label) {
 			case 1:
 				selenium.open("/web/guest/home/");
+				selenium.clickAt("//div[@id='dockbar']",
+					RuntimeVariables.replace("Dockbar"));
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isElementPresent(
+									"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
+
 				assertEquals(RuntimeVariables.replace("Go to"),
 					selenium.getText("//li[@id='_145_mySites']/a/span"));
 				selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -89,7 +109,8 @@ public class AssignMembersOrganizationTest extends BaseTestCase {
 						"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Assign Users')]/a"));
 				selenium.waitForPageToLoad("30000");
 
-				boolean basicPresent = selenium.isVisible("link=\u00ab Basic");
+				boolean basicPresent = selenium.isVisible(
+						"//a[contains(text(),\"\u00ab Basic\")]");
 
 				if (!basicPresent) {
 					label = 2;
@@ -97,7 +118,7 @@ public class AssignMembersOrganizationTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("link=\u00ab Basic",
+				selenium.clickAt("//div[@id='toggle_id_users_admin_user_searchadvanced']/div/a",
 					RuntimeVariables.replace("\u00ab Basic"));
 
 			case 2:

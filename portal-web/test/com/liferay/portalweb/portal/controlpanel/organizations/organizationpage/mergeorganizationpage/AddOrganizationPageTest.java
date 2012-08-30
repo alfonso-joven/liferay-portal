@@ -28,6 +28,26 @@ public class AddOrganizationPageTest extends BaseTestCase {
 			switch (label) {
 			case 1:
 				selenium.open("/web/guest/home/");
+				selenium.clickAt("//div[@id='dockbar']",
+					RuntimeVariables.replace("Dockbar"));
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isElementPresent(
+									"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
+
 				assertEquals(RuntimeVariables.replace("Go to"),
 					selenium.getText("//li[@id='_145_mySites']/a/span"));
 				selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -219,6 +239,7 @@ public class AddOrganizationPageTest extends BaseTestCase {
 				selenium.clickAt("//li[contains(@class,'manage-page')]/a",
 					RuntimeVariables.replace("Page"));
 				Thread.sleep(10000);
+				selenium.selectFrame("//iframe");
 
 				for (int second = 0;; second++) {
 					if (second >= 90) {
@@ -343,6 +364,7 @@ public class AddOrganizationPageTest extends BaseTestCase {
 
 				assertEquals(RuntimeVariables.replace("Selenium Test Home Page"),
 					selenium.getText("link=Selenium Test Home Page"));
+				selenium.selectFrame("relative=top");
 
 			case 100:
 				label = -1;

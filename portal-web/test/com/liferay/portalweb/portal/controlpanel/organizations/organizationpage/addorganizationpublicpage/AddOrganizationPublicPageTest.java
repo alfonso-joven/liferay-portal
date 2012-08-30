@@ -28,6 +28,26 @@ public class AddOrganizationPublicPageTest extends BaseTestCase {
 			switch (label) {
 			case 1:
 				selenium.open("/web/guest/home/");
+				selenium.clickAt("//div[@id='dockbar']",
+					RuntimeVariables.replace("Dockbar"));
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isElementPresent(
+									"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
+
 				assertEquals(RuntimeVariables.replace("Go to"),
 					selenium.getText("//li[@id='_145_mySites']/a/span"));
 				selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -59,7 +79,7 @@ public class AddOrganizationPublicPageTest extends BaseTestCase {
 					RuntimeVariables.replace("Search"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace(
-						"Organization Name\nBelongs to an organization of type Regular Organization."),
+						"Organization Name Belongs to an organization of type Regular Organization."),
 					selenium.getText(
 						"//td[@id='_134_groupsSearchContainer_col-name_row--organization-name']/a"));
 				assertEquals(RuntimeVariables.replace("Private"),
@@ -100,7 +120,7 @@ public class AddOrganizationPublicPageTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Manage Pages')]"));
 				selenium.waitForPageToLoad("30000");
-				selenium.clickAt("link=Public Pages",
+				selenium.clickAt("//a[contains(text(),'Public Pages')]",
 					RuntimeVariables.replace("Public Pages"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("Add Page"),

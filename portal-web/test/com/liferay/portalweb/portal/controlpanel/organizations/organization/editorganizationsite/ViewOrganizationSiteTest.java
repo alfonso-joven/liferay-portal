@@ -23,6 +23,26 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class ViewOrganizationSiteTest extends BaseTestCase {
 	public void testViewOrganizationSite() throws Exception {
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isElementPresent(
+							"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -54,7 +74,7 @@ public class ViewOrganizationSiteTest extends BaseTestCase {
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
-				"Organization Name\nBelongs to an organization of type Regular Organization."),
+				"Organization Name Belongs to an organization of type Regular Organization."),
 			selenium.getText(
 				"//td[@id='_134_groupsSearchContainer_col-name_row--organization-name']/a"));
 		assertEquals(RuntimeVariables.replace("Private"),
@@ -68,7 +88,7 @@ public class ViewOrganizationSiteTest extends BaseTestCase {
 				"//td[@id='_134_groupsSearchContainer_col-active_row--organization-name']"));
 		selenium.clickAt("//td[@id='_134_groupsSearchContainer_col-name_row--organization-name']/a",
 			RuntimeVariables.replace(
-				"Organization Name\nBelongs to an organization of type Regular Organization."));
+				"Organization Name Belongs to an organization of type Regular Organization."));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Site Settings"),
 			selenium.getText("//h1[@class='portlet-title']/span"));

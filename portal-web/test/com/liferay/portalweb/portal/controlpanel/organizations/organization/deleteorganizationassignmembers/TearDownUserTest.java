@@ -130,7 +130,7 @@ public class TearDownUserTest extends BaseTestCase {
 
 				selenium.select("//select[@id='_125_status']",
 					RuntimeVariables.replace("Inactive"));
-				selenium.clickAt("//input[@value='Search']",
+				selenium.clickAt("xPath=(//input[@value='Search'])[2]",
 					RuntimeVariables.replace("Search"));
 				selenium.waitForPageToLoad("30000");
 
