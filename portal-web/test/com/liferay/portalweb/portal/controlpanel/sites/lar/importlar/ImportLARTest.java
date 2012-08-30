@@ -23,6 +23,29 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class ImportLARTest extends BaseTestCase {
 	public void testImportLAR() throws Exception {
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isElementPresent(
+							"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
+		assertEquals(RuntimeVariables.replace("Go to"),
+			selenium.getText("//li[@id='_145_mySites']/a/span"));
+		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -79,6 +102,7 @@ public class ImportLARTest extends BaseTestCase {
 				"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//button[3]", RuntimeVariables.replace("Import"));
+		selenium.selectFrame("//iframe");
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -96,7 +120,7 @@ public class ImportLARTest extends BaseTestCase {
 			Thread.sleep(1000);
 		}
 
-		selenium.type("//input[@id='_156_importFileName']",
+		selenium.uploadCommonFile("//input[@id='_156_importFileName']",
 			RuntimeVariables.replace(
 				"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\portal\\controlpanel\\sites\\lar\\importlar\\dependencies\\Sites_Public_Pages.lar"));
 		assertFalse(selenium.isChecked(
@@ -144,5 +168,6 @@ public class ImportLARTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
+		selenium.selectFrame("relative=top");
 	}
 }

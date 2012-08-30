@@ -23,6 +23,30 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class ViewSitesPublicPageDropDownTest extends BaseTestCase {
 	public void testViewSitesPublicPageDropDown() throws Exception {
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isElementPresent(
+							"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
+		assertEquals(RuntimeVariables.replace("Go to"),
+			selenium.getText("//li[@id='_145_mySites']/a/span"));
+		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+		selenium.selectWindow("null");
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -32,7 +56,7 @@ public class ViewSitesPublicPageDropDownTest extends BaseTestCase {
 			try {
 				if (RuntimeVariables.replace("Community Name")
 										.equals(selenium.getText(
-								"//li[6]/a/span"))) {
+								"//div[5]/div/ul/li[4]/a"))) {
 					break;
 				}
 			}
@@ -43,8 +67,8 @@ public class ViewSitesPublicPageDropDownTest extends BaseTestCase {
 		}
 
 		assertEquals(RuntimeVariables.replace("Community Name"),
-			selenium.getText("//li[6]/a/span"));
-		selenium.clickAt("//li[6]/a/span",
+			selenium.getText("//div[5]/div/ul/li[4]/a"));
+		selenium.clickAt("//div[5]/div/ul/li[4]/a",
 			RuntimeVariables.replace("Community Name"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Public Page"),

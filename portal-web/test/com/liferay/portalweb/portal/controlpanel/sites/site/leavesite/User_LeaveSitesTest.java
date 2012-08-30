@@ -44,7 +44,7 @@ public class User_LeaveSitesTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_29_name']",
 			RuntimeVariables.replace("Test Open Community"));
-		selenium.clickAt("xPath=(//input[@value='Search'])[2]",
+		selenium.clickAt("xPath=(//input[@value='Search'])[3]",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Test Open Community"),

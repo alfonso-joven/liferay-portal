@@ -71,7 +71,7 @@ public class User_JoinSitesRestrictedTest extends BaseTestCase {
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
-				"Test Restricted Community\nThis is an restricted test community!"),
+				"Test Restricted Community This is an restricted test community!"),
 			selenium.getText("//div[1]/div/table/tbody/tr[4]/td[1]"));
 		assertEquals(RuntimeVariables.replace("1"),
 			selenium.getText("//div[1]/div/table/tbody/tr[4]/td[2]"));
@@ -93,7 +93,7 @@ public class User_JoinSitesRestrictedTest extends BaseTestCase {
 				"Your request was sent. You will receive a reply by email."),
 			selenium.getText("xPath=(//div[@class='portlet-msg-success'])[2]"));
 		assertEquals(RuntimeVariables.replace(
-				"Test Restricted Community\nThis is an restricted test community!"),
+				"Test Restricted Community This is an restricted test community!"),
 			selenium.getText("//div[1]/div/table/tbody/tr[4]/td[1]"));
 		assertEquals(RuntimeVariables.replace("1"),
 			selenium.getText("//div[1]/div/table/tbody/tr[4]/td[2]"));

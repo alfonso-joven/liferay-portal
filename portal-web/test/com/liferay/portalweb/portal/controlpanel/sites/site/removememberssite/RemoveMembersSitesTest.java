@@ -87,7 +87,8 @@ public class RemoveMembersSitesTest extends BaseTestCase {
 					RuntimeVariables.replace("Users"));
 				selenium.waitForPageToLoad("30000");
 
-				boolean basicVisible = selenium.isVisible("link=\u00ab Basic");
+				boolean basicVisible = selenium.isVisible(
+						"//a[contains(text(),\"\u00ab Basic\")]");
 
 				if (!basicVisible) {
 					label = 2;

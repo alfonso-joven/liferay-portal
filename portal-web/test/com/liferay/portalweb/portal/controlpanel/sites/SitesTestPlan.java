@@ -31,9 +31,9 @@ public class SitesTestPlan extends BaseTestSuite {
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
 
-		testSuite.addTest(SiteTestPlan.suite());
-		testSuite.addTest(SitePageTestPlan.suite());
-		testSuite.addTest(SitePortletTestPlan.suite());
+//		testSuite.addTest(SiteTestPlan.suite());
+//		testSuite.addTest(SitePageTestPlan.suite());
+//		testSuite.addTest(SitePortletTestPlan.suite());
 		testSuite.addTest(LARTestPlan.suite());
 
 		return testSuite;
