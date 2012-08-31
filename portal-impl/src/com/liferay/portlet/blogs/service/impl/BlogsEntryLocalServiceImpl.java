@@ -35,6 +35,7 @@ import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.Validator;
+import com.liferay.portal.kernel.util.WebKeys;
 import com.liferay.portal.kernel.workflow.WorkflowConstants;
 import com.liferay.portal.kernel.workflow.WorkflowHandlerRegistryUtil;
 import com.liferay.portal.model.Group;
@@ -42,6 +43,7 @@ import com.liferay.portal.model.ResourceConstants;
 import com.liferay.portal.model.User;
 import com.liferay.portal.service.ServiceContext;
 import com.liferay.portal.service.ServiceContextUtil;
+import com.liferay.portal.theme.ThemeDisplay;
 import com.liferay.portal.util.Portal;
 import com.liferay.portal.util.PortalUtil;
 import com.liferay.portal.util.PortletKeys;
@@ -74,6 +76,8 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.portlet.PortletPreferences;
+
+import javax.servlet.http.HttpServletRequest;
 
 import net.htmlparser.jericho.Source;
 import net.htmlparser.jericho.StartTag;
@@ -1079,8 +1083,8 @@ public class BlogsEntryLocalServiceImpl extends BlogsEntryLocalServiceBaseImpl {
 		}
 	}
 
-	protected void pingPingback(
-		BlogsEntry entry, ServiceContext serviceContext) {
+	protected void pingPingback(BlogsEntry entry, ServiceContext serviceContext)
+		throws PortalException, SystemException {
 
 		if (!PropsValues.BLOGS_PINGBACK_ENABLED ||
 			!entry.isAllowPingbacks() || !entry.isApproved()) {
@@ -1088,7 +1092,12 @@ public class BlogsEntryLocalServiceImpl extends BlogsEntryLocalServiceBaseImpl {
 			return;
 		}
 
-		String layoutFullURL = serviceContext.getLayoutFullURL();
+		HttpServletRequest request = serviceContext.getRequest();
+
+		ThemeDisplay themeDisplay = (ThemeDisplay)request.getAttribute(
+			WebKeys.THEME_DISPLAY);
+
+		String layoutFullURL = PortalUtil.getLayoutFullURL(themeDisplay);
 
 		if (Validator.isNull(layoutFullURL)) {
 			return;
@@ -1119,7 +1128,7 @@ public class BlogsEntryLocalServiceImpl extends BlogsEntryLocalServiceBaseImpl {
 	protected void pingTrackbacks(
 			BlogsEntry entry, String[] trackbacks, boolean pingOldTrackbacks,
 			ServiceContext serviceContext)
-		throws SystemException {
+		throws PortalException, SystemException {
 
 		if (!PropsValues.BLOGS_TRACKBACK_ENABLED ||
 			!entry.isAllowTrackbacks() || !entry.isApproved()) {
@@ -1127,7 +1136,12 @@ public class BlogsEntryLocalServiceImpl extends BlogsEntryLocalServiceBaseImpl {
 			return;
 		}
 
-		String layoutFullURL = serviceContext.getLayoutFullURL();
+		HttpServletRequest request = serviceContext.getRequest();
+
+		ThemeDisplay themeDisplay = (ThemeDisplay)request.getAttribute(
+			WebKeys.THEME_DISPLAY);
+
+		String layoutFullURL = PortalUtil.getLayoutFullURL(themeDisplay);
 
 		if (Validator.isNull(layoutFullURL)) {
 			return;
