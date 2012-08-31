@@ -16,6 +16,7 @@ package com.liferay.portalweb.portal.controlpanel.organizations.organization.ass
 
 import com.liferay.portalweb.portal.BaseTestSuite;
 import com.liferay.portalweb.portal.controlpanel.organizations.organization.addorganization.AddOrganizationTest;
+import com.liferay.portalweb.portal.controlpanel.organizations.organization.addorganization.TearDownOrganizationTest;
 import com.liferay.portalweb.portal.controlpanel.users.user.adduser.AddUserTest;
 import com.liferay.portalweb.portal.controlpanel.users.user.adduser.TearDownUserTest;
 
@@ -33,7 +34,7 @@ public class AssignMembersOrganizationUserTests extends BaseTestSuite {
 		testSuite.addTestSuite(AssignMembersOrganizationUserTest.class);
 		testSuite.addTestSuite(ViewAssignMembersOrganizationUserTest.class);
 		testSuite.addTestSuite(TearDownUserTest.class);
-		testSuite.addTestSuite(TearDownTest.class);
+		testSuite.addTestSuite(TearDownOrganizationTest.class);
 
 		return testSuite;
 	}
