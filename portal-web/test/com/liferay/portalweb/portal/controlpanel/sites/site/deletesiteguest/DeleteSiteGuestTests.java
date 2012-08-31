@@ -26,7 +26,6 @@ public class DeleteSiteGuestTests extends BaseTestSuite {
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
 		testSuite.addTestSuite(DeleteSitesGuestTest.class);
-		testSuite.addTestSuite(TearDownSitesTest.class);
 
 		return testSuite;
 	}

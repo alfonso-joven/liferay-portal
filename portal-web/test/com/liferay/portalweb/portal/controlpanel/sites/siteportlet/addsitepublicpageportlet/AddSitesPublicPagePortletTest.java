@@ -22,7 +22,7 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
  */
 public class AddSitesPublicPagePortletTest extends BaseTestCase {
 	public void testAddSitesPublicPagePortlet() throws Exception {
-		selenium.open("/web/community-name/public-page");
+		selenium.open("/web/site-name/public-page");
 		selenium.clickAt("//div[@id='dockbar']",
 			RuntimeVariables.replace("Dockbar"));
 

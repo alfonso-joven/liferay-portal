@@ -22,79 +22,28 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
  */
 public class User_JoinSitesInactiveTest extends BaseTestCase {
 	public void testUser_JoinSitesInactive() throws Exception {
-		selenium.open("/user/selenium01/home/");
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isVisible("link=Available Sites")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
+		selenium.open("/user/usersn/home/");
 		selenium.clickAt("link=Available Sites",
 			RuntimeVariables.replace("Available Sites"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_29_name']",
-			RuntimeVariables.replace("Test Inactive Community"));
+			RuntimeVariables.replace("Site Name"));
 		selenium.clickAt("xPath=(//input[@value='Search'])[3]",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("No sites were found."),
 			selenium.getText("//div[@class='portlet-msg-info']"));
-		assertFalse(selenium.isTextPresent("Test Inactive Community"));
-		selenium.open("/user/selenium01/home/");
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isVisible("link=My Sites")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
+		assertFalse(selenium.isTextPresent("Site Name"));
+		selenium.open("/user/usersn/home/");
 		selenium.clickAt("link=My Sites", RuntimeVariables.replace("My Sites"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("No sites were found."),
 			selenium.getText("//div[@class='portlet-msg-info']"));
-		assertFalse(selenium.isTextPresent("Test Inactive Community"));
-		selenium.open("/user/selenium01/home/");
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isVisible("link=Available Sites")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
+		assertFalse(selenium.isTextPresent("Site Name"));
+		selenium.open("/user/usersn/home/");
 		selenium.clickAt("link=Available Sites",
 			RuntimeVariables.replace("Available Sites"));
 		selenium.waitForPageToLoad("30000");
-		assertFalse(selenium.isTextPresent("Test Inactive Community"));
+		assertFalse(selenium.isTextPresent("Site Name"));
 	}
 }

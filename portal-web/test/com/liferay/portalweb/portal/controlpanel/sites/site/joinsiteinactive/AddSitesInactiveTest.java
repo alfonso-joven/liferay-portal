@@ -28,6 +28,8 @@ public class AddSitesInactiveTest extends BaseTestCase {
 			switch (label) {
 			case 1:
 				selenium.open("/web/guest/home/");
+				selenium.clickAt("//div[@id='dockbar']",
+					RuntimeVariables.replace("Dockbar"));
 
 				for (int second = 0;; second++) {
 					if (second >= 90) {
@@ -35,7 +37,28 @@ public class AddSitesInactiveTest extends BaseTestCase {
 					}
 
 					try {
-						if (selenium.isElementPresent("link=Control Panel")) {
+						if (selenium.isElementPresent(
+									"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
+
+				assertEquals(RuntimeVariables.replace("Go to"),
+					selenium.getText("//li[@id='_145_mySites']/a/span"));
+				selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isVisible("link=Control Panel")) {
 							break;
 						}
 					}
@@ -59,7 +82,7 @@ public class AddSitesInactiveTest extends BaseTestCase {
 
 					try {
 						if (selenium.isVisible(
-									"//div[@class='lfr-component lfr-menu-list']/ul/li/a")) {
+									"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Blank Site')]/a")) {
 							break;
 						}
 					}
@@ -71,18 +94,15 @@ public class AddSitesInactiveTest extends BaseTestCase {
 
 				assertEquals(RuntimeVariables.replace("Blank Site"),
 					selenium.getText(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li/a"));
+						"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Blank Site')]/a"));
 				selenium.click(RuntimeVariables.replace(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li/a"));
+						"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Blank Site')]/a"));
 				selenium.waitForPageToLoad("30000");
 				selenium.type("//input[@id='_134_name']",
-					RuntimeVariables.replace("Test Inactive Community"));
-				selenium.type("//textarea[@id='_134_description']",
-					RuntimeVariables.replace(
-						"This is an inactive test community!"));
+					RuntimeVariables.replace("Site Name"));
 
 				boolean activeChecked = selenium.isChecked(
-						"_134_activeCheckbox");
+						"//input[@id='_134_activeCheckbox']");
 
 				if (!activeChecked) {
 					label = 2;
@@ -100,9 +120,11 @@ public class AddSitesInactiveTest extends BaseTestCase {
 				assertEquals(RuntimeVariables.replace(
 						"Your request completed successfully."),
 					selenium.getText("//div[@class='portlet-msg-success']"));
-				assertEquals(RuntimeVariables.replace("Test Inactive Community"),
+				assertEquals(RuntimeVariables.replace("Site Name"),
 					selenium.getText("//h1[@class='header-title']/span"));
 				selenium.open("/web/guest/home/");
+				selenium.clickAt("//div[@id='dockbar']",
+					RuntimeVariables.replace("Dockbar"));
 
 				for (int second = 0;; second++) {
 					if (second >= 90) {
@@ -110,7 +132,28 @@ public class AddSitesInactiveTest extends BaseTestCase {
 					}
 
 					try {
-						if (selenium.isElementPresent("link=Control Panel")) {
+						if (selenium.isElementPresent(
+									"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
+
+				assertEquals(RuntimeVariables.replace("Go to"),
+					selenium.getText("//li[@id='_145_mySites']/a/span"));
+				selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isVisible("link=Control Panel")) {
 							break;
 						}
 					}
@@ -125,16 +168,21 @@ public class AddSitesInactiveTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				selenium.clickAt("link=Sites", RuntimeVariables.replace("Sites"));
 				selenium.waitForPageToLoad("30000");
-				assertEquals(RuntimeVariables.replace("Test Inactive Community"),
-					selenium.getText("//tr[4]/td[1]"));
+				selenium.type("//input[@id='_134_name']",
+					RuntimeVariables.replace("Site"));
+				selenium.clickAt("//input[@value='Search']",
+					RuntimeVariables.replace("Search"));
+				selenium.waitForPageToLoad("30000");
+				assertEquals(RuntimeVariables.replace("Site Name"),
+					selenium.getText("//tr[3]/td[1]"));
 				assertEquals(RuntimeVariables.replace("Open"),
-					selenium.getText("//tr[4]/td[2]"));
+					selenium.getText("//tr[3]/td[2]"));
 				assertEquals(RuntimeVariables.replace("1 User"),
-					selenium.getText("//tr[4]/td[3]"));
+					selenium.getText("//tr[3]/td[3]"));
 				assertEquals(RuntimeVariables.replace("No"),
-					selenium.getText("//tr[4]/td[4]"));
+					selenium.getText("//tr[3]/td[4]"));
 				assertEquals(RuntimeVariables.replace(""),
-					selenium.getText("//tr[4]/td[5]"));
+					selenium.getText("//tr[3]/td[5]"));
 
 			case 100:
 				label = -1;

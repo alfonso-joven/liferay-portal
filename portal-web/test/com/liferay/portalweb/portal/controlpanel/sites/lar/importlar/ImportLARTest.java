@@ -53,7 +53,7 @@ public class ImportLARTest extends BaseTestCase {
 			}
 
 			try {
-				if (selenium.isElementPresent("link=Control Panel")) {
+				if (selenium.isVisible("link=Control Panel")) {
 					break;
 				}
 			}
@@ -69,10 +69,12 @@ public class ImportLARTest extends BaseTestCase {
 		selenium.clickAt("link=Sites", RuntimeVariables.replace("Sites"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_134_name']",
-			RuntimeVariables.replace("Community Name"));
+			RuntimeVariables.replace("Site"));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
+		assertEquals(RuntimeVariables.replace("Site Name"),
+			selenium.getText("//td[1]/a"));
 		assertEquals(RuntimeVariables.replace("Actions"),
 			selenium.getText("//td[7]/span/ul/li/strong/a/span"));
 		selenium.clickAt("//td[7]/span/ul/li/strong/a/span",
@@ -101,8 +103,26 @@ public class ImportLARTest extends BaseTestCase {
 		selenium.click(RuntimeVariables.replace(
 				"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//button[3]", RuntimeVariables.replace("Import"));
-		selenium.selectFrame("//iframe");
+		selenium.clickAt("//button[.='Import']",
+			RuntimeVariables.replace("Import"));
+
+		for (int second = 0;; second++) {
+			if (second >= 90) {
+				fail("timeout");
+			}
+
+			try {
+				if (selenium.isVisible("//iframe[@id='_156_importDialog']")) {
+					break;
+				}
+			}
+			catch (Exception e) {
+			}
+
+			Thread.sleep(1000);
+		}
+
+		selenium.selectFrame("//iframe[@id='_156_importDialog']");
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -120,7 +140,7 @@ public class ImportLARTest extends BaseTestCase {
 			Thread.sleep(1000);
 		}
 
-		selenium.uploadCommonFile("//input[@id='_156_importFileName']",
+		selenium.uploadFile("//input[@id='_156_importFileName']",
 			RuntimeVariables.replace(
 				"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\portal\\controlpanel\\sites\\lar\\importlar\\dependencies\\Sites_Public_Pages.lar"));
 		assertFalse(selenium.isChecked(
@@ -145,9 +165,8 @@ public class ImportLARTest extends BaseTestCase {
 				"Delete portlet data before importing Checkbox"));
 		assertTrue(selenium.isChecked(
 				"//input[@id='_156_DELETE_PORTLET_DATACheckbox']"));
-		selenium.clickAt("//input[@value='Import']",
-			RuntimeVariables.replace("Import"));
-		selenium.waitForPageToLoad("30000");
+		selenium.click("//input[@value='Import']");
+		selenium.selectFrame("relative=top");
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -168,6 +187,5 @@ public class ImportLARTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
-		selenium.selectFrame("relative=top");
 	}
 }

@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.portalweb.portal.controlpanel.sites.sitepage.viewsitepublicpagedropdown;
+package com.liferay.portalweb.portal.controlpanel.sites.sitepage.addsiteprivatepage;
 
 import com.liferay.portalweb.portal.BaseTestCase;
 import com.liferay.portalweb.portal.util.RuntimeVariables;
@@ -20,8 +20,8 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 /**
  * @author Brian Wing Shun Chan
  */
-public class ViewSitesPublicPageDropDownTest extends BaseTestCase {
-	public void testViewSitesPublicPageDropDown() throws Exception {
+public class ViewSitesPrivatePageDropDownTest extends BaseTestCase {
+	public void testViewSitesPrivatePageDropDown() throws Exception {
 		selenium.open("/web/guest/home/");
 		selenium.clickAt("//div[@id='dockbar']",
 			RuntimeVariables.replace("Dockbar"));
@@ -46,7 +46,6 @@ public class ViewSitesPublicPageDropDownTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
-		selenium.selectWindow("null");
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
@@ -54,9 +53,9 @@ public class ViewSitesPublicPageDropDownTest extends BaseTestCase {
 			}
 
 			try {
-				if (RuntimeVariables.replace("Community Name")
+				if (RuntimeVariables.replace("Site Name")
 										.equals(selenium.getText(
-								"//div[5]/div/ul/li[4]/a"))) {
+								"//div[5]/div/ul/li/a[contains(.,'Site Name')]"))) {
 					break;
 				}
 			}
@@ -66,17 +65,17 @@ public class ViewSitesPublicPageDropDownTest extends BaseTestCase {
 			Thread.sleep(1000);
 		}
 
-		assertEquals(RuntimeVariables.replace("Community Name"),
-			selenium.getText("//div[5]/div/ul/li[4]/a"));
-		selenium.clickAt("//div[5]/div/ul/li[4]/a",
-			RuntimeVariables.replace("Community Name"));
+		assertEquals(RuntimeVariables.replace("Site Name"),
+			selenium.getText("//div[5]/div/ul/li/a[contains(.,'Site Name')]"));
+		selenium.clickAt("//div[5]/div/ul/li/a[contains(.,'Site Name')]",
+			RuntimeVariables.replace("Site Name"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Public Page"),
+		assertEquals(RuntimeVariables.replace("Private Page"),
 			selenium.getText("//nav/ul/li/a/span"));
-		assertEquals(RuntimeVariables.replace("Public Page"),
+		assertEquals(RuntimeVariables.replace("Private Page"),
 			selenium.getText("//nav/ul/li[3]/span/a"));
 		assertEquals(RuntimeVariables.replace(
-				"http://localhost:8080/web/community-name/public-page"),
+				"http://localhost:8080/group/site-name/private-page"),
 			selenium.getLocation());
 	}
 }

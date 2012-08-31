@@ -23,7 +23,7 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class AddSitesPublicPagePortletStagingTest extends BaseTestCase {
 	public void testAddSitesPublicPagePortletStaging()
 		throws Exception {
-		selenium.open("/web/community-name/public-page");
+		selenium.open("/web/site-name/public-page");
 
 		for (int second = 0;; second++) {
 			if (second >= 90) {
