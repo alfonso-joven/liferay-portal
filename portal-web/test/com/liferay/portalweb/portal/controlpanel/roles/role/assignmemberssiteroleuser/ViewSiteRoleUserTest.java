@@ -78,15 +78,16 @@ public class ViewSiteRoleUserTest extends BaseTestCase {
 					RuntimeVariables.replace("Search All Users"));
 				selenium.waitForPageToLoad("30000");
 
-				boolean basicVisible = selenium.isVisible("link=\u00ab Basic");
+				boolean BasicVisible = selenium.isVisible(
+						"//a[contains(text(),'\u00ab Basic')]");
 
-				if (!basicVisible) {
+				if (!BasicVisible) {
 					label = 2;
 
 					continue;
 				}
 
-				selenium.clickAt("link=\u00ab Basic",
+				selenium.clickAt("//a[contains(text(),'\u00ab Basic')]",
 					RuntimeVariables.replace("\u00ab Basic"));
 
 				for (int second = 0;; second++) {
