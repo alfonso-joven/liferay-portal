@@ -1084,7 +1084,6 @@ public class LayoutImporter {
 					groupId, privateLayout);
 			}
 			else {
-				importedLayout.setUuid(layout.getUuid());
 				importedLayout.setCreateDate(layout.getCreateDate());
 				importedLayout.setModifiedDate(layout.getModifiedDate());
 				importedLayout.setLayoutPrototypeUuid(
@@ -1095,6 +1094,7 @@ public class LayoutImporter {
 					layout.getSourcePrototypeLayoutUuid());
 			}
 
+			importedLayout.setUuid(layout.getUuid());
 			importedLayout.setGroupId(groupId);
 			importedLayout.setPrivateLayout(privateLayout);
 			importedLayout.setLayoutId(layoutId);
