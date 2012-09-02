@@ -364,8 +364,8 @@ public class LayoutAction extends Action {
 			return request;
 		}
 
-		ThemeDisplay themeDisplay =
-			(ThemeDisplay)request.getAttribute(WebKeys.THEME_DISPLAY);
+		ThemeDisplay themeDisplay = (ThemeDisplay)request.getAttribute(
+			WebKeys.THEME_DISPLAY);
 
 		Layout currentLayout = themeDisplay.getLayout();
 
@@ -493,8 +493,8 @@ public class LayoutAction extends Action {
 
 		String portletId = portlet.getPortletId();
 
-		ServletContext servletContext =
-			(ServletContext)request.getAttribute(WebKeys.CTX);
+		ServletContext servletContext = (ServletContext)request.getAttribute(
+			WebKeys.CTX);
 
 		InvokerPortlet invokerPortlet = PortletInstanceFactoryUtil.create(
 			portlet, servletContext);

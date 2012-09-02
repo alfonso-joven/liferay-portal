@@ -77,8 +77,8 @@ public class TemplateProcessor implements ColumnProcessor {
 				}
 			}
 
-			Boolean portletParallelRender =
-				(Boolean)_request.getAttribute(WebKeys.PORTLET_PARALLEL_RENDER);
+			Boolean portletParallelRender = (Boolean)_request.getAttribute(
+				WebKeys.PORTLET_PARALLEL_RENDER);
 
 			if (Boolean.FALSE.equals(portletParallelRender)) {
 
