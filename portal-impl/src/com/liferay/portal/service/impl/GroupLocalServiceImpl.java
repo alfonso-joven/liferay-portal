@@ -450,8 +450,9 @@ public class GroupLocalServiceImpl extends GroupLocalServiceBaseImpl {
 			long defaultUserId = userLocalService.getDefaultUserId(companyId);
 
 			groupLocalService.addGroup(
-				defaultUserId, Company.class.getName(), companyId, null, null,
-				0, null, false, true, null);
+				defaultUserId, Company.class.getName(), companyId,
+				GroupConstants.GLOBAL, null, 0,
+				GroupConstants.GLOBAL_FRIENDLY_URL, false, true, null);
 		}
 	}
 
