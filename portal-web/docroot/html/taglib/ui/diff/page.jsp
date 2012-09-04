@@ -116,7 +116,7 @@ private static String _processColumn(String changedLine) {
 	changedLine = changedLine.replaceAll(" ", "&nbsp;");
 	changedLine = changedLine.replaceAll("\t", "&nbsp;&nbsp;&nbsp;");
 
-	String column = "<td>" + changedLine + "</td>";
+	String column = "<td>" + HtmlUtil.escape(changedLine) + "</td>";
 
 	if (changedLine.equals(StringPool.BLANK)) {
 		return "<td>&nbsp;</td>";
