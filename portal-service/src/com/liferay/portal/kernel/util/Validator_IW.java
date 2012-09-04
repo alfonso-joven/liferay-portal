@@ -70,6 +70,10 @@ public class Validator_IW {
 		return Validator.isAscii(c);
 	}
 
+	public boolean isBlank(java.lang.String s) {
+		return Validator.isBlank(s);
+	}
+
 	public boolean isChar(char c) {
 		return Validator.isChar(c);
 	}
