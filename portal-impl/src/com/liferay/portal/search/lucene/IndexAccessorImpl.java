@@ -340,7 +340,7 @@ public class IndexAccessorImpl implements IndexAccessor {
 		try {
 			_indexWriter = new IndexWriter(
 				getLuceneDir(), LuceneHelperUtil.getAnalyzer(),
-				_dumpIndexDeletionPolicy, IndexWriter.MaxFieldLength.LIMITED);
+				_dumpIndexDeletionPolicy, IndexWriter.MaxFieldLength.UNLIMITED);
 
 			_indexWriter.setMergeFactor(PropsValues.LUCENE_MERGE_FACTOR);
 			_indexWriter.setRAMBufferSizeMB(PropsValues.LUCENE_BUFFER_SIZE);
