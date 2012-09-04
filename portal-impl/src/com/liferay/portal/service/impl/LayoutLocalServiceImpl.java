@@ -2102,7 +2102,7 @@ public class LayoutLocalServiceImpl extends LayoutLocalServiceBaseImpl {
 
 		boolean lessThan = false;
 
-		if (oldPriority < priority) {
+		if (oldPriority < nextPriority) {
 			lessThan = true;
 		}
 
