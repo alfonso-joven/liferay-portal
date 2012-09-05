@@ -84,6 +84,10 @@ public class ServiceTestUtil {
 
 	public static final int THREAD_COUNT = 25;
 
+	public static Group addGroup() throws Exception {
+		return addGroup(randomString());
+	}
+
 	public static Group addGroup(String name) throws Exception {
 		Group group = GroupLocalServiceUtil.fetchGroup(
 			TestPropsValues.getCompanyId(), name);
