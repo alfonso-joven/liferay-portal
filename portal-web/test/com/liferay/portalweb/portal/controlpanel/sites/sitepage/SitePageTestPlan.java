@@ -20,7 +20,6 @@ import com.liferay.portalweb.portal.controlpanel.sites.sitepage.addsitepublicpag
 import com.liferay.portalweb.portal.controlpanel.sites.sitepage.addsitepublicpages.AddSitePublicPagesTests;
 import com.liferay.portalweb.portal.controlpanel.sites.sitepage.addsitepublicpageschildpage.AddSitePublicPagesChildPageTests;
 
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
 

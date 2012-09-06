@@ -28,6 +28,26 @@ public class AddSitePublicPage1ChildPageCPTest extends BaseTestCase {
 			switch (label) {
 			case 1:
 				selenium.open("/web/guest/home/");
+				selenium.clickAt("//div[@id='dockbar']",
+					RuntimeVariables.replace("Dockbar"));
+
+				for (int second = 0;; second++) {
+					if (second >= 90) {
+						fail("timeout");
+					}
+
+					try {
+						if (selenium.isElementPresent(
+									"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
+							break;
+						}
+					}
+					catch (Exception e) {
+					}
+
+					Thread.sleep(1000);
+				}
+
 				assertEquals(RuntimeVariables.replace("Go to"),
 					selenium.getText("//li[@id='_145_mySites']/a/span"));
 				selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -150,7 +170,7 @@ public class AddSitePublicPage1ChildPageCPTest extends BaseTestCase {
 				assertEquals(RuntimeVariables.replace("Add Child Page"),
 					selenium.getText(
 						"//div[@id='_156_layoutToolbar']/span/button/span[contains(.,'Add Child Page')]"));
-				selenium.clickAt("//div/span/button[1]",
+				selenium.clickAt("//div[@id='_156_layoutToolbar']/span/button/span[contains(.,'Add Child Page')]",
 					RuntimeVariables.replace("Add Child Page"));
 
 				for (int second = 0;; second++) {
