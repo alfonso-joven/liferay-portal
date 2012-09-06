@@ -1278,13 +1278,15 @@ public class LayoutTypePortletImpl
 	}
 
 	protected List<String> getColumns() {
-		LayoutTemplate layoutTemplate = getLayoutTemplate();
-		Layout layout = getLayout();
-
 		List<String> columns = new ArrayList<String>();
 
+		Layout layout = getLayout();
+
 		if (layout.isTypePortlet()) {
+			LayoutTemplate layoutTemplate = getLayoutTemplate();
+
 			columns.addAll(layoutTemplate.getColumns());
+
 			columns.addAll(getNestedColumns());
 			columns.addAll(getRuntimeColumns());
 		}
@@ -1330,7 +1332,7 @@ public class LayoutTypePortletImpl
 
 	protected List<Portlet> getEmbeddedPortlets(
 			List<Portlet> columnPortlets, List<Portlet> staticPortlets)
-		throws PortalException, SystemException {
+		throws SystemException {
 
 		if (_embeddedPortlets != null) {
 			return _embeddedPortlets;
