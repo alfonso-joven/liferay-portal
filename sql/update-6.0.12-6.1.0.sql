@@ -584,6 +584,11 @@ delete from VirtualHost where hostname = '';
 alter table WorkflowDefinitionLink add classPK LONG;
 alter table WorkflowDefinitionLink add typePK LONG;
 
+COMMIT_TRANSACTION;
+
+update WorkflowDefinitionLink set classPK = 0;
+update WorkflowDefinitionLink set typePK = 0;
+
 drop table QUARTZ_BLOB_TRIGGERS;
 drop table QUARTZ_CALENDARS;
 drop table QUARTZ_CRON_TRIGGERS;
