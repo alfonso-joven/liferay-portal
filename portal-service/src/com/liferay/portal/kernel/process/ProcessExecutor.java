@@ -237,11 +237,11 @@ public class ProcessExecutor {
 		}
 
 		public ProcessCallable<? extends Serializable> call() throws Exception {
-			try {
-				ObjectInputStream objectInputStream = null;
+			ObjectInputStream objectInputStream = null;
+			UnsyncByteArrayOutputStream unsyncByteArrayOutputStream = null;
 
-				UnsyncByteArrayOutputStream unsyncByteArrayOutputStream =
-					new UnsyncByteArrayOutputStream();
+			try {
+				unsyncByteArrayOutputStream = new UnsyncByteArrayOutputStream();
 
 				while (true) {
 					try {
@@ -264,6 +264,8 @@ public class ProcessExecutor {
 										unsyncByteArrayOutputStream.toString());
 							}
 						}
+
+						unsyncByteArrayOutputStream.close();
 
 						unsyncByteArrayOutputStream = null;
 
@@ -303,6 +305,15 @@ public class ProcessExecutor {
 				}
 			}
 			catch (EOFException eofe) {
+			}
+			finally {
+				if (objectInputStream != null) {
+					objectInputStream.close();
+				}
+
+				if (unsyncByteArrayOutputStream != null) {
+					unsyncByteArrayOutputStream.close();
+				}
 			}
 
 			return null;
