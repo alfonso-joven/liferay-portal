@@ -294,7 +294,7 @@ public class RSSAction extends PortletAction {
 			contentField = HtmlUtil.escapeXPathAttribute(contentField);
 
 			XPath xPathSelector = SAXReaderUtil.createXPath(
-				"//dynamic-element[@name='" + contentField + "']");
+				"//dynamic-element[@name=" + contentField + "]");
 
 			List<Node> results = xPathSelector.selectNodes(document);
 
