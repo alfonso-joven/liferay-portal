@@ -22,6 +22,8 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
  */
 public class AssertAdSensePresentTest extends BaseTestCase {
 	public void testAssertAdSensePresent() throws Exception {
+		selenium.selectWindow("null");
+		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
 		selenium.click(RuntimeVariables.replace("link=Google Adsense Test Page"));
 		selenium.waitForPageToLoad("30000");

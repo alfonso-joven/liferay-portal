@@ -22,25 +22,11 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
  */
 public class User_ViewOffPermissionsBlogsUSPTest extends BaseTestCase {
 	public void testUser_ViewOffPermissionsBlogsUSP() throws Exception {
+		selenium.selectWindow("null");
+		selenium.selectFrame("relative=top");
 		selenium.open("/web/usersn/home/");
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isVisible(
-							"xPath=(//div[@class='portlet-body']/section)[3]")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
+		selenium.waitForVisible(
+			"xPath=(//div[@class='portlet-body']/section)[3]");
 		assertTrue(selenium.isElementNotPresent(
 				"//div[@class='subscribe']/span[2]/a/span"));
 		assertTrue(selenium.isElementNotPresent(
@@ -50,45 +36,12 @@ public class User_ViewOffPermissionsBlogsUSPTest extends BaseTestCase {
 			selenium.getText("//a[@class='menu-button']/span"));
 		selenium.clickAt("//a[@class='menu-button']/span",
 			RuntimeVariables.replace("Add"));
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isVisible("//a[@id='_145_addApplication']")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
+		selenium.waitForVisible("//a[@id='_145_addApplication']");
 		assertTrue(selenium.isPartialText("//a[@id='_145_addApplication']",
 				"More"));
 		selenium.clickAt("//a[@id='_145_addApplication']",
 			RuntimeVariables.replace("More"));
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isVisible(
-							"//input[@id='layout_configuration_content']")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
+		selenium.waitForVisible("//input[@id='layout_configuration_content']");
 		assertTrue(selenium.isElementNotPresent("//div[@title='Blogs']"));
 	}
 }

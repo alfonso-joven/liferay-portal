@@ -27,25 +27,11 @@ public class DeletePMMessageAllTest extends BaseTestCase {
 		while (label >= 1) {
 			switch (label) {
 			case 1:
+				selenium.selectWindow("null");
+				selenium.selectFrame("relative=top");
 				selenium.open("/user/joebloggs/so/dashboard/");
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isVisible(
-									"//nav/ul/li[contains(.,'Messages')]/a/span")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
+				selenium.waitForVisible(
+					"//nav/ul/li[contains(.,'Messages')]/a/span");
 				selenium.clickAt("//nav/ul/li[contains(.,'Messages')]/a/span",
 					RuntimeVariables.replace("Messages"));
 				selenium.waitForPageToLoad("30000");
@@ -137,24 +123,8 @@ public class DeletePMMessageAllTest extends BaseTestCase {
 						"//tr[4]/td[1]/span/span/span/input[2]"));
 				assertFalse(selenium.isChecked(
 						"//tr[5]/td[1]/span/span/span/input[2]"));
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isVisible(
-									"//input[@id='_1_WAR_privatemessagingportlet_checkAll']")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
+				selenium.waitForVisible(
+					"//input[@id='_1_WAR_privatemessagingportlet_checkAll']");
 				selenium.clickAt("//input[@id='_1_WAR_privatemessagingportlet_checkAll']",
 					RuntimeVariables.replace("All"));
 				assertTrue(selenium.isChecked("//td[1]/span/span/span/input[2]"));
@@ -167,24 +137,7 @@ public class DeletePMMessageAllTest extends BaseTestCase {
 				selenium.clickAt("//input[@value='Delete']",
 					RuntimeVariables.replace("Delete"));
 				selenium.waitForPageToLoad("30000");
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isVisible(
-									"//div[@class='portlet-msg-info']")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
+				selenium.waitForVisible("//div[@class='portlet-msg-info']");
 				assertEquals(RuntimeVariables.replace("No messages found."),
 					selenium.getText("//div[@class='portlet-msg-info']"));
 

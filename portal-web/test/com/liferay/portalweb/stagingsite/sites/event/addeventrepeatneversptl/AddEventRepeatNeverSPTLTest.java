@@ -27,24 +27,10 @@ public class AddEventRepeatNeverSPTLTest extends BaseTestCase {
 		while (label >= 1) {
 			switch (label) {
 			case 1:
+				selenium.selectWindow("null");
+				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isElementPresent("link=Site Name")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
+				selenium.waitForElementPresent("link=Site Name");
 				selenium.clickAt("link=Site Name",
 					RuntimeVariables.replace("Site Name"));
 				selenium.waitForPageToLoad("30000");
@@ -64,22 +50,7 @@ public class AddEventRepeatNeverSPTLTest extends BaseTestCase {
 						"//a[@id='_170_0publishScheduleLink']"));
 				selenium.clickAt("//a[@id='_170_0publishScheduleLink']",
 					RuntimeVariables.replace("Schedule Publication to Live"));
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isVisible("//div[4]/div/a")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
+				selenium.waitForVisible("//div[4]/div/a");
 
 				boolean startDateMonthVisible = selenium.isVisible(
 						"_88_schedulerStartDateMonth");
@@ -95,82 +66,18 @@ public class AddEventRepeatNeverSPTLTest extends BaseTestCase {
 
 			case 2:
 				Thread.sleep(5000);
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isElementPresent(
-									"//select[@id='_88_schedulerStartDateYear']")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
+				selenium.waitForElementPresent(
+					"//select[@id='_88_schedulerStartDateYear']");
 				selenium.select("//select[@id='_88_schedulerStartDateYear']",
 					RuntimeVariables.replace("label=2017"));
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isElementPresent(
-									"//input[@id='_88_recurrenceTypeNever']")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
+				selenium.waitForElementPresent(
+					"//input[@id='_88_recurrenceTypeNever']");
 				selenium.clickAt("//input[@id='_88_recurrenceTypeNever']",
 					RuntimeVariables.replace("Never"));
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isVisible("//input[@value='Add Event']")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
+				selenium.waitForVisible("//input[@value='Add Event']");
 				selenium.clickAt("//input[@value='Add Event']",
 					RuntimeVariables.replace("Add Event"));
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isVisible("//th[2]")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
+				selenium.waitForVisible("//th[2]");
 				assertEquals(RuntimeVariables.replace("No end date"),
 					selenium.getText("//tr[3]/td[3]"));
 

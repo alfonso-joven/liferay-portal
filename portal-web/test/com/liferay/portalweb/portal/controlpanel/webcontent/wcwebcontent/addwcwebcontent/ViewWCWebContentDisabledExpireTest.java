@@ -22,47 +22,17 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
  */
 public class ViewWCWebContentDisabledExpireTest extends BaseTestCase {
 	public void testViewWCWebContentDisabledExpire() throws Exception {
+		selenium.selectWindow("null");
+		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
 		selenium.clickAt("//div[@id='dockbar']",
 			RuntimeVariables.replace("Dockbar"));
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isElementPresent(
-							"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isVisible("link=Control Panel")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
@@ -80,24 +50,8 @@ public class ViewWCWebContentDisabledExpireTest extends BaseTestCase {
 		selenium.clickAt("//input[@name='_15_allRowIds']",
 			RuntimeVariables.replace("Select All"));
 		assertTrue(selenium.isChecked("//input[@name='_15_allRowIds']"));
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isElementNotPresent(
-							"//span[contains(@class,'aui-button-disabled')]/span/input[@value='Expire']")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
+		selenium.waitForElementNotPresent(
+			"//span[contains(@class,'aui-button-disabled')]/span/input[@value='Expire']");
 		assertTrue(selenium.isElementNotPresent(
 				"//span[contains(@class,'aui-button-disabled')]/span/input[@value='Expire']"));
 		assertTrue(selenium.isElementNotPresent(
@@ -106,24 +60,8 @@ public class ViewWCWebContentDisabledExpireTest extends BaseTestCase {
 		selenium.clickAt("//input[@name='_15_allRowIds']",
 			RuntimeVariables.replace("Select All"));
 		assertFalse(selenium.isChecked("//input[@name='_15_allRowIds']"));
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isVisible(
-							"//span[contains(@class,'aui-button-disabled')]/span/input[@value='Expire']")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
+		selenium.waitForVisible(
+			"//span[contains(@class,'aui-button-disabled')]/span/input[@value='Expire']");
 		assertTrue(selenium.isVisible(
 				"//span[contains(@class,'aui-button-disabled')]/span/input[@value='Expire']"));
 		assertTrue(selenium.isVisible(
@@ -131,24 +69,8 @@ public class ViewWCWebContentDisabledExpireTest extends BaseTestCase {
 		selenium.clickAt("//input[@name='_15_rowIds']",
 			RuntimeVariables.replace("Row Entry Check Box"));
 		assertTrue(selenium.isChecked("//input[@name='_15_rowIds']"));
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isElementNotPresent(
-							"//span[contains(@class,'aui-button-disabled')]/span/input[@value='Expire']")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
+		selenium.waitForElementNotPresent(
+			"//span[contains(@class,'aui-button-disabled')]/span/input[@value='Expire']");
 		assertTrue(selenium.isElementNotPresent(
 				"//span[contains(@class,'aui-button-disabled')]/span/input[@value='Expire']"));
 		assertTrue(selenium.isElementNotPresent(
@@ -157,24 +79,8 @@ public class ViewWCWebContentDisabledExpireTest extends BaseTestCase {
 		selenium.clickAt("//input[@name='_15_rowIds']",
 			RuntimeVariables.replace("Row Entry Check Box"));
 		assertFalse(selenium.isChecked("//input[@name='_15_rowIds']"));
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isVisible(
-							"//span[contains(@class,'aui-button-disabled')]/span/input[@value='Expire']")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
+		selenium.waitForVisible(
+			"//span[contains(@class,'aui-button-disabled')]/span/input[@value='Expire']");
 		assertTrue(selenium.isVisible(
 				"//span[contains(@class,'aui-button-disabled')]/span/input[@value='Expire']"));
 		assertTrue(selenium.isVisible(

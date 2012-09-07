@@ -27,47 +27,17 @@ public class DeleteVocabularyAssetType2Test extends BaseTestCase {
 		while (label >= 1) {
 			switch (label) {
 			case 1:
+				selenium.selectWindow("null");
+				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
 				selenium.clickAt("//div[@id='dockbar']",
 					RuntimeVariables.replace("Dockbar"));
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isElementPresent(
-									"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
+				selenium.waitForElementPresent(
+					"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
 				assertEquals(RuntimeVariables.replace("Go to"),
 					selenium.getText("//li[@id='_145_mySites']/a/span"));
 				selenium.mouseOver("//li[@id='_145_mySites']/a/span");
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isVisible("link=Control Panel")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
+				selenium.waitForVisible("link=Control Panel");
 				selenium.clickAt("link=Control Panel",
 					RuntimeVariables.replace("Control Panel"));
 				selenium.waitForPageToLoad("30000");
@@ -78,41 +48,10 @@ public class DeleteVocabularyAssetType2Test extends BaseTestCase {
 					selenium.getText("//span[@class='vocabulary-item']/a"));
 				selenium.clickAt("//a[@class='vocabulary-item-actions-trigger']",
 					RuntimeVariables.replace("Edit"));
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isElementPresent(
-									"//script[contains(@src,'/liferay/panel_floating.js')]")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isVisible(
-									"//div[@id='vocabularyExtraFieldsPanelContainer']/div/div/span")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
+				selenium.waitForElementPresent(
+					"//script[contains(@src,'/liferay/panel_floating.js')]");
+				selenium.waitForVisible(
+					"//div[@id='vocabularyExtraFieldsPanelContainer']/div/div/span");
 				assertEquals(RuntimeVariables.replace("Associated Asset Types"),
 					selenium.getText(
 						"//div[@id='vocabularyExtraFieldsPanelContainer']/div/div/span"));
@@ -128,87 +67,22 @@ public class DeleteVocabularyAssetType2Test extends BaseTestCase {
 
 				selenium.clickAt("//div[@id='vocabularyExtraFieldsPanelContainer']/div/div/span",
 					RuntimeVariables.replace("Associated Asset Types"));
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isVisible(
-									"//select[@id='_147_classNameId0']")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
+				selenium.waitForVisible("//select[@id='_147_classNameId0']");
 
 			case 2:
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isVisible(
-									"xPath=(//button[contains(@class,'delete-row')])[2]")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
+				selenium.waitForVisible(
+					"xPath=(//button[contains(@class,'delete-row')])[2]");
 				selenium.clickAt("xPath=(//button[contains(@class,'delete-row')])[2]",
 					RuntimeVariables.replace("Delete Row"));
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (!selenium.isVisible(
-									"//select[@id='_147_classNameId1']")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
+				selenium.waitForNotVisible("//select[@id='_147_classNameId1']");
 				assertFalse(selenium.isVisible(
 						"//select[@id='_147_classNameId1']"));
 				assertEquals(RuntimeVariables.replace("Undo (1)"),
 					selenium.getText("//div/a[1]"));
 				selenium.clickAt("//input[@value='Save']",
 					RuntimeVariables.replace("Save"));
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isVisible(
-									"//div[@class='lfr-message-response portlet-msg-success']")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
+				selenium.waitForVisible(
+					"//div[@class='lfr-message-response portlet-msg-success']");
 				assertEquals(RuntimeVariables.replace(
 						"Your request processed successfully."),
 					selenium.getText(

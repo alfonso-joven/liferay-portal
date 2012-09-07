@@ -24,6 +24,8 @@ public class User_ViewUserStatisticsReplyMessageBoardThreadTest
 	extends BaseTestCase {
 	public void testUser_ViewUserStatisticsReplyMessageBoardThread()
 		throws Exception {
+		selenium.selectWindow("null");
+		selenium.selectFrame("relative=top");
 		selenium.open("/web/site-name/");
 		selenium.clickAt("link=User Statistics Test Page",
 			RuntimeVariables.replace("User Statistics Test Page"));

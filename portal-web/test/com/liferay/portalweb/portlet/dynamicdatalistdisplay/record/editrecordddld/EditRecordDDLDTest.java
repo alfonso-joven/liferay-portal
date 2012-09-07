@@ -22,6 +22,8 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
  */
 public class EditRecordDDLDTest extends BaseTestCase {
 	public void testEditRecordDDLD() throws Exception {
+		selenium.selectWindow("null");
+		selenium.selectFrame("relative=top");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
 		selenium.clickAt("link=Dynamic Data List Display Test Page",
@@ -32,24 +34,8 @@ public class EditRecordDDLDTest extends BaseTestCase {
 			selenium.getText("//span[@title='Actions']/ul/li/strong/a"));
 		selenium.clickAt("//span[@title='Actions']/ul/li/strong/a",
 			RuntimeVariables.replace("Actions"));
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isVisible(
-							"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
+		selenium.waitForVisible(
+			"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a");
 		assertEquals(RuntimeVariables.replace("Edit"),
 			selenium.getText(
 				"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a"));
@@ -64,24 +50,8 @@ public class EditRecordDDLDTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Date"),
 			selenium.getText(
 				"//div[@class='aui-fieldset-content ']/div[2]/div/label"));
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isVisible(
-							"//div[@class='aui-datepicker-select-wrapper']/select")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
+		selenium.waitForVisible(
+			"//div[@class='aui-datepicker-select-wrapper']/select");
 		selenium.clickAt("//div[@class='aui-datepicker-select-wrapper']/select",
 			RuntimeVariables.replace("Month Drop Down"));
 		selenium.select("//div[@class='aui-datepicker-select-wrapper']/select",
@@ -100,41 +70,9 @@ public class EditRecordDDLDTest extends BaseTestCase {
 				"//div[@class='aui-fieldset-content ']/div[4]/div/span/span/label"));
 		selenium.clickAt("//input[@value='Select']",
 			RuntimeVariables.replace("Select"));
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isVisible("//iframe")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
+		selenium.waitForVisible("//iframe");
 		selenium.selectFrame("//iframe");
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isVisible("link=document_edited.txt")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
+		selenium.waitForVisible("link=document_edited.txt");
 		assertEquals(RuntimeVariables.replace("document_edited.txt"),
 			selenium.getText("link=document_edited.txt"));
 		assertTrue(selenium.isVisible("//tr[4]/td[5]/input"));

@@ -27,24 +27,10 @@ public class ViewCompletedTaskKaleoTicketKFTest extends BaseTestCase {
 		while (label >= 1) {
 			switch (label) {
 			case 1:
+				selenium.selectWindow("null");
+				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isVisible("link=Kaleo Forms Test Page")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
+				selenium.waitForVisible("link=Kaleo Forms Test Page");
 				selenium.clickAt("link=Kaleo Forms Test Page",
 					RuntimeVariables.replace("Kaleo Forms Test Page"));
 				selenium.waitForPageToLoad("30000");

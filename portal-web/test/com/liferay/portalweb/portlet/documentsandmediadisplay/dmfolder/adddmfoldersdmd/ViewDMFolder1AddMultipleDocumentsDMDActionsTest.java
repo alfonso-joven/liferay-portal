@@ -24,6 +24,8 @@ public class ViewDMFolder1AddMultipleDocumentsDMDActionsTest
 	extends BaseTestCase {
 	public void testViewDMFolder1AddMultipleDocumentsDMDActions()
 		throws Exception {
+		selenium.selectWindow("null");
+		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
 		selenium.clickAt("link=Documents and Media Display Test Page",
 			RuntimeVariables.replace("Documents and Media Display Test Page"));
@@ -35,24 +37,8 @@ public class ViewDMFolder1AddMultipleDocumentsDMDActionsTest
 			selenium.getText("//span[@title='Actions']/ul/li/strong/a/span"));
 		selenium.clickAt("//span[@title='Actions']/ul/li/strong/a/span",
 			RuntimeVariables.replace("Actions"));
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isVisible(
-							"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Multiple Documents')]/a")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
+		selenium.waitForVisible(
+			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Multiple Documents')]/a");
 		assertEquals(RuntimeVariables.replace("Multiple Documents"),
 			selenium.getText(
 				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Multiple Documents')]/a"));
@@ -64,24 +50,7 @@ public class ViewDMFolder1AddMultipleDocumentsDMDActionsTest
 		assertEquals(RuntimeVariables.replace("\u00ab Back"),
 			selenium.getText("//span[@class='header-back-to']/a"));
 		Thread.sleep(5000);
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isVisible(
-							"link=Browse (you can select multiple files).")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
+		selenium.waitForVisible("link=Browse (you can select multiple files).");
 		assertTrue(selenium.isVisible(
 				"link=Browse (you can select multiple files)."));
 		assertTrue(selenium.isVisible(

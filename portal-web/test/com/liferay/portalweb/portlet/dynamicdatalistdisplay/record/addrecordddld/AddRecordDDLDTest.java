@@ -22,6 +22,8 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
  */
 public class AddRecordDDLDTest extends BaseTestCase {
 	public void testAddRecordDDLD() throws Exception {
+		selenium.selectWindow("null");
+		selenium.selectFrame("relative=top");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
 		selenium.clickAt("link=Dynamic Data List Display Test Page",
@@ -40,24 +42,8 @@ public class AddRecordDDLDTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Date"),
 			selenium.getText(
 				"//div[@class='aui-fieldset-content ']/div[2]/div/label"));
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isVisible(
-							"//div[@class='aui-datepicker-select-wrapper']/select")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
+		selenium.waitForVisible(
+			"//div[@class='aui-datepicker-select-wrapper']/select");
 		selenium.clickAt("//div[@class='aui-datepicker-select-wrapper']/select",
 			RuntimeVariables.replace("Month Drop Down"));
 		selenium.select("//div[@class='aui-datepicker-select-wrapper']/select",
@@ -76,41 +62,9 @@ public class AddRecordDDLDTest extends BaseTestCase {
 				"//div[@class='aui-fieldset-content ']/div[4]/div/span/span/label"));
 		selenium.clickAt("//input[@value='Select']",
 			RuntimeVariables.replace("Select"));
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isVisible("//iframe")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
+		selenium.waitForVisible("//iframe");
 		selenium.selectFrame("//iframe");
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (selenium.isVisible("//input[@value='Choose']")) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
+		selenium.waitForVisible("//input[@value='Choose']");
 		selenium.clickAt("//input[@value='Choose']",
 			RuntimeVariables.replace("Choose"));
 		selenium.selectFrame("relative=top");

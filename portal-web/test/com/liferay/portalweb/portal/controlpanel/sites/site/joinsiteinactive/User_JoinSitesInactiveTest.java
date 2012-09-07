@@ -22,6 +22,8 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
  */
 public class User_JoinSitesInactiveTest extends BaseTestCase {
 	public void testUser_JoinSitesInactive() throws Exception {
+		selenium.selectWindow("null");
+		selenium.selectFrame("relative=top");
 		selenium.open("/user/usersn/home/");
 		selenium.clickAt("link=Available Sites",
 			RuntimeVariables.replace("Available Sites"));

@@ -27,47 +27,17 @@ public class EditUserRegRoleTest extends BaseTestCase {
 		while (label >= 1) {
 			switch (label) {
 			case 1:
+				selenium.selectWindow("null");
+				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
 				selenium.clickAt("//div[@id='dockbar']",
 					RuntimeVariables.replace("Dockbar"));
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isElementPresent(
-									"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
+				selenium.waitForElementPresent(
+					"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
 				assertEquals(RuntimeVariables.replace("Go to"),
 					selenium.getText("//li[@id='_145_mySites']/a/span"));
 				selenium.mouseOver("//li[@id='_145_mySites']/a/span");
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isVisible("link=Control Panel")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
+				selenium.waitForVisible("link=Control Panel");
 				selenium.clickAt("link=Control Panel",
 					RuntimeVariables.replace("Control Panel"));
 				selenium.waitForPageToLoad("30000");
@@ -77,22 +47,7 @@ public class EditUserRegRoleTest extends BaseTestCase {
 				selenium.clickAt("link=Search All Users",
 					RuntimeVariables.replace("Search All Users"));
 				selenium.waitForPageToLoad("30000");
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isElementPresent("//a[.='\u00ab Basic']")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
+				selenium.waitForElementPresent("//a[.='\u00ab Basic']");
 
 				boolean basicVisible = selenium.isVisible(
 						"//a[.='\u00ab Basic']");
@@ -105,22 +60,7 @@ public class EditUserRegRoleTest extends BaseTestCase {
 
 				selenium.clickAt("//a[.='\u00ab Basic']",
 					RuntimeVariables.replace("\u00ab Basic"));
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isVisible("//input[@name='_125_keywords']")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
+				selenium.waitForVisible("//input[@name='_125_keywords']");
 
 			case 2:
 				Thread.sleep(1000);
@@ -143,24 +83,8 @@ public class EditUserRegRoleTest extends BaseTestCase {
 						"//span[@title='Actions']/ul[@id='_125_usersSearchContainer_usersn_menu']/li/strong/a"));
 				selenium.clickAt("//span[@title='Actions']/ul[@id='_125_usersSearchContainer_usersn_menu']/li/strong/a",
 					RuntimeVariables.replace("Actions"));
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isVisible(
-									"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Edit')]")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
+				selenium.waitForVisible(
+					"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Edit')]");
 				assertEquals(RuntimeVariables.replace("Edit"),
 					selenium.getText(
 						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Edit')]"));
@@ -171,24 +95,8 @@ public class EditUserRegRoleTest extends BaseTestCase {
 						"Roles"));
 				selenium.clickAt("//a[@id='_125_rolesLink']",
 					RuntimeVariables.replace("Roles"));
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isVisible(
-									"//span[contains(.,'Select')]/a[contains(@href,'openRegularRoleSelector')]")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
+				selenium.waitForVisible(
+					"//span[contains(.,'Select')]/a[contains(@href,'openRegularRoleSelector')]");
 				assertEquals(RuntimeVariables.replace("Select"),
 					selenium.getText(
 						"//span[contains(.,'Select')]/a[contains(@href,'openRegularRoleSelector')]"));
@@ -196,49 +104,16 @@ public class EditUserRegRoleTest extends BaseTestCase {
 					RuntimeVariables.replace("Select"));
 				Thread.sleep(5000);
 				selenium.selectWindow("title=Users and Organizations");
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isVisible(
-									"//tr[contains(.,'Roles Regrole Name')]/td[@headers='_125_rolesSearchContainer_col-title']/a")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
+				selenium.waitForVisible(
+					"//tr[contains(.,'Roles Regrole Name')]/td[@headers='_125_rolesSearchContainer_col-title']/a");
 				assertEquals(RuntimeVariables.replace("Roles Regrole Name"),
 					selenium.getText(
 						"//tr[contains(.,'Roles Regrole Name')]/td[@headers='_125_rolesSearchContainer_col-title']/a"));
 				selenium.clickAt("//tr[contains(.,'Roles Regrole Name')]/td[@headers='_125_rolesSearchContainer_col-title']/a",
 					RuntimeVariables.replace("Roles Regrole Name"));
 				selenium.selectWindow("null");
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isPartialText(
-									"//div[@id='_125_rolesSearchContainer']",
-									"Roles Regrole Name")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
+				selenium.waitForPartialText("//div[@id='_125_rolesSearchContainer']",
+					"Roles Regrole Name");
 				assertTrue(selenium.isPartialText(
 						"//div[@id='_125_rolesSearchContainer']",
 						"Roles Regrole Name"));

@@ -27,6 +27,8 @@ public class TearDownDMDocumentDMDTest extends BaseTestCase {
 		while (label >= 1) {
 			switch (label) {
 			case 1:
+				selenium.selectWindow("null");
+				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
 				selenium.clickAt("link=Documents and Media Display Test Page",
 					RuntimeVariables.replace(
@@ -47,24 +49,8 @@ public class TearDownDMDocumentDMDTest extends BaseTestCase {
 						"//a[contains(@id,'objectsSearchContainer_1_menuButton')]/span"));
 				selenium.clickAt("//a[contains(@id,'objectsSearchContainer_1_menuButton')]/span",
 					RuntimeVariables.replace("Actions"));
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isVisible(
-									"//a[contains(@id,'objectsSearchContainer_1_menu_delete')]")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
+				selenium.waitForVisible(
+					"//a[contains(@id,'objectsSearchContainer_1_menu_delete')]");
 				assertEquals(RuntimeVariables.replace("Delete"),
 					selenium.getText(
 						"//a[contains(@id,'objectsSearchContainer_1_menu_delete')]"));
@@ -91,24 +77,8 @@ public class TearDownDMDocumentDMDTest extends BaseTestCase {
 						"//a[contains(@id,'objectsSearchContainer_1_menuButton')]/span"));
 				selenium.clickAt("//a[contains(@id,'objectsSearchContainer_1_menuButton')]/span",
 					RuntimeVariables.replace("Actions"));
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isVisible(
-									"//a[contains(@id,'objectsSearchContainer_1_menu_delete')]")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
+				selenium.waitForVisible(
+					"//a[contains(@id,'objectsSearchContainer_1_menu_delete')]");
 				assertEquals(RuntimeVariables.replace("Delete"),
 					selenium.getText(
 						"//a[contains(@id,'objectsSearchContainer_1_menu_delete')]"));
@@ -135,24 +105,8 @@ public class TearDownDMDocumentDMDTest extends BaseTestCase {
 						"//a[contains(@id,'objectsSearchContainer_1_menuButton')]/span"));
 				selenium.clickAt("//a[contains(@id,'objectsSearchContainer_1_menuButton')]/span",
 					RuntimeVariables.replace("Actions"));
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isVisible(
-									"//a[contains(@id,'objectsSearchContainer_1_menu_delete')]")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
+				selenium.waitForVisible(
+					"//a[contains(@id,'objectsSearchContainer_1_menu_delete')]");
 				assertEquals(RuntimeVariables.replace("Delete"),
 					selenium.getText(
 						"//a[contains(@id,'objectsSearchContainer_1_menu_delete')]"));
@@ -179,24 +133,8 @@ public class TearDownDMDocumentDMDTest extends BaseTestCase {
 						"//a[contains(@id,'objectsSearchContainer_1_menuButton')]/span"));
 				selenium.clickAt("//a[contains(@id,'objectsSearchContainer_1_menuButton')]/span",
 					RuntimeVariables.replace("Actions"));
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isVisible(
-									"//a[contains(@id,'objectsSearchContainer_1_menu_delete')]")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
+				selenium.waitForVisible(
+					"//a[contains(@id,'objectsSearchContainer_1_menu_delete')]");
 				assertEquals(RuntimeVariables.replace("Delete"),
 					selenium.getText(
 						"//a[contains(@id,'objectsSearchContainer_1_menu_delete')]"));
@@ -223,24 +161,8 @@ public class TearDownDMDocumentDMDTest extends BaseTestCase {
 						"//a[contains(@id,'objectsSearchContainer_1_menuButton')]/span"));
 				selenium.clickAt("//a[contains(@id,'objectsSearchContainer_1_menuButton')]/span",
 					RuntimeVariables.replace("Actions"));
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isVisible(
-									"//a[contains(@id,'objectsSearchContainer_1_menu_delete')]")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
+				selenium.waitForVisible(
+					"//a[contains(@id,'objectsSearchContainer_1_menu_delete')]");
 				assertEquals(RuntimeVariables.replace("Delete"),
 					selenium.getText(
 						"//a[contains(@id,'objectsSearchContainer_1_menu_delete')]"));

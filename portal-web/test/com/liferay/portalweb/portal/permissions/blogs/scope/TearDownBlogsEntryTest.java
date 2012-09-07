@@ -27,6 +27,8 @@ public class TearDownBlogsEntryTest extends BaseTestCase {
 		while (label >= 1) {
 			switch (label) {
 			case 1:
+				selenium.selectWindow("null");
+				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
 				selenium.clickAt("link=Blogs Permissions Page",
 					RuntimeVariables.replace("Blogs Permissions Page"));

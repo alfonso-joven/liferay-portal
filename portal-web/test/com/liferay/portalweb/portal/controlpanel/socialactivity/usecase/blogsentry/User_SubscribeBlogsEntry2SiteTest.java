@@ -22,29 +22,14 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
  */
 public class User_SubscribeBlogsEntry2SiteTest extends BaseTestCase {
 	public void testUser_SubscribeBlogsEntry2Site() throws Exception {
+		selenium.selectWindow("null");
+		selenium.selectFrame("relative=top");
 		selenium.open("/web/site-name/");
 		selenium.clickAt("link=Blogs Test Page",
 			RuntimeVariables.replace("Blogs Test Page"));
 		selenium.waitForPageToLoad("30000");
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (RuntimeVariables.replace("Blogs Entry2 Title")
-										.equals(selenium.getText(
-								"//div[@class='entry-title']/h2/a"))) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
+		selenium.waitForText("//div[@class='entry-title']/h2/a",
+			"Blogs Entry2 Title");
 		assertEquals(RuntimeVariables.replace("Blogs Entry2 Title"),
 			selenium.getText("//div[@class='entry-title']/h2/a"));
 		selenium.clickAt("//div[@class='entry-title']/h2/a",
@@ -54,26 +39,8 @@ public class User_SubscribeBlogsEntry2SiteTest extends BaseTestCase {
 			selenium.getText("//span[@class='subscribe-link']/a/span"));
 		selenium.clickAt("//span[@class='subscribe-link']/a/span",
 			RuntimeVariables.replace("Subscribe to Comments"));
-
-		for (int second = 0;; second++) {
-			if (second >= 90) {
-				fail("timeout");
-			}
-
-			try {
-				if (RuntimeVariables.replace(
-							"Your request processed successfully.")
-										.equals(selenium.getText(
-								"//div[@id='_33_discussion-status-messages']"))) {
-					break;
-				}
-			}
-			catch (Exception e) {
-			}
-
-			Thread.sleep(1000);
-		}
-
+		selenium.waitForText("//div[@id='_33_discussion-status-messages']",
+			"Your request processed successfully.");
 		assertEquals(RuntimeVariables.replace(
 				"Your request processed successfully."),
 			selenium.getText("//div[@id='_33_discussion-status-messages']"));

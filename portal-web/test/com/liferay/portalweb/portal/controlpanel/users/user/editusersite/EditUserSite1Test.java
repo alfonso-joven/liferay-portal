@@ -27,47 +27,17 @@ public class EditUserSite1Test extends BaseTestCase {
 		while (label >= 1) {
 			switch (label) {
 			case 1:
+				selenium.selectWindow("null");
+				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
 				selenium.clickAt("//div[@id='dockbar']",
 					RuntimeVariables.replace("Dockbar"));
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isElementPresent(
-									"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
+				selenium.waitForElementPresent(
+					"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
 				assertEquals(RuntimeVariables.replace("Go to"),
 					selenium.getText("//li[@id='_145_mySites']/a/span"));
 				selenium.mouseOver("//li[@id='_145_mySites']/a/span");
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isVisible("link=Control Panel")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
+				selenium.waitForVisible("link=Control Panel");
 				selenium.clickAt("link=Control Panel",
 					RuntimeVariables.replace("Control Panel"));
 				selenium.waitForPageToLoad("30000");
@@ -77,22 +47,7 @@ public class EditUserSite1Test extends BaseTestCase {
 				selenium.clickAt("link=Search All Users",
 					RuntimeVariables.replace("Search All Users"));
 				selenium.waitForPageToLoad("30000");
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isElementPresent("//a[.='\u00ab Basic']")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
+				selenium.waitForElementPresent("//a[.='\u00ab Basic']");
 
 				boolean basicVisible = selenium.isVisible(
 						"//a[.='\u00ab Basic']");
@@ -105,22 +60,7 @@ public class EditUserSite1Test extends BaseTestCase {
 
 				selenium.clickAt("//a[.='\u00ab Basic']",
 					RuntimeVariables.replace("\u00ab Basic"));
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isVisible("//input[@name='_125_keywords']")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
+				selenium.waitForVisible("//input[@name='_125_keywords']");
 
 			case 2:
 				selenium.type("//input[@name='_125_keywords']",
@@ -137,47 +77,14 @@ public class EditUserSite1Test extends BaseTestCase {
 						"Sites"));
 				selenium.clickAt("//a[@id='_125_sitesLink']",
 					RuntimeVariables.replace("Sites"));
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isVisible(
-									"//div[@id='_125_sites']/span/a/span")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
+				selenium.waitForVisible("//div[@id='_125_sites']/span/a/span");
 				assertEquals(RuntimeVariables.replace("Select"),
 					selenium.getText("//div[@id='_125_sites']/span/a/span"));
 				selenium.clickAt("//div[@id='_125_sites']/span/a/span",
 					RuntimeVariables.replace("Select"));
 				Thread.sleep(5000);
 				selenium.selectWindow("title=Users and Organizations");
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (selenium.isVisible("//input[@id='_125_name']")) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
+				selenium.waitForVisible("//input[@id='_125_name']");
 				selenium.type("//input[@id='_125_name']",
 					RuntimeVariables.replace("Site1"));
 				selenium.clickAt("//input[@value='Search']",
@@ -188,25 +95,8 @@ public class EditUserSite1Test extends BaseTestCase {
 				selenium.clickAt("//tr[3]/td[1]/a",
 					RuntimeVariables.replace("Site1 Name"));
 				selenium.selectWindow("null");
-
-				for (int second = 0;; second++) {
-					if (second >= 90) {
-						fail("timeout");
-					}
-
-					try {
-						if (RuntimeVariables.replace("Site1 Name")
-												.equals(selenium.getText(
-										"//table[@data-searchcontainerid='_125_groupsSearchContainer']/tr/td"))) {
-							break;
-						}
-					}
-					catch (Exception e) {
-					}
-
-					Thread.sleep(1000);
-				}
-
+				selenium.waitForText("//table[@data-searchcontainerid='_125_groupsSearchContainer']/tr/td",
+					"Site1 Name");
 				assertEquals(RuntimeVariables.replace("Site1 Name"),
 					selenium.getText(
 						"//table[@data-searchcontainerid='_125_groupsSearchContainer']/tr/td"));
