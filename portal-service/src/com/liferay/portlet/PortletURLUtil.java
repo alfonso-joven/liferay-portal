@@ -14,6 +14,8 @@
 
 package com.liferay.portlet;
 
+import com.liferay.portal.kernel.portlet.LiferayPortletRequest;
+import com.liferay.portal.kernel.portlet.LiferayPortletResponse;
 import com.liferay.portal.kernel.portlet.LiferayPortletURL;
 import com.liferay.portal.kernel.portlet.LiferayWindowState;
 import com.liferay.portal.kernel.util.HttpUtil;
@@ -100,15 +102,16 @@ public class PortletURLUtil {
 	}
 
 	public static PortletURL getCurrent(
-		PortletRequest portletRequest, MimeResponse mimeResponse) {
+		LiferayPortletRequest liferayPortletRequest,
+		LiferayPortletResponse liferayPortletResponse) {
 
-		PortletURL portletURL = mimeResponse.createRenderURL();
+		PortletURL portletURL = liferayPortletResponse.createRenderURL();
 
-		Enumeration<String> enu = portletRequest.getParameterNames();
+		Enumeration<String> enu = liferayPortletRequest.getParameterNames();
 
 		while (enu.hasMoreElements()) {
 			String param = enu.nextElement();
-			String[] values = portletRequest.getParameterValues(param);
+			String[] values = liferayPortletRequest.getParameterValues(param);
 
 			boolean addParam = true;
 
@@ -128,6 +131,14 @@ public class PortletURLUtil {
 		}
 
 		return portletURL;
+	}
+
+	public static PortletURL getCurrent(
+		PortletRequest portletRequest, MimeResponse mimeResponse) {
+
+		return getCurrent(
+			(LiferayPortletRequest)portletRequest,
+			(LiferayPortletResponse)mimeResponse);
 	}
 
 	public static String getRefreshURL(
