@@ -27,12 +27,12 @@ import com.liferay.portal.kernel.servlet.HttpHeaders;
 import com.liferay.portal.kernel.servlet.ServletResponseUtil;
 import com.liferay.portal.kernel.servlet.StringServletResponse;
 import com.liferay.portal.kernel.util.CharPool;
-import com.liferay.portal.kernel.util.ContentTypes;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.HttpUtil;
 import com.liferay.portal.kernel.util.JavaConstants;
 import com.liferay.portal.kernel.util.KMPSearch;
 import com.liferay.portal.kernel.util.ParamUtil;
+import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.servlet.filters.BasePortalFilter;
 import com.liferay.portal.servlet.filters.dynamiccss.DynamicCSSUtil;
@@ -210,6 +210,28 @@ public class StripFilter extends BasePortalFilter {
 		}
 	}
 
+	protected boolean isStripContentType(String contentType) {
+		boolean isStripContentType = false;
+
+		for (String stripContentType : PropsValues.STRIP_MIME_TYPES) {
+			if (stripContentType.endsWith(StringPool.STAR)) {
+				stripContentType = stripContentType.substring(
+					0, stripContentType.length() - 1);
+
+				isStripContentType = contentType.startsWith(stripContentType);
+			}
+			else {
+				isStripContentType = contentType.equals(stripContentType);
+			}
+
+			if (isStripContentType) {
+				break;
+			}
+		}
+
+		return isStripContentType;
+	}
+
 	protected void outputCloseTag(
 			CharBuffer charBuffer, Writer writer, String closeTag)
 		throws Exception {
@@ -343,7 +365,7 @@ public class StripFilter extends BasePortalFilter {
 
 		response.setContentType(contentType);
 
-		if (contentType.startsWith(ContentTypes.TEXT_HTML) &&
+		if (isStripContentType(contentType) &&
 			(stringResponse.getStatus() == HttpServletResponse.SC_OK)) {
 
 			CharBuffer oldCharBuffer = CharBuffer.wrap(
