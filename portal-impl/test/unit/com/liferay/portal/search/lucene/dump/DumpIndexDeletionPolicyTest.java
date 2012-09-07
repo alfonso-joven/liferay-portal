@@ -301,8 +301,6 @@ public class DumpIndexDeletionPolicyTest extends TestCase {
 
 		TopDocs topDocs = indexSearcher.search(termQuery, 1);
 
-		indexSearcher.close();
-
 		assertEquals(totalHits, topDocs.totalHits);
 	}
 
