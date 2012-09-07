@@ -165,6 +165,10 @@ public class ThemeDisplay implements Cloneable, Serializable {
 		return _facebookCanvasPageURL;
 	}
 
+	public String getFocusedPortletId() {
+		return _focusedPortletId;
+	}
+
 	public String getI18nLanguageId() {
 		return _i18nLanguageId;
 	}
@@ -599,6 +603,18 @@ public class ThemeDisplay implements Cloneable, Serializable {
 		return _lifecycleResource;
 	}
 
+	public boolean isPortletDisplayFocused() {
+		if (Validator.isNotNull(getPortletDisplay()) &&
+			Validator.isNotNull(getFocusedPortletId()) &&
+			getPortletDisplay().getId().equals(getFocusedPortletId())) {
+
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
 	public boolean isSecure() {
 		return _secure;
 	}
@@ -782,6 +798,10 @@ public class ThemeDisplay implements Cloneable, Serializable {
 		if (Validator.isNotNull(facebookCanvasPageURL)) {
 			_facebook = true;
 		}
+	}
+
+	public void setFocusedPortletId(String focusedPortletId) {
+		_focusedPortletId = focusedPortletId;
 	}
 
 	public void setFreeformLayout(boolean freeformLayout) {
@@ -1309,6 +1329,7 @@ public class ThemeDisplay implements Cloneable, Serializable {
 	private String _doAsUserLanguageId = StringPool.BLANK;
 	private boolean _facebook;
 	private String _facebookCanvasPageURL;
+	private String _focusedPortletId = StringPool.BLANK;
 	private boolean _freeformLayout;
 	private boolean _i18n;
 	private String _i18nLanguageId;
