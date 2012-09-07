@@ -53,8 +53,6 @@ import com.liferay.portlet.layoutconfiguration.util.xml.RenderURLLogic;
 import com.liferay.portlet.layoutconfiguration.util.xml.RuntimeLogic;
 import com.liferay.taglib.util.VelocityTaglib;
 
-import java.lang.reflect.Constructor;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -334,24 +332,6 @@ public class RuntimePortletImpl implements RuntimePortlet {
 		return content;
 	}
 
-	protected Object buildVelocityTaglib(
-			HttpServletRequest request, HttpServletResponse response,
-			PageContext pageContext)
-		throws Exception {
-
-		// We have to load this class from the plugin class loader (context
-		// class loader) or we will throw a ClassCastException
-
-		Class<?> clazz = Class.forName(VelocityTaglib.class.getName());
-
-		Constructor<?> constructor = clazz.getConstructor(
-			ServletContext.class, HttpServletRequest.class,
-			HttpServletResponse.class, PageContext.class);
-
-		return constructor.newInstance(
-			pageContext.getServletContext(), request, response, pageContext);
-	}
-
 	protected String doDispatch(
 			ServletContext servletContext, HttpServletRequest request,
 			HttpServletResponse response, PageContext pageContext,
@@ -448,8 +428,8 @@ public class RuntimePortletImpl implements RuntimePortlet {
 
 		// liferay:include tag library
 
-		Object velocityTaglib = buildVelocityTaglib(
-			request, response, pageContext);
+		Object velocityTaglib = new VelocityTaglib(
+			pageContext.getServletContext(), request, response, pageContext);
 
 		velocityContext.put("taglibLiferay", velocityTaglib);
 		velocityContext.put("theme", velocityTaglib);
@@ -495,8 +475,8 @@ public class RuntimePortletImpl implements RuntimePortlet {
 
 		UnsyncStringWriter unsyncStringWriter = new UnsyncStringWriter();
 
-		Object velocityTaglib = buildVelocityTaglib(
-			request, response, pageContext);
+		Object velocityTaglib = new VelocityTaglib(
+			pageContext.getServletContext(), request, response, pageContext);
 
 		velocityContext.put("taglibLiferay", velocityTaglib);
 		velocityContext.put("theme", velocityTaglib);
