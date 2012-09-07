@@ -275,7 +275,7 @@
 	</target>
 
 	<target name="build-test-ant-scripts">
-		<property name="build-test-ant-scripts.version" value="8" />
+		<property name="build-test-ant-scripts.version" value="9" />
 
 		<if>
 			<available file="portal-web/test-ant-scripts/version" />
@@ -354,6 +354,7 @@
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="control-panel-organizations" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="ControlPanelOrganizationsTestSuite" />
 		</antcall>
 
@@ -383,16 +384,19 @@
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="control-panel-server-administration" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="ControlPanelServerAdministrationTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="control-panel-settings" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="ControlPanelSettingsTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="control-panel-sites" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="ControlPanelSitesTestSuite" />
 		</antcall>
 
@@ -1489,111 +1493,133 @@
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-activities" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebActivitiesTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-add-application" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebAddApplicationTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-amazon-rankings" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebAmazonRankingsTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-announcements" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebAnnouncementsTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-asset-publisher" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebAssetPublisherTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-blogs" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebBlogsTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-blogs-aggregator" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebBlogsAggregatorTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-bookmarks" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebBookmarksTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-breadcrumb" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebBreadcrumbTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-calendar" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebCalendarTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-currency-converter" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebCurrencyConverterTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-dictionary" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebDictionaryTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-directory" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebDirectoryTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-documents-and-media" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebDocumentsAndMediaTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-documents-and-media-display" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebDocumentsAndMediaDisplayTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-dynamic-data-list-display" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebDynamicDataListDisplayTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-hello-velocity" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebHelloVelocityTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-hello-world" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebHelloWorldTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-iframe" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebIFrameTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-invitation" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebInvitationTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-language" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebLanguageTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-loan-calculator" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebLoanCalculatorTestSuite" />
 		</antcall>
 
@@ -1604,156 +1630,187 @@
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-media-gallery" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebMediaGalleryTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-message-boards" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebMessageBoardsTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-my-account" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebMyAccountTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-navigation" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebNavigationTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-nested-portlets" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebNestedPortletsTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-network-utilities" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebNetworkUtilitiesTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-page-comments" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebPageCommentsTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-page-ratings" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebPageRatingsTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-password-generator" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebPasswordGeneratorTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-polls-display" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebPollsDisplayTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-quick-note" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebQuickNoteTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-recent-bloggers" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebRecentBloggersTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-recent-documents" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebRecentDocumentsTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-rss" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebRSSTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-security-json" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebSecurityJsonTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-sign-in" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebSignInTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-search" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebSearchTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-shopping" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebShoppingTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-site-map" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebSiteMapTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-software-catalog" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebSoftwareCatalogTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-translator" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebTranslatorTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-unit-converter" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebUnitConverterTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-user-statistics" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebUserStatisticsTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-web-content-display" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebWebContentDisplayTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-web-content-list" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebWebContentListTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-web-content-search" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebWebContentSearchTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-web-proxy" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebWebProxyTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-wiki" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebWikiTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-wiki-display" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebWikiDisplayTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-words" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebWordsTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="portal-web-xsl-content" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PortalWebXSLContentTestSuite" />
 		</antcall>
 
