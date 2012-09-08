@@ -5833,7 +5833,7 @@ public class PortalImpl implements Portal {
 		catch (NoSuchResourceException nsre) {
 			ResourceLocalServiceUtil.addResources(
 				companyId, groupId, 0, name, primaryKey, portletActions, true,
-				true);
+				!layout.isPrivateLayout());
 		}
 	}
 
