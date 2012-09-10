@@ -106,11 +106,18 @@ public class SA_ViewPublicPagesSiteBWCTest extends BaseTestCase {
 				assertEquals(RuntimeVariables.replace("Site Settings"),
 					selenium.getText("link=Site Settings"));
 				selenium.open("http://www.able.com:8080");
-				selenium.clickAt("//nav[@id='navigation']",
-					RuntimeVariables.replace("Navigation"));
-				selenium.waitForElementPresent("//a[@id='addPage']");
+				selenium.clickAt("//div[@id='dockbar']",
+					RuntimeVariables.replace("Dockbar"));
+				selenium.waitForElementPresent(
+					"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+				assertEquals(RuntimeVariables.replace("Add"),
+					selenium.getText("//li[@id='_145_addContent']/a/span"));
+				selenium.mouseOver("//li[@id='_145_addContent']/a/span");
+				selenium.waitForVisible("//a[@id='addPage']");
+				assertEquals(RuntimeVariables.replace("Page"),
+					selenium.getText("//a[@id='addPage']"));
 				selenium.clickAt("//a[@id='addPage']",
-					RuntimeVariables.replace("Add Page"));
+					RuntimeVariables.replace("Page"));
 				selenium.waitForVisible("//input[@type='text']");
 				selenium.type("//input[@type='text']",
 					RuntimeVariables.replace("Web Content Display Test Page"));
@@ -120,11 +127,29 @@ public class SA_ViewPublicPagesSiteBWCTest extends BaseTestCase {
 				selenium.clickAt("link=Web Content Display Test Page",
 					RuntimeVariables.replace("Web Content Display Test Page"));
 				selenium.waitForPageToLoad("30000");
+				selenium.clickAt("//div[@id='dockbar']",
+					RuntimeVariables.replace("Dockbar"));
+				selenium.waitForElementPresent(
+					"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+				assertEquals(RuntimeVariables.replace("Add"),
+					selenium.getText("//li[@id='_145_addContent']/a/span"));
+				selenium.mouseOver("//li[@id='_145_addContent']/a/span");
+				selenium.waitForVisible("//a[@id='_145_addApplication']");
 				assertTrue(selenium.isPartialText(
 						"//a[@id='_145_addApplication']", "More"));
 				selenium.clickAt("//a[@id='_145_addApplication']",
 					RuntimeVariables.replace("More"));
 				selenium.waitForElementPresent(
+					"//script[contains(@src,'/aui/aui-live-search/aui-live-search-min.js')]");
+				selenium.waitForVisible(
+					"//input[@id='layout_configuration_content']");
+				selenium.type("//input[@id='layout_configuration_content']",
+					RuntimeVariables.replace("w"));
+				selenium.keyDown("//input[@id='layout_configuration_content']",
+					RuntimeVariables.replace("\\13"));
+				selenium.keyUp("//input[@id='layout_configuration_content']",
+					RuntimeVariables.replace("\\13"));
+				selenium.waitForVisible(
 					"//div[@title='Web Content Display']/p/a");
 				selenium.clickAt("//div[@title='Web Content Display']/p/a",
 					RuntimeVariables.replace("Add"));
@@ -133,6 +158,11 @@ public class SA_ViewPublicPagesSiteBWCTest extends BaseTestCase {
 				selenium.clickAt("//div[@id='dockbar']",
 					RuntimeVariables.replace("Dockbar"));
 				selenium.waitForElementPresent(
+					"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+				assertEquals(RuntimeVariables.replace("Manage"),
+					selenium.getText("//li[@id='_145_manageContent']/a/span"));
+				selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+				selenium.waitForVisible(
 					"//li[contains(@class,'manage-page')]/a");
 				selenium.clickAt("//li[contains(@class,'manage-page')]/a",
 					RuntimeVariables.replace("Manage Pages"));

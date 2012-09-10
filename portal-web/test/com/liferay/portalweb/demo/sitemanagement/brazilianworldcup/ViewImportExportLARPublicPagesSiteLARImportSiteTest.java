@@ -27,11 +27,13 @@ public class ViewImportExportLARPublicPagesSiteLARImportSiteTest
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
 		assertEquals(RuntimeVariables.replace("Go to"),
-			selenium.getText("//ul[contains(.,'Go to')]/li/a"));
-		Thread.sleep(5000);
-		selenium.clickAt("//ul[contains(.,'Go to')]/li/a",
-			RuntimeVariables.replace("Go to"));
+			selenium.getText("//li[@id='_145_mySites']/a/span"));
+		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
 		selenium.waitForVisible(
 			"//li[contains(.,'LAR Import Site')]/a/span[contains(.,'Public')]");
 		assertEquals(RuntimeVariables.replace("Public"),

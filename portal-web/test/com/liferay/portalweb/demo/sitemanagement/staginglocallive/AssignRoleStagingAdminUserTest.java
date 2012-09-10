@@ -25,7 +25,14 @@ public class AssignRoleStagingAdminUserTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Go to"),
+			selenium.getText("//li[@id='_145_mySites']/a/span"));
+		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
@@ -50,10 +57,10 @@ public class AssignRoleStagingAdminUserTest extends BaseTestCase {
 			RuntimeVariables.replace("Select"));
 		Thread.sleep(5000);
 		selenium.selectWindow("name=role");
-		selenium.waitForVisible("//tr[5]/td/a");
+		selenium.waitForVisible("//tr[contains(.,'Staging Admin')]/td[1]/a");
 		assertEquals(RuntimeVariables.replace("Staging Admin"),
-			selenium.getText("//tr[5]/td/a"));
-		selenium.clickAt("//tr[5]/td/a",
+			selenium.getText("//tr[contains(.,'Staging Admin')]/td[1]/a"));
+		selenium.clickAt("//tr[contains(.,'Staging Admin')]/td[1]/a",
 			RuntimeVariables.replace("Staging Admin"));
 		Thread.sleep(5000);
 		selenium.selectWindow("null");
