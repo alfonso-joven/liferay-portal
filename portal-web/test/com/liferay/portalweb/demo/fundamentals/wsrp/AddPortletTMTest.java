@@ -25,7 +25,6 @@ public class AddPortletTMTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Test Misc Test Page");
 		selenium.clickAt("link=Test Misc Test Page",
 			RuntimeVariables.replace("Test Misc Test Page"));
 		selenium.waitForPageToLoad("30000");
@@ -44,7 +43,7 @@ public class AddPortletTMTest extends BaseTestCase {
 		selenium.waitForElementPresent(
 			"//script[contains(@src,'/aui/aui-live-search/aui-live-search-min.js')]");
 		selenium.waitForVisible("//input[@id='layout_configuration_content']");
-		selenium.typeKeys("//input[@id='layout_configuration_content']",
+		selenium.sendKeys("//input[@id='layout_configuration_content']",
 			RuntimeVariables.replace("t"));
 		selenium.waitForVisible("//div[@title='Test Misc']/p/a");
 		selenium.clickAt("//div[@title='Test Misc']/p/a",

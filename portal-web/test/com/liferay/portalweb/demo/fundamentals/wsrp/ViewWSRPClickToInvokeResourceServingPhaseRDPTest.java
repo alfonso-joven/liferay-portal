@@ -27,7 +27,6 @@ public class ViewWSRPClickToInvokeResourceServingPhaseRDPTest
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=WSRP Remote Test Misc Test Page");
 		selenium.clickAt("link=WSRP Remote Test Misc Test Page",
 			RuntimeVariables.replace("WSRP Remote Test Misc Test Page"));
 		selenium.waitForPageToLoad("30000");
@@ -39,6 +38,7 @@ public class ViewWSRPClickToInvokeResourceServingPhaseRDPTest
 		selenium.clickAt("//div[@class='portlet-body']/p[4]/a[2]",
 			RuntimeVariables.replace("Download File"));
 		selenium.downloadTempFile("logo(1).png");
+		Thread.sleep(5000);
 		selenium.open("/web/guest/home/");
 		selenium.waitForVisible("link=Documents and Media Test Page");
 		selenium.clickAt("link=Documents and Media Test Page",
@@ -62,8 +62,7 @@ public class ViewWSRPClickToInvokeResourceServingPhaseRDPTest
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForText("//div[@class='portlet-msg-success']",
-			"Your request completed successfully.");
+		selenium.waitForVisible("//div[@class='portlet-msg-success']");
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));

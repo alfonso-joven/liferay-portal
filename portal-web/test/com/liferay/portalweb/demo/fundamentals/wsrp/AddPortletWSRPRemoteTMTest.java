@@ -43,7 +43,7 @@ public class AddPortletWSRPRemoteTMTest extends BaseTestCase {
 		selenium.waitForElementPresent(
 			"//script[contains(@src,'/aui/aui-live-search/aui-live-search-min.js')]");
 		selenium.waitForVisible("//input[@id='layout_configuration_content']");
-		selenium.typeKeys("//input[@id='layout_configuration_content']",
+		selenium.sendKeys("//input[@id='layout_configuration_content']",
 			RuntimeVariables.replace("r"));
 		selenium.waitForVisible("//div[@title='Remote Test Misc']/p/a");
 		selenium.clickAt("//div[@title='Remote Test Misc']/p/a",

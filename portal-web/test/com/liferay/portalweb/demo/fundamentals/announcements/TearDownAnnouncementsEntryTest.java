@@ -30,12 +30,16 @@ public class TearDownAnnouncementsEntryTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				selenium.waitForVisible("link=Announcements Test Page");
 				selenium.clickAt("link=Announcements Test Page",
 					RuntimeVariables.replace("Announcements Test Page"));
 				selenium.waitForPageToLoad("30000");
-				selenium.clickAt("link=Entries",
-					RuntimeVariables.replace("Entries"));
+				selenium.clickAt("link=Manage Entries",
+					RuntimeVariables.replace("Manage Entries"));
+				selenium.waitForPageToLoad("30000");
+				assertTrue(selenium.isVisible(
+						"//select[@id='_84_distributionScope']"));
+				selenium.select("//select[@id='_84_distributionScope']",
+					RuntimeVariables.replace("General"));
 				selenium.waitForPageToLoad("30000");
 
 				boolean entry1Present = selenium.isElementPresent("link=Delete");

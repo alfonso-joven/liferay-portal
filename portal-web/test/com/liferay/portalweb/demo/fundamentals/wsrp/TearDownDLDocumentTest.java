@@ -30,49 +30,54 @@ public class TearDownDLDocumentTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				selenium.waitForVisible("link=Documents and Media Test Page");
 				selenium.clickAt("link=Documents and Media Test Page",
 					RuntimeVariables.replace("Documents and Media Test Page"));
 				selenium.waitForPageToLoad("30000");
+				Thread.sleep(5000);
+				selenium.waitForVisible("//button[@title='Icon View']");
 				selenium.clickAt("//button[@title='Icon View']",
 					RuntimeVariables.replace("Icon View"));
+				selenium.waitForVisible(
+					"//div[@class='aui-loadingmask-message']");
+				selenium.waitForNotVisible(
+					"//div[@class='aui-loadingmask-message']");
 				selenium.waitForVisible(
 					"//button[contains(@class,'aui-state-active') and @title='Icon View']");
 				assertTrue(selenium.isVisible(
 						"//button[contains(@class,'aui-state-active') and @title='Icon View']"));
 
-				boolean dmlDocumentPresent = selenium.isElementPresent(
-						"//input[@id='_20_rowIdsFileEntryCheckbox']");
+				boolean dmDocumentPresent = selenium.isElementPresent(
+						"//a[contains(@class,'document-link')]/span[@class='entry-title']");
 
-				if (!dmlDocumentPresent) {
+				if (!dmDocumentPresent) {
 					label = 2;
 
 					continue;
 				}
 
-				Thread.sleep(5000);
 				assertFalse(selenium.isChecked(
 						"//input[@id='_20_allRowIdsCheckbox']"));
 				selenium.clickAt("//input[@id='_20_allRowIdsCheckbox']",
 					RuntimeVariables.replace("All Entries Check Box"));
 				assertTrue(selenium.isChecked(
 						"//input[@id='_20_allRowIdsCheckbox']"));
-				Thread.sleep(5000);
+				selenium.waitForVisible(
+					"//div[@class='document-display-style display-icon selectable selected']");
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//span[@title='Actions']/ul/li/strong/a/span"));
 				selenium.clickAt("//span[@title='Actions']/ul/li/strong/a/span",
 					RuntimeVariables.replace("Actions"));
 				selenium.waitForVisible(
-					"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Move to the Recycle Bin')]/a");
-				assertEquals(RuntimeVariables.replace("Move to the Recycle Bin"),
+					"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Delete')]/a");
+				assertEquals(RuntimeVariables.replace("Delete"),
 					selenium.getText(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Move to the Recycle Bin')]/a"));
+						"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Delete')]/a"));
 				selenium.click(RuntimeVariables.replace(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Move to the Recycle Bin')]/a"));
+						"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Delete')]/a"));
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to move the selected entries to the Recycle Bin[\\s\\S]$"));
+								   .matches("^Are you sure you want to delete the selected entries[\\s\\S]$"));
 				assertEquals(RuntimeVariables.replace(
 						"Your request completed successfully."),
 					selenium.getText("//div[@class='portlet-msg-success']"));
@@ -80,41 +85,8 @@ public class TearDownDLDocumentTest extends BaseTestCase {
 			case 2:
 				assertEquals(RuntimeVariables.replace(
 						"There are no documents or media files in this folder."),
-					selenium.getText(
-						"//div[contains(@class,'portlet-msg-info')]"));
-				selenium.open("/web/guest/home/");
-				assertEquals(RuntimeVariables.replace("Go to"),
-					selenium.getText("//li[@id='_145_mySites']/a/span"));
-				selenium.mouseOver("//li[@id='_145_mySites']/a/span");
-				selenium.waitForVisible("link=Control Panel");
-				selenium.clickAt("link=Control Panel",
-					RuntimeVariables.replace("Control Panel"));
-				selenium.waitForPageToLoad("30000");
-				selenium.clickAt("link=Recycle Bin",
-					RuntimeVariables.replace("Recycle Bin"));
-				selenium.waitForPageToLoad("30000");
+					selenium.getText("//div[@class='portlet-msg-info']"));
 
-				boolean assetPresent = selenium.isElementPresent(
-						"//input[@name='_182_rowIds']");
-
-				if (!assetPresent) {
-					label = 3;
-
-					continue;
-				}
-
-				assertFalse(selenium.isChecked(
-						"//input[@name='_182_allRowIds']"));
-				selenium.clickAt("//input[@name='_182_allRowIds']",
-					RuntimeVariables.replace("All Rows"));
-				assertTrue(selenium.isChecked("//input[@name='_182_allRowIds']"));
-				selenium.click(RuntimeVariables.replace(
-						"//input[@value='Delete']"));
-				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete the selected entries[\\s\\S] They will be deleted immediately.$"));
-
-			case 3:
 			case 100:
 				label = -1;
 			}
