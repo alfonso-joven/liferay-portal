@@ -116,14 +116,14 @@ public class ViewCompletedTaskKaleoTicketKFTest extends BaseTestCase {
 				assertEquals(RuntimeVariables.replace(
 						"Task initially assigned to the QA Engineer role."),
 					selenium.getText(
-						"xPath=(//div[@class='task-activity-message'])[7]"));
+						" xPath=(//div[@class='task-activity-message'])[contains(.,'QA Engineer')]"));
 				assertEquals(RuntimeVariables.replace("Assigned initial task."),
 					selenium.getText(
 						"xPath=(//div[@class='task-activity-comment'])[7]"));
 				assertEquals(RuntimeVariables.replace(
 						"Task initially assigned to the QA Manager role."),
 					selenium.getText(
-						"xPath=(//div[@class='task-activity-message'])[8]"));
+						" xPath=(//div[@class='task-activity-message'])[contains(.,'QA Manager')]"));
 				assertEquals(RuntimeVariables.replace("Assigned initial task."),
 					selenium.getText(
 						"xPath=(//div[@class='task-activity-comment'])[8]"));
