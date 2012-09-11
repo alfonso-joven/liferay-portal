@@ -165,10 +165,6 @@ public class ThemeDisplay implements Cloneable, Serializable {
 		return _facebookCanvasPageURL;
 	}
 
-	public String getFocusedPortletId() {
-		return _focusedPortletId;
-	}
-
 	public String getI18nLanguageId() {
 		return _i18nLanguageId;
 	}
@@ -326,6 +322,10 @@ public class ThemeDisplay implements Cloneable, Serializable {
 	 */
 	public long getPortletGroupId() {
 		return getScopeGroupId();
+	}
+
+	public String getPpid() {
+		return _ppid;
 	}
 
 	public String getRealCompanyLogo() {
@@ -603,20 +603,6 @@ public class ThemeDisplay implements Cloneable, Serializable {
 		return _lifecycleResource;
 	}
 
-	public boolean isPortletDisplayFocused() {
-		PortletDisplay portletDisplay = getPortletDisplay();
-
-		if ((portletDisplay != null) &&
-			portletDisplay.getId().equals(getFocusedPortletId()) &&
-			Validator.isNotNull(getFocusedPortletId())) {
-
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
-
 	public boolean isSecure() {
 		return _secure;
 	}
@@ -800,10 +786,6 @@ public class ThemeDisplay implements Cloneable, Serializable {
 		if (Validator.isNotNull(facebookCanvasPageURL)) {
 			_facebook = true;
 		}
-	}
-
-	public void setFocusedPortletId(String focusedPortletId) {
-		_focusedPortletId = focusedPortletId;
 	}
 
 	public void setFreeformLayout(boolean freeformLayout) {
@@ -1046,6 +1028,10 @@ public class ThemeDisplay implements Cloneable, Serializable {
 
 	public void setPortalURL(String portalURL) {
 		_portalURL = portalURL;
+	}
+
+	public void setPpid(String ppid) {
+		_ppid = ppid;
 	}
 
 	public void setRealCompanyLogo(String realCompanyLogo) {
@@ -1331,7 +1317,6 @@ public class ThemeDisplay implements Cloneable, Serializable {
 	private String _doAsUserLanguageId = StringPool.BLANK;
 	private boolean _facebook;
 	private String _facebookCanvasPageURL;
-	private String _focusedPortletId = StringPool.BLANK;
 	private boolean _freeformLayout;
 	private boolean _i18n;
 	private String _i18nLanguageId;
@@ -1374,6 +1359,7 @@ public class ThemeDisplay implements Cloneable, Serializable {
 	private long _plid;
 	private String _portalURL = StringPool.BLANK;
 	private PortletDisplay _portletDisplay = new PortletDisplay();
+	private String _ppid = StringPool.BLANK;
 	private String _realCompanyLogo = StringPool.BLANK;
 	private int _realCompanyLogoHeight;
 	private int _realCompanyLogoWidth;
