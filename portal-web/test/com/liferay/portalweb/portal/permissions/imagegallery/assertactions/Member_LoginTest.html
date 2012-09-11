@@ -9,24 +9,19 @@
 <tr><td rowspan="1" colspan="3">Member_LoginTest</td></tr>
 </thead><tbody>
 <tr>
+	<td>clickAtAndWait</td>
+	<td>//input[@value='Sign In']</td>
+	<td>Sign In</td>
+</tr>
+<tr>
 	<td>open</td>
 	<td>/web/guest/home/</td>
 	<td></td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
-	<td>link=Welcome</td>
-	<td>Welcome</td>
-</tr>
-<tr>
 	<td>clickAtAndWait</td>
 	<td>link=Welcome</td>
 	<td>Welcome</td>
-</tr>
-<tr>
-	<td>waitForElementPresent</td>
-	<td>//input[@id='_58_login']</td>
-	<td>Email Address</td>
 </tr>
 <tr>
 	<td>type</td>
@@ -39,8 +34,18 @@
 	<td>test</td>
 </tr>
 <tr>
+	<td>assertNotChecked</td>
+	<td>//input[@id='_58_rememberMeCheckbox']</td>
+	<td>Remember Me</td>
+</tr>
+<tr>
 	<td>clickAt</td>
-	<td>//input[@type='checkbox']</td>
+	<td>//input[@id='_58_rememberMeCheckbox']</td>
+	<td>Remember Me</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//input[@id='_58_rememberMeCheckbox']</td>
 	<td>Remember Me</td>
 </tr>
 <tr>
@@ -48,17 +53,6 @@
 	<td>//input[@value='Sign In']</td>
 	<td>Sign In</td>
 </tr>
-<tr>
-	<td>waitForTextPresent</td>
-	<td>You are signed in as Member Liferay.</td>
-	<td>You are signed in as Member Liferay.</td>
-</tr>
-<tr>
-	<td>assertTextPresent</td>
-	<td>You are signed in as Member Liferay.</td>
-	<td>You are signed in as Member Liferay.</td>
-</tr>
-
 </tbody></table>
 </body>
 </html>

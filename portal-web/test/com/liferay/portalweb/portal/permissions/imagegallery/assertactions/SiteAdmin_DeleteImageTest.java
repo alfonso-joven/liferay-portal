@@ -25,8 +25,6 @@ public class SiteAdmin_DeleteImageTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent(
-			"link=Media Gallery Permissions Test Page");
 		selenium.clickAt("link=Media Gallery Permissions Test Page",
 			RuntimeVariables.replace("Media Gallery Permissions Test Page"));
 		selenium.waitForPageToLoad("30000");
@@ -50,12 +48,11 @@ public class SiteAdmin_DeleteImageTest extends BaseTestCase {
 			selenium.getText("//a[@title='Permissions Image Test Edited - ']"));
 		selenium.clickAt("//a[@title='Permissions Image Test Edited - ']",
 			RuntimeVariables.replace("Permissions Image Test Edited"));
-		selenium.waitForElementPresent("//img[@alt='Delete']");
-		selenium.click(RuntimeVariables.replace("//img[@alt='Delete']"));
+		selenium.waitForVisible("//img[@title='Delete']");
+		selenium.click(RuntimeVariables.replace("//img[@title='Delete']"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.getConfirmation()
 						   .matches("^Are you sure you want to delete this[\\s\\S]$"));
-		selenium.waitForVisible("//div[@class='portlet-msg-success']");
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));

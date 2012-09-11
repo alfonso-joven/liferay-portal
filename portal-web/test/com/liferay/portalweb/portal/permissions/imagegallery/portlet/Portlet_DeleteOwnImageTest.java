@@ -25,8 +25,6 @@ public class Portlet_DeleteOwnImageTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent(
-			"link=Media Gallery Permissions Test Page");
 		selenium.clickAt("link=Media Gallery Permissions Test Page",
 			RuntimeVariables.replace("Media Gallery Permissions Test Page"));
 		selenium.waitForPageToLoad("30000");
@@ -41,8 +39,8 @@ public class Portlet_DeleteOwnImageTest extends BaseTestCase {
 				"//a[@title='Portlet Permissions Image Test Title - ']"));
 		selenium.clickAt("//a[@title='Portlet Permissions Image Test Title - ']",
 			RuntimeVariables.replace("Portlet Permissions Image Test Title"));
-		selenium.waitForVisible("//img[@alt='Delete']");
-		selenium.clickAt("//img[@alt='Delete']",
+		selenium.waitForVisible("//img[@title='Delete']");
+		selenium.clickAt("//img[@title='Delete']",
 			RuntimeVariables.replace("Delete"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.getConfirmation()

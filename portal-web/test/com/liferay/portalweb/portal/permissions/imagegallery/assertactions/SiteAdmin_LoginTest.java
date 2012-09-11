@@ -25,21 +25,18 @@ public class SiteAdmin_LoginTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Welcome");
 		selenium.clickAt("link=Welcome", RuntimeVariables.replace("Welcome"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForElementPresent("//input[@id='_58_login']");
 		selenium.type("//input[@id='_58_login']",
 			RuntimeVariables.replace("siteadmin@liferay.com"));
 		selenium.type("//input[@id='_58_password']",
 			RuntimeVariables.replace("test"));
-		selenium.clickAt("//input[@type='checkbox']",
+		assertFalse(selenium.isChecked("//input[@id='_58_rememberMeCheckbox']"));
+		selenium.clickAt("//input[@id='_58_rememberMeCheckbox']",
 			RuntimeVariables.replace("Remember Me"));
+		assertTrue(selenium.isChecked("//input[@id='_58_rememberMeCheckbox']"));
 		selenium.clickAt("//input[@value='Sign In']",
 			RuntimeVariables.replace("Sign In"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForTextPresent("You are signed in as SiteAdmin Liferay. ");
-		assertTrue(selenium.isTextPresent(
-				"You are signed in as SiteAdmin Liferay. "));
 	}
 }

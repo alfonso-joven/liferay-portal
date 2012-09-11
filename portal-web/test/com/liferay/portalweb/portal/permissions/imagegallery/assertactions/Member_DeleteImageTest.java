@@ -41,12 +41,11 @@ public class Member_DeleteImageTest extends BaseTestCase {
 			selenium.getText("//a[@title='Permissions Image 3 Test Edited - ']"));
 		selenium.clickAt("//a[@title='Permissions Image 3 Test Edited - ']",
 			RuntimeVariables.replace("Permissions Image 3 Test Edited"));
-		selenium.waitForVisible("//img[@alt='Delete']");
-		selenium.click(RuntimeVariables.replace("//img[@alt='Delete']"));
+		selenium.waitForVisible("//img[@title='Delete']");
+		selenium.click(RuntimeVariables.replace("//img[@title='Delete']"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.getConfirmation()
 						   .matches("^Are you sure you want to delete this[\\s\\S]$"));
-		selenium.waitForVisible("//div[@class='portlet-msg-success']");
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
