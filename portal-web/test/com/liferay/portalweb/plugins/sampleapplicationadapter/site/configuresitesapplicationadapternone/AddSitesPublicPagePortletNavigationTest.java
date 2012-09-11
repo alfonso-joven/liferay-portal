@@ -25,7 +25,7 @@ public class AddSitesPublicPagePortletNavigationTest extends BaseTestCase {
 		throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
-		selenium.open("/web/community-name/public-page");
+		selenium.open("/web/site-name/public-page");
 		selenium.waitForVisible("link=Public Page");
 		selenium.clickAt("link=Public Page",
 			RuntimeVariables.replace("Public Page"));

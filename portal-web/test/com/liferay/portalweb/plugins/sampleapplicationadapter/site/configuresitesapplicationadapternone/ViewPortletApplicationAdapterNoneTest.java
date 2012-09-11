@@ -25,7 +25,7 @@ public class ViewPortletApplicationAdapterNoneTest extends BaseTestCase {
 		throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
-		selenium.open("/web/community-name/public-page");
+		selenium.open("/web/site-name/public-page");
 		selenium.waitForVisible("link=Public Page");
 		selenium.clickAt("link=Public Page",
 			RuntimeVariables.replace("Public Page"));
@@ -35,7 +35,7 @@ public class ViewPortletApplicationAdapterNoneTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Liferay"),
 			selenium.getText(
 				"//div[@class='portlet-body']/div/ul[contains(@class,'breadcrumbs-horizontal')]/li[1]/span/a"));
-		assertEquals(RuntimeVariables.replace("Community Name"),
+		assertEquals(RuntimeVariables.replace("Site Name"),
 			selenium.getText(
 				"//div[@class='portlet-body']/div/ul[contains(@class,'breadcrumbs-horizontal')]/li[2]/span/a"));
 		assertEquals(RuntimeVariables.replace("Public Page"),

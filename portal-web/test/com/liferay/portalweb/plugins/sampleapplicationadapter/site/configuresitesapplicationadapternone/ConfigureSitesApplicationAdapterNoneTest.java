@@ -40,11 +40,11 @@ public class ConfigureSitesApplicationAdapterNoneTest extends BaseTestCase {
 		selenium.clickAt("link=Sites", RuntimeVariables.replace("Sites"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_134_name']",
-			RuntimeVariables.replace("Community Name"));
+			RuntimeVariables.replace("Site Name"));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Community Name"),
+		assertEquals(RuntimeVariables.replace("Site Name"),
 			selenium.getText("//tr[3]/td[1]"));
 		assertEquals(RuntimeVariables.replace("Actions"),
 			selenium.getText("//td[7]/span/ul/li/strong/a/span"));
