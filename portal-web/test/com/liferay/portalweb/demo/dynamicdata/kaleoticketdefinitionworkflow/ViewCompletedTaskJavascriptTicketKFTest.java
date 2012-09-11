@@ -144,14 +144,14 @@ public class ViewCompletedTaskJavascriptTicketKFTest extends BaseTestCase {
 				assertEquals(RuntimeVariables.replace(
 						"Task initially assigned to the QA Engineer role."),
 					selenium.getText(
-						" xPath=(//div[@class='task-activity-message'])[contains(.,'QA Engineer')]"));
+						"xPath=(//div[@class='task-activity-message'])[contains(.,'QA Engineer')]"));
 				assertEquals(RuntimeVariables.replace("Assigned initial task."),
 					selenium.getText(
 						"xPath=(//div[@class='task-activity-comment'])[13]"));
 				assertEquals(RuntimeVariables.replace(
 						"Task initially assigned to the QA Manager role."),
 					selenium.getText(
-						" xPath=(//div[@class='task-activity-message'])[contains(.,'QA Manager')]"));
+						"xPath=(//div[@class='task-activity-message'])[contains(.,'QA Manager')]"));
 				assertEquals(RuntimeVariables.replace("Assigned initial task."),
 					selenium.getText(
 						"xPath=(//div[@class='task-activity-comment'])[14]"));
@@ -204,14 +204,14 @@ public class ViewCompletedTaskJavascriptTicketKFTest extends BaseTestCase {
 				assertEquals(RuntimeVariables.replace(
 						"Task initially assigned to the QA Engineer role."),
 					selenium.getText(
-						"xPath=(//div[@class='task-activity-message'])[25]"));
+						"xPath=(//div[@class='task-activity task-type-1']/div[contains(.,'Task initially assigned to the QA Engineer role.')])[2]"));
 				assertEquals(RuntimeVariables.replace("Assigned initial task."),
 					selenium.getText(
 						"xPath=(//div[@class='task-activity-comment'])[25]"));
 				assertEquals(RuntimeVariables.replace(
 						"Task initially assigned to the QA Manager role."),
 					selenium.getText(
-						"xPath=(//div[@class='task-activity-message'])[26]"));
+						"xPath=(//div[@class='task-activity task-type-1']/div[contains(.,'Task initially assigned to the QA Manager role.')])[2]"));
 				assertEquals(RuntimeVariables.replace("Assigned initial task."),
 					selenium.getText(
 						"xPath=(//div[@class='task-activity-comment'])[26]"));
