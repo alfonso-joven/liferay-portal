@@ -35,11 +35,13 @@ public class ViewActionResponseExclusiveStateMiscTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Download File"),
 			selenium.getText("//p[3]/a"));
 		selenium.clickAt("//p[3]/a", RuntimeVariables.replace("Download File"));
-		selenium.downloadTempFile("logo(2).png");
+		selenium.downloadTempFile("logo(1).png");
+		Thread.sleep(5000);
 		selenium.open("/web/guest/home/");
 		selenium.clickAt("link=Documents and Media Test Page",
 			RuntimeVariables.replace("Documents and Media Test Page"));
 		selenium.waitForPageToLoad("30000");
+		Thread.sleep(5000);
 		assertEquals(RuntimeVariables.replace("Add"),
 			selenium.getText("//span[@title='Add']/ul/li/strong/a/span"));
 		selenium.clickAt("//span[@title='Add']/ul/li/strong/a/span",
@@ -53,7 +55,7 @@ public class ViewActionResponseExclusiveStateMiscTest extends BaseTestCase {
 				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Basic Document')]/a"));
 		selenium.waitForPageToLoad("30000");
 		selenium.uploadTempFile("//input[@id='_20_file']",
-			RuntimeVariables.replace("logo(2).png"));
+			RuntimeVariables.replace("logo(1).png"));
 		selenium.type("//input[@id='_20_title']",
 			RuntimeVariables.replace(
 				"Portlet Response (ActionResponse,Exclusive State)"));

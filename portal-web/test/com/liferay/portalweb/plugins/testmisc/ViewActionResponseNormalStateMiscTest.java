@@ -36,10 +36,12 @@ public class ViewActionResponseNormalStateMiscTest extends BaseTestCase {
 			selenium.getText("//p[2]/a"));
 		selenium.clickAt("//p[2]/a", RuntimeVariables.replace("Download File"));
 		selenium.downloadTempFile("logo.png");
+		Thread.sleep(5000);
 		selenium.open("/web/guest/home/");
 		selenium.clickAt("link=Documents and Media Test Page",
 			RuntimeVariables.replace("Documents and Media Test Page"));
 		selenium.waitForPageToLoad("30000");
+		Thread.sleep(5000);
 		assertEquals(RuntimeVariables.replace("Add"),
 			selenium.getText("//span[@title='Add']/ul/li/strong/a/span"));
 		selenium.clickAt("//span[@title='Add']/ul/li/strong/a/span",
