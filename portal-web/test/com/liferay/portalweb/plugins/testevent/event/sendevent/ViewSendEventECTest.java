@@ -29,6 +29,6 @@ public class ViewSendEventECTest extends BaseTestCase {
 			RuntimeVariables.replace("Event Consumer Test Page"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("PASSED"),
-			selenium.getText("//div[@class='portlet-body']"));
+			selenium.getText("//div[@class='portlet-content']"));
 	}
 }

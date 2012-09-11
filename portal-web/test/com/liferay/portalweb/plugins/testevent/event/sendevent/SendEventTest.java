@@ -36,6 +36,6 @@ public class SendEventTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Event Consumer"),
 			selenium.getText("//span[@class='portlet-title-text']"));
 		assertEquals(RuntimeVariables.replace("PASSED"),
-			selenium.getText("//div[@class='portlet-body']"));
+			selenium.getText("//div[@class='portlet-content']"));
 	}
 }
