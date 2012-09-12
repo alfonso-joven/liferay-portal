@@ -553,7 +553,9 @@ public class PortalImpl implements Portal {
 
 		String name = WebKeys.PORTLET_BREADCRUMBS;
 
-		if (!portletDisplay.isFocused()) {
+		if (Validator.isNotNull(portletDisplay.getId()) &&
+			!portletDisplay.isFocused()) {
+
 			name += StringPool.UNDERLINE + portletDisplay.getId();
 		}
 
@@ -3236,7 +3238,9 @@ public class PortalImpl implements Portal {
 
 		String name = WebKeys.PORTLET_BREADCRUMBS;
 
-		if (!portletDisplay.isFocused()) {
+		if (Validator.isNotNull(portletDisplay.getId()) &&
+			!portletDisplay.isFocused()) {
+
 			name += StringPool.UNDERLINE + portletDisplay.getId();
 		}
 
