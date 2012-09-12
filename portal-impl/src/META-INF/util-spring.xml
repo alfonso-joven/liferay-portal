@@ -315,6 +315,11 @@
 			<bean class="com.liferay.portal.staging.permission.StagingPermissionImpl" />
 		</property>
 	</bean>
+	<bean id="com.liferay.portal.kernel.transaction.TransactionCommitCallbackRegistryUtil" class="com.liferay.portal.kernel.transaction.TransactionCommitCallbackRegistryUtil">
+		<property name="transactionCallbackRegistry">
+			<bean class="com.liferay.portal.spring.transaction.TransactionCommitCallbackRegistryImpl" />
+		</property>
+	</bean>
 	<bean id="com.liferay.portal.kernel.upgrade.util.UpgradeTableFactoryUtil" class="com.liferay.portal.kernel.upgrade.util.UpgradeTableFactoryUtil">
 		<property name="upgradeTableFactory">
 			<bean class="com.liferay.portal.upgrade.util.DefaultUpgradeTableFactoryImpl" />
