@@ -37,10 +37,7 @@ public class TearDownDMDocumentTest extends BaseTestCase {
 				selenium.waitForVisible("//button[@title='Icon View']");
 				selenium.clickAt("//button[@title='Icon View']",
 					RuntimeVariables.replace("Icon View"));
-				selenium.waitForVisible(
-					"//div[@class='aui-loadingmask-message']");
-				selenium.waitForNotVisible(
-					"//div[@class='aui-loadingmask-message']");
+				Thread.sleep(5000);
 				selenium.waitForVisible(
 					"//button[contains(@class,'aui-state-active') and @title='Icon View']");
 				assertTrue(selenium.isVisible(
@@ -83,6 +80,8 @@ public class TearDownDMDocumentTest extends BaseTestCase {
 					selenium.getText("//div[@class='portlet-msg-success']"));
 
 			case 2:
+				selenium.clickAt("//button[@title='Icon View']",
+					RuntimeVariables.replace("Icon View"));
 				assertEquals(RuntimeVariables.replace(
 						"There are no documents or media files in this folder."),
 					selenium.getText("//div[@class='portlet-msg-info']"));
