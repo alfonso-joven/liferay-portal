@@ -28,6 +28,8 @@ public class ViewBlogsEntryScopeCurrentPageTest extends BaseTestCase {
 		selenium.clickAt("link=Blogs Test Page",
 			RuntimeVariables.replace("Blogs Test Page"));
 		selenium.waitForPageToLoad("30000");
+		assertEquals(RuntimeVariables.replace("Blogs (Blogs Test Page)"),
+			selenium.getText("//span[@class='portlet-title-text']"));
 		assertTrue(selenium.isVisible("//input[@title='Search Entries']"));
 		assertTrue(selenium.isVisible("//input[@value='Search']"));
 		assertTrue(selenium.isVisible("//input[@value='Add Blog Entry']"));
