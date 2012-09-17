@@ -81,7 +81,6 @@ import com.liferay.portlet.asset.model.AssetRendererFactory;
 import com.liferay.portlet.social.service.SocialActivityInterpreterLocalServiceUtil;
 import com.liferay.portlet.social.service.SocialRequestInterpreterLocalServiceUtil;
 import com.liferay.util.bridges.php.PHPPortlet;
-import com.liferay.util.log4j.Log4JUtil;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -298,10 +297,6 @@ public class PortletHotDeployListener extends BaseHotDeployListener {
 			servletContextName, servletContext, xmls,
 			hotDeployEvent.getPluginPackage());
 
-		ClassLoader classLoader = hotDeployEvent.getContextClassLoader();
-
-		initLogger(classLoader);
-
 		boolean portletAppInitialized = false;
 
 		boolean phpPortlet = false;
@@ -309,7 +304,10 @@ public class PortletHotDeployListener extends BaseHotDeployListener {
 
 		PortletBagFactory portletBagFactory = new PortletBagFactory();
 
+		ClassLoader classLoader = hotDeployEvent.getContextClassLoader();
+
 		portletBagFactory.setClassLoader(classLoader);
+
 		portletBagFactory.setServletContext(servletContext);
 		portletBagFactory.setWARFile(true);
 
@@ -532,11 +530,6 @@ public class PortletHotDeployListener extends BaseHotDeployListener {
 						" was unregistered");
 			}
 		}
-	}
-
-	protected void initLogger(ClassLoader classLoader) {
-		Log4JUtil.configureLog4J(
-			classLoader.getResource("META-INF/portal-log4j.xml"));
 	}
 
 	protected PortletBag initPortlet(
