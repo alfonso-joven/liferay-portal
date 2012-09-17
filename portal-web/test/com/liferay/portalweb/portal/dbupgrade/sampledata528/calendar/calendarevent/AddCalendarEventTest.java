@@ -25,38 +25,52 @@ public class AddCalendarEventTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
-		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
+		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
+				"Welcome"));
+		selenium.mouseOver("//h2[@class='user-greeting']/span");
+		selenium.clickAt("//h2[@class='user-greeting']/span",
+			RuntimeVariables.replace("Welcome"));
+		selenium.waitForVisible("link=Control Panel");
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Communities", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Communities",
+			RuntimeVariables.replace("Communities"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_134_name",
+		selenium.type("//input[@id='_134_name']",
 			RuntimeVariables.replace("Calendar Event Community"));
 		selenium.clickAt("//input[@value='Search']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//td[2]/a", RuntimeVariables.replace("Open"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Calendar Event Page",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Calendar Event Page"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Events", RuntimeVariables.replace(""));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//input[@value='Add Event']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Add Event"));
 		selenium.waitForPageToLoad("30000");
-		selenium.select("_8_startDateMonth", RuntimeVariables.replace("May"));
-		selenium.select("_8_startDateDay", RuntimeVariables.replace("label=31"));
-		selenium.select("_8_startDateYear", RuntimeVariables.replace("2010"));
-		selenium.select("_8_startDateHour", RuntimeVariables.replace("12"));
+		selenium.select("//select[@id='_8_startDateMonth']",
+			RuntimeVariables.replace("May"));
+		selenium.select("//select[@id='_8_startDateDay']",
+			RuntimeVariables.replace("label=31"));
+		selenium.select("//select[@id='_8_startDateYear']",
+			RuntimeVariables.replace("2010"));
+		selenium.select("//select[@name='_8_startDateHour']",
+			RuntimeVariables.replace("12"));
 		selenium.clickAt("//td[2]/input[2]", RuntimeVariables.replace(""));
-		selenium.select("_8_startDateMinute", RuntimeVariables.replace(":00"));
-		selenium.select("_8_startDateAmPm", RuntimeVariables.replace("PM"));
+		selenium.select("//select[@name='_8_startDateMinute']",
+			RuntimeVariables.replace(":00"));
+		selenium.select("//select[@name='_8_startDateAmPm']",
+			RuntimeVariables.replace("PM"));
 		selenium.type("//tr[6]/td[2]/input",
 			RuntimeVariables.replace("Hashi's birthday bash"));
 		selenium.type("//textarea",
 			RuntimeVariables.replace("This is so much fun!"));
-		selenium.clickAt("//input[@value='Save']", RuntimeVariables.replace(""));
+		selenium.clickAt("//input[@value='Save']",
+			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Your request processed successfully."),
