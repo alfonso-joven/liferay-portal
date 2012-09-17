@@ -38,6 +38,7 @@ public class ViewAnnouncementsEntryTest extends BaseTestCase {
 		selenium.clickAt("//h3[@class='entry-title']/a",
 			RuntimeVariables.replace("Announcements Entry Name"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isElementPresent("//img[@alt='Liferay']"));
+		Thread.sleep(5000);
+		assertTrue(selenium.isVisible("//img[@alt='Liferay']"));
 	}
 }

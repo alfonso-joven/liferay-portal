@@ -25,15 +25,24 @@ public class AddAnnouncementsEntryTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
-		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Manage"),
+			selenium.getText("//li[@id='_145_manageContent']/a/span"));
+		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+		selenium.waitForVisible("link=Control Panel");
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Communities", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Communities",
+			RuntimeVariables.replace("Communities"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_134_name",
+		selenium.type("//input[@id='_134_name']",
 			RuntimeVariables.replace("Announcements Entry Community"));
 		selenium.clickAt("//input[@value='Search']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//td[1]/a", RuntimeVariables.replace("Open"));
 		selenium.waitForPageToLoad("30000");
@@ -41,16 +50,17 @@ public class AddAnnouncementsEntryTest extends BaseTestCase {
 		selenium.clickAt("link=Announcements Entry Page",
 			RuntimeVariables.replace(""));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Manage Entries", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Manage Entries",
+			RuntimeVariables.replace("Manage Entries"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//input[@value='Add Entry']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Add Entry"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_84_title",
+		selenium.type("//input[@id='_84_title']",
 			RuntimeVariables.replace("Announcements Entry Name"));
-		selenium.type("_84_url",
+		selenium.type("//input[@id='_84_url']",
 			RuntimeVariables.replace("http://www.liferay.com"));
-		selenium.type("_84_content",
+		selenium.type("//textarea[@id='_84_content']",
 			RuntimeVariables.replace("Announcements Entry Content"));
 		selenium.select("//select[@id='_84_displayDateMonth']",
 			RuntimeVariables.replace("November"));
@@ -64,7 +74,8 @@ public class AddAnnouncementsEntryTest extends BaseTestCase {
 			RuntimeVariables.replace("31"));
 		selenium.select("//select[@id='_84_expirationDateYear']",
 			RuntimeVariables.replace("2012"));
-		selenium.clickAt("//input[@value='Save']", RuntimeVariables.replace(""));
+		selenium.clickAt("//input[@value='Save']",
+			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Entries", RuntimeVariables.replace(""));
 		selenium.waitForPageToLoad("30000");
@@ -74,6 +85,7 @@ public class AddAnnouncementsEntryTest extends BaseTestCase {
 		selenium.clickAt("//div/h3/a",
 			RuntimeVariables.replace("Announcements Entry Name"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isElementPresent("//img[@alt='Liferay']"));
+		Thread.sleep(5000);
+		assertTrue(selenium.isVisible("//img[@alt='Liferay']"));
 	}
 }
