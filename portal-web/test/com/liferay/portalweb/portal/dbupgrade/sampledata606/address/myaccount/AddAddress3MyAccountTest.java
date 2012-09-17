@@ -25,49 +25,69 @@ public class AddAddress3MyAccountTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Manage"),
+			selenium.getText("//li[@id='_145_manageContent']/a/span"));
+		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=My Account", RuntimeVariables.replace(""));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("addressesLink", RuntimeVariables.replace(""));
-		selenium.waitForVisible("_2_addressStreet1_0");
+		selenium.waitForVisible("//input[@id='_2_addressStreet1_0']");
 		selenium.waitForVisible("//div[2]/div/span/span/button[1]");
 		selenium.clickAt("//div[2]/div/span/span/button[1]",
 			RuntimeVariables.replace(""));
-		selenium.waitForVisible("_2_addressStreet1_3");
-		selenium.type("_2_addressStreet1_3",
+		selenium.waitForVisible("//input[@id='_2_addressStreet1_3']");
+		selenium.type("//input[@id='_2_addressStreet1_3']",
 			RuntimeVariables.replace("1220 Brea Canyon Rd"));
-		selenium.select("_2_addressTypeId3",
+		selenium.select("//select[@id='_2_addressTypeId3']",
 			RuntimeVariables.replace("label=Business"));
-		selenium.type("_2_addressStreet2_3", RuntimeVariables.replace("Ste 12"));
-		selenium.type("_2_addressZip3", RuntimeVariables.replace("91789"));
-		selenium.type("_2_addressStreet3_3", RuntimeVariables.replace("Walnut"));
-		selenium.type("_2_addressCity3", RuntimeVariables.replace("Los Angeles"));
-		selenium.waitForPartialText("_2_addressCountryId3", "United States");
-		selenium.select("_2_addressCountryId3",
+		selenium.type("//input[@id='_2_addressStreet2_3']",
+			RuntimeVariables.replace("Ste 12"));
+		selenium.type("//input[@id='_2_addressZip3']",
+			RuntimeVariables.replace("91789"));
+		selenium.type("//input[@id='_2_addressStreet3_3']",
+			RuntimeVariables.replace("Walnut"));
+		selenium.type("//input[@id='_2_addressCity3']",
+			RuntimeVariables.replace("Los Angeles"));
+		selenium.waitForPartialText("//select[@id='_2_addressCountryId3']",
+			"United States");
+		selenium.select("//select[@id='_2_addressCountryId3']",
 			RuntimeVariables.replace("label=United States"));
-		selenium.waitForPartialText("_2_addressRegionId3", "California");
-		selenium.select("_2_addressRegionId3",
+		selenium.waitForPartialText("//select[@id='_2_addressRegionId3']",
+			"California");
+		selenium.select("//select[@id='_2_addressRegionId3']",
 			RuntimeVariables.replace("label=California"));
 		Thread.sleep(5000);
-		selenium.clickAt("//input[@value='Save']", RuntimeVariables.replace(""));
+		selenium.clickAt("//input[@value='Save']",
+			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForSelectedLabel("_2_addressCountryId2", "United States");
-		selenium.waitForSelectedLabel("_2_addressRegionId2", "California");
+		selenium.waitForSelectedLabel("//select[@id='_2_addressCountryId2']",
+			"United States");
+		selenium.waitForSelectedLabel("//select[@id='_2_addressRegionId2']",
+			"California");
 		assertEquals(RuntimeVariables.replace(
 				"Your request processed successfully."),
 			selenium.getText("//section/div/div/div/div[1]"));
 		assertEquals("1220 Brea Canyon Rd",
-			selenium.getValue("_2_addressStreet1_2"));
-		assertEquals("Business", selenium.getSelectedLabel("_2_addressTypeId2"));
-		assertEquals("Ste 12", selenium.getValue("_2_addressStreet2_2"));
-		assertEquals("91789", selenium.getValue("_2_addressZip2"));
-		assertEquals("Walnut", selenium.getValue("_2_addressStreet3_2"));
-		assertEquals("Los Angeles", selenium.getValue("_2_addressCity2"));
+			selenium.getValue("//input[@id='_2_addressStreet1_2']"));
+		assertEquals("Business",
+			selenium.getSelectedLabel("//select[@id='_2_addressTypeId2']"));
+		assertEquals("Ste 12",
+			selenium.getValue("//input[@id='_2_addressStreet2_2']"));
+		assertEquals("91789", selenium.getValue("//input[@id='_2_addressZip2']"));
+		assertEquals("Walnut",
+			selenium.getValue("//input[@id='_2_addressStreet3_2']"));
+		assertEquals("Los Angeles",
+			selenium.getValue("//input[@id='_2_addressCity2']"));
 		assertEquals("United States",
-			selenium.getSelectedLabel("_2_addressCountryId2"));
+			selenium.getSelectedLabel("//select[@id='_2_addressCountryId2']"));
 		assertEquals("California",
-			selenium.getSelectedLabel("_2_addressRegionId2"));
+			selenium.getSelectedLabel("//select[@id='_2_addressRegionId2']"));
 	}
 }

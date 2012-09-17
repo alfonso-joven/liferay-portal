@@ -25,44 +25,61 @@ public class AddAddress2MyAccountTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home");
-		selenium.waitForElementPresent("link=Control Panel");
-		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
-		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=My Account", RuntimeVariables.replace(""));
+		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
+				"Welcome"));
+		selenium.mouseOver("//h2[@class='user-greeting']/span");
+		selenium.clickAt("//h2[@class='user-greeting']/span",
+			RuntimeVariables.replace("Welcome"));
+		selenium.waitForVisible("link=My Account");
+		selenium.clickAt("link=My Account",
+			RuntimeVariables.replace("My Account"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("addressesLink", RuntimeVariables.replace(""));
 		selenium.waitForVisible("//div[2]/div/span/a[1]");
 		selenium.clickAt("//div[2]/div/span/a[1]", RuntimeVariables.replace(""));
-		selenium.waitForVisible("_2_addressStreet1_2");
-		selenium.type("_2_addressStreet1_2",
+		selenium.waitForVisible("//input[@id='_2_addressStreet1_2']");
+		selenium.type("//input[@id='_2_addressStreet1_2']",
 			RuntimeVariables.replace("123 Lets"));
-		selenium.select("_2_addressTypeId2",
+		selenium.select("//select[@id='_2_addressTypeId2']",
 			RuntimeVariables.replace("label=Other"));
-		selenium.type("_2_addressStreet2_2",
+		selenium.type("//input[@id='_2_addressStreet2_2']",
 			RuntimeVariables.replace("897 Hope"));
-		selenium.type("_2_addressZip2", RuntimeVariables.replace("00000"));
-		selenium.type("_2_addressStreet3_2",
+		selenium.type("//input[@id='_2_addressZip2']",
+			RuntimeVariables.replace("00000"));
+		selenium.type("//input[@id='_2_addressStreet3_2']",
 			RuntimeVariables.replace("7896 This"));
-		selenium.type("_2_addressCity2", RuntimeVariables.replace("Works"));
-		selenium.select("_2_addressCountryId2",
+		selenium.type("//input[@id='_2_addressCity2']",
+			RuntimeVariables.replace("Works"));
+		selenium.select("//select[@id='_2_addressCountryId2']",
 			RuntimeVariables.replace("label=Canada"));
-		selenium.waitForPartialText("_2_addressRegionId2", "Ontario");
-		selenium.select("_2_addressRegionId2",
+		selenium.waitForPartialText("//input[@id='_2_addressRegionId2']",
+			"Ontario");
+		selenium.select("//select[@id='_2_addressRegionId2']",
 			RuntimeVariables.replace("label=Ontario"));
-		selenium.clickAt("//input[@value='Save']", RuntimeVariables.replace(""));
+		selenium.clickAt("//input[@value='Save']",
+			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForSelectedLabel("_2_addressCountryId1", "Canada");
-		selenium.waitForSelectedLabel("_2_addressRegionId1", "Ontario");
+		selenium.waitForSelectedLabel("//input[@id='_2_addressCountryId1']",
+			"Canada");
+		selenium.waitForSelectedLabel("//input[@id='_2_addressRegionId1']",
+			"Ontario");
 		assertEquals(RuntimeVariables.replace(
 				"Your request processed successfully."),
 			selenium.getText("//div[2]/div/div/div"));
-		assertEquals("123 Lets", selenium.getValue("_2_addressStreet1_1"));
-		assertEquals("Other", selenium.getSelectedLabel("_2_addressTypeId1"));
-		assertEquals("897 Hope", selenium.getValue("_2_addressStreet2_1"));
-		assertEquals("00000", selenium.getValue("_2_addressZip1"));
-		assertEquals("7896 This", selenium.getValue("_2_addressStreet3_1"));
-		assertEquals("Works", selenium.getValue("_2_addressCity1"));
-		assertEquals("Canada", selenium.getSelectedLabel("_2_addressCountryId1"));
-		assertEquals("Ontario", selenium.getSelectedLabel("_2_addressRegionId1"));
+		assertEquals("123 Lets",
+			selenium.getValue("//input[@id='_2_addressStreet1_1']"));
+		assertEquals("Other",
+			selenium.getSelectedLabel("//select[@id='_2_addressTypeId1']"));
+		assertEquals("897 Hope",
+			selenium.getValue("//input[@id='_2_addressStreet2_1']"));
+		assertEquals("00000", selenium.getValue("//input[@id='_2_addressZip1']"));
+		assertEquals("7896 This",
+			selenium.getValue("//input[@id='_2_addressStreet3_1']"));
+		assertEquals("Works",
+			selenium.getValue("//input[@id='_2_addressCity1']"));
+		assertEquals("Canada",
+			selenium.getSelectedLabel("//select[@id='_2_addressCountryId1']"));
+		assertEquals("Ontario",
+			selenium.getSelectedLabel("//select[@id='_2_addressRegionId1']"));
 	}
 }

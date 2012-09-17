@@ -25,6 +25,10 @@ public class AddAddress2MyAccountTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -79,7 +83,7 @@ public class AddAddress2MyAccountTest extends BaseTestCase {
 		assertEquals("123 Lets",
 			selenium.getValue("//input[@id='_2_addressStreet1_1']"));
 		assertEquals("Other",
-			selenium.getSelectedLabel("//select[@id='_2_addressTypeId1']"));
+			selenium.getSelectedLabel("//select[@name='_2_addressTypeId1']"));
 		assertEquals("897 Hope",
 			selenium.getValue("//input[@id='_2_addressStreet2_1']"));
 		assertEquals("00000", selenium.getValue("//input[@id='_2_addressZip1']"));

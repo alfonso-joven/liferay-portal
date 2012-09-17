@@ -14,19 +14,29 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
-	<td>link=Control Panel</td>
-	<td></td>
+	<td>assertPartialText</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
 </tr>
 <tr>
-	<td>clickAtAndWait</td>
-	<td>link=Control Panel</td>
-	<td></td>
+	<td>mouseOver</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>link=My Account</td>
+	<td>My Account</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=My Account</td>
-	<td></td>
+	<td>My Account</td>
 </tr>
 <tr>
 	<td>clickAt</td>
@@ -35,7 +45,7 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>_2_addressStreet1_0</td>
+	<td>//input[@id='_2_addressStreet1_0']</td>
 	<td></td>
 </tr>
 <tr>
@@ -45,58 +55,48 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>_2_addressStreet1_3</td>
+	<td>//input[@id='_2_addressStreet1_3']</td>
 	<td></td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_2_addressStreet1_3</td>
+	<td>//input[@id='_2_addressStreet1_3']</td>
 	<td>1220 Brea Canyon Rd</td>
 </tr>
 <tr>
 	<td>select</td>
-	<td>_2_addressTypeId3</td>
+	<td>//select[@id='_2_addressTypeId3']</td>
 	<td>label=Business</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_2_addressStreet2_3</td>
+	<td>//input[@id='_2_addressStreet2_3']</td>
 	<td>Ste 12</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_2_addressZip3</td>
+	<td>//input[@id='_2_addressZip3']</td>
 	<td>91789</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_2_addressStreet3_3</td>
+	<td>//input[@id='_2_addressStreet3_3']</td>
 	<td>Walnut</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_2_addressCity3</td>
+	<td>//input[@id='_2_addressCity3']</td>
 	<td>Los Angeles</td>
 </tr>
 <tr>
 	<td>waitForPartialText</td>
-	<td>_2_addressCountryId3</td>
+	<td>//select[@id='_2_addressCountryId3']</td>
 	<td>United States</td>
 </tr>
 <tr>
 	<td>select</td>
-	<td>_2_addressCountryId3</td>
+	<td>//select[@id='_2_addressCountryId3']</td>
 	<td>label=United States</td>
-</tr>
-<tr>
-	<td>waitForPartialText</td>
-	<td>_2_addressRegionId3</td>
-	<td>California</td>
-</tr>
-<tr>
-	<td>select</td>
-	<td>_2_addressRegionId3</td>
-	<td>label=California</td>
 </tr>
 <tr>
 	<td>pause</td>
@@ -104,18 +104,28 @@
 	<td></td>
 </tr>
 <tr>
+	<td>waitForPartialText</td>
+	<td>//select[@id='_2_addressRegionId3']</td>
+	<td>California</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//select[@id='_2_addressRegionId3']</td>
+	<td>label=California</td>
+</tr>
+<tr>
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Save']</td>
-	<td></td>
+	<td>Save</td>
 </tr>
 <tr>
 	<td>waitForSelectedLabel</td>
-	<td>_2_addressCountryId2</td>
+	<td>//select[@id='_2_addressCountryId2']</td>
 	<td>United States</td>
 </tr>
 <tr>
 	<td>waitForSelectedLabel</td>
-	<td>_2_addressRegionId2</td>
+	<td>//select[@id='_2_addressRegionId2']</td>
 	<td>California</td>
 </tr>
 <tr>
@@ -125,42 +135,42 @@
 </tr>
 <tr>
 	<td>assertValue</td>
-	<td>_2_addressStreet1_2</td>
+	<td>//input[@id='_2_addressStreet1_2']</td>
 	<td>1220 Brea Canyon Rd</td>
 </tr>
 <tr>
 	<td>assertSelectedLabel</td>
-	<td>_2_addressTypeId2</td>
+	<td>//select[@name='_2_addressTypeId2']</td>
 	<td>Business</td>
 </tr>
 <tr>
 	<td>assertValue</td>
-	<td>_2_addressStreet2_2</td>
+	<td>//input[@id='_2_addressStreet2_2']</td>
 	<td>Ste 12</td>
 </tr>
 <tr>
 	<td>assertValue</td>
-	<td>_2_addressZip2</td>
+	<td>//input[@id='_2_addressZip2']</td>
 	<td>91789</td>
 </tr>
 <tr>
 	<td>assertValue</td>
-	<td>_2_addressStreet3_2</td>
+	<td>//input[@id='_2_addressStreet3_2']</td>
 	<td>Walnut</td>
 </tr>
 <tr>
 	<td>assertValue</td>
-	<td>_2_addressCity2</td>
+	<td>//input[@id='_2_addressCity2']</td>
 	<td>Los Angeles</td>
 </tr>
 <tr>
 	<td>assertSelectedLabel</td>
-	<td>_2_addressCountryId2</td>
+	<td>//select[@id='_2_addressCountryId2']</td>
 	<td>United States</td>
 </tr>
 <tr>
 	<td>assertSelectedLabel</td>
-	<td>_2_addressRegionId2</td>
+	<td>//select[@id='_2_addressRegionId2']</td>
 	<td>California</td>
 </tr>
 
