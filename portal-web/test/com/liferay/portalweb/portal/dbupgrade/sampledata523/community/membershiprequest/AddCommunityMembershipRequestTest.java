@@ -25,7 +25,12 @@ public class AddCommunityMembershipRequestTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
+		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
+				"Welcome"));
+		selenium.mouseOver("//h2[@class='user-greeting']/span");
+		selenium.clickAt("//h2[@class='user-greeting']/span",
+			RuntimeVariables.replace("Welcome"));
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
@@ -34,13 +39,13 @@ public class AddCommunityMembershipRequestTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Add", RuntimeVariables.replace("Add"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_134_name",
+		selenium.type("//input[@id='_134_name']",
 			RuntimeVariables.replace("Membership Request Community Name"));
-		selenium.clickAt("_134_description",
+		selenium.clickAt("//textarea[@id='_134_description']",
 			RuntimeVariables.replace("Community Description"));
-		selenium.type("_134_description",
+		selenium.type("//textarea[@id='_134_description']",
 			RuntimeVariables.replace("Membership Request Community Description"));
-		selenium.select("_134_type",
+		selenium.select("//select[@name='_134_type']",
 			RuntimeVariables.replace("label=Restricted"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));

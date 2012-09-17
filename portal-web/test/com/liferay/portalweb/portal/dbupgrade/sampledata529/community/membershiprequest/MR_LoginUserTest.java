@@ -25,23 +25,21 @@ public class MR_LoginUserTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.setTimeout("180000");
-		selenium.open("/web/guest/home");
-		selenium.waitForElementPresent("link=Sign In");
-		selenium.click(RuntimeVariables.replace("link=Sign In"));
-		selenium.waitForPageToLoad("30000");
-		selenium.type("_58_login",
+		selenium.open("/web/guest/home/");
+		selenium.waitForVisible("//input[@value='Sign In']");
+		assertTrue(selenium.isVisible("//input[@value='Sign In']"));
+		selenium.type("//input[@name='_58_login']",
 			RuntimeVariables.replace("requestmemberea@liferay.com"));
-		selenium.type("_58_password", RuntimeVariables.replace("test"));
-		selenium.click("_58_rememberMeCheckbox");
+		selenium.type("//input[@name='_58_password']",
+			RuntimeVariables.replace("test"));
+		selenium.clickAt("//input[@id='_58_rememberMeCheckbox']",
+			RuntimeVariables.replace("Remember Me"));
 		selenium.click(RuntimeVariables.replace("//input[@value='Sign In']"));
 		selenium.waitForPageToLoad("30000");
 		selenium.click(RuntimeVariables.replace("//input[@value='I Agree']"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("reminderQueryAnswer", RuntimeVariables.replace("Test"));
 		selenium.click(RuntimeVariables.replace("//input[@value='Save']"));
-		selenium.waitForPageToLoad("30000");
-		selenium.click(RuntimeVariables.replace(
-				"document.getElementById('my-community-private-pages')"));
 		selenium.waitForPageToLoad("30000");
 	}
 }

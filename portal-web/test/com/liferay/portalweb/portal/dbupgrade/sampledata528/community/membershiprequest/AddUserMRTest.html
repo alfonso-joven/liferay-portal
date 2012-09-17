@@ -14,9 +14,24 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
+	<td>assertPartialText</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>mouseOver</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
 	<td>link=Control Panel</td>
-	<td></td>
+	<td>Control Panel</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -35,53 +50,53 @@
 </tr>
 <tr>
 	<td>select</td>
-	<td>_125_prefixId</td>
+	<td>//select[@name='_125_prefixId']</td>
 	<td>label=Mr.</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_125_screenName</td>
+	<td>//input[@name='_125_screenName']</td>
 	<td>requestmembersn</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_125_emailAddress</td>
+	<td>//input[@name='_125_emailAddress']</td>
 	<td>requestmemberea@liferay.com</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_125_firstName</td>
+	<td>//input[@name='_125_firstName']</td>
 	<td>requestmemberfn</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_125_lastName</td>
+	<td>//input[@name='_125_lastName']</td>
 	<td>requestmemberln</td>
 </tr>
 <tr>
 	<td>select</td>
-	<td>_125_birthdayMonth</td>
+	<td>//select[@name='_125_birthdayMonth']</td>
 	<td>label=April</td>
 </tr>
 <tr>
 	<td>select</td>
-	<td>_125_birthdayDay</td>
+	<td>//select[@name='_125_birthdayDay']</td>
 	<td>label=10</td>
 </tr>
 <tr>
 	<td>select</td>
-	<td>_125_birthdayYear</td>
+	<td>//select[@name='_125_birthdayYear']</td>
 	<td>label=1986</td>
 </tr>
 <tr>
 	<td>select</td>
-	<td>_125_male</td>
+	<td>//select[@name='_125_male']</td>
 	<td>label=Male</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Save']</td>
-	<td></td>
+	<td>Save</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -90,22 +105,22 @@
 </tr>
 <tr>
 	<td>assertValue</td>
-	<td>_125_screenName</td>
+	<td>//input[@name='_125_screenName']</td>
 	<td>requestmembersn</td>
 </tr>
 <tr>
 	<td>assertValue</td>
-	<td>_125_emailAddress</td>
+	<td>//input[@name='_125_emailAddress']</td>
 	<td>requestmemberea@liferay.com</td>
 </tr>
 <tr>
 	<td>assertValue</td>
-	<td>_125_firstName</td>
+	<td>//input[@name='_125_firstName']</td>
 	<td>requestmemberfn</td>
 </tr>
 <tr>
 	<td>assertValue</td>
-	<td>_125_lastName</td>
+	<td>//input[@name='_125_lastName']</td>
 	<td>requestmemberln</td>
 </tr>
 

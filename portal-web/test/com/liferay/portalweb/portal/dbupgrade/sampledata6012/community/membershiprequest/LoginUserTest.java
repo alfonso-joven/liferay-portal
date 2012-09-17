@@ -29,11 +29,13 @@ public class LoginUserTest extends BaseTestCase {
 		selenium.waitForVisible("link=Sign In");
 		selenium.clickAt("link=Sign In", RuntimeVariables.replace(""));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForVisible("_58_login");
-		selenium.type("_58_login", RuntimeVariables.replace("test@liferay.com"));
-		selenium.type("_58_password", RuntimeVariables.replace("test"));
-		selenium.waitForVisible("_58_rememberMeCheckbox");
-		selenium.click("_58_rememberMeCheckbox");
+		selenium.waitForVisible("//input[@id='_58_login']");
+		selenium.type("//input[@id='_58_login']",
+			RuntimeVariables.replace("test@liferay.com"));
+		selenium.type("//input[@id='_58_password']",
+			RuntimeVariables.replace("test"));
+		selenium.waitForVisible("//input[@id='_58_rememberMeCheckbox']");
+		selenium.click("//input[@id='_58_rememberMeCheckbox']");
 		selenium.waitForVisible("//input[@value='Sign In']");
 		selenium.clickAt("//input[@value='Sign In']",
 			RuntimeVariables.replace(""));

@@ -29,7 +29,7 @@ public class MR_RequestCommunityTest extends BaseTestCase {
 		selenium.clickAt("link=Available Communities",
 			RuntimeVariables.replace("Available Communities"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_29_name",
+		selenium.type("//input[@id='_29_name']",
 			RuntimeVariables.replace("Membership Request Community Name"));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
@@ -39,7 +39,7 @@ public class MR_RequestCommunityTest extends BaseTestCase {
 		selenium.clickAt("//span/a[2]",
 			RuntimeVariables.replace("Request Membership"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_29_comments",
+		selenium.type("//textarea[@id='_29_comments']",
 			RuntimeVariables.replace(
 				"Community Description comments request to join"));
 		selenium.clickAt("//input[@value='Save']",
