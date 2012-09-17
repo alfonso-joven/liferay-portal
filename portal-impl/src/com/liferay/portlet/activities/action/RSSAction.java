@@ -131,6 +131,10 @@ public class RSSAction extends PortletAction {
 
 		syndFeed.setTitle(feedTitle);
 
+		syndFeed.setPublishedDate(new Date());
+
+		syndFeed.setUri(feedLink);
+
 		List<SyndEntry> syndEntries = new ArrayList<SyndEntry>();
 
 		syndFeed.setEntries(syndEntries);

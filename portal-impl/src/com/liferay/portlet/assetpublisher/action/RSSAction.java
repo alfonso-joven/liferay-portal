@@ -49,6 +49,7 @@ import com.sun.syndication.feed.synd.SyndFeedImpl;
 import java.io.OutputStream;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.portlet.PortletConfig;
@@ -98,8 +99,13 @@ public class RSSAction extends PortletAction {
 
 		syndFeed.setFeedType(RSSUtil.getFeedType(type, version));
 		syndFeed.setTitle(name);
-		syndFeed.setLink(getFeedURL(portletRequest));
+
+		String feedURL = getFeedURL(portletRequest);
+
+		syndFeed.setLink(feedURL);
 		syndFeed.setDescription(GetterUtil.getString(description, name));
+		syndFeed.setPublishedDate(new Date());
+		syndFeed.setUri(feedURL);
 
 		List<SyndEntry> syndEntries = new ArrayList<SyndEntry>();
 
