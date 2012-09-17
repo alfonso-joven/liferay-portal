@@ -25,14 +25,21 @@ public class AddPortletBookmarksEntryTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Manage"),
+			selenium.getText("//li[@id='_145_manageContent']/a/span"));
+		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Communities",
 			RuntimeVariables.replace("Communities"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_134_name",
+		selenium.type("//input[@id='_134_name']",
 			RuntimeVariables.replace("Bookmarks Entry Community"));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
@@ -41,10 +48,18 @@ public class AddPortletBookmarksEntryTest extends BaseTestCase {
 			selenium.getText("//td[2]/a"));
 		selenium.clickAt("//td[2]/a", RuntimeVariables.replace("Open"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=More\u2026",
-			RuntimeVariables.replace("More\u2026"));
-		Thread.sleep(5000);
-		selenium.typeKeys("layout_configuration_content",
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Add"),
+			selenium.getText("//li[@id='_145_addContent']/a/span"));
+		selenium.mouseOver("//li[@id='_145_addContent']/a/span");
+		selenium.waitForVisible("//a[@id='_145_addApplication']");
+		selenium.clickAt("//a[@id='_145_addApplication']",
+			RuntimeVariables.replace("Add Application"));
+		selenium.waitForVisible("//input[@id='layout_configuration_content']");
+		selenium.sendKeys("//input[@id='layout_configuration_content']",
 			RuntimeVariables.replace("b"));
 		selenium.waitForVisible("//div[@title='Bookmarks']/p/a");
 		selenium.clickAt("//div[@title='Bookmarks']/p/a",

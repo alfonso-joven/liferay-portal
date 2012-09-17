@@ -25,14 +25,19 @@ public class AddBookmarksFolderEntryTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
+		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
+				"Welcome"));
+		selenium.mouseOver("//h2[@class='user-greeting']/span");
+		selenium.clickAt("//h2[@class='user-greeting']/span",
+			RuntimeVariables.replace("Welcome"));
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Communities",
 			RuntimeVariables.replace("Communities"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_134_name",
+		selenium.type("//input[@id='_134_name']",
 			RuntimeVariables.replace("Bookmarks Entry Community"));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
@@ -49,11 +54,11 @@ public class AddBookmarksFolderEntryTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Add Entry']",
 			RuntimeVariables.replace("Add Entry"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_28_name",
+		selenium.type("//input[@id='_28_name']",
 			RuntimeVariables.replace("Bookmarks Entry Name"));
-		selenium.type("_28_url",
+		selenium.type("//input[@id='_28_url']",
 			RuntimeVariables.replace("http://www.liferay.com"));
-		selenium.type("_28_comments",
+		selenium.type("//textarea[@id='_28_comments']",
 			RuntimeVariables.replace("Bookmarks Entry Comments"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));

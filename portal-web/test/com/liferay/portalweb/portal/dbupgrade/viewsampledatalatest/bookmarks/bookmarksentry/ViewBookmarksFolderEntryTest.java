@@ -43,6 +43,7 @@ public class ViewBookmarksFolderEntryTest extends BaseTestCase {
 		selenium.clickAt("//div[@class='lfr-asset-url']/a",
 			RuntimeVariables.replace("http://www.liferay.com"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isElementPresent("//img[@alt='Liferay']"));
+		Thread.sleep(5000);
+		assertTrue(selenium.isVisible("//img[@alt='Liferay']"));
 	}
 }
