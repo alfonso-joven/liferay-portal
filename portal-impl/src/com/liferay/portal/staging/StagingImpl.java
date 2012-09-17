@@ -1463,13 +1463,13 @@ public class StagingImpl implements Staging {
 						description, true,
 						LayoutSetBranchConstants.ALL_BRANCHES, serviceContext);
 
-				List<LayoutRevision> revisions =
+				List<LayoutRevision> layoutRevisions =
 					LayoutRevisionLocalServiceUtil.getLayoutRevisions(
 						layoutSetBranch.getLayoutSetBranchId(), false);
 
-				for (LayoutRevision revision : revisions) {
+				for (LayoutRevision layoutRevision : layoutRevisions) {
 					LayoutRevisionLocalServiceUtil.updateStatus(
-						userId, revision.getLayoutRevisionId(),
+						userId, layoutRevision.getLayoutRevisionId(),
 						WorkflowConstants.STATUS_APPROVED, serviceContext);
 				}
 			}
@@ -1493,13 +1493,13 @@ public class StagingImpl implements Staging {
 						description, true,
 						LayoutSetBranchConstants.ALL_BRANCHES, serviceContext);
 
-				List<LayoutRevision> revisions =
+				List<LayoutRevision> layoutRevisions =
 					LayoutRevisionLocalServiceUtil.getLayoutRevisions(
 						layoutSetBranch.getLayoutSetBranchId(), false);
 
-				for (LayoutRevision revision : revisions) {
+				for (LayoutRevision layoutRevision : layoutRevisions) {
 					LayoutRevisionLocalServiceUtil.updateStatus(
-						userId, revision.getLayoutRevisionId(),
+						userId, layoutRevision.getLayoutRevisionId(),
 						WorkflowConstants.STATUS_APPROVED, serviceContext);
 				}
 			}
