@@ -30,8 +30,14 @@ public class AddAnnouncementDeliveryTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home");
-				selenium.waitForElementPresent("link=My Account");
-				selenium.clickAt("link=My Account", RuntimeVariables.replace(""));
+				assertTrue(selenium.isPartialText(
+						"//h2[@class='user-greeting']/span", "Welcome"));
+				selenium.mouseOver("//h2[@class='user-greeting']/span");
+				selenium.clickAt("//h2[@class='user-greeting']/span",
+					RuntimeVariables.replace("Welcome"));
+				selenium.waitForVisible("link=My Account");
+				selenium.clickAt("link=My Account",
+					RuntimeVariables.replace("My Account"));
 				selenium.waitForPageToLoad("30000");
 				selenium.clickAt("announcementsLink",
 					RuntimeVariables.replace(""));
@@ -45,7 +51,7 @@ public class AddAnnouncementDeliveryTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("_2_announcementsTypegeneralEmailCheckbox",
+				selenium.clickAt("//input[@id='_2_announcementsTypegeneralEmailCheckbox']",
 					RuntimeVariables.replace(""));
 
 			case 2:
@@ -59,7 +65,7 @@ public class AddAnnouncementDeliveryTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("_2_announcementsTypegeneralSmsCheckbox",
+				selenium.clickAt("//input[@id='_2_announcementsTypegeneralSmsCheckbox']",
 					RuntimeVariables.replace(""));
 
 			case 3:
@@ -73,7 +79,7 @@ public class AddAnnouncementDeliveryTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("_2_announcementsTypenewsEmailCheckbox",
+				selenium.clickAt("//input[@id='_2_announcementsTypenewsEmailCheckbox']",
 					RuntimeVariables.replace(""));
 
 			case 4:
@@ -87,7 +93,7 @@ public class AddAnnouncementDeliveryTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("_2_announcementsTypenewsSmsCheckbox",
+				selenium.clickAt("//input[@id='_2_announcementsTypenewsSmsCheckbox']",
 					RuntimeVariables.replace(""));
 
 			case 5:
@@ -101,7 +107,7 @@ public class AddAnnouncementDeliveryTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("_2_announcementsTypetestEmailCheckbox",
+				selenium.clickAt("//input[@id='_2_announcementsTypetestEmailCheckbox']",
 					RuntimeVariables.replace(""));
 
 			case 6:
@@ -115,32 +121,32 @@ public class AddAnnouncementDeliveryTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("_2_announcementsTypetestSmsCheckbox",
+				selenium.clickAt("//input[@id='_2_announcementsTypetestSmsCheckbox']",
 					RuntimeVariables.replace(""));
 
 			case 7:
 				selenium.clickAt("//input[@value='Save']",
-					RuntimeVariables.replace(""));
+					RuntimeVariables.replace("Save"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace(
 						"Your request processed successfully."),
 					selenium.getText("//div[2]/div/div/div"));
 				assertTrue(selenium.isChecked(
-						"_2_announcementsTypegeneralEmailCheckbox"));
+						"//input[@id='_2_announcementsTypegeneralEmailCheckbox']"));
 				assertTrue(selenium.isChecked(
-						"_2_announcementsTypegeneralSmsCheckbox"));
+						"//input[@id='_2_announcementsTypegeneralSmsCheckbox']"));
 				assertTrue(selenium.isElementPresent(
 						"//input[@id='_2_announcementsTypegeneralWebsiteCheckbox' and @disabled='']"));
 				assertTrue(selenium.isChecked(
-						"_2_announcementsTypenewsSmsCheckbox"));
+						"//input[@id='_2_announcementsTypenewsSmsCheckbox']"));
 				assertTrue(selenium.isChecked(
-						"_2_announcementsTypenewsSmsCheckbox"));
+						"//input[@id='_2_announcementsTypenewsSmsCheckbox']"));
 				assertTrue(selenium.isElementPresent(
 						"//input[@id='_2_announcementsTypenewsWebsiteCheckbox' and @disabled='']"));
 				assertTrue(selenium.isChecked(
-						"_2_announcementsTypetestEmailCheckbox"));
+						"//input[@id='_2_announcementsTypetestEmailCheckbox']"));
 				assertTrue(selenium.isChecked(
-						"_2_announcementsTypetestSmsCheckbox"));
+						"//input[@id='_2_announcementsTypetestSmsCheckbox']"));
 				assertTrue(selenium.isElementPresent(
 						"//input[@id='_2_announcementsTypetestWebsiteCheckbox' and @disabled='']"));
 

@@ -25,25 +25,38 @@ public class ViewAnnouncementDeliveryTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Manage"),
+			selenium.getText("//li[@id='_145_manageContent']/a/span"));
+		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=My Account", RuntimeVariables.replace(""));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//a[@id='_2_addressesLink']",
 			RuntimeVariables.replace("Addresses Link"));
-		selenium.waitForVisible("_2_announcementsTypegeneralEmailCheckbox");
+		selenium.waitForVisible(
+			"//input[@id='_2_announcementsTypegeneralEmailCheckbox']");
 		assertTrue(selenium.isChecked(
-				"_2_announcementsTypegeneralEmailCheckbox"));
-		assertTrue(selenium.isChecked("_2_announcementsTypegeneralSmsCheckbox"));
+				"//input[@id='_2_announcementsTypegeneralEmailCheckbox']"));
+		assertTrue(selenium.isChecked(
+				"//input[@id='_2_announcementsTypegeneralSmsCheckbox']"));
 		assertTrue(selenium.isElementPresent(
 				"//input[@id='_2_announcementsTypegeneralWebsiteCheckbox' and @disabled='']"));
-		assertTrue(selenium.isChecked("_2_announcementsTypenewsSmsCheckbox"));
-		assertTrue(selenium.isChecked("_2_announcementsTypenewsSmsCheckbox"));
+		assertTrue(selenium.isChecked(
+				"//input[@id='_2_announcementsTypenewsSmsCheckbox']"));
+		assertTrue(selenium.isChecked(
+				"//input[@id='_2_announcementsTypenewsSmsCheckbox']"));
 		assertTrue(selenium.isElementPresent(
 				"//input[@id='_2_announcementsTypenewsWebsiteCheckbox' and @disabled='']"));
-		assertTrue(selenium.isChecked("_2_announcementsTypetestEmailCheckbox"));
-		assertTrue(selenium.isChecked("_2_announcementsTypetestSmsCheckbox"));
+		assertTrue(selenium.isChecked(
+				"//input[@id='_2_announcementsTypetestEmailCheckbox']"));
+		assertTrue(selenium.isChecked(
+				"//input[@id='_2_announcementsTypetestSmsCheckbox']"));
 		assertTrue(selenium.isElementPresent(
 				"//input[@id='_2_announcementsTypetestWebsiteCheckbox' and @disabled='']"));
 	}
