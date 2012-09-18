@@ -56,6 +56,7 @@ import com.sun.syndication.feed.synd.SyndEntryImpl;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.feed.synd.SyndFeedImpl;
 import com.sun.syndication.feed.synd.SyndLink;
+import com.sun.syndication.feed.synd.SyndLinkImpl;
 import com.sun.syndication.io.FeedException;
 
 import java.io.OutputStream;
@@ -171,7 +172,16 @@ public class RSSAction extends PortletAction {
 
 		String link = feedURL.toString();
 
-		syndFeed.setLink(link);
+		List<SyndLink> syndLinks = new ArrayList<SyndLink>();
+
+		syndFeed.setLinks(syndLinks);
+
+		SyndLink syndLinkSelf = new SyndLinkImpl();
+
+		syndLinks.add(syndLinkSelf);
+
+		syndLinkSelf.setHref(link);
+		syndLinkSelf.setRel("self");
 
 		syndFeed.setTitle(feed.getName());
 		syndFeed.setPublishedDate(new Date());

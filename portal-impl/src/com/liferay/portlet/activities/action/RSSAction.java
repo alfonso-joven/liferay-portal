@@ -39,6 +39,8 @@ import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndEntryImpl;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.feed.synd.SyndFeedImpl;
+import com.sun.syndication.feed.synd.SyndLink;
+import com.sun.syndication.feed.synd.SyndLinkImpl;
 import com.sun.syndication.io.FeedException;
 
 import edu.emory.mathcs.backport.java.util.Collections;
@@ -162,7 +164,23 @@ public class RSSAction extends PortletAction {
 			PortalUtil.getLayoutFullURL(themeDisplay) +
 				Portal.FRIENDLY_URL_SEPARATOR + "activities/rss";
 
-		syndFeed.setLink(link);
+		List<SyndLink> syndLinks = new ArrayList<SyndLink>();
+
+		syndFeed.setLinks(syndLinks);
+
+		SyndLink syndLinkSelf = new SyndLinkImpl();
+
+		syndLinks.add(syndLinkSelf);
+
+		syndLinkSelf.setHref(link);
+		syndLinkSelf.setRel("self");
+
+		SyndLink syndLinkAlternate = new SyndLinkImpl();
+
+		syndLinks.add(syndLinkAlternate);
+
+		syndLinkAlternate.setHref(PortalUtil.getLayoutFullURL(themeDisplay));
+		syndLinkAlternate.setRel("alternate");
 
 		syndFeed.setPublishedDate(new Date());
 		syndFeed.setTitle(description);
