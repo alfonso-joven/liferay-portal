@@ -163,6 +163,14 @@ public class RSSAction extends PortletAction {
 
 		syndFeed.setFeedType(feed.getFeedType() + "_" + feed.getFeedVersion());
 
+		List<SyndLink> syndLinks = new ArrayList<SyndLink>();
+
+		syndFeed.setLinks(syndLinks);
+
+		SyndLink selfSyndLink = new SyndLinkImpl();
+
+		syndLinks.add(selfSyndLink);
+
 		ResourceURL feedURL = resourceResponse.createResourceURL();
 
 		feedURL.setCacheability(ResourceURL.FULL);
@@ -172,16 +180,9 @@ public class RSSAction extends PortletAction {
 
 		String link = feedURL.toString();
 
-		List<SyndLink> syndLinks = new ArrayList<SyndLink>();
+		selfSyndLink.setHref(link);
 
-		syndFeed.setLinks(syndLinks);
-
-		SyndLink syndLinkSelf = new SyndLinkImpl();
-
-		syndLinks.add(syndLinkSelf);
-
-		syndLinkSelf.setHref(link);
-		syndLinkSelf.setRel("self");
+		selfSyndLink.setRel("self");
 
 		syndFeed.setTitle(feed.getName());
 		syndFeed.setPublishedDate(new Date());

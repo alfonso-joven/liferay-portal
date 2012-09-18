@@ -150,14 +150,15 @@ public class RSSAction extends PortletAction {
 
 		syndFeed.setLinks(syndLinks);
 
-		SyndLink syndLinkSelf = new SyndLinkImpl();
+		SyndLink selfSyndLink = new SyndLinkImpl();
 
-		syndLinks.add(syndLinkSelf);
+		syndLinks.add(selfSyndLink);
 
 		String feedURL = getFeedURL(portletRequest);
 
-		syndLinkSelf.setHref(feedURL);
-		syndLinkSelf.setRel("self");
+		selfSyndLink.setHref(feedURL);
+
+		selfSyndLink.setRel("self");
 
 		syndFeed.setPublishedDate(new Date());
 		syndFeed.setTitle(name);
