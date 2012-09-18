@@ -105,21 +105,9 @@ public class RSSAction extends PortletAction {
 			ThemeDisplay themeDisplay)
 		throws Exception {
 
-		ResourceURL feedURL = resourceResponse.createResourceURL();
-
-		feedURL.setCacheability(ResourceURL.FULL);
-		feedURL.setParameter("struts_action", "/journal/rss");
-		feedURL.setParameter("groupId", String.valueOf(feed.getGroupId()));
-		feedURL.setParameter("feedId", String.valueOf(feed.getFeedId()));
-
 		SyndFeed syndFeed = new SyndFeedImpl();
 
 		syndFeed.setDescription(feed.getDescription());
-		syndFeed.setFeedType(feed.getFeedType() + "_" + feed.getFeedVersion());
-		syndFeed.setLink(feedURL.toString());
-		syndFeed.setTitle(feed.getName());
-		syndFeed.setPublishedDate(new Date());
-		syndFeed.setUri(feedURL.toString());
 
 		List<SyndEntry> syndEntries = new ArrayList<SyndEntry>();
 
@@ -132,15 +120,15 @@ public class RSSAction extends PortletAction {
 		}
 
 		for (JournalArticle article : articles) {
-			String author = PortalUtil.getUserName(article);
-			String link = getEntryURL(
-				resourceRequest, feed, article, layout, themeDisplay);
-
 			SyndEntry syndEntry = new SyndEntryImpl();
+
+			String author = PortalUtil.getUserName(article);
 
 			syndEntry.setAuthor(author);
 
 			SyndContent syndContent = new SyndContentImpl();
+
+			syndContent.setType(RSSUtil.ENTRY_TYPE_DEFAULT);
 
 			String value = article.getDescription(languageId);
 
@@ -155,19 +143,39 @@ public class RSSAction extends PortletAction {
 				}
 			}
 
-			syndContent.setType(RSSUtil.ENTRY_TYPE_DEFAULT);
 			syndContent.setValue(value);
 
 			syndEntry.setDescription(syndContent);
 
+			String link = getEntryURL(
+				resourceRequest, feed, article, layout, themeDisplay);
+
 			syndEntry.setLink(link);
+
 			syndEntry.setPublishedDate(article.getDisplayDate());
 			syndEntry.setTitle(article.getTitle(languageId));
 			syndEntry.setUpdatedDate(article.getModifiedDate());
-			syndEntry.setUri(syndEntry.getLink());
+			syndEntry.setUri(link);
 
 			syndEntries.add(syndEntry);
 		}
+
+		syndFeed.setFeedType(feed.getFeedType() + "_" + feed.getFeedVersion());
+
+		ResourceURL feedURL = resourceResponse.createResourceURL();
+
+		feedURL.setCacheability(ResourceURL.FULL);
+		feedURL.setParameter("struts_action", "/journal/rss");
+		feedURL.setParameter("groupId", String.valueOf(feed.getGroupId()));
+		feedURL.setParameter("feedId", String.valueOf(feed.getFeedId()));
+
+		String link = feedURL.toString();
+
+		syndFeed.setLink(link);
+
+		syndFeed.setTitle(feed.getName());
+		syndFeed.setPublishedDate(new Date());
+		syndFeed.setUri(feedURL.toString());
 
 		try {
 			return RSSUtil.export(syndFeed);

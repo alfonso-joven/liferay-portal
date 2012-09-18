@@ -117,23 +117,9 @@ public class RSSAction extends PortletAction {
 
 		SyndFeed syndFeed = new SyndFeedImpl();
 
-		String feedTitle = ParamUtil.getString(portletRequest, "feedTitle");
+		String description = ParamUtil.getString(portletRequest, "feedTitle");
 
-		syndFeed.setDescription(feedTitle);
-
-		syndFeed.setFeedType(RSSUtil.FEED_TYPE_DEFAULT);
-
-		String feedLink =
-			PortalUtil.getLayoutFullURL(themeDisplay) +
-				Portal.FRIENDLY_URL_SEPARATOR + "activities/rss";
-
-		syndFeed.setLink(feedLink);
-
-		syndFeed.setTitle(feedTitle);
-
-		syndFeed.setPublishedDate(new Date());
-
-		syndFeed.setUri(feedLink);
+		syndFeed.setDescription(description);
 
 		List<SyndEntry> syndEntries = new ArrayList<SyndEntry>();
 
@@ -169,6 +155,18 @@ public class RSSAction extends PortletAction {
 
 			syndEntries.add(syndEntry);
 		}
+
+		syndFeed.setFeedType(RSSUtil.FEED_TYPE_DEFAULT);
+
+		String link =
+			PortalUtil.getLayoutFullURL(themeDisplay) +
+				Portal.FRIENDLY_URL_SEPARATOR + "activities/rss";
+
+		syndFeed.setLink(link);
+
+		syndFeed.setPublishedDate(new Date());
+		syndFeed.setTitle(description);
+		syndFeed.setUri(link);
 
 		String rss = StringPool.BLANK;
 
