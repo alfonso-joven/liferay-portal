@@ -168,12 +168,6 @@ public class CalEventLocalServiceImpl extends CalEventLocalServiceBaseImpl {
 		startDate.set(Calendar.SECOND, 0);
 		startDate.set(Calendar.MILLISECOND, 0);
 
-		Date endDate = null;
-
-		if (hasRecurrenceEndDate(recurrence)) {
-			endDate = recurrence.getUntil().getTime();
-		}
-
 		if (allDay) {
 			startDate.set(Calendar.HOUR_OF_DAY, 0);
 			startDate.set(Calendar.MINUTE, 0);
@@ -201,7 +195,7 @@ public class CalEventLocalServiceImpl extends CalEventLocalServiceBaseImpl {
 		event.setDescription(description);
 		event.setLocation(location);
 		event.setStartDate(startDate.getTime());
-		event.setEndDate(endDate);
+		event.setEndDate(getEndDate(recurrence));
 		event.setDurationHour(durationHour);
 		event.setDurationMinute(durationMinute);
 		event.setAllDay(allDay);
@@ -779,12 +773,6 @@ public class CalEventLocalServiceImpl extends CalEventLocalServiceBaseImpl {
 		startDate.set(Calendar.SECOND, 0);
 		startDate.set(Calendar.MILLISECOND, 0);
 
-		Date endDate = null;
-
-		if (hasRecurrenceEndDate(recurrence)) {
-			endDate = recurrence.getUntil().getTime();
-		}
-
 		if (allDay) {
 			startDate.set(Calendar.HOUR_OF_DAY, 0);
 			startDate.set(Calendar.MINUTE, 0);
@@ -804,7 +792,7 @@ public class CalEventLocalServiceImpl extends CalEventLocalServiceBaseImpl {
 		event.setDescription(description);
 		event.setLocation(location);
 		event.setStartDate(startDate.getTime());
-		event.setEndDate(endDate);
+		event.setEndDate(getEndDate(recurrence));
 		event.setDurationHour(durationHour);
 		event.setDurationMinute(durationMinute);
 		event.setAllDay(allDay);
@@ -899,6 +887,20 @@ public class CalEventLocalServiceImpl extends CalEventLocalServiceBaseImpl {
 		}
 	}
 
+	protected Date getEndDate(Recurrence recurrence) {
+		if (recurrence == null) {
+			return null;
+		}
+
+		Calendar untilCalendar = recurrence.getUntil();
+
+		if (untilCalendar == null) {
+			return null;
+		}
+
+		return untilCalendar.getTime();
+	}
+
 	protected Calendar getRecurrenceCal(
 		Calendar cal, Calendar tzICal, CalEvent event) {
 
@@ -940,14 +942,6 @@ public class CalEventLocalServiceImpl extends CalEventLocalServiceBaseImpl {
 		}
 
 		return recurrenceCal;
-	}
-
-	protected boolean hasRecurrenceEndDate(Recurrence recurrence) {
-		if ((recurrence == null) || (recurrence.getUntil() == null)) {
-			return false;
-		}
-
-		return true;
 	}
 
 	protected void importICal4j(long userId, long groupId, VEvent event)
