@@ -26,7 +26,12 @@ public class AssignMembersCommunityOrganizationActionsTest extends BaseTestCase 
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
+		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
+				"Welcome"));
+		selenium.mouseOver("//h2[@class='user-greeting']/span");
+		selenium.clickAt("//h2[@class='user-greeting']/span",
+			RuntimeVariables.replace("Welcome"));
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
@@ -61,7 +66,7 @@ public class AssignMembersCommunityOrganizationActionsTest extends BaseTestCase 
 		selenium.clickAt("//li[@id='_134_tabs2availableTabsId']/a",
 			RuntimeVariables.replace("Available"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_134_keywords",
+		selenium.type("//input[@name='_134_keywords']",
 			RuntimeVariables.replace("Organization Groups Orgs"));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));

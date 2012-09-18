@@ -30,6 +30,10 @@ public class AssignMembersUserGroupTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
+				selenium.clickAt("//div[@id='dockbar']",
+					RuntimeVariables.replace("Dockbar"));
+				selenium.waitForElementPresent(
+					"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
 				assertEquals(RuntimeVariables.replace("Go to"),
 					selenium.getText("//li[@id='_145_mySites']/a/span"));
 				selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -64,7 +68,8 @@ public class AssignMembersUserGroupTest extends BaseTestCase {
 					RuntimeVariables.replace("Available"));
 				selenium.waitForPageToLoad("30000");
 
-				boolean basicVisible = selenium.isVisible("link=\u00ab Basic");
+				boolean basicVisible = selenium.isVisible(
+						"//a[.='\u00ab Basic']");
 
 				if (!basicVisible) {
 					label = 2;
@@ -72,7 +77,7 @@ public class AssignMembersUserGroupTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("link=\u00ab Basic",
+				selenium.clickAt("//a[.='\u00ab Basic']",
 					RuntimeVariables.replace(""));
 				selenium.waitForVisible("//input[@name='_127_keywords']");
 
@@ -82,21 +87,10 @@ public class AssignMembersUserGroupTest extends BaseTestCase {
 				selenium.clickAt("//input[@value='Search']",
 					RuntimeVariables.replace("Search"));
 				selenium.waitForPageToLoad("30000");
-
-				boolean userChecked = selenium.isChecked("_127_rowIds");
-
-				if (userChecked) {
-					label = 3;
-
-					continue;
-				}
-
 				assertFalse(selenium.isChecked("//input[@name='_127_rowIds']"));
 				selenium.clickAt("//input[@name='_127_rowIds']",
 					RuntimeVariables.replace("Checkbox"));
 				assertTrue(selenium.isChecked("//input[@name='_127_rowIds']"));
-
-			case 3:
 				selenium.clickAt("//input[@value='Update Associations']",
 					RuntimeVariables.replace("Update Associations"));
 				selenium.waitForPageToLoad("30000");

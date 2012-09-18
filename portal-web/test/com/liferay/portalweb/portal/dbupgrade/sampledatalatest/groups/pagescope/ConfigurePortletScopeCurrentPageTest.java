@@ -38,8 +38,9 @@ public class ConfigurePortletScopeCurrentPageTest extends BaseTestCase {
 			selenium.getText(
 				"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a"));
 		selenium.click("//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a");
-		selenium.waitForVisible("link=Scope");
-		selenium.clickAt("link=Scope", RuntimeVariables.replace("Scope"));
+		selenium.waitForVisible("//li[@id='_86_tabs1scopeTabsId']/a");
+		selenium.clickAt("//li[@id='_86_tabs1scopeTabsId']/a",
+			RuntimeVariables.replace("Scope"));
 		selenium.waitForPageToLoad("30000");
 		selenium.select("//select[@id='_86_scopeType']",
 			RuntimeVariables.replace("label=Select Layout"));
