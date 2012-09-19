@@ -429,7 +429,9 @@ public class RuntimePortletImpl implements RuntimePortlet {
 		// liferay:include tag library
 
 		Object velocityTaglib = new VelocityTaglib(
-			pageContext.getServletContext(), request, response, pageContext);
+			pageContext.getServletContext(), request,
+			new PipingServletResponse(response, unsyncStringWriter),
+			pageContext);
 
 		velocityContext.put("taglibLiferay", velocityTaglib);
 		velocityContext.put("theme", velocityTaglib);
@@ -476,7 +478,9 @@ public class RuntimePortletImpl implements RuntimePortlet {
 		UnsyncStringWriter unsyncStringWriter = new UnsyncStringWriter();
 
 		Object velocityTaglib = new VelocityTaglib(
-			pageContext.getServletContext(), request, response, pageContext);
+			pageContext.getServletContext(), request,
+			new PipingServletResponse(response, unsyncStringWriter),
+			pageContext);
 
 		velocityContext.put("taglibLiferay", velocityTaglib);
 		velocityContext.put("theme", velocityTaglib);
