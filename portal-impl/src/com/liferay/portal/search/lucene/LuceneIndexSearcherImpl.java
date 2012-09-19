@@ -64,11 +64,9 @@ import com.liferay.portal.util.PropsValues;
 import java.io.IOException;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
 
 import org.apache.lucene.document.NumericField;
 import org.apache.lucene.index.IndexReader;
@@ -77,8 +75,6 @@ import org.apache.lucene.search.Explanation;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.SortField;
 import org.apache.lucene.search.TopFieldDocs;
-import org.apache.lucene.search.highlight.Formatter;
-import org.apache.lucene.search.highlight.TokenGroup;
 
 /**
  * @author Bruno Farache
@@ -456,8 +452,8 @@ public class LuceneIndexSearcherImpl implements IndexSearcher {
 		return newDocument;
 	}
 
-	protected Set<String> getQueryTerms(Query query) {
-		Set<String> queryTerms = new HashSet<String>();
+	protected String[] getQueryTerms(Query query) {
+		String[] queryTerms = new String[0];
 
 		try {
 			queryTerms = LuceneHelperUtil.getQueryTerms(
@@ -473,7 +469,7 @@ public class LuceneIndexSearcherImpl implements IndexSearcher {
 
 	protected String getSnippet(
 			org.apache.lucene.document.Document doc, Query query, String field,
-			Locale locale, Set<String> matchingTerms)
+			Locale locale)
 		throws IOException {
 
 		String localizedName = DocumentImpl.getLocalizedName(locale, field);
@@ -492,16 +488,11 @@ public class LuceneIndexSearcherImpl implements IndexSearcher {
 
 		String s = StringUtil.merge(values);
 
-		TermCollectingFormatter termCollectingFormatter =
-			new TermCollectingFormatter();
-
 		try {
 			snippet = LuceneHelperUtil.getSnippet(
 				(org.apache.lucene.search.Query)QueryTranslatorUtil.translate(
 					query),
-				field, s, termCollectingFormatter);
-
-			matchingTerms.addAll(termCollectingFormatter.getCollectedTerms());
+				field, s);
 		}
 		catch (ParseException pe) {
 			_log.error("Query " + query, pe);
@@ -523,7 +514,7 @@ public class LuceneIndexSearcherImpl implements IndexSearcher {
 			end = length;
 		}
 
-		Set<String> queryTerms = new HashSet<String>();
+		String[] queryTerms = getQueryTerms(query);
 
 		IndexReader indexReader = indexSearcher.getIndexReader();
 
@@ -575,18 +566,9 @@ public class LuceneIndexSearcherImpl implements IndexSearcher {
 				String subsetSnippet = StringPool.BLANK;
 
 				if (queryConfig.isHighlightEnabled()) {
-					for (String fieldName : Field.KEYWORDS) {
-						String lastSubsetSnippet = getSnippet(
-							document, query, fieldName, queryConfig.getLocale(),
-							queryTerms);
-
-						if (fieldName.equals(Field.CONTENT)) {
-							subsetSnippet = lastSubsetSnippet;
-						}
-					}
-				}
-				else {
-					queryTerms = getQueryTerms(query);
+					subsetSnippet = getSnippet(
+						document, query, Field.CONTENT,
+						queryConfig.getLocale());
 				}
 
 				subsetDocument.addText(Field.SNIPPET, subsetSnippet);
@@ -618,8 +600,7 @@ public class LuceneIndexSearcherImpl implements IndexSearcher {
 			hits.setStart(startTime);
 			hits.setSearchTime(searchTime);
 			hits.setQuery(query);
-			hits.setQueryTerms(
-				queryTerms.toArray(new String[queryTerms.size()]));
+			hits.setQueryTerms(queryTerms);
 			hits.setDocs(subsetDocs.toArray(new Document[subsetDocs.size()]));
 			hits.setLength(length);
 			hits.setSnippets(
@@ -683,27 +664,6 @@ public class LuceneIndexSearcherImpl implements IndexSearcher {
 
 		private BrowseHit[] _browseHits;
 		private TopFieldDocs _topFieldDocs;
-
-	}
-
-	private class TermCollectingFormatter implements Formatter {
-
-		public Set<String> getCollectedTerms() {
-			return _collectedTerms;
-		}
-
-		@Override
-		public String highlightTerm(
-			String originalText, TokenGroup tokenGroup) {
-
-			if (tokenGroup.getTotalScore() > 0) {
-				_collectedTerms.add(originalText);
-			}
-
-			return originalText;
-		}
-
-		private Set<String> _collectedTerms = new HashSet<String>();
 
 	}
 

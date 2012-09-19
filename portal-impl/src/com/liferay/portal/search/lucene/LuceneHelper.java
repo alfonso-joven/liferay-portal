@@ -22,15 +22,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import java.util.Set;
-
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.search.BooleanQuery;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
-import org.apache.lucene.search.highlight.Formatter;
 import org.apache.lucene.util.Version;
 
 /**
@@ -86,14 +83,15 @@ public interface LuceneHelper {
 			long companyId, Address bootupAddress)
 		throws SystemException;
 
-	public Set<String> getQueryTerms(Query query);
+	public String[] getQueryTerms(Query query);
 
 	public IndexSearcher getSearcher(long companyId, boolean readOnly)
 		throws IOException;
 
 	public String getSnippet(
 			Query query, String field, String s, int maxNumFragments,
-			int fragmentLength, String fragmentSuffix, Formatter formatter)
+			int fragmentLength, String fragmentSuffix, String preTag,
+			String postTag)
 		throws IOException;
 
 	public Version getVersion();
