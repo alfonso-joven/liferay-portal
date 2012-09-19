@@ -234,7 +234,7 @@ public class DLIndexer extends BaseIndexer {
 
 		List<DLFileEntryMetadata> dlFileEntryMetadatas =
 			DLFileEntryMetadataLocalServiceUtil.
-				getFileEntryMetadataByFileVersionId(
+				getFileVersionFileEntryMetadatas(
 					dlFileVersion.getFileVersionId());
 
 		for (DLFileEntryMetadata dlFileEntryMetadata : dlFileEntryMetadatas) {
