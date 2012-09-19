@@ -129,11 +129,6 @@ public class Field implements Serializable {
 		this(name, new String[] {value});
 	}
 
-	public Field(String name, String[] values) {
-		_name = name;
-		_values = values;
-	}
-
 	/**
 	 * @deprecated
 	 */
@@ -141,6 +136,11 @@ public class Field implements Serializable {
 		this(name, value);
 
 		setTokenized(tokenized);
+	}
+
+	public Field(String name, String[] values) {
+		_name = name;
+		_values = values;
 	}
 
 	/**
