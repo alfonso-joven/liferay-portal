@@ -339,10 +339,10 @@ public class LuceneHelperUtil {
 	public static String getSnippet(Query query, String field, String s)
 		throws IOException {
 
-		Formatter formatter = new SimpleHTMLFormatter(
+		SimpleHTMLFormatter simpleHTMLFormatter = new SimpleHTMLFormatter(
 			StringPool.BLANK, StringPool.BLANK);
 
-		return getSnippet(query, field, s, formatter);
+		return getSnippet(query, field, s, simpleHTMLFormatter);
 	}
 
 	public static String getSnippet(
