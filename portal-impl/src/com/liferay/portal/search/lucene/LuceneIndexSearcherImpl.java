@@ -578,15 +578,15 @@ public class LuceneIndexSearcherImpl implements IndexSearcher {
 				String subsetSnippet = StringPool.BLANK;
 
 				if (queryConfig.isHighlightEnabled()) {
-					Locale locale = queryConfig.getLocale();
+					for (String fieldName : Field.KEYWORDS) {
+						String lastSubsetSnippet = getSnippet(
+							document, query, fieldName, queryConfig.getLocale(),
+							queryTerms);
 
-					subsetSnippet = getSnippet(
-						document, query, Field.CONTENT, locale, queryTerms);
-
-					getSnippet(
-						document, query, Field.DESCRIPTION, locale, queryTerms);
-					getSnippet(
-						document, query, Field.TITLE, locale, queryTerms);
+						if (fieldName.equals(Field.CONTENT)) {
+							subsetSnippet = lastSubsetSnippet;
+						}
+					}
 				}
 				else {
 					queryTerms = getQueryTerms(query);
