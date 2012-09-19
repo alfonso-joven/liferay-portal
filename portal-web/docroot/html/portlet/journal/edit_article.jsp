@@ -393,8 +393,6 @@ request.setAttribute("edit_article.jsp-toLanguageId", toLanguageId);
 </aui:script>
 
 <%!
-private static String[] _CATEGORY_NAMES = {""};
-
 private String _getArticleImage(ThemeDisplay themeDisplay, JournalArticle article) {
 	String imageURL = null;
 
@@ -413,4 +411,6 @@ private String _getArticleImage(ThemeDisplay themeDisplay, JournalArticle articl
 private String _getSectionJsp(String name) {
 	return TextFormatter.format(name, TextFormatter.N);
 }
+
+private static final String[] _CATEGORY_NAMES = {""};
 %>
