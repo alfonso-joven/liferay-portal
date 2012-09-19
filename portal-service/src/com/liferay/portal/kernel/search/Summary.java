@@ -14,10 +14,6 @@
 
 package com.liferay.portal.kernel.search;
 
-import com.liferay.portal.kernel.util.StringUtil;
-
-import java.util.Locale;
-
 import javax.portlet.PortletURL;
 
 /**
@@ -25,14 +21,6 @@ import javax.portlet.PortletURL;
  * @author Ryan Park
  */
 public class Summary {
-	public Summary(
-		Locale locale, String title, String content, PortletURL portletURL) {
-
-		_title = title;
-		_content = content;
-		_locale = locale;
-		_portletURL = portletURL;
-	}
 
 	public Summary(String title, String content, PortletURL portletURL) {
 		_title = title;
@@ -42,14 +30,6 @@ public class Summary {
 
 	public String getContent() {
 		return _content;
-	}
-
-	public Locale getLocale() {
-		return _locale;
-	}
-
-	public int getMaxContentLength() {
-		return _maxContentLength;
 	}
 
 	public PortletURL getPortletURL() {
@@ -62,22 +42,6 @@ public class Summary {
 
 	public void setContent(String content) {
 		_content = content;
-
-		if ((_content != null) && (_maxContentLength > 0) &&
-			(_content.length() > _maxContentLength)) {
-
-			_content = StringUtil.shorten(_content, _maxContentLength);
-		}
-	}
-
-	public void setLocale(Locale locale) {
-		_locale = locale;
-	}
-
-	public void setMaxContentLength(int maxContentLength) {
-		_maxContentLength = maxContentLength;
-
-		setContent(_content);
 	}
 
 	public void setPortletURL(PortletURL portletURL) {
@@ -89,8 +53,6 @@ public class Summary {
 	}
 
 	private String _content;
-	private Locale _locale;
-	private int _maxContentLength;
 	private PortletURL _portletURL;
 	private String _title;
 
