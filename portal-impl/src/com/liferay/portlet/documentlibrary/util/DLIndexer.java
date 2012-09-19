@@ -43,6 +43,7 @@ import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ListUtil;
 import com.liferay.portal.kernel.util.PropsKeys;
 import com.liferay.portal.kernel.util.StringPool;
+import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.kernel.workflow.WorkflowConstants;
 import com.liferay.portal.model.Group;
@@ -471,17 +472,20 @@ public class DLIndexer extends BaseIndexer {
 		catch (WindowStateException wse) {
 		}
 
+		String title = document.get(Field.TITLE);
+
+		String content = snippet;
+
+		if (Validator.isNull(snippet)) {
+			content = StringUtil.shorten(document.get(Field.CONTENT), 200);
+		}
+
 		String fileEntryId = document.get(Field.ENTRY_CLASS_PK);
 
 		portletURL.setParameter("struts_action", "/document_library/get_file");
 		portletURL.setParameter("fileEntryId", fileEntryId);
 
-		Summary summary = createSummary(document, Field.TITLE, Field.CONTENT);
-
-		summary.setMaxContentLength(200);
-		summary.setPortletURL(portletURL);
-
-		return summary;
+		return new Summary(title, content, portletURL);
 	}
 
 	@Override

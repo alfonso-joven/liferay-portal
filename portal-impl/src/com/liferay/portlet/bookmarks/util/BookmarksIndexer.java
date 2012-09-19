@@ -151,16 +151,16 @@ public class BookmarksIndexer extends BaseIndexer {
 		Document document, Locale locale, String snippet,
 		PortletURL portletURL) {
 
+		String title = document.get(Field.TITLE);
+
+		String url = document.get(Field.URL);
+
 		String entryId = document.get(Field.ENTRY_CLASS_PK);
 
 		portletURL.setParameter("struts_action", "/bookmarks/view_entry");
 		portletURL.setParameter("entryId", entryId);
 
-		Summary summary = createSummary(document, Field.TITLE, Field.URL);
-
-		summary.setPortletURL(portletURL);
-
-		return summary;
+		return new Summary(title, url, portletURL);
 	}
 
 	@Override
