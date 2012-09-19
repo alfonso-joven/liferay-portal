@@ -195,7 +195,7 @@
 				) TEMP_TABLE
 				INNER JOIN
 					JournalStructure ON
-						TEMP_TABLE.id_ = JournalStructure.id_
+						(TEMP_TABLE.id_ = JournalStructure.id_)
 			ORDER BY
 				structureId ASC
 		]]>
@@ -239,7 +239,7 @@
 				) TEMP_TABLE
 				INNER JOIN
 					JournalTemplate ON
-						TEMP_TABLE.id_ = JournalTemplate.id_
+						(TEMP_TABLE.id_ = JournalTemplate.id_)
 			ORDER BY
 				templateId ASC
 		]]>
