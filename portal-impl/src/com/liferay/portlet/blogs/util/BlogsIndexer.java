@@ -80,11 +80,6 @@ public class BlogsIndexer extends BaseIndexer {
 	}
 
 	@Override
-	public boolean isFilterSearch() {
-		return _FILTER_SEARCH;
-	}
-
-	@Override
 	public boolean isPermissionAware() {
 		return _PERMISSION_AWARE;
 	}
@@ -268,8 +263,6 @@ public class BlogsIndexer extends BaseIndexer {
 		SearchEngineUtil.updateDocuments(
 			getSearchEngineId(), companyId, documents);
 	}
-
-	private static final boolean _FILTER_SEARCH = true;
 
 	private static final boolean _PERMISSION_AWARE = true;
 
