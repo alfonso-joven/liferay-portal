@@ -364,7 +364,7 @@ if (!selectableTree) {
 					}
 				);
 			},
-			
+
 			updateSelectedNodes: function(node, state) {
 				var plid = TreeUtil.extractPlid(node);
 
@@ -456,7 +456,7 @@ if (!selectableTree) {
 			after: {
 				checkedChange: function(event) {
 					TreeUtil.updateSessionTreeCheckedState('<%= HtmlUtil.escape(treeId) %>SelectedNode', <%= LayoutConstants.DEFAULT_PLID %>, event.newVal);
-					
+
 					TreeUtil.updateSelectedNodes(event.target, event.newVal);
 				},
 				expandedChange: function(event) {
