@@ -957,6 +957,7 @@ public class DLWebDAVStorageImpl extends BaseWebDAVStorageImpl {
 		WebDAVRequest webDavRequest, FileEntry fileEntry, boolean appendPath) {
 
 		String parentPath = getRootPath() + webDavRequest.getPath();
+
 		String name = StringPool.BLANK;
 
 		if (appendPath) {
@@ -971,6 +972,7 @@ public class DLWebDAVStorageImpl extends BaseWebDAVStorageImpl {
 		WebDAVRequest webDavRequest, Folder folder, boolean appendPath) {
 
 		String parentPath = getRootPath() + webDavRequest.getPath();
+
 		String name = StringPool.BLANK;
 
 		if (appendPath) {
