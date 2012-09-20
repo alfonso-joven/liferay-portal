@@ -576,11 +576,10 @@ public class DLPortletDataHandlerImpl extends BasePortletDataHandler {
 		}
 
 		Repository repository =
-			(Repository)portletDataContext.getZipEntryAsObject(path);
+			(Repository)portletDataContext.getZipEntryAsObject(
+				repositoryElement, path);
 
 		long userId = portletDataContext.getUserId(repository.getUserUuid());
-		long classNameId = PortalUtil.getClassNameId(
-			repositoryElement.attributeValue("class-name"));
 
 		ServiceContext serviceContext = portletDataContext.createServiceContext(
 			repositoryElement, repository, _NAMESPACE);
@@ -598,7 +597,7 @@ public class DLPortletDataHandlerImpl extends BasePortletDataHandler {
 					importedRepositoryId =
 						RepositoryLocalServiceUtil.addRepository(
 							userId, portletDataContext.getScopeGroupId(),
-							classNameId,
+							repository.getClassNameId(),
 							DLFolderConstants.DEFAULT_PARENT_FOLDER_ID,
 							repository.getName(), repository.getDescription(),
 							repository.getPortletId(),
@@ -615,7 +614,8 @@ public class DLPortletDataHandlerImpl extends BasePortletDataHandler {
 			}
 			else {
 				importedRepositoryId = RepositoryLocalServiceUtil.addRepository(
-					userId, portletDataContext.getScopeGroupId(), classNameId,
+					userId, portletDataContext.getScopeGroupId(),
+					repository.getClassNameId(),
 					DLFolderConstants.DEFAULT_PARENT_FOLDER_ID,
 					repository.getName(), repository.getDescription(),
 					repository.getPortletId(),
@@ -1103,8 +1103,6 @@ public class DLPortletDataHandlerImpl extends BasePortletDataHandler {
 
 		Element repositoryElement = repositoriesElement.addElement(
 			"repository");
-
-		repositoryElement.addAttribute("class-name", repository.getClassName());
 
 		portletDataContext.addClassedModel(
 			repositoryElement, path, repository, _NAMESPACE);
