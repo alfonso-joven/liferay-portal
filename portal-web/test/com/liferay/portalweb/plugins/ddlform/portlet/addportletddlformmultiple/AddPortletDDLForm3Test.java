@@ -48,12 +48,10 @@ public class AddPortletDDLForm3Test extends BaseTestCase {
 		selenium.waitForVisible("//div[@title='Dynamic Data List Form']/p/a");
 		selenium.clickAt("//div[@title='Dynamic Data List Form']/p/a",
 			RuntimeVariables.replace("Add"));
-		selenium.waitForVisible("//section");
-		assertTrue(selenium.isVisible("//section"));
 		selenium.waitForVisible("//div[1]/div/section");
 		assertTrue(selenium.isVisible("//div[1]/div/section"));
 		assertEquals(RuntimeVariables.replace("Dynamic Data List Form"),
-			selenium.getText("xPath=(//span[@class='portlet-title-text'])"));
+			selenium.getText("xPath=(//span[@class='portlet-title-text'])[1]"));
 		selenium.waitForVisible("//div[2]/div/section");
 		assertTrue(selenium.isVisible("//div[2]/div/section"));
 		assertEquals(RuntimeVariables.replace("Dynamic Data List Form"),
