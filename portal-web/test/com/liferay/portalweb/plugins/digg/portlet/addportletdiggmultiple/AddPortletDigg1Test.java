@@ -20,8 +20,8 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 /**
  * @author Brian Wing Shun Chan
  */
-public class AddPortletDigg2Test extends BaseTestCase {
-	public void testAddPortletDigg2() throws Exception {
+public class AddPortletDigg1Test extends BaseTestCase {
+	public void testAddPortletDigg1() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
@@ -49,13 +49,7 @@ public class AddPortletDigg2Test extends BaseTestCase {
 		selenium.waitForVisible("//div[@title='Digg']/p/a");
 		selenium.clickAt("//div[@title='Digg']/p/a",
 			RuntimeVariables.replace("Add"));
-		selenium.waitForVisible("//div[1]/div/section");
-		assertTrue(selenium.isVisible("//div[1]/div/section"));
-		assertEquals(RuntimeVariables.replace("Digg"),
-			selenium.getText("xpath=(//span[@class='portlet-title-text'])[1]"));
-		selenium.waitForVisible("//div[2]/div/section");
-		assertTrue(selenium.isVisible("//div[2]/div/section"));
-		assertEquals(RuntimeVariables.replace("Digg"),
-			selenium.getText("xpath=(//span[@class='portlet-title-text'])[2]"));
+		selenium.waitForVisible("//section");
+		assertTrue(selenium.isVisible("//section"));
 	}
 }

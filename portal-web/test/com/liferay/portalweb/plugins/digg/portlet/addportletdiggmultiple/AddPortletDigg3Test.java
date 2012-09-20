@@ -49,15 +49,16 @@ public class AddPortletDigg3Test extends BaseTestCase {
 		selenium.waitForVisible("//div[@title='Digg']/p/a");
 		selenium.clickAt("//div[@title='Digg']/p/a",
 			RuntimeVariables.replace("Add"));
-		selenium.waitForVisible("//section");
-		assertTrue(selenium.isVisible("//section"));
+		selenium.waitForVisible("//div[1]/div/section");
 		assertTrue(selenium.isVisible("//div[1]/div/section"));
 		assertEquals(RuntimeVariables.replace("Digg"),
-			selenium.getText("xpath=(//span[@class='portlet-title-text'])"));
+			selenium.getText("xpath=(//span[@class='portlet-title-text'])[1]"));
+		selenium.waitForVisible("//div[2]/div/section");
 		assertTrue(selenium.isVisible("//div[2]/div/section"));
 		assertEquals(RuntimeVariables.replace("Digg"),
 			selenium.getText("xpath=(//span[@class='portlet-title-text'])[2]"));
 		assertTrue(selenium.isVisible("//div[3]/div/section"));
+		selenium.waitForVisible("//div[3]/div/section");
 		assertEquals(RuntimeVariables.replace("Digg"),
 			selenium.getText("xpath=(//span[@class='portlet-title-text'])[3]"));
 	}
