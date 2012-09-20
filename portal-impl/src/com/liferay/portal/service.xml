@@ -2153,8 +2153,8 @@
 		<reference package-path="com.liferay.portlet.announcements" entity="AnnouncementsDelivery" />
 		<reference package-path="com.liferay.portlet.asset" entity="AssetEntry" />
 		<reference package-path="com.liferay.portlet.blogs" entity="BlogsStatsUser" />
-		<reference package-path="com.liferay.portlet.expando" entity="ExpandoValue" />
 		<reference package-path="com.liferay.portlet.documentlibrary" entity="DLFileRank" />
+		<reference package-path="com.liferay.portlet.expando" entity="ExpandoValue" />
 		<reference package-path="com.liferay.portlet.messageboards" entity="MBBan" />
 		<reference package-path="com.liferay.portlet.messageboards" entity="MBMessage" />
 		<reference package-path="com.liferay.portlet.messageboards" entity="MBStatsUser" />
@@ -2594,10 +2594,10 @@
 		<exception>DuplicateUserGroup</exception>
 		<exception>DuplicateUserId</exception>
 		<exception>DuplicateUserScreenName</exception>
-		<exception>GroupFriendlyURL</exception>
-		<exception>GroupName</exception>
 		<exception>EmailAddress</exception>
 		<exception>ExpiredLock</exception>
+		<exception>GroupFriendlyURL</exception>
+		<exception>GroupName</exception>
 		<exception>ImageType</exception>
 		<exception>InvalidLock</exception>
 		<exception>InvalidRepository</exception>
@@ -2605,7 +2605,6 @@
 		<exception>LARFileSize</exception>
 		<exception>LARType</exception>
 		<exception>LayoutBranchName</exception>
-		<exception>LayoutSetBranchName</exception>
 		<exception>LayoutFriendlyURL</exception>
 		<exception>LayoutHidden</exception>
 		<exception>LayoutImport</exception>
@@ -2614,21 +2613,23 @@
 		<exception>LayoutPermission</exception>
 		<exception>LayoutPrototype</exception>
 		<exception>LayoutRevisionMajor</exception>
+		<exception>LayoutSetBranchName</exception>
 		<exception>LayoutSetVirtualHost</exception>
 		<exception>LayoutType</exception>
 		<exception>MembershipRequestComments</exception>
+		<exception>OldServiceComponent</exception>
 		<exception>OrganizationId</exception>
 		<exception>OrganizationName</exception>
 		<exception>OrganizationParent</exception>
 		<exception>OrganizationType</exception>
 		<exception>PasswordExpired</exception>
 		<exception>PasswordPolicyName</exception>
-		<exception>PwdEncryptor</exception>
 		<exception>PhoneNumber</exception>
 		<exception>PortletActive</exception>
 		<exception>PortletDefaultPreferences</exception>
 		<exception>PortletId</exception>
 		<exception>PortletItemName</exception>
+		<exception>PwdEncryptor</exception>
 		<exception>RegionCode</exception>
 		<exception>RegionName</exception>
 		<exception>RemoteExport</exception>
@@ -2650,7 +2651,6 @@
 		<exception>RoleAssignment</exception>
 		<exception>RoleName</exception>
 		<exception>RolePermissions</exception>
-		<exception>OldServiceComponent</exception>
 		<exception>SendPassword</exception>
 		<exception>TeamName</exception>
 		<exception>UserActive</exception>
