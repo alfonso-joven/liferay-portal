@@ -29,6 +29,7 @@ public class AddUserPhoneNumberTests extends BaseTestSuite {
 		TestSuite testSuite = new TestSuite();
 		testSuite.addTestSuite(AddUserTest.class);
 		testSuite.addTestSuite(AddUserPhoneNumberTest.class);
+		testSuite.addTestSuite(ViewUserPhoneNumberTest.class);
 		testSuite.addTestSuite(TearDownUserTest.class);
 
 		return testSuite;

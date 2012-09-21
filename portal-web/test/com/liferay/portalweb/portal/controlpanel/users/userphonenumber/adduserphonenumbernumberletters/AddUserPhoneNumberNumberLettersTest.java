@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.portalweb.portal.controlpanel.users.userphonenumber.adduserphonenumbernumberinvalid;
+package com.liferay.portalweb.portal.controlpanel.users.userphonenumber.adduserphonenumbernumberletters;
 
 import com.liferay.portalweb.portal.BaseTestCase;
 import com.liferay.portalweb.portal.util.RuntimeVariables;
@@ -20,8 +20,8 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 /**
  * @author Brian Wing Shun Chan
  */
-public class AddUserPhoneNumberNumberInvalidTest extends BaseTestCase {
-	public void testAddUserPhoneNumberNumberInvalid() throws Exception {
+public class AddUserPhoneNumberNumberLettersTest extends BaseTestCase {
+	public void testAddUserPhoneNumberNumberLetters() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");

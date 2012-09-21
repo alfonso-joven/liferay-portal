@@ -71,8 +71,16 @@ public class DeactivateUserActionsTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
-		assertFalse(selenium.isTextPresent("userfn"));
-		assertFalse(selenium.isTextPresent("userln"));
-		assertFalse(selenium.isTextPresent("usersn"));
+		assertEquals(RuntimeVariables.replace(
+				"Inactive Users (Search All Users)"),
+			selenium.getText("//div[@id='usersAdminUsersPanel']/div/div/span"));
+		assertTrue(selenium.isVisible("//input[@value='Delete']"));
+		assertTrue(selenium.isVisible("//input[@value='Restore']"));
+		assertEquals(RuntimeVariables.replace("userfn"),
+			selenium.getText("//td[2]/a"));
+		assertEquals(RuntimeVariables.replace("userln"),
+			selenium.getText("//td[3]/a"));
+		assertEquals(RuntimeVariables.replace("usersn"),
+			selenium.getText("//td[4]/a"));
 	}
 }
