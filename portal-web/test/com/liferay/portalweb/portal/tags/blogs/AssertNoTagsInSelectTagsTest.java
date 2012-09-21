@@ -30,7 +30,6 @@ public class AssertNoTagsInSelectTagsTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				selenium.waitForVisible("link=Blogs Tags Test Page");
 				selenium.clickAt("link=Blogs Tags Test Page",
 					RuntimeVariables.replace("Blogs Tags Test Page"));
 				selenium.waitForPageToLoad("30000");
@@ -41,9 +40,13 @@ public class AssertNoTagsInSelectTagsTest extends BaseTestCase {
 					RuntimeVariables.replace("Tags Blog Entry1 Title"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("Edit"),
-					selenium.getText("//span/a/span"));
-				selenium.click(RuntimeVariables.replace("//span/a/span"));
+					selenium.getText(
+						"//a[@class='taglib-icon']/span[contains(.,'Edit')]"));
+				selenium.click(RuntimeVariables.replace(
+						"//a[@class='taglib-icon']/span[contains(.,'Edit')]"));
 				selenium.waitForPageToLoad("30000");
+				selenium.waitForElementPresent(
+					"//textarea[@id='_33_editor' and @style='display: none;']");
 				selenium.waitForVisible(
 					"//td[@id='cke_contents__33_editor']/iframe");
 
@@ -78,7 +81,7 @@ public class AssertNoTagsInSelectTagsTest extends BaseTestCase {
 						"xpath=(//div[@class='lfr-tags-selector-list']/fieldset//label)[3]"));
 				assertTrue(selenium.isElementNotPresent(
 						"xpath=(//div[@class='lfr-tags-selector-list']/fieldset//label)[4]"));
-				selenium.clickAt("//button[@id='closethick']",
+				selenium.clickAt("//button[@title='Close dialog']",
 					RuntimeVariables.replace("Close"));
 				selenium.clickAt("//input[@value='Cancel']",
 					RuntimeVariables.replace("Cancel"));

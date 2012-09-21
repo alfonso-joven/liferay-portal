@@ -59,7 +59,7 @@ public class SetupTest extends BaseTestCase {
 		selenium.waitForElementPresent(
 			"//script[contains(@src,'/aui/aui-live-search/aui-live-search-min.js')]	");
 		selenium.waitForVisible("//input[@id='layout_configuration_content']");
-		selenium.typeKeys("//input[@id='layout_configuration_content']",
+		selenium.sendKeys("//input[@id='layout_configuration_content']",
 			RuntimeVariables.replace("b"));
 		selenium.waitForElementPresent("//div[@title='Blogs']/p/a");
 		selenium.clickAt("//div[@title='Blogs']/p/a",

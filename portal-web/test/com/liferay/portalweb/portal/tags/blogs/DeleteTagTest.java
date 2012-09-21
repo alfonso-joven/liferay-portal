@@ -25,16 +25,23 @@ public class DeleteTagTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Go to"),
+			selenium.getText("//li[@id='_145_mySites']/a/span"));
+		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Tags", RuntimeVariables.replace("Tags"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForVisible("xPath=(//span[@class='tag-item']/a)[2]");
+		selenium.waitForVisible("xPath=(//span[@class='tag-item']/a)[3]");
 		assertEquals(RuntimeVariables.replace("selenium2 liferay2"),
-			selenium.getText("xPath=(//span[@class='tag-item']/a)[2]"));
-		selenium.clickAt("xPath=(//span[@class='tag-item']/a)[2]",
+			selenium.getText("xPath=(//span[@class='tag-item']/a)[3]"));
+		selenium.clickAt("xPath=(//span[@class='tag-item']/a)[3]",
 			RuntimeVariables.replace("selenium2 liferay2"));
 		selenium.waitForText("//div/h1/span", "selenium2 liferay2");
 		assertEquals(RuntimeVariables.replace("selenium2 liferay2"),
