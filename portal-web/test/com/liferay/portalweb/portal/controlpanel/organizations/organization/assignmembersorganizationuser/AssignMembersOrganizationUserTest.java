@@ -67,7 +67,7 @@ public class AssignMembersOrganizationUserTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 
 				boolean basicVisible = selenium.isVisible(
-						"//a[contains(text(),\"\u00ab Basic\")]");
+						"//a[.='\u00ab Basic']");
 
 				if (!basicVisible) {
 					label = 2;
@@ -75,7 +75,7 @@ public class AssignMembersOrganizationUserTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("//a[contains(text(),\"\u00ab Basic\")]",
+				selenium.clickAt("//a[.='\u00ab Basic']",
 					RuntimeVariables.replace("\u00ab Basic"));
 
 			case 2:
