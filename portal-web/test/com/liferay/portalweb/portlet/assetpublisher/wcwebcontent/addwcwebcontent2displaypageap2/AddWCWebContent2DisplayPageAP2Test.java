@@ -68,10 +68,10 @@ public class AddWCWebContent2DisplayPageAP2Test extends BaseTestCase {
 		selenium.waitForText("//body", "WC WebContent2 Content");
 		selenium.selectFrame("relative=top");
 		selenium.waitForVisible("//a[@id='_15_displayPageLink']");
-		assertEquals(RuntimeVariables.replace("Display Page (Modified)"),
-			selenium.getText("//a[@id='_15_displayPageLink']"));
+		assertTrue(selenium.isPartialText("//a[@id='_15_displayPageLink']",
+				"Display Page"));
 		selenium.clickAt("//a[@id='_15_displayPageLink']",
-			RuntimeVariables.replace("Display Page (Modified)"));
+			RuntimeVariables.replace("Display Page"));
 		selenium.waitForVisible("//button[@id='_15_chooseDisplayPage']");
 		assertEquals(RuntimeVariables.replace("Select"),
 			selenium.getText("//button[@id='_15_chooseDisplayPage']"));
@@ -86,7 +86,8 @@ public class AddWCWebContent2DisplayPageAP2Test extends BaseTestCase {
 				"//a[contains(@id,'PublicPages_layout_asset-publisher-test-page2')]"));
 		selenium.clickAt("//a[contains(@id,'PublicPages_layout_asset-publisher-test-page2')]",
 			RuntimeVariables.replace("Asset Publisher Test Page2"));
-		selenium.waitForVisible("//div[@id='_15_selectedPageMessage']");
+		selenium.waitForText("//div[@id='_15_selectedPageMessage']",
+			"Public Pages > Asset Publisher Test Page2");
 		assertEquals(RuntimeVariables.replace(
 				"Public Pages > Asset Publisher Test Page2"),
 			selenium.getText("//div[@id='_15_selectedPageMessage']"));
