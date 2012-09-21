@@ -4646,28 +4646,10 @@ public class PortalImpl implements Portal {
 			return true;
 		}
 
-		if (layout.isTypePortlet()) {
-			String checkPortletId = portletId;
+		if ((layoutTypePortlet != null) &&
+			layoutTypePortlet.hasPortletId(portletId)) {
 
-			String outerPortletId = getOuterPortletId(request);
-
-			if (outerPortletId != null) {
-				checkPortletId = outerPortletId;
-			}
-
-			if (layoutTypePortlet.hasPortletId(checkPortletId)) {
-				return true;
-			}
-
-			String resourcePrimKey = PortletPermissionUtil.getPrimaryKey(
-				themeDisplay.getPlid(), portletId);
-
-			if (ResourcePermissionLocalServiceUtil.getResourcePermissionsCount(
-					themeDisplay.getCompanyId(), portlet.getPortletName(),
-					ResourceConstants.SCOPE_INDIVIDUAL, resourcePrimKey) > 0) {
-
-				return true;
-			}
+			return true;
 		}
 
 		if (themeDisplay.isSignedIn() &&

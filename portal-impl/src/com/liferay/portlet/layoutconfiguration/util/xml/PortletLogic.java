@@ -14,11 +14,19 @@
 
 package com.liferay.portlet.layoutconfiguration.util.xml;
 
+import com.liferay.portal.kernel.portlet.PortletLayoutListener;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.kernel.xml.Document;
 import com.liferay.portal.kernel.xml.Element;
 import com.liferay.portal.kernel.xml.SAXReaderUtil;
+import com.liferay.portal.model.Portlet;
 import com.liferay.portal.model.PortletConstants;
+import com.liferay.portal.service.PortletLocalServiceUtil;
+import com.liferay.portal.service.PortletPreferencesLocalServiceUtil;
+import com.liferay.portal.theme.ThemeDisplay;
+import com.liferay.portal.util.PortletKeys;
+import com.liferay.portal.util.WebKeys;
+import com.liferay.portlet.PortletPreferencesFactoryUtil;
 import com.liferay.portlet.layoutconfiguration.util.RuntimePortletUtil;
 
 import javax.portlet.RenderRequest;
@@ -76,6 +84,27 @@ public class PortletLogic extends RuntimeLogic {
 
 		if (Validator.isNotNull(instanceId)) {
 			portletId += PortletConstants.INSTANCE_SEPARATOR + instanceId;
+		}
+
+		ThemeDisplay themeDisplay = (ThemeDisplay)_request.getAttribute(
+			WebKeys.THEME_DISPLAY);
+
+		if (PortletPreferencesLocalServiceUtil.getPortletPreferencesCount(
+				PortletKeys.PREFS_OWNER_TYPE_LAYOUT, themeDisplay.getPlid(),
+				portletId) < 1) {
+
+			Portlet portlet = PortletLocalServiceUtil.getPortletById(
+				themeDisplay.getCompanyId(), portletId);
+
+			PortletPreferencesFactoryUtil.getPortletSetup(_request, portletId);
+
+			PortletLayoutListener portletLayoutListener =
+				portlet.getPortletLayoutListenerInstance();
+
+			if (portletLayoutListener != null) {
+				portletLayoutListener.onAddToLayout(
+					portletId, themeDisplay.getPlid());
+			}
 		}
 
 		return RuntimePortletUtil.processPortlet(
