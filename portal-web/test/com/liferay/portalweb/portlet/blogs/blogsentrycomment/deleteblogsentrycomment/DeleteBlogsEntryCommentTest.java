@@ -39,14 +39,13 @@ public class DeleteBlogsEntryCommentTest extends BaseTestCase {
 			selenium.getText("//li[4]/span/a/span"));
 		selenium.clickAt("//li[4]/span/a/span",
 			RuntimeVariables.replace("Delete"));
-		selenium.waitForText("//div[@class='lfr-message-response portlet-msg-success']",
-			"Your request processed successfully.");
+		selenium.waitForConfirmation("Are you sure you want to delete this?");
+		selenium.waitForVisible(
+			"//div[@class='lfr-message-response portlet-msg-success']");
 		assertEquals(RuntimeVariables.replace(
 				"Your request processed successfully."),
 			selenium.getText(
 				"//div[@class='lfr-message-response portlet-msg-success']"));
 		assertFalse(selenium.isTextPresent("Blogs Entry Comment Body"));
-		assertTrue(selenium.getConfirmation()
-						   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 	}
 }
