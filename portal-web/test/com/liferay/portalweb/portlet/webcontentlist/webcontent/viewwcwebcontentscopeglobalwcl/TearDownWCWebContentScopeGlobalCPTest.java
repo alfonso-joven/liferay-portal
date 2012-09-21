@@ -42,6 +42,7 @@ public class TearDownWCWebContentScopeGlobalCPTest extends BaseTestCase {
 				selenium.clickAt("link=Control Panel",
 					RuntimeVariables.replace("Control Panel"));
 				selenium.waitForPageToLoad("30000");
+				Thread.sleep(5000);
 				selenium.clickAt("//strong/a/span",
 					RuntimeVariables.replace("Scope Selector"));
 				selenium.waitForVisible(
