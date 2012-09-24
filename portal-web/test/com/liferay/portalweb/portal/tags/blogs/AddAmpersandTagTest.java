@@ -71,19 +71,19 @@ public class AddAmpersandTagTest extends BaseTestCase {
 
 			case 2:
 				selenium.sendKeys("//input[@class='lfr-tag-selector-input aui-field-input-text']",
-					RuntimeVariables.replace("&amp;test"));
+					RuntimeVariables.replace("&test"));
 				selenium.clickAt("//input[@value='Publish']",
 					RuntimeVariables.replace("Publish"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace(
 						"Your request completed successfully."),
 					selenium.getText("//div[@class='portlet-msg-success']"));
-				assertEquals(RuntimeVariables.replace("amptest"),
+				assertEquals(RuntimeVariables.replace("test"),
 					selenium.getText(
 						"//span[@class='taglib-asset-tags-summary']/a[2]"));
 				assertTrue(selenium.isElementNotPresent(
-						"//span[@class='entry-tags']/span/a[contains(.,'&amp;test')]"));
-				assertFalse(selenium.isTextPresent("&amp;test"));
+						"//span[@class='entry-tags']/span/a[contains(.,'&test')]"));
+				assertFalse(selenium.isTextPresent("&test"));
 
 			case 100:
 				label = -1;

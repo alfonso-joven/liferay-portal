@@ -74,26 +74,23 @@ public class AddTagThroughJavaScriptTest extends BaseTestCase {
 					RuntimeVariables.replace("selenium2 liferay2"));
 				selenium.clickAt("//button[@id='add']",
 					RuntimeVariables.replace("Add"));
-				selenium.waitForText("xPath=(//span[@class='aui-textboxlistentry-text'])[4]",
+				selenium.waitForText("xPath=(//span[@class='aui-textboxlistentry-text'])[3]",
 					"selenium2 liferay2");
 				assertEquals(RuntimeVariables.replace("selenium2 liferay2"),
 					selenium.getText(
-						"xPath=(//span[@class='aui-textboxlistentry-text'])[4]"));
+						"xPath=(//span[@class='aui-textboxlistentry-text'])[3]"));
 				selenium.clickAt("//input[@value='Publish']",
 					RuntimeVariables.replace("Publish"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace(
 						"Your request completed successfully."),
 					selenium.getText("//div[@class='portlet-msg-success']"));
-				assertEquals(RuntimeVariables.replace("amptest"),
-					selenium.getText(
-						"//span[@class='taglib-asset-tags-summary']/a[2]"));
 				assertEquals(RuntimeVariables.replace("test"),
 					selenium.getText(
-						"//span[@class='taglib-asset-tags-summary']/a[3]"));
+						"//span[@class='taglib-asset-tags-summary']/a[2]"));
 				assertEquals(RuntimeVariables.replace("selenium2 liferay2"),
 					selenium.getText(
-						"//span[@class='taglib-asset-tags-summary']/a[4]"));
+						"//span[@class='taglib-asset-tags-summary']/a[3]"));
 
 			case 100:
 				label = -1;

@@ -73,10 +73,11 @@ public class SelectTagsTest extends BaseTestCase {
 				selenium.clickAt("//button[@id='select']",
 					RuntimeVariables.replace("Select"));
 				Thread.sleep(5000);
-				selenium.waitForVisible("//label[2]/input");
-				selenium.clickAt("//label[2]",
+				selenium.waitForVisible(
+					"//label[@title='selenium1 liferay1']/input");
+				selenium.clickAt("//label[@title='selenium1 liferay1']",
 					RuntimeVariables.replace("selenium1 liferay1"));
-				selenium.clickAt("//label[3]",
+				selenium.clickAt("//label[@title='selenium2 liferay2']",
 					RuntimeVariables.replace("selenium2 liferay2"));
 				selenium.clickAt("//button[@title='Close dialog']",
 					RuntimeVariables.replace("Close"));

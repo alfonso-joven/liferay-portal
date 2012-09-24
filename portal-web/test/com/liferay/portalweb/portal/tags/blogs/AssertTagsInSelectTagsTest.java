@@ -73,24 +73,25 @@ public class AssertTagsInSelectTagsTest extends BaseTestCase {
 				selenium.clickAt("//button[@id='select']",
 					RuntimeVariables.replace("Select"));
 				Thread.sleep(5000);
-				assertEquals(RuntimeVariables.replace("amptest"),
-					selenium.getText("//label[1]"));
-				assertTrue(selenium.isVisible("//label[1]/input"));
 				assertEquals(RuntimeVariables.replace("selenium1 liferay1"),
-					selenium.getText("//label[2]"));
-				assertTrue(selenium.isVisible("//label[2]/input"));
+					selenium.getText("//label[@title='selenium1 liferay1']"));
+				assertTrue(selenium.isVisible(
+						"//label[@title='selenium1 liferay1']/input"));
 				assertEquals(RuntimeVariables.replace("selenium2 liferay2"),
-					selenium.getText("//label[3]"));
-				assertTrue(selenium.isVisible("//label[3]/input"));
+					selenium.getText("//label[@title='selenium2 liferay2']"));
+				assertTrue(selenium.isVisible(
+						"//label[@title='selenium2 liferay2']/input"));
 				assertEquals(RuntimeVariables.replace("selenium3 liferay3"),
-					selenium.getText("//label[4]"));
-				assertTrue(selenium.isVisible("//label[4]/input"));
+					selenium.getText("//label[@title='selenium3 liferay3']"));
+				assertTrue(selenium.isVisible(
+						"//label[@title='selenium3 liferay3']/input"));
 				assertEquals(RuntimeVariables.replace("selenium4 liferay4"),
-					selenium.getText("//label[5]"));
-				assertTrue(selenium.isVisible("//label[5]/input"));
+					selenium.getText("//label[@title='selenium4 liferay4']"));
+				assertTrue(selenium.isVisible(
+						"//label[@title='selenium4 liferay4']/input"));
 				assertEquals(RuntimeVariables.replace("test"),
-					selenium.getText("//label[6]"));
-				assertTrue(selenium.isVisible("//label[6]/input"));
+					selenium.getText("//label[@title='test']"));
+				assertTrue(selenium.isVisible("//label[@title='test']/input"));
 				selenium.clickAt("//button[@title='Close dialog']",
 					RuntimeVariables.replace("Close"));
 				selenium.clickAt("//input[@value='Cancel']",

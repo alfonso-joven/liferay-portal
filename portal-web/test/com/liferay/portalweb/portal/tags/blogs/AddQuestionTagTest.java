@@ -78,15 +78,11 @@ public class AddQuestionTagTest extends BaseTestCase {
 				assertEquals(RuntimeVariables.replace(
 						"Your request completed successfully."),
 					selenium.getText("//div[@class='portlet-msg-success']"));
-				assertEquals(RuntimeVariables.replace("amptest"),
-					selenium.getText(
-						"//span[@class='taglib-asset-tags-summary']/a[2]"));
 				assertEquals(RuntimeVariables.replace("test"),
 					selenium.getText(
-						"//span[@class='taglib-asset-tags-summary']/a[3]"));
+						"//span[@class='taglib-asset-tags-summary']/a[2]"));
 				assertTrue(selenium.isElementNotPresent(
 						"//span[@class='entry-tags']/span/a[contains(.,'?test')]"));
-				assertFalse(selenium.isTextPresent("?test"));
 
 			case 100:
 				label = -1;

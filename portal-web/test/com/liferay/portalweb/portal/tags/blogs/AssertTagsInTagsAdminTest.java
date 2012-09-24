@@ -39,17 +39,15 @@ public class AssertTagsInTagsAdminTest extends BaseTestCase {
 		selenium.clickAt("link=Tags", RuntimeVariables.replace("Tags"));
 		selenium.waitForPageToLoad("30000");
 		selenium.waitForVisible("xPath=(//span[@class='tag-item']/a)[1]");
-		assertEquals(RuntimeVariables.replace("amptest"),
-			selenium.getText("xPath=(//span[@class='tag-item']/a)[1]"));
 		assertEquals(RuntimeVariables.replace("selenium1 liferay1"),
-			selenium.getText("xPath=(//span[@class='tag-item']/a)[2]"));
+			selenium.getText("xPath=(//span[@class='tag-item']/a)[1]"));
 		assertEquals(RuntimeVariables.replace("selenium2 liferay2"),
-			selenium.getText("xPath=(//span[@class='tag-item']/a)[3]"));
+			selenium.getText("xPath=(//span[@class='tag-item']/a)[2]"));
 		assertEquals(RuntimeVariables.replace("selenium3 liferay3"),
-			selenium.getText("xPath=(//span[@class='tag-item']/a)[4]"));
+			selenium.getText("xPath=(//span[@class='tag-item']/a)[3]"));
 		assertEquals(RuntimeVariables.replace("selenium4 liferay4"),
-			selenium.getText("xPath=(//span[@class='tag-item']/a)[5]"));
+			selenium.getText("xPath=(//span[@class='tag-item']/a)[4]"));
 		assertEquals(RuntimeVariables.replace("test"),
-			selenium.getText("xPath=(//span[@class='tag-item']/a)[6]"));
+			selenium.getText("xPath=(//span[@class='tag-item']/a)[5]"));
 	}
 }

@@ -38,10 +38,10 @@ public class DeleteTagTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Tags", RuntimeVariables.replace("Tags"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForVisible("xPath=(//span[@class='tag-item']/a)[3]");
+		selenium.waitForVisible("xPath=(//span[@class='tag-item']/a)[2]");
 		assertEquals(RuntimeVariables.replace("selenium2 liferay2"),
-			selenium.getText("xPath=(//span[@class='tag-item']/a)[3]"));
-		selenium.clickAt("xPath=(//span[@class='tag-item']/a)[3]",
+			selenium.getText("xPath=(//span[@class='tag-item']/a)[2]"));
+		selenium.clickAt("xPath=(//span[@class='tag-item']/a)[2]",
 			RuntimeVariables.replace("selenium2 liferay2"));
 		selenium.waitForText("//div/h1/span", "selenium2 liferay2");
 		assertEquals(RuntimeVariables.replace("selenium2 liferay2"),
