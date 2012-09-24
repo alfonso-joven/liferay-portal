@@ -68,7 +68,8 @@ public class ViewWCTemplateVMScriptTest extends BaseTestCase {
 		assertEquals("<h3>$text.getData()</h3>",
 			selenium.getValue("//textarea[@id='_15_plainEditorField']"));
 		selenium.selectFrame("relative=top");
-		selenium.clickAt("//button[@id='closethick']",
+		selenium.waitForVisible("//button[@title='Close dialog']");
+		selenium.clickAt("//button[@title='Close dialog']",
 			RuntimeVariables.replace("X"));
 		selenium.waitForNotVisible("//iframe[@id='_15_xslContentIFrame']");
 		assertFalse(selenium.isVisible("//iframe[@id='_15_xslContentIFrame']"));

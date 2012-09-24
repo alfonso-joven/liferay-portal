@@ -76,7 +76,8 @@ public class ViewWCStructureXMLSchemaDefinitionTest extends BaseTestCase {
 		assertEquals("<?xml version=\"1.0\"?>\n\n<root>\n	<dynamic-element name=\"text\" type=\"text\" index-type=\"\" repeatable=\"false\"/>\n</root>",
 			selenium.getValue("//textarea[@id='_15_plainEditorField']"));
 		selenium.selectFrame("relative=top");
-		selenium.clickAt("//button[@id='closethick']",
+		selenium.waitForVisible("//button[@title='Close dialog']");
+		selenium.clickAt("//button[@title='Close dialog']",
 			RuntimeVariables.replace("X"));
 		selenium.waitForNotVisible("//iframe[@id='_15_xsdContentIFrame']");
 		assertFalse(selenium.isVisible("//iframe[@id='_15_xsdContentIFrame']"));

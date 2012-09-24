@@ -58,7 +58,7 @@ public class ViewEditWCSubstucture3DefaultValueTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("WC Substructure3 Name"),
 			selenium.getText("//span[@id='_15_structureNameLabel']"));
 		assertEquals(RuntimeVariables.replace("Title (Required)"),
-			selenium.getText("//label[@for='_15_null_en_US']"));
+			selenium.getText("//label[@for='_15_title_en_US']"));
 		assertEquals("Give the Web Content a Name",
 			selenium.getValue("//input[@id='_15_title_en_US']"));
 		assertEquals(RuntimeVariables.replace("Head"),

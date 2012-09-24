@@ -130,8 +130,8 @@ public class ViewWCWebContentLocalizedTest extends BaseTestCase {
 				"WC WebContent Content \u4e16\u754c\u60a8\u597d"),
 			selenium.getText("//body"));
 		selenium.selectFrame("relative=top");
-		selenium.waitForVisible("//button[@id='closethick']");
-		selenium.clickAt("//button[@id='closethick']",
+		selenium.waitForVisible("//button[@title='Close dialog']");
+		selenium.clickAt("//button[@title='Close dialog']",
 			RuntimeVariables.replace("X"));
 		assertEquals("WC WebContent Title",
 			selenium.getValue("//input[@id='_15_title_en_US']"));

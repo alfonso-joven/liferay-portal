@@ -76,7 +76,7 @@ public class EditWCSubstructure2DefaultValuesTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("WC Substructure2 Name"),
 			selenium.getText("//span[@id='_15_structureNameLabel']"));
 		assertEquals(RuntimeVariables.replace("Title"),
-			selenium.getText("//label[@for='_15_null_en_US']"));
+			selenium.getText("//label[@for='_15_title_en_US']"));
 		selenium.type("//input[@id='_15_title_en_US']",
 			RuntimeVariables.replace("Give the Web Content a Name"));
 		assertEquals(RuntimeVariables.replace("Head"),
