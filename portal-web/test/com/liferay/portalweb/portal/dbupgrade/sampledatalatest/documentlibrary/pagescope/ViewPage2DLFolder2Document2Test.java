@@ -61,7 +61,7 @@ public class ViewPage2DLFolder2Document2Test extends BaseTestCase {
 			selenium.getText("//div[contains(@class,'lfr-asset-author')]"));
 		assertEquals(RuntimeVariables.replace("Status: Approved"),
 			selenium.getText("//span[@class='workflow-status']"));
-		assertEquals(RuntimeVariables.replace("Download (6.5k)"),
+		assertEquals(RuntimeVariables.replace("Download (23.0k)"),
 			selenium.getText("//span[@class='download-document']/span/a/span"));
 		assertEquals(RuntimeVariables.replace(
 				"Content Type application/vnd.ms-excel"),
@@ -70,7 +70,7 @@ public class ViewPage2DLFolder2Document2Test extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("1.0"),
 			selenium.getText("//tr[3]/td[1]"));
 		assertTrue(selenium.isVisible("//tr[3]/td[2]"));
-		assertEquals(RuntimeVariables.replace("6.5k"),
+		assertEquals(RuntimeVariables.replace("23.0k"),
 			selenium.getText("//tr[3]/td[3]"));
 		assertEquals(RuntimeVariables.replace("Approved"),
 			selenium.getText("//tr[3]/td[4]"));
@@ -111,7 +111,7 @@ public class ViewPage2DLFolder2Document2Test extends BaseTestCase {
 			selenium.getText("//div[contains(@class,'lfr-asset-author')]"));
 		assertEquals(RuntimeVariables.replace("Status: Approved"),
 			selenium.getText("//span[@class='workflow-status']"));
-		assertEquals(RuntimeVariables.replace("Download (6.5k)"),
+		assertEquals(RuntimeVariables.replace("Download (23.0k)"),
 			selenium.getText("//span[@class='download-document']/span/a/span"));
 		assertEquals(RuntimeVariables.replace(
 				"Content Type application/vnd.ms-excel"),
@@ -120,7 +120,7 @@ public class ViewPage2DLFolder2Document2Test extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("1.0"),
 			selenium.getText("//tr[3]/td[1]"));
 		assertTrue(selenium.isVisible("//tr[3]/td[2]"));
-		assertEquals(RuntimeVariables.replace("6.5k"),
+		assertEquals(RuntimeVariables.replace("23.0k"),
 			selenium.getText("//tr[3]/td[3]"));
 		assertEquals(RuntimeVariables.replace("Approved"),
 			selenium.getText("//tr[3]/td[4]"));

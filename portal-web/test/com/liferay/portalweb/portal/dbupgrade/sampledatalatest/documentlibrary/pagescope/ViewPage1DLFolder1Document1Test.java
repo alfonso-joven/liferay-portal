@@ -60,7 +60,7 @@ public class ViewPage1DLFolder1Document1Test extends BaseTestCase {
 			selenium.getText("//div[contains(@class,'lfr-asset-author')]"));
 		assertEquals(RuntimeVariables.replace("Status: Approved"),
 			selenium.getText("//span[@class='workflow-status']"));
-		assertEquals(RuntimeVariables.replace("Download (10.0k)"),
+		assertEquals(RuntimeVariables.replace("Download (21.5k)"),
 			selenium.getText("//span[@class='download-document']/span/a/span"));
 		assertEquals(RuntimeVariables.replace("Content Type application/msword"),
 			selenium.getText(
@@ -68,7 +68,7 @@ public class ViewPage1DLFolder1Document1Test extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("1.0"),
 			selenium.getText("//tr[3]/td[1]"));
 		assertTrue(selenium.isVisible("//tr[3]/td[2]"));
-		assertEquals(RuntimeVariables.replace("10.0k"),
+		assertEquals(RuntimeVariables.replace("21.5k"),
 			selenium.getText("//tr[3]/td[3]"));
 		assertEquals(RuntimeVariables.replace("Approved"),
 			selenium.getText("//tr[3]/td[4]"));
