@@ -67,7 +67,7 @@ public class ViewOrganizationTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Details"),
 			selenium.getText("//div[@id='_125_details']/h3"));
 		assertEquals(RuntimeVariables.replace("Name (Required)"),
-			selenium.getText("//label[@for='_125_']"));
+			selenium.getText("//label[@for='_125_name']"));
 		assertEquals("Organization Name",
 			selenium.getValue("//input[@id='_125_name']"));
 		assertEquals(RuntimeVariables.replace("Type"),
