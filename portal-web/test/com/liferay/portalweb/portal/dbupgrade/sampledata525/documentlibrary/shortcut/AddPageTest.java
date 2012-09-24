@@ -24,20 +24,31 @@ public class AddPageTest extends BaseTestCase {
 	public void testAddPage() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
-		selenium.open("/user/joebloggs/home/");
-		selenium.waitForElementPresent("link=Communities I Own");
-		selenium.clickAt("link=Communities I Own", RuntimeVariables.replace(""));
+		selenium.open("/web/guest/home/");
+		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
+				"Welcome"));
+		selenium.mouseOver("//h2[@class='user-greeting']/span");
+		selenium.clickAt("//h2[@class='user-greeting']/span",
+			RuntimeVariables.replace("Welcome"));
+		selenium.waitForVisible("link=Control Panel");
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_29_name",
+		selenium.clickAt("link=Communities",
+			RuntimeVariables.replace("Communities"));
+		selenium.waitForPageToLoad("30000");
+		selenium.type("//input[@id='_134_name']",
 			RuntimeVariables.replace("Document Library Shortcut Community"));
 		selenium.clickAt("//input[@value='Search']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//strong/span", RuntimeVariables.replace(""));
-		selenium.waitForElementPresent("//body/div[2]/ul/li[2]/a");
-		selenium.click(RuntimeVariables.replace("//body/div[2]/ul/li[2]/a"));
+		selenium.waitForElementPresent(
+			"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a");
+		selenium.click(RuntimeVariables.replace(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_29_name_en_US",
+		selenium.type("//input[@name='_134_name_en_US']",
 			RuntimeVariables.replace("Document Library Page"));
 		selenium.clickAt("//input[@value='Add Page']",
 			RuntimeVariables.replace(""));

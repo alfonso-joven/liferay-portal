@@ -28,9 +28,12 @@ public class SRl_AddPageFriendsTest extends BaseTestCase {
 		selenium.waitForElementPresent("//div[@id='add-page']/a/span");
 		selenium.clickAt("//div[@id='add-page']/a/span",
 			RuntimeVariables.replace("Add Page"));
-		selenium.waitForElementPresent("new_page");
-		selenium.type("new_page", RuntimeVariables.replace("Friends Test Page"));
-		selenium.clickAt("link=Save", RuntimeVariables.replace("Save"));
+		selenium.waitForElementPresent("//input[@name='new_page']");
+		selenium.type("//input[@name='new_page']",
+			RuntimeVariables.replace("Friends Test Page"));
+		selenium.waitForVisible("//a[@class='save-page']");
+		selenium.clickAt("//a[@class='save-page']",
+			RuntimeVariables.replace("Save"));
 		selenium.waitForElementPresent("link=Friends Test Page");
 		selenium.clickAt("link=Friends Test Page",
 			RuntimeVariables.replace("Friends Test Page"));

@@ -32,6 +32,9 @@ public class SRq_AddPortletRequestsTest extends BaseTestCase {
 				"More"));
 		selenium.clickAt("//a[@id='_145_addApplication']",
 			RuntimeVariables.replace("More"));
+		selenium.waitForVisible("//input[@id='layout_configuration_content']");
+		selenium.sendKeys("//input[@id='layout_configuration_content']",
+			RuntimeVariables.replace("r"));
 		selenium.waitForElementPresent("//div[@title='Requests']/p/a");
 		selenium.clickAt("//div[@title='Requests']/p/a",
 			RuntimeVariables.replace("Add"));

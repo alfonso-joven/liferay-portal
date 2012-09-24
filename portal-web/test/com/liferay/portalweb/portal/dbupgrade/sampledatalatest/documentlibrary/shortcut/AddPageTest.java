@@ -25,6 +25,10 @@ public class AddPageTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -53,8 +57,8 @@ public class AddPageTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//div/span/button[1]",
 			RuntimeVariables.replace("Add Page"));
-		selenium.waitForVisible("//input[@id='_156_name_en_US']");
-		selenium.type("//input[@id='_156_name_en_US']",
+		selenium.waitForVisible("//input[@name='_156_name_en_US']");
+		selenium.type("//input[@name='_156_name_en_US']",
 			RuntimeVariables.replace("Document Library Page"));
 		selenium.clickAt("//input[@value='Add Page']",
 			RuntimeVariables.replace("Add Page"));

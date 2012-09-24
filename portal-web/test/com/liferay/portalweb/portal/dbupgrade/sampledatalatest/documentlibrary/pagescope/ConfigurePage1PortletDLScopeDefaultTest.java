@@ -46,8 +46,9 @@ public class ConfigurePage1PortletDLScopeDefaultTest extends BaseTestCase {
 		selenium.click("//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a");
 		selenium.waitForVisible("//iframe[@id='_20_configurationIframeDialog']");
 		selenium.selectFrame("//iframe[@id='_20_configurationIframeDialog']");
-		selenium.waitForVisible("link=Scope");
-		selenium.clickAt("link=Scope", RuntimeVariables.replace("Scope"));
+		selenium.waitForVisible("//li[@id='_86_tabs1scopeTabsId']/a");
+		selenium.clickAt("//li[@id='_86_tabs1scopeTabsId']/a",
+			RuntimeVariables.replace("Scope"));
 		selenium.waitForPageToLoad("30000");
 		selenium.waitForVisible("//label[@for='scopeType']");
 		assertEquals(RuntimeVariables.replace("Scope"),

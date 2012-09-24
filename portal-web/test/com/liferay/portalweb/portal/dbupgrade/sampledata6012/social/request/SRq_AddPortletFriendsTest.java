@@ -32,6 +32,9 @@ public class SRq_AddPortletFriendsTest extends BaseTestCase {
 				"More"));
 		selenium.clickAt("//a[@id='_145_addApplication']",
 			RuntimeVariables.replace("More"));
+		selenium.waitForVisible("//input[@id='layout_configuration_content']");
+		selenium.sendKeys("//input[@id='layout_configuration_content']",
+			RuntimeVariables.replace("f"));
 		selenium.waitForElementPresent("//div[@title='Friends']/p/a");
 		selenium.clickAt("//div[@title='Friends']/p/a",
 			RuntimeVariables.replace("Add"));

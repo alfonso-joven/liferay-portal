@@ -74,9 +74,9 @@ public class AddShortcutTest extends BaseTestCase {
 		selenium.waitForVisible("link=Test1 Folder1");
 		selenium.click(RuntimeVariables.replace("link=Test1 Folder1"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace(
-				"Test1 Document1.txt\nThis is test1 document1."),
-			selenium.getText("//td[1]/a"));
+		assertTrue(selenium.isPartialText("//td[1]/a", "Test1 Document1.txt"));
+		assertTrue(selenium.isPartialText("//td[1]/a",
+				"This is test1 document1."));
 		selenium.click("//td[1]/a");
 		selenium.selectWindow("null");
 		selenium.waitForVisible("//span[@id='_20_toFileEntryTitle']");

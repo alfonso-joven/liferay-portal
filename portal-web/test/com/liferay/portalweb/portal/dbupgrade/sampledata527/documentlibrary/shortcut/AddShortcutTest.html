@@ -1,9 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head profile="http://selenium-ide.openqa.org/profiles/test-case">
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link rel="selenium.base" href="" />
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>AddShortcutTest</title>
 </head>
 <body>
@@ -13,28 +10,48 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/user/joebloggs/home/</td>
+	<td>/web/guest/home/</td>
 	<td></td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
-	<td>link=Communities I Own</td>
-	<td></td>
+	<td>assertPartialText</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>mouseOver</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>link=Control Panel</td>
+	<td>Control Panel</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>link=Communities I Own</td>
-	<td></td>
+	<td>link=Control Panel</td>
+	<td>Control Panel</td>
+</tr>
+<tr>
+	<td>clickAtAndWait</td>
+	<td>link=Communities</td>
+	<td>Communities</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_29_name</td>
+	<td>//input[@id='_134_name']</td>
 	<td>Document Library Shortcut Community</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Search']</td>
-	<td></td>
+	<td>Search</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -58,22 +75,22 @@
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>//div[1]/input[2]</td>
-	<td></td>
+	<td>//input[@value='Add Shortcut']</td>
+	<td>Add Shortcut</td>
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>//td[2]/input</td>
-	<td></td>
+	<td>//input[@value='Select']</td>
+	<td>Select</td>
 </tr>
 <tr>
 	<td>waitForPopUp</td>
-	<td>toGroup</td>
+	<td>title=Document Library</td>
 	<td>30000</td>
 </tr>
 <tr>
 	<td>selectWindow</td>
-	<td>toGroup</td>
+	<td>title=Document Library</td>
 	<td></td>
 </tr>
 <tr>
@@ -129,7 +146,7 @@
 <tr>
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Save']</td>
-	<td></td>
+	<td>Save</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -137,9 +154,14 @@
 	<td>Your request processed successfully.</td>
 </tr>
 <tr>
-	<td>assertText</td>
+	<td>assertPartialText</td>
 	<td>//td[1]/a</td>
-	<td>Test1 Document1.txt<br />This is test1 document1.</td>
+	<td>Test1 Document1.txt</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>//td[1]/a</td>
+	<td>This is test1 document1.</td>
 </tr>
 
 </tbody></table>

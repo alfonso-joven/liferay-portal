@@ -25,7 +25,14 @@ public class AddDocumentTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForText("link=Control Panel", "Control Panel");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Manage"),
+			selenium.getText("//li[@id='_145_manageContent']/a/span"));
+		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
@@ -55,9 +62,8 @@ public class AddDocumentTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Use the classic uploader."),
 			selenium.getText("//a[@class='use-fallback using-new-uploader']"));
 		selenium.click("//a[@class='use-fallback using-new-uploader']");
-		selenium.type("//input[@id='_20_file']",
-			RuntimeVariables.replace(
-				"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\portal\\dbupgrade\\sampledata606\\documentlibrary\\documentlock\\dependencies\\test_document.txt"));
+		selenium.uploadCommonFile("//input[@id='_20_file']",
+			RuntimeVariables.replace("test_document.txt"));
 		selenium.type("//input[@id='_20_title']",
 			RuntimeVariables.replace("Test1 Document1.txt"));
 		selenium.type("//textarea[@id='_20_description']",
@@ -65,14 +71,11 @@ public class AddDocumentTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForText("//div[@class='portlet-msg-success']",
-			"Your request processed successfully.");
 		assertEquals(RuntimeVariables.replace(
 				"Your request processed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
-		assertEquals(RuntimeVariables.replace(
-				"Test1 Document1.txt This is Test1 Document1"),
-			selenium.getText("//td[1]/a"));
+		assertTrue(selenium.isPartialText("//td[1]/a", "Test1 Document1.txt"));
+		assertTrue(selenium.isPartialText("//td[1]/a", "This is Test1 Document1"));
 		assertFalse(selenium.isTextPresent("0.0k"));
 		assertEquals(RuntimeVariables.replace("0"),
 			selenium.getText("//td[3]/a"));

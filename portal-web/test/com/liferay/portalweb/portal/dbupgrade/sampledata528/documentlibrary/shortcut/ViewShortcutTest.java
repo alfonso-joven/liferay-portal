@@ -24,14 +24,23 @@ public class ViewShortcutTest extends BaseTestCase {
 	public void testViewShortcut() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
-		selenium.open("/user/joebloggs/home/");
-		selenium.waitForElementPresent("link=Communities I Own");
-		selenium.clickAt("link=Communities I Own", RuntimeVariables.replace(""));
+		selenium.open("/web/guest/home/");
+		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
+				"Welcome"));
+		selenium.mouseOver("//h2[@class='user-greeting']/span");
+		selenium.clickAt("//h2[@class='user-greeting']/span",
+			RuntimeVariables.replace("Welcome"));
+		selenium.waitForVisible("link=Control Panel");
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_29_name",
+		selenium.clickAt("link=Communities",
+			RuntimeVariables.replace("Communities"));
+		selenium.waitForPageToLoad("30000");
+		selenium.type("//input[@id='_134_name']",
 			RuntimeVariables.replace("Document Library Shortcut Community"));
 		selenium.clickAt("//input[@value='Search']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Open", RuntimeVariables.replace("Open"));
 		selenium.waitForPageToLoad("30000");
@@ -42,8 +51,8 @@ public class ViewShortcutTest extends BaseTestCase {
 		selenium.clickAt("//tr[4]/td[1]/a[2]/b",
 			RuntimeVariables.replace("Test2 Folder2"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace(
-				"Test1 Document1.txt\nThis is test1 document1."),
-			selenium.getText("//td[1]/a"));
+		assertTrue(selenium.isPartialText("//td[1]/a", "Test1 Document1.txt"));
+		assertTrue(selenium.isPartialText("//td[1]/a",
+				"This is test1 document1."));
 	}
 }

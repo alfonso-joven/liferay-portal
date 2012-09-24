@@ -24,15 +24,24 @@ public class AddDocumentVersionTest extends BaseTestCase {
 	public void testAddDocumentVersion() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
-		selenium.open("/user/joebloggs/home/");
-		selenium.waitForElementPresent("link=Communities I Own");
-		selenium.clickAt("link=Communities I Own", RuntimeVariables.replace(""));
+		selenium.open("/web/guest/home/");
+		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
+				"Welcome"));
+		selenium.mouseOver("//h2[@class='user-greeting']/span");
+		selenium.clickAt("//h2[@class='user-greeting']/span",
+			RuntimeVariables.replace("Welcome"));
+		selenium.waitForVisible("link=Control Panel");
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_29_name",
+		selenium.clickAt("link=Communities",
+			RuntimeVariables.replace("Communities"));
+		selenium.waitForPageToLoad("30000");
+		selenium.type("//input[@id='_134_name']",
 			RuntimeVariables.replace(
 				"Document Library Document Version Community"));
 		selenium.clickAt("//input[@value='Search']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Open", RuntimeVariables.replace("Open"));
 		selenium.waitForPageToLoad("30000");
@@ -45,18 +54,19 @@ public class AddDocumentVersionTest extends BaseTestCase {
 		selenium.click("//strong/span");
 		selenium.click(RuntimeVariables.replace("link=Edit"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForElementPresent("_20_file");
-		selenium.type("_20_file",
-			RuntimeVariables.replace(
-				"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\portal\\dbupgrade\\sampledata527\\documentlibrary\\documentversion\\dependencies\\test_document2.txt"));
-		selenium.type("_20_title", RuntimeVariables.replace("Test2 Document2"));
-		selenium.type("_20_description",
+		selenium.waitForVisible("//input[@id='_20_file']");
+		selenium.uploadCommonFile("//input[@id='_20_file']",
+			RuntimeVariables.replace("test_document2.txt"));
+		selenium.type("//input[@id='_20_title']",
+			RuntimeVariables.replace("Test2 Document2"));
+		selenium.type("//textarea[@id='_20_description']",
 			RuntimeVariables.replace("This is test2 document2."));
-		selenium.clickAt("//input[@value='Save']", RuntimeVariables.replace(""));
+		selenium.clickAt("//input[@value='Save']",
+			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
 		selenium.selectWindow("null");
 		assertEquals(RuntimeVariables.replace(
-				"Test2 Document2.txt\nThis is test2 document2."),
+				"Test2 Document2.txt This is test2 document2."),
 			selenium.getText("//td[1]/a"));
 		selenium.click("//strong/span");
 		selenium.clickAt("link=View", RuntimeVariables.replace(""));

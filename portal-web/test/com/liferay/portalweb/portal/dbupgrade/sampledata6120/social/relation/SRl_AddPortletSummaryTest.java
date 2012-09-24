@@ -41,7 +41,7 @@ public class SRl_AddPortletSummaryTest extends BaseTestCase {
 		selenium.clickAt("//a[@id='_145_addApplication']",
 			RuntimeVariables.replace("More"));
 		selenium.waitForVisible("//input[@id='layout_configuration_content']");
-		selenium.typeKeys("//input[@id='layout_configuration_content']",
+		selenium.sendKeys("//input[@id='layout_configuration_content']",
 			RuntimeVariables.replace("s"));
 		selenium.waitForVisible("//div[@title='Summary']/p/a");
 		selenium.clickAt("//div[@title='Summary']/p/a",

@@ -27,14 +27,16 @@ public class AddCommunityDocumentLibraryShortcutTest extends BaseTestCase {
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/joebloggs/home/");
 		selenium.waitForElementPresent("link=Communities I Own");
-		selenium.clickAt("link=Communities I Own", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Communities I Own",
+			RuntimeVariables.replace("Communities I Own"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//input[@value='Add Community']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Add Community"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_29_name",
+		selenium.type("//input[@id='_29_name']",
 			RuntimeVariables.replace("Document Library Shortcut Community"));
-		selenium.clickAt("//input[@value='Save']", RuntimeVariables.replace(""));
+		selenium.clickAt("//input[@value='Save']",
+			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isTextPresent(
 				"Your request processed successfully."));
