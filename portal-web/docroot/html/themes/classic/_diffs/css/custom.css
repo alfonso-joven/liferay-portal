@@ -107,6 +107,10 @@ hr, .separator {
 	top: -1.2em;
 }
 
+.ie7 #banner {
+	z-index: 2;
+}
+
 .ie6 #banner {
 	height: 1%;
 }
