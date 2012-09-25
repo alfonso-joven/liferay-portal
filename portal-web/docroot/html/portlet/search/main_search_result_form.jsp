@@ -75,7 +75,7 @@ if (assetRendererFactory != null) {
 	}
 
 	entryTitle = assetRenderer.getTitle(locale);
-	entrySummary = assetRenderer.getSummary(locale);
+	entrySummary = assetRenderer.getSearchSummary(locale);
 }
 else {
 	String portletId = document.get(Field.PORTLET_ID);

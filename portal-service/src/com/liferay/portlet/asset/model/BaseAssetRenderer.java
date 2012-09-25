@@ -29,6 +29,8 @@ import com.liferay.portal.service.GroupLocalServiceUtil;
 import com.liferay.portal.service.LayoutLocalServiceUtil;
 import com.liferay.portal.theme.ThemeDisplay;
 
+import java.util.Locale;
+
 import javax.portlet.PortletRequest;
 import javax.portlet.PortletURL;
 import javax.portlet.WindowState;
@@ -54,6 +56,10 @@ public abstract class BaseAssetRenderer implements AssetRenderer {
 			WebKeys.THEME_DISPLAY);
 
 		return getIconPath(themeDisplay);
+	}
+
+	public String getSearchSummary(Locale locale) {
+		return getSummary(locale);
 	}
 
 	public PortletURL getURLEdit(
