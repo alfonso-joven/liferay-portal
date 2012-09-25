@@ -2192,7 +2192,7 @@ public class LayoutLocalServiceImpl extends LayoutLocalServiceBaseImpl {
 
 		Projection plidProjection = ProjectionFactoryUtil.property("plid");
 
-		layoutDynamicQuery.setProjection(plidProjection);
+		layoutDynamicQuery.setNoColumnAliasProjection(plidProjection);
 
 		Property groupIdProperty = PropertyFactoryUtil.forName("groupId");
 
