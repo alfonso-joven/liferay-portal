@@ -646,6 +646,38 @@ public class EditLayoutsAction extends PortletAction {
 		return new byte[0];
 	}
 
+	protected void inheritMobileRuleGroups(
+			Layout layout, ServiceContext serviceContext)
+		throws PortalException, SystemException {
+
+		List<MDRRuleGroupInstance> parentMDRRuleGroupInstances =
+			MDRRuleGroupInstanceLocalServiceUtil.getRuleGroupInstances(
+				Layout.class.getName(), layout.getParentPlid());
+
+		for (MDRRuleGroupInstance parentMDRRuleGroupInstance :
+				parentMDRRuleGroupInstances) {
+
+			MDRRuleGroupInstance mdrRuleGroupInstance =
+				MDRRuleGroupInstanceServiceUtil.addRuleGroupInstance(
+					layout.getGroupId(), Layout.class.getName(),
+					layout.getPlid(),
+					parentMDRRuleGroupInstance.getRuleGroupId(),
+					parentMDRRuleGroupInstance.getPriority(), serviceContext);
+
+			List<MDRAction> parentMDRActions =
+				MDRActionLocalServiceUtil.getActions(
+					parentMDRRuleGroupInstance.getRuleGroupInstanceId());
+
+			for (MDRAction mdrAction : parentMDRActions) {
+				MDRActionServiceUtil.addAction(
+					mdrRuleGroupInstance.getRuleGroupInstanceId(),
+					mdrAction.getNameMap(), mdrAction.getDescriptionMap(),
+					mdrAction.getType(), mdrAction.getTypeSettings(),
+					serviceContext);
+			}
+		}
+	}
+
 	@Override
 	protected boolean isCheckMethodOnProcessAction() {
 		return _CHECK_METHOD_ON_PROCESS_ACTION;
@@ -851,7 +883,7 @@ public class EditLayoutsAction extends PortletAction {
 					layout.getGroupId(), layout.isPrivateLayout(),
 					layout.getLayoutId(), parentLayout.getTypeSettings());
 
-				updateMobileRuleGroups(layout, serviceContext);
+				inheritMobileRuleGroups(layout, serviceContext);
 
 				if (parentLayout.isTypePortlet()) {
 					ActionUtil.copyPreferences(
@@ -1102,38 +1134,6 @@ public class EditLayoutsAction extends PortletAction {
 			LayoutServiceUtil.updateLookAndFeel(
 				groupId, privateLayout, layoutId, deviceThemeId,
 				deviceColorSchemeId, deviceCss, deviceWapTheme);
-		}
-	}
-
-	protected void updateMobileRuleGroups(
-			Layout layout, ServiceContext serviceContext)
-		throws PortalException, SystemException {
-
-		List<MDRRuleGroupInstance> parentMDRRuleGroupInstances =
-			MDRRuleGroupInstanceLocalServiceUtil.getRuleGroupInstances(
-				Layout.class.getName(), layout.getParentPlid());
-
-		for (MDRRuleGroupInstance parentMDRRuleGroupInstance :
-				parentMDRRuleGroupInstances) {
-
-			MDRRuleGroupInstance mdrRuleGroupInstance =
-				MDRRuleGroupInstanceServiceUtil.addRuleGroupInstance(
-					layout.getGroupId(), Layout.class.getName(),
-					layout.getPlid(),
-					parentMDRRuleGroupInstance.getRuleGroupId(),
-					parentMDRRuleGroupInstance.getPriority(), serviceContext);
-
-			List<MDRAction> parentMDRActions =
-				MDRActionLocalServiceUtil.getActions(
-					parentMDRRuleGroupInstance.getRuleGroupInstanceId());
-
-			for (MDRAction mdrAction : parentMDRActions) {
-				MDRActionServiceUtil.addAction(
-					mdrRuleGroupInstance.getRuleGroupInstanceId(),
-					mdrAction.getNameMap(), mdrAction.getDescriptionMap(),
-					mdrAction.getType(), mdrAction.getTypeSettings(),
-					serviceContext);
-			}
 		}
 	}
 
