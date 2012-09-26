@@ -1976,8 +1976,9 @@ public class ServicePreAction extends Action {
 			}
 		}
 
-		Boolean parallelRenderEnableObj = Boolean.valueOf(ParamUtil.getBoolean(
-			request, "p_p_parallel", parallelRenderEnable));
+		Boolean parallelRenderEnableObj = Boolean.valueOf(
+			ParamUtil.getBoolean(
+				request, "p_p_parallel", parallelRenderEnable));
 
 		request.setAttribute(
 			WebKeys.PORTLET_PARALLEL_RENDER, parallelRenderEnableObj);

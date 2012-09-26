@@ -78,8 +78,9 @@ public class EditCompanyLogoAction extends PortletAction {
 			RenderRequest renderRequest, RenderResponse renderResponse)
 		throws Exception {
 
-		return mapping.findForward(getForward(
-			renderRequest, "portlet.portal_settings.edit_company_logo"));
+		return mapping.findForward(
+			getForward(
+				renderRequest, "portlet.portal_settings.edit_company_logo"));
 	}
 
 	protected void updateLogo(ActionRequest actionRequest) throws Exception {

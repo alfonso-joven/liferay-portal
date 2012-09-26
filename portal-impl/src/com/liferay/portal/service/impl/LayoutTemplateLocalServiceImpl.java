@@ -370,24 +370,29 @@ public class LayoutTemplateLocalServiceImpl
 
 			layoutTemplateModel.setStandard(standard);
 			layoutTemplateModel.setThemeId(themeId);
-			layoutTemplateModel.setName(GetterUtil.getString(
-				layoutTemplate.attributeValue("name"),
-				layoutTemplateModel.getName()));
-			layoutTemplateModel.setTemplatePath(GetterUtil.getString(
-				layoutTemplate.elementText("template-path"),
-				layoutTemplateModel.getTemplatePath()));
-			layoutTemplateModel.setWapTemplatePath(GetterUtil.getString(
-				layoutTemplate.elementText("wap-template-path"),
-				layoutTemplateModel.getWapTemplatePath()));
-			layoutTemplateModel.setThumbnailPath(GetterUtil.getString(
-				layoutTemplate.elementText("thumbnail-path"),
-				layoutTemplateModel.getThumbnailPath()));
+			layoutTemplateModel.setName(
+				GetterUtil.getString(
+					layoutTemplate.attributeValue("name"),
+					layoutTemplateModel.getName()));
+			layoutTemplateModel.setTemplatePath(
+				GetterUtil.getString(
+					layoutTemplate.elementText("template-path"),
+					layoutTemplateModel.getTemplatePath()));
+			layoutTemplateModel.setWapTemplatePath(
+				GetterUtil.getString(
+					layoutTemplate.elementText("wap-template-path"),
+					layoutTemplateModel.getWapTemplatePath()));
+			layoutTemplateModel.setThumbnailPath(
+				GetterUtil.getString(
+					layoutTemplate.elementText("thumbnail-path"),
+					layoutTemplateModel.getThumbnailPath()));
 
 			String content = null;
 
 			try {
-				content = HttpUtil.URLtoString(servletContext.getResource(
-					layoutTemplateModel.getTemplatePath()));
+				content = HttpUtil.URLtoString(
+					servletContext.getResource(
+						layoutTemplateModel.getTemplatePath()));
 			}
 			catch (Exception e) {
 				_log.error(
