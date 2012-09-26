@@ -2915,8 +2915,8 @@ public class JournalArticleLocalServiceImpl
 				continue;
 			}
 
-			long contentImageId = GetterUtil.getLong(HttpUtil.getParameter(
-				dynamicContent.getText(), "img_id"));
+			long contentImageId = GetterUtil.getLong(
+				HttpUtil.getParameter(dynamicContent.getText(), "img_id"));
 
 			if (contentImageId <= 0) {
 				contentImageId = GetterUtil.getLong(HttpUtil.getParameter(
