@@ -396,13 +396,6 @@ definePermissionsURL.setParameter(Constants.CMD, Constants.VIEW);
 					}
 				}
 
-				List<String> currentActions = new ArrayList<String>();
-
-				currentActions.addAll(currentIndividualActions);
-				currentActions.addAll(currentGroupActions);
-				currentActions.addAll(currentGroupTemplateActions);
-				currentActions.addAll(currentCompanyActions);
-
 				List<String> guestUnsupportedActions = ResourceActionsUtil.getResourceGuestUnsupportedActions(portletResource, modelResource);
 
 				for (String action : actions) {
