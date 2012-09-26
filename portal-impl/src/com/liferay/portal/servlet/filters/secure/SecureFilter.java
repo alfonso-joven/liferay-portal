@@ -26,6 +26,7 @@ import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.User;
+import com.liferay.portal.security.auth.CompanyThreadLocal;
 import com.liferay.portal.security.auth.PrincipalThreadLocal;
 import com.liferay.portal.security.permission.PermissionChecker;
 import com.liferay.portal.security.permission.PermissionCheckerFactoryUtil;
@@ -104,7 +105,7 @@ public class SecureFilter extends BasePortalFilter {
 			request = new ProtectedServletRequest(
 				request, String.valueOf(userId), HttpServletRequest.BASIC_AUTH);
 
-			initPermissionChecker(request);
+			initThreadLocals(request);
 		}
 		else {
 			try {
@@ -143,7 +144,7 @@ public class SecureFilter extends BasePortalFilter {
 				request, String.valueOf(userId),
 				HttpServletRequest.DIGEST_AUTH);
 
-			initPermissionChecker(request);
+			initThreadLocals(request);
 		}
 		else {
 			try {
@@ -184,19 +185,21 @@ public class SecureFilter extends BasePortalFilter {
 		return request;
 	}
 
-	protected void initPermissionChecker(HttpServletRequest request)
+	protected void initThreadLocals(HttpServletRequest request)
 		throws Exception {
-
-		if (!_usePermissionChecker) {
-			return;
-		}
 
 		HttpSession session = request.getSession();
 
 		User user = (User)session.getAttribute(WebKeys.USER);
 
+		CompanyThreadLocal.setCompanyId(user.getCompanyId());
+
 		PrincipalThreadLocal.setName(user.getUserId());
 		PrincipalThreadLocal.setPassword(PortalUtil.getUserPassword(request));
+
+		if (!_usePermissionChecker) {
+			return;
+		}
 
 		PermissionChecker permissionChecker =
 			PermissionCheckerFactoryUtil.create(user);
@@ -334,7 +337,7 @@ public class SecureFilter extends BasePortalFilter {
 		session.setAttribute(WebKeys.USER, user);
 		session.setAttribute(_AUTHENTICATED_USER, userIdString);
 
-		initPermissionChecker(request);
+		initThreadLocals(request);
 
 		return request;
 	}
