@@ -42,6 +42,8 @@ public class ViewPortletMGShowSearchCheckedTest extends BaseTestCase {
 			RuntimeVariables.replace("Configuration"));
 		selenium.waitForVisible("//iframe[@id='_31_configurationIframeDialog']");
 		selenium.selectFrame("//iframe[@id='_31_configurationIframeDialog']");
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/liferay/navigation_interaction.js')]");
 		selenium.waitForVisible(
 			"//input[contains(@id,'showFoldersSearchCheckbox')]");
 		assertTrue(selenium.isChecked(

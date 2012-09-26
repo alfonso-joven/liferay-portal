@@ -40,7 +40,11 @@ public class ViewImportMGLARTest extends BaseTestCase {
 				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]"));
 		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]",
 			RuntimeVariables.replace("Configuration"));
-		Thread.sleep(5000);
+		selenium.waitForVisible("//iframe[@id='_31_configurationIframeDialog']");
+		selenium.selectFrame("//iframe[@id='_31_configurationIframeDialog']");
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/liferay/navigation_interaction.js')]");
+		selenium.waitForVisible("//input[contains(@id,'showActionsCheckbox')]");
 		assertTrue(selenium.isChecked(
 				"//input[contains(@id,'showActionsCheckbox')]"));
 		assertTrue(selenium.isChecked(
@@ -49,6 +53,7 @@ public class ViewImportMGLARTest extends BaseTestCase {
 				"//input[contains(@id,'showTabsCheckbox')]"));
 		assertTrue(selenium.isChecked(
 				"//input[contains(@id,'showFoldersSearchCheckbox')]"));
+		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
 		selenium.clickAt("link=Media Gallery Test Page",
 			RuntimeVariables.replace("Media Gallery Test Page"));

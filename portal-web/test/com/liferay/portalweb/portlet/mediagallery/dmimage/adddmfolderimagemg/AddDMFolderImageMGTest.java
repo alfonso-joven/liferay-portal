@@ -72,6 +72,6 @@ public class AddDMFolderImageMGTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("DM Folder Name"),
 			selenium.getText("//h1[@class='header-title']/span"));
 		assertEquals(RuntimeVariables.replace("DM Folder Image Title"),
-			selenium.getText("xPath=(//span[@class='image-title'])[1]"));
+			selenium.getText("//span[@class='image-title']"));
 	}
 }
