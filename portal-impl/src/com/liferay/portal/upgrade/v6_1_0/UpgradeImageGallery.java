@@ -319,7 +319,7 @@ public class UpgradeImageGallery extends UpgradeProcess {
 	}
 
 	protected void deleteConflictingIGPermissions_1to5(
-			long IGCodeId, long DLCodeId)
+			long igCodeId, long dlCodeId)
 		throws Exception {
 
 		Connection con = null;
@@ -335,7 +335,7 @@ public class UpgradeImageGallery extends UpgradeProcess {
 				databaseMetaData.supportsBatchUpdates();
 
 			ps = con.prepareStatement(
-				"select primKey from Resource_ where codeId = " + IGCodeId);
+				"select primKey from Resource_ where codeId = " + igCodeId);
 
 			rs = ps.executeQuery();
 
@@ -347,7 +347,7 @@ public class UpgradeImageGallery extends UpgradeProcess {
 				ps = con.prepareStatement(
 					"delete from Resource_ where codeId = ? and primKey = ?");
 
-				ps.setLong(1, DLCodeId);
+				ps.setLong(1, dlCodeId);
 				ps.setString(2, primKey);
 
 				if (supportsBatchUpdates) {
@@ -551,8 +551,8 @@ public class UpgradeImageGallery extends UpgradeProcess {
 			con = DataAccess.getUpgradeOptimizedConnection();
 
 			ps = con.prepareStatement(
-				"select codeId from ResourceCode where companyId = ? and name" +
-					" = ? and scope = ?");
+				"select codeId from ResourceCode where companyId = ? and " +
+					"name = ? and scope = ?");
 
 			ps.setLong(1, companyId);
 			ps.setString(2, name);
@@ -564,7 +564,9 @@ public class UpgradeImageGallery extends UpgradeProcess {
 				return rs.getLong("codeId");
 			}
 			else {
-				_log.warn("Could not find corresponding ResourceCodeId");
+				_log.warn(
+					"Could not find resourceCodeId for name '" + name +
+						"' and scope '" + scope + "'");
 
 				return 0;
 			}
@@ -987,19 +989,19 @@ public class UpgradeImageGallery extends UpgradeProcess {
 		return false;
 	}
 
-	protected void updateIGPermissions(String IGClassName, String DLClassName)
+	protected void updateIGPermissions(String igClassName, String dlClassName)
 		throws Exception {
 
 		if (PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM == 6) {
-			upgradeIGPermissions_6(IGClassName, DLClassName);
+			upgradeIGPermissions_6(igClassName, dlClassName);
 		}
 		else {
-			upgradeIGPermissions_1to5(IGClassName, DLClassName);
+			upgradeIGPermissions_1to5(igClassName, dlClassName);
 		}
 	}
 
 	protected void upgradeIGPermissions_1to5(
-			String IGClassName, String DLClassName)
+			String igClassName, String dlClassName)
 		throws Exception {
 
 		Connection con = null;
@@ -1013,27 +1015,27 @@ public class UpgradeImageGallery extends UpgradeProcess {
 				"select codeId, companyId, scope from ResourceCode where name" +
 					" = ?");
 
-			ps.setString(1, IGClassName);
+			ps.setString(1, igClassName);
 
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
-				long IGCodeId = rs.getLong("codeId");
+				long igCodeId = rs.getLong("codeId");
 				long companyId = rs.getLong("companyId");
 				int scope = rs.getInt("scope");
 
-				long DLCodeId = getResourceCodeId(
-					companyId, DLClassName, scope);
+				long dlCodeId = getResourceCodeId(
+					companyId, dlClassName, scope);
 
-				if (DLCodeId != 0) {
-					deleteConflictingIGPermissions_1to5(IGCodeId, DLCodeId);
+				if (dlCodeId != 0) {
+					deleteConflictingIGPermissions_1to5(igCodeId, dlCodeId);
 
 					StringBundler sb = new StringBundler(4);
 
 					sb.append("update Resource_ set codeId = ");
-					sb.append(DLCodeId);
+					sb.append(dlCodeId);
 					sb.append(" where codeId = ");
-					sb.append(IGCodeId);
+					sb.append(igCodeId);
 
 					runSQL(sb.toString());
 				}
@@ -1045,10 +1047,10 @@ public class UpgradeImageGallery extends UpgradeProcess {
 	}
 
 	protected void upgradeIGPermissions_6(
-			String IGClassName, String DLClassName)
+			String igClassName, String dlClassName)
 		throws Exception {
 
-		deleteConflictingIGPermissions_6(IGClassName, DLClassName);
+		deleteConflictingIGPermissions_6(igClassName, dlClassName);
 
 		runSQL(
 			"update ResourcePermission set name = '" +
