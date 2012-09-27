@@ -401,6 +401,8 @@ public class UpgradeImageGallery extends UpgradeProcess {
 
 			rs = ps.executeQuery();
 
+			ps.close();
+
 			ps = con.prepareStatement(
 				"delete from ResourcePermission where name = ? and " +
 					"companyId = ? and scope = ? and primKey = ? and " +
@@ -563,13 +565,8 @@ public class UpgradeImageGallery extends UpgradeProcess {
 			if (rs.next()) {
 				return rs.getLong("codeId");
 			}
-			else {
-				_log.warn(
-					"Could not find resourceCodeId for name '" + name +
-						"' and scope '" + scope + "'");
 
-				return 0;
-			}
+			return 0;
 		}
 		finally {
 			DataAccess.cleanUp(con, ps, rs);
@@ -1027,18 +1024,15 @@ public class UpgradeImageGallery extends UpgradeProcess {
 				long dlCodeId = getResourceCodeId(
 					companyId, dlClassName, scope);
 
-				if (dlCodeId != 0) {
-					deleteConflictingIGPermissions_1to5(igCodeId, dlCodeId);
-
-					StringBundler sb = new StringBundler(4);
-
-					sb.append("update Resource_ set codeId = ");
-					sb.append(dlCodeId);
-					sb.append(" where codeId = ");
-					sb.append(igCodeId);
-
-					runSQL(sb.toString());
+				if (dlCodeId == 0) {
+					continue;
 				}
+
+				deleteConflictingIGPermissions_1to5(igCodeId, dlCodeId);
+
+				runSQL(
+					"update Resource_ set codeId = " + dlCodeId +
+						" where codeId = " + igCodeId);
 			}
 		}
 		finally {
