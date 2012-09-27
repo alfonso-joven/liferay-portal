@@ -25,21 +25,43 @@ public class AddEventDateStartInvalidTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Calendar Test Page");
-		selenium.clickAt("link=Calendar Test Page", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Calendar Test Page",
+			RuntimeVariables.replace("Calendar Test Page"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//input[@value='Add Event']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Add Event"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_8_title",
-			RuntimeVariables.replace("Invalid Start Date Test Event"));
-		selenium.clickAt("_8_startDateMonth",
-			RuntimeVariables.replace("Start Date Month"));
-		selenium.select("_8_startDateMonth",
-			RuntimeVariables.replace("label=February"));
 		Thread.sleep(5000);
-		selenium.select("_8_startDateMonth",
-			RuntimeVariables.replace("label=February"));
-		assertFalse(selenium.isPartialText("_8_startDateDay", "30"));
+		selenium.type("//input[@id='_8_title']",
+			RuntimeVariables.replace("Calendar Event Title"));
+		selenium.waitForElementPresent(
+			"//textarea[@id='_8_editor' and @style='display: none;']");
+		selenium.waitForVisible("//span[.='Source']");
+		assertEquals(RuntimeVariables.replace("Source"),
+			selenium.getText("//span[.='Source']"));
+		selenium.clickAt("//span[.='Source']",
+			RuntimeVariables.replace("Source"));
+		selenium.waitForVisible("//a[@class='cke_button_source cke_on']");
+		selenium.waitForVisible("//td[@id='cke_contents__8_editor']/textarea");
+		selenium.type("//td[@id='cke_contents__8_editor']/textarea",
+			RuntimeVariables.replace("Calendar Event Description"));
+		assertEquals(RuntimeVariables.replace("Source"),
+			selenium.getText("//span[.='Source']"));
+		selenium.clickAt("//span[.='Source']",
+			RuntimeVariables.replace("Source"));
+		selenium.waitForElementPresent(
+			"//textarea[@id='_8_editor' and @style='display: none;']");
+		selenium.waitForVisible("//td[@id='cke_contents__8_editor']/iframe");
+		selenium.selectFrame("//td[@id='cke_contents__8_editor']/iframe");
+		selenium.waitForText("//body", "Calendar Event Description");
+		selenium.selectFrame("relative=top");
+		selenium.waitForVisible("//select[@id='_8_startDateMonth']");
+		selenium.clickAt("//select[@id='_8_startDateMonth']",
+			RuntimeVariables.replace("End Date Month"));
+		selenium.select("//select[@id='_8_startDateMonth']",
+			RuntimeVariables.replace("February"));
+		Thread.sleep(5000);
+		assertFalse(selenium.isPartialText("//select[@id='_8_startDateDay']",
+				"30"));
 	}
 }

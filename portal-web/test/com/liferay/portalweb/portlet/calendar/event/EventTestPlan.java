@@ -17,7 +17,6 @@ package com.liferay.portalweb.portlet.calendar.event;
 import com.liferay.portalweb.portal.BaseTestSuite;
 import com.liferay.portalweb.portlet.calendar.event.addevent.AddEventTests;
 import com.liferay.portalweb.portlet.calendar.event.addeventdateendinvalid.AddEventDateEndInvalidTests;
-import com.liferay.portalweb.portlet.calendar.event.addeventdaterepeatinvalid.AddEventDateRepeatInvalidTests;
 import com.liferay.portalweb.portlet.calendar.event.addeventdatestartinvalid.AddEventDateStartInvalidTests;
 import com.liferay.portalweb.portlet.calendar.event.addeventdurationinvalid.AddEventDurationInvalidTests;
 import com.liferay.portalweb.portlet.calendar.event.addeventrepeatingdaily.AddEventRepeatingDailyTests;
@@ -51,7 +50,6 @@ public class EventTestPlan extends BaseTestSuite {
 
 		testSuite.addTest(AddEventTests.suite());
 		testSuite.addTest(AddEventDateEndInvalidTests.suite());
-		testSuite.addTest(AddEventDateRepeatInvalidTests.suite());
 		testSuite.addTest(AddEventDateStartInvalidTests.suite());
 		testSuite.addTest(AddEventDurationInvalidTests.suite());
 		testSuite.addTest(AddEventRepeatingDailyTests.suite());

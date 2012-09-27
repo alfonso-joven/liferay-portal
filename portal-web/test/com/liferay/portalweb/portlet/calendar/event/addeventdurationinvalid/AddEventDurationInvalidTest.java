@@ -25,20 +25,52 @@ public class AddEventDurationInvalidTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Calendar Test Page");
-		selenium.clickAt("link=Calendar Test Page", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Calendar Test Page",
+			RuntimeVariables.replace("Calendar Test Page"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//input[@value='Add Event']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Add Event"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_8_title",
-			RuntimeVariables.replace("Invalid Duration Test Entry"));
-		selenium.select("_8_durationHour", RuntimeVariables.replace("label=0"));
-		selenium.select("_8_durationMinute",
-			RuntimeVariables.replace("label=:00"));
-		selenium.clickAt("//input[@value='Save']", RuntimeVariables.replace(""));
+		Thread.sleep(5000);
+		selenium.type("//input[@id='_8_title']",
+			RuntimeVariables.replace("Calendar Event Title"));
+		selenium.waitForElementPresent(
+			"//textarea[@id='_8_editor' and @style='display: none;']");
+		selenium.waitForVisible("//span[.='Source']");
+		assertEquals(RuntimeVariables.replace("Source"),
+			selenium.getText("//span[.='Source']"));
+		selenium.clickAt("//span[.='Source']",
+			RuntimeVariables.replace("Source"));
+		selenium.waitForVisible("//a[@class='cke_button_source cke_on']");
+		selenium.waitForVisible("//td[@id='cke_contents__8_editor']/textarea");
+		selenium.type("//td[@id='cke_contents__8_editor']/textarea",
+			RuntimeVariables.replace("Calendar Event Description"));
+		assertEquals(RuntimeVariables.replace("Source"),
+			selenium.getText("//span[.='Source']"));
+		selenium.clickAt("//span[.='Source']",
+			RuntimeVariables.replace("Source"));
+		selenium.waitForElementPresent(
+			"//textarea[@id='_8_editor' and @style='display: none;']");
+		selenium.waitForVisible("//td[@id='cke_contents__8_editor']/iframe");
+		selenium.selectFrame("//td[@id='cke_contents__8_editor']/iframe");
+		selenium.waitForText("//body", "Calendar Event Description");
+		selenium.selectFrame("relative=top");
+		selenium.waitForVisible("//select[@id='_8_durationHour']");
+		selenium.clickAt("//select[@id='_8_durationHour']",
+			RuntimeVariables.replace("Duration Hour"));
+		selenium.select("//select[@id='_8_durationHour']",
+			RuntimeVariables.replace("0"));
+		selenium.clickAt("//select[@id='_8_durationMinute']",
+			RuntimeVariables.replace("Duration Minute"));
+		selenium.select("//select[@id='_8_durationMinute']",
+			RuntimeVariables.replace(":00"));
+		selenium.clickAt("//input[@value='Save']",
+			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isTextPresent("Your request failed to complete."));
-		assertTrue(selenium.isTextPresent("Please enter a longer duration."));
+		assertEquals(RuntimeVariables.replace(
+				"Your request failed to complete."),
+			selenium.getText("xPath=(//div[@class='portlet-msg-error'])[1]"));
+		assertEquals(RuntimeVariables.replace("Please enter a longer duration."),
+			selenium.getText("xPath=(//div[@class='portlet-msg-error'])[2]"));
 	}
 }

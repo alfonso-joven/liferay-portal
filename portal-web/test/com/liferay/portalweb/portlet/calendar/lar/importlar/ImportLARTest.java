@@ -25,27 +25,32 @@ public class ImportLARTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Calendar Test Page");
-		selenium.clickAt("link=Calendar Test Page", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Calendar Test Page",
+			RuntimeVariables.replace("Calendar Test Page"));
 		selenium.waitForPageToLoad("30000");
 		Thread.sleep(5000);
+		selenium.waitForVisible("//strong/a");
 		selenium.clickAt("//strong/a", RuntimeVariables.replace("Options"));
-		selenium.waitForElementPresent(
+		selenium.waitForVisible(
 			"//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a");
-		selenium.click(RuntimeVariables.replace(
+		assertEquals(RuntimeVariables.replace("Export / Import"),
+			selenium.getText(
 				"//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a"));
+		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a",
+			RuntimeVariables.replace("Export / Import"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Import", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Import", RuntimeVariables.replace("Import"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_86_importFileName",
+		selenium.uploadFile("//input[@id='_86_importFileName']",
 			RuntimeVariables.replace(
-				"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\portlet\\calendar\\lar\\importlar\\dependencies\\Selenium-Calendar.portlet.lar"));
-		selenium.check("_86_DELETE_PORTLET_DATACheckbox");
-		selenium.check("_86_PORTLET_DATACheckbox");
+				"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\portlet\\calendar\\lar\\importlar\\dependencies\\Calendar-Selenium.portlet.lar"));
+		selenium.check("//input[@id='_86_DELETE_PORTLET_DATACheckbox']");
+		selenium.check("//input[@id='_86_PORTLET_DATACheckbox']");
 		selenium.clickAt("//input[@value='Import']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Import"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isTextPresent(
-				"Your request completed successfully."));
+		assertEquals(RuntimeVariables.replace(
+				"Your request completed successfully."),
+			selenium.getText("//div[@class='portlet-msg-success']"));
 	}
 }

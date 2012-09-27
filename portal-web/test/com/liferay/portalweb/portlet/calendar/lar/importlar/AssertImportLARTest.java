@@ -25,10 +25,10 @@ public class AssertImportLARTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Calendar Test Page");
-		selenium.clickAt("link=Calendar Test Page", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Calendar Test Page",
+			RuntimeVariables.replace("Calendar Test Page"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Events", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Events", RuntimeVariables.replace("Events"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Caedmon's Call Concert!"),
 			selenium.getText("//tr[3]/td[3]/a"));

@@ -25,7 +25,6 @@ public class RemovePortletCalendarTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Calendar Test Page");
 		selenium.clickAt("link=Calendar Test Page",
 			RuntimeVariables.replace("Calendar Test Page"));
 		selenium.waitForPageToLoad("30000");

@@ -25,11 +25,11 @@ public class AssertEventSelectFieldEnabledTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Calendar Test Page");
-		selenium.clickAt("link=Calendar Test Page", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Calendar Test Page",
+			RuntimeVariables.replace("Calendar Test Page"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//input[@value='Add Event']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Add Event"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isElementPresent(
 				"//select[@name='_8_startDateMonth']"));
@@ -48,15 +48,14 @@ public class AssertEventSelectFieldEnabledTest extends BaseTestCase {
 		assertTrue(selenium.isElementPresent(
 				"//select[@name='_8_durationMinute']"));
 		assertTrue(selenium.isElementPresent("//select[@name='_8_type']"));
-		selenium.clickAt("//input[@name='_8_recurrenceType' and @value='5']",
-			RuntimeVariables.replace(""));
-		selenium.waitForVisible("_8_monthlyType");
+		selenium.clickAt("//input[@id='_8_recurrenceTypeMonthly']",
+			RuntimeVariables.replace("Monthly"));
+		selenium.waitForVisible("//input[@name='_8_monthlyType']");
 		assertTrue(selenium.isElementPresent("//select[@name='_8_monthlyPos']"));
 		assertTrue(selenium.isElementPresent("//select[@name='_8_monthlyDay1']"));
-		assertTrue(selenium.isElementPresent("//select[@name='_8_monthlyDay1']"));
-		selenium.clickAt("//input[@name='_8_recurrenceType' and @value='6']",
-			RuntimeVariables.replace(""));
-		selenium.waitForVisible("_8_yearlyType");
+		selenium.clickAt("//input[@id='_8_recurrenceTypeYearly']",
+			RuntimeVariables.replace("Yearly"));
+		selenium.waitForVisible("//input[@name='_8_yearlyType']");
 		assertTrue(selenium.isElementPresent(
 				"//select[@name='_8_yearlyMonth0']"));
 		assertTrue(selenium.isElementPresent("//select[@name='_8_yearlyPos']"));
@@ -89,18 +88,16 @@ public class AssertEventSelectFieldEnabledTest extends BaseTestCase {
 				"//select[@name='_8_durationMinute' and @disabled='']"));
 		assertTrue(selenium.isElementNotPresent(
 				"//select[@name='_8_type' and @disabled='']"));
-		selenium.clickAt("//input[@name='_8_recurrenceType' and @value='5']",
-			RuntimeVariables.replace(""));
-		selenium.waitForVisible("_8_monthlyType");
+		selenium.clickAt("//input[@id='_8_recurrenceTypeMonthly']",
+			RuntimeVariables.replace("Monthly"));
+		selenium.waitForVisible("//input[@name='_8_monthlyType']");
 		assertTrue(selenium.isElementNotPresent(
 				"//select[@name='_8_monthlyPos' and @disabled='']"));
 		assertTrue(selenium.isElementNotPresent(
 				"//select[@name='_8_monthlyDay1' and @disabled='']"));
-		assertTrue(selenium.isElementNotPresent(
-				"//select[@name='_8_monthlyDay1' and @disabled='']"));
-		selenium.clickAt("//input[@name='_8_recurrenceType' and @value='6']",
-			RuntimeVariables.replace(""));
-		selenium.waitForVisible("_8_yearlyType");
+		selenium.clickAt("//input[@id='_8_recurrenceTypeYearly']",
+			RuntimeVariables.replace("Yearly"));
+		selenium.waitForVisible("//input[@name='_8_yearlyType']");
 		assertTrue(selenium.isElementNotPresent(
 				"//select[@name='_8_yearlyMonth0' and @disabled='']"));
 		assertTrue(selenium.isElementNotPresent(

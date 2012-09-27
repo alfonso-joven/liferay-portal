@@ -25,25 +25,49 @@ public class AddEventTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Calendar Test Page");
-		selenium.clickAt("link=Calendar Test Page", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Calendar Test Page",
+			RuntimeVariables.replace("Calendar Test Page"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//input[@value='Add Event']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Add Event"));
 		selenium.waitForPageToLoad("30000");
 		Thread.sleep(5000);
-		selenium.type("_8_title", RuntimeVariables.replace("Test Event"));
-		selenium.type("_8_description",
-			RuntimeVariables.replace("This is a Test Event."));
-		selenium.clickAt("//input[@value='Save']", RuntimeVariables.replace(""));
+		selenium.type("//input[@id='_8_title']",
+			RuntimeVariables.replace("Calendar Event Title"));
+		selenium.waitForElementPresent(
+			"//textarea[@id='_8_editor' and @style='display: none;']");
+		selenium.waitForVisible("//span[.='Source']");
+		assertEquals(RuntimeVariables.replace("Source"),
+			selenium.getText("//span[.='Source']"));
+		selenium.clickAt("//span[.='Source']",
+			RuntimeVariables.replace("Source"));
+		selenium.waitForVisible("//a[@class='cke_button_source cke_on']");
+		selenium.waitForVisible("//td[@id='cke_contents__8_editor']/textarea");
+		selenium.type("//td[@id='cke_contents__8_editor']/textarea",
+			RuntimeVariables.replace("Calendar Event Description"));
+		assertEquals(RuntimeVariables.replace("Source"),
+			selenium.getText("//span[.='Source']"));
+		selenium.clickAt("//span[.='Source']",
+			RuntimeVariables.replace("Source"));
+		selenium.waitForElementPresent(
+			"//textarea[@id='_8_editor' and @style='display: none;']");
+		selenium.waitForVisible("//td[@id='cke_contents__8_editor']/iframe");
+		selenium.selectFrame("//td[@id='cke_contents__8_editor']/iframe");
+		selenium.waitForText("//body", "Calendar Event Description");
+		selenium.selectFrame("relative=top");
+		selenium.clickAt("//input[@value='Save']",
+			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isTextPresent(
-				"Your request completed successfully."));
+		assertEquals(RuntimeVariables.replace(
+				"Your request completed successfully."),
+			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertTrue(selenium.isElementPresent(
-				"//div[1]/table/tbody/tr[3]/td[1]/a"));
-		assertEquals(RuntimeVariables.replace("Test Event"),
-			selenium.getText("//div[1]/table/tbody/tr[3]/td[2]/a"));
+				"//td[@id='_8_ocerSearchContainer_col-time_row-1']"));
+		assertEquals(RuntimeVariables.replace("Calendar Event Title"),
+			selenium.getText(
+				"//td[@id='_8_ocerSearchContainer_col-title_row-1']"));
 		assertEquals(RuntimeVariables.replace("Anniversary"),
-			selenium.getText("//div[1]/table/tbody/tr[3]/td[3]/a"));
+			selenium.getText(
+				"//td[@id='_8_ocerSearchContainer_col-type_row-1']"));
 	}
 }

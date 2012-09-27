@@ -14,19 +14,24 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
-	<td>link=Calendar Test Page</td>
-	<td></td>
-</tr>
-<tr>
 	<td>clickAtAndWait</td>
 	<td>link=Calendar Test Page</td>
-	<td></td>
+	<td>Calendar Test Page</td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//td[@id='_8_ocerSearchContainer_col-time_row-1']</td>
+	<td>Time</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//table[@class='taglib-search-iterator']/tbody/tr[3]/td[2]/a</td>
-	<td>Test Event</td>
+	<td>//td[@id='_8_ocerSearchContainer_col-title_row-1']</td>
+	<td>Calendar Event Title</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//td[@id='_8_ocerSearchContainer_col-type_row-1']</td>
+	<td>Anniversary</td>
 </tr>
 <tr>
 	<td>pause</td>
@@ -34,12 +39,22 @@
 	<td></td>
 </tr>
 <tr>
-	<td>clickAt</td>
-	<td>//td[4]/span/ul/li/strong/a</td>
+	<td>waitForVisible</td>
+	<td>//td[contains(.,'Actions')]/span/ul/li/strong/a</td>
 	<td>Actions</td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
+	<td>clickAt</td>
+	<td>//td[contains(.,'Actions')]/span/ul/li/strong/a</td>
+	<td>Actions</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[4]/a</td>
+	<td>Delete</td>
+</tr>
+<tr>
+	<td>assertText</td>
 	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[4]/a</td>
 	<td>Delete</td>
 </tr>
@@ -54,16 +69,25 @@
 	<td></td>
 </tr>
 <tr>
-	<td>assertTextPresent</td>
+	<td>assertText</td>
+	<td>//div[@class='portlet-msg-success']</td>
 	<td>Your request completed successfully.</td>
-	<td></td>
 </tr>
 <tr>
 	<td>assertElementNotPresent</td>
-	<td>link=Test Event</td>
-	<td></td>
+	<td>//td[@id='_8_ocerSearchContainer_col-time_row-1']</td>
+	<td>Time</td>
 </tr>
-
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>//td[@id='_8_ocerSearchContainer_col-title_row-1']</td>
+	<td>Calendar Event Title</td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>//td[@id='_8_ocerSearchContainer_col-type_row-1']</td>
+	<td>Anniversary</td>
+</tr>
 </tbody></table>
 </body>
 </html>

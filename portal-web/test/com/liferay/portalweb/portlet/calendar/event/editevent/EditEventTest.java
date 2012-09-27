@@ -25,29 +25,67 @@ public class EditEventTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Calendar Test Page");
-		selenium.clickAt("link=Calendar Test Page", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Calendar Test Page",
+			RuntimeVariables.replace("Calendar Test Page"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Test Event"),
+		assertTrue(selenium.isElementPresent(
+				"//td[@id='_8_ocerSearchContainer_col-time_row-1']"));
+		assertEquals(RuntimeVariables.replace("Calendar Event Title"),
 			selenium.getText(
-				"//table[@class='taglib-search-iterator']/tbody/tr[3]/td[2]/a"));
+				"//td[@id='_8_ocerSearchContainer_col-title_row-1']"));
+		assertEquals(RuntimeVariables.replace("Anniversary"),
+			selenium.getText(
+				"//td[@id='_8_ocerSearchContainer_col-type_row-1']"));
 		Thread.sleep(5000);
-		selenium.clickAt("//td[4]/span/ul/li/strong/a",
+		selenium.waitForVisible(
+			"//td[contains(.,'Actions')]/span/ul/li/strong/a");
+		selenium.clickAt("//td[contains(.,'Actions')]/span/ul/li/strong/a",
 			RuntimeVariables.replace("Actions"));
-		selenium.waitForElementPresent(
+		selenium.waitForVisible(
 			"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a");
-		selenium.click(RuntimeVariables.replace(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a"));
-		selenium.waitForPageToLoad("30000");
-		selenium.type("_8_title", RuntimeVariables.replace("Test Event Edited"));
-		selenium.type("_8_description",
-			RuntimeVariables.replace("This is a Test Event. Edited."));
-		selenium.clickAt("//input[@value='Save']", RuntimeVariables.replace(""));
-		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isTextPresent(
-				"Your request completed successfully."));
-		assertEquals(RuntimeVariables.replace("Test Event Edited"),
+		assertEquals(RuntimeVariables.replace("Edit"),
 			selenium.getText(
-				"//table[@class='taglib-search-iterator']/tbody/tr[3]/td[2]/a"));
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a"));
+		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a",
+			RuntimeVariables.replace("Edit"));
+		selenium.waitForPageToLoad("30000");
+		Thread.sleep(5000);
+		selenium.type("//input[@id='_8_title']",
+			RuntimeVariables.replace("Calendar Event Title Edit"));
+		selenium.waitForElementPresent(
+			"//textarea[@id='_8_editor' and @style='display: none;']");
+		selenium.waitForVisible("//span[.='Source']");
+		assertEquals(RuntimeVariables.replace("Source"),
+			selenium.getText("//span[.='Source']"));
+		selenium.clickAt("//span[.='Source']",
+			RuntimeVariables.replace("Source"));
+		selenium.waitForVisible("//a[@class='cke_button_source cke_on']");
+		selenium.waitForVisible("//td[@id='cke_contents__8_editor']/textarea");
+		selenium.type("//td[@id='cke_contents__8_editor']/textarea",
+			RuntimeVariables.replace("Calendar Event Description Edit"));
+		assertEquals(RuntimeVariables.replace("Source"),
+			selenium.getText("//span[.='Source']"));
+		selenium.clickAt("//span[.='Source']",
+			RuntimeVariables.replace("Source"));
+		selenium.waitForElementPresent(
+			"//textarea[@id='_8_editor' and @style='display: none;']");
+		selenium.waitForVisible("//td[@id='cke_contents__8_editor']/iframe");
+		selenium.selectFrame("//td[@id='cke_contents__8_editor']/iframe");
+		selenium.waitForText("//body", "Calendar Event Description Edit");
+		selenium.selectFrame("relative=top");
+		selenium.clickAt("//input[@value='Save']",
+			RuntimeVariables.replace("Save"));
+		selenium.waitForPageToLoad("30000");
+		assertEquals(RuntimeVariables.replace(
+				"Your request completed successfully."),
+			selenium.getText("//div[@class='portlet-msg-success']"));
+		assertTrue(selenium.isElementPresent(
+				"//td[@id='_8_ocerSearchContainer_col-time_row-1']"));
+		assertEquals(RuntimeVariables.replace("Calendar Event Title Edit"),
+			selenium.getText(
+				"//td[@id='_8_ocerSearchContainer_col-title_row-1']"));
+		assertEquals(RuntimeVariables.replace("Anniversary"),
+			selenium.getText(
+				"//td[@id='_8_ocerSearchContainer_col-type_row-1']"));
 	}
 }
