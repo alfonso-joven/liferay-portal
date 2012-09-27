@@ -318,7 +318,66 @@ public class UpgradeImageGallery extends UpgradeProcess {
 		}
 	}
 
-	protected void deleteConflictingIGPermissions(
+	protected void deleteConflictingIGPermissions_1to5(
+			long IGCodeId, long DLCodeId)
+		throws Exception {
+
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		try {
+			con = DataAccess.getUpgradeOptimizedConnection();
+
+			DatabaseMetaData databaseMetaData = con.getMetaData();
+
+			boolean supportsBatchUpdates =
+				databaseMetaData.supportsBatchUpdates();
+
+			ps = con.prepareStatement(
+				"select primKey from Resource_ where codeId = " + IGCodeId);
+
+			rs = ps.executeQuery();
+
+			int count = 0;
+
+			while (rs.next()) {
+				String primKey = rs.getString("primKey");
+
+				ps = con.prepareStatement(
+					"delete from Resource_ where codeId = ? and primKey = ?");
+
+				ps.setLong(1, DLCodeId);
+				ps.setString(2, primKey);
+
+				if (supportsBatchUpdates) {
+					ps.addBatch();
+
+					if (count == PropsValues.HIBERNATE_JDBC_BATCH_SIZE) {
+						ps.executeBatch();
+
+						count = 0;
+					}
+					else {
+						count++;
+					}
+				}
+				else {
+					ps.executeUpdate();
+				}
+			}
+
+			if (supportsBatchUpdates && (count > 0)) {
+				ps.executeBatch();
+			}
+		}
+
+		finally {
+			DataAccess.cleanUp(con, ps, rs);
+		}
+	}
+
+	protected void deleteConflictingIGPermissions_6(
 			String igResourceName, String dlResourceName)
 		throws Exception {
 
@@ -387,8 +446,8 @@ public class UpgradeImageGallery extends UpgradeProcess {
 		addIGImageDLFileEntryType();
 		updateIGFolderEntries();
 		updateIGImageEntries();
-		updateIGFolderPermissions();
-		updateIGImagePermissions();
+		updateIGPermissions(_IG_IMAGE_CLASS_NAME, _DL_FILE_CLASS_NAME);
+		updateIGPermissions(_IG_FOLDER_CLASS_NAME, _DL_FOLDER_CLASS_NAME);
 
 		migrateImageFiles();
 
@@ -475,6 +534,40 @@ public class UpgradeImageGallery extends UpgradeProcess {
 			}
 
 			return null;
+		}
+		finally {
+			DataAccess.cleanUp(con, ps, rs);
+		}
+	}
+
+	protected long getResourceCodeId(long companyId, String name, int scope)
+		throws Exception {
+
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		try {
+			con = DataAccess.getUpgradeOptimizedConnection();
+
+			ps = con.prepareStatement(
+				"select codeId from ResourceCode where companyId = ? and name" +
+					" = ? and scope = ?");
+
+			ps.setLong(1, companyId);
+			ps.setString(2, name);
+			ps.setInt(3, scope);
+
+			rs = ps.executeQuery();
+
+			if (rs.next()) {
+				return rs.getLong("codeId");
+			}
+			else {
+				_log.warn("Could not find corresponding ResourceCodeId");
+
+				return 0;
+			}
 		}
 		finally {
 			DataAccess.cleanUp(con, ps, rs);
@@ -724,19 +817,6 @@ public class UpgradeImageGallery extends UpgradeProcess {
 		}
 	}
 
-	protected void updateIGFolderPermissions() throws Exception {
-		if (PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM != 6) {
-			return;
-		}
-
-		deleteConflictingIGPermissions(
-			_IG_FOLDER_CLASS_NAME, DLFolder.class.getName());
-
-		runSQL("update ResourcePermission set name = '" +
-			DLFolder.class.getName() +
-				"' where name = '" + _IG_FOLDER_CLASS_NAME + "'");
-	}
-
 	protected void updateIGImageEntries() throws Exception {
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -907,19 +987,80 @@ public class UpgradeImageGallery extends UpgradeProcess {
 		return false;
 	}
 
-	protected void updateIGImagePermissions() throws Exception {
-		if (PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM != 6) {
-			return;
-		}
+	protected void updateIGPermissions(String IGClassName, String DLClassName)
+		throws Exception {
 
-		deleteConflictingIGPermissions(
-			_IG_IMAGE_CLASS_NAME, DLFileEntry.class.getName());
+		if (PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM == 6) {
+			upgradeIGPermissions_6(IGClassName, DLClassName);
+		}
+		else {
+			upgradeIGPermissions_1to5(IGClassName, DLClassName);
+		}
+	}
+
+	protected void upgradeIGPermissions_1to5(
+			String IGClassName, String DLClassName)
+		throws Exception {
+
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		try {
+			con = DataAccess.getUpgradeOptimizedConnection();
+
+			ps = con.prepareStatement(
+				"select codeId, companyId, scope from ResourceCode where name" +
+					" = ?");
+
+			ps.setString(1, IGClassName);
+
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				long IGCodeId = rs.getLong("codeId");
+				long companyId = rs.getLong("companyId");
+				int scope = rs.getInt("scope");
+
+				long DLCodeId = getResourceCodeId(
+					companyId, DLClassName, scope);
+
+				if (DLCodeId != 0) {
+					deleteConflictingIGPermissions_1to5(IGCodeId, DLCodeId);
+
+					StringBundler sb = new StringBundler(4);
+
+					sb.append("update Resource_ set codeId = ");
+					sb.append(DLCodeId);
+					sb.append(" where codeId = ");
+					sb.append(IGCodeId);
+
+					runSQL(sb.toString());
+				}
+			}
+		}
+		finally {
+			DataAccess.cleanUp(con, ps, rs);
+		}
+	}
+
+	protected void upgradeIGPermissions_6(
+			String IGClassName, String DLClassName)
+		throws Exception {
+
+		deleteConflictingIGPermissions_6(IGClassName, DLClassName);
 
 		runSQL(
 			"update ResourcePermission set name = '" +
 				DLFileEntry.class.getName() + "' where name = '" +
 					_IG_IMAGE_CLASS_NAME + "'");
 	}
+
+	private static final String _DL_FILE_CLASS_NAME =
+		DLFileEntry.class.getName();
+
+	private static final String _DL_FOLDER_CLASS_NAME =
+		DLFolder.class.getName();
 
 	private static final String _IG_FOLDER_CLASS_NAME =
 		"com.liferay.portlet.imagegallery.model.IGFolder";
