@@ -33,8 +33,7 @@ public class ViewDMFolderDocumentRecentDocumentsTest extends BaseTestCase {
 		selenium.waitForVisible("//button[@title='Icon View']");
 		selenium.clickAt("//button[@title='Icon View']",
 			RuntimeVariables.replace("Icon View"));
-		selenium.waitForVisible("//div[@class='aui-loadingmask-message']");
-		selenium.waitForNotVisible("//div[@class='aui-loadingmask-message']");
+		Thread.sleep(5000);
 		selenium.waitForVisible(
 			"//button[contains(@class,'aui-state-active') and @title='Icon View']");
 		assertTrue(selenium.isVisible(

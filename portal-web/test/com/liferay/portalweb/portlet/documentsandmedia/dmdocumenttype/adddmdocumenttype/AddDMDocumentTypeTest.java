@@ -41,6 +41,8 @@ public class AddDMDocumentTypeTest extends BaseTestCase {
 		selenium.click("//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a");
 		selenium.waitForVisible("//iframe[@id='_20_openFileEntryTypeView']");
 		selenium.selectFrame("//iframe[@id='_20_openFileEntryTypeView']");
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/liferay/navigation_interaction.js')]");
 		selenium.waitForVisible("//span[contains(@class,'add-button')]/a");
 		assertEquals(RuntimeVariables.replace("Add"),
 			selenium.getText("//span[contains(@class,'add-button')]/a"));
@@ -51,8 +53,8 @@ public class AddDMDocumentTypeTest extends BaseTestCase {
 			RuntimeVariables.replace("DM DocumentType Name"));
 		selenium.waitForVisible(
 			"xPath=(//div[@class='aui-diagram-builder-field-label'])[11]");
-		selenium.dragAndDropToObject("xPath=(//div[@class='aui-diagram-builder-field-label'])[11]",
-			"xPath=(//div[@class='aui-diagram-builder-field-label'])[11]");
+		selenium.dragAndDropToObject("//div[@class='aui-tabview-content aui-widget-bd']/div/ul/li[11]/div",
+			"//div[@class='aui-tabview-content aui-widget-bd']");
 		selenium.waitForVisible(
 			"//div[contains(@class,'aui-form-builder-text-field-content')]/label");
 		assertEquals(RuntimeVariables.replace("Text Box"),

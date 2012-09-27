@@ -20,18 +20,48 @@
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
-	<td>//li[7]/a</td>
+	<td>//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]</td>
+	<td>AUI Editable Min</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//li[@id='_145_manageContent']/a/span</td>
+	<td>Manage</td>
+</tr>
+<tr>
+	<td>mouseOver</td>
+	<td>//li[@id='_145_manageContent']/a/span</td>
+	<td>Manage</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//li[contains(@class,'manage-site-content')]/a</td>
 	<td>Site Content</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//li[7]/a</td>
+	<td>//li[contains(@class,'manage-site-content')]/a</td>
 	<td>Site Content</td>
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>//li[7]/a</td>
+	<td>//li[contains(@class,'manage-site-content')]/a</td>
 	<td>Site Content</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//iframe[@id='manageContentDialog']</td>
+	<td>Manage Site Content</td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>//iframe[@id='manageContentDialog']</td>
+	<td>Manage Site Content</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//script[contains(@src,'/aui/transition/transition-min.js')]</td>
+	<td>Transition Min</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
@@ -64,23 +94,18 @@
 	<td>Options</td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>5000</td>
-	<td></td>
-</tr>
-<tr>
 	<td>waitForVisible</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Export / Import')]</td>
 	<td>Export / Import</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Export / Import')]</td>
 	<td>Export / Import</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Export / Import')]</td>
 	<td>Export / Import</td>
 </tr>
 <tr>
@@ -89,7 +114,7 @@
 	<td>Import</td>
 </tr>
 <tr>
-	<td>type</td>
+	<td>uploadFile</td>
 	<td>//input[@id='_86_importFileName']</td>
 	<td>L:\portal\build\portal-web\test\com\liferay\portalweb\portlet\documentsandmedia\dependencies\Document_Library-Selenium.portlet.lar</td>
 </tr>
@@ -99,7 +124,17 @@
 	<td>Delete portlet data before importing.</td>
 </tr>
 <tr>
+	<td>assertChecked</td>
+	<td>//input[@id='_86_DELETE_PORTLET_DATACheckbox']</td>
+	<td>Delete portlet data before importing.</td>
+</tr>
+<tr>
 	<td>check</td>
+	<td>//input[@id='_86_PORTLET_DATACheckbox']</td>
+	<td>Data</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
 	<td>//input[@id='_86_PORTLET_DATACheckbox']</td>
 	<td>Data</td>
 </tr>
@@ -109,7 +144,17 @@
 	<td>Permissions</td>
 </tr>
 <tr>
+	<td>assertChecked</td>
+	<td>//input[@id='_86_PERMISSIONSCheckbox']</td>
+	<td>Permissions</td>
+</tr>
+<tr>
 	<td>check</td>
+	<td>//input[@id='_86_CATEGORIESCheckbox']</td>
+	<td>Categories</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
 	<td>//input[@id='_86_CATEGORIESCheckbox']</td>
 	<td>Categories</td>
 </tr>
@@ -122,6 +167,11 @@
 	<td>assertText</td>
 	<td>//div[@class='portlet-msg-success']</td>
 	<td>Your request completed successfully.</td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>relative=top</td>
+	<td>top</td>
 </tr>
 </tbody></table>
 </body>

@@ -43,23 +43,23 @@ public class AddDMFolderDocumentNullTest extends BaseTestCase {
 		selenium.clickAt("//span[@title='Add']/ul/li/strong/a/span",
 			RuntimeVariables.replace("Add"));
 		selenium.waitForVisible(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Basic Document')]/a");
+			"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Basic Document')]");
 		assertEquals(RuntimeVariables.replace("Basic Document"),
 			selenium.getText(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Basic Document')]/a"));
-		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Basic Document')]/a",
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Basic Document')]"));
+		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Basic Document')]",
 			RuntimeVariables.replace("Basic Document"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("//input[@id='_20_file']", RuntimeVariables.replace(""));
+		selenium.uploadFile("//input[@id='_20_file']",
+			RuntimeVariables.replace(""));
 		selenium.type("//input[@id='_20_title']", RuntimeVariables.replace(""));
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
-		selenium.waitForVisible("xPath=(//div[@class='portlet-msg-error'])[1]");
+		selenium.waitForVisible(
+			"//div[contains(@class,'aui-form-validator-message')]");
 		assertEquals(RuntimeVariables.replace(
-				"Your request failed to complete."),
-			selenium.getText("xPath=(//div[@class='portlet-msg-error'])[1]"));
-		assertEquals(RuntimeVariables.replace(
-				"Please enter a file with a valid file name."),
-			selenium.getText("xPath=(//div[@class='portlet-msg-error'])[2]"));
+				"You must specify a file or a title."),
+			selenium.getText(
+				"//div[contains(@class,'aui-form-validator-message')]"));
 	}
 }

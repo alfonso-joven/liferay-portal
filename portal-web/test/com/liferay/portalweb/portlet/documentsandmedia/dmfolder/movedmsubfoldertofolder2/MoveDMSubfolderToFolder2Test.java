@@ -59,16 +59,14 @@ public class MoveDMSubfolderToFolder2Test extends BaseTestCase {
 			selenium.getText("//span[@class='folder-title']"));
 		selenium.clickAt("//input[@value='Select']",
 			RuntimeVariables.replace("Select"));
-		selenium.waitForPopUp("folder", RuntimeVariables.replace("30000"));
-		selenium.selectWindow("name=folder");
 		Thread.sleep(5000);
+		selenium.selectWindow("title=Documents and Media");
 		selenium.waitForVisible("//tr[4]/td[1]/a");
 		assertEquals(RuntimeVariables.replace("DM Folder2 Name"),
 			selenium.getText("//tr[4]/td[1]/a"));
 		selenium.click(RuntimeVariables.replace("//tr[4]/td[1]/a"));
 		selenium.waitForPageToLoad("30000");
 		selenium.click("//input[@value='Choose This Folder']");
-		Thread.sleep(5000);
 		selenium.selectWindow("null");
 		selenium.waitForText("//a[@id='_20_folderName']", "DM Folder2 Name");
 		assertEquals(RuntimeVariables.replace("DM Folder2 Name"),

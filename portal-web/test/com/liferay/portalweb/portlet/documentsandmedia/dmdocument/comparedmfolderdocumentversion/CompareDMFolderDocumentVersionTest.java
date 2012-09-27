@@ -120,8 +120,8 @@ public class CompareDMFolderDocumentVersionTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Compare Versions']",
 			RuntimeVariables.replace("Compare Versions"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("_4"), selenium.getText("//ins"));
-		assertEquals(RuntimeVariables.replace("*.txt document."),
-			selenium.getText("//del"));
+		assertTrue(selenium.isPartialText("//tr[3]/td[1]", ".txt"));
+		assertFalse(selenium.isPartialText("//tr[3]/td[1]", "_4"));
+		assertTrue(selenium.isPartialText("//tr[3]/td[2]", "_4"));
 	}
 }

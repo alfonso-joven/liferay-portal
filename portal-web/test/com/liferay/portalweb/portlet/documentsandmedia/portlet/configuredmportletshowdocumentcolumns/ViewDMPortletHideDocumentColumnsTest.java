@@ -33,8 +33,7 @@ public class ViewDMPortletHideDocumentColumnsTest extends BaseTestCase {
 		selenium.waitForVisible("//button[@title='Icon View']");
 		selenium.clickAt("//button[@title='Icon View']",
 			RuntimeVariables.replace("Icon View"));
-		selenium.waitForVisible("//div[@class='aui-loadingmask-message']");
-		selenium.waitForNotVisible("//div[@class='aui-loadingmask-message']");
+		Thread.sleep(5000);
 		selenium.waitForVisible(
 			"//button[contains(@class,'aui-state-active') and @title='Icon View']");
 		assertTrue(selenium.isVisible(
@@ -53,7 +52,9 @@ public class ViewDMPortletHideDocumentColumnsTest extends BaseTestCase {
 		selenium.clickAt("//button[@title='List View']",
 			RuntimeVariables.replace("List View"));
 		selenium.waitForVisible(
-			"//button[@title='List View' and contains(@class,'aui-buttonitem-focused')]");
+			"//button[contains(@class,'aui-state-active') and @title='List View']");
+		assertTrue(selenium.isVisible(
+				"//button[contains(@class,'aui-state-active') and @title='List View']"));
 		selenium.waitForText("//tr[3]/td[2]", "0.3k");
 		assertEquals(RuntimeVariables.replace("0.3k"),
 			selenium.getText("//tr[3]/td[2]"));
