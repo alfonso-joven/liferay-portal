@@ -89,7 +89,7 @@ public class ViewInactivePageTemplateTest extends BaseTestCase {
 		assertTrue(selenium.isVisible("//textarea[@id='_146_description']"));
 		assertFalse(selenium.isChecked("//input[@id='_146_activeCheckbox']"));
 		assertEquals(RuntimeVariables.replace("Active"),
-			selenium.getText("//label[@for='_146_Checkbox']"));
+			selenium.getText("//label[@for='_146_activeCheckbox']"));
 		assertEquals(RuntimeVariables.replace("Configuration"),
 			selenium.getText("//div/label"));
 		assertEquals(RuntimeVariables.replace("Open Page Template"),
