@@ -25,6 +25,10 @@ public class ViewCategoryTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -46,12 +50,12 @@ public class ViewCategoryTest extends BaseTestCase {
 		selenium.open(
 			"/web/shopping-category-community/shopping-category-page/");
 		selenium.clickAt("link=Shopping Category Page",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Shopping Category Page"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Categories", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Categories",
+			RuntimeVariables.replace("Categories"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace(
-				"Category Test\nThis is a category test."),
-			selenium.getText("//td/a"));
+		assertTrue(selenium.isPartialText("//td/a", "Category Test"));
+		assertTrue(selenium.isPartialText("//td/a", "This is a category test."));
 	}
 }

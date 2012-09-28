@@ -10,28 +10,48 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/user/joebloggs/home/</td>
+	<td>/web/guest/home/</td>
 	<td></td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
-	<td>link=Communities I Own</td>
-	<td></td>
+	<td>assertPartialText</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>mouseOver</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>link=Control Panel</td>
+	<td>Control Panel</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>link=Communities I Own</td>
-	<td></td>
+	<td>link=Control Panel</td>
+	<td>Control Panel</td>
+</tr>
+<tr>
+	<td>clickAtAndWait</td>
+	<td>link=Communities</td>
+	<td>Communities</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_29_name</td>
+	<td>//input[@id='_134_name']</td>
 	<td>Shopping Order Community</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Search']</td>
-	<td></td>
+	<td>Search</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -41,46 +61,46 @@
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=Shopping Order Page</td>
-	<td></td>
+	<td>Shopping Order Page</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=Cart</td>
-	<td></td>
+	<td>Cart</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Checkout']</td>
-	<td></td>
+	<td>Checkout</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_34_billingStreet</td>
+	<td>//input[@id='_34_billingStreet']</td>
 	<td>1234 Sesame Street</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_34_billingCity</td>
+	<td>//input[@id='_34_billingCity']</td>
 	<td>Gotham City</td>
 </tr>
 <tr>
 	<td>select</td>
-	<td>_34_billingStateSel</td>
+	<td>//select[@id='_34_billingStateSel']</td>
 	<td>label=California</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_34_billingZip</td>
+	<td>//input[@id='_34_billingZip']</td>
 	<td>90028</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_34_billingCountry</td>
+	<td>//input[@id='_34_billingCountry']</td>
 	<td>USA</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_34_billingPhone</td>
+	<td>//input[@id='_34_billingPhone']</td>
 	<td>626-589-1453</td>
 </tr>
 <tr>
@@ -95,8 +115,8 @@
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>_34_shipToBillingCheckbox</td>
-	<td></td>
+	<td>//input[@id='_34_shipToBillingCheckbox']</td>
+	<td>Checkout</td>
 </tr>
 <tr>
 	<td>label</td>
@@ -105,33 +125,33 @@
 </tr>
 <tr>
 	<td>assertChecked</td>
-	<td>_34_shipToBillingCheckbox</td>
-	<td></td>
+	<td>//input[@id='_34_shipToBillingCheckbox']</td>
+	<td>Checkout</td>
 </tr>
 <tr>
 	<td>select</td>
-	<td>_34_ccType</td>
+	<td>//select[@name='_34_ccType']</td>
 	<td>label=Visa</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_34_ccNumber</td>
+	<td>//input[@id='_34_ccNumber']</td>
 	<td>4111111111111111</td>
 </tr>
 <tr>
 	<td>select</td>
-	<td>_34_ccExpYear</td>
+	<td>//select[@name='_34_ccExpYear']</td>
 	<td>label=2017</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_34_comments</td>
+	<td>//textarea[@id='_34_comments']</td>
 	<td>Please take care of my order.</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Continue']</td>
-	<td></td>
+	<td>Continue</td>
 </tr>
 <tr>
 	<td>assertTextPresent</td>
@@ -141,7 +161,7 @@
 <tr>
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Finished']</td>
-	<td></td>
+	<td>Finished</td>
 </tr>
 <tr>
 	<td>assertTextPresent</td>
@@ -150,28 +170,48 @@
 </tr>
 <tr>
 	<td>open</td>
-	<td>/user/joebloggs/home/</td>
+	<td>/web/guest/home/</td>
 	<td></td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
-	<td>link=Communities I Own</td>
-	<td></td>
+	<td>assertPartialText</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>mouseOver</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>link=Control Panel</td>
+	<td>Control Panel</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>link=Communities I Own</td>
-	<td></td>
+	<td>link=Control Panel</td>
+	<td>Control Panel</td>
+</tr>
+<tr>
+	<td>clickAtAndWait</td>
+	<td>link=Communities</td>
+	<td>Communities</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_29_name</td>
+	<td>//input[@id='_134_name']</td>
 	<td>Shopping Order Community</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Search']</td>
-	<td></td>
+	<td>Search</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -181,17 +221,17 @@
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=Shopping Order Page</td>
-	<td></td>
+	<td>Shopping Order Page</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=Orders</td>
-	<td></td>
+	<td>Orders</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=Checkout</td>
-	<td></td>
+	<td>Checkout</td>
 </tr>
 <tr>
 	<td>assertTextPresent</td>

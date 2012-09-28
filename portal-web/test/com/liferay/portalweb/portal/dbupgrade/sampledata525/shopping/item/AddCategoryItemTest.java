@@ -24,44 +24,61 @@ public class AddCategoryItemTest extends BaseTestCase {
 	public void testAddCategoryItem() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
-		selenium.open("/user/joebloggs/home/");
-		selenium.waitForElementPresent("link=Communities I Own");
-		selenium.clickAt("link=Communities I Own", RuntimeVariables.replace(""));
+		selenium.open("/web/guest/home/");
+		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
+				"Welcome"));
+		selenium.mouseOver("//h2[@class='user-greeting']/span");
+		selenium.clickAt("//h2[@class='user-greeting']/span",
+			RuntimeVariables.replace("Welcome"));
+		selenium.waitForVisible("link=Control Panel");
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_29_name",
+		selenium.clickAt("link=Communities",
+			RuntimeVariables.replace("Communities"));
+		selenium.waitForPageToLoad("30000");
+		selenium.type("//input[@id='_134_name']",
 			RuntimeVariables.replace("Shopping Item Community"));
 		selenium.clickAt("//input[@value='Search']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//td[2]/a", RuntimeVariables.replace("Open"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Shopping Item Page", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Shopping Item Page",
+			RuntimeVariables.replace("Shopping Item Page"));
 		selenium.waitForPageToLoad("30000");
 		selenium.click(RuntimeVariables.replace("//td[1]/a"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//input[@value='Add Item']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Add Item"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_34_sku", RuntimeVariables.replace("1111"));
-		selenium.type("_34_name", RuntimeVariables.replace("Item Test"));
-		selenium.type("_34_description",
+		selenium.type("//input[@id='_34_sku']", RuntimeVariables.replace("1111"));
+		selenium.type("//input[@id='_34_name']",
+			RuntimeVariables.replace("Item Test"));
+		selenium.type("//textarea[@id='_34_description']",
 			RuntimeVariables.replace("This is an item test."));
-		selenium.type("_34_stockQuantity", RuntimeVariables.replace("50"));
-		selenium.type("_34_properties",
+		selenium.type("//input[@id='_34_stockQuantity']",
+			RuntimeVariables.replace("50"));
+		selenium.type("//textarea[@id='_34_properties']",
 			RuntimeVariables.replace("Limited Time Only"));
-		assertTrue(selenium.isElementPresent("_34_requiresShippingCheckbox"));
-		selenium.clickAt("_34_requiresShippingCheckbox",
-			RuntimeVariables.replace(""));
-		assertTrue(selenium.isChecked("_34_requiresShippingCheckbox"));
-		selenium.type("_34_price0", RuntimeVariables.replace("$9.99"));
-		selenium.type("_34_minQuantity0", RuntimeVariables.replace("1"));
-		selenium.clickAt("//input[@value='Save']", RuntimeVariables.replace(""));
+		assertTrue(selenium.isElementPresent(
+				"//input[@id='_34_requiresShippingCheckbox']"));
+		selenium.clickAt("//input[@id='_34_requiresShippingCheckbox']",
+			RuntimeVariables.replace("Checkbox"));
+		assertTrue(selenium.isChecked(
+				"//input[@id='_34_requiresShippingCheckbox']"));
+		selenium.type("//input[@id='_34_price0']",
+			RuntimeVariables.replace("$9.99"));
+		selenium.type("//input[@id='_34_minQuantity0']",
+			RuntimeVariables.replace("1"));
+		selenium.clickAt("//input[@value='Save']",
+			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Your request processed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
-		assertEquals(RuntimeVariables.replace(
-				"Item Test\nThis is an item test.\nLimited: Time Only"),
-			selenium.getText("//td[2]/a"));
+		assertTrue(selenium.isPartialText("//td[2]/a", "Item Test"));
+		assertTrue(selenium.isPartialText("//td[2]/a", "This is an item test."));
+		assertTrue(selenium.isPartialText("//td[2]/a", "Limited: Time Only"));
 	}
 }

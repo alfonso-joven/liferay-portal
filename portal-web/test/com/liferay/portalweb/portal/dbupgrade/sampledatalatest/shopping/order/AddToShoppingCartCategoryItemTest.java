@@ -40,8 +40,15 @@ public class AddToShoppingCartCategoryItemTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
-		assertEquals(RuntimeVariables.replace(
-				"Item Test\nThis is an item test.\n\nAvailability: In Stock\n\n\nPrice for 1 Items and Above:$9.99"),
-			selenium.getText("//td[2]/a"));
+		assertTrue(selenium.isPartialText("//td[2]/a", "Item Test"));
+		assertTrue(selenium.isPartialText("//td[2]/a", "This is an item test."));
+		assertTrue(selenium.isPartialText("//td[2]/a", "Availability:"));
+		assertEquals(RuntimeVariables.replace("In Stock"),
+			selenium.getText(
+				"//div[.='In Stock' and @class='portlet-msg-success']"));
+		assertTrue(selenium.isPartialText("//td[2]/a",
+				"Price for 1 Items and Above:"));
+		assertTrue(selenium.isPartialText("//td[2]/a", "$"));
+		assertTrue(selenium.isPartialText("//td[2]/a", "9.99"));
 	}
 }

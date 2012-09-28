@@ -25,19 +25,29 @@ public class ViewCategoryItemTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
-		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Manage"),
+			selenium.getText("//li[@id='_145_manageContent']/a/span"));
+		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+		selenium.waitForVisible("link=Control Panel");
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Communities", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Communities",
+			RuntimeVariables.replace("Communities"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_134_name",
+		selenium.type("//input[@id='_134_name']",
 			RuntimeVariables.replace("Shopping Item Community"));
 		selenium.clickAt("//input[@value='Search']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//td[2]/a", RuntimeVariables.replace("Open"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Shopping Item Page", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Shopping Item Page",
+			RuntimeVariables.replace("Shopping Item Page"));
 		selenium.waitForPageToLoad("30000");
 		selenium.click(RuntimeVariables.replace("//td[1]/a"));
 		selenium.waitForPageToLoad("30000");
@@ -45,13 +55,16 @@ public class ViewCategoryItemTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("1111"),
 			selenium.getText("//td[1]/strong"));
-		assertEquals(RuntimeVariables.replace(
-				"Item Test\n \n This is an item test. \n Limited: Time Only \n\n Price for 1 Items and Above: $9.99\n \n Availability: In Stock"),
-			selenium.getText("//td[3]"));
-		assertEquals(RuntimeVariables.replace(
-				"Item Test\n \n This is an item test. \n Limited: Time Only \n\n Price for 1 Items and Above: $9.99\n \n Availability: In Stock"),
-			selenium.getText("//td[3]"));
+		assertTrue(selenium.isPartialText("//td[3]", "Item Test"));
+		assertTrue(selenium.isPartialText("//td[3]", "This is an item test."));
+		assertTrue(selenium.isPartialText("//td[3]", "Limited: Time Only"));
+		assertTrue(selenium.isPartialText("//td[3]",
+				"Price for 1 Items and Above: "));
+		assertTrue(selenium.isPartialText("//td[3]", "$"));
+		assertTrue(selenium.isPartialText("//td[3]", "9.99"));
+		assertTrue(selenium.isPartialText("//td[3]", "Availability:"));
 		assertEquals(RuntimeVariables.replace("In Stock"),
-			selenium.getText("//td[3]/div[1]"));
+			selenium.getText(
+				"//div[.='In Stock' and @class='portlet-msg-success']"));
 	}
 }

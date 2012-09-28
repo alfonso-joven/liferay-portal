@@ -25,7 +25,14 @@ public class AddCouponTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Manage"),
+			selenium.getText("//li[@id='_145_manageContent']/a/span"));
+		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
@@ -56,7 +63,7 @@ public class AddCouponTest extends BaseTestCase {
 			RuntimeVariables.replace("Coupon Test"));
 		selenium.type("//textarea[@id='_34_description']",
 			RuntimeVariables.replace("This is a coupon test."));
-		selenium.type("//input[@id='_34_discount']",
+		selenium.type("//input[@name='_34_discount']",
 			RuntimeVariables.replace("0.50"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));

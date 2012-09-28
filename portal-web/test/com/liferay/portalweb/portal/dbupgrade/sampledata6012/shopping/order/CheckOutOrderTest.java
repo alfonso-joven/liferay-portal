@@ -30,7 +30,14 @@ public class CheckOutOrderTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				selenium.waitForElementPresent("link=Control Panel");
+				selenium.clickAt("//div[@id='dockbar']",
+					RuntimeVariables.replace("Dockbar"));
+				selenium.waitForElementPresent(
+					"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+				assertEquals(RuntimeVariables.replace("Manage"),
+					selenium.getText("//li[@id='_145_manageContent']/a/span"));
+				selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+				selenium.waitForVisible("link=Control Panel");
 				selenium.clickAt("link=Control Panel",
 					RuntimeVariables.replace("Control Panel"));
 				selenium.waitForPageToLoad("30000");
@@ -75,16 +82,16 @@ public class CheckOutOrderTest extends BaseTestCase {
 				}
 
 				selenium.clickAt("//input[@id='_34_shipToBillingCheckbox']",
-					RuntimeVariables.replace(""));
+					RuntimeVariables.replace("Checkout"));
 
 			case 2:
 				assertTrue(selenium.isChecked(
 						"//input[@id='_34_shipToBillingCheckbox']"));
-				selenium.select("//select[@id='_34_ccType']",
+				selenium.select("//select[@name='_34_ccType']",
 					RuntimeVariables.replace("label=Visa"));
 				selenium.type("//input[@id='_34_ccNumber']",
 					RuntimeVariables.replace("4111111111111111"));
-				selenium.select("//select[@id='_34_ccExpYear']",
+				selenium.select("//select[@name='_34_ccExpYear']",
 					RuntimeVariables.replace("label=2017"));
 				selenium.type("//textarea[@id='_34_comments']",
 					RuntimeVariables.replace("Please take care of my order."));
@@ -99,7 +106,14 @@ public class CheckOutOrderTest extends BaseTestCase {
 						"Thank you for your purchase."),
 					selenium.getText("//div[@class='portlet-msg-success']"));
 				selenium.open("/web/guest/home/");
-				selenium.waitForElementPresent("link=Control Panel");
+				selenium.clickAt("//div[@id='dockbar']",
+					RuntimeVariables.replace("Dockbar"));
+				selenium.waitForElementPresent(
+					"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+				assertEquals(RuntimeVariables.replace("Manage"),
+					selenium.getText("//li[@id='_145_manageContent']/a/span"));
+				selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+				selenium.waitForVisible("link=Control Panel");
 				selenium.clickAt("link=Control Panel",
 					RuntimeVariables.replace("Control Panel"));
 				selenium.waitForPageToLoad("30000");

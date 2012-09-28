@@ -60,7 +60,7 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>//input[@id='_34_discount']</td>
+	<td>//input[@name='_34_discount']</td>
 	<td>0.50</td>
 </tr>
 <tr>
@@ -79,11 +79,20 @@
 	<td>Your request completed successfully.</td>
 </tr>
 <tr>
-	<td>assertTextPresent</td>
+	<td>assertPartialText</td>
 	<td>Coupon Test<br />This is a coupon test.</td>
 	<td></td>
 </tr>
-
+<tr>
+	<td>assertPartialText</td>
+	<td>//td[3]/a</td>
+	<td>Coupon Test</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>//td[3]/a</td>
+	<td>This is a coupon test.</td>
+</tr>
 </tbody></table>
 </body>
 </html>

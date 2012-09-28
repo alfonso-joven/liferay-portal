@@ -46,8 +46,8 @@ public class AddCategoryTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
-		assertEquals(RuntimeVariables.replace(
-				"Category Test\nThis is a category test."),
-			selenium.getText("//td[1]/a"));
+		assertTrue(selenium.isPartialText("//td[1]/a", "Category Test"));
+		assertTrue(selenium.isPartialText("//td[1]/a",
+				"This is a category test."));
 	}
 }

@@ -14,6 +14,16 @@
 	<td></td>
 </tr>
 <tr>
+	<td>clickAt</td>
+	<td>//div[@id='dockbar']</td>
+	<td>Dockbar</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]</td>
+	<td>AUI Editable Min</td>
+</tr>
+<tr>
 	<td>assertText</td>
 	<td>//li[@id='_145_mySites']/a/span</td>
 	<td>Go to</td>
@@ -74,13 +84,43 @@
 	<td>Item Test</td>
 </tr>
 <tr>
-	<td>assertText</td>
+	<td>assertPartialText</td>
 	<td>//td[3]</td>
-	<td>Item Test<br /> <br /> This is an item test. <br /> Limited: Time Only <br /><br /> Price for 1 Items and Above: $9.99<br /> <br /> Availability: In Stock</td>
+	<td>Item Test</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>//td[3]</td>
+	<td>This is an item test.</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>//td[3]</td>
+	<td>Limited: Time Only</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>//td[3]</td>
+	<td>Price for 1 Items and Above: </td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>//td[3]</td>
+	<td>$</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>//td[3]</td>
+	<td>9.99</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>//td[3]</td>
+	<td>Availability:</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//td[3]/div[1]</td>
+	<td>//div[.='In Stock' and @class='portlet-msg-success']</td>
 	<td>In Stock</td>
 </tr>
 </tbody></table>

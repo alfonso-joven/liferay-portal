@@ -25,30 +25,40 @@ public class ViewCouponTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
-		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Manage"),
+			selenium.getText("//li[@id='_145_manageContent']/a/span"));
+		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+		selenium.waitForVisible("link=Control Panel");
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Communities", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Communities",
+			RuntimeVariables.replace("Communities"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_134_name",
+		selenium.type("//input[@id='_134_name']",
 			RuntimeVariables.replace("Shopping Coupon Community"));
 		selenium.clickAt("//input[@value='Search']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//td[2]/a", RuntimeVariables.replace("Open"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Shopping Coupon Page",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Shopping Coupon Page"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Coupons", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Coupons", RuntimeVariables.replace("Coupons"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//td[2]/a", RuntimeVariables.replace("Coupon Code"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals("Coupon Test", selenium.getValue("_34_name"));
+		assertEquals("Coupon Test", selenium.getValue("//input[@id='_34_name']"));
 		assertEquals("This is a coupon test.",
-			selenium.getValue("_34_description"));
-		assertEquals("0.00", selenium.getValue("_34_minOrder"));
-		assertEquals("0.50", selenium.getValue("_34_discount"));
-		assertEquals("Percentage", selenium.getSelectedLabel("_34_discountType"));
+			selenium.getValue("//textarea[@id='_34_description']"));
+		assertEquals("0.00", selenium.getValue("//input[@name='_34_minOrder']"));
+		assertEquals("0.50", selenium.getValue("//input[@name='_34_discount']"));
+		assertEquals("Percentage",
+			selenium.getSelectedLabel("//select[@name='_34_discountType']"));
 	}
 }

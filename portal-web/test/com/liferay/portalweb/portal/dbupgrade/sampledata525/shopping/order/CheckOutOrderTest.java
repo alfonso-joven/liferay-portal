@@ -29,37 +29,45 @@ public class CheckOutOrderTest extends BaseTestCase {
 			case 1:
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
-				selenium.open("/user/joebloggs/home/");
-				selenium.waitForElementPresent("link=Communities I Own");
-				selenium.clickAt("link=Communities I Own",
-					RuntimeVariables.replace(""));
+				selenium.open("/web/guest/home/");
+				assertTrue(selenium.isPartialText(
+						"//h2[@class='user-greeting']/span", "Welcome"));
+				selenium.mouseOver("//h2[@class='user-greeting']/span");
+				selenium.clickAt("//h2[@class='user-greeting']/span",
+					RuntimeVariables.replace("Welcome"));
+				selenium.waitForVisible("link=Control Panel");
+				selenium.clickAt("link=Control Panel",
+					RuntimeVariables.replace("Control Panel"));
 				selenium.waitForPageToLoad("30000");
-				selenium.type("_29_name",
+				selenium.clickAt("link=Communities",
+					RuntimeVariables.replace("Communities"));
+				selenium.waitForPageToLoad("30000");
+				selenium.type("//input[@id='_134_name']",
 					RuntimeVariables.replace("Shopping Order Community"));
 				selenium.clickAt("//input[@value='Search']",
-					RuntimeVariables.replace(""));
+					RuntimeVariables.replace("Search"));
 				selenium.waitForPageToLoad("30000");
 				selenium.clickAt("//td[2]/a", RuntimeVariables.replace("Open"));
 				selenium.waitForPageToLoad("30000");
 				selenium.clickAt("link=Shopping Order Page",
-					RuntimeVariables.replace(""));
+					RuntimeVariables.replace("Shopping Order Page"));
 				selenium.waitForPageToLoad("30000");
-				selenium.clickAt("link=Cart", RuntimeVariables.replace(""));
+				selenium.clickAt("link=Cart", RuntimeVariables.replace("Cart"));
 				selenium.waitForPageToLoad("30000");
 				selenium.clickAt("//input[@value='Checkout']",
-					RuntimeVariables.replace(""));
+					RuntimeVariables.replace("Checkout"));
 				selenium.waitForPageToLoad("30000");
-				selenium.type("_34_billingStreet",
+				selenium.type("//input[@id='_34_billingStreet']",
 					RuntimeVariables.replace("1234 Sesame Street"));
-				selenium.type("_34_billingCity",
+				selenium.type("//input[@id='_34_billingCity']",
 					RuntimeVariables.replace("Gotham City"));
-				selenium.select("_34_billingStateSel",
+				selenium.select("//select[@id='_34_billingStateSel']",
 					RuntimeVariables.replace("label=California"));
-				selenium.type("_34_billingZip",
+				selenium.type("//input[@id='_34_billingZip']",
 					RuntimeVariables.replace("90028"));
-				selenium.type("_34_billingCountry",
+				selenium.type("//input[@id='_34_billingCountry']",
 					RuntimeVariables.replace("USA"));
-				selenium.type("_34_billingPhone",
+				selenium.type("//input[@id='_34_billingPhone']",
 					RuntimeVariables.replace("626-589-1453"));
 
 				boolean sameAsBillingChecked = selenium.isChecked(
@@ -71,46 +79,57 @@ public class CheckOutOrderTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("_34_shipToBillingCheckbox",
-					RuntimeVariables.replace(""));
+				selenium.clickAt("//input[@id='_34_shipToBillingCheckbox']",
+					RuntimeVariables.replace("Checkout"));
 
 			case 2:
-				assertTrue(selenium.isChecked("_34_shipToBillingCheckbox"));
-				selenium.select("_34_ccType",
+				assertTrue(selenium.isChecked(
+						"//input[@id='_34_shipToBillingCheckbox']"));
+				selenium.select("//select[@name='_34_ccType']",
 					RuntimeVariables.replace("label=Visa"));
-				selenium.type("_34_ccNumber",
+				selenium.type("//input[@id='_34_ccNumber']",
 					RuntimeVariables.replace("4111111111111111"));
-				selenium.select("_34_ccExpYear",
+				selenium.select("//select[@name='_34_ccExpYear']",
 					RuntimeVariables.replace("label=2017"));
-				selenium.type("_34_comments",
+				selenium.type("//textarea[@id='_34_comments']",
 					RuntimeVariables.replace("Please take care of my order."));
 				selenium.clickAt("//input[@value='Continue']",
-					RuntimeVariables.replace(""));
+					RuntimeVariables.replace("Continue"));
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.isTextPresent("1234 Sesame Street"));
 				selenium.clickAt("//input[@value='Finished']",
-					RuntimeVariables.replace(""));
+					RuntimeVariables.replace("Finished"));
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.isTextPresent(
 						"Thank you for your purchase."));
-				selenium.open("/user/joebloggs/home/");
-				selenium.waitForElementPresent("link=Communities I Own");
-				selenium.clickAt("link=Communities I Own",
-					RuntimeVariables.replace(""));
+				selenium.open("/web/guest/home/");
+				assertTrue(selenium.isPartialText(
+						"//h2[@class='user-greeting']/span", "Welcome"));
+				selenium.mouseOver("//h2[@class='user-greeting']/span");
+				selenium.clickAt("//h2[@class='user-greeting']/span",
+					RuntimeVariables.replace("Welcome"));
+				selenium.waitForVisible("link=Control Panel");
+				selenium.clickAt("link=Control Panel",
+					RuntimeVariables.replace("Control Panel"));
 				selenium.waitForPageToLoad("30000");
-				selenium.type("_29_name",
+				selenium.clickAt("link=Communities",
+					RuntimeVariables.replace("Communities"));
+				selenium.waitForPageToLoad("30000");
+				selenium.type("//input[@id='_134_name']",
 					RuntimeVariables.replace("Shopping Order Community"));
 				selenium.clickAt("//input[@value='Search']",
-					RuntimeVariables.replace(""));
+					RuntimeVariables.replace("Search"));
 				selenium.waitForPageToLoad("30000");
 				selenium.clickAt("//td[2]/a", RuntimeVariables.replace("Open"));
 				selenium.waitForPageToLoad("30000");
 				selenium.clickAt("link=Shopping Order Page",
-					RuntimeVariables.replace(""));
+					RuntimeVariables.replace("Shopping Order Page"));
 				selenium.waitForPageToLoad("30000");
-				selenium.clickAt("link=Orders", RuntimeVariables.replace(""));
+				selenium.clickAt("link=Orders",
+					RuntimeVariables.replace("Orders"));
 				selenium.waitForPageToLoad("30000");
-				selenium.clickAt("link=Checkout", RuntimeVariables.replace(""));
+				selenium.clickAt("link=Checkout",
+					RuntimeVariables.replace("Checkout"));
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.isTextPresent(
 						"Please take care of my order."));

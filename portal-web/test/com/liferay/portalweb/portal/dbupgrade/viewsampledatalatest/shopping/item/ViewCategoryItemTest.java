@@ -25,6 +25,10 @@ public class ViewCategoryItemTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -50,10 +54,16 @@ public class ViewCategoryItemTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//td[2]/a", RuntimeVariables.replace("Item Test"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace(
-				"Item Test\n \n This is an item test. \n Limited: Time Only \n\n Price for 1 Items and Above: $9.99\n \n Availability: In Stock"),
-			selenium.getText("//td[3]"));
+		assertTrue(selenium.isPartialText("//td[3]", "Item Test"));
+		assertTrue(selenium.isPartialText("//td[3]", "This is an item test."));
+		assertTrue(selenium.isPartialText("//td[3]", "Limited: Time Only"));
+		assertTrue(selenium.isPartialText("//td[3]",
+				"Price for 1 Items and Above: "));
+		assertTrue(selenium.isPartialText("//td[3]", "$"));
+		assertTrue(selenium.isPartialText("//td[3]", "9.99"));
+		assertTrue(selenium.isPartialText("//td[3]", "Availability:"));
 		assertEquals(RuntimeVariables.replace("In Stock"),
-			selenium.getText("//td[3]/div[1]"));
+			selenium.getText(
+				"//div[.='In Stock' and @class='portlet-msg-success']"));
 	}
 }

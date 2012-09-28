@@ -25,6 +25,10 @@ public class ViewCouponTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -53,9 +57,9 @@ public class ViewCouponTest extends BaseTestCase {
 		assertEquals("Coupon Test", selenium.getValue("//input[@id='_34_name']"));
 		assertEquals("This is a coupon test.",
 			selenium.getValue("//textarea[@id='_34_description']"));
-		assertEquals("0.00", selenium.getValue("//input[@id='_34_minOrder']"));
-		assertEquals("0.50", selenium.getValue("//input[@id='_34_discount']"));
+		assertEquals("0.00", selenium.getValue("//input[@name='_34_minOrder']"));
+		assertEquals("0.50", selenium.getValue("//input[@name='_34_discount']"));
 		assertEquals("Percentage",
-			selenium.getSelectedLabel("//select[@id='_34_discountType']"));
+			selenium.getSelectedLabel("//select[@name='_34_discountType']"));
 	}
 }

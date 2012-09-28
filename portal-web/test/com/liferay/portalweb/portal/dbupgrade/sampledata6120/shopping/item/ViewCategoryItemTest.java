@@ -38,13 +38,16 @@ public class ViewCategoryItemTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("1111"),
 			selenium.getText("//td[1]/strong"));
-		assertEquals(RuntimeVariables.replace(
-				"Item Test\n \n This is an item test. \n Limited: Time Only \n\n Price for 1 Items and Above: $9.99\n \n Availability: In Stock"),
-			selenium.getText("//td[3]"));
-		assertEquals(RuntimeVariables.replace(
-				"Item Test\n \n This is an item test. \n Limited: Time Only \n\n Price for 1 Items and Above: $9.99\n \n Availability: In Stock"),
-			selenium.getText("//td[3]"));
+		assertTrue(selenium.isPartialText("//td[3]", "Item Test"));
+		assertTrue(selenium.isPartialText("//td[3]", "This is an item test."));
+		assertTrue(selenium.isPartialText("//td[3]", "Limited: Time Only"));
+		assertTrue(selenium.isPartialText("//td[3]",
+				"Price for 1 Items and Above: "));
+		assertTrue(selenium.isPartialText("//td[3]", "$"));
+		assertTrue(selenium.isPartialText("//td[3]", "9.99"));
+		assertTrue(selenium.isPartialText("//td[3]", "Availability:"));
 		assertEquals(RuntimeVariables.replace("In Stock"),
-			selenium.getText("//td[3]/div[1]"));
+			selenium.getText(
+				"//div[.='In Stock' and @class='portlet-msg-success']"));
 	}
 }

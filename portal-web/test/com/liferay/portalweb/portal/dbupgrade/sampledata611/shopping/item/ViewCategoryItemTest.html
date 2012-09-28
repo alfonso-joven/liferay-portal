@@ -44,18 +44,43 @@
 	<td>1111</td>
 </tr>
 <tr>
-	<td>assertText</td>
+	<td>assertPartialText</td>
 	<td>//td[3]</td>
-	<td>Item Test<br /> <br /> This is an item test. <br /> Limited: Time Only <br /><br /> Price for 1 Items and Above: $9.99<br /> <br /> Availability: In Stock</td>
+	<td>Item Test</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>//td[3]</td>
+	<td>This is an item test.</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>//td[3]</td>
+	<td>Limited: Time Only</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>//td[3]</td>
+	<td>Price for 1 Items and Above: </td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>//td[3]</td>
+	<td>$</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>//td[3]</td>
+	<td>9.99</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>//td[3]</td>
+	<td>Availability:</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//td[3]</td>
-	<td>Item Test<br /> <br /> This is an item test. <br /> Limited: Time Only <br /><br /> Price for 1 Items and Above: $9.99<br /> <br /> Availability: In Stock</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//td[3]/div[1]</td>
+	<td>//div[.='In Stock' and @class='portlet-msg-success']</td>
 	<td>In Stock</td>
 </tr>
 

@@ -43,7 +43,7 @@ public class AddCouponTest extends BaseTestCase {
 			RuntimeVariables.replace("Coupon Test"));
 		selenium.type("//textarea[@id='_34_description']",
 			RuntimeVariables.replace("This is a coupon test."));
-		selenium.type("//input[@id='_34_discount']",
+		selenium.type("//input[@name='_34_discount']",
 			RuntimeVariables.replace("0.50"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
