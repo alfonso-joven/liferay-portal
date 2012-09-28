@@ -60,8 +60,8 @@ public class AddPageStagingOrganizationWCDTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//div/span/button[1]",
 			RuntimeVariables.replace("Add Page"));
-		selenium.waitForVisible("//input[@id='_156_name_en_US']");
-		selenium.type("//input[@id='_156_name_en_US']",
+		selenium.waitForVisible("//input[@name='_156_name_en_US']");
+		selenium.type("//input[@name='_156_name_en_US']",
 			RuntimeVariables.replace(
 				"Page Staging Organization Web Content Display"));
 		selenium.clickAt("//input[@value='Add Page']",

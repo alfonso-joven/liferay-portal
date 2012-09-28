@@ -29,19 +29,26 @@ public class ViewOrganizationStagingOrganizationWCDTest extends BaseTestCase {
 		selenium.waitForVisible(
 			"link=Page Staging Organization Web Content Display");
 		selenium.clickAt("link=Page Staging Organization Web Content Display",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace(
+				"Page Staging Organization Web Content Display"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isElementNotPresent(
 				"//body[@class='blue staging controls-visible public-page']"));
-		selenium.clickAt("link=View Staged Page", RuntimeVariables.replace(""));
-		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isElementPresent(
-				"//body[@class='blue staging controls-visible public-page']"));
+		assertFalse(selenium.isTextPresent("WC Web Content Content"));
+		selenium.open("/web/organization-staging-organization-wcd-staging/");
 		assertEquals(RuntimeVariables.replace("WC Web Content Content"),
 			selenium.getText("//p"));
-		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
+		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
+				"Welcome"));
+		selenium.mouseOver("//h2[@class='user-greeting']/span");
+		selenium.clickAt("//h2[@class='user-greeting']/span",
+			RuntimeVariables.replace("Welcome"));
+		selenium.waitForVisible("link=Control Panel");
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Web Content", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Web Content",
+			RuntimeVariables.replace("Web Content"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Organization Staging Organization WCD (Staging)"),
@@ -61,14 +68,23 @@ public class ViewOrganizationStagingOrganizationWCDTest extends BaseTestCase {
 		selenium.waitForVisible(
 			"link=Page Staging Organization Web Content Display");
 		selenium.clickAt("link=Page Staging Organization Web Content Display",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace(
+				"Page Staging Organization Web Content Display"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isElementNotPresent(
 				"//body[@class='blue staging controls-visible public-page']"));
 		assertFalse(selenium.isTextPresent("WC Web Content Content"));
-		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
+		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
+				"Welcome"));
+		selenium.mouseOver("//h2[@class='user-greeting']/span");
+		selenium.clickAt("//h2[@class='user-greeting']/span",
+			RuntimeVariables.replace("Welcome"));
+		selenium.waitForVisible("link=Control Panel");
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Web Content", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Web Content",
+			RuntimeVariables.replace("Web Content"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Organization Staging Organization WCD (Staging)"),

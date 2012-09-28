@@ -26,31 +26,47 @@ public class AddOrganizationStagingOrganizationWCDTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
-		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
+		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
+				"Welcome"));
+		selenium.mouseOver("//h2[@class='user-greeting']/span");
+		selenium.clickAt("//h2[@class='user-greeting']/span",
+			RuntimeVariables.replace("Welcome"));
+		selenium.waitForVisible("link=Control Panel");
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Organizations", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Organizations",
+			RuntimeVariables.replace("Organizations"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Add", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Add", RuntimeVariables.replace("Add"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_126_name",
+		selenium.type("//input[@id='_126_name']",
 			RuntimeVariables.replace("Organization Staging Organization WCD"));
-		selenium.clickAt("//input[@value='Save']", RuntimeVariables.replace(""));
+		selenium.clickAt("//input[@value='Save']",
+			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Your request processed successfully."),
 			selenium.getText("//div[2]/div/div/div"));
 		assertEquals("Organization Staging Organization WCD",
-			selenium.getValue("_126_name"));
+			selenium.getValue("//input[@id='_126_name']"));
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
-		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
+		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
+				"Welcome"));
+		selenium.mouseOver("//h2[@class='user-greeting']/span");
+		selenium.clickAt("//h2[@class='user-greeting']/span",
+			RuntimeVariables.replace("Welcome"));
+		selenium.waitForVisible("link=Control Panel");
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Organizations", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Organizations",
+			RuntimeVariables.replace("Organizations"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_126_keywords", RuntimeVariables.replace("WCD"));
+		selenium.type("//input[@name='_126_keywords']",
+			RuntimeVariables.replace("WCD"));
 		selenium.clickAt("//input[@value='Search']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//strong/span", RuntimeVariables.replace("Actions"));
 		selenium.waitForVisible(
@@ -64,16 +80,18 @@ public class AddOrganizationStagingOrganizationWCDTest extends BaseTestCase {
 		selenium.clickAt("//li[@id='_126_tabs1settingsTabsId']/a",
 			RuntimeVariables.replace("Settings"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Virtual Host", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Virtual Host",
+			RuntimeVariables.replace("Virtual Host"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_126_friendlyURL",
+		selenium.type("//input[@name='_126_friendlyURL']",
 			RuntimeVariables.replace("/staging-organization-wcd"));
-		selenium.clickAt("//input[@value='Save']", RuntimeVariables.replace(""));
+		selenium.clickAt("//input[@value='Save']",
+			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Your request processed successfully."),
 			selenium.getText("//div[2]/div/div/div"));
 		assertEquals("/staging-organization-wcd",
-			selenium.getValue("_126_friendlyURL"));
+			selenium.getValue("//input[@name='_126_friendlyURL']"));
 	}
 }

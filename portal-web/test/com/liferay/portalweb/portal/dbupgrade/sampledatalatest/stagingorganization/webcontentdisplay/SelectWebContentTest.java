@@ -33,6 +33,10 @@ public class SelectWebContentTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//img[@alt='Select Web Content']",
 			RuntimeVariables.replace("Select Web Content"));
+		selenium.waitForVisible(
+			"//iframe[contains(@id,'configurationIframeDialog')]");
+		selenium.selectFrame(
+			"//iframe[contains(@id,'configurationIframeDialog')]");
 		selenium.waitForVisible("//td[1]/a");
 		assertTrue(selenium.isVisible("//td[1]/a"));
 		assertEquals(RuntimeVariables.replace("WC Web Content Name"),

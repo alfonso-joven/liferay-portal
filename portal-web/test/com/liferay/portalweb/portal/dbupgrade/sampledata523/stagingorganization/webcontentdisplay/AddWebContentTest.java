@@ -28,35 +28,47 @@ public class AddWebContentTest extends BaseTestCase {
 		selenium.waitForVisible(
 			"link=Page Staging Organization Web Content Display");
 		selenium.clickAt("link=Page Staging Organization Web Content Display",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace(
+				"Page Staging Organization Web Content Display"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isElementNotPresent(
 				"//body[@class='blue staging controls-visible public-page']"));
-		selenium.clickAt("link=View Staged Page", RuntimeVariables.replace(""));
+		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
+				"Welcome"));
+		selenium.mouseOver("//h2[@class='user-greeting']/span");
+		selenium.clickAt("//h2[@class='user-greeting']/span",
+			RuntimeVariables.replace("Welcome"));
+		selenium.waitForVisible("link=Control Panel");
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isElementPresent(
-				"//body[@class='blue staging controls-visible public-page']"));
-		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
-		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Web Content", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Web Content",
+			RuntimeVariables.replace("Web Content"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//input[@value='Add Web Content']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Add Web Content"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_15_title",
+		selenium.type("//input[@id='_15_title']",
 			RuntimeVariables.replace("WC Web Content Name"));
 		Thread.sleep(5000);
-		selenium.waitForElementPresent("_15_editor");
-		selenium.waitForElementPresent("FCKeditor1___Frame");
-		selenium.waitForElementPresent("xEditingArea");
-		selenium.selectFrame("//iframe[@id='_15_editor']");
-		selenium.selectFrame("//iframe[@id='FCKeditor1___Frame']");
-		selenium.selectFrame("//iframe");
-		selenium.type("//body",
+		selenium.selectFrame("//iframe[@id=\"_15_editor\"]");
+		selenium.selectFrame("//iframe[@id=\"FCKeditor1___Frame\"]");
+		selenium.waitForText("//div[.='Source']", "Source");
+		assertEquals(RuntimeVariables.replace("Source"),
+			selenium.getText("//div[.='Source']"));
+		selenium.clickAt("//div[.='Source']", RuntimeVariables.replace("Source"));
+		selenium.waitForVisible("//div[@class='TB_Button_On']");
+		selenium.waitForVisible("//textarea[@class='SourceField']");
+		selenium.type("//textarea[@class='SourceField']",
 			RuntimeVariables.replace("WC Web Content Content"));
+		selenium.waitForText("//div[.='Source']", "Source");
+		assertEquals(RuntimeVariables.replace("Source"),
+			selenium.getText("//div[.='Source']"));
+		selenium.clickAt("//div[.='Source']", RuntimeVariables.replace("Source"));
+		selenium.waitForElementPresent("//div[@class='TB_Button_Off']");
 		selenium.selectFrame("relative=top");
 		selenium.clickAt("//input[@value='Save and Approve']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Save and Approve"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Your request processed successfully."),

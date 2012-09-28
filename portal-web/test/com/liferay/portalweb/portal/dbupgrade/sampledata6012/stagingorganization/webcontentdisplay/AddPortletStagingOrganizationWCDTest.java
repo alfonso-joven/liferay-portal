@@ -29,16 +29,25 @@ public class AddPortletStagingOrganizationWCDTest extends BaseTestCase {
 		selenium.waitForVisible(
 			"link=Page Staging Organization Web Content Display");
 		selenium.clickAt("link=Page Staging Organization Web Content Display",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace(
+				"Page Staging Organization Web Content Display"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("_145_addApplication", RuntimeVariables.replace(""));
-		Thread.sleep(5000);
-		selenium.waitForVisible("layout_configuration_content");
-		selenium.typeKeys("layout_configuration_content",
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Add"),
+			selenium.getText("//li[@id='_145_addContent']/a/span"));
+		selenium.mouseOver("//li[@id='_145_addContent']/a/span");
+		selenium.waitForVisible("//a[@id='_145_addApplication']");
+		selenium.clickAt("//a[@id='_145_addApplication']",
+			RuntimeVariables.replace("Add Application"));
+		selenium.waitForVisible("//input[@id='layout_configuration_content']");
+		selenium.sendKeys("//input[@id='layout_configuration_content']",
 			RuntimeVariables.replace("w"));
 		selenium.waitForVisible("//div[@title='Web Content Display']/p/a");
 		selenium.clickAt("//div[@title='Web Content Display']/p/a",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Add"));
 		selenium.waitForVisible("//section");
 		assertTrue(selenium.isVisible("//section"));
 	}

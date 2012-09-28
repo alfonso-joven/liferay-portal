@@ -29,16 +29,23 @@ public class AddPortletStagingOrganizationWCDTest extends BaseTestCase {
 		selenium.waitForVisible(
 			"link=Page Staging Organization Web Content Display");
 		selenium.clickAt("link=Page Staging Organization Web Content Display",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace(
+				"Page Staging Organization Web Content Display"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Add Application", RuntimeVariables.replace(""));
-		Thread.sleep(5000);
-		selenium.waitForVisible("layout_configuration_content");
-		selenium.typeKeys("layout_configuration_content",
+		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
+				"Welcome"));
+		selenium.mouseOver("//h2[@class='user-greeting']/span");
+		selenium.clickAt("//h2[@class='user-greeting']/span",
+			RuntimeVariables.replace("Welcome"));
+		selenium.waitForVisible("link=Add Application");
+		selenium.clickAt("link=Add Application",
+			RuntimeVariables.replace("Add Application"));
+		selenium.waitForVisible("//input[@id='layout_configuration_content']");
+		selenium.sendKeys("//input[@id='layout_configuration_content']",
 			RuntimeVariables.replace("w"));
 		selenium.waitForVisible("//div[@title='Web Content Display']/p/a");
 		selenium.clickAt("//div[@title='Web Content Display']/p/a",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Add"));
 		selenium.waitForVisible("//td[1]/div");
 		assertTrue(selenium.isVisible("//td[1]/div"));
 	}

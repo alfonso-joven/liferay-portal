@@ -24,24 +24,27 @@ public class SelectWebContentTest extends BaseTestCase {
 	public void testSelectWebContent() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
-		selenium.open("/web/staging-organization-wcd/");
+		selenium.open("/web/staging-organization-wcd-staging/");
 		selenium.waitForVisible(
 			"link=Page Staging Organization Web Content Display");
 		selenium.clickAt("link=Page Staging Organization Web Content Display",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace(
+				"Page Staging Organization Web Content Display"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isElementPresent(
-				"//body[@class='blue live-view controls-visible signed-in public-page']"));
-		assertTrue(selenium.isElementNotPresent(
 				"//body[@class='blue staging controls-visible signed-in public-page']"));
-		selenium.clickAt("link=View Staged Page", RuntimeVariables.replace(""));
-		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isElementNotPresent(
-				"//body[@class='blue live-view controls-visible signed-in public-page']"));
-		assertTrue(selenium.isElementPresent(
-				"//body[@class='blue staging controls-visible signed-in public-page']"));
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Manage"),
+			selenium.getText("//li[@id='_145_manageContent']/a/span"));
+		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("//img[@alt='Select Web Content']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Select"));
+		selenium.waitForElementPresent("//iframe[@class='configuration-frame']");
+		selenium.selectFrame("//iframe[@class='configuration-frame']");
 		selenium.waitForVisible("//td[1]/a");
 		assertTrue(selenium.isElementPresent("//td[1]/a"));
 		assertEquals(RuntimeVariables.replace("WC Web Content Name"),
@@ -58,10 +61,11 @@ public class SelectWebContentTest extends BaseTestCase {
 			"Displaying Content:");
 		assertTrue(selenium.isPartialText("//form[@id='_86_fm1']/div",
 				"Displaying Content:"));
-		selenium.clickAt("//input[@value='Save']", RuntimeVariables.replace(""));
+		selenium.clickAt("//form[2]/div/span/span/input",
+			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"You have successfully updated the setup."),
-			selenium.getText("//div[@class='portlet-msg-success']"));
+			selenium.getText("//div[@id='p_p_id_86_']/div/div[1]"));
 	}
 }

@@ -24,22 +24,17 @@ public class AddWebContentTest extends BaseTestCase {
 	public void testAddWebContent() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
-		selenium.open("/web/staging-organization-wcd/");
-		assertTrue(selenium.isElementPresent(
-				"//body[@class='blue live-view controls-visible signed-in public-page dockbar-ready']"));
-		assertTrue(selenium.isElementNotPresent(
-				"//body[@class='blue staging controls-visible signed-in public-page dockbar-ready']"));
-		assertEquals(RuntimeVariables.replace("Staging"),
-			selenium.getText("//li[@id='_145_staging']/a/span"));
-		selenium.mouseOver("//li[@id='_145_staging']/a/span");
-		selenium.waitForVisible("link=View Staged Page");
-		selenium.clickAt("link=View Staged Page",
-			RuntimeVariables.replace("View Staged Page"));
+		selenium.open("/web/staging-organization-wcd-staging/");
+		selenium.clickAt("link=Page Staging Organization Web Content Display",
+			RuntimeVariables.replace(
+				"Page Staging Organization Web Content Display"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isElementNotPresent(
-				"//body[@class='blue live-view controls-visible signed-in public-page dockbar-ready']"));
 		assertTrue(selenium.isElementPresent(
 				"//body[@class='blue staging controls-visible signed-in public-page dockbar-ready']"));
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
 		assertEquals(RuntimeVariables.replace("Manage"),
 			selenium.getText("//li[@id='_145_manageContent']/a/span"));
 		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
@@ -50,16 +45,13 @@ public class AddWebContentTest extends BaseTestCase {
 		selenium.clickAt("link=Web Content",
 			RuntimeVariables.replace("Web Content"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace(
-				"Organization Staging Organization Web Content Display"),
-			selenium.getText("//nav/ul/li[2]/span"));
 		selenium.clickAt("//input[@value='Add Web Content']",
 			RuntimeVariables.replace("Add Web Content"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_15_title']",
 			RuntimeVariables.replace("WC Web Content Name"));
 		selenium.waitForElementPresent(
-			"//textarea[@id='_15__15_structure_el_TextAreaField_content' and @style='display: none;']");
+			"//textarea[@id='_15__15_structure_el_TextAreaField_content' and @style=\"display: none;\"]");
 		assertEquals(RuntimeVariables.replace("Source"),
 			selenium.getText("//a/span[.='Source']"));
 		selenium.clickAt("//a/span[.='Source']",
@@ -74,7 +66,7 @@ public class AddWebContentTest extends BaseTestCase {
 		selenium.clickAt("//a/span[.='Source']",
 			RuntimeVariables.replace("Source"));
 		selenium.waitForElementPresent(
-			"//textarea[@id='_15__15_structure_el_TextAreaField_content' and @style='display: none;']");
+			"//textarea[@id='_15__15_structure_el_TextAreaField_content' and @style=\"display: none;\"]");
 		selenium.waitForVisible(
 			"//td[@id='cke_contents__15__15_structure_el_TextAreaField_content']/iframe");
 		selenium.selectFrame(
@@ -92,8 +84,8 @@ public class AddWebContentTest extends BaseTestCase {
 			selenium.getText("//td[3]/a"));
 		assertEquals(RuntimeVariables.replace("Approved"),
 			selenium.getText("//td[4]/a"));
-		assertTrue(selenium.isVisible("//td[5]/a"));
 		assertTrue(selenium.isVisible("//td[6]/a"));
+		assertTrue(selenium.isVisible("//td[7]/a"));
 		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
 			selenium.getText("//td[7]/a"));
 	}

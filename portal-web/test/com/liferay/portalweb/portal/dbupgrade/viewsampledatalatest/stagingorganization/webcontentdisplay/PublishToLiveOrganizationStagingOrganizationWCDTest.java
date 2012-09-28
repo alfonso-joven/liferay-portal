@@ -38,6 +38,8 @@ public class PublishToLiveOrganizationStagingOrganizationWCDTest
 		selenium.clickAt("//div[@class='staging-bar']/ul/li[2]/span/a",
 			RuntimeVariables.replace("Staging"));
 		selenium.waitForPageToLoad("30000");
+		selenium.clickAt("//span[@class='staging-icon-menu-container']",
+			RuntimeVariables.replace("Staging Arrow"));
 		selenium.waitForElementPresent(
 			"//script[contains(@src,'/liferay/navigation_interaction.js')]");
 		selenium.clickAt("//span[@class='staging-icon-menu-container']/span/ul/li/strong/a",

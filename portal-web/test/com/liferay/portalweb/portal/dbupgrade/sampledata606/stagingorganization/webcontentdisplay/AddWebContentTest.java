@@ -28,38 +28,40 @@ public class AddWebContentTest extends BaseTestCase {
 		selenium.waitForVisible(
 			"link=Page Staging Organization Web Content Display");
 		selenium.clickAt("link=Page Staging Organization Web Content Display",
-			RuntimeVariables.replace(""));
-		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isElementPresent(
-				"//body[@class='blue live-view controls-visible signed-in public-page']"));
-		assertTrue(selenium.isElementNotPresent(
-				"//body[@class='blue staging controls-visible signed-in public-page']"));
-		selenium.clickAt("link=View Staged Page", RuntimeVariables.replace(""));
+			RuntimeVariables.replace(
+				"Page Staging Organization Web Content Display"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isElementNotPresent(
-				"//body[@class='blue live-view controls-visible signed-in public-page']"));
-		assertTrue(selenium.isElementPresent(
 				"//body[@class='blue staging controls-visible signed-in public-page']"));
-		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		assertEquals(RuntimeVariables.replace("Manage"),
+			selenium.getText("//li[@id='_145_manageContent']/a/span"));
+		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+		selenium.waitForVisible("link=Control Panel");
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Web Content", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Web Content",
+			RuntimeVariables.replace("Web Content"));
 		selenium.waitForPageToLoad("30000");
+		assertEquals(RuntimeVariables.replace("Organization Staging..."),
+			selenium.getText("//div/div/div/div[2]/div/div/span/a"));
 		selenium.clickAt("//input[@value='Add Web Content']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Add Web Content"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_15_title",
+		selenium.type("//input[@id='_15_title']",
 			RuntimeVariables.replace("WC Web Content Name"));
-		Thread.sleep(5000);
-		selenium.waitForElementPresent("_15_structure_el_TextAreaField_content");
-		selenium.waitForElementPresent("cke_contents_CKEditor1");
 		selenium.selectFrame(
 			"//iframe[@id='_15_structure_el_TextAreaField_content']");
+		selenium.waitForElementPresent(
+			"//textarea[@id='CKEditor1' and @style='visibility: hidden; display: none;']");
 		selenium.selectFrame("//td[@id='cke_contents_CKEditor1']/iframe");
-		selenium.type("//body",
+		selenium.uploadFile("//body",
 			RuntimeVariables.replace("WC Web Content Content"));
 		selenium.selectFrame("relative=top");
 		selenium.clickAt("//input[@value='Publish']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Your request processed successfully."),
