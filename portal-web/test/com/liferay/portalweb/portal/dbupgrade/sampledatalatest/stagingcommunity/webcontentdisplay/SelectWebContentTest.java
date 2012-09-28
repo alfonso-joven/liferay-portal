@@ -33,6 +33,10 @@ public class SelectWebContentTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//img[@alt='Select Web Content']",
 			RuntimeVariables.replace("Select Web Content"));
+		selenium.waitForVisible(
+			"//iframe[contains(@id,'configurationIframeDialog')]");
+		selenium.selectFrame(
+			"//iframe[contains(@id,'configurationIframeDialog')]");
 		selenium.waitForVisible("//td[1]/a");
 		assertTrue(selenium.isElementPresent("//td[1]/a"));
 		assertEquals(RuntimeVariables.replace("WC Web Content Name"),
@@ -54,6 +58,7 @@ public class SelectWebContentTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"You have successfully updated the setup."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
+		selenium.selectFrame("relative=top");
 		selenium.waitForText("//div[@class='journal-content-article']/p",
 			"WC Web Content Content");
 		assertEquals(RuntimeVariables.replace("WC Web Content Content"),

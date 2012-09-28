@@ -35,6 +35,13 @@ public class AddWebContentTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Manage"),
 			selenium.getText("//li[@id='_145_manageContent']/a/span"));
 		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Manage"),
+			selenium.getText("//li[@id='_145_manageContent']/a/span"));
+		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
 		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
@@ -50,8 +57,9 @@ public class AddWebContentTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_15_title']",
 			RuntimeVariables.replace("WC Web Content Name"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='CKEditor1' and @style=\"display: none;\"]");
+		selenium.selectFrame(
+			"//iframe[@id='_15_structure_el_TextAreaField_content']");
+		selenium.waitForText("//a/span[.='Source']", "Source");
 		assertEquals(RuntimeVariables.replace("Source"),
 			selenium.getText("//a/span[.='Source']"));
 		selenium.clickAt("//a/span[.='Source']",
@@ -64,8 +72,6 @@ public class AddWebContentTest extends BaseTestCase {
 			selenium.getText("//a/span[.='Source']"));
 		selenium.clickAt("//a/span[.='Source']",
 			RuntimeVariables.replace("Source"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='CKEditor1' and @style=\"display: none;\"]");
 		selenium.waitForVisible("//td[@id='cke_contents_CKEditor1']/iframe");
 		selenium.selectFrame("//td[@id='cke_contents_CKEditor1']/iframe");
 		selenium.waitForText("//body", "WC Web Content Content");

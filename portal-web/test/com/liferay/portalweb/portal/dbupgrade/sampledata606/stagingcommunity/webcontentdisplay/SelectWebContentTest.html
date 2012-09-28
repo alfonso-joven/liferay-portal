@@ -14,29 +14,49 @@
 	<td></td>
 </tr>
 <tr>
+	<td>clickAt</td>
+	<td>//div[@id='dockbar']</td>
+	<td>Dockbar</td>
+</tr>
+<tr>
 	<td>waitForElementPresent</td>
+	<td>//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]</td>
+	<td>AUI Editable Min</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//li[@id='_145_manageContent']/a/span</td>
+	<td>Manage</td>
+</tr>
+<tr>
+	<td>mouseOver</td>
+	<td>//li[@id='_145_manageContent']/a/span</td>
+	<td>Manage</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
 	<td>link=Control Panel</td>
-	<td></td>
+	<td>Control Panel</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=Control Panel</td>
-	<td></td>
+	<td>Control Panel</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=Communities</td>
-	<td></td>
+	<td>Communities</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_134_name</td>
+	<td>//input[@id='_134_name']</td>
 	<td>Community Staging Community Web Content Display</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Search']</td>
-	<td></td>
+	<td>Search</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -51,12 +71,12 @@
 <tr>
 	<td>waitForVisible</td>
 	<td>link=Page Staging Community Web Content Display</td>
-	<td></td>
+	<td>Page Staging Community Web Content Display</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=Page Staging Community Web Content Display</td>
-	<td></td>
+	<td>Page Staging Community Web Content Display</td>
 </tr>
 <tr>
 	<td>assertElementPresent</td>
@@ -66,7 +86,17 @@
 <tr>
 	<td>clickAt</td>
 	<td>//img[@alt='Select Web Content']</td>
-	<td></td>
+	<td>Select</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//iframe[@class='configuration-frame']</td>
+	<td>IFrame</td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>//iframe[@class='configuration-frame']</td>
+	<td>IFrame</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
@@ -121,14 +151,18 @@
 <tr>
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Save']</td>
-	<td></td>
+	<td>Save</td>
 </tr>
 <tr>
 	<td>assertText</td>
 	<td>//div[@id='p_p_id_86_']/div/div[1]</td>
 	<td>You have successfully updated the setup.</td>
 </tr>
-
+<tr>
+	<td>selectFrame</td>
+	<td>relative=top</td>
+	<td>Top</td>
+</tr>
 </tbody></table>
 </body>
 </html>

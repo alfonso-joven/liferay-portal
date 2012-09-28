@@ -25,16 +25,25 @@ public class AddWebContentTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
-		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Manage"),
+			selenium.getText("//li[@id='_145_manageContent']/a/span"));
+		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+		selenium.waitForVisible("link=Control Panel");
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Communities", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Communities",
+			RuntimeVariables.replace("Communities"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_134_name",
+		selenium.type("//input[@id='_134_name']",
 			RuntimeVariables.replace(
 				"Community Staging Community Web Content Display"));
 		selenium.clickAt("//input[@value='Search']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Staging"),
 			selenium.getText("//td[1]/a[2]"));
@@ -43,29 +52,39 @@ public class AddWebContentTest extends BaseTestCase {
 		selenium.waitForVisible(
 			"link=Page Staging Community Web Content Display");
 		selenium.clickAt("link=Page Staging Community Web Content Display",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace(
+				"Page Staging Community Web Content Display"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isElementPresent(
 				"//body[@class='blue staging controls-visible signed-in public-page']"));
-		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Manage"),
+			selenium.getText("//li[@id='_145_manageContent']/a/span"));
+		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+		selenium.waitForVisible("link=Control Panel");
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Web Content", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Web Content",
+			RuntimeVariables.replace("Web Content"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Community Staging Community Web Content Display (Staging)"),
 			selenium.getText("//nav/ul/li[2]/span"));
 		selenium.clickAt("//input[@value='Add Web Content']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Add Web Content"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_15_title",
+		selenium.type("//input[@id='_15_title']",
 			RuntimeVariables.replace("WC Web Content Name"));
-		Thread.sleep(5000);
-		selenium.waitForElementPresent("_15_structure_el_TextAreaField_content");
-		selenium.waitForElementPresent("cke_contents_CKEditor1");
 		selenium.selectFrame(
 			"//iframe[@id='_15_structure_el_TextAreaField_content']");
+		selenium.waitForElementPresent(
+			"//textarea[@id='CKEditor1' and @style='visibility: hidden; display: none;']");
 		selenium.selectFrame("//td[@id='cke_contents_CKEditor1']/iframe");
-		selenium.type("//body",
+		selenium.uploadFile("//body",
 			RuntimeVariables.replace("WC Web Content Content"));
 		selenium.selectFrame("relative=top");
 		selenium.clickAt("//input[@value='Publish']",

@@ -33,6 +33,8 @@ public class SelectWebContentTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//img[@alt='Select Web Content']",
 			RuntimeVariables.replace("Select Web Content"));
+		selenium.waitForVisible("//iframe");
+		selenium.selectFrame("//iframe");
 		selenium.waitForVisible("//td[1]/a");
 		assertTrue(selenium.isElementPresent("//td[1]/a"));
 		assertEquals(RuntimeVariables.replace("WC Web Content Name"),
@@ -43,20 +45,21 @@ public class SelectWebContentTest extends BaseTestCase {
 			selenium.getText("//td[5]/a"));
 		selenium.clickAt("//td[2]/a",
 			RuntimeVariables.replace("WC Web Content Name"));
-		selenium.waitForText("//span[@class='displaying-article-id-holder']",
-			"Displaying Content: WC Web Content Name (Modified)");
-		assertEquals(RuntimeVariables.replace(
-				"Displaying Content: WC Web Content Name (Modified)"),
-			selenium.getText("//span[@class='displaying-article-id-holder']"));
+		selenium.waitForText("//span[@class='displaying-article-id modified']",
+			"WC Web Content Name (Modified)");
+		assertEquals(RuntimeVariables.replace("WC Web Content Name (Modified)"),
+			selenium.getText("//span[@class='displaying-article-id modified']"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"You have successfully updated the setup."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
+		selenium.selectFrame("relative=top");
 		selenium.waitForText("//div[@class='journal-content-article']/p",
 			"WC Web Content Content");
 		assertEquals(RuntimeVariables.replace("WC Web Content Content"),
 			selenium.getText("//div[@class='journal-content-article']/p"));
+		selenium.selectFrame("relative=top");
 	}
 }

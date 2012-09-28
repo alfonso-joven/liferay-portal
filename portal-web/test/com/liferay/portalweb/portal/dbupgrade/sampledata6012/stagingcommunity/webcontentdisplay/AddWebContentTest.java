@@ -32,6 +32,10 @@ public class AddWebContentTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isVisible(
 				"//body[@class='blue staging controls-visible signed-in public-page dockbar-ready']"));
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
 		assertEquals(RuntimeVariables.replace("Manage"),
 			selenium.getText("//li[@id='_145_manageContent']/a/span"));
 		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");

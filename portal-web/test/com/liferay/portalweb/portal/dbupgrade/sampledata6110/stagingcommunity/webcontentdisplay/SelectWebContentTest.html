@@ -30,6 +30,16 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
+	<td>//iframe</td>
+	<td>Web Content Display - Configuration</td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>//iframe</td>
+	<td>Web Content Display - Configuration</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
 	<td>//td[1]/a</td>
 	<td>WC Web Content ID</td>
 </tr>
@@ -65,13 +75,13 @@
 </tr>
 <tr>
 	<td>waitForText</td>
-	<td>//span[@class='displaying-article-id-holder']</td>
-	<td>Displaying Content: WC Web Content Name (Modified)</td>
+	<td>//span[@class='displaying-article-id modified']</td>
+	<td>WC Web Content Name (Modified)</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//span[@class='displaying-article-id-holder']</td>
-	<td>Displaying Content: WC Web Content Name (Modified)</td>
+	<td>//span[@class='displaying-article-id modified']</td>
+	<td>WC Web Content Name (Modified)</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -84,6 +94,11 @@
 	<td>You have successfully updated the setup.</td>
 </tr>
 <tr>
+	<td>selectFrame</td>
+	<td>relative=top</td>
+	<td>Top</td>
+</tr>
+<tr>
 	<td>waitForText</td>
 	<td>//div[@class='journal-content-article']/p</td>
 	<td>WC Web Content Content</td>
@@ -92,6 +107,11 @@
 	<td>assertText</td>
 	<td>//div[@class='journal-content-article']/p</td>
 	<td>WC Web Content Content</td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>relative=top</td>
+	<td>Top</td>
 </tr>
 </tbody></table>
 </body>

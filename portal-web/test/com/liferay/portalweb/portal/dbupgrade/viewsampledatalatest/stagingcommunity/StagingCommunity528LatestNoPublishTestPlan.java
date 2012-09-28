@@ -29,7 +29,7 @@ public class StagingCommunity528LatestNoPublishTestPlan extends BaseTestSuite {
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
 
-		testSuite.addTest(QuartzTests.suite());
+		//testSuite.addTest(QuartzTests.suite());
 		testSuite.addTest(WebContentDisplayNoPublishTests.suite());
 
 		return testSuite;

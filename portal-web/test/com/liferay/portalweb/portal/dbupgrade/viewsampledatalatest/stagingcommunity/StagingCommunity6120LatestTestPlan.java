@@ -29,7 +29,7 @@ public class StagingCommunity6120LatestTestPlan extends BaseTestSuite {
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
 
-		testSuite.addTest(QuartzTests.suite());
+		//testSuite.addTest(QuartzTests.suite());
 		testSuite.addTest(WebContentDisplayTests.suite());
 
 		return testSuite;
