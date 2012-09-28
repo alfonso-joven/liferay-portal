@@ -47,6 +47,7 @@ import com.liferay.portal.model.Image;
 import com.liferay.portal.model.Layout;
 import com.liferay.portal.model.RepositoryEntry;
 import com.liferay.portal.model.User;
+import com.liferay.portal.repository.liferayrepository.model.LiferayFileEntry;
 import com.liferay.portal.service.GroupLocalServiceUtil;
 import com.liferay.portal.service.LayoutLocalServiceUtil;
 import com.liferay.portal.service.ServiceContext;
@@ -1540,7 +1541,7 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 						DLAppLocalServiceUtil.getFileEntryByUuidAndGroupId(
 							uuid, groupId);
 				}
-				else if (isLegacyURL) {
+				else {
 					String folderIdString = MapUtil.getString(map, "folderId");
 
 					if (Validator.isNotNull(folderIdString)) {
@@ -1560,10 +1561,7 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 							DLFileEntryLocalServiceUtil.getFileEntryByName(
 								groupId, folderId, name);
 
-						if (dlFileEntry != null) {
-							fileEntry = DLAppLocalServiceUtil.getFileEntry(
-								dlFileEntry.getFileEntryId());
-						}
+						fileEntry = new LiferayFileEntry(dlFileEntry);
 					}
 					else if (map.containsKey("image_id") ||
 							map.containsKey("img_id") ||
@@ -1579,20 +1577,12 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 							}
 						}
 
-						try {
-							DLFileEntry dlFileEntry =
-								DLFileEntryLocalServiceUtil
-									.fetchFileEntryByAnyImageId(imageId);
+						DLFileEntry dlFileEntry =
+							DLFileEntryLocalServiceUtil
+								.fetchFileEntryByAnyImageId(imageId);
 
-							if (dlFileEntry != null) {
-								fileEntry = DLAppLocalServiceUtil.getFileEntry(
-									dlFileEntry.getFileEntryId());
-							}
-						}
-						catch (SystemException e) {
-							_log.error(
-								"Unable to find DLFileEntry by imageId: " +
-								imageId);
+						if (dlFileEntry != null) {
+							fileEntry = new LiferayFileEntry(dlFileEntry);
 						}
 					}
 				}
