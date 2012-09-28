@@ -52,9 +52,7 @@ public class ViewPollsVoteTest extends BaseTestCase {
 			selenium.getText("//tr[2]/td[1]"));
 		assertEquals(RuntimeVariables.replace("1"),
 			selenium.getText("//tr[2]/td[2]"));
-		assertEquals(RuntimeVariables.replace("a."),
-			selenium.getText("//td[6]/strong"));
-		assertEquals(RuntimeVariables.replace("Test Choice A"),
-			selenium.getText("//td[7]"));
+		assertEquals(RuntimeVariables.replace("a. Test Choice A"),
+			selenium.getText("//div/div/table/tbody/tr[3]/td[2]"));
 	}
 }

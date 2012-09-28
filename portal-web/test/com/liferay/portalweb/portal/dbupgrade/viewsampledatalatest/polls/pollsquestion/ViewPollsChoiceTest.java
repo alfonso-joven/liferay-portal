@@ -49,10 +49,10 @@ public class ViewPollsChoiceTest extends BaseTestCase {
 				"This is a test poll description."),
 			selenium.getText("//fieldset/div/span"));
 		assertEquals(RuntimeVariables.replace("Test Choice A"),
-			selenium.getText("//td[7]"));
+			selenium.getText("//td[5]"));
 		assertEquals(RuntimeVariables.replace("Test Choice B"),
-			selenium.getText("//tr[3]/td[5]"));
+			selenium.getText("//tr[3]/td[4]"));
 		assertEquals(RuntimeVariables.replace("Test Choice C"),
-			selenium.getText("//tr[4]/td[5]"));
+			selenium.getText("//tr[4]/td[4]"));
 	}
 }

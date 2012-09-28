@@ -60,9 +60,8 @@ public class AddVotePollsTest extends BaseTestCase {
 			selenium.getText("//tr[2]/td[1]"));
 		assertEquals(RuntimeVariables.replace("1"),
 			selenium.getText("//tr[2]/td[2]"));
-		assertEquals(RuntimeVariables.replace("a."),
-			selenium.getText("//td[6]/strong"));
+		assertEquals(RuntimeVariables.replace("a."), selenium.getText("//td[4]"));
 		assertEquals(RuntimeVariables.replace("Test Choice A"),
-			selenium.getText("//td[7]"));
+			selenium.getText("//td[5]"));
 	}
 }
