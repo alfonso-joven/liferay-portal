@@ -32,7 +32,7 @@ public class SignInTest extends BaseTestCase {
 			RuntimeVariables.replace("test@liferay.com"));
 		selenium.type("//input[@name='_58_password']",
 			RuntimeVariables.replace("test"));
-		selenium.clickAt("//input[@name='_58_rememberMeCheckbox']",
+		selenium.clickAt("//input[@id='_58_rememberMeCheckbox']",
 			RuntimeVariables.replace("Remember Me"));
 		selenium.clickAt("//input[@value='Sign In']",
 			RuntimeVariables.replace("Sign In"));

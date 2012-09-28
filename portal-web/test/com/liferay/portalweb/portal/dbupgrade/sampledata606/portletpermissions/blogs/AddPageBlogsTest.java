@@ -25,18 +25,23 @@ public class AddPageBlogsTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.clickAt("main-content", RuntimeVariables.replace(""));
-		selenium.clickAt("dockbar", RuntimeVariables.replace(""));
-		selenium.clickAt("navigation", RuntimeVariables.replace(""));
-		selenium.waitForElementPresent("addPage");
-		selenium.clickAt("addPage", RuntimeVariables.replace(""));
-		selenium.waitForVisible("//input");
-		selenium.type("//input",
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Add"),
+			selenium.getText("//li[@id='_145_addContent']/a/span"));
+		selenium.mouseOver("//li[@id='_145_addContent']/a/span");
+		selenium.waitForVisible("//a[@id='addPage']");
+		selenium.clickAt("//a[@id='addPage']", RuntimeVariables.replace("Page"));
+		selenium.waitForVisible("//input[@type='text']");
+		selenium.type("//input[@type='text']",
 			RuntimeVariables.replace("Blogs Portlet Permissions Page"));
-		selenium.clickAt("save", RuntimeVariables.replace(""));
+		selenium.clickAt("//button[@id='save']",
+			RuntimeVariables.replace("Save"));
 		selenium.waitForVisible("link=Blogs Portlet Permissions Page");
 		selenium.clickAt("link=Blogs Portlet Permissions Page",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Blogs Portlet Permissions Page"));
 		selenium.waitForPageToLoad("30000");
 	}
 }

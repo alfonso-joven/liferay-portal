@@ -36,14 +36,24 @@ public class RemovePortletPermissionsGuestViewTest extends BaseTestCase {
 				selenium.clickAt("link=Blogs Portlet Permissions Page",
 					RuntimeVariables.replace(""));
 				selenium.waitForPageToLoad("30000");
-				selenium.clickAt("link=Configuration",
-					RuntimeVariables.replace(""));
-				selenium.waitForPageToLoad("30000");
-				selenium.clickAt("link=Permissions",
+				Thread.sleep(5000);
+				assertEquals(RuntimeVariables.replace("Options"),
+					selenium.getText("//strong/span"));
+				selenium.clickAt("//strong/span",
+					RuntimeVariables.replace("Options"));
+				selenium.waitForVisible(
+					"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a");
+				assertEquals(RuntimeVariables.replace("Configuration"),
+					selenium.getText(
+						"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a"));
+				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a",
+					RuntimeVariables.replace("Configuration"));
+				selenium.clickAt("//li[@id='_86_tabs1permissionsTabsId']/a",
 					RuntimeVariables.replace(""));
 				selenium.waitForPageToLoad("30000");
 
-				boolean guestViewChecked = selenium.isChecked("15_ACTION_VIEW");
+				boolean guestViewChecked = selenium.isChecked(
+						"//input[@name='15_ACTION_VIEW']");
 
 				if (!guestViewChecked) {
 					label = 2;
@@ -51,7 +61,8 @@ public class RemovePortletPermissionsGuestViewTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("15_ACTION_VIEW", RuntimeVariables.replace(""));
+				selenium.clickAt("//input[@name='15_ACTION_VIEW']",
+					RuntimeVariables.replace(""));
 
 			case 2:
 				selenium.clickAt("//input[@value='Submit']",
@@ -59,7 +70,8 @@ public class RemovePortletPermissionsGuestViewTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.isTextPresent(
 						"Your request processed successfully."));
-				assertFalse(selenium.isChecked("15_ACTION_VIEW"));
+				assertFalse(selenium.isChecked(
+						"//input[@name='15_ACTION_VIEW']"));
 
 			case 100:
 				label = -1;

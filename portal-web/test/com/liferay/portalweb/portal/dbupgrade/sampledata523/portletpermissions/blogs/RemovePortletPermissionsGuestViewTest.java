@@ -36,14 +36,26 @@ public class RemovePortletPermissionsGuestViewTest extends BaseTestCase {
 				selenium.clickAt("link=Blogs Portlet Permissions Page",
 					RuntimeVariables.replace("Blogs Portlet Permissions Page"));
 				selenium.waitForPageToLoad("30000");
-				selenium.clickAt("link=Configuration",
+				Thread.sleep(5000);
+				assertEquals(RuntimeVariables.replace("Options"),
+					selenium.getText("//strong/span"));
+				selenium.clickAt("//strong/span",
+					RuntimeVariables.replace("Options"));
+				selenium.waitForVisible(
+					"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a");
+				assertEquals(RuntimeVariables.replace("Configuration"),
+					selenium.getText(
+						"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a"));
+				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a",
 					RuntimeVariables.replace("Configuration"));
-				selenium.waitForPageToLoad("30000");
-				selenium.clickAt("link=Permissions",
+				selenium.waitForVisible(
+					"//li[@id='_86_tabs1permissionsTabsId']/a");
+				selenium.clickAt("//li[@id='_86_tabs1permissionsTabsId']/a",
 					RuntimeVariables.replace("Permissions"));
 				selenium.waitForPageToLoad("30000");
 
-				boolean guestViewChecked = selenium.isChecked("13_ACTION_VIEW");
+				boolean guestViewChecked = selenium.isChecked(
+						"//input[@name='13_ACTION_VIEW']");
 
 				if (!guestViewChecked) {
 					label = 2;

@@ -24,13 +24,19 @@ public class SignInTest extends BaseTestCase {
 	public void testSignIn() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
-		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Sign In");
-		selenium.clickAt("link=Sign In", RuntimeVariables.replace(""));
-		selenium.waitForPageToLoad("30000");
-		selenium.type("_58_login", RuntimeVariables.replace("test@liferay.com"));
-		selenium.type("_58_password", RuntimeVariables.replace("test"));
-		selenium.clickAt("_58_rememberMeCheckbox", RuntimeVariables.replace(""));
+		selenium.open("/web/guest/home");
+		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
+				"Welcome"));
+		selenium.mouseOver("//h2[@class='user-greeting']/span");
+		selenium.clickAt("//h2[@class='user-greeting']/span",
+			RuntimeVariables.replace("Welcome"));
+		selenium.waitForVisible("//input[@value='Sign In']");
+		selenium.type("//input[@name='_58_login']",
+			RuntimeVariables.replace("test@liferay.com"));
+		selenium.type("//input[@name='_58_password']",
+			RuntimeVariables.replace("test"));
+		selenium.clickAt("//input[@id='_58_rememberMeCheckbox']",
+			RuntimeVariables.replace("Remember Me"));
 		selenium.clickAt("//input[@value='Sign In']",
 			RuntimeVariables.replace(""));
 		selenium.waitForPageToLoad("30000");

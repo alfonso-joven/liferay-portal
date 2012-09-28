@@ -45,12 +45,20 @@ public class RemovePortletPermissionsGuestViewTest extends BaseTestCase {
 						"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a"));
 				selenium.click(
 					"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a");
-				selenium.waitForVisible("link=Permissions");
-				selenium.clickAt("link=Permissions",
-					RuntimeVariables.replace(""));
+				selenium.waitForVisible(
+					"//iframe[contains(@id,'configurationIframe')]");
+				selenium.selectFrame(
+					"//iframe[contains(@id,'configurationIframe')]");
+				selenium.waitForElementPresent(
+					"//script[contains(@src,'/liferay/hudcrumbs.js')]");
+				selenium.waitForVisible(
+					"//span[@class='aui-tab-label']/a[contains(.,'Permissions')]");
+				selenium.clickAt("//span[@class='aui-tab-label']/a[contains(.,'Permissions')]",
+					RuntimeVariables.replace("Permissions"));
 				selenium.waitForPageToLoad("30000");
 
-				boolean guestViewChecked = selenium.isChecked("15_ACTION_VIEW");
+				boolean guestViewChecked = selenium.isChecked(
+						"//input[@name='15_ACTION_VIEW']");
 
 				if (!guestViewChecked) {
 					label = 2;
@@ -58,7 +66,8 @@ public class RemovePortletPermissionsGuestViewTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("15_ACTION_VIEW", RuntimeVariables.replace(""));
+				selenium.clickAt("//input[@name='15_ACTION_VIEW']",
+					RuntimeVariables.replace(""));
 
 			case 2:
 				selenium.clickAt("//input[@value='Save']",
@@ -67,7 +76,8 @@ public class RemovePortletPermissionsGuestViewTest extends BaseTestCase {
 				assertEquals(RuntimeVariables.replace(
 						"Your request processed successfully."),
 					selenium.getText("//div[@class='portlet-msg-success']"));
-				assertFalse(selenium.isChecked("15_ACTION_VIEW"));
+				assertFalse(selenium.isChecked(
+						"//input[@name='15_ACTION_VIEW']"));
 
 			case 100:
 				label = -1;

@@ -28,9 +28,11 @@ public class AddPageBlogsTest extends BaseTestCase {
 		selenium.waitForElementPresent("//div[@id='add-page']/a/span");
 		selenium.clickAt("//div[@id='add-page']/a/span",
 			RuntimeVariables.replace("Add"));
-		selenium.type("new_page",
+		selenium.type("//input[@name='new_page']",
 			RuntimeVariables.replace("Blogs Portlet Permissions Page"));
-		selenium.clickAt("link=Save", RuntimeVariables.replace("Save"));
+		selenium.waitForVisible("//a[@class='save-page']");
+		selenium.clickAt("//a[@class='save-page']",
+			RuntimeVariables.replace("Save"));
 		selenium.waitForElementPresent("link=Blogs Portlet Permissions Page");
 		selenium.clickAt("link=Blogs Portlet Permissions Page",
 			RuntimeVariables.replace("Blogs Portlet Permissions Page"));

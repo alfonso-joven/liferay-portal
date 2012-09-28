@@ -24,10 +24,14 @@ public class SignInTest extends BaseTestCase {
 	public void testSignIn() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
-		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Sign In");
-		selenium.clickAt("link=Sign In", RuntimeVariables.replace("Sign In"));
-		selenium.waitForPageToLoad("30000");
+		selenium.open("/web/guest/home");
+		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
+				"Welcome"));
+		selenium.mouseOver("//h2[@class='user-greeting']/span");
+		selenium.clickAt("//h2[@class='user-greeting']/span",
+			RuntimeVariables.replace("Welcome"));
+		selenium.waitForVisible("//input[@value='Sign In']");
+		assertTrue(selenium.isVisible("//input[@value='Sign In']"));
 		selenium.type("//input[@name='_58_login']",
 			RuntimeVariables.replace("test@liferay.com"));
 		selenium.type("//input[@name='_58_password']",

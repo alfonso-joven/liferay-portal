@@ -24,18 +24,48 @@
 	<td>Blogs Portlet Permissions Page</td>
 </tr>
 <tr>
-	<td>clickAtAndWait</td>
-	<td>link=Configuration</td>
+	<td>pause</td>
+	<td>5000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//strong/span</td>
+	<td>Options</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//strong/span</td>
+	<td>Options</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a</td>
 	<td>Configuration</td>
 </tr>
 <tr>
-	<td>clickAtAndWait</td>
-	<td>link=Permissions</td>
+	<td>assertText</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a</td>
+	<td>Configuration</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a</td>
+	<td>Configuration</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//li[@id='_86_tabs1permissionsTabsId']/a</td>
 	<td>Permissions</td>
 </tr>
 <tr>
-	<td>store</td>
-	<td>eval(selenium.isChecked('13_ACTION_VIEW'))</td>
+	<td>clickAtAndWait</td>
+	<td>//li[@id='_86_tabs1permissionsTabsId']/a</td>
+	<td>Permissions</td>
+</tr>
+<tr>
+	<td>storeChecked</td>
+	<td>//input[@name='13_ACTION_VIEW']</td>
 	<td>guestViewChecked</td>
 </tr>
 <tr>

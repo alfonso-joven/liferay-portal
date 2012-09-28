@@ -45,12 +45,20 @@ public class RemovePortletPermissionsGuestViewTest extends BaseTestCase {
 						"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a"));
 				selenium.click(
 					"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a");
-				selenium.waitForVisible("link=Permissions");
-				selenium.clickAt("link=Permissions",
+				selenium.waitForVisible(
+					"//iframe[contains(@id,'configurationIframe')]");
+				selenium.selectFrame(
+					"//iframe[contains(@id,'configurationIframe')]");
+				selenium.waitForElementPresent(
+					"//script[contains(@src,'/liferay/hudcrumbs.js')]");
+				selenium.waitForVisible(
+					"//span[@class='aui-tab-label']/a[contains(.,'Permissions')]");
+				selenium.clickAt("//span[@class='aui-tab-label']/a[contains(.,'Permissions')]",
 					RuntimeVariables.replace("Permissions"));
 				selenium.waitForPageToLoad("30000");
 
-				boolean guestViewChecked = selenium.isChecked("16_ACTION_VIEW");
+				boolean guestViewChecked = selenium.isChecked(
+						"//input[@name='16_ACTION_VIEW']");
 
 				if (!guestViewChecked) {
 					label = 2;
