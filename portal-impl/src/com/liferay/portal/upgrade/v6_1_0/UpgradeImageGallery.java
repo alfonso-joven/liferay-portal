@@ -339,20 +339,20 @@ public class UpgradeImageGallery extends UpgradeProcess {
 
 			rs = ps.executeQuery();
 
-			ps = con.prepareStatement(
+			PreparedStatement batchPS = con.prepareStatement(
 				"delete from Resource_ where codeId = ? and primKey = ?");
 
 			int count = 0;
 
 			while (rs.next()) {
-				ps.setLong(1, dlCodeId);
-				ps.setString(2, rs.getString("primKey"));
+				batchPS.setLong(1, dlCodeId);
+				batchPS.setString(2, rs.getString("primKey"));
 
 				if (supportsBatchUpdates) {
-					ps.addBatch();
+					batchPS.addBatch();
 
 					if (count == PropsValues.HIBERNATE_JDBC_BATCH_SIZE) {
-						ps.executeBatch();
+						batchPS.executeBatch();
 
 						count = 0;
 					}
@@ -361,13 +361,15 @@ public class UpgradeImageGallery extends UpgradeProcess {
 					}
 				}
 				else {
-					ps.executeUpdate();
+					batchPS.executeUpdate();
 				}
 			}
 
 			if (supportsBatchUpdates && (count > 0)) {
-				ps.executeBatch();
+				batchPS.executeBatch();
 			}
+
+			batchPS.close();
 		}
 		finally {
 			DataAccess.cleanUp(con, ps, rs);
