@@ -30,7 +30,14 @@ public class AssignMembersOrganizationTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				selenium.waitForElementPresent("link=Control Panel");
+				selenium.clickAt("//div[@id='dockbar']",
+					RuntimeVariables.replace("Dockbar"));
+				selenium.waitForElementPresent(
+					"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+				assertEquals(RuntimeVariables.replace("Go to"),
+					selenium.getText("//li[@id='_145_mySites']/a/span"));
+				selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+				selenium.waitForVisible("link=Control Panel");
 				selenium.clickAt("link=Control Panel",
 					RuntimeVariables.replace("Control Panel"));
 				selenium.waitForPageToLoad("30000");
@@ -41,7 +48,8 @@ public class AssignMembersOrganizationTest extends BaseTestCase {
 					RuntimeVariables.replace("Search All Organizations"));
 				selenium.waitForPageToLoad("30000");
 
-				boolean basic1Visible = selenium.isVisible("link=\u00ab Basic");
+				boolean basic1Visible = selenium.isVisible(
+						"//div/div/a[contains(.,'Basic')]");
 
 				if (!basic1Visible) {
 					label = 2;
@@ -49,7 +57,7 @@ public class AssignMembersOrganizationTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("link=\u00ab Basic",
+				selenium.clickAt("//div/div/a[contains(.,'Basic')]",
 					RuntimeVariables.replace("\u00ab Basic"));
 
 			case 2:
@@ -75,7 +83,8 @@ public class AssignMembersOrganizationTest extends BaseTestCase {
 					RuntimeVariables.replace("Available"));
 				selenium.waitForPageToLoad("30000");
 
-				boolean basic2Visible = selenium.isVisible("link=\u00ab Basic");
+				boolean basic2Visible = selenium.isVisible(
+						"//div/div/a[contains(.,'Basic')]");
 
 				if (!basic2Visible) {
 					label = 3;
@@ -83,7 +92,7 @@ public class AssignMembersOrganizationTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("link=\u00ab Basic",
+				selenium.clickAt("//div/div/a[contains(.,'Basic')]",
 					RuntimeVariables.replace("\u00ab Basic"));
 
 			case 3:

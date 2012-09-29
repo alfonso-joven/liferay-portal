@@ -25,7 +25,6 @@ public class SearchUserGroupQuotesTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Directory Test Page");
 		selenium.clickAt("link=Directory Test Page",
 			RuntimeVariables.replace("Directory Test Page"));
 		selenium.waitForPageToLoad("30000");

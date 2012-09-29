@@ -30,12 +30,12 @@ public class SearchUserQuotesTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				selenium.waitForVisible("link=Directory Test Page");
 				selenium.clickAt("link=Directory Test Page",
 					RuntimeVariables.replace("Directory Test Page"));
 				selenium.waitForPageToLoad("30000");
 
-				boolean basicVisible = selenium.isVisible("link=\u00ab Basic");
+				boolean basicVisible = selenium.isVisible(
+						"//div/div/a[contains(.,'Basic')]");
 
 				if (!basicVisible) {
 					label = 2;
@@ -43,8 +43,8 @@ public class SearchUserQuotesTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("link=\u00ab Basic",
-					RuntimeVariables.replace("\u00ab Basic"));
+				selenium.clickAt("//div/div/a[contains(.,'Basic')]",
+					RuntimeVariables.replace("Basic \u00bb"));
 
 			case 2:
 				selenium.type("//input[@name='_11_keywords']",

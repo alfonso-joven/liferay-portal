@@ -30,7 +30,6 @@ public class ViewOrganizationUserTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				selenium.waitForVisible("link=Directory Test Page");
 				selenium.clickAt("link=Directory Test Page",
 					RuntimeVariables.replace("Directory Test Page"));
 				selenium.waitForPageToLoad("30000");
@@ -38,7 +37,8 @@ public class ViewOrganizationUserTest extends BaseTestCase {
 					RuntimeVariables.replace("Organizations"));
 				selenium.waitForPageToLoad("30000");
 
-				boolean basicVisible = selenium.isVisible("link=\u00ab Basic");
+				boolean basicVisible = selenium.isVisible(
+						"//div/div/a[contains(.,'Basic')]");
 
 				if (!basicVisible) {
 					label = 2;
@@ -46,8 +46,8 @@ public class ViewOrganizationUserTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("link=\u00ab Basic",
-					RuntimeVariables.replace("\u00ab Basic"));
+				selenium.clickAt("//div/div/a[contains(.,'Basic')]",
+					RuntimeVariables.replace("Basic \u00bb"));
 
 			case 2:
 				selenium.type("//input[@name='_11_keywords']",
@@ -103,9 +103,18 @@ public class ViewOrganizationUserTest extends BaseTestCase {
 					selenium.getText("//dl[@class='property-list']/dt[4]"));
 				assertEquals(RuntimeVariables.replace("Test Organization"),
 					selenium.getText("//dl[@class='property-list']/dd[4]"));
-				assertEquals(RuntimeVariables.replace(
-						"Billing 12345 Test Street\n 11111, Diamond Bar (Mailing)"),
-					selenium.getText("//li[@class='primary']"));
+				assertTrue(selenium.isPartialText("//li[@class='primary']",
+						"Billing"));
+				assertTrue(selenium.isPartialText("//li[@class='primary']",
+						"12345 Test"));
+				assertTrue(selenium.isPartialText("//li[@class='primary']",
+						"Street"));
+				assertTrue(selenium.isPartialText("//li[@class='primary']",
+						"11111, Diamond"));
+				assertTrue(selenium.isPartialText("//li[@class='primary']",
+						"Bar"));
+				assertTrue(selenium.isPartialText("//li[@class='primary']",
+						"(Mailing)"));
 
 			case 100:
 				label = -1;

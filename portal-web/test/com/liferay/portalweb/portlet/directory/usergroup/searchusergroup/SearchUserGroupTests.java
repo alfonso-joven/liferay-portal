@@ -15,6 +15,7 @@
 package com.liferay.portalweb.portlet.directory.usergroup.searchusergroup;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
+import com.liferay.portalweb.portal.controlpanel.usergroups.ugusergroup.addugusergroup.TearDownUGUserGroupTest;
 import com.liferay.portalweb.portal.util.TearDownPageTest;
 import com.liferay.portalweb.portlet.directory.portlet.addportletdirectory.AddPageDirectoryTest;
 import com.liferay.portalweb.portlet.directory.portlet.addportletdirectory.AddPortletDirectoryTest;
@@ -33,7 +34,7 @@ public class SearchUserGroupTests extends BaseTestSuite {
 		testSuite.addTestSuite(AddUserGroupTest.class);
 		testSuite.addTestSuite(SearchUserGroupTest.class);
 		testSuite.addTestSuite(SearchUserGroupQuotesTest.class);
-		testSuite.addTestSuite(TearDownUserGroupTest.class);
+		testSuite.addTestSuite(TearDownUGUserGroupTest.class);
 		testSuite.addTestSuite(TearDownPageTest.class);
 
 		return testSuite;

@@ -30,7 +30,6 @@ public class AdvancedSearchUserLastNameTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				selenium.waitForVisible("link=Directory Test Page");
 				selenium.clickAt("link=Directory Test Page",
 					RuntimeVariables.replace("Directory Test Page"));
 				selenium.waitForPageToLoad("30000");
@@ -38,7 +37,7 @@ public class AdvancedSearchUserLastNameTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 
 				boolean advancedVisible = selenium.isVisible(
-						"link=Advanced \u00bb");
+						"//div/div/a[contains(.,'Advanced')]");
 
 				if (!advancedVisible) {
 					label = 2;
@@ -46,7 +45,7 @@ public class AdvancedSearchUserLastNameTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("link=Advanced \u00bb",
+				selenium.clickAt("//div/div/a[contains(.,'Advanced')]",
 					RuntimeVariables.replace("Advanced \u00bb"));
 
 			case 2:
@@ -55,22 +54,22 @@ public class AdvancedSearchUserLastNameTest extends BaseTestCase {
 					RuntimeVariables.replace("Any"));
 				selenium.type("//input[@id='_11_lastName']",
 					RuntimeVariables.replace("userln"));
-				selenium.click(RuntimeVariables.replace(
-						"//input[@value='Search']"));
+				selenium.clickAt("xPath=(//input[@value='Search'])[2]",
+					RuntimeVariables.replace("Search"));
 				selenium.waitForPageToLoad("30000");
 				selenium.type("//input[@id='_11_lastName']",
 					RuntimeVariables.replace(""));
 				assertTrue(selenium.isElementPresent("link=userfn"));
 				selenium.type("//input[@id='_11_lastName']",
 					RuntimeVariables.replace("userln1"));
-				selenium.click(RuntimeVariables.replace(
-						"//input[@value='Search']"));
+				selenium.clickAt("xPath=(//input[@value='Search'])[2]",
+					RuntimeVariables.replace("Search"));
 				selenium.waitForPageToLoad("30000");
 				selenium.select("//select[@id='_11_andOperator']",
 					RuntimeVariables.replace("All"));
 				selenium.type("//input[@id='_11_lastName']",
 					RuntimeVariables.replace(""));
-				selenium.clickAt("link=\u00ab Basic",
+				selenium.clickAt("//div/div/a[contains(.,'Basic')]",
 					RuntimeVariables.replace("\u00ab Basic"));
 				assertFalse(selenium.isPartialText(
 						"//div[@id='_11_usersSearchContainer']", "userfn"));
