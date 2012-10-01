@@ -25,7 +25,6 @@ public class EditCommentReplyBodyNullTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Page Comments Test Page");
 		selenium.clickAt("link=Page Comments Test Page",
 			RuntimeVariables.replace("Page Comments Test Page"));
 		selenium.waitForPageToLoad("30000");
@@ -51,7 +50,6 @@ public class EditCommentReplyBodyNullTest extends BaseTestCase {
 		assertFalse(selenium.isTextPresent(
 				"Your request processed successfully."));
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Page Comments Test Page");
 		selenium.clickAt("link=Page Comments Test Page",
 			RuntimeVariables.replace("Page Comments Test Page"));
 		selenium.waitForPageToLoad("30000");

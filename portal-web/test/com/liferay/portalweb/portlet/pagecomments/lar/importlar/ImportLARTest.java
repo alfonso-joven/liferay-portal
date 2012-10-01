@@ -25,7 +25,6 @@ public class ImportLARTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Page Comments Test Page");
 		selenium.clickAt("link=Page Comments Test Page",
 			RuntimeVariables.replace("Page Comments Test Page"));
 		selenium.waitForPageToLoad("30000");
@@ -46,7 +45,7 @@ public class ImportLARTest extends BaseTestCase {
 		selenium.clickAt("//div/ul/li[2]/span/a",
 			RuntimeVariables.replace("Import"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("//input[@id='_86_importFileName']",
+		selenium.uploadFile("//input[@id='_86_importFileName']",
 			RuntimeVariables.replace(
 				"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\portlet\\pagecomments\\lar\\importlar\\dependencies\\Page_Comments-Selenium.portlet.lar"));
 		assertFalse(selenium.isChecked(

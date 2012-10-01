@@ -25,7 +25,6 @@ public class EditCommentBodySpaceTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Page Comments Test Page");
 		selenium.clickAt("link=Page Comments Test Page",
 			RuntimeVariables.replace("Page Comments Test Page"));
 		selenium.waitForPageToLoad("30000");
@@ -49,7 +48,6 @@ public class EditCommentBodySpaceTest extends BaseTestCase {
 		assertTrue(selenium.isVisible("//textarea[@name='_107_editReplyBody1']"));
 		assertTrue(selenium.isVisible("//input[@value='Publish']"));
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Page Comments Test Page");
 		selenium.clickAt("link=Page Comments Test Page",
 			RuntimeVariables.replace("Page Comments Test Page"));
 		selenium.waitForPageToLoad("30000");

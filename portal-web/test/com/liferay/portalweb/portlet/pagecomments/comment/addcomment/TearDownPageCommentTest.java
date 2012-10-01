@@ -30,13 +30,12 @@ public class TearDownPageCommentTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				selenium.waitForVisible("link=Page Comments Test Page");
 				selenium.clickAt("link=Page Comments Test Page",
 					RuntimeVariables.replace("Page Comments Test Page"));
 				selenium.waitForPageToLoad("30000");
 
 				boolean pageComment1Present = selenium.isElementPresent(
-						"//li[4]/span/a/span");
+						"//div[@class='lfr-discussion-message']");
 
 				if (!pageComment1Present) {
 					label = 2;
@@ -47,14 +46,14 @@ public class TearDownPageCommentTest extends BaseTestCase {
 				assertEquals(RuntimeVariables.replace("Delete"),
 					selenium.getText("//li[4]/span/a/span"));
 				selenium.click("//li[4]/span/a/span");
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete this?");
 				Thread.sleep(5000);
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 
 			case 2:
 
 				boolean pageComment2Present = selenium.isElementPresent(
-						"//li[4]/span/a/span");
+						"//div[@class='lfr-discussion-message']");
 
 				if (!pageComment2Present) {
 					label = 3;
@@ -65,14 +64,14 @@ public class TearDownPageCommentTest extends BaseTestCase {
 				assertEquals(RuntimeVariables.replace("Delete"),
 					selenium.getText("//li[4]/span/a/span"));
 				selenium.click("//li[4]/span/a/span");
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete this?");
 				Thread.sleep(5000);
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 
 			case 3:
 
 				boolean pageComment3Present = selenium.isElementPresent(
-						"//li[4]/span/a/span");
+						"//div[@class='lfr-discussion-message']");
 
 				if (!pageComment3Present) {
 					label = 4;
@@ -83,14 +82,14 @@ public class TearDownPageCommentTest extends BaseTestCase {
 				assertEquals(RuntimeVariables.replace("Delete"),
 					selenium.getText("//li[4]/span/a/span"));
 				selenium.click("//li[4]/span/a/span");
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete this?");
 				Thread.sleep(5000);
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 
 			case 4:
 
 				boolean pageComment4Present = selenium.isElementPresent(
-						"//li[4]/span/a/span");
+						"//div[@class='lfr-discussion-message']");
 
 				if (!pageComment4Present) {
 					label = 5;
@@ -101,14 +100,14 @@ public class TearDownPageCommentTest extends BaseTestCase {
 				assertEquals(RuntimeVariables.replace("Delete"),
 					selenium.getText("//li[4]/span/a/span"));
 				selenium.click("//li[4]/span/a/span");
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete this?");
 				Thread.sleep(5000);
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 
 			case 5:
 
 				boolean pageComment5Present = selenium.isElementPresent(
-						"//li[4]/span/a/span");
+						"//div[@class='lfr-discussion-message']");
 
 				if (!pageComment5Present) {
 					label = 6;
@@ -119,9 +118,9 @@ public class TearDownPageCommentTest extends BaseTestCase {
 				assertEquals(RuntimeVariables.replace("Delete"),
 					selenium.getText("//li[4]/span/a/span"));
 				selenium.click("//li[4]/span/a/span");
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete this?");
 				Thread.sleep(5000);
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 
 			case 6:
 			case 100:

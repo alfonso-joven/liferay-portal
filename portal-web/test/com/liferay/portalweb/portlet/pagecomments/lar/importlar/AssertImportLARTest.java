@@ -25,12 +25,11 @@ public class AssertImportLARTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Page Comments Test Page");
 		selenium.clickAt("link=Page Comments Test Page",
 			RuntimeVariables.replace("Page Comments Test Page"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
-				"This is a edited test page comment!"),
+				"This is an edited test page comment!"),
 			selenium.getText(
 				"xPath=(//div[@class='lfr-discussion-message'])[1]"));
 		assertEquals(RuntimeVariables.replace("This is a test page comment 2!"),

@@ -14,18 +14,13 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForVisible</td>
-	<td>link=Page Comments Test Page</td>
-	<td>Page Comments Test Page</td>
-</tr>
-<tr>
 	<td>clickAtAndWait</td>
 	<td>link=Page Comments Test Page</td>
 	<td>Page Comments Test Page</td>
 </tr>
 <tr>
-	<td>store</td>
-	<td>eval(selenium.isElementPresent('//li[4]/span/a/span'))</td>
+	<td>storeElementPresent</td>
+	<td>//div[@class='lfr-discussion-message']</td>
 	<td>pageComment1Present</td>
 </tr>
 <tr>
@@ -44,13 +39,13 @@
 	<td>Delete</td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>5000</td>
+	<td>waitForConfirmation</td>
+	<td>Are you sure you want to delete this?</td>
 	<td></td>
 </tr>
 <tr>
-	<td>assertConfirmation</td>
-	<td>Are you sure you want to delete this?</td>
+	<td>pause</td>
+	<td>5000</td>
 	<td></td>
 </tr>
 <tr>
@@ -59,8 +54,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>store</td>
-	<td>eval(selenium.isElementPresent('//li[4]/span/a/span'))</td>
+	<td>storeElementPresent</td>
+	<td>//div[@class='lfr-discussion-message']</td>
 	<td>pageComment2Present</td>
 </tr>
 <tr>
@@ -79,13 +74,13 @@
 	<td>Delete</td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>5000</td>
+	<td>waitForConfirmation</td>
+	<td>Are you sure you want to delete this?</td>
 	<td></td>
 </tr>
 <tr>
-	<td>assertConfirmation</td>
-	<td>Are you sure you want to delete this?</td>
+	<td>pause</td>
+	<td>5000</td>
 	<td></td>
 </tr>
 <tr>
@@ -94,8 +89,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>store</td>
-	<td>eval(selenium.isElementPresent('//li[4]/span/a/span'))</td>
+	<td>storeElementPresent</td>
+	<td>//div[@class='lfr-discussion-message']</td>
 	<td>pageComment3Present</td>
 </tr>
 <tr>
@@ -114,13 +109,13 @@
 	<td>Delete</td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>5000</td>
+	<td>waitForConfirmation</td>
+	<td>Are you sure you want to delete this?</td>
 	<td></td>
 </tr>
 <tr>
-	<td>assertConfirmation</td>
-	<td>Are you sure you want to delete this?</td>
+	<td>pause</td>
+	<td>5000</td>
 	<td></td>
 </tr>
 <tr>
@@ -129,8 +124,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>store</td>
-	<td>eval(selenium.isElementPresent('//li[4]/span/a/span'))</td>
+	<td>storeElementPresent</td>
+	<td>//div[@class='lfr-discussion-message']</td>
 	<td>pageComment4Present</td>
 </tr>
 <tr>
@@ -149,13 +144,13 @@
 	<td>Delete</td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>5000</td>
+	<td>waitForConfirmation</td>
+	<td>Are you sure you want to delete this?</td>
 	<td></td>
 </tr>
 <tr>
-	<td>assertConfirmation</td>
-	<td>Are you sure you want to delete this?</td>
+	<td>pause</td>
+	<td>5000</td>
 	<td></td>
 </tr>
 <tr>
@@ -164,8 +159,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>store</td>
-	<td>eval(selenium.isElementPresent('//li[4]/span/a/span'))</td>
+	<td>storeElementPresent</td>
+	<td>//div[@class='lfr-discussion-message']</td>
 	<td>pageComment5Present</td>
 </tr>
 <tr>
@@ -184,13 +179,13 @@
 	<td>Delete</td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>5000</td>
+	<td>waitForConfirmation</td>
+	<td>Are you sure you want to delete this?</td>
 	<td></td>
 </tr>
 <tr>
-	<td>assertConfirmation</td>
-	<td>Are you sure you want to delete this?</td>
+	<td>pause</td>
+	<td>5000</td>
 	<td></td>
 </tr>
 <tr>
@@ -198,7 +193,6 @@
 	<td>PageComment5NotPresent</td>
 	<td></td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

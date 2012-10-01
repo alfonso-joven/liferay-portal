@@ -41,7 +41,6 @@ public class AddPagePCTest extends BaseTestCase {
 			RuntimeVariables.replace("Page Comments Test Page"));
 		selenium.clickAt("//button[contains(@id,'Save')]",
 			RuntimeVariables.replace("Save"));
-		selenium.waitForVisible("link=Page Comments Test Page");
 		selenium.clickAt("link=Page Comments Test Page",
 			RuntimeVariables.replace("Page Comments Test Page"));
 		selenium.waitForPageToLoad("30000");
