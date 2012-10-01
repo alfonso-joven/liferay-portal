@@ -25,13 +25,12 @@ public class ViewWebContentExpandoTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/expando-web-content-community/");
-		selenium.waitForVisible("link=Web Content Display Page");
 		selenium.clickAt("link=Web Content Display Page",
 			RuntimeVariables.replace("Web Content Display Page"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("First Expando Bank"),
 			selenium.getText("//div[@class='journal-content-article']/h1"));
-		assertTrue(selenium.isElementPresent("//input[@value='Create Account']"));
+		assertTrue(selenium.isVisible("//input[@value='Create Account']"));
 		assertEquals(RuntimeVariables.replace("Michael"),
 			selenium.getText("//td[2]"));
 		assertEquals(RuntimeVariables.replace("Hashimoto"),

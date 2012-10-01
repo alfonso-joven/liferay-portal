@@ -14,19 +14,9 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
-	<td>link=Expando Web Form Community</td>
-	<td>Expando Web Form Community</td>
-</tr>
-<tr>
 	<td>clickAtAndWait</td>
 	<td>link=Expando Web Form Community</td>
 	<td>Expando Web Form Community</td>
-</tr>
-<tr>
-	<td>clickAtAndWait</td>
-	<td>link=Web Form Page</td>
-	<td>Web Form Page</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -50,38 +40,53 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]</td>
 	<td>Configuration</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]</td>
 	<td>Configuration</td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]</td>
 	<td>Configuration</td>
 </tr>
 <tr>
-	<td>waitForText</td>
-	<td>//div[3]/div[2]/fieldset/div/div[1]</td>
+	<td>waitForVisible</td>
+	<td>//iframe[contains(@id,'_configurationIframeDialog')]</td>
+	<td>Web Form - Configuration</td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>//iframe[contains(@id,'_configurationIframeDialog')]</td>
+	<td>Web Form - Configuration</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//div[@class='portlet-msg-alert']</td>
 	<td>There is existing form data. Please export and delete it before making changes to the fields.</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[3]/div[2]/fieldset/div/div[1]</td>
+	<td>//div[@class='portlet-msg-alert']</td>
 	<td>There is existing form data. Please export and delete it before making changes to the fields.</td>
 </tr>
 <tr>
-	<td>assertElementPresent</td>
+	<td>assertVisible</td>
 	<td>//input[@value='Export Data']</td>
 	<td>Export Data</td>
 </tr>
 <tr>
-	<td>assertElementPresent</td>
+	<td>assertVisible</td>
 	<td>//input[@value='Delete Data']</td>
 	<td>Delete Data</td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>relative=top</td>
+	<td>top</td>
 </tr>
 </tbody></table>
 </body>

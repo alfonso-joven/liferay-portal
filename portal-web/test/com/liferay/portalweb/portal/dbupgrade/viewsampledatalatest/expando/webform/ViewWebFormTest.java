@@ -25,12 +25,8 @@ public class ViewWebFormTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Expando Web Form Community");
 		selenium.clickAt("link=Expando Web Form Community",
 			RuntimeVariables.replace("Expando Web Form Community"));
-		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Web Form Page",
-			RuntimeVariables.replace("Web Form Page"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Web Form Page",
 			RuntimeVariables.replace("Web Form Page"));
@@ -40,17 +36,22 @@ public class ViewWebFormTest extends BaseTestCase {
 			selenium.getText("//strong/a"));
 		selenium.clickAt("//strong/a", RuntimeVariables.replace("Options"));
 		selenium.waitForVisible(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a");
+			"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]");
 		assertEquals(RuntimeVariables.replace("Configuration"),
 			selenium.getText(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a"));
-		selenium.click("//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a");
-		selenium.waitForText("//div[3]/div[2]/fieldset/div/div[1]",
-			"There is existing form data. Please export and delete it before making changes to the fields.");
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]"));
+		selenium.click(
+			"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]");
+		selenium.waitForVisible(
+			"//iframe[contains(@id,'_configurationIframeDialog')]");
+		selenium.selectFrame(
+			"//iframe[contains(@id,'_configurationIframeDialog')]");
+		selenium.waitForVisible("//div[@class='portlet-msg-alert']");
 		assertEquals(RuntimeVariables.replace(
 				"There is existing form data. Please export and delete it before making changes to the fields."),
-			selenium.getText("//div[3]/div[2]/fieldset/div/div[1]"));
-		assertTrue(selenium.isElementPresent("//input[@value='Export Data']"));
-		assertTrue(selenium.isElementPresent("//input[@value='Delete Data']"));
+			selenium.getText("//div[@class='portlet-msg-alert']"));
+		assertTrue(selenium.isVisible("//input[@value='Export Data']"));
+		assertTrue(selenium.isVisible("//input[@value='Delete Data']"));
+		selenium.selectFrame("relative=top");
 	}
 }
