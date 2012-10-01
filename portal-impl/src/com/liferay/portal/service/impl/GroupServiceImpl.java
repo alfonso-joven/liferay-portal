@@ -408,8 +408,8 @@ public class GroupServiceImpl extends GroupServiceBaseImpl {
 				user.getCompanyId(), organizationParams, start, end);
 
 			for (Organization organization : userOrgs) {
-				if (!organization.hasPublicLayouts() &&
-					!organization.hasPrivateLayouts()) {
+				if (!organization.hasPrivateLayouts() &&
+					!organization.hasPublicLayouts()) {
 
 					userPlaces.remove(organization.getGroup());
 				}
@@ -421,8 +421,8 @@ public class GroupServiceImpl extends GroupServiceBaseImpl {
 					for (Organization ancestorOrganization :
 							organization.getAncestors()) {
 
-						if (!organization.hasPublicLayouts() &&
-							!organization.hasPrivateLayouts()) {
+						if (!organization.hasPrivateLayouts() &&
+							!organization.hasPublicLayouts()) {
 
 							continue;
 						}
