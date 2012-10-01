@@ -25,7 +25,6 @@ public class AssertImportLARTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Wiki Test Page");
 		selenium.clickAt("link=Wiki Test Page",
 			RuntimeVariables.replace("Wiki Test Page"));
 		selenium.waitForPageToLoad("30000");
@@ -37,10 +36,10 @@ public class AssertImportLARTest extends BaseTestCase {
 			selenium.getText("//div[@class='wiki-body']/p/strong"));
 		assertEquals(RuntimeVariables.replace("Link to website"),
 			selenium.getText("//div[@class='wiki-body']/p/a"));
-		assertEquals(RuntimeVariables.replace("this is a list item"),
-			selenium.getText("//div[@class='wiki-body']/ul/li"));
+		assertTrue(selenium.isPartialText("//div[@class='wiki-body']/ul/li",
+				"this is a list item"));
 		assertEquals(RuntimeVariables.replace("this is a sub list item"),
-			selenium.getText("//div[@class='wiki-body']/ul/ul/li"));
+			selenium.getText("//div[@class='wiki-body']/ul/li/ul/li"));
 		assertEquals(RuntimeVariables.replace("Test"),
 			selenium.getText("//div[@class='child-pages']/ul/li/a"));
 		selenium.clickAt("//div[@class='child-pages']/ul/li/a",
@@ -54,10 +53,10 @@ public class AssertImportLARTest extends BaseTestCase {
 			selenium.getText("//div[@class='wiki-body']/p/strong"));
 		assertEquals(RuntimeVariables.replace("Link to website"),
 			selenium.getText("//div[@class='wiki-body']/p/a"));
-		assertEquals(RuntimeVariables.replace("this is a list item"),
-			selenium.getText("//div[@class='wiki-body']/ul/li"));
+		assertTrue(selenium.isPartialText("//div[@class='wiki-body']/ul/li",
+				"this is a list item"));
 		assertEquals(RuntimeVariables.replace("this is a sub list item"),
-			selenium.getText("//div[@class='wiki-body']/ul/ul/li"));
+			selenium.getText("//div[@class='wiki-body']/ul/li/ul/li"));
 		selenium.clickAt("link=Second Edited Wiki Test",
 			RuntimeVariables.replace("Second Edited Wiki Test"));
 		selenium.waitForPageToLoad("30000");

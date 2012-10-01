@@ -53,10 +53,12 @@ public class AddFrontPageCreoleTableOfContentsTest extends BaseTestCase {
 			RuntimeVariables.replace("Source"));
 		selenium.waitForElementPresent(
 			"//textarea[@id='_36_editor' and @style='display: none;']");
-		assertTrue(selenium.isVisible(
-				"//td[@id='cke_contents__36_editor']/iframe"));
+		selenium.waitForVisible("//td[@id='cke_contents__36_editor']/iframe");
 		selenium.selectFrame("//td[@id='cke_contents__36_editor']/iframe");
-		selenium.waitForText("//body", "<<TableOfContents>>\nUnitChapterSection");
+		selenium.waitForPartialText("//body", "<<TableOfContents>>");
+		selenium.waitForPartialText("//body", "Unit");
+		selenium.waitForPartialText("//body", "Chapter");
+		selenium.waitForPartialText("//body", "Section");
 		selenium.selectFrame("relative=top");
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));

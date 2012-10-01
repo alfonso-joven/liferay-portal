@@ -36,6 +36,7 @@ public class EditFrontPageTest extends BaseTestCase {
 			RuntimeVariables.replace("Edit"));
 		selenium.waitForElementPresent(
 			"//textarea[@id='_36_editor' and @style='display: none;']");
+		selenium.waitForVisible("//span[.='Source']");
 		assertEquals(RuntimeVariables.replace("Source"),
 			selenium.getText("//span[.='Source']"));
 		selenium.clickAt("//span[.='Source']",
@@ -44,14 +45,14 @@ public class EditFrontPageTest extends BaseTestCase {
 		selenium.waitForVisible("//td[@id='cke_contents__36_editor']/textarea");
 		selenium.type("//td[@id='cke_contents__36_editor']/textarea",
 			RuntimeVariables.replace("Wiki FrontPage Content Edit"));
+		selenium.waitForVisible("//span[.='Source']");
 		assertEquals(RuntimeVariables.replace("Source"),
 			selenium.getText("//span[.='Source']"));
 		selenium.clickAt("//span[.='Source']",
 			RuntimeVariables.replace("Source"));
 		selenium.waitForElementPresent(
 			"//textarea[@id='_36_editor' and @style='display: none;']");
-		assertTrue(selenium.isVisible(
-				"//td[@id='cke_contents__36_editor']/iframe"));
+		selenium.waitForVisible("//td[@id='cke_contents__36_editor']/iframe");
 		selenium.selectFrame("//td[@id='cke_contents__36_editor']/iframe");
 		selenium.waitForText("//body", "Wiki FrontPage Content Edit");
 		selenium.selectFrame("relative=top");

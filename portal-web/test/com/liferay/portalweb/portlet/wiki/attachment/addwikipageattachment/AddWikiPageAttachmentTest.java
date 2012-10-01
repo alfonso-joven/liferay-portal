@@ -25,7 +25,6 @@ public class AddWikiPageAttachmentTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Wiki Test Page");
 		selenium.clickAt("link=Wiki Test Page",
 			RuntimeVariables.replace("Wiki Test Page"));
 		selenium.waitForPageToLoad("30000");
@@ -43,21 +42,20 @@ public class AddWikiPageAttachmentTest extends BaseTestCase {
 		selenium.clickAt("//div[6]/div[1]/span[2]/a/span",
 			RuntimeVariables.replace("0 Attachments"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForText("//div[@class='portlet-msg-info']",
-			"This page does not have any file attachments.");
+		selenium.waitForVisible("//div[@class='portlet-msg-info']");
 		assertEquals(RuntimeVariables.replace(
 				"This page does not have any file attachments."),
 			selenium.getText("//div[@class='portlet-msg-info']"));
 		selenium.clickAt("//input[@value='Add Attachments']",
 			RuntimeVariables.replace("Add Attachments"));
 		selenium.waitForPageToLoad("30000");
-		selenium.selectWindow("null");
 		Thread.sleep(5000);
-		selenium.windowFocus();
 		selenium.waitForVisible("//a[@class='use-fallback using-new-uploader']");
+		assertEquals(RuntimeVariables.replace("Use the classic uploader."),
+			selenium.getText("//a[@class='use-fallback using-new-uploader']"));
 		selenium.click("//a[@class='use-fallback using-new-uploader']");
 		selenium.waitForVisible("//input[@id='_36_file1']");
-		selenium.type("//input[@id='_36_file1']",
+		selenium.uploadFile("//input[@id='_36_file1']",
 			RuntimeVariables.replace(
 				"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\portlet\\wiki\\attachment\\addfrontpageattachment\\dependencies\\Wiki_Attachment.jpg"));
 		selenium.clickAt("//input[@value='Save']",

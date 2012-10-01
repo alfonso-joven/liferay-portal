@@ -25,7 +25,6 @@ public class DeleteFrontPageTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Wiki Test Page");
 		selenium.clickAt("link=Wiki Test Page",
 			RuntimeVariables.replace("Wiki Test Page"));
 		selenium.waitForPageToLoad("30000");
@@ -39,13 +38,13 @@ public class DeleteFrontPageTest extends BaseTestCase {
 			selenium.getText("//td[6]/span/ul/li/strong/a"));
 		selenium.clickAt("//td[6]/span/ul/li/strong/a",
 			RuntimeVariables.replace("Actions"));
-		selenium.waitForElementPresent(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[6]/a");
+		selenium.waitForVisible(
+			"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]");
 		assertEquals(RuntimeVariables.replace("Delete"),
 			selenium.getText(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[6]/a"));
-		selenium.click(RuntimeVariables.replace(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[6]/a"));
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]"));
+		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]",
+			RuntimeVariables.replace("Delete"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.getConfirmation()
 						   .matches("^Are you sure you want to delete this[\\s\\S]$"));
@@ -54,7 +53,6 @@ public class DeleteFrontPageTest extends BaseTestCase {
 			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertTrue(selenium.isElementNotPresent("//td[1]/a"));
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Wiki Test Page");
 		selenium.clickAt("link=Wiki Test Page",
 			RuntimeVariables.replace("Wiki Test Page"));
 		selenium.waitForPageToLoad("30000");

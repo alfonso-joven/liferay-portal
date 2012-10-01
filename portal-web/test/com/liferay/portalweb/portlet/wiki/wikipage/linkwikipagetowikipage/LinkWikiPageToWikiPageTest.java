@@ -41,8 +41,6 @@ public class LinkWikiPageToWikiPageTest extends BaseTestCase {
 		selenium.clickAt("//div[3]/span[1]/a/span",
 			RuntimeVariables.replace("Edit"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("//input[@id='_36_title']",
-			RuntimeVariables.replace("Wiki Page1 Title"));
 		selenium.waitForElementPresent(
 			"//textarea[@id='_36_editor' and @style='display: none;']");
 		assertEquals(RuntimeVariables.replace("Source"),
@@ -63,7 +61,8 @@ public class LinkWikiPageToWikiPageTest extends BaseTestCase {
 		assertTrue(selenium.isVisible(
 				"//td[@id='cke_contents__36_editor']/iframe"));
 		selenium.selectFrame("//td[@id='cke_contents__36_editor']/iframe");
-		selenium.waitForText("//body", "Wiki Page1 Content \n Wiki Page2 Title");
+		selenium.waitForPartialText("//body", "Wiki Page1 Content");
+		selenium.waitForPartialText("//body", "Wiki Page2 Title");
 		selenium.selectFrame("relative=top");
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));

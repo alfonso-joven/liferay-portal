@@ -74,7 +74,7 @@
 	<td>Text Area</td>
 </tr>
 <tr>
-	<td>assertVisible</td>
+	<td>waitForVisible</td>
 	<td>//td[@id='cke_contents__36_editor']/iframe</td>
 	<td>CK Editor</td>
 </tr>
@@ -84,9 +84,49 @@
 	<td>CK Editor</td>
 </tr>
 <tr>
-	<td>waitForText</td>
+	<td>waitForPartialText</td>
 	<td>//body</td>
-	<td>Item1 Subitem1a Item2 Subitem2a Subitem2b Item3 Subitem3a Subitem3b Subitem3c</td>
+	<td>Item1</td>
+</tr>
+<tr>
+	<td>waitForPartialText</td>
+	<td>//body</td>
+	<td>Subitem1a</td>
+</tr>
+<tr>
+	<td>waitForPartialText</td>
+	<td>//body</td>
+	<td>Item2</td>
+</tr>
+<tr>
+	<td>waitForPartialText</td>
+	<td>//body</td>
+	<td>Subitem2a</td>
+</tr>
+<tr>
+	<td>waitForPartialText</td>
+	<td>//body</td>
+	<td>Subitem2b</td>
+</tr>
+<tr>
+	<td>waitForPartialText</td>
+	<td>//body</td>
+	<td>Item3</td>
+</tr>
+<tr>
+	<td>waitForPartialText</td>
+	<td>//body</td>
+	<td>Subitem3a</td>
+</tr>
+<tr>
+	<td>waitForPartialText</td>
+	<td>//body</td>
+	<td>Subitem3b</td>
+</tr>
+<tr>
+	<td>waitForPartialText</td>
+	<td>//body</td>
+	<td>Subitem3c</td>
 </tr>
 <tr>
 	<td>selectFrame</td>
@@ -109,63 +149,48 @@
 	<td>Item1 Subitem1a Item2 Subitem2a Subitem2b Item3 Subitem3a Subitem3b Subitem3c</td>
 </tr>
 <tr>
-	<td>assertText</td>
+	<td>assertPartialText</td>
 	<td>xPath=(//div[@class='wiki-body']/ol/li)[1]</td>
 	<td>Item1</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//div[@class='wiki-body']/ol/ol)[1]</td>
+	<td>xPath=(//div[@class='wiki-body']/ol/li/ol/li[1])[1]</td>
 	<td>Subitem1a</td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>xPath=(//div[@class='wiki-body']/ol/ol/li)[1]</td>
-	<td>Subitem1a</td>
-</tr>
-<tr>
-	<td>assertText</td>
+	<td>assertPartialText</td>
 	<td>xPath=(//div[@class='wiki-body']/ol/li)[2]</td>
 	<td>Item2</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//div[@class='wiki-body']/ol/ol)[2]</td>
-	<td>Subitem2a Subitem2b</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>xPath=(//div[@class='wiki-body']/ol/ol/li)[2]</td>
+	<td>xPath=(//div[@class='wiki-body']/ol/li/ol/li[1])[2]</td>
 	<td>Subitem2a</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//div[@class='wiki-body']/ol/ol/li)[3]</td>
+	<td>xPath=(//div[@class='wiki-body']/ol/li/ol/li[2])[1]</td>
 	<td>Subitem2b</td>
 </tr>
 <tr>
-	<td>assertText</td>
+	<td>assertPartialText</td>
 	<td>xPath=(//div[@class='wiki-body']/ol/li)[3]</td>
 	<td>Item3</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//div[@class='wiki-body']/ol/ol)[3]</td>
-	<td>Subitem3a Subitem3b Subitem3c</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>xPath=(//div[@class='wiki-body']/ol/ol/li)[4]</td>
+	<td>xPath=(//div[@class='wiki-body']/ol/li/ol/li[1])[3]</td>
 	<td>Subitem3a</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//div[@class='wiki-body']/ol/ol/li)[5]</td>
+	<td>xPath=(//div[@class='wiki-body']/ol/li/ol/li[2])[2]</td>
 	<td>Subitem3b</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//div[@class='wiki-body']/ol/ol/li)[6]</td>
+	<td>xPath=(//div[@class='wiki-body']/ol/li/ol/li[3])[1]</td>
 	<td>Subitem3c</td>
 </tr>
 </tbody></table>

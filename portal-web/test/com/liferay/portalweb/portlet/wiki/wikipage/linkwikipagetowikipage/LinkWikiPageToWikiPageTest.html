@@ -49,11 +49,6 @@
 	<td>Edit</td>
 </tr>
 <tr>
-	<td>type</td>
-	<td>//input[@id='_36_title']</td>
-	<td>Wiki Page1 Title</td>
-</tr>
-<tr>
 	<td>waitForElementPresent</td>
 	<td>//textarea[@id='_36_editor' and @style='display: none;']</td>
 	<td>Text Area</td>
@@ -109,9 +104,14 @@
 	<td>CK Editor</td>
 </tr>
 <tr>
-	<td>waitForText</td>
+	<td>waitForPartialText</td>
 	<td>//body</td>
-	<td>Wiki Page1 Content <br /> Wiki Page2 Title</td>
+	<td>Wiki Page1 Content</td>
+</tr>
+<tr>
+	<td>waitForPartialText</td>
+	<td>//body</td>
+	<td>Wiki Page2 Title</td>
 </tr>
 <tr>
 	<td>selectFrame</td>

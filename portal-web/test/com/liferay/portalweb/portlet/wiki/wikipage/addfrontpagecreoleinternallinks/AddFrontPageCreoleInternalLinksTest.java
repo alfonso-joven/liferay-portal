@@ -51,8 +51,7 @@ public class AddFrontPageCreoleInternalLinksTest extends BaseTestCase {
 			RuntimeVariables.replace("Source"));
 		selenium.waitForElementPresent(
 			"//textarea[@id='_36_editor' and @style='display: none;']");
-		assertTrue(selenium.isVisible(
-				"//td[@id='cke_contents__36_editor']/iframe"));
+		selenium.waitForVisible("//td[@id='cke_contents__36_editor']/iframe");
 		selenium.selectFrame("//td[@id='cke_contents__36_editor']/iframe");
 		selenium.waitForText("//body", "Link to a page");
 		selenium.selectFrame("relative=top");

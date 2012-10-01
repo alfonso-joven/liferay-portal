@@ -30,7 +30,6 @@ public class ImportLARTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				selenium.waitForVisible("link=Wiki Test Page");
 				selenium.clickAt("link=Wiki Test Page",
 					RuntimeVariables.replace("Wiki Test Page"));
 				selenium.waitForPageToLoad("30000");
@@ -40,23 +39,23 @@ public class ImportLARTest extends BaseTestCase {
 				selenium.clickAt("//span[@title='Options']/ul/li/strong/a",
 					RuntimeVariables.replace("Options"));
 				selenium.waitForVisible(
-					"//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a");
+					"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Export / Import')]");
 				assertEquals(RuntimeVariables.replace("Export / Import"),
 					selenium.getText(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a"));
-				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a",
+						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Export / Import')]"));
+				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Export / Import')]",
 					RuntimeVariables.replace("Export / Import"));
 				selenium.waitForPageToLoad("30000");
 				selenium.clickAt("link=Import",
 					RuntimeVariables.replace("Import"));
 				selenium.waitForPageToLoad("30000");
 				selenium.waitForVisible("//input[@id='_86_importFileName']");
-				selenium.type("//input[@id='_86_importFileName']",
+				selenium.uploadFile("//input[@id='_86_importFileName']",
 					RuntimeVariables.replace(
 						"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\portlet\\wiki\\lar\\importlar\\dependencies\\Wiki-Selenium.portlet.lar"));
 
 				boolean deleteBeforeChecked = selenium.isChecked(
-						"_86_DELETE_PORTLET_DATACheckbox");
+						"//input[@id='_86_DELETE_PORTLET_DATACheckbox']");
 
 				if (deleteBeforeChecked) {
 					label = 2;
@@ -64,14 +63,18 @@ public class ImportLARTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("_86_DELETE_PORTLET_DATACheckbox",
+				assertFalse(selenium.isChecked(
+						"//input[@id='_86_DELETE_PORTLET_DATACheckbox']"));
+				selenium.clickAt("//input[@id='_86_DELETE_PORTLET_DATACheckbox']",
 					RuntimeVariables.replace(
 						"Delete portlet data before importing."));
+				assertTrue(selenium.isChecked(
+						"//input[@id='_86_DELETE_PORTLET_DATACheckbox']"));
 
 			case 2:
 
 				boolean dataChecked = selenium.isChecked(
-						"_86_PORTLET_DATACheckbox");
+						"//input[@id='_86_PORTLET_DATACheckbox']");
 
 				if (dataChecked) {
 					label = 3;
@@ -79,8 +82,12 @@ public class ImportLARTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("_86_PORTLET_DATACheckbox",
-					RuntimeVariables.replace(""));
+				assertFalse(selenium.isChecked(
+						"//input[@id='_86_PORTLET_DATACheckbox']"));
+				selenium.clickAt("//input[@id='_86_PORTLET_DATACheckbox']",
+					RuntimeVariables.replace("Data"));
+				assertTrue(selenium.isChecked(
+						"//input[@id='_86_PORTLET_DATACheckbox']"));
 
 			case 3:
 				selenium.clickAt("//input[@value='Import']",

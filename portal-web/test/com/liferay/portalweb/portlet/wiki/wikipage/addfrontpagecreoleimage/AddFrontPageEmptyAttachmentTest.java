@@ -38,21 +38,20 @@ public class AddFrontPageEmptyAttachmentTest extends BaseTestCase {
 		selenium.clickAt("link=Attachments",
 			RuntimeVariables.replace("Attachments"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForText("//div[@class='portlet-msg-info']",
-			"This page does not have any file attachments.");
+		selenium.waitForVisible("//div[@class='portlet-msg-info']");
 		assertEquals(RuntimeVariables.replace(
 				"This page does not have any file attachments."),
 			selenium.getText("//div[@class='portlet-msg-info']"));
 		selenium.clickAt("//input[@value='Add Attachments']",
 			RuntimeVariables.replace("Add Attachments"));
 		selenium.waitForPageToLoad("30000");
-		selenium.selectWindow("null");
 		Thread.sleep(5000);
-		selenium.windowFocus();
 		selenium.waitForVisible("//a[@class='use-fallback using-new-uploader']");
+		assertEquals(RuntimeVariables.replace("Use the classic uploader."),
+			selenium.getText("//a[@class='use-fallback using-new-uploader']"));
 		selenium.click("//a[@class='use-fallback using-new-uploader']");
 		selenium.waitForVisible("//input[@id='_36_file1']");
-		selenium.type("//input[@id='_36_file1']",
+		selenium.uploadFile("//input[@id='_36_file1']",
 			RuntimeVariables.replace(
 				"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\portlet\\wiki\\wikipage\\addfrontpagecreoleimage\\dependencies\\Wiki_Attachment.jpg"));
 		selenium.clickAt("//input[@value='Save']",
@@ -64,7 +63,7 @@ public class AddFrontPageEmptyAttachmentTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Wiki_Attachment.jpg"),
 			selenium.getText("//td[1]/a"));
 		assertEquals(RuntimeVariables.replace("Showing 1 result."),
-			selenium.getText("//div[@class='search-results']/"));
+			selenium.getText("//div[@class='search-results']"));
 		selenium.open("/web/guest/home/");
 		selenium.clickAt("link=Wiki Test Page",
 			RuntimeVariables.replace("Wiki Test Page"));

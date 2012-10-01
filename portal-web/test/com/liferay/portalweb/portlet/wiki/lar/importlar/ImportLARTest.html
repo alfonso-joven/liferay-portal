@@ -14,11 +14,6 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForVisible</td>
-	<td>link=Wiki Test Page</td>
-	<td>Wiki Test Page</td>
-</tr>
-<tr>
 	<td>clickAtAndWait</td>
 	<td>link=Wiki Test Page</td>
 	<td>Wiki Test Page</td>
@@ -40,17 +35,17 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Export / Import')]</td>
 	<td>Export / Import</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Export / Import')]</td>
 	<td>Export / Import</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Export / Import')]</td>
 	<td>Export / Import</td>
 </tr>
 <tr>
@@ -64,13 +59,13 @@
 	<td>Import a LAR file to overwrite the selected data.</td>
 </tr>
 <tr>
-	<td>type</td>
+	<td>uploadFile</td>
 	<td>//input[@id='_86_importFileName']</td>
 	<td>L:\portal\build\portal-web\test\com\liferay\portalweb\portlet\wiki\lar\importlar\dependencies\Wiki-Selenium.portlet.lar</td>
 </tr>
 <tr>
-	<td>store</td>
-	<td>eval(selenium.isChecked('_86_DELETE_PORTLET_DATACheckbox'))</td>
+	<td>storeChecked</td>
+	<td>//input[@id='_86_DELETE_PORTLET_DATACheckbox']</td>
 	<td>deleteBeforeChecked</td>
 </tr>
 <tr>
@@ -79,8 +74,18 @@
 	<td>DeleteBeforeChecked</td>
 </tr>
 <tr>
+	<td>assertNotChecked</td>
+	<td>//input[@id='_86_DELETE_PORTLET_DATACheckbox']</td>
+	<td>Delete portlet data before importing.</td>
+</tr>
+<tr>
 	<td>clickAt</td>
-	<td>_86_DELETE_PORTLET_DATACheckbox</td>
+	<td>//input[@id='_86_DELETE_PORTLET_DATACheckbox']</td>
+	<td>Delete portlet data before importing.</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//input[@id='_86_DELETE_PORTLET_DATACheckbox']</td>
 	<td>Delete portlet data before importing.</td>
 </tr>
 <tr>
@@ -89,8 +94,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>store</td>
-	<td>eval(selenium.isChecked('_86_PORTLET_DATACheckbox'))</td>
+	<td>storeChecked</td>
+	<td>//input[@id='_86_PORTLET_DATACheckbox']</td>
 	<td>dataChecked</td>
 </tr>
 <tr>
@@ -99,9 +104,19 @@
 	<td>DataChecked</td>
 </tr>
 <tr>
+	<td>assertNotChecked</td>
+	<td>//input[@id='_86_PORTLET_DATACheckbox']</td>
+	<td>Data</td>
+</tr>
+<tr>
 	<td>clickAt</td>
-	<td>_86_PORTLET_DATACheckbox</td>
-	<td></td>
+	<td>//input[@id='_86_PORTLET_DATACheckbox']</td>
+	<td>Data</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//input[@id='_86_PORTLET_DATACheckbox']</td>
+	<td>Data</td>
 </tr>
 <tr>
 	<td>label</td>

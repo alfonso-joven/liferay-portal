@@ -14,11 +14,6 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForVisible</td>
-	<td>link=Wiki Test Page</td>
-	<td>Wiki Test Page</td>
-</tr>
-<tr>
 	<td>clickAtAndWait</td>
 	<td>link=Wiki Test Page</td>
 	<td>Wiki Test Page</td>
@@ -44,13 +39,13 @@
 	<td>Link to website</td>
 </tr>
 <tr>
-	<td>assertText</td>
+	<td>assertPartialText</td>
 	<td>//div[@class='wiki-body']/ul/li</td>
 	<td>this is a list item</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='wiki-body']/ul/ul/li</td>
+	<td>//div[@class='wiki-body']/ul/li/ul/li</td>
 	<td>this is a sub list item</td>
 </tr>
 <tr>
@@ -84,13 +79,13 @@
 	<td>Link to website</td>
 </tr>
 <tr>
-	<td>assertText</td>
+	<td>assertPartialText</td>
 	<td>//div[@class='wiki-body']/ul/li</td>
 	<td>this is a list item</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='wiki-body']/ul/ul/li</td>
+	<td>//div[@class='wiki-body']/ul/li/ul/li</td>
 	<td>this is a sub list item</td>
 </tr>
 <tr>
@@ -173,7 +168,6 @@
 	<td>xPath=(//div[@class='wiki-body']/p/a)[2]</td>
 	<td>Link Me 1</td>
 </tr>
-
 </tbody></table>
 </body>
 </html>
