@@ -25,7 +25,6 @@ public class ConfigurePortletDisplayGuestTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Web Content List Test Page");
 		selenium.clickAt("link=Web Content List Test Page",
 			RuntimeVariables.replace("Web Content List Test Page"));
 		selenium.waitForPageToLoad("30000");
@@ -43,6 +42,10 @@ public class ConfigurePortletDisplayGuestTest extends BaseTestCase {
 			selenium.getText(
 				"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a"));
 		selenium.click("//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a");
+		selenium.waitForElementPresent(
+			"//iframe[contains(@id,'configurationIframeDialog')]");
+		selenium.selectFrame(
+			"//iframe[contains(@id,'configurationIframeDialog')]");
 		selenium.waitForVisible("//select[@id='_86_groupId']");
 		selenium.select("//select[@id='_86_groupId']",
 			RuntimeVariables.replace("Liferay"));
@@ -61,6 +64,7 @@ public class ConfigurePortletDisplayGuestTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"You have successfully updated the setup."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
+		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
 		selenium.waitForVisible("link=Web Content List Test Page");
 		selenium.clickAt("link=Web Content List Test Page",
