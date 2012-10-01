@@ -25,7 +25,6 @@ public class SelectQuestion1Test extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Polls Display Test Page");
 		selenium.clickAt("link=Polls Display Test Page",
 			RuntimeVariables.replace("Polls Display Test Page"));
 		selenium.waitForPageToLoad("30000");
@@ -40,7 +39,10 @@ public class SelectQuestion1Test extends BaseTestCase {
 				"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a"));
 		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a",
 			RuntimeVariables.replace("Configuration"));
-		selenium.waitForVisible("//select[@id='_86_questionId']");
+		selenium.waitForVisible(
+			"//iframe[contains(@id,'configurationIframeDialog')]");
+		selenium.selectFrame(
+			"//iframe[contains(@id,'configurationIframeDialog')]");
 		selenium.select("//select[@id='_86_questionId']",
 			RuntimeVariables.replace("PD Question1 Title"));
 		selenium.clickAt("//input[@value='Save']",

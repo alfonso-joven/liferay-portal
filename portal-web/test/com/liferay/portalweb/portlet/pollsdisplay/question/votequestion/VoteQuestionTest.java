@@ -25,7 +25,6 @@ public class VoteQuestionTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Polls Display Test Page");
 		selenium.clickAt("link=Polls Display Test Page",
 			RuntimeVariables.replace("Polls Display Test Page"));
 		selenium.waitForPageToLoad("30000");
@@ -41,19 +40,19 @@ public class VoteQuestionTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("0"),
 			selenium.getText("//tr[2]/td[2]"));
 		assertEquals(RuntimeVariables.replace("PD Question ChoiceA"),
-			selenium.getText("//tr[2]/td[5]"));
+			selenium.getText("//td[4]"));
 		assertEquals(RuntimeVariables.replace("100%"),
 			selenium.getText("//tr[3]/td[1]"));
 		assertEquals(RuntimeVariables.replace("1"),
 			selenium.getText("//tr[3]/td[2]"));
 		assertEquals(RuntimeVariables.replace("PD Question ChoiceB"),
-			selenium.getText("//tr[3]/td[7]"));
+			selenium.getText("//td[5]"));
 		assertEquals(RuntimeVariables.replace("0%"),
 			selenium.getText("//tr[4]/td[1]"));
 		assertEquals(RuntimeVariables.replace("0"),
 			selenium.getText("//tr[4]/td[2]"));
 		assertEquals(RuntimeVariables.replace("PD Question ChoiceC"),
-			selenium.getText("//tr[4]/td[5]"));
+			selenium.getText("//tr[4]/td[4]"));
 		assertEquals(RuntimeVariables.replace("Total Votes: 1"),
 			selenium.getText("//form/div"));
 		assertTrue(selenium.isElementNotPresent("//input[@value='Vote']"));

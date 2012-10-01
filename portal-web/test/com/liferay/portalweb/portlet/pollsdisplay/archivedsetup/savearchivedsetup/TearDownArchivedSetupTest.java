@@ -30,7 +30,6 @@ public class TearDownArchivedSetupTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				selenium.waitForVisible("link=Polls Display Test Page");
 				selenium.clickAt("link=Polls Display Test Page",
 					RuntimeVariables.replace("Polls Display Test Page"));
 				selenium.waitForPageToLoad("30000");
@@ -46,6 +45,10 @@ public class TearDownArchivedSetupTest extends BaseTestCase {
 						"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a"));
 				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a",
 					RuntimeVariables.replace("Configuration"));
+				selenium.waitForVisible(
+					"//iframe[contains(@id,'configurationIframeDialog')]");
+				selenium.selectFrame(
+					"//iframe[contains(@id,'configurationIframeDialog')]");
 				selenium.waitForVisible(
 					"//div[@class='archived-setups']/span/a/span");
 				assertEquals(RuntimeVariables.replace("Archive/Restore Setup"),

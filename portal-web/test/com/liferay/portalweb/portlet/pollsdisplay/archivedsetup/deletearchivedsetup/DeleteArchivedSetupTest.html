@@ -14,11 +14,6 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForVisible</td>
-	<td>link=Polls Display Test Page</td>
-	<td>Polls Display Test Page</td>
-</tr>
-<tr>
 	<td>clickAtAndWait</td>
 	<td>link=Polls Display Test Page</td>
 	<td>Polls Display Test Page</td>
@@ -52,6 +47,16 @@
 	<td>clickAt</td>
 	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a</td>
 	<td>Configuration</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//iframe[contains(@id,'configurationIframeDialog')]</td>
+	<td>IFrame</td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>//iframe[contains(@id,'configurationIframeDialog')]</td>
+	<td>IFrame</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
@@ -129,9 +134,9 @@
 	<td>There are no archived setups.</td>
 </tr>
 <tr>
-	<td>assertTextNotPresent</td>
+	<td>assertNotText</td>
+	<td>//tr[3]/td[1]</td>
 	<td>Archived Setup</td>
-	<td></td>
 </tr>
 </tbody></table>
 </body>
