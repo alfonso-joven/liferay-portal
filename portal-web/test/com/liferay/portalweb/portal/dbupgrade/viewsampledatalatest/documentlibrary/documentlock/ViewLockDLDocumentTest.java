@@ -25,17 +25,25 @@ public class ViewLockDLDocumentTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("web/document-library-document-lock-community/");
-		selenium.waitForVisible("link=Document Lock Page");
 		selenium.clickAt("link=Document Lock Page",
 			RuntimeVariables.replace("Document Lock Page"));
 		selenium.waitForPageToLoad("30000");
+		selenium.waitForVisible("//div/a/span[2]");
 		assertEquals(RuntimeVariables.replace("Test1 Folder1"),
 			selenium.getText("//div/a/span[2]"));
 		selenium.clickAt("//div/a/span[2]",
 			RuntimeVariables.replace("Test1 Folder1"));
-		Thread.sleep(3000);
-		selenium.waitForVisible("//div/a/span[2]");
+		selenium.waitForText("//div/a/span[2]", "Test1 Document1.txt");
 		assertEquals(RuntimeVariables.replace("Test1 Document1.txt"),
 			selenium.getText("//div/a/span[2]"));
+		selenium.clickAt("//div/a/span[2]",
+			RuntimeVariables.replace("Test1 Document1.txt"));
+		selenium.waitForPageToLoad("30000");
+		assertEquals(RuntimeVariables.replace("Test1 Document1.txt"),
+			selenium.getText("//h1[@class='header-title']/span"));
+		assertEquals(RuntimeVariables.replace(
+				"You now have a lock on this document. No one else can edit this document until you unlock it. This lock will automatically expire in 1 day."),
+			selenium.getText(
+				"//div[@class='portlet-msg-lock portlet-msg-success']"));
 	}
 }

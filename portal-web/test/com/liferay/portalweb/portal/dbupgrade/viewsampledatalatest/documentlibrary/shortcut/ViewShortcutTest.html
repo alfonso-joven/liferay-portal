@@ -14,24 +14,24 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForVisible</td>
-	<td>link=Document Library Page</td>
-	<td>Document Library Page</td>
-</tr>
-<tr>
 	<td>clickAtAndWait</td>
 	<td>link=Document Library Page</td>
 	<td>Document Library Page</td>
 </tr>
 <tr>
-	<td>clickAt</td>
-	<td>//div[2]/a/span[2]</td>
+	<td>assertText</td>
+	<td>//div[3]/a/span[2]</td>
 	<td>Test2 Folder2</td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>3000</td>
-	<td></td>
+	<td>clickAt</td>
+	<td>//div[3]/a/span[2]</td>
+	<td>Test2 Folder2</td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>//div/a/span[2]</td>
+	<td>Test1 Document1.txt</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -48,7 +48,6 @@
 	<td>//div[2]/div[1]/span[4]</td>
 	<td>This is test1 document1.</td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

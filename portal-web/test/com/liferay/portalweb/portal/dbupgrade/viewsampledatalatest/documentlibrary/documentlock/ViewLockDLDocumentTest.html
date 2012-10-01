@@ -14,14 +14,14 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForVisible</td>
+	<td>clickAtAndWait</td>
 	<td>link=Document Lock Page</td>
 	<td>Document Lock Page</td>
 </tr>
 <tr>
-	<td>clickAtAndWait</td>
-	<td>link=Document Lock Page</td>
-	<td>Document Lock Page</td>
+	<td>waitForVisible</td>
+	<td>//div/a/span[2]</td>
+	<td>Test1 Folder1</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -34,12 +34,7 @@
 	<td>Test1 Folder1</td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>3000</td>
-	<td></td>
-</tr>
-<tr>
-	<td>waitForVisible</td>
+	<td>waitForText</td>
 	<td>//div/a/span[2]</td>
 	<td>Test1 Document1.txt</td>
 </tr>
@@ -48,7 +43,21 @@
 	<td>//div/a/span[2]</td>
 	<td>Test1 Document1.txt</td>
 </tr>
-
+<tr>
+	<td>clickAtAndWait</td>
+	<td>//div/a/span[2]</td>
+	<td>Test1 Document1.txt</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//h1[@class='header-title']/span</td>
+	<td>Test1 Document1.txt</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='portlet-msg-lock portlet-msg-success']</td>
+	<td>You now have a lock on this document. No one else can edit this document until you unlock it. This lock will automatically expire in 1 day.</td>
+</tr>
 </tbody></table>
 </body>
 </html>

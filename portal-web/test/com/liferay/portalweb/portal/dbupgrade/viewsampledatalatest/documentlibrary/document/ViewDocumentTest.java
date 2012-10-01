@@ -25,14 +25,15 @@ public class ViewDocumentTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/document-library-document-community/");
-		selenium.waitForVisible("link=Document Library Page");
 		selenium.clickAt("link=Document Library Page",
 			RuntimeVariables.replace("Document Library Page"));
 		selenium.waitForPageToLoad("30000");
+		selenium.waitForText("//div/a/span[2]", "Test1 Folder1");
+		assertEquals(RuntimeVariables.replace("Test1 Folder1"),
+			selenium.getText("//div/a/span[2]"));
 		selenium.clickAt("//div/a/span[2]",
 			RuntimeVariables.replace("Test1 Folder1"));
-		Thread.sleep(3000);
-		selenium.waitForVisible("//div/a/span[2]");
+		selenium.waitForText("//div/a/span[2]", "Test1 Document1.txt");
 		assertEquals(RuntimeVariables.replace("Test1 Document1.txt"),
 			selenium.getText("//div/a/span[2]"));
 		selenium.clickAt("//div/a/span[2]",
