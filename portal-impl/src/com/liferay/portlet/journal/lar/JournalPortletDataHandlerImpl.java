@@ -1407,6 +1407,7 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 
 		int beginPos = content.length();
 		int currentLocation = -1;
+
 		boolean isLegacyURL = true;
 
 		while (true) {
@@ -1420,6 +1421,7 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 
 			if (currentLocation == -1) {
 				currentLocation = content.lastIndexOf("/documents/", beginPos);
+
 				isLegacyURL = false;
 			}
 
@@ -1557,11 +1559,8 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 							groupId = portletDataContext.getScopeGroupId();
 						}
 
-						DLFileEntry dlFileEntry =
-							DLFileEntryLocalServiceUtil.getFileEntryByName(
-								groupId, folderId, name);
-
-						fileEntry = new LiferayFileEntry(dlFileEntry);
+						fileEntry = DLAppLocalServiceUtil.getFileEntry(
+							groupId, folderId, name);
 					}
 					else if (map.containsKey("image_id") ||
 							map.containsKey("img_id") ||
