@@ -41,7 +41,8 @@ public class SRq2_SignInTest extends BaseTestCase {
 					RuntimeVariables.replace("Sign In"));
 				selenium.waitForPageToLoad("30000");
 
-				boolean iAgreeVisible = selenium.isElementPresent("//input[3]");
+				boolean iAgreeVisible = selenium.isElementPresent(
+						"//input[@value='I Agree']");
 
 				if (!iAgreeVisible) {
 					label = 2;

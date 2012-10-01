@@ -25,7 +25,6 @@ public class SRl_AddPortletFriendsTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/socialrelationsn1/home/");
-		selenium.waitForVisible("link=Friends Test Page");
 		selenium.click(RuntimeVariables.replace("link=Friends Test Page"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//div[@id='dockbar']",
@@ -38,6 +37,8 @@ public class SRl_AddPortletFriendsTest extends BaseTestCase {
 		selenium.waitForVisible("//a[@id='_145_addApplication']");
 		selenium.clickAt("//a[@id='_145_addApplication']",
 			RuntimeVariables.replace("Add Application"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-live-search/aui-live-search-min.js')]");
 		selenium.waitForVisible("//input[@id='layout_configuration_content']");
 		selenium.sendKeys("//input[@id='layout_configuration_content']",
 			RuntimeVariables.replace("f"));

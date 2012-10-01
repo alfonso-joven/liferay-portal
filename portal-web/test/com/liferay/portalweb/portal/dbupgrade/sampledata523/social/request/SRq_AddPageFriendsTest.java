@@ -30,8 +30,8 @@ public class SRq_AddPageFriendsTest extends BaseTestCase {
 			selenium.getText("//div[@id='add-page']/a/span"));
 		selenium.clickAt("//div[@id='add-page']/a/span",
 			RuntimeVariables.replace("Add Page"));
-		selenium.waitForVisible("//input[@name='//input[@name='new_page']']");
-		selenium.type("//input[@name='//input[@name='new_page']']",
+		selenium.waitForVisible("//input[@name='new_page']");
+		selenium.type("//input[@name='new_page']",
 			RuntimeVariables.replace("Friends Test Page"));
 		selenium.waitForVisible("//a[@class='save-page']");
 		selenium.clickAt("//a[@class='save-page']",

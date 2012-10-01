@@ -25,7 +25,6 @@ public class AddPortletActivitiesTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/joebloggs/home/");
-		selenium.waitForVisible("link=Activities Page");
 		selenium.clickAt("link=Activities Page",
 			RuntimeVariables.replace("Activities Page"));
 		selenium.waitForPageToLoad("30000");
@@ -39,6 +38,8 @@ public class AddPortletActivitiesTest extends BaseTestCase {
 		selenium.waitForVisible("//a[@id='_145_addApplication']");
 		selenium.clickAt("//a[@id='_145_addApplication']",
 			RuntimeVariables.replace("Add Application"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-live-search/aui-live-search-min.js')]");
 		selenium.waitForVisible("//input[@id='layout_configuration_content']");
 		selenium.sendKeys("//input[@id='layout_configuration_content']",
 			RuntimeVariables.replace("a"));

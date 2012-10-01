@@ -25,7 +25,6 @@ public class SRl_AddPortletFriendsTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/socialrelationsn1/home/");
-		selenium.waitForElementPresent("link=Friends Test Page");
 		selenium.clickAt("link=Friends Test Page",
 			RuntimeVariables.replace("Friends Test Page"));
 		selenium.waitForPageToLoad("30000");
@@ -43,7 +42,7 @@ public class SRl_AddPortletFriendsTest extends BaseTestCase {
 		selenium.waitForVisible("//div[@title='Friends']/p/a");
 		selenium.clickAt("//div[@title='Friends']/p/a",
 			RuntimeVariables.replace("Add"));
-		selenium.waitForElementPresent("//td[1]/div/div[1]/div");
-		assertTrue(selenium.isElementPresent("//td[1]/div/div[1]/div"));
+		selenium.waitForVisible("//td[1]/div/div[1]/div");
+		assertTrue(selenium.isVisible("//td[1]/div/div[1]/div"));
 	}
 }

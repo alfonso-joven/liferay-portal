@@ -29,7 +29,7 @@ public class SRq_SignInTest extends BaseTestCase {
 			case 1:
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
-				selenium.open("/web/guest/home");
+				selenium.open("/web/guest/home/");
 				selenium.waitForVisible("//input[@name='_58_login']");
 				selenium.type("//input[@name='_58_login']",
 					RuntimeVariables.replace("socialrequestea1@liferay.com"));
@@ -41,7 +41,8 @@ public class SRq_SignInTest extends BaseTestCase {
 					RuntimeVariables.replace("Sign In"));
 				selenium.waitForPageToLoad("30000");
 
-				boolean iAgreeVisible = selenium.isElementPresent("//input[3]");
+				boolean iAgreeVisible = selenium.isElementPresent(
+						"//input[@value='I Agree']");
 
 				if (!iAgreeVisible) {
 					label = 2;

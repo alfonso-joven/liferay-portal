@@ -25,7 +25,6 @@ public class SRq_AddPortletRequestsTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/socialrequestsn1/home/");
-		selenium.waitForVisible("link=Requests Test Page");
 		selenium.clickAt("link=Requests Test Page",
 			RuntimeVariables.replace("Requests Test Page"));
 		selenium.waitForPageToLoad("30000");

@@ -43,12 +43,30 @@ public class AddBlogsEntryCPTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_33_title']",
 			RuntimeVariables.replace("Blogs Entry Title"));
-		Thread.sleep(5000);
 		selenium.waitForVisible("//iframe[@id='_33_editor']");
-		selenium.waitForVisible("//td[@id='cke_contents_CKEditor1']/iframe");
 		selenium.selectFrame("//iframe[@id='_33_editor']");
+		selenium.waitForElementPresent(
+			"//textarea[@id='CKEditor1' and @style='visibility: hidden; display: none;']");
+		assertEquals(RuntimeVariables.replace("Source"),
+			selenium.getText("//span[.='Source' and @class='cke_label']"));
+		selenium.clickAt("//span[.='Source' and @class='cke_label']",
+			RuntimeVariables.replace("Source"));
+		selenium.waitForVisible("//a[@class='cke_button_source cke_on']");
+		selenium.waitForVisible("//td[@id='cke_contents_CKEditor1']/textarea");
+		selenium.type("//td[@id='cke_contents_CKEditor1']/textarea",
+			RuntimeVariables.replace("Blogs Entry Content"));
+		assertEquals(RuntimeVariables.replace("Source"),
+			selenium.getText("//span[.='Source' and @class='cke_label']"));
+		selenium.clickAt("//span[.='Source' and @class='cke_label']",
+			RuntimeVariables.replace("Source"));
+		selenium.waitForElementPresent(
+			"//textarea[@id='CKEditor1' and @style='visibility: hidden; display: none;']");
+		selenium.selectFrame("relative=top");
+		selenium.waitForVisible("//iframe[@id='_33_editor']");
+		selenium.selectFrame("//iframe[@id='_33_editor']");
+		selenium.waitForVisible("//td[@id='cke_contents_CKEditor1']/iframe");
 		selenium.selectFrame("//td[@id='cke_contents_CKEditor1']/iframe");
-		selenium.type("//body", RuntimeVariables.replace("Blogs Entry Content"));
+		selenium.waitForText("//body", "Blogs Entry Content");
 		selenium.selectFrame("relative=top");
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
