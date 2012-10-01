@@ -24,27 +24,9 @@ public class AddDocumentTest extends BaseTestCase {
 	public void testAddDocument() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
-		selenium.open("/web/guest/home/");
-		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
-				"Welcome"));
-		selenium.mouseOver("//h2[@class='user-greeting']/span");
-		selenium.clickAt("//h2[@class='user-greeting']/span",
-			RuntimeVariables.replace("Welcome"));
-		selenium.waitForVisible("link=Control Panel");
-		selenium.clickAt("link=Control Panel",
-			RuntimeVariables.replace("Control Panel"));
-		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Communities",
-			RuntimeVariables.replace("Communities"));
-		selenium.waitForPageToLoad("30000");
-		selenium.type("//input[@id='_134_name']",
-			RuntimeVariables.replace("Document Library Document Lock Community"));
-		selenium.clickAt("//input[@value='Search']",
-			RuntimeVariables.replace("Search"));
-		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Open"),
-			selenium.getText("//td[2]/a"));
-		selenium.clickAt("//td[2]/a", RuntimeVariables.replace("Open"));
+		selenium.open("/web/document-library-document-lock-community/");
+		selenium.clickAt("link=Document Lock Page",
+			RuntimeVariables.replace("Document Lock Page"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Test1 Folder1"),
 			selenium.getText("//b"));
@@ -58,7 +40,7 @@ public class AddDocumentTest extends BaseTestCase {
 			selenium.getText("//a[@class='use-fallback using-new-uploader']"));
 		selenium.click("//a[@class='use-fallback using-new-uploader']");
 		selenium.uploadCommonFile("//input[@id='_20_file']",
-			RuntimeVariables.replace("test_document.txt"));
+			RuntimeVariables.replace("Document_1.txt"));
 		selenium.type("//input[@id='_20_title']",
 			RuntimeVariables.replace("Test1 Document1"));
 		selenium.type("//textarea[@id='_20_description']",
@@ -71,7 +53,8 @@ public class AddDocumentTest extends BaseTestCase {
 			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertTrue(selenium.isPartialText("//td[1]/a", "Test1 Document1.txt"));
 		assertTrue(selenium.isPartialText("//td[1]/a", "This is Test1 Document1"));
-		assertFalse(selenium.isTextPresent("0.0k"));
+		assertEquals(RuntimeVariables.replace("0.3k"),
+			selenium.getText("//td[2]/a"));
 		assertEquals(RuntimeVariables.replace("0"),
 			selenium.getText("//td[3]/a"));
 		assertEquals(RuntimeVariables.replace("No"),

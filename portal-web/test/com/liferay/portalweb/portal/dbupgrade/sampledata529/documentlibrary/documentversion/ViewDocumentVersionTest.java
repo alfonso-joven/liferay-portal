@@ -24,40 +24,31 @@ public class ViewDocumentVersionTest extends BaseTestCase {
 	public void testViewDocumentVersion() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
-		selenium.open("/web/guest/home/");
-		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
-				"Welcome"));
-		selenium.mouseOver("//h2[@class='user-greeting']/span");
-		selenium.clickAt("//h2[@class='user-greeting']/span",
-			RuntimeVariables.replace("Welcome"));
-		selenium.waitForVisible("link=Control Panel");
-		selenium.clickAt("link=Control Panel",
-			RuntimeVariables.replace("Control Panel"));
-		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Communities",
-			RuntimeVariables.replace("Communities"));
-		selenium.waitForPageToLoad("30000");
-		selenium.type("//input[@id='_134_name']",
-			RuntimeVariables.replace(
-				"Document Library Document Version Community"));
-		selenium.clickAt("//input[@value='Search']",
-			RuntimeVariables.replace("Search"));
-		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Open", RuntimeVariables.replace("Open"));
-		selenium.waitForPageToLoad("30000");
-		selenium.waitForElementPresent("link=Document Library Page");
+		selenium.open("/web/document-library-document-version-community/");
 		selenium.clickAt("link=Document Library Page",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Document Library Page"));
 		selenium.waitForPageToLoad("30000");
+		assertEquals(RuntimeVariables.replace("Test1 Folder1"),
+			selenium.getText("//b"));
 		selenium.clickAt("//b", RuntimeVariables.replace("Test1 Folder1"));
 		selenium.waitForPageToLoad("30000");
-		selenium.click("//strong/span");
-		selenium.clickAt("link=View", RuntimeVariables.replace(""));
+		assertEquals(RuntimeVariables.replace("Actions"),
+			selenium.getText("//strong/span"));
+		selenium.clickAt("//strong/span", RuntimeVariables.replace("Actions"));
+		selenium.waitForVisible(
+			"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'View')]");
+		assertEquals(RuntimeVariables.replace("View"),
+			selenium.getText(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'View')]"));
+		selenium.click(RuntimeVariables.replace(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'View')]"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForText("//tr[4]/td[2]/a", "1.0");
-		selenium.waitForText("//tr[2]/td[2]", "1.1");
+		assertEquals(RuntimeVariables.replace("Version"),
+			selenium.getText("//tr[2]/td[1]"));
 		assertEquals(RuntimeVariables.replace("1.1"),
 			selenium.getText("//tr[2]/td[2]"));
+		assertEquals(RuntimeVariables.replace("1.1"),
+			selenium.getText("//tr[3]/td[2]/a"));
 		assertEquals(RuntimeVariables.replace("1.0"),
 			selenium.getText("//tr[4]/td[2]/a"));
 	}
