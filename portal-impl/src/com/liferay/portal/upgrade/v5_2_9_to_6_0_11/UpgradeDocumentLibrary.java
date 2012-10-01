@@ -31,6 +31,7 @@ import com.liferay.portal.upgrade.v6_0_0.util.DLFileEntryTitleUpgradeColumnImpl;
 import com.liferay.portal.upgrade.v6_0_0.util.DLFileEntryVersionUpgradeColumnImpl;
 import com.liferay.portal.upgrade.v6_0_0.util.DLFileRankTable;
 import com.liferay.portal.upgrade.v6_0_0.util.DLFileShortcutTable;
+import com.liferay.portlet.documentlibrary.NoSuchFileException;
 import com.liferay.portlet.documentlibrary.model.DLFolderConstants;
 import com.liferay.portlet.documentlibrary.store.DLStoreUtil;
 
@@ -127,8 +128,16 @@ public class UpgradeDocumentLibrary extends UpgradeProcess {
 					name);
 
 				if (!newName.equals(name)) {
-					DLStoreUtil.updateFile(
-						companyId, repositoryId, name, newName);
+					try {
+						DLStoreUtil.updateFile(
+							companyId, repositoryId, name, newName);
+					}
+					catch (NoSuchFileException nsfe) {
+						if (_log.isWarnEnabled()) {
+							_log.warn(
+								"Unable to update file for " + name, nsfe);
+						}
+					}
 				}
 			}
 		}
