@@ -68,7 +68,7 @@ public class MinifierFilter extends BasePortalFilter {
 	public static String aggregateCss(String dir, String content)
 		throws IOException {
 
-		StringBuilder sb = new StringBuilder(content.length());
+		StringBundler sb = new StringBundler(content.length());
 
 		int pos = 0;
 
@@ -98,8 +98,28 @@ public class MinifierFilter extends BasePortalFilter {
 			else {
 				sb.append(content.substring(pos, importX));
 
-				String importFileName = content.substring(
-					importX + _CSS_IMPORT_BEGIN.length(), importY);
+				String mediaQuery = StringPool.BLANK;
+
+				int mediaQueryImportX = content.indexOf(
+					CharPool.CLOSE_PARENTHESIS,
+					importX + _CSS_IMPORT_BEGIN.length());
+				int mediaQueryImportY = content.indexOf(
+					CharPool.SEMICOLON, importX + _CSS_IMPORT_BEGIN.length());
+
+				String importFileName = null;
+
+				if (importY != mediaQueryImportX) {
+					mediaQuery = content.substring(
+						mediaQueryImportX + 1, mediaQueryImportY);
+
+					importFileName = content.substring(
+						importX + _CSS_IMPORT_BEGIN.length(),
+						mediaQueryImportX);
+				}
+				else {
+					importFileName = content.substring(
+						importX + _CSS_IMPORT_BEGIN.length(), importY);
+				}
 
 				String importFullFileName = dir.concat(StringPool.SLASH).concat(
 					importFileName);
@@ -152,9 +172,21 @@ public class MinifierFilter extends BasePortalFilter {
 				importContent = StringUtil.replace(
 					importContent, "[$TEMP_RELATIVE_PATH$]", StringPool.BLANK);
 
-				sb.append(importContent);
+				if (Validator.isNotNull(mediaQuery)) {
+					sb.append(_CSS_MEDIA_QUERY);
+					sb.append(CharPool.SPACE);
+					sb.append(mediaQuery);
+					sb.append(CharPool.OPEN_CURLY_BRACE);
+					sb.append(importContent);
+					sb.append(CharPool.CLOSE_CURLY_BRACE);
 
-				pos = importY + _CSS_IMPORT_END.length();
+					pos = mediaQueryImportY + 1;
+				}
+				else {
+					sb.append(importContent);
+
+					pos = importY + _CSS_IMPORT_END.length();
+				}
 			}
 		}
 
@@ -505,6 +537,8 @@ public class MinifierFilter extends BasePortalFilter {
 	private static final String _CSS_IMPORT_BEGIN = "@import url(";
 
 	private static final String _CSS_IMPORT_END = ");";
+
+	private static final String _CSS_MEDIA_QUERY = "@media";
 
 	private static final String _JAVASCRIPT_EXTENSION = ".js";
 
