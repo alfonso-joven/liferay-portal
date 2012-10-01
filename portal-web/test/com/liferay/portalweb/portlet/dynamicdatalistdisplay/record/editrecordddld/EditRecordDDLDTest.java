@@ -82,7 +82,7 @@ public class EditRecordDDLDTest extends BaseTestCase {
 		assertTrue(selenium.isPartialText(
 				"//div[@class='aui-fieldset-content ']/div[5]/span/span/label",
 				"File Upload"));
-		selenium.type("//div[@class='aui-fieldset-content ']/div[5]/span/span/span/input",
+		selenium.uploadCommonFile("//div[@class='aui-fieldset-content ']/div[5]/span/span/span/input",
 			RuntimeVariables.replace(
 				"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\portal\\controlpanel\\dynamicdatalists\\dependencies\\document.txt"));
 		assertEquals(RuntimeVariables.replace("Integer"),

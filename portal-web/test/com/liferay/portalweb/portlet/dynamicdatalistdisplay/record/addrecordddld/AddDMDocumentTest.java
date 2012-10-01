@@ -42,7 +42,7 @@ public class AddDMDocumentTest extends BaseTestCase {
 			RuntimeVariables.replace("Basic Document"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isVisible("//input[@id='_20_file']"));
-		selenium.type("//input[@id='_20_file']",
+		selenium.uploadCommonFile("//input[@id='_20_file']",
 			RuntimeVariables.replace(
 				"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\portlet\\dynamicdatalistdisplay\\dependencies\\document.txt"));
 		selenium.clickAt("//input[@value='Publish']",
