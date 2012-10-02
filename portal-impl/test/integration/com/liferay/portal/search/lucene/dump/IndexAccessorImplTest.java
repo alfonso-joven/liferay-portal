@@ -14,9 +14,9 @@
 
 package com.liferay.portal.search.lucene.dump;
 
+import com.liferay.portal.kernel.test.ExecutionTestListeners;
 import com.liferay.portal.search.lucene.IndexAccessorImpl;
 import com.liferay.portal.test.EnvironmentExecutionTestListener;
-import com.liferay.portal.test.ExecutionTestListeners;
 import com.liferay.portal.test.LiferayIntegrationJUnitTestRunner;
 import com.liferay.portal.util.PropsValues;
 
