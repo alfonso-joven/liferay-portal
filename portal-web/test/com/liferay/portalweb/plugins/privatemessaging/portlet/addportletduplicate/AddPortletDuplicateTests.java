@@ -14,6 +14,8 @@
 
 package com.liferay.portalweb.plugins.privatemessaging.portlet.addportletduplicate;
 
+import com.liferay.portalweb.plugins.privatemessaging.portlet.addportlet.AddPagePMTest;
+import com.liferay.portalweb.plugins.privatemessaging.portlet.addportlet.AddPortletPMTest;
 import com.liferay.portalweb.portal.BaseTestSuite;
 import com.liferay.portalweb.portal.util.TearDownPageTest;
 
