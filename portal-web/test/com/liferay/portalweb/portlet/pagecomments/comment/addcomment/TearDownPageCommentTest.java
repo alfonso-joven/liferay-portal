@@ -48,9 +48,13 @@ public class TearDownPageCommentTest extends BaseTestCase {
 				selenium.click("//li[4]/span/a/span");
 				selenium.waitForConfirmation(
 					"Are you sure you want to delete this?");
+				selenium.waitForVisible(
+					"//div[@class='lfr-message-response portlet-msg-success']");
+				assertEquals(RuntimeVariables.replace(
+						"Your request processed successfully."),
+					selenium.getText(
+						"//div[@class='lfr-message-response portlet-msg-success']"));
 				Thread.sleep(5000);
-
-			case 2:
 
 				boolean pageComment2Present = selenium.isElementPresent(
 						"//div[@class='lfr-discussion-message']");
@@ -66,9 +70,13 @@ public class TearDownPageCommentTest extends BaseTestCase {
 				selenium.click("//li[4]/span/a/span");
 				selenium.waitForConfirmation(
 					"Are you sure you want to delete this?");
+				selenium.waitForVisible(
+					"//div[@class='lfr-message-response portlet-msg-success']");
+				assertEquals(RuntimeVariables.replace(
+						"Your request processed successfully."),
+					selenium.getText(
+						"//div[@class='lfr-message-response portlet-msg-success']"));
 				Thread.sleep(5000);
-
-			case 3:
 
 				boolean pageComment3Present = selenium.isElementPresent(
 						"//div[@class='lfr-discussion-message']");
@@ -84,9 +92,13 @@ public class TearDownPageCommentTest extends BaseTestCase {
 				selenium.click("//li[4]/span/a/span");
 				selenium.waitForConfirmation(
 					"Are you sure you want to delete this?");
+				selenium.waitForVisible(
+					"//div[@class='lfr-message-response portlet-msg-success']");
+				assertEquals(RuntimeVariables.replace(
+						"Your request processed successfully."),
+					selenium.getText(
+						"//div[@class='lfr-message-response portlet-msg-success']"));
 				Thread.sleep(5000);
-
-			case 4:
 
 				boolean pageComment4Present = selenium.isElementPresent(
 						"//div[@class='lfr-discussion-message']");
@@ -102,9 +114,13 @@ public class TearDownPageCommentTest extends BaseTestCase {
 				selenium.click("//li[4]/span/a/span");
 				selenium.waitForConfirmation(
 					"Are you sure you want to delete this?");
+				selenium.waitForVisible(
+					"//div[@class='lfr-message-response portlet-msg-success']");
+				assertEquals(RuntimeVariables.replace(
+						"Your request processed successfully."),
+					selenium.getText(
+						"//div[@class='lfr-message-response portlet-msg-success']"));
 				Thread.sleep(5000);
-
-			case 5:
 
 				boolean pageComment5Present = selenium.isElementPresent(
 						"//div[@class='lfr-discussion-message']");
@@ -120,8 +136,18 @@ public class TearDownPageCommentTest extends BaseTestCase {
 				selenium.click("//li[4]/span/a/span");
 				selenium.waitForConfirmation(
 					"Are you sure you want to delete this?");
+				selenium.waitForVisible(
+					"//div[@class='lfr-message-response portlet-msg-success']");
+				assertEquals(RuntimeVariables.replace(
+						"Your request processed successfully."),
+					selenium.getText(
+						"//div[@class='lfr-message-response portlet-msg-success']"));
 				Thread.sleep(5000);
 
+			case 2:
+			case 3:
+			case 4:
+			case 5:
 			case 6:
 			case 100:
 				label = -1;
