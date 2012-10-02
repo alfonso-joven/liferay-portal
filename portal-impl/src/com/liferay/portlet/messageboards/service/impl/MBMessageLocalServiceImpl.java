@@ -2001,7 +2001,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 							WebKeys.THEME_DISPLAY);
 
 					messageBody = MBUtil.replaceMessageBodyPaths(
-						messageBody, themeDisplay);
+						themeDisplay, messageBody);
 				}
 			}
 			catch (Exception e) {
