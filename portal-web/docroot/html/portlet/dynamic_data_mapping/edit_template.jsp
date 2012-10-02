@@ -18,7 +18,6 @@
 
 <%
 String redirect = ParamUtil.getString(request, "redirect");
-String backURL = ParamUtil.getString(request, "backURL");
 
 String portletResource = ParamUtil.getString(request, "portletResource");
 
@@ -87,8 +86,13 @@ if (Validator.isNotNull(structureAvailableFields)) {
 	}
 	%>
 
+	<portlet:renderURL var="viewTemplatesURL">
+		<portlet:param name="struts_action" value="/dynamic_data_mapping/view_template" />
+		<portlet:param name="structureId" value="<%= String.valueOf(structureId) %>" />
+	</portlet:renderURL>
+
 	<liferay-ui:header
-		backURL="<%= backURL %>"
+		backURL="<%= Validator.isNotNull(portletResource) ? null : viewTemplatesURL %>"
 		localizeTitle="<%= false %>"
 		title="<%= title %>"
 	/>
