@@ -14,8 +14,8 @@
 
 package com.liferay.portal.service.persistence;
 
-import com.liferay.portal.test.AbstractExecutionTestListener;
-import com.liferay.portal.test.TestContext;
+import com.liferay.portal.kernel.test.AbstractExecutionTestListener;
+import com.liferay.portal.kernel.test.TestContext;
 import com.liferay.portal.util.PropsValues;
 
 /**
