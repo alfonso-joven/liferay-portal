@@ -15,6 +15,7 @@
 package com.liferay.portalweb.plugins.opensocial;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
+import com.liferay.portalweb.portal.util.TearDownPageTest;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -25,10 +26,11 @@ import junit.framework.TestSuite;
 public class OpenSocialTests extends BaseTestSuite {
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
-		testSuite.addTestSuite(AddPageTest.class);
+		testSuite.addTestSuite(AddPageOpenSocialTest.class);
 		testSuite.addTestSuite(AddGadgetTest.class);
 		testSuite.addTestSuite(AddPortletOpenSocialGadgetTest.class);
-		testSuite.addTestSuite(DeletePageTest.class);
+		testSuite.addTestSuite(TearDownPageTest.class);
+		testSuite.addTestSuite(TearDownGadgetTest.class);
 
 		return testSuite;
 	}
