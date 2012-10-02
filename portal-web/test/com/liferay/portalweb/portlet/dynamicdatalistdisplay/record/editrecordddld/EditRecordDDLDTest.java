@@ -24,7 +24,6 @@ public class EditRecordDDLDTest extends BaseTestCase {
 	public void testEditRecordDDLD() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
-		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
 		selenium.clickAt("link=Dynamic Data List Display Test Page",
 			RuntimeVariables.replace("Dynamic Data List Display Test Page"));
@@ -82,7 +81,7 @@ public class EditRecordDDLDTest extends BaseTestCase {
 		assertTrue(selenium.isPartialText(
 				"//div[@class='aui-fieldset-content ']/div[5]/span/span/label",
 				"File Upload"));
-		selenium.uploadCommonFile("//div[@class='aui-fieldset-content ']/div[5]/span/span/span/input",
+		selenium.uploadFile("//div[@class='aui-fieldset-content ']/div[5]/span/span/span/input",
 			RuntimeVariables.replace(
 				"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\portal\\controlpanel\\dynamicdatalists\\dependencies\\document.txt"));
 		assertEquals(RuntimeVariables.replace("Integer"),

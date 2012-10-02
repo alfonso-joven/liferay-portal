@@ -92,10 +92,14 @@ public class ViewEditRecordDDLDTest extends BaseTestCase {
 			selenium.getText("//div[@class='aui-fieldset-content ']/div[3]"));
 		assertTrue(selenium.isPartialText(
 				"//div[@class='aui-fieldset-content ']/div[4]",
-				"Documents and Media document_edited.txt"));
+				"Documents and Media"));
 		assertTrue(selenium.isPartialText(
-				"//div[@class='aui-fieldset-content ']/div[5]",
-				"File Upload document.txt"));
+				"//div[@class='aui-fieldset-content ']/div[4]",
+				"document_edited.txt"));
+		assertTrue(selenium.isPartialText(
+				"//div[@class='aui-fieldset-content ']/div[5]", "File Upload"));
+		assertTrue(selenium.isPartialText(
+				"//div[@class='aui-fieldset-content ']/div[5]", "document.txt"));
 		assertEquals(RuntimeVariables.replace("Integer 8910"),
 			selenium.getText("//div[@class='aui-fieldset-content ']/div[6]"));
 		assertEquals(RuntimeVariables.replace("Number 111213"),
