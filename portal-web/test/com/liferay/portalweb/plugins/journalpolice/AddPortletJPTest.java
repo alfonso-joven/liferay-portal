@@ -20,19 +20,33 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 /**
  * @author Brian Wing Shun Chan
  */
-public class AddPortletTest extends BaseTestCase {
-	public void testAddPortlet() throws Exception {
+public class AddPortletJPTest extends BaseTestCase {
+	public void testAddPortletJP() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
 		selenium.waitForVisible("link=Journal Police Test Page");
-		selenium.click(RuntimeVariables.replace("link=Journal Police Test Page"));
+		selenium.clickAt("link=Journal Police Test Page",
+			RuntimeVariables.replace("Journal Police Test Page"));
 		selenium.waitForPageToLoad("30000");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Add"),
+			selenium.getText("//li[@id='_145_addContent']/a/span"));
+		selenium.mouseOver("//li[@id='_145_addContent']/a/span");
+		selenium.waitForVisible("//a[@id='_145_addApplication']");
 		assertTrue(selenium.isPartialText("//a[@id='_145_addApplication']",
 				"More"));
 		selenium.clickAt("//a[@id='_145_addApplication']",
 			RuntimeVariables.replace("More"));
-		selenium.waitForElementPresent("//div[@title='Journal Police']/p/a");
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-live-search/aui-live-search-min.js')]");
+		selenium.waitForVisible("//input[@id='layout_configuration_content']");
+		selenium.sendKeys("//input[@id='layout_configuration_content']",
+			RuntimeVariables.replace("j"));
+		selenium.waitForVisible("//div[@title='Journal Police']/p/a");
 		selenium.clickAt("//div[@title='Journal Police']/p/a",
 			RuntimeVariables.replace("Add"));
 		selenium.waitForVisible("//section");
