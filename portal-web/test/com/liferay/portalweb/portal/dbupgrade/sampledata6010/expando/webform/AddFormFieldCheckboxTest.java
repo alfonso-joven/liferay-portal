@@ -24,41 +24,28 @@ public class AddFormFieldCheckboxTest extends BaseTestCase {
 	public void testAddFormFieldCheckbox() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
-		selenium.open("/web/guest/home/");
-		selenium.clickAt("//div[@id='dockbar']",
-			RuntimeVariables.replace("Dockbar"));
-		selenium.waitForElementPresent(
-			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
-		assertEquals(RuntimeVariables.replace("Manage"),
-			selenium.getText("//li[@id='_145_manageContent']/a/span"));
-		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
-		selenium.waitForVisible("link=Control Panel");
-		selenium.clickAt("link=Control Panel",
-			RuntimeVariables.replace("Control Panel"));
+		selenium.open("/web/expando-web-form-community/");
+		selenium.clickAt("link=Web Form Page",
+			RuntimeVariables.replace("Web Form Page"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Communities",
-			RuntimeVariables.replace("Communities"));
-		selenium.waitForPageToLoad("30000");
-		selenium.type("//input[@id='_134_name']",
-			RuntimeVariables.replace("Expando Web Form Community"));
-		selenium.clickAt("//input[@value='Search']",
-			RuntimeVariables.replace("Search"));
-		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//td[2]/a", RuntimeVariables.replace("Open"));
-		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Web Form Page", RuntimeVariables.replace(""));
-		selenium.waitForPageToLoad("30000");
+		Thread.sleep(5000);
+		assertEquals(RuntimeVariables.replace("Options"),
+			selenium.getText("//strong/a"));
 		selenium.clickAt("//strong/a", RuntimeVariables.replace("Options"));
 		selenium.waitForVisible(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a");
+			"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]");
 		assertEquals(RuntimeVariables.replace("Configuration"),
 			selenium.getText(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a"));
-		selenium.click("//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a");
-		selenium.waitForVisible("//div[5]/span/span/button[1]");
-		selenium.clickAt("//div[5]/span/span/button[1]",
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]"));
+		selenium.click(
+			"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]");
+		selenium.waitForVisible(
+			"//iframe[contains(@id,'_configurationIframe')]");
+		selenium.selectFrame("//iframe[contains(@id,'_configurationIframe')]");
+		selenium.waitForVisible("//button[contains(@class,'add-row')]");
+		selenium.clickAt("//button[contains(@class,'add-row')]",
 			RuntimeVariables.replace("Add Row"));
-		selenium.waitForVisible("//input[@id='_86_fieldType6']");
+		selenium.waitForVisible("//select[@id='_86_fieldType6']");
 		selenium.select("//select[@id='_86_fieldType6']",
 			RuntimeVariables.replace("label=Check Box"));
 		selenium.waitForVisible("//input[@id='_86_fieldLabel6_en_US']");
@@ -70,10 +57,13 @@ public class AddFormFieldCheckboxTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"You have successfully updated the setup."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
-		selenium.waitForElementPresent("link=Web Form Page");
-		selenium.clickAt("link=Web Form Page", RuntimeVariables.replace(""));
+		selenium.selectFrame("relative=top");
+		selenium.open("/web/expando-web-form-community/");
+		selenium.clickAt("link=Web Form Page",
+			RuntimeVariables.replace("Web Form Page"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isTextPresent("Checkbox"));
-		assertTrue(selenium.isElementPresent("//input[@type='checkbox']"));
+		assertEquals(RuntimeVariables.replace("Checkbox"),
+			selenium.getText("//label[contains(@for,'_field2Checkbox')]"));
+		assertTrue(selenium.isVisible("//input[@type='checkbox']"));
 	}
 }

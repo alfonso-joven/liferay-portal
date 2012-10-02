@@ -24,7 +24,7 @@ public class AddWebContentExpandoTest extends BaseTestCase {
 	public void testAddWebContentExpando() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
-		selenium.open("/web/guest/home/");
+		selenium.open("/web/expando-web-content-community/");
 		selenium.clickAt("//div[@id='dockbar']",
 			RuntimeVariables.replace("Dockbar"));
 		selenium.waitForElementPresent(
@@ -36,55 +36,52 @@ public class AddWebContentExpandoTest extends BaseTestCase {
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Communities",
-			RuntimeVariables.replace("Communities"));
-		selenium.waitForPageToLoad("30000");
-		selenium.type("//input[@id='_134_name']",
-			RuntimeVariables.replace("Expando Web Content Community"));
-		selenium.clickAt("//input[@value='Search']",
-			RuntimeVariables.replace("Search"));
-		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//td[2]/a", RuntimeVariables.replace("Open"));
-		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Control Panel",
-			RuntimeVariables.replace("Control Panel"));
-		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Web Content", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Web Content",
+			RuntimeVariables.replace("Web Content"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//input[@value='Add Web Content']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Add Web Content"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("//input[@id='_15_title']",
-			RuntimeVariables.replace("Expando Web Content Test"));
-		selenium.click("//input[@id='_15_changeStructureBtn']");
+		selenium.waitForVisible(
+			"//iframe[@id='_15_structure_el_TextAreaField_content']");
+		selenium.selectFrame(
+			"//iframe[@id='_15_structure_el_TextAreaField_content']");
+		selenium.waitForElementPresent(
+			"//textarea[@id='CKEditor1' and @style='display: none;']");
+		selenium.selectFrame("relative=top");
+		assertEquals(RuntimeVariables.replace("Choose"),
+			selenium.getText("//a[@id='_15_changeStructureBtn']"));
+		selenium.clickAt("//a[@id='_15_changeStructureBtn']",
+			RuntimeVariables.replace("Choose"));
 		assertTrue(selenium.getConfirmation()
 						   .matches("^Selecting a new structure will change the available input fields and available templates[\\s\\S] Do you want to proceed[\\s\\S]$"));
-		selenium.waitForPopUp("ChangeStructure",
-			RuntimeVariables.replace("30000"));
-		selenium.selectWindow("name=ChangeStructure");
-		selenium.waitForElementPresent("link=TEST_EXPANDO");
+		Thread.sleep(5000);
+		selenium.selectWindow("title=Web Content");
+		selenium.waitForVisible("link=TEST_EXPANDO");
 		selenium.click("link=TEST_EXPANDO");
 		selenium.selectWindow("null");
-		selenium.waitForText("//input[@id='_15_structureNameLabel']",
+		selenium.waitForText("//span[@id='_15_structureNameLabel']",
 			"Expando Structure Test (Use Default)");
 		assertEquals(RuntimeVariables.replace(
 				"Expando Structure Test (Use Default)"),
-			selenium.getText("//input[@id='_15_structureNameLabel']"));
+			selenium.getText("//span[@id='_15_structureNameLabel']"));
+		selenium.type("//input[@id='_15_title']",
+			RuntimeVariables.replace("Expando Web Content Test"));
 		selenium.clickAt("//input[@value='Publish']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Your request processed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
-		assertTrue(selenium.isElementPresent("//td[2]/a"));
+		assertTrue(selenium.isVisible("//td[2]/a"));
 		assertEquals(RuntimeVariables.replace("Expando Web Content Test"),
 			selenium.getText("//td[3]/a"));
 		assertEquals(RuntimeVariables.replace("1.0"),
 			selenium.getText("//td[4]/a"));
 		assertEquals(RuntimeVariables.replace("Approved"),
 			selenium.getText("//td[5]/a"));
-		assertTrue(selenium.isElementPresent("//td[6]/a"));
-		assertTrue(selenium.isElementPresent("//td[7]/a"));
+		assertTrue(selenium.isVisible("//td[6]/a"));
+		assertTrue(selenium.isVisible("//td[7]/a"));
 		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
 			selenium.getText("//td[8]/a"));
 	}

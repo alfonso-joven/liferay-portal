@@ -24,36 +24,20 @@ public class SelectWebContentExpandoTest extends BaseTestCase {
 	public void testSelectWebContentExpando() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
-		selenium.open("/web/guest/home/");
-		selenium.clickAt("//div[@id='dockbar']",
-			RuntimeVariables.replace("Dockbar"));
-		selenium.waitForElementPresent(
-			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
-		assertEquals(RuntimeVariables.replace("Manage"),
-			selenium.getText("//li[@id='_145_manageContent']/a/span"));
-		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
-		selenium.waitForVisible("link=Control Panel");
-		selenium.clickAt("link=Control Panel",
-			RuntimeVariables.replace("Control Panel"));
-		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Communities",
-			RuntimeVariables.replace("Communities"));
-		selenium.waitForPageToLoad("30000");
-		selenium.type("//input[@id='_134_name']",
-			RuntimeVariables.replace("Expando Web Content Community"));
-		selenium.clickAt("//input[@value='Search']",
-			RuntimeVariables.replace("Search"));
-		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//td[2]/a", RuntimeVariables.replace("Open"));
-		selenium.waitForPageToLoad("30000");
+		selenium.open("/web/expando-web-content-community/");
 		selenium.clickAt("link=Web Content Display Page",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Web Content Display Page"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//img[@alt='Select Web Content']",
-			RuntimeVariables.replace(""));
-		selenium.waitForVisible("link=Expando Web Content Test");
-		selenium.clickAt("link=Expando Web Content Test",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Select Web Content"));
+		selenium.waitForVisible(
+			"//iframe[contains(@id,'_configurationIframe')]");
+		selenium.selectFrame("//iframe[contains(@id,'_configurationIframe')]");
+		selenium.waitForVisible("//td[2]/a");
+		assertEquals(RuntimeVariables.replace("Expando Web Content Test"),
+			selenium.getText("//td[2]/a"));
+		selenium.clickAt("//td[2]/a",
+			RuntimeVariables.replace("Expando Web Content Test"));
 		selenium.waitForPartialText("//form[@id='_86_fm1']/div",
 			"Displaying Content:");
 		assertTrue(selenium.isPartialText("//form[@id='_86_fm1']/div",
@@ -64,5 +48,6 @@ public class SelectWebContentExpandoTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"You have successfully updated the setup."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
+		selenium.selectFrame("relative=top");
 	}
 }

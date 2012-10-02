@@ -54,19 +54,29 @@
 	<td>Search</td>
 </tr>
 <tr>
+	<td>assertText</td>
+	<td>//strong/span</td>
+	<td>Actions</td>
+</tr>
+<tr>
 	<td>clickAt</td>
 	<td>//strong/span</td>
-	<td></td>
+	<td>Actions</td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
-	<td>link=Manage Pages</td>
-	<td></td>
+	<td>waitForVisible</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Manage Pages')]</td>
+	<td>Manage Pages</td>
 </tr>
 <tr>
-	<td>clickAtAndWait</td>
-	<td>link=Manage Pages</td>
-	<td></td>
+	<td>assertText</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Manage Pages')]</td>
+	<td>Manage Pages</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Manage Pages')]</td>
+	<td>Manage Pages</td>
 </tr>
 <tr>
 	<td>type</td>
@@ -76,19 +86,18 @@
 <tr>
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Add Page']</td>
-	<td></td>
+	<td>Add Page</td>
 </tr>
 <tr>
-	<td>assertTextPresent</td>
+	<td>assertText</td>
+	<td>//div[@class='portlet-msg-success']</td>
 	<td>Your request processed successfully.</td>
-	<td></td>
 </tr>
 <tr>
-	<td>assertElementPresent</td>
-	<td>link=Web Content Display Page</td>
-	<td></td>
+	<td>assertText</td>
+	<td>//li[@class='tree-item']/a</td>
+	<td>Web Content Display Page</td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

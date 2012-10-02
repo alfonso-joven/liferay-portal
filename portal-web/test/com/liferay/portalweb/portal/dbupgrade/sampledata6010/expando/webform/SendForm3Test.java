@@ -24,38 +24,20 @@ public class SendForm3Test extends BaseTestCase {
 	public void testSendForm3() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
-		selenium.open("/web/guest/home/");
-		selenium.clickAt("//div[@id='dockbar']",
-			RuntimeVariables.replace("Dockbar"));
-		selenium.waitForElementPresent(
-			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
-		assertEquals(RuntimeVariables.replace("Manage"),
-			selenium.getText("//li[@id='_145_manageContent']/a/span"));
-		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
-		selenium.waitForVisible("link=Control Panel");
-		selenium.clickAt("link=Control Panel",
-			RuntimeVariables.replace("Control Panel"));
-		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Communities",
-			RuntimeVariables.replace("Communities"));
-		selenium.waitForPageToLoad("30000");
-		selenium.type("//input[@id='_134_name']",
-			RuntimeVariables.replace("Expando Web Form Community"));
-		selenium.clickAt("//input[@value='Search']",
-			RuntimeVariables.replace("Search"));
-		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//td[2]/a", RuntimeVariables.replace("Open"));
-		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Web Form Page", RuntimeVariables.replace(""));
+		selenium.open("/web/expando-web-form-community/");
+		selenium.clickAt("link=Web Form Page",
+			RuntimeVariables.replace("Web Form Page"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@type='text']", RuntimeVariables.replace("Houn"));
 		selenium.clickAt("//input[@type='checkbox']",
-			RuntimeVariables.replace(""));
-		selenium.clickAt("//input[@value='Male']", RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Checkbox"));
+		selenium.clickAt("//input[@value='Male']",
+			RuntimeVariables.replace("Male"));
 		selenium.select("//select", RuntimeVariables.replace("label=Excellent"));
 		selenium.type("//textarea",
 			RuntimeVariables.replace("This is a comment. Houn."));
-		selenium.clickAt("//input[@value='Send']", RuntimeVariables.replace(""));
+		selenium.clickAt("//input[@value='Send']",
+			RuntimeVariables.replace("Send"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"The form information was sent successfully."),

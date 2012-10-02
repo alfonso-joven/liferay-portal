@@ -24,32 +24,12 @@ public class CreateAccountExpando2Test extends BaseTestCase {
 	public void testCreateAccountExpando2() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
-		selenium.open("/web/guest/home/");
-		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
-				"Welcome"));
-		selenium.mouseOver("//h2[@class='user-greeting']/span");
-		selenium.clickAt("//h2[@class='user-greeting']/span",
-			RuntimeVariables.replace("Welcome"));
-		selenium.waitForVisible("link=Control Panel");
-		selenium.clickAt("link=Control Panel",
-			RuntimeVariables.replace("Control Panel"));
-		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Communities",
-			RuntimeVariables.replace("Communities"));
-		selenium.waitForPageToLoad("30000");
-		selenium.type("//input[@id='_134_name']",
-			RuntimeVariables.replace("Expando Web Content Community"));
-		selenium.clickAt("//input[@value='Search']",
-			RuntimeVariables.replace("Search"));
-		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//tr[@class='portlet-section-body results-row']/td[1]/a",
-			RuntimeVariables.replace(""));
-		selenium.waitForPageToLoad("30000");
+		selenium.open("/web/expando-web-content-community/");
 		selenium.clickAt("link=Web Content Display Page",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Web Content Display Page"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//input[@value='Create Account']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Create Account"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//table[@class='lfr-table']/tbody/tr[1]/td[2]/input",
 			RuntimeVariables.replace("JR"));

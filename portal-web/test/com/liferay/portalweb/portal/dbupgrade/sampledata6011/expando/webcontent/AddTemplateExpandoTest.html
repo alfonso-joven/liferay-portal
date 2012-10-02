@@ -10,7 +10,7 @@
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/web/guest/home/</td>
+	<td>/web/expando-web-content-community/</td>
 	<td></td>
 </tr>
 <tr>
@@ -45,43 +45,18 @@
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>link=Communities</td>
-	<td>Communities</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>//input[@id='_134_name']</td>
-	<td>Expando Web Content Community</td>
-</tr>
-<tr>
-	<td>clickAtAndWait</td>
-	<td>//input[@value='Search']</td>
-	<td>Search</td>
-</tr>
-<tr>
-	<td>clickAtAndWait</td>
-	<td>//td[2]/a</td>
-	<td>Open</td>
-</tr>
-<tr>
-	<td>clickAtAndWait</td>
-	<td>link=Control Panel</td>
-	<td>Control Panel</td>
-</tr>
-<tr>
-	<td>clickAtAndWait</td>
 	<td>link=Web Content</td>
-	<td></td>
+	<td>Web Content</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=Templates</td>
-	<td></td>
+	<td>Templates</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Add Template']</td>
-	<td></td>
+	<td>Add Template</td>
 </tr>
 <tr>
 	<td>type</td>
@@ -95,12 +70,12 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>//input[@id='_15_description']</td>
+	<td>//textarea[@id='_15_description']</td>
 	<td>This is an expando template test.</td>
 </tr>
 <tr>
-	<td>store</td>
-	<td>eval(selenium.isChecked('_15_cacheableCheckbox'))</td>
+	<td>storeChecked</td>
+	<td>//input[@id='_15_cacheableCheckbox']</td>
 	<td>cacheableChecked</td>
 </tr>
 <tr>
@@ -111,7 +86,7 @@
 <tr>
 	<td>clickAt</td>
 	<td>//input[@id='_15_cacheableCheckbox']</td>
-	<td></td>
+	<td>Cacheable</td>
 </tr>
 <tr>
 	<td>label</td>
@@ -121,27 +96,27 @@
 <tr>
 	<td>clickAt</td>
 	<td>//input[@value='Select']</td>
-	<td></td>
+	<td>Select</td>
 </tr>
 <tr>
-	<td>waitForPopUp</td>
-	<td>structure</td>
-	<td>30000</td>
+	<td>pause</td>
+	<td>5000</td>
+	<td></td>
 </tr>
 <tr>
 	<td>selectWindow</td>
-	<td>name=structure</td>
-	<td></td>
+	<td>title=Web Content</td>
+	<td>Web Content</td>
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
 	<td>link=TEST_EXPANDO</td>
-	<td></td>
+	<td>TEST_EXPANDO</td>
 </tr>
 <tr>
 	<td>click</td>
 	<td>link=TEST_EXPANDO</td>
-	<td></td>
+	<td>TEST_EXPANDO</td>
 </tr>
 <tr>
 	<td>selectWindow</td>
@@ -150,18 +125,18 @@
 </tr>
 <tr>
 	<td>waitForText</td>
-	<td>//input[@id='_15_structureName']</td>
+	<td>//a[@id='_15_structureName']</td>
 	<td>Expando Structure Test</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//input[@id='_15_structureName']</td>
+	<td>//a[@id='_15_structureName']</td>
 	<td>Expando Structure Test</td>
 </tr>
 <tr>
-	<td>type</td>
+	<td>uploadFile</td>
 	<td>//input[@id='_15_xsl']</td>
-	<td>L:\portal\build\portal-web\test\com\liferay\portalweb\portal\dbupgrade\sampledata6011\expando\webcontent\dependencies\Expando.htm</td>
+	<td>L:\portal\build\portal-web\test\com\liferay\portalweb\portal\dbupgrade\sampledata606\expando\webcontent\dependencies\Expando.htm</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -175,13 +150,18 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//tr[@class='portlet-section-body results-row last']/td[2]</td>
+	<td>//td[2]/a</td>
 	<td>TEST_EXPANDO</td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>//tr[@class='portlet-section-body results-row last']/td[3]</td>
-	<td>Expando Template Test<br /> This is an expando template test.</td>
+	<td>assertPartialText</td>
+	<td>//td[3]/a</td>
+	<td>Expando Template Test</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>//td[3]/a</td>
+	<td>This is an expando template test.</td>
 </tr>
 </tbody></table>
 </body>

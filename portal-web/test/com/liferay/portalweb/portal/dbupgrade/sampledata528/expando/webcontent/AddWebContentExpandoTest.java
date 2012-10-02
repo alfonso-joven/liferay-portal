@@ -24,7 +24,7 @@ public class AddWebContentExpandoTest extends BaseTestCase {
 	public void testAddWebContentExpando() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
-		selenium.open("/web/guest/home/");
+		selenium.open("/web/expando-web-content-community/");
 		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
 				"Welcome"));
 		selenium.mouseOver("//h2[@class='user-greeting']/span");
@@ -34,47 +34,39 @@ public class AddWebContentExpandoTest extends BaseTestCase {
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Communities",
-			RuntimeVariables.replace("Communities"));
-		selenium.waitForPageToLoad("30000");
-		selenium.type("//input[@id='_134_name']",
-			RuntimeVariables.replace("Expando Web Content Community"));
-		selenium.clickAt("//input[@value='Search']",
-			RuntimeVariables.replace("Search"));
-		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//tr[@class='portlet-section-body results-row last']/td[1]/a",
-			RuntimeVariables.replace(""));
-		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Control Panel",
-			RuntimeVariables.replace("Control Panel"));
-		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Web Content", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Web Content",
+			RuntimeVariables.replace("Web Content"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//input[@value='Add Web Content']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Add Web Content"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_15_title']",
 			RuntimeVariables.replace("Expando Web Content Test"));
+		selenium.waitForVisible("//iframe[@id='_15_editor']");
+		selenium.selectFrame("//iframe[@id='_15_editor']");
+		selenium.waitForElementPresent(
+			"//textarea[@id='FCKeditor1' and @style='display: none']");
+		selenium.selectFrame("relative=top");
 		selenium.clickAt("//input[@value='Select']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Select"));
 		assertTrue(selenium.getConfirmation()
 						   .matches("^Selecting a new structure will change the available input fields and available templates[\\s\\S] Do you want to proceed[\\s\\S]$"));
-		selenium.waitForPopUp("structure", RuntimeVariables.replace("30000"));
-		selenium.selectWindow("name=structure");
+		Thread.sleep(5000);
+		selenium.selectWindow("title=Web Content");
 		selenium.waitForElementPresent("link=TEST_EXPANDO");
 		selenium.click("link=TEST_EXPANDO");
 		selenium.selectWindow("null");
-		selenium.waitForText("//input[@id='_15_structureName']",
+		selenium.waitForText("//a[@id='_15_structureName']",
 			"Expando Structure Test");
 		assertEquals(RuntimeVariables.replace("Expando Structure Test"),
-			selenium.getText("//input[@id='_15_structureName']"));
+			selenium.getText("//a[@id='_15_structureName']"));
 		selenium.clickAt("//input[@value='Save and Approve']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Save and Approve"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isTextPresent(
-				"Your request processed successfully."));
+		assertEquals(RuntimeVariables.replace(
+				"Your request processed successfully."),
+			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertEquals(RuntimeVariables.replace("Expando Web Content Test"),
-			selenium.getText(
-				"//tr[@class='portlet-section-body results-row last']/td[3]"));
+			selenium.getText("//td[3]/a"));
 	}
 }

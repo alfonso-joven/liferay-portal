@@ -42,17 +42,27 @@ public class AddPageWFTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//strong/span", RuntimeVariables.replace(""));
-		selenium.waitForElementPresent("link=Manage Pages");
-		selenium.clickAt("link=Manage Pages", RuntimeVariables.replace(""));
+		assertEquals(RuntimeVariables.replace("Actions"),
+			selenium.getText("//strong/span[.='Actions']"));
+		selenium.clickAt("//strong/span[.='Actions']",
+			RuntimeVariables.replace("Actions"));
+		selenium.waitForVisible(
+			"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Manage Pages')]");
+		assertEquals(RuntimeVariables.replace("Manage Pages"),
+			selenium.getText(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Manage Pages')]"));
+		selenium.click(RuntimeVariables.replace(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Manage Pages')]"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@name='_134_name_en_US']",
 			RuntimeVariables.replace("Web Form Page"));
 		selenium.clickAt("//input[@value='Add Page']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Add Page"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isTextPresent(
-				"Your request processed successfully."));
-		assertTrue(selenium.isElementPresent("link=Web Form Page"));
+		assertEquals(RuntimeVariables.replace(
+				"Your request processed successfully."),
+			selenium.getText("//div[@class='portlet-msg-success']"));
+		assertEquals(RuntimeVariables.replace("Web Form Page"),
+			selenium.getText("//li[@class='tree-item']/a/span"));
 	}
 }

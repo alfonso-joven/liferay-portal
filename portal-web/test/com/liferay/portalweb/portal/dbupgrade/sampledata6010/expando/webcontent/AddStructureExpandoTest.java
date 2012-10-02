@@ -24,7 +24,7 @@ public class AddStructureExpandoTest extends BaseTestCase {
 	public void testAddStructureExpando() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
-		selenium.open("/web/guest/home/");
+		selenium.open("/web/expando-web-content-community/");
 		selenium.clickAt("//div[@id='dockbar']",
 			RuntimeVariables.replace("Dockbar"));
 		selenium.waitForElementPresent(
@@ -36,44 +36,28 @@ public class AddStructureExpandoTest extends BaseTestCase {
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Communities",
-			RuntimeVariables.replace("Communities"));
+		selenium.clickAt("link=Web Content",
+			RuntimeVariables.replace("Web Content"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("//input[@id='_134_name']",
-			RuntimeVariables.replace("Expando Web Content Community"));
-		selenium.clickAt("//input[@value='Search']",
-			RuntimeVariables.replace("Search"));
-		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//td[2]/a", RuntimeVariables.replace("Open"));
-		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Control Panel",
-			RuntimeVariables.replace("Control Panel"));
-		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Web Content", RuntimeVariables.replace(""));
-		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Structures", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Structures",
+			RuntimeVariables.replace("Structures"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//input[@value='Add Structure']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Add Structure"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_15_newStructureId']",
 			RuntimeVariables.replace("test_expando"));
 		selenium.type("//input[@id='_15_name']",
 			RuntimeVariables.replace("Expando Structure Test"));
-		selenium.type("//input[@id='_15_description']",
+		selenium.type("//textarea[@id='_15_description']",
 			RuntimeVariables.replace("This is an expando structure test."));
-		selenium.clickAt("//input[@id='_15_editorButton']",
-			RuntimeVariables.replace(""));
-		Thread.sleep(5000);
-		selenium.waitForVisible("//input[@id='_15_xsdContent']");
-		selenium.type("//input[@id='_15_xsdContent']",
-			RuntimeVariables.replace(
-				"<root>\n	<dynamic-element name='content' type='text'</dynamic-element>\n</root>"));
-		Thread.sleep(5000);
-		selenium.click("//input[@value='Update']");
-		selenium.waitForElementPresent("//input[@id='_15_structure_el0_name']");
-		assertTrue(selenium.isElementPresent(
-				"//input[@id='_15_structure_el0_name']"));
+		selenium.clickAt("//input[@value='Add Row']",
+			RuntimeVariables.replace("Add Row"));
+		selenium.waitForPageToLoad("30000");
+		selenium.type("//input[@id='_15_structure_el0_name']",
+			RuntimeVariables.replace("content"));
+		selenium.select("//select[@id='_15_structure_el0_type']",
+			RuntimeVariables.replace("Text"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
@@ -82,8 +66,8 @@ public class AddStructureExpandoTest extends BaseTestCase {
 			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertEquals(RuntimeVariables.replace("TEST_EXPANDO"),
 			selenium.getText("//td[2]/a"));
-		assertEquals(RuntimeVariables.replace(
-				"Expando Structure Test\nThis is an expando structure test."),
-			selenium.getText("//td[3]/a"));
+		assertTrue(selenium.isPartialText("//td[3]/a", "Expando Structure Test"));
+		assertTrue(selenium.isPartialText("//td[3]/a",
+				"This is an expando structure test."));
 	}
 }
