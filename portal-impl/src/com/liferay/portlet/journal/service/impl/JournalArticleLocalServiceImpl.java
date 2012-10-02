@@ -189,7 +189,7 @@ public class JournalArticleLocalServiceImpl
 
 		validate(
 			user.getCompanyId(), groupId, classNameId, articleId, autoArticleId,
-			version, expirationDate, titleMap, content, type, structureId,
+			version, titleMap, content, expirationDate, type, structureId,
 			templateId, smallImage, smallImageURL, smallImageFile,
 			smallImageBytes);
 
@@ -2015,7 +2015,7 @@ public class JournalArticleLocalServiceImpl
 
 		validate(
 			user.getCompanyId(), groupId, latestArticle.getClassNameId(),
-			expirationDate, titleMap, content, type, structureId, templateId,
+			titleMap, content, expirationDate, type, structureId, templateId,
 			smallImage, smallImageURL, smallImageFile, smallImageBytes);
 
 		if (addNewVersion) {
@@ -3412,10 +3412,11 @@ public class JournalArticleLocalServiceImpl
 	}
 
 	protected void validate(
-			long companyId, long groupId, long classNameId, Date expirationDate,
-			Map<Locale, String> titleMap, String content, String type,
-			String structureId, String templateId, boolean smallImage,
-			String smallImageURL, File smallImageFile, byte[] smallImageBytes)
+			long companyId, long groupId, long classNameId,
+			Map<Locale, String> titleMap, String content, Date expirationDate,
+			String type, String structureId, String templateId,
+			boolean smallImage, String smallImageURL, File smallImageFile,
+			byte[] smallImageBytes)
 		throws PortalException, SystemException {
 
 		Locale articleDefaultLocale = LocaleUtil.fromLanguageId(
@@ -3434,10 +3435,6 @@ public class JournalArticleLocalServiceImpl
 			throw le;
 		}
 
-		if ((expirationDate != null) && expirationDate.before(new Date())) {
-			throw new ArticleExpirationDateException();
-		}
-
 		if ((classNameId == 0) &&
 			(titleMap.isEmpty() ||
 			 Validator.isNull(titleMap.get(articleDefaultLocale)))) {
@@ -3449,6 +3446,10 @@ public class JournalArticleLocalServiceImpl
 		}
 
 		validateContent(content);
+
+		if ((expirationDate != null) && expirationDate.before(new Date())) {
+			throw new ArticleExpirationDateException();
+		}
 
 		if (Validator.isNotNull(structureId)) {
 			Group companyGroup = groupLocalService.getCompanyGroup(companyId);
@@ -3522,8 +3523,8 @@ public class JournalArticleLocalServiceImpl
 
 	protected void validate(
 			long companyId, long groupId, long classNameId, String articleId,
-			boolean autoArticleId, double version, Date expirationDate,
-			Map<Locale, String> titleMap, String content, String type,
+			boolean autoArticleId, double version, Map<Locale, String> titleMap,
+			String content, Date expirationDate, String type,
 			String structureId, String templateId, boolean smallImage,
 			String smallImageURL, File smallImageFile, byte[] smallImageBytes)
 		throws PortalException, SystemException {
@@ -3533,7 +3534,7 @@ public class JournalArticleLocalServiceImpl
 		}
 
 		validate(
-			companyId, groupId, classNameId, expirationDate, titleMap, content,
+			companyId, groupId, classNameId, titleMap, content, expirationDate,
 			type, structureId, templateId, smallImage, smallImageURL,
 			smallImageFile, smallImageBytes);
 	}
