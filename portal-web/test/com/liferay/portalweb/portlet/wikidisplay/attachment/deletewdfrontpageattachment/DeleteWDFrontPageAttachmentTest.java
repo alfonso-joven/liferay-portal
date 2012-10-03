@@ -25,7 +25,6 @@ public class DeleteWDFrontPageAttachmentTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Wiki Display Test Page");
 		selenium.clickAt("link=Wiki Display Test Page",
 			RuntimeVariables.replace("Wiki Display Test Page"));
 		selenium.waitForPageToLoad("30000");
@@ -45,9 +44,8 @@ public class DeleteWDFrontPageAttachmentTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
-		assertFalse(selenium.isTextPresent("Wiki_Attachment.jpg"));
+		assertFalse(selenium.isTextPresent("Document_1.jpg"));
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Wiki Display Test Page");
 		selenium.clickAt("link=Wiki Display Test Page",
 			RuntimeVariables.replace("Wiki Display Test Page"));
 		selenium.waitForPageToLoad("30000");
