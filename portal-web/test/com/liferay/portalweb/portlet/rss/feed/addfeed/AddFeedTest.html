@@ -81,7 +81,7 @@
 <tr>
 	<td>type</td>
 	<td>//input[@id='_86_url3']</td>
-	<td>http://feeds.digg.com/digg/popular.rss</td>
+	<td>http://feed.dilbert.com/dilbert/most_popular</td>
 </tr>
 <tr>
 	<td>select</td>
@@ -115,13 +115,13 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//a[@href='http://feeds.digg.com']</td>
-	<td>Stories(Opens New Window)</td>
+	<td>//a[@href='http://dilbert.com/']</td>
+	<td>Dilbert Most Popular Strips</td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>//a[@href='http://feeds.digg.com']</td>
-	<td>Stories(Opens New Window)</td>
+	<td>assertPartialText</td>
+	<td>//a[@href='http://dilbert.com/']</td>
+	<td>Dilbert Most Popular Strips</td>
 </tr>
 </tbody></table>
 </body>
