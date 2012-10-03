@@ -26,8 +26,8 @@ import junit.framework.TestSuite;
 public class SampleDAOTests extends BaseTestSuite {
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
-		testSuite.addTestSuite(AddPageTest.class);
-		testSuite.addTestSuite(AddPortletTest.class);
+		testSuite.addTestSuite(AddPageSDTest.class);
+		testSuite.addTestSuite(AddPortletSDTest.class);
 		testSuite.addTestSuite(TearDownPageTest.class);
 
 		return testSuite;

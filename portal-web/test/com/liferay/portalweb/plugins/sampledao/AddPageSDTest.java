@@ -20,8 +20,8 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 /**
  * @author Brian Wing Shun Chan
  */
-public class AddPageTest extends BaseTestCase {
-	public void testAddPage() throws Exception {
+public class AddPageSDTest extends BaseTestCase {
+	public void testAddPageSD() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");

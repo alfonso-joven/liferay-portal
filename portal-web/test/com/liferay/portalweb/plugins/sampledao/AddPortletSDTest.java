@@ -20,8 +20,8 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 /**
  * @author Brian Wing Shun Chan
  */
-public class AddPortletTest extends BaseTestCase {
-	public void testAddPortlet() throws Exception {
+public class AddPortletSDTest extends BaseTestCase {
+	public void testAddPortletSD() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
@@ -42,12 +42,8 @@ public class AddPortletTest extends BaseTestCase {
 		selenium.waitForElementPresent(
 			"//script[contains(@src,'/aui/aui-live-search/aui-live-search-min.js')]");
 		selenium.waitForVisible("//input[@id='layout_configuration_content']");
-		selenium.type("//input[@id='layout_configuration_content']",
+		selenium.sendKeys("//input[@id='layout_configuration_content']",
 			RuntimeVariables.replace("s"));
-		selenium.keyDown("//input[@id='layout_configuration_content']",
-			RuntimeVariables.replace("\\13"));
-		selenium.keyUp("//input[@id='layout_configuration_content']",
-			RuntimeVariables.replace("\\13"));
 		selenium.waitForElementPresent("//div[@title='Sample DAO']/p/a");
 		selenium.clickAt("//div[@title='Sample DAO']/p/a",
 			RuntimeVariables.replace("Add"));
