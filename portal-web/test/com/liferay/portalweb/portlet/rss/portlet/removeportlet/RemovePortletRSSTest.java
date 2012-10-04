@@ -25,7 +25,8 @@ public class RemovePortletRSSTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.clickAt("link=RSS Test Page", RuntimeVariables.replace(""));
+		selenium.clickAt("link=RSS Test Page",
+			RuntimeVariables.replace("RSS Test Page"));
 		selenium.waitForPageToLoad("30000");
 		selenium.waitForVisible("//img[@alt='Remove']");
 		selenium.click("//img[@alt='Remove']");

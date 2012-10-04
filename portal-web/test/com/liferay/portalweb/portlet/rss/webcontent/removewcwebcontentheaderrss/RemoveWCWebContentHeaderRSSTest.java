@@ -28,8 +28,10 @@ public class RemoveWCWebContentHeaderRSSTest extends BaseTestCase {
 		selenium.clickAt("link=RSS Test Page",
 			RuntimeVariables.replace("RSS Test Page"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForTextPresent("WC WebContent Content");
-		assertTrue(selenium.isTextPresent("WC WebContent Content"));
+		selenium.waitForText("//div[@class='portlet-content']/div/div/p",
+			"WC WebContent Content");
+		assertEquals(RuntimeVariables.replace("WC WebContent Content"),
+			selenium.getText("//div[@class='portlet-content']/div/div/p"));
 		Thread.sleep(5000);
 		assertEquals(RuntimeVariables.replace("Options"),
 			selenium.getText("//span[@title='Options']/ul/li/strong/a"));
@@ -42,8 +44,10 @@ public class RemoveWCWebContentHeaderRSSTest extends BaseTestCase {
 				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a"));
 		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a",
 			RuntimeVariables.replace("Configuration"));
-		selenium.waitForVisible("//iframe");
-		selenium.selectFrame("//iframe");
+		selenium.waitForVisible(
+			"//iframe[contains(@id,'configurationIframeDialog')]");
+		selenium.selectFrame(
+			"//iframe[contains(@id,'configurationIframeDialog')]");
 		selenium.waitForElementPresent(
 			"//script[contains(@src,'/liferay/navigation_interaction.js')]");
 		selenium.waitForVisible("xPath=(//input[@id='_86_removeButton'])[1]");
