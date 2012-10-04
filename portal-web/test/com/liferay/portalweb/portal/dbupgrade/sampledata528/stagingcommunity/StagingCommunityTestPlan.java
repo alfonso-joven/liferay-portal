@@ -15,7 +15,6 @@
 package com.liferay.portalweb.portal.dbupgrade.sampledata528.stagingcommunity;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
-import com.liferay.portalweb.portal.dbupgrade.sampledata528.stagingcommunity.quartz.QuartzTests;
 import com.liferay.portalweb.portal.dbupgrade.sampledata528.stagingcommunity.webcontentdisplay.WebContentDisplayTests;
 
 import junit.framework.Test;
