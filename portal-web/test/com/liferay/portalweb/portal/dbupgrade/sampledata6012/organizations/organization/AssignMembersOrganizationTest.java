@@ -30,7 +30,14 @@ public class AssignMembersOrganizationTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				selenium.waitForElementPresent("link=Control Panel");
+				selenium.clickAt("//div[@id='dockbar']",
+					RuntimeVariables.replace("Dockbar"));
+				selenium.waitForElementPresent(
+					"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+				assertEquals(RuntimeVariables.replace("Manage"),
+					selenium.getText("//li[@id='_145_manageContent']/a/span"));
+				selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+				selenium.waitForVisible("link=Control Panel");
 				selenium.clickAt("link=Control Panel",
 					RuntimeVariables.replace(""));
 				selenium.waitForPageToLoad("30000");
@@ -38,7 +45,8 @@ public class AssignMembersOrganizationTest extends BaseTestCase {
 					RuntimeVariables.replace(""));
 				selenium.waitForPageToLoad("30000");
 
-				boolean basicVisible = selenium.isVisible("link=\u00ab Basic");
+				boolean basicVisible = selenium.isVisible(
+						"//a[.='\u00ab Basic']");
 
 				if (!basicVisible) {
 					label = 2;
@@ -46,11 +54,11 @@ public class AssignMembersOrganizationTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("link=\u00ab Basic",
+				selenium.clickAt("//a[.='\u00ab Basic']",
 					RuntimeVariables.replace(""));
 
 			case 2:
-				selenium.type("_126_keywords",
+				selenium.type("//input[@name='_126_keywords']",
 					RuntimeVariables.replace("Sample"));
 				selenium.clickAt("//input[@value='Search']",
 					RuntimeVariables.replace(""));
@@ -68,7 +76,8 @@ public class AssignMembersOrganizationTest extends BaseTestCase {
 				selenium.clickAt("link=Available", RuntimeVariables.replace(""));
 				selenium.waitForPageToLoad("30000");
 
-				boolean basic2Visible = selenium.isVisible("link=\u00ab Basic");
+				boolean basic2Visible = selenium.isVisible(
+						"//a[.='\u00ab Basic']");
 
 				if (!basic2Visible) {
 					label = 3;
@@ -76,27 +85,19 @@ public class AssignMembersOrganizationTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("link=\u00ab Basic",
+				selenium.clickAt("//a[.='\u00ab Basic']",
 					RuntimeVariables.replace(""));
 
 			case 3:
-				selenium.type("_126_keywords",
+				selenium.type("//input[@name='_126_keywords']",
 					RuntimeVariables.replace("Joe Bloggs"));
 				selenium.clickAt("//input[@value='Search']",
 					RuntimeVariables.replace(""));
 				selenium.waitForPageToLoad("30000");
-
-				boolean userChecked = selenium.isChecked("_126_rowIds");
-
-				if (userChecked) {
-					label = 4;
-
-					continue;
-				}
-
-				selenium.clickAt("_126_rowIds", RuntimeVariables.replace(""));
-
-			case 4:
+				assertFalse(selenium.isChecked("//input[@name='_126_rowIds']"));
+				selenium.clickAt("//input[@name='_126_rowIds']",
+					RuntimeVariables.replace("Checkbox"));
+				assertTrue(selenium.isChecked("//input[@name='_126_rowIds']"));
 				selenium.clickAt("//input[@value='Update Associations']",
 					RuntimeVariables.replace(""));
 				selenium.waitForPageToLoad("30000");

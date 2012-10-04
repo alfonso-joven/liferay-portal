@@ -25,6 +25,10 @@ public class ViewOrganizationTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -57,6 +61,10 @@ public class ViewOrganizationTest extends BaseTestCase {
 			selenium.getText(
 				"//tr[@class='portlet-section-body results-row last']/td[3]"));
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -73,8 +81,8 @@ public class ViewOrganizationTest extends BaseTestCase {
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Search All Users"),
-			selenium.getText("//a[@id='_125_allUsersLink']"));
-		selenium.clickAt("//a[@id='_125_allUsersLink']",
+			selenium.getText("//span/a/span"));
+		selenium.clickAt("//span/a/span",
 			RuntimeVariables.replace("Search All Users"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@name='_125_keywords']",

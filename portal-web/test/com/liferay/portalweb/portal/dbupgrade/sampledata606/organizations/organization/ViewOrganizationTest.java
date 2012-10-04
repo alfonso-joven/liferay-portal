@@ -22,102 +22,87 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
  */
 public class ViewOrganizationTest extends BaseTestCase {
 	public void testViewOrganization() throws Exception {
-		int label = 1;
-
-		while (label >= 1) {
-			switch (label) {
-			case 1:
-				selenium.selectWindow("null");
-				selenium.selectFrame("relative=top");
-				selenium.open("/web/guest/home/");
-				selenium.waitForElementPresent("link=Control Panel");
-				selenium.clickAt("link=Control Panel",
-					RuntimeVariables.replace(""));
-				selenium.waitForPageToLoad("30000");
-				selenium.clickAt("link=Organizations",
-					RuntimeVariables.replace(""));
-				selenium.waitForPageToLoad("30000");
-
-				boolean basicVisible = selenium.isVisible("link=\u00ab Basic");
-
-				if (!basicVisible) {
-					label = 2;
-
-					continue;
-				}
-
-				selenium.clickAt("link=\u00ab Basic",
-					RuntimeVariables.replace(""));
-
-			case 2:
-				selenium.type("_126_keywords",
-					RuntimeVariables.replace("Sample"));
-				selenium.clickAt("//input[@value='Search']",
-					RuntimeVariables.replace(""));
-				selenium.waitForPageToLoad("30000");
-				assertEquals(RuntimeVariables.replace("Actions"),
-					selenium.getText("//strong/a"));
-				selenium.clickAt("//strong/a",
-					RuntimeVariables.replace("Actions"));
-				selenium.waitForVisible(
-					"//div[@class='lfr-component lfr-menu-list']/ul/li[5]/a");
-				assertEquals(RuntimeVariables.replace("Assign Members"),
-					selenium.getText(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[5]/a"));
-				selenium.click(RuntimeVariables.replace(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[5]/a"));
-				selenium.waitForPageToLoad("30000");
-				assertEquals(RuntimeVariables.replace("Joe Bloggs"),
-					selenium.getText(
-						"//tr[@class='portlet-section-body results-row last']/td[2]"));
-				assertEquals(RuntimeVariables.replace("joebloggs"),
-					selenium.getText(
-						"//tr[@class='portlet-section-body results-row last']/td[3]"));
-				selenium.open("/web/guest/home/");
-				selenium.waitForElementPresent("link=Control Panel");
-				selenium.clickAt("link=Control Panel",
-					RuntimeVariables.replace(""));
-				selenium.waitForPageToLoad("30000");
-				selenium.clickAt("link=Organizations",
-					RuntimeVariables.replace(""));
-				selenium.waitForPageToLoad("30000");
-				selenium.type("_126_keywords",
-					RuntimeVariables.replace("Sample"));
-				selenium.clickAt("//input[@value='Search']",
-					RuntimeVariables.replace(""));
-				selenium.waitForPageToLoad("30000");
-				assertEquals(RuntimeVariables.replace("Actions"),
-					selenium.getText("//strong/a"));
-				selenium.clickAt("//strong/a",
-					RuntimeVariables.replace("Actions"));
-				selenium.waitForVisible(
-					"//div[@class='lfr-component lfr-menu-list']/ul/li[7]/a");
-				assertEquals(RuntimeVariables.replace("View Users"),
-					selenium.getText(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[7]/a"));
-				selenium.click(RuntimeVariables.replace(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[7]/a"));
-				selenium.waitForPageToLoad("30000");
-				assertEquals(RuntimeVariables.replace("Joe"),
-					selenium.getText(
-						"//tr[@class='portlet-section-body results-row last']/td[2]"));
-				assertEquals(RuntimeVariables.replace("Bloggs"),
-					selenium.getText(
-						"//tr[@class='portlet-section-body results-row last']/td[3]"));
-				assertEquals(RuntimeVariables.replace("joebloggs"),
-					selenium.getText(
-						"//tr[@class='portlet-section-body results-row last']/td[4]"));
-				assertEquals(RuntimeVariables.replace(""),
-					selenium.getText(
-						"//tr[@class='portlet-section-body results-row last']/td[5]"));
-				assertEquals(RuntimeVariables.replace(
-						"Liferay Los Angeles, Liferay, Inc., Organization Sample Test"),
-					selenium.getText(
-						"//tr[@class='portlet-section-body results-row last']/td[6]"));
-
-			case 100:
-				label = -1;
-			}
-		}
+		selenium.selectWindow("null");
+		selenium.selectFrame("relative=top");
+		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Manage"),
+			selenium.getText("//li[@id='_145_manageContent']/a/span"));
+		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+		selenium.waitForVisible("link=Control Panel");
+		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
+		selenium.waitForPageToLoad("30000");
+		selenium.clickAt("link=Organizations", RuntimeVariables.replace(""));
+		selenium.waitForPageToLoad("30000");
+		selenium.type("//input[@name='_126_keywords']",
+			RuntimeVariables.replace("Sample"));
+		selenium.clickAt("//input[@value='Search']",
+			RuntimeVariables.replace(""));
+		selenium.waitForPageToLoad("30000");
+		assertEquals(RuntimeVariables.replace("Actions"),
+			selenium.getText("//strong/a"));
+		selenium.clickAt("//strong/a", RuntimeVariables.replace("Actions"));
+		selenium.waitForVisible(
+			"//div[@class='lfr-component lfr-menu-list']/ul/li[5]/a");
+		assertEquals(RuntimeVariables.replace("Assign Members"),
+			selenium.getText(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[5]/a"));
+		selenium.click(RuntimeVariables.replace(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[5]/a"));
+		selenium.waitForPageToLoad("30000");
+		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
+			selenium.getText(
+				"//tr[@class='portlet-section-body results-row last']/td[2]"));
+		assertEquals(RuntimeVariables.replace("joebloggs"),
+			selenium.getText(
+				"//tr[@class='portlet-section-body results-row last']/td[3]"));
+		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Manage"),
+			selenium.getText("//li[@id='_145_manageContent']/a/span"));
+		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+		selenium.waitForVisible("link=Control Panel");
+		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
+		selenium.waitForPageToLoad("30000");
+		selenium.clickAt("link=Organizations", RuntimeVariables.replace(""));
+		selenium.waitForPageToLoad("30000");
+		selenium.type("//input[@name='_126_keywords']",
+			RuntimeVariables.replace("Sample"));
+		selenium.clickAt("//input[@value='Search']",
+			RuntimeVariables.replace(""));
+		selenium.waitForPageToLoad("30000");
+		assertEquals(RuntimeVariables.replace("Actions"),
+			selenium.getText("//strong/a"));
+		selenium.clickAt("//strong/a", RuntimeVariables.replace("Actions"));
+		selenium.waitForVisible(
+			"//div[@class='lfr-component lfr-menu-list']/ul/li[7]/a");
+		assertEquals(RuntimeVariables.replace("View Users"),
+			selenium.getText(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[7]/a"));
+		selenium.click(RuntimeVariables.replace(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[7]/a"));
+		selenium.waitForPageToLoad("30000");
+		assertEquals(RuntimeVariables.replace("Joe"),
+			selenium.getText(
+				"//tr[@class='portlet-section-body results-row last']/td[2]"));
+		assertEquals(RuntimeVariables.replace("Bloggs"),
+			selenium.getText(
+				"//tr[@class='portlet-section-body results-row last']/td[3]"));
+		assertEquals(RuntimeVariables.replace("joebloggs"),
+			selenium.getText(
+				"//tr[@class='portlet-section-body results-row last']/td[4]"));
+		assertEquals(RuntimeVariables.replace(""),
+			selenium.getText(
+				"//tr[@class='portlet-section-body results-row last']/td[5]"));
+		assertEquals(RuntimeVariables.replace(
+				"Liferay Los Angeles, Liferay, Inc., Organization Sample Test"),
+			selenium.getText(
+				"//tr[@class='portlet-section-body results-row last']/td[6]"));
 	}
 }

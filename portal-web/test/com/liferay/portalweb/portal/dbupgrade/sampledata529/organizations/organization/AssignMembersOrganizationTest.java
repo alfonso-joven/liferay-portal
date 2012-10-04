@@ -22,93 +22,58 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
  */
 public class AssignMembersOrganizationTest extends BaseTestCase {
 	public void testAssignMembersOrganization() throws Exception {
-		int label = 1;
-
-		while (label >= 1) {
-			switch (label) {
-			case 1:
-				selenium.selectWindow("null");
-				selenium.selectFrame("relative=top");
-				selenium.open("/web/guest/home/");
-				selenium.waitForElementPresent("link=Control Panel");
-				selenium.clickAt("link=Control Panel",
-					RuntimeVariables.replace(""));
-				selenium.waitForPageToLoad("30000");
-				selenium.clickAt("link=Organizations",
-					RuntimeVariables.replace(""));
-				selenium.waitForPageToLoad("30000");
-
-				boolean basicVisible = selenium.isVisible("link=\u00ab Basic");
-
-				if (!basicVisible) {
-					label = 2;
-
-					continue;
-				}
-
-				selenium.clickAt("link=\u00ab Basic",
-					RuntimeVariables.replace(""));
-
-			case 2:
-				selenium.type("_126_keywords",
-					RuntimeVariables.replace("organization sample test"));
-				selenium.clickAt("//input[@value='Search']",
-					RuntimeVariables.replace(""));
-				selenium.waitForPageToLoad("30000");
-				selenium.clickAt("//strong/span", RuntimeVariables.replace(""));
-				selenium.waitForElementPresent("link=Assign Members");
-				selenium.clickAt("link=Assign Members",
-					RuntimeVariables.replace(""));
-				selenium.waitForPageToLoad("30000");
-				selenium.clickAt("link=Available", RuntimeVariables.replace(""));
-				selenium.waitForPageToLoad("30000");
-
-				boolean basic2Visible = selenium.isVisible("link=\u00ab Basic");
-
-				if (!basic2Visible) {
-					label = 3;
-
-					continue;
-				}
-
-				selenium.clickAt("link=\u00ab Basic",
-					RuntimeVariables.replace(""));
-
-			case 3:
-				selenium.type("_126_keywords",
-					RuntimeVariables.replace("Joe Bloggs"));
-				selenium.clickAt("//input[@value='Search']",
-					RuntimeVariables.replace(""));
-				selenium.waitForPageToLoad("30000");
-
-				boolean userChecked = selenium.isChecked("_126_rowIds");
-
-				if (userChecked) {
-					label = 4;
-
-					continue;
-				}
-
-				selenium.clickAt("_126_rowIds", RuntimeVariables.replace(""));
-
-			case 4:
-				selenium.clickAt("//input[@value='Update Associations']",
-					RuntimeVariables.replace(""));
-				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.isTextPresent(
-						"Your request processed successfully."));
-				selenium.clickAt("link=Current", RuntimeVariables.replace(""));
-				selenium.waitForPageToLoad("30000");
-				assertEquals(RuntimeVariables.replace("Joe Bloggs"),
-					selenium.getText(
-						"//tr[@class='portlet-section-body results-row last']/td[2]"));
-				assertEquals(RuntimeVariables.replace("joebloggs"),
-					selenium.getText(
-						"//tr[@class='portlet-section-body results-row last']/td[3]"));
-
-			case 100:
-				label = -1;
-			}
-		}
+		selenium.selectWindow("null");
+		selenium.selectFrame("relative=top");
+		selenium.open("/web/guest/home/");
+		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
+				"Welcome"));
+		selenium.mouseOver("//h2[@class='user-greeting']/span");
+		selenium.clickAt("//h2[@class='user-greeting']/span",
+			RuntimeVariables.replace("Welcome"));
+		selenium.waitForVisible("link=Control Panel");
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
+		selenium.waitForPageToLoad("30000");
+		selenium.clickAt("link=Organizations",
+			RuntimeVariables.replace("Organizations"));
+		selenium.waitForPageToLoad("30000");
+		selenium.type("//input[@name='_126_keywords']",
+			RuntimeVariables.replace("organization sample test"));
+		selenium.clickAt("//input[@value='Search']",
+			RuntimeVariables.replace("Search"));
+		selenium.waitForPageToLoad("30000");
+		selenium.clickAt("//strong/span", RuntimeVariables.replace("Actions"));
+		selenium.waitForVisible(
+			"//div[@class='lfr-component lfr-menu-list']/ul/li[4]/a");
+		assertEquals(RuntimeVariables.replace("Assign Members"),
+			selenium.getText(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[4]/a"));
+		selenium.click(RuntimeVariables.replace(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[4]/a"));
+		selenium.waitForPageToLoad("30000");
+		selenium.clickAt("link=Available", RuntimeVariables.replace("Available"));
+		selenium.waitForPageToLoad("30000");
+		selenium.type("//input[@name='_126_keywords']",
+			RuntimeVariables.replace("Joe Bloggs"));
+		selenium.clickAt("//input[@value='Search']",
+			RuntimeVariables.replace("Search"));
+		selenium.waitForPageToLoad("30000");
+		assertFalse(selenium.isChecked("//input[@name='_126_rowIds']"));
+		selenium.clickAt("//input[@name='_126_rowIds']",
+			RuntimeVariables.replace("Checkbox"));
+		assertTrue(selenium.isChecked("//input[@name='_126_rowIds']"));
+		selenium.clickAt("//input[@value='Update Associations']",
+			RuntimeVariables.replace("Update Associations"));
+		selenium.waitForPageToLoad("30000");
+		assertTrue(selenium.isTextPresent(
+				"Your request processed successfully."));
+		selenium.clickAt("link=Current", RuntimeVariables.replace("Current"));
+		selenium.waitForPageToLoad("30000");
+		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
+			selenium.getText(
+				"//tr[@class='portlet-section-body results-row last']/td[2]"));
+		assertEquals(RuntimeVariables.replace("joebloggs"),
+			selenium.getText(
+				"//tr[@class='portlet-section-body results-row last']/td[3]"));
 	}
 }

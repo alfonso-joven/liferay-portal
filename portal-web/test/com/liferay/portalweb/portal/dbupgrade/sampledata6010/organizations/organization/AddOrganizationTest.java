@@ -25,14 +25,21 @@ public class AddOrganizationTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Manage"),
+			selenium.getText("//li[@id='_145_manageContent']/a/span"));
+		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Organizations", RuntimeVariables.replace(""));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Add", RuntimeVariables.replace(""));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_126_name",
+		selenium.type("//input[@id='_126_name']",
 			RuntimeVariables.replace("Organization Sample Test"));
 		selenium.clickAt("//input[@value='Save']", RuntimeVariables.replace(""));
 		selenium.waitForPageToLoad("30000");

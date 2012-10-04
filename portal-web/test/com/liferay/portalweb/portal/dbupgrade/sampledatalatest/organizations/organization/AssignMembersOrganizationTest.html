@@ -14,6 +14,16 @@
 	<td></td>
 </tr>
 <tr>
+	<td>clickAt</td>
+	<td>//div[@id='dockbar']</td>
+	<td>Dockbar</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]</td>
+	<td>AUI Editable Min</td>
+</tr>
+<tr>
 	<td>assertText</td>
 	<td>//li[@id='_145_mySites']/a/span</td>
 	<td>Go to</td>
@@ -40,7 +50,7 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>//input[@id='_125_keywords']</td>
+	<td>//input[@name='_125_keywords']</td>
 	<td>Sample</td>
 </tr>
 <tr>
@@ -74,8 +84,8 @@
 	<td>Available</td>
 </tr>
 <tr>
-	<td>store</td>
-	<td>eval(selenium.isVisible('link=« Basic'))</td>
+	<td>storeVisible</td>
+	<td>//a[.='« Basic']</td>
 	<td>basic2Visible</td>
 </tr>
 <tr>
@@ -85,7 +95,7 @@
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>link=« Basic</td>
+	<td>//a[.='« Basic']</td>
 	<td></td>
 </tr>
 <tr>

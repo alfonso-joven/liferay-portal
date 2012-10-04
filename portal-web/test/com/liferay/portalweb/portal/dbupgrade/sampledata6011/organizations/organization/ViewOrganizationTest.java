@@ -30,7 +30,14 @@ public class ViewOrganizationTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				selenium.waitForElementPresent("link=Control Panel");
+				selenium.clickAt("//div[@id='dockbar']",
+					RuntimeVariables.replace("Dockbar"));
+				selenium.waitForElementPresent(
+					"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+				assertEquals(RuntimeVariables.replace("Manage"),
+					selenium.getText("//li[@id='_145_manageContent']/a/span"));
+				selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+				selenium.waitForVisible("link=Control Panel");
 				selenium.clickAt("link=Control Panel",
 					RuntimeVariables.replace(""));
 				selenium.waitForPageToLoad("30000");
@@ -38,7 +45,8 @@ public class ViewOrganizationTest extends BaseTestCase {
 					RuntimeVariables.replace(""));
 				selenium.waitForPageToLoad("30000");
 
-				boolean basicVisible = selenium.isVisible("link=\u00ab Basic");
+				boolean basicVisible = selenium.isVisible(
+						"//a[.='\u00ab Basic']");
 
 				if (!basicVisible) {
 					label = 2;
@@ -46,11 +54,11 @@ public class ViewOrganizationTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("link=\u00ab Basic",
+				selenium.clickAt("//a[.='\u00ab Basic']",
 					RuntimeVariables.replace(""));
 
 			case 2:
-				selenium.type("_126_keywords",
+				selenium.type("//input[@name='_126_keywords']",
 					RuntimeVariables.replace("Sample"));
 				selenium.clickAt("//input[@value='Search']",
 					RuntimeVariables.replace(""));
@@ -72,14 +80,21 @@ public class ViewOrganizationTest extends BaseTestCase {
 					selenium.getText(
 						"//tr[@class='portlet-section-body results-row last']/td[3]"));
 				selenium.open("/web/guest/home/");
-				selenium.waitForElementPresent("link=Control Panel");
+				selenium.clickAt("//div[@id='dockbar']",
+					RuntimeVariables.replace("Dockbar"));
+				selenium.waitForElementPresent(
+					"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+				assertEquals(RuntimeVariables.replace("Manage"),
+					selenium.getText("//li[@id='_145_manageContent']/a/span"));
+				selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+				selenium.waitForVisible("link=Control Panel");
 				selenium.clickAt("link=Control Panel",
 					RuntimeVariables.replace(""));
 				selenium.waitForPageToLoad("30000");
 				selenium.clickAt("link=Organizations",
 					RuntimeVariables.replace(""));
 				selenium.waitForPageToLoad("30000");
-				selenium.type("_126_keywords",
+				selenium.type("//input[@name='_126_keywords']",
 					RuntimeVariables.replace("Sample"));
 				selenium.clickAt("//input[@value='Search']",
 					RuntimeVariables.replace(""));
