@@ -45,7 +45,7 @@ public class AddPortletCalendarEventTest extends BaseTestCase {
 		selenium.clickAt("//td[2]/a", RuntimeVariables.replace("Open"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Calendar Event Page",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Calendar Event Page"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
 				"Welcome"));

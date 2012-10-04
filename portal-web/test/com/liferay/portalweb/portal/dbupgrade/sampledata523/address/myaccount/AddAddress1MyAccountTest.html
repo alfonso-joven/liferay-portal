@@ -40,13 +40,13 @@
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>addressesLink</td>
-	<td></td>
+	<td>//a[@id='addressesLink']</td>
+	<td>Addresses</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
 	<td>//input[@id='_2_addressStreet10']</td>
-	<td></td>
+	<td>Street 1</td>
 </tr>
 <tr>
 	<td>type</td>
@@ -89,14 +89,14 @@
 	<td></td>
 </tr>
 <tr>
-	<td>click</td>
+	<td>clickAt</td>
 	<td>//input[@id='_2_addressPrimary0']</td>
-	<td></td>
+	<td>Primary</td>
 </tr>
 <tr>
-	<td>click</td>
+	<td>clickAt</td>
 	<td>//input[@id='_2_addressMailing0Checkbox']</td>
-	<td></td>
+	<td>Mailing</td>
 </tr>
 <tr>
 	<td>waitForPartialText</td>
@@ -116,7 +116,7 @@
 <tr>
 	<td>clickAndWait</td>
 	<td>//input[@value='Save']</td>
-	<td></td>
+	<td>Save</td>
 </tr>
 <tr>
 	<td>waitForSelectedLabel</td>
@@ -135,7 +135,7 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[2]/div/div/div</td>
+	<td>//div[@class='portlet-msg-success']</td>
 	<td>Your request processed successfully.</td>
 </tr>
 <tr>
@@ -171,12 +171,12 @@
 <tr>
 	<td>assertChecked</td>
 	<td>//input[@id='_2_addressPrimary0']</td>
-	<td></td>
+	<td>Checkbox</td>
 </tr>
 <tr>
 	<td>assertChecked</td>
 	<td>//input[@id='_2_addressMailing0Checkbox']</td>
-	<td></td>
+	<td>Checkbox</td>
 </tr>
 <tr>
 	<td>assertSelectedLabel</td>

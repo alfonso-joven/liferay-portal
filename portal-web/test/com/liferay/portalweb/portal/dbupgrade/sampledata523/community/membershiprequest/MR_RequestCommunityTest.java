@@ -25,7 +25,6 @@ public class MR_RequestCommunityTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/requestmembersn/home/");
-		selenium.waitForVisible("link=Available Communities");
 		selenium.clickAt("link=Available Communities",
 			RuntimeVariables.replace("Available Communities"));
 		selenium.waitForPageToLoad("30000");

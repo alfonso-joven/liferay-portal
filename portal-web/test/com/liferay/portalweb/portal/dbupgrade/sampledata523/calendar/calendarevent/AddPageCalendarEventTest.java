@@ -42,19 +42,25 @@ public class AddPageCalendarEventTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
+		assertEquals(RuntimeVariables.replace("Actions"),
+			selenium.getText("//strong/span"));
 		selenium.clickAt("//strong/span", RuntimeVariables.replace("Actions"));
-		selenium.waitForElementPresent(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a");
+		selenium.waitForVisible(
+			"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Manage Pages')]");
+		assertEquals(RuntimeVariables.replace("Manage Pages"),
+			selenium.getText(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Manage Pages')]"));
 		selenium.click(RuntimeVariables.replace(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a"));
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Manage Pages')]"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@name='_134_name_en_US']",
 			RuntimeVariables.replace("Calendar Event Page"));
 		selenium.clickAt("//input[@value='Add Page']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Add Page"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Your request processed successfully."),
-			selenium.getText("//div[2]/div/div/div"));
+			selenium.getText("//div[@class='portlet-msg-success']"));
+		assertTrue(selenium.isElementPresent("link=Calendar Event Page"));
 	}
 }

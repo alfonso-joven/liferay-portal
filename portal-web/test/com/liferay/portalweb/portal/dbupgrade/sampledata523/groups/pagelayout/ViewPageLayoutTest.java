@@ -42,6 +42,8 @@ public class ViewPageLayoutTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
+		assertEquals(RuntimeVariables.replace("Open"),
+			selenium.getText("//td[2]/a"));
 		selenium.clickAt("//td[2]/a", RuntimeVariables.replace("Open"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Page Layout Page",

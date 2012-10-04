@@ -31,11 +31,12 @@ public class AddUserMRTest extends BaseTestCase {
 		selenium.clickAt("//h2[@class='user-greeting']/span",
 			RuntimeVariables.replace("Welcome"));
 		selenium.waitForVisible("link=Control Panel");
-		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Users", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Users", RuntimeVariables.replace("Users"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Add", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Add", RuntimeVariables.replace("Add"));
 		selenium.waitForPageToLoad("30000");
 		selenium.select("//select[@name='_125_prefixId']",
 			RuntimeVariables.replace("label=Mr."));

@@ -39,8 +39,8 @@ public class AddAnnouncementDeliveryTest extends BaseTestCase {
 				selenium.clickAt("link=My Account",
 					RuntimeVariables.replace("My Account"));
 				selenium.waitForPageToLoad("30000");
-				selenium.clickAt("announcementsLink",
-					RuntimeVariables.replace(""));
+				selenium.clickAt("//a[@id='announcementsLink']",
+					RuntimeVariables.replace("Announcements"));
 
 				boolean generalEmailChecked = selenium.isChecked(
 						"_2_announcementsTypegeneralEmailCheckbox");
@@ -52,7 +52,7 @@ public class AddAnnouncementDeliveryTest extends BaseTestCase {
 				}
 
 				selenium.clickAt("//input[@id='_2_announcementsTypegeneralEmailCheckbox']",
-					RuntimeVariables.replace(""));
+					RuntimeVariables.replace("General Email"));
 
 			case 2:
 
@@ -66,7 +66,7 @@ public class AddAnnouncementDeliveryTest extends BaseTestCase {
 				}
 
 				selenium.clickAt("//input[@id='_2_announcementsTypegeneralSmsCheckbox']",
-					RuntimeVariables.replace(""));
+					RuntimeVariables.replace("General Sms"));
 
 			case 3:
 
@@ -80,7 +80,7 @@ public class AddAnnouncementDeliveryTest extends BaseTestCase {
 				}
 
 				selenium.clickAt("//input[@id='_2_announcementsTypenewsEmailCheckbox']",
-					RuntimeVariables.replace(""));
+					RuntimeVariables.replace("News Email"));
 
 			case 4:
 
@@ -94,7 +94,7 @@ public class AddAnnouncementDeliveryTest extends BaseTestCase {
 				}
 
 				selenium.clickAt("//input[@id='_2_announcementsTypenewsSmsCheckbox']",
-					RuntimeVariables.replace(""));
+					RuntimeVariables.replace("News Sms"));
 
 			case 5:
 
@@ -108,7 +108,7 @@ public class AddAnnouncementDeliveryTest extends BaseTestCase {
 				}
 
 				selenium.clickAt("//input[@id='_2_announcementsTypetestEmailCheckbox']",
-					RuntimeVariables.replace(""));
+					RuntimeVariables.replace("Test Email"));
 
 			case 6:
 
@@ -122,7 +122,7 @@ public class AddAnnouncementDeliveryTest extends BaseTestCase {
 				}
 
 				selenium.clickAt("//input[@id='_2_announcementsTypetestSmsCheckbox']",
-					RuntimeVariables.replace(""));
+					RuntimeVariables.replace("Test Sms"));
 
 			case 7:
 				selenium.clickAt("//input[@value='Save']",

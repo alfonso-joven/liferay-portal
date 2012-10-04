@@ -47,13 +47,13 @@ public class AssignMembersUserGroupTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Actions"),
 			selenium.getText("//strong/span"));
 		selenium.clickAt("//strong/span", RuntimeVariables.replace("Actions"));
-		selenium.waitForText("//div[@class='lfr-component lfr-menu-list']/ul/li[4]/a",
+		selenium.waitForText("//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Assign Members')]",
 			"Assign Members");
 		assertEquals(RuntimeVariables.replace("Assign Members"),
 			selenium.getText(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[4]/a"));
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Assign Members')]"));
 		selenium.click(RuntimeVariables.replace(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[4]/a"));
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Assign Members')]"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Available", RuntimeVariables.replace("Available"));
 		selenium.waitForPageToLoad("30000");

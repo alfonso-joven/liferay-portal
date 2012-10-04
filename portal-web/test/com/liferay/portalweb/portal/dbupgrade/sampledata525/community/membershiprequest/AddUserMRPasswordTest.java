@@ -31,10 +31,11 @@ public class AddUserMRPasswordTest extends BaseTestCase {
 		selenium.clickAt("//h2[@class='user-greeting']/span",
 			RuntimeVariables.replace("Welcome"));
 		selenium.waitForVisible("link=Control Panel");
-		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
 		selenium.waitForElementPresent("link=Users");
-		selenium.clickAt("link=Users", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Users", RuntimeVariables.replace("Users"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@name='_125_keywords']",
 			RuntimeVariables.replace("requestmembersn"));

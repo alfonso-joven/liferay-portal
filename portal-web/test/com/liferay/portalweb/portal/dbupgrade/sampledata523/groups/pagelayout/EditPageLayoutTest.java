@@ -42,6 +42,8 @@ public class EditPageLayoutTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
+		assertEquals(RuntimeVariables.replace("Open"),
+			selenium.getText("//td[2]/a"));
 		selenium.clickAt("//td[2]/a", RuntimeVariables.replace("Open"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Page Layout Page",
@@ -56,7 +58,8 @@ public class EditPageLayoutTest extends BaseTestCase {
 		selenium.waitForVisible("//input[@id='layoutTemplateId2']");
 		selenium.clickAt("//input[@id='layoutTemplateId2']",
 			RuntimeVariables.replace("2 Columns (50/50)"));
-		selenium.clickAt("//input[5]", RuntimeVariables.replace("Save"));
+		selenium.clickAt("//input[@value='Save']",
+			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isElementPresent(
 				"//td[@id='column-1' and @class='lfr-column fifty']"));

@@ -42,7 +42,9 @@ public class AddPortletAnnouncementsEntryTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//td[1]/a", RuntimeVariables.replace("Open"));
+		assertEquals(RuntimeVariables.replace("Open"),
+			selenium.getText("//td[2]/a"));
+		selenium.clickAt("//td[2]/a", RuntimeVariables.replace("Open"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
 				"Welcome"));

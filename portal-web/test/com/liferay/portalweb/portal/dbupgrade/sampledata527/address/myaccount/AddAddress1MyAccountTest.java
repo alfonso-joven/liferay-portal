@@ -34,7 +34,8 @@ public class AddAddress1MyAccountTest extends BaseTestCase {
 		selenium.clickAt("link=My Account",
 			RuntimeVariables.replace("My Account"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("addressesLink", RuntimeVariables.replace(""));
+		selenium.clickAt("//a[@id='addressesLink']",
+			RuntimeVariables.replace("Addresses"));
 		selenium.waitForVisible("//input[@id='_2_addressStreet1_0']");
 		selenium.type("//input[@id='_2_addressStreet1_0']",
 			RuntimeVariables.replace("1220 Brea Canyon Rd"));
@@ -52,9 +53,9 @@ public class AddAddress1MyAccountTest extends BaseTestCase {
 			RuntimeVariables.replace("label=United States"));
 		Thread.sleep(5000);
 		selenium.clickAt("//input[@id='_2_addressPrimary0']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Primary"));
 		selenium.clickAt("//input[@id='_2_addressMailing0Checkbox']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Mailing"));
 		selenium.waitForPartialText("//select[@name='_2_addressRegionId0']",
 			"California");
 		selenium.select("//select[@name='_2_addressRegionId0']",
@@ -69,7 +70,7 @@ public class AddAddress1MyAccountTest extends BaseTestCase {
 			"California");
 		assertEquals(RuntimeVariables.replace(
 				"Your request processed successfully."),
-			selenium.getText("//div[2]/div/div/div"));
+			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertEquals("1220 Brea Canyon Rd",
 			selenium.getValue("//input[@id='_2_addressStreet1_0']"));
 		assertEquals("Ste 12",

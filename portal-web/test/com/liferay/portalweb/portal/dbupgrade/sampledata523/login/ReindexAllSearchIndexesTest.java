@@ -34,7 +34,7 @@ public class ReindexAllSearchIndexesTest extends BaseTestCase {
 		selenium.click(RuntimeVariables.replace("link=Control Panel"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Server Administration",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Server Administration"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Clear the database cache."),
 			selenium.getText("//tr[4]/td[1]"));

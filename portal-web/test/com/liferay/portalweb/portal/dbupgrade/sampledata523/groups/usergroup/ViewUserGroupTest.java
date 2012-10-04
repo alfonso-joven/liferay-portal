@@ -47,13 +47,13 @@ public class ViewUserGroupTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Actions"),
 			selenium.getText("//strong/span"));
 		selenium.clickAt("//strong/span", RuntimeVariables.replace("Actions"));
-		selenium.waitForText("//div[@class='lfr-component lfr-menu-list']/ul/li[4]/a",
+		selenium.waitForText("//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Assign Members')]",
 			"Assign Members");
 		assertEquals(RuntimeVariables.replace("Assign Members"),
 			selenium.getText(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[4]/a"));
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Assign Members')]"));
 		selenium.click(RuntimeVariables.replace(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[4]/a"));
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Assign Members')]"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Current", RuntimeVariables.replace("Current"));
 		selenium.waitForPageToLoad("30000");
@@ -85,13 +85,13 @@ public class ViewUserGroupTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Actions"),
 			selenium.getText("//strong/span"));
 		selenium.clickAt("//strong/span", RuntimeVariables.replace("Actions"));
-		selenium.waitForText("//div[@class='lfr-component lfr-menu-list']/ul/li[5]/a",
+		selenium.waitForText("//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'View Users')]",
 			"View Users");
 		assertEquals(RuntimeVariables.replace("View Users"),
 			selenium.getText(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[5]/a"));
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'View Users')]"));
 		selenium.click(RuntimeVariables.replace(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[5]/a"));
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'View Users')]"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Joe"),
 			selenium.getText("//td[2]/a"));
@@ -103,5 +103,6 @@ public class ViewUserGroupTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"Liferay Los Angeles, Liferay, Inc."),
 			selenium.getText("//td[6]/a"));
+		assertTrue(selenium.isVisible("//strong/span"));
 	}
 }

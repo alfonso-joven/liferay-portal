@@ -47,7 +47,7 @@ public class AddCalendarEventTest extends BaseTestCase {
 		selenium.clickAt("link=Calendar Event Page",
 			RuntimeVariables.replace("Calendar Event Page"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Events", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Events", RuntimeVariables.replace("Events"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//input[@value='Add Event']",
 			RuntimeVariables.replace("Add Event"));
@@ -74,7 +74,7 @@ public class AddCalendarEventTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Your request processed successfully."),
-			selenium.getText("//div[2]/div/div/div"));
+			selenium.getText("//div[@class='portlet-msg-success']"));
 		selenium.clickAt("//td[1]/a", RuntimeVariables.replace(""));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("5/31/10"),

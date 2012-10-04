@@ -45,9 +45,9 @@ public class ViewCalendarEventTest extends BaseTestCase {
 		selenium.clickAt("//td[2]/a", RuntimeVariables.replace("Open"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Calendar Event Page",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Calendar Event Page"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Events", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Events", RuntimeVariables.replace("Events"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//td[1]/a", RuntimeVariables.replace(""));
 		selenium.waitForPageToLoad("30000");

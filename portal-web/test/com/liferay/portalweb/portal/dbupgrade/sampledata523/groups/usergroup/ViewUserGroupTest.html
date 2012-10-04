@@ -70,17 +70,17 @@
 </tr>
 <tr>
 	<td>waitForText</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[4]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Assign Members')]</td>
 	<td>Assign Members</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[4]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Assign Members')]</td>
 	<td>Assign Members</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[4]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Assign Members')]</td>
 	<td>Assign Members</td>
 </tr>
 <tr>
@@ -165,17 +165,17 @@
 </tr>
 <tr>
 	<td>waitForText</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[5]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'View Users')]</td>
 	<td>View Users</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[5]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'View Users')]</td>
 	<td>View Users</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[5]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'View Users')]</td>
 	<td>View Users</td>
 </tr>
 <tr>
@@ -203,7 +203,11 @@
 	<td>//td[6]/a</td>
 	<td>Liferay Los Angeles, Liferay, Inc.</td>
 </tr>
-
+<tr>
+	<td>assertVisible</td>
+	<td>//strong/span</td>
+	<td>Actions</td>
+</tr>
 </tbody></table>
 </body>
 </html>

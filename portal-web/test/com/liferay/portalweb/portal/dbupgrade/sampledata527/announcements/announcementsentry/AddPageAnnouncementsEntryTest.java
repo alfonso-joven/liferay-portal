@@ -51,10 +51,10 @@ public class AddPageAnnouncementsEntryTest extends BaseTestCase {
 		selenium.type("//input[@name='_134_name_en_US']",
 			RuntimeVariables.replace("Announcements Entry Page"));
 		selenium.clickAt("//input[@value='Add Page']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Add Page"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Your request processed successfully."),
-			selenium.getText("//div[2]/div/div/div"));
+			selenium.getText("//div[@class='portlet-msg-success']"));
 	}
 }

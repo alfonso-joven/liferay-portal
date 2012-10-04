@@ -47,6 +47,12 @@ public class AddCommunityGroupPageScopeTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"Your request processed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
-		assertTrue(selenium.isTextPresent("Group Page Scope Community"));
+		selenium.type("//input[@id='_134_name']",
+			RuntimeVariables.replace("Group Page Scope Community"));
+		selenium.clickAt("//input[@value='Search']",
+			RuntimeVariables.replace("Search"));
+		selenium.waitForPageToLoad("30000");
+		assertEquals(RuntimeVariables.replace("Group Page Scope Community"),
+			selenium.getText("//tr[3]/td[1]"));
 	}
 }

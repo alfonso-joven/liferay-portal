@@ -51,7 +51,7 @@ public class AddPageCalendarEventTest extends BaseTestCase {
 		selenium.type("//input[@name='_134_name_en_US']",
 			RuntimeVariables.replace("Calendar Event Page"));
 		selenium.clickAt("//input[@value='Add Page']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Add Page"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Your request processed successfully."),

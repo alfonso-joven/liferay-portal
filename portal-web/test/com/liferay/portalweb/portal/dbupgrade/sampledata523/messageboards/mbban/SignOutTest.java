@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.portalweb.portal.dbupgrade.sampledata523.calendar.calendarevent;
+package com.liferay.portalweb.portal.dbupgrade.sampledata523.messageboards.mbban;
 
 import com.liferay.portalweb.portal.BaseTestCase;
 import com.liferay.portalweb.portal.util.RuntimeVariables;
@@ -20,8 +20,8 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 /**
  * @author Brian Wing Shun Chan
  */
-public class AddCommunityCalendarEventTest extends BaseTestCase {
-	public void testAddCommunityCalendarEvent() throws Exception {
+public class SignOutTest extends BaseTestCase {
+	public void testSignOut() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
@@ -30,23 +30,10 @@ public class AddCommunityCalendarEventTest extends BaseTestCase {
 		selenium.mouseOver("//h2[@class='user-greeting']/span");
 		selenium.clickAt("//h2[@class='user-greeting']/span",
 			RuntimeVariables.replace("Welcome"));
-		selenium.waitForVisible("link=Control Panel");
-		selenium.clickAt("link=Control Panel",
-			RuntimeVariables.replace("Control Panel"));
+		selenium.waitForVisible("link=Sign Out");
+		selenium.clickAt("link=Sign Out", RuntimeVariables.replace("Sign Out"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Communities",
-			RuntimeVariables.replace("Communities"));
-		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//span[2]/a", RuntimeVariables.replace("Add"));
-		selenium.waitForPageToLoad("30000");
-		selenium.type("//input[@id='_134_name']",
-			RuntimeVariables.replace("Calendar Event Community"));
-		selenium.clickAt("//input[@value='Save']",
-			RuntimeVariables.replace("Save"));
-		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace(
-				"Your request processed successfully."),
-			selenium.getText("//div[@class='portlet-msg-success']"));
-		assertTrue(selenium.isTextPresent("Calendar Event Community"));
+		selenium.waitForVisible("//input[@value='Sign In']");
+		assertTrue(selenium.isVisible("//input[@value='Sign In']"));
 	}
 }

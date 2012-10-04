@@ -34,9 +34,11 @@ public class AddAddress2MyAccountTest extends BaseTestCase {
 		selenium.clickAt("link=My Account",
 			RuntimeVariables.replace("My Account"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("addressesLink", RuntimeVariables.replace(""));
+		selenium.clickAt("//a[@id='addressesLink']",
+			RuntimeVariables.replace("Addresses"));
 		selenium.waitForVisible("//div[2]/div/span/a[1]");
-		selenium.clickAt("//div[2]/div/span/a[1]", RuntimeVariables.replace(""));
+		selenium.clickAt("//div[2]/div/span/a[1]",
+			RuntimeVariables.replace("Add"));
 		selenium.waitForVisible("//input[@id='_2_addressStreet1_2']");
 		selenium.type("//input[@id='_2_addressStreet1_2']",
 			RuntimeVariables.replace("123 Lets"));
@@ -65,7 +67,7 @@ public class AddAddress2MyAccountTest extends BaseTestCase {
 			"Ontario");
 		assertEquals(RuntimeVariables.replace(
 				"Your request processed successfully."),
-			selenium.getText("//div[2]/div/div/div"));
+			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertEquals("123 Lets",
 			selenium.getValue("//input[@id='_2_addressStreet1_1']"));
 		assertEquals("Other",

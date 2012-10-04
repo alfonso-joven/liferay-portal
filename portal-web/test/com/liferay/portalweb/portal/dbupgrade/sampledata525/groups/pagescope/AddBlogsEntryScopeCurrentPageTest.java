@@ -43,13 +43,13 @@ public class AddBlogsEntryScopeCurrentPageTest extends BaseTestCase {
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//tr[@class='portlet-section-body results-row']/td[1]/a",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Group Page Scope Community"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Blogs Page Scope Current Page",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Blogs Page Scope Current Page"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//input[@value='Add Blog Entry']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Add Blog Entry"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_33_title']",
 			RuntimeVariables.replace("Blogs Entry Scope Current Page"));
@@ -65,7 +65,7 @@ public class AddBlogsEntryScopeCurrentPageTest extends BaseTestCase {
 				"This is a blogs entry scope current page test."));
 		selenium.selectFrame("relative=top");
 		selenium.clickAt("//input[@value='Publish']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isTextPresent(
 				"Your request processed successfully."));

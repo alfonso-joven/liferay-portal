@@ -46,12 +46,12 @@ public class ViewUserRequestTest extends BaseTestCase {
 			selenium.getText("//strong/span"));
 		selenium.clickAt("//strong/span", RuntimeVariables.replace("Actions"));
 		selenium.waitForVisible(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[5]/a");
+			"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'View Membership Requests')]");
 		assertEquals(RuntimeVariables.replace("View Membership Requests"),
 			selenium.getText(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[5]/a"));
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'View Membership Requests')]"));
 		selenium.click(RuntimeVariables.replace(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[5]/a"));
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'View Membership Requests')]"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"requestmemberfn requestmemberln (requestmemberea@liferay.com)"),

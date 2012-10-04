@@ -47,7 +47,7 @@ public class AddCalendarEventTest extends BaseTestCase {
 		selenium.clickAt("link=Calendar Event Page",
 			RuntimeVariables.replace("Calendar Event Page"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Events", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Events", RuntimeVariables.replace("Events"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//input[@value='Add Event']",
 			RuntimeVariables.replace("Add Event"));
@@ -60,7 +60,11 @@ public class AddCalendarEventTest extends BaseTestCase {
 			RuntimeVariables.replace("2010"));
 		selenium.select("//select[@name='_8_startDateHour']",
 			RuntimeVariables.replace("12"));
-		selenium.clickAt("//td[2]/input[2]", RuntimeVariables.replace(""));
+		assertFalse(selenium.isChecked(
+				"//input[contains(@id,'allDayCheckbox')]"));
+		selenium.clickAt("//input[contains(@id,'allDayCheckbox')]",
+			RuntimeVariables.replace("All Day Event"));
+		assertTrue(selenium.isChecked("//input[contains(@id,'allDayCheckbox')]"));
 		selenium.select("//select[@name='_8_startDateMinute']",
 			RuntimeVariables.replace(":00"));
 		selenium.select("//select[@name='_8_startDateAmPm']",
@@ -74,8 +78,11 @@ public class AddCalendarEventTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Your request processed successfully."),
-			selenium.getText("//div[2]/div/div/div"));
-		selenium.clickAt("//td[1]/a", RuntimeVariables.replace(""));
+			selenium.getText("//div[@class='portlet-msg-success']"));
+		assertEquals(RuntimeVariables.replace("Hashi's birthday bash"),
+			selenium.getText("//td[3]/a"));
+		selenium.clickAt("//td[3]/a",
+			RuntimeVariables.replace("Hashi's birthday bash"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("5/31/10"),
 			selenium.getText("//td[2]"));

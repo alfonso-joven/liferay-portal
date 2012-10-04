@@ -22,137 +22,79 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
  */
 public class AddAnnouncementDeliveryTest extends BaseTestCase {
 	public void testAddAnnouncementDelivery() throws Exception {
-		int label = 1;
-
-		while (label >= 1) {
-			switch (label) {
-			case 1:
-				selenium.selectWindow("null");
-				selenium.selectFrame("relative=top");
-				selenium.open("/web/guest/home");
-				assertTrue(selenium.isPartialText(
-						"//h2[@class='user-greeting']/span", "Welcome"));
-				selenium.mouseOver("//h2[@class='user-greeting']/span");
-				selenium.clickAt("//h2[@class='user-greeting']/span",
-					RuntimeVariables.replace("Welcome"));
-				selenium.waitForVisible("link=My Account");
-				selenium.clickAt("link=My Account",
-					RuntimeVariables.replace("My Account"));
-				selenium.waitForPageToLoad("30000");
-				selenium.clickAt("announcementsLink",
-					RuntimeVariables.replace(""));
-
-				boolean generalEmailChecked = selenium.isChecked(
-						"_2_announcementsTypegeneralEmailCheckbox");
-
-				if (generalEmailChecked) {
-					label = 2;
-
-					continue;
-				}
-
-				selenium.clickAt("//input[@id='_2_announcementsTypegeneralEmailCheckbox']",
-					RuntimeVariables.replace(""));
-
-			case 2:
-
-				boolean generalSmsChecked = selenium.isChecked(
-						"_2_announcementsTypegeneralSmsCheckbox");
-
-				if (generalSmsChecked) {
-					label = 3;
-
-					continue;
-				}
-
-				selenium.clickAt("//input[@id='_2_announcementsTypegeneralSmsCheckbox']",
-					RuntimeVariables.replace(""));
-
-			case 3:
-
-				boolean newsEmailChecked = selenium.isChecked(
-						"_2_announcementsTypenewsEmailCheckbox");
-
-				if (newsEmailChecked) {
-					label = 4;
-
-					continue;
-				}
-
-				selenium.clickAt("//input[@id='_2_announcementsTypenewsEmailCheckbox']",
-					RuntimeVariables.replace(""));
-
-			case 4:
-
-				boolean newsSmsChecked = selenium.isChecked(
-						"_2_announcementsTypenewsSmsCheckbox");
-
-				if (newsSmsChecked) {
-					label = 5;
-
-					continue;
-				}
-
-				selenium.clickAt("//input[@id='_2_announcementsTypenewsSmsCheckbox']",
-					RuntimeVariables.replace(""));
-
-			case 5:
-
-				boolean testEmailChecked = selenium.isChecked(
-						"_2_announcementsTypetestEmailCheckbox");
-
-				if (testEmailChecked) {
-					label = 6;
-
-					continue;
-				}
-
-				selenium.clickAt("//input[@id='_2_announcementsTypetestEmailCheckbox']",
-					RuntimeVariables.replace(""));
-
-			case 6:
-
-				boolean testSmsChecked = selenium.isChecked(
-						"_2_announcementsTypetestSmsCheckbox");
-
-				if (testSmsChecked) {
-					label = 7;
-
-					continue;
-				}
-
-				selenium.clickAt("//input[@id='_2_announcementsTypetestSmsCheckbox']",
-					RuntimeVariables.replace(""));
-
-			case 7:
-				selenium.clickAt("//input[@value='Save']",
-					RuntimeVariables.replace("Save"));
-				selenium.waitForPageToLoad("30000");
-				assertEquals(RuntimeVariables.replace(
-						"Your request processed successfully."),
-					selenium.getText("//div[2]/div/div/div"));
-				assertTrue(selenium.isChecked(
-						"//input[@id='_2_announcementsTypegeneralEmailCheckbox']"));
-				assertTrue(selenium.isChecked(
-						"//input[@id='_2_announcementsTypegeneralSmsCheckbox']"));
-				assertTrue(selenium.isElementPresent(
-						"//input[@id='_2_announcementsTypegeneralWebsiteCheckbox' and @disabled='']"));
-				assertTrue(selenium.isChecked(
-						"//input[@id='_2_announcementsTypenewsSmsCheckbox']"));
-				assertTrue(selenium.isChecked(
-						"//input[@id='_2_announcementsTypenewsSmsCheckbox']"));
-				assertTrue(selenium.isElementPresent(
-						"//input[@id='_2_announcementsTypenewsWebsiteCheckbox' and @disabled='']"));
-				assertTrue(selenium.isChecked(
-						"//input[@id='_2_announcementsTypetestEmailCheckbox']"));
-				assertTrue(selenium.isChecked(
-						"//input[@id='_2_announcementsTypetestSmsCheckbox']"));
-				assertTrue(selenium.isElementPresent(
-						"//input[@id='_2_announcementsTypetestWebsiteCheckbox' and @disabled='']"));
-
-			case 100:
-				label = -1;
-			}
-		}
+		selenium.selectWindow("null");
+		selenium.selectFrame("relative=top");
+		selenium.open("/web/guest/home");
+		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
+				"Welcome"));
+		selenium.mouseOver("//h2[@class='user-greeting']/span");
+		selenium.clickAt("//h2[@class='user-greeting']/span",
+			RuntimeVariables.replace("Welcome"));
+		selenium.waitForVisible("link=My Account");
+		selenium.clickAt("link=My Account",
+			RuntimeVariables.replace("My Account"));
+		selenium.waitForPageToLoad("30000");
+		selenium.clickAt("//a[@id='announcementsLink']",
+			RuntimeVariables.replace("Announcements"));
+		assertFalse(selenium.isChecked(
+				"//input[@id='_2_announcementsTypegeneralEmailCheckbox']"));
+		selenium.clickAt("//input[@id='_2_announcementsTypegeneralEmailCheckbox']",
+			RuntimeVariables.replace("General Email"));
+		assertTrue(selenium.isChecked(
+				"//input[@id='_2_announcementsTypegeneralEmailCheckbox']"));
+		assertFalse(selenium.isChecked(
+				"//input[@id='_2_announcementsTypegeneralSmsCheckbox']"));
+		selenium.clickAt("//input[@id='_2_announcementsTypegeneralSmsCheckbox']",
+			RuntimeVariables.replace("General SMS"));
+		assertTrue(selenium.isChecked(
+				"//input[@id='_2_announcementsTypegeneralSmsCheckbox']"));
+		assertFalse(selenium.isChecked(
+				"//input[@id='_2_announcementsTypenewsEmailCheckbox']"));
+		selenium.clickAt("//input[@id='_2_announcementsTypenewsEmailCheckbox']",
+			RuntimeVariables.replace("News Email"));
+		assertTrue(selenium.isChecked(
+				"//input[@id='_2_announcementsTypenewsEmailCheckbox']"));
+		assertFalse(selenium.isChecked(
+				"//input[@id='_2_announcementsTypenewsSmsCheckbox']"));
+		selenium.clickAt("//input[@id='_2_announcementsTypenewsSmsCheckbox']",
+			RuntimeVariables.replace("News SMS"));
+		assertTrue(selenium.isChecked(
+				"//input[@id='_2_announcementsTypenewsSmsCheckbox']"));
+		assertFalse(selenium.isChecked(
+				"//input[@id='_2_announcementsTypetestEmailCheckbox']"));
+		selenium.clickAt("//input[@id='_2_announcementsTypetestEmailCheckbox']",
+			RuntimeVariables.replace("Test Email"));
+		assertTrue(selenium.isChecked(
+				"//input[@id='_2_announcementsTypetestEmailCheckbox']"));
+		assertFalse(selenium.isChecked(
+				"//input[@id='_2_announcementsTypetestSmsCheckbox']"));
+		selenium.clickAt("//input[@id='_2_announcementsTypetestSmsCheckbox']",
+			RuntimeVariables.replace("Test SMS"));
+		assertTrue(selenium.isChecked(
+				"//input[@id='_2_announcementsTypetestSmsCheckbox']"));
+		selenium.clickAt("//input[@value='Save']",
+			RuntimeVariables.replace("Save"));
+		selenium.waitForPageToLoad("30000");
+		assertEquals(RuntimeVariables.replace(
+				"Your request processed successfully."),
+			selenium.getText("//div[@class='portlet-msg-success']"));
+		assertTrue(selenium.isChecked(
+				"//input[@id='_2_announcementsTypegeneralEmailCheckbox']"));
+		assertTrue(selenium.isChecked(
+				"//input[@id='_2_announcementsTypegeneralSmsCheckbox']"));
+		assertTrue(selenium.isElementPresent(
+				"//input[@id='_2_announcementsTypegeneralWebsiteCheckbox' and @disabled='']"));
+		assertTrue(selenium.isChecked(
+				"//input[@id='_2_announcementsTypenewsEmailCheckbox']"));
+		assertTrue(selenium.isChecked(
+				"//input[@id='_2_announcementsTypenewsSmsCheckbox']"));
+		assertTrue(selenium.isElementPresent(
+				"//input[@id='_2_announcementsTypenewsWebsiteCheckbox' and @disabled='']"));
+		assertTrue(selenium.isChecked(
+				"//input[@id='_2_announcementsTypetestEmailCheckbox']"));
+		assertTrue(selenium.isChecked(
+				"//input[@id='_2_announcementsTypetestSmsCheckbox']"));
+		assertTrue(selenium.isElementPresent(
+				"//input[@id='_2_announcementsTypetestWebsiteCheckbox' and @disabled='']"));
 	}
 }

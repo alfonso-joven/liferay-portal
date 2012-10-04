@@ -56,8 +56,11 @@ public class AddBookmarksFolderTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
+		assertEquals(RuntimeVariables.replace(
+				"Your request processed successfully."),
+			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertEquals(RuntimeVariables.replace("Bookmarks Folder Name"),
-			selenium.getText("//b"));
+			selenium.getText("//td[1]/a/b"));
 		assertTrue(selenium.isPartialText("//td[1]/a",
 				"Bookmarks Folder Description"));
 	}

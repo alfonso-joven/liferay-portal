@@ -47,7 +47,7 @@ public class AddCalendarEventTest extends BaseTestCase {
 		selenium.clickAt("link=Calendar Event Page",
 			RuntimeVariables.replace("Calendar Event Page"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Events", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Events", RuntimeVariables.replace("Events"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//input[@value='Add Event']",
 			RuntimeVariables.replace("Add Event"));

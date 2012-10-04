@@ -45,17 +45,27 @@ public class ViewCalendarEventTest extends BaseTestCase {
 		selenium.clickAt("//td[2]/a", RuntimeVariables.replace("Open"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Calendar Event Page",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Calendar Event Page"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Events", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Events", RuntimeVariables.replace("Events"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//td[1]/a", RuntimeVariables.replace(""));
+		assertEquals(RuntimeVariables.replace("Hashi's birthday bash"),
+			selenium.getText("//td[3]/a"));
+		selenium.clickAt("//td[3]/a",
+			RuntimeVariables.replace("Hashi's birthday bash"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("5/31/10"),
 			selenium.getText("//td[2]"));
+		assertEquals(RuntimeVariables.replace(
+				"All Day: All Day (Time Zone Sensitive)"),
+			selenium.getText("//tr[2]/td[2]"));
 		assertEquals(RuntimeVariables.replace("Hashi's birthday bash"),
 			selenium.getText("//td[2]/span"));
 		assertEquals(RuntimeVariables.replace("This is so much fun!"),
 			selenium.getText("//tr[5]/td[2]"));
+		assertEquals(RuntimeVariables.replace("Anniversary"),
+			selenium.getText("//tr[6]/td[2]/span"));
+		assertEquals(RuntimeVariables.replace("None"),
+			selenium.getText("//tr[8]/td[2]"));
 	}
 }

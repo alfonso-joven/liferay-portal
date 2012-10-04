@@ -47,8 +47,8 @@ public class AddBookmarksFolderEntryTest extends BaseTestCase {
 		selenium.clickAt("//td[2]/a", RuntimeVariables.replace("Open"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Bookmarks Folder Name"),
-			selenium.getText("//b"));
-		selenium.clickAt("//b",
+			selenium.getText("//td[1]/a/b"));
+		selenium.clickAt("//td[1]/a/b",
 			RuntimeVariables.replace("Bookmarks Folder Name"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//input[@value='Add Entry']",

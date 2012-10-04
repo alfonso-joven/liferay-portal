@@ -31,18 +31,22 @@ public class AddUserMRPasswordTest extends BaseTestCase {
 		selenium.clickAt("//h2[@class='user-greeting']/span",
 			RuntimeVariables.replace("Welcome"));
 		selenium.waitForVisible("link=Control Panel");
-		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForElementPresent("link=Users");
-		selenium.clickAt("link=Users", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Users", RuntimeVariables.replace("Users"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@name='_125_keywords']",
 			RuntimeVariables.replace("requestmembersn"));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//td[2]/a", RuntimeVariables.replace("User Name"));
+		assertEquals(RuntimeVariables.replace("requestmemberfn"),
+			selenium.getText("//td[2]/a"));
+		selenium.clickAt("//td[2]/a",
+			RuntimeVariables.replace("requestmemberfn"));
 		selenium.waitForPageToLoad("30000");
+		assertTrue(selenium.isPartialText("//a[@id='passwordLink']", "Password"));
 		selenium.clickAt("//a[@id='passwordLink']",
 			RuntimeVariables.replace("Password"));
 		selenium.waitForVisible("//input[@name='_125_password1']");

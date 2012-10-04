@@ -44,8 +44,15 @@ public class AddCommunityGroupPageLayoutTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isTextPresent(
-				"Your request processed successfully."));
-		assertTrue(selenium.isTextPresent("Group Page Layout Community"));
+		assertEquals(RuntimeVariables.replace(
+				"Your request processed successfully."),
+			selenium.getText("//div[@class='portlet-msg-success']"));
+		selenium.type("//input[@id='_134_name']",
+			RuntimeVariables.replace("Group Page Layout Community"));
+		selenium.clickAt("//input[@value='Search']",
+			RuntimeVariables.replace("Search"));
+		selenium.waitForPageToLoad("30000");
+		assertEquals(RuntimeVariables.replace("Group Page Layout Community"),
+			selenium.getText("//tr[3]/td[1]"));
 	}
 }

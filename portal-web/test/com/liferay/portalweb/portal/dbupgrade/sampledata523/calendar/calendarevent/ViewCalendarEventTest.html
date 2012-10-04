@@ -61,22 +61,32 @@
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=Calendar Event Page</td>
-	<td></td>
+	<td>Calendar Event Page</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=Events</td>
-	<td></td>
+	<td>Events</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//td[3]/a</td>
+	<td>Hashi's birthday bash</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>//td[1]/a</td>
-	<td></td>
+	<td>//td[3]/a</td>
+	<td>Hashi's birthday bash</td>
 </tr>
 <tr>
 	<td>assertText</td>
 	<td>//td[2]</td>
 	<td>5/31/10</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[2]/td[2]</td>
+	<td>All Day: All Day (Time Zone Sensitive)</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -88,7 +98,16 @@
 	<td>//tr[5]/td[2]</td>
 	<td>This is so much fun!</td>
 </tr>
-
+<tr>
+	<td>assertText</td>
+	<td>//tr[6]/td[2]/span</td>
+	<td>Anniversary</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[8]/td[2]</td>
+	<td>None</td>
+</tr>
 </tbody></table>
 </body>
 </html>

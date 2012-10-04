@@ -34,7 +34,8 @@ public class ViewAnnouncementDeliveryTest extends BaseTestCase {
 		selenium.clickAt("link=My Account",
 			RuntimeVariables.replace("My Account"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("announcementsLink", RuntimeVariables.replace(""));
+		selenium.clickAt("//a[@id='announcementsLink']",
+			RuntimeVariables.replace("Announcements"));
 		assertTrue(selenium.isChecked(
 				"//input[@id='_2_announcementsTypegeneralEmailCheckbox']"));
 		assertTrue(selenium.isChecked(

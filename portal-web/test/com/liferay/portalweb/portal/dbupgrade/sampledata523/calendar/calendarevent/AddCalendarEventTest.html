@@ -66,7 +66,7 @@
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=Events</td>
-	<td></td>
+	<td>Events</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -94,9 +94,19 @@
 	<td>12</td>
 </tr>
 <tr>
+	<td>assertNotChecked</td>
+	<td>//input[contains(@id,'allDayCheckbox')]</td>
+	<td>All Day Event</td>
+</tr>
+<tr>
 	<td>clickAt</td>
-	<td>//td[2]/input[2]</td>
-	<td></td>
+	<td>//input[contains(@id,'allDayCheckbox')]</td>
+	<td>All Day Event</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//input[contains(@id,'allDayCheckbox')]</td>
+	<td>All Day Event</td>
 </tr>
 <tr>
 	<td>select</td>
@@ -125,13 +135,18 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[2]/div/div/div</td>
+	<td>//div[@class='portlet-msg-success']</td>
 	<td>Your request processed successfully.</td>
 </tr>
 <tr>
+	<td>assertText</td>
+	<td>//td[3]/a</td>
+	<td>Hashi's birthday bash</td>
+</tr>
+<tr>
 	<td>clickAtAndWait</td>
-	<td>//td[1]/a</td>
-	<td></td>
+	<td>//td[3]/a</td>
+	<td>Hashi's birthday bash</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -148,7 +163,6 @@
 	<td>//tr[5]/td[2]</td>
 	<td>This is so much fun!</td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

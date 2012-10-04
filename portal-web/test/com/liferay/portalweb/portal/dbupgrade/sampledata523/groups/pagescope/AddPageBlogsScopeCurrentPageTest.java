@@ -42,10 +42,16 @@ public class AddPageBlogsScopeCurrentPageTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
+		assertEquals(RuntimeVariables.replace("Actions"),
+			selenium.getText("//strong/span"));
 		selenium.clickAt("//strong/span", RuntimeVariables.replace("Actions"));
-		selenium.waitForElementPresent("link=Manage Pages");
-		selenium.clickAt("link=Manage Pages",
-			RuntimeVariables.replace("Manage Pages"));
+		selenium.waitForVisible(
+			"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Manage Pages')]");
+		assertEquals(RuntimeVariables.replace("Manage Pages"),
+			selenium.getText(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Manage Pages')]"));
+		selenium.click(RuntimeVariables.replace(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Manage Pages')]"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@name='_134_name_en_US']",
 			RuntimeVariables.replace("Blogs Page Scope Current Page"));

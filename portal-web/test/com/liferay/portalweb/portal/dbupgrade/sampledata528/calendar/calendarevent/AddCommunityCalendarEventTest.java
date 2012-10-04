@@ -46,7 +46,7 @@ public class AddCommunityCalendarEventTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Your request processed successfully."),
-			selenium.getText("//div[2]/div/div/div"));
+			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertTrue(selenium.isTextPresent("Calendar Event Community"));
 	}
 }
