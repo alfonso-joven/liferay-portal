@@ -20,24 +20,23 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 /**
  * @author Brian Wing Shun Chan
  */
-public class AddPageTest extends BaseTestCase {
-	public void testAddPage() throws Exception {
+public class ViewSSITest extends BaseTestCase {
+	public void testViewSSI() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.clickAt("//nav[@id='navigation']",
-			RuntimeVariables.replace("Navigation"));
-		selenium.waitForElementPresent("//a[@id='addPage']");
-		selenium.clickAt("//a[@id='addPage']",
-			RuntimeVariables.replace("Add Page"));
-		selenium.waitForVisible("//input[@type='text']");
-		selenium.type("//input[@type='text']",
-			RuntimeVariables.replace("Sample Sign In Test Page"));
-		selenium.clickAt("//button[contains(@id,'Save')]",
-			RuntimeVariables.replace("Save"));
 		selenium.waitForVisible("link=Sample Sign In Test Page");
-		selenium.clickAt("link=Sample Sign In Test Page",
-			RuntimeVariables.replace("Sample Sign In Test Page"));
+		selenium.click(RuntimeVariables.replace("link=Sample Sign In Test Page"));
 		selenium.waitForPageToLoad("30000");
+		selenium.waitForVisible("//section/div/div/div");
+		assertEquals(RuntimeVariables.replace(
+				"You are signed in as Joe Bloggs."),
+			selenium.getText("//section/div/div/div"));
+		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
+			selenium.getText("//div/div/a"));
+		selenium.clickAt("//div/div/a", RuntimeVariables.replace("Joe Bloggs"));
+		selenium.waitForVisible("//input[@id='_2_emailAddress']");
+		assertEquals("test@liferay.com",
+			selenium.getValue("//input[@id='_2_emailAddress']"));
 	}
 }
