@@ -68,7 +68,7 @@ public class MinifierFilter extends BasePortalFilter {
 	public static String aggregateCss(String dir, String content)
 		throws IOException {
 
-		StringBundler sb = new StringBundler(content.length());
+		StringBundler sb = new StringBundler();
 
 		int pos = 0;
 
