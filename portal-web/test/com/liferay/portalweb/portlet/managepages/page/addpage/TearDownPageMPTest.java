@@ -76,8 +76,6 @@ public class TearDownPageMPTest extends BaseTestCase {
 
 				selenium.clickAt("xPath=(//a[contains(@id,'layoutsTree_layout')])[2]",
 					RuntimeVariables.replace("Page Name"));
-				selenium.waitForElementPresent(
-					"//div[@id='_88_layoutsContainer']/div[contains(@class,'aui-loadingmask')]");
 				selenium.waitForElementNotPresent(
 					"//div[@id='_88_layoutsContainer']/div[contains(@class,'aui-loadingmask')]");
 				selenium.waitForElementPresent(

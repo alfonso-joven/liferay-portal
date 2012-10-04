@@ -30,9 +30,7 @@ public class CopyPageChildPageTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				selenium.clickAt("link=Manage Pages Test Page",
-					RuntimeVariables.replace("Manage Pages Test Page"));
-				selenium.waitForPageToLoad("30000");
+				selenium.mouseOver("link=Manage Pages Test Page");
 				selenium.clickAt("link=Child Test Page",
 					RuntimeVariables.replace("Child Test Page"));
 				selenium.waitForPageToLoad("30000");
@@ -129,6 +127,7 @@ public class CopyPageChildPageTest extends BaseTestCase {
 					selenium.getText("//div[@class='portlet-msg-success']"));
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
+				selenium.mouseOver("link=Manage Pages Test Page");
 				selenium.clickAt("link=Child Test Page",
 					RuntimeVariables.replace("Child Test Page"));
 				selenium.waitForPageToLoad("30000");
