@@ -197,6 +197,8 @@ public class TearDownArchivedSetupTest extends BaseTestCase {
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 
 			case 6:
+				selenium.selectFrame("relative=top");
+
 			case 100:
 				label = -1;
 			}

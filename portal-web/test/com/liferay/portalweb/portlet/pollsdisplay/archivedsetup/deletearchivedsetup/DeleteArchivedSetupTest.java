@@ -75,5 +75,6 @@ public class DeleteArchivedSetupTest extends BaseTestCase {
 			selenium.getText("//div[@class='portlet-msg-info']"));
 		assertNotEquals(RuntimeVariables.replace("Archived Setup"),
 			selenium.getText("//tr[3]/td[1]"));
+		selenium.selectFrame("relative=top");
 	}
 }

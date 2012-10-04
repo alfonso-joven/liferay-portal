@@ -70,6 +70,7 @@ public class RestoreArchivedSetupTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"You have successfully updated the setup."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
+		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
 		selenium.clickAt("link=Polls Display Test Page",
 			RuntimeVariables.replace("Polls Display Test Page"));

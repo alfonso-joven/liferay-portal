@@ -53,8 +53,8 @@ public class SelectQuestion2Test extends BaseTestCase {
 			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertEquals("PD Question2 Title",
 			selenium.getSelectedLabel("//select[@id='_86_questionId']"));
+		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Polls Display Test Page");
 		selenium.clickAt("link=Polls Display Test Page",
 			RuntimeVariables.replace("Polls Display Test Page"));
 		selenium.waitForPageToLoad("30000");

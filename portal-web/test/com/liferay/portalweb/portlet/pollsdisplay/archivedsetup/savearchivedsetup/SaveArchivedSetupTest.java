@@ -62,5 +62,6 @@ public class SaveArchivedSetupTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
 			selenium.getText("//tr[3]/td[2]"));
 		assertTrue(selenium.isVisible("//tr[3]/td[3]"));
+		selenium.selectFrame("relative=top");
 	}
 }
