@@ -35,20 +35,22 @@ public class TearDownArchivedSetupTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				Thread.sleep(5000);
 				assertEquals(RuntimeVariables.replace("Options"),
-					selenium.getText("//strong/a"));
-				selenium.clickAt("//strong/a",
+					selenium.getText("//span[@title='Options']/ul/li/strong/a"));
+				selenium.clickAt("//span[@title='Options']/ul/li/strong/a",
 					RuntimeVariables.replace("Options"));
 				selenium.waitForVisible(
-					"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a");
+					"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]");
 				assertEquals(RuntimeVariables.replace("Configuration"),
 					selenium.getText(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a"));
-				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a",
+						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]"));
+				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]",
 					RuntimeVariables.replace("Configuration"));
 				selenium.waitForVisible(
 					"//iframe[contains(@id,'configurationIframeDialog')]");
 				selenium.selectFrame(
 					"//iframe[contains(@id,'configurationIframeDialog')]");
+				selenium.waitForElementPresent(
+					"//script[contains(@src,'/liferay/navigation_interaction.js')]");
 				selenium.waitForVisible(
 					"//div[@class='archived-setups']/span/a/span");
 				assertEquals(RuntimeVariables.replace("Archive/Restore Setup"),
@@ -59,7 +61,7 @@ public class TearDownArchivedSetupTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 
 				boolean pdArchivedSetup1Present = selenium.isElementPresent(
-						"//tr[3]/td[4]/span/ul/li/strong/a");
+						"//span[@title='Actions']/ul/li/strong/a/span");
 
 				if (!pdArchivedSetup1Present) {
 					label = 2;
@@ -84,10 +86,8 @@ public class TearDownArchivedSetupTest extends BaseTestCase {
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 
-			case 2:
-
 				boolean pdArchivedSetup2Present = selenium.isElementPresent(
-						"//tr[3]/td[4]/span/ul/li/strong/a");
+						"//span[@title='Actions']/ul/li/strong/a/span");
 
 				if (!pdArchivedSetup2Present) {
 					label = 3;
@@ -112,10 +112,8 @@ public class TearDownArchivedSetupTest extends BaseTestCase {
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 
-			case 3:
-
 				boolean pdArchivedSetup3Present = selenium.isElementPresent(
-						"//tr[3]/td[4]/span/ul/li/strong/a");
+						"//span[@title='Actions']/ul/li/strong/a/span");
 
 				if (!pdArchivedSetup3Present) {
 					label = 4;
@@ -140,10 +138,8 @@ public class TearDownArchivedSetupTest extends BaseTestCase {
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 
-			case 4:
-
 				boolean pdArchivedSetup4Present = selenium.isElementPresent(
-						"//tr[3]/td[4]/span/ul/li/strong/a");
+						"//span[@title='Actions']/ul/li/strong/a/span");
 
 				if (!pdArchivedSetup4Present) {
 					label = 5;
@@ -168,10 +164,8 @@ public class TearDownArchivedSetupTest extends BaseTestCase {
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 
-			case 5:
-
 				boolean pdArchivedSetup5Present = selenium.isElementPresent(
-						"//tr[3]/td[4]/span/ul/li/strong/a");
+						"//span[@title='Actions']/ul/li/strong/a/span");
 
 				if (!pdArchivedSetup5Present) {
 					label = 6;
@@ -196,6 +190,10 @@ public class TearDownArchivedSetupTest extends BaseTestCase {
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 
+			case 2:
+			case 3:
+			case 4:
+			case 5:
 			case 6:
 				selenium.selectFrame("relative=top");
 

@@ -25,27 +25,27 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//strong/a</td>
+	<td>//span[@title='Options']/ul/li/strong/a</td>
 	<td>Options</td>
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>//strong/a</td>
+	<td>//span[@title='Options']/ul/li/strong/a</td>
 	<td>Options</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]</td>
 	<td>Configuration</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]</td>
 	<td>Configuration</td>
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]</td>
 	<td>Configuration</td>
 </tr>
 <tr>
@@ -57,6 +57,11 @@
 	<td>selectFrame</td>
 	<td>//iframe[contains(@id,'configurationIframeDialog')]</td>
 	<td>IFrame</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//script[contains(@src,'/liferay/navigation_interaction.js')]</td>
+	<td>Navigation Interaction</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
@@ -74,8 +79,8 @@
 	<td>Archive/Restore Setup</td>
 </tr>
 <tr>
-	<td>store</td>
-	<td>eval(selenium.isElementPresent('//tr[3]/td[4]/span/ul/li/strong/a'))</td>
+	<td>storeElementPresent</td>
+	<td>//span[@title='Actions']/ul/li/strong/a/span</td>
 	<td>pdArchivedSetup1Present</td>
 </tr>
 <tr>
@@ -119,13 +124,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>label</td>
-	<td>PDArchivedSetup1NotPresent</td>
-	<td></td>
-</tr>
-<tr>
-	<td>store</td>
-	<td>eval(selenium.isElementPresent('//tr[3]/td[4]/span/ul/li/strong/a'))</td>
+	<td>storeElementPresent</td>
+	<td>//span[@title='Actions']/ul/li/strong/a/span</td>
 	<td>pdArchivedSetup2Present</td>
 </tr>
 <tr>
@@ -169,13 +169,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>label</td>
-	<td>PDArchivedSetup2NotPresent</td>
-	<td></td>
-</tr>
-<tr>
-	<td>store</td>
-	<td>eval(selenium.isElementPresent('//tr[3]/td[4]/span/ul/li/strong/a'))</td>
+	<td>storeElementPresent</td>
+	<td>//span[@title='Actions']/ul/li/strong/a/span</td>
 	<td>pdArchivedSetup3Present</td>
 </tr>
 <tr>
@@ -219,13 +214,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>label</td>
-	<td>PDArchivedSetup3NotPresent</td>
-	<td></td>
-</tr>
-<tr>
-	<td>store</td>
-	<td>eval(selenium.isElementPresent('//tr[3]/td[4]/span/ul/li/strong/a'))</td>
+	<td>storeElementPresent</td>
+	<td>//span[@title='Actions']/ul/li/strong/a/span</td>
 	<td>pdArchivedSetup4Present</td>
 </tr>
 <tr>
@@ -269,13 +259,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>label</td>
-	<td>PDArchivedSetup4NotPresent</td>
-	<td></td>
-</tr>
-<tr>
-	<td>store</td>
-	<td>eval(selenium.isElementPresent('//tr[3]/td[4]/span/ul/li/strong/a'))</td>
+	<td>storeElementPresent</td>
+	<td>//span[@title='Actions']/ul/li/strong/a/span</td>
 	<td>pdArchivedSetup5Present</td>
 </tr>
 <tr>
@@ -316,6 +301,26 @@
 <tr>
 	<td>assertConfirmation</td>
 	<td>Are you sure you want to delete this?</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>PDArchivedSetup1NotPresent</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>PDArchivedSetup2NotPresent</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>PDArchivedSetup3NotPresent</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>PDArchivedSetup4NotPresent</td>
 	<td></td>
 </tr>
 <tr>
