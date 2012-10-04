@@ -30,7 +30,14 @@ public class AddPageMBTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				selenium.waitForElementPresent("link=Control Panel");
+				selenium.clickAt("//div[@id='dockbar']",
+					RuntimeVariables.replace("Dockbar"));
+				selenium.waitForElementPresent(
+					"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+				assertEquals(RuntimeVariables.replace("Manage"),
+					selenium.getText("//li[@id='_145_manageContent']/a/span"));
+				selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+				selenium.waitForVisible("link=Control Panel");
 				selenium.clickAt("link=Control Panel",
 					RuntimeVariables.replace("Control Panel"));
 				selenium.waitForPageToLoad("30000");
@@ -42,8 +49,8 @@ public class AddPageMBTest extends BaseTestCase {
 				selenium.clickAt("//input[@value='Search']",
 					RuntimeVariables.replace("Search"));
 				selenium.waitForPageToLoad("30000");
-				assertEquals(RuntimeVariables.replace("MB Ban Community"),
-					selenium.getText("//tr[3]/td[1]"));
+				assertTrue(selenium.isPartialText("//tr[3]/td[1]",
+						"MB Ban Community"));
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText("//strong/a"));
 				selenium.clickAt("//strong/a",

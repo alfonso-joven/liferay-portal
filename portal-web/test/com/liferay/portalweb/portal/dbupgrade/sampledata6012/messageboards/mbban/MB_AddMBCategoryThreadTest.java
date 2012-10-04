@@ -39,12 +39,12 @@ public class MB_AddMBCategoryThreadTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_19_subject']",
 			RuntimeVariables.replace("MB Ban Thread"));
-		selenium.type("//textarea[@id='_19_textArea']",
+		selenium.type("//textarea[@id='_19_editor']",
 			RuntimeVariables.replace("This is to test the mbban table."));
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("MB Ban Thread"),
-			selenium.getText("//td[1]/a"));
+			selenium.getText("//div/h1/span"));
 	}
 }

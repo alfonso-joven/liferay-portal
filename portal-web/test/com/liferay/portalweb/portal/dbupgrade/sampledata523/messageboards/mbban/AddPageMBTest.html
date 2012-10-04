@@ -14,7 +14,22 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
+	<td>assertPartialText</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>mouseOver</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
 	<td>link=Control Panel</td>
 	<td>Control Panel</td>
 </tr>
@@ -54,18 +69,18 @@
 	<td>Actions</td>
 </tr>
 <tr>
-	<td>waitForText</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a</td>
+	<td>waitForVisible</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Manage Pages')]</td>
 	<td>Manage Pages</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Manage Pages')]</td>
 	<td>Manage Pages</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Manage Pages')]</td>
 	<td>Manage Pages</td>
 </tr>
 <tr>
@@ -88,7 +103,6 @@
 	<td>//li[2]/ul/li/a/span</td>
 	<td>Message Boards Test Page</td>
 </tr>
-
 </tbody></table>
 </body>
 </html>
