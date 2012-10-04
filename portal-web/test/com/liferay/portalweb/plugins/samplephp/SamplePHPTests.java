@@ -15,6 +15,7 @@
 package com.liferay.portalweb.plugins.samplephp;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
+import com.liferay.portalweb.portal.util.TearDownPageTest;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -25,10 +26,10 @@ import junit.framework.TestSuite;
 public class SamplePHPTests extends BaseTestSuite {
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
-		testSuite.addTestSuite(AddPageTest.class);
-		testSuite.addTestSuite(AddPortletTest.class);
-		testSuite.addTestSuite(VerifyFunctionalityTest.class);
-		testSuite.addTestSuite(DeletePageTest.class);
+		testSuite.addTestSuite(AddPageSPTest.class);
+		testSuite.addTestSuite(AddPortletSPTest.class);
+		testSuite.addTestSuite(ViewSPTest.class);
+		testSuite.addTestSuite(TearDownPageTest.class);
 
 		return testSuite;
 	}
