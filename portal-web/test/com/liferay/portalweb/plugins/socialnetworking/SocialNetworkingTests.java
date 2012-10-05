@@ -15,6 +15,7 @@
 package com.liferay.portalweb.plugins.socialnetworking;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
+import com.liferay.portalweb.portal.util.TearDownPageTest;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -25,24 +26,24 @@ import junit.framework.TestSuite;
 public class SocialNetworkingTests extends BaseTestSuite {
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
-		testSuite.addTestSuite(AddPageTest.class);
-		testSuite.addTestSuite(AddFriendsPortletTest.class);
-		testSuite.addTestSuite(RemovePortletTest.class);
-		testSuite.addTestSuite(AddFriendsActivitiesPortletTest.class);
-		testSuite.addTestSuite(RemovePortletTest.class);
-		testSuite.addTestSuite(AddMapPortletTest.class);
-		testSuite.addTestSuite(RemovePortletTest.class);
-		testSuite.addTestSuite(AddMeetupsPortletTest.class);
-		testSuite.addTestSuite(RemovePortletTest.class);
-		testSuite.addTestSuite(AddMembersPortletTest.class);
-		testSuite.addTestSuite(RemovePortletTest.class);
-		testSuite.addTestSuite(AddMembersActivitiesPortletTest.class);
-		testSuite.addTestSuite(RemovePortletTest.class);
-		testSuite.addTestSuite(AddSummaryPortletTest.class);
-		testSuite.addTestSuite(RemovePortletTest.class);
-		testSuite.addTestSuite(AddWallPortletTest.class);
-		testSuite.addTestSuite(RemovePortletTest.class);
-		testSuite.addTestSuite(DeletePageTest.class);
+		testSuite.addTestSuite(AddPageSNTest.class);
+		testSuite.addTestSuite(AddPortletFriendsTest.class);
+		testSuite.addTestSuite(RemovePortletSNTest.class);
+		testSuite.addTestSuite(AddPortletFATest.class);
+		testSuite.addTestSuite(RemovePortletSNTest.class);
+		testSuite.addTestSuite(AddPortletMapTest.class);
+		testSuite.addTestSuite(RemovePortletSNTest.class);
+		testSuite.addTestSuite(AddPortletMeetupsTest.class);
+		testSuite.addTestSuite(RemovePortletSNTest.class);
+		testSuite.addTestSuite(AddPortletMembersTest.class);
+		testSuite.addTestSuite(RemovePortletSNTest.class);
+		testSuite.addTestSuite(AddPortletMATest.class);
+		testSuite.addTestSuite(RemovePortletSNTest.class);
+		testSuite.addTestSuite(AddPortletSummaryTest.class);
+		testSuite.addTestSuite(RemovePortletSNTest.class);
+		testSuite.addTestSuite(AddPortletWallTest.class);
+		testSuite.addTestSuite(RemovePortletSNTest.class);
+		testSuite.addTestSuite(TearDownPageTest.class);
 
 		return testSuite;
 	}
