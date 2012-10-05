@@ -20,8 +20,8 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 /**
  * @author Brian Wing Shun Chan
  */
-public class EditPreferencesTest extends BaseTestCase {
-	public void testEditPreferences() throws Exception {
+public class ConfigurePortletStocksTest extends BaseTestCase {
+	public void testConfigurePortletStocks() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
@@ -30,28 +30,44 @@ public class EditPreferencesTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		Thread.sleep(5000);
 		assertEquals(RuntimeVariables.replace("Options"),
-			selenium.getText("//strong/a"));
-		selenium.clickAt("//strong/a", RuntimeVariables.replace("Options"));
+			selenium.getText("//span[@title='Options']/ul/li/strong/a"));
+		selenium.clickAt("//span[@title='Options']/ul/li/strong/a",
+			RuntimeVariables.replace("Options"));
 		selenium.waitForVisible(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a");
+			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Preferences')]/a");
 		assertEquals(RuntimeVariables.replace("Preferences"),
 			selenium.getText(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a"));
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Preferences')]/a"));
 		selenium.click(RuntimeVariables.replace(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a"));
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Preferences')]/a"));
 		selenium.waitForPageToLoad("30000");
 		Thread.sleep(5000);
 		selenium.type("//section[@id='portlet_1_WAR_stocksportlet']/div/div/div/form/textarea",
 			RuntimeVariables.replace("GOOG"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
-		selenium.waitForPageToLoad("30000");
+		selenium.waitForVisible("//div[@class='portlet-msg-success']");
+		assertEquals(RuntimeVariables.replace(
+				"You have successfully updated your preferences."),
+			selenium.getText("//div[@class='portlet-msg-success']"));
 		selenium.clickAt("//a[@class='portlet-icon-back']",
 			RuntimeVariables.replace("Return to Full Page"));
-		selenium.waitForPageToLoad("30000");
+		selenium.waitForVisible(
+			"//section[@id='portlet_1_WAR_stocksportlet']/div/div/div/form/table/tbody/tr/td[1]/a");
+		assertEquals(RuntimeVariables.replace("GOOG"),
+			selenium.getText(
+				"//section[@id='portlet_1_WAR_stocksportlet']/div/div/div/form/table/tbody/tr/td[1]/a"));
 		selenium.clickAt("//section[@id='portlet_1_WAR_stocksportlet']/div/div/div/form/table/tbody/tr/td[1]/a",
 			RuntimeVariables.replace("GOOG"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isTextPresent("Change"));
+		assertEquals("GOOG",
+			selenium.getValue("//input[@name='_1_WAR_stocksportlet_symbol']"));
+		assertTrue(selenium.isPartialText("//td", "Last Trade"));
+		assertTrue(selenium.isPartialText("//td[2]", "Change"));
+		assertTrue(selenium.isPartialText("//td[3]", "Day High"));
+		assertTrue(selenium.isPartialText("//td[4]", "Day Low"));
+		assertTrue(selenium.isPartialText("//td[5]", "Open"));
+		assertTrue(selenium.isPartialText("//td[6]", "Previous Close"));
+		assertTrue(selenium.isPartialText("//td[7]", "Volume"));
 	}
 }

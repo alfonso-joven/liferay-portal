@@ -15,6 +15,7 @@
 package com.liferay.portalweb.plugins.stocks;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
+import com.liferay.portalweb.portal.util.TearDownPageTest;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -25,10 +26,10 @@ import junit.framework.TestSuite;
 public class StocksTests extends BaseTestSuite {
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
-		testSuite.addTestSuite(AddPageTest.class);
-		testSuite.addTestSuite(AddPortletTest.class);
-		testSuite.addTestSuite(EditPreferencesTest.class);
-		testSuite.addTestSuite(DeletePageTest.class);
+		testSuite.addTestSuite(AddPageStocksTest.class);
+		testSuite.addTestSuite(AddPortletStocksTest.class);
+		testSuite.addTestSuite(ConfigurePortletStocksTest.class);
+		testSuite.addTestSuite(TearDownPageTest.class);
 
 		return testSuite;
 	}
