@@ -76,10 +76,12 @@ public class AddChildPage3Test extends BaseTestCase {
 				assertEquals("Manage Pages Test Page",
 					selenium.getValue(
 						"//div[1]/fieldset/div/span[1]/span/span/span/input"));
-				selenium.waitForVisible("//div/span/button[1]");
+				selenium.waitForVisible(
+					"//span[@class='aui-toolbar-content']/button[contains(.,'Add Child Page')]");
 				assertEquals(RuntimeVariables.replace("Add Child Page"),
-					selenium.getText("//div/span/button[1]"));
-				selenium.clickAt("//div/span/button[1]",
+					selenium.getText(
+						"//span[@class='aui-toolbar-content']/button[contains(.,'Add Child Page')]"));
+				selenium.clickAt("//span[@class='aui-toolbar-content']/button[contains(.,'Add Child Page')]",
 					RuntimeVariables.replace("Add Child Page"));
 				selenium.waitForVisible(
 					"//input[@id='_88_addLayoutName_en_US']");
@@ -143,7 +145,7 @@ public class AddChildPage3Test extends BaseTestCase {
 					RuntimeVariables.replace("Child Test Page3"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("Child Test Page3"),
-					selenium.getText("//nav/ul/li[3]/span/a"));
+					selenium.getText("//nav[@id='breadcrumbs']/ul/li[3]/span/a"));
 
 			case 100:
 				label = -1;

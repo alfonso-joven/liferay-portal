@@ -69,10 +69,12 @@ public class AddPageTest extends BaseTestCase {
 					selenium.getText("//li/ul/li[1]/div/div[3]/a"));
 				selenium.clickAt("//a[@class='layout-tree']",
 					RuntimeVariables.replace("Public Pages"));
-				selenium.waitForText("//div/span/button[1]", "Add Page");
+				selenium.waitForText("//span[@class='aui-toolbar-content']/button[contains(.,'Add Page')]",
+					"Add Page");
 				assertEquals(RuntimeVariables.replace("Add Page"),
-					selenium.getText("//div/span/button[1]"));
-				selenium.clickAt("//div/span/button[1]",
+					selenium.getText(
+						"//span[@class='aui-toolbar-content']/button[contains(.,'Add Page')]"));
+				selenium.clickAt("//span[@class='aui-toolbar-content']/button[contains(.,'Add Page')]",
 					RuntimeVariables.replace("Add Page"));
 				selenium.waitForVisible(
 					"//input[@id='_88_addLayoutName_en_US']");
@@ -108,7 +110,7 @@ public class AddPageTest extends BaseTestCase {
 					RuntimeVariables.replace("Manage Pages Test Page"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("Manage Pages Test Page"),
-					selenium.getText("//nav/ul/li[2]/span/a"));
+					selenium.getText("//nav[@id='breadcrumbs']/ul/li[2]/span/a"));
 
 			case 100:
 				label = -1;

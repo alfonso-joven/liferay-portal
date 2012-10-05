@@ -132,7 +132,7 @@ public class CopyPageChildPageTest extends BaseTestCase {
 					RuntimeVariables.replace("Child Test Page"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("Child Test Page"),
-					selenium.getText("//nav/ul/li[3]/span/a"));
+					selenium.getText("//nav[@id='breadcrumbs']/ul/li[3]/span/a"));
 				assertEquals(RuntimeVariables.replace("Sign In"),
 					selenium.getText("//section[@id='portlet_58']/header/h1"));
 				assertEquals(RuntimeVariables.replace("Hello World"),

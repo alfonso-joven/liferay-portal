@@ -129,11 +129,11 @@ public class SetDisplayOrderTest extends BaseTestCase {
 				selenium.open("/web/guest/home/");
 				selenium.mouseOver("link=Manage Pages Test Page");
 				assertEquals(RuntimeVariables.replace("Child Test Page2"),
-					selenium.getText("//li[2]/ul/li[1]"));
+					selenium.getText("//ul[@class='child-menu']/li[1]/a"));
 				assertEquals(RuntimeVariables.replace("Child Test Page3"),
-					selenium.getText("//li[2]/ul/li[2]"));
+					selenium.getText("//ul[@class='child-menu']/li[2]/a"));
 				assertEquals(RuntimeVariables.replace("Child Test Page1"),
-					selenium.getText("//li[2]/ul/li[3]"));
+					selenium.getText("//ul[@class='child-menu']/li[3]/a"));
 
 			case 100:
 				label = -1;
