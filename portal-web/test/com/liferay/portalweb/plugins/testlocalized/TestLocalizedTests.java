@@ -26,8 +26,8 @@ import junit.framework.TestSuite;
 public class TestLocalizedTests extends BaseTestSuite {
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
-		testSuite.addTestSuite(AddPageTest.class);
-		testSuite.addTestSuite(AddPortletTest.class);
+		testSuite.addTestSuite(AddPageTLTest.class);
+		testSuite.addTestSuite(AddPortletTLTest.class);
 		testSuite.addTestSuite(ViewPortletChineseLocalizedTest.class);
 		testSuite.addTestSuite(ViewPortletFrenchLocalizedTest.class);
 		testSuite.addTestSuite(ViewPortletSpanishLocalizedTest.class);
