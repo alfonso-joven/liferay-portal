@@ -20,8 +20,8 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 /**
  * @author Brian Wing Shun Chan
  */
-public class AssertPortletContentsTest extends BaseTestCase {
-	public void testAssertPortletContents() throws Exception {
+public class ViewPortletTHTest extends BaseTestCase {
+	public void testViewPortletTH() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");

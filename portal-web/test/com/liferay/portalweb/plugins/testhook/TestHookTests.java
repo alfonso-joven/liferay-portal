@@ -26,9 +26,9 @@ import junit.framework.TestSuite;
 public class TestHookTests extends BaseTestSuite {
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
-		testSuite.addTestSuite(AddPageTest.class);
-		testSuite.addTestSuite(AddPortletTest.class);
-		testSuite.addTestSuite(AssertPortletContentsTest.class);
+		testSuite.addTestSuite(AddPageTHTest.class);
+		testSuite.addTestSuite(AddPortletTHTest.class);
+		testSuite.addTestSuite(ViewPortletTHTest.class);
 		testSuite.addTestSuite(TearDownPageTest.class);
 
 		return testSuite;
