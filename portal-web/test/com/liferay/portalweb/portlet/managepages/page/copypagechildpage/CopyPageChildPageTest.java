@@ -31,6 +31,7 @@ public class CopyPageChildPageTest extends BaseTestCase {
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
 				selenium.mouseOver("link=Manage Pages Test Page");
+				selenium.waitForVisible("link=Child Test Page");
 				selenium.clickAt("link=Child Test Page",
 					RuntimeVariables.replace("Child Test Page"));
 				selenium.waitForPageToLoad("30000");
@@ -128,6 +129,7 @@ public class CopyPageChildPageTest extends BaseTestCase {
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
 				selenium.mouseOver("link=Manage Pages Test Page");
+				selenium.waitForVisible("link=Child Test Page");
 				selenium.clickAt("link=Child Test Page",
 					RuntimeVariables.replace("Child Test Page"));
 				selenium.waitForPageToLoad("30000");

@@ -111,9 +111,9 @@ public class SetDisplayOrderTest extends BaseTestCase {
 				selenium.waitForVisible(
 					"//div[contains(@class, 'yui3-dd-drop-active-valid')]");
 				selenium.mouseMoveAt("//li[2]/ul/li[3]/div/div[3]/a",
-					RuntimeVariables.replace("0,10"));
+					RuntimeVariables.replace("0,20"));
 				selenium.mouseMoveAt("//li[2]/ul/li[3]/div/div[3]/a",
-					RuntimeVariables.replace("0,10"));
+					RuntimeVariables.replace("0,20"));
 				selenium.waitForVisible(
 					"//div[contains(@class,'aui-tree-drag-insert-below')]");
 				selenium.mouseUp("//li[2]/ul/li[3]/div/div[3]/a");
