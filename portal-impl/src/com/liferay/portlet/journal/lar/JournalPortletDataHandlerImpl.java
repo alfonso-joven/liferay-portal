@@ -1902,9 +1902,9 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 			return;
 		}
 
-		String parentStructureId = structure.getParentStructureId();
-
 		JournalStructure parentStructure = null;
+
+		String parentStructureId = structure.getParentStructureId();
 
 		if (Validator.isNotNull(parentStructureId)) {
 			try {
