@@ -332,8 +332,7 @@ public class DDMStructureImpl extends DDMStructureBaseImpl {
 		}
 
 		fieldsMap = new LinkedHashMap<String, Map<String, String>>();
-		transientFieldsMap =
-			new LinkedHashMap<String, Map<String, String>>();
+		transientFieldsMap = new LinkedHashMap<String, Map<String, String>>();
 
 		XPath xPathSelector = SAXReaderUtil.createXPath("//dynamic-element");
 
