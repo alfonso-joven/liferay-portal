@@ -20,8 +20,8 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 /**
  * @author Brian Wing Shun Chan
  */
-public class EditPreferencesTest extends BaseTestCase {
-	public void testEditPreferences() throws Exception {
+public class ConfigurePortletCityTest extends BaseTestCase {
+	public void testConfigurePortletCity() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
@@ -33,21 +33,27 @@ public class EditPreferencesTest extends BaseTestCase {
 			selenium.getText("//strong/a"));
 		selenium.clickAt("//strong/a", RuntimeVariables.replace("Options"));
 		selenium.waitForVisible(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a");
-		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a",
+			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a");
+		assertEquals(RuntimeVariables.replace("Configuration"),
+			selenium.getText(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a"));
+		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a",
 			RuntimeVariables.replace("Configuration"));
-		selenium.waitForPageToLoad("30000");
-		selenium.type("//textarea[@name='_1_WAR_weatherportlet_zips']",
+		selenium.waitForVisible("//iframe");
+		selenium.selectFrame("//iframe");
+		selenium.waitForVisible("//input[@id='_86_apiKey']");
+		assertEquals(RuntimeVariables.replace("World Weather Online API Key"),
+			selenium.getText("//label[@for='_86_apiKey']"));
+		selenium.type("//input[@id='_86_apiKey']",
+			RuntimeVariables.replace("c5039b6259195429120810"));
+		selenium.type("//textarea[@id='_86_zips']",
 			RuntimeVariables.replace("Diamond Bar, CA"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
-		selenium.waitForPageToLoad("30000");
+		selenium.waitForVisible("//div[@class='portlet-msg-success']");
 		assertEquals(RuntimeVariables.replace(
-				"You have successfully updated your preferences."),
+				"You have successfully updated the setup."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
-		selenium.clickAt("link=Return to Full Page",
-			RuntimeVariables.replace("Return to Full Page"));
-		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isElementPresent("link=Diamond Bar, CA"));
+		selenium.selectFrame("relative=top");
 	}
 }

@@ -20,22 +20,16 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 /**
  * @author Brian Wing Shun Chan
  */
-public class AddPortletTest extends BaseTestCase {
-	public void testAddPortlet() throws Exception {
+public class ViewCityTest extends BaseTestCase {
+	public void testViewCity() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
 		selenium.waitForVisible("link=Weather Test Page");
 		selenium.click(RuntimeVariables.replace("link=Weather Test Page"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isPartialText("//a[@id='_145_addApplication']",
-				"More"));
-		selenium.clickAt("//a[@id='_145_addApplication']",
-			RuntimeVariables.replace("More"));
-		selenium.waitForElementPresent("//div[@title='Weather']/p/a");
-		selenium.clickAt("//div[@title='Weather']/p/a",
-			RuntimeVariables.replace("Add"));
-		selenium.waitForVisible("//section");
-		assertTrue(selenium.isVisible("//section"));
+		selenium.waitForVisible("//td/a");
+		assertEquals(RuntimeVariables.replace("Diamond Bar, CA"),
+			selenium.getText("//td/a"));
 	}
 }
