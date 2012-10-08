@@ -42,12 +42,13 @@ public class MR_LoginUserTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.waitForVisible("//input[@value='I Agree']");
 		selenium.clickAt("//input[@value='I Agree']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("I Agree"));
 		selenium.waitForPageToLoad("30000");
 		selenium.waitForVisible("reminderQueryAnswer");
 		selenium.type("reminderQueryAnswer", RuntimeVariables.replace("Test"));
 		selenium.waitForVisible("//input[@value='Save']");
-		selenium.clickAt("//input[@value='Save']", RuntimeVariables.replace(""));
+		selenium.clickAt("//input[@value='Save']",
+			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
 	}
 }

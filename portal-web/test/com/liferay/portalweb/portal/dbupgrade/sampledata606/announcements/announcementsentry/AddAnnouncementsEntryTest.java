@@ -48,7 +48,7 @@ public class AddAnnouncementsEntryTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.waitForVisible("link=Announcements Entry Page");
 		selenium.clickAt("link=Announcements Entry Page",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Announcements Entry Page"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Manage Entries",
 			RuntimeVariables.replace("Manage Entries"));
@@ -71,7 +71,7 @@ public class AddAnnouncementsEntryTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Entries", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Entries", RuntimeVariables.replace("Entries"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Announcements Entry Name"),
 			selenium.getText("//div/h3/a"));

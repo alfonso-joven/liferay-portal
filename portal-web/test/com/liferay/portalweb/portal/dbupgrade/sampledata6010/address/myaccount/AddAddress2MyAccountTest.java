@@ -33,14 +33,17 @@ public class AddAddress2MyAccountTest extends BaseTestCase {
 			selenium.getText("//li[@id='_145_manageContent']/a/span"));
 		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
 		selenium.waitForVisible("link=Control Panel");
-		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=My Account", RuntimeVariables.replace(""));
+		selenium.clickAt("link=My Account",
+			RuntimeVariables.replace("My Account"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("addressesLink", RuntimeVariables.replace(""));
+		selenium.clickAt("//a[@id='addressesLink']",
+			RuntimeVariables.replace("Addresses"));
 		selenium.waitForVisible("//div[2]/div/span/span/button[1]");
 		selenium.clickAt("//div[2]/div/span/span/button[1]",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Add"));
 		selenium.waitForVisible("//input[@id='_2_addressStreet1_2']");
 		selenium.type("//input[@id='_2_addressStreet1_2']",
 			RuntimeVariables.replace("123 Lets"));

@@ -33,9 +33,11 @@ public class ViewOrganizationTest extends BaseTestCase {
 			selenium.getText("//li[@id='_145_manageContent']/a/span"));
 		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
 		selenium.waitForVisible("link=Control Panel");
-		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Organizations", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Organizations",
+			RuntimeVariables.replace("Organizations"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@name='_126_keywords']",
 			RuntimeVariables.replace("Sample"));
@@ -68,9 +70,11 @@ public class ViewOrganizationTest extends BaseTestCase {
 			selenium.getText("//li[@id='_145_manageContent']/a/span"));
 		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
 		selenium.waitForVisible("link=Control Panel");
-		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Organizations", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Organizations",
+			RuntimeVariables.replace("Organizations"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@name='_126_keywords']",
 			RuntimeVariables.replace("Sample"));

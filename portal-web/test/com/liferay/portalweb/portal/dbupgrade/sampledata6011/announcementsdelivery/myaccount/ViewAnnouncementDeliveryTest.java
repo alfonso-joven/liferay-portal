@@ -33,11 +33,14 @@ public class ViewAnnouncementDeliveryTest extends BaseTestCase {
 			selenium.getText("//li[@id='_145_manageContent']/a/span"));
 		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
 		selenium.waitForVisible("link=Control Panel");
-		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=My Account", RuntimeVariables.replace(""));
+		selenium.clickAt("link=My Account",
+			RuntimeVariables.replace("My Account"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("announcementsLink", RuntimeVariables.replace(""));
+		selenium.clickAt("//a[@id='announcementsLink']",
+			RuntimeVariables.replace("Announcements"));
 		selenium.waitForVisible(
 			"//input[@id='_2_announcementsTypegeneralEmailCheckbox']");
 		assertTrue(selenium.isChecked(

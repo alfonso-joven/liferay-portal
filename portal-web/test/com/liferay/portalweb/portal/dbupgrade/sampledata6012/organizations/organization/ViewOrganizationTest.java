@@ -39,10 +39,10 @@ public class ViewOrganizationTest extends BaseTestCase {
 				selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
 				selenium.waitForVisible("link=Control Panel");
 				selenium.clickAt("link=Control Panel",
-					RuntimeVariables.replace(""));
+					RuntimeVariables.replace("Control Panel"));
 				selenium.waitForPageToLoad("30000");
 				selenium.clickAt("link=Organizations",
-					RuntimeVariables.replace(""));
+					RuntimeVariables.replace("Organizations"));
 				selenium.waitForPageToLoad("30000");
 
 				boolean basicVisible = selenium.isVisible(
@@ -89,10 +89,10 @@ public class ViewOrganizationTest extends BaseTestCase {
 				selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
 				selenium.waitForVisible("link=Control Panel");
 				selenium.clickAt("link=Control Panel",
-					RuntimeVariables.replace(""));
+					RuntimeVariables.replace("Control Panel"));
 				selenium.waitForPageToLoad("30000");
 				selenium.clickAt("link=Organizations",
-					RuntimeVariables.replace(""));
+					RuntimeVariables.replace("Organizations"));
 				selenium.waitForPageToLoad("30000");
 				selenium.type("//input[@name='_126_keywords']",
 					RuntimeVariables.replace("Sample"));

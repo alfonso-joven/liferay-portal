@@ -33,9 +33,11 @@ public class AddAddress1MyAccountTest extends BaseTestCase {
 			selenium.getText("//li[@id='_145_manageContent']/a/span"));
 		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
 		selenium.waitForVisible("link=Control Panel");
-		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=My Account", RuntimeVariables.replace(""));
+		selenium.clickAt("link=My Account",
+			RuntimeVariables.replace("My Account"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//a[@id='_2_addressesLink']",
 			RuntimeVariables.replace("Addresses Link"));
@@ -57,9 +59,9 @@ public class AddAddress1MyAccountTest extends BaseTestCase {
 		selenium.select("//select[@name='_2_addressCountryId0']",
 			RuntimeVariables.replace("label=United States"));
 		selenium.clickAt("//input[@id='_2_addressPrimary0']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Primary"));
 		selenium.clickAt("//input[@id='_2_addressMailing0Checkbox']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Mailing"));
 		selenium.waitForPartialText("//select[@name='_2_addressRegionId0']",
 			"California");
 		selenium.select("//select[@name='_2_addressRegionId0']",
