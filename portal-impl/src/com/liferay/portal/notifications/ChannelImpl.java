@@ -147,8 +147,8 @@ public class ChannelImpl extends BaseChannelImpl {
 		_reentrantLock.lock();
 
 		try {
-			UserNotificationEventLocalServiceUtil.
-				deleteUserNotificationEvent(notificationEventUuid);
+			UserNotificationEventLocalServiceUtil.deleteUserNotificationEvent(
+				notificationEventUuid);
 
 			Map<String, NotificationEvent> unconfirmedNotificationEvents =
 				_getUnconfirmedNotificationEvents();
@@ -171,8 +171,8 @@ public class ChannelImpl extends BaseChannelImpl {
 		_reentrantLock.lock();
 
 		try {
-			UserNotificationEventLocalServiceUtil.
-				deleteUserNotificationEvents(notificationEventUuids);
+			UserNotificationEventLocalServiceUtil.deleteUserNotificationEvents(
+				notificationEventUuids);
 
 			for (String notificationEventUuid : notificationEventUuids) {
 				Map<String, NotificationEvent> unconfirmedNotificationEvents =

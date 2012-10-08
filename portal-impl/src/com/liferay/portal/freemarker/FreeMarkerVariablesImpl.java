@@ -335,6 +335,7 @@ public class FreeMarkerVariablesImpl implements FreeMarkerVariables {
 			"randomizer", Randomizer_IW.getInstance().getWrappedInstance());
 
 		try {
+
 			// Util locator
 
 			UtilLocator utilLocator = UtilLocator.getInstance();

@@ -494,9 +494,8 @@ public class SitesUtil {
 			}
 
 			LayoutSetPrototype layoutSetPrototype =
-				LayoutSetPrototypeLocalServiceUtil.
-					getLayoutSetPrototypeByUuid(
-						layoutSet.getLayoutSetPrototypeUuid());
+				LayoutSetPrototypeLocalServiceUtil.getLayoutSetPrototypeByUuid(
+					layoutSet.getLayoutSetPrototypeUuid());
 
 			Group group = layoutSetPrototype.getGroup();
 
@@ -662,9 +661,8 @@ public class SitesUtil {
 
 		try {
 			LayoutSetPrototype layoutSetPrototype =
-				LayoutSetPrototypeLocalServiceUtil.
-					getLayoutSetPrototypeByUuid(
-						layoutSet.getLayoutSetPrototypeUuid());
+				LayoutSetPrototypeLocalServiceUtil.getLayoutSetPrototypeByUuid(
+					layoutSet.getLayoutSetPrototypeUuid());
 
 			String layoutsUpdateable = layoutSetPrototype.getSettingsProperty(
 				"layoutsUpdateable");

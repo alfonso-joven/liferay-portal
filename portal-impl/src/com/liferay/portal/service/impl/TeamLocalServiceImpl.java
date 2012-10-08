@@ -90,6 +90,7 @@ public class TeamLocalServiceImpl extends TeamLocalServiceBaseImpl {
 
 	@Override
 	public Team deleteTeam(Team team) throws PortalException, SystemException {
+
 		// Team
 
 		teamPersistence.remove(team);
