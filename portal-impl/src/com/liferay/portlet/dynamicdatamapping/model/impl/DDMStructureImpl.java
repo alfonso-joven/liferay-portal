@@ -22,6 +22,7 @@ import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.HtmlUtil;
 import com.liferay.portal.kernel.util.ListUtil;
 import com.liferay.portal.kernel.util.LocaleUtil;
+import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.kernel.xml.Attribute;
@@ -141,7 +142,7 @@ public class DDMStructureImpl extends DDMStructureBaseImpl {
 			throw new StructureFieldException();
 		}
 
-		Map<String, Map<String, String>> fieldsMap = _getFieldsMap(locale);
+		Map<String, Map<String, String>> fieldsMap = getFieldsMap(locale);
 
 		Map<String, String> field = fieldsMap.get(fieldName);
 
@@ -166,15 +167,23 @@ public class DDMStructureImpl extends DDMStructureBaseImpl {
 		String locale) {
 
 		try {
-			Map<String, Map<String, String>> fieldsMap = _getFieldsMap(locale);
+			if ((attributeName == null) || (attributeValue == null)) {
+				return null;
+			}
 
-			Map<String, String> field = fieldsMap.get(fieldName);
+			Map<String, Map<String, String>> fieldsMap = getTransientFieldsMap(
+				locale);
 
-			if (field != null) {
-				String value = field.get(attributeName);
+			for (Map<String, String> fields : fieldsMap.values()) {
+				String parentName = fields.get(
+					_getPrivateAttributeKey("parentName"));
 
-				if (Validator.equals(value, attributeValue)) {
-					return field;
+				if (!fieldName.equals(parentName)) {
+					continue;
+				}
+
+				if (attributeValue.equals(fields.get(attributeName))) {
+					return fields;
 				}
 			}
 		}
@@ -186,11 +195,17 @@ public class DDMStructureImpl extends DDMStructureBaseImpl {
 	}
 
 	public Map<String, Map<String, String>> getFieldsMap() {
-		return _getFieldsMap(getDefaultLocale());
+		return getFieldsMap(getDefaultLocale());
 	}
 
 	public Map<String, Map<String, String>> getFieldsMap(String locale) {
-		return _getFieldsMap(locale);
+
+		_indexFieldsMap(locale);
+
+		Map<String, Map<String, String>> fieldsMap = _localizedFieldsMap.get(
+			locale);
+
+		return fieldsMap;
 	}
 
 	public String getFieldType(String fieldName)
@@ -199,15 +214,19 @@ public class DDMStructureImpl extends DDMStructureBaseImpl {
 		return getFieldProperty(fieldName, "type");
 	}
 
-	@Override
-	public Map<String, Map<String, Map<String, String>>>
-		getLocalizedFieldsMap() {
-
-		return _localizedFieldsMap;
-	}
-
 	public List<DDMTemplate> getTemplates() throws SystemException {
 		return DDMTemplateLocalServiceUtil.getTemplates(getStructureId());
+	}
+
+	public Map<String, Map<String, String>> getTransientFieldsMap(String locale)
+		throws SystemException {
+
+		_indexFieldsMap(locale);
+
+		Map<String, Map<String, String>> fieldsMap =
+			_localizedTransientFieldsMap.get(locale);
+
+		return fieldsMap;
 	}
 
 	public boolean hasField(String fieldName) {
@@ -241,18 +260,12 @@ public class DDMStructureImpl extends DDMStructureBaseImpl {
 	}
 
 	@Override
-	public void setLocalizedFieldsMap(
-		Map<String, Map<String, Map<String, String>>> localizedFieldsMap) {
-
-		_localizedFieldsMap = localizedFieldsMap;
-	}
-
-	@Override
 	public void setXsd(String xsd) {
 		super.setXsd(xsd);
 
 		_document = null;
 		_localizedFieldsMap.clear();
+		_localizedTransientFieldsMap.clear();
 	}
 
 	private Map<String, String> _getField(Element element, String locale) {
@@ -290,35 +303,59 @@ public class DDMStructureImpl extends DDMStructureBaseImpl {
 			field.put(attribute.getName(), attribute.getValue());
 		}
 
+		Element parentElement = element.getParent();
+
+		if (parentElement != null) {
+			String parentName = parentElement.attributeValue("name");
+
+			if (Validator.isNotNull(parentName)) {
+				field.put(_getPrivateAttributeKey("parentName"), parentName);
+			}
+		}
+
 		return field;
 	}
 
-	private Map<String, Map<String, String>> _getFieldsMap(String locale) {
+	private String _getPrivateAttributeKey(String attributeName) {
+		return StringPool.UNDERLINE.concat(attributeName).concat(
+			StringPool.UNDERLINE);
+	}
+
+	private void _indexFieldsMap(String locale) {
 		Map<String, Map<String, String>> fieldsMap = _localizedFieldsMap.get(
 			locale);
+		Map<String, Map<String, String>> transientFieldsMap =
+			_localizedTransientFieldsMap.get(locale);
 
-		if (fieldsMap == null) {
-			fieldsMap = new LinkedHashMap<String, Map<String, String>>();
-
-			XPath xPathSelector = SAXReaderUtil.createXPath(
-				"//dynamic-element[@dataType]");
-
-			List<Node> nodes = xPathSelector.selectNodes(getDocument());
-
-			Iterator<Node> itr = nodes.iterator();
-
-			while (itr.hasNext()) {
-				Element element = (Element)itr.next();
-
-				String name = element.attributeValue("name");
-
-				fieldsMap.put(name, _getField(element, locale));
-			}
-
-			_localizedFieldsMap.put(locale, fieldsMap);
+		if (fieldsMap != null) {
+			return;
 		}
 
-		return fieldsMap;
+		fieldsMap = new LinkedHashMap<String, Map<String, String>>();
+		transientFieldsMap =
+			new LinkedHashMap<String, Map<String, String>>();
+
+		XPath xPathSelector = SAXReaderUtil.createXPath("//dynamic-element");
+
+		List<Node> nodes = xPathSelector.selectNodes(getDocument());
+
+		Iterator<Node> itr = nodes.iterator();
+
+		while (itr.hasNext()) {
+			Element element = (Element)itr.next();
+
+			String name = element.attributeValue("name");
+
+			if (Validator.isNotNull(element.attributeValue("dataType"))) {
+				fieldsMap.put(name, _getField(element, locale));
+			}
+			else {
+				transientFieldsMap.put(name, _getField(element, locale));
+			}
+		}
+
+		_localizedFieldsMap.put(locale, fieldsMap);
+		_localizedTransientFieldsMap.put(locale, transientFieldsMap);
 	}
 
 	private static Log _log = LogFactoryUtil.getLog(DDMStructureImpl.class);
@@ -329,5 +366,10 @@ public class DDMStructureImpl extends DDMStructureBaseImpl {
 	@CacheField
 	private Map<String, Map<String, Map<String, String>>> _localizedFieldsMap =
 		new ConcurrentHashMap<String, Map<String, Map<String, String>>>();
+
+	@CacheField
+	private Map<String, Map<String, Map<String, String>>>
+		_localizedTransientFieldsMap =
+			new ConcurrentHashMap<String, Map<String, Map<String, String>>>();
 
 }
