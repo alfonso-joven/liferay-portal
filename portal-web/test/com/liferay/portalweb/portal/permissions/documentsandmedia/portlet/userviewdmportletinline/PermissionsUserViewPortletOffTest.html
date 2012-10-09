@@ -14,11 +14,6 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForVisible</td>
-	<td>link=Documents and Media Test Page</td>
-	<td>Documents and Media Test Page</td>
-</tr>
-<tr>
 	<td>clickAtAndWait</td>
 	<td>link=Documents and Media Test Page</td>
 	<td>Documents and Media Test Page</td>
@@ -40,28 +35,48 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Permissions')]</td>
 	<td>Permissions</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Permissions')]</td>
 	<td>Permissions</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Permissions')]</td>
 	<td>Permissions</td>
 </tr>
 <tr>
 	<td>assertText</td>
 	<td>//tr[6]/td[1]/a</td>
-	<td>RegularRole Name</td>
+	<td>Roles Regrole Name</td>
 </tr>
 <tr>
 	<td>assertText</td>
 	<td>//tr[1]/th[10]</td>
 	<td>View</td>
+</tr>
+<tr>
+	<td>storeChecked</td>
+	<td>//tr[6]/td[10]/input</td>
+	<td>viewPermissionChecked</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>!${viewPermissionChecked}</td>
+	<td>ViewPermissionNotChecked</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//tr[6]/td[10]/input</td>
+	<td>View Permission</td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>ViewPermissionNotChecked</td>
+	<td></td>
 </tr>
 <tr>
 	<td>assertNotChecked</td>

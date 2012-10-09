@@ -17,6 +17,9 @@ package com.liferay.portalweb.portal.permissions.documentsandmedia.folder.guesta
 import com.liferay.portalweb.portal.BaseTestSuite;
 import com.liferay.portalweb.portal.controlpanel.users.user.signin.SignInTest;
 import com.liferay.portalweb.portal.util.TearDownPageTest;
+import com.liferay.portalweb.portlet.documentsandmedia.dmdocument.adddmdocument.TearDownDMDocumentTest;
+import com.liferay.portalweb.portlet.documentsandmedia.dmfolder.adddmfolder.AddDMFolderTest;
+import com.liferay.portalweb.portlet.documentsandmedia.dmimage.adddmfolderimage.AddDMFolderImageTest;
 import com.liferay.portalweb.portlet.documentsandmedia.portlet.addportletdm.AddPageDMTest;
 import com.liferay.portalweb.portlet.documentsandmedia.portlet.addportletdm.AddPortletDMTest;
 
@@ -31,8 +34,8 @@ public class Guest_AccessDmFolderInlineTests extends BaseTestSuite {
 		TestSuite testSuite = new TestSuite();
 		testSuite.addTestSuite(AddPageDMTest.class);
 		testSuite.addTestSuite(AddPortletDMTest.class);
-		testSuite.addTestSuite(AddDmFolderTest.class);
-		testSuite.addTestSuite(AddDmFolderImageTest.class);
+		testSuite.addTestSuite(AddDMFolderTest.class);
+		testSuite.addTestSuite(AddDMFolderImageTest.class);
 		testSuite.addTestSuite(PermissionsGuestViewFolderOffTest.class);
 		testSuite.addTestSuite(PermissionsGuestAccessFolderOffTest.class);
 		testSuite.addTestSuite(Guest_NoAccessDmFolderTest.class);
@@ -40,7 +43,7 @@ public class Guest_AccessDmFolderInlineTests extends BaseTestSuite {
 		testSuite.addTestSuite(PermissionsGuestAccessFolderOnTest.class);
 		testSuite.addTestSuite(Guest_AccessDmFolderTest.class);
 		testSuite.addTestSuite(SignInTest.class);
-		testSuite.addTestSuite(TearDownDLDocumentTest.class);
+		testSuite.addTestSuite(TearDownDMDocumentTest.class);
 		testSuite.addTestSuite(TearDownPageTest.class);
 
 		return testSuite;

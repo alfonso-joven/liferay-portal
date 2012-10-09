@@ -15,13 +15,17 @@
 package com.liferay.portalweb.portal.permissions.documentsandmedia.document.useradddmdocumentscopeportal;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
+import com.liferay.portalweb.portal.controlpanel.roles.role.addregrole.AddRegRoleTest;
+import com.liferay.portalweb.portal.controlpanel.roles.role.addregrole.TearDownRoleTest;
 import com.liferay.portalweb.portal.controlpanel.users.user.adduser.AddUserTest;
+import com.liferay.portalweb.portal.controlpanel.users.user.adduser.TearDownUserTest;
 import com.liferay.portalweb.portal.controlpanel.users.user.edituserpassword.EditUserPasswordTest;
 import com.liferay.portalweb.portal.controlpanel.users.user.signin.SignInTest;
 import com.liferay.portalweb.portal.controlpanel.users.user.signin.SignOutTest;
 import com.liferay.portalweb.portal.controlpanel.users.user.signin.User_SignInTest;
 import com.liferay.portalweb.portal.controlpanel.users.user.signin.User_SignOutTest;
 import com.liferay.portalweb.portal.util.TearDownPageTest;
+import com.liferay.portalweb.portlet.documentsandmedia.dmdocument.adddmdocument.TearDownDMDocumentTest;
 import com.liferay.portalweb.portlet.documentsandmedia.portlet.addportletdm.AddPageDMTest;
 import com.liferay.portalweb.portlet.documentsandmedia.portlet.addportletdm.AddPortletDMTest;
 
@@ -36,7 +40,7 @@ public class User_AddDmDocumentScopePortalTests extends BaseTestSuite {
 		TestSuite testSuite = new TestSuite();
 		testSuite.addTestSuite(AddUserTest.class);
 		testSuite.addTestSuite(EditUserPasswordTest.class);
-		testSuite.addTestSuite(AddRegularRoleTest.class);
+		testSuite.addTestSuite(AddRegRoleTest.class);
 		testSuite.addTestSuite(AssignMembersRegularRoleUserTest.class);
 		testSuite.addTestSuite(AddPageDMTest.class);
 		testSuite.addTestSuite(AddPortletDMTest.class);
@@ -52,7 +56,7 @@ public class User_AddDmDocumentScopePortalTests extends BaseTestSuite {
 		testSuite.addTestSuite(User_AddDmDocumentTest.class);
 		testSuite.addTestSuite(User_SignOutTest.class);
 		testSuite.addTestSuite(SignInTest.class);
-		testSuite.addTestSuite(TearDownDLDocumentTest.class);
+		testSuite.addTestSuite(TearDownDMDocumentTest.class);
 		testSuite.addTestSuite(TearDownPageTest.class);
 		testSuite.addTestSuite(TearDownRoleTest.class);
 		testSuite.addTestSuite(TearDownUserTest.class);

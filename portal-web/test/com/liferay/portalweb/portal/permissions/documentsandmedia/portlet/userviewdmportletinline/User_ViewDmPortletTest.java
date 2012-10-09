@@ -25,14 +25,13 @@ public class User_ViewDmPortletTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Documents and Media Test Page");
 		selenium.clickAt("link=Documents and Media Test Page",
 			RuntimeVariables.replace("Documents and Media Test Page"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isElementNotPresent(
-				"//div[@class='portlet-msg-error']"));
 		assertFalse(selenium.isTextPresent(
 				"You do not have the required permissions."));
+		assertTrue(selenium.isElementNotPresent(
+				"//div[@class='portlet-msg-error']"));
 		assertEquals(RuntimeVariables.replace(
 				"There are no documents or media files in this folder."),
 			selenium.getText("//div[@class='portlet-msg-info']"));

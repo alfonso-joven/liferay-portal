@@ -26,33 +26,40 @@ public class DefinePermissionsRoleViewPortletPortalOnTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Go to"),
+			selenium.getText("//li[@id='_145_mySites']/a/span"));
+		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Roles", RuntimeVariables.replace("Roles"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_128_keywords']",
-			RuntimeVariables.replace("RegularRole Name"));
+			RuntimeVariables.replace("Name"));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("RegularRole Name"),
+		assertEquals(RuntimeVariables.replace("Roles Regrole Name"),
 			selenium.getText("//td[1]/a"));
 		assertEquals(RuntimeVariables.replace("Regular"),
 			selenium.getText("//td[2]/a"));
 		assertEquals(RuntimeVariables.replace(""), selenium.getText("//td[3]/a"));
 		assertEquals(RuntimeVariables.replace("Actions"),
-			selenium.getText("//td[4]/span/ul/li/strong/a/span"));
-		selenium.clickAt("//td[4]/span/ul/li/strong/a/span",
+			selenium.getText("//span[@title='Actions']/ul/li/strong/a/span"));
+		selenium.clickAt("//span[@title='Actions']/ul/li/strong/a/span",
 			RuntimeVariables.replace("Actions"));
 		selenium.waitForVisible(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a");
+			"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Define Permissions')]");
 		assertEquals(RuntimeVariables.replace("Define Permissions"),
 			selenium.getText(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a"));
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Define Permissions')]"));
 		selenium.click(RuntimeVariables.replace(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a"));
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Define Permissions')]"));
 		selenium.waitForPageToLoad("30000");
 		selenium.select("//select[@id='_128_add-permissions']",
 			RuntimeVariables.replace("Documents and Media"));

@@ -18,6 +18,8 @@ import com.liferay.portalweb.portal.BaseTestSuite;
 import com.liferay.portalweb.portal.controlpanel.users.user.signin.SignInTest;
 import com.liferay.portalweb.portal.controlpanel.users.user.signin.SignOutTest;
 import com.liferay.portalweb.portal.util.TearDownPageTest;
+import com.liferay.portalweb.portlet.documentsandmedia.dmdocument.adddmdocument.TearDownDMDocumentTest;
+import com.liferay.portalweb.portlet.documentsandmedia.dmfolder.adddmfolder.AddDMFolderTest;
 import com.liferay.portalweb.portlet.documentsandmedia.portlet.addportletdm.AddPageDMTest;
 import com.liferay.portalweb.portlet.documentsandmedia.portlet.addportletdm.AddPortletDMTest;
 
@@ -32,7 +34,7 @@ public class Guest_ViewDmFolderInlineTests extends BaseTestSuite {
 		TestSuite testSuite = new TestSuite();
 		testSuite.addTestSuite(AddPageDMTest.class);
 		testSuite.addTestSuite(AddPortletDMTest.class);
-		testSuite.addTestSuite(AddDmFolderTest.class);
+		testSuite.addTestSuite(AddDMFolderTest.class);
 		testSuite.addTestSuite(PermissionsGuestViewFolderOffTest.class);
 		testSuite.addTestSuite(SignOutTest.class);
 		testSuite.addTestSuite(Guest_NoViewDmFolderTest.class);
@@ -41,7 +43,7 @@ public class Guest_ViewDmFolderInlineTests extends BaseTestSuite {
 		testSuite.addTestSuite(SignOutTest.class);
 		testSuite.addTestSuite(Guest_ViewDmFolderTest.class);
 		testSuite.addTestSuite(SignInTest.class);
-		testSuite.addTestSuite(TearDownDLDocumentTest.class);
+		testSuite.addTestSuite(TearDownDMDocumentTest.class);
 		testSuite.addTestSuite(TearDownPageTest.class);
 
 		return testSuite;

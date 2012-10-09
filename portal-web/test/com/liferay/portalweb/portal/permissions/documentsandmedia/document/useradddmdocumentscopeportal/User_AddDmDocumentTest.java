@@ -25,7 +25,6 @@ public class User_AddDmDocumentTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Documents and Media Test Page");
 		selenium.clickAt("link=Documents and Media Test Page",
 			RuntimeVariables.replace("Documents and Media Test Page"));
 		selenium.waitForPageToLoad("30000");
@@ -35,16 +34,15 @@ public class User_AddDmDocumentTest extends BaseTestCase {
 		selenium.clickAt("//span[@title='Add']/ul/li/strong/a/span",
 			RuntimeVariables.replace("Add"));
 		selenium.waitForVisible(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a");
+			"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Basic Document')]");
 		assertEquals(RuntimeVariables.replace("Basic Document"),
 			selenium.getText(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a"));
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Basic Document')]"));
 		selenium.click(RuntimeVariables.replace(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a"));
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Basic Document')]"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("//input[@id='_20_file']",
-			RuntimeVariables.replace(
-				"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\portal\\permissions\\documentsandmedia\\dependencies\\document_1.doc"));
+		selenium.uploadCommonFile("//input[@id='_20_file']",
+			RuntimeVariables.replace("Document_1.doc"));
 		selenium.type("//input[@id='_20_title']",
 			RuntimeVariables.replace("DM Document Title"));
 		selenium.clickAt("//input[@value='Publish']",
@@ -84,7 +82,7 @@ public class User_AddDmDocumentTest extends BaseTestCase {
 			selenium.getText("//h3[contains(@class,'version')]"));
 		assertEquals(RuntimeVariables.replace("Status: Approved"),
 			selenium.getText("//span[@class='workflow-status']"));
-		assertEquals(RuntimeVariables.replace("Download (10.0k)"),
+		assertEquals(RuntimeVariables.replace("Download (21.5k)"),
 			selenium.getText("//span[@class='download-document']/span/a/span"));
 	}
 }

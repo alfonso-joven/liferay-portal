@@ -30,7 +30,6 @@ public class PermissionsUserAddDocumentOnTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				selenium.waitForVisible("link=Documents and Media Test Page");
 				selenium.clickAt("link=Documents and Media Test Page",
 					RuntimeVariables.replace("Documents and Media Test Page"));
 				selenium.waitForPageToLoad("30000");
@@ -40,14 +39,14 @@ public class PermissionsUserAddDocumentOnTest extends BaseTestCase {
 				selenium.clickAt("//span/span/ul/li/strong/a",
 					RuntimeVariables.replace("Actions"));
 				selenium.waitForVisible(
-					"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a");
+					"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Permissions')]");
 				assertEquals(RuntimeVariables.replace("Permissions"),
 					selenium.getText(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a"));
+						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Permissions')]"));
 				selenium.click(RuntimeVariables.replace(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a"));
+						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Permissions')]"));
 				selenium.waitForPageToLoad("30000");
-				assertEquals(RuntimeVariables.replace("RegularRole Name"),
+				assertEquals(RuntimeVariables.replace("Roles Regrole Name"),
 					selenium.getText("//tr[6]/td[1]/a"));
 				assertEquals(RuntimeVariables.replace("Add Document"),
 					selenium.getText("//tr[1]/th[2]"));
@@ -61,7 +60,6 @@ public class PermissionsUserAddDocumentOnTest extends BaseTestCase {
 					continue;
 				}
 
-				assertFalse(selenium.isChecked("//tr[6]/td[2]/input"));
 				selenium.clickAt("//tr[6]/td[2]/input",
 					RuntimeVariables.replace("Add Document Permission"));
 
