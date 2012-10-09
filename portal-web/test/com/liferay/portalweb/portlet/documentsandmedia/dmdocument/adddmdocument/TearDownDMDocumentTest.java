@@ -80,8 +80,6 @@ public class TearDownDMDocumentTest extends BaseTestCase {
 					selenium.getText("//div[@class='portlet-msg-success']"));
 
 			case 2:
-				selenium.clickAt("//button[@title='Icon View']",
-					RuntimeVariables.replace("Icon View"));
 				assertEquals(RuntimeVariables.replace(
 						"There are no documents or media files in this folder."),
 					selenium.getText("//div[@class='portlet-msg-info']"));
