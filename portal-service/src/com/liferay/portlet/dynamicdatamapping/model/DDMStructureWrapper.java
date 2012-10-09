@@ -859,8 +859,7 @@ public class DDMStructureWrapper implements DDMStructure,
 	}
 
 	public java.util.Map<java.lang.String, java.util.Map<java.lang.String, java.lang.String>> getTransientFieldsMap(
-		java.lang.String locale)
-		throws com.liferay.portal.kernel.exception.SystemException {
+		java.lang.String locale) {
 		return _ddmStructure.getTransientFieldsMap(locale);
 	}
 

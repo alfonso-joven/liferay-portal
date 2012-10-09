@@ -218,8 +218,8 @@ public class DDMStructureImpl extends DDMStructureBaseImpl {
 		return DDMTemplateLocalServiceUtil.getTemplates(getStructureId());
 	}
 
-	public Map<String, Map<String, String>> getTransientFieldsMap(String locale)
-		throws SystemException {
+	public Map<String, Map<String, String>> getTransientFieldsMap(
+		String locale) {
 
 		_indexFieldsMap(locale);
 
