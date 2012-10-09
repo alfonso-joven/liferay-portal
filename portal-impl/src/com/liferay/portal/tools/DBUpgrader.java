@@ -37,7 +37,7 @@ import com.liferay.portal.service.ClassNameLocalServiceUtil;
 import com.liferay.portal.service.ReleaseLocalServiceUtil;
 import com.liferay.portal.service.ResourceActionLocalServiceUtil;
 import com.liferay.portal.service.ResourceCodeLocalServiceUtil;
-import com.liferay.portal.spring.aop.ServiceBeanAopCacheManager;
+import com.liferay.portal.spring.aop.ServiceMethodAnnotationCache;
 import com.liferay.portal.util.InitUtil;
 import com.liferay.portal.util.PropsUtil;
 import com.liferay.portal.util.PropsValues;
@@ -309,7 +309,7 @@ public class DBUpgrader {
 		PropsValues.SPRING_HIBERNATE_SESSION_DELEGATED = false;
 
 		Field field = ReflectionUtil.getDeclaredField(
-			ServiceBeanAopCacheManager.class, "_annotations");
+			ServiceMethodAnnotationCache.class, "_annotations");
 
 		field.set(
 			null,
@@ -343,7 +343,7 @@ public class DBUpgrader {
 			PropsUtil.get(PropsKeys.SPRING_HIBERNATE_SESSION_DELEGATED));
 
 		Field field = ReflectionUtil.getDeclaredField(
-			ServiceBeanAopCacheManager.class, "_annotations");
+			ServiceMethodAnnotationCache.class, "_annotations");
 
 		field.set(
 			null, new ConcurrentHashMap<MethodInvocation, Annotation[]>());
