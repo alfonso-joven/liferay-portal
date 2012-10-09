@@ -28,7 +28,7 @@ public class AddWikiPageTest extends BaseTestCase {
 		selenium.clickAt("link=Wiki Page Test",
 			RuntimeVariables.replace("Wiki Page Test"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//div[5]/div/div/a",
+		selenium.clickAt("//div[@class='portlet-msg-info']/a",
 			RuntimeVariables.replace(
 				"This page is empty. Edit it to add some text."));
 		selenium.waitForPageToLoad("30000");

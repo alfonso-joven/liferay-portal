@@ -25,7 +25,6 @@ public class AddMBCategoryTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/tags-message-board-community/");
-		selenium.waitForVisible("link=Message Boards Page");
 		selenium.clickAt("link=Message Boards Page",
 			RuntimeVariables.replace("Message Boards Page"));
 		selenium.waitForPageToLoad("30000");
@@ -42,6 +41,7 @@ public class AddMBCategoryTest extends BaseTestCase {
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertEquals(RuntimeVariables.replace("Category Test"),
-			selenium.getText("//a/strong"));
+			selenium.getText(
+				"//tr[@class='portlet-section-body results-row last']/td/a/strong"));
 	}
 }

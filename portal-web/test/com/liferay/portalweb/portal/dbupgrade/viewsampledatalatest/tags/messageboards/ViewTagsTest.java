@@ -25,23 +25,35 @@ public class ViewTagsTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/tags-message-board-community/");
-		selenium.waitForVisible("link=Message Boards Page");
 		selenium.clickAt("link=Message Boards Page",
 			RuntimeVariables.replace("Message Boards Page"));
 		selenium.waitForPageToLoad("30000");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Go to"),
+			selenium.getText("//li[@id='_145_mySites']/a/span"));
+		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Tags", RuntimeVariables.replace("Tags"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForText("//li[1]/div/span/a", "selenium");
+		selenium.waitForText("//div[@class='tags-admin-list lfr-component']/ul/li[1]/div/span/a",
+			"selenium");
 		assertEquals(RuntimeVariables.replace("selenium"),
-			selenium.getText("//li[1]/div/span/a"));
+			selenium.getText(
+				"//div[@class='tags-admin-list lfr-component']/ul/li[1]/div/span/a"));
 		assertEquals(RuntimeVariables.replace("selenium1"),
-			selenium.getText("//li[2]/div/span/a"));
+			selenium.getText(
+				"//div[@class='tags-admin-list lfr-component']/ul/li[2]/div/span/a"));
 		assertEquals(RuntimeVariables.replace("selenium2"),
-			selenium.getText("//li[3]/div/span/a"));
+			selenium.getText(
+				"//div[@class='tags-admin-list lfr-component']/ul/li[3]/div/span/a"));
 		assertEquals(RuntimeVariables.replace("selenium3"),
-			selenium.getText("//li[4]/div/span/a"));
+			selenium.getText(
+				"//div[@class='tags-admin-list lfr-component']/ul/li[4]/div/span/a"));
 	}
 }

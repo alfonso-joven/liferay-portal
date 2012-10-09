@@ -26,31 +26,38 @@ public class SelectWebContentImageAssociationTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
-		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
+		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
+				"Welcome"));
+		selenium.mouseOver("//h2[@class='user-greeting']/span");
+		selenium.clickAt("//h2[@class='user-greeting']/span",
+			RuntimeVariables.replace("Welcome"));
+		selenium.waitForVisible("link=Control Panel");
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Communities", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Communities",
+			RuntimeVariables.replace("Communities"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_134_name",
+		selenium.type("//input[@id='_134_name']",
 			RuntimeVariables.replace("Web Content Image Association Community"));
 		selenium.clickAt("//input[@value='Search']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//tr[@class='portlet-section-body results-row']/td[1]/a",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Public Pages - Live (1)"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Web Content Display Page",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Web Content Display Page"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//img[@alt='Select Web Content']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Select Web Content"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Image Web Content Test",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Image Web Content Test"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForPartialText("//form[@id='_86_fm1']/div",
+		selenium.waitForPartialText("//div[@class='portlet-msg-info']",
 			"Displaying Content:");
-		assertTrue(selenium.isPartialText("//form[@id='_86_fm1']/div",
+		assertTrue(selenium.isPartialText("//div[@class='portlet-msg-info']",
 				"Displaying Content:"));
 	}
 }

@@ -45,18 +45,33 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//tr[3]/td/a</td>
+	<td>//iframe</td>
+	<td>Select Media Type</td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>//iframe</td>
+	<td>Select Media Type</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//a[@class='select-file-entry-type' and contains(.,'Basic Document')]</td>
 	<td>Basic Document</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//tr[3]/td/a</td>
+	<td>//a[@class='select-file-entry-type' and contains(.,'Basic Document')]</td>
 	<td>Basic Document</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>//tr[3]/td/a</td>
+	<td>//a[@class='select-file-entry-type' and contains(.,'Basic Document')]</td>
 	<td>Basic Document</td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>relative=top</td>
+	<td>top</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
@@ -64,7 +79,7 @@
 	<td>File</td>
 </tr>
 <tr>
-	<td>type</td>
+	<td>uploadFile</td>
 	<td>//input[@id='_31_file']</td>
 	<td>L:\portal\build\portal-web\test\com\liferay\portalweb\portal\dbupgrade\sampledata611\webcontent\imageassociation\dependencies\ImageGallery.jpg</td>
 </tr>
@@ -72,6 +87,11 @@
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Publish']</td>
 	<td>Publish</td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>5000</td>
+	<td></td>
 </tr>
 <tr>
 	<td>assertText</td>

@@ -14,7 +14,22 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
+	<td>assertPartialText</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>mouseOver</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
 	<td>link=Control Panel</td>
 	<td>Control Panel</td>
 </tr>
@@ -30,7 +45,7 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>_134_name</td>
+	<td>//input[@id='_134_name']</td>
 	<td>WC Journal Feed Community</td>
 </tr>
 <tr>
@@ -40,13 +55,33 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//td[2]/a</td>
+	<td>//tr[@class='portlet-section-body results-row last']/td[2]/a	</td>
 	<td>Open</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>//td[2]/a</td>
+	<td>//tr[@class='portlet-section-body results-row last']/td[2]/a	</td>
 	<td>Open</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>mouseOver</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>link=Control Panel</td>
+	<td>Control Panel</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -70,27 +105,27 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//li[1]/span</td>
+	<td>//li[@id='_15_tabs1feedTabsId']/span	</td>
 	<td>Feed</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_15_newFeedId</td>
+	<td>//input[@id='_15_newFeedId']</td>
 	<td>FEED_ID</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_15_name</td>
+	<td>//input[@id='_15_name']</td>
 	<td>Feed Name</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_15_description</td>
+	<td>//textarea[@id='_15_description']</td>
 	<td>Feed Description</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_15_targetLayoutFriendlyUrl</td>
+	<td>//input[@id='_15_targetLayoutFriendlyUrl']</td>
 	<td>/web/guest/home</td>
 </tr>
 <tr>
@@ -105,10 +140,9 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//td[2]/a</td>
+	<td>//tr[@class='portlet-section-body results-row last']/td[2]/a	</td>
 	<td>FEED_ID</td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

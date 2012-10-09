@@ -25,7 +25,14 @@ public class AddWCContentTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Manage"),
+			selenium.getText("//li[@id='_145_manageContent']/a/span"));
+		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
@@ -38,9 +45,19 @@ public class AddWCContentTest extends BaseTestCase {
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Open"),
-			selenium.getText("//td[2]/a"));
-		selenium.clickAt("//td[2]/a", RuntimeVariables.replace("Open"));
+			selenium.getText(
+				"//tr[@class='portlet-section-body results-row last']/td[2]/a"));
+		selenium.clickAt("//tr[@class='portlet-section-body results-row last']/td[2]/a",
+			RuntimeVariables.replace("Open"));
 		selenium.waitForPageToLoad("30000");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Manage"),
+			selenium.getText("//li[@id='_145_manageContent']/a/span"));
+		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
@@ -54,16 +71,32 @@ public class AddWCContentTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("New Web Content"),
 			selenium.getText("//h1[@class='header-title']"));
-		selenium.type("_15_title", RuntimeVariables.replace("Web Content Name"));
+		selenium.type("//input[@id='_15_title']",
+			RuntimeVariables.replace("Web Content Name"));
 		Thread.sleep(5000);
-		selenium.waitForElementPresent("_15_structure_el_TextAreaField_content");
-		selenium.waitForElementPresent("cke_contents_CKEditor1");
-		selenium.waitForElementPresent("//textarea");
-		selenium.selectFrame(
+		selenium.waitForElementPresent(
 			"//iframe[@id='_15_structure_el_TextAreaField_content']");
+		selenium.waitForText("//span[.='Source']/a", "Source");
+		assertEquals(RuntimeVariables.replace("Source"),
+			selenium.getText("//span[.='Source']/a"));
+		selenium.clickAt("//span[.='Source']/a",
+			RuntimeVariables.replace("Source"));
+		selenium.waitForVisible("//a[@class='cke_button_source cke_on']");
+		selenium.waitForVisible("//td[@id='cke_contents_CKEditor1']/textarea");
+		selenium.type("//td[@id='cke_contents_CKEditor1']/textarea",
+			RuntimeVariables.replace("Web Content Content"));
+		selenium.waitForText("//span[.='Source']/a", "Source");
+		assertEquals(RuntimeVariables.replace("Source"),
+			selenium.getText("//span[.='Source']/a"));
+		selenium.clickAt("//span[.='Source']/a",
+			RuntimeVariables.replace("Source"));
+		selenium.waitForElementPresent(
+			"//iframe[@id='_15_structure_el_TextAreaField_content']");
+		selenium.waitForVisible("//td[@id='cke_contents_CKEditor1']/iframe");
 		selenium.selectFrame("//td[@id='cke_contents_CKEditor1']/iframe");
-		selenium.type("//body", RuntimeVariables.replace("Web Content Content"));
+		selenium.waitForText("//body", "Web Content Content");
 		selenium.selectFrame("relative=top");
+		Thread.sleep(5000);
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");

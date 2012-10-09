@@ -25,33 +25,44 @@ public class AddIGFolderImageTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
-		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
+		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
+				"Welcome"));
+		selenium.mouseOver("//h2[@class='user-greeting']/span");
+		selenium.clickAt("//h2[@class='user-greeting']/span",
+			RuntimeVariables.replace("Welcome"));
+		selenium.waitForVisible("link=Control Panel");
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Communities", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Communities",
+			RuntimeVariables.replace("Communities"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_134_name",
+		selenium.type("//input[@id='_134_name']",
 			RuntimeVariables.replace("Web Content Image Association Community"));
 		selenium.clickAt("//input[@value='Search']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//tr[@class='portlet-section-body results-row last']/td[1]/a",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Public Pages - Live (1)"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Image Gallery Page", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Image Gallery Page",
+			RuntimeVariables.replace("Image Gallery Page"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Folder Test", RuntimeVariables.replace(""));
+		selenium.clickAt("//tr[@class='portlet-section-body results-row last']/td/a",
+			RuntimeVariables.replace("Folder Test"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//input[@value='Add Image']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Add Image"));
 		selenium.waitForPageToLoad("30000");
 		Thread.sleep(5000);
-		selenium.waitForElementPresent("link=Use the classic uploader.");
+		selenium.waitForVisible("link=Use the classic uploader.");
 		selenium.click("link=Use the classic uploader.");
-		selenium.type("_31_file",
+		selenium.waitForVisible("//input[@id='_31_file']");
+		selenium.uploadFile("//input[@id='_31_file']",
 			RuntimeVariables.replace(
 				"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\portal\\dbupgrade\\sampledata527\\webcontent\\imageassociation\\dependencies\\ImageGallery.jpg"));
-		selenium.clickAt("//input[@value='Save']", RuntimeVariables.replace(""));
+		selenium.clickAt("//input[@value='Save']",
+			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
 		Thread.sleep(5000);
 		assertTrue(selenium.isElementPresent("//img[@alt='ImageGallery. ']"));

@@ -25,60 +25,85 @@ public class AddWebContentImageAssociationTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
-		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Manage"),
+			selenium.getText("//li[@id='_145_manageContent']/a/span"));
+		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+		selenium.waitForVisible("link=Control Panel");
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Communities", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Communities",
+			RuntimeVariables.replace("Communities"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_134_name",
+		selenium.type("//input[@id='_134_name']",
 			RuntimeVariables.replace("Web Content Image Association Community"));
 		selenium.clickAt("//input[@value='Search']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//td[2]/a", RuntimeVariables.replace("Open"));
+		selenium.clickAt("//tr[@class='portlet-section-body results-row last']/td[2]/a",
+			RuntimeVariables.replace("Open"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Manage"),
+			selenium.getText("//li[@id='_145_manageContent']/a/span"));
+		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+		selenium.waitForVisible("link=Control Panel");
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Web Content", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Web Content",
+			RuntimeVariables.replace("Web Content"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//input[@value='Add Web Content']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Add Web Content"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_15_title",
+		selenium.type("//input[@id='_15_title']",
 			RuntimeVariables.replace("Image Web Content Test"));
-		assertEquals(RuntimeVariables.replace("Choose"),
-			selenium.getText("_15_changeStructureButton"));
-		selenium.clickAt("_15_changeStructureButton",
-			RuntimeVariables.replace("Choose"));
+		selenium.clickAt("//input[@value='Select']",
+			RuntimeVariables.replace("Select"));
 		assertTrue(selenium.getConfirmation()
-						   .matches("^Selecting a new structure will change the available input fields and available templates[\\s\\S] Do you want to proceed[\\s\\S]$"));
-		selenium.waitForPopUp("ChangeStructure",
-			RuntimeVariables.replace("30000"));
-		selenium.selectWindow("ChangeStructure");
-		selenium.waitForVisible("//td[2]/a");
-		assertTrue(selenium.isPartialText("//td[2]/a", "Image Structure Test"));
-		selenium.click("//td[2]/a");
+						   .matches("^Selecting a template will change the structure, available input fields, and available templates[\\s\\S] Do you want to proceed[\\s\\S]$"));
+		selenium.waitForPopUp("null", RuntimeVariables.replace("30000"));
+		selenium.selectWindow("title=Web Content");
+		selenium.waitForVisible(
+			"//tr[@class='portlet-section-body results-row last']/td[2]/a");
+		assertTrue(selenium.isPartialText(
+				"//tr[@class='portlet-section-body results-row last']/td[2]/a",
+				"Image Template Test"));
+		selenium.click(
+			"//tr[@class='portlet-section-body results-row last']/td[2]/a");
 		selenium.selectWindow("null");
-		selenium.waitForText("_15_structureNameLabel",
+		selenium.waitForText("//span[@id='_15_structureNameLabel']",
 			"Image Structure Test (Use Default)");
 		assertEquals(RuntimeVariables.replace(
 				"Image Structure Test (Use Default)"),
-			selenium.getText("_15_structureNameLabel"));
-		selenium.type("text-test", RuntimeVariables.replace("Text Test"));
-		selenium.type("image-test",
+			selenium.getText("//span[@id='_15_structureNameLabel']"));
+		selenium.waitForVisible("//input[@id='text-test']");
+		selenium.type("//input[@id='text-test']",
+			RuntimeVariables.replace("Text Test"));
+		selenium.uploadFile("//input[@id='image-test']",
 			RuntimeVariables.replace(
 				"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\portal\\dbupgrade\\sampledata6012\\webcontent\\imageassociation\\dependencies\\Image.jpg"));
 		selenium.click("//input[@value='Select']");
-		selenium.waitForPopUp("ImageGallery", RuntimeVariables.replace("30000"));
-		selenium.selectWindow("name=ImageGallery");
-		selenium.waitForElementPresent("link=Folder Test");
-		selenium.clickAt("link=Folder Test", RuntimeVariables.replace(""));
+		selenium.waitForPopUp("null", RuntimeVariables.replace("30000"));
+		selenium.selectWindow("title=Web Content");
+		selenium.waitForVisible(
+			"//tr[@class='portlet-section-body results-row last']/td/a");
+		selenium.clickAt("//tr[@class='portlet-section-body results-row last']/td/a",
+			RuntimeVariables.replace("Folder Test"));
 		selenium.waitForPageToLoad("30000");
 		selenium.click("//input[@value='Choose']");
 		selenium.selectWindow("null");
 		Thread.sleep(5000);
 		selenium.clickAt("//input[@value='Publish']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");
 		selenium.selectWindow("null");
 		assertEquals(RuntimeVariables.replace(

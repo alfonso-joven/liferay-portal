@@ -25,22 +25,35 @@ public class AddWCContentTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
+		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
+				"Welcome"));
+		selenium.mouseOver("//h2[@class='user-greeting']/span");
+		selenium.clickAt("//h2[@class='user-greeting']/span",
+			RuntimeVariables.replace("Welcome"));
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Communities",
 			RuntimeVariables.replace("Communities"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_134_name",
+		selenium.type("//input[@id='_134_name']",
 			RuntimeVariables.replace("WC Journal Feed Community"));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Open"),
-			selenium.getText("//td[2]/a"));
-		selenium.clickAt("//td[2]/a", RuntimeVariables.replace("Open"));
+			selenium.getText(
+				"//tr[@class='portlet-section-body results-row last']/td[2]/a"));
+		selenium.clickAt("//tr[@class='portlet-section-body results-row last']/td[2]/a",
+			RuntimeVariables.replace("Open"));
 		selenium.waitForPageToLoad("30000");
+		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
+				"Welcome"));
+		selenium.mouseOver("//h2[@class='user-greeting']/span");
+		selenium.clickAt("//h2[@class='user-greeting']/span",
+			RuntimeVariables.replace("Welcome"));
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
@@ -52,15 +65,24 @@ public class AddWCContentTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Web Content"),
 			selenium.getText("//span[@class='portlet-title']"));
-		selenium.type("_15_title", RuntimeVariables.replace("Web Content Name"));
+		selenium.type("//input[@id='_15_title']",
+			RuntimeVariables.replace("Web Content Name"));
 		Thread.sleep(5000);
-		selenium.waitForElementPresent("_15_editor");
-		selenium.waitForElementPresent("FCKeditor1___Frame");
-		selenium.waitForElementPresent("//textarea");
 		selenium.selectFrame("//iframe[@id=\"_15_editor\"]");
 		selenium.selectFrame("//iframe[@id=\"FCKeditor1___Frame\"]");
-		selenium.selectFrame("//iframe");
-		selenium.type("//body", RuntimeVariables.replace("Web Content Body"));
+		selenium.waitForText("//div[.='Source']", "Source");
+		assertEquals(RuntimeVariables.replace("Source"),
+			selenium.getText("//div[.='Source']"));
+		selenium.clickAt("//div[.='Source']", RuntimeVariables.replace("Source"));
+		selenium.waitForVisible("//div[@class='TB_Button_On']");
+		selenium.waitForVisible("//textarea[@class='SourceField']");
+		selenium.type("//textarea[@class='SourceField']",
+			RuntimeVariables.replace("Web Content Body"));
+		selenium.waitForText("//div[.='Source']", "Source");
+		assertEquals(RuntimeVariables.replace("Source"),
+			selenium.getText("//div[.='Source']"));
+		selenium.clickAt("//div[.='Source']", RuntimeVariables.replace("Source"));
+		selenium.waitForElementPresent("//div[@class='TB_Button_Off']");
 		selenium.selectFrame("relative=top");
 		selenium.clickAt("//input[@value='Save and Approve']",
 			RuntimeVariables.replace("Save and Approve"));
@@ -69,8 +91,10 @@ public class AddWCContentTest extends BaseTestCase {
 				"Your request processed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertEquals(RuntimeVariables.replace("Web Content Name"),
-			selenium.getText("//td[3]/a"));
+			selenium.getText(
+				"//tr[@class='portlet-section-body results-row last']/td[3]/a"));
 		assertEquals(RuntimeVariables.replace("Approved"),
-			selenium.getText("//td[5]/a"));
+			selenium.getText(
+				"//tr[@class='portlet-section-body results-row last']/td[5]/a"));
 	}
 }

@@ -30,10 +30,7 @@ public class AddWebsiteMyAccountTest extends BaseTestCase {
 		selenium.mouseOver("//h2[@class='user-greeting']/span");
 		selenium.clickAt("//h2[@class='user-greeting']/span",
 			RuntimeVariables.replace("Welcome"));
-		selenium.waitForVisible("link=Control Panel");
-		selenium.clickAt("link=Control Panel",
-			RuntimeVariables.replace("Control Panel"));
-		selenium.waitForPageToLoad("30000");
+		selenium.waitForVisible("link=My Account");
 		selenium.clickAt("link=My Account",
 			RuntimeVariables.replace("My Account"));
 		selenium.waitForPageToLoad("30000");

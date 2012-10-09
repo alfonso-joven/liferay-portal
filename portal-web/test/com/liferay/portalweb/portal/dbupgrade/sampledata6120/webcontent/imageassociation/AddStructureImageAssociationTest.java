@@ -25,6 +25,10 @@ public class AddStructureImageAssociationTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/web-content-image-association-community/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -73,6 +77,7 @@ public class AddStructureImageAssociationTest extends BaseTestCase {
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertEquals(RuntimeVariables.replace("Image Structure Test"),
-			selenium.getText("//tr[3]/td[3]"));
+			selenium.getText(
+				"//tr[@class='portlet-section-body results-row last']/td[3]"));
 	}
 }

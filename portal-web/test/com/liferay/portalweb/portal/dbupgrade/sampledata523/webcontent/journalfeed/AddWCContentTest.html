@@ -14,7 +14,22 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
+	<td>assertPartialText</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>mouseOver</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
 	<td>link=Control Panel</td>
 	<td>Control Panel</td>
 </tr>
@@ -30,7 +45,7 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>_134_name</td>
+	<td>//input[@id='_134_name']</td>
 	<td>WC Journal Feed Community</td>
 </tr>
 <tr>
@@ -40,13 +55,33 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//td[2]/a</td>
+	<td>//tr[@class='portlet-section-body results-row']/td[2]/a</td>
 	<td>Open</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>//td[2]/a</td>
+	<td>//tr[@class='portlet-section-body results-row']/td[2]/a</td>
 	<td>Open</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>mouseOver</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>link=Control Panel</td>
+	<td>Control Panel</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -70,7 +105,7 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>_15_title</td>
+	<td>//input[@id='_15_title']</td>
 	<td>Web Content Name</td>
 </tr>
 <tr>
@@ -79,44 +114,69 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
-	<td>_15_editor</td>
-	<td></td>
-</tr>
-<tr>
-	<td>waitForElementPresent</td>
-	<td>FCKeditor1___Frame</td>
-	<td></td>
-</tr>
-<tr>
-	<td>waitForElementPresent</td>
-	<td>//textarea</td>
-	<td></td>
-</tr>
-<tr>
 	<td>selectFrame</td>
 	<td>//iframe[@id="_15_editor"]</td>
-	<td></td>
+	<td>IFrame</td>
 </tr>
 <tr>
 	<td>selectFrame</td>
 	<td>//iframe[@id="FCKeditor1___Frame"]</td>
-	<td></td>
+	<td>IFrame</td>
 </tr>
 <tr>
-	<td>selectFrame</td>
-	<td>//iframe</td>
-	<td></td>
+	<td>waitForText</td>
+	<td>//div[.='Source']</td>
+	<td>Source</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[.='Source']</td>
+	<td>Source</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[.='Source']</td>
+	<td>Source</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//div[@class='TB_Button_On']</td>
+	<td>Source Button On</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//textarea[@class='SourceField']</td>
+	<td>CK Editor</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>//body</td>
+	<td>//textarea[@class='SourceField']</td>
 	<td>Web Content Content</td>
+</tr>
+<tr>
+	<td>waitForText</td>
+	<td>//div[.='Source']</td>
+	<td>Source</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[.='Source']</td>
+	<td>Source</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[.='Source']</td>
+	<td>Source</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//div[@class='TB_Button_Off']</td>
+	<td>Text Area</td>
 </tr>
 <tr>
 	<td>selectFrame</td>
 	<td>relative=top</td>
-	<td></td>
+	<td>top</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -130,15 +190,14 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//td[3]/a</td>
+	<td>//tr[@class='portlet-section-body results-row']/td[3]/a</td>
 	<td>Web Content Name</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//td[5]/a</td>
+	<td>//tr[@class='portlet-section-body results-row']/td[5]/a</td>
 	<td>Approved</td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

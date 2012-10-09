@@ -25,7 +25,14 @@ public class AddWCJournalFeedTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Manage"),
+			selenium.getText("//li[@id='_145_manageContent']/a/span"));
+		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
@@ -38,9 +45,19 @@ public class AddWCJournalFeedTest extends BaseTestCase {
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Open"),
-			selenium.getText("//td[2]/a"));
-		selenium.clickAt("//td[2]/a", RuntimeVariables.replace("Open"));
+			selenium.getText(
+				"//tr[@class='portlet-section-body results-row last']/td[2]/a"));
+		selenium.clickAt("//tr[@class='portlet-section-body results-row last']/td[2]/a",
+			RuntimeVariables.replace("Open"));
 		selenium.waitForPageToLoad("30000");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Manage"),
+			selenium.getText("//li[@id='_145_manageContent']/a/span"));
+		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
@@ -58,11 +75,13 @@ public class AddWCJournalFeedTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("New Feed"),
 			selenium.getText("//div[1]/h1/span"));
-		selenium.type("_15_newFeedId", RuntimeVariables.replace("FEED_ID"));
-		selenium.type("_15_name", RuntimeVariables.replace("Feed Name"));
-		selenium.type("_15_description",
+		selenium.type("//input[@id='_15_newFeedId']",
+			RuntimeVariables.replace("FEED_ID"));
+		selenium.type("//input[@id='_15_name']",
+			RuntimeVariables.replace("Feed Name"));
+		selenium.type("//textarea[@id='_15_description']",
 			RuntimeVariables.replace("Feed Description"));
-		selenium.type("_15_targetLayoutFriendlyUrl",
+		selenium.type("//input[@id='_15_targetLayoutFriendlyUrl']",
 			RuntimeVariables.replace("/web/guest/home"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
@@ -71,6 +90,7 @@ public class AddWCJournalFeedTest extends BaseTestCase {
 				"Your request processed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertEquals(RuntimeVariables.replace("FEED_ID"),
-			selenium.getText("//td[2]/a"));
+			selenium.getText(
+				"//tr[@class='portlet-section-body results-row last']/td[2]/a"));
 	}
 }

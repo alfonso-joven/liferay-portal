@@ -25,6 +25,10 @@ public class AddTemplateImageAssociationTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/web-content-image-association-community/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -45,25 +49,31 @@ public class AddTemplateImageAssociationTest extends BaseTestCase {
 		selenium.type("//textarea[@id='_15_description_en_US']",
 			RuntimeVariables.replace("This is an image template test."));
 		selenium.click("//input[@value='Select']");
-		selenium.waitForVisible("//td[2]/a");
+		selenium.waitForVisible("//iframe");
+		selenium.selectFrame("//iframe");
+		selenium.waitForVisible("//a[contains(.,'Image Structure Test')]");
 		assertEquals(RuntimeVariables.replace("Image Structure Test"),
-			selenium.getText("//td[2]/a"));
-		selenium.clickAt("//td[2]/a",
+			selenium.getText("//a[contains(.,'Image Structure Test')]"));
+		selenium.clickAt("//a[contains(.,'Image Structure Test')]",
 			RuntimeVariables.replace("Image Structure Test"));
+		selenium.selectFrame("relative=top");
 		selenium.waitForText("//a[@id='_15_structureName']",
 			"Image Structure Test");
 		assertEquals(RuntimeVariables.replace("Image Structure Test"),
 			selenium.getText("//a[@id='_15_structureName']"));
-		selenium.clickAt("//input[@id='_15_editorButton']",
+		selenium.clickAt("//input[@value='Launch Editor']",
 			RuntimeVariables.replace("Launch Editor"));
+		selenium.waitForVisible("//iframe");
+		selenium.selectFrame("//iframe");
 		selenium.waitForVisible("//textarea[@id='_15_plainEditorField']");
 		selenium.waitForElementPresent(
-			"//div[@class='ace_layer ace_gutter-layer']");
+			"//div[@class='ace_layer ace_gutter-layer ace_folding-enabled']");
 		selenium.type("//textarea[@id='_15_plainEditorField']",
 			RuntimeVariables.replace(
 				"<h1 id=\"web-content-title\">$text-test.getData()</h1>\n\n<h2 id=\"image-title\">Image Test:</h2>\n<a id=\"image\"><img src=\"$image-test.data\"></img></a>\n\n<h2 id=\"image-gallery-title\">Image Gallery Image Test:</h2>\n<a id=\"image-gallery\"><img src=\"$image-gallery-test.data\"></img></a>"));
 		selenium.clickAt("//input[@value='Update']",
 			RuntimeVariables.replace("Update"));
+		selenium.selectFrame("relative=top");
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
@@ -71,6 +81,7 @@ public class AddTemplateImageAssociationTest extends BaseTestCase {
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertEquals(RuntimeVariables.replace("Image Template Test"),
-			selenium.getText("//tr[3]/td[3]"));
+			selenium.getText(
+				"//tr[@class='portlet-section-body results-row last']/td[3]"));
 	}
 }

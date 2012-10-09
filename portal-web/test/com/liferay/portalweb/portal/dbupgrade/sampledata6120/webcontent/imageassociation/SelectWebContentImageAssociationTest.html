@@ -25,6 +25,16 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
+	<td>//iframe</td>
+	<td>Web Content Display - Configuration</td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>//iframe</td>
+	<td>Web Content Display - Configuration</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
 	<td>link=Image Web Content Test</td>
 	<td>Image Web Content Test</td>
 </tr>
@@ -35,12 +45,12 @@
 </tr>
 <tr>
 	<td>waitForPartialText</td>
-	<td>//form[@id='_86_fm1']/div</td>
+	<td>//div[@class='portlet-msg-info']</td>
 	<td>Displaying Content:</td>
 </tr>
 <tr>
 	<td>assertPartialText</td>
-	<td>//form[@id='_86_fm1']/div</td>
+	<td>//div[@class='portlet-msg-info']</td>
 	<td>Displaying Content:</td>
 </tr>
 <tr>
@@ -52,6 +62,11 @@
 	<td>assertText</td>
 	<td>//div[@class='portlet-msg-success']</td>
 	<td>You have successfully updated the setup.</td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>relative=top</td>
+	<td>top</td>
 </tr>
 </tbody></table>
 </body>

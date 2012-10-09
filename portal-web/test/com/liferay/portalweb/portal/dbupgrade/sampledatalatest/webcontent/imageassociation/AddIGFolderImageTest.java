@@ -39,13 +39,18 @@ public class AddIGFolderImageTest extends BaseTestCase {
 		selenium.clickAt("//div[contains(@class,'lfr-component lfr-menu-list')]/ul/li[contains(.,'Add Media')]/a",
 			RuntimeVariables.replace("Add Media"));
 		Thread.sleep(5000);
-		selenium.waitForVisible("//tr[3]/td/a");
+		selenium.waitForVisible("//iframe");
+		selenium.selectFrame("//iframe");
+		selenium.waitForVisible(
+			"//a[@class='select-file-entry-type' and contains(.,'Basic Document')]");
 		assertEquals(RuntimeVariables.replace("Basic Document"),
-			selenium.getText("//tr[3]/td/a"));
-		selenium.click(RuntimeVariables.replace("//tr[3]/td/a"));
+			selenium.getText(
+				"//a[@class='select-file-entry-type' and contains(.,'Basic Document')]"));
+		selenium.click(RuntimeVariables.replace(
+				"//a[@class='select-file-entry-type' and contains(.,'Basic Document')]"));
 		selenium.waitForPageToLoad("30000");
 		selenium.waitForVisible("//input[@id='_31_file']");
-		selenium.type("//input[@id='_31_file']",
+		selenium.uploadFile("//input[@id='_31_file']",
 			RuntimeVariables.replace(
 				"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\portal\\dbupgrade\\sampledata610\\webcontent\\imageassociation\\dependencies\\ImageGallery.jpg"));
 		selenium.clickAt("//input[@value='Publish']",

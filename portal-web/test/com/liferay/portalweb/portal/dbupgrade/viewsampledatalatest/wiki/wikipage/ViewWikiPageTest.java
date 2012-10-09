@@ -25,7 +25,6 @@ public class ViewWikiPageTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/wiki-wiki-page-community/");
-		selenium.waitForVisible("link=Wiki Page Test");
 		selenium.clickAt("link=Wiki Page Test",
 			RuntimeVariables.replace("Wiki Page Test"));
 		selenium.waitForPageToLoad("30000");

@@ -14,6 +14,16 @@
 	<td></td>
 </tr>
 <tr>
+	<td>clickAt</td>
+	<td>//div[@id='dockbar']</td>
+	<td>Dockbar</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]</td>
+	<td>AUI Editable Min</td>
+</tr>
+<tr>
 	<td>assertText</td>
 	<td>//li[@id='_145_mySites']/a/span</td>
 	<td>Go to</td>
@@ -65,18 +75,33 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//td[2]/a</td>
+	<td>//iframe</td>
+	<td>Structure</td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>//iframe</td>
+	<td>Structure</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//a[contains(.,'Image Structure Test')]</td>
 	<td>Image Structure Test</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//td[2]/a</td>
+	<td>//a[contains(.,'Image Structure Test')]</td>
 	<td>Image Structure Test</td>
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>//td[2]/a</td>
+	<td>//a[contains(.,'Image Structure Test')]</td>
 	<td>Image Structure Test</td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>relative=top</td>
+	<td>top</td>
 </tr>
 <tr>
 	<td>waitForText</td>
@@ -90,8 +115,18 @@
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>//input[@id='_15_editorButton']</td>
+	<td>//input[@value='Launch Editor']</td>
 	<td>Launch Editor</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//iframe</td>
+	<td>Editor</td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>//iframe</td>
+	<td>Editor</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
@@ -100,7 +135,7 @@
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
-	<td>//div[@class='ace_layer ace_gutter-layer']</td>
+	<td>//div[@class='ace_layer ace_gutter-layer ace_folding-enabled']</td>
 	<td>Ace Gutter</td>
 </tr>
 <tr>
@@ -114,6 +149,11 @@
 	<td>Update</td>
 </tr>
 <tr>
+	<td>selectFrame</td>
+	<td>relative=top</td>
+	<td>top</td>
+</tr>
+<tr>
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Save']</td>
 	<td>Save</td>
@@ -125,7 +165,7 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//tr[3]/td[3]</td>
+	<td>//tr[@class='portlet-section-body results-row last']/td[3]</td>
 	<td>Image Template Test</td>
 </tr>
 </tbody></table>

@@ -14,6 +14,16 @@
 	<td></td>
 </tr>
 <tr>
+	<td>clickAt</td>
+	<td>//div[@id='dockbar']</td>
+	<td>Dockbar</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]</td>
+	<td>AUI Editable Min</td>
+</tr>
+<tr>
 	<td>assertText</td>
 	<td>//li[@id='_145_mySites']/a/span</td>
 	<td>Go to</td>
@@ -75,23 +85,43 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//td[2]/a</td>
+	<td>//iframe</td>
+	<td>Change Structure</td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>//iframe</td>
+	<td>Change Structure</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//a[contains(.,'Image Structure Test')]</td>
 	<td>Image Structure Test</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//td[2]/a</td>
+	<td>//a[contains(.,'Image Structure Test')]</td>
 	<td>Image Structure Test</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>//td[2]/a</td>
+	<td>//a[contains(.,'Image Structure Test')]</td>
 	<td>Image Structure Test</td>
 </tr>
 <tr>
 	<td>waitForConfirmation</td>
 	<td>Selecting a new structure will change the available input fields and available templates? Do you want to proceed?</td>
 	<td></td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>relative=top</td>
+	<td>top</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//span[@id='_15_structureNameLabel']</td>
+	<td>Image Structure Test</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -104,7 +134,7 @@
 	<td>Text Test</td>
 </tr>
 <tr>
-	<td>type</td>
+	<td>uploadFile</td>
 	<td>//input[@id='image-test']</td>
 	<td>L:\portal\build\portal-web\test\com\liferay\portalweb\portal\dbupgrade\sampledata611\webcontent\imageassociation\dependencies\Image.jpg</td>
 </tr>
@@ -115,28 +145,48 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//tr[3]/td[1]/a</td>
+	<td>//iframe</td>
+	<td>Documents and Media</td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>//iframe</td>
+	<td>Documents and Media</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//tr[@class='portlet-section-body results-row last']/td/a</td>
 	<td>Folder Test</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//tr[3]/td[1]/a</td>
+	<td>//tr[@class='portlet-section-body results-row last']/td/a</td>
 	<td>Folder Test</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>//tr[3]/td[1]/a</td>
+	<td>//tr[@class='portlet-section-body results-row last']/td/a</td>
 	<td>Folder Test</td>
 </tr>
 <tr>
+	<td>waitForVisible</td>
+	<td>//tr[@class='portlet-section-body results-row last']/td/a</td>
+	<td>ImageGallery.jpg</td>
+</tr>
+<tr>
 	<td>assertText</td>
-	<td>//tr[3]/td[1]/a</td>
+	<td>//tr[@class='portlet-section-body results-row last']/td/a</td>
 	<td>ImageGallery.jpg</td>
 </tr>
 <tr>
 	<td>click</td>
 	<td>//input[@value='Choose']</td>
 	<td>Choose</td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>relative=top</td>
+	<td>top</td>
 </tr>
 <tr>
 	<td>pause</td>

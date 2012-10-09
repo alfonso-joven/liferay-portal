@@ -24,6 +24,11 @@
 	<td>Navigation Interaction</td>
 </tr>
 <tr>
+	<td>pause</td>
+	<td>5000</td>
+	<td></td>
+</tr>
+<tr>
 	<td>assertText</td>
 	<td>//span[@title='Options']/ul/li/strong/a</td>
 	<td>Options</td>
@@ -55,18 +60,33 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//input[@id='_86_showActionsCheckbox']</td>
-	<td>Show Actions</td>
+	<td>//iframe</td>
+	<td>Media Gallery - Configuration</td>
 </tr>
 <tr>
-	<td>assertNotChecked</td>
+	<td>selectFrame</td>
+	<td>//iframe</td>
+	<td>Media Gallery - Configuration</td>
+</tr>
+<tr>
+	<td>storeChecked</td>
 	<td>//input[@id='_86_showActionsCheckbox']</td>
-	<td>Show Actions</td>
+	<td>actionsChecked</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>${actionsChecked}</td>
+	<td>ActionsChecked</td>
 </tr>
 <tr>
 	<td>clickAt</td>
 	<td>//input[@id='_86_showActionsCheckbox']</td>
 	<td>Show Actions</td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>ActionsChecked</td>
+	<td></td>
 </tr>
 <tr>
 	<td>assertChecked</td>
@@ -88,7 +108,11 @@
 	<td>//input[@id='_86_showActionsCheckbox']</td>
 	<td>Show Actions</td>
 </tr>
-
+<tr>
+	<td>selectFrame</td>
+	<td>relative=top</td>
+	<td>top</td>
+</tr>
 </tbody>
 </table>
 </body>

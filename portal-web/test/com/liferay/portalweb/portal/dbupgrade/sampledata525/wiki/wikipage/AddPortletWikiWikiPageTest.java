@@ -25,24 +25,43 @@ public class AddPortletWikiWikiPageTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
-		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
+		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
+				"Welcome"));
+		selenium.mouseOver("//h2[@class='user-greeting']/span");
+		selenium.clickAt("//h2[@class='user-greeting']/span",
+			RuntimeVariables.replace("Welcome"));
+		selenium.waitForVisible("link=Control Panel");
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Communities", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Communities",
+			RuntimeVariables.replace("Communities"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_134_name",
+		selenium.type("//input[@id='_134_name']",
 			RuntimeVariables.replace("Wiki Wiki Page Community"));
 		selenium.clickAt("//input[@value='Search']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//td[1]/a", RuntimeVariables.replace(""));
+		selenium.clickAt("//tr[@class='portlet-section-body results-row']/td[1]/a",
+			RuntimeVariables.replace("Public Pages - Live (1)"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Wiki Page Test", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Wiki Page Test",
+			RuntimeVariables.replace("Wiki Page Test"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Add Application", RuntimeVariables.replace(""));
-		selenium.waitForElementPresent("//div[@id='Wiki-Wiki']/p/a");
-		selenium.clickAt("//div[@id='Wiki-Wiki']/p/a",
-			RuntimeVariables.replace(""));
+		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
+				"Welcome"));
+		selenium.mouseOver("//h2[@class='user-greeting']/span");
+		selenium.clickAt("//h2[@class='user-greeting']/span",
+			RuntimeVariables.replace("Welcome"));
+		selenium.waitForVisible("link=Add Application");
+		selenium.clickAt("link=Add Application",
+			RuntimeVariables.replace("Add Application"));
+		selenium.waitForVisible("//input[@id='layout_configuration_content']");
+		selenium.sendKeys("//input[@id='layout_configuration_content']",
+			RuntimeVariables.replace("w"));
+		selenium.waitForVisible("//div[@title='Wiki']/p/a");
+		selenium.clickAt("//div[@title='Wiki']/p/a",
+			RuntimeVariables.replace("Add"));
 		selenium.waitForElementPresent("//td[1]/div/div[1]/div");
 		assertTrue(selenium.isElementPresent("//td[1]/div/div[1]/div"));
 	}

@@ -31,12 +31,14 @@ public class SelectWebContentImageAssociationTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//img[@alt='Select Web Content']",
 			RuntimeVariables.replace("Select Web Content"));
+		selenium.waitForVisible("//iframe");
+		selenium.selectFrame("//iframe");
 		selenium.waitForVisible("link=Image Web Content Test");
 		selenium.clickAt("link=Image Web Content Test",
 			RuntimeVariables.replace("Image Web Content Test"));
-		selenium.waitForPartialText("//form[@id='_86_fm1']/div",
+		selenium.waitForPartialText("//div[@class='portlet-msg-info']",
 			"Displaying Content:");
-		assertTrue(selenium.isPartialText("//form[@id='_86_fm1']/div",
+		assertTrue(selenium.isPartialText("//div[@class='portlet-msg-info']",
 				"Displaying Content:"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
@@ -44,5 +46,6 @@ public class SelectWebContentImageAssociationTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"You have successfully updated the setup."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
+		selenium.selectFrame("relative=top");
 	}
 }

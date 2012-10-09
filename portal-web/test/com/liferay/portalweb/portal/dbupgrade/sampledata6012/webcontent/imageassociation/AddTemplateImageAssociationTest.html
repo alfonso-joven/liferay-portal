@@ -14,93 +14,138 @@
 	<td></td>
 </tr>
 <tr>
+	<td>clickAt</td>
+	<td>//div[@id='dockbar']</td>
+	<td>Dockbar</td>
+</tr>
+<tr>
 	<td>waitForElementPresent</td>
+	<td>//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]</td>
+	<td>AUI Editable Min</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//li[@id='_145_manageContent']/a/span</td>
+	<td>Manage</td>
+</tr>
+<tr>
+	<td>mouseOver</td>
+	<td>//li[@id='_145_manageContent']/a/span</td>
+	<td>Manage</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
 	<td>link=Control Panel</td>
-	<td></td>
+	<td>Control Panel</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=Control Panel</td>
-	<td></td>
+	<td>Control Panel</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=Communities</td>
-	<td></td>
+	<td>Communities</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_134_name</td>
+	<td>//input[@id='_134_name']</td>
 	<td>Web Content Image Association Community</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Search']</td>
-	<td></td>
+	<td>Search</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>//td[2]/a</td>
+	<td>//tr[@class='portlet-section-body results-row last']/td[2]/a</td>
 	<td>Open</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='dockbar']</td>
+	<td>Dockbar</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]</td>
+	<td>AUI Editable Min</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//li[@id='_145_manageContent']/a/span</td>
+	<td>Manage</td>
+</tr>
+<tr>
+	<td>mouseOver</td>
+	<td>//li[@id='_145_manageContent']/a/span</td>
+	<td>Manage</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>link=Control Panel</td>
+	<td>Control Panel</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=Control Panel</td>
-	<td></td>
+	<td>Control Panel</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=Web Content</td>
-	<td></td>
+	<td>Web Content</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=Templates</td>
-	<td></td>
+	<td>Templates</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Add Template']</td>
-	<td></td>
+	<td>Add Template</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_15_newTemplateId</td>
+	<td>//input[@id='_15_newTemplateId']</td>
 	<td>test_image</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_15_name</td>
+	<td>//input[@id='_15_name']</td>
 	<td>Image Template Test</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_15_description</td>
+	<td>//textarea[@id='_15_description']</td>
 	<td>This is an image template test.</td>
 </tr>
 <tr>
 	<td>click</td>
 	<td>//input[@value='Select']</td>
-	<td></td>
+	<td>Select</td>
 </tr>
 <tr>
 	<td>waitForPopUp</td>
-	<td>structure</td>
+	<td>null</td>
 	<td>30000</td>
 </tr>
 <tr>
 	<td>selectWindow</td>
-	<td>name=structure</td>
+	<td>title=Web Content</td>
 	<td></td>
 </tr>
 <tr>
 	<td>assertPartialText</td>
-	<td>//td[2]/a</td>
+	<td>//tr[@class='portlet-section-body results-row last']/td[2]/a</td>
 	<td>Image Structure Test</td>
 </tr>
 <tr>
 	<td>click</td>
-	<td>//td[2]/a</td>
+	<td>//tr[@class='portlet-section-body results-row last']/td[2]/a</td>
 	<td>Image Structure Test</td>
 </tr>
 <tr>
@@ -110,18 +155,18 @@
 </tr>
 <tr>
 	<td>waitForText</td>
-	<td>_15_structureName</td>
+	<td>//a[@id='_15_structureName']</td>
 	<td>Image Structure Test</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>_15_structureName</td>
+	<td>//a[@id='_15_structureName']</td>
 	<td>Image Structure Test</td>
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>_15_editorButton</td>
-	<td></td>
+	<td>//input[@value='Launch Editor']</td>
+	<td>Launch Editor</td>
 </tr>
 <tr>
 	<td>pause</td>
@@ -130,12 +175,12 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>_15_xslContent</td>
+	<td>//textarea[@id='_15_xslContent']</td>
 	<td></td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_15_xslContent</td>
+	<td>//textarea[@id='_15_xslContent']</td>
 	<td><h1 id="web-content-title">$text-test.getData()</h1><br /><br /><h2 id="image-title">Image Test:</h2><br /><a id="image"><img src="$image-test.data"></img></a><br /><br /><h2 id="image-gallery-title">Image Gallery Image Test:</h2><br /><a id="image-gallery"><img src="$image-gallery-test.data"></img></a></td>
 </tr>
 <tr>
@@ -146,12 +191,12 @@
 <tr>
 	<td>click</td>
 	<td>//input[@value='Update']</td>
-	<td></td>
+	<td>Update</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Save']</td>
-	<td></td>
+	<td>Save</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -164,9 +209,14 @@
 	<td>Template ID</td>
 </tr>
 <tr>
-	<td>assertText</td>
+	<td>assertPartialText</td>
 	<td>//tr[@class='portlet-section-body results-row last']/td[3]</td>
-	<td>Image Template Test<br /> This is an image template test.</td>
+	<td>Image Template Test</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>//tr[@class='portlet-section-body results-row last']/td[3]</td>
+	<td>This is an image template test.</td>
 </tr>
 </tbody></table>
 </body>

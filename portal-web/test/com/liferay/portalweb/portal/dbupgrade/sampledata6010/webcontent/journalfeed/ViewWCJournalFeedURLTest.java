@@ -25,7 +25,14 @@ public class ViewWCJournalFeedURLTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Manage"),
+			selenium.getText("//li[@id='_145_manageContent']/a/span"));
+		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
@@ -37,8 +44,20 @@ public class ViewWCJournalFeedURLTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//td[2]/a", RuntimeVariables.replace("Open"));
+		assertEquals(RuntimeVariables.replace("Open"),
+			selenium.getText(
+				"//tr[@class='portlet-section-body results-row last']/td[2]/a"));
+		selenium.clickAt("//tr[@class='portlet-section-body results-row last']/td[2]/a",
+			RuntimeVariables.replace("Open"));
 		selenium.waitForPageToLoad("30000");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Manage"),
+			selenium.getText("//li[@id='_145_manageContent']/a/span"));
+		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
@@ -54,26 +73,26 @@ public class ViewWCJournalFeedURLTest extends BaseTestCase {
 		selenium.clickAt("//td[4]/ul/li/strong/a",
 			RuntimeVariables.replace("Actions"));
 		selenium.waitForVisible(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a");
+			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Edit')]/a");
 		assertEquals(RuntimeVariables.replace("Edit"),
 			selenium.getText(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a"));
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Edit')]/a"));
 		selenium.click(RuntimeVariables.replace(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a"));
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Edit')]/a"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Feed Name"),
-			selenium.getText("//div[1]/h1/span"));
+			selenium.getText("//h1[@class='header-title']/span"));
 
-		String URL = selenium.getValue("//div/input");
+		String URL = selenium.getValue("//input[@class='form-text ']");
 		RuntimeVariables.setValue("URL", URL);
 		selenium.open(RuntimeVariables.getValue("URL"));
 		assertEquals(RuntimeVariables.replace("Feed Name"),
-			selenium.getText("//x:h1"));
+			selenium.getText("//x:div[@id='feedTitleContainer']/x:h1"));
 		assertEquals(RuntimeVariables.replace("Feed Description"),
-			selenium.getText("//x:h2"));
+			selenium.getText("//x:div[@id='feedTitleContainer']/x:h2"));
 		assertEquals(RuntimeVariables.replace("Web Content Name"),
-			selenium.getText("//x:h3/x:a"));
+			selenium.getText("//x:div[@id='feedContent']/x:div/x:h3/x:a"));
 		assertEquals(RuntimeVariables.replace("Web Content Content"),
-			selenium.getText("//x:div[2]/x:div[1]/x:div/x:p"));
+			selenium.getText("//x:div[@id='feedContent']/x:div/x:div/x:p"));
 	}
 }

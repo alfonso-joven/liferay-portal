@@ -14,84 +14,129 @@
 	<td></td>
 </tr>
 <tr>
+	<td>clickAt</td>
+	<td>//div[@id='dockbar']</td>
+	<td>Dockbar</td>
+</tr>
+<tr>
 	<td>waitForElementPresent</td>
+	<td>//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]</td>
+	<td>AUI Editable Min</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//li[@id='_145_manageContent']/a/span</td>
+	<td>Manage</td>
+</tr>
+<tr>
+	<td>mouseOver</td>
+	<td>//li[@id='_145_manageContent']/a/span</td>
+	<td>Manage</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
 	<td>link=Control Panel</td>
-	<td></td>
+	<td>Control Panel</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=Control Panel</td>
-	<td></td>
+	<td>Control Panel</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=Communities</td>
-	<td></td>
+	<td>Communities</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_134_name</td>
+	<td>//input[@id='_134_name']</td>
 	<td>Web Content Image Association Community</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Search']</td>
-	<td></td>
+	<td>Search</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>//td[2]/a</td>
+	<td>//tr[@class='portlet-section-body results-row last']/td[2]/a</td>
 	<td>Open</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='dockbar']</td>
+	<td>Dockbar</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]</td>
+	<td>AUI Editable Min</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//li[@id='_145_manageContent']/a/span</td>
+	<td>Manage</td>
+</tr>
+<tr>
+	<td>mouseOver</td>
+	<td>//li[@id='_145_manageContent']/a/span</td>
+	<td>Manage</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>link=Control Panel</td>
+	<td>Control Panel</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=Control Panel</td>
-	<td></td>
+	<td>Control Panel</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=Web Content</td>
-	<td></td>
+	<td>Web Content</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Add Web Content']</td>
-	<td></td>
+	<td>Add Web Content</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_15_title</td>
+	<td>//input[@id='_15_title']</td>
 	<td>Image Web Content Test</td>
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>_15_changeStructureBtn</td>
-	<td></td>
+	<td>//input[@value='Select']</td>
+	<td>Select</td>
 </tr>
 <tr>
 	<td>assertConfirmation</td>
-	<td>Selecting a new structure will change the available input fields and available templates? Do you want to proceed?</td>
+	<td>Selecting a template will change the structure, available input fields, and available templates? Do you want to proceed?</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForPopUp</td>
-	<td>ChangeStructure</td>
+	<td>null</td>
 	<td>30000</td>
 </tr>
 <tr>
 	<td>selectWindow</td>
-	<td>ChangeStructure</td>
+	<td>title=Web Content</td>
 	<td></td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
+	<td>waitForVisible</td>
 	<td>link=TEST_IMAGE</td>
-	<td></td>
+	<td>TEST_IMAGE</td>
 </tr>
 <tr>
 	<td>click</td>
 	<td>link=TEST_IMAGE</td>
-	<td></td>
+	<td>TEST_IMAGE</td>
 </tr>
 <tr>
 	<td>selectWindow</td>
@@ -100,22 +145,27 @@
 </tr>
 <tr>
 	<td>waitForText</td>
-	<td>_15_structureNameLabel</td>
+	<td>//span[@id='_15_structureNameLabel']</td>
 	<td>Image Structure Test (Use Default)</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>_15_structureNameLabel</td>
+	<td>//span[@id='_15_structureNameLabel']</td>
 	<td>Image Structure Test (Use Default)</td>
 </tr>
 <tr>
-	<td>type</td>
-	<td>text-test</td>
+	<td>waitForVisible</td>
+	<td>//input[@id='text-test']</td>
 	<td>Text Test</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>image-test</td>
+	<td>//input[@id='text-test']</td>
+	<td>Text Test</td>
+</tr>
+<tr>
+	<td>uploadFile</td>
+	<td>//input[@id='image-test']</td>
 	<td>L:\portal\build\portal-web\test\com\liferay\portalweb\portal\dbupgrade\sampledata6010\webcontent\imageassociation\dependencies\Image.jpg</td>
 </tr>
 <tr>
@@ -125,28 +175,28 @@
 </tr>
 <tr>
 	<td>waitForPopUp</td>
-	<td>ImageGallery</td>
+	<td>null</td>
 	<td>30000</td>
 </tr>
 <tr>
 	<td>selectWindow</td>
-	<td>name=ImageGallery</td>
+	<td>title=Web Content</td>
 	<td></td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
-	<td>link=Folder Test</td>
-	<td></td>
+	<td>waitForVisible</td>
+	<td>//tr[@class='portlet-section-body results-row last']/td/a</td>
+	<td>Folder Test</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>link=Folder Test</td>
-	<td></td>
+	<td>//tr[@class='portlet-section-body results-row last']/td/a</td>
+	<td>Folder Test</td>
 </tr>
 <tr>
 	<td>click</td>
 	<td>//input[@value='Choose']</td>
-	<td></td>
+	<td>Choose</td>
 </tr>
 <tr>
 	<td>selectWindow</td>
@@ -161,7 +211,7 @@
 <tr>
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Publish']</td>
-	<td></td>
+	<td>Publish</td>
 </tr>
 <tr>
 	<td>selectWindow</td>

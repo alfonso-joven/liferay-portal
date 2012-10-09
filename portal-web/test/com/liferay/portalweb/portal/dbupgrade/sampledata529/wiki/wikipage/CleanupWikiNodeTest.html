@@ -14,49 +14,64 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
+	<td>assertPartialText</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>mouseOver</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//h2[@class='user-greeting']/span</td>
+	<td>Welcome</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
 	<td>link=Control Panel</td>
-	<td></td>
+	<td>Control Panel</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=Control Panel</td>
-	<td></td>
+	<td>Control Panel</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=Communities</td>
-	<td></td>
+	<td>Communities</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_134_name</td>
+	<td>//input[@id='_134_name']</td>
 	<td>Wiki Wiki Page Community</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Search']</td>
-	<td></td>
+	<td>Search</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>//td[1]/a</td>
-	<td></td>
+	<td>//tr[@class='portlet-section-body results-row last']/td[1]/a	</td>
+	<td>Public Pages - Live (1)</td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
+	<td>waitForVisible</td>
 	<td>link=Wiki Page Test</td>
-	<td></td>
+	<td>Wiki Page Test</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=Wiki Page Test</td>
-	<td></td>
+	<td>Wiki Page Test</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>//img[@alt='Manage Wikis']</td>
-	<td></td>
+	<td>Manage Wikis</td>
 </tr>
 <tr>
 	<td>store</td>
@@ -69,19 +84,29 @@
 	<td>WikiNodeNotPresent</td>
 </tr>
 <tr>
-	<td>clickAt</td>
-	<td>//tr[4]/td[4]/ul/li/strong/span</td>
-	<td></td>
+	<td>assertText</td>
+	<td>//ul[@class='lfr-component lfr-actions right ']/li/strong/span	</td>
+	<td>Actions</td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[6]/a</td>
-	<td></td>
+	<td>clickAt</td>
+	<td>//ul[@class='lfr-component lfr-actions right ']/li/strong/span	</td>
+	<td>Actions</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Delete')]/a	</td>
+	<td>Delete</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Delete')]/a	</td>
+	<td>Delete</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[6]/a</td>
-	<td></td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Delete')]/a	</td>
+	<td>Delete</td>
 </tr>
 <tr>
 	<td>assertConfirmation</td>
@@ -93,7 +118,6 @@
 	<td>WikiNodeNotPresent</td>
 	<td></td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

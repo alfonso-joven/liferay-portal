@@ -25,6 +25,10 @@ public class ViewWCJournalFeedURLTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/wc-journal-feed-community/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -33,7 +37,8 @@ public class ViewWCJournalFeedURLTest extends BaseTestCase {
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("WC Journal Feed Community"),
-			selenium.getText("//strong/a/span"));
+			selenium.getText(
+				"//span[@title='WC Journal Feed Community']/ul/li/strong/a/span"));
 		selenium.clickAt("link=Web Content",
 			RuntimeVariables.replace("Web Content"));
 		selenium.waitForPageToLoad("30000");
@@ -43,24 +48,25 @@ public class ViewWCJournalFeedURLTest extends BaseTestCase {
 		selenium.clickAt("//span[@title='Actions']/ul/li/strong/a/span",
 			RuntimeVariables.replace("Actions"));
 		selenium.waitForVisible(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a");
+			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Edit')]/a");
 		assertEquals(RuntimeVariables.replace("Edit"),
 			selenium.getText(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a"));
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Edit')]/a"));
 		selenium.click(RuntimeVariables.replace(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a"));
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Edit')]/a"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Feed Name"),
-			selenium.getText("//div[1]/h1/span"));
+			selenium.getText("//h1[@class='header-title']/span"));
 
-		String URL = selenium.getValue("//div/input");
+		String URL = selenium.getValue(
+				"//input[@class='form-text lfr-input-resource ']");
 		RuntimeVariables.setValue("URL", URL);
 		selenium.open(RuntimeVariables.getValue("URL"));
 		assertEquals(RuntimeVariables.replace("Feed Name"),
-			selenium.getText("//x:h1"));
+			selenium.getText("//x:div[@id='feedTitleContainer']/x:h1"));
 		assertEquals(RuntimeVariables.replace("Feed Description"),
-			selenium.getText("//x:h2"));
+			selenium.getText("//x:div[@id='feedTitleContainer']/x:h2"));
 		assertEquals(RuntimeVariables.replace("Web Content Name"),
-			selenium.getText("//x:h3/x:a"));
+			selenium.getText("//x:div[@id='feedContent']/x:div/x:h3/x:a"));
 	}
 }

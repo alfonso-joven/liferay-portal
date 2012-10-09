@@ -25,6 +25,10 @@ public class AddWCJournalFeedTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/wc-journal-feed-community/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -33,7 +37,8 @@ public class AddWCJournalFeedTest extends BaseTestCase {
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("WC Journal Feed Community"),
-			selenium.getText("//strong/a/span"));
+			selenium.getText(
+				"//span[@title='WC Journal Feed Community']/ul/li/strong/a"));
 		selenium.clickAt("link=Web Content",
 			RuntimeVariables.replace("Web Content"));
 		selenium.waitForPageToLoad("30000");
@@ -45,7 +50,7 @@ public class AddWCJournalFeedTest extends BaseTestCase {
 			RuntimeVariables.replace("Add Feed"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("New Feed"),
-			selenium.getText("//div[1]/h1/span"));
+			selenium.getText("//h1[@class='header-title']/span"));
 		selenium.type("//input[@id='_15_name']",
 			RuntimeVariables.replace("Feed Name"));
 		selenium.type("//textarea[@id='_15_description']",

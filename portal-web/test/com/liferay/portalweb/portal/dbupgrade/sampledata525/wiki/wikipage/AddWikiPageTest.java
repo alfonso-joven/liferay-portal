@@ -25,33 +25,45 @@ public class AddWikiPageTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
-		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
+		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
+				"Welcome"));
+		selenium.mouseOver("//h2[@class='user-greeting']/span");
+		selenium.clickAt("//h2[@class='user-greeting']/span",
+			RuntimeVariables.replace("Welcome"));
+		selenium.waitForVisible("link=Control Panel");
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Communities", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Communities",
+			RuntimeVariables.replace("Communities"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_134_name",
+		selenium.type("//input[@id='_134_name']",
 			RuntimeVariables.replace("Wiki Wiki Page Community"));
 		selenium.clickAt("//input[@value='Search']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//td[1]/a", RuntimeVariables.replace(""));
+		selenium.clickAt("//tr[@class='portlet-section-body results-row']/td[1]/a",
+			RuntimeVariables.replace("Public Pages - Live (1)"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForElementPresent("link=Wiki Page Test");
-		selenium.clickAt("link=Wiki Page Test", RuntimeVariables.replace(""));
+		selenium.waitForVisible("link=Wiki Page Test");
+		selenium.clickAt("link=Wiki Page Test",
+			RuntimeVariables.replace("Wiki Page Test"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=This page is empty. Edit it to add some text.",
-			RuntimeVariables.replace(""));
+		selenium.clickAt("//div[@class='portlet-msg-info']/a",
+			RuntimeVariables.replace(
+				"This page is empty. Edit it to add some text."));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_36_content", RuntimeVariables.replace("Front Page Text"));
+		selenium.type("//textarea[@id='_36_content']",
+			RuntimeVariables.replace("Front Page Text"));
 		assertEquals(RuntimeVariables.replace(""),
-			selenium.getText("_36_content"));
-		selenium.clickAt("//input[@value='Save']", RuntimeVariables.replace(""));
+			selenium.getText("//textarea[@id='_36_content']"));
+		selenium.clickAt("//input[@value='Save']",
+			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Your request processed successfully."),
-			selenium.getText("//div[@class='portlet-msg-success'][1]"));
+			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertEquals(RuntimeVariables.replace("Front Page Text"),
-			selenium.getText("//div[3]/div"));
+			selenium.getText("//div[@class='wiki-body']"));
 	}
 }

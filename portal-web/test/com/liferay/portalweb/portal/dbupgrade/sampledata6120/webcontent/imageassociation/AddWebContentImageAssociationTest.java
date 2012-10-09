@@ -25,6 +25,10 @@ public class AddWebContentImageAssociationTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/web-content-image-association-community/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -51,32 +55,42 @@ public class AddWebContentImageAssociationTest extends BaseTestCase {
 			RuntimeVariables.replace("Image Web Content Test"));
 		selenium.clickAt("//img[@alt='Change']",
 			RuntimeVariables.replace("Change"));
-		selenium.waitForVisible("//td[2]/a");
+		selenium.waitForVisible("//iframe");
+		selenium.selectFrame("//iframe");
+		selenium.waitForVisible("//a[contains(.,'Image Structure Test')]");
 		assertEquals(RuntimeVariables.replace("Image Structure Test"),
-			selenium.getText("//td[2]/a"));
-		selenium.clickAt("//td[2]/a",
+			selenium.getText("//a[contains(.,'Image Structure Test')]"));
+		selenium.clickAt("//a[contains(.,'Image Structure Test')]",
 			RuntimeVariables.replace("Image Structure Test"));
 		selenium.waitForPageToLoad("30000");
 		selenium.waitForConfirmation(
 			"Selecting a new structure will change the available input fields and available templates? Do you want to proceed?");
+		selenium.selectFrame("relative=top");
+		selenium.waitForVisible("//span[@id='_15_structureNameLabel']");
 		assertEquals(RuntimeVariables.replace("Image Structure Test"),
 			selenium.getText("//span[@id='_15_structureNameLabel']"));
 		selenium.type("//input[@id='text-test']",
 			RuntimeVariables.replace("Text Test"));
-		selenium.type("//input[@id='image-test']",
+		selenium.uploadFile("//input[@id='image-test']",
 			RuntimeVariables.replace(
 				"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\portal\\dbupgrade\\sampledata6120\\webcontent\\imageassociation\\dependencies\\Image.jpg"));
 		selenium.clickAt("xPath=(//input[@value='Select'])[2]",
 			RuntimeVariables.replace("Select"));
-		selenium.waitForVisible("//tr[3]/td[1]/a");
+		selenium.waitForVisible("//iframe");
+		selenium.selectFrame("//iframe");
+		selenium.waitForVisible(
+			"//tr[@class='portlet-section-body results-row last']/td/a");
 		assertEquals(RuntimeVariables.replace("Folder Test"),
-			selenium.getText("//tr[3]/td[1]/a"));
-		selenium.clickAt("//tr[3]/td[1]/a",
+			selenium.getText(
+				"//tr[@class='portlet-section-body results-row last']/td/a"));
+		selenium.clickAt("//tr[@class='portlet-section-body results-row last']/td/a",
 			RuntimeVariables.replace("Folder Test"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("ImageGallery.jpg"),
-			selenium.getText("//tr[3]/td[1]/a"));
+			selenium.getText(
+				"//tr[@class='portlet-section-body results-row last']/td/a"));
 		selenium.click("//input[@value='Choose']");
+		selenium.selectFrame("relative=top");
 		Thread.sleep(5000);
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));

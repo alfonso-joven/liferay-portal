@@ -25,25 +25,33 @@ public class SearchTagsTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
-		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
+		assertTrue(selenium.isPartialText("//h2[@class='user-greeting']/span",
+				"Welcome"));
+		selenium.mouseOver("//h2[@class='user-greeting']/span");
+		selenium.clickAt("//h2[@class='user-greeting']/span",
+			RuntimeVariables.replace("Welcome"));
+		selenium.waitForVisible("link=Control Panel");
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Communities", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Communities",
+			RuntimeVariables.replace("Communities"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_134_name",
+		selenium.type("//input[@id='_134_name']",
 			RuntimeVariables.replace("Tags Message Board Community"));
 		selenium.clickAt("//input[@value='Search']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//tr[@class='portlet-section-body results-row last']/td[1]/a",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Public Pages - Live (1)"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Message Boards Page",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Message Boards Page"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_19_keywords1", RuntimeVariables.replace("selenium1"));
+		selenium.type("//input[@id='_19_keywords1']",
+			RuntimeVariables.replace("selenium1"));
 		selenium.clickAt("//input[@value='Search Categories']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Search Categories"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isElementPresent("link=Message1 Tag1 Test1"));
 		assertTrue(selenium.isElementNotPresent("link=Message2 Tag2 Test2"));
@@ -53,11 +61,12 @@ public class SearchTagsTest extends BaseTestCase {
 		assertTrue(selenium.isElementNotPresent("link=MessageC TagC TestC"));
 		selenium.waitForElementPresent("link=Message Boards Page");
 		selenium.clickAt("link=Message Boards Page",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Message Boards Page"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_19_keywords1", RuntimeVariables.replace("selenium2"));
+		selenium.type("//input[@id='_19_keywords1']",
+			RuntimeVariables.replace("selenium2"));
 		selenium.clickAt("//input[@value='Search Categories']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Search Categories"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isElementPresent("link=Message2 Tag2 Test2"));
 		assertTrue(selenium.isElementNotPresent("link=Message1 Tag1 Test1"));
@@ -67,11 +76,12 @@ public class SearchTagsTest extends BaseTestCase {
 		assertTrue(selenium.isElementNotPresent("link=MessageC TagC TestC"));
 		selenium.waitForElementPresent("link=Message Boards Page");
 		selenium.clickAt("link=Message Boards Page",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Message Boards Page"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_19_keywords1", RuntimeVariables.replace("selenium3"));
+		selenium.type("//input[@id='_19_keywords1']",
+			RuntimeVariables.replace("selenium3"));
 		selenium.clickAt("//input[@value='Search Categories']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Search Categories"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isElementPresent("link=Message3 Tag3 Test3"));
 		assertTrue(selenium.isElementNotPresent("link=Message1 Tag1 Test1"));
@@ -81,11 +91,12 @@ public class SearchTagsTest extends BaseTestCase {
 		assertTrue(selenium.isElementNotPresent("link=MessageC TagC TestC"));
 		selenium.waitForElementPresent("link=Message Boards Page");
 		selenium.clickAt("link=Message Boards Page",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Message Boards Page"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("_19_keywords1", RuntimeVariables.replace("selenium"));
+		selenium.type("//input[@id='_19_keywords1']",
+			RuntimeVariables.replace("selenium"));
 		selenium.clickAt("//input[@value='Search Categories']",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Search Categories"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isElementPresent("link=MessageA TagA TestA"));
 		assertTrue(selenium.isElementPresent("link=MessageB TagB TestB"));

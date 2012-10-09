@@ -14,53 +14,78 @@
 	<td></td>
 </tr>
 <tr>
+	<td>clickAt</td>
+	<td>//div[@id='dockbar']</td>
+	<td>Dockbar</td>
+</tr>
+<tr>
 	<td>waitForElementPresent</td>
+	<td>//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]</td>
+	<td>AUI Editable Min</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//li[@id='_145_manageContent']/a/span</td>
+	<td>Manage</td>
+</tr>
+<tr>
+	<td>mouseOver</td>
+	<td>//li[@id='_145_manageContent']/a/span</td>
+	<td>Manage</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
 	<td>link=Control Panel</td>
-	<td></td>
+	<td>Control Panel</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=Control Panel</td>
-	<td></td>
+	<td>Control Panel</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=Communities</td>
-	<td></td>
+	<td>Communities</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>_134_name</td>
+	<td>//input[@id='_134_name']</td>
 	<td>Web Content Image Association Community</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Search']</td>
-	<td></td>
+	<td>Search</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>//td[2]/a</td>
+	<td>//tr[@class='portlet-section-body results-row last']/td[2]/a</td>
 	<td>Open</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=Image Gallery Page</td>
-	<td></td>
+	<td>Image Gallery Page</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>link=Folder Test</td>
-	<td></td>
+	<td>//tr[@class='portlet-section-body results-row last']/td/a/strong</td>
+	<td>Folder Test</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//div[@class='lfr-component lfr-menu-list lfr-menu-expanded right ']/ul/li[contains(.,'Add Image')]/a</td>
+	<td>Add Image</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='lfr-component lfr-menu-list lfr-menu-expanded right ']/ul/li[5]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list lfr-menu-expanded right ']/ul/li[contains(.,'Add Image')]/a</td>
 	<td>Add Image</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>//div[@class='lfr-component lfr-menu-list lfr-menu-expanded right ']/ul/li[5]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list lfr-menu-expanded right ']/ul/li[contains(.,'Add Image')]/a</td>
 	<td>Add Image</td>
 </tr>
 <tr>
@@ -69,39 +94,29 @@
 	<td></td>
 </tr>
 <tr>
-	<td>selectWindow</td>
-	<td>null</td>
-	<td></td>
-</tr>
-<tr>
-	<td>windowFocus</td>
-	<td></td>
-	<td></td>
-</tr>
-<tr>
 	<td>waitForVisible</td>
 	<td>link=Use the classic uploader.</td>
-	<td></td>
+	<td>Use the classic uploader.</td>
 </tr>
 <tr>
 	<td>click</td>
 	<td>link=Use the classic uploader.</td>
-	<td></td>
+	<td>Use the classic uploader.</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>_31_file</td>
+	<td>//input[@id='_31_file']</td>
 	<td></td>
 </tr>
 <tr>
-	<td>type</td>
-	<td>_31_file</td>
+	<td>uploadFile</td>
+	<td>//input[@id='_31_file']</td>
 	<td>L:\portal\build\portal-web\test\com\liferay\portalweb\portal\dbupgrade\sampledata606\webcontent\imageassociation\dependencies\ImageGallery.jpg</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Save']</td>
-	<td></td>
+	<td>Save</td>
 </tr>
 <tr>
 	<td>pause</td>
@@ -111,14 +126,13 @@
 <tr>
 	<td>assertElementPresent</td>
 	<td>//img[@alt='ImageGallery - ']</td>
-	<td></td>
+	<td>Image</td>
 </tr>
 <tr>
 	<td>assertText</td>
 	<td>//span[@class='image-title']</td>
 	<td>ImageGallery</td>
 </tr>
-
 </tbody></table>
 </body>
 </html>
