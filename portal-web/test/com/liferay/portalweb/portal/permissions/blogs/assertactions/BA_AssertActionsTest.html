@@ -14,11 +14,6 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
-	<td>link=Blogs Permissions Page</td>
-	<td>Blogs Permissions Page</td>
-</tr>
-<tr>
 	<td>clickAtAndWait</td>
 	<td>link=Blogs Permissions Page</td>
 	<td>Blogs Permissions Page</td>
@@ -35,23 +30,23 @@
 </tr>
 <tr>
 	<td>assertVisible</td>
-	<td>link=Edit</td>
+	<td>//span[contains(.,'Edit')]/a</td>
 	<td>Edit</td>
 </tr>
 <tr>
 	<td>assertVisible</td>
-	<td>link=Permissions</td>
+	<td>//span[contains(.,'Permissions')]/a</td>
 	<td>Permissions</td>
 </tr>
 <tr>
 	<td>assertVisible</td>
-	<td>link=Delete</td>
+	<td>//span[contains(.,'Delete')]/a</td>
 	<td>Delete</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[4]/span/a/span[1]</td>
-	<td>RSS</td>
+	<td>//span[contains(.,'RSS')]/a</td>
+	<td>RSS (Opens New Window)</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -60,20 +55,19 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//td[1]/span/a/span</td>
+	<td>//span[contains(.,'Edit')]/a</td>
 	<td>Edit</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//td[2]/span/a/span</td>
+	<td>xPath=(//span[contains(.,'Permissions')]/a)[3]</td>
 	<td>Permissions</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//td[3]/span/a/span</td>
+	<td>//span[contains(.,'Delete')]/a</td>
 	<td>Delete</td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

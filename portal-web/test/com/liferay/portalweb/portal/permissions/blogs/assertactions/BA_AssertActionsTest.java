@@ -25,26 +25,25 @@ public class BA_AssertActionsTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Blogs Permissions Page");
 		selenium.clickAt("link=Blogs Permissions Page",
 			RuntimeVariables.replace("Blogs Permissions Page"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isElementPresent(
 				"//li[@class='portlet-configuration portlet-configuration-icon']/a"));
 		assertTrue(selenium.isVisible("//input[@value='Add Blog Entry']"));
-		assertTrue(selenium.isVisible("link=Edit"));
-		assertTrue(selenium.isVisible("link=Permissions"));
-		assertTrue(selenium.isVisible("link=Delete"));
-		assertEquals(RuntimeVariables.replace("RSS"),
-			selenium.getText("//div[4]/span/a/span[1]"));
+		assertTrue(selenium.isVisible("//span[contains(.,'Edit')]/a"));
+		assertTrue(selenium.isVisible("//span[contains(.,'Permissions')]/a"));
+		assertTrue(selenium.isVisible("//span[contains(.,'Delete')]/a"));
+		assertEquals(RuntimeVariables.replace("RSS (Opens New Window)"),
+			selenium.getText("//span[contains(.,'RSS')]/a"));
 		selenium.clickAt("//div[@class='entry-title']/h2/a",
 			RuntimeVariables.replace("Permissions Blogs Test Entry"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Edit"),
-			selenium.getText("//td[1]/span/a/span"));
+			selenium.getText("//span[contains(.,'Edit')]/a"));
 		assertEquals(RuntimeVariables.replace("Permissions"),
-			selenium.getText("//td[2]/span/a/span"));
+			selenium.getText("xPath=(//span[contains(.,'Permissions')]/a)[3]"));
 		assertEquals(RuntimeVariables.replace("Delete"),
-			selenium.getText("//td[3]/span/a/span"));
+			selenium.getText("//span[contains(.,'Delete')]/a"));
 	}
 }

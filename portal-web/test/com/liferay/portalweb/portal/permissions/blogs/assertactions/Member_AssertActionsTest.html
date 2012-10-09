@@ -14,19 +14,14 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
-	<td>link=Blogs Permissions Page</td>
-	<td>Blogs Permissions Page</td>
-</tr>
-<tr>
 	<td>clickAtAndWait</td>
 	<td>link=Blogs Permissions Page</td>
 	<td>Blogs Permissions Page</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[4]/span/a/span[1]</td>
-	<td>RSS</td>
+	<td>//span[contains(.,'RSS')]/a</td>
+	<td>RSS (Opens New Window)</td>
 </tr>
 <tr>
 	<td>assertElementNotPresent</td>
@@ -35,7 +30,7 @@
 </tr>
 <tr>
 	<td>assertElementNotPresent</td>
-	<td>link=Edit</td>
+	<td>//span[contains(.,'Edit')]/a</td>
 	<td>Edit</td>
 </tr>
 <tr>
@@ -45,17 +40,17 @@
 </tr>
 <tr>
 	<td>assertElementNotPresent</td>
-	<td>link=Delete</td>
+	<td>//span[contains(.,'Delete')]/a</td>
 	<td>Delete</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>link=Permissions Blogs Test Entry</td>
+	<td>//div[@class='entry-title']/h2/a</td>
 	<td>Permissions Blogs Test Entry</td>
 </tr>
 <tr>
 	<td>assertElementNotPresent</td>
-	<td>link=Edit</td>
+	<td>//span[contains(.,'Edit')]/a</td>
 	<td>Edit</td>
 </tr>
 <tr>
@@ -65,10 +60,9 @@
 </tr>
 <tr>
 	<td>assertElementNotPresent</td>
-	<td>link=Delete</td>
+	<td>//span[contains(.,'Delete')]/a</td>
 	<td>Delete</td>
 </tr>
-
 </tbody></table>
 </body>
 </html>
