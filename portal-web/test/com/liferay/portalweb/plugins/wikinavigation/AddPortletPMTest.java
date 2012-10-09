@@ -20,8 +20,8 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 /**
  * @author Brian Wing Shun Chan
  */
-public class AddPortletTreeMenuTest extends BaseTestCase {
-	public void testAddPortletTreeMenu() throws Exception {
+public class AddPortletPMTest extends BaseTestCase {
+	public void testAddPortletPM() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
@@ -29,15 +29,27 @@ public class AddPortletTreeMenuTest extends BaseTestCase {
 		selenium.clickAt("link=Wiki Navigation Test Page",
 			RuntimeVariables.replace("Wiki Navigation Test Page"));
 		selenium.waitForPageToLoad("30000");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Add"),
+			selenium.getText("//li[@id='_145_addContent']/a/span"));
+		selenium.mouseOver("//li[@id='_145_addContent']/a/span");
+		selenium.waitForVisible("//a[@id='_145_addApplication']");
 		assertTrue(selenium.isPartialText("//a[@id='_145_addApplication']",
 				"More"));
 		selenium.clickAt("//a[@id='_145_addApplication']",
 			RuntimeVariables.replace("More"));
-		selenium.waitForElementPresent("//div[@title='Tree Menu']/p/a");
-		selenium.clickAt("//div[@title='Tree Menu']/p/a",
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-live-search/aui-live-search-min.js')]");
+		selenium.waitForVisible("//input[@id='layout_configuration_content']");
+		selenium.sendKeys("//input[@id='layout_configuration_content']",
+			RuntimeVariables.replace("p"));
+		selenium.waitForVisible("//div[@title='Page Menu']/p/a");
+		selenium.clickAt("//div[@title='Page Menu']/p/a",
 			RuntimeVariables.replace("Add"));
 		selenium.waitForVisible("//section");
 		assertTrue(selenium.isVisible("//section"));
-		assertTrue(selenium.isVisible("//div[2]/div/section"));
 	}
 }
