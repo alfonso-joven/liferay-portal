@@ -64,18 +64,18 @@ public class ViewPageWhatWeDoTest extends BaseTestCase {
 			selenium.getText("//ul[@id='contentNav']/li[7]/a"));
 		assertTrue(selenium.isVisible("//a[@id='marketplace']"));
 		assertTrue(selenium.isVisible(
-				"//div[@id='getting-started']/div/span[@class='footer-logo']"));
+				"//div[@id='social-office']/div/span[@class='footer-logo']"));
 		assertEquals(RuntimeVariables.replace("Want Easy Social Collaboration?"),
-			selenium.getText("//div[@id='getting-started']/div/div/h3"));
+			selenium.getText("//div[@id='social-office']/div/div/h3"));
 		assertEquals(RuntimeVariables.replace("Get Social Office \u25ba"),
-			selenium.getText("//div[@id='getting-started']/div/div/a"));
+			selenium.getText("//div[@id='social-office']/div/div/a"));
+		assertTrue(selenium.isVisible(
+				"//div[@id='getting-started']/div/span[@class='footer-logo']"));
+		assertTrue(selenium.isVisible("//div[@id='getting-started']/div/div/h3"));
+		assertTrue(selenium.isVisible("//div[@id='getting-started']/div/div/a"));
 		assertTrue(selenium.isVisible(
 				"//div[@id='ide']/div/span[@class='footer-logo']"));
 		assertTrue(selenium.isVisible("//div[@id='ide']/div/div/h3"));
 		assertTrue(selenium.isVisible("//div[@id='ide']/div/div/a"));
-		assertTrue(selenium.isVisible(
-				"//div[@id='social-office']/div/span[@class='footer-logo']"));
-		assertTrue(selenium.isVisible("//div[@id='social-office']/div/div/h3"));
-		assertTrue(selenium.isVisible("//div[@id='social-office']/div/div/a"));
 	}
 }
