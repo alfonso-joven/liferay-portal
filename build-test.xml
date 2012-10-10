@@ -280,7 +280,7 @@
 	</target>
 
 	<target name="build-test-ant-scripts">
-		<property name="build-test-ant-scripts.version" value="7" />
+		<property name="build-test-ant-scripts.version" value="8" />
 
 		<if>
 			<available file="portal-web/test-ant-scripts/version" />
@@ -880,66 +880,77 @@
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="kaleo-asset-publisher" />
 			<param name="test.ant.script.kaleo" value="true" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="KaleoAssetPublisherTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="kaleo-blogs" />
 			<param name="test.ant.script.kaleo" value="true" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="KaleoBlogsTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="kaleo-message-boards" />
 			<param name="test.ant.script.kaleo" value="true" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="KaleoMessageBoardsTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="kaleo-my-submissions" />
 			<param name="test.ant.script.kaleo" value="true" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="KaleoMySubmissionsTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="kaleo-my-workflow-tasks" />
 			<param name="test.ant.script.kaleo" value="true" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="KaleoMyWorkflowTasksTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="kaleo-page-comments" />
 			<param name="test.ant.script.kaleo" value="true" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="KaleoPageCommentsTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="kaleo-web-content" />
 			<param name="test.ant.script.kaleo" value="true" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="KaleoWebContentTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="kaleo-web-content-display" />
 			<param name="test.ant.script.kaleo" value="true" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="KaleoWebContentDisplayTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="kaleo-wiki" />
 			<param name="test.ant.script.kaleo" value="true" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="KaleoWikiTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="kaleo-workflow" />
 			<param name="test.ant.script.kaleo" value="true" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="KaleoWorkflowTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="kaleo-workflow-configuration" />
 			<param name="test.ant.script.kaleo" value="true" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="KaleoWorkflowConfigurationTestSuite" />
 		</antcall>
 
@@ -1014,41 +1025,49 @@
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="permissions-announcements" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PermissionsAnnouncementsTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="permissions-blogs" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PermissionsBlogsTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="permissions-document-library" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PermissionsDocumentLibraryTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="permissions-image-gallery" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PermissionsImageGalleryTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="permissions-media-gallery" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PermissionsMediaGalleryTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="permissions-message-boards" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PermissionsMessageBoardsTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="permissions-organizations" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PermissionsOrganizationsTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="permissions-web-content" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PermissionsWebContentTestSuite" />
 		</antcall>
 
@@ -2149,56 +2168,66 @@
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="staging-community-asset-publisher" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="StagingCommunityAssetPublisherTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="staging-community-blogs" />
 			<param name="test.ant.script.kaleo" value="true" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="StagingCommunityBlogsTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="staging-community-documents-and-media" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="StagingCommunityDocumentsAndMediaTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="staging-community-sites" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="StagingCommunitySitesTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="staging-community-web-content-display" />
 			<param name="test.ant.script.kaleo" value="true" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="StagingCommunityWebContentDisplayTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="staging-organization-blogs" />
 			<param name="test.ant.script.kaleo" value="true" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="StagingOrganizationBlogsTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="tags-blogs" />
 			<param name="test.ant.script.database.collate" value="true" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="TagsBlogsTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="tags-tags-admin" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="TagsTagsAdminTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="tags-web-content" />
 			<param name="test.ant.script.database.collate" value="true" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="TagsWebContentTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="tags-wiki" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="TagsWikiTestSuite" />
 		</antcall>
 
