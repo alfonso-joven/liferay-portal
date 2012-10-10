@@ -27,8 +27,6 @@ public class SOUs_ViewMicroblogsContentViewableByConnectionsTest
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/socialoffice01/so/dashboard");
-		assertEquals(RuntimeVariables.replace("Microblogs Status Update"),
-			selenium.getText("//span[@class='portlet-title-default']"));
 		assertTrue(selenium.isElementPresent(
 				"//div[contains(@id,'_2_WAR_microblogsportlet_autocompleteContent')]"));
 		assertEquals(RuntimeVariables.replace(
@@ -42,7 +40,6 @@ public class SOUs_ViewMicroblogsContentViewableByConnectionsTest
 		assertEquals(RuntimeVariables.replace("There are no recent activities."),
 			selenium.getText("xPath=(//div[@class='portlet-msg-info'])[2]"));
 		assertFalse(selenium.isTextPresent("Microblogs Post"));
-		selenium.waitForVisible("//nav/ul/li[contains(.,'Microblogs')]/a/span");
 		selenium.clickAt("//nav/ul/li[contains(.,'Microblogs')]/a/span",
 			RuntimeVariables.replace("Microblogs"));
 		selenium.waitForPageToLoad("30000");

@@ -26,12 +26,9 @@ public class AddMicroblogsContent150CharacterTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/joebloggs/so/dashboard");
-		selenium.waitForVisible("//nav/ul/li[contains(.,'Microblogs')]/a/span");
 		selenium.clickAt("//nav/ul/li[contains(.,'Microblogs')]/a/span",
 			RuntimeVariables.replace("Microblogs"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Microblogs"),
-			selenium.getText("//span[@class='portlet-title-default']"));
 		assertTrue(selenium.isElementPresent(
 				"//div[contains(@id,'_1_WAR_microblogsportlet_autocompleteContent')]"));
 		assertEquals(RuntimeVariables.replace(
@@ -41,7 +38,7 @@ public class AddMicroblogsContent150CharacterTest extends BaseTestCase {
 			RuntimeVariables.replace("Update your status..."));
 		selenium.waitForElementPresent("//textarea");
 		selenium.clickAt("//textarea", RuntimeVariables.replace("Text area"));
-		selenium.typeKeys("//textarea",
+		selenium.sendKeys("//textarea",
 			RuntimeVariables.replace(
 				"|||||||||1|||||||||2|||||||||3|||||||||4|||||||||5|||||||||6|||||||||7|||||||||8|||||||||9||||||||10||||||||11||||||||12||||||||13||||||||14||||||||15"));
 		selenium.waitForText("//span[@class='microblogs-countdown']", "0");

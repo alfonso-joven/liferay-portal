@@ -33,7 +33,6 @@ public class SOUs_ViewDeleteRepostMicroblogsContentTest extends BaseTestCase {
 			selenium.getText("xPath=(//div[@class='portlet-msg-info'])[2]"));
 		assertFalse(selenium.isTextPresent("Reposted From Joe Bloggs"));
 		assertFalse(selenium.isTextPresent("Microblogs Post"));
-		selenium.waitForVisible("//nav/ul/li[contains(.,'Microblogs')]/a/span");
 		selenium.clickAt("//nav/ul/li[contains(.,'Microblogs')]/a/span",
 			RuntimeVariables.replace("Microblogs"));
 		selenium.waitForPageToLoad("30000");
