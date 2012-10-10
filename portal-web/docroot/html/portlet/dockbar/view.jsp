@@ -322,13 +322,26 @@ boolean hasLayoutUpdatePermission = LayoutPermissionUtil.contains(permissionChec
 				myAccountURL = HttpUtil.setParameter(myAccountURL, "controlPanelCategory", controlPanelCategory);
 				%>
 
-				<aui:a cssClass='<%= "user-portrait" + useDialog %>' href="<%= myAccountURL %>" title="manage-my-account">
-					<img alt="<%= HtmlUtil.escape(user.getFullName()) %>" src="<%= HtmlUtil.escape(user.getPortraitURL(themeDisplay)) %>" />
-				</aui:a>
+				<liferay-util:buffer var="userName">
+					<img alt="<liferay-ui:message key="manage-my-account" />" src="<%= HtmlUtil.escape(user.getPortraitURL(themeDisplay)) %>" />
 
-				<aui:a cssClass='<%= "user-fullname" + useDialog %>' data-controlPanelCategory="<%= controlPanelCategory %>" href="<%= themeDisplay.getURLMyAccount().toString() %>" title="manage-my-account">
-					<%= HtmlUtil.escape(user.getFullName()) %>
-				</aui:a>
+					<span class="user-fullname">
+						<%= HtmlUtil.escape(user.getFullName()) %>
+					</span>
+				</liferay-util:buffer>
+
+				<c:choose>
+					<c:when test="<%= PortalPermissionUtil.contains(permissionChecker, ActionKeys.VIEW_CONTROL_PANEL) %>">
+						<aui:a cssClass='<%= "user-portrait" + useDialog %>' href="<%= myAccountURL %>" title="manage-my-account">
+							<%= userName %>
+						</aui:a>
+					</c:when>
+					<c:otherwise>
+						<span class="user-portrait">
+							<%= userName %>
+						</span>
+					</c:otherwise>
+				</c:choose>
 
 				<c:if test="<%= themeDisplay.isShowSignOutIcon() %>">
 					<span class="sign-out">(<aui:a href="<%= themeDisplay.getURLSignOut() %>" label="sign-out" />)</span>
