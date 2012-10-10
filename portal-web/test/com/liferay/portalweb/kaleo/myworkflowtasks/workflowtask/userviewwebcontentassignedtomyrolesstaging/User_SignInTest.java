@@ -25,7 +25,6 @@ public class User_SignInTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home");
-		selenium.waitForVisible("link=Sign In");
 		selenium.clickAt("link=Sign In", RuntimeVariables.replace("Sign In"));
 		selenium.waitForPageToLoad("30000");
 		selenium.waitForVisible("//input[@id='_58_login']");

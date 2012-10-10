@@ -15,8 +15,17 @@
 package com.liferay.portalweb.kaleo.myworkflowtasks.workflowtask.userviewwebcontentassignedtomyrolesstaging;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
+import com.liferay.portalweb.portal.controlpanel.sites.site.addsite.AddSiteTest;
+import com.liferay.portalweb.portal.controlpanel.sites.site.addsite.TearDownSiteTest;
+import com.liferay.portalweb.portal.controlpanel.sites.site.assignmemberssite.AssignMembersSitesTest;
+import com.liferay.portalweb.portal.controlpanel.users.user.adduser.AddUserTest;
+import com.liferay.portalweb.portal.controlpanel.users.user.adduser.TearDownUserTest;
+import com.liferay.portalweb.portal.controlpanel.users.user.edituserpassword.EditUserPasswordTest;
 import com.liferay.portalweb.portal.controlpanel.users.user.signin.SignInTest;
 import com.liferay.portalweb.portal.controlpanel.users.user.signin.SignOutTest;
+import com.liferay.portalweb.portal.controlpanel.users.user.signin.User_SignInTest;
+import com.liferay.portalweb.portal.controlpanel.users.user.signin.User_SignOutTest;
+import com.liferay.portalweb.stagingsite.sites.site.activatestaging.ActivateStagingTest;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -29,8 +38,9 @@ public class User_ViewWebContentAssignedToMyRolesStagingTests
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
 		testSuite.addTestSuite(AddUserTest.class);
-		testSuite.addTestSuite(AddSitesTest.class);
-		testSuite.addTestSuite(AssignUserSitesTest.class);
+		testSuite.addTestSuite(EditUserPasswordTest.class);
+		testSuite.addTestSuite(AddSiteTest.class);
+		testSuite.addTestSuite(AssignMembersSitesTest.class);
 		testSuite.addTestSuite(ConfigureWebContentSingleApproverTest.class);
 		testSuite.addTestSuite(AssignRoleSitesContentReviewerUserTest.class);
 		testSuite.addTestSuite(AddWCWebContent1CPTest.class);

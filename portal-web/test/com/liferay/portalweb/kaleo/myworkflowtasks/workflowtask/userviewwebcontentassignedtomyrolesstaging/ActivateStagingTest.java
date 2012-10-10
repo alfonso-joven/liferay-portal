@@ -30,7 +30,14 @@ public class ActivateStagingTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				selenium.waitForElementPresent("link=Control Panel");
+				selenium.clickAt("//div[@id='dockbar']",
+					RuntimeVariables.replace("Dockbar"));
+				selenium.waitForElementPresent(
+					"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+				assertEquals(RuntimeVariables.replace("Go to"),
+					selenium.getText("//li[@id='_145_mySites']/a/span"));
+				selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+				selenium.waitForVisible("link=Control Panel");
 				selenium.clickAt("link=Control Panel",
 					RuntimeVariables.replace("Control Panel"));
 				selenium.waitForPageToLoad("30000");
@@ -46,11 +53,11 @@ public class ActivateStagingTest extends BaseTestCase {
 						"//span[@title='Actions']/ul/li/strong/a/span"));
 				selenium.click("//span[@title='Actions']/ul/li/strong/a/span");
 				selenium.waitForVisible(
-					"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a");
+					"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Edit Settings')]/a");
 				assertEquals(RuntimeVariables.replace("Edit Settings"),
 					selenium.getText(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a"));
-				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a",
+						"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Edit Settings')]/a"));
+				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Edit Settings')]/a",
 					RuntimeVariables.replace("Edit Settings"));
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.isPartialText(
@@ -74,6 +81,8 @@ public class ActivateStagingTest extends BaseTestCase {
 					RuntimeVariables.replace("Blogs"));
 
 			case 2:
+				assertTrue(selenium.isChecked(
+						"//input[@id='_165_staged-portlet_161Checkbox']"));
 
 				boolean bookmarksChecked = selenium.isChecked(
 						"_165_staged-portlet_28Checkbox");
@@ -88,6 +97,8 @@ public class ActivateStagingTest extends BaseTestCase {
 					RuntimeVariables.replace("Bookmarks"));
 
 			case 3:
+				assertTrue(selenium.isChecked(
+						"//input[@id='_165_staged-portlet_28Checkbox']"));
 
 				boolean calendarChecked = selenium.isChecked(
 						"_165_staged-portlet_8Checkbox");
@@ -102,6 +113,8 @@ public class ActivateStagingTest extends BaseTestCase {
 					RuntimeVariables.replace("Calendar"));
 
 			case 4:
+				assertTrue(selenium.isChecked(
+						"//input[@id='_165_staged-portlet_8Checkbox']"));
 
 				boolean documentLibraryDisplayChecked = selenium.isChecked(
 						"_165_staged-portlet_20Checkbox");
@@ -116,6 +129,8 @@ public class ActivateStagingTest extends BaseTestCase {
 					RuntimeVariables.replace("DocumentLibraryDisplay"));
 
 			case 5:
+				assertTrue(selenium.isChecked(
+						"//input[@id='_165_staged-portlet_20Checkbox']"));
 
 				boolean dynamicDataMappingChecked = selenium.isChecked(
 						"_165_staged-portlet_166Checkbox");
@@ -130,6 +145,8 @@ public class ActivateStagingTest extends BaseTestCase {
 					RuntimeVariables.replace("Dynamic Data Mapping"));
 
 			case 6:
+				assertTrue(selenium.isChecked(
+						"//input[@id='_165_staged-portlet_166Checkbox']"));
 
 				boolean messageBoardsChecked = selenium.isChecked(
 						"_165_staged-portlet_19Checkbox");
@@ -144,6 +161,8 @@ public class ActivateStagingTest extends BaseTestCase {
 					RuntimeVariables.replace("Message Boards"));
 
 			case 7:
+				assertTrue(selenium.isChecked(
+						"//input[@id='_165_staged-portlet_19Checkbox']"));
 
 				boolean pageCommentsChecked = selenium.isChecked(
 						"_165_staged-portlet_107Checkbox");
@@ -158,6 +177,8 @@ public class ActivateStagingTest extends BaseTestCase {
 					RuntimeVariables.replace("Page Comments"));
 
 			case 8:
+				assertTrue(selenium.isChecked(
+						"//input[@id='_165_staged-portlet_107Checkbox']"));
 
 				boolean pageRatingsChecked = selenium.isChecked(
 						"_165_staged-portlet_108Checkbox");
@@ -172,6 +193,8 @@ public class ActivateStagingTest extends BaseTestCase {
 					RuntimeVariables.replace("Page Ratings"));
 
 			case 9:
+				assertTrue(selenium.isChecked(
+						"//input[@id='_165_staged-portlet_108Checkbox']"));
 
 				boolean pollsChecked = selenium.isChecked(
 						"_165_staged-portlet_25Checkbox");
@@ -186,6 +209,8 @@ public class ActivateStagingTest extends BaseTestCase {
 					RuntimeVariables.replace("Polls"));
 
 			case 10:
+				assertTrue(selenium.isChecked(
+						"//input[@id='_165_staged-portlet_25Checkbox']"));
 
 				boolean pollsDisplayChecked = selenium.isChecked(
 						"_165_staged-portlet_59Checkbox");
@@ -200,6 +225,8 @@ public class ActivateStagingTest extends BaseTestCase {
 					RuntimeVariables.replace("Polls Display"));
 
 			case 11:
+				assertTrue(selenium.isChecked(
+						"//input[@id='_165_staged-portlet_59Checkbox']"));
 
 				boolean webContentDisplayChecked = selenium.isChecked(
 						"_165_staged-portlet_56Checkbox");
@@ -214,6 +241,8 @@ public class ActivateStagingTest extends BaseTestCase {
 					RuntimeVariables.replace("Web Content Display"));
 
 			case 12:
+				assertTrue(selenium.isChecked(
+						"//input[@id='_165_staged-portlet_56Checkbox']"));
 
 				boolean wikiChecked = selenium.isChecked(
 						"_165_staged-portlet_36Checkbox");
@@ -228,6 +257,8 @@ public class ActivateStagingTest extends BaseTestCase {
 					RuntimeVariables.replace("Wiki"));
 
 			case 13:
+				assertTrue(selenium.isChecked(
+						"//input[@id='_165_staged-portlet_36Checkbox']"));
 
 				boolean wikiDisplayChecked = selenium.isChecked(
 						"_165_staged-portlet_54Checkbox");
@@ -242,6 +273,8 @@ public class ActivateStagingTest extends BaseTestCase {
 					RuntimeVariables.replace("Wiki Display Checked"));
 
 			case 14:
+				assertTrue(selenium.isChecked(
+						"//input[@id='_165_staged-portlet_54Checkbox']"));
 				selenium.clickAt("//input[@value='Save']",
 					RuntimeVariables.replace("Save"));
 				selenium.waitForPageToLoad("30000");

@@ -27,7 +27,14 @@ public class User_ViewWebContent1WorkflowTasksAssignedToMyRolesTest
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/liferay/dockbar_underlay.js')]");
+		assertEquals(RuntimeVariables.replace("Go to"),
+			selenium.getText("//li[@id='_145_mySites']/a/span"));
+		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
@@ -35,17 +42,19 @@ public class User_ViewWebContent1WorkflowTasksAssignedToMyRolesTest
 			RuntimeVariables.replace("My Workflow Tasks"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Review"),
-			selenium.getText("//td[1]/a/span"));
+			selenium.getText(
+				"//tr[@class='portlet-section-body results-row last']/td[1]/a"));
 		assertEquals(RuntimeVariables.replace("Web Content1 Name"),
-			selenium.getText("//td[2]/a"));
+			selenium.getText(
+				"//tr[@class='portlet-section-body results-row last']/td[2]/a"));
 		assertEquals(RuntimeVariables.replace("Web Content"),
-			selenium.getText("//td[3]/a"));
-		selenium.clickAt("//td[2]/a",
+			selenium.getText(
+				"//tr[@class='portlet-section-body results-row last']/td[3]/a"));
+		selenium.clickAt("//tr[@class='portlet-section-body results-row last']/td[2]/a",
 			RuntimeVariables.replace("Web Content1 Name"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Preview of Web Content"),
-			selenium.getText(
-				"//div[2]/div/div[1]/div/div[2]/div[1]/div[1]/div/span"));
+			selenium.getText("xPath=(//div[@class='lfr-panel-title']/span)[4]"));
 		assertEquals(RuntimeVariables.replace("Web Content1 Name"),
 			selenium.getText("//h3[@class='task-content-title']"));
 	}

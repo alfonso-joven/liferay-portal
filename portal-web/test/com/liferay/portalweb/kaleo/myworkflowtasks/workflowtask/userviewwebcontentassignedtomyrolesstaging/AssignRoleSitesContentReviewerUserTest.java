@@ -26,7 +26,14 @@ public class AssignRoleSitesContentReviewerUserTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Go to"),
+			selenium.getText("//li[@id='_145_mySites']/a/span"));
+		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
@@ -34,14 +41,16 @@ public class AssignRoleSitesContentReviewerUserTest extends BaseTestCase {
 			RuntimeVariables.replace("Users and Organizations"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_125_keywords']",
-			RuntimeVariables.replace("selen01"));
+			RuntimeVariables.replace("userfn"));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("selen01"),
-			selenium.getText("//td[2]/a"));
-		selenium.clickAt("//td[2]/a", RuntimeVariables.replace("selen01"));
+		assertEquals(RuntimeVariables.replace("userfn"),
+			selenium.getText("//tr[contains(.,'userfn')]/td[2]/a"));
+		selenium.clickAt("//tr[contains(.,'userfn')]/td[2]/a",
+			RuntimeVariables.replace("userfn"));
 		selenium.waitForPageToLoad("30000");
+		assertTrue(selenium.isPartialText("//a[@id='_125_rolesLink']", "Roles"));
 		selenium.clickAt("//a[@id='_125_rolesLink']",
 			RuntimeVariables.replace("Roles"));
 		selenium.waitForVisible("//div[6]/span[2]/a/span");
@@ -50,16 +59,19 @@ public class AssignRoleSitesContentReviewerUserTest extends BaseTestCase {
 		selenium.clickAt("//div[6]/span[2]/a/span",
 			RuntimeVariables.replace("Select"));
 		Thread.sleep(5000);
-		selenium.selectWindow("name=role");
-		selenium.waitForVisible("//tr[4]/td/a");
+		selenium.waitForPopUp("null", RuntimeVariables.replace("30000"));
+		selenium.selectWindow("title=Users and Organizations");
+		selenium.waitForVisible(
+			"//tr[contains(.,'Site Content Reviewer')]/td[1]/a");
 		assertEquals(RuntimeVariables.replace("Site Content Reviewer"),
-			selenium.getText("//tr[4]/td/a"));
-		selenium.clickAt("//tr[4]/td/a",
+			selenium.getText(
+				"//tr[contains(.,'Site Content Reviewer')]/td[1]/a"));
+		selenium.clickAt("//tr[contains(.,'Site Content Reviewer')]/td[1]/a",
 			RuntimeVariables.replace("Site Content Reviewer"));
 		Thread.sleep(5000);
 		selenium.selectWindow("null");
 		assertEquals(RuntimeVariables.replace("Site Content Reviewer"),
-			selenium.getText("//table/tr/td[1]"));
+			selenium.getText("//tr[contains(.,'Site Content Reviewer')]/td[1]"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
@@ -67,6 +79,6 @@ public class AssignRoleSitesContentReviewerUserTest extends BaseTestCase {
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertEquals(RuntimeVariables.replace("Site Content Reviewer"),
-			selenium.getText("//div[3]/div/div/table/tbody/tr[3]/td[1]"));
+			selenium.getText("//tr[contains(.,'Site Content Reviewer')]/td[2]"));
 	}
 }

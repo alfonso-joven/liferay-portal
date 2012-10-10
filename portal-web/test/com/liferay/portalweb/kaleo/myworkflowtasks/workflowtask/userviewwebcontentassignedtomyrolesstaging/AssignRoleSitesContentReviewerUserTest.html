@@ -14,7 +14,27 @@
 	<td></td>
 </tr>
 <tr>
+	<td>clickAt</td>
+	<td>//div[@id='dockbar']</td>
+	<td>Dockbar</td>
+</tr>
+<tr>
 	<td>waitForElementPresent</td>
+	<td>//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]</td>
+	<td>AUI Editable Min</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//li[@id='_145_mySites']/a/span</td>
+	<td>Go to</td>
+</tr>
+<tr>
+	<td>mouseOver</td>
+	<td>//li[@id='_145_mySites']/a/span</td>
+	<td>Go to</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
 	<td>link=Control Panel</td>
 	<td>Control Panel</td>
 </tr>
@@ -31,7 +51,7 @@
 <tr>
 	<td>type</td>
 	<td>//input[@id='_125_keywords']</td>
-	<td>selen01</td>
+	<td>userfn</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -40,13 +60,18 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//td[2]/a</td>
-	<td>selen01</td>
+	<td>//tr[contains(.,'userfn')]/td[2]/a</td>
+	<td>userfn</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>//td[2]/a</td>
-	<td>selen01</td>
+	<td>//tr[contains(.,'userfn')]/td[2]/a</td>
+	<td>userfn</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>//a[@id='_125_rolesLink']</td>
+	<td>Roles</td>
 </tr>
 <tr>
 	<td>clickAt</td>
@@ -74,23 +99,28 @@
 	<td></td>
 </tr>
 <tr>
+	<td>waitForPopUp</td>
+	<td>null</td>
+	<td>30000</td>
+</tr>
+<tr>
 	<td>selectWindow</td>
-	<td>name=role</td>
+	<td>title=Users and Organizations</td>
 	<td></td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//tr[4]/td/a</td>
+	<td>//tr[contains(.,'Site Content Reviewer')]/td[1]/a</td>
 	<td>Site Content Reviewer</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//tr[4]/td/a</td>
+	<td>//tr[contains(.,'Site Content Reviewer')]/td[1]/a</td>
 	<td>Site Content Reviewer</td>
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>//tr[4]/td/a</td>
+	<td>//tr[contains(.,'Site Content Reviewer')]/td[1]/a</td>
 	<td>Site Content Reviewer</td>
 </tr>
 <tr>
@@ -105,7 +135,7 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//table/tr/td[1]</td>
+	<td>//tr[contains(.,'Site Content Reviewer')]/td[1]</td>
 	<td>Site Content Reviewer</td>
 </tr>
 <tr>
@@ -120,10 +150,9 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[3]/div/div/table/tbody/tr[3]/td[1]</td>
+	<td>//tr[contains(.,'Site Content Reviewer')]/td[2]</td>
 	<td>Site Content Reviewer</td>
 </tr>
-
 </tbody></table>
 </body>
 </html>
