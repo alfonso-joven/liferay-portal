@@ -376,7 +376,7 @@ public class ClusterLinkImplTest extends BaseClusterTest {
 
 		assertLogger(
 			logRecords, "Unable to send multicast message " + message,
-			ChannelClosedException.class);
+			Exception.class);
 
 		clusterLinkImpl.destroy();
 	}
@@ -409,7 +409,7 @@ public class ClusterLinkImplTest extends BaseClusterTest {
 
 		assertLogger(
 			logRecords, "Unable to send multicast message " + message,
-			ChannelNotConnectedException.class);
+			Exception.class);
 
 		clusterLinkImpl.destroy();
 	}
@@ -498,7 +498,7 @@ public class ClusterLinkImplTest extends BaseClusterTest {
 
 		assertLogger(
 			logRecords, "Unable to send unicast message " + message,
-			ChannelClosedException.class);
+			Exception.class);
 
 		clusterLinkImpl.destroy();
 	}
@@ -532,7 +532,7 @@ public class ClusterLinkImplTest extends BaseClusterTest {
 
 		assertLogger(
 			logRecords, "Unable to send unicast message " + message,
-			ChannelNotConnectedException.class);
+			Exception.class);
 
 		clusterLinkImpl.destroy();
 	}
