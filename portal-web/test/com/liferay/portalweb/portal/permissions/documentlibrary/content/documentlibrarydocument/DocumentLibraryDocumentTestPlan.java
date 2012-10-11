@@ -35,12 +35,12 @@ public class DocumentLibraryDocumentTestPlan extends BaseTestSuite {
 		TestSuite testSuite = new TestSuite();
 
 		testSuite.addTest(AddDocumentDiscussionTests.suite());
-		testSuite.addTest(DeleteDocumentTests.suite());
-		testSuite.addTest(DeleteDocumentDiscussionTests.suite());
-		testSuite.addTest(DocumentPermissionsTests.suite());
-		testSuite.addTest(UpdateDocumentTests.suite());
-		testSuite.addTest(UpdateDocumentDiscussionTests.suite());
-		testSuite.addTest(ViewDocumentTests.suite());
+//		testSuite.addTest(DeleteDocumentTests.suite());
+//		testSuite.addTest(DeleteDocumentDiscussionTests.suite());
+//		testSuite.addTest(DocumentPermissionsTests.suite());
+//		testSuite.addTest(UpdateDocumentTests.suite());
+//		testSuite.addTest(UpdateDocumentDiscussionTests.suite());
+//		testSuite.addTest(ViewDocumentTests.suite());
 
 		return testSuite;
 	}

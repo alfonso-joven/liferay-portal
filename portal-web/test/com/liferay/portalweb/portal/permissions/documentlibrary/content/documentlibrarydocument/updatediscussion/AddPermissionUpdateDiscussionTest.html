@@ -14,7 +14,27 @@
 	<td></td>
 </tr>
 <tr>
+	<td>clickAt</td>
+	<td>//div[@id='dockbar']</td>
+	<td>Dockbar</td>
+</tr>
+<tr>
 	<td>waitForElementPresent</td>
+	<td>//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]</td>
+	<td>AUI Editable Min</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//li[@id='_145_mySites']/a/span</td>
+	<td>Go to</td>
+</tr>
+<tr>
+	<td>mouseOver</td>
+	<td>//li[@id='_145_mySites']/a/span</td>
+	<td>Go to</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
 	<td>link=Control Panel</td>
 	<td>Control Panel</td>
 </tr>
@@ -59,9 +79,29 @@
 	<td>Documents and Media</td>
 </tr>
 <tr>
-	<td>check</td>
+	<td>storeChecked</td>
 	<td>//input[@value='com.liferay.portlet.documentlibrary.model.DLFileEntryUPDATE_DISCUSSION']</td>
-	<td>DL Document Update</td>
+	<td>updateDiscussion</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>${updateDiscussion}</td>
+	<td>UpdateDiscussion</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//input[@value='com.liferay.portlet.documentlibrary.model.DLFileEntryUPDATE_DISCUSSION']</td>
+	<td>DL Document Update Discussion</td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>UpdateDiscussion</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//input[@value='com.liferay.portlet.documentlibrary.model.DLFileEntryUPDATE_DISCUSSION']</td>
+	<td>DL Document Update Discussion</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -73,7 +113,6 @@
 	<td>//div[@class='portlet-msg-success']</td>
 	<td>The role permissions were updated.</td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

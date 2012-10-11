@@ -31,7 +31,7 @@ public class Member_AssertCannotViewTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Documents and Media"),
 			selenium.getText("//span[@class='portlet-title-text']"));
 		assertEquals(RuntimeVariables.replace(
-				"You do not have the roles required to access this portlet."),
+				"You do not have the required permissions."),
 			selenium.getText("//div[@class='portlet-msg-error']"));
 	}
 }

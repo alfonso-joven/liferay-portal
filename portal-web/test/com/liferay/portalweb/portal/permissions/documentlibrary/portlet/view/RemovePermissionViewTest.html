@@ -14,7 +14,27 @@
 	<td></td>
 </tr>
 <tr>
+	<td>clickAt</td>
+	<td>//div[@id='dockbar']</td>
+	<td>Dockbar</td>
+</tr>
+<tr>
 	<td>waitForElementPresent</td>
+	<td>//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]</td>
+	<td>AUI Editable Min</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//li[@id='_145_mySites']/a/span</td>
+	<td>Go to</td>
+</tr>
+<tr>
+	<td>mouseOver</td>
+	<td>//li[@id='_145_mySites']/a/span</td>
+	<td>Go to</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
 	<td>link=Control Panel</td>
 	<td>Control Panel</td>
 </tr>
@@ -54,24 +74,39 @@
 	<td>Define Permissions</td>
 </tr>
 <tr>
-	<td>typeKeys</td>
+	<td>selectAndWait</td>
 	<td>//select[@id='_128_add-permissions']</td>
-	<td>ddddddd</td>
-</tr>
-<tr>
-	<td>keyPressAndWait</td>
-	<td>//select[@id='_128_add-permissions']</td>
-	<td>\13</td>
+	<td>Documents and Media</td>
 </tr>
 <tr>
 	<td>assertText</td>
 	<td>//h3</td>
-	<td>Documents and Media</td>
+	<td>Document Type</td>
 </tr>
 <tr>
-	<td>uncheck</td>
-	<td>//input[@value='20VIEW']</td>
-	<td>View</td>
+	<td>storeChecked</td>
+	<td>//input[@value='com.liferay.portlet.documentlibraryVIEW']</td>
+	<td>documentLibraryView</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>!${documentLibraryView}</td>
+	<td>DocumentLibraryView</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//input[@value='com.liferay.portlet.documentlibraryVIEW']</td>
+	<td>documentLibraryView</td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>DocumentLibraryView</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertNotChecked</td>
+	<td>//input[@value='com.liferay.portlet.documentlibraryVIEW']</td>
+	<td>documentLibraryView</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -83,7 +118,6 @@
 	<td>//div[@class='portlet-msg-success']</td>
 	<td>The role permissions were updated.</td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

@@ -38,11 +38,9 @@ public class AddDocumentTypeTest extends BaseTestCase {
 		selenium.clickAt("//span[@title='Manage']/ul/li/strong/a",
 			RuntimeVariables.replace("Manage"));
 		selenium.waitForVisible(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a");
-		assertEquals(RuntimeVariables.replace("Document Types"),
-			selenium.getText(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a"));
-		selenium.click("//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a");
+			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Document Types')]/a");
+		selenium.click(
+			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Document Types')]/a");
 		selenium.waitForVisible("//iframe");
 		selenium.selectFrame("//iframe");
 		selenium.waitForVisible("link=Add");

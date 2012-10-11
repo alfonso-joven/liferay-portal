@@ -14,7 +14,22 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
+	<td>clickAt</td>
+	<td>//div[@id='dockbar']</td>
+	<td>Dockbar</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//li[@id='_145_mySites']/a/span</td>
+	<td>Go to</td>
+</tr>
+<tr>
+	<td>mouseOver</td>
+	<td>//li[@id='_145_mySites']/a/span</td>
+	<td>Go to</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
 	<td>link=Control Panel</td>
 	<td>Control Panel</td>
 </tr>
@@ -34,24 +49,24 @@
 	<td>Edit</td>
 </tr>
 <tr>
-	<td>assertNotVisible</td>
+	<td>assertElementNotPresent</td>
 	<td>link=Move</td>
 	<td>Move</td>
 </tr>
 <tr>
-	<td>assertNotVisible</td>
+	<td>assertElementNotPresent</td>
 	<td>link=Checkout</td>
 	<td>Checkout</td>
 </tr>
 <tr>
 	<td>assertText</td>
 	<td>//a[contains(@class,'document-link')]/span[@class='entry-title']</td>
-	<td>TestDocument.txt</td>
+	<td>Document_1.txt</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>//a[contains(@class,'document-link')]/span[@class='entry-title']</td>
-	<td>TestDocument.txt</td>
+	<td>Document_1.txt</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -88,8 +103,6 @@
 	<td>Checkout</td>
 	<td></td>
 </tr>
-
-
 </tbody></table>
 </body>
 </html>

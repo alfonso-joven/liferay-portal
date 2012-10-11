@@ -25,22 +25,26 @@ public class Member_DeleteFolderTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		assertEquals(RuntimeVariables.replace("Go to"),
+			selenium.getText("//li[@id='_145_mySites']/a/span"));
+		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Documents and Media",
 			RuntimeVariables.replace("Documents and Media"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForVisible(
-			"//input[@id='_20_rowIds_com.liferay.portal.kernel.repository.model.FolderCheckbox']");
-		selenium.clickAt("//input[@id='_20_rowIds_com.liferay.portal.kernel.repository.model.FolderCheckbox']",
+		selenium.waitForVisible("//input[@id='_20_rowIdsFolderCheckbox']");
+		selenium.clickAt("//input[@id='_20_rowIdsFolderCheckbox']",
 			RuntimeVariables.replace("Folder Checkbox"));
 		selenium.clickAt("//span[@title='Actions']/ul/li/strong/a",
 			RuntimeVariables.replace("Actions"));
 		selenium.waitForVisible(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[5]/a");
-		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[5]/a",
+			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Delete')]/a");
+		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Delete')]/a",
 			RuntimeVariables.replace("Delete"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(

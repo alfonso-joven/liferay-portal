@@ -25,7 +25,12 @@ public class Member_AddFolderShortcutTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		assertEquals(RuntimeVariables.replace("Go to"),
+			selenium.getText("//li[@id='_145_mySites']/a/span"));
+		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
@@ -38,15 +43,13 @@ public class Member_AddFolderShortcutTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"There are no documents or media files in this folder."),
 			selenium.getText("//div[@class='portlet-msg-info']"));
+		selenium.waitForVisible("link=Add");
 		assertTrue(selenium.isVisible("link=Add"));
 		selenium.clickAt("link=Add", RuntimeVariables.replace("Add"));
 		selenium.waitForVisible(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a");
-		assertEquals(RuntimeVariables.replace("Shortcut"),
-			selenium.getText(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a"));
+			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Shortcut')]/a");
 		selenium.click(RuntimeVariables.replace(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a"));
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Shortcut')]/a"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("xPath=(//input[@value='Select'])[1]",
 			RuntimeVariables.replace("Select Site"));
@@ -62,17 +65,17 @@ public class Member_AddFolderShortcutTest extends BaseTestCase {
 		selenium.selectWindow("title=Documents and Media");
 		selenium.waitForVisible("//tr[3]/td/a");
 		selenium.clickAt("//tr[3]/td/a",
-			RuntimeVariables.replace("TestDocument.txt"));
+			RuntimeVariables.replace("Document_1.txt"));
 		selenium.selectWindow("null");
 		selenium.waitForText("//span[@id='_20_toFileEntryTitle']",
-			"TestDocument.txt");
+			"Document_1.txt");
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
-		assertEquals(RuntimeVariables.replace("TestDocument.txt"),
+		assertEquals(RuntimeVariables.replace("Document_1.txt"),
 			selenium.getText(
 				"//a[contains(@class,'document-link')]/span[@class='entry-title']"));
 	}

@@ -34,11 +34,9 @@ public class RemoveGuestViewPermissionTest extends BaseTestCase {
 		selenium.clickAt("//span[@title='Options']/ul/li/strong/a",
 			RuntimeVariables.replace("Options"));
 		selenium.waitForVisible(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a");
-		assertEquals(RuntimeVariables.replace("Configuration"),
-			selenium.getText(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a"));
-		selenium.click("//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a");
+			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a");
+		selenium.click(
+			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a");
 		selenium.waitForVisible("//iframe[@id='_20_configurationIframeDialog']");
 		selenium.selectFrame("//iframe[@id='_20_configurationIframeDialog']");
 		selenium.waitForVisible("//ul[@class='aui-tabview-list']/li[2]/span/a");

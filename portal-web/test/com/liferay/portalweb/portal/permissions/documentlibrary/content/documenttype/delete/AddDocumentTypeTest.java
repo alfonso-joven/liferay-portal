@@ -22,49 +22,95 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
  */
 public class AddDocumentTypeTest extends BaseTestCase {
 	public void testAddDocumentType() throws Exception {
-		selenium.selectWindow("null");
-		selenium.selectFrame("relative=top");
-		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
-		selenium.clickAt("link=Control Panel",
-			RuntimeVariables.replace("Control Panel"));
-		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Documents and Media",
-			RuntimeVariables.replace("Documents and Media"));
-		selenium.waitForPageToLoad("30000");
-		Thread.sleep(5000);
-		assertEquals(RuntimeVariables.replace("Manage"),
-			selenium.getText("//span[@title='Manage']/ul/li/strong/a"));
-		selenium.clickAt("//span[@title='Manage']/ul/li/strong/a",
-			RuntimeVariables.replace("Manage"));
-		selenium.waitForVisible(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a");
-		assertEquals(RuntimeVariables.replace("Document Types"),
-			selenium.getText(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a"));
-		selenium.click("//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a");
-		selenium.waitForVisible("//iframe");
-		selenium.selectFrame("//iframe");
-		selenium.waitForVisible("link=Add");
-		selenium.clickAt("link=Add", RuntimeVariables.replace("Add"));
-		selenium.waitForVisible("//input[@id='_20_name']");
-		selenium.type("//input[@id='_20_name']",
-			RuntimeVariables.replace("Document Type Name"));
-		selenium.waitForVisible(
-			"xPath=(//div[@class='aui-diagram-builder-field-label'])[11]");
-		selenium.dragAndDropToObject("xPath=(//div[@class='aui-diagram-builder-field-label'])[11]",
-			"xPath=(//div[@class='aui-diagram-builder-field-label'])[11]");
-		selenium.waitForVisible(
-			"//div[contains(@class,'aui-form-builder-text-field-content')]/label");
-		assertEquals(RuntimeVariables.replace("Text Box"),
-			selenium.getText(
-				"//div[contains(@class,'aui-form-builder-text-field-content')]/label"));
-		selenium.clickAt("//input[@value='Save']",
-			RuntimeVariables.replace("Save"));
-		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace(
-				"Your request completed successfully."),
-			selenium.getText("//div[@class='portlet-msg-success']"));
-		selenium.selectFrame("relative=top");
+		int label = 1;
+
+		while (label >= 1) {
+			switch (label) {
+			case 1:
+				selenium.selectWindow("null");
+				selenium.selectFrame("relative=top");
+				selenium.open("/web/guest/home/");
+				selenium.waitForElementPresent("link=Control Panel");
+				selenium.clickAt("link=Control Panel",
+					RuntimeVariables.replace("Control Panel"));
+				selenium.waitForPageToLoad("30000");
+				selenium.clickAt("link=Documents and Media",
+					RuntimeVariables.replace("Documents and Media"));
+				selenium.waitForPageToLoad("30000");
+				Thread.sleep(5000);
+				assertEquals(RuntimeVariables.replace("Manage"),
+					selenium.getText("//span[@title='Manage']/ul/li/strong/a"));
+				selenium.clickAt("//span[@title='Manage']/ul/li/strong/a",
+					RuntimeVariables.replace("Manage"));
+				selenium.waitForVisible(
+					"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Document Types')]/a");
+				selenium.click(
+					"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Document Types')]/a");
+				selenium.waitForVisible("//iframe");
+				selenium.selectFrame("//iframe");
+				selenium.waitForVisible("link=Add");
+				selenium.clickAt("link=Add", RuntimeVariables.replace("Add"));
+				selenium.waitForVisible("//input[@id='_20_name']");
+				selenium.type("//input[@id='_20_name']",
+					RuntimeVariables.replace("Document Type Name"));
+				selenium.waitForVisible(
+					"xPath=(//div[@class='aui-diagram-builder-field-label'])[11]");
+				selenium.dragAndDropToObject("xPath=(//div[@class='aui-diagram-builder-field-label'])[11]",
+					"xPath=(//div[@class='aui-diagram-builder-field-label'])[11]");
+				selenium.waitForVisible(
+					"//div[contains(@class,'aui-form-builder-text-field-content')]/label");
+				assertEquals(RuntimeVariables.replace("Text Box"),
+					selenium.getText(
+						"//div[contains(@class,'aui-form-builder-text-field-content')]/label"));
+				selenium.clickAt("//input[@value='Save']",
+					RuntimeVariables.replace("Save"));
+				selenium.waitForPageToLoad("30000");
+				assertEquals(RuntimeVariables.replace(
+						"Your request completed successfully."),
+					selenium.getText("//div[@class='portlet-msg-success']"));
+				selenium.waitForVisible("//input[@id='_20_keywords']");
+				selenium.type("//input[@id='_20_keywords']",
+					RuntimeVariables.replace("Name"));
+				selenium.clickAt("//input[@value='Search']",
+					RuntimeVariables.replace("Search"));
+				Thread.sleep(5000);
+				selenium.waitForVisible("//tr[3]/td[1]");
+				assertEquals(RuntimeVariables.replace("Document Type Name"),
+					selenium.getText("//tr[3]/td[1]"));
+				selenium.clickAt("//span[@title='Actions']/ul/li/strong/a",
+					RuntimeVariables.replace("Actions"));
+				selenium.waitForVisible(
+					"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Permissions')]/a");
+				selenium.click(
+					"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Permissions')]/a");
+				selenium.waitForVisible("//input[@id='guest_ACTION_VIEW']");
+
+				boolean guestView = selenium.isChecked(
+						"//input[@id='guest_ACTION_VIEW']");
+
+				if (guestView) {
+					label = 2;
+
+					continue;
+				}
+
+				selenium.clickAt("//input[@id='guest_ACTION_VIEW']",
+					RuntimeVariables.replace("Guest View"));
+
+			case 2:
+				assertTrue(selenium.isChecked(
+						"//input[@id='guest_ACTION_VIEW']"));
+				selenium.clickAt("//input[@value='Save']",
+					RuntimeVariables.replace("Save"));
+				selenium.waitForPageToLoad("30000");
+				assertEquals(RuntimeVariables.replace(
+						"Your request completed successfully."),
+					selenium.getText("//div[@class='portlet-msg-success']"));
+				selenium.selectFrame("relative=top");
+
+			case 100:
+				label = -1;
+			}
+		}
 	}
 }

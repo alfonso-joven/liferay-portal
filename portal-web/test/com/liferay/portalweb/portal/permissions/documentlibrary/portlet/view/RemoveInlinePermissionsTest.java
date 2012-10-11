@@ -31,10 +31,8 @@ public class RemoveInlinePermissionsTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//span[@title='Options']/ul/li/strong/a",
 			RuntimeVariables.replace("Options"));
-		assertEquals(RuntimeVariables.replace("Configuration"),
-			selenium.getText(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a"));
-		selenium.click("//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a");
+		selenium.click(
+			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a");
 		selenium.waitForVisible("//input[@value='Save']");
 		assertEquals(RuntimeVariables.replace("Permissions"),
 			selenium.getText("//ul[@class='aui-tabview-list']/li[2]/span/a"));

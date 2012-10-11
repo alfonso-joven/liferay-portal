@@ -14,7 +14,22 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
+	<td>clickAt</td>
+	<td>//div[@id='dockbar']</td>
+	<td>Dockbar</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//li[@id='_145_mySites']/a/span</td>
+	<td>Go to</td>
+</tr>
+<tr>
+	<td>mouseOver</td>
+	<td>//li[@id='_145_mySites']/a/span</td>
+	<td>Go to</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
 	<td>link=Control Panel</td>
 	<td>Control Panel</td>
 </tr>
@@ -30,12 +45,12 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//input[@id='_20_rowIds_com.liferay.portal.kernel.repository.model.FolderCheckbox']</td>
+	<td>//input[@id='_20_rowIdsFolderCheckbox']</td>
 	<td>Folder Checkbox</td>
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>//input[@id='_20_rowIds_com.liferay.portal.kernel.repository.model.FolderCheckbox']</td>
+	<td>//input[@id='_20_rowIdsFolderCheckbox']</td>
 	<td>Folder Checkbox</td>
 </tr>
 <tr>
@@ -45,12 +60,12 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[5]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Delete')]/a</td>
 	<td>Delete</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[5]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Delete')]/a</td>
 	<td>Delete</td>
 </tr>
 <tr>
@@ -63,7 +78,6 @@
 	<td>//div[@class='portlet-msg-info']</td>
 	<td>There are no documents or media files in this folder.</td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

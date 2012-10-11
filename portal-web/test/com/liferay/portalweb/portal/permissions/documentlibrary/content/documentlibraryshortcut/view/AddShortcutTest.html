@@ -14,7 +14,27 @@
 	<td></td>
 </tr>
 <tr>
+	<td>clickAt</td>
+	<td>//div[@id='dockbar']</td>
+	<td>Dockbar</td>
+</tr>
+<tr>
 	<td>waitForElementPresent</td>
+	<td>//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]</td>
+	<td>AUI Editable Min</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//li[@id='_145_mySites']/a/span</td>
+	<td>Go to</td>
+</tr>
+<tr>
+	<td>mouseOver</td>
+	<td>//li[@id='_145_mySites']/a/span</td>
+	<td>Go to</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
 	<td>link=Control Panel</td>
 	<td>Control Panel</td>
 </tr>
@@ -40,17 +60,12 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a</td>
-	<td>Shortcut</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Shortcut')]/a</td>
 	<td>Shortcut</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Shortcut')]/a</td>
 	<td>Shortcut</td>
 </tr>
 <tr>
@@ -111,12 +126,12 @@
 <tr>
 	<td>waitForVisible</td>
 	<td>//tr[3]/td/a</td>
-	<td>TestDocument.txt</td>
+	<td>Document_1.txt</td>
 </tr>
 <tr>
 	<td>clickAt</td>
 	<td>//tr[3]/td/a</td>
-	<td>TestDocument.txt</td>
+	<td>Document_1.txt</td>
 </tr>
 <tr>
 	<td>selectWindow</td>
@@ -126,7 +141,7 @@
 <tr>
 	<td>waitForText</td>
 	<td>//span[@id='_20_toFileEntryTitle']</td>
-	<td>TestDocument.txt</td>
+	<td>Document_1.txt</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -136,11 +151,11 @@
 <tr>
 	<td>assertText</td>
 	<td>//span[@id='_20_toFileEntryTitle']</td>
-	<td>TestDocument.txt</td>
+	<td>Document_1.txt</td>
 </tr>
 <tr>
 	<td>select</td>
-	<td>//select[@id='_20_inputPermissionsViewRole']</td>
+	<td>//select[@id='_20__inputPermissionsViewRole']</td>
 	<td>Owner</td>
 </tr>
 <tr>
@@ -150,23 +165,33 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//input[@id='_20_guestPermissions_ADD_DISCUSSION']</td>
+	<td>//input[@id='_20__guestPermissions_ADD_DISCUSSION']</td>
 	<td>Add Discussion</td>
 </tr>
 <tr>
-	<td>assertChecked</td>
-	<td>//input[@id='_20_groupPermissions_ADD_DISCUSSION']</td>
-	<td>Add Discussion</td>
+	<td>storeChecked</td>
+	<td>//input[@id='_20__groupPermissions_ADD_DISCUSSION']</td>
+	<td>addGroupDiscussion</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>!${addGroupDiscussion}</td>
+	<td>AddGroupDiscussion</td>
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>//input[@id='_20_groupPermissions_ADD_DISCUSSION']</td>
-	<td>Add Discussion</td>
+	<td>//input[@id='_20__groupPermissions_ADD_DISCUSSION']</td>
+	<td>Add Group Discussion</td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>AddGroupDiscussion</td>
+	<td></td>
 </tr>
 <tr>
 	<td>assertNotChecked</td>
-	<td>//input[@id='_20_groupPermissions_ADD_DISCUSSION']</td>
-	<td>Add Discussion</td>
+	<td>//input[@id='_20__groupPermissions_ADD_DISCUSSION']</td>
+	<td>Add Group Discussion</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -181,12 +206,12 @@
 <tr>
 	<td>assertText</td>
 	<td>xPath=(//a[contains(@class,'document-link')]/span[@class='entry-title'])[1]</td>
-	<td>TestDocument.txt</td>
+	<td>Document_1.txt</td>
 </tr>
 <tr>
 	<td>assertText</td>
 	<td>xPath=(//a[contains(@class,'document-link')]/span[@class='entry-title'])[2]</td>
-	<td>TestDocument.txt</td>
+	<td>Document_1.txt</td>
 </tr>
 </tbody></table>
 </body>

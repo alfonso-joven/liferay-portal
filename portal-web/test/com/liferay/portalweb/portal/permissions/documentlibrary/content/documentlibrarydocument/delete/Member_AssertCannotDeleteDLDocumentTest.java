@@ -26,18 +26,28 @@ public class Member_AssertCannotDeleteDLDocumentTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		assertEquals(RuntimeVariables.replace("Go to"),
+			selenium.getText("//li[@id='_145_mySites']/a/span"));
+		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Documents and Media",
 			RuntimeVariables.replace("Documents and Media"));
 		selenium.waitForPageToLoad("30000");
-		assertFalse(selenium.isChecked("//input[@id='_20_allRowIdsCheckbox']"));
-		selenium.clickAt("//input[@id='_20_allRowIdsCheckbox']",
-			RuntimeVariables.replace("All Rows"));
-		assertTrue(selenium.isChecked("//input[@id='_20_allRowIdsCheckbox']"));
-		assertFalse(selenium.isVisible("link=Actions"));
-		assertFalse(selenium.isVisible("link=Delete"));
+		selenium.waitForVisible(
+			"//div[@id='_20_documentContainer']/div[2]/span/span/ul/li/strong/a");
+		selenium.click(
+			"//div[@id='_20_documentContainer']/div[2]/span/span/ul/li/strong/a");
+		selenium.waitForVisible(
+			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Download (0.3k)')]/a");
+		assertEquals(RuntimeVariables.replace("Download (0.3k)"),
+			selenium.getText(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Download (0.3k)')]/a"));
+		assertTrue(selenium.isElementNotPresent(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Delete')]/a"));
 	}
 }
