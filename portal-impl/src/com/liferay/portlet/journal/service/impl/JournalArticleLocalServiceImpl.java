@@ -3447,10 +3447,6 @@ public class JournalArticleLocalServiceImpl
 
 		validateContent(content);
 
-		if ((expirationDate != null) && expirationDate.before(new Date())) {
-			throw new ArticleExpirationDateException();
-		}
-
 		if (Validator.isNotNull(structureId)) {
 			Group companyGroup = groupLocalService.getCompanyGroup(companyId);
 
@@ -3481,6 +3477,10 @@ public class JournalArticleLocalServiceImpl
 			else if (classNameId == 0) {
 				throw new NoSuchTemplateException();
 			}
+		}
+
+		if ((expirationDate != null) && expirationDate.before(new Date())) {
+			throw new ArticleExpirationDateException();
 		}
 
 		String[] imageExtensions = PrefsPropsUtil.getStringArray(
