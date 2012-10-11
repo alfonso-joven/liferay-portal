@@ -39,7 +39,7 @@ public class ContactServiceImpl extends ContactServiceBaseImpl {
 			getPermissionChecker(), contact.getClassNameId(),
 			contact.getClassPK(), ActionKeys.VIEW);
 
-		return contact;
+		return contactLocalService.getContact(contactId);
 	}
 
 	public List<Contact> getContacts(
