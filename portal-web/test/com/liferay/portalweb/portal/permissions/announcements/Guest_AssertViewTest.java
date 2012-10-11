@@ -25,7 +25,6 @@ public class Guest_AssertViewTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/site-name/");
-		selenium.waitForVisible("link=Announcements Permissions Page");
 		selenium.clickAt("link=Announcements Permissions Page",
 			RuntimeVariables.replace("Announcements Permissions Page"));
 		selenium.waitForPageToLoad("30000");
