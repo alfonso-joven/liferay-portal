@@ -615,7 +615,8 @@ public class BlogsEntryLocalServiceImpl extends BlogsEntryLocalServiceBaseImpl {
 			StringUtil.shorten(entry.getContent(), 500));
 
 		AssetEntry assetEntry = assetEntryLocalService.updateEntry(
-			userId, entry.getGroupId(), BlogsEntry.class.getName(),
+			userId, entry.getGroupId(), entry.getCreateDate(),
+			entry.getModifiedDate(), BlogsEntry.class.getName(),
 			entry.getEntryId(), entry.getUuid(), 0, assetCategoryIds,
 			assetTagNames, visible, null, null, entry.getDisplayDate(), null,
 			ContentTypes.TEXT_HTML, entry.getTitle(), entry.getDescription(),
