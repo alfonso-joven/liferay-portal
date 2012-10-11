@@ -51,7 +51,9 @@ public class LoginUsersTest extends BaseTestCase {
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
 		Thread.sleep(5000);
-		assertTrue(selenium.isTextPresent("You are signed in as BA Liferay."));
+		assertEquals(RuntimeVariables.replace("BA Liferay"),
+			selenium.getText(
+				"//div[@class='portlet-body']/a[contains(.,'BA Liferay')]"));
 		selenium.waitForVisible("link=Sign Out");
 		selenium.clickAt("link=Sign Out", RuntimeVariables.replace("Sign Out"));
 		selenium.waitForElementPresent("//input[@id='_58_login']");
@@ -78,9 +80,11 @@ public class LoginUsersTest extends BaseTestCase {
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
 		Thread.sleep(5000);
-		assertTrue(selenium.isTextPresent(
-				"You are signed in as Member Liferay."));
+		assertEquals(RuntimeVariables.replace("Member Liferay"),
+			selenium.getText(
+				"//div[@class='portlet-body']/a[contains(.,'Member Liferay')]"));
 		selenium.waitForVisible("link=Sign Out");
 		selenium.clickAt("link=Sign Out", RuntimeVariables.replace("Sign Out"));
+		selenium.waitForPageToLoad("30000");
 	}
 }

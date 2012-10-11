@@ -89,9 +89,9 @@
 	<td></td>
 </tr>
 <tr>
-	<td>assertTextPresent</td>
-	<td>You are signed in as BA Liferay.</td>
-	<td></td>
+	<td>assertText</td>
+	<td>//div[@class='portlet-body']/a[contains(.,'BA Liferay')]</td>
+	<td>BA Liferay</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
@@ -174,9 +174,9 @@
 	<td></td>
 </tr>
 <tr>
-	<td>assertTextPresent</td>
-	<td>You are signed in as Member Liferay.</td>
-	<td></td>
+	<td>assertText</td>
+	<td>//div[@class='portlet-body']/a[contains(.,'Member Liferay')]</td>
+	<td>Member Liferay</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
@@ -184,7 +184,7 @@
 	<td>Sign Out</td>
 </tr>
 <tr>
-	<td>clickAt</td>
+	<td>clickAtAndWait</td>
 	<td>link=Sign Out</td>
 	<td>Sign Out</td>
 </tr>

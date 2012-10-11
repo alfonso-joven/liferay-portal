@@ -29,19 +29,19 @@ public class Member_AssertActionsTest extends BaseTestCase {
 			RuntimeVariables.replace("Blogs Permissions Page"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("RSS (Opens New Window)"),
-			selenium.getText("//span[contains(.,'RSS')]/a"));
+			selenium.getText("//span/a[contains(.,'RSS')]"));
 		assertTrue(selenium.isElementNotPresent(
 				"//input[@value='Add Blog Entry']"));
-		assertTrue(selenium.isElementNotPresent("//span[contains(.,'Edit')]/a"));
+		assertTrue(selenium.isElementNotPresent("//span/a[contains(.,'Edit')]"));
 		assertTrue(selenium.isElementNotPresent("link=Permissions"));
 		assertTrue(selenium.isElementNotPresent(
-				"//span[contains(.,'Delete')]/a"));
+				"//span/a[contains(.,'Delete')]"));
 		selenium.clickAt("//div[@class='entry-title']/h2/a",
 			RuntimeVariables.replace("Permissions Blogs Test Entry"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isElementNotPresent("//span[contains(.,'Edit')]/a"));
+		assertTrue(selenium.isElementNotPresent("//span/a[contains(.,'Edit')]"));
 		assertTrue(selenium.isElementNotPresent("link=Permissions"));
 		assertTrue(selenium.isElementNotPresent(
-				"//span[contains(.,'Delete')]/a"));
+				"//span/a[contains(.,'Delete')]"));
 	}
 }

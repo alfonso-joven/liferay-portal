@@ -49,8 +49,8 @@ public class SA_DefineMemberRoleTest extends BaseTestCase {
 					RuntimeVariables.replace("Search"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("Member"),
-					selenium.getText("//tr[contains(.,'Member')]/td[1]/a"));
-				selenium.clickAt("//tr[contains(.,'Member')]/td[1]/a",
+					selenium.getText("//tr/td[1]/a[contains(.,'Member')]"));
+				selenium.clickAt("//tr/td[1]/a[contains(.,'Member')]",
 					RuntimeVariables.replace("Member"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("Define Permissions"),

@@ -33,10 +33,10 @@ public class Member_AddCommentTest extends BaseTestCase {
 		selenium.clickAt("//div[@class='entry-title']/h2/a",
 			RuntimeVariables.replace("Permissions Blogs Test Entry"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForVisible("//span[contains(.,'Add Comment')]/a");
+		selenium.waitForVisible("//span/a[contains(.,'Add Comment')]");
 		assertEquals(RuntimeVariables.replace("Add Comment"),
-			selenium.getText("//span[contains(.,'Add Comment')]/a"));
-		selenium.click("//span[contains(.,'Add Comment')]/a");
+			selenium.getText("//span/a[contains(.,'Add Comment')]"));
+		selenium.click("//span/a[contains(.,'Add Comment')]");
 		selenium.waitForVisible("//textarea[@name='_33_postReplyBody0']");
 		selenium.type("//textarea[@name='_33_postReplyBody0']",
 			RuntimeVariables.replace("Member Permissions Blogs Test Comment"));

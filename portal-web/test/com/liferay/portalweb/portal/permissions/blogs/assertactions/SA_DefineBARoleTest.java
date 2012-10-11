@@ -50,8 +50,8 @@ public class SA_DefineBARoleTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("Blogs Administrator"),
 					selenium.getText(
-						"//tr[contains(.,'Blogs Administrator')]/td[1]/a"));
-				selenium.clickAt("//tr[contains(.,'Blogs Administrator')]/td[1]/a",
+						"//tr/td[1]/a[contains(.,'Blogs Administrator')]"));
+				selenium.clickAt("//tr/td[1]/a[contains(.,'Blogs Administrator')]",
 					RuntimeVariables.replace("Blogs Administrator"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("Define Permissions"),

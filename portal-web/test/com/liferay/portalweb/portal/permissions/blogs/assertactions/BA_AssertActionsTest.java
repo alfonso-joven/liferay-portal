@@ -31,19 +31,19 @@ public class BA_AssertActionsTest extends BaseTestCase {
 		assertTrue(selenium.isElementPresent(
 				"//li[@class='portlet-configuration portlet-configuration-icon']/a"));
 		assertTrue(selenium.isVisible("//input[@value='Add Blog Entry']"));
-		assertTrue(selenium.isVisible("//span[contains(.,'Edit')]/a"));
-		assertTrue(selenium.isVisible("//span[contains(.,'Permissions')]/a"));
-		assertTrue(selenium.isVisible("//span[contains(.,'Delete')]/a"));
+		assertTrue(selenium.isVisible("//span/a[contains(.,'Edit')]"));
+		assertTrue(selenium.isVisible("//span/a[contains(.,'Permissions')]"));
+		assertTrue(selenium.isVisible("//span/a[contains(.,'Delete')]"));
 		assertEquals(RuntimeVariables.replace("RSS (Opens New Window)"),
-			selenium.getText("//span[contains(.,'RSS')]/a"));
+			selenium.getText("//span/a[contains(.,'RSS')]"));
 		selenium.clickAt("//div[@class='entry-title']/h2/a",
 			RuntimeVariables.replace("Permissions Blogs Test Entry"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Edit"),
-			selenium.getText("//span[contains(.,'Edit')]/a"));
+			selenium.getText("//span/a[contains(.,'Edit')]"));
 		assertEquals(RuntimeVariables.replace("Permissions"),
-			selenium.getText("xPath=(//span[contains(.,'Permissions')]/a)[3]"));
+			selenium.getText("xPath=(//span/a[contains(.,'Permissions')])[3]"));
 		assertEquals(RuntimeVariables.replace("Delete"),
-			selenium.getText("//span[contains(.,'Delete')]/a"));
+			selenium.getText("//span/a[contains(.,'Delete')]"));
 	}
 }
