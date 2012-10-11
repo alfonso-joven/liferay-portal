@@ -77,6 +77,10 @@ public interface DDMStructure extends DDMStructureModel, PersistedModel {
 	public java.lang.String getFieldType(java.lang.String fieldName)
 		throws com.liferay.portlet.dynamicdatamapping.StructureFieldException;
 
+	public java.util.Map<java.lang.String, java.util.Map<java.lang.String, java.util.Map<java.lang.String, java.lang.String>>> getLocalizedFieldsMap();
+
+	public java.util.Map<java.lang.String, java.util.Map<java.lang.String, java.util.Map<java.lang.String, java.lang.String>>> getLocalizedTransientFieldsMap();
+
 	public java.util.List<com.liferay.portlet.dynamicdatamapping.model.DDMTemplate> getTemplates()
 		throws com.liferay.portal.kernel.exception.SystemException;
 
@@ -90,6 +94,12 @@ public interface DDMStructure extends DDMStructureModel, PersistedModel {
 		throws com.liferay.portal.LocaleException;
 
 	public void setDocument(com.liferay.portal.kernel.xml.Document document);
+
+	public void setLocalizedFieldsMap(
+		java.util.Map<java.lang.String, java.util.Map<java.lang.String, java.util.Map<java.lang.String, java.lang.String>>> localizedFieldsMap);
+
+	public void setLocalizedTransientFieldsMap(
+		java.util.Map<java.lang.String, java.util.Map<java.lang.String, java.util.Map<java.lang.String, java.lang.String>>> localizedTransientFieldsMap);
 
 	public void setXsd(java.lang.String xsd);
 }
