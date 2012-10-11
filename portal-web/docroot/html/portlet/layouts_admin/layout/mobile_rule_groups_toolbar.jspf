@@ -68,7 +68,7 @@ String toolbarItem = ParamUtil.getString(request, "toolbarItem", "add");
 	function <portlet:namespace />saveRuleGroupsPriorities(dialog) {
 		<portlet:namespace />processDialog(dialog);
 
-		location.href = '<%= redirect %>';
+		location.href = '<%= redirect %>' + Liferay.Util.getHistoryParam('<portlet:namespace />');
 	}
 
 	Liferay.provide(
@@ -102,7 +102,7 @@ String toolbarItem = ParamUtil.getString(request, "toolbarItem", "add");
 					serviceParameterTypes: A.JSON.stringify(serviceParameterTypes)
 				},
 				function(response, xhr) {
-					location.href = '<%= redirect %>';
+					location.href = '<%= redirect %>' + Liferay.Util.getHistoryParam('<portlet:namespace />');
 				}
 			);
 		},
