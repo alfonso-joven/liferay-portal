@@ -6,7 +6,6 @@ AUI.add(
 		var HistoryManager = Liferay.HistoryManager;
 		var Lang = A.Lang;
 		var Node = A.Node;
-		var Widget = A.Widget;
 		var Util = Liferay.Util;
 
 		var owns = AObject.owns;
@@ -76,8 +75,6 @@ AUI.add(
 		var SELECTOR_BUTTON_CANCEL = '.aui-button-input-cancel';
 
 		var SELECTOR_CATEGORY_ITEM = '.category-item';
-
-		var SELECTOR_CATEGORY_ITEM_CHECK = '.category-item-check';
 
 		var SELECTOR_CATEGORY_NAME_INPUT = '.category-name input';
 
@@ -806,8 +803,6 @@ AUI.add(
 
 					_deleteSelected: function(event) {
 						var instance = this;
-
-						var vocabulary = true;
 
 						var ids = A.all('.vocabulary-item-check:checked').attr(DATA_VOCABULARY_ID);
 
@@ -1719,7 +1714,7 @@ AUI.add(
 							if (action == ACTION_ADD) {
 								parentCategoryId = 0;
 							}
-							else  if (action == ACTION_ADD_SUBCATEGORY) {
+							else if (action == ACTION_ADD_SUBCATEGORY) {
 								parentCategoryId = instance._selectedCategoryId;
 							}
 
@@ -2697,8 +2692,6 @@ AUI.add(
 						var instance = this;
 
 						if (instance._findCategoryByName(event)) {
-							var dropAction = instance.dropAction;
-
 							var dragNode = event.drag.get(STR_NODE).get(STR_PARENT_NODE);
 							var dropNode = event.drop.get(STR_NODE).get(STR_PARENT_NODE);
 
