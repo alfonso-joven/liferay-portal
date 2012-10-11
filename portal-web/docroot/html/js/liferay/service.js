@@ -38,6 +38,15 @@ Liferay.Service.registerClass(
 );
 
 Liferay.Service.registerClass(
+	Liferay.Service.Portal, "Contact",
+	{
+		getContact: true,
+		getContacts: true,
+		getContactsCount: true
+	}
+);
+
+Liferay.Service.registerClass(
 	Liferay.Service.Portal, "Country",
 	{
 		addCountry: true,
