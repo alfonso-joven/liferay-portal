@@ -2002,7 +2002,7 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 			JournalArticleImage articleImage, Image image)
 		throws Exception {
 
-		StringBundler sb = new StringBundler(13);
+		StringBundler sb = new StringBundler(12);
 
 		sb.append(portletDataContext.getPortletPath(PortletKeys.JOURNAL));
 		sb.append("/articles/");
@@ -2015,7 +2015,6 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 		sb.append(articleImage.getElName());
 
 		if (Validator.isNotNull(articleImage.getLanguageId())) {
-			sb.append(StringPool.UNDERLINE);
 			sb.append(articleImage.getLanguageId());
 		}
 
