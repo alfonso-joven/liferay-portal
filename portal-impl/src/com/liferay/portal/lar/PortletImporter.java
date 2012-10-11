@@ -933,9 +933,9 @@ public class PortletImporter {
 					PermissionThreadLocal.getPermissionChecker();
 
 				if (permissionChecker.hasPermission(
-					groupId, AssetVocabulary.class.getName(),
-					existingAssetVocabulary.getVocabularyId(),
-					ActionKeys.UPDATE)) {
+						groupId, AssetVocabulary.class.getName(),
+						existingAssetVocabulary.getVocabularyId(),
+						ActionKeys.UPDATE)) {
 
 					serviceContext.setScopeGroupId(groupId);
 				}

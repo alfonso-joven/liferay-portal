@@ -873,7 +873,8 @@ public class PortalImpl implements Portal {
 
 					for (Locale locale : availableLocales) {
 						if (!ArrayUtil.contains(
-							articleLocales, LocaleUtil.toLanguageId(locale))) {
+								articleLocales,
+								LocaleUtil.toLanguageId(locale))) {
 
 							alternateLocales[i] = locale;
 
