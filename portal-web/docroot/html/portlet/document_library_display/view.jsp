@@ -81,7 +81,7 @@ request.setAttribute("view.jsp-useAssetEntryQuery", String.valueOf(useAssetEntry
 	<c:when test="<%= useAssetEntryQuery %>">
 		<liferay-ui:categorization-filter
 			assetType="documents"
-			portletURL="<%= portletURL%>"
+			portletURL="<%= portletURL %>"
 		/>
 
 		<%@ include file="/html/portlet/document_library_display/view_file_entries.jspf" %>
