@@ -14,11 +14,6 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForVisible</td>
-	<td>//input[@id='_58_login']</td>
-	<td>Email Address</td>
-</tr>
-<tr>
 	<td>type</td>
 	<td>//input[@id='_58_login']</td>
 	<td>test@liferay.com</td>
@@ -29,7 +24,27 @@
 	<td>test</td>
 </tr>
 <tr>
+	<td>storeChecked</td>
+	<td>//input[@id='_58_rememberMeCheckbox']</td>
+	<td>rememberMeNotChecked</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>${rememberMeNotChecked}</td>
+	<td>RememberMeChecked</td>
+</tr>
+<tr>
 	<td>clickAt</td>
+	<td>//input[@id='_58_rememberMeCheckbox']</td>
+	<td>Remember Me</td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>RememberMeChecked</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertChecked</td>
 	<td>//input[@id='_58_rememberMeCheckbox']</td>
 	<td>Remember Me</td>
 </tr>
@@ -38,7 +53,6 @@
 	<td>//input[@value='Sign In']</td>
 	<td>Sign In</td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

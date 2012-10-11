@@ -24,8 +24,7 @@ public class User_AccessStagingTest extends BaseTestCase {
 	public void testUser_AccessStaging() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
-		selenium.open("/web/site-name-staging");
-		selenium.waitForVisible("//div[@class='staging-bar']");
+		selenium.open("/web/site-name-staging/");
 		assertEquals(RuntimeVariables.replace("Staging"),
 			selenium.getText("//div[@class='staging-bar']/ul/li/span/span"));
 		assertEquals(RuntimeVariables.replace("Site Name (Staging)"),

@@ -30,7 +30,14 @@ public class ActivateStagingTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				selenium.waitForElementPresent("link=Control Panel");
+				selenium.clickAt("//div[@id='dockbar']",
+					RuntimeVariables.replace("Dockbar"));
+				selenium.waitForElementPresent(
+					"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+				assertEquals(RuntimeVariables.replace("Go to"),
+					selenium.getText("//li[@id='_145_mySites']/a/span"));
+				selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+				selenium.waitForVisible("link=Control Panel");
 				selenium.clickAt("link=Control Panel",
 					RuntimeVariables.replace("Control Panel"));
 				selenium.waitForPageToLoad("30000");
@@ -44,13 +51,14 @@ public class ActivateStagingTest extends BaseTestCase {
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//span[@title='Actions']/ul/li/strong/a/span"));
-				selenium.click("//span[@title='Actions']/ul/li/strong/a/span");
+				selenium.clickAt("//span[@title='Actions']/ul/li/strong/a/span",
+					RuntimeVariables.replace("Actions"));
 				selenium.waitForVisible(
-					"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a");
+					"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Edit Settings')]");
 				assertEquals(RuntimeVariables.replace("Edit Settings"),
 					selenium.getText(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a"));
-				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a",
+						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Edit Settings')]"));
+				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Edit Settings')]",
 					RuntimeVariables.replace("Edit Settings"));
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.isPartialText(
@@ -76,6 +84,8 @@ public class ActivateStagingTest extends BaseTestCase {
 					RuntimeVariables.replace("Blogs"));
 
 			case 2:
+				assertTrue(selenium.isChecked(
+						"//span/span[contains(.,'Blogs')]/span/input[2]"));
 
 				boolean bookmarksChecked = selenium.isChecked(
 						"//span/span[contains(.,'Bookmarks')]/span/input[2]");
@@ -90,6 +100,8 @@ public class ActivateStagingTest extends BaseTestCase {
 					RuntimeVariables.replace("Bookmarks"));
 
 			case 3:
+				assertTrue(selenium.isChecked(
+						"//span/span[contains(.,'Bookmarks')]/span/input[2]"));
 
 				boolean calendarChecked = selenium.isChecked(
 						"//span/span[contains(.,'Calendar')]/span/input[2]");
@@ -104,34 +116,40 @@ public class ActivateStagingTest extends BaseTestCase {
 					RuntimeVariables.replace("Calendar"));
 
 			case 4:
+				assertTrue(selenium.isChecked(
+						"//span/span[contains(.,'Calendar')]/span/input[2]"));
 
-				boolean documentLibraryChecked = selenium.isChecked(
+				boolean documentsAndMediaChecked = selenium.isChecked(
 						"//span/span[contains(.,'Documents and Media')]/span/input[2]");
 
-				if (documentLibraryChecked) {
+				if (documentsAndMediaChecked) {
 					label = 5;
 
 					continue;
 				}
 
 				selenium.clickAt("//span/span[contains(.,'Documents and Media')]/span/input[2]",
-					RuntimeVariables.replace("DocumentLibrary"));
+					RuntimeVariables.replace("Documents and Media"));
 
 			case 5:
+				assertTrue(selenium.isChecked(
+						"//span/span[contains(.,'Documents and Media')]/span/input[2]"));
 
-				boolean documentLibraryDisplayChecked = selenium.isChecked(
+				boolean documentsAndMediaDisplayChecked = selenium.isChecked(
 						"//span/span[contains(.,'Documents and Media Display')]/span/input[2]");
 
-				if (documentLibraryDisplayChecked) {
+				if (documentsAndMediaDisplayChecked) {
 					label = 6;
 
 					continue;
 				}
 
 				selenium.clickAt("//span/span[contains(.,'Documents and Media Display')]/span/input[2]",
-					RuntimeVariables.replace("DocumentLibraryDisplay"));
+					RuntimeVariables.replace("Documents and Media Display"));
 
 			case 6:
+				assertTrue(selenium.isChecked(
+						"//span/span[contains(.,'Documents and Media Display')]/span/input[2]"));
 
 				boolean dynamicDataMappingChecked = selenium.isChecked(
 						"//span/span[contains(.,'Dynamic Data Mapping')]/span/input[2]");
@@ -146,6 +164,8 @@ public class ActivateStagingTest extends BaseTestCase {
 					RuntimeVariables.replace("Dynamic Data Mapping"));
 
 			case 7:
+				assertTrue(selenium.isChecked(
+						"//span/span[contains(.,'Dynamic Data Mapping')]/span/input[2]"));
 
 				boolean messageBoardsChecked = selenium.isChecked(
 						"//span/span[contains(.,'Message Boards')]/span/input[2]");
@@ -160,6 +180,8 @@ public class ActivateStagingTest extends BaseTestCase {
 					RuntimeVariables.replace("Message Boards"));
 
 			case 8:
+				assertTrue(selenium.isChecked(
+						"//span/span[contains(.,'Message Boards')]/span/input[2]"));
 
 				boolean pageCommentsChecked = selenium.isChecked(
 						"//span/span[contains(.,'Page Comments')]/span/input[2]");
@@ -174,6 +196,8 @@ public class ActivateStagingTest extends BaseTestCase {
 					RuntimeVariables.replace("Page Comments"));
 
 			case 9:
+				assertTrue(selenium.isChecked(
+						"//span/span[contains(.,'Page Comments')]/span/input[2]"));
 
 				boolean pageRatingsChecked = selenium.isChecked(
 						"//span/span[contains(.,'Page Ratings')]/span/input[2]");
@@ -188,6 +212,8 @@ public class ActivateStagingTest extends BaseTestCase {
 					RuntimeVariables.replace("Page Ratings"));
 
 			case 10:
+				assertTrue(selenium.isChecked(
+						"//span/span[contains(.,'Page Ratings')]/span/input[2]"));
 
 				boolean pollsChecked = selenium.isChecked(
 						"//span/span[contains(.,'Polls')]/span/input[2]");
@@ -202,6 +228,8 @@ public class ActivateStagingTest extends BaseTestCase {
 					RuntimeVariables.replace("Polls"));
 
 			case 11:
+				assertTrue(selenium.isChecked(
+						"//span/span[contains(.,'Polls')]/span/input[2]"));
 
 				boolean pollsDisplayChecked = selenium.isChecked(
 						"//span/span[contains(.,'Polls Display')]/span/input[2]");
@@ -216,6 +244,8 @@ public class ActivateStagingTest extends BaseTestCase {
 					RuntimeVariables.replace("Polls Display"));
 
 			case 12:
+				assertTrue(selenium.isChecked(
+						"//span/span[contains(.,'Polls Display')]/span/input[2]"));
 
 				boolean webContentChecked = selenium.isChecked(
 						"//span/span[contains(.,'Web Content')]/span/input[2]");
@@ -230,6 +260,8 @@ public class ActivateStagingTest extends BaseTestCase {
 					RuntimeVariables.replace("Web Content"));
 
 			case 13:
+				assertTrue(selenium.isChecked(
+						"//span/span[contains(.,'Web Content')]/span/input[2]"));
 
 				boolean webContentDisplayChecked = selenium.isChecked(
 						"//span/span[contains(.,'Web Content Display')]/span/input[2]");
@@ -244,6 +276,8 @@ public class ActivateStagingTest extends BaseTestCase {
 					RuntimeVariables.replace("Web Content Display"));
 
 			case 14:
+				assertTrue(selenium.isChecked(
+						"//span/span[contains(.,'Web Content Display')]/span/input[2]"));
 
 				boolean wikiChecked = selenium.isChecked(
 						"//span/span[contains(.,'Wiki')]/span/input[2]");
@@ -258,6 +292,8 @@ public class ActivateStagingTest extends BaseTestCase {
 					RuntimeVariables.replace("Wiki"));
 
 			case 15:
+				assertTrue(selenium.isChecked(
+						"//span/span[contains(.,'Wiki')]/span/input[2]"));
 
 				boolean wikiDisplayChecked = selenium.isChecked(
 						"//span/span[contains(.,'Wiki Display')]/span/input[2]");
@@ -272,11 +308,46 @@ public class ActivateStagingTest extends BaseTestCase {
 					RuntimeVariables.replace("Wiki Display Checked"));
 
 			case 16:
+				assertTrue(selenium.isChecked(
+						"//span/span[contains(.,'Wiki Display')]/span/input[2]"));
 				selenium.clickAt("//input[@value='Save']",
 					RuntimeVariables.replace("Save"));
 				selenium.waitForPageToLoad("30000");
+				assertEquals(RuntimeVariables.replace(
+						"Your request completed successfully."),
+					selenium.getText("//div[@class='portlet-msg-success']"));
 				assertEquals(RuntimeVariables.replace("Site Name (Staging)"),
 					selenium.getText("//h1[@class='header-title']/span"));
+				assertTrue(selenium.isChecked(
+						"//span/span[contains(.,'Blogs')]/span/input[2]"));
+				assertTrue(selenium.isChecked(
+						"//span/span[contains(.,'Bookmarks')]/span/input[2]"));
+				assertTrue(selenium.isChecked(
+						"//span/span[contains(.,'Calendar')]/span/input[2]"));
+				assertTrue(selenium.isChecked(
+						"//span/span[contains(.,'Documents and Media')]/span/input[2]"));
+				assertTrue(selenium.isChecked(
+						"//span/span[contains(.,'Documents and Media Display')]/span/input[2]"));
+				assertTrue(selenium.isChecked(
+						"//span/span[contains(.,'Dynamic Data Mapping')]/span/input[2]"));
+				assertTrue(selenium.isChecked(
+						"//span/span[contains(.,'Message Boards')]/span/input[2]"));
+				assertTrue(selenium.isChecked(
+						"//span/span[contains(.,'Page Comments')]/span/input[2]"));
+				assertTrue(selenium.isChecked(
+						"//span/span[contains(.,'Page Ratings')]/span/input[2]"));
+				assertTrue(selenium.isChecked(
+						"//span/span[contains(.,'Polls')]/span/input[2]"));
+				assertTrue(selenium.isChecked(
+						"//span/span[contains(.,'Polls Display')]/span/input[2]"));
+				assertTrue(selenium.isChecked(
+						"//span/span[contains(.,'Web Content')]/span/input[2]"));
+				assertTrue(selenium.isChecked(
+						"//span/span[contains(.,'Web Content Display')]/span/input[2]"));
+				assertTrue(selenium.isChecked(
+						"//span/span[contains(.,'Wiki')]/span/input[2]"));
+				assertTrue(selenium.isChecked(
+						"//span/span[contains(.,'Wiki Display')]/span/input[2]"));
 
 			case 100:
 				label = -1;

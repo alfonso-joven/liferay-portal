@@ -22,18 +22,41 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
  */
 public class SA_LoginTest extends BaseTestCase {
 	public void testSA_Login() throws Exception {
-		selenium.selectWindow("null");
-		selenium.selectFrame("relative=top");
-		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("//input[@id='_58_login']");
-		selenium.type("//input[@id='_58_login']",
-			RuntimeVariables.replace("test@liferay.com"));
-		selenium.type("//input[@id='_58_password']",
-			RuntimeVariables.replace("test"));
-		selenium.clickAt("//input[@id='_58_rememberMeCheckbox']",
-			RuntimeVariables.replace("Remember Me"));
-		selenium.clickAt("//input[@value='Sign In']",
-			RuntimeVariables.replace("Sign In"));
-		selenium.waitForPageToLoad("30000");
+		int label = 1;
+
+		while (label >= 1) {
+			switch (label) {
+			case 1:
+				selenium.selectWindow("null");
+				selenium.selectFrame("relative=top");
+				selenium.open("/web/guest/home/");
+				selenium.type("//input[@id='_58_login']",
+					RuntimeVariables.replace("test@liferay.com"));
+				selenium.type("//input[@id='_58_password']",
+					RuntimeVariables.replace("test"));
+
+				boolean rememberMeNotChecked = selenium.isChecked(
+						"//input[@id='_58_rememberMeCheckbox']");
+
+				if (rememberMeNotChecked) {
+					label = 2;
+
+					continue;
+				}
+
+				selenium.clickAt("//input[@id='_58_rememberMeCheckbox']",
+					RuntimeVariables.replace("Remember Me"));
+
+			case 2:
+				assertTrue(selenium.isChecked(
+						"//input[@id='_58_rememberMeCheckbox']"));
+				selenium.clickAt("//input[@value='Sign In']",
+					RuntimeVariables.replace("Sign In"));
+				selenium.waitForPageToLoad("30000");
+
+			case 100:
+				label = -1;
+			}
+		}
 	}
 }

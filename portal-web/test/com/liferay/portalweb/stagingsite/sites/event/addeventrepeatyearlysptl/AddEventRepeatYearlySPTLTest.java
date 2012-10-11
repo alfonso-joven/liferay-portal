@@ -30,7 +30,14 @@ public class AddEventRepeatYearlySPTLTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				selenium.waitForElementPresent("link=Site Name");
+				selenium.clickAt("//div[@id='dockbar']",
+					RuntimeVariables.replace("Dockbar"));
+				selenium.waitForElementPresent(
+					"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+				assertEquals(RuntimeVariables.replace("Go to"),
+					selenium.getText("//li[@id='_145_mySites']/a/span"));
+				selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+				selenium.waitForVisible("link=Site Name");
 				selenium.clickAt("link=Site Name",
 					RuntimeVariables.replace("Site Name"));
 				selenium.waitForPageToLoad("30000");
@@ -46,14 +53,16 @@ public class AddEventRepeatYearlySPTLTest extends BaseTestCase {
 						"//body[contains(@class,'local-staging')]"));
 				assertTrue(selenium.isElementNotPresent(
 						"//body[contains(@class,'live-view')]"));
-				assertTrue(selenium.isElementPresent(
-						"//a[@id='_170_0publishScheduleLink']"));
+				Thread.sleep(5000);
+				selenium.clickAt("//span[@class='staging-icon-menu-container']/span/ul/li/strong/a",
+					RuntimeVariables.replace("Staging Drop Down"));
+				selenium.waitForVisible("//a[@id='_170_0publishScheduleLink']");
 				selenium.clickAt("//a[@id='_170_0publishScheduleLink']",
 					RuntimeVariables.replace("Schedule Publication to Live"));
 				selenium.waitForVisible("//div[4]/div/a");
 
 				boolean startDateMonthVisible = selenium.isVisible(
-						"_88_schedulerStartDateMonth");
+						"//select[@id='_88_schedulerStartDateMonth']");
 
 				if (startDateMonthVisible) {
 					label = 2;
@@ -65,8 +74,7 @@ public class AddEventRepeatYearlySPTLTest extends BaseTestCase {
 					RuntimeVariables.replace("Plus"));
 
 			case 2:
-				Thread.sleep(5000);
-				selenium.waitForElementPresent(
+				selenium.waitForVisible(
 					"//input[@id='_88_recurrenceTypeYearly']");
 				selenium.clickAt("//input[@id='_88_recurrenceTypeYearly']",
 					RuntimeVariables.replace("Yearly"));
