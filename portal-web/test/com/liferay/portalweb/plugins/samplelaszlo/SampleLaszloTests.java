@@ -26,8 +26,8 @@ import junit.framework.TestSuite;
 public class SampleLaszloTests extends BaseTestSuite {
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
-		testSuite.addTestSuite(AddPageTest.class);
-		testSuite.addTestSuite(AddPortletTest.class);
+		testSuite.addTestSuite(AddPageSLTest.class);
+		testSuite.addTestSuite(AddPortletSLTest.class);
 		testSuite.addTestSuite(TearDownPageTest.class);
 
 		return testSuite;
