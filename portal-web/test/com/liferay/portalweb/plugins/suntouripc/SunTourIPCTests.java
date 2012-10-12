@@ -26,7 +26,7 @@ import junit.framework.TestSuite;
 public class SunTourIPCTests extends BaseTestSuite {
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
-		testSuite.addTestSuite(AddPageTest.class);
+		testSuite.addTestSuite(AddPageSTITest.class);
 		testSuite.addTestSuite(AddPortletTourDetailsTest.class);
 		testSuite.addTestSuite(AddPortletTourListingsTest.class);
 		testSuite.addTestSuite(AddPortletTourMapTest.class);
