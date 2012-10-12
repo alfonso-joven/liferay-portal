@@ -25,7 +25,14 @@ public class SA_AssignUserRolesTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Go to"),
+			selenium.getText("//li[@id='_145_mySites']/a/span"));
+		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
@@ -38,8 +45,8 @@ public class SA_AssignUserRolesTest extends BaseTestCase {
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Portlet"),
-			selenium.getText("//tbody/tr[3]/td[2]/a"));
-		selenium.clickAt("//tbody/tr[3]/td[2]/a",
+			selenium.getText("//tr[contains(.,'Portlet')]/td[2]/a"));
+		selenium.clickAt("//tr[contains(.,'Portlet')]/td[2]/a",
 			RuntimeVariables.replace("Portlet"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isPartialText("//a[@id='_125_rolesLink']", "Roles"));
@@ -51,16 +58,18 @@ public class SA_AssignUserRolesTest extends BaseTestCase {
 		selenium.clickAt("//div[6]/span[1]/a/span",
 			RuntimeVariables.replace("Select"));
 		Thread.sleep(5000);
+		selenium.waitForPopUp("null", RuntimeVariables.replace("30000"));
 		selenium.selectWindow("title=Users and Organizations");
-		selenium.waitForVisible("link=Portlet");
+		selenium.waitForVisible("//tr[contains(.,'Portlet')]/td[1]/a");
 		selenium.type("//input[@id='_125_keywords']",
 			RuntimeVariables.replace("Portlet"));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Portlet"),
-			selenium.getText("//tr[3]/td/a"));
-		selenium.clickAt("//tr[3]/td/a", RuntimeVariables.replace("Portlet"));
+			selenium.getText("//tr[contains(.,'Portlet')]/td[1]/a"));
+		selenium.clickAt("//tr[contains(.,'Portlet')]/td[1]/a",
+			RuntimeVariables.replace("Portlet"));
 		selenium.selectWindow("null");
 		selenium.waitForPartialText("//div[@id='_125_rolesSearchContainer']",
 			"Portlet");

@@ -14,14 +14,9 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
-	<td>link=Blogs Permissions Page</td>
-	<td>Blogs Permissions Page</td>
-</tr>
-<tr>
 	<td>clickAtAndWait</td>
-	<td>link=Blogs Permissions Page</td>
-	<td>Blogs Permissions Page</td>
+	<td>link=Blogs Test Page</td>
+	<td>Blogs Test Page</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -29,14 +24,24 @@
 	<td>Permissions</td>
 </tr>
 <tr>
-	<td>assertChecked</td>
+	<td>storeChecked</td>
+	<td>//input[@id='portlet_ACTION_ADD_ENTRY']</td>
+	<td>portletAddEntryChecked</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>!${portletAddEntryChecked}</td>
+	<td>PortletAddEntryChecked</td>
+</tr>
+<tr>
+	<td>clickAt</td>
 	<td>//input[@id='portlet_ACTION_ADD_ENTRY']</td>
 	<td>Portlet Add Entry</td>
 </tr>
 <tr>
-	<td>uncheck</td>
-	<td>//input[@id='portlet_ACTION_ADD_ENTRY']</td>
-	<td>Portlet Add Entry</td>
+	<td>label</td>
+	<td>PortletAddEntryChecked</td>
+	<td></td>
 </tr>
 <tr>
 	<td>assertNotChecked</td>

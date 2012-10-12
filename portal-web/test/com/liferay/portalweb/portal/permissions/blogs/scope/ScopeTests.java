@@ -15,7 +15,12 @@
 package com.liferay.portalweb.portal.permissions.blogs.scope;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
+import com.liferay.portalweb.portal.controlpanel.users.user.signin.SignInTest;
+import com.liferay.portalweb.portal.controlpanel.users.user.signin.SignOutTest;
 import com.liferay.portalweb.portal.util.TearDownPageTest;
+import com.liferay.portalweb.portlet.blogs.blogsentry.addblogsentry.TearDownBlogsEntryTest;
+import com.liferay.portalweb.portlet.blogs.portlet.addportletblogs.AddPageBlogsTest;
+import com.liferay.portalweb.portlet.blogs.portlet.addportletblogs.AddPortletBlogsTest;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -26,8 +31,8 @@ import junit.framework.TestSuite;
 public class ScopeTests extends BaseTestSuite {
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
-		testSuite.addTestSuite(SA_AddPageTest.class);
-		testSuite.addTestSuite(SA_AddPortletTest.class);
+		testSuite.addTestSuite(AddPageBlogsTest.class);
+		testSuite.addTestSuite(AddPortletBlogsTest.class);
 		testSuite.addTestSuite(SA_AddUserScopeTest.class);
 		testSuite.addTestSuite(SA_AddScopeRoleTest.class);
 		testSuite.addTestSuite(SA_DefineScopeRoleTest.class);
@@ -36,20 +41,20 @@ public class ScopeTests extends BaseTestSuite {
 		testSuite.addTestSuite(SA_AddPortletScopeSiteTest.class);
 		testSuite.addTestSuite(SA_AssignScopeMemberToScopeSiteTest.class);
 		testSuite.addTestSuite(SA_AssignUserRolesTest.class);
-		testSuite.addTestSuite(LogoutTest.class);
+		testSuite.addTestSuite(SignOutTest.class);
 		testSuite.addTestSuite(LoginUsersTest.class);
 		testSuite.addTestSuite(Scope_LoginTest.class);
 		testSuite.addTestSuite(Scope_AddGuestSiteScopeEntryTest.class);
 		testSuite.addTestSuite(Scope_AddScopeSiteScopeEntryTest.class);
-		testSuite.addTestSuite(LogoutTest.class);
-		testSuite.addTestSuite(SA_LoginTest.class);
+		testSuite.addTestSuite(SignOutTest.class);
+		testSuite.addTestSuite(SignInTest.class);
 		testSuite.addTestSuite(SA_LimitScopePermissionsScopeSiteTest.class);
-		testSuite.addTestSuite(LogoutTest.class);
+		testSuite.addTestSuite(SignOutTest.class);
 		testSuite.addTestSuite(Scope_LoginTest.class);
 		testSuite.addTestSuite(Scope_AssertCannotAddSiteScopeEntryTest.class);
 		testSuite.addTestSuite(Scope_AddScopeSiteScopeEntryTest.class);
-		testSuite.addTestSuite(LogoutTest.class);
-		testSuite.addTestSuite(SA_LoginTest.class);
+		testSuite.addTestSuite(SignOutTest.class);
+		testSuite.addTestSuite(SignInTest.class);
 		testSuite.addTestSuite(TearDownBlogsEntryTest.class);
 		testSuite.addTestSuite(TearDownBlogsRolesTest.class);
 		testSuite.addTestSuite(TearDownUserTest.class);

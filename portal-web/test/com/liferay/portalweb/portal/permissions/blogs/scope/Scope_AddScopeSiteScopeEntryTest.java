@@ -25,7 +25,6 @@ public class Scope_AddScopeSiteScopeEntryTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/scope-site/scope-site-test-page/");
-		selenium.waitForElementPresent("//input[@value='Add Blog Entry']");
 		selenium.clickAt("//input[@value='Add Blog Entry']",
 			RuntimeVariables.replace("Add Blog Entry"));
 		selenium.waitForPageToLoad("30000");

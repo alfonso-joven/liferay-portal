@@ -15,7 +15,12 @@
 package com.liferay.portalweb.portal.permissions.blogs.assertactions;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
+import com.liferay.portalweb.portal.controlpanel.users.user.signin.SignInTest;
+import com.liferay.portalweb.portal.controlpanel.users.user.signin.SignOutTest;
 import com.liferay.portalweb.portal.util.TearDownPageTest;
+import com.liferay.portalweb.portlet.blogs.blogsentry.addblogsentry.TearDownBlogsEntryTest;
+import com.liferay.portalweb.portlet.blogs.portlet.addportletblogs.AddPageBlogsTest;
+import com.liferay.portalweb.portlet.blogs.portlet.addportletblogs.AddPortletBlogsTest;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -33,24 +38,24 @@ public class AssertActionsTests extends BaseTestSuite {
 		testSuite.addTestSuite(SA_AddMemberRoleTest.class);
 		testSuite.addTestSuite(SA_DefineMemberRoleTest.class);
 		testSuite.addTestSuite(SA_AssignUserRolesTest.class);
-		testSuite.addTestSuite(SA_AddPageTest.class);
-		testSuite.addTestSuite(SA_AddPortletTest.class);
-		testSuite.addTestSuite(LogoutTest.class);
+		testSuite.addTestSuite(AddPageBlogsTest.class);
+		testSuite.addTestSuite(AddPortletBlogsTest.class);
+		testSuite.addTestSuite(SignOutTest.class);
 		testSuite.addTestSuite(LoginUsersTest.class);
 		testSuite.addTestSuite(BA_LoginTest.class);
 		testSuite.addTestSuite(BA_AddEntryTest.class);
 		testSuite.addTestSuite(BA_AddCommentTest.class);
 		testSuite.addTestSuite(BA_AssertActionsTest.class);
-		testSuite.addTestSuite(LogoutTest.class);
+		testSuite.addTestSuite(SignOutTest.class);
 		testSuite.addTestSuite(Member_LoginTest.class);
 		testSuite.addTestSuite(Member_ViewEntryTest.class);
 		testSuite.addTestSuite(Member_AddCommentTest.class);
 		testSuite.addTestSuite(Member_AssertActionsTest.class);
-		testSuite.addTestSuite(LogoutTest.class);
+		testSuite.addTestSuite(SignOutTest.class);
 		testSuite.addTestSuite(Guest_ViewEntryTest.class);
 		testSuite.addTestSuite(Guest_ViewCommentsTest.class);
 		testSuite.addTestSuite(Guest_AssertActionsTest.class);
-		testSuite.addTestSuite(SA_LoginTest.class);
+		testSuite.addTestSuite(SignInTest.class);
 		testSuite.addTestSuite(TearDownBlogsEntryTest.class);
 		testSuite.addTestSuite(TearDownBlogsRolesTest.class);
 		testSuite.addTestSuite(TearDownUserTest.class);

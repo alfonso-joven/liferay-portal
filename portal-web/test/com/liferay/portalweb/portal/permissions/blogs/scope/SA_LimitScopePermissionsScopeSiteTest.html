@@ -14,7 +14,27 @@
 	<td></td>
 </tr>
 <tr>
+	<td>clickAt</td>
+	<td>//div[@id='dockbar']</td>
+	<td>Dockbar</td>
+</tr>
+<tr>
 	<td>waitForElementPresent</td>
+	<td>//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]</td>
+	<td>AUI Editable Min</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//li[@id='_145_mySites']/a/span</td>
+	<td>Go to</td>
+</tr>
+<tr>
+	<td>mouseOver</td>
+	<td>//li[@id='_145_mySites']/a/span</td>
+	<td>Go to</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
 	<td>link=Control Panel</td>
 	<td>Control Panel</td>
 </tr>
@@ -40,17 +60,22 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//tr[3]/td/a</td>
+	<td>//tr[contains(.,'Scope')]/td[1]/a</td>
 	<td>Scope</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>//tr[3]/td/a</td>
+	<td>//tr[contains(.,'Scope')]/td[1]/a</td>
 	<td>Scope</td>
 </tr>
 <tr>
+	<td>assertText</td>
+	<td>//ul[@class='aui-tabview-list']/li/span/a[contains(.,'Define Permissions')]</td>
+	<td>Define Permissions</td>
+</tr>
+<tr>
 	<td>clickAtAndWait</td>
-	<td>link=Define Permissions</td>
+	<td>//ul[@class='aui-tabview-list']/li/span/a[contains(.,'Define Permissions')]</td>
 	<td>Define Permissions</td>
 </tr>
 <tr>
@@ -60,7 +85,7 @@
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>link=Limit Scope</td>
+	<td>//tr[contains(.,'Limit Scope')]/td[4]/span/a</td>
 	<td>Limit Scope</td>
 </tr>
 <tr>
@@ -95,7 +120,7 @@
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>link=Scope Site</td>
+	<td>//tr[contains(.,'Scope Site')]/td[1]/a</td>
 	<td>Scope Site</td>
 </tr>
 <tr>
@@ -135,22 +160,22 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//h3</td>
+	<td>//form[@id='_128_fm']/h3</td>
 	<td>Blogs</td>
 </tr>
 <tr>
 	<td>assertChecked</td>
-	<td>//td/input</td>
-	<td>Checkbox</td>
+	<td>//input[@value='com.liferay.portlet.blogsADD_ENTRY']</td>
+	<td>Add Entry Checkbox</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//tr[3]/td[2]</td>
+	<td>//tr[contains(.,'Add Entry')]/td[2]</td>
 	<td>Add Entry</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//tr[3]/td[3]</td>
+	<td>//tr[contains(.,'Scope Site')]/td[3]</td>
 	<td>Scope Site</td>
 </tr>
 </tbody></table>
