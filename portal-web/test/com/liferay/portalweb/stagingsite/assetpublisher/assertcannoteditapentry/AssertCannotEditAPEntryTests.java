@@ -14,9 +14,14 @@
 
 package com.liferay.portalweb.stagingsite.assetpublisher.assertcannoteditapentry;
 
+import com.liferay.portalweb.asset.assetpublisher.portlet.addportletapsite.AddPageAPSiteTest;
+import com.liferay.portalweb.asset.assetpublisher.portlet.addportletapsite.AddPortletAPSiteTest;
 import com.liferay.portalweb.portal.BaseTestSuite;
 import com.liferay.portalweb.portal.controlpanel.sites.site.addsite.AddSiteTest;
 import com.liferay.portalweb.portal.controlpanel.sites.site.addsite.TearDownSiteTest;
+import com.liferay.portalweb.portal.controlpanel.sites.sitepage.addsitepublicpage.AddSitesPublicPageTest;
+import com.liferay.portalweb.portlet.blogs.portlet.addportletblogssite.AddPageBlogsSiteTest;
+import com.liferay.portalweb.portlet.blogs.portlet.addportletblogssite.AddPortletBlogsSiteTest;
 import com.liferay.portalweb.stagingsite.assetpublisher.asserteditapentry.AssertEditAPEntryTest;
 import com.liferay.portalweb.stagingsite.sites.site.activatestaging.ActivateStagingTest;
 import com.liferay.portalweb.stagingsite.sites.site.deactivatestaging.DeactivateStagingTest;
@@ -31,11 +36,11 @@ public class AssertCannotEditAPEntryTests extends BaseTestSuite {
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
 		testSuite.addTestSuite(AddSiteTest.class);
-		testSuite.addTestSuite(AddSitePublicPageTest.class);
-		testSuite.addTestSuite(AddPageAPTest.class);
-		testSuite.addTestSuite(AddPortletAPTest.class);
-		testSuite.addTestSuite(AddPageBlogsTest.class);
-		testSuite.addTestSuite(AddPortletBlogsTest.class);
+		testSuite.addTestSuite(AddSitesPublicPageTest.class);
+		testSuite.addTestSuite(AddPageAPSiteTest.class);
+		testSuite.addTestSuite(AddPortletAPSiteTest.class);
+		testSuite.addTestSuite(AddPageBlogsSiteTest.class);
+		testSuite.addTestSuite(AddPortletBlogsSiteTest.class);
 		testSuite.addTestSuite(AddBlogsEntryTest.class);
 		testSuite.addTestSuite(AssertEditAPEntryTest.class);
 		testSuite.addTestSuite(ActivateStagingTest.class);

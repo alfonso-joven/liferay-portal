@@ -40,7 +40,7 @@ public class AssertCannotEditAPEntryTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Blogs Entry Title"),
 			selenium.getText("//h3[@class='asset-title']/a"));
-		assertTrue(selenium.isElementNotPresent("link=Edit Blogs Entry Title"));
+		assertFalse(selenium.isTextPresent("//span/a[contains(.,'Edit')]"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry Content"),
 			selenium.getText("//div[@class='asset-summary']"));
 	}

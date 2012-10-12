@@ -32,7 +32,7 @@ public class AssertEditAPEntryTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
-		selenium.waitForElementPresent("link=Site Name");
+		selenium.waitForVisible("link=Site Name");
 		selenium.clickAt("link=Site Name", RuntimeVariables.replace("Site Name"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Asset Publisher Test Page",
@@ -40,7 +40,8 @@ public class AssertEditAPEntryTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Blogs Entry Title"),
 			selenium.getText("//h3[@class='asset-title']/a"));
-		assertTrue(selenium.isElementPresent("link=Edit Blogs Entry Title"));
+		assertEquals(RuntimeVariables.replace("Edit Blogs Entry Title"),
+			selenium.getText("//span/a[contains(.,'Edit')]"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry Content"),
 			selenium.getText("//div[@class='asset-summary']"));
 	}
