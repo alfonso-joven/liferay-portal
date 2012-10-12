@@ -45,8 +45,8 @@ public class SA_LimitScopePermissionsScopeSiteTest extends BaseTestCase {
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Scope"),
-			selenium.getText("//tr[contains(.,'Scope')]/td[1]/a"));
-		selenium.clickAt("//tr[contains(.,'Scope')]/td[1]/a",
+			selenium.getText("//tr/td[1]/a[contains(.,'Scope')]"));
+		selenium.clickAt("//tr/td[1]/a[contains(.,'Scope')]",
 			RuntimeVariables.replace("Scope"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Define Permissions"),
@@ -58,7 +58,7 @@ public class SA_LimitScopePermissionsScopeSiteTest extends BaseTestCase {
 		selenium.select("//select[@id='_128_add-permissions']",
 			RuntimeVariables.replace("label=Blogs"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//tr[contains(.,'Limit Scope')]/td[4]/span/a",
+		selenium.clickAt("//tr/td[4]/span/a[contains(.,'Limit Scope')]",
 			RuntimeVariables.replace("Limit Scope"));
 		Thread.sleep(5000);
 		selenium.waitForPopUp("null", RuntimeVariables.replace("30000"));
@@ -69,7 +69,7 @@ public class SA_LimitScopePermissionsScopeSiteTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//tr[contains(.,'Scope Site')]/td[1]/a",
+		selenium.clickAt("//tr/td[1]/a[contains(.,'Scope')]",
 			RuntimeVariables.replace("Scope Site"));
 		Thread.sleep(5000);
 		selenium.selectWindow("null");

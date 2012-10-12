@@ -49,8 +49,8 @@ public class SA_DefineScopeRoleTest extends BaseTestCase {
 					RuntimeVariables.replace("Search"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("Scope"),
-					selenium.getText("//tr[contains(.,'Scope')]/td[1]/a"));
-				selenium.clickAt("//tr[contains(.,'Scope')]/td[1]/a",
+					selenium.getText("//tr/td[1]/a[contains(.,'Scope')]"));
+				selenium.clickAt("//tr/td[1]/a[contains(.,'Scope')]",
 					RuntimeVariables.replace("Scope"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("Define Permissions"),

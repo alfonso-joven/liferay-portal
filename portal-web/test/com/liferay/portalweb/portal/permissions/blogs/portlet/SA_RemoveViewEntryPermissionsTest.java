@@ -55,36 +55,8 @@ public class SA_RemoveViewEntryPermissionsTest extends BaseTestCase {
 			case 2:
 				assertFalse(selenium.isChecked(
 						"//input[@id='guest_ACTION_VIEW']"));
-
-				boolean portletViewChecked = selenium.isChecked(
-						"//input[@id='portlet_ACTION_VIEW']");
-
-				if (!portletViewChecked) {
-					label = 3;
-
-					continue;
-				}
-
-				selenium.clickAt("//input[@id='portlet_ACTION_VIEW']",
-					RuntimeVariables.replace("Portlet View"));
-
-			case 3:
 				assertFalse(selenium.isChecked(
 						"//input[@id='portlet_ACTION_VIEW']"));
-
-				boolean powerUserViewChecked = selenium.isChecked(
-						"//input[@id='power-user_ACTION_VIEW']");
-
-				if (!powerUserViewChecked) {
-					label = 4;
-
-					continue;
-				}
-
-				selenium.clickAt("//input[@id='power-user_ACTION_VIEW']",
-					RuntimeVariables.replace("Power User View"));
-
-			case 4:
 				assertFalse(selenium.isChecked(
 						"//input[@id='power-user_ACTION_VIEW']"));
 				selenium.clickAt("//input[@value='Save']",

@@ -31,7 +31,7 @@ public class Portlet_EditEntryTest extends BaseTestCase {
 		selenium.clickAt("//div[@class='entry-title']/h2/a",
 			RuntimeVariables.replace("Blogs Entry Title Temporary"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//tr[contains(.,'Edit')]/td[1]/span/a",
+		selenium.clickAt("//tr/td[1]/span/a[contains(.,'Edit')]",
 			RuntimeVariables.replace("Edit"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_33_title']",

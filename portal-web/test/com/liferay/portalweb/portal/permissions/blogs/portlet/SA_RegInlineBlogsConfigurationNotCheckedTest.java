@@ -23,58 +23,32 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class SA_RegInlineBlogsConfigurationNotCheckedTest extends BaseTestCase {
 	public void testSA_RegInlineBlogsConfigurationNotChecked()
 		throws Exception {
-		int label = 1;
-
-		while (label >= 1) {
-			switch (label) {
-			case 1:
-				selenium.selectWindow("null");
-				selenium.selectFrame("relative=top");
-				selenium.open("/web/guest/home/");
-				selenium.clickAt("link=Blogs Test Page",
-					RuntimeVariables.replace("Blogs Test Page"));
-				selenium.waitForPageToLoad("30000");
-				Thread.sleep(5000);
-				assertEquals(RuntimeVariables.replace("Options"),
-					selenium.getText("//span[@title='Options']/ul/li/strong/a"));
-				selenium.clickAt("//span[@title='Options']/ul/li/strong/a",
-					RuntimeVariables.replace("Options"));
-				selenium.waitForVisible(
-					"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]");
-				assertEquals(RuntimeVariables.replace("Configuration"),
-					selenium.getText(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]"));
-				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]",
-					RuntimeVariables.replace("Configuration"));
-				selenium.waitForVisible(
-					"//iframe[@id='_33_configurationIframeDialog']");
-				selenium.selectFrame(
-					"//iframe[@id='_33_configurationIframeDialog']");
-				selenium.waitForVisible("link=Permissions");
-				selenium.clickAt("link=Permissions",
-					RuntimeVariables.replace("Permissions"));
-				selenium.waitForPageToLoad("30000");
-
-				boolean portletConfigurationChecked = selenium.isChecked(
-						"//input[@id='portlet_ACTION_CONFIGURATION']");
-
-				if (!portletConfigurationChecked) {
-					label = 2;
-
-					continue;
-				}
-
-				selenium.clickAt("//input[@id='portlet_ACTION_CONFIGURATION']",
-					RuntimeVariables.replace("Portlet Configuration"));
-
-			case 2:
-				assertFalse(selenium.isChecked(
-						"//input[@id='portlet_ACTION_CONFIGURATION']"));
-				selenium.selectFrame("relative=top");
-
-			case 100:
-				label = -1;
-			}
-		}
+		selenium.selectWindow("null");
+		selenium.selectFrame("relative=top");
+		selenium.open("/web/guest/home/");
+		selenium.clickAt("link=Blogs Test Page",
+			RuntimeVariables.replace("Blogs Test Page"));
+		selenium.waitForPageToLoad("30000");
+		Thread.sleep(5000);
+		assertEquals(RuntimeVariables.replace("Options"),
+			selenium.getText("//span[@title='Options']/ul/li/strong/a"));
+		selenium.clickAt("//span[@title='Options']/ul/li/strong/a",
+			RuntimeVariables.replace("Options"));
+		selenium.waitForVisible(
+			"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]");
+		assertEquals(RuntimeVariables.replace("Configuration"),
+			selenium.getText(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]"));
+		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]",
+			RuntimeVariables.replace("Configuration"));
+		selenium.waitForVisible("//iframe[@id='_33_configurationIframeDialog']");
+		selenium.selectFrame("//iframe[@id='_33_configurationIframeDialog']");
+		selenium.waitForVisible("link=Permissions");
+		selenium.clickAt("link=Permissions",
+			RuntimeVariables.replace("Permissions"));
+		selenium.waitForPageToLoad("30000");
+		assertFalse(selenium.isChecked(
+				"//input[@id='portlet_ACTION_CONFIGURATION']"));
+		selenium.selectFrame("relative=top");
 	}
 }

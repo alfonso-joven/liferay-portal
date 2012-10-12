@@ -23,40 +23,16 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class SA_RegInlineBlogsAddEntryNotCheckedTest extends BaseTestCase {
 	public void testSA_RegInlineBlogsAddEntryNotChecked()
 		throws Exception {
-		int label = 1;
-
-		while (label >= 1) {
-			switch (label) {
-			case 1:
-				selenium.selectWindow("null");
-				selenium.selectFrame("relative=top");
-				selenium.open("/web/guest/home/");
-				selenium.clickAt("link=Blogs Test Page",
-					RuntimeVariables.replace("Blogs Test Page"));
-				selenium.waitForPageToLoad("30000");
-				selenium.clickAt("//input[@value='Permissions']",
-					RuntimeVariables.replace("Permissions"));
-				selenium.waitForPageToLoad("30000");
-
-				boolean portletAddEntryChecked = selenium.isChecked(
-						"//input[@id='portlet_ACTION_ADD_ENTRY']");
-
-				if (!portletAddEntryChecked) {
-					label = 2;
-
-					continue;
-				}
-
-				selenium.clickAt("//input[@id='portlet_ACTION_ADD_ENTRY']",
-					RuntimeVariables.replace("Portlet Add Entry"));
-
-			case 2:
-				assertFalse(selenium.isChecked(
-						"//input[@id='portlet_ACTION_ADD_ENTRY']"));
-
-			case 100:
-				label = -1;
-			}
-		}
+		selenium.selectWindow("null");
+		selenium.selectFrame("relative=top");
+		selenium.open("/web/guest/home/");
+		selenium.clickAt("link=Blogs Test Page",
+			RuntimeVariables.replace("Blogs Test Page"));
+		selenium.waitForPageToLoad("30000");
+		selenium.clickAt("//input[@value='Permissions']",
+			RuntimeVariables.replace("Permissions"));
+		selenium.waitForPageToLoad("30000");
+		assertFalse(selenium.isChecked(
+				"//input[@id='portlet_ACTION_ADD_ENTRY']"));
 	}
 }

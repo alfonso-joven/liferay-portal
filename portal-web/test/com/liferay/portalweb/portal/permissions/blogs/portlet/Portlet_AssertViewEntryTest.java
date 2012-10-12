@@ -42,6 +42,6 @@ public class Portlet_AssertViewEntryTest extends BaseTestCase {
 		Thread.sleep(5000);
 		assertEquals(RuntimeVariables.replace("Blogs Entry Title Temporary"),
 			selenium.getText(
-				"//tr[contains(.,'Blogs Entry Title Temporary')]/td[2]/a"));
+				"//tr/td[2]/a[contains(.,'Blogs Entry Title Temporary')]"));
 	}
 }

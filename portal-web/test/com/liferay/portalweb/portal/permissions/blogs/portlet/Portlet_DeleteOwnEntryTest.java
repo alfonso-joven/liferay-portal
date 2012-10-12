@@ -33,7 +33,7 @@ public class Portlet_DeleteOwnEntryTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Blogs Entry Content"),
 			selenium.getText("//div[@class='entry-body']/p"));
 		selenium.click(RuntimeVariables.replace(
-				"//span[contains(.,'Delete')]/a"));
+				"//span/a[contains(.,'Delete')]"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.getConfirmation()
 						   .matches("^Are you sure you want to delete this[\\s\\S]$"));

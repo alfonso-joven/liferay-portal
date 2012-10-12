@@ -45,8 +45,8 @@ public class SA_AssignUserRolesTest extends BaseTestCase {
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Portlet"),
-			selenium.getText("//tr[contains(.,'Portlet')]/td[2]/a"));
-		selenium.clickAt("//tr[contains(.,'Portlet')]/td[2]/a",
+			selenium.getText("//tr/td[2]/a[contains(.,'Portlet')]"));
+		selenium.clickAt("//tr/td[2]/a[contains(.,'Portlet')]",
 			RuntimeVariables.replace("Portlet"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isPartialText("//a[@id='_125_rolesLink']", "Roles"));
@@ -60,15 +60,15 @@ public class SA_AssignUserRolesTest extends BaseTestCase {
 		Thread.sleep(5000);
 		selenium.waitForPopUp("null", RuntimeVariables.replace("30000"));
 		selenium.selectWindow("title=Users and Organizations");
-		selenium.waitForVisible("//tr[contains(.,'Portlet')]/td[1]/a");
+		selenium.waitForVisible("//tr/td[1]/a[contains(.,'Portlet')]");
 		selenium.type("//input[@id='_125_keywords']",
 			RuntimeVariables.replace("Portlet"));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Portlet"),
-			selenium.getText("//tr[contains(.,'Portlet')]/td[1]/a"));
-		selenium.clickAt("//tr[contains(.,'Portlet')]/td[1]/a",
+			selenium.getText("//tr/td[1]/a[contains(.,'Portlet')]"));
+		selenium.clickAt("//tr/td[1]/a[contains(.,'Portlet')]",
 			RuntimeVariables.replace("Portlet"));
 		selenium.selectWindow("null");
 		selenium.waitForPartialText("//div[@id='_125_rolesSearchContainer']",

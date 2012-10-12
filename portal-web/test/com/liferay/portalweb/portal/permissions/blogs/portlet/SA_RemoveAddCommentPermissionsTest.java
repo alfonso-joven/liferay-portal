@@ -55,36 +55,8 @@ public class SA_RemoveAddCommentPermissionsTest extends BaseTestCase {
 			case 2:
 				assertFalse(selenium.isChecked(
 						"//input[@id='guest_ACTION_ADD_DISCUSSION']"));
-
-				boolean portletAddDiscussionChecked = selenium.isChecked(
-						"//input[@id='portlet_ACTION_ADD_DISCUSSION']");
-
-				if (!portletAddDiscussionChecked) {
-					label = 3;
-
-					continue;
-				}
-
-				selenium.clickAt("//input[@id='portlet_ACTION_ADD_DISCUSSION']",
-					RuntimeVariables.replace("Portlet Add Discussion"));
-
-			case 3:
 				assertFalse(selenium.isChecked(
 						"//input[@id='portlet_ACTION_ADD_DISCUSSION']"));
-
-				boolean powerUserAddDiscussionChecked = selenium.isChecked(
-						"//input[@id='power-user_ACTION_ADD_DISCUSSION']");
-
-				if (!powerUserAddDiscussionChecked) {
-					label = 4;
-
-					continue;
-				}
-
-				selenium.clickAt("//input[@id='power-user_ACTION_ADD_DISCUSSION']",
-					RuntimeVariables.replace("Power User Add Discussion"));
-
-			case 4:
 				assertFalse(selenium.isChecked(
 						"//input[@id='power-user_ACTION_ADD_DISCUSSION']"));
 				selenium.clickAt("//input[@value='Save']",
