@@ -56,7 +56,8 @@ public class SpringCompatibilityTest {
 			filteredPropertyDescriptorsCacheField.getType();
 
 		if (!Map.class.isAssignableFrom(
-			filteredPropertyDescriptorsCacheClass)) {
+				filteredPropertyDescriptorsCacheClass)) {
+
 			Assert.fail(
 				filteredPropertyDescriptorsCacheClass.getClass().getName() +
 				" is not " + Map.class.getName());
