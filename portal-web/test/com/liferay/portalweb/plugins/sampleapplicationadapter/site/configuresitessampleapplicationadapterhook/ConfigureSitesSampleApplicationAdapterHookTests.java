@@ -14,6 +14,7 @@
 
 package com.liferay.portalweb.plugins.sampleapplicationadapter.site.configuresitessampleapplicationadapterhook;
 
+import com.liferay.portalweb.plugins.sampleapplicationadapter.site.configuresitesapplicationadapternone.AddSitesPublicPagePortletNavigationTest;
 import com.liferay.portalweb.portal.BaseTestSuite;
 import com.liferay.portalweb.portal.controlpanel.sites.site.addsite.AddSiteTest;
 import com.liferay.portalweb.portal.controlpanel.sites.site.addsite.TearDownSiteTest;

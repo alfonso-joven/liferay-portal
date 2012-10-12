@@ -26,7 +26,6 @@ public class AddSitesPublicPagePortletNavigationTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/site-name/public-page");
-		selenium.waitForVisible("link=Public Page");
 		selenium.clickAt("link=Public Page",
 			RuntimeVariables.replace("Public Page"));
 		selenium.waitForPageToLoad("30000");
@@ -45,12 +44,8 @@ public class AddSitesPublicPagePortletNavigationTest extends BaseTestCase {
 		selenium.waitForElementPresent(
 			"//script[contains(@src,'/aui/aui-live-search/aui-live-search-min.js')]");
 		selenium.waitForVisible("//input[@id='layout_configuration_content']");
-		selenium.type("//input[@id='layout_configuration_content']",
+		selenium.sendKeys("//input[@id='layout_configuration_content']",
 			RuntimeVariables.replace("n"));
-		selenium.keyDown("//input[@id='layout_configuration_content']",
-			RuntimeVariables.replace("\\13"));
-		selenium.keyUp("//input[@id='layout_configuration_content']",
-			RuntimeVariables.replace("\\13"));
 		selenium.waitForElementPresent("//div[@title='Navigation']/p/a");
 		selenium.clickAt("//div[@title='Navigation']/p/a",
 			RuntimeVariables.replace("Navigation"));
