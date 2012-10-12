@@ -46,6 +46,7 @@ hr, .separator {
 	height: auto;
 	margin-top: 1.4em;
 	position: relative;
+	z-index: 300;
 }
 
 .site-title .site-name {
