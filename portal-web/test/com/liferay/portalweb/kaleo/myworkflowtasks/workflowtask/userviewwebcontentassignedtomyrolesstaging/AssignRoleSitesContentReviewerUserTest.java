@@ -59,7 +59,6 @@ public class AssignRoleSitesContentReviewerUserTest extends BaseTestCase {
 		selenium.clickAt("//div[6]/span[2]/a/span",
 			RuntimeVariables.replace("Select"));
 		Thread.sleep(5000);
-		selenium.waitForPopUp("null", RuntimeVariables.replace("30000"));
 		selenium.selectWindow("title=Users and Organizations");
 		selenium.waitForVisible(
 			"//tr[contains(.,'Site Content Reviewer')]/td[1]/a");

@@ -62,9 +62,18 @@ public class User_ViewWebContent2AssignedToMyRolesStagingTest
 		selenium.clickAt("//tr[@class='portlet-section-body results-row']/td[2]/a",
 			RuntimeVariables.replace("Web Content2 Name"));
 		selenium.waitForPageToLoad("30000");
+		assertEquals(RuntimeVariables.replace("My Workflow Tasks"),
+			selenium.getText("//h1[@class='portlet-title']/span"));
+		assertEquals(RuntimeVariables.replace("Review: Web Content2 Name"),
+			selenium.getText("//div[@class='taglib-header ']/h1/span"));
+		assertEquals(RuntimeVariables.replace("\u00ab Back"),
+			selenium.getText("//span[@class='header-back-to']/a"));
 		assertEquals(RuntimeVariables.replace("Preview of Web Content"),
 			selenium.getText("xPath=(//div[@class='lfr-panel-title']/span)[4]"));
 		assertEquals(RuntimeVariables.replace("Web Content2 Name"),
 			selenium.getText("//h3[@class='task-content-title']"));
+		assertTrue(selenium.isPartialText(
+				"xpath=(//div[@class='lfr-panel-content'])[4]",
+				"Web Content2 Content"));
 	}
 }
