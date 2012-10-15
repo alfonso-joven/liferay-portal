@@ -50,11 +50,11 @@ import com.liferay.portal.security.permission.ResourceBlockIdsBag;
 import com.liferay.portal.service.GroupLocalServiceUtil;
 import com.liferay.portal.service.PermissionLocalServiceUtil;
 import com.liferay.portal.service.ResourceBlockLocalServiceUtil;
+import com.liferay.portal.service.ResourceBlockPermissionLocalServiceUtil;
 import com.liferay.portal.service.ResourceLocalServiceUtil;
 import com.liferay.portal.service.ResourcePermissionLocalServiceUtil;
 import com.liferay.portal.service.RoleLocalServiceUtil;
 import com.liferay.portal.service.UserGroupRoleLocalServiceUtil;
-import com.liferay.portal.service.persistence.ResourceBlockPermissionUtil;
 import com.liferay.portal.util.PropsValues;
 
 import java.util.ArrayList;
@@ -257,8 +257,10 @@ public class SearchPermissionCheckerImpl implements SearchPermissionChecker {
 
 			for (long resourceBlockId : resourceBlockIds) {
 				for (int i = 0; i < roleIdsArray.length; i++) {
-					int count = ResourceBlockPermissionUtil.countByR_R(
-						resourceBlockId, roleIdsArray[i]);
+					int count =
+						ResourceBlockPermissionLocalServiceUtil.
+							getResourceBlockPermissionsCount(
+								resourceBlockId, roleIdsArray[i]);
 
 					hasResourcePermissions[i] = (count > 0);
 				}
