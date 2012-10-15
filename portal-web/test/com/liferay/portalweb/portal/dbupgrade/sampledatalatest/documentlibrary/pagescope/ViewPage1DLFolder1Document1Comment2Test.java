@@ -54,6 +54,6 @@ public class ViewPage1DLFolder1Document1Comment2Test extends BaseTestCase {
 			selenium.getText(
 				"xPath=(//div[@class='lfr-discussion-message'])[2]"));
 		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
-			selenium.getText("xPath=(//span[@class='user-name'])[2]"));
+			selenium.getText("xPath=(//span[@class='user-name'])[3]"));
 	}
 }
