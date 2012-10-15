@@ -325,7 +325,7 @@ boolean hasLayoutUpdatePermission = LayoutPermissionUtil.contains(permissionChec
 				<liferay-util:buffer var="userName">
 					<img alt="<liferay-ui:message key="manage-my-account" />" src="<%= HtmlUtil.escape(user.getPortraitURL(themeDisplay)) %>" />
 
-					<span class="user-fullname">
+					<span class="user-full-name">
 						<%= HtmlUtil.escape(user.getFullName()) %>
 					</span>
 				</liferay-util:buffer>
