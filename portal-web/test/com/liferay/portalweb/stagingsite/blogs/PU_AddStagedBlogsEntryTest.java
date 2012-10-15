@@ -27,10 +27,11 @@ public class PU_AddStagedBlogsEntryTest extends BaseTestCase {
 		selenium.open("/web/guest/home/");
 		assertTrue(selenium.isElementPresent("//div[@class='staging-bar']"));
 		assertEquals(RuntimeVariables.replace("Live"),
-			selenium.getText("//li[1]/span/span"));
+			selenium.getText("//span[contains(.,'Live')]"));
 		assertEquals(RuntimeVariables.replace("Staging"),
-			selenium.getText("//li[2]/span/a"));
-		selenium.clickAt("//li[2]/span/a", RuntimeVariables.replace("Staging"));
+			selenium.getText("//span/a[contains(.,'Staging')]"));
+		selenium.clickAt("//span/a[contains(.,'Staging')]",
+			RuntimeVariables.replace("Staging"));
 		selenium.waitForPageToLoad("30000");
 		selenium.waitForVisible("link=Blogs Test Page");
 		selenium.clickAt("link=Blogs Test Page",
@@ -68,7 +69,7 @@ public class PU_AddStagedBlogsEntryTest extends BaseTestCase {
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertEquals(RuntimeVariables.replace("Pending Approval"),
-			selenium.getText("//div[2]/div[1]/h3"));
+			selenium.getText("//div[@class='entry-content']/h3"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry Title"),
 			selenium.getText("//div[@class='entry-title']/h2/a"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry Content"),

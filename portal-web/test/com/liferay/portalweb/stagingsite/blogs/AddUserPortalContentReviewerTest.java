@@ -44,14 +44,17 @@ public class AddUserPortalContentReviewerTest extends BaseTestCase {
 				selenium.clickAt("link=Users and Organizations",
 					RuntimeVariables.replace("Users and Organizations"));
 				selenium.waitForPageToLoad("30000");
-				selenium.clickAt("link=Add", RuntimeVariables.replace("Add"));
+				assertEquals(RuntimeVariables.replace("Add"),
+					selenium.getText("//span[@title='Add']/ul/li/strong/a"));
+				selenium.clickAt("//span[@title='Add']/ul/li/strong/a",
+					RuntimeVariables.replace("Add"));
 				selenium.waitForVisible(
-					"//div[@class='lfr-component lfr-menu-list']/ul/li/a");
+					"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'User')]");
 				assertEquals(RuntimeVariables.replace("User"),
 					selenium.getText(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li/a"));
+						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'User')]"));
 				selenium.click(RuntimeVariables.replace(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li/a"));
+						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'User')]"));
 				selenium.waitForPageToLoad("30000");
 				selenium.select("//select[@id='_125_prefixId']",
 					RuntimeVariables.replace("label=Mr."));
@@ -119,16 +122,20 @@ public class AddUserPortalContentReviewerTest extends BaseTestCase {
 				selenium.clickAt("//div[6]/span/a/span",
 					RuntimeVariables.replace("Select"));
 				Thread.sleep(5000);
-				selenium.selectWindow("name=role");
-				selenium.waitForVisible("//tr[4]/td/a");
+				selenium.waitForPopUp("null", RuntimeVariables.replace("30000"));
+				selenium.selectWindow("title=Users and Organizations");
+				selenium.waitForVisible(
+					"//tr[contains(.,'Portal Content Reviewer')]/td[1]/a");
 				assertEquals(RuntimeVariables.replace("Portal Content Reviewer"),
-					selenium.getText("//tr[4]/td/a"));
-				selenium.clickAt("//tr[4]/td/a",
+					selenium.getText(
+						"//tr[contains(.,'Portal Content Reviewer')]/td[1]/a"));
+				selenium.clickAt("//tr[contains(.,'Portal Content Reviewer')]/td[1]/a",
 					RuntimeVariables.replace("Portal Content Reviewer"));
 				Thread.sleep(5000);
 				selenium.selectWindow("null");
 				assertEquals(RuntimeVariables.replace("Portal Content Reviewer"),
-					selenium.getText("//table/tr/td[1]"));
+					selenium.getText(
+						"//td[contains(.,'Portal Content Reviewer')]"));
 				selenium.clickAt("//input[@value='Save']",
 					RuntimeVariables.replace("Save"));
 				selenium.waitForPageToLoad("30000");
@@ -136,9 +143,9 @@ public class AddUserPortalContentReviewerTest extends BaseTestCase {
 						"Your request completed successfully."),
 					selenium.getText("//div[@class='portlet-msg-success']"));
 				assertEquals(RuntimeVariables.replace("Portal Content Reviewer"),
-					selenium.getText("//tr[3]/td[1]"));
+					selenium.getText(
+						"//td[contains(.,'Portal Content Reviewer')]"));
 				selenium.open("/web/guest/home/");
-				selenium.waitForVisible("link=Sign Out");
 				selenium.clickAt("link=Sign Out",
 					RuntimeVariables.replace("Sign Out"));
 				selenium.waitForPageToLoad("30000");

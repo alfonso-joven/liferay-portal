@@ -44,27 +44,30 @@ public class TearDownPermissionsTest extends BaseTestCase {
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Power User"),
-			selenium.getText("//td[1]/a"));
-		selenium.clickAt("//td[1]/a", RuntimeVariables.replace("Power User"));
+			selenium.getText("//tr[contains(.,'Power User')]/td[1]/a"));
+		selenium.clickAt("//tr[contains(.,'Power User')]/td[1]/a",
+			RuntimeVariables.replace("Power User"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Define Permissions",
+		selenium.clickAt("//span/a[contains(.,'Define Permissions')]",
 			RuntimeVariables.replace("Define Permissions"));
 		selenium.waitForPageToLoad("30000");
 		selenium.select("//select[@id='_128_add-permissions']",
 			RuntimeVariables.replace("Blogs"));
-		selenium.waitForText("//tr[3]/td[2]", "Add Entry");
+		selenium.waitForText("//tr[contains(.,'Add Entry')]/td[2]", "Add Entry");
 		assertEquals(RuntimeVariables.replace("Add Entry"),
-			selenium.getText("//tr[3]/td[2]"));
+			selenium.getText("//tr[contains(.,'Add Entry')]/td[2]"));
 		assertEquals(RuntimeVariables.replace("Limit Scope"),
-			selenium.getText("//span/a/span"));
-		selenium.clickAt("//span/a/span",
+			selenium.getText("//span/a[contains(.,'Limit Scope')]"));
+		selenium.clickAt("//span/a[contains(.,'Limit Scope')]",
 			RuntimeVariables.replace("Limit Scope"));
 		Thread.sleep(5000);
-		selenium.selectWindow("name=site");
-		selenium.waitForVisible("//tr[4]/td/a");
+		selenium.waitForPopUp("null", RuntimeVariables.replace("30000"));
+		selenium.selectWindow("title=Roles");
+		selenium.waitForVisible(
+			"//tr[contains(.,'User Personal Site')]/td[1]/a");
 		assertEquals(RuntimeVariables.replace("User Personal Site"),
-			selenium.getText("//tr[4]/td/a"));
-		selenium.clickAt("//tr[4]/td/a",
+			selenium.getText("//tr[contains(.,'User Personal Site')]/td[1]/a"));
+		selenium.clickAt("//tr[contains(.,'User Personal Site')]/td[1]/a",
 			RuntimeVariables.replace("User Personal Site"));
 		Thread.sleep(5000);
 		selenium.selectWindow("null");
@@ -77,14 +80,15 @@ public class TearDownPermissionsTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"The role permissions were updated."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
-		selenium.clickAt("link=Define Permissions",
+		selenium.clickAt("//a[contains(.,'Define Permissions')]",
 			RuntimeVariables.replace("Define Permissions"));
 		selenium.waitForPageToLoad("30000");
 		selenium.select("//select[@id='_128_add-permissions']",
 			RuntimeVariables.replace("Sites"));
-		selenium.waitForText("//tr[14]/td[2]", "Manage Pages");
+		selenium.waitForText("//tr[contains(.,'Manage Pages')]/td[2]",
+			"Manage Pages");
 		assertEquals(RuntimeVariables.replace("Manage Pages"),
-			selenium.getText("//tr[14]/td[2]"));
+			selenium.getText("//tr[contains(.,'Manage Pages')]/td[2]"));
 		selenium.waitForText("//span[@id='_128_groupHTMLcom.liferay.portal.model.GroupMANAGE_LAYOUTS']",
 			"Portal");
 		assertEquals(RuntimeVariables.replace("Limit Scope"),
@@ -92,11 +96,13 @@ public class TearDownPermissionsTest extends BaseTestCase {
 		selenium.clickAt("//tr[14]/td[4]/span/a/span",
 			RuntimeVariables.replace("Limit Scope"));
 		Thread.sleep(5000);
-		selenium.selectWindow("name=site");
-		selenium.waitForVisible("//tr[4]/td/a");
+		selenium.waitForPopUp("null", RuntimeVariables.replace("30000"));
+		selenium.selectWindow("title=Roles");
+		selenium.waitForVisible(
+			"//tr[contains(.,'User Personal Site')]/td[1]/a");
 		assertEquals(RuntimeVariables.replace("User Personal Site"),
-			selenium.getText("//tr[4]/td/a"));
-		selenium.clickAt("//tr[4]/td/a",
+			selenium.getText("//tr[contains(.,'User Personal Site')]/td[1]/a"));
+		selenium.clickAt("//tr[contains(.,'User Personal Site')]/td[1]/a",
 			RuntimeVariables.replace("User Personal Site"));
 		Thread.sleep(5000);
 		selenium.selectWindow("null");

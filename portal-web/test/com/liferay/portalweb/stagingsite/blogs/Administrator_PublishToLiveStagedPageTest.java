@@ -34,13 +34,13 @@ public class Administrator_PublishToLiveStagedPageTest extends BaseTestCase {
 				assertTrue(selenium.isElementPresent(
 						"//div[@class='staging-bar']"));
 				assertEquals(RuntimeVariables.replace("Live"),
-					selenium.getText("//li[1]/span/span"));
+					selenium.getText("//span[contains(.,'Live')]"));
 				assertEquals(RuntimeVariables.replace(
 						"You are viewing the live version of Liferay and cannot make changes here. Make your changes in staging and publish them to Live afterwards to make them public."),
 					selenium.getText("//span[@class='staging-live-help']"));
 				assertEquals(RuntimeVariables.replace("Staging"),
-					selenium.getText("//li[2]/span/a"));
-				selenium.clickAt("//li[2]/span/a",
+					selenium.getText("//span/a[contains(.,'Staging')]"));
+				selenium.clickAt("//span/a[contains(.,'Staging')]",
 					RuntimeVariables.replace("Staging"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace(
@@ -51,13 +51,18 @@ public class Administrator_PublishToLiveStagedPageTest extends BaseTestCase {
 					RuntimeVariables.replace("Blogs Test Page"));
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.isVisible("//section"));
-				assertTrue(selenium.isElementPresent(
-						"//a[@id='_170_0publishNowLink']"));
-				selenium.clickAt("//a[@id='_170_0publishNowLink']",
+				Thread.sleep(5000);
+				selenium.click("//span[contains(.,'Staging')]/span/span/ul");
+				selenium.waitForVisible(
+					"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Publish to Live Now')]");
+				assertEquals(RuntimeVariables.replace("Publish to Live Now"),
+					selenium.getText(
+						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Publish to Live Now')]"));
+				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Publish to Live Now')]",
 					RuntimeVariables.replace("Publish to Live Now"));
 				selenium.waitForVisible("//div[2]/div[1]/a");
 
-				boolean blogsVisible = selenium.isVisible(
+				boolean blogsVisible = selenium.isChecked(
 						"_88_PORTLET_DATA_33Checkbox");
 
 				if (blogsVisible) {
@@ -70,12 +75,12 @@ public class Administrator_PublishToLiveStagedPageTest extends BaseTestCase {
 					RuntimeVariables.replace("Plus"));
 
 			case 2:
-				selenium.waitForElementPresent("//input[@id='_88_rangeAll']");
+				selenium.waitForVisible("//input[@id='_88_rangeAll']");
 				selenium.clickAt("//input[@id='_88_rangeAll']",
 					RuntimeVariables.replace("All"));
 
 				boolean blogsChecked = selenium.isChecked(
-						"_88_PORTLET_DATA_33Checkbox");
+						"//input[@id='_88_PORTLET_DATA_33Checkbox']");
 
 				if (blogsChecked) {
 					label = 3;
@@ -83,14 +88,12 @@ public class Administrator_PublishToLiveStagedPageTest extends BaseTestCase {
 					continue;
 				}
 
-				assertFalse(selenium.isChecked(
-						"//input[@id='_88_PORTLET_DATA_33Checkbox']"));
 				selenium.clickAt("//input[@id='_88_PORTLET_DATA_33Checkbox']",
 					RuntimeVariables.replace("Blogs"));
-				assertTrue(selenium.isChecked(
-						"//input[@id='_88_PORTLET_DATA_33Checkbox']"));
 
 			case 3:
+				assertTrue(selenium.isChecked(
+						"//input[@id='_88_PORTLET_DATA_33Checkbox']"));
 				Thread.sleep(5000);
 				selenium.waitForVisible("//input[@value='Publish']");
 				selenium.clickAt("//input[@value='Publish']",

@@ -50,27 +50,27 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//span[@title='Actions']/ul/li/strong/a/span</td>
+	<td>xPath=(//span[@title='Actions']/ul/li/strong/a/span)[2]</td>
 	<td>Actions</td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>//span[@title='Actions']/ul/li/strong/a/span</td>
+	<td>clickAt</td>
+	<td>xPath=(//span[@title='Actions']/ul/li/strong/a/span)[2]</td>
 	<td>Actions</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Edit Settings')]</td>
 	<td>Edit Settings</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Edit Settings')]</td>
 	<td>Edit Settings</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Edit Settings')]</td>
 	<td>Edit Settings</td>
 </tr>
 <tr>
@@ -119,6 +119,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>assertChecked</td>
+	<td>//span/span[contains(.,'Blogs')]/span/input[2]</td>
+	<td>Blogs</td>
+</tr>
+<tr>
 	<td>storeChecked</td>
 	<td>//span/span[contains(.,'Bookmarks')]/span/input[2]</td>
 	<td>bookmarksChecked</td>
@@ -137,6 +142,11 @@
 	<td>label</td>
 	<td>BookmarksChecked</td>
 	<td></td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//span/span[contains(.,'Bookmarks')]/span/input[2]</td>
+	<td>Bookmarks</td>
 </tr>
 <tr>
 	<td>storeChecked</td>
@@ -159,44 +169,59 @@
 	<td></td>
 </tr>
 <tr>
+	<td>assertChecked</td>
+	<td>//span/span[contains(.,'Calendar')]/span/input[2]</td>
+	<td>Calendar</td>
+</tr>
+<tr>
 	<td>storeChecked</td>
 	<td>//span/span[contains(.,'Documents and Media')]/span/input[2]</td>
-	<td>documentLibraryChecked</td>
+	<td>documentsAndMediaChecked</td>
 </tr>
 <tr>
 	<td>gotoIf</td>
-	<td>${documentLibraryChecked}</td>
-	<td>DocumentLibraryChecked</td>
+	<td>${documentsAndMediaChecked}</td>
+	<td>DocumentsAndMediaChecked</td>
 </tr>
 <tr>
 	<td>clickAt</td>
 	<td>//span/span[contains(.,'Documents and Media')]/span/input[2]</td>
-	<td>DocumentLibrary</td>
+	<td>Documents and Media</td>
 </tr>
 <tr>
 	<td>label</td>
-	<td>DocumentLibraryChecked</td>
+	<td>DocumentsAndMediaChecked</td>
 	<td></td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//span/span[contains(.,'Documents and Media')]/span/input[2]</td>
+	<td>Documents and Media</td>
 </tr>
 <tr>
 	<td>storeChecked</td>
 	<td>//span/span[contains(.,'Documents and Media Display')]/span/input[2]</td>
-	<td>documentLibraryDisplayChecked</td>
+	<td>documentsAndMediaDisplayChecked</td>
 </tr>
 <tr>
 	<td>gotoIf</td>
-	<td>${documentLibraryDisplayChecked}</td>
-	<td>DocumentLibraryDisplayChecked</td>
+	<td>${documentsAndMediaDisplayChecked}</td>
+	<td>DocumentsAndMediaDisplayChecked</td>
 </tr>
 <tr>
 	<td>clickAt</td>
 	<td>//span/span[contains(.,'Documents and Media Display')]/span/input[2]</td>
-	<td>DocumentLibraryDisplay</td>
+	<td>Documents and Media Display</td>
 </tr>
 <tr>
 	<td>label</td>
-	<td>DocumentLibraryDisplayChecked</td>
+	<td>DocumentsAndMediaDisplayChecked</td>
 	<td></td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//span/span[contains(.,'Documents and Media Display')]/span/input[2]</td>
+	<td>Documents and Media Display</td>
 </tr>
 <tr>
 	<td>storeChecked</td>
@@ -219,6 +244,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>assertChecked</td>
+	<td>//span/span[contains(.,'Dynamic Data Mapping')]/span/input[2]</td>
+	<td>Dynamic Data Mapping</td>
+</tr>
+<tr>
 	<td>storeChecked</td>
 	<td>//span/span[contains(.,'Message Boards')]/span/input[2]</td>
 	<td>messageBoardsChecked</td>
@@ -237,6 +267,11 @@
 	<td>label</td>
 	<td>MessageBoardsChecked</td>
 	<td></td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//span/span[contains(.,'Message Boards')]/span/input[2]</td>
+	<td>Message Boards</td>
 </tr>
 <tr>
 	<td>storeChecked</td>
@@ -259,6 +294,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>assertChecked</td>
+	<td>//span/span[contains(.,'Page Comments')]/span/input[2]</td>
+	<td>Page Comments</td>
+</tr>
+<tr>
 	<td>storeChecked</td>
 	<td>//span/span[contains(.,'Page Ratings')]/span/input[2]</td>
 	<td>pageRatingsChecked</td>
@@ -277,6 +317,11 @@
 	<td>label</td>
 	<td>PageRatingsChecked</td>
 	<td></td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//span/span[contains(.,'Page Ratings')]/span/input[2]</td>
+	<td>Page Ratings</td>
 </tr>
 <tr>
 	<td>storeChecked</td>
@@ -299,6 +344,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>assertChecked</td>
+	<td>//span/span[contains(.,'Polls')]/span/input[2]</td>
+	<td>Polls</td>
+</tr>
+<tr>
 	<td>storeChecked</td>
 	<td>//span/span[contains(.,'Polls Display')]/span/input[2]</td>
 	<td>pollsDisplayChecked</td>
@@ -317,6 +367,11 @@
 	<td>label</td>
 	<td>PollsDisplayChecked</td>
 	<td></td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//span/span[contains(.,'Polls Display')]/span/input[2]</td>
+	<td>Polls Display</td>
 </tr>
 <tr>
 	<td>storeChecked</td>
@@ -339,6 +394,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>assertChecked</td>
+	<td>//span/span[contains(.,'Web Content')]/span/input[2]</td>
+	<td>Web Content</td>
+</tr>
+<tr>
 	<td>storeChecked</td>
 	<td>//span/span[contains(.,'Web Content Display')]/span/input[2]</td>
 	<td>webContentDisplayChecked</td>
@@ -357,6 +417,11 @@
 	<td>label</td>
 	<td>WebContentDisplayChecked</td>
 	<td></td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//span/span[contains(.,'Web Content Display')]/span/input[2]</td>
+	<td>Web Content Display</td>
 </tr>
 <tr>
 	<td>storeChecked</td>
@@ -379,6 +444,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>assertChecked</td>
+	<td>//span/span[contains(.,'Wiki')]/span/input[2]</td>
+	<td>Wiki</td>
+</tr>
+<tr>
 	<td>storeChecked</td>
 	<td>//span/span[contains(.,'Wiki Display')]/span/input[2]</td>
 	<td>wikiDisplayChecked</td>
@@ -399,14 +469,99 @@
 	<td></td>
 </tr>
 <tr>
+	<td>assertChecked</td>
+	<td>//span/span[contains(.,'Wiki Display')]/span/input[2]</td>
+	<td>Wiki Display Checked</td>
+</tr>
+<tr>
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Save']</td>
 	<td>Save</td>
 </tr>
 <tr>
 	<td>assertText</td>
+	<td>//div[@class='portlet-msg-success']</td>
+	<td>Your request completed successfully.</td>
+</tr>
+<tr>
+	<td>assertText</td>
 	<td>//h1[@class='header-title']/span</td>
 	<td>Liferay (Staging)</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//span/span[contains(.,'Blogs')]/span/input[2]</td>
+	<td>Blogs</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//span/span[contains(.,'Bookmarks')]/span/input[2]</td>
+	<td>Bookmarks</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//span/span[contains(.,'Calendar')]/span/input[2]</td>
+	<td>Calendar</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//span/span[contains(.,'Documents and Media')]/span/input[2]</td>
+	<td>Documents and Media</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//span/span[contains(.,'Documents and Media Display')]/span/input[2]</td>
+	<td>Documents and Media Display</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//span/span[contains(.,'Dynamic Data Mapping')]/span/input[2]</td>
+	<td>Dynamic Data Mapping</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//span/span[contains(.,'Message Boards')]/span/input[2]</td>
+	<td>Message Boards</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//span/span[contains(.,'Page Comments')]/span/input[2]</td>
+	<td>Page Comments</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//span/span[contains(.,'Page Ratings')]/span/input[2]</td>
+	<td>Page Ratings</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//span/span[contains(.,'Polls')]/span/input[2]</td>
+	<td>Polls</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//span/span[contains(.,'Polls Display')]/span/input[2]</td>
+	<td>Polls Display</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//span/span[contains(.,'Web Content')]/span/input[2]</td>
+	<td>Web Content</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//span/span[contains(.,'Web Content Display')]/span/input[2]</td>
+	<td>Web Content Display</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//span/span[contains(.,'Wiki')]/span/input[2]</td>
+	<td>Wiki</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//span/span[contains(.,'Wiki Display')]/span/input[2]</td>
+	<td>Wiki Display Checked</td>
 </tr>
 </tbody></table>
 </body>

@@ -20,17 +20,17 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//li[1]/span/span</td>
+	<td>//span[contains(.,'Live')]</td>
 	<td>Live</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//li[2]/span/a</td>
+	<td>//span/a[contains(.,'Staging')]</td>
 	<td>Staging</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>//li[2]/span/a</td>
+	<td>//span/a[contains(.,'Staging')]</td>
 	<td>Staging</td>
 </tr>
 <tr>
@@ -54,13 +54,28 @@
 	<td>Blogs Entry Content</td>
 </tr>
 <tr>
-	<td>assertElementPresent</td>
-	<td>//a[@id='_170_0publishNowLink']</td>
+	<td>pause</td>
+	<td>5000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//span[contains(.,'Staging')]/span/span/ul</td>
+	<td>Staging Drop Down</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Publish to Live Now')]</td>
+	<td>Publish to Live Now</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Publish to Live Now')]</td>
 	<td>Publish to Live Now</td>
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>//a[@id='_170_0publishNowLink']</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Publish to Live Now')]</td>
 	<td>Publish to Live Now</td>
 </tr>
 <tr>
@@ -99,8 +114,8 @@
 	<td>All</td>
 </tr>
 <tr>
-	<td>store</td>
-	<td>eval(selenium.isChecked('_88_PORTLET_DATA_33Checkbox'))</td>
+	<td>storeChecked</td>
+	<td>//input[@id='_88_PORTLET_DATA_33Checkbox']</td>
 	<td>blogsChecked</td>
 </tr>
 <tr>
@@ -109,17 +124,7 @@
 	<td>BlogsChecked</td>
 </tr>
 <tr>
-	<td>assertNotChecked</td>
-	<td>//input[@id='_88_PORTLET_DATA_33Checkbox']</td>
-	<td>Blogs</td>
-</tr>
-<tr>
 	<td>clickAt</td>
-	<td>//input[@id='_88_PORTLET_DATA_33Checkbox']</td>
-	<td>Blogs</td>
-</tr>
-<tr>
-	<td>assertChecked</td>
 	<td>//input[@id='_88_PORTLET_DATA_33Checkbox']</td>
 	<td>Blogs</td>
 </tr>
@@ -127,6 +132,11 @@
 	<td>label</td>
 	<td>BlogsChecked</td>
 	<td></td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//input[@id='_88_PORTLET_DATA_33Checkbox']</td>
+	<td>Blogs</td>
 </tr>
 <tr>
 	<td>pause</td>
