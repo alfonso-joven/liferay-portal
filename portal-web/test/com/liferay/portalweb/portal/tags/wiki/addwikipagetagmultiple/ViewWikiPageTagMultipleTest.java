@@ -25,20 +25,75 @@ public class ViewWikiPageTagMultipleTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Wiki Test Page");
 		selenium.clickAt("link=Wiki Test Page",
 			RuntimeVariables.replace("Wiki Test Page"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=All Pages", RuntimeVariables.replace("All Pages"));
+		selenium.clickAt("//span/a[contains(.,'All Pages')]",
+			RuntimeVariables.replace("All Pages"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Wiki Page1 Test",
+		selenium.clickAt("//tr[contains(.,'Wiki Page1 Title')]/td[1]/a",
 			RuntimeVariables.replace("Wiki Page1 Test"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=wiki tag multiple",
+		selenium.clickAt("//a[contains(.,'wiki tag multiple')]",
 			RuntimeVariables.replace("wiki tag multiple"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isVisible("link=Wiki Page1 Test"));
-		assertTrue(selenium.isVisible("link=Wiki Page2 Test"));
-		assertTrue(selenium.isVisible("link=Wiki Page3 Test"));
+		assertEquals(RuntimeVariables.replace("FrontPage"),
+			selenium.getText("//span[contains(.,'FrontPage')]"));
+		assertEquals(RuntimeVariables.replace("Recent Changes"),
+			selenium.getText("//span[contains(.,'Recent Changes')]"));
+		assertEquals(RuntimeVariables.replace("All Pages"),
+			selenium.getText("//span[contains(.,'All Pages')]"));
+		assertEquals(RuntimeVariables.replace("Orphan Pages"),
+			selenium.getText("//span[contains(.,'Orphan Pages')]"));
+		assertEquals(RuntimeVariables.replace("Draft Pages"),
+			selenium.getText("//span[contains(.,'Draft Pages')]"));
+		assertTrue(selenium.isVisible("//input[@id='_36_keywords']"));
+		assertTrue(selenium.isVisible("//input[@value='Search']"));
+		assertEquals(RuntimeVariables.replace(
+				"Pages with tag wiki tag multiple ."),
+			selenium.getText("//h1[contains(.,'Pages with tag')]"));
+		assertEquals(RuntimeVariables.replace("wiki tag multiple"),
+			selenium.getText("//span[@class='asset-entry']"));
+		assertEquals(RuntimeVariables.replace("Wiki Page3 Title"),
+			selenium.getText("//tr[contains(.,'Wiki Page3 Title')]/td[1]/a"));
+		assertEquals(RuntimeVariables.replace("Approved"),
+			selenium.getText("//tr[contains(.,'Approved')]/td[2]/a"));
+		assertEquals(RuntimeVariables.replace("1.1"),
+			selenium.getText("//tr[contains(.,'1.1')]/td[3]/a"));
+		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
+			selenium.getText("//tr[contains(.,'Joe Bloggs')]/td[4]/a"));
+		assertEquals(RuntimeVariables.replace("Date"),
+			selenium.getText("//a[contains(text(),'Date')]"));
+		assertEquals(RuntimeVariables.replace("Actions"),
+			selenium.getText(
+				"xPath=(//span[@title='Actions']/ul/li/strong/a)[1]"));
+		assertEquals(RuntimeVariables.replace("Wiki Page2 Title"),
+			selenium.getText("//tr[contains(.,'Wiki Page2 Title')]/td[1]/a"));
+		assertEquals(RuntimeVariables.replace("Approved"),
+			selenium.getText("//tr[4][contains(.,'Approved')]/td[2]/a"));
+		assertEquals(RuntimeVariables.replace("1.1"),
+			selenium.getText("//tr[4][contains(.,'1.1')]/td[3]/a"));
+		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
+			selenium.getText("//tr[4][contains(.,'Joe Bloggs')]/td[4]/a"));
+		assertEquals(RuntimeVariables.replace("Date"),
+			selenium.getText("//a[contains(text(),'Date')]"));
+		assertEquals(RuntimeVariables.replace("Actions"),
+			selenium.getText(
+				"xPath=(//span[@title='Actions']/ul/li/strong/a)[2]"));
+		assertEquals(RuntimeVariables.replace("Wiki Page1 Title"),
+			selenium.getText("//tr[contains(.,'Wiki Page1 Title')]/td[1]/a"));
+		assertEquals(RuntimeVariables.replace("Approved"),
+			selenium.getText("//tr[5][contains(.,'Approved')]/td[2]/a"));
+		assertEquals(RuntimeVariables.replace("1.1"),
+			selenium.getText("//tr[5][contains(.,'1.1')]/td[3]/a"));
+		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
+			selenium.getText("//tr[5][contains(.,'Joe Bloggs')]/td[4]/a"));
+		assertEquals(RuntimeVariables.replace("Date"),
+			selenium.getText("//a[contains(text(),'Date')]"));
+		assertEquals(RuntimeVariables.replace("Actions"),
+			selenium.getText(
+				"xPath=(//span[@title='Actions']/ul/li/strong/a)[3]"));
+		assertEquals(RuntimeVariables.replace("Showing 3 results."),
+			selenium.getText("//div[@class='search-results']"));
 	}
 }
