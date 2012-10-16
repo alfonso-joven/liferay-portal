@@ -122,7 +122,6 @@ public class AddUserPortalContentReviewerTest extends BaseTestCase {
 				selenium.clickAt("//div[6]/span/a/span",
 					RuntimeVariables.replace("Select"));
 				Thread.sleep(5000);
-				selenium.waitForPopUp("null", RuntimeVariables.replace("30000"));
 				selenium.selectWindow("title=Users and Organizations");
 				selenium.waitForVisible(
 					"//tr[contains(.,'Portal Content Reviewer')]/td[1]/a");

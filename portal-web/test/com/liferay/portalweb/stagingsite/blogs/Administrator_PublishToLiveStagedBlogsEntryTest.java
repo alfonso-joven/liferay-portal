@@ -50,7 +50,8 @@ public class Administrator_PublishToLiveStagedBlogsEntryTest
 				assertEquals(RuntimeVariables.replace("Blogs Entry Content"),
 					selenium.getText("//div[@class='entry-body']/p"));
 				Thread.sleep(5000);
-				selenium.click("//span[contains(.,'Staging')]/span/span/ul");
+				selenium.clickAt("//span[contains(.,'Staging')]/span/span/ul",
+					RuntimeVariables.replace("Staging Drop Down"));
 				selenium.waitForVisible(
 					"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Publish to Live Now')]");
 				assertEquals(RuntimeVariables.replace("Publish to Live Now"),
@@ -58,10 +59,11 @@ public class Administrator_PublishToLiveStagedBlogsEntryTest
 						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Publish to Live Now')]"));
 				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Publish to Live Now')]",
 					RuntimeVariables.replace("Publish to Live Now"));
+				Thread.sleep(5000);
 				selenium.waitForVisible("//div[2]/div[1]/a");
 
 				boolean blogsVisible = selenium.isVisible(
-						"_88_PORTLET_DATA_33Checkbox");
+						"//input[@id='_88_PORTLET_DATA_33Checkbox']");
 
 				if (blogsVisible) {
 					label = 2;

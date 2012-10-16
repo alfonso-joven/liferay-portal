@@ -61,7 +61,6 @@ public class TearDownPermissionsTest extends BaseTestCase {
 		selenium.clickAt("//span/a[contains(.,'Limit Scope')]",
 			RuntimeVariables.replace("Limit Scope"));
 		Thread.sleep(5000);
-		selenium.waitForPopUp("null", RuntimeVariables.replace("30000"));
 		selenium.selectWindow("title=Roles");
 		selenium.waitForVisible(
 			"//tr[contains(.,'User Personal Site')]/td[1]/a");
@@ -96,7 +95,6 @@ public class TearDownPermissionsTest extends BaseTestCase {
 		selenium.clickAt("//tr[14]/td[4]/span/a/span",
 			RuntimeVariables.replace("Limit Scope"));
 		Thread.sleep(5000);
-		selenium.waitForPopUp("null", RuntimeVariables.replace("30000"));
 		selenium.selectWindow("title=Roles");
 		selenium.waitForVisible(
 			"//tr[contains(.,'User Personal Site')]/td[1]/a");
