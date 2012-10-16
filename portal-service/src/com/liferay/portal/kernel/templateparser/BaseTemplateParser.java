@@ -15,10 +15,13 @@
 package com.liferay.portal.kernel.templateparser;
 
 import com.liferay.portal.kernel.io.unsync.UnsyncStringWriter;
+import com.liferay.portal.kernel.mobile.device.Device;
+import com.liferay.portal.kernel.mobile.device.UnknownDevice;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.LocaleUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
+import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.kernel.xml.Document;
 import com.liferay.portal.kernel.xml.DocumentException;
 import com.liferay.portal.kernel.xml.Element;
@@ -29,7 +32,6 @@ import com.liferay.portal.service.CompanyLocalServiceUtil;
 import com.liferay.portal.theme.ThemeDisplay;
 
 import java.io.IOException;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -66,6 +68,10 @@ public abstract class BaseTemplateParser implements TemplateParser {
 		return _xml;
 	}
 
+	public void setContextObjects(Map<String, Object> contextObjects) {
+		_contextObjects = contextObjects;
+	}
+
 	public void setLanguageId(String languageId) {
 		_languageId = languageId;
 	}
@@ -98,24 +104,34 @@ public abstract class BaseTemplateParser implements TemplateParser {
 		try {
 			TemplateContext templateContext = getTemplateContext();
 
-			Document document = SAXReaderUtil.read(_xml);
+			if (Validator.isNotNull(_xml)) {
+				Document document = SAXReaderUtil.read(_xml);
 
-			Element rootElement = document.getRootElement();
+				Element rootElement = document.getRootElement();
 
-			List<TemplateNode> templateNodes = getTemplateNodes(rootElement);
+				List<TemplateNode> templateNodes = getTemplateNodes(
+					rootElement);
 
-			if (templateNodes != null) {
-				for (TemplateNode templateNode : templateNodes) {
-					templateContext.put(templateNode.getName(), templateNode);
+				if (templateNodes != null) {
+					for (TemplateNode templateNode : templateNodes) {
+						templateContext.put(
+							templateNode.getName(), templateNode);
+					}
 				}
+
+				Element requestElement = rootElement.element("request");
+
+				templateContext.put(
+					"request", insertRequestVariables(requestElement));
+
+				templateContext.put("xmlRequest", requestElement.asXML());
 			}
 
-			Element requestElement = rootElement.element("request");
-
-			templateContext.put(
-				"request", insertRequestVariables(requestElement));
-
-			templateContext.put("xmlRequest", requestElement.asXML());
+			if (_contextObjects != null) {
+				for (String key : _contextObjects.keySet()) {
+					templateContext.put(key, _contextObjects.get(key));
+				}
+			}
 
 			populateTemplateContext(templateContext);
 
@@ -145,25 +161,59 @@ public abstract class BaseTemplateParser implements TemplateParser {
 	}
 
 	protected Company getCompany() throws Exception {
-		long companyId = getCompanyId();
+		if (_themeDisplay != null) {
+			return _themeDisplay.getCompany();
+		}
 
-		return CompanyLocalServiceUtil.getCompany(companyId);
+		return CompanyLocalServiceUtil.getCompany(getCompanyId());
 	}
 
 	protected long getCompanyId() {
+		if (_themeDisplay != null) {
+			return _themeDisplay.getCompanyId();
+		}
+
 		return GetterUtil.getLong(_tokens.get("company_id"));
 	}
 
+	protected Device getDevice() {
+		if (_themeDisplay != null) {
+			return _themeDisplay.getDevice();
+		}
+
+		return UnknownDevice.getInstance();
+	}
+
 	protected long getGroupId() {
+		if (_themeDisplay != null) {
+			return _themeDisplay.getScopeGroupId();
+		}
+
 		return GetterUtil.getLong(_tokens.get("group_id"));
+	}
+
+	protected long getCompanyGroupId() {
+		if (_themeDisplay != null) {
+			return _themeDisplay.getCompanyGroupId();
+		}
+
+		return GetterUtil.getLong(_tokens.get("company_group_id"));
 	}
 
 	protected abstract TemplateContext getTemplateContext() throws Exception;
 
 	protected String getTemplateId() {
-		long companyGroupId = GetterUtil.getLong(
-			_tokens.get("company_group_id"));
-		String templateId = _tokens.get("template_id");
+		long companyGroupId = getCompanyGroupId();
+
+		String templateId = null;
+
+		if (_tokens != null) {
+			templateId = _tokens.get("template_id");
+		}
+
+		if (Validator.isNull(templateId)) {
+			templateId = (String.valueOf(_contextObjects.get("template_id")));
+		}
 
 		StringBundler sb = new StringBundler(5);
 
@@ -243,7 +293,7 @@ public abstract class BaseTemplateParser implements TemplateParser {
 
 		templateContext.put("company", getCompany());
 		templateContext.put("companyId", getCompanyId());
-		templateContext.put("device", _themeDisplay.getDevice());
+		templateContext.put("device", getDevice());
 		templateContext.put("groupId", getGroupId());
 
 		Locale locale = LocaleUtil.fromLanguageId(_languageId);
@@ -255,6 +305,7 @@ public abstract class BaseTemplateParser implements TemplateParser {
 		templateContext.put("viewMode", _viewMode);
 	}
 
+	private Map<String, Object> _contextObjects = new HashMap<String, Object>();
 	private String _languageId;
 	private String _script;
 	private ThemeDisplay _themeDisplay;
