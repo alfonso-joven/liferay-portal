@@ -29,8 +29,8 @@ public class RecentBloggersTestPlan extends BaseTestSuite {
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
 
-		testSuite.addTest(RBEntryTestPlan.suite());
 		testSuite.addTest(PortletTestPlan.suite());
+		testSuite.addTest(RBEntryTestPlan.suite());
 
 		return testSuite;
 	}

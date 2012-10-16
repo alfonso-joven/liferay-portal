@@ -42,5 +42,8 @@ public class AddPageRBTest extends BaseTestCase {
 		selenium.clickAt("//button[contains(@id,'Save')]",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForVisible("link=Recent Bloggers Test Page");
+		selenium.clickAt("link=Recent Bloggers Test Page",
+			RuntimeVariables.replace("Recent Bloggers Test Page"));
+		selenium.waitForPageToLoad("30000");
 	}
 }
