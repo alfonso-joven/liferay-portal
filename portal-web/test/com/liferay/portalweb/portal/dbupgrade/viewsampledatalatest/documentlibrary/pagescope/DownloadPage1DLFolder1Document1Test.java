@@ -47,11 +47,11 @@ public class DownloadPage1DLFolder1Document1Test extends BaseTestCase {
 			RuntimeVariables.replace("Actions Arrow"));
 		selenium.waitForVisible(
 			"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a");
-		assertEquals(RuntimeVariables.replace("Download (10.0k)"),
+		assertEquals(RuntimeVariables.replace("Download (21.5k)"),
 			selenium.getText(
 				"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a"));
 		selenium.click("//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a");
-		selenium.downloadTempFile("DL_Folder1_Document1_Title.doc");
+		selenium.downloadTempFile("DL Folder1 Document1 Title.doc");
 		Thread.sleep(15000);
 		selenium.open("/web/document-library-page-scope-community/");
 		selenium.waitForVisible("link=DL Page1 Name");
@@ -76,7 +76,7 @@ public class DownloadPage1DLFolder1Document1Test extends BaseTestCase {
 				"//div[@class='lfr-component lfr-menu-list']/ul/li[5]/a"));
 		selenium.waitForPageToLoad("30000");
 		selenium.uploadTempFile("//input[@id='_20_file']",
-			RuntimeVariables.replace("DL_Folder1_Document1_Title.doc"));
+			RuntimeVariables.replace("DL Folder1 Document1 Title.doc"));
 		selenium.type("//input[@id='_20_title']",
 			RuntimeVariables.replace("Temp_DL_Folder1_Document1_Title.doc"));
 		selenium.clickAt("//input[@value='Publish']",
@@ -108,9 +108,9 @@ public class DownloadPage1DLFolder1Document1Test extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"Temp_DL_Folder1_Document1_Title.doc"),
 			selenium.getText("//h1[@class='header-title']/span"));
-		assertEquals(RuntimeVariables.replace("Download (10.0k)"),
+		assertEquals(RuntimeVariables.replace("Download (21.5k)"),
 			selenium.getText("//span[@class='download-document']/span/a/span"));
-		assertEquals(RuntimeVariables.replace("10.0k"),
+		assertEquals(RuntimeVariables.replace("21.5k"),
 			selenium.getText("//tr[3]/td[3]"));
 		selenium.open("/web/document-library-page-scope-community/");
 		selenium.waitForVisible("link=DL Page1 Name");
