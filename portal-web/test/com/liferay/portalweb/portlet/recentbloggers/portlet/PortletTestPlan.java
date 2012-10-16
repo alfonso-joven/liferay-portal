@@ -15,11 +15,11 @@
 package com.liferay.portalweb.portlet.recentbloggers.portlet;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
-import com.liferay.portalweb.portlet.recentbloggers.portlet.addportletduplicate.AddPortletDuplicateTests;
 import com.liferay.portalweb.portlet.recentbloggers.portlet.addportletrb.AddPortletRBTests;
-import com.liferay.portalweb.portlet.recentbloggers.portlet.configureportletdisplaystyleusername.ConfigurePortletDisplayStyleUserNameTests;
-import com.liferay.portalweb.portlet.recentbloggers.portlet.configureportletdisplaystyleusernameandimage.ConfigurePortletDisplayStyleUserNameAndImageTests;
-import com.liferay.portalweb.portlet.recentbloggers.portlet.removeportlet.RemovePortletTests;
+import com.liferay.portalweb.portlet.recentbloggers.portlet.addportletrbduplicate.AddPortletRBDuplicateTests;
+import com.liferay.portalweb.portlet.recentbloggers.portlet.configureportletrbdisplaystyleusername.ConfigurePortletRBDisplayStyleUserNameTests;
+import com.liferay.portalweb.portlet.recentbloggers.portlet.configureportletrbdisplaystyleusernameandimage.ConfigurePortletRBDisplayStyleUserNameAndImageTests;
+import com.liferay.portalweb.portlet.recentbloggers.portlet.removeportletrb.RemovePortletRBTests;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -32,12 +32,12 @@ public class PortletTestPlan extends BaseTestSuite {
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
 
-		testSuite.addTest(AddPortletDuplicateTests.suite());
 		testSuite.addTest(AddPortletRBTests.suite());
-		testSuite.addTest(ConfigurePortletDisplayStyleUserNameTests.suite());
+		testSuite.addTest(AddPortletRBDuplicateTests.suite());
+		testSuite.addTest(ConfigurePortletRBDisplayStyleUserNameTests.suite());
 		testSuite.addTest(
-			ConfigurePortletDisplayStyleUserNameAndImageTests.suite());
-		testSuite.addTest(RemovePortletTests.suite());
+			ConfigurePortletRBDisplayStyleUserNameAndImageTests.suite());
+		testSuite.addTest(RemovePortletRBTests.suite());
 
 		return testSuite;
 	}

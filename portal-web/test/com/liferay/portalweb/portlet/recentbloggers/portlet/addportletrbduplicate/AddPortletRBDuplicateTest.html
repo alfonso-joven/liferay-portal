@@ -1,12 +1,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>AddPortletRBTest</title>
+<title>AddPortletRBDuplicateTest</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">AddPortletRBTest</td></tr>
+<tr><td rowspan="1" colspan="3">AddPortletRBDuplicateTest</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
@@ -70,23 +70,13 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
+	<td>//div[@title='Recent Bloggers']</td>
+	<td>Recent Bloggers</td>
+</tr>
+<tr>
+	<td>assertNotVisible</td>
 	<td>//div[@title='Recent Bloggers']/p/a</td>
 	<td>Add</td>
-</tr>
-<tr>
-	<td>clickAt</td>
-	<td>//div[@title='Recent Bloggers']/p/a</td>
-	<td>Add</td>
-</tr>
-<tr>
-	<td>waitForVisible</td>
-	<td>//section</td>
-	<td>Portlet</td>
-</tr>
-<tr>
-	<td>assertVisible</td>
-	<td>//section</td>
-	<td>Portlet</td>
 </tr>
 </tbody></table>
 </body>

@@ -12,11 +12,12 @@
  * details.
  */
 
-package com.liferay.portalweb.portlet.recentbloggers;
+package com.liferay.portalweb.portlet.recentbloggers.portlet.removeportletrb;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
-import com.liferay.portalweb.portlet.recentbloggers.portlet.PortletTestPlan;
-import com.liferay.portalweb.portlet.recentbloggers.rbentry.RBEntryTestPlan;
+import com.liferay.portalweb.portal.util.TearDownPageTest;
+import com.liferay.portalweb.portlet.recentbloggers.portlet.addportletrb.AddPageRBTest;
+import com.liferay.portalweb.portlet.recentbloggers.portlet.addportletrb.AddPortletRBTest;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -24,15 +25,14 @@ import junit.framework.TestSuite;
 /**
  * @author Brian Wing Shun Chan
  */
-public class RecentBloggersTestPlan extends BaseTestSuite {
-
+public class RemovePortletRBTests extends BaseTestSuite {
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
-
-		testSuite.addTest(RBEntryTestPlan.suite());
-		testSuite.addTest(PortletTestPlan.suite());
+		testSuite.addTestSuite(AddPageRBTest.class);
+		testSuite.addTestSuite(AddPortletRBTest.class);
+		testSuite.addTestSuite(RemovePortletRBTest.class);
+		testSuite.addTestSuite(TearDownPageTest.class);
 
 		return testSuite;
 	}
-
 }

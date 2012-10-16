@@ -12,11 +12,11 @@
  * details.
  */
 
-package com.liferay.portalweb.portlet.recentbloggers;
+package com.liferay.portalweb.portlet.recentbloggers.rbentry;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
-import com.liferay.portalweb.portlet.recentbloggers.portlet.PortletTestPlan;
-import com.liferay.portalweb.portlet.recentbloggers.rbentry.RBEntryTestPlan;
+import com.liferay.portalweb.portlet.recentbloggers.rbentry.viewrbusername.ViewRBUserNameTests;
+import com.liferay.portalweb.portlet.recentbloggers.rbentry.viewrbusernameandimage.ViewRBUserNameAndImageTests;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -24,13 +24,13 @@ import junit.framework.TestSuite;
 /**
  * @author Brian Wing Shun Chan
  */
-public class RecentBloggersTestPlan extends BaseTestSuite {
+public class RBEntryTestPlan extends BaseTestSuite {
 
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
 
-		testSuite.addTest(RBEntryTestPlan.suite());
-		testSuite.addTest(PortletTestPlan.suite());
+		testSuite.addTest(ViewRBUserNameTests.suite());
+		testSuite.addTest(ViewRBUserNameAndImageTests.suite());
 
 		return testSuite;
 	}
