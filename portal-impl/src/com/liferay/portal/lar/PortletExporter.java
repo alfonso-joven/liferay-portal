@@ -1096,7 +1096,7 @@ public class PortletExporter {
 				preferencesXML, plid);
 		}
 		else if (rootPotletId.equals(PortletKeys.TAGS_CATEGORIES_NAVIGATION)) {
-			preferencesXML = updateCategoryNavigationPortletPreferences(
+			preferencesXML = updateAssetCategoriesNavigationPortletPreferences(
 				preferencesXML, plid);
 		}
 
@@ -1518,7 +1518,7 @@ public class PortletExporter {
 		return PortletPreferencesFactoryUtil.toXML(jxPreferences);
 	}
 
-	protected String updateCategoryNavigationPortletPreferences(
+	protected String updateAssetCategoriesNavigationPortletPreferences(
 			String xml, long plid)
 		throws Exception {
 
@@ -1577,15 +1577,6 @@ public class PortletExporter {
 						uuid = category.getUuid();
 					}
 				}
-				else if (className.equals(JournalStructure.class.getName())) {
-					JournalStructure structure =
-						JournalStructureLocalServiceUtil.fetchJournalStructure(
-							primaryKeyLong);
-
-					if (structure != null) {
-						uuid = structure.getUuid();
-					}
-				}
 				else if (className.equals(AssetVocabulary.class.getName())) {
 					AssetVocabulary vocabulary =
 						AssetVocabularyLocalServiceUtil.fetchAssetVocabulary(
@@ -1593,6 +1584,15 @@ public class PortletExporter {
 
 					if (vocabulary != null) {
 						uuid = vocabulary.getUuid();
+					}
+				}
+				else if (className.equals(JournalStructure.class.getName())) {
+					JournalStructure structure =
+						JournalStructureLocalServiceUtil.fetchJournalStructure(
+							primaryKeyLong);
+
+					if (structure != null) {
+						uuid = structure.getUuid();
 					}
 				}
 
