@@ -33,8 +33,7 @@ public class TearDownAPArchivedSetupTest extends BaseTestCase {
 				selenium.clickAt("link=Asset Publisher Test Page",
 					RuntimeVariables.replace("Asset Publisher Test Page"));
 				selenium.waitForPageToLoad("30000");
-				selenium.waitForElementPresent(
-					"//nav[@class='site-breadcrumbs aui-helper-hidden lfr-hudcrumbs']");
+				Thread.sleep(5000);
 				selenium.waitForVisible(
 					"//span[@title='Options']/ul/li/strong/a");
 				assertEquals(RuntimeVariables.replace("Options"),
@@ -70,8 +69,7 @@ public class TearDownAPArchivedSetupTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.waitForElementPresent(
-					"//script[contains(@src,'liferay/navigation_interaction.js')]");
+				Thread.sleep(5000);
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText("//span[@title='Actions']/ul/li/strong"));
 				selenium.clickAt("//span[@title='Actions']/ul/li/strong",
@@ -96,8 +94,7 @@ public class TearDownAPArchivedSetupTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.waitForElementPresent(
-					"//script[contains(@src,'liferay/navigation_interaction.js')]");
+				Thread.sleep(5000);
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText("//span[@title='Actions']/ul/li/strong"));
 				selenium.clickAt("//span[@title='Actions']/ul/li/strong",
@@ -122,8 +119,7 @@ public class TearDownAPArchivedSetupTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.waitForElementPresent(
-					"//script[contains(@src,'liferay/navigation_interaction.js')]");
+				Thread.sleep(5000);
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText("//span[@title='Actions']/ul/li/strong"));
 				selenium.clickAt("//span[@title='Actions']/ul/li/strong",
@@ -148,8 +144,7 @@ public class TearDownAPArchivedSetupTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.waitForElementPresent(
-					"//script[contains(@src,'liferay/navigation_interaction.js')]");
+				Thread.sleep(5000);
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText("//span[@title='Actions']/ul/li/strong"));
 				selenium.clickAt("//span[@title='Actions']/ul/li/strong",
@@ -174,8 +169,7 @@ public class TearDownAPArchivedSetupTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.waitForElementPresent(
-					"//script[contains(@src,'liferay/navigation_interaction.js')]");
+				Thread.sleep(5000);
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText("//span[@title='Actions']/ul/li/strong"));
 				selenium.clickAt("//span[@title='Actions']/ul/li/strong",
