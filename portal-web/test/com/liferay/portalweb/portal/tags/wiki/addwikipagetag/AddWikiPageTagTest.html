@@ -19,8 +19,13 @@
 	<td>Wiki Test Page</td>
 </tr>
 <tr>
+	<td>assertText</td>
+	<td>//ul[@class='top-links-navigation']/li/span/a/span[contains(.,'All Pages')]</td>
+	<td>All Pages</td>
+</tr>
+<tr>
 	<td>clickAtAndWait</td>
-	<td>//span/a[contains(.,'All Pages')]</td>
+	<td>//ul[@class='top-links-navigation']/li/span/a/span[contains(.,'All Pages')]</td>
 	<td>All Pages</td>
 </tr>
 <tr>
@@ -35,12 +40,12 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//span/a[contains(.,'Edit')]</td>
+	<td>//div[@class='page-actions top-actions']/span/a[contains(.,'Edit')]</td>
 	<td>Edit</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>//span/a[contains(.,'Edit')]</td>
+	<td>//div[@class='page-actions top-actions']/span/a[contains(.,'Edit')]</td>
 	<td>Edit</td>
 </tr>
 <tr>
@@ -55,12 +60,12 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//span[contains(.,'Categorization')]</td>
+	<td>//div[@id='wikiPageCategorizationPanel']/div/div/span</td>
 	<td>Categorization</td>
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>//span[contains(.,'Categorization')]</td>
+	<td>//div[@id='wikiPageCategorizationPanel']/div/div/span</td>
 	<td>Categorization</td>
 </tr>
 <tr>
@@ -95,7 +100,7 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//a[contains(.,'wiki tag1')]</td>
+	<td>//div[@class='page-tags']/span/a</td>
 	<td>wiki tag1</td>
 </tr>
 </tbody></table>

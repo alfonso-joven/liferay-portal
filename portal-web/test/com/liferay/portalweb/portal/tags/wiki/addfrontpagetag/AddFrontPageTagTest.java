@@ -34,8 +34,9 @@ public class AddFrontPageTagTest extends BaseTestCase {
 					RuntimeVariables.replace("Wiki Test Page"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("Edit"),
-					selenium.getText("//span/a[contains(.,'Edit')]"));
-				selenium.clickAt("//span/a[contains(.,'Edit')]",
+					selenium.getText(
+						"//div[@class='page-actions top-actions']/span/a[contains(.,'Edit')]"));
+				selenium.clickAt("//div[@class='page-actions top-actions']/span/a[contains(.,'Edit')]",
 					RuntimeVariables.replace("Edit"));
 				selenium.waitForPageToLoad("30000");
 
@@ -49,8 +50,9 @@ public class AddFrontPageTagTest extends BaseTestCase {
 				}
 
 				assertEquals(RuntimeVariables.replace("Categorization"),
-					selenium.getText("//span[contains(.,'Categorization')]"));
-				selenium.clickAt("//span[contains(.,'Categorization')]",
+					selenium.getText(
+						"//div[@id='wikiPageCategorizationPanel']/div/div/span"));
+				selenium.clickAt("//div[@id='wikiPageCategorizationPanel']/div/div/span",
 					RuntimeVariables.replace("Categorization"));
 				selenium.waitForVisible(
 					"//input[@class='lfr-tag-selector-input aui-field-input-text']");

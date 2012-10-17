@@ -33,7 +33,10 @@ public class AddWikiPage3Tag1Test extends BaseTestCase {
 				selenium.clickAt("link=Wiki Test Page",
 					RuntimeVariables.replace("Wiki Test Page"));
 				selenium.waitForPageToLoad("30000");
-				selenium.clickAt("//span/a[contains(.,'All Pages')]",
+				assertEquals(RuntimeVariables.replace("All Pages"),
+					selenium.getText(
+						"//ul[@class='top-links-navigation']/li/span/a/span[contains(.,'All Pages')]"));
+				selenium.clickAt("//ul[@class='top-links-navigation']/li/span/a/span[contains(.,'All Pages')]",
 					RuntimeVariables.replace("All Pages"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("Wiki Page3 Title"),
@@ -43,8 +46,9 @@ public class AddWikiPage3Tag1Test extends BaseTestCase {
 					RuntimeVariables.replace("Wiki Page3 Title"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("Edit"),
-					selenium.getText("//span/a[contains(.,'Edit')]"));
-				selenium.clickAt("//span/a[contains(.,'Edit')]",
+					selenium.getText(
+						"//div[@class='page-actions top-actions']/span/a[contains(.,'Edit')]"));
+				selenium.clickAt("//div[@class='page-actions top-actions']/span/a[contains(.,'Edit')]",
 					RuntimeVariables.replace("Edit"));
 				selenium.waitForPageToLoad("30000");
 
@@ -58,8 +62,9 @@ public class AddWikiPage3Tag1Test extends BaseTestCase {
 				}
 
 				assertEquals(RuntimeVariables.replace("Categorization"),
-					selenium.getText("//span[contains(.,'Categorization')]"));
-				selenium.clickAt("//span[contains(.,'Categorization')]",
+					selenium.getText(
+						"//div[@id='wikiPageCategorizationPanel']/div/div/span"));
+				selenium.clickAt("//div[@id='wikiPageCategorizationPanel']/div/div/span",
 					RuntimeVariables.replace("Categorization"));
 				selenium.waitForVisible(
 					"//input[@class='lfr-tag-selector-input aui-field-input-text']");
