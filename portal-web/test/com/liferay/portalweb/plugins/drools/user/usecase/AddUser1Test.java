@@ -190,7 +190,6 @@ public class AddUser1Test extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.isVisible("//input[@value='Sign In']"));
 				selenium.open("/web/guest/home/");
-				selenium.waitForVisible("//input[@id='_58_login']");
 				selenium.type("//input[@id='_58_login']",
 					RuntimeVariables.replace("test@liferay.com"));
 				selenium.type("//input[@id='_58_password']",

@@ -60,7 +60,7 @@ public class AddBlogsEntry3TagWCSTest extends BaseTestCase {
 			"//input[@class='lfr-tag-selector-input aui-field-input-text']");
 		selenium.type("//input[@class='lfr-tag-selector-input aui-field-input-text']",
 			RuntimeVariables.replace("Americas Symposium"));
-		selenium.clickAt("//button[@id='add']", RuntimeVariables.replace(""));
+		selenium.clickAt("//button[@id='add']", RuntimeVariables.replace("Add"));
 		selenium.clickAt("//div[@id='blogsEntryCategorizationPanel']/div/div/span",
 			RuntimeVariables.replace("Categorization"));
 		selenium.clickAt("//input[@value='Publish']",

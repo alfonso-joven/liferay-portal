@@ -111,7 +111,6 @@ public class AddUser3Test extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.isVisible("//input[@value='Sign In']"));
 				selenium.open("/web/guest/home/");
-				selenium.waitForVisible("//input[@id='_58_login']");
 				selenium.type("//input[@id='_58_login']",
 					RuntimeVariables.replace("user3@liferay.com"));
 				selenium.type("//input[@id='_58_password']",
@@ -186,13 +185,11 @@ public class AddUser3Test extends BaseTestCase {
 
 			case 5:
 				selenium.open("/web/guest/home/");
-				selenium.waitForVisible("link=Sign Out");
 				selenium.clickAt("link=Sign Out",
 					RuntimeVariables.replace("Sign Out"));
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.isVisible("//input[@value='Sign In']"));
 				selenium.open("/web/guest/home/");
-				selenium.waitForVisible("//input[@id='_58_login']");
 				selenium.type("//input[@id='_58_login']",
 					RuntimeVariables.replace("test@liferay.com"));
 				selenium.type("//input[@id='_58_password']",
