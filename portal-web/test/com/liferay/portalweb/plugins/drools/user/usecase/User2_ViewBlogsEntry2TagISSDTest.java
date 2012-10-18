@@ -25,13 +25,14 @@ public class User2_ViewBlogsEntry2TagISSDTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Sample Drools Test Page");
 		selenium.clickAt("link=Sample Drools Test Page",
 			RuntimeVariables.replace("Sample Drools Test Page"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Indian Symposium"),
-			selenium.getText("//strong"));
-		assertEquals(RuntimeVariables.replace("Blogs Entry Content"),
-			selenium.getText("//p"));
+		assertTrue(selenium.isPartialText("//div[@class='portlet-content']",
+				"Welcome User Two!"));
+		assertTrue(selenium.isPartialText("//div[@class='portlet-content']",
+				"Indian Symposium"));
+		assertTrue(selenium.isPartialText("//div[@class='portlet-content']",
+				"Blogs Entry Content"));
 	}
 }

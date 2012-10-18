@@ -14,11 +14,6 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForVisible</td>
-	<td>link=Blogs Test Page</td>
-	<td>Blogs Test Page</td>
-</tr>
-<tr>
 	<td>clickAtAndWait</td>
 	<td>link=Blogs Test Page</td>
 	<td>Blogs Test Page</td>
@@ -101,12 +96,17 @@
 <tr>
 	<td>clickAt</td>
 	<td>//div[@id='blogsEntryCategorizationPanel']/div/div/span</td>
-	<td></td>
+	<td>Categorization</td>
 </tr>
 <tr>
 	<td>pause</td>
 	<td>5000</td>
 	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//input[@class='lfr-tag-selector-input aui-field-input-text']</td>
+	<td>Tags Field</td>
 </tr>
 <tr>
 	<td>type</td>
@@ -117,6 +117,11 @@
 	<td>clickAt</td>
 	<td>//button[@id='add']</td>
 	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@id='blogsEntryCategorizationPanel']/div/div/span</td>
+	<td>Categorization</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>

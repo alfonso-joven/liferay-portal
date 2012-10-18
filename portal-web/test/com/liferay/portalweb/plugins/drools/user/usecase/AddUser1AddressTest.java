@@ -25,6 +25,10 @@ public class AddUser1AddressTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
@@ -40,7 +44,8 @@ public class AddUser1AddressTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//td[2]/a", RuntimeVariables.replace("User Name"));
+		selenium.clickAt("//tr[@class='portlet-section-body results-row last']/td[4]/a",
+			RuntimeVariables.replace("user1"));
 		selenium.waitForPageToLoad("30000");
 		selenium.waitForVisible("//a[@id='_125_addressesLink']");
 		assertTrue(selenium.isPartialText("//a[@id='_125_addressesLink']",

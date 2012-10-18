@@ -30,7 +30,14 @@ public class TearDownUserTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				selenium.waitForElementPresent("link=Control Panel");
+				selenium.clickAt("//div[@id='dockbar']",
+					RuntimeVariables.replace("Dockbar"));
+				selenium.waitForElementPresent(
+					"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+				assertEquals(RuntimeVariables.replace("Go to"),
+					selenium.getText("//li[@id='_145_mySites']/a/span"));
+				selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+				selenium.waitForVisible("link=Control Panel");
 				selenium.clickAt("link=Control Panel",
 					RuntimeVariables.replace("Control Panel"));
 				selenium.waitForPageToLoad("30000");
@@ -67,9 +74,10 @@ public class TearDownUserTest extends BaseTestCase {
 				selenium.clickAt("link=Search All Users",
 					RuntimeVariables.replace("Search All Users"));
 				selenium.waitForPageToLoad("30000");
+				selenium.waitForElementPresent("//a[.='Advanced \u00bb']");
 
 				boolean advancedVisible = selenium.isVisible(
-						"link=Advanced \u00bb");
+						"//a[.='Advanced \u00bb']");
 
 				if (!advancedVisible) {
 					label = 3;
@@ -77,14 +85,14 @@ public class TearDownUserTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("link=Advanced \u00bb",
-					RuntimeVariables.replace("Advanced"));
+				selenium.clickAt("//a[.='Advanced \u00bb']",
+					RuntimeVariables.replace("Advanced \u00bb"));
 
 			case 3:
 				selenium.waitForVisible("//select[@id='_125_status']");
 				selenium.select("//select[@id='_125_status']",
 					RuntimeVariables.replace("Inactive"));
-				selenium.clickAt("//input[@value='Search']",
+				selenium.clickAt("//div[@class='taglib-search-toggle-advanced']/span[2]/span/input",
 					RuntimeVariables.replace("Search"));
 				selenium.waitForPageToLoad("30000");
 
@@ -123,8 +131,8 @@ public class TearDownUserTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("link=\u00ab Basic",
-					RuntimeVariables.replace("Basic"));
+				selenium.clickAt("//a[.='\u00ab Basic']",
+					RuntimeVariables.replace("\u00ab Basic"));
 
 			case 5:
 			case 100:

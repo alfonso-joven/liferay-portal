@@ -14,6 +14,16 @@
 	<td></td>
 </tr>
 <tr>
+	<td>clickAt</td>
+	<td>//div[@id='dockbar']</td>
+	<td>Dockbar</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]</td>
+	<td>AUI Editable Min</td>
+</tr>
+<tr>
 	<td>assertText</td>
 	<td>//li[@id='_145_mySites']/a/span</td>
 	<td>Go to</td>
@@ -39,33 +49,33 @@
 	<td>Sites</td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>//td[7]/span/ul/li/strong/a/span</td>
+	<td>assertVisible</td>
+	<td>xPath=(//span[@title='Actions']/ul/li/strong/a)[2]</td>
 	<td>Actions</td>
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>//td[7]/span/ul/li/strong/a/span</td>
+	<td>xPath=(//span[@title='Actions']/ul/li/strong/a)[2]</td>
 	<td>Actions</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Manage Memberships')]</td>
 	<td>Manage Memberships</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Manage Memberships')]</td>
 	<td>Manage Memberships</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Manage Memberships')]</td>
 	<td>Manage Memberships</td>
 </tr>
 <tr>
 	<td>type</td>
-	<td>//input[@name='_174_keywords']</td>
+	<td>//input[@name='_174_keywords_users']</td>
 	<td>user2</td>
 </tr>
 <tr>
@@ -74,9 +84,114 @@
 	<td>Search</td>
 </tr>
 <tr>
-	<td>assertTextPresent</td>
+	<td>assertText</td>
+	<td>//div[@class='portlet-body']/div[1]/h1</td>
+	<td>Liferay</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='portlet-body']/div[1]/span</td>
+	<td>« Back</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='portlet-body']/div[2]/span[1]</td>
+	<td>View Members</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>//div[@class='portlet-body']/div[2]/span[2]</td>
+	<td>Add Members</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>//div[@class='portlet-body']/div[2]/span[3]</td>
+	<td>Add Site Roles to</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='portlet-body']/div[2]/span[4]</td>
+	<td>View Teams</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='portlet-body']/ul/li[1]</td>
+	<td>Summary</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='portlet-body']/ul/li[2]</td>
+	<td>Users</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='portlet-body']/ul/li[3]</td>
+	<td>Organizations</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='portlet-body']/ul/li[4]</td>
+	<td>User Groups</td>
+</tr>
+<tr>
+	<td>assertVisible</td>
+	<td>//div[@class='portlet-body']/form/div[1]/div/span/span[1]/span/span/input</td>
+	<td>Search Field</td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>//div[@class='portlet-body']/form/div[1]/div/span/span[2]/span/input</td>
+	<td>Search</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='portlet-body']/form/div[1]/div/div</td>
+	<td>Advanced »</td>
+</tr>
+<tr>
+	<td>assertVisible</td>
+	<td>//div[@class='portlet-body']/form/div[3]/div[1]/div/table</td>
+	<td>Search Results</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[@class='portlet-section-header results-header']/th[1]</td>
+	<td>Name</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[@class='portlet-section-header results-header']/th[2]</td>
+	<td>Screen Name</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[@class='portlet-section-header results-header']/th[3]</td>
+	<td>Site Roles</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[@class='portlet-section-body results-row last']/td[1]</td>
 	<td>User Two</td>
-	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[@class='portlet-section-body results-row last']/td[2]</td>
+	<td>user2</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>//tr[@class='portlet-section-body results-row last']/td[4]</td>
+	<td>Actions</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='portlet-body']/form/div[3]/div[2]/div/div</td>
+	<td>Showing 1 result.</td>
+</tr>
+<tr>
+	<td>assertValue</td>
+	<td>//div[@class='portlet-body']/form/div[4]/span/span/input</td>
+	<td>Assign Users</td>
 </tr>
 </tbody></table>
 </body>

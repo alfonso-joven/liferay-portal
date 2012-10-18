@@ -42,7 +42,8 @@ public class AddPageSDTest extends BaseTestCase {
 		selenium.clickAt("//button[contains(@id,'Save')]",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForVisible("link=Sample Drools Test Page");
-		selenium.click(RuntimeVariables.replace("link=Sample Drools Test Page"));
+		selenium.clickAt("link=Sample Drools Test Page",
+			RuntimeVariables.replace("Sample Drools Test Page"));
 		selenium.waitForPageToLoad("30000");
 	}
 }

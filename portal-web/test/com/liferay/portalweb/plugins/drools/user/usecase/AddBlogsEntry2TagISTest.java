@@ -25,7 +25,6 @@ public class AddBlogsEntry2TagISTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Blogs Test Page");
 		selenium.clickAt("link=Blogs Test Page",
 			RuntimeVariables.replace("Blogs Test Page"));
 		selenium.waitForPageToLoad("30000");
@@ -55,11 +54,15 @@ public class AddBlogsEntry2TagISTest extends BaseTestCase {
 		selenium.waitForText("//body", "Blogs Entry Content");
 		selenium.selectFrame("relative=top");
 		selenium.clickAt("//div[@id='blogsEntryCategorizationPanel']/div/div/span",
-			RuntimeVariables.replace(""));
+			RuntimeVariables.replace("Categorization"));
 		Thread.sleep(5000);
+		selenium.waitForVisible(
+			"//input[@class='lfr-tag-selector-input aui-field-input-text']");
 		selenium.type("//input[@class='lfr-tag-selector-input aui-field-input-text']",
 			RuntimeVariables.replace("Indian Symposium"));
-		selenium.clickAt("//button[@id='add']", RuntimeVariables.replace(""));
+		selenium.clickAt("//button[@id='add']", RuntimeVariables.replace("Add"));
+		selenium.clickAt("//div[@id='blogsEntryCategorizationPanel']/div/div/span",
+			RuntimeVariables.replace("Categorization"));
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");
