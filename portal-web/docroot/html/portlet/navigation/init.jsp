@@ -29,7 +29,7 @@ String defaultBulletStyle = GetterUtil.getString(themeDisplay.getThemeSetting("b
 
 String bulletStyle = PrefsParamUtil.getString(preferences, renderRequest, "bulletStyle", defaultBulletStyle);
 
-String displayStyle = PrefsParamUtil.getString(preferences, renderRequest, "displayStyle", "relative-with-breadcrumb");
+String displayStyle = PrefsParamUtil.getString(preferences, renderRequest, "displayStyle", PropsValues.NAVIGATION_DISPLAY_STYLE_DEFAULT);
 
 String headerType = PrefsParamUtil.getString(preferences, renderRequest, "headerType", "root-layout");
 
