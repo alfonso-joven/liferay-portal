@@ -25,7 +25,14 @@ public class TearDownPermissionsTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Go to"),
+			selenium.getText("//li[@id='_145_mySites']/a/span"));
+		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
@@ -37,8 +44,8 @@ public class TearDownPermissionsTest extends BaseTestCase {
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Organization User"),
-			selenium.getText("//tr[contains(.,'Organization User')]/td[1]/a"));
-		selenium.clickAt("//tr[contains(.,'Organization User')]/td[1]/a",
+			selenium.getText("//tr/td[1]/a[contains(.,'Organization User')]"));
+		selenium.clickAt("//tr/td[1]/a[contains(.,'Organization User')]",
 			RuntimeVariables.replace("Organization User"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Define Permissions",

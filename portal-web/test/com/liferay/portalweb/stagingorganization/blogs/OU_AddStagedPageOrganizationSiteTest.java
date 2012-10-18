@@ -39,15 +39,18 @@ public class OU_AddStagedPageOrganizationSiteTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"You are viewing the staged version of Selenium. You can make changes here and publish them to Live afterwards to make them public."),
 			selenium.getText("//span[@class='staging-live-help']"));
-		selenium.clickAt("//nav[@id='navigation']",
-			RuntimeVariables.replace("Navigation"));
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/liferay/dockbar_underlay.js')]");
 		selenium.waitForVisible(
-			"//a[@class='menu-button']/span[contains(.,'Add')]	");
+			"//a[@class='menu-button']/span[contains(.,'Add')]");
 		selenium.clickAt("//a[@class='menu-button']/span[contains(.,'Add')]	",
 			RuntimeVariables.replace("Add"));
-		selenium.waitForElementPresent("//a[@id='addPage']");
-		selenium.clickAt("//a[@id='addPage']",
-			RuntimeVariables.replace("Add Page"));
+		selenium.waitForVisible("//a[@id='addPage']");
+		assertEquals(RuntimeVariables.replace("Page"),
+			selenium.getText("//a[@id='addPage']"));
+		selenium.clickAt("//a[@id='addPage']", RuntimeVariables.replace("Page"));
 		selenium.waitForVisible("//input[@type='text']");
 		selenium.type("//input[@type='text']",
 			RuntimeVariables.replace("Blogs Test Page"));
