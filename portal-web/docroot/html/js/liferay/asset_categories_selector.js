@@ -594,8 +594,9 @@ AUI.add(
 									url: themeDisplay.getPathMain() + '/asset/get_categories'
 								},
 								paginator: {
-									limit: 50,
-									offsetParam: 'start'
+									end: -1,
+									offsetParam: 'start',
+									start: -1
 								}
 							}
 						).render(popup.entriesNode);
