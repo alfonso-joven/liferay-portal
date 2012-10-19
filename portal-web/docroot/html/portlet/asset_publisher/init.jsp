@@ -168,7 +168,7 @@ if (portletName.equals(PortletKeys.RELATED_ASSETS)) {
 boolean mergeUrlTags = GetterUtil.getBoolean(preferences.getValue("mergeUrlTags", null), true);
 boolean mergeLayoutTags = GetterUtil.getBoolean(preferences.getValue("mergeLayoutTags", null), false);
 
-String displayStyle = GetterUtil.getString(preferences.getValue("displayStyle", "abstracts"));
+String displayStyle = GetterUtil.getString(preferences.getValue("displayStyle", PropsValues.ASSET_PUBLISHER_DISPLAY_STYLE_DEFAULT));
 
 if (Validator.isNull(displayStyle)) {
 	displayStyle = "abstracts";
