@@ -55,6 +55,12 @@ public class ContactServiceUtil {
 		getService().setBeanIdentifier(beanIdentifier);
 	}
 
+	public static com.liferay.portal.model.Contact getContact(long contactId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService().getContact(contactId);
+	}
+
 	public static ContactService getService() {
 		if (_service == null) {
 			_service = (ContactService)PortalBeanLocatorUtil.locate(ContactService.class.getName());

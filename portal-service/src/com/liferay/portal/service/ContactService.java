@@ -18,6 +18,7 @@ import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.jsonwebservice.JSONWebService;
 import com.liferay.portal.kernel.transaction.Isolation;
+import com.liferay.portal.kernel.transaction.Propagation;
 import com.liferay.portal.kernel.transaction.Transactional;
 
 /**
@@ -56,4 +57,9 @@ public interface ContactService extends BaseService {
 	* @param beanIdentifier the Spring bean ID for this bean
 	*/
 	public void setBeanIdentifier(java.lang.String beanIdentifier);
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public com.liferay.portal.model.Contact getContact(long contactId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
 }
