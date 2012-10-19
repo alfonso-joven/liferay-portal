@@ -5730,7 +5730,6 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 		if ((user != null) && (user.getUserId() != userId)) {
 			throw new DuplicateOpenIdException();
 		}
-
 	}
 
 	protected void validatePassword(
