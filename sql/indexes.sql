@@ -44,6 +44,7 @@ create index IX_FC1F9C7B on AssetEntry (classUuid);
 create index IX_7306C60 on AssetEntry (companyId);
 create index IX_75D42FF9 on AssetEntry (expirationDate);
 create index IX_1EBA6821 on AssetEntry (groupId, classUuid);
+create index IX_FEC4A201 on AssetEntry (layoutUuid);
 create index IX_2E4E3885 on AssetEntry (publishDate);
 create index IX_9029E15A on AssetEntry (visible);
 
@@ -311,6 +312,7 @@ create index IX_8DEAE14E on JournalArticle (groupId, templateId);
 create index IX_22882D02 on JournalArticle (groupId, urlTitle);
 create index IX_D2D249E8 on JournalArticle (groupId, urlTitle, status);
 create index IX_F0A26B29 on JournalArticle (groupId, version, status);
+create index IX_3F1EA19E on JournalArticle (layoutUuid);
 create index IX_33F49D16 on JournalArticle (resourcePrimKey);
 create index IX_3E2765FC on JournalArticle (resourcePrimKey, status);
 create index IX_EF9B7028 on JournalArticle (smallImageId);
@@ -369,6 +371,7 @@ create index IX_8CE8C0D9 on Layout (groupId, privateLayout, sourcePrototypeLayou
 create index IX_1A1B61D2 on Layout (groupId, privateLayout, type_);
 create index IX_23922F7D on Layout (iconImageId);
 create index IX_B529BFD3 on Layout (layoutPrototypeUuid);
+create index IX_39A18ECC on Layout (sourcePrototypeLayoutUuid);
 create index IX_D0822724 on Layout (uuid_);
 create unique index IX_CED31606 on Layout (uuid_, groupId);
 
@@ -562,6 +565,7 @@ create unique index IX_C7057FF7 on PortletPreferences (ownerId, ownerType, plid,
 create index IX_D5EDA3A1 on PortletPreferences (ownerType, plid, portletId);
 create index IX_F15C1C4F on PortletPreferences (plid);
 create index IX_D340DB76 on PortletPreferences (plid, portletId);
+create index IX_8E6DA3A1 on PortletPreferences (portletId);
 
 create index IX_16184D57 on RatingsEntry (classNameId, classPK);
 create index IX_A1A8CB8B on RatingsEntry (classNameId, classPK, score);
