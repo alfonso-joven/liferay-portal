@@ -30,6 +30,7 @@ public class AddPortletAPSiteTests extends BaseTestSuite {
 		testSuite.addTestSuite(AddSiteTest.class);
 		testSuite.addTestSuite(AddPageAPSiteTest.class);
 		testSuite.addTestSuite(AddPortletAPSiteTest.class);
+		testSuite.addTestSuite(ViewPortletAPSiteTest.class);
 		testSuite.addTestSuite(TearDownSiteTest.class);
 
 		return testSuite;
