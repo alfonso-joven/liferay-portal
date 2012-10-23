@@ -1182,17 +1182,6 @@ public class MainServlet extends ActionServlet {
 		catch (Exception e) {
 			_log.error(e, e);
 		}
-
-		if (_HTTP_HEADER_VERSION_VERBOSITY_DEFAULT) {
-		}
-		else if (_HTTP_HEADER_VERSION_VERBOSITY_PARTIAL) {
-			response.addHeader(
-				_LIFERAY_PORTAL_REQUEST_HEADER, ReleaseInfo.getName());
-		}
-		else {
-			response.addHeader(
-				_LIFERAY_PORTAL_REQUEST_HEADER, ReleaseInfo.getReleaseInfo());
-		}
 	}
 
 	protected boolean processServicePre(
@@ -1232,6 +1221,17 @@ public class MainServlet extends ActionServlet {
 				servletContext, request, response);
 
 			return true;
+		}
+
+		if (_HTTP_HEADER_VERSION_VERBOSITY_DEFAULT) {
+		}
+		else if (_HTTP_HEADER_VERSION_VERBOSITY_PARTIAL) {
+			response.addHeader(
+				_LIFERAY_PORTAL_REQUEST_HEADER, ReleaseInfo.getName());
+		}
+		else {
+			response.addHeader(
+				_LIFERAY_PORTAL_REQUEST_HEADER, ReleaseInfo.getReleaseInfo());
 		}
 
 		return false;
