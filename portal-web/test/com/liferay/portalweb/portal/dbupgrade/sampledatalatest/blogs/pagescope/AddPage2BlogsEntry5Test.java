@@ -25,7 +25,6 @@ public class AddPage2BlogsEntry5Test extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/blogs-page-scope-community/");
-		selenium.waitForVisible("link=Blogs Test Page2");
 		selenium.clickAt("link=Blogs Test Page2",
 			RuntimeVariables.replace("Blogs Test Page2"));
 		selenium.waitForPageToLoad("30000");
@@ -69,7 +68,6 @@ public class AddPage2BlogsEntry5Test extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Blogs Entry5 Content"),
 			selenium.getText("xPath=(//div[@class='entry-body'])[1]/p"));
 		selenium.open("/web/blogs-page-scope-community/");
-		selenium.waitForVisible("link=Blogs Test Page1");
 		selenium.clickAt("link=Blogs Test Page1",
 			RuntimeVariables.replace("Blogs Test Page1"));
 		selenium.waitForPageToLoad("30000");
@@ -86,7 +84,6 @@ public class AddPage2BlogsEntry5Test extends BaseTestCase {
 		assertFalse(selenium.isTextPresent("Blogs Entry2 Title"));
 		assertFalse(selenium.isTextPresent("Blogs Entry2 Content"));
 		selenium.open("/web/blogs-page-scope-community/");
-		selenium.waitForVisible("link=Blogs Test Page2");
 		selenium.clickAt("link=Blogs Test Page2",
 			RuntimeVariables.replace("Blogs Test Page2"));
 		selenium.waitForPageToLoad("30000");
@@ -99,7 +96,6 @@ public class AddPage2BlogsEntry5Test extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Blogs Entry5 Content"),
 			selenium.getText("xPath=(//div[@class='entry-body'])[1]/p"));
 		selenium.open("/web/blogs-page-scope-community/");
-		selenium.waitForVisible("link=Blogs Test Page3");
 		selenium.clickAt("link=Blogs Test Page3",
 			RuntimeVariables.replace("Blogs Test Page3"));
 		selenium.waitForPageToLoad("30000");

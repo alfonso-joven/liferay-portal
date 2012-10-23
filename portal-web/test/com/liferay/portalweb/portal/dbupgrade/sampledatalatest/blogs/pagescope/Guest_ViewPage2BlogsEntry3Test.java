@@ -25,7 +25,6 @@ public class Guest_ViewPage2BlogsEntry3Test extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/blogs-page-scope-community/");
-		selenium.waitForVisible("link=Blogs Test Page1");
 		selenium.clickAt("link=Blogs Test Page1",
 			RuntimeVariables.replace("Blogs Test Page1"));
 		selenium.waitForPageToLoad("30000");
@@ -48,7 +47,6 @@ public class Guest_ViewPage2BlogsEntry3Test extends BaseTestCase {
 		assertFalse(selenium.isTextPresent("Blogs Entry3 Title"));
 		assertFalse(selenium.isTextPresent("Blogs Entry3 Content"));
 		selenium.open("/web/blogs-page-scope-community/");
-		selenium.waitForVisible("link=Blogs Test Page2");
 		selenium.clickAt("link=Blogs Test Page2",
 			RuntimeVariables.replace("Blogs Test Page2"));
 		selenium.waitForPageToLoad("30000");
@@ -78,7 +76,6 @@ public class Guest_ViewPage2BlogsEntry3Test extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Blogs Entry3 Content"),
 			selenium.getText("//div[@class='entry-body']/p"));
 		selenium.open("/web/blogs-page-scope-community/");
-		selenium.waitForVisible("link=Blogs Test Page3");
 		selenium.clickAt("link=Blogs Test Page3",
 			RuntimeVariables.replace("Blogs Test Page3"));
 		selenium.waitForPageToLoad("30000");
