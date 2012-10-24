@@ -341,7 +341,8 @@ public class PermissionImporter {
 				int type = Integer.valueOf(roleElement.attributeValue("type"));
 
 				role = RoleLocalServiceUtil.addRole(
-					userId, companyId, name, titleMap, descriptionMap, type);
+					userId, null, 0, name, titleMap, descriptionMap, type,
+					null);
 			}
 
 			String roleName = role.getName();
@@ -420,7 +421,7 @@ public class PermissionImporter {
 				String subType = roleElement.attributeValue("subType");
 
 				role = RoleLocalServiceUtil.addRole(
-					userId, companyId, name, titleMap, descriptionMap, type,
+					userId, null, 0, name, titleMap, descriptionMap, type,
 					subType);
 			}
 
