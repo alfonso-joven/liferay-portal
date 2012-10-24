@@ -25,7 +25,6 @@ public class AddJIRAPortletTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Social Coding Test Page");
 		selenium.clickAt("link=Social Coding Test Page",
 			RuntimeVariables.replace("Social Coding Test Page"));
 		selenium.waitForPageToLoad("30000");

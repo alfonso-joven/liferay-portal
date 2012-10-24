@@ -25,7 +25,6 @@ public class AddPortletSTTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Sample Tapestry Test Page");
 		selenium.clickAt("link=Sample Tapestry Test Page",
 			RuntimeVariables.replace("Sample Tapestry Test Page"));
 		selenium.waitForPageToLoad("30000");

@@ -25,7 +25,6 @@ public class AddPortletTLTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Test Localized Page");
 		selenium.clickAt("link=Test Localized Page",
 			RuntimeVariables.replace("Test Localized Page"));
 		selenium.waitForPageToLoad("30000");

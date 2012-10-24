@@ -69,6 +69,11 @@ public class TearDownSettingsTest extends BaseTestCase {
 					RuntimeVariables.replace("Save Settings"));
 				selenium.waitForElementNotPresent(
 					"//li[@class='chat-settings saved']");
+				selenium.waitForVisible(
+					"//ul[@class='chat-tabs']/li[2]/div[1]/span");
+				selenium.clickAt("//ul[@class='chat-tabs']/li[2]/div[1]/span",
+					RuntimeVariables.replace("Settings"));
+				Thread.sleep(5000);
 				selenium.clickAt("//input[@id='saveSettings']",
 					RuntimeVariables.replace("Save Settings"));
 				selenium.waitForElementNotPresent(

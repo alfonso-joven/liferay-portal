@@ -25,7 +25,6 @@ public class AddPortletRCTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Ruby Console Test Page");
 		selenium.clickAt("link=Ruby Console Test Page",
 			RuntimeVariables.replace("Ruby Console Test Page"));
 		selenium.waitForPageToLoad("30000");

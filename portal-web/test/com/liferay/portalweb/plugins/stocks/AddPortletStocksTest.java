@@ -25,7 +25,6 @@ public class AddPortletStocksTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Stocks Test Page");
 		selenium.clickAt("link=Stocks Test Page",
 			RuntimeVariables.replace("Stocks Test Page"));
 		selenium.waitForPageToLoad("30000");

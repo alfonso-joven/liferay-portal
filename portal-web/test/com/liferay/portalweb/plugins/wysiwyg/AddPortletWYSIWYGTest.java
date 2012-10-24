@@ -25,7 +25,6 @@ public class AddPortletWYSIWYGTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Wysiwyg Test Page");
 		selenium.clickAt("link=Wysiwyg Test Page",
 			RuntimeVariables.replace("Wysiwyg Test Page"));
 		selenium.waitForPageToLoad("30000");

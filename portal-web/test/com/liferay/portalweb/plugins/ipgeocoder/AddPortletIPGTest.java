@@ -25,7 +25,6 @@ public class AddPortletIPGTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=IP Geocoder Test Page");
 		selenium.clickAt("link=IP Geocoder Test Page",
 			RuntimeVariables.replace("IP Geocoder Test Page"));
 		selenium.waitForPageToLoad("30000");

@@ -25,7 +25,6 @@ public class AddPortletYoutube3Test extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Youtube Test Page");
 		selenium.clickAt("link=Youtube Test Page",
 			RuntimeVariables.replace("Youtube Test Page"));
 		selenium.waitForPageToLoad("30000");

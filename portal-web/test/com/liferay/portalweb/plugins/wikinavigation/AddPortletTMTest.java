@@ -25,7 +25,6 @@ public class AddPortletTMTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Wiki Navigation Test Page");
 		selenium.clickAt("link=Wiki Navigation Test Page",
 			RuntimeVariables.replace("Wiki Navigation Test Page"));
 		selenium.waitForPageToLoad("30000");

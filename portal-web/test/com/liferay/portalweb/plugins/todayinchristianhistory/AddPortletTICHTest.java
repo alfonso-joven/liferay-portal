@@ -25,7 +25,6 @@ public class AddPortletTICHTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Today in Christian History Test Page");
 		selenium.clickAt("link=Today in Christian History Test Page",
 			RuntimeVariables.replace("Today in Christian History Test Page"));
 		selenium.waitForPageToLoad("30000");

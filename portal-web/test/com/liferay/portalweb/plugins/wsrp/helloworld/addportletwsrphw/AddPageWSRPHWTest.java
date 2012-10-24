@@ -37,7 +37,7 @@ public class AddPageWSRPHWTest extends BaseTestCase {
 			selenium.getText("//a[@id='addPage']"));
 		selenium.clickAt("//a[@id='addPage']", RuntimeVariables.replace("Page"));
 		selenium.waitForVisible("//input[@type='text']");
-		selenium.type("//input[@type='text']",
+		selenium.sendKeys("//input[@type='text']",
 			RuntimeVariables.replace("WSRP Hello World Test Page"));
 		selenium.clickAt("//button[contains(@id,'Save')]",
 			RuntimeVariables.replace("Save"));

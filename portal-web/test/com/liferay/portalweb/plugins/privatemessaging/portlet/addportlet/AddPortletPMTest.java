@@ -25,7 +25,6 @@ public class AddPortletPMTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Private Messaging Test Page");
 		selenium.clickAt("link=Private Messaging Test Page",
 			RuntimeVariables.replace("Private Messaging Test Page"));
 		selenium.waitForPageToLoad("30000");

@@ -25,7 +25,6 @@ public class AddPortletWCTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Westminster Catechism Test Page");
 		selenium.clickAt("link=Westminster Catechism Test Page",
 			RuntimeVariables.replace("Westminster Catechism Test Page"));
 		selenium.waitForPageToLoad("30000");

@@ -25,8 +25,6 @@ public class AddPortletSUSCTTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible(
-			"link=Sample UI Search Container Tag Libs Test Page");
 		selenium.clickAt("link=Sample UI Search Container Tag Libs Test Page",
 			RuntimeVariables.replace(
 				"Sample UI Search Container Tag Libs Test Page"));

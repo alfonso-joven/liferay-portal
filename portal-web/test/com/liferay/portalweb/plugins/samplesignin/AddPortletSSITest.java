@@ -25,7 +25,6 @@ public class AddPortletSSITest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Sample Sign In Test Page");
 		selenium.clickAt("link=Sample Sign In Test Page",
 			RuntimeVariables.replace("Sample Sign In Test Page"));
 		selenium.waitForPageToLoad("30000");

@@ -25,7 +25,6 @@ public class AddPortletSSBTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Sample Service Builder Test Page");
 		selenium.clickAt("link=Sample Service Builder Test Page",
 			RuntimeVariables.replace("Sample Service Builder Test Page"));
 		selenium.waitForPageToLoad("30000");

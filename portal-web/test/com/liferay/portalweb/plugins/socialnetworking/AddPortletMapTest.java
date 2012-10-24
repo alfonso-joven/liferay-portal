@@ -25,7 +25,6 @@ public class AddPortletMapTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Social Networking Test Page");
 		selenium.clickAt("link=Social Networking Test Page",
 			RuntimeVariables.replace("Social Networking Test Page"));
 		selenium.waitForPageToLoad("30000");

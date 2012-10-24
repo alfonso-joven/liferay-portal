@@ -25,7 +25,6 @@ public class AddPortletOpenSocialGadgetTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=OpenSocial Test Page");
 		selenium.clickAt("link=OpenSocial Test Page",
 			RuntimeVariables.replace("OpenSocial Test Page"));
 		selenium.waitForPageToLoad("30000");

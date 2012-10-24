@@ -25,7 +25,6 @@ public class ViewTransactionTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Test Transaction Page");
 		selenium.clickAt("link=Test Transaction Page",
 			RuntimeVariables.replace("Test Transaction Page"));
 		selenium.waitForPageToLoad("30000");

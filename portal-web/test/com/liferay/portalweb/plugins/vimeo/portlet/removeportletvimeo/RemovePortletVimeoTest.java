@@ -25,7 +25,6 @@ public class RemovePortletVimeoTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Vimeo Test Page");
 		selenium.clickAt("link=Vimeo Test Page",
 			RuntimeVariables.replace("Vimeo Test Page"));
 		selenium.waitForPageToLoad("30000");

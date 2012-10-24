@@ -25,7 +25,6 @@ public class ViewSPTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Sample PHP Test Page");
 		selenium.click(RuntimeVariables.replace("link=Sample PHP Test Page"));
 		selenium.waitForPageToLoad("30000");
 		selenium.waitForElementPresent("//input[@value='']");

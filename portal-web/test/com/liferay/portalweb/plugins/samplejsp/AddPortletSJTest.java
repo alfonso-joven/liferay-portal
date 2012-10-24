@@ -25,7 +25,6 @@ public class AddPortletSJTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Sample JSP Test Page");
 		selenium.clickAt("link=Sample JSP Test Page",
 			RuntimeVariables.replace("Sample JSP Test Page"));
 		selenium.waitForPageToLoad("30000");

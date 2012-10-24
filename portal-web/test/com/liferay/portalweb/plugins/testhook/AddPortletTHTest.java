@@ -25,7 +25,6 @@ public class AddPortletTHTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Test Hook Page");
 		selenium.clickAt("link=Test Hook Page",
 			RuntimeVariables.replace("Test Hook Page"));
 		selenium.waitForPageToLoad("30000");

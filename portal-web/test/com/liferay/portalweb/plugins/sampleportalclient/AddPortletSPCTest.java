@@ -25,7 +25,6 @@ public class AddPortletSPCTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Sample Portal Client Test Page");
 		selenium.clickAt("link=Sample Portal Client Test Page",
 			RuntimeVariables.replace("Sample Portal Client Test Page"));
 		selenium.waitForPageToLoad("30000");

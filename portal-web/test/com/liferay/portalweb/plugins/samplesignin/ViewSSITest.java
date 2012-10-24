@@ -25,7 +25,6 @@ public class ViewSSITest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Sample Sign In Test Page");
 		selenium.click(RuntimeVariables.replace("link=Sample Sign In Test Page"));
 		selenium.waitForPageToLoad("30000");
 		selenium.waitForVisible("//section/div/div/div");

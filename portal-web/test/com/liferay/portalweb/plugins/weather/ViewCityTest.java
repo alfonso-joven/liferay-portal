@@ -25,7 +25,6 @@ public class ViewCityTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Weather Test Page");
 		selenium.click(RuntimeVariables.replace("link=Weather Test Page"));
 		selenium.waitForPageToLoad("30000");
 		selenium.waitForVisible("//td/a");

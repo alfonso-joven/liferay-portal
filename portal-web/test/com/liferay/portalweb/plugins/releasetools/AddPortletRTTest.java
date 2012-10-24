@@ -25,7 +25,6 @@ public class AddPortletRTTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Release Tools Test Page");
 		selenium.clickAt("link=Release Tools Test Page",
 			RuntimeVariables.replace("Release Tools Test Page"));
 		selenium.waitForPageToLoad("30000");
