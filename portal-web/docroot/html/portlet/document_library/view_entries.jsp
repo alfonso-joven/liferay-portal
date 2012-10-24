@@ -316,6 +316,7 @@ for (int i = 0; i < results.size(); i++) {
 							data="<%= data %>"
 							image='<%= "../file_system/small/" + DLUtil.getFileIcon(fileEntry.getExtension()) %>'
 							label="<%= true %>"
+							localizeMessage="<%= false %>"
 							message="<%= fileEntry.getTitle() %>"
 							method="get"
 							url="<%= rowURL.toString() %>"
