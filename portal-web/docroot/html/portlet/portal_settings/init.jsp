@@ -23,6 +23,7 @@ page import="com.liferay.portal.ImageTypeException" %><%@
 page import="com.liferay.portal.LocaleException" %><%@
 page import="com.liferay.portal.kernel.facebook.FacebookConnectUtil" %><%@
 page import="com.liferay.portal.kernel.ldap.DuplicateLDAPServerNameException" %><%@
+page import="com.liferay.portal.kernel.ldap.LDAPFilterException" %><%@
 page import="com.liferay.portal.kernel.ldap.LDAPServerNameException" %><%@
 page import="com.liferay.portal.security.auth.AuthSettingsUtil" %><%@
 page import="com.liferay.portal.security.ldap.LDAPSettingsUtil" %><%@
