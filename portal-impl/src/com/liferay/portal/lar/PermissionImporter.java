@@ -339,10 +339,11 @@ public class PermissionImporter {
 					LocalizationUtil.getLocalizationMap(description);
 
 				int type = Integer.valueOf(roleElement.attributeValue("type"));
+				String subType = roleElement.attributeValue("subType");
 
 				role = RoleLocalServiceUtil.addRole(
 					userId, null, 0, name, titleMap, descriptionMap, type,
-					null);
+					subType);
 			}
 
 			String roleName = role.getName();
