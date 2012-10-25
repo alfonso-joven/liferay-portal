@@ -150,7 +150,7 @@ public class PhoneLocalServiceImpl extends PhoneLocalServiceBaseImpl {
 		}
 
 		if (Validator.isNotNull(extension)) {
-			for (int i = 0;i < extension.length();i++) {
+			for (int i = 0; i < extension.length(); i++) {
 				if (!Character.isDigit(extension.charAt(i))) {
 					throw new PhoneNumberException();
 				}
