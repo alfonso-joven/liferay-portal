@@ -28,8 +28,8 @@ public class WeatherTests extends BaseTestSuite {
 		TestSuite testSuite = new TestSuite();
 		testSuite.addTestSuite(AddPageWeatherTest.class);
 		testSuite.addTestSuite(AddPortletWeatherTest.class);
-		testSuite.addTestSuite(ConfigurePortletCityTest.class);
-		testSuite.addTestSuite(ViewCityTest.class);
+		testSuite.addTestSuite(ConfigurePortletWeatherCityTest.class);
+		testSuite.addTestSuite(ViewPortletWeatherCityTest.class);
 		testSuite.addTestSuite(TearDownPageTest.class);
 
 		return testSuite;

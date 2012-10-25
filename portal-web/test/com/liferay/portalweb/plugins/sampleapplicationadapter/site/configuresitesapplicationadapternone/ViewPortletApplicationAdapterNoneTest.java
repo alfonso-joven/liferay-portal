@@ -26,7 +26,6 @@ public class ViewPortletApplicationAdapterNoneTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/site-name/public-page");
-		selenium.waitForVisible("link=Public Page");
 		selenium.clickAt("link=Public Page",
 			RuntimeVariables.replace("Public Page"));
 		selenium.waitForPageToLoad("30000");

@@ -28,7 +28,7 @@ public class SampleSignInTests extends BaseTestSuite {
 		TestSuite testSuite = new TestSuite();
 		testSuite.addTestSuite(AddPageSSITest.class);
 		testSuite.addTestSuite(AddPortletSSITest.class);
-		testSuite.addTestSuite(ViewSSITest.class);
+		testSuite.addTestSuite(ViewPortletSSITest.class);
 		testSuite.addTestSuite(TearDownPageTest.class);
 
 		return testSuite;

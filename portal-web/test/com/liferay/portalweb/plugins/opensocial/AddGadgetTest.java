@@ -36,7 +36,6 @@ public class AddGadgetTest extends BaseTestCase {
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForElementPresent("link=OpenSocial Gadget Publisher");
 		selenium.clickAt("link=OpenSocial Gadget Publisher",
 			RuntimeVariables.replace("OpenSocial Gadget Publisher"));
 		selenium.waitForPageToLoad("30000");

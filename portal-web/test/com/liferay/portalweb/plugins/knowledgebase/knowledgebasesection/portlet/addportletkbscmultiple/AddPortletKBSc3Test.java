@@ -49,8 +49,8 @@ public class AddPortletKBSc3Test extends BaseTestCase {
 			"//div[@title='Knowledge Base Section']/p/a");
 		selenium.clickAt("//div[@title='Knowledge Base Section']/p/a",
 			RuntimeVariables.replace("Add"));
-		selenium.waitForVisible("//section");
-		assertTrue(selenium.isVisible("//section"));
+		selenium.waitForVisible("//div[1]/div/section");
+		assertTrue(selenium.isVisible("//div[1]/div/section"));
 		selenium.waitForVisible("//div[2]/div/section");
 		assertTrue(selenium.isVisible("//div[2]/div/section"));
 		selenium.waitForVisible("//div[3]/div/section");

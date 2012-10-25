@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.portalweb.plugins.samplesignin;
+package com.liferay.portalweb.plugins.weather;
 
 import com.liferay.portalweb.portal.BaseTestCase;
 import com.liferay.portalweb.portal.util.RuntimeVariables;
@@ -20,22 +20,15 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 /**
  * @author Brian Wing Shun Chan
  */
-public class ViewSSITest extends BaseTestCase {
-	public void testViewSSI() throws Exception {
+public class ViewPortletWeatherCityTest extends BaseTestCase {
+	public void testViewPortletWeatherCity() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.click(RuntimeVariables.replace("link=Sample Sign In Test Page"));
+		selenium.click(RuntimeVariables.replace("link=Weather Test Page"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForVisible("//section/div/div/div");
-		assertEquals(RuntimeVariables.replace(
-				"You are signed in as Joe Bloggs."),
-			selenium.getText("//section/div/div/div"));
-		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
-			selenium.getText("//div/div/a"));
-		selenium.clickAt("//div/div/a", RuntimeVariables.replace("Joe Bloggs"));
-		selenium.waitForVisible("//input[@id='_2_emailAddress']");
-		assertEquals("test@liferay.com",
-			selenium.getValue("//input[@id='_2_emailAddress']"));
+		selenium.waitForVisible("//td/a");
+		assertEquals(RuntimeVariables.replace("Diamond Bar, CA"),
+			selenium.getText("//td/a"));
 	}
 }

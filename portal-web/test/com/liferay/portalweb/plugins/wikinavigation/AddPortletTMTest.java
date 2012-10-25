@@ -48,8 +48,9 @@ public class AddPortletTMTest extends BaseTestCase {
 		selenium.waitForVisible("//div[@title='Tree Menu']/p/a");
 		selenium.clickAt("//div[@title='Tree Menu']/p/a",
 			RuntimeVariables.replace("Add"));
-		selenium.waitForVisible("//section");
-		assertTrue(selenium.isVisible("//section"));
+		selenium.waitForVisible("//div[1]/div/section");
+		assertTrue(selenium.isVisible("//div[1]/div/section"));
+		selenium.waitForVisible("//div[2]/div/section");
 		assertTrue(selenium.isVisible("//div[2]/div/section"));
 	}
 }

@@ -48,7 +48,13 @@ public class AddPortletSWVTest extends BaseTestCase {
 		selenium.waitForVisible("//div[@title='Sample WAP Video']/p/a");
 		selenium.clickAt("//div[@title='Sample WAP Video']/p/a",
 			RuntimeVariables.replace("Add"));
-		selenium.waitForVisible("//section");
-		assertTrue(selenium.isVisible("//section"));
+		selenium.waitForVisible("//div[1]/div/section");
+		assertTrue(selenium.isVisible("//div[1]/div/section"));
+		assertEquals(RuntimeVariables.replace("Sample WAP Video"),
+			selenium.getText("xpath=(//span[@class='portlet-title-text'])[1]"));
+		selenium.waitForVisible("//div[2]/div/section");
+		assertTrue(selenium.isVisible("//div[2]/div/section"));
+		assertEquals(RuntimeVariables.replace("Sample WAP Photo Gallery"),
+			selenium.getText("xpath=(//span[@class='portlet-title-text'])[2]"));
 	}
 }

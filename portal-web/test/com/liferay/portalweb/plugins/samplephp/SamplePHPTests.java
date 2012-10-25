@@ -26,9 +26,9 @@ import junit.framework.TestSuite;
 public class SamplePHPTests extends BaseTestSuite {
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
-		testSuite.addTestSuite(AddPageSPTest.class);
-		testSuite.addTestSuite(AddPortletSPTest.class);
-		testSuite.addTestSuite(ViewSPTest.class);
+		testSuite.addTestSuite(AddPageSPHPTest.class);
+		testSuite.addTestSuite(AddPortletSPHPTest.class);
+		testSuite.addTestSuite(ViewPortletSPHPTest.class);
 		testSuite.addTestSuite(TearDownPageTest.class);
 
 		return testSuite;

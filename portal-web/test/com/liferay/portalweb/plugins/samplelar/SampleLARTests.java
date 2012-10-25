@@ -28,7 +28,7 @@ public class SampleLARTests extends BaseTestSuite {
 		TestSuite testSuite = new TestSuite();
 		testSuite.addTestSuite(AddPageSLTest.class);
 		testSuite.addTestSuite(AddPortletSLTest.class);
-		testSuite.addTestSuite(ViewSLOptionsTest.class);
+		testSuite.addTestSuite(ViewPortletSLOptionsTest.class);
 		testSuite.addTestSuite(TearDownPageTest.class);
 
 		return testSuite;
