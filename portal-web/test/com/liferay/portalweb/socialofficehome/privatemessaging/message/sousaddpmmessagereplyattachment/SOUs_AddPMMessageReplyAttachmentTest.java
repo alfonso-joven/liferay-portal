@@ -33,10 +33,10 @@ public class SOUs_AddPMMessageReplyAttachmentTest extends BaseTestCase {
 		selenium.waitForVisible("//div[@class='title']");
 		assertEquals(RuntimeVariables.replace("Joe Bloggs sent you a message."),
 			selenium.getText("//div[@class='title']"));
-		assertEquals(RuntimeVariables.replace("Mark as Read"),
+		assertEquals(RuntimeVariables.replace("Mark All as Read"),
 			selenium.getText("//span[@class='dismiss-notifications']/a"));
 		selenium.clickAt("//span[@class='dismiss-notifications']/a",
-			RuntimeVariables.replace("Mark as Read"));
+			RuntimeVariables.replace("Mark All as Read"));
 		selenium.waitForPageToLoad("30000");
 		selenium.waitForElementPresent("//li[@id='_145_notificationsMenu']");
 		assertEquals(RuntimeVariables.replace("0"),
@@ -74,7 +74,7 @@ public class SOUs_AddPMMessageReplyAttachmentTest extends BaseTestCase {
 			RuntimeVariables.replace("Message Subject Reply"));
 		assertTrue(selenium.isVisible(
 				"//input[@id='_1_WAR_privatemessagingportlet_msgFile1']"));
-		selenium.type("//input[@id='_1_WAR_privatemessagingportlet_msgFile1']",
+		selenium.uploadFile("//input[@id='_1_WAR_privatemessagingportlet_msgFile1']",
 			RuntimeVariables.replace(
 				"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\socialofficehome\\privatemessaging\\message\\sousaddpmmessagereplyattachment\\dependencies\\PM_Attachment.jpg"));
 		selenium.clickAt("//input[@value='Send']",

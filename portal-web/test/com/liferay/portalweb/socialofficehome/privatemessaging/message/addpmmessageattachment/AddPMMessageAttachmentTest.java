@@ -42,7 +42,7 @@ public class AddPMMessageAttachmentTest extends BaseTestCase {
 			"//button[contains(@class,'autocomplete-button')]/span");
 		selenium.clickAt("//button[contains(@class,'autocomplete-button')]/span",
 			RuntimeVariables.replace("Dropdown"));
-		selenium.typeKeys("//input[@id='_1_WAR_privatemessagingportlet_to']",
+		selenium.sendKeys("//input[@id='_1_WAR_privatemessagingportlet_to']",
 			RuntimeVariables.replace("Social01"));
 		Thread.sleep(5000);
 		selenium.waitForPartialText("//li[contains(@data-text,'Social01 Office01 User01')]",
@@ -65,7 +65,7 @@ public class AddPMMessageAttachmentTest extends BaseTestCase {
 			RuntimeVariables.replace("Message Body"));
 		assertTrue(selenium.isVisible(
 				"//input[@id='_1_WAR_privatemessagingportlet_msgFile1']"));
-		selenium.type("//input[@id='_1_WAR_privatemessagingportlet_msgFile1']",
+		selenium.uploadFile("//input[@id='_1_WAR_privatemessagingportlet_msgFile1']",
 			RuntimeVariables.replace(
 				"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\socialofficehome\\privatemessaging\\message\\addpmmessageattachment\\dependencies\\PM_Attachment.jpg"));
 		selenium.clickAt("//input[@value='Send']",
