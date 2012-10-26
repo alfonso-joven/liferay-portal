@@ -675,8 +675,6 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 			autoScreenName = true;
 		}
 
-		// PLACEHOLDER 01
-
 		long userId = counterLocalService.increment();
 
 		EmailAddressGenerator emailAddressGenerator =
@@ -5191,8 +5189,6 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 				_log.error(e, e);
 			}
 		}
-
-		// PLACEHOLDER 02
 
 		return authResult;
 	}

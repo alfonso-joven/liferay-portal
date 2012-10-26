@@ -395,8 +395,6 @@ public class ClusterExecutorImpl
 		if ((previousAddress == null) && !_localAddress.equals(joinAddress)) {
 			ClusterEvent clusterEvent = ClusterEvent.join(clusterNode);
 
-			// PLACEHOLDER
-
 			fireClusterEvent(clusterEvent);
 		}
 	}
