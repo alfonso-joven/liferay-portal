@@ -382,7 +382,7 @@ AUI.add(
 						var text = Liferay.Util.escapeHTML(instance.inputNode.val());
 
 						if (text) {
-							if(text.indexOf(',') > -1) {
+							if (text.indexOf(',') > -1) {
 								var items = text.split(',');
 
 								A.each(
@@ -589,7 +589,7 @@ AUI.add(
 
 									suggestionsIO.start();
 								},
-								until: function () {
+								until: function() {
 									return length <= start;
 								}
 							}

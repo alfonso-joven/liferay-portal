@@ -318,7 +318,7 @@ public class TrimNewLinesJspWriter extends JspWriter {
 
 		int end = 0;
 
-		for (int i = length - 1; i >= 0 ; i--) {
+		for (int i = length - 1; i >= 0; i--) {
 			char c = string.charAt(i);
 
 			if ((c != CharPool.NEW_LINE) && (c != CharPool.RETURN)) {

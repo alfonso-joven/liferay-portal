@@ -163,7 +163,7 @@ public class UpgradePortletId extends UpgradeProcess {
 					plid + PortletConstants.LAYOUT_SEPARATOR + newRootPortletId;
 
 				String oldPortletId = oldRootPortletId;
-				String newPortletId = newRootPortletId ;
+				String newPortletId = newRootPortletId;
 
 				pos = portletId.indexOf(PortletConstants.INSTANCE_SEPARATOR);
 
