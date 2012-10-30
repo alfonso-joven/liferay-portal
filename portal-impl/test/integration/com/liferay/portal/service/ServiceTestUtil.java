@@ -213,7 +213,6 @@ public class ServiceTestUtil {
 		_deleteDLDirectories();
 	}
 
-	@Deprecated
 	public static SearchContext getSearchContext() throws Exception {
 		return getSearchContext(TestPropsValues.getGroupId());
 	}
@@ -230,7 +229,6 @@ public class ServiceTestUtil {
 		return searchContext;
 	}
 
-	@Deprecated
 	public static ServiceContext getServiceContext() throws Exception {
 		return getServiceContext(TestPropsValues.getGroupId());
 	}
@@ -335,6 +333,10 @@ public class ServiceTestUtil {
 			e.printStackTrace();
 		}
 
+		// Class names
+
+		_checkClassNames();
+
 		// Resource actions
 
 		try {
@@ -343,10 +345,6 @@ public class ServiceTestUtil {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-
-		// Stateful services
-
-		_setStatefulServices();
 
 		// Asset
 
@@ -414,6 +412,13 @@ public class ServiceTestUtil {
 		return PwdGenerator.getPassword();
 	}
 
+	private static void _checkClassNames() {
+
+		// Repository Default ClassName
+
+		PortalUtil.getClassNameId(LiferayRepository.class.getName());
+	}
+
 	private static void _checkResourceActions() throws Exception {
 		for (int i = 0; i < 200; i++) {
 			String portletId = String.valueOf(i);
@@ -447,13 +452,6 @@ public class ServiceTestUtil {
 
 		FileUtil.deltree(
 			PropsUtil.get(PropsKeys.JCR_JACKRABBIT_REPOSITORY_ROOT));
-	}
-
-	private static void _setStatefulServices() {
-
-		// Repository Default ClassName
-
-		PortalUtil.getClassNameId(LiferayRepository.class.getName());
 	}
 
 	private static Random _random = new Random();

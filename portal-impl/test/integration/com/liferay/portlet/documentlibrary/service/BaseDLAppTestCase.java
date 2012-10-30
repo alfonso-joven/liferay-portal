@@ -256,7 +256,6 @@ public abstract class BaseDLAppTestCase {
 		"Content: Enterprise. Open Source. For Life.";
 
 	protected Group group;
-
 	protected Folder parentFolder;
 
 }
