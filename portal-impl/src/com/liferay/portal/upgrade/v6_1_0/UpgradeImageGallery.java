@@ -594,6 +594,22 @@ public class UpgradeImageGallery extends UpgradeProcess {
 		}
 	}
 
+	protected List<String> getResourceActionIds(
+		Map<String, Long> bitwiseValues, long actionIdsLong) {
+
+		List<String> actionIds = new ArrayList<String>();
+
+		for (String actionId : bitwiseValues.keySet()) {
+			long bitwiseValue = bitwiseValues.get(actionId);
+
+			if ((actionIdsLong & bitwiseValue) == bitwiseValue) {
+				actionIds.add(actionId);
+			}
+		}
+
+		return actionIds;
+	}
+
 	protected long getResourceCodeId(long companyId, String name, int scope)
 		throws Exception {
 
@@ -623,22 +639,6 @@ public class UpgradeImageGallery extends UpgradeProcess {
 		finally {
 			DataAccess.cleanUp(con, ps, rs);
 		}
-	}
-
-	protected List<String> getResourceActionIds(
-		Map<String, Long> bitwiseValues, long actionIdsLong) {
-
-		List<String> actionIds = new ArrayList<String>();
-
-		for (String actionId : bitwiseValues.keySet()) {
-			long bitwiseValue = bitwiseValues.get(actionId);
-
-			if ((actionIdsLong & bitwiseValue) == bitwiseValue) {
-				actionIds.add(actionId);
-			}
-		}
-
-		return actionIds;
 	}
 
 	protected void migrateFile(
@@ -1096,7 +1096,7 @@ public class UpgradeImageGallery extends UpgradeProcess {
 		// respectively. This means the loop will execute at most 2^7 (128)
 		// times. If we were to check before update, we would still have to
 		// perform 128 queries, so we may as well just update 128 times even if
-		// no candidates exist for a give value.
+		// no candidates exist for a given value.
 
 		for (int i = 0; i < Math.pow(2, igBitwiseValues.size()); i++) {
 			List<String> igActionIds = getResourceActionIds(igBitwiseValues, i);
@@ -1115,7 +1115,7 @@ public class UpgradeImageGallery extends UpgradeProcess {
 						igResourceName + "'" + " and actionIds = " + i);
 		}
 	}
-	
+
 	protected void upgradeIGPermissions_1to5(
 			String igClassName, String dlClassName)
 		throws Exception {
