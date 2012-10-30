@@ -5578,8 +5578,6 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 
 		validateEmailAddress(companyId, emailAddress);
 
-		validateOpenId(companyId, userId, openId);
-
 		if (Validator.isNotNull(emailAddress)) {
 			User user = userPersistence.fetchByC_EA(companyId, emailAddress);
 
@@ -5587,6 +5585,8 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 				throw new DuplicateUserEmailAddressException();
 			}
 		}
+
+		validateOpenId(companyId, userId, openId);
 
 		validateFullName(companyId, firstName, middleName, lastName);
 
