@@ -1339,7 +1339,8 @@ public class JournalUtil {
 				"path-friendly-url-private-group");
 		}
 
-		String layoutSetFriendlyUrl = themeDisplayElement.elementText("i18n-path");
+		String layoutSetFriendlyUrl = themeDisplayElement.elementText(
+			"i18n-path");
 
 		String virtualHostname = layoutSet.getVirtualHostname();
 
