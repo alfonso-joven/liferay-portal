@@ -126,6 +126,7 @@ public class Serializer {
 		}
 		else if (serializable instanceof Class) {
 			Class<?> clazz = (Class<?>)serializable;
+
 			ClassLoader classLoader = clazz.getClassLoader();
 
 			String contextName = ClassLoaderPool.getContextName(classLoader);
