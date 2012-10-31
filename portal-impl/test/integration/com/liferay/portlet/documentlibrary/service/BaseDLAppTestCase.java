@@ -14,9 +14,6 @@
 
 package com.liferay.portlet.documentlibrary.service;
 
-import org.junit.After;
-import org.junit.Before;
-
 import com.liferay.portal.kernel.repository.model.FileEntry;
 import com.liferay.portal.kernel.repository.model.Folder;
 import com.liferay.portal.kernel.util.ContentTypes;
@@ -31,6 +28,9 @@ import com.liferay.portlet.documentlibrary.NoSuchFolderException;
 import com.liferay.portlet.documentlibrary.model.DLFileRank;
 import com.liferay.portlet.documentlibrary.model.DLFileShortcut;
 import com.liferay.portlet.documentlibrary.model.DLFolderConstants;
+
+import org.junit.After;
+import org.junit.Before;
 
 /**
  * @author Alexander Chow

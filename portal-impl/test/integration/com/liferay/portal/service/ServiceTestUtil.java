@@ -413,9 +413,6 @@ public class ServiceTestUtil {
 	}
 
 	private static void _checkClassNames() {
-
-		// Repository Default ClassName
-
 		PortalUtil.getClassNameId(LiferayRepository.class.getName());
 	}
 

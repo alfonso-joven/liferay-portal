@@ -84,14 +84,13 @@ public class RepositoryTest {
 			new ServiceContext());
 
 		repositoryIds[1] = RepositoryServiceUtil.addRepository(
-			_group.getGroupId(), classNameId, dlFolder.getFolderId(),
-			"Test 2", "Test 2", PortletKeys.DOCUMENT_LIBRARY,
-			new UnicodeProperties(), new ServiceContext());
+			_group.getGroupId(), classNameId, dlFolder.getFolderId(), "Test 2",
+			"Test 2", PortletKeys.DOCUMENT_LIBRARY, new UnicodeProperties(),
+			new ServiceContext());
 
 		// Delete repositories
 
-		RepositoryLocalServiceUtil.deleteRepositories(
-			_group.getGroupId());
+		RepositoryLocalServiceUtil.deleteRepositories(_group.getGroupId());
 
 		for (long repositoryId : repositoryIds) {
 			try {
