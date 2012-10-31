@@ -98,8 +98,8 @@ public class DDLUtil {
 		throws Exception {
 
 		return getDDL().getTemplateContent(
-				ddmTemplateId, recordSet, themeDisplay, renderRequest,
-				renderResponse);
+			ddmTemplateId, recordSet, themeDisplay, renderRequest,
+			renderResponse);
 	}
 
 	public static boolean isEditable(
