@@ -1913,10 +1913,9 @@ public class PortletImporter {
 				String name = enu.nextElement();
 
 				if (!ArrayUtil.contains(dataPortletPreferences, name)) {
-					String value = GetterUtil.getString(
-						jxPreferences.getValue(name, null));
+					String[] values = jxPreferences.getValues(name, null);
 
-					portletPreferences.setValue(name, value);
+					portletPreferences.setValues(name, values);
 				}
 			}
 
