@@ -191,6 +191,7 @@ public class HookHotDeployListener
 		"auth.max.failures", "auth.token.impl", "auth.pipeline.post",
 		"auth.pipeline.pre", "auto.login.hooks",
 		"captcha.check.portal.create_account", "captcha.engine.impl",
+		"company.default.locale", "company.default.time.zone",
 		"company.settings.form.configuration",
 		"company.settings.form.identification",
 		"company.settings.form.miscellaneous",
@@ -2534,6 +2535,7 @@ public class HookHotDeployListener
 	};
 
 	private static final String[] _PROPS_VALUES_STRING = {
+		"company.default.locale", "company.default.time.zone",
 		"default.landing.page.path",
 		"passwords.passwordpolicytoolkit.generator",
 		"passwords.passwordpolicytoolkit.static",
