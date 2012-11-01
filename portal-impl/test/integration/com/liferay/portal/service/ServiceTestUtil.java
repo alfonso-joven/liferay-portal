@@ -18,6 +18,7 @@ import com.liferay.counter.service.CounterLocalServiceUtil;
 import com.liferay.portal.NoSuchLayoutException;
 import com.liferay.portal.jcr.JCRFactoryUtil;
 import com.liferay.portal.kernel.bean.PortalBeanLocatorUtil;
+import com.liferay.portal.kernel.freemarker.FreeMarkerEngineUtil;
 import com.liferay.portal.kernel.messaging.MessageBus;
 import com.liferay.portal.kernel.messaging.MessageBusUtil;
 import com.liferay.portal.kernel.messaging.sender.MessageSender;
@@ -30,6 +31,7 @@ import com.liferay.portal.kernel.util.FriendlyURLNormalizerUtil;
 import com.liferay.portal.kernel.util.LocaleUtil;
 import com.liferay.portal.kernel.util.PropsKeys;
 import com.liferay.portal.kernel.util.StringPool;
+import com.liferay.portal.kernel.velocity.VelocityEngineUtil;
 import com.liferay.portal.kernel.workflow.WorkflowHandlerRegistryUtil;
 import com.liferay.portal.model.Group;
 import com.liferay.portal.model.GroupConstants;
@@ -279,6 +281,24 @@ public class ServiceTestUtil {
 
 		try {
 			JCRFactoryUtil.prepare();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		// FreeMarker
+
+		try {
+			FreeMarkerEngineUtil.init();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		// Velocity
+
+		try {
+			VelocityEngineUtil.init();
 		}
 		catch (Exception e) {
 			e.printStackTrace();
