@@ -462,6 +462,7 @@ for (int i = 0; i < results.size(); i++) {
 							data="<%= data %>"
 							image="<%= folderImage %>"
 							label="<%= true %>"
+							localizeMessage="<%= false %>"
 							message="<%= curFolder.getName() %>"
 							method="get"
 							url="<%= rowURL.toString() %>"
