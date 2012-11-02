@@ -31,6 +31,9 @@ public class UpgradePortletId extends UpgradeProcess {
 
 	@Override
 	protected void doUpgrade() throws Exception {
+
+		// This is only tested to work on instanceable portlets
+
 		try {
 			runSQL("create index IX_5F076332 on Resource_ (primKey)");
 		}
@@ -43,8 +46,6 @@ public class UpgradePortletId extends UpgradeProcess {
 		}
 		catch (Exception e) {
 		}
-
-		// This is only tested to work on instanceable portlets
 
 		String[][] portletIdsArray = getPortletIdsArray();
 
