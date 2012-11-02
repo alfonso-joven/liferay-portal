@@ -620,6 +620,7 @@ create index IX_A82690E2 on ResourceTypePermission (roleId);
 
 create index IX_2578FBD3 on Resource_ (codeId);
 create unique index IX_67DE7856 on Resource_ (codeId, primKey);
+create index IX_5F076332 on Resource_ (primKey);
 
 create index IX_449A10B9 on Role_ (companyId);
 create unique index IX_A88E424E on Role_ (companyId, classNameId, classPK);

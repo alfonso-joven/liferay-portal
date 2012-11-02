@@ -1591,6 +1591,9 @@
 		<finder name="CodeId" return-type="Collection">
 			<finder-column name="codeId" />
 		</finder>
+		<finder name="PrimKey" return-type="Collection">
+			<finder-column name="primKey" />
+		</finder>
 		<finder name="C_P" return-type="Resource" unique="true">
 			<finder-column name="codeId" />
 			<finder-column name="primKey" />
