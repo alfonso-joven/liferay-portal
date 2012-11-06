@@ -463,14 +463,15 @@ public class LayoutLocalServiceImpl extends LayoutLocalServiceBaseImpl {
 		//Mobile Device Rules
 
 		long layoutClassNameId = classNameLocalService.getClassNameId(
-				Layout.class);
+			Layout.class);
 
 		List<MDRRuleGroupInstance> mdrRuleGroupInstances =
 			mdrRuleGroupInstancePersistence.findByC_C(
-			layoutClassNameId, layout.getPlid());
+				layoutClassNameId, layout.getPlid());
 
 		for (MDRRuleGroupInstance mdrRuleGroupInstance :
 				mdrRuleGroupInstances) {
+
 			mdrRuleGroupInstanceLocalService.deleteMDRRuleGroupInstance(
 				mdrRuleGroupInstance);
 		}
