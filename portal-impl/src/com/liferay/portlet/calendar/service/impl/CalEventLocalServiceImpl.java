@@ -1022,6 +1022,9 @@ public class CalEventLocalServiceImpl extends CalEventLocalServiceBaseImpl {
 				CalEvent.class.getName(), "title",
 				event.getSummary().getValue());
 		}
+		else {
+			title = "(none)";
+		}
 
 		// Description
 
