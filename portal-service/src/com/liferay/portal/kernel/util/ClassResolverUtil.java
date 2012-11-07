@@ -26,7 +26,7 @@ public class ClassResolverUtil {
 		throws ClassNotFoundException {
 
 		try {
-			return classLoader.loadClass(className);
+			return Class.forName(className, false, classLoader);
 		}
 		catch (ClassNotFoundException cnfe) {
 			Class<?> clazz = _primitiveClasses.get(className);
