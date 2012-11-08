@@ -215,8 +215,8 @@ String[][] categorySections = {mainSections};
 											if (!popup) {
 												popup = new A.Dialog(
 													{
+														align: Liferay.Util.Window.ALIGN_CENTER,
 														bodyContent: content.show(),
-														centered: true,
 														title: '<%= UnicodeLanguageUtil.get(pageContext, "add-child-page") %>',
 														modal: true,
 														width: 500
