@@ -331,6 +331,12 @@ public class JSONWebServiceConfigurator extends ClassFinder {
 				continue;
 			}
 
+			if ((_excludedMethodNames != null) &&
+				_excludedMethodNames.contains(method.getName())) {
+
+				continue;
+			}
+
 			boolean registerMethod = false;
 
 			JSONWebService methodAnnotation = method.getAnnotation(
@@ -361,12 +367,6 @@ public class JSONWebServiceConfigurator extends ClassFinder {
 						registerMethod = true;
 					}
 				}
-			}
-
-			if ((_excludedMethodNames != null) &&
-				_excludedMethodNames.contains(method.getName())) {
-
-				registerMethod = false;
 			}
 
 			if (registerMethod) {
