@@ -328,8 +328,9 @@ public class FileImpl implements com.liferay.portal.kernel.util.File {
 			if ((rootCause instanceof CryptographyException) ||
 				(rootCause instanceof EncryptedDocumentException)) {
 
-				_log.error(
-					"Cannot extract text from encrypted document: " + fileName);
+				if (_log.isWarnEnabled()) {
+					_log.warn("Cannot extract text from encrypted file!");
+				}
 			}
 			else {
 				_log.error(e, e);
