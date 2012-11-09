@@ -52,10 +52,10 @@ public class SA_AssignUserRolesTest extends BaseTestCase {
 		assertTrue(selenium.isPartialText("//a[@id='_125_rolesLink']", "Roles"));
 		selenium.clickAt("//a[@id='_125_rolesLink']",
 			RuntimeVariables.replace("Roles"));
-		selenium.waitForVisible("//div[6]/span[1]/a/span");
+		selenium.waitForVisible("//div[@id='_125_roles']/span[1]/a/span");
 		assertEquals(RuntimeVariables.replace("Select"),
-			selenium.getText("//div[6]/span[1]/a/span"));
-		selenium.clickAt("//div[6]/span[1]/a/span",
+			selenium.getText("//div[@id='_125_roles']/span[1]/a/span"));
+		selenium.clickAt("//div[@id='_125_roles']/span[1]/a/span",
 			RuntimeVariables.replace("Select"));
 		Thread.sleep(5000);
 		selenium.waitForPopUp("null", RuntimeVariables.replace("30000"));

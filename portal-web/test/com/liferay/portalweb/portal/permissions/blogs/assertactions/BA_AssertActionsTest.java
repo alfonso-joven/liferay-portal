@@ -25,8 +25,8 @@ public class BA_AssertActionsTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.clickAt("link=Blogs Permissions Page",
-			RuntimeVariables.replace("Blogs Permissions Page"));
+		selenium.clickAt("link=Blogs Test Page",
+			RuntimeVariables.replace("Blogs Test Page"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isElementPresent(
 				"//li[@class='portlet-configuration portlet-configuration-icon']/a"));
@@ -42,7 +42,7 @@ public class BA_AssertActionsTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Edit"),
 			selenium.getText("//span/a[contains(.,'Edit')]"));
 		assertEquals(RuntimeVariables.replace("Permissions"),
-			selenium.getText("xPath=(//span/a[contains(.,'Permissions')])[3]"));
+			selenium.getText("//span/a[@id=\"_33_ctvk\"]"));
 		assertEquals(RuntimeVariables.replace("Delete"),
 			selenium.getText("//span/a[contains(.,'Delete')]"));
 	}
