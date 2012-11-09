@@ -23,6 +23,8 @@ String portletResourceNamespace = ParamUtil.getString(request, "portletResourceN
 
 DDMStructure structure = (DDMStructure)request.getAttribute(WebKeys.DYNAMIC_DATA_MAPPING_STRUCTURE);
 
+long groupId = BeanParamUtil.getLong(structure, request, "groupId", scopeGroupId);
+
 long structureId = BeanParamUtil.getLong(structure, request, "structureId");
 
 String script = BeanParamUtil.getString(structure, request, "xsd");
@@ -45,6 +47,7 @@ if (scriptJSONArray != null) {
 <aui:form action="<%= editStructureURL %>" method="post" name="fm" onSubmit='<%= "event.preventDefault(); " + renderResponse.getNamespace() + "saveStructure();" %>'>
 	<aui:input name="<%= Constants.CMD %>" type="hidden" value="<%= (structure != null) ? Constants.UPDATE : Constants.ADD %>" />
 	<aui:input name="redirect" type="hidden" value="<%= redirect %>" />
+	<aui:input name="groupId" type="hidden" value="<%= groupId %>" />
 	<aui:input name="structureId" type="hidden" value="<%= structureId %>" />
 	<aui:input name="xsd" type="hidden" />
 	<aui:input name="saveCallback" type="hidden" value="<%= saveCallback %>" />

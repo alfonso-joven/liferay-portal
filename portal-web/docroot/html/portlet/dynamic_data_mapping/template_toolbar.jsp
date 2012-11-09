@@ -19,6 +19,8 @@
 <%
 String toolbarItem = ParamUtil.getString(request, "toolbarItem", "view-all");
 
+long groupId = ParamUtil.getLong(request, "groupId", scopeGroupId);
+
 long structureId = ParamUtil.getLong(request, "structureId");
 %>
 
@@ -40,7 +42,7 @@ long structureId = ParamUtil.getLong(request, "structureId");
 		<portlet:renderURL var="addTemplateURL">
 			<portlet:param name="struts_action" value="/dynamic_data_mapping/edit_template" />
 			<portlet:param name="redirect" value="<%= viewTemplatesURL %>" />
-			<portlet:param name="groupId" value="<%= String.valueOf(scopeGroupId) %>" />
+			<portlet:param name="groupId" value="<%= String.valueOf(groupId) %>" />
 			<portlet:param name="structureId" value="<%= String.valueOf(structureId) %>" />
 			<portlet:param name="structureAvailableFields" value='<%= renderResponse.getNamespace() + "structureAvailableFields" %>' />
 		</portlet:renderURL>
@@ -60,7 +62,7 @@ long structureId = ParamUtil.getLong(request, "structureId");
 		<portlet:renderURL var="addTemplateURL">
 			<portlet:param name="struts_action" value="/dynamic_data_mapping/edit_template" />
 			<portlet:param name="redirect" value="<%= viewTemplatesURL %>" />
-			<portlet:param name="groupId" value="<%= String.valueOf(scopeGroupId) %>" />
+			<portlet:param name="groupId" value="<%= String.valueOf(groupId) %>" />
 			<portlet:param name="structureId" value="<%= String.valueOf(structureId) %>" />
 			<portlet:param name="type" value="list" />
 		</portlet:renderURL>

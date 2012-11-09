@@ -157,6 +157,7 @@ if (Validator.isNotNull(ddmStructureId)) {
 				dialog: {
 					width:820
 				},
+				groupId: <%= groupId %>,
 				saveCallback: '<portlet:namespace />selectDDMStructure',
 				storageType: '<%= PropsValues.DYNAMIC_DATA_LISTS_STORAGE_TYPE %>',
 				structureId: ddmStructureId,

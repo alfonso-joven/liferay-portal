@@ -1248,6 +1248,7 @@
 
 			ddmURL.setParameter('chooseCallback', config.chooseCallback);
 			ddmURL.setParameter('ddmResource', config.ddmResource);
+			ddmURL.setParameter('groupId', config.groupId);
 			ddmURL.setParameter('saveCallback', config.saveCallback);
 			ddmURL.setParameter('scopeAvailableFields', config.availableFields);
 			ddmURL.setParameter('scopeStorageType', config.storageType);
