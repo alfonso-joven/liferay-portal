@@ -30,7 +30,14 @@ public class AddPropertiesTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				selenium.waitForElementPresent("link=Control Panel");
+				selenium.clickAt("//div[@id='dockbar']",
+					RuntimeVariables.replace("Dockbar"));
+				selenium.waitForElementPresent(
+					"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+				assertEquals(RuntimeVariables.replace("Go to"),
+					selenium.getText("//li[@id='_145_mySites']/a/span"));
+				selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+				selenium.waitForVisible("link=Control Panel");
 				selenium.clickAt("link=Control Panel",
 					RuntimeVariables.replace("Control Panel"));
 				selenium.waitForPageToLoad("30000");
@@ -65,7 +72,9 @@ public class AddPropertiesTest extends BaseTestCase {
 					RuntimeVariables.replace("related to selenium."));
 				selenium.clickAt("//input[@value='Save']",
 					RuntimeVariables.replace("Save"));
+				Thread.sleep(5000);
 				selenium.clickAt("link=Tags", RuntimeVariables.replace("Tags"));
+				selenium.waitForPageToLoad("30000");
 				selenium.waitForText("//span[@class='property-key']",
 					"This is a tag for anything");
 				assertEquals(RuntimeVariables.replace(

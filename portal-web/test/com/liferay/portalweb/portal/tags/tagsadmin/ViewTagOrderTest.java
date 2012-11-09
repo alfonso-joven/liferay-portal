@@ -20,8 +20,8 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 /**
  * @author Brian Wing Shun Chan
  */
-public class AddAtTagTest extends BaseTestCase {
-	public void testAddAtTag() throws Exception {
+public class ViewTagOrderTest extends BaseTestCase {
+	public void testViewTagOrder() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
@@ -38,17 +38,36 @@ public class AddAtTagTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Tags", RuntimeVariables.replace("Tags"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//input[@id='_99_addTagButton']",
-			RuntimeVariables.replace("Add Tag"));
-		selenium.waitForVisible("//input[@id='_99_name']");
-		selenium.type("//input[@id='_99_name']",
-			RuntimeVariables.replace("@test"));
-		selenium.clickAt("//input[@value='Save']",
-			RuntimeVariables.replace("Save"));
-		Thread.sleep(5000);
-		selenium.waitForVisible("//div[@id='portletMessages']");
-		assertTrue(selenium.isPartialText("//div[@id='portletMessages']",
-				"Tag names cannot be an empty string or contain characters such as:"));
-		assertTrue(selenium.isElementNotPresent("link=@test"));
+		assertTrue(selenium.isPartialText(
+				"//div[@class='lfr-header-row-content']/div[1]/span[2]",
+				"Actions"));
+		assertEquals("Add Tag",
+			selenium.getValue(
+				"//div[@class='lfr-header-row-content']/div[1]/div/span[1]/span/input"));
+		assertEquals("Permissions",
+			selenium.getValue(
+				"//div[@class='lfr-header-row-content']/div[1]/div/span[2]/span/input"));
+		assertTrue(selenium.isVisible(
+				"//div[@class='lfr-header-row-content']/div[2]/span/span/span/input"));
+		assertEquals(RuntimeVariables.replace("Tags"),
+			selenium.getText(
+				"//div[contains(@class,'tags-admin-list-container-content')]/div[1]"));
+		assertTrue(selenium.isVisible(
+				"//div[contains(@class,'tags-admin-list-container-content')]/div[2]"));
+		assertEquals(RuntimeVariables.replace("blue"),
+			selenium.getText(
+				"//div[@class='tags-admin-list lfr-component']/ul/li[1]"));
+		assertEquals(RuntimeVariables.replace("blue car"),
+			selenium.getText(
+				"//div[@class='tags-admin-list lfr-component']/ul/li[2]"));
+		assertEquals(RuntimeVariables.replace("blue green"),
+			selenium.getText(
+				"//div[@class='tags-admin-list lfr-component']/ul/li[3]"));
+		assertEquals(RuntimeVariables.replace("green"),
+			selenium.getText(
+				"//div[@class='tags-admin-list lfr-component']/ul/li[4]"));
+		assertEquals(RuntimeVariables.replace("green tree"),
+			selenium.getText(
+				"//div[@class='tags-admin-list lfr-component']/ul/li[5]"));
 	}
 }

@@ -25,21 +25,39 @@ public class TearDownTagTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Go to"),
+			selenium.getText("//li[@id='_145_mySites']/a/span"));
+		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Tags", RuntimeVariables.replace("Tags"));
 		selenium.waitForPageToLoad("30000");
+		assertFalse(selenium.isChecked(
+				"//input[@id='_99_checkAllTagsCheckbox']"));
 		selenium.clickAt("//input[@id='_99_checkAllTagsCheckbox']",
 			RuntimeVariables.replace("Check All Tags"));
+		assertTrue(selenium.isChecked("//input[@id='_99_checkAllTagsCheckbox']"));
+		assertEquals(RuntimeVariables.replace("Actions"),
+			selenium.getText("//span[@title='Actions']/ul/li/strong/a"));
 		selenium.clickAt("//span[@title='Actions']/ul/li/strong/a",
 			RuntimeVariables.replace("Actions"));
-		selenium.waitForVisible("//a[@id='_99_deleteSelectedTags']");
-		selenium.clickAt("//a[@id='_99_deleteSelectedTags']",
+		selenium.waitForVisible(
+			"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]");
+		assertEquals(RuntimeVariables.replace("Delete"),
+			selenium.getText(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]"));
+		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]",
 			RuntimeVariables.replace("Delete"));
-		assertTrue(selenium.getConfirmation()
-						   .matches("^Are you sure you want to delete the selected tags[\\s\\S]$"));
+		selenium.waitForConfirmation(
+			"Are you sure you want to delete the selected tags?");
 		selenium.waitForText("//div[@id='tagsMessages']", "There are no tags.");
+		assertEquals(RuntimeVariables.replace("There are no tags."),
+			selenium.getText("//div[@id='tagsMessages']"));
 	}
 }

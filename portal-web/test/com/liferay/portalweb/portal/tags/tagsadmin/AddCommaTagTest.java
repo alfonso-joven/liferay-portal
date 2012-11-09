@@ -25,7 +25,14 @@ public class AddCommaTagTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Go to"),
+			selenium.getText("//li[@id='_145_mySites']/a/span"));
+		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
@@ -38,10 +45,10 @@ public class AddCommaTagTest extends BaseTestCase {
 			RuntimeVariables.replace(",test"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
+		Thread.sleep(5000);
 		selenium.waitForVisible("//div[@id='portletMessages']");
-		assertEquals(RuntimeVariables.replace(
-				"Tag names cannot be an empty string or contain characters such as: \n , = > / < [ { % | + # ? \" ; / * ~."),
-			selenium.getText("//div[@id='portletMessages']"));
+		assertTrue(selenium.isPartialText("//div[@id='portletMessages']",
+				"Tag names cannot be an empty string or contain characters such as:"));
 		assertTrue(selenium.isElementNotPresent("link=,test"));
 	}
 }

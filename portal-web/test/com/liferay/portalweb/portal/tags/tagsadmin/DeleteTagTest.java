@@ -25,7 +25,14 @@ public class DeleteTagTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Go to"),
+			selenium.getText("//li[@id='_145_mySites']/a/span"));
+		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
@@ -36,13 +43,14 @@ public class DeleteTagTest extends BaseTestCase {
 			selenium.getText("//h1[@class='header-title']/span"));
 		selenium.clickAt("//input[@id='deleteTagButton']",
 			RuntimeVariables.replace("Delete"));
-		assertTrue(selenium.getConfirmation()
-						   .matches("^Are you sure you want to delete this tag[\\s\\S]$"));
+		selenium.waitForConfirmation(
+			"Are you sure you want to delete this tag?");
 		selenium.waitForVisible("//div[@id='portletMessages']");
 		assertEquals(RuntimeVariables.replace(
 				"Your request processed successfully."),
 			selenium.getText("//div[@id='portletMessages']"));
-		assertTrue(selenium.isElementNotPresent("//div[2]/ul/li/div/span/a"));
+		assertTrue(selenium.isElementNotPresent(
+				"//div[@class='tags-admin-content-wrapper']/span/a"));
 		assertTrue(selenium.isElementNotPresent("link=selenium ide"));
 	}
 }

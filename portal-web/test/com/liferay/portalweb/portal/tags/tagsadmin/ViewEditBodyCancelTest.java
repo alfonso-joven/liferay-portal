@@ -20,12 +20,19 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 /**
  * @author Brian Wing Shun Chan
  */
-public class AssertEditBodyCancelTest extends BaseTestCase {
-	public void testAssertEditBodyCancel() throws Exception {
+public class ViewEditBodyCancelTest extends BaseTestCase {
+	public void testViewEditBodyCancel() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Go to"),
+			selenium.getText("//li[@id='_145_mySites']/a/span"));
+		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
@@ -37,7 +44,10 @@ public class AssertEditBodyCancelTest extends BaseTestCase {
 		selenium.clickAt("//input[@id='editTagButton']",
 			RuntimeVariables.replace("Edit"));
 		selenium.waitForVisible("//input[@id='_99_name']");
-		selenium.click("//input[@value='Close']");
+		assertEquals("selenium ide",
+			selenium.getValue("//input[@id='_99_name']"));
+		selenium.clickAt("//input[@value='Close']",
+			RuntimeVariables.replace("Close"));
 		assertTrue(selenium.isElementNotPresent("//input[@id='_99_name']"));
 	}
 }

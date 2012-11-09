@@ -49,15 +49,15 @@ public class TagsAdminTests extends BaseTestSuite {
 		testSuite.addTestSuite(AddTildeTagTest.class);
 		testSuite.addTestSuite(EditTagNameTest.class);
 		testSuite.addTestSuite(AddPropertiesTest.class);
-		testSuite.addTestSuite(AssertEditBodyCancelTest.class);
+		testSuite.addTestSuite(ViewEditBodyCancelTest.class);
 		testSuite.addTestSuite(DeleteTagTest.class);
 		testSuite.addTestSuite(AddTag1Test.class);
 		testSuite.addTestSuite(AddTag2Test.class);
 		testSuite.addTestSuite(AddTag3Test.class);
 		testSuite.addTestSuite(AddTag4Test.class);
 		testSuite.addTestSuite(AddTag5Test.class);
-		testSuite.addTestSuite(AssertTagOrderTest.class);
-		testSuite.addTestSuite(SearchTest.class);
+		testSuite.addTestSuite(ViewTagOrderTest.class);
+		testSuite.addTestSuite(SearchTagsTest.class);
 		testSuite.addTestSuite(TearDownTagTest.class);
 
 		return testSuite;

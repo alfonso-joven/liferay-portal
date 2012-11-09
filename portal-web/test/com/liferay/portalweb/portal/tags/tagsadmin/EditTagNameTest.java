@@ -25,7 +25,14 @@ public class EditTagNameTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Go to"),
+			selenium.getText("//li[@id='_145_mySites']/a/span"));
+		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
@@ -41,12 +48,15 @@ public class EditTagNameTest extends BaseTestCase {
 			RuntimeVariables.replace("selenium ide"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
+		Thread.sleep(5000);
 		selenium.waitForVisible("//div[@id='portletMessages']");
 		assertEquals(RuntimeVariables.replace(
 				"Your request processed successfully."),
 			selenium.getText("//div[@id='portletMessages']"));
-		selenium.waitForVisible("//div[2]/ul/li/div/span/a");
+		selenium.waitForVisible(
+			"//div[@class='tags-admin-content-wrapper']/span/a");
 		assertEquals(RuntimeVariables.replace("selenium ide"),
-			selenium.getText("//div[2]/ul/li/div/span/a"));
+			selenium.getText(
+				"//div[@class='tags-admin-content-wrapper']/span/a"));
 	}
 }

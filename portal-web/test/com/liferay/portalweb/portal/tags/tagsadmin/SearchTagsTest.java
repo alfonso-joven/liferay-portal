@@ -20,12 +20,19 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 /**
  * @author Brian Wing Shun Chan
  */
-public class SearchTest extends BaseTestCase {
-	public void testSearch() throws Exception {
+public class SearchTagsTest extends BaseTestCase {
+	public void testSearchTags() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Go to"),
+			selenium.getText("//li[@id='_145_mySites']/a/span"));
+		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
@@ -34,20 +41,24 @@ public class SearchTest extends BaseTestCase {
 		selenium.type("//input[@id='_99_tagsAdminSearchInput']",
 			RuntimeVariables.replace("blue"));
 		Thread.sleep(5000);
-		assertTrue(selenium.isVisible("link=blue"));
-		assertTrue(selenium.isVisible("link=blue car"));
-		assertTrue(selenium.isVisible("link=blue green"));
-		assertTrue(selenium.isElementNotPresent("link=green"));
-		assertTrue(selenium.isElementNotPresent("link=green tree"));
-		selenium.clickAt("link=Tags", RuntimeVariables.replace("Tags"));
-		selenium.waitForPageToLoad("30000");
+		assertEquals(RuntimeVariables.replace("blue"),
+			selenium.getText("link=blue"));
+		assertEquals(RuntimeVariables.replace("blue car"),
+			selenium.getText("link=blue car"));
+		assertEquals(RuntimeVariables.replace("blue green"),
+			selenium.getText("link=blue green"));
+		assertFalse(selenium.isTextPresent("link=green"));
+		assertFalse(selenium.isTextPresent("link=green tree"));
 		selenium.type("//input[@id='_99_tagsAdminSearchInput']",
 			RuntimeVariables.replace("green"));
 		Thread.sleep(5000);
-		assertTrue(selenium.isElementNotPresent("link=blue"));
-		assertTrue(selenium.isElementNotPresent("link=blue car"));
-		assertTrue(selenium.isVisible("link=blue green"));
-		assertTrue(selenium.isVisible("link=green"));
-		assertTrue(selenium.isVisible("link=green tree"));
+		assertEquals(RuntimeVariables.replace("blue green"),
+			selenium.getText("link=blue green"));
+		assertEquals(RuntimeVariables.replace("green"),
+			selenium.getText("link=green"));
+		assertEquals(RuntimeVariables.replace("green tree"),
+			selenium.getText("link=green tree"));
+		assertFalse(selenium.isTextPresent("link=blue"));
+		assertFalse(selenium.isTextPresent("link=blue car"));
 	}
 }
