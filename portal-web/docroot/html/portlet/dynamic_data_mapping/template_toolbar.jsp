@@ -20,7 +20,6 @@
 String toolbarItem = ParamUtil.getString(request, "toolbarItem", "view-all");
 
 long groupId = ParamUtil.getLong(request, "groupId", scopeGroupId);
-
 long structureId = ParamUtil.getLong(request, "structureId");
 %>
 
