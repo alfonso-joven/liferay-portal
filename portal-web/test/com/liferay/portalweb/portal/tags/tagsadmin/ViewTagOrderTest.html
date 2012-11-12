@@ -49,23 +49,23 @@
 	<td>Tags</td>
 </tr>
 <tr>
-	<td>assertPartialText</td>
-	<td>//div[@class='lfr-header-row-content']/div[1]/span[2]</td>
+	<td>assertText</td>
+	<td>//div[@class='lfr-header-row-content']/div/span[@title='Actions']/ul/li/strong/a/span</td>
 	<td>Actions</td>
 </tr>
 <tr>
 	<td>assertValue</td>
-	<td>//div[@class='lfr-header-row-content']/div[1]/div/span[1]/span/input</td>
+	<td>//div[contains(@class,'tags-admin-actions')]/span/span/input[contains(@id,'addTagButton')]</td>
 	<td>Add Tag</td>
 </tr>
 <tr>
 	<td>assertValue</td>
-	<td>//div[@class='lfr-header-row-content']/div[1]/div/span[2]/span/input</td>
+	<td>//div[contains(@class,'tags-admin-actions')]/span/span/input[contains(@id,'tagsPermissionsButton')]</td>
 	<td>Permissions</td>
 </tr>
 <tr>
 	<td>assertVisible</td>
-	<td>//div[@class='lfr-header-row-content']/div[2]/span/span/span/input</td>
+	<td>//div[@class='lfr-header-row-content']/div/span/span/span/input[contains(@id,'tagsAdminSearchInput')]</td>
 	<td>Search Tags</td>
 </tr>
 <tr>

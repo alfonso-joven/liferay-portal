@@ -46,8 +46,7 @@ public class ViewEditBodyCancelTest extends BaseTestCase {
 		selenium.waitForVisible("//input[@id='_99_name']");
 		assertEquals("selenium ide",
 			selenium.getValue("//input[@id='_99_name']"));
-		selenium.clickAt("//input[@value='Close']",
-			RuntimeVariables.replace("Close"));
+		selenium.click("//input[@value='Close']");
 		assertTrue(selenium.isElementNotPresent("//input[@id='_99_name']"));
 	}
 }

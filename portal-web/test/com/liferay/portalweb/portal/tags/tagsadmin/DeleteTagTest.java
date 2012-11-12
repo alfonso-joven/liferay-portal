@@ -45,10 +45,12 @@ public class DeleteTagTest extends BaseTestCase {
 			RuntimeVariables.replace("Delete"));
 		selenium.waitForConfirmation(
 			"Are you sure you want to delete this tag?");
-		selenium.waitForVisible("//div[@id='portletMessages']");
+		selenium.waitForVisible(
+			"//div[@class='lfr-message-response portlet-msg-success']");
 		assertEquals(RuntimeVariables.replace(
 				"Your request processed successfully."),
-			selenium.getText("//div[@id='portletMessages']"));
+			selenium.getText(
+				"//div[@class='lfr-message-response portlet-msg-success']"));
 		assertTrue(selenium.isElementNotPresent(
 				"//div[@class='tags-admin-content-wrapper']/span/a"));
 		assertTrue(selenium.isElementNotPresent("link=selenium ide"));

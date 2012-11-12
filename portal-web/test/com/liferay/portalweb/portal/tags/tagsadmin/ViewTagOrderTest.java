@@ -38,17 +38,17 @@ public class ViewTagOrderTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Tags", RuntimeVariables.replace("Tags"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isPartialText(
-				"//div[@class='lfr-header-row-content']/div[1]/span[2]",
-				"Actions"));
+		assertEquals(RuntimeVariables.replace("Actions"),
+			selenium.getText(
+				"//div[@class='lfr-header-row-content']/div/span[@title='Actions']/ul/li/strong/a/span"));
 		assertEquals("Add Tag",
 			selenium.getValue(
-				"//div[@class='lfr-header-row-content']/div[1]/div/span[1]/span/input"));
+				"//div[contains(@class,'tags-admin-actions')]/span/span/input[contains(@id,'addTagButton')]"));
 		assertEquals("Permissions",
 			selenium.getValue(
-				"//div[@class='lfr-header-row-content']/div[1]/div/span[2]/span/input"));
+				"//div[contains(@class,'tags-admin-actions')]/span/span/input[contains(@id,'tagsPermissionsButton')]"));
 		assertTrue(selenium.isVisible(
-				"//div[@class='lfr-header-row-content']/div[2]/span/span/span/input"));
+				"//div[@class='lfr-header-row-content']/div/span/span/span/input[contains(@id,'tagsAdminSearchInput')]"));
 		assertEquals(RuntimeVariables.replace("Tags"),
 			selenium.getText(
 				"//div[contains(@class,'tags-admin-list-container-content')]/div[1]"));

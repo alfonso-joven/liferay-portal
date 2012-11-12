@@ -69,26 +69,30 @@
 	<td>Save</td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>5000</td>
-	<td></td>
-</tr>
-<tr>
 	<td>waitForVisible</td>
-	<td>//div[@id='portletMessages']</td>
+	<td>//div[@class='lfr-message-response portlet-msg-error']</td>
 	<td>Tag names cannot be an empty string or contain characters such as:</td>
 </tr>
 <tr>
 	<td>assertPartialText</td>
-	<td>//div[@id='portletMessages']</td>
+	<td>//div[@class='lfr-message-response portlet-msg-error']</td>
 	<td>Tag names cannot be an empty string or contain characters such as:</td>
 </tr>
 <tr>
-	<td>assertElementNotPresent</td>
-	<td>link==test</td>
-	<td>=test</td>
+	<td>assertPartialText</td>
+	<td>//div[@class='lfr-message-response portlet-msg-error']</td>
+	<td>, = > / <</td>
 </tr>
-
+<tr>
+	<td>assertPartialText</td>
+	<td>//div[@class='lfr-message-response portlet-msg-error']</td>
+	<td>{ % | + # ? " ; / * ~.</td>
+</tr>
+<tr>
+	<td>assertTextNotPresent</td>
+	<td>=test</td>
+	<td></td>
+</tr>
 </tbody></table>
 </body>
 </html>

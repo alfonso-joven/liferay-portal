@@ -45,7 +45,6 @@ public class AddDuplicateTagTest extends BaseTestCase {
 			RuntimeVariables.replace("selenium"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
-		Thread.sleep(5000);
 		selenium.waitForVisible("//div[@id='portletMessages']");
 		assertEquals(RuntimeVariables.replace("That tag already exists."),
 			selenium.getText("//div[@id='portletMessages']"));

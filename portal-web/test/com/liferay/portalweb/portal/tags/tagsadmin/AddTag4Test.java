@@ -45,11 +45,12 @@ public class AddTag4Test extends BaseTestCase {
 			RuntimeVariables.replace("blue car"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
-		Thread.sleep(5000);
-		selenium.waitForVisible("//div[@id='portletMessages']");
+		selenium.waitForVisible(
+			"//div[@class='lfr-message-response portlet-msg-success']");
 		assertEquals(RuntimeVariables.replace(
 				"Your request processed successfully."),
-			selenium.getText("//div[@id='portletMessages']"));
+			selenium.getText(
+				"//div[@class='lfr-message-response portlet-msg-success']"));
 		selenium.waitForVisible("link=blue car");
 	}
 }

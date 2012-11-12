@@ -56,6 +56,12 @@ public class TearDownTagTest extends BaseTestCase {
 			RuntimeVariables.replace("Delete"));
 		selenium.waitForConfirmation(
 			"Are you sure you want to delete the selected tags?");
+		selenium.waitForVisible(
+			"//div[@class='lfr-message-response portlet-msg-success']");
+		assertEquals(RuntimeVariables.replace(
+				"Your request processed successfully."),
+			selenium.getText(
+				"//div[@class='lfr-message-response portlet-msg-success']"));
 		selenium.waitForText("//div[@id='tagsMessages']", "There are no tags.");
 		assertEquals(RuntimeVariables.replace("There are no tags."),
 			selenium.getText("//div[@id='tagsMessages']"));

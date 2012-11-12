@@ -22,32 +22,66 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
  */
 public class AddNullTagTest extends BaseTestCase {
 	public void testAddNullTag() throws Exception {
-		selenium.selectWindow("null");
-		selenium.selectFrame("relative=top");
-		selenium.open("/web/guest/home/");
-		selenium.clickAt("//div[@id='dockbar']",
-			RuntimeVariables.replace("Dockbar"));
-		selenium.waitForElementPresent(
-			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
-		assertEquals(RuntimeVariables.replace("Go to"),
-			selenium.getText("//li[@id='_145_mySites']/a/span"));
-		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
-		selenium.waitForVisible("link=Control Panel");
-		selenium.clickAt("link=Control Panel",
-			RuntimeVariables.replace("Control Panel"));
-		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Tags", RuntimeVariables.replace("Tags"));
-		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//input[@id='_99_addTagButton']",
-			RuntimeVariables.replace("Add Tag"));
-		selenium.waitForVisible("//input[@id='_99_name']");
-		selenium.type("//input[@id='_99_name']", RuntimeVariables.replace(""));
-		selenium.clickAt("//input[@value='Save']",
-			RuntimeVariables.replace("Save"));
-		Thread.sleep(5000);
-		selenium.waitForVisible("//div[@id='portletMessages']");
-		assertTrue(selenium.isPartialText("//div[@id='portletMessages']",
-				"Tag names cannot be an empty string or contain characters such as:"));
-		assertTrue(selenium.isElementNotPresent("//div[2]/ul/li[2]/div/span/a"));
+		int label = 1;
+
+		while (label >= 1) {
+			switch (label) {
+			case 1:
+				selenium.selectWindow("null");
+				selenium.selectFrame("relative=top");
+				selenium.open("/web/guest/home/");
+				selenium.clickAt("//div[@id='dockbar']",
+					RuntimeVariables.replace("Dockbar"));
+				selenium.waitForElementPresent(
+					"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+				assertEquals(RuntimeVariables.replace("Go to"),
+					selenium.getText("//li[@id='_145_mySites']/a/span"));
+				selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+				selenium.waitForVisible("link=Control Panel");
+				selenium.clickAt("link=Control Panel",
+					RuntimeVariables.replace("Control Panel"));
+				selenium.waitForPageToLoad("30000");
+				selenium.clickAt("link=Tags", RuntimeVariables.replace("Tags"));
+				selenium.waitForPageToLoad("30000");
+				selenium.clickAt("//input[@id='_99_addTagButton']",
+					RuntimeVariables.replace("Add Tag"));
+				selenium.waitForVisible("//input[@id='_99_name']");
+				selenium.type("//input[@id='_99_name']",
+					RuntimeVariables.replace(""));
+				selenium.clickAt("//input[@value='Save']",
+					RuntimeVariables.replace("Save"));
+				selenium.waitForVisible(
+					"//div[@class='lfr-message-response portlet-msg-error']");
+				assertTrue(selenium.isPartialText(
+						"//div[@class='lfr-message-response portlet-msg-error']",
+						"Tag names cannot be an empty string or contain characters such as:"));
+				assertTrue(selenium.isPartialText(
+						"//div[@class='lfr-message-response portlet-msg-error']",
+						", = > / <"));
+				assertTrue(selenium.isPartialText(
+						"//div[@class='lfr-message-response portlet-msg-error']",
+						"{ % | + # ? \" ; / * ~."));
+				assertNotEquals(RuntimeVariables.replace(""),
+					selenium.getText(
+						"//div[@class='tags-admin-content-wrapper']/span/a"));
+
+				boolean nullTagPresent = selenium.isElementPresent(
+						"xpath=(//div[@class='tags-admin-content-wrapper']/span/a)[2]");
+
+				if (!nullTagPresent) {
+					label = 2;
+
+					continue;
+				}
+
+				assertNotEquals(RuntimeVariables.replace(""),
+					selenium.getText(
+						"//div[@class='tags-admin-content-wrapper']/span/a"));
+
+			case 2:
+			case 100:
+				label = -1;
+			}
+		}
 	}
 }

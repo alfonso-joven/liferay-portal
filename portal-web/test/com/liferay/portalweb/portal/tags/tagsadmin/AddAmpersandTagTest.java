@@ -45,10 +45,17 @@ public class AddAmpersandTagTest extends BaseTestCase {
 			RuntimeVariables.replace("&amp;test"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
-		Thread.sleep(5000);
-		selenium.waitForVisible("//div[@id='portletMessages']");
-		assertTrue(selenium.isPartialText("//div[@id='portletMessages']",
+		selenium.waitForVisible(
+			"//div[@class='lfr-message-response portlet-msg-error']");
+		assertTrue(selenium.isPartialText(
+				"//div[@class='lfr-message-response portlet-msg-error']",
 				"Tag names cannot be an empty string or contain characters such as:"));
-		assertTrue(selenium.isElementNotPresent("link=&amp;test"));
+		assertTrue(selenium.isPartialText(
+				"//div[@class='lfr-message-response portlet-msg-error']",
+				", = > / <"));
+		assertTrue(selenium.isPartialText(
+				"//div[@class='lfr-message-response portlet-msg-error']",
+				"{ % | + # ? \" ; / * ~."));
+		assertFalse(selenium.isTextPresent("&amp;test"));
 	}
 }

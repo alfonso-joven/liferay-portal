@@ -48,7 +48,6 @@ public class AddPropertiesTest extends BaseTestCase {
 					selenium.getText("//h1[@class='header-title']/span"));
 				selenium.clickAt("//input[@id='editTagButton']",
 					RuntimeVariables.replace("Edit"));
-				Thread.sleep(5000);
 				selenium.waitForVisible("//input[@id='_99_name']");
 
 				boolean propertiesVisible = selenium.isVisible(
@@ -72,7 +71,12 @@ public class AddPropertiesTest extends BaseTestCase {
 					RuntimeVariables.replace("related to selenium."));
 				selenium.clickAt("//input[@value='Save']",
 					RuntimeVariables.replace("Save"));
-				Thread.sleep(5000);
+				selenium.waitForVisible(
+					"//div[@class='lfr-message-response portlet-msg-success']");
+				assertEquals(RuntimeVariables.replace(
+						"Your request processed successfully."),
+					selenium.getText(
+						"//div[@class='lfr-message-response portlet-msg-success']"));
 				selenium.clickAt("link=Tags", RuntimeVariables.replace("Tags"));
 				selenium.waitForPageToLoad("30000");
 				selenium.waitForText("//span[@class='property-key']",

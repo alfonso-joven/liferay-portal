@@ -69,26 +69,50 @@
 	<td>Save</td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>5000</td>
-	<td></td>
-</tr>
-<tr>
 	<td>waitForVisible</td>
-	<td>//div[@id='portletMessages']</td>
+	<td>//div[@class='lfr-message-response portlet-msg-error']</td>
 	<td>Tag names cannot be an empty string or contain characters such as:</td>
 </tr>
 <tr>
 	<td>assertPartialText</td>
-	<td>//div[@id='portletMessages']</td>
+	<td>//div[@class='lfr-message-response portlet-msg-error']</td>
 	<td>Tag names cannot be an empty string or contain characters such as:</td>
 </tr>
 <tr>
-	<td>assertElementNotPresent</td>
-	<td>//div[2]/ul/li[2]/div/span/a</td>
-	<td>null</td>
+	<td>assertPartialText</td>
+	<td>//div[@class='lfr-message-response portlet-msg-error']</td>
+	<td>, = > / <</td>
 </tr>
-
+<tr>
+	<td>assertPartialText</td>
+	<td>//div[@class='lfr-message-response portlet-msg-error']</td>
+	<td>{ % | + # ? " ; / * ~.</td>
+</tr>
+<tr>
+	<td>assertNotText</td>
+	<td>//div[@class='tags-admin-content-wrapper']/span/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>xpath=(//div[@class='tags-admin-content-wrapper']/span/a)[2]</td>
+	<td>nullTagPresent</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>!${nullTagPresent}</td>
+	<td>NullTagNotPresent</td>
+</tr>
+<tr>
+	<td>assertNotText</td>
+	<td>//div[@class='tags-admin-content-wrapper']/span/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>NullTagNotPresent</td>
+	<td></td>
+</tr>
 </tbody></table>
 </body>
 </html>

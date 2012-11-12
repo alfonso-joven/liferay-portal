@@ -45,10 +45,17 @@ public class AddQuoteTagTest extends BaseTestCase {
 			RuntimeVariables.replace("\"test\""));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
-		Thread.sleep(5000);
-		selenium.waitForVisible("//div[@id='portletMessages']");
-		assertTrue(selenium.isPartialText("//div[@id='portletMessages']",
+		selenium.waitForVisible(
+			"//div[@class='lfr-message-response portlet-msg-error']");
+		assertTrue(selenium.isPartialText(
+				"//div[@class='lfr-message-response portlet-msg-error']",
 				"Tag names cannot be an empty string or contain characters such as:"));
-		assertTrue(selenium.isElementNotPresent("link=\"test\""));
+		assertTrue(selenium.isPartialText(
+				"//div[@class='lfr-message-response portlet-msg-error']",
+				", = > / <"));
+		assertTrue(selenium.isPartialText(
+				"//div[@class='lfr-message-response portlet-msg-error']",
+				"{ % | + # ? \" ; / * ~."));
+		assertFalse(selenium.isTextPresent("\"test\""));
 	}
 }
