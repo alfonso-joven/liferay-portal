@@ -289,11 +289,7 @@ public class PortalInstances {
 	private long[] _getCompanyIdsBySQL() throws SQLException {
 		List<Long> companyIds = new ArrayList<Long>();
 
-		Connection con = null;
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-
-		String currentShard = ShardUtil.getCurrentShardName();
+		String currentShardName = ShardUtil.getCurrentShardName();
 
 		ShardDataSourceTargetSource shardDataSourceTargetSource =
 			(ShardDataSourceTargetSource)
@@ -310,13 +306,17 @@ public class PortalInstances {
 			PropsValues.SHARD_DEFAULT_NAME);
 
 		ShardUtil.pushCompanyService(PropsValues.SHARD_DEFAULT_NAME);
-		
+
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
 		try {
 			con = DataAccess.getConnection();
 
 			ps = con.prepareStatement(_GET_COMPANY_IDS);
 
-			ps.setString(1, currentShard);
+			ps.setString(1, currentShardName);
 
 			rs = ps.executeQuery();
 
@@ -327,13 +327,13 @@ public class PortalInstances {
 			}
 		}
 		finally {
-			DataAccess.cleanUp(con, ps, rs);
-
 			ShardUtil.popCompanyService();
 
-			shardSessionFactoryTargetSource.setSessionFactory(currentShard);
+			shardSessionFactoryTargetSource.setSessionFactory(currentShardName);
 
-			shardDataSourceTargetSource.setDataSource(currentShard);
+			shardDataSourceTargetSource.setDataSource(currentShardName);
+
+			DataAccess.cleanUp(con, ps, rs);
 		}
 
 		return ArrayUtil.toArray(
