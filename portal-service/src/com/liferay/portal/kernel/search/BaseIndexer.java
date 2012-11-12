@@ -65,6 +65,8 @@ import com.liferay.portlet.expando.model.ExpandoColumnConstants;
 import com.liferay.portlet.expando.util.ExpandoBridgeFactoryUtil;
 import com.liferay.portlet.expando.util.ExpandoBridgeIndexerUtil;
 
+import java.io.Serializable;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -725,7 +727,18 @@ public abstract class BaseIndexer implements Indexer {
 			return;
 		}
 
-		String value = String.valueOf(searchContext.getAttribute(field));
+		Serializable serializableValue = searchContext.getAttribute(field);
+
+		String value = null;
+
+		if ((serializableValue != null) &&
+			serializableValue.getClass().isArray()) {
+
+			value = StringUtil.merge((Object[])serializableValue);
+		}
+		else {
+			value = GetterUtil.getString(serializableValue);
+		}
 
 		if (searchContext.getFacet(field) != null) {
 			if (Validator.isNotNull(value)) {
