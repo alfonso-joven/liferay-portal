@@ -28,22 +28,40 @@ public class BA_AssertActionsTest extends BaseTestCase {
 		selenium.clickAt("link=Blogs Test Page",
 			RuntimeVariables.replace("Blogs Test Page"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isElementPresent(
-				"//li[@class='portlet-configuration portlet-configuration-icon']/a"));
+		assertEquals(RuntimeVariables.replace("Options"),
+			selenium.getText("//span[@title='Options']/ul/li/strong/a/span"));
+		selenium.clickAt("//span[@title='Options']/ul/li/strong/a/span",
+			RuntimeVariables.replace("Options"));
+		selenium.waitForVisible(
+			"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]");
+		assertEquals(RuntimeVariables.replace("Configuration"),
+			selenium.getText(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]"));
+		assertTrue(selenium.isVisible("//input[@value='Search']"));
 		assertTrue(selenium.isVisible("//input[@value='Add Blog Entry']"));
-		assertTrue(selenium.isVisible("//span/a[contains(.,'Edit')]"));
-		assertTrue(selenium.isVisible("//span/a[contains(.,'Permissions')]"));
-		assertTrue(selenium.isVisible("//span/a[contains(.,'Delete')]"));
+		assertTrue(selenium.isVisible("//input[@value='Permissions']"));
+		assertEquals(RuntimeVariables.replace("Edit"),
+			selenium.getText("//td[contains(.,'Edit')]/span/a/span"));
+		assertEquals(RuntimeVariables.replace("Permissions"),
+			selenium.getText("//td[contains(.,'Permissions')]/span/a/span"));
+		assertEquals(RuntimeVariables.replace("Delete"),
+			selenium.getText("//td[contains(.,'Delete')]/span/a/span"));
 		assertEquals(RuntimeVariables.replace("RSS (Opens New Window)"),
-			selenium.getText("//span/a[contains(.,'RSS')]"));
+			selenium.getText(
+				"//div[@class='subscribe']/span/a[contains(@href,'rss')]"));
+		assertEquals(RuntimeVariables.replace("Subscribe"),
+			selenium.getText(
+				"//div[@class='subscribe']/span/a[contains(@href,'subscribe')]"));
+		assertEquals(RuntimeVariables.replace("Permissions Blogs Test Entry"),
+			selenium.getText("//div[@class='entry-title']/h2/a"));
 		selenium.clickAt("//div[@class='entry-title']/h2/a",
 			RuntimeVariables.replace("Permissions Blogs Test Entry"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Edit"),
-			selenium.getText("//span/a[contains(.,'Edit')]"));
+			selenium.getText("//td[contains(.,'Edit')]/span/a/span"));
 		assertEquals(RuntimeVariables.replace("Permissions"),
-			selenium.getText("//span/a[@id=\"_33_ctvk\"]"));
+			selenium.getText("//td[contains(.,'Permissions')]/span/a/span"));
 		assertEquals(RuntimeVariables.replace("Delete"),
-			selenium.getText("//span/a[contains(.,'Delete')]"));
+			selenium.getText("//td[contains(.,'Delete')]/span/a/span"));
 	}
 }

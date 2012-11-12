@@ -52,24 +52,23 @@ public class SA_AssignUserRolesTest extends BaseTestCase {
 		assertTrue(selenium.isPartialText("//a[@id='_125_rolesLink']", "Roles"));
 		selenium.clickAt("//a[@id='_125_rolesLink']",
 			RuntimeVariables.replace("Roles"));
-		selenium.waitForVisible("//div[@id='_125_roles']/span[1]/a/span");
+		selenium.waitForVisible("//div[@id='_125_roles']/span/a/span");
 		assertEquals(RuntimeVariables.replace("Select"),
-			selenium.getText("//div[@id='_125_roles']/span[1]/a/span"));
-		selenium.clickAt("//div[@id='_125_roles']/span[1]/a/span",
+			selenium.getText("//div[@id='_125_roles']/span/a/span"));
+		selenium.clickAt("//div[@id='_125_roles']/span/a/span",
 			RuntimeVariables.replace("Select"));
 		Thread.sleep(5000);
-		selenium.waitForPopUp("null", RuntimeVariables.replace("30000"));
 		selenium.selectWindow("title=Users and Organizations");
 		selenium.waitForVisible(
-			"//tr/td[1]/a[contains(.,'Blogs Administrator')]");
+			"//tr[contains(.,'Blogs Administrator')]/td[1]/a");
 		selenium.type("//input[@id='_125_keywords']",
 			RuntimeVariables.replace("Blogs"));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Blogs Administrator"),
-			selenium.getText("//tr/td[1]/a[contains(.,'Blogs Administrator')]"));
-		selenium.clickAt("//tr/td[1]/a[contains(.,'Blogs Administrator')]",
+			selenium.getText("//tr[contains(.,'Blogs Administrator')]/td[1]/a"));
+		selenium.clickAt("//tr[contains(.,'Blogs Administrator')]/td[1]/a",
 			RuntimeVariables.replace("Blogs Administrator"));
 		selenium.selectWindow("null");
 		selenium.waitForPartialText("//div[@id='_125_rolesSearchContainer']",
@@ -98,13 +97,12 @@ public class SA_AssignUserRolesTest extends BaseTestCase {
 		assertTrue(selenium.isPartialText("//a[@id='_125_rolesLink']", "Roles"));
 		selenium.clickAt("//a[@id='_125_rolesLink']",
 			RuntimeVariables.replace("Roles"));
-		selenium.waitForVisible("//div[6]/span[1]/a/span");
+		selenium.waitForVisible("//div[@id='_125_roles']/span/a/span");
 		assertEquals(RuntimeVariables.replace("Select"),
-			selenium.getText("//div[6]/span[1]/a/span"));
-		selenium.clickAt("//div[6]/span[1]/a/span",
+			selenium.getText("//div[@id='_125_roles']/span/a/span"));
+		selenium.clickAt("//div[@id='_125_roles']/span/a/span",
 			RuntimeVariables.replace("Select"));
 		Thread.sleep(5000);
-		selenium.waitForPopUp("null", RuntimeVariables.replace("30000"));
 		selenium.selectWindow("title=Users and Organizations");
 		selenium.waitForVisible("//tr/td[1]/a[contains(.,'Member')]");
 		selenium.type("//input[@id='_125_keywords']",

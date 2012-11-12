@@ -28,32 +28,43 @@ public class Guest_AssertActionsTest extends BaseTestCase {
 		selenium.clickAt("link=Blogs Test Page",
 			RuntimeVariables.replace("Blogs Test Page"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isElementPresent("//input[@value='Search']"));
-		assertTrue(selenium.isElementPresent("//div[@class='entry-title']/h2/a"));
-		assertTrue(selenium.isElementNotPresent("//span/a[contains(.,'Edit')]"));
-		assertTrue(selenium.isElementNotPresent("link=Permissions"));
 		assertTrue(selenium.isElementNotPresent(
-				"//span/a[contains(.,'Delete')]"));
+				"//span[@title='Options']/ul/li/strong/a/span"));
+		assertTrue(selenium.isVisible("//input[@value='Search']"));
 		assertTrue(selenium.isElementNotPresent(
 				"//input[@value='Add Blog Entry']"));
+		assertTrue(selenium.isElementNotPresent("//input[@value='Permissions']"));
+		assertTrue(selenium.isElementNotPresent(
+				"//td[contains(.,'Edit')]/span/a/span"));
+		assertTrue(selenium.isElementNotPresent(
+				"//td[contains(.,'Permissions')]/span/a/span"));
+		assertTrue(selenium.isElementNotPresent(
+				"//td[contains(.,'Delete')]/span/a/span"));
+		assertEquals(RuntimeVariables.replace("Permissions Blogs Test Entry"),
+			selenium.getText("//div[@class='entry-title']/h2/a"));
 		selenium.clickAt("//div[@class='entry-title']/h2/a",
 			RuntimeVariables.replace("Permissions Blogs Test Entry"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Add Comment"),
 			selenium.getText("//span/a[contains(.,'Add Comment')]"));
-		selenium.click("//span/a[contains(.,'Add Comment')]");
+		selenium.clickAt("//span/a[contains(.,'Add Comment')]",
+			RuntimeVariables.replace("Add Comment"));
 		selenium.waitForVisible("//textarea[@name='_33_postReplyBody0']");
-		assertTrue(selenium.isElementNotPresent("//input[@value='Reply']"));
-		assertTrue(selenium.isElementNotPresent("//span/a[contains(.,'Edit')]"));
-		assertTrue(selenium.isElementNotPresent("link=Permissions"));
 		assertTrue(selenium.isElementNotPresent(
-				"//span/a[contains(.,'Delete')]"));
-		assertTrue(selenium.isElementPresent(
+				"//td[contains(.,'Edit')]/span/a/span"));
+		assertTrue(selenium.isElementNotPresent(
+				"//td[contains(.,'Permissions')]/span/a/span"));
+		assertTrue(selenium.isElementNotPresent(
+				"//td[contains(.,'Delete')]/span/a/span"));
+		assertTrue(selenium.isElementNotPresent("//input[@value='Reply']"));
+		assertTrue(selenium.isVisible(
 				"//div[@class='lfr-discussion-controls']/div/a"));
 		selenium.clickAt("//input[@value='Reply as...']",
 			RuntimeVariables.replace("Reply as..."));
 		selenium.waitForVisible("//iframe[@id='_33_signInDialog']");
 		selenium.selectFrame("//iframe[@id='_33_signInDialog']");
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/liferay/navigation_interaction.js')]");
 		selenium.waitForVisible("//label[@for='_164_login']");
 		assertEquals(RuntimeVariables.replace("Email Address"),
 			selenium.getText("//label[@for='_164_login']"));

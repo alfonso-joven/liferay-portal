@@ -19,9 +19,29 @@
 	<td>Blogs Test Page</td>
 </tr>
 <tr>
-	<td>assertElementPresent</td>
-	<td>//li[@class='portlet-configuration portlet-configuration-icon']/a</td>
+	<td>assertText</td>
+	<td>//span[@title='Options']/ul/li/strong/a/span</td>
+	<td>Options</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//span[@title='Options']/ul/li/strong/a/span</td>
+	<td>Options</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]</td>
 	<td>Configuration</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]</td>
+	<td>Configuration</td>
+</tr>
+<tr>
+	<td>assertVisible</td>
+	<td>//input[@value='Search']</td>
+	<td>Search</td>
 </tr>
 <tr>
 	<td>assertVisible</td>
@@ -30,23 +50,38 @@
 </tr>
 <tr>
 	<td>assertVisible</td>
-	<td>//span/a[contains(.,'Edit')]</td>
-	<td>Edit</td>
-</tr>
-<tr>
-	<td>assertVisible</td>
-	<td>//span/a[contains(.,'Permissions')]</td>
+	<td>//input[@value='Permissions']</td>
 	<td>Permissions</td>
 </tr>
 <tr>
-	<td>assertVisible</td>
-	<td>//span/a[contains(.,'Delete')]</td>
+	<td>assertText</td>
+	<td>//td[contains(.,'Edit')]/span/a/span</td>
+	<td>Edit</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//td[contains(.,'Permissions')]/span/a/span</td>
+	<td>Permissions</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//td[contains(.,'Delete')]/span/a/span</td>
 	<td>Delete</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//span/a[contains(.,'RSS')]</td>
+	<td>//div[@class='subscribe']/span/a[contains(@href,'rss')]</td>
 	<td>RSS (Opens New Window)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='subscribe']/span/a[contains(@href,'subscribe')]</td>
+	<td>Subscribe</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='entry-title']/h2/a</td>
+	<td>Permissions Blogs Test Entry</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -55,17 +90,17 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//span/a[contains(.,'Edit')]</td>
+	<td>//td[contains(.,'Edit')]/span/a/span</td>
 	<td>Edit</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//span/a[@id="_33_ctvk"]</td>
+	<td>//td[contains(.,'Permissions')]/span/a/span</td>
 	<td>Permissions</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//span/a[contains(.,'Delete')]</td>
+	<td>//td[contains(.,'Delete')]/span/a/span</td>
 	<td>Delete</td>
 </tr>
 </tbody></table>

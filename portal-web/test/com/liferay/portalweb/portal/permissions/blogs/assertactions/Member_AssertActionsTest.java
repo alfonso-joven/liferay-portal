@@ -28,20 +28,29 @@ public class Member_AssertActionsTest extends BaseTestCase {
 		selenium.clickAt("link=Blogs Test Page",
 			RuntimeVariables.replace("Blogs Test Page"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("RSS (Opens New Window)"),
-			selenium.getText("//span/a[contains(.,'RSS')]"));
+		assertTrue(selenium.isElementNotPresent(
+				"//span[@title='Options']/ul/li/strong/a/span"));
+		assertTrue(selenium.isVisible("//input[@value='Search']"));
 		assertTrue(selenium.isElementNotPresent(
 				"//input[@value='Add Blog Entry']"));
-		assertTrue(selenium.isElementNotPresent("//span/a[contains(.,'Edit')]"));
-		assertTrue(selenium.isElementNotPresent("link=Permissions"));
+		assertTrue(selenium.isElementNotPresent("//input[@value='Permissions']"));
 		assertTrue(selenium.isElementNotPresent(
-				"//span/a[contains(.,'Delete')]"));
+				"//td[contains(.,'Edit')]/span/a/span"));
+		assertTrue(selenium.isElementNotPresent(
+				"//td[contains(.,'Permissions')]/span/a/span"));
+		assertTrue(selenium.isElementNotPresent(
+				"//td[contains(.,'Delete')]/span/a/span"));
+		assertEquals(RuntimeVariables.replace("RSS (Opens New Window)"),
+			selenium.getText(
+				"//div[@class='subscribe']/span/a[contains(@href,'rss')]"));
 		selenium.clickAt("//div[@class='entry-title']/h2/a",
 			RuntimeVariables.replace("Permissions Blogs Test Entry"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isElementNotPresent("//span/a[contains(.,'Edit')]"));
-		assertTrue(selenium.isElementNotPresent("link=Permissions"));
 		assertTrue(selenium.isElementNotPresent(
-				"//span/a[contains(.,'Delete')]"));
+				"//td[contains(.,'Edit')]/span/a/span"));
+		assertTrue(selenium.isElementNotPresent(
+				"//td[contains(.,'Permissions')]/span/a/span"));
+		assertTrue(selenium.isElementNotPresent(
+				"//td[contains(.,'Delete')]/span/a/span"));
 	}
 }

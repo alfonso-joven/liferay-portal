@@ -19,34 +19,44 @@
 	<td>Blogs Test Page</td>
 </tr>
 <tr>
-	<td>assertElementPresent</td>
+	<td>assertElementNotPresent</td>
+	<td>//span[@title='Options']/ul/li/strong/a/span</td>
+	<td>Options</td>
+</tr>
+<tr>
+	<td>assertVisible</td>
 	<td>//input[@value='Search']</td>
 	<td>Search</td>
-</tr>
-<tr>
-	<td>assertElementPresent</td>
-	<td>//div[@class='entry-title']/h2/a</td>
-	<td>Permissions Blogs Test Entry</td>
-</tr>
-<tr>
-	<td>assertElementNotPresent</td>
-	<td>//span/a[contains(.,'Edit')]</td>
-	<td>Edit</td>
-</tr>
-<tr>
-	<td>assertElementNotPresent</td>
-	<td>link=Permissions</td>
-	<td>Permissions</td>
-</tr>
-<tr>
-	<td>assertElementNotPresent</td>
-	<td>//span/a[contains(.,'Delete')]</td>
-	<td>Delete</td>
 </tr>
 <tr>
 	<td>assertElementNotPresent</td>
 	<td>//input[@value='Add Blog Entry']</td>
 	<td>Add Blog Entry</td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>//input[@value='Permissions']</td>
+	<td>Permissions</td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>//td[contains(.,'Edit')]/span/a/span</td>
+	<td>Edit</td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>//td[contains(.,'Permissions')]/span/a/span</td>
+	<td>Permissions</td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>//td[contains(.,'Delete')]/span/a/span</td>
+	<td>Delete</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='entry-title']/h2/a</td>
+	<td>Permissions Blogs Test Entry</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -59,7 +69,7 @@
 	<td>Add Comment</td>
 </tr>
 <tr>
-	<td>click</td>
+	<td>clickAt</td>
 	<td>//span/a[contains(.,'Add Comment')]</td>
 	<td>Add Comment</td>
 </tr>
@@ -70,26 +80,26 @@
 </tr>
 <tr>
 	<td>assertElementNotPresent</td>
-	<td>//input[@value='Reply']</td>
-	<td>Reply</td>
-</tr>
-<tr>
-	<td>assertElementNotPresent</td>
-	<td>//span/a[contains(.,'Edit')]</td>
+	<td>//td[contains(.,'Edit')]/span/a/span</td>
 	<td>Edit</td>
 </tr>
 <tr>
 	<td>assertElementNotPresent</td>
-	<td>link=Permissions</td>
+	<td>//td[contains(.,'Permissions')]/span/a/span</td>
 	<td>Permissions</td>
 </tr>
 <tr>
 	<td>assertElementNotPresent</td>
-	<td>//span/a[contains(.,'Delete')]</td>
+	<td>//td[contains(.,'Delete')]/span/a/span</td>
 	<td>Delete</td>
 </tr>
 <tr>
-	<td>assertElementPresent</td>
+	<td>assertElementNotPresent</td>
+	<td>//input[@value='Reply']</td>
+	<td>Reply</td>
+</tr>
+<tr>
+	<td>assertVisible</td>
 	<td>//div[@class='lfr-discussion-controls']/div/a</td>
 	<td>Sign in to vote.</td>
 </tr>
@@ -107,6 +117,11 @@
 	<td>selectFrame</td>
 	<td>//iframe[@id='_33_signInDialog']</td>
 	<td>Sign In</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//script[contains(@src,'/liferay/navigation_interaction.js')]</td>
+	<td>Navigation Interaction</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
