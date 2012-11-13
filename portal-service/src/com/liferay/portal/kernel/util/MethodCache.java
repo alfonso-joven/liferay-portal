@@ -122,6 +122,10 @@ public class MethodCache {
 
 			method = clazz.getMethod(methodName, parameterTypes);
 
+			if (!method.isAccessible()) {
+				method.setAccessible(true);
+			}
+
 			methodsMap.put(methodKey, method);
 		}
 
