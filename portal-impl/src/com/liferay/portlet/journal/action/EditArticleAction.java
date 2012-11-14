@@ -199,7 +199,8 @@ public class EditArticleAction extends PortletAction {
 
 			Layout layout = themeDisplay.getLayout();
 
-			if (cmd.equals(Constants.DELETE_VERSIONS) &&
+			if ((cmd.equals(Constants.DELETE) ||
+				cmd.equals(Constants.DELETE_VERSIONS)) &&
 				hasArticle(actionRequest)) {
 
 				redirect = ParamUtil.getString(
