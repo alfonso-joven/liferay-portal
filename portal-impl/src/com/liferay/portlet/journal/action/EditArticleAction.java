@@ -201,7 +201,7 @@ public class EditArticleAction extends PortletAction {
 
 			if ((cmd.equals(Constants.DELETE) ||
 				cmd.equals(Constants.DELETE_VERSIONS)) &&
-				hasArticle(actionRequest)) {
+				!hasArticle(actionRequest)) {
 
 				redirect = ParamUtil.getString(
 					actionRequest, "originalRedirect");
@@ -454,10 +454,10 @@ public class EditArticleAction extends PortletAction {
 			JournalArticleLocalServiceUtil.getArticle(groupId, articleId);
 		}
 		catch (NoSuchArticleException nsae) {
-			return true;
+			return false;
 		}
 
-		return false;
+		return true;
 	}
 
 	protected void removeArticlesLocale(ActionRequest actionRequest)
