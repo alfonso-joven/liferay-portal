@@ -1470,6 +1470,13 @@ public class PortalUtil {
 		return getPortal().isGroupAdmin(user, groupId);
 	}
 
+	public static boolean isGroupFriendlyURL(
+		String fullURL, String groupFriendlyURL, String layoutFriendlyURL) {
+
+		return getPortal().isGroupFriendlyURL(
+			fullURL, groupFriendlyURL, layoutFriendlyURL);
+	}
+
 	public static boolean isGroupOwner(User user, long groupId)
 		throws Exception {
 
