@@ -501,7 +501,7 @@ public class DLFileEntryLocalServiceImpl
 		long classNameId = PortalUtil.getClassNameId(DLFileEntry.class);
 
 		ddmStructures = ddmStructureLocalService.getClassStructures(
-			classNameId);
+			companyId, classNameId);
 
 		for (DDMStructure ddmStructure : ddmStructures) {
 			try {
