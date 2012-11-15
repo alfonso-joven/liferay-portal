@@ -16,11 +16,9 @@ package com.liferay.portlet.wiki.engines.mediawiki.matchers;
 
 import com.liferay.portal.kernel.util.ArrayUtil;
 import com.liferay.portal.kernel.util.CallbackMatcher;
-import com.liferay.portal.kernel.util.HttpUtil;
-import com.liferay.portal.kernel.util.StringBundler;
+import com.liferay.portal.kernel.util.CharPool;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
-import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portlet.wiki.model.WikiPage;
 
 import java.util.regex.MatchResult;
@@ -28,47 +26,32 @@ import java.util.regex.MatchResult;
 /**
  * @author Kenneth Chang
  */
-public class DirectURLMatcher extends CallbackMatcher {
+public class DirectTagMatcher extends CallbackMatcher {
 
-	public DirectURLMatcher(WikiPage page, String attachmentURLPrefix) {
+	public DirectTagMatcher(WikiPage page) {
 		_page = page;
-		_attachmentURLPrefix = attachmentURLPrefix;
 
-		setRegex(_URL_REGEX);
+		setRegex(_REGEX);
 	}
 
-	public String replaceMatches(
-		CharSequence charSequence, boolean hasUnderscore) {
-
-		if (hasUnderscore) {
-			setRegex(_UNDERSCORE_REGEX);
-		}
-
+	public String replaceMatches(CharSequence charSequence) {
 		return replaceMatches(charSequence, _callBack);
 	}
 
-	private static final String _UNDERSCORE_REGEX =
-		"<p>([^|<]*)[|]*?([^|<]*)<\\/p>";
-
-	private static final String _URL_REGEX =
-		"<a href=\"[^\"]*?Special:Edit[^\"]*?topic=[^\"]*?\".*?title=\"" +
-			"([^\"]*?)\".*?>(.*?)</a>";
-
-	private String _attachmentURLPrefix;
+	private static final String _REGEX = "\\[\\[([^\\]]+)\\]\\]";
 
 	private Callback _callBack = new Callback() {
 
 		public String foundMatch(MatchResult matchResult) {
-			String fileName = StringUtil.replace(
-				matchResult.group(1), "%5F", StringPool.UNDERLINE);
-			String title = StringUtil.replace(
-				matchResult.group(2), "%5F", StringPool.UNDERLINE);
+			String fileName = matchResult.group(1);
 
-			if (Validator.isNull(title)) {
-				title = fileName;
+			if (!fileName.contains(StringPool.UNDERLINE)) {
+				return null;
 			}
 
-			String url = _attachmentURLPrefix + HttpUtil.encodeURL(fileName);
+			if (fileName.indexOf(CharPool.PIPE) >= 0) {
+				fileName = StringUtil.extractFirst(fileName, CharPool.PIPE);
+			}
 
 			try {
 				String[] attachments = _page.getAttachmentsFiles();
@@ -85,15 +68,8 @@ public class DirectURLMatcher extends CallbackMatcher {
 				return null;
 			}
 
-			StringBundler sb = new StringBundler(5);
-
-			sb.append("<a href=\"");
-			sb.append(url);
-			sb.append("\">");
-			sb.append(title);
-			sb.append("</a>");
-
-			return sb.toString();
+			return StringUtil.replace(
+				fileName, StringPool.UNDERLINE, "$5F");
 		}
 
 	};
