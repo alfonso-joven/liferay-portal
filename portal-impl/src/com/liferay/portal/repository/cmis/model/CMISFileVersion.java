@@ -322,6 +322,10 @@ public class CMISFileVersion extends CMISModel implements FileVersion {
 		return this;
 	}
 
+	public FileVersion toUnescapedModel() {
+		return this;
+	}
+
 	@Override
 	protected CMISRepository getCmisRepository() {
 		return _cmisRepository;

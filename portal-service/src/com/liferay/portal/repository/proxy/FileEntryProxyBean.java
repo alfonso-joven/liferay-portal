@@ -294,6 +294,12 @@ public class FileEntryProxyBean
 		return newFileEntryProxyBean(fileEntry);
 	}
 
+	public FileEntry toUnescapedModel() {
+		FileEntry fileEntry = _fileEntry.toUnescapedModel();
+
+		return newFileEntryProxyBean(fileEntry);
+	}
+
 	private FileEntry _fileEntry;
 
 }

@@ -278,6 +278,15 @@ public class LiferayFolder extends LiferayModel implements Folder {
 		}
 	}
 
+	public Folder toUnescapedModel() {
+		if (isEscapedModel()) {
+			return new LiferayFolder(_dlFolder.toUnescapedModel(), true);
+		}
+		else {
+			return this;
+		}
+	}
+
 	private DLFolder _dlFolder;
 	private boolean _escapedModel;
 
