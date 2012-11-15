@@ -233,7 +233,7 @@ public class StagingImplTest {
 			for (Locale locale : _locales) {
 				Assert.assertEquals(
 					category.getTitle(locale),
-						stagingCategory.getTitle(locale));
+					stagingCategory.getTitle(locale));
 			}
 		}
 		else {
