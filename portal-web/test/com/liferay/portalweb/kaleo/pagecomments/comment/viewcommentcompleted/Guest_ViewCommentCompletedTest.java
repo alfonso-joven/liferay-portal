@@ -29,8 +29,7 @@ public class Guest_ViewCommentCompletedTest extends BaseTestCase {
 		selenium.clickAt("link=Page Comments Test Page",
 			RuntimeVariables.replace("Page Comments Test Page"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("PC Comment"),
-			selenium.getText("//div[@class='lfr-discussion-message']"));
+		assertTrue(selenium.isVisible("//div[@class='lfr-discussion-message']"));
 		assertFalse(selenium.isTextPresent("Pending (Review)"));
 	}
 }

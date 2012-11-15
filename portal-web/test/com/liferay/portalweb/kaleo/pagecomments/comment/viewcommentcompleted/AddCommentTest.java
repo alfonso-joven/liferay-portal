@@ -49,5 +49,7 @@ public class AddCommentTest extends BaseTestCase {
 			selenium.getText("//strong[@class='workflow-status-pending']"));
 		assertEquals(RuntimeVariables.replace("PC Comment"),
 			selenium.getText("//div[@class='lfr-discussion-message']"));
+		assertTrue(selenium.isElementPresent(
+				"//input[@value='Submit for Publication']"));
 	}
 }

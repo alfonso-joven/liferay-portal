@@ -37,6 +37,8 @@ public class AddCommentTest extends BaseTestCase {
 		assertTrue(selenium.isVisible("//textarea[@name='_107_postReplyBody0']"));
 		selenium.type("//textarea[@name='_107_postReplyBody0']",
 			RuntimeVariables.replace("PC Comment"));
+		assertTrue(selenium.isVisible(
+				"//input[@value='Submit for Publication']"));
 		selenium.clickAt("//input[@value='Submit for Publication']",
 			RuntimeVariables.replace("Submit for Publication"));
 		selenium.waitForText("//div[@class='lfr-message-response portlet-msg-success']",
