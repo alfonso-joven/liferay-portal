@@ -14,10 +14,6 @@
 
 package com.liferay.util.bridges.php;
 
-import com.caucho.vfs.Path;
-import com.caucho.vfs.SchemeMap;
-import com.caucho.vfs.Vfs;
-
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.servlet.DynamicServletConfig;
@@ -26,7 +22,6 @@ import com.liferay.portal.kernel.servlet.ServletContextUtil;
 import com.liferay.portal.kernel.servlet.ServletObjectsFactory;
 import com.liferay.portal.kernel.servlet.StringServletResponse;
 import com.liferay.portal.kernel.util.GetterUtil;
-import com.liferay.portal.kernel.util.InstanceFactory;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.util.bridges.common.ScriptPostProcess;
 
@@ -148,43 +143,42 @@ public class PHPPortlet extends GenericPortlet {
 	protected synchronized void initQuercus(ServletConfig servletConfig)
 		throws PortletException {
 
-		if (quercusServlet != null) {
-			return;
-		}
+		if (quercusServlet == null) {
+			try {
+				com.caucho.vfs.SchemeMap defaultSchemeMap =
+					com.caucho.vfs.Vfs.getDefaultScheme();
 
-		try {
-			SchemeMap schemeMap = Vfs.getDefaultScheme();
+				URI rootURI = ServletContextUtil.getRootURI(
+					servletConfig.getServletContext());
 
-			URI rootURI = ServletContextUtil.getRootURI(
-				servletConfig.getServletContext());
+				defaultSchemeMap.put(
+					rootURI.getScheme(),
+					new ServletContextPath(servletConfig.getServletContext()));
 
-			schemeMap.put(
-				rootURI.getScheme(),
-				new ServletContextPath(servletConfig.getServletContext()));
+				com.caucho.vfs.Path.setDefaultSchemeMap(defaultSchemeMap);
 
-			Path.setDefaultSchemeMap(schemeMap);
+				quercusServlet = (HttpServlet)Class.forName(
+					_QUERCUS_SERVLET).newInstance();
 
-			quercusServlet = (HttpServlet)InstanceFactory.newInstance(
-				_QUERCUS_SERVLET);
+				Map<String, String> params = new HashMap<String, String>();
 
-			Map<String, String> params = new HashMap<String, String>();
+				Enumeration<String> enu = servletConfig.getInitParameterNames();
 
-			Enumeration<String> enu = servletConfig.getInitParameterNames();
+				while (enu.hasMoreElements()) {
+					String name = enu.nextElement();
 
-			while (enu.hasMoreElements()) {
-				String name = enu.nextElement();
-
-				if (!name.equals("portlet-class")) {
-					params.put(name, servletConfig.getInitParameter(name));
+					if (!name.equals("portlet-class")) {
+						params.put(name, servletConfig.getInitParameter(name));
+					}
 				}
+
+				servletConfig = new DynamicServletConfig(servletConfig, params);
+
+				quercusServlet.init(servletConfig);
 			}
-
-			servletConfig = new DynamicServletConfig(servletConfig, params);
-
-			quercusServlet.init(servletConfig);
-		}
-		catch (Exception e) {
-			throw new PortletException(e);
+			catch (Exception e) {
+				throw new PortletException(e);
+			}
 		}
 	}
 
