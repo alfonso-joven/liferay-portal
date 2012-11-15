@@ -54,7 +54,6 @@ public class ViewBlogsTagSuggestionsNoTest extends BaseTestCase {
 			case 2:
 				selenium.waitForVisible("//input[@title='Add Tags']");
 				assertTrue(selenium.isVisible("//input[@title='Add Tags']"));
-				assertFalse(selenium.isTextPresent("Suggestions"));
 				assertTrue(selenium.isElementNotPresent(
 						"//button[@id='suggest']"));
 
