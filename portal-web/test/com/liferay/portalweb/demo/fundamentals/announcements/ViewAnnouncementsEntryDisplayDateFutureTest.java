@@ -26,14 +26,7 @@ public class ViewAnnouncementsEntryDisplayDateFutureTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.clickAt("link=Announcements Test Page",
-			RuntimeVariables.replace("Announcements Test Page"));
-		selenium.waitForPageToLoad("30000");
-		assertFalse(selenium.isTextPresent("Announcements Entry Future Title"));
-		assertFalse(selenium.isTextPresent("Announcements Entry Future Content"));
 		Thread.sleep(60000);
-		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Announcements Test Page");
 		selenium.clickAt("link=Announcements Test Page",
 			RuntimeVariables.replace("Announcements Test Page"));
 		selenium.waitForPageToLoad("30000");

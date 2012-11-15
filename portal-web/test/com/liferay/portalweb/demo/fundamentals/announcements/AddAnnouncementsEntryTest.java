@@ -62,6 +62,7 @@ public class AddAnnouncementsEntryTest extends BaseTestCase {
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Announcements Entry Title"),
-			selenium.getText("//td[1]/a"));
+			selenium.getText(
+				"//tr[@class='portlet-section-body results-row last']/td[1]/a"));
 	}
 }

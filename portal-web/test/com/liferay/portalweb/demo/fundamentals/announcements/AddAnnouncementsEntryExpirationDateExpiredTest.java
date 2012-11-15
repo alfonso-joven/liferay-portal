@@ -61,15 +61,22 @@ public class AddAnnouncementsEntryExpirationDateExpiredTest extends BaseTestCase
 		selenium.selectFrame("//td[@id='cke_contents__84_editor']/iframe");
 		selenium.waitForText("//body", "Announcements Entry Expired Content");
 		selenium.selectFrame("relative=top");
-		selenium.keyPress("//select[@name='_84_expirationDateMinute']",
-			RuntimeVariables.replace("40"));
-		selenium.keyPress("//select[@name='_84_expirationDateMonth']",
-			RuntimeVariables.replace("38"));
+		selenium.select("//select[@name='_84_expirationDateMinute']",
+			RuntimeVariables.replace(":07"));
+		assertEquals(":07",
+			selenium.getSelectedLabel(
+				"//select[@name='_84_expirationDateMinute']"));
+		selenium.select("//select[@name='_84_expirationDateMonth']",
+			RuntimeVariables.replace("November"));
+		assertEquals("November",
+			selenium.getSelectedLabel(
+				"//select[@name='_84_expirationDateMonth']"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Announcements Entry Expired Title"),
-			selenium.getText("//tr[5]/td[1]/a"));
+			selenium.getText(
+				"//tr[@class='portlet-section-body results-row last']/td[1]/a"));
 	}
 }

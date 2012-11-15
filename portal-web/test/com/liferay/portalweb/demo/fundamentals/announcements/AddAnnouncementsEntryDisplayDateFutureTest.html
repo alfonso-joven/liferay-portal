@@ -104,9 +104,14 @@
 	<td>top</td>
 </tr>
 <tr>
-	<td>keyPress</td>
+	<td>select</td>
 	<td>//select[@name='_84_displayDateMinute']</td>
-	<td>\40</td>
+	<td>:03</td>
+</tr>
+<tr>
+	<td>assertSelectedLabel</td>
+	<td>//select[@name='_84_displayDateMinute']</td>
+	<td>:03</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -115,7 +120,7 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//tr[4]/td[1]/a</td>
+	<td>//tr[@class='portlet-section-alternate results-row alt last']/td[1]/a</td>
 	<td>Announcements Entry Future Title</td>
 </tr>
 </tbody></table>
