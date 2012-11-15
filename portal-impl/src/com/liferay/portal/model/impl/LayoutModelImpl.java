@@ -1339,13 +1339,12 @@ public class LayoutModelImpl extends BaseModelImpl<Layout>
 
 	@Override
 	public Layout toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (Layout)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (Layout)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -1866,9 +1865,7 @@ public class LayoutModelImpl extends BaseModelImpl<Layout>
 	}
 
 	private static ClassLoader _classLoader = Layout.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
-			Layout.class
-		};
+	private static Class<?>[] _escapedModelInterfaces = new Class[] { Layout.class };
 	private String _uuid;
 	private String _originalUuid;
 	private long _plid;
@@ -1921,5 +1918,5 @@ public class LayoutModelImpl extends BaseModelImpl<Layout>
 	private String _sourcePrototypeLayoutUuid;
 	private String _originalSourcePrototypeLayoutUuid;
 	private long _columnBitmask;
-	private Layout _escapedModelProxy;
+	private Layout _escapedModel;
 }

@@ -381,13 +381,12 @@ public class MBBanModelImpl extends BaseModelImpl<MBBan> implements MBBanModel {
 
 	@Override
 	public MBBan toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (MBBan)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (MBBan)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -585,9 +584,7 @@ public class MBBanModelImpl extends BaseModelImpl<MBBan> implements MBBanModel {
 	}
 
 	private static ClassLoader _classLoader = MBBan.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
-			MBBan.class
-		};
+	private static Class<?>[] _escapedModelInterfaces = new Class[] { MBBan.class };
 	private long _banId;
 	private long _groupId;
 	private long _originalGroupId;
@@ -605,5 +602,5 @@ public class MBBanModelImpl extends BaseModelImpl<MBBan> implements MBBanModel {
 	private long _originalBanUserId;
 	private boolean _setOriginalBanUserId;
 	private long _columnBitmask;
-	private MBBan _escapedModelProxy;
+	private MBBan _escapedModel;
 }

@@ -295,13 +295,12 @@ public class DLFileRankModelImpl extends BaseModelImpl<DLFileRank>
 
 	@Override
 	public DLFileRank toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (DLFileRank)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (DLFileRank)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -472,7 +471,7 @@ public class DLFileRankModelImpl extends BaseModelImpl<DLFileRank>
 	}
 
 	private static ClassLoader _classLoader = DLFileRank.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			DLFileRank.class
 		};
 	private long _fileRankId;
@@ -491,5 +490,5 @@ public class DLFileRankModelImpl extends BaseModelImpl<DLFileRank>
 	private long _originalFileEntryId;
 	private boolean _setOriginalFileEntryId;
 	private long _columnBitmask;
-	private DLFileRank _escapedModelProxy;
+	private DLFileRank _escapedModel;
 }

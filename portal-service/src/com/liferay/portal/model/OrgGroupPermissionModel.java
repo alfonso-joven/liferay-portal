@@ -125,6 +125,8 @@ public interface OrgGroupPermissionModel extends BaseModel<OrgGroupPermission> {
 
 	public OrgGroupPermission toEscapedModel();
 
+	public OrgGroupPermission toUnescapedModel();
+
 	public String toString();
 
 	public String toXmlString();

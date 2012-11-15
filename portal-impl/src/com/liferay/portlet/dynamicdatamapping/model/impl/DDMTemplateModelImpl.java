@@ -734,13 +734,12 @@ public class DDMTemplateModelImpl extends BaseModelImpl<DDMTemplate>
 
 	@Override
 	public DDMTemplate toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (DDMTemplate)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (DDMTemplate)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -1047,7 +1046,7 @@ public class DDMTemplateModelImpl extends BaseModelImpl<DDMTemplate>
 	}
 
 	private static ClassLoader _classLoader = DDMTemplate.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			DDMTemplate.class
 		};
 	private String _uuid;
@@ -1077,5 +1076,5 @@ public class DDMTemplateModelImpl extends BaseModelImpl<DDMTemplate>
 	private String _originalLanguage;
 	private String _script;
 	private long _columnBitmask;
-	private DDMTemplate _escapedModelProxy;
+	private DDMTemplate _escapedModel;
 }

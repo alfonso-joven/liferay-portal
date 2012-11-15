@@ -1355,13 +1355,12 @@ public class ShoppingOrderModelImpl extends BaseModelImpl<ShoppingOrder>
 
 	@Override
 	public ShoppingOrder toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (ShoppingOrder)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (ShoppingOrder)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -2143,7 +2142,7 @@ public class ShoppingOrderModelImpl extends BaseModelImpl<ShoppingOrder>
 	}
 
 	private static ClassLoader _classLoader = ShoppingOrder.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			ShoppingOrder.class
 		};
 	private long _orderId;
@@ -2206,5 +2205,5 @@ public class ShoppingOrderModelImpl extends BaseModelImpl<ShoppingOrder>
 	private boolean _sendOrderEmail;
 	private boolean _sendShippingEmail;
 	private long _columnBitmask;
-	private ShoppingOrder _escapedModelProxy;
+	private ShoppingOrder _escapedModel;
 }

@@ -203,6 +203,10 @@ public class OrgGroupPermissionWrapper implements OrgGroupPermission,
 		return new OrgGroupPermissionWrapper(_orgGroupPermission.toEscapedModel());
 	}
 
+	public com.liferay.portal.model.OrgGroupPermission toUnescapedModel() {
+		return new OrgGroupPermissionWrapper(_orgGroupPermission.toUnescapedModel());
+	}
+
 	@Override
 	public java.lang.String toString() {
 		return _orgGroupPermission.toString();

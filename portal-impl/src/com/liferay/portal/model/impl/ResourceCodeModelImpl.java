@@ -237,13 +237,12 @@ public class ResourceCodeModelImpl extends BaseModelImpl<ResourceCode>
 
 	@Override
 	public ResourceCode toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (ResourceCode)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (ResourceCode)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -389,7 +388,7 @@ public class ResourceCodeModelImpl extends BaseModelImpl<ResourceCode>
 	}
 
 	private static ClassLoader _classLoader = ResourceCode.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			ResourceCode.class
 		};
 	private long _codeId;
@@ -402,5 +401,5 @@ public class ResourceCodeModelImpl extends BaseModelImpl<ResourceCode>
 	private int _originalScope;
 	private boolean _setOriginalScope;
 	private long _columnBitmask;
-	private ResourceCode _escapedModelProxy;
+	private ResourceCode _escapedModel;
 }

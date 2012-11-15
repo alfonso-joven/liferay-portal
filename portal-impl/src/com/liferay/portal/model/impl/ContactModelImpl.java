@@ -837,13 +837,12 @@ public class ContactModelImpl extends BaseModelImpl<Contact>
 
 	@Override
 	public Contact toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (Contact)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (Contact)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -1346,7 +1345,7 @@ public class ContactModelImpl extends BaseModelImpl<Contact>
 	}
 
 	private static ClassLoader _classLoader = Contact.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			Contact.class
 		};
 	private long _contactId;
@@ -1383,5 +1382,5 @@ public class ContactModelImpl extends BaseModelImpl<Contact>
 	private String _jobClass;
 	private String _hoursOfOperation;
 	private long _columnBitmask;
-	private Contact _escapedModelProxy;
+	private Contact _escapedModel;
 }

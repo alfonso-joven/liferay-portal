@@ -367,13 +367,12 @@ public class JournalArticleImageModelImpl extends BaseModelImpl<JournalArticleIm
 
 	@Override
 	public JournalArticleImage toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (JournalArticleImage)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (JournalArticleImage)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -583,7 +582,7 @@ public class JournalArticleImageModelImpl extends BaseModelImpl<JournalArticleIm
 	}
 
 	private static ClassLoader _classLoader = JournalArticleImage.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			JournalArticleImage.class
 		};
 	private long _articleImageId;
@@ -605,5 +604,5 @@ public class JournalArticleImageModelImpl extends BaseModelImpl<JournalArticleIm
 	private boolean _originalTempImage;
 	private boolean _setOriginalTempImage;
 	private long _columnBitmask;
-	private JournalArticleImage _escapedModelProxy;
+	private JournalArticleImage _escapedModel;
 }

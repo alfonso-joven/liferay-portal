@@ -346,6 +346,8 @@ public interface DLFolderModel extends BaseModel<DLFolder>, GroupedModel {
 
 	public DLFolder toEscapedModel();
 
+	public DLFolder toUnescapedModel();
+
 	public String toString();
 
 	public String toXmlString();

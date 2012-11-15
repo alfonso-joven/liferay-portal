@@ -299,13 +299,12 @@ public class PermissionModelImpl extends BaseModelImpl<Permission>
 
 	@Override
 	public Permission toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (Permission)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (Permission)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -447,7 +446,7 @@ public class PermissionModelImpl extends BaseModelImpl<Permission>
 	}
 
 	private static ClassLoader _classLoader = Permission.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			Permission.class
 		};
 	private long _permissionId;
@@ -458,5 +457,5 @@ public class PermissionModelImpl extends BaseModelImpl<Permission>
 	private long _originalResourceId;
 	private boolean _setOriginalResourceId;
 	private long _columnBitmask;
-	private Permission _escapedModelProxy;
+	private Permission _escapedModel;
 }

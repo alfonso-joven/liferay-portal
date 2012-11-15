@@ -354,13 +354,12 @@ public class AnnouncementsDeliveryModelImpl extends BaseModelImpl<AnnouncementsD
 
 	@Override
 	public AnnouncementsDelivery toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (AnnouncementsDelivery)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (AnnouncementsDelivery)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -530,7 +529,7 @@ public class AnnouncementsDeliveryModelImpl extends BaseModelImpl<AnnouncementsD
 	}
 
 	private static ClassLoader _classLoader = AnnouncementsDelivery.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			AnnouncementsDelivery.class
 		};
 	private long _deliveryId;
@@ -545,5 +544,5 @@ public class AnnouncementsDeliveryModelImpl extends BaseModelImpl<AnnouncementsD
 	private boolean _sms;
 	private boolean _website;
 	private long _columnBitmask;
-	private AnnouncementsDelivery _escapedModelProxy;
+	private AnnouncementsDelivery _escapedModel;
 }

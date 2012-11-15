@@ -498,6 +498,8 @@ public interface DDMTemplateModel extends BaseModel<DDMTemplate>, GroupedModel {
 
 	public DDMTemplate toEscapedModel();
 
+	public DDMTemplate toUnescapedModel();
+
 	public String toString();
 
 	public String toXmlString();

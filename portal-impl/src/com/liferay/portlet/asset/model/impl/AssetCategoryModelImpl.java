@@ -724,13 +724,12 @@ public class AssetCategoryModelImpl extends BaseModelImpl<AssetCategory>
 
 	@Override
 	public AssetCategory toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (AssetCategory)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (AssetCategory)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -1017,7 +1016,7 @@ public class AssetCategoryModelImpl extends BaseModelImpl<AssetCategory>
 	}
 
 	private static ClassLoader _classLoader = AssetCategory.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			AssetCategory.class
 		};
 	private String _uuid;
@@ -1047,5 +1046,5 @@ public class AssetCategoryModelImpl extends BaseModelImpl<AssetCategory>
 	private long _originalVocabularyId;
 	private boolean _setOriginalVocabularyId;
 	private long _columnBitmask;
-	private AssetCategory _escapedModelProxy;
+	private AssetCategory _escapedModel;
 }

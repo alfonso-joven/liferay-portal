@@ -493,6 +493,8 @@ public interface DLFileEntryModel extends BaseModel<DLFileEntry>, GroupedModel {
 
 	public DLFileEntry toEscapedModel();
 
+	public DLFileEntry toUnescapedModel();
+
 	public String toString();
 
 	public String toXmlString();

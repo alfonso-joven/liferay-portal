@@ -508,13 +508,12 @@ public class PhoneModelImpl extends BaseModelImpl<Phone> implements PhoneModel {
 
 	@Override
 	public Phone toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (Phone)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (Phone)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -766,9 +765,7 @@ public class PhoneModelImpl extends BaseModelImpl<Phone> implements PhoneModel {
 	}
 
 	private static ClassLoader _classLoader = Phone.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
-			Phone.class
-		};
+	private static Class<?>[] _escapedModelInterfaces = new Class[] { Phone.class };
 	private long _phoneId;
 	private long _companyId;
 	private long _originalCompanyId;
@@ -793,5 +790,5 @@ public class PhoneModelImpl extends BaseModelImpl<Phone> implements PhoneModel {
 	private boolean _originalPrimary;
 	private boolean _setOriginalPrimary;
 	private long _columnBitmask;
-	private Phone _escapedModelProxy;
+	private Phone _escapedModel;
 }

@@ -469,13 +469,12 @@ public class DDMContentModelImpl extends BaseModelImpl<DDMContent>
 
 	@Override
 	public DDMContent toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (DDMContent)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (DDMContent)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -722,7 +721,7 @@ public class DDMContentModelImpl extends BaseModelImpl<DDMContent>
 	}
 
 	private static ClassLoader _classLoader = DDMContent.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			DDMContent.class
 		};
 	private String _uuid;
@@ -744,5 +743,5 @@ public class DDMContentModelImpl extends BaseModelImpl<DDMContent>
 	private String _description;
 	private String _xml;
 	private long _columnBitmask;
-	private DDMContent _escapedModelProxy;
+	private DDMContent _escapedModel;
 }

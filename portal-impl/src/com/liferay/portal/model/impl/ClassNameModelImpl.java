@@ -246,13 +246,12 @@ public class ClassNameModelImpl extends BaseModelImpl<ClassName>
 
 	@Override
 	public ClassName toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (ClassName)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (ClassName)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -372,12 +371,12 @@ public class ClassNameModelImpl extends BaseModelImpl<ClassName>
 	}
 
 	private static ClassLoader _classLoader = ClassName.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			ClassName.class
 		};
 	private long _classNameId;
 	private String _value;
 	private String _originalValue;
 	private long _columnBitmask;
-	private ClassName _escapedModelProxy;
+	private ClassName _escapedModel;
 }

@@ -155,6 +155,8 @@ public interface RepositoryEntryModel extends BaseModel<RepositoryEntry> {
 
 	public RepositoryEntry toEscapedModel();
 
+	public RepositoryEntry toUnescapedModel();
+
 	public String toString();
 
 	public String toXmlString();

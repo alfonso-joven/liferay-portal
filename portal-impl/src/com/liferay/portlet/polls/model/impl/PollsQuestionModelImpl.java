@@ -619,13 +619,12 @@ public class PollsQuestionModelImpl extends BaseModelImpl<PollsQuestion>
 
 	@Override
 	public PollsQuestion toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (PollsQuestion)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (PollsQuestion)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -886,7 +885,7 @@ public class PollsQuestionModelImpl extends BaseModelImpl<PollsQuestion>
 	}
 
 	private static ClassLoader _classLoader = PollsQuestion.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			PollsQuestion.class
 		};
 	private String _uuid;
@@ -908,5 +907,5 @@ public class PollsQuestionModelImpl extends BaseModelImpl<PollsQuestion>
 	private Date _expirationDate;
 	private Date _lastVoteDate;
 	private long _columnBitmask;
-	private PollsQuestion _escapedModelProxy;
+	private PollsQuestion _escapedModel;
 }

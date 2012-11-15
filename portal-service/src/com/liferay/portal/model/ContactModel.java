@@ -547,6 +547,8 @@ public interface ContactModel extends AuditedModel, BaseModel<Contact> {
 
 	public Contact toEscapedModel();
 
+	public Contact toUnescapedModel();
+
 	public String toString();
 
 	public String toXmlString();

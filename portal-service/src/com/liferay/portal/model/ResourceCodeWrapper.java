@@ -226,6 +226,10 @@ public class ResourceCodeWrapper implements ResourceCode,
 		return new ResourceCodeWrapper(_resourceCode.toEscapedModel());
 	}
 
+	public com.liferay.portal.model.ResourceCode toUnescapedModel() {
+		return new ResourceCodeWrapper(_resourceCode.toUnescapedModel());
+	}
+
 	@Override
 	public java.lang.String toString() {
 		return _resourceCode.toString();

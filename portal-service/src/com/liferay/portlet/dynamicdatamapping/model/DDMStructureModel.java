@@ -505,6 +505,8 @@ public interface DDMStructureModel extends BaseModel<DDMStructure>, GroupedModel
 
 	public DDMStructure toEscapedModel();
 
+	public DDMStructure toUnescapedModel();
+
 	public String toString();
 
 	public String toXmlString();

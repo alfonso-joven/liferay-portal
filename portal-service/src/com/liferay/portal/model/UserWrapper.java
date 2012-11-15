@@ -1180,6 +1180,10 @@ public class UserWrapper implements User, ModelWrapper<User> {
 		return new UserWrapper(_user.toEscapedModel());
 	}
 
+	public com.liferay.portal.model.User toUnescapedModel() {
+		return new UserWrapper(_user.toUnescapedModel());
+	}
+
 	@Override
 	public java.lang.String toString() {
 		return _user.toString();

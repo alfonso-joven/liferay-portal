@@ -347,13 +347,12 @@ public class SCLicenseModelImpl extends BaseModelImpl<SCLicense>
 
 	@Override
 	public SCLicense toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (SCLicense)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (SCLicense)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -519,7 +518,7 @@ public class SCLicenseModelImpl extends BaseModelImpl<SCLicense>
 	}
 
 	private static ClassLoader _classLoader = SCLicense.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			SCLicense.class
 		};
 	private long _licenseId;
@@ -533,5 +532,5 @@ public class SCLicenseModelImpl extends BaseModelImpl<SCLicense>
 	private boolean _originalRecommended;
 	private boolean _setOriginalRecommended;
 	private long _columnBitmask;
-	private SCLicense _escapedModelProxy;
+	private SCLicense _escapedModel;
 }

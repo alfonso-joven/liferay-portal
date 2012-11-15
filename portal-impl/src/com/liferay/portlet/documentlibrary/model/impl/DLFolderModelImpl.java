@@ -602,13 +602,12 @@ public class DLFolderModelImpl extends BaseModelImpl<DLFolder>
 
 	@Override
 	public DLFolder toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (DLFolder)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (DLFolder)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -928,7 +927,7 @@ public class DLFolderModelImpl extends BaseModelImpl<DLFolder>
 	}
 
 	private static ClassLoader _classLoader = DLFolder.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			DLFolder.class
 		};
 	private String _uuid;
@@ -961,5 +960,5 @@ public class DLFolderModelImpl extends BaseModelImpl<DLFolder>
 	private long _defaultFileEntryTypeId;
 	private boolean _overrideFileEntryTypes;
 	private long _columnBitmask;
-	private DLFolder _escapedModelProxy;
+	private DLFolder _escapedModel;
 }

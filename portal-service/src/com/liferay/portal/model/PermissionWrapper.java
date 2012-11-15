@@ -225,6 +225,10 @@ public class PermissionWrapper implements Permission, ModelWrapper<Permission> {
 		return new PermissionWrapper(_permission.toEscapedModel());
 	}
 
+	public com.liferay.portal.model.Permission toUnescapedModel() {
+		return new PermissionWrapper(_permission.toUnescapedModel());
+	}
+
 	@Override
 	public java.lang.String toString() {
 		return _permission.toString();

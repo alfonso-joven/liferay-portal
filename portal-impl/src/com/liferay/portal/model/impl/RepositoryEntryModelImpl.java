@@ -267,13 +267,12 @@ public class RepositoryEntryModelImpl extends BaseModelImpl<RepositoryEntry>
 
 	@Override
 	public RepositoryEntry toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (RepositoryEntry)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (RepositoryEntry)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -436,7 +435,7 @@ public class RepositoryEntryModelImpl extends BaseModelImpl<RepositoryEntry>
 	}
 
 	private static ClassLoader _classLoader = RepositoryEntry.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			RepositoryEntry.class
 		};
 	private String _uuid;
@@ -451,5 +450,5 @@ public class RepositoryEntryModelImpl extends BaseModelImpl<RepositoryEntry>
 	private String _mappedId;
 	private String _originalMappedId;
 	private long _columnBitmask;
-	private RepositoryEntry _escapedModelProxy;
+	private RepositoryEntry _escapedModel;
 }

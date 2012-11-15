@@ -344,13 +344,12 @@ public class UserNotificationEventModelImpl extends BaseModelImpl<UserNotificati
 
 	@Override
 	public UserNotificationEvent toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (UserNotificationEvent)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (UserNotificationEvent)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -561,7 +560,7 @@ public class UserNotificationEventModelImpl extends BaseModelImpl<UserNotificati
 	}
 
 	private static ClassLoader _classLoader = UserNotificationEvent.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			UserNotificationEvent.class
 		};
 	private String _uuid;
@@ -580,5 +579,5 @@ public class UserNotificationEventModelImpl extends BaseModelImpl<UserNotificati
 	private boolean _originalArchived;
 	private boolean _setOriginalArchived;
 	private long _columnBitmask;
-	private UserNotificationEvent _escapedModelProxy;
+	private UserNotificationEvent _escapedModel;
 }

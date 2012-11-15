@@ -126,6 +126,8 @@ public interface ResourceModel extends BaseModel<Resource> {
 
 	public Resource toEscapedModel();
 
+	public Resource toUnescapedModel();
+
 	public String toString();
 
 	public String toXmlString();

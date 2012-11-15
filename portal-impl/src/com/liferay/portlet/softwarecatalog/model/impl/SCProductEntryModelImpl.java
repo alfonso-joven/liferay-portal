@@ -604,13 +604,12 @@ public class SCProductEntryModelImpl extends BaseModelImpl<SCProductEntry>
 
 	@Override
 	public SCProductEntry toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (SCProductEntry)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (SCProductEntry)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -947,7 +946,7 @@ public class SCProductEntryModelImpl extends BaseModelImpl<SCProductEntry>
 	}
 
 	private static ClassLoader _classLoader = SCProductEntry.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			SCProductEntry.class
 		};
 	private long _productEntryId;
@@ -976,5 +975,5 @@ public class SCProductEntryModelImpl extends BaseModelImpl<SCProductEntry>
 	private String _repoArtifactId;
 	private String _originalRepoArtifactId;
 	private long _columnBitmask;
-	private SCProductEntry _escapedModelProxy;
+	private SCProductEntry _escapedModel;
 }

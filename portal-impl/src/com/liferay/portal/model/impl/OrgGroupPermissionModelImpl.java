@@ -190,13 +190,12 @@ public class OrgGroupPermissionModelImpl extends BaseModelImpl<OrgGroupPermissio
 
 	@Override
 	public OrgGroupPermission toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (OrgGroupPermission)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (OrgGroupPermission)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -317,7 +316,7 @@ public class OrgGroupPermissionModelImpl extends BaseModelImpl<OrgGroupPermissio
 	}
 
 	private static ClassLoader _classLoader = OrgGroupPermission.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			OrgGroupPermission.class
 		};
 	private long _organizationId;
@@ -328,5 +327,5 @@ public class OrgGroupPermissionModelImpl extends BaseModelImpl<OrgGroupPermissio
 	private long _originalPermissionId;
 	private boolean _setOriginalPermissionId;
 	private long _columnBitmask;
-	private OrgGroupPermission _escapedModelProxy;
+	private OrgGroupPermission _escapedModel;
 }

@@ -242,13 +242,12 @@ public class ExpandoTableModelImpl extends BaseModelImpl<ExpandoTable>
 
 	@Override
 	public ExpandoTable toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (ExpandoTable)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (ExpandoTable)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -394,7 +393,7 @@ public class ExpandoTableModelImpl extends BaseModelImpl<ExpandoTable>
 	}
 
 	private static ClassLoader _classLoader = ExpandoTable.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			ExpandoTable.class
 		};
 	private long _tableId;
@@ -407,5 +406,5 @@ public class ExpandoTableModelImpl extends BaseModelImpl<ExpandoTable>
 	private String _name;
 	private String _originalName;
 	private long _columnBitmask;
-	private ExpandoTable _escapedModelProxy;
+	private ExpandoTable _escapedModel;
 }

@@ -140,6 +140,8 @@ public interface ResourceCodeModel extends BaseModel<ResourceCode> {
 
 	public ResourceCode toEscapedModel();
 
+	public ResourceCode toUnescapedModel();
+
 	public String toString();
 
 	public String toXmlString();

@@ -672,13 +672,12 @@ public class JournalStructureModelImpl extends BaseModelImpl<JournalStructure>
 
 	@Override
 	public JournalStructure toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (JournalStructure)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (JournalStructure)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -953,7 +952,7 @@ public class JournalStructureModelImpl extends BaseModelImpl<JournalStructure>
 	}
 
 	private static ClassLoader _classLoader = JournalStructure.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			JournalStructure.class
 		};
 	private String _uuid;
@@ -978,5 +977,5 @@ public class JournalStructureModelImpl extends BaseModelImpl<JournalStructure>
 	private String _descriptionCurrentLanguageId;
 	private String _xsd;
 	private long _columnBitmask;
-	private JournalStructure _escapedModelProxy;
+	private JournalStructure _escapedModel;
 }

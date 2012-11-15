@@ -364,13 +364,12 @@ public class ShoppingCartModelImpl extends BaseModelImpl<ShoppingCart>
 
 	@Override
 	public ShoppingCart toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (ShoppingCart)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (ShoppingCart)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -603,7 +602,7 @@ public class ShoppingCartModelImpl extends BaseModelImpl<ShoppingCart>
 	}
 
 	private static ClassLoader _classLoader = ShoppingCart.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			ShoppingCart.class
 		};
 	private long _cartId;
@@ -623,5 +622,5 @@ public class ShoppingCartModelImpl extends BaseModelImpl<ShoppingCart>
 	private int _altShipping;
 	private boolean _insure;
 	private long _columnBitmask;
-	private ShoppingCart _escapedModelProxy;
+	private ShoppingCart _escapedModel;
 }

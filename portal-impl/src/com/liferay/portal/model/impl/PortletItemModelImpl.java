@@ -384,13 +384,12 @@ public class PortletItemModelImpl extends BaseModelImpl<PortletItem>
 
 	@Override
 	public PortletItem toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (PortletItem)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (PortletItem)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -618,7 +617,7 @@ public class PortletItemModelImpl extends BaseModelImpl<PortletItem>
 	}
 
 	private static ClassLoader _classLoader = PortletItem.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			PortletItem.class
 		};
 	private long _portletItemId;
@@ -639,5 +638,5 @@ public class PortletItemModelImpl extends BaseModelImpl<PortletItem>
 	private long _originalClassNameId;
 	private boolean _setOriginalClassNameId;
 	private long _columnBitmask;
-	private PortletItem _escapedModelProxy;
+	private PortletItem _escapedModel;
 }

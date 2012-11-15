@@ -711,13 +711,12 @@ public class JournalFeedModelImpl extends BaseModelImpl<JournalFeed>
 
 	@Override
 	public JournalFeed toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (JournalFeed)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (JournalFeed)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -1129,7 +1128,7 @@ public class JournalFeedModelImpl extends BaseModelImpl<JournalFeed>
 	}
 
 	private static ClassLoader _classLoader = JournalFeed.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			JournalFeed.class
 		};
 	private String _uuid;
@@ -1161,5 +1160,5 @@ public class JournalFeedModelImpl extends BaseModelImpl<JournalFeed>
 	private String _feedType;
 	private double _feedVersion;
 	private long _columnBitmask;
-	private JournalFeed _escapedModelProxy;
+	private JournalFeed _escapedModel;
 }

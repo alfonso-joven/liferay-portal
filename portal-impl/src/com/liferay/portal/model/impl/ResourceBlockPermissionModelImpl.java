@@ -222,13 +222,12 @@ public class ResourceBlockPermissionModelImpl extends BaseModelImpl<ResourceBloc
 
 	@Override
 	public ResourceBlockPermission toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (ResourceBlockPermission)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (ResourceBlockPermission)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -366,7 +365,7 @@ public class ResourceBlockPermissionModelImpl extends BaseModelImpl<ResourceBloc
 	}
 
 	private static ClassLoader _classLoader = ResourceBlockPermission.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			ResourceBlockPermission.class
 		};
 	private long _resourceBlockPermissionId;
@@ -378,5 +377,5 @@ public class ResourceBlockPermissionModelImpl extends BaseModelImpl<ResourceBloc
 	private boolean _setOriginalRoleId;
 	private long _actionIds;
 	private long _columnBitmask;
-	private ResourceBlockPermission _escapedModelProxy;
+	private ResourceBlockPermission _escapedModel;
 }

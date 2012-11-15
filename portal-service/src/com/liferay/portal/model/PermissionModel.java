@@ -140,6 +140,8 @@ public interface PermissionModel extends BaseModel<Permission> {
 
 	public Permission toEscapedModel();
 
+	public Permission toUnescapedModel();
+
 	public String toString();
 
 	public String toXmlString();

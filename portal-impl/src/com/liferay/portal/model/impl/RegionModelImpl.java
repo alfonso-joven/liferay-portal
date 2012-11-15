@@ -319,13 +319,12 @@ public class RegionModelImpl extends BaseModelImpl<Region>
 
 	@Override
 	public Region toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (Region)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (Region)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -484,9 +483,7 @@ public class RegionModelImpl extends BaseModelImpl<Region>
 	}
 
 	private static ClassLoader _classLoader = Region.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
-			Region.class
-		};
+	private static Class<?>[] _escapedModelInterfaces = new Class[] { Region.class };
 	private long _regionId;
 	private long _countryId;
 	private long _originalCountryId;
@@ -498,5 +495,5 @@ public class RegionModelImpl extends BaseModelImpl<Region>
 	private boolean _originalActive;
 	private boolean _setOriginalActive;
 	private long _columnBitmask;
-	private Region _escapedModelProxy;
+	private Region _escapedModel;
 }

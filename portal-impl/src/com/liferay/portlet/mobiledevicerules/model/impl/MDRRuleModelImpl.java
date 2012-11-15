@@ -655,13 +655,12 @@ public class MDRRuleModelImpl extends BaseModelImpl<MDRRule>
 
 	@Override
 	public MDRRule toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (MDRRule)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (MDRRule)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -932,7 +931,7 @@ public class MDRRuleModelImpl extends BaseModelImpl<MDRRule>
 	}
 
 	private static ClassLoader _classLoader = MDRRule.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			MDRRule.class
 		};
 	private String _uuid;
@@ -957,5 +956,5 @@ public class MDRRuleModelImpl extends BaseModelImpl<MDRRule>
 	private String _type;
 	private String _typeSettings;
 	private long _columnBitmask;
-	private MDRRule _escapedModelProxy;
+	private MDRRule _escapedModel;
 }

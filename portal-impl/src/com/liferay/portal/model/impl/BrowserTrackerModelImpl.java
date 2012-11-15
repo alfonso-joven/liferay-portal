@@ -201,13 +201,12 @@ public class BrowserTrackerModelImpl extends BaseModelImpl<BrowserTracker>
 
 	@Override
 	public BrowserTracker toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (BrowserTracker)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (BrowserTracker)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -332,7 +331,7 @@ public class BrowserTrackerModelImpl extends BaseModelImpl<BrowserTracker>
 	}
 
 	private static ClassLoader _classLoader = BrowserTracker.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			BrowserTracker.class
 		};
 	private long _browserTrackerId;
@@ -342,5 +341,5 @@ public class BrowserTrackerModelImpl extends BaseModelImpl<BrowserTracker>
 	private boolean _setOriginalUserId;
 	private long _browserKey;
 	private long _columnBitmask;
-	private BrowserTracker _escapedModelProxy;
+	private BrowserTracker _escapedModel;
 }

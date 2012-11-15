@@ -200,6 +200,10 @@ public class ResourceWrapper implements Resource, ModelWrapper<Resource> {
 		return new ResourceWrapper(_resource.toEscapedModel());
 	}
 
+	public com.liferay.portal.model.Resource toUnescapedModel() {
+		return new ResourceWrapper(_resource.toUnescapedModel());
+	}
+
 	@Override
 	public java.lang.String toString() {
 		return _resource.toString();

@@ -302,13 +302,12 @@ public class PortletModelImpl extends BaseModelImpl<Portlet>
 
 	@Override
 	public Portlet toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (Portlet)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (Portlet)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -465,7 +464,7 @@ public class PortletModelImpl extends BaseModelImpl<Portlet>
 	}
 
 	private static ClassLoader _classLoader = Portlet.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			Portlet.class
 		};
 	private long _id;
@@ -477,5 +476,5 @@ public class PortletModelImpl extends BaseModelImpl<Portlet>
 	private String _roles;
 	private boolean _active;
 	private long _columnBitmask;
-	private Portlet _escapedModelProxy;
+	private Portlet _escapedModel;
 }

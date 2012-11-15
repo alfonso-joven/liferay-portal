@@ -226,13 +226,12 @@ public class PortalPreferencesModelImpl extends BaseModelImpl<PortalPreferences>
 
 	@Override
 	public PortalPreferences toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (PortalPreferences)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (PortalPreferences)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -376,7 +375,7 @@ public class PortalPreferencesModelImpl extends BaseModelImpl<PortalPreferences>
 	}
 
 	private static ClassLoader _classLoader = PortalPreferences.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			PortalPreferences.class
 		};
 	private long _portalPreferencesId;
@@ -388,5 +387,5 @@ public class PortalPreferencesModelImpl extends BaseModelImpl<PortalPreferences>
 	private boolean _setOriginalOwnerType;
 	private String _preferences;
 	private long _columnBitmask;
-	private PortalPreferences _escapedModelProxy;
+	private PortalPreferences _escapedModel;
 }

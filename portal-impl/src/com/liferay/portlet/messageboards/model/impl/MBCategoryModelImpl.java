@@ -533,13 +533,12 @@ public class MBCategoryModelImpl extends BaseModelImpl<MBCategory>
 
 	@Override
 	public MBCategory toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (MBCategory)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (MBCategory)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -846,7 +845,7 @@ public class MBCategoryModelImpl extends BaseModelImpl<MBCategory>
 	}
 
 	private static ClassLoader _classLoader = MBCategory.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			MBCategory.class
 		};
 	private String _uuid;
@@ -873,5 +872,5 @@ public class MBCategoryModelImpl extends BaseModelImpl<MBCategory>
 	private int _messageCount;
 	private Date _lastPostDate;
 	private long _columnBitmask;
-	private MBCategory _escapedModelProxy;
+	private MBCategory _escapedModel;
 }

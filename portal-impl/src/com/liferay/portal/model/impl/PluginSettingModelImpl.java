@@ -336,13 +336,12 @@ public class PluginSettingModelImpl extends BaseModelImpl<PluginSetting>
 
 	@Override
 	public PluginSetting toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (PluginSetting)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (PluginSetting)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -516,7 +515,7 @@ public class PluginSettingModelImpl extends BaseModelImpl<PluginSetting>
 	}
 
 	private static ClassLoader _classLoader = PluginSetting.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			PluginSetting.class
 		};
 	private long _pluginSettingId;
@@ -530,5 +529,5 @@ public class PluginSettingModelImpl extends BaseModelImpl<PluginSetting>
 	private String _roles;
 	private boolean _active;
 	private long _columnBitmask;
-	private PluginSetting _escapedModelProxy;
+	private PluginSetting _escapedModel;
 }

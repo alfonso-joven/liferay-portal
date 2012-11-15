@@ -433,13 +433,12 @@ public class LayoutBranchModelImpl extends BaseModelImpl<LayoutBranch>
 
 	@Override
 	public LayoutBranch toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (LayoutBranch)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (LayoutBranch)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -655,7 +654,7 @@ public class LayoutBranchModelImpl extends BaseModelImpl<LayoutBranch>
 	}
 
 	private static ClassLoader _classLoader = LayoutBranch.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			LayoutBranch.class
 		};
 	private long _LayoutBranchId;
@@ -677,5 +676,5 @@ public class LayoutBranchModelImpl extends BaseModelImpl<LayoutBranch>
 	private boolean _originalMaster;
 	private boolean _setOriginalMaster;
 	private long _columnBitmask;
-	private LayoutBranch _escapedModelProxy;
+	private LayoutBranch _escapedModel;
 }

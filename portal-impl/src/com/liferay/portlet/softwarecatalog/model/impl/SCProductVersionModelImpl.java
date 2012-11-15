@@ -474,13 +474,12 @@ public class SCProductVersionModelImpl extends BaseModelImpl<SCProductVersion>
 
 	@Override
 	public SCProductVersion toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (SCProductVersion)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (SCProductVersion)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -733,7 +732,7 @@ public class SCProductVersionModelImpl extends BaseModelImpl<SCProductVersion>
 	}
 
 	private static ClassLoader _classLoader = SCProductVersion.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			SCProductVersion.class
 		};
 	private long _productVersionId;
@@ -753,5 +752,5 @@ public class SCProductVersionModelImpl extends BaseModelImpl<SCProductVersion>
 	private String _originalDirectDownloadURL;
 	private boolean _repoStoreArtifact;
 	private long _columnBitmask;
-	private SCProductVersion _escapedModelProxy;
+	private SCProductVersion _escapedModel;
 }

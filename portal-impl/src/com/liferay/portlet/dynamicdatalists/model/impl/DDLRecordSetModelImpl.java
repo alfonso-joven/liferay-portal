@@ -666,13 +666,12 @@ public class DDLRecordSetModelImpl extends BaseModelImpl<DDLRecordSet>
 
 	@Override
 	public DDLRecordSet toEscapedModel() {
-		if (_escapedModelProxy == null) {
-			_escapedModelProxy = (DDLRecordSet)ProxyUtil.newProxyInstance(_classLoader,
-					_escapedModelProxyInterfaces,
-					new AutoEscapeBeanHandler(this));
+		if (_escapedModel == null) {
+			_escapedModel = (DDLRecordSet)ProxyUtil.newProxyInstance(_classLoader,
+					_escapedModelInterfaces, new AutoEscapeBeanHandler(this));
 		}
 
-		return _escapedModelProxy;
+		return _escapedModel;
 	}
 
 	@Override
@@ -944,7 +943,7 @@ public class DDLRecordSetModelImpl extends BaseModelImpl<DDLRecordSet>
 	}
 
 	private static ClassLoader _classLoader = DDLRecordSet.class.getClassLoader();
-	private static Class<?>[] _escapedModelProxyInterfaces = new Class[] {
+	private static Class<?>[] _escapedModelInterfaces = new Class[] {
 			DDLRecordSet.class
 		};
 	private String _uuid;
@@ -969,5 +968,5 @@ public class DDLRecordSetModelImpl extends BaseModelImpl<DDLRecordSet>
 	private int _minDisplayRows;
 	private int _scope;
 	private long _columnBitmask;
-	private DDLRecordSet _escapedModelProxy;
+	private DDLRecordSet _escapedModel;
 }
