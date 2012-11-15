@@ -49,29 +49,29 @@
 	<td>Documents and Media</td>
 </tr>
 <tr>
-	<td>assertVisible</td>
-	<td>link=Add</td>
+	<td>assertText</td>
+	<td>//span[@title='Add']/ul/li/strong/a</td>
 	<td>Add</td>
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>link=Add</td>
+	<td>//span[@title='Add']/ul/li/strong/a</td>
 	<td>Add</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Basic Document')]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Basic Document')]</td>
+	<td>Basic Document</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Basic Document')]</td>
 	<td>Basic Document</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Basic Document')]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Basic Document')]</td>
 	<td>Basic Document</td>
-</tr>
-<tr>
-	<td>assertVisible</td>
-	<td>//input[@id='_20_file']</td>
-	<td>File</td>
 </tr>
 <tr>
 	<td>uploadCommonFile</td>
@@ -96,57 +96,57 @@
 <tr>
 	<td>waitForVisible</td>
 	<td>//input[@id='_20__guestPermissions_ADD_DISCUSSION']</td>
-	<td>Add Discussion</td>
+	<td>Guest Add Discussion</td>
 </tr>
 <tr>
 	<td>storeChecked</td>
 	<td>//input[@id='_20__guestPermissions_ADD_DISCUSSION']</td>
-	<td>addDiscussion</td>
+	<td>guestAddDiscussion</td>
 </tr>
 <tr>
 	<td>gotoIf</td>
-	<td>!${addDiscussion}</td>
-	<td>AddDiscussion</td>
+	<td>!${guestAddDiscussion}</td>
+	<td>GuestAddDiscussionNotChecked</td>
 </tr>
 <tr>
 	<td>clickAt</td>
 	<td>//input[@id='_20__guestPermissions_ADD_DISCUSSION']</td>
-	<td>Add Discussion</td>
+	<td>Guest Add Discussion</td>
 </tr>
 <tr>
 	<td>label</td>
-	<td>AddDiscussion</td>
+	<td>GuestAddDiscussionNotChecked</td>
 	<td></td>
 </tr>
 <tr>
 	<td>assertNotChecked</td>
 	<td>//input[@id='_20__guestPermissions_ADD_DISCUSSION']</td>
-	<td>Add Discussion</td>
+	<td>Guest Add Discussion</td>
 </tr>
 <tr>
 	<td>storeChecked</td>
 	<td>//input[@id='_20__groupPermissions_ADD_DISCUSSION']</td>
-	<td>addGroupDiscussion</td>
+	<td>groupAddDiscussion</td>
 </tr>
 <tr>
 	<td>gotoIf</td>
-	<td>!${addGroupDiscussion}</td>
-	<td>AddGroupDiscussion</td>
+	<td>!${groupAddDiscussion}</td>
+	<td>GroupAddDiscussionNotChecked</td>
 </tr>
 <tr>
 	<td>clickAt</td>
 	<td>//input[@id='_20__groupPermissions_ADD_DISCUSSION']</td>
-	<td>Add Group Discussion</td>
+	<td>Group Add Discussion</td>
 </tr>
 <tr>
 	<td>label</td>
-	<td>AddGroupDiscussion</td>
+	<td>GroupAddDiscussionNotChecked</td>
 	<td></td>
 </tr>
 <tr>
 	<td>assertNotChecked</td>
 	<td>//input[@id='_20__groupPermissions_ADD_DISCUSSION']</td>
-	<td>Add Group Discussion</td>
+	<td>Group Add Discussion</td>
 </tr>
 <tr>
 	<td>pause</td>
@@ -157,11 +157,6 @@
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Publish']</td>
 	<td>Publish</td>
-</tr>
-<tr>
-	<td>waitForVisible</td>
-	<td>//div[@class='portlet-msg-success']</td>
-	<td>Your request completed successfully.</td>
 </tr>
 <tr>
 	<td>assertText</td>

@@ -38,9 +38,21 @@ public class Member_AssertCannotUpdateDocumentTest extends BaseTestCase {
 		selenium.clickAt("link=Documents and Media",
 			RuntimeVariables.replace("Documents and Media"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isElementNotPresent("link=Edit"));
-		assertTrue(selenium.isElementNotPresent("link=Move"));
-		assertTrue(selenium.isElementNotPresent("link=Checkout"));
+		selenium.waitForVisible(
+			"xpath=(//span[@class='overlay document-action']/span/ul/li/strong/a)[2]");
+		selenium.clickAt("xpath=(//span[@class='overlay document-action']/span/ul/li/strong/a)[2]",
+			RuntimeVariables.replace("Document Actions"));
+		selenium.waitForVisible(
+			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Download (0.3k)')]/a");
+		assertEquals(RuntimeVariables.replace("Download (0.3k)"),
+			selenium.getText(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Download (0.3k)')]/a"));
+		assertTrue(selenium.isElementNotPresent(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Edit')]/a"));
+		assertTrue(selenium.isElementNotPresent(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Move')]/a"));
+		assertTrue(selenium.isElementNotPresent(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Checkout')]/a"));
 		assertEquals(RuntimeVariables.replace("Document_1.txt"),
 			selenium.getText(
 				"//a[contains(@class,'document-link')]/span[@class='entry-title']"));

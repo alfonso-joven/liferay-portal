@@ -38,9 +38,14 @@ public class Member_AssertCannotAddFolderDocumentTest extends BaseTestCase {
 		selenium.clickAt("link=Documents and Media",
 			RuntimeVariables.replace("Documents and Media"));
 		selenium.waitForPageToLoad("30000");
+		assertEquals(RuntimeVariables.replace("Folder Name"),
+			selenium.getText(
+				"//a[contains(@class,'document-link')]/span[@class='entry-title']"));
 		selenium.clickAt("//a[contains(@class,'document-link')]/span[@class='entry-title']",
 			RuntimeVariables.replace("Folder Name"));
+		selenium.waitForPageToLoad("30000");
 		selenium.waitForVisible("//div[@class='portlet-msg-info']");
-		assertTrue(selenium.isElementNotPresent("link=Add"));
+		assertTrue(selenium.isElementNotPresent(
+				"//span[@title='Add']/ul/li/strong/a"));
 	}
 }

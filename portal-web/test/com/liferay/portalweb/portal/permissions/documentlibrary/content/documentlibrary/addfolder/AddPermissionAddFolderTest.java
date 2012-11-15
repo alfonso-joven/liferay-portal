@@ -75,22 +75,6 @@ public class AddPermissionAddFolderTest extends BaseTestCase {
 			case 2:
 				assertTrue(selenium.isChecked(
 						"//input[@value='com.liferay.portlet.documentlibraryADD_FOLDER']"));
-
-				boolean viewDocument = selenium.isChecked(
-						"//input[@value='com.liferay.portlet.documentlibraryVIEW']");
-
-				if (viewDocument) {
-					label = 3;
-
-					continue;
-				}
-
-				selenium.clickAt("//input[@value='com.liferay.portlet.documentlibraryVIEW']",
-					RuntimeVariables.replace("View Document"));
-
-			case 3:
-				assertTrue(selenium.isChecked(
-						"//input[@value='com.liferay.portlet.documentlibraryVIEW']"));
 				selenium.clickAt("//input[@value='Save']",
 					RuntimeVariables.replace("Save"));
 				selenium.waitForPageToLoad("30000");

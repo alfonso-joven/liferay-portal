@@ -44,7 +44,12 @@
 	<td>Documents and Media</td>
 </tr>
 <tr>
-	<td>clickAt</td>
+	<td>assertText</td>
+	<td>//a[contains(@class,'document-link')]/span[@class='entry-title']</td>
+	<td>Folder Name</td>
+</tr>
+<tr>
+	<td>clickAtAndWait</td>
 	<td>//a[contains(@class,'document-link')]/span[@class='entry-title']</td>
 	<td>Folder Name</td>
 </tr>
@@ -59,28 +64,28 @@
 	<td>There are no documents or media files in this folder.</td>
 </tr>
 <tr>
-	<td>waitForVisible</td>
-	<td>link=Add</td>
-	<td>Add</td>
-</tr>
-<tr>
-	<td>assertVisible</td>
-	<td>link=Add</td>
+	<td>assertText</td>
+	<td>//span[@title='Add']/ul/li/strong/a</td>
 	<td>Add</td>
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>link=Add</td>
+	<td>//span[@title='Add']/ul/li/strong/a</td>
 	<td>Add</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Shortcut')]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Shortcut')]</td>
+	<td>Shortcut</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Shortcut')]</td>
 	<td>Shortcut</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Shortcut')]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Shortcut')]</td>
 	<td>Shortcut</td>
 </tr>
 <tr>
@@ -167,6 +172,11 @@
 	<td>assertText</td>
 	<td>//a[contains(@class,'document-link')]/span[@class='entry-title']</td>
 	<td>Document_1.txt</td>
+</tr>
+<tr>
+	<td>assertVisible</td>
+	<td>//span[@class='document-thumbnail']/img[@class='shortcut-icon']</td>
+	<td>Document_1.txt Shortcut Icon</td>
 </tr>
 </tbody></table>
 </body>

@@ -38,14 +38,23 @@ public class Member_AssertCannotAddDocumentTypeTest extends BaseTestCase {
 		selenium.clickAt("link=Documents and Media",
 			RuntimeVariables.replace("Documents and Media"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//span[@title='Manage']/ul/li/strong/a",
+		Thread.sleep(5000);
+		assertEquals(RuntimeVariables.replace("Manage"),
+			selenium.getText("//span[@title='Manage']/ul/li/strong/a/span"));
+		selenium.clickAt("//span[@title='Manage']/ul/li/strong/a/span",
 			RuntimeVariables.replace("Manage"));
 		selenium.waitForVisible(
 			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Document Types')]/a");
-		selenium.click(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Document Types')]/a");
-		selenium.waitForVisible("//iframe");
-		selenium.selectFrame("//iframe");
+		assertEquals(RuntimeVariables.replace("Document Types"),
+			selenium.getText(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Document Types')]/a"));
+		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Document Types')]/a",
+			RuntimeVariables.replace("Document Types"));
+		selenium.waitForVisible(
+			"//iframe[contains(@id,'openFileEntryTypeView')]");
+		selenium.selectFrame("//iframe[contains(@id,'openFileEntryTypeView')]");
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/liferay/search_container.js')]");
 		selenium.waitForVisible("//input[@value='Search']");
 		assertTrue(selenium.isElementNotPresent(
 				"//span[@class='lfr-toolbar-button add-button ']/a"));

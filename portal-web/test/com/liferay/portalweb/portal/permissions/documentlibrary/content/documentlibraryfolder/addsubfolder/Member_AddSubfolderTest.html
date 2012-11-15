@@ -44,7 +44,12 @@
 	<td>Documents and Media</td>
 </tr>
 <tr>
-	<td>clickAt</td>
+	<td>assertText</td>
+	<td>//a[contains(@class,'document-link')]/span[@class='entry-title']</td>
+	<td>Folder Name</td>
+</tr>
+<tr>
+	<td>clickAtAndWait</td>
 	<td>//a[contains(@class,'document-link')]/span[@class='entry-title']</td>
 	<td>Folder Name</td>
 </tr>
@@ -64,23 +69,28 @@
 	<td></td>
 </tr>
 <tr>
-	<td>assertVisible</td>
-	<td>link=Add</td>
+	<td>assertText</td>
+	<td>//span[@title='Add']/ul/li/strong/a</td>
 	<td>Add</td>
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>link=Add</td>
+	<td>//span[@title='Add']/ul/li/strong/a</td>
 	<td>Add</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Subfolder')]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Subfolder')]</td>
+	<td>Subfolder</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Subfolder')]</td>
 	<td>Subfolder</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Subfolder')]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Subfolder')]</td>
 	<td>Subfolder</td>
 </tr>
 <tr>
@@ -97,6 +107,11 @@
 	<td>assertText</td>
 	<td>//div[@class='portlet-msg-success']</td>
 	<td>Your request completed successfully.</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//a[contains(@class,'document-link')]/span[@class='entry-title']</td>
+	<td>Subfolder Name</td>
 </tr>
 </tbody></table>
 </body>

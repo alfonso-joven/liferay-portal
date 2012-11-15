@@ -21,6 +21,7 @@ import com.liferay.portalweb.portal.permissions.documentlibrary.content.document
 import com.liferay.portalweb.portal.permissions.documentlibrary.portlet.accessincontrolpanel.AddMemberRoleTest;
 import com.liferay.portalweb.portal.permissions.documentlibrary.portlet.accessincontrolpanel.AddMemberTest;
 import com.liferay.portalweb.portal.permissions.documentlibrary.portlet.accessincontrolpanel.AssignUserRolesTest;
+import com.liferay.portalweb.portal.permissions.documentlibrary.portlet.accessincontrolpanel.DefineMemberRoleTest;
 import com.liferay.portalweb.portal.permissions.documentlibrary.portlet.accessincontrolpanel.LoginUsersTest;
 import com.liferay.portalweb.portal.permissions.documentlibrary.portlet.accessincontrolpanel.Member_LoginTest;
 import com.liferay.portalweb.portal.permissions.documentlibrary.portlet.accessincontrolpanel.RemoveRolePowerUserTest;
@@ -55,6 +56,7 @@ public class AddShortcutTests extends BaseTestSuite {
 		testSuite.addTestSuite(SignOutTest.class);
 		testSuite.addTestSuite(SignInTest.class);
 		testSuite.addTestSuite(TearDownDLContentTest.class);
+		testSuite.addTestSuite(TearDownDLContentGlobalTest.class);
 		testSuite.addTestSuite(TearDownUserTest.class);
 		testSuite.addTestSuite(TearDownRolesTest.class);
 

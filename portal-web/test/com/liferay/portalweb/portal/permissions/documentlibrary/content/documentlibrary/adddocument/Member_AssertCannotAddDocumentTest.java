@@ -39,6 +39,5 @@ public class Member_AssertCannotAddDocumentTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isElementNotPresent(
 				"//span[@title='Add']/ul/li/strong/a"));
-		assertTrue(selenium.isElementNotPresent("link=Add"));
 	}
 }

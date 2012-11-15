@@ -39,43 +39,53 @@
 	<td>Configuration</td>
 </tr>
 <tr>
-	<td>click</td>
+	<td>assertText</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a</td>
+	<td>Configuration</td>
+</tr>
+<tr>
+	<td>clickAt</td>
 	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a</td>
 	<td>Configuration</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//iframe[@id='_20_configurationIframeDialog']</td>
+	<td>//iframe[contains(@id,'configurationIframeDialog')]</td>
 	<td>Documents and Media - Configuration</td>
 </tr>
 <tr>
 	<td>selectFrame</td>
-	<td>//iframe[@id='_20_configurationIframeDialog']</td>
+	<td>//iframe[contains(@id,'configurationIframeDialog')]</td>
 	<td>Documents and Media - Configuration</td>
 </tr>
 <tr>
+	<td>waitForElementPresent</td>
+	<td>//script[contains(@src,'/liferay/navigation_interaction.js')]</td>
+	<td>Navigation Interaction</td>
+</tr>
+<tr>
 	<td>waitForVisible</td>
-	<td>//ul[@class='aui-tabview-list']/li[1]/span/a</td>
+	<td>//ul[@class='aui-tabview-list']/li/span/a[contains(.,'Setup')]</td>
 	<td>Setup</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//ul[@class='aui-tabview-list']/li[1]/span/a</td>
+	<td>//ul[@class='aui-tabview-list']/li/span/a[contains(.,'Setup')]</td>
 	<td>Setup</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//ul[@class='aui-tabview-list']/li[2]/span/a</td>
+	<td>//ul[@class='aui-tabview-list']/li/span/a[contains(.,'Communication')]</td>
 	<td>Communication</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//ul[@class='aui-tabview-list']/li[3]/span/a</td>
+	<td>//ul[@class='aui-tabview-list']/li/span/a[contains(.,'Sharing')]</td>
 	<td>Sharing</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//ul[@class='aui-tabview-list']/li[4]/span/a</td>
+	<td>//ul[@class='aui-tabview-list']/li/span/a[contains(.,'Scope')]</td>
 	<td>Scope</td>
 </tr>
 <tr>

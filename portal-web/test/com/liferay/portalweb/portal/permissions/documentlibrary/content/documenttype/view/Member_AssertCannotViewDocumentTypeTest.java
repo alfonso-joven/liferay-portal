@@ -38,14 +38,27 @@ public class Member_AssertCannotViewDocumentTypeTest extends BaseTestCase {
 		selenium.clickAt("link=Documents and Media",
 			RuntimeVariables.replace("Documents and Media"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isElementNotPresent("link=Document Type Name"));
+		assertTrue(selenium.isElementNotPresent(
+				"//li[@class='folder file-entry-type ']/a/span[contains(.,'Document Type Name')]"));
+		assertEquals(RuntimeVariables.replace("Manage"),
+			selenium.getText("//span[@title='Manage']/ul/li/strong/a"));
 		selenium.clickAt("//span[@title='Manage']/ul/li/strong/a",
 			RuntimeVariables.replace("Manage"));
 		selenium.waitForVisible(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Document Types')]/a");
-		selenium.click(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Document Types')]/a");
-		Thread.sleep(5000);
+			"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Document Types')]");
+		assertEquals(RuntimeVariables.replace("Document Types"),
+			selenium.getText(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Document Types')]"));
+		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Document Types')]",
+			RuntimeVariables.replace("Document Types"));
+		selenium.waitForVisible(
+			"//iframe[contains(@id,'openFileEntryTypeView')]");
+		selenium.selectFrame("//iframe[contains(@id,'openFileEntryTypeView')]");
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/liferay/search_container.js')]");
+		selenium.waitForVisible("//div[@class='portlet-msg-info']");
+		assertEquals(RuntimeVariables.replace("There are no results."),
+			selenium.getText("//div[@class='portlet-msg-info']"));
 		assertFalse(selenium.isTextPresent("Document Type Name"));
 	}
 }

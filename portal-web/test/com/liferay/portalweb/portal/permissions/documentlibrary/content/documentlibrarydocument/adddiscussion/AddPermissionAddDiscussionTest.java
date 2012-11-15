@@ -60,27 +60,11 @@ public class AddPermissionAddDiscussionTest extends BaseTestCase {
 					RuntimeVariables.replace("Documents and Media"));
 				selenium.waitForPageToLoad("30000");
 
-				boolean viewDocument = selenium.isChecked(
-						"//input[@value='com.liferay.portlet.documentlibraryVIEW']");
-
-				if (viewDocument) {
-					label = 2;
-
-					continue;
-				}
-
-				selenium.clickAt("//input[@value='com.liferay.portlet.documentlibraryVIEW']",
-					RuntimeVariables.replace("View Document"));
-
-			case 2:
-				assertTrue(selenium.isChecked(
-						"//input[@value='com.liferay.portlet.documentlibraryVIEW']"));
-
 				boolean addDiscussionDocument = selenium.isChecked(
 						"//input[@value='com.liferay.portlet.documentlibrary.model.DLFileEntryADD_DISCUSSION']");
 
 				if (addDiscussionDocument) {
-					label = 3;
+					label = 2;
 
 					continue;
 				}
@@ -88,7 +72,7 @@ public class AddPermissionAddDiscussionTest extends BaseTestCase {
 				selenium.clickAt("//input[@value='com.liferay.portlet.documentlibrary.model.DLFileEntryADD_DISCUSSION']",
 					RuntimeVariables.replace("DLD Add Discussion"));
 
-			case 3:
+			case 2:
 				assertTrue(selenium.isChecked(
 						"//input[@value='com.liferay.portlet.documentlibrary.model.DLFileEntryADD_DISCUSSION']"));
 				selenium.clickAt("//input[@value='Save']",

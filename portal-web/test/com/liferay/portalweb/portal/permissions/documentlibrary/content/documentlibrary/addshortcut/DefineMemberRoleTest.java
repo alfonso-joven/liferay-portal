@@ -95,6 +95,28 @@ public class DefineMemberRoleTest extends BaseTestCase {
 				selenium.clickAt("//input[@value='Save']",
 					RuntimeVariables.replace("Save"));
 				selenium.waitForPageToLoad("30000");
+				selenium.select("//select[@id='_128_add-permissions']",
+					RuntimeVariables.replace("Documents and Media"));
+				selenium.waitForPageToLoad("30000");
+
+				boolean viewDocument = selenium.isChecked(
+						"//input[@value='com.liferay.portlet.documentlibraryVIEW']");
+
+				if (viewDocument) {
+					label = 4;
+
+					continue;
+				}
+
+				selenium.clickAt("//input[@value='com.liferay.portlet.documentlibraryVIEW']",
+					RuntimeVariables.replace("View Document"));
+
+			case 4:
+				assertTrue(selenium.isChecked(
+						"//input[@value='com.liferay.portlet.documentlibraryVIEW']"));
+				selenium.clickAt("//input[@value='Save']",
+					RuntimeVariables.replace("Save"));
+				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace(
 						"The role permissions were updated."),
 					selenium.getText("//div[@class='portlet-msg-success']"));

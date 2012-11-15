@@ -44,14 +44,18 @@ public class AddDocumentTest extends BaseTestCase {
 				selenium.clickAt("link=Documents and Media",
 					RuntimeVariables.replace("Documents and Media"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.isVisible("link=Add"));
-				selenium.clickAt("link=Add", RuntimeVariables.replace("Add"));
+				assertEquals(RuntimeVariables.replace("Add"),
+					selenium.getText("//span[@title='Add']/ul/li/strong/a"));
+				selenium.clickAt("//span[@title='Add']/ul/li/strong/a",
+					RuntimeVariables.replace("Add"));
 				selenium.waitForVisible(
-					"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Basic Document')]/a");
-				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Basic Document')]/a",
+					"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Basic Document')]");
+				assertEquals(RuntimeVariables.replace("Basic Document"),
+					selenium.getText(
+						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Basic Document')]"));
+				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Basic Document')]",
 					RuntimeVariables.replace("Basic Document"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.isVisible("//input[@id='_20_file']"));
 				selenium.uploadCommonFile("//input[@id='_20_file']",
 					RuntimeVariables.replace("Document_1.txt"));
 				selenium.type("//input[@id='_20_title']",
@@ -63,33 +67,33 @@ public class AddDocumentTest extends BaseTestCase {
 				selenium.waitForVisible(
 					"//input[@id='_20__guestPermissions_ADD_DISCUSSION']");
 
-				boolean addDiscussion = selenium.isChecked(
+				boolean guestAddDiscussion = selenium.isChecked(
 						"//input[@id='_20__guestPermissions_ADD_DISCUSSION']");
 
-				if (!addDiscussion) {
+				if (!guestAddDiscussion) {
 					label = 2;
 
 					continue;
 				}
 
 				selenium.clickAt("//input[@id='_20__guestPermissions_ADD_DISCUSSION']",
-					RuntimeVariables.replace("Add Discussion"));
+					RuntimeVariables.replace("Guest Add Discussion"));
 
 			case 2:
 				assertFalse(selenium.isChecked(
 						"//input[@id='_20__guestPermissions_ADD_DISCUSSION']"));
 
-				boolean addGroupDiscussion = selenium.isChecked(
+				boolean groupAddDiscussion = selenium.isChecked(
 						"//input[@id='_20__groupPermissions_ADD_DISCUSSION']");
 
-				if (!addGroupDiscussion) {
+				if (!groupAddDiscussion) {
 					label = 3;
 
 					continue;
 				}
 
 				selenium.clickAt("//input[@id='_20__groupPermissions_ADD_DISCUSSION']",
-					RuntimeVariables.replace("Add Group Discussion"));
+					RuntimeVariables.replace("Group Add Discussion"));
 
 			case 3:
 				assertFalse(selenium.isChecked(
@@ -98,7 +102,6 @@ public class AddDocumentTest extends BaseTestCase {
 				selenium.clickAt("//input[@value='Publish']",
 					RuntimeVariables.replace("Publish"));
 				selenium.waitForPageToLoad("30000");
-				selenium.waitForVisible("//div[@class='portlet-msg-success']");
 				assertEquals(RuntimeVariables.replace(
 						"Your request completed successfully."),
 					selenium.getText("//div[@class='portlet-msg-success']"));

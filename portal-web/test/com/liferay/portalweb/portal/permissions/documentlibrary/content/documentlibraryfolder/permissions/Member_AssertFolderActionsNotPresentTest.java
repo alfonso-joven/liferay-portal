@@ -39,9 +39,9 @@ public class Member_AssertFolderActionsNotPresentTest extends BaseTestCase {
 			RuntimeVariables.replace("Documents and Media"));
 		selenium.waitForPageToLoad("30000");
 		selenium.waitForVisible(
-			"//div[@id='_20_documentContainer']/div[2]/span/span/ul/li/strong/a");
-		selenium.click(
-			"//div[@id='_20_documentContainer']/div[2]/span/span/ul/li/strong/a");
+			"xpath=(//span[@class='overlay document-action']/span/ul/li/strong/a)[2]");
+		selenium.clickAt("xpath=(//span[@class='overlay document-action']/span/ul/li/strong/a)[2]",
+			RuntimeVariables.replace("Document Actions"));
 		selenium.waitForVisible(
 			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Access from Desktop')]/a");
 		assertEquals(RuntimeVariables.replace("Access from Desktop"),

@@ -37,9 +37,13 @@ public class Member_AssertViewShortcutTest extends BaseTestCase {
 		selenium.clickAt("link=Documents and Media",
 			RuntimeVariables.replace("Documents and Media"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isVisible(
+		assertEquals(RuntimeVariables.replace("Document_1.txt"),
+			selenium.getText(
 				"xPath=(//a[contains(@class,'document-link')]/span[@class='entry-title'])[1]"));
-		assertTrue(selenium.isVisible(
+		assertEquals(RuntimeVariables.replace("Document_1.txt"),
+			selenium.getText(
 				"xPath=(//a[contains(@class,'document-link')]/span[@class='entry-title'])[2]"));
+		assertTrue(selenium.isVisible(
+				"//span[@class='document-thumbnail']/img[@class='shortcut-icon']"));
 	}
 }

@@ -44,8 +44,53 @@
 	<td>Documents and Media</td>
 </tr>
 <tr>
-	<td>assertVisible</td>
-	<td>link=Document Type Name</td>
+	<td>assertText</td>
+	<td>//li[@class='folder file-entry-type ']/a/span[contains(.,'Document Type Name')]</td>
+	<td>Document Type Name</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@title='Manage']/ul/li/strong/a</td>
+	<td>Manage</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//span[@title='Manage']/ul/li/strong/a</td>
+	<td>Manage</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Document Types')]</td>
+	<td>Document Types</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Document Types')]</td>
+	<td>Document Types</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Document Types')]</td>
+	<td>Document Types</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//iframe[contains(@id,'openFileEntryTypeView')]</td>
+	<td>Document Types</td>
+</tr>
+<tr>
+	<td>selectFrame</td>
+	<td>//iframe[contains(@id,'openFileEntryTypeView')]</td>
+	<td>Document Types</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//script[contains(@src,'/liferay/search_container.js')]</td>
+	<td>Search Container</td>
+</tr>
+<tr>
+	<td>assertTextPresent</td>
+	<td>Document Type Name</td>
 	<td>Document Type Name</td>
 </tr>
 </tbody></table>

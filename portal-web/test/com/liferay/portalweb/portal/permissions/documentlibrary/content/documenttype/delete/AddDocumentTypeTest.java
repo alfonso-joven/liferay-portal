@@ -30,7 +30,12 @@ public class AddDocumentTypeTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				selenium.waitForElementPresent("link=Control Panel");
+				selenium.clickAt("//div[@id='dockbar']",
+					RuntimeVariables.replace("Dockbar"));
+				assertEquals(RuntimeVariables.replace("Go to"),
+					selenium.getText("//li[@id='_145_mySites']/a/span"));
+				selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+				selenium.waitForVisible("link=Control Panel");
 				selenium.clickAt("link=Control Panel",
 					RuntimeVariables.replace("Control Panel"));
 				selenium.waitForPageToLoad("30000");
@@ -43,13 +48,25 @@ public class AddDocumentTypeTest extends BaseTestCase {
 				selenium.clickAt("//span[@title='Manage']/ul/li/strong/a",
 					RuntimeVariables.replace("Manage"));
 				selenium.waitForVisible(
-					"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Document Types')]/a");
-				selenium.click(
-					"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Document Types')]/a");
-				selenium.waitForVisible("//iframe");
-				selenium.selectFrame("//iframe");
-				selenium.waitForVisible("link=Add");
-				selenium.clickAt("link=Add", RuntimeVariables.replace("Add"));
+					"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Document Types')]");
+				assertEquals(RuntimeVariables.replace("Document Types"),
+					selenium.getText(
+						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Document Types')]"));
+				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Document Types')]",
+					RuntimeVariables.replace("Document Types"));
+				selenium.waitForVisible(
+					"//iframe[contains(@id,'openFileEntryTypeView')]");
+				selenium.selectFrame(
+					"//iframe[contains(@id,'openFileEntryTypeView')]");
+				selenium.waitForElementPresent(
+					"//script[contains(@src,'/liferay/search_container.js')]");
+				selenium.waitForVisible(
+					"//span[@class='lfr-toolbar-button add-button ']/a");
+				assertEquals(RuntimeVariables.replace("Add"),
+					selenium.getText(
+						"//span[@class='lfr-toolbar-button add-button ']/a"));
+				selenium.clickAt("//span[@class='lfr-toolbar-button add-button ']/a",
+					RuntimeVariables.replace("Add"));
 				selenium.waitForVisible("//input[@id='_20_name']");
 				selenium.type("//input[@id='_20_name']",
 					RuntimeVariables.replace("Document Type Name"));
@@ -77,12 +94,17 @@ public class AddDocumentTypeTest extends BaseTestCase {
 				selenium.waitForVisible("//tr[3]/td[1]");
 				assertEquals(RuntimeVariables.replace("Document Type Name"),
 					selenium.getText("//tr[3]/td[1]"));
+				assertEquals(RuntimeVariables.replace("Actions"),
+					selenium.getText("//span[@title='Actions']/ul/li/strong/a"));
 				selenium.clickAt("//span[@title='Actions']/ul/li/strong/a",
 					RuntimeVariables.replace("Actions"));
 				selenium.waitForVisible(
-					"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Permissions')]/a");
-				selenium.click(
-					"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Permissions')]/a");
+					"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Permissions')]");
+				assertEquals(RuntimeVariables.replace("Permissions"),
+					selenium.getText(
+						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Permissions')]"));
+				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Permissions')]",
+					RuntimeVariables.replace("Permissions"));
 				selenium.waitForVisible("//input[@id='guest_ACTION_VIEW']");
 
 				boolean guestView = selenium.isChecked(

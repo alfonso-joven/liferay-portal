@@ -38,12 +38,15 @@ public class Member_AssertCannotAddFolderShortcutTest extends BaseTestCase {
 		selenium.clickAt("link=Documents and Media",
 			RuntimeVariables.replace("Documents and Media"));
 		selenium.waitForPageToLoad("30000");
+		assertEquals(RuntimeVariables.replace("Folder Name"),
+			selenium.getText(
+				"//a[contains(@class,'document-link')]/span[@class='entry-title']"));
 		selenium.clickAt("//a[contains(@class,'document-link')]/span[@class='entry-title']",
 			RuntimeVariables.replace("Folder Name"));
-		selenium.waitForVisible("//div[@class='portlet-msg-info']");
-		assertEquals(RuntimeVariables.replace(
-				"There are no documents or media files in this folder."),
-			selenium.getText("//div[@class='portlet-msg-info']"));
-		assertTrue(selenium.isElementNotPresent("link=Add"));
+		selenium.waitForPageToLoad("30000");
+		assertTrue(selenium.isElementNotPresent(
+				"//span[@title='Add']/ul/li/strong/a"));
+		assertTrue(selenium.isElementNotPresent(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Shortcut')]"));
 	}
 }

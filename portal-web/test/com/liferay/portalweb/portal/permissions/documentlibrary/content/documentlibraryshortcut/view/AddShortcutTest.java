@@ -44,12 +44,17 @@ public class AddShortcutTest extends BaseTestCase {
 				selenium.clickAt("link=Documents and Media",
 					RuntimeVariables.replace("Documents and Media"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.isVisible("link=Add"));
-				selenium.clickAt("link=Add", RuntimeVariables.replace("Add"));
+				assertEquals(RuntimeVariables.replace("Add"),
+					selenium.getText("//span[@title='Add']/ul/li/strong/a"));
+				selenium.clickAt("//span[@title='Add']/ul/li/strong/a",
+					RuntimeVariables.replace("Add"));
 				selenium.waitForVisible(
-					"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Shortcut')]/a");
+					"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Shortcut')]");
+				assertEquals(RuntimeVariables.replace("Shortcut"),
+					selenium.getText(
+						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Shortcut')]"));
 				selenium.click(RuntimeVariables.replace(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Shortcut')]/a"));
+						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Shortcut')]"));
 				selenium.waitForPageToLoad("30000");
 				selenium.clickAt("xPath=(//input[@value='Select'])[1]",
 					RuntimeVariables.replace("Select Site"));

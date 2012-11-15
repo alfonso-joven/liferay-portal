@@ -37,8 +37,10 @@ public class Member_AssertUpdateDocumentTest extends BaseTestCase {
 		selenium.clickAt("link=Documents and Media",
 			RuntimeVariables.replace("Documents and Media"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//span[2]/span/ul/li/strong/a",
-			RuntimeVariables.replace("Actions"));
+		selenium.waitForVisible(
+			"xpath=(//span[@class='overlay document-action']/span/ul/li/strong/a)[2]");
+		selenium.clickAt("xpath=(//span[@class='overlay document-action']/span/ul/li/strong/a)[2]",
+			RuntimeVariables.replace("Document Actions"));
 		selenium.waitForVisible(
 			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Edit')]/a");
 		assertEquals(RuntimeVariables.replace("Edit"),
@@ -58,7 +60,6 @@ public class Member_AssertUpdateDocumentTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Document_1.txt"),
 			selenium.getText("//h2[@class='document-title']"));
-		assertTrue(selenium.isTextPresent("Edit"));
 		assertEquals(RuntimeVariables.replace("Download"),
 			selenium.getText("//div[@id='_20_fileEntryToolbar']/span/button[1]"));
 		assertEquals(RuntimeVariables.replace("Edit"),
@@ -75,8 +76,6 @@ public class Member_AssertUpdateDocumentTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForText("//div[@class='portlet-msg-success']",
-			"Your request completed successfully.");
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));

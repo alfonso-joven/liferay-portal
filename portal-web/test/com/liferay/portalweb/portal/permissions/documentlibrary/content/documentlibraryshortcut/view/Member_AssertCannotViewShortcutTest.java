@@ -42,5 +42,7 @@ public class Member_AssertCannotViewShortcutTest extends BaseTestCase {
 				"xPath=(//a[contains(@class,'document-link')]/span[@class='entry-title'])[1]"));
 		assertTrue(selenium.isElementNotPresent(
 				"xPath=(//a[contains(@class,'document-link')]/span[@class='entry-title'])[2]"));
+		assertTrue(selenium.isElementNotPresent(
+				"//span[@class='document-thumbnail']/img[@class='shortcut-icon']"));
 	}
 }

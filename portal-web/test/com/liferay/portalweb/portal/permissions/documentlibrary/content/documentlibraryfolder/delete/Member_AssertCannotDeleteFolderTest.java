@@ -39,5 +39,22 @@ public class Member_AssertCannotDeleteFolderTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isElementNotPresent(
 				"//input[@id='_20_rowIds_com.liferay.portal.kernel.repository.model.FolderCheckbox']"));
+		selenium.waitForVisible(
+			"xpath=(//span[@class='overlay document-action']/span/ul/li/strong/a)[2]");
+		selenium.clickAt("xpath=(//span[@class='overlay document-action']/span/ul/li/strong/a)[2]",
+			RuntimeVariables.replace("Document Actions"));
+		selenium.waitForVisible(
+			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Access from Desktop')]/a");
+		assertEquals(RuntimeVariables.replace("Access from Desktop"),
+			selenium.getText(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Access from Desktop')]/a"));
+		assertTrue(selenium.isElementNotPresent(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Delete')]/a"));
+		selenium.clickAt("//input[@id='_20_allRowIdsCheckbox']",
+			RuntimeVariables.replace("Select All"));
+		assertFalse(selenium.isVisible(
+				"//span[@title='Actions']/ul/li/strong/a"));
+		assertTrue(selenium.isElementNotPresent(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]"));
 	}
 }

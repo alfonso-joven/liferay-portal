@@ -35,14 +35,23 @@ public class Member_AssertPermissionsTest extends BaseTestCase {
 			RuntimeVariables.replace("Options"));
 		selenium.waitForVisible(
 			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a");
-		selenium.click(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a");
-		selenium.waitForVisible("//iframe[@id='_20_configurationIframeDialog']");
-		selenium.selectFrame("//iframe[@id='_20_configurationIframeDialog']");
-		selenium.waitForVisible("//ul[@class='aui-tabview-list']/li[2]/span/a");
+		assertEquals(RuntimeVariables.replace("Configuration"),
+			selenium.getText(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a"));
+		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a",
+			RuntimeVariables.replace("Configuration"));
+		selenium.waitForVisible(
+			"//iframe[contains(@id,'configurationIframeDialog')]");
+		selenium.selectFrame(
+			"//iframe[contains(@id,'configurationIframeDialog')]");
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/liferay/navigation_interaction.js')]");
+		selenium.waitForVisible(
+			"//ul[@class='aui-tabview-list']/li/span/a[contains(.,'Permissions')]");
 		assertEquals(RuntimeVariables.replace("Permissions"),
-			selenium.getText("//ul[@class='aui-tabview-list']/li[2]/span/a"));
-		selenium.clickAt("//ul[@class='aui-tabview-list']/li[2]/span/a",
+			selenium.getText(
+				"//ul[@class='aui-tabview-list']/li/span/a[contains(.,'Permissions')]"));
+		selenium.clickAt("//ul[@class='aui-tabview-list']/li/span/a[contains(.,'Permissions')]",
 			RuntimeVariables.replace("Permissions"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Role"),

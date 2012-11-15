@@ -35,19 +35,31 @@ public class Member_AssertConfigurationTest extends BaseTestCase {
 			RuntimeVariables.replace("Options"));
 		selenium.waitForVisible(
 			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a");
-		selenium.click(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a");
-		selenium.waitForVisible("//iframe[@id='_20_configurationIframeDialog']");
-		selenium.selectFrame("//iframe[@id='_20_configurationIframeDialog']");
-		selenium.waitForVisible("//ul[@class='aui-tabview-list']/li[1]/span/a");
+		assertEquals(RuntimeVariables.replace("Configuration"),
+			selenium.getText(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a"));
+		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a",
+			RuntimeVariables.replace("Configuration"));
+		selenium.waitForVisible(
+			"//iframe[contains(@id,'configurationIframeDialog')]");
+		selenium.selectFrame(
+			"//iframe[contains(@id,'configurationIframeDialog')]");
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/liferay/navigation_interaction.js')]");
+		selenium.waitForVisible(
+			"//ul[@class='aui-tabview-list']/li/span/a[contains(.,'Setup')]");
 		assertEquals(RuntimeVariables.replace("Setup"),
-			selenium.getText("//ul[@class='aui-tabview-list']/li[1]/span/a"));
+			selenium.getText(
+				"//ul[@class='aui-tabview-list']/li/span/a[contains(.,'Setup')]"));
 		assertEquals(RuntimeVariables.replace("Communication"),
-			selenium.getText("//ul[@class='aui-tabview-list']/li[2]/span/a"));
+			selenium.getText(
+				"//ul[@class='aui-tabview-list']/li/span/a[contains(.,'Communication')]"));
 		assertEquals(RuntimeVariables.replace("Sharing"),
-			selenium.getText("//ul[@class='aui-tabview-list']/li[3]/span/a"));
+			selenium.getText(
+				"//ul[@class='aui-tabview-list']/li/span/a[contains(.,'Sharing')]"));
 		assertEquals(RuntimeVariables.replace("Scope"),
-			selenium.getText("//ul[@class='aui-tabview-list']/li[4]/span/a"));
+			selenium.getText(
+				"//ul[@class='aui-tabview-list']/li/span/a[contains(.,'Scope')]"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");

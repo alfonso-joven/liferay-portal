@@ -37,16 +37,24 @@ public class Member_DeleteDocumentTest extends BaseTestCase {
 		selenium.clickAt("link=Documents and Media",
 			RuntimeVariables.replace("Documents and Media"));
 		selenium.waitForPageToLoad("30000");
+		assertFalse(selenium.isChecked("//input[@id='_20_allRowIdsCheckbox']"));
+		selenium.clickAt("//input[@id='_20_allRowIdsCheckbox']",
+			RuntimeVariables.replace("All Rows"));
+		assertTrue(selenium.isChecked("//input[@id='_20_allRowIdsCheckbox']"));
+		assertEquals(RuntimeVariables.replace("Actions"),
+			selenium.getText("//span[@title='Actions']/ul/li/strong/a"));
+		selenium.clickAt("//span[@title='Actions']/ul/li/strong/a",
+			RuntimeVariables.replace("Actions"));
 		selenium.waitForVisible(
-			"//div[@id='_20_documentContainer']/div[2]/span/span/ul/li/strong/a");
-		selenium.click(
-			"//div[@id='_20_documentContainer']/div[2]/span/span/ul/li/strong/a");
-		selenium.waitForVisible(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Delete')]/a");
-		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Delete')]/a",
+			"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]");
+		assertEquals(RuntimeVariables.replace("Delete"),
+			selenium.getText(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]"));
+		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]",
 			RuntimeVariables.replace("Delete"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForConfirmation("Are you sure you want to delete this?");
+		assertTrue(selenium.getConfirmation()
+						   .matches("^Are you sure you want to delete the selected entries[\\s\\S]$"));
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));

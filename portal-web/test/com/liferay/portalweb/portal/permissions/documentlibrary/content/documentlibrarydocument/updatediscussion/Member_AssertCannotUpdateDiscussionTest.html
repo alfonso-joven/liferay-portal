@@ -44,13 +44,18 @@
 	<td>Documents and Media</td>
 </tr>
 <tr>
+	<td>assertText</td>
+	<td>//a[contains(@class,'document-link')]/span[@class='entry-title']</td>
+	<td>Document_1.txt</td>
+</tr>
+<tr>
 	<td>clickAtAndWait</td>
 	<td>//a[contains(@class,'document-link')]/span[@class='entry-title']</td>
 	<td>Document_1.txt</td>
 </tr>
 <tr>
 	<td>assertElementNotPresent</td>
-	<td>link=Edit</td>
+	<td>//li[@class='lfr-discussion-delete-reply']/span/a</td>
 	<td>Edit</td>
 </tr>
 </tbody></table>

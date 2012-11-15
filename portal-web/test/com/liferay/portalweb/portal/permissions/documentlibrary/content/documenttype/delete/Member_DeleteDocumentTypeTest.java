@@ -43,11 +43,17 @@ public class Member_DeleteDocumentTypeTest extends BaseTestCase {
 		selenium.clickAt("//span[@title='Manage']/ul/li/strong/a",
 			RuntimeVariables.replace("Manage"));
 		selenium.waitForVisible(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Document Types')]/a");
-		selenium.click(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Document Types')]/a");
-		selenium.waitForVisible("//iframe");
-		selenium.selectFrame("//iframe");
+			"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Document Types')]");
+		assertEquals(RuntimeVariables.replace("Document Types"),
+			selenium.getText(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Document Types')]"));
+		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Document Types')]",
+			RuntimeVariables.replace("Document Types"));
+		selenium.waitForVisible(
+			"//iframe[contains(@id,'openFileEntryTypeView')]");
+		selenium.selectFrame("//iframe[contains(@id,'openFileEntryTypeView')]");
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/liferay/search_container.js')]");
 		selenium.waitForVisible("//input[@id='_20_keywords']");
 		selenium.type("//input[@id='_20_keywords']",
 			RuntimeVariables.replace("Name"));
@@ -67,6 +73,8 @@ public class Member_DeleteDocumentTypeTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
+		assertEquals(RuntimeVariables.replace("There are no results."),
+			selenium.getText("//div[@class='portlet-msg-info']"));
 		selenium.selectFrame("relative=top");
 	}
 }

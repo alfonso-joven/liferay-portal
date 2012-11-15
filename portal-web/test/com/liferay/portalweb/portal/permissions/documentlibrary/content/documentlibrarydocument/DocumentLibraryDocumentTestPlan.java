@@ -16,12 +16,6 @@ package com.liferay.portalweb.portal.permissions.documentlibrary.content.documen
 
 import com.liferay.portalweb.portal.BaseTestSuite;
 import com.liferay.portalweb.portal.permissions.documentlibrary.content.documentlibrarydocument.adddiscussion.AddDocumentDiscussionTests;
-import com.liferay.portalweb.portal.permissions.documentlibrary.content.documentlibrarydocument.delete.DeleteDocumentTests;
-import com.liferay.portalweb.portal.permissions.documentlibrary.content.documentlibrarydocument.deletediscussion.DeleteDocumentDiscussionTests;
-import com.liferay.portalweb.portal.permissions.documentlibrary.content.documentlibrarydocument.permissions.DocumentPermissionsTests;
-import com.liferay.portalweb.portal.permissions.documentlibrary.content.documentlibrarydocument.update.UpdateDocumentTests;
-import com.liferay.portalweb.portal.permissions.documentlibrary.content.documentlibrarydocument.updatediscussion.UpdateDocumentDiscussionTests;
-import com.liferay.portalweb.portal.permissions.documentlibrary.content.documentlibrarydocument.view.ViewDocumentTests;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
