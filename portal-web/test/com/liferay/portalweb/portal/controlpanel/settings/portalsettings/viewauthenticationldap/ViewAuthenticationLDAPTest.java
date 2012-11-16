@@ -25,45 +25,51 @@ public class ViewAuthenticationLDAPTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Go to"),
+			selenium.getText("//li[@id='_145_mySites']/a/span"));
+		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Portal Settings",
 			RuntimeVariables.replace("Portal Settings"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForVisible("//a[@id='_130_authenticationLink']");
 		selenium.clickAt("//a[@id='_130_authenticationLink']",
 			RuntimeVariables.replace("Authentication"));
 		selenium.clickAt("link=LDAP", RuntimeVariables.replace("LDAP"));
-		selenium.waitForElementPresent(
+		selenium.waitForVisible(
 			"//input[@name='_130_settings--ldap.auth.enabled--Checkbox']");
-		assertTrue(selenium.isElementPresent(
+		assertFalse(selenium.isChecked(
 				"//input[@name='_130_settings--ldap.auth.enabled--Checkbox']"));
-		assertTrue(selenium.isElementPresent(
+		assertFalse(selenium.isChecked(
 				"//input[@name='_130_settings--ldap.auth.required--Checkbox']"));
-		assertTrue(selenium.isElementPresent(
+		assertFalse(selenium.isChecked(
 				"//input[@id='_130_ldapImportEnabledCheckbox']"));
-		assertTrue(selenium.isElementPresent(
+		assertFalse(selenium.isChecked(
 				"//input[@id='_130_ldapExportEnabledCheckbox']"));
-		assertTrue(selenium.isElementPresent(
+		assertFalse(selenium.isChecked(
 				"//input[@name='_130_settings--ldap.password.policy.enabled--Checkbox']"));
-		selenium.clickAt("//div/span/span/input",
+		selenium.clickAt("//input[@value='Add']",
 			RuntimeVariables.replace("Add"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals("ldap://localhost:10389",
+		assertEquals("",
 			selenium.getValue("//input[@id='_130_ldap.base.provider.url.0']"));
-		selenium.clickAt("//input[@name='_130_defaultLdap' and @value='microsoft']",
+		selenium.clickAt("//input[@value='microsoft']",
 			RuntimeVariables.replace("Microsoft Active Directory Server Button"));
-		selenium.clickAt("//div[2]/span/span/input",
+		selenium.clickAt("//input[@value='Reset Values']",
 			RuntimeVariables.replace("Reset Values"));
 		assertEquals("ldap://localhost:389",
 			selenium.getValue("//input[@id='_130_ldap.base.provider.url.0']"));
-		assertTrue(selenium.isElementPresent(
-				"//input[@value='Test LDAP Connection']"));
-		assertTrue(selenium.isElementPresent(
-				"//input[@value='Test LDAP Users']"));
-		assertTrue(selenium.isElementPresent(
-				"//input[@value='Test LDAP Groups']"));
+		assertEquals("Test LDAP Connection",
+			selenium.getValue("//input[@value='Test LDAP Connection']"));
+		assertEquals("Test LDAP Users",
+			selenium.getValue("//input[@value='Test LDAP Users']"));
+		assertEquals("Test LDAP Groups",
+			selenium.getValue("//input[@value='Test LDAP Groups']"));
 	}
 }

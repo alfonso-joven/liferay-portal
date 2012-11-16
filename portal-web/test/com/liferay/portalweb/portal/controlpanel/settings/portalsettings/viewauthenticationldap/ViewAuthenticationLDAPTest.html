@@ -14,7 +14,27 @@
 	<td></td>
 </tr>
 <tr>
+	<td>clickAt</td>
+	<td>//div[@id='dockbar']</td>
+	<td>Dockbar</td>
+</tr>
+<tr>
 	<td>waitForElementPresent</td>
+	<td>//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]</td>
+	<td>AUI Editable Min</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//li[@id='_145_mySites']/a/span</td>
+	<td>Go to</td>
+</tr>
+<tr>
+	<td>mouseOver</td>
+	<td>//li[@id='_145_mySites']/a/span</td>
+	<td>Go to</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
 	<td>link=Control Panel</td>
 	<td>Control Panel</td>
 </tr>
@@ -29,11 +49,6 @@
 	<td>Portal Settings</td>
 </tr>
 <tr>
-	<td>waitForVisible</td>
-	<td>//a[@id='_130_authenticationLink']</td>
-	<td>Authentication</td>
-</tr>
-<tr>
 	<td>clickAt</td>
 	<td>//a[@id='_130_authenticationLink']</td>
 	<td>Authentication</td>
@@ -44,53 +59,53 @@
 	<td>LDAP</td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
+	<td>waitForVisible</td>
 	<td>//input[@name='_130_settings--ldap.auth.enabled--Checkbox']</td>
 	<td>Enabled Checkbox</td>
 </tr>
 <tr>
-	<td>assertElementPresent</td>
+	<td>assertNotChecked</td>
 	<td>//input[@name='_130_settings--ldap.auth.enabled--Checkbox']</td>
 	<td>Enabled Checkbox</td>
 </tr>
 <tr>
-	<td>assertElementPresent</td>
+	<td>assertNotChecked</td>
 	<td>//input[@name='_130_settings--ldap.auth.required--Checkbox']</td>
 	<td>Required Checkbox</td>
 </tr>
 <tr>
-	<td>assertElementPresent</td>
+	<td>assertNotChecked</td>
 	<td>//input[@id='_130_ldapImportEnabledCheckbox']</td>
 	<td>Import Checkbox</td>
 </tr>
 <tr>
-	<td>assertElementPresent</td>
+	<td>assertNotChecked</td>
 	<td>//input[@id='_130_ldapExportEnabledCheckbox']</td>
 	<td>Export Checkbox</td>
 </tr>
 <tr>
-	<td>assertElementPresent</td>
+	<td>assertNotChecked</td>
 	<td>//input[@name='_130_settings--ldap.password.policy.enabled--Checkbox']</td>
 	<td>Use LDAP Password Policy Checkbox</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>//div/span/span/input</td>
+	<td>//input[@value='Add']</td>
 	<td>Add</td>
 </tr>
 <tr>
 	<td>assertValue</td>
 	<td>//input[@id='_130_ldap.base.provider.url.0']</td>
-	<td>ldap://localhost:10389</td>
+	<td></td>
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>//input[@name='_130_defaultLdap' and @value='microsoft']</td>
+	<td>//input[@value='microsoft']</td>
 	<td>Microsoft Active Directory Server Button</td>
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>//div[2]/span/span/input</td>
+	<td>//input[@value='Reset Values']</td>
 	<td>Reset Values</td>
 </tr>
 <tr>
@@ -99,21 +114,20 @@
 	<td>ldap://localhost:389</td>
 </tr>
 <tr>
-	<td>assertElementPresent</td>
+	<td>assertValue</td>
 	<td>//input[@value='Test LDAP Connection']</td>
 	<td>Test LDAP Connection</td>
 </tr>
 <tr>
-	<td>assertElementPresent</td>
+	<td>assertValue</td>
 	<td>//input[@value='Test LDAP Users']</td>
 	<td>Test LDAP Users</td>
 </tr>
 <tr>
-	<td>assertElementPresent</td>
+	<td>assertValue</td>
 	<td>//input[@value='Test LDAP Groups']</td>
 	<td>Test LDAP Groups</td>
 </tr>
-
 </tbody></table>
 </body>
 </html>
