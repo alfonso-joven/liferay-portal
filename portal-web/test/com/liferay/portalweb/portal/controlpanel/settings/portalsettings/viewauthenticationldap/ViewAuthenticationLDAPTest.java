@@ -39,6 +39,8 @@ public class ViewAuthenticationLDAPTest extends BaseTestCase {
 		selenium.clickAt("link=Portal Settings",
 			RuntimeVariables.replace("Portal Settings"));
 		selenium.waitForPageToLoad("30000");
+		assertTrue(selenium.isPartialText(
+				"//a[@id='_130_authenticationLink']", "Authentication"));
 		selenium.clickAt("//a[@id='_130_authenticationLink']",
 			RuntimeVariables.replace("Authentication"));
 		selenium.clickAt("link=LDAP", RuntimeVariables.replace("LDAP"));
@@ -57,19 +59,30 @@ public class ViewAuthenticationLDAPTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Add']",
 			RuntimeVariables.replace("Add"));
 		selenium.waitForPageToLoad("30000");
+		assertEquals(RuntimeVariables.replace("Server Name"),
+			selenium.getText("//label[@for='_130_ldap.server.name.0']"));
 		assertEquals("",
 			selenium.getValue("//input[@id='_130_ldap.base.provider.url.0']"));
+		assertEquals(RuntimeVariables.replace("Default Values"),
+			selenium.getText("//h3"));
 		selenium.clickAt("//input[@value='microsoft']",
 			RuntimeVariables.replace("Microsoft Active Directory Server Button"));
 		selenium.clickAt("//input[@value='Reset Values']",
 			RuntimeVariables.replace("Reset Values"));
+		assertEquals(RuntimeVariables.replace("Connection"),
+			selenium.getText("//h3[2]"));
 		assertEquals("ldap://localhost:389",
 			selenium.getValue("//input[@id='_130_ldap.base.provider.url.0']"));
-		assertEquals("Test LDAP Connection",
-			selenium.getValue("//input[@value='Test LDAP Connection']"));
-		assertEquals("Test LDAP Users",
-			selenium.getValue("//input[@value='Test LDAP Users']"));
-		assertEquals("Test LDAP Groups",
-			selenium.getValue("//input[@value='Test LDAP Groups']"));
+		assertEquals("dc=example,dc=com",
+			selenium.getValue("//input[@id='_130_ldap.base.dn.0']"));
+		assertEquals("admin",
+			selenium.getValue("//input[@id='_130_ldap.security.principal.0']"));
+		assertEquals("secret",
+			selenium.getValue("//input[@id='_130_ldap.security.credentials.0']"));
+		assertTrue(selenium.isVisible("//input[@value='Test LDAP Connection']"));
+		assertTrue(selenium.isVisible("//input[@value='Test LDAP Users']"));
+		assertTrue(selenium.isVisible("//input[@value='Test LDAP Groups']"));
+		assertTrue(selenium.isVisible("//input[@value='Save']"));
+		assertTrue(selenium.isVisible("//input[@value='Cancel']"));
 	}
 }
