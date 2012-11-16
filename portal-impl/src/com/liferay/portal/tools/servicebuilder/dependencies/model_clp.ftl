@@ -460,6 +460,10 @@ public class ${entity.name}Clp extends BaseModelImpl<${entity.name}> implements 
 		return (${entity.name})ProxyUtil.newProxyInstance(${entity.name}.class.getClassLoader(), new Class[] {${entity.name}.class}, new AutoEscapeBeanHandler(this));
 	}
 
+	public ${entity.name} toUnescapedModel() {
+		return this;
+	}
+
 	@Override
 	public Object clone() {
 		${entity.name}Clp clone = new ${entity.name}Clp();

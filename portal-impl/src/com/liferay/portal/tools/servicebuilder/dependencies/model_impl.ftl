@@ -764,6 +764,10 @@ public class ${entity.name}ModelImpl extends BaseModelImpl<${entity.name}> imple
 		return _escapedModel;
 	}
 
+	public ${entity.name} toUnescapedModel() {
+		return (${entity.name})this;
+	}
+
 	@Override
 	public Object clone() {
 		${entity.name}Impl ${entity.varName}Impl = new ${entity.name}Impl();
