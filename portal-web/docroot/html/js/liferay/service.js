@@ -549,7 +549,6 @@ Liferay.Service.registerClass(
 		getVocabularyCategoriesCount: true,
 		getVocabularyRootCategories: true,
 		moveCategory: true,
-		rebuildTree: true,
 		search: true,
 		updateCategory: true
 	}
