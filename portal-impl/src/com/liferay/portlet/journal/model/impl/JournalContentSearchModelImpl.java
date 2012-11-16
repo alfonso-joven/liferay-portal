@@ -327,6 +327,10 @@ public class JournalContentSearchModelImpl extends BaseModelImpl<JournalContentS
 		return _escapedModel;
 	}
 
+	public JournalContentSearch toUnescapedModel() {
+		return (JournalContentSearch)this;
+	}
+
 	@Override
 	public Object clone() {
 		JournalContentSearchImpl journalContentSearchImpl = new JournalContentSearchImpl();

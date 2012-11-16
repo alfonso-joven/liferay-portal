@@ -280,6 +280,10 @@ public class DDMStorageLinkModelImpl extends BaseModelImpl<DDMStorageLink>
 		return _escapedModel;
 	}
 
+	public DDMStorageLink toUnescapedModel() {
+		return (DDMStorageLink)this;
+	}
+
 	@Override
 	public Object clone() {
 		DDMStorageLinkImpl ddmStorageLinkImpl = new DDMStorageLinkImpl();

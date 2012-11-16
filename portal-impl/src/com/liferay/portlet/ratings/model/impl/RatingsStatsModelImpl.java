@@ -282,6 +282,10 @@ public class RatingsStatsModelImpl extends BaseModelImpl<RatingsStats>
 		return _escapedModel;
 	}
 
+	public RatingsStats toUnescapedModel() {
+		return (RatingsStats)this;
+	}
+
 	@Override
 	public Object clone() {
 		RatingsStatsImpl ratingsStatsImpl = new RatingsStatsImpl();

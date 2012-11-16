@@ -230,6 +230,10 @@ public class ResourceBlockPermissionModelImpl extends BaseModelImpl<ResourceBloc
 		return _escapedModel;
 	}
 
+	public ResourceBlockPermission toUnescapedModel() {
+		return (ResourceBlockPermission)this;
+	}
+
 	@Override
 	public Object clone() {
 		ResourceBlockPermissionImpl resourceBlockPermissionImpl = new ResourceBlockPermissionImpl();

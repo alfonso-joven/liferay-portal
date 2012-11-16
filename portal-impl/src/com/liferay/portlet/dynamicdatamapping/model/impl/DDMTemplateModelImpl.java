@@ -742,6 +742,10 @@ public class DDMTemplateModelImpl extends BaseModelImpl<DDMTemplate>
 		return _escapedModel;
 	}
 
+	public DDMTemplate toUnescapedModel() {
+		return (DDMTemplate)this;
+	}
+
 	@Override
 	public Object clone() {
 		DDMTemplateImpl ddmTemplateImpl = new DDMTemplateImpl();

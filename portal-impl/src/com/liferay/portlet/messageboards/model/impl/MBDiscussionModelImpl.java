@@ -263,6 +263,10 @@ public class MBDiscussionModelImpl extends BaseModelImpl<MBDiscussion>
 		return _escapedModel;
 	}
 
+	public MBDiscussion toUnescapedModel() {
+		return (MBDiscussion)this;
+	}
+
 	@Override
 	public Object clone() {
 		MBDiscussionImpl mbDiscussionImpl = new MBDiscussionImpl();

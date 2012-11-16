@@ -254,6 +254,10 @@ public class AssetTagStatsModelImpl extends BaseModelImpl<AssetTagStats>
 		return _escapedModel;
 	}
 
+	public AssetTagStats toUnescapedModel() {
+		return (AssetTagStats)this;
+	}
+
 	@Override
 	public Object clone() {
 		AssetTagStatsImpl assetTagStatsImpl = new AssetTagStatsImpl();

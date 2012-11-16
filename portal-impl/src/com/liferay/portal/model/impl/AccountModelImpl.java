@@ -525,6 +525,10 @@ public class AccountModelImpl extends BaseModelImpl<Account>
 		return _escapedModel;
 	}
 
+	public Account toUnescapedModel() {
+		return (Account)this;
+	}
+
 	@Override
 	public Object clone() {
 		AccountImpl accountImpl = new AccountImpl();

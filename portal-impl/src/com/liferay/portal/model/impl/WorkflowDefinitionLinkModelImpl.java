@@ -466,6 +466,10 @@ public class WorkflowDefinitionLinkModelImpl extends BaseModelImpl<WorkflowDefin
 		return _escapedModel;
 	}
 
+	public WorkflowDefinitionLink toUnescapedModel() {
+		return (WorkflowDefinitionLink)this;
+	}
+
 	@Override
 	public Object clone() {
 		WorkflowDefinitionLinkImpl workflowDefinitionLinkImpl = new WorkflowDefinitionLinkImpl();

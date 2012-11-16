@@ -414,6 +414,10 @@ public class ExpandoValueModelImpl extends BaseModelImpl<ExpandoValue>
 		return _escapedModel;
 	}
 
+	public ExpandoValue toUnescapedModel() {
+		return (ExpandoValue)this;
+	}
+
 	@Override
 	public Object clone() {
 		ExpandoValueImpl expandoValueImpl = new ExpandoValueImpl();

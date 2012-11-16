@@ -1411,6 +1411,10 @@ public class LayoutRevisionModelImpl extends BaseModelImpl<LayoutRevision>
 		return _escapedModel;
 	}
 
+	public LayoutRevision toUnescapedModel() {
+		return (LayoutRevision)this;
+	}
+
 	@Override
 	public Object clone() {
 		LayoutRevisionImpl layoutRevisionImpl = new LayoutRevisionImpl();

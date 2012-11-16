@@ -494,6 +494,10 @@ public class EmailAddressModelImpl extends BaseModelImpl<EmailAddress>
 		return _escapedModel;
 	}
 
+	public EmailAddress toUnescapedModel() {
+		return (EmailAddress)this;
+	}
+
 	@Override
 	public Object clone() {
 		EmailAddressImpl emailAddressImpl = new EmailAddressImpl();

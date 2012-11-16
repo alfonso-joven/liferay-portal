@@ -901,6 +901,10 @@ public class WikiPageModelImpl extends BaseModelImpl<WikiPage>
 		return _escapedModel;
 	}
 
+	public WikiPage toUnescapedModel() {
+		return (WikiPage)this;
+	}
+
 	@Override
 	public Object clone() {
 		WikiPageImpl wikiPageImpl = new WikiPageImpl();

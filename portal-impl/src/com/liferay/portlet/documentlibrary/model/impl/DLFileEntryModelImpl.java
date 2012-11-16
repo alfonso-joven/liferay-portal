@@ -830,6 +830,10 @@ public class DLFileEntryModelImpl extends BaseModelImpl<DLFileEntry>
 		return _escapedModel;
 	}
 
+	public DLFileEntry toUnescapedModel() {
+		return (DLFileEntry)this;
+	}
+
 	@Override
 	public Object clone() {
 		DLFileEntryImpl dlFileEntryImpl = new DLFileEntryImpl();

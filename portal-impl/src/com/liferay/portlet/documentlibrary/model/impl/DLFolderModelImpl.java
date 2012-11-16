@@ -610,6 +610,10 @@ public class DLFolderModelImpl extends BaseModelImpl<DLFolder>
 		return _escapedModel;
 	}
 
+	public DLFolder toUnescapedModel() {
+		return (DLFolder)this;
+	}
+
 	@Override
 	public Object clone() {
 		DLFolderImpl dlFolderImpl = new DLFolderImpl();

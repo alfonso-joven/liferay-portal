@@ -482,6 +482,10 @@ public class SCProductVersionModelImpl extends BaseModelImpl<SCProductVersion>
 		return _escapedModel;
 	}
 
+	public SCProductVersion toUnescapedModel() {
+		return (SCProductVersion)this;
+	}
+
 	@Override
 	public Object clone() {
 		SCProductVersionImpl scProductVersionImpl = new SCProductVersionImpl();

@@ -732,6 +732,10 @@ public class AssetCategoryModelImpl extends BaseModelImpl<AssetCategory>
 		return _escapedModel;
 	}
 
+	public AssetCategory toUnescapedModel() {
+		return (AssetCategory)this;
+	}
+
 	@Override
 	public Object clone() {
 		AssetCategoryImpl assetCategoryImpl = new AssetCategoryImpl();

@@ -622,6 +622,10 @@ public class AnnouncementsEntryModelImpl extends BaseModelImpl<AnnouncementsEntr
 		return _escapedModel;
 	}
 
+	public AnnouncementsEntry toUnescapedModel() {
+		return (AnnouncementsEntry)this;
+	}
+
 	@Override
 	public Object clone() {
 		AnnouncementsEntryImpl announcementsEntryImpl = new AnnouncementsEntryImpl();

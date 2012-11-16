@@ -352,6 +352,10 @@ public class UserNotificationEventModelImpl extends BaseModelImpl<UserNotificati
 		return _escapedModel;
 	}
 
+	public UserNotificationEvent toUnescapedModel() {
+		return (UserNotificationEvent)this;
+	}
+
 	@Override
 	public Object clone() {
 		UserNotificationEventImpl userNotificationEventImpl = new UserNotificationEventImpl();

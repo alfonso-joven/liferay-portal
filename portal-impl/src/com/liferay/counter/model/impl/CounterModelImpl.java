@@ -155,6 +155,10 @@ public class CounterModelImpl extends BaseModelImpl<Counter>
 		return _escapedModel;
 	}
 
+	public Counter toUnescapedModel() {
+		return (Counter)this;
+	}
+
 	@Override
 	public Object clone() {
 		CounterImpl counterImpl = new CounterImpl();

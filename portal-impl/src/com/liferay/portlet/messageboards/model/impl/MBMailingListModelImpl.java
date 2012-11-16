@@ -690,6 +690,10 @@ public class MBMailingListModelImpl extends BaseModelImpl<MBMailingList>
 		return _escapedModel;
 	}
 
+	public MBMailingList toUnescapedModel() {
+		return (MBMailingList)this;
+	}
+
 	@Override
 	public Object clone() {
 		MBMailingListImpl mbMailingListImpl = new MBMailingListImpl();

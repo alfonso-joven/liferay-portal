@@ -659,6 +659,10 @@ public class AssetVocabularyModelImpl extends BaseModelImpl<AssetVocabulary>
 		return _escapedModel;
 	}
 
+	public AssetVocabulary toUnescapedModel() {
+		return (AssetVocabulary)this;
+	}
+
 	@Override
 	public Object clone() {
 		AssetVocabularyImpl assetVocabularyImpl = new AssetVocabularyImpl();

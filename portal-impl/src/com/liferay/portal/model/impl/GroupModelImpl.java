@@ -633,6 +633,10 @@ public class GroupModelImpl extends BaseModelImpl<Group> implements GroupModel {
 		return _escapedModel;
 	}
 
+	public Group toUnescapedModel() {
+		return (Group)this;
+	}
+
 	@Override
 	public Object clone() {
 		GroupImpl groupImpl = new GroupImpl();

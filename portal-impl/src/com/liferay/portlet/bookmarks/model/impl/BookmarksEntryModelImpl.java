@@ -554,6 +554,10 @@ public class BookmarksEntryModelImpl extends BaseModelImpl<BookmarksEntry>
 		return _escapedModel;
 	}
 
+	public BookmarksEntry toUnescapedModel() {
+		return (BookmarksEntry)this;
+	}
+
 	@Override
 	public Object clone() {
 		BookmarksEntryImpl bookmarksEntryImpl = new BookmarksEntryImpl();

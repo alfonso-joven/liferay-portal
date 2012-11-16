@@ -407,6 +407,10 @@ public class CountryModelImpl extends BaseModelImpl<Country>
 		return _escapedModel;
 	}
 
+	public Country toUnescapedModel() {
+		return (Country)this;
+	}
+
 	@Override
 	public Object clone() {
 		CountryImpl countryImpl = new CountryImpl();

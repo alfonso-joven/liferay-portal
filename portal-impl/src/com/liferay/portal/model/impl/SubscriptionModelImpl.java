@@ -375,6 +375,10 @@ public class SubscriptionModelImpl extends BaseModelImpl<Subscription>
 		return _escapedModel;
 	}
 
+	public Subscription toUnescapedModel() {
+		return (Subscription)this;
+	}
+
 	@Override
 	public Object clone() {
 		SubscriptionImpl subscriptionImpl = new SubscriptionImpl();

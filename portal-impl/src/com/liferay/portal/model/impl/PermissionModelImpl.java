@@ -307,6 +307,10 @@ public class PermissionModelImpl extends BaseModelImpl<Permission>
 		return _escapedModel;
 	}
 
+	public Permission toUnescapedModel() {
+		return (Permission)this;
+	}
+
 	@Override
 	public Object clone() {
 		PermissionImpl permissionImpl = new PermissionImpl();

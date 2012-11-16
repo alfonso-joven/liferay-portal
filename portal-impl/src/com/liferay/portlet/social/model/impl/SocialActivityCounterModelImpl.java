@@ -446,6 +446,10 @@ public class SocialActivityCounterModelImpl extends BaseModelImpl<SocialActivity
 		return _escapedModel;
 	}
 
+	public SocialActivityCounter toUnescapedModel() {
+		return (SocialActivityCounter)this;
+	}
+
 	@Override
 	public Object clone() {
 		SocialActivityCounterImpl socialActivityCounterImpl = new SocialActivityCounterImpl();

@@ -318,6 +318,10 @@ public class SocialRelationModelImpl extends BaseModelImpl<SocialRelation>
 		return _escapedModel;
 	}
 
+	public SocialRelation toUnescapedModel() {
+		return (SocialRelation)this;
+	}
+
 	@Override
 	public Object clone() {
 		SocialRelationImpl socialRelationImpl = new SocialRelationImpl();

@@ -254,6 +254,10 @@ public class ClassNameModelImpl extends BaseModelImpl<ClassName>
 		return _escapedModel;
 	}
 
+	public ClassName toUnescapedModel() {
+		return (ClassName)this;
+	}
+
 	@Override
 	public Object clone() {
 		ClassNameImpl classNameImpl = new ClassNameImpl();

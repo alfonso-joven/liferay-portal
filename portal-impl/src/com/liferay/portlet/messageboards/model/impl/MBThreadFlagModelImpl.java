@@ -240,6 +240,10 @@ public class MBThreadFlagModelImpl extends BaseModelImpl<MBThreadFlag>
 		return _escapedModel;
 	}
 
+	public MBThreadFlag toUnescapedModel() {
+		return (MBThreadFlag)this;
+	}
+
 	@Override
 	public Object clone() {
 		MBThreadFlagImpl mbThreadFlagImpl = new MBThreadFlagImpl();

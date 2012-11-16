@@ -325,6 +325,10 @@ public class ShoppingItemPriceModelImpl extends BaseModelImpl<ShoppingItemPrice>
 		return _escapedModel;
 	}
 
+	public ShoppingItemPrice toUnescapedModel() {
+		return (ShoppingItemPrice)this;
+	}
+
 	@Override
 	public Object clone() {
 		ShoppingItemPriceImpl shoppingItemPriceImpl = new ShoppingItemPriceImpl();

@@ -407,6 +407,10 @@ public class LockModelImpl extends BaseModelImpl<Lock> implements LockModel {
 		return _escapedModel;
 	}
 
+	public Lock toUnescapedModel() {
+		return (Lock)this;
+	}
+
 	@Override
 	public Object clone() {
 		LockImpl lockImpl = new LockImpl();

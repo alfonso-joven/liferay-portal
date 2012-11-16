@@ -222,6 +222,10 @@ public class UserTrackerPathModelImpl extends BaseModelImpl<UserTrackerPath>
 		return _escapedModel;
 	}
 
+	public UserTrackerPath toUnescapedModel() {
+		return (UserTrackerPath)this;
+	}
+
 	@Override
 	public Object clone() {
 		UserTrackerPathImpl userTrackerPathImpl = new UserTrackerPathImpl();

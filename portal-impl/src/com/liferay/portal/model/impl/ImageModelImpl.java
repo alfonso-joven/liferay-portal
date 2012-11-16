@@ -335,6 +335,10 @@ public class ImageModelImpl extends BaseModelImpl<Image> implements ImageModel {
 		return _escapedModel;
 	}
 
+	public Image toUnescapedModel() {
+		return (Image)this;
+	}
+
 	@Override
 	public Object clone() {
 		ImageImpl imageImpl = new ImageImpl();

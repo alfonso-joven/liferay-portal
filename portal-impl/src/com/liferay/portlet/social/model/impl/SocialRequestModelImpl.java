@@ -513,6 +513,10 @@ public class SocialRequestModelImpl extends BaseModelImpl<SocialRequest>
 		return _escapedModel;
 	}
 
+	public SocialRequest toUnescapedModel() {
+		return (SocialRequest)this;
+	}
+
 	@Override
 	public Object clone() {
 		SocialRequestImpl socialRequestImpl = new SocialRequestImpl();

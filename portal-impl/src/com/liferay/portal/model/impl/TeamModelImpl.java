@@ -411,6 +411,10 @@ public class TeamModelImpl extends BaseModelImpl<Team> implements TeamModel {
 		return _escapedModel;
 	}
 
+	public Team toUnescapedModel() {
+		return (Team)this;
+	}
+
 	@Override
 	public Object clone() {
 		TeamImpl teamImpl = new TeamImpl();

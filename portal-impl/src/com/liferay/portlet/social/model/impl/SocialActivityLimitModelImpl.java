@@ -400,6 +400,10 @@ public class SocialActivityLimitModelImpl extends BaseModelImpl<SocialActivityLi
 		return _escapedModel;
 	}
 
+	public SocialActivityLimit toUnescapedModel() {
+		return (SocialActivityLimit)this;
+	}
+
 	@Override
 	public Object clone() {
 		SocialActivityLimitImpl socialActivityLimitImpl = new SocialActivityLimitImpl();

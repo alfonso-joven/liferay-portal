@@ -627,6 +627,10 @@ public class PollsQuestionModelImpl extends BaseModelImpl<PollsQuestion>
 		return _escapedModel;
 	}
 
+	public PollsQuestion toUnescapedModel() {
+		return (PollsQuestion)this;
+	}
+
 	@Override
 	public Object clone() {
 		PollsQuestionImpl pollsQuestionImpl = new PollsQuestionImpl();

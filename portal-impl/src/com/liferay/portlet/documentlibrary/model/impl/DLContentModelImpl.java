@@ -350,6 +350,10 @@ public class DLContentModelImpl extends BaseModelImpl<DLContent>
 		return _escapedModel;
 	}
 
+	public DLContent toUnescapedModel() {
+		return (DLContent)this;
+	}
+
 	@Override
 	public Object clone() {
 		DLContentImpl dlContentImpl = new DLContentImpl();

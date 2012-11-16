@@ -577,6 +577,10 @@ public class LayoutSetModelImpl extends BaseModelImpl<LayoutSet>
 		return _escapedModel;
 	}
 
+	public LayoutSet toUnescapedModel() {
+		return (LayoutSet)this;
+	}
+
 	@Override
 	public Object clone() {
 		LayoutSetImpl layoutSetImpl = new LayoutSetImpl();

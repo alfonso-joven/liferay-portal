@@ -424,6 +424,10 @@ public class ResourcePermissionModelImpl extends BaseModelImpl<ResourcePermissio
 		return _escapedModel;
 	}
 
+	public ResourcePermission toUnescapedModel() {
+		return (ResourcePermission)this;
+	}
+
 	@Override
 	public Object clone() {
 		ResourcePermissionImpl resourcePermissionImpl = new ResourcePermissionImpl();

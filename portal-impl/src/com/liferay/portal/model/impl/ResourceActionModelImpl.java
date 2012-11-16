@@ -239,6 +239,10 @@ public class ResourceActionModelImpl extends BaseModelImpl<ResourceAction>
 		return _escapedModel;
 	}
 
+	public ResourceAction toUnescapedModel() {
+		return (ResourceAction)this;
+	}
+
 	@Override
 	public Object clone() {
 		ResourceActionImpl resourceActionImpl = new ResourceActionImpl();

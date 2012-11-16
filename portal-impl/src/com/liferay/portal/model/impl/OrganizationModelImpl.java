@@ -459,6 +459,10 @@ public class OrganizationModelImpl extends BaseModelImpl<Organization>
 		return _escapedModel;
 	}
 
+	public Organization toUnescapedModel() {
+		return (Organization)this;
+	}
+
 	@Override
 	public Object clone() {
 		OrganizationImpl organizationImpl = new OrganizationImpl();

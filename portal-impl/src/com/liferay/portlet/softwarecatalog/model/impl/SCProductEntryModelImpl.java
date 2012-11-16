@@ -612,6 +612,10 @@ public class SCProductEntryModelImpl extends BaseModelImpl<SCProductEntry>
 		return _escapedModel;
 	}
 
+	public SCProductEntry toUnescapedModel() {
+		return (SCProductEntry)this;
+	}
+
 	@Override
 	public Object clone() {
 		SCProductEntryImpl scProductEntryImpl = new SCProductEntryImpl();

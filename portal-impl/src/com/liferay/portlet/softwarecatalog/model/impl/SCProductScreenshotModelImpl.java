@@ -305,6 +305,10 @@ public class SCProductScreenshotModelImpl extends BaseModelImpl<SCProductScreens
 		return _escapedModel;
 	}
 
+	public SCProductScreenshot toUnescapedModel() {
+		return (SCProductScreenshot)this;
+	}
+
 	@Override
 	public Object clone() {
 		SCProductScreenshotImpl scProductScreenshotImpl = new SCProductScreenshotImpl();

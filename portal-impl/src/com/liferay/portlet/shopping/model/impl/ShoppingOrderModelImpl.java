@@ -1363,6 +1363,10 @@ public class ShoppingOrderModelImpl extends BaseModelImpl<ShoppingOrder>
 		return _escapedModel;
 	}
 
+	public ShoppingOrder toUnescapedModel() {
+		return (ShoppingOrder)this;
+	}
+
 	@Override
 	public Object clone() {
 		ShoppingOrderImpl shoppingOrderImpl = new ShoppingOrderImpl();

@@ -963,6 +963,10 @@ public class MBMessageModelImpl extends BaseModelImpl<MBMessage>
 		return _escapedModel;
 	}
 
+	public MBMessage toUnescapedModel() {
+		return (MBMessage)this;
+	}
+
 	@Override
 	public Object clone() {
 		MBMessageImpl mbMessageImpl = new MBMessageImpl();

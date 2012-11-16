@@ -209,6 +209,10 @@ public class BrowserTrackerModelImpl extends BaseModelImpl<BrowserTracker>
 		return _escapedModel;
 	}
 
+	public BrowserTracker toUnescapedModel() {
+		return (BrowserTracker)this;
+	}
+
 	@Override
 	public Object clone() {
 		BrowserTrackerImpl browserTrackerImpl = new BrowserTrackerImpl();

@@ -501,6 +501,10 @@ public class DLSyncModelImpl extends BaseModelImpl<DLSync>
 		return _escapedModel;
 	}
 
+	public DLSync toUnescapedModel() {
+		return (DLSync)this;
+	}
+
 	@Override
 	public Object clone() {
 		DLSyncImpl dlSyncImpl = new DLSyncImpl();

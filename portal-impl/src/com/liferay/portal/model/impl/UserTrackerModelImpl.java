@@ -335,6 +335,10 @@ public class UserTrackerModelImpl extends BaseModelImpl<UserTracker>
 		return _escapedModel;
 	}
 
+	public UserTracker toUnescapedModel() {
+		return (UserTracker)this;
+	}
+
 	@Override
 	public Object clone() {
 		UserTrackerImpl userTrackerImpl = new UserTrackerImpl();

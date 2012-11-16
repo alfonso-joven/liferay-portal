@@ -801,6 +801,10 @@ public class JournalTemplateModelImpl extends BaseModelImpl<JournalTemplate>
 		return _escapedModel;
 	}
 
+	public JournalTemplate toUnescapedModel() {
+		return (JournalTemplate)this;
+	}
+
 	@Override
 	public Object clone() {
 		JournalTemplateImpl journalTemplateImpl = new JournalTemplateImpl();

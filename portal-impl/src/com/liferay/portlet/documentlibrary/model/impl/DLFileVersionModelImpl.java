@@ -854,6 +854,10 @@ public class DLFileVersionModelImpl extends BaseModelImpl<DLFileVersion>
 		return _escapedModel;
 	}
 
+	public DLFileVersion toUnescapedModel() {
+		return (DLFileVersion)this;
+	}
+
 	@Override
 	public Object clone() {
 		DLFileVersionImpl dlFileVersionImpl = new DLFileVersionImpl();

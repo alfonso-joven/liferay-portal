@@ -369,6 +369,10 @@ public class BlogsStatsUserModelImpl extends BaseModelImpl<BlogsStatsUser>
 		return _escapedModel;
 	}
 
+	public BlogsStatsUser toUnescapedModel() {
+		return (BlogsStatsUser)this;
+	}
+
 	@Override
 	public Object clone() {
 		BlogsStatsUserImpl blogsStatsUserImpl = new BlogsStatsUserImpl();

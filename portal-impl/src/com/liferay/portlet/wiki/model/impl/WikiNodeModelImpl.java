@@ -460,6 +460,10 @@ public class WikiNodeModelImpl extends BaseModelImpl<WikiNode>
 		return _escapedModel;
 	}
 
+	public WikiNode toUnescapedModel() {
+		return (WikiNode)this;
+	}
+
 	@Override
 	public Object clone() {
 		WikiNodeImpl wikiNodeImpl = new WikiNodeImpl();

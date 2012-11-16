@@ -344,6 +344,10 @@ public class PluginSettingModelImpl extends BaseModelImpl<PluginSetting>
 		return _escapedModel;
 	}
 
+	public PluginSetting toUnescapedModel() {
+		return (PluginSetting)this;
+	}
+
 	@Override
 	public Object clone() {
 		PluginSettingImpl pluginSettingImpl = new PluginSettingImpl();

@@ -279,6 +279,10 @@ public class UserIdMapperModelImpl extends BaseModelImpl<UserIdMapper>
 		return _escapedModel;
 	}
 
+	public UserIdMapper toUnescapedModel() {
+		return (UserIdMapper)this;
+	}
+
 	@Override
 	public Object clone() {
 		UserIdMapperImpl userIdMapperImpl = new UserIdMapperImpl();

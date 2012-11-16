@@ -504,6 +504,10 @@ public class OrgLaborModelImpl extends BaseModelImpl<OrgLabor>
 		return _escapedModel;
 	}
 
+	public OrgLabor toUnescapedModel() {
+		return (OrgLabor)this;
+	}
+
 	@Override
 	public Object clone() {
 		OrgLaborImpl orgLaborImpl = new OrgLaborImpl();

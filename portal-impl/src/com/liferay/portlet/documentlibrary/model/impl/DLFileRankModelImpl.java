@@ -303,6 +303,10 @@ public class DLFileRankModelImpl extends BaseModelImpl<DLFileRank>
 		return _escapedModel;
 	}
 
+	public DLFileRank toUnescapedModel() {
+		return (DLFileRank)this;
+	}
+
 	@Override
 	public Object clone() {
 		DLFileRankImpl dlFileRankImpl = new DLFileRankImpl();

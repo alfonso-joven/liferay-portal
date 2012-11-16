@@ -329,6 +329,10 @@ public class TicketModelImpl extends BaseModelImpl<Ticket>
 		return _escapedModel;
 	}
 
+	public Ticket toUnescapedModel() {
+		return (Ticket)this;
+	}
+
 	@Override
 	public Object clone() {
 		TicketImpl ticketImpl = new TicketImpl();

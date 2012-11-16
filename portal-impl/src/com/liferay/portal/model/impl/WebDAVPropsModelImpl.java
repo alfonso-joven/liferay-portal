@@ -303,6 +303,10 @@ public class WebDAVPropsModelImpl extends BaseModelImpl<WebDAVProps>
 		return _escapedModel;
 	}
 
+	public WebDAVProps toUnescapedModel() {
+		return (WebDAVProps)this;
+	}
+
 	@Override
 	public Object clone() {
 		WebDAVPropsImpl webDAVPropsImpl = new WebDAVPropsImpl();

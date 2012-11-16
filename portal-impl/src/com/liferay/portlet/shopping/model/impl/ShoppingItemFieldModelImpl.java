@@ -252,6 +252,10 @@ public class ShoppingItemFieldModelImpl extends BaseModelImpl<ShoppingItemField>
 		return _escapedModel;
 	}
 
+	public ShoppingItemField toUnescapedModel() {
+		return (ShoppingItemField)this;
+	}
+
 	@Override
 	public Object clone() {
 		ShoppingItemFieldImpl shoppingItemFieldImpl = new ShoppingItemFieldImpl();

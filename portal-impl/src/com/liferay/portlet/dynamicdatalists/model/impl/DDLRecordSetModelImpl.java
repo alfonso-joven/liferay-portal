@@ -674,6 +674,10 @@ public class DDLRecordSetModelImpl extends BaseModelImpl<DDLRecordSet>
 		return _escapedModel;
 	}
 
+	public DDLRecordSet toUnescapedModel() {
+		return (DDLRecordSet)this;
+	}
+
 	@Override
 	public Object clone() {
 		DDLRecordSetImpl ddlRecordSetImpl = new DDLRecordSetImpl();

@@ -355,6 +355,10 @@ public class SCLicenseModelImpl extends BaseModelImpl<SCLicense>
 		return _escapedModel;
 	}
 
+	public SCLicense toUnescapedModel() {
+		return (SCLicense)this;
+	}
+
 	@Override
 	public Object clone() {
 		SCLicenseImpl scLicenseImpl = new SCLicenseImpl();

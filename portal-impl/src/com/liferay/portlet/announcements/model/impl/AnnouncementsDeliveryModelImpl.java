@@ -362,6 +362,10 @@ public class AnnouncementsDeliveryModelImpl extends BaseModelImpl<AnnouncementsD
 		return _escapedModel;
 	}
 
+	public AnnouncementsDelivery toUnescapedModel() {
+		return (AnnouncementsDelivery)this;
+	}
+
 	@Override
 	public Object clone() {
 		AnnouncementsDeliveryImpl announcementsDeliveryImpl = new AnnouncementsDeliveryImpl();

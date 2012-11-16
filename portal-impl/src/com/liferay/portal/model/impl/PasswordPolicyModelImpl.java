@@ -858,6 +858,10 @@ public class PasswordPolicyModelImpl extends BaseModelImpl<PasswordPolicy>
 		return _escapedModel;
 	}
 
+	public PasswordPolicy toUnescapedModel() {
+		return (PasswordPolicy)this;
+	}
+
 	@Override
 	public Object clone() {
 		PasswordPolicyImpl passwordPolicyImpl = new PasswordPolicyImpl();

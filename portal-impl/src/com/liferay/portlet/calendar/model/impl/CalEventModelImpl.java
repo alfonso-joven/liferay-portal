@@ -734,6 +734,10 @@ public class CalEventModelImpl extends BaseModelImpl<CalEvent>
 		return _escapedModel;
 	}
 
+	public CalEvent toUnescapedModel() {
+		return (CalEvent)this;
+	}
+
 	@Override
 	public Object clone() {
 		CalEventImpl calEventImpl = new CalEventImpl();

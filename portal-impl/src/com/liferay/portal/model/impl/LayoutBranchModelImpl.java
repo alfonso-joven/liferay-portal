@@ -441,6 +441,10 @@ public class LayoutBranchModelImpl extends BaseModelImpl<LayoutBranch>
 		return _escapedModel;
 	}
 
+	public LayoutBranch toUnescapedModel() {
+		return (LayoutBranch)this;
+	}
+
 	@Override
 	public Object clone() {
 		LayoutBranchImpl layoutBranchImpl = new LayoutBranchImpl();

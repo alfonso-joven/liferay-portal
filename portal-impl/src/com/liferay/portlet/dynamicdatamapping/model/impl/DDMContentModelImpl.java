@@ -477,6 +477,10 @@ public class DDMContentModelImpl extends BaseModelImpl<DDMContent>
 		return _escapedModel;
 	}
 
+	public DDMContent toUnescapedModel() {
+		return (DDMContent)this;
+	}
+
 	@Override
 	public Object clone() {
 		DDMContentImpl ddmContentImpl = new DDMContentImpl();

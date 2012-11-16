@@ -533,6 +533,10 @@ public class DDLRecordVersionModelImpl extends BaseModelImpl<DDLRecordVersion>
 		return _escapedModel;
 	}
 
+	public DDLRecordVersion toUnescapedModel() {
+		return (DDLRecordVersion)this;
+	}
+
 	@Override
 	public Object clone() {
 		DDLRecordVersionImpl ddlRecordVersionImpl = new DDLRecordVersionImpl();

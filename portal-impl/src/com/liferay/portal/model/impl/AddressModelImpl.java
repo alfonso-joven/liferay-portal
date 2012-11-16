@@ -657,6 +657,10 @@ public class AddressModelImpl extends BaseModelImpl<Address>
 		return _escapedModel;
 	}
 
+	public Address toUnescapedModel() {
+		return (Address)this;
+	}
+
 	@Override
 	public Object clone() {
 		AddressImpl addressImpl = new AddressImpl();

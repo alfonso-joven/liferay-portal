@@ -843,6 +843,10 @@ public class BlogsEntryModelImpl extends BaseModelImpl<BlogsEntry>
 		return _escapedModel;
 	}
 
+	public BlogsEntry toUnescapedModel() {
+		return (BlogsEntry)this;
+	}
+
 	@Override
 	public Object clone() {
 		BlogsEntryImpl blogsEntryImpl = new BlogsEntryImpl();

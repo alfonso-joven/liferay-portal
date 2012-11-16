@@ -630,6 +630,10 @@ public class DLFileShortcutModelImpl extends BaseModelImpl<DLFileShortcut>
 		return _escapedModel;
 	}
 
+	public DLFileShortcut toUnescapedModel() {
+		return (DLFileShortcut)this;
+	}
+
 	@Override
 	public Object clone() {
 		DLFileShortcutImpl dlFileShortcutImpl = new DLFileShortcutImpl();

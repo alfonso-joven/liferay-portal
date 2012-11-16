@@ -411,6 +411,10 @@ public class AssetTagPropertyModelImpl extends BaseModelImpl<AssetTagProperty>
 		return _escapedModel;
 	}
 
+	public AssetTagProperty toUnescapedModel() {
+		return (AssetTagProperty)this;
+	}
+
 	@Override
 	public Object clone() {
 		AssetTagPropertyImpl assetTagPropertyImpl = new AssetTagPropertyImpl();

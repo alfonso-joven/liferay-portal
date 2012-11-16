@@ -261,6 +261,10 @@ public class UserGroupGroupRoleModelImpl extends BaseModelImpl<UserGroupGroupRol
 		return _escapedModel;
 	}
 
+	public UserGroupGroupRole toUnescapedModel() {
+		return (UserGroupGroupRole)this;
+	}
+
 	@Override
 	public Object clone() {
 		UserGroupGroupRoleImpl userGroupGroupRoleImpl = new UserGroupGroupRoleImpl();

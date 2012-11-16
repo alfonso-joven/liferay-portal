@@ -1347,6 +1347,10 @@ public class LayoutModelImpl extends BaseModelImpl<Layout>
 		return _escapedModel;
 	}
 
+	public Layout toUnescapedModel() {
+		return (Layout)this;
+	}
+
 	@Override
 	public Object clone() {
 		LayoutImpl layoutImpl = new LayoutImpl();

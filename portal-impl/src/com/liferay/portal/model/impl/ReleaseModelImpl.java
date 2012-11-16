@@ -309,6 +309,10 @@ public class ReleaseModelImpl extends BaseModelImpl<Release>
 		return _escapedModel;
 	}
 
+	public Release toUnescapedModel() {
+		return (Release)this;
+	}
+
 	@Override
 	public Object clone() {
 		ReleaseImpl releaseImpl = new ReleaseImpl();

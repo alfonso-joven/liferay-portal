@@ -343,6 +343,10 @@ public class AssetLinkModelImpl extends BaseModelImpl<AssetLink>
 		return _escapedModel;
 	}
 
+	public AssetLink toUnescapedModel() {
+		return (AssetLink)this;
+	}
+
 	@Override
 	public Object clone() {
 		AssetLinkImpl assetLinkImpl = new AssetLinkImpl();

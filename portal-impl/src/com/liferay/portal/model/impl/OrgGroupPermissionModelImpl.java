@@ -198,6 +198,10 @@ public class OrgGroupPermissionModelImpl extends BaseModelImpl<OrgGroupPermissio
 		return _escapedModel;
 	}
 
+	public OrgGroupPermission toUnescapedModel() {
+		return (OrgGroupPermission)this;
+	}
+
 	@Override
 	public Object clone() {
 		OrgGroupPermissionImpl orgGroupPermissionImpl = new OrgGroupPermissionImpl();

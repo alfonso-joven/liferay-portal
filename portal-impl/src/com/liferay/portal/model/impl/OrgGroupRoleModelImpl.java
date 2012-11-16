@@ -198,6 +198,10 @@ public class OrgGroupRoleModelImpl extends BaseModelImpl<OrgGroupRole>
 		return _escapedModel;
 	}
 
+	public OrgGroupRole toUnescapedModel() {
+		return (OrgGroupRole)this;
+	}
+
 	@Override
 	public Object clone() {
 		OrgGroupRoleImpl orgGroupRoleImpl = new OrgGroupRoleImpl();

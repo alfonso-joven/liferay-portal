@@ -516,6 +516,10 @@ public class PhoneModelImpl extends BaseModelImpl<Phone> implements PhoneModel {
 		return _escapedModel;
 	}
 
+	public Phone toUnescapedModel() {
+		return (Phone)this;
+	}
+
 	@Override
 	public Object clone() {
 		PhoneImpl phoneImpl = new PhoneImpl();

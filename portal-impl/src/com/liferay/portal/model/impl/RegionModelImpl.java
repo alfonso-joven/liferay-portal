@@ -327,6 +327,10 @@ public class RegionModelImpl extends BaseModelImpl<Region>
 		return _escapedModel;
 	}
 
+	public Region toUnescapedModel() {
+		return (Region)this;
+	}
+
 	@Override
 	public Object clone() {
 		RegionImpl regionImpl = new RegionImpl();

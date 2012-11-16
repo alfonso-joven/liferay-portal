@@ -392,6 +392,10 @@ public class WorkflowInstanceLinkModelImpl extends BaseModelImpl<WorkflowInstanc
 		return _escapedModel;
 	}
 
+	public WorkflowInstanceLink toUnescapedModel() {
+		return (WorkflowInstanceLink)this;
+	}
+
 	@Override
 	public Object clone() {
 		WorkflowInstanceLinkImpl workflowInstanceLinkImpl = new WorkflowInstanceLinkImpl();

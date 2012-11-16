@@ -437,6 +437,10 @@ public class MembershipRequestModelImpl extends BaseModelImpl<MembershipRequest>
 		return _escapedModel;
 	}
 
+	public MembershipRequest toUnescapedModel() {
+		return (MembershipRequest)this;
+	}
+
 	@Override
 	public Object clone() {
 		MembershipRequestImpl membershipRequestImpl = new MembershipRequestImpl();

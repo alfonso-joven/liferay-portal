@@ -265,6 +265,10 @@ public class ResourceModelImpl extends BaseModelImpl<Resource>
 		return _escapedModel;
 	}
 
+	public Resource toUnescapedModel() {
+		return (Resource)this;
+	}
+
 	@Override
 	public Object clone() {
 		ResourceImpl resourceImpl = new ResourceImpl();

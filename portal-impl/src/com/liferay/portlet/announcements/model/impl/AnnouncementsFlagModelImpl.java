@@ -328,6 +328,10 @@ public class AnnouncementsFlagModelImpl extends BaseModelImpl<AnnouncementsFlag>
 		return _escapedModel;
 	}
 
+	public AnnouncementsFlag toUnescapedModel() {
+		return (AnnouncementsFlag)this;
+	}
+
 	@Override
 	public Object clone() {
 		AnnouncementsFlagImpl announcementsFlagImpl = new AnnouncementsFlagImpl();

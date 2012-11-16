@@ -719,6 +719,10 @@ public class JournalFeedModelImpl extends BaseModelImpl<JournalFeed>
 		return _escapedModel;
 	}
 
+	public JournalFeed toUnescapedModel() {
+		return (JournalFeed)this;
+	}
+
 	@Override
 	public Object clone() {
 		JournalFeedImpl journalFeedImpl = new JournalFeedImpl();

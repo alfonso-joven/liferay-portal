@@ -791,6 +791,10 @@ public class DDMStructureModelImpl extends BaseModelImpl<DDMStructure>
 		return _escapedModel;
 	}
 
+	public DDMStructure toUnescapedModel() {
+		return (DDMStructure)this;
+	}
+
 	@Override
 	public Object clone() {
 		DDMStructureImpl ddmStructureImpl = new DDMStructureImpl();

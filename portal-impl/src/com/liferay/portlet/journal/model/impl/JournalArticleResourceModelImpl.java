@@ -247,6 +247,10 @@ public class JournalArticleResourceModelImpl extends BaseModelImpl<JournalArticl
 		return _escapedModel;
 	}
 
+	public JournalArticleResource toUnescapedModel() {
+		return (JournalArticleResource)this;
+	}
+
 	@Override
 	public Object clone() {
 		JournalArticleResourceImpl journalArticleResourceImpl = new JournalArticleResourceImpl();

@@ -334,6 +334,10 @@ public class ExpandoColumnModelImpl extends BaseModelImpl<ExpandoColumn>
 		return _escapedModel;
 	}
 
+	public ExpandoColumn toUnescapedModel() {
+		return (ExpandoColumn)this;
+	}
+
 	@Override
 	public Object clone() {
 		ExpandoColumnImpl expandoColumnImpl = new ExpandoColumnImpl();

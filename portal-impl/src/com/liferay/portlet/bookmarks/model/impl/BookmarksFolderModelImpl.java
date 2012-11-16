@@ -496,6 +496,10 @@ public class BookmarksFolderModelImpl extends BaseModelImpl<BookmarksFolder>
 		return _escapedModel;
 	}
 
+	public BookmarksFolder toUnescapedModel() {
+		return (BookmarksFolder)this;
+	}
+
 	@Override
 	public Object clone() {
 		BookmarksFolderImpl bookmarksFolderImpl = new BookmarksFolderImpl();

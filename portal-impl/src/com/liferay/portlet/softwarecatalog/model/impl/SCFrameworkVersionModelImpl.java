@@ -468,6 +468,10 @@ public class SCFrameworkVersionModelImpl extends BaseModelImpl<SCFrameworkVersio
 		return _escapedModel;
 	}
 
+	public SCFrameworkVersion toUnescapedModel() {
+		return (SCFrameworkVersion)this;
+	}
+
 	@Override
 	public Object clone() {
 		SCFrameworkVersionImpl scFrameworkVersionImpl = new SCFrameworkVersionImpl();

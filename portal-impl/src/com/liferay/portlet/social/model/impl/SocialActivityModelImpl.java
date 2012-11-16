@@ -478,6 +478,10 @@ public class SocialActivityModelImpl extends BaseModelImpl<SocialActivity>
 		return _escapedModel;
 	}
 
+	public SocialActivity toUnescapedModel() {
+		return (SocialActivity)this;
+	}
+
 	@Override
 	public Object clone() {
 		SocialActivityImpl socialActivityImpl = new SocialActivityImpl();

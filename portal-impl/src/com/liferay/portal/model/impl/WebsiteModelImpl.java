@@ -494,6 +494,10 @@ public class WebsiteModelImpl extends BaseModelImpl<Website>
 		return _escapedModel;
 	}
 
+	public Website toUnescapedModel() {
+		return (Website)this;
+	}
+
 	@Override
 	public Object clone() {
 		WebsiteImpl websiteImpl = new WebsiteImpl();

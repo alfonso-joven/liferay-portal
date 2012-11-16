@@ -245,6 +245,10 @@ public class ResourceCodeModelImpl extends BaseModelImpl<ResourceCode>
 		return _escapedModel;
 	}
 
+	public ResourceCode toUnescapedModel() {
+		return (ResourceCode)this;
+	}
+
 	@Override
 	public Object clone() {
 		ResourceCodeImpl resourceCodeImpl = new ResourceCodeImpl();

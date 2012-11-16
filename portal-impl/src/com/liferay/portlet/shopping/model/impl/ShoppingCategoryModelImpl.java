@@ -420,6 +420,10 @@ public class ShoppingCategoryModelImpl extends BaseModelImpl<ShoppingCategory>
 		return _escapedModel;
 	}
 
+	public ShoppingCategory toUnescapedModel() {
+		return (ShoppingCategory)this;
+	}
+
 	@Override
 	public Object clone() {
 		ShoppingCategoryImpl shoppingCategoryImpl = new ShoppingCategoryImpl();

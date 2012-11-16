@@ -1216,6 +1216,10 @@ public class UserModelImpl extends BaseModelImpl<User> implements UserModel {
 		return _escapedModel;
 	}
 
+	public User toUnescapedModel() {
+		return (User)this;
+	}
+
 	@Override
 	public Object clone() {
 		UserImpl userImpl = new UserImpl();

@@ -516,6 +516,10 @@ public class RepositoryModelImpl extends BaseModelImpl<Repository>
 		return _escapedModel;
 	}
 
+	public Repository toUnescapedModel() {
+		return (Repository)this;
+	}
+
 	@Override
 	public Object clone() {
 		RepositoryImpl repositoryImpl = new RepositoryImpl();

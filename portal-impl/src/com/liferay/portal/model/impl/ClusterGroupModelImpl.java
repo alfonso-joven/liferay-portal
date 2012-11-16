@@ -211,6 +211,10 @@ public class ClusterGroupModelImpl extends BaseModelImpl<ClusterGroup>
 		return _escapedModel;
 	}
 
+	public ClusterGroup toUnescapedModel() {
+		return (ClusterGroup)this;
+	}
+
 	@Override
 	public Object clone() {
 		ClusterGroupImpl clusterGroupImpl = new ClusterGroupImpl();

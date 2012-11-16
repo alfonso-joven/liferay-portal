@@ -244,6 +244,10 @@ public class ListTypeModelImpl extends BaseModelImpl<ListType>
 		return _escapedModel;
 	}
 
+	public ListType toUnescapedModel() {
+		return (ListType)this;
+	}
+
 	@Override
 	public Object clone() {
 		ListTypeImpl listTypeImpl = new ListTypeImpl();

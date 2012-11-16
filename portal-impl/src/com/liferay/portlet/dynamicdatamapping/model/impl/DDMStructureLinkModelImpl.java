@@ -263,6 +263,10 @@ public class DDMStructureLinkModelImpl extends BaseModelImpl<DDMStructureLink>
 		return _escapedModel;
 	}
 
+	public DDMStructureLink toUnescapedModel() {
+		return (DDMStructureLink)this;
+	}
+
 	@Override
 	public Object clone() {
 		DDMStructureLinkImpl ddmStructureLinkImpl = new DDMStructureLinkImpl();

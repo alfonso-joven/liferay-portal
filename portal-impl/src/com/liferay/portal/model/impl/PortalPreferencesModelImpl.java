@@ -234,6 +234,10 @@ public class PortalPreferencesModelImpl extends BaseModelImpl<PortalPreferences>
 		return _escapedModel;
 	}
 
+	public PortalPreferences toUnescapedModel() {
+		return (PortalPreferences)this;
+	}
+
 	@Override
 	public Object clone() {
 		PortalPreferencesImpl portalPreferencesImpl = new PortalPreferencesImpl();

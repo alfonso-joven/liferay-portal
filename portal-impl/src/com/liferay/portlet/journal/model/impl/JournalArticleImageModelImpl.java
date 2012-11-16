@@ -375,6 +375,10 @@ public class JournalArticleImageModelImpl extends BaseModelImpl<JournalArticleIm
 		return _escapedModel;
 	}
 
+	public JournalArticleImage toUnescapedModel() {
+		return (JournalArticleImage)this;
+	}
+
 	@Override
 	public Object clone() {
 		JournalArticleImageImpl journalArticleImageImpl = new JournalArticleImageImpl();

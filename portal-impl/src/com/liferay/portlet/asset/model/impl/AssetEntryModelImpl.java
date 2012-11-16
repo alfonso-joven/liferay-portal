@@ -1103,6 +1103,10 @@ public class AssetEntryModelImpl extends BaseModelImpl<AssetEntry>
 		return _escapedModel;
 	}
 
+	public AssetEntry toUnescapedModel() {
+		return (AssetEntry)this;
+	}
+
 	@Override
 	public Object clone() {
 		AssetEntryImpl assetEntryImpl = new AssetEntryImpl();

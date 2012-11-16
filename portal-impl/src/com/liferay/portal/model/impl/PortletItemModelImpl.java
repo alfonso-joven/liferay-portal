@@ -392,6 +392,10 @@ public class PortletItemModelImpl extends BaseModelImpl<PortletItem>
 		return _escapedModel;
 	}
 
+	public PortletItem toUnescapedModel() {
+		return (PortletItem)this;
+	}
+
 	@Override
 	public Object clone() {
 		PortletItemImpl portletItemImpl = new PortletItemImpl();

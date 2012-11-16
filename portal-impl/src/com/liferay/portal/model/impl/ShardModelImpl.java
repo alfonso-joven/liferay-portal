@@ -264,6 +264,10 @@ public class ShardModelImpl extends BaseModelImpl<Shard> implements ShardModel {
 		return _escapedModel;
 	}
 
+	public Shard toUnescapedModel() {
+		return (Shard)this;
+	}
+
 	@Override
 	public Object clone() {
 		ShardImpl shardImpl = new ShardImpl();

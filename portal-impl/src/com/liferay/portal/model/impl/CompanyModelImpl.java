@@ -445,6 +445,10 @@ public class CompanyModelImpl extends BaseModelImpl<Company>
 		return _escapedModel;
 	}
 
+	public Company toUnescapedModel() {
+		return (Company)this;
+	}
+
 	@Override
 	public Object clone() {
 		CompanyImpl companyImpl = new CompanyImpl();

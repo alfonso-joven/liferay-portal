@@ -279,6 +279,10 @@ public class MBStatsUserModelImpl extends BaseModelImpl<MBStatsUser>
 		return _escapedModel;
 	}
 
+	public MBStatsUser toUnescapedModel() {
+		return (MBStatsUser)this;
+	}
+
 	@Override
 	public Object clone() {
 		MBStatsUserImpl mbStatsUserImpl = new MBStatsUserImpl();

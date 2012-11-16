@@ -389,6 +389,10 @@ public class MBBanModelImpl extends BaseModelImpl<MBBan> implements MBBanModel {
 		return _escapedModel;
 	}
 
+	public MBBan toUnescapedModel() {
+		return (MBBan)this;
+	}
+
 	@Override
 	public Object clone() {
 		MBBanImpl mbBanImpl = new MBBanImpl();

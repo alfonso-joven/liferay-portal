@@ -322,6 +322,10 @@ public class SocialActivityAchievementModelImpl extends BaseModelImpl<SocialActi
 		return _escapedModel;
 	}
 
+	public SocialActivityAchievement toUnescapedModel() {
+		return (SocialActivityAchievement)this;
+	}
+
 	@Override
 	public Object clone() {
 		SocialActivityAchievementImpl socialActivityAchievementImpl = new SocialActivityAchievementImpl();

@@ -845,6 +845,10 @@ public class ContactModelImpl extends BaseModelImpl<Contact>
 		return _escapedModel;
 	}
 
+	public Contact toUnescapedModel() {
+		return (Contact)this;
+	}
+
 	@Override
 	public Object clone() {
 		ContactImpl contactImpl = new ContactImpl();

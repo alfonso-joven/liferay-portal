@@ -586,6 +586,10 @@ public class ShoppingCouponModelImpl extends BaseModelImpl<ShoppingCoupon>
 		return _escapedModel;
 	}
 
+	public ShoppingCoupon toUnescapedModel() {
+		return (ShoppingCoupon)this;
+	}
+
 	@Override
 	public Object clone() {
 		ShoppingCouponImpl shoppingCouponImpl = new ShoppingCouponImpl();

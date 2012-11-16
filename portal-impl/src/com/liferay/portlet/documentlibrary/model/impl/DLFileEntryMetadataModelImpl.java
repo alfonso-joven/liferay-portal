@@ -318,6 +318,10 @@ public class DLFileEntryMetadataModelImpl extends BaseModelImpl<DLFileEntryMetad
 		return _escapedModel;
 	}
 
+	public DLFileEntryMetadata toUnescapedModel() {
+		return (DLFileEntryMetadata)this;
+	}
+
 	@Override
 	public Object clone() {
 		DLFileEntryMetadataImpl dlFileEntryMetadataImpl = new DLFileEntryMetadataImpl();

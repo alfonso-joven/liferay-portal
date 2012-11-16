@@ -586,6 +586,10 @@ public class MDRRuleGroupModelImpl extends BaseModelImpl<MDRRuleGroup>
 		return _escapedModel;
 	}
 
+	public MDRRuleGroup toUnescapedModel() {
+		return (MDRRuleGroup)this;
+	}
+
 	@Override
 	public Object clone() {
 		MDRRuleGroupImpl mdrRuleGroupImpl = new MDRRuleGroupImpl();

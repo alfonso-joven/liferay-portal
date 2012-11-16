@@ -237,6 +237,10 @@ public class PasswordTrackerModelImpl extends BaseModelImpl<PasswordTracker>
 		return _escapedModel;
 	}
 
+	public PasswordTracker toUnescapedModel() {
+		return (PasswordTracker)this;
+	}
+
 	@Override
 	public Object clone() {
 		PasswordTrackerImpl passwordTrackerImpl = new PasswordTrackerImpl();

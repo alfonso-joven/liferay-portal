@@ -670,6 +670,10 @@ public class MBThreadModelImpl extends BaseModelImpl<MBThread>
 		return _escapedModel;
 	}
 
+	public MBThread toUnescapedModel() {
+		return (MBThread)this;
+	}
+
 	@Override
 	public Object clone() {
 		MBThreadImpl mbThreadImpl = new MBThreadImpl();

@@ -348,6 +348,10 @@ public class ResourceBlockModelImpl extends BaseModelImpl<ResourceBlock>
 		return _escapedModel;
 	}
 
+	public ResourceBlock toUnescapedModel() {
+		return (ResourceBlock)this;
+	}
+
 	@Override
 	public Object clone() {
 		ResourceBlockImpl resourceBlockImpl = new ResourceBlockImpl();

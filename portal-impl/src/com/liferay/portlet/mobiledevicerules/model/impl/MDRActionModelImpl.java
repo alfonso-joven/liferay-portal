@@ -717,6 +717,10 @@ public class MDRActionModelImpl extends BaseModelImpl<MDRAction>
 		return _escapedModel;
 	}
 
+	public MDRAction toUnescapedModel() {
+		return (MDRAction)this;
+	}
+
 	@Override
 	public Object clone() {
 		MDRActionImpl mdrActionImpl = new MDRActionImpl();

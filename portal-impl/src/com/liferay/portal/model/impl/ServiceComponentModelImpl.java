@@ -255,6 +255,10 @@ public class ServiceComponentModelImpl extends BaseModelImpl<ServiceComponent>
 		return _escapedModel;
 	}
 
+	public ServiceComponent toUnescapedModel() {
+		return (ServiceComponent)this;
+	}
+
 	@Override
 	public Object clone() {
 		ServiceComponentImpl serviceComponentImpl = new ServiceComponentImpl();

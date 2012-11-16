@@ -351,6 +351,10 @@ public class PortletPreferencesModelImpl extends BaseModelImpl<PortletPreference
 		return _escapedModel;
 	}
 
+	public PortletPreferences toUnescapedModel() {
+		return (PortletPreferences)this;
+	}
+
 	@Override
 	public Object clone() {
 		PortletPreferencesImpl portletPreferencesImpl = new PortletPreferencesImpl();

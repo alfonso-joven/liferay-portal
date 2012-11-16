@@ -247,6 +247,10 @@ public class WikiPageResourceModelImpl extends BaseModelImpl<WikiPageResource>
 		return _escapedModel;
 	}
 
+	public WikiPageResource toUnescapedModel() {
+		return (WikiPageResource)this;
+	}
+
 	@Override
 	public Object clone() {
 		WikiPageResourceImpl wikiPageResourceImpl = new WikiPageResourceImpl();

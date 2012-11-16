@@ -652,6 +652,10 @@ public class RoleModelImpl extends BaseModelImpl<Role> implements RoleModel {
 		return _escapedModel;
 	}
 
+	public Role toUnescapedModel() {
+		return (Role)this;
+	}
+
 	@Override
 	public Object clone() {
 		RoleImpl roleImpl = new RoleImpl();

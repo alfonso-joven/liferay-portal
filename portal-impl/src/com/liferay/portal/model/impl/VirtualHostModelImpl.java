@@ -245,6 +245,10 @@ public class VirtualHostModelImpl extends BaseModelImpl<VirtualHost>
 		return _escapedModel;
 	}
 
+	public VirtualHost toUnescapedModel() {
+		return (VirtualHost)this;
+	}
+
 	@Override
 	public Object clone() {
 		VirtualHostImpl virtualHostImpl = new VirtualHostImpl();

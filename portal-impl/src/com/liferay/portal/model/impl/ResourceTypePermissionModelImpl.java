@@ -291,6 +291,10 @@ public class ResourceTypePermissionModelImpl extends BaseModelImpl<ResourceTypeP
 		return _escapedModel;
 	}
 
+	public ResourceTypePermission toUnescapedModel() {
+		return (ResourceTypePermission)this;
+	}
+
 	@Override
 	public Object clone() {
 		ResourceTypePermissionImpl resourceTypePermissionImpl = new ResourceTypePermissionImpl();

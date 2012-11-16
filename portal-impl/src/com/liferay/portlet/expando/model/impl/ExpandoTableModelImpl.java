@@ -250,6 +250,10 @@ public class ExpandoTableModelImpl extends BaseModelImpl<ExpandoTable>
 		return _escapedModel;
 	}
 
+	public ExpandoTable toUnescapedModel() {
+		return (ExpandoTable)this;
+	}
+
 	@Override
 	public Object clone() {
 		ExpandoTableImpl expandoTableImpl = new ExpandoTableImpl();

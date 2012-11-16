@@ -541,6 +541,10 @@ public class MBCategoryModelImpl extends BaseModelImpl<MBCategory>
 		return _escapedModel;
 	}
 
+	public MBCategory toUnescapedModel() {
+		return (MBCategory)this;
+	}
+
 	@Override
 	public Object clone() {
 		MBCategoryImpl mbCategoryImpl = new MBCategoryImpl();
