@@ -14,32 +14,22 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForVisible</td>
-	<td>link=Page Comments Test Page</td>
-	<td>Page Comments Test Page</td>
-</tr>
-<tr>
 	<td>clickAtAndWait</td>
 	<td>link=Page Comments Test Page</td>
 	<td>Page Comments Test Page</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//fieldset/div/a</td>
+	<td>//fieldset[@class='aui-fieldset add-comment ']/div/a</td>
 	<td>Be the first.</td>
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>//fieldset/div/a</td>
+	<td>//fieldset[@class='aui-fieldset add-comment ']/div/a</td>
 	<td>Be the first.</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//textarea[@name='_107_postReplyBody0']</td>
-	<td>Comment Text Area</td>
-</tr>
-<tr>
-	<td>assertVisible</td>
 	<td>//textarea[@name='_107_postReplyBody0']</td>
 	<td>Comment Text Area</td>
 </tr>
@@ -47,11 +37,6 @@
 	<td>type</td>
 	<td>//textarea[@name='_107_postReplyBody0']</td>
 	<td>PC Comment</td>
-</tr>
-<tr>
-	<td>assertVisible</td>
-	<td>//input[@value='Submit for Publication']</td>
-	<td>Submit for Publication</td>
 </tr>
 <tr>
 	<td>clickAt</td>

@@ -25,20 +25,17 @@ public class AddCommentTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Page Comments Test Page");
 		selenium.clickAt("link=Page Comments Test Page",
 			RuntimeVariables.replace("Page Comments Test Page"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Be the first."),
-			selenium.getText("//fieldset/div/a"));
-		selenium.clickAt("//fieldset/div/a",
+			selenium.getText(
+				"//fieldset[@class='aui-fieldset add-comment ']/div/a"));
+		selenium.clickAt("//fieldset[@class='aui-fieldset add-comment ']/div/a",
 			RuntimeVariables.replace("Be the first."));
 		selenium.waitForVisible("//textarea[@name='_107_postReplyBody0']");
-		assertTrue(selenium.isVisible("//textarea[@name='_107_postReplyBody0']"));
 		selenium.type("//textarea[@name='_107_postReplyBody0']",
 			RuntimeVariables.replace("PC Comment"));
-		assertTrue(selenium.isVisible(
-				"//input[@value='Submit for Publication']"));
 		selenium.clickAt("//input[@value='Submit for Publication']",
 			RuntimeVariables.replace("Submit for Publication"));
 		selenium.waitForText("//div[@class='lfr-message-response portlet-msg-success']",

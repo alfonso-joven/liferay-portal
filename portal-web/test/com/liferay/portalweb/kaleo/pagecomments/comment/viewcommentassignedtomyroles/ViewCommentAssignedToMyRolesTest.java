@@ -25,13 +25,13 @@ public class ViewCommentAssignedToMyRolesTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Page Comments Test Page");
 		selenium.clickAt("link=Page Comments Test Page",
 			RuntimeVariables.replace("Page Comments Test Page"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isVisible(
-				"//strong[@class='workflow-status-pending']"));
-		assertTrue(selenium.isVisible("//div[@class='lfr-discussion-message']"));
+		assertEquals(RuntimeVariables.replace("Pending (Review)"),
+			selenium.getText("//strong[@class='workflow-status-pending']"));
+		assertEquals(RuntimeVariables.replace("PC Comment"),
+			selenium.getText("//div[@class='lfr-discussion-message']"));
 		selenium.open("/web/guest/home/");
 		selenium.clickAt("//div[@id='dockbar']",
 			RuntimeVariables.replace("Dockbar"));
@@ -53,13 +53,14 @@ public class ViewCommentAssignedToMyRolesTest extends BaseTestCase {
 				"There are no pending tasks assigned to you."),
 			selenium.getText("//div[@class='portlet-msg-info']"));
 		assertEquals(RuntimeVariables.replace("Review"),
-			selenium.getText("//td[1]/a"));
-		assertTrue(selenium.isPartialText("//td[2]/a", "PC Comment"));
+			selenium.getText("//tr[contains(.,'PC Comment')]/td[1]/a"));
+		assertTrue(selenium.isPartialText(
+				"//tr[contains(.,'PC Comment')]/td[2]/a", "PC Comment"));
 		assertEquals(RuntimeVariables.replace("Comments"),
-			selenium.getText("//td[3]/a"));
-		assertTrue(selenium.isVisible("//td[4]/a"));
+			selenium.getText("//tr[contains(.,'PC Comment')]/td[3]/a"));
+		assertTrue(selenium.isVisible("//tr[contains(.,'PC Comment')]/td[4]/a"));
 		assertEquals(RuntimeVariables.replace("Never"),
-			selenium.getText("//td[5]/a"));
+			selenium.getText("//tr[contains(.,'PC Comment')]/td[5]/a"));
 		selenium.clickAt("link=Completed", RuntimeVariables.replace("Completed"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("There are no completed tasks."),

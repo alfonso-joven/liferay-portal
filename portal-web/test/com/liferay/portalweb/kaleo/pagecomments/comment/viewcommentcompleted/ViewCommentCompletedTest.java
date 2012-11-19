@@ -25,7 +25,6 @@ public class ViewCommentCompletedTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Page Comments Test Page");
 		selenium.clickAt("link=Page Comments Test Page",
 			RuntimeVariables.replace("Page Comments Test Page"));
 		selenium.waitForPageToLoad("30000");
@@ -58,12 +57,13 @@ public class ViewCommentCompletedTest extends BaseTestCase {
 		selenium.clickAt("link=Completed", RuntimeVariables.replace("Completed"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Review"),
-			selenium.getText("//td[1]/a"));
-		assertTrue(selenium.isPartialText("//td[2]/a", "PC Comment"));
+			selenium.getText("//tr[contains(.,'PC Comment')]/td[1]/a"));
+		assertTrue(selenium.isPartialText(
+				"//tr[contains(.,'PC Comment')]/td[2]/a", "PC Comment"));
 		assertEquals(RuntimeVariables.replace("Comments"),
-			selenium.getText("//td[3]/a"));
-		assertTrue(selenium.isVisible("//td[4]/a"));
+			selenium.getText("//tr[contains(.,'PC Comment')]/td[3]/a"));
+		assertTrue(selenium.isVisible("//tr[contains(.,'PC Comment')]/td[4]/a"));
 		assertEquals(RuntimeVariables.replace("Never"),
-			selenium.getText("//td[5]/a"));
+			selenium.getText("//tr[contains(.,'PC Comment')]/td[5]/a"));
 	}
 }
