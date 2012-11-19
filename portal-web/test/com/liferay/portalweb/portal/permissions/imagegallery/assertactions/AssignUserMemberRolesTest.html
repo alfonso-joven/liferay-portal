@@ -50,7 +50,7 @@
 </tr>
 <tr>
 	<td>type</td>
-	<td>//input[@id='_125_keywords']</td>
+	<td>//input[@title='Search Users and Organizations']</td>
 	<td>member@liferay.com</td>
 </tr>
 <tr>
@@ -60,12 +60,12 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//tbody/tr[3]/td[2]/a</td>
+	<td>link=Member</td>
 	<td>Member</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>//tbody/tr[3]/td[2]/a</td>
+	<td>link=Member</td>
 	<td>Member</td>
 </tr>
 <tr>
@@ -80,17 +80,17 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//div[6]/span[1]/a/span</td>
+	<td>//div[@id='_125_roles']/span/a</td>
 	<td>Select</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[6]/span[1]/a/span</td>
+	<td>//div[@id='_125_roles']/span/a</td>
 	<td>Select</td>
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>//div[6]/span[1]/a/span</td>
+	<td>//div[@id='_125_roles']/span/a</td>
 	<td>Select</td>
 </tr>
 <tr>
@@ -120,12 +120,12 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//tr[3]/td/a</td>
+	<td>link=Member</td>
 	<td>Member</td>
 </tr>
 <tr>
-	<td>click</td>
-	<td>//tr[3]/td/a</td>
+	<td>clickAt</td>
+	<td>link=Member</td>
 	<td>Member</td>
 </tr>
 <tr>
@@ -135,12 +135,12 @@
 </tr>
 <tr>
 	<td>waitForPartialText</td>
-	<td>//div[@id='_125_rolesSearchContainer']</td>
+	<td>//tr[contains(.,'Member')]/td</td>
 	<td>Member</td>
 </tr>
 <tr>
 	<td>assertPartialText</td>
-	<td>//div[@id='_125_rolesSearchContainer']</td>
+	<td>//tr[contains(.,'Member')]/td</td>
 	<td>Member</td>
 </tr>
 <tr>
@@ -152,11 +152,6 @@
 	<td>assertText</td>
 	<td>//div[@class='portlet-msg-success']</td>
 	<td>Your request completed successfully.</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//tr[3]/td[1]</td>
-	<td>Member</td>
 </tr>
 </tbody></table>
 </body>

@@ -60,12 +60,12 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//tr[3]/td/a</td>
+	<td>//td[@headers='_128_ocerSearchContainer_col-name']/a</td>
 	<td>Member</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>//tr[3]/td/a</td>
+	<td>//td[@headers='_128_ocerSearchContainer_col-name']/a</td>
 	<td>Member</td>
 </tr>
 <tr>
@@ -79,39 +79,64 @@
 	<td>label=Media Gallery</td>
 </tr>
 <tr>
-	<td>check</td>
-	<td>//input[@name='_128_rowIds' and @value='com.liferay.portlet.documentlibraryADD_DOCUMENT']</td>
+	<td>assertNotChecked</td>
+	<td>//input[@value='com.liferay.portlet.documentlibraryADD_DOCUMENT']</td>
 	<td>Media Gallery Add Document</td>
 </tr>
 <tr>
-	<td>uncheck</td>
-	<td>//input[@name='_128_rowIds' and @value='com.liferay.portlet.documentlibraryADD_DOCUMENT_TYPE']</td>
+	<td>clickAt</td>
+	<td>//input[@value='com.liferay.portlet.documentlibraryADD_DOCUMENT']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//input[@value='com.liferay.portlet.documentlibraryADD_DOCUMENT']</td>
+	<td>Media Gallery Add Document</td>
+</tr>
+<tr>
+	<td>assertNotChecked</td>
+	<td>//input[@value='com.liferay.portlet.documentlibraryADD_DOCUMENT_TYPE']</td>
 	<td>Media Gallery Add Document Type</td>
 </tr>
 <tr>
-	<td>uncheck</td>
-	<td>//input[@name='_128_rowIds' and @value='com.liferay.portlet.documentlibraryADD_FOLDER']</td>
+	<td>assertNotChecked</td>
+	<td>//input[@value='com.liferay.portlet.documentlibraryADD_FOLDER']</td>
 	<td>Media Gallery Add Folder</td>
 </tr>
 <tr>
-	<td>uncheck</td>
-	<td>//input[@name='_128_rowIds' and @value='com.liferay.portlet.documentlibraryADD_SHORTCUT']</td>
+	<td>assertNotChecked</td>
+	<td>//input[@value='com.liferay.portlet.documentlibraryADD_REPOSITORY']</td>
+	<td>Media Gallery Add Repository</td>
+</tr>
+<tr>
+	<td>assertNotChecked</td>
+	<td>//input[@value='com.liferay.portlet.documentlibraryADD_SHORTCUT']</td>
 	<td>Media Gallery Add Shortcut</td>
 </tr>
 <tr>
-	<td>uncheck</td>
-	<td>//input[@name='_128_rowIds' and @value='com.liferay.portlet.documentlibraryPERMISSIONS']</td>
+	<td>assertNotChecked</td>
+	<td>//input[@value='com.liferay.portlet.documentlibraryPERMISSIONS']</td>
 	<td>Media Gallery Permissions</td>
 </tr>
 <tr>
-	<td>uncheck</td>
-	<td>//input[@name='_128_rowIds' and @value='com.liferay.portlet.documentlibraryUPDATE']</td>
+	<td>assertNotChecked</td>
+	<td>//input[@value='com.liferay.portlet.documentlibraryUPDATE']</td>
 	<td>Media Gallery Update</td>
 </tr>
 <tr>
-	<td>check</td>
-	<td>//input[@name='_128_rowIds' and @value='com.liferay.portlet.documentlibraryVIEW']</td>
+	<td>assertNotChecked</td>
+	<td>//input[@value='com.liferay.portlet.documentlibraryVIEW']</td>
 	<td>Media Gallery View</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//input[@value='com.liferay.portlet.documentlibraryVIEW']</td>
+	<td>Media Gallery View</td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//input[@value='com.liferay.portlet.documentlibraryVIEW']</td>
+	<td></td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -126,45 +151,30 @@
 <tr>
 	<td>selectAndWait</td>
 	<td>//select[@id='_128_add-permissions']</td>
-	<td>label=Media Gallery</td>
-</tr>
-<tr>
-	<td>assertChecked</td>
-	<td>//tr[3]/td/input</td>
-	<td>Add Document Checked</td>
-</tr>
-<tr>
-	<td>assertChecked</td>
-	<td>//tr[11]/td/input</td>
-	<td>View Checked</td>
-</tr>
-<tr>
-	<td>selectAndWait</td>
-	<td>//select[@id='_128_add-permissions']</td>
 	<td>index=51</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//h3</td>
+	<td>//form[@id='_128_fm']/h3</td>
 	<td>Media Gallery</td>
 </tr>
 <tr>
-	<td>uncheck</td>
+	<td>assertNotChecked</td>
 	<td>//input[@value='31ADD_TO_PAGE']</td>
 	<td>Media Gallery Add to Page</td>
 </tr>
 <tr>
-	<td>uncheck</td>
+	<td>assertNotChecked</td>
 	<td>//input[@value='31CONFIGURATION']</td>
 	<td>Media Gallery Configuration</td>
 </tr>
 <tr>
-	<td>uncheck</td>
+	<td>assertNotChecked</td>
 	<td>//input[@value='31PERMISSIONS']</td>
 	<td>Media Gallery Permissions</td>
 </tr>
 <tr>
-	<td>check</td>
+	<td>clickAt</td>
 	<td>//input[@value='31VIEW']</td>
 	<td>Media Gallery View</td>
 </tr>
@@ -177,21 +187,6 @@
 	<td>assertText</td>
 	<td>//div[@class='portlet-msg-success']</td>
 	<td>The role permissions were updated.</td>
-</tr>
-<tr>
-	<td>selectAndWait</td>
-	<td>//select[@id='_128_add-permissions']</td>
-	<td>index=51</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//h3</td>
-	<td>Media Gallery</td>
-</tr>
-<tr>
-	<td>assertChecked</td>
-	<td>//tr[6]/td/input</td>
-	<td>View Checked</td>
 </tr>
 </tbody></table>
 </body>

@@ -45,9 +45,8 @@ public class RemoveSiteAdminRolePowerUserTest extends BaseTestCase {
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("SiteAdmin"),
-			selenium.getText("//tbody/tr[3]/td[2]/a"));
-		selenium.clickAt("//tbody/tr[3]/td[2]/a",
-			RuntimeVariables.replace("SiteAdmin"));
+			selenium.getText("link=SiteAdmin"));
+		selenium.clickAt("link=SiteAdmin", RuntimeVariables.replace("SiteAdmin"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isPartialText("//a[@id='_125_rolesLink']", "Roles"));
 		selenium.clickAt("//a[@id='_125_rolesLink']",

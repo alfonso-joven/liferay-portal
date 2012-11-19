@@ -46,12 +46,12 @@ public class AddMemberTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				selenium.clickAt("link=Add", RuntimeVariables.replace("Add"));
 				selenium.waitForVisible(
-					"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'User')]/a");
+					"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'User')]");
 				assertEquals(RuntimeVariables.replace("User"),
 					selenium.getText(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'User')]/a"));
+						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'User')]"));
 				selenium.click(RuntimeVariables.replace(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'User')]/a"));
+						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'User')]"));
 				selenium.waitForPageToLoad("30000");
 				selenium.select("//select[@id='_125_prefixId']",
 					RuntimeVariables.replace("label=Mr."));
@@ -163,7 +163,7 @@ public class AddMemberTest extends BaseTestCase {
 
 				assertEquals(RuntimeVariables.replace(
 						"Please choose a reminder query."),
-					selenium.getText("//form/div[1]"));
+					selenium.getText("//div[@class='portlet-msg-info']"));
 				selenium.type("reminderQueryAnswer",
 					RuntimeVariables.replace("test"));
 				selenium.clickAt("//input[@value='Save']",

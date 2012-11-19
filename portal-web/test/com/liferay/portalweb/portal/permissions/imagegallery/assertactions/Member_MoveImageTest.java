@@ -48,10 +48,11 @@ public class Member_MoveImageTest extends BaseTestCase {
 			RuntimeVariables.replace("Permissions Image 3 Test"));
 		selenium.waitForVisible("//img[@title='View']");
 		selenium.click("//img[@title='View']");
-		selenium.waitForVisible("//button[3]");
+		selenium.waitForVisible("//button[contains(.,'Move')]");
 		assertEquals(RuntimeVariables.replace("Move"),
-			selenium.getText("//button[3]"));
-		selenium.clickAt("//button[3]", RuntimeVariables.replace("Move"));
+			selenium.getText("//button[contains(.,'Move')]"));
+		selenium.clickAt("//button[contains(.,'Move')]",
+			RuntimeVariables.replace("Move"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//input[@value='Select']",
 			RuntimeVariables.replace("Select"));
@@ -60,14 +61,14 @@ public class Member_MoveImageTest extends BaseTestCase {
 		selenium.waitForVisible("link=Home");
 		selenium.clickAt("link=Home", RuntimeVariables.replace("Home"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForVisible("//td[1]/a");
+		selenium.waitForVisible("//a[contains(.,'Media Gallery')]");
 		assertEquals(RuntimeVariables.replace(
 				"Media Gallery Permissions Test Folder"),
-			selenium.getText("//td[1]/a"));
-		selenium.clickAt("//td[1]/a",
+			selenium.getText("//a[contains(.,'Media Gallery')]"));
+		selenium.clickAt("//a[contains(.,'Media Gallery')]",
 			RuntimeVariables.replace("Media Gallery Permissions Test Folder"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForVisible("//li[2]/span/a");
+		selenium.waitForVisible("//li[@class='last']");
 		selenium.click("//input[@value='Choose This Folder']");
 		selenium.selectWindow("null");
 		selenium.waitForText("//a[@id='_31_folderName']",

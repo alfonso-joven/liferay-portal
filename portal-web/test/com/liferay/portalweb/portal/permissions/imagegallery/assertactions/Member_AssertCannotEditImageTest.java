@@ -32,7 +32,11 @@ public class Member_AssertCannotEditImageTest extends BaseTestCase {
 			selenium.getText("//a[@title='Permissions Image 2 Test - ']"));
 		selenium.clickAt("//a[@title='Permissions Image 2 Test - ']",
 			RuntimeVariables.replace("Permissions Image 2 Test"));
-		selenium.waitForVisible("//div/div[2]/div[1]");
+		selenium.waitForVisible(
+			"//div[contains(@class,'aui-image-viewer-caption')]");
+		assertEquals(RuntimeVariables.replace("Permissions Image 2 Test -"),
+			selenium.getText(
+				"//div[contains(@class,'aui-image-viewer-caption')]"));
 		assertTrue(selenium.isElementPresent("//img[@title='Download (29.9k)']"));
 		assertTrue(selenium.isElementPresent("//img[@title='View']"));
 		assertTrue(selenium.isElementNotPresent("//img[@title='Edit']"));

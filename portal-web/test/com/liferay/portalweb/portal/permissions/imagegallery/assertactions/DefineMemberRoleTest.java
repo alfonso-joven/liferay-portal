@@ -44,8 +44,10 @@ public class DefineMemberRoleTest extends BaseTestCase {
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Member"),
-			selenium.getText("//tr[3]/td/a"));
-		selenium.clickAt("//tr[3]/td/a", RuntimeVariables.replace("Member"));
+			selenium.getText(
+				"//td[@headers='_128_ocerSearchContainer_col-name']/a"));
+		selenium.clickAt("//td[@headers='_128_ocerSearchContainer_col-name']/a",
+			RuntimeVariables.replace("Member"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Define Permissions",
 			RuntimeVariables.replace("Define Permissions"));
@@ -53,40 +55,30 @@ public class DefineMemberRoleTest extends BaseTestCase {
 		selenium.select("//select[@id='_128_add-permissions']",
 			RuntimeVariables.replace("label=Media Gallery"));
 		selenium.waitForPageToLoad("30000");
-		selenium.check(
-			"//input[@name='_128_rowIds' and @value='com.liferay.portlet.documentlibraryADD_DOCUMENT']");
-		selenium.uncheck(
-			"//input[@name='_128_rowIds' and @value='com.liferay.portlet.documentlibraryADD_DOCUMENT_TYPE']");
-		selenium.uncheck(
-			"//input[@name='_128_rowIds' and @value='com.liferay.portlet.documentlibraryADD_FOLDER']");
-		selenium.uncheck(
-			"//input[@name='_128_rowIds' and @value='com.liferay.portlet.documentlibraryADD_SHORTCUT']");
-		selenium.uncheck(
-			"//input[@name='_128_rowIds' and @value='com.liferay.portlet.documentlibraryPERMISSIONS']");
-		selenium.uncheck(
-			"//input[@name='_128_rowIds' and @value='com.liferay.portlet.documentlibraryUPDATE']");
-		selenium.check(
-			"//input[@name='_128_rowIds' and @value='com.liferay.portlet.documentlibraryVIEW']");
-		selenium.clickAt("//input[@value='Save']",
-			RuntimeVariables.replace("Save"));
-		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace(
-				"The role permissions were updated."),
-			selenium.getText("//div[@class='portlet-msg-success']"));
-		selenium.select("//select[@id='_128_add-permissions']",
-			RuntimeVariables.replace("label=Media Gallery"));
-		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isChecked("//tr[3]/td/input"));
-		assertTrue(selenium.isChecked("//tr[11]/td/input"));
-		selenium.select("//select[@id='_128_add-permissions']",
-			RuntimeVariables.replace("index=51"));
-		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Media Gallery"),
-			selenium.getText("//h3"));
-		selenium.uncheck("//input[@value='31ADD_TO_PAGE']");
-		selenium.uncheck("//input[@value='31CONFIGURATION']");
-		selenium.uncheck("//input[@value='31PERMISSIONS']");
-		selenium.check("//input[@value='31VIEW']");
+		assertFalse(selenium.isChecked(
+				"//input[@value='com.liferay.portlet.documentlibraryADD_DOCUMENT']"));
+		selenium.clickAt("//input[@value='com.liferay.portlet.documentlibraryADD_DOCUMENT']",
+			RuntimeVariables.replace(""));
+		assertTrue(selenium.isChecked(
+				"//input[@value='com.liferay.portlet.documentlibraryADD_DOCUMENT']"));
+		assertFalse(selenium.isChecked(
+				"//input[@value='com.liferay.portlet.documentlibraryADD_DOCUMENT_TYPE']"));
+		assertFalse(selenium.isChecked(
+				"//input[@value='com.liferay.portlet.documentlibraryADD_FOLDER']"));
+		assertFalse(selenium.isChecked(
+				"//input[@value='com.liferay.portlet.documentlibraryADD_REPOSITORY']"));
+		assertFalse(selenium.isChecked(
+				"//input[@value='com.liferay.portlet.documentlibraryADD_SHORTCUT']"));
+		assertFalse(selenium.isChecked(
+				"//input[@value='com.liferay.portlet.documentlibraryPERMISSIONS']"));
+		assertFalse(selenium.isChecked(
+				"//input[@value='com.liferay.portlet.documentlibraryUPDATE']"));
+		assertFalse(selenium.isChecked(
+				"//input[@value='com.liferay.portlet.documentlibraryVIEW']"));
+		selenium.clickAt("//input[@value='com.liferay.portlet.documentlibraryVIEW']",
+			RuntimeVariables.replace("Media Gallery View"));
+		assertTrue(selenium.isChecked(
+				"//input[@value='com.liferay.portlet.documentlibraryVIEW']"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
@@ -97,7 +89,17 @@ public class DefineMemberRoleTest extends BaseTestCase {
 			RuntimeVariables.replace("index=51"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Media Gallery"),
-			selenium.getText("//h3"));
-		assertTrue(selenium.isChecked("//tr[6]/td/input"));
+			selenium.getText("//form[@id='_128_fm']/h3"));
+		assertFalse(selenium.isChecked("//input[@value='31ADD_TO_PAGE']"));
+		assertFalse(selenium.isChecked("//input[@value='31CONFIGURATION']"));
+		assertFalse(selenium.isChecked("//input[@value='31PERMISSIONS']"));
+		selenium.clickAt("//input[@value='31VIEW']",
+			RuntimeVariables.replace("Media Gallery View"));
+		selenium.clickAt("//input[@value='Save']",
+			RuntimeVariables.replace("Save"));
+		selenium.waitForPageToLoad("30000");
+		assertEquals(RuntimeVariables.replace(
+				"The role permissions were updated."),
+			selenium.getText("//div[@class='portlet-msg-success']"));
 	}
 }
