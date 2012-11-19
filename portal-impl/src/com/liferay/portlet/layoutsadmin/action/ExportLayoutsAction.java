@@ -25,7 +25,6 @@ import com.liferay.portal.kernel.util.FileUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.Time;
-import com.liferay.portal.kernel.util.UnicodeProperties;
 import com.liferay.portal.model.LayoutSet;
 import com.liferay.portal.security.auth.PrincipalException;
 import com.liferay.portal.service.LayoutServiceUtil;
@@ -135,21 +134,13 @@ public class ExportLayoutsAction extends PortletAction {
 				LayoutSet layoutSet = LayoutSetLocalServiceUtil.getLayoutSet(
 					groupId, privateLayout);
 
-				UnicodeProperties settingsProperties =
-					layoutSet.getSettingsProperties();
-
 				long lastPublishDate = GetterUtil.getLong(
-					settingsProperties.getProperty("last-publish-date"));
+					layoutSet.getSettingsProperty("last-publish-date"));
 
 				if (lastPublishDate > 0) {
-					Calendar cal = Calendar.getInstance(
-						themeDisplay.getTimeZone(), themeDisplay.getLocale());
+					endDate = new Date();
 
-					endDate = cal.getTime();
-
-					cal.setTimeInMillis(lastPublishDate);
-
-					startDate = cal.getTime();
+					startDate = new Date(lastPublishDate);
 				}
 			}
 			else if (range.equals("last")) {

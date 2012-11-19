@@ -1788,21 +1788,13 @@ public class StagingImpl implements Staging {
 			LayoutSet layoutSet = LayoutSetLocalServiceUtil.getLayoutSet(
 				sourceGroupId, privateLayout);
 
-			UnicodeProperties settingsProperties =
-				layoutSet.getSettingsProperties();
-
 			long lastPublishDate = GetterUtil.getLong(
-				settingsProperties.getProperty("last-publish-date"));
+				layoutSet.getSettingsProperty("last-publish-date"));
 
 			if (lastPublishDate > 0) {
-				Calendar cal = Calendar.getInstance(
-					themeDisplay.getTimeZone(), themeDisplay.getLocale());
+				endDate = new Date();
 
-				endDate = cal.getTime();
-
-				cal.setTimeInMillis(lastPublishDate);
-
-				startDate = cal.getTime();
+				startDate = new Date(lastPublishDate);
 			}
 		}
 		else if (range.equals("last")) {
@@ -1998,21 +1990,13 @@ public class StagingImpl implements Staging {
 			LayoutSet layoutSet = LayoutSetLocalServiceUtil.getLayoutSet(
 				groupId, privateLayout);
 
-			UnicodeProperties layoutTypeSettingsProperties =
-				layoutSet.getSettingsProperties();
-
 			long lastPublishDate = GetterUtil.getLong(
-				layoutTypeSettingsProperties.getProperty("last-publish-date"));
+				layoutSet.getSettingsProperty("last-publish-date"));
 
 			if (lastPublishDate > 0) {
-				Calendar cal = Calendar.getInstance(
-					themeDisplay.getTimeZone(), themeDisplay.getLocale());
+				endDate = new Date();
 
-				endDate = cal.getTime();
-
-				cal.setTimeInMillis(lastPublishDate);
-
-				startDate = cal.getTime();
+				startDate = new Date(lastPublishDate);
 			}
 		}
 		else if (range.equals("last")) {
