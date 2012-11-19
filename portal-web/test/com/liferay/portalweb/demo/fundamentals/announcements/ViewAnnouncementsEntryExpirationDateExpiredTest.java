@@ -27,6 +27,13 @@ public class ViewAnnouncementsEntryExpirationDateExpiredTest
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("link=Announcements Test Page",
+			RuntimeVariables.replace("Announcements Test Page"));
+		selenium.waitForPageToLoad("30000");
+		assertFalse(selenium.isTextPresent("Announcements Entry Expired Title"));
+		assertFalse(selenium.isTextPresent(
+				"Announcements Entry Expired Content"));
+		selenium.open("/web/guest/home/");
 		Thread.sleep(60000);
 		selenium.clickAt("link=Announcements Test Page",
 			RuntimeVariables.replace("Announcements Test Page"));

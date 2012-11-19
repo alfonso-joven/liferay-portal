@@ -104,24 +104,34 @@
 	<td>top</td>
 </tr>
 <tr>
-	<td>select</td>
-	<td>//select[@name='_84_expirationDateMinute']</td>
-	<td>:07</td>
+	<td>storeValue</td>
+	<td>//select[@name='_84_expirationDateMonth']</td>
+	<td>expirationMonth</td>
 </tr>
 <tr>
-	<td>assertSelectedLabel</td>
-	<td>//select[@name='_84_expirationDateMinute']</td>
-	<td>:07</td>
+	<td>storeEval</td>
+	<td>${expirationMonth} - 1</td>
+	<td>ExpirationMonthDecremented</td>
 </tr>
 <tr>
 	<td>select</td>
 	<td>//select[@name='_84_expirationDateMonth']</td>
-	<td>November</td>
+	<td>value=${ExpirationMonthDecremented}</td>
 </tr>
 <tr>
-	<td>assertSelectedLabel</td>
-	<td>//select[@name='_84_expirationDateMonth']</td>
-	<td>November</td>
+	<td>storeValue</td>
+	<td>//select[@name='_84_expirationDateMinute']</td>
+	<td>currentTime</td>
+</tr>
+<tr>
+	<td>storeEval</td>
+	<td>${currentTime} - 1</td>
+	<td>CurrentTimeDecremented</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//select[@name='_84_expirationDateMinute']</td>
+	<td>value=${CurrentTimeDecremented}</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -130,8 +140,13 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//tr[@class='portlet-section-body results-row last']/td[1]/a</td>
+	<td>//tr[contains(.,'Announcements Entry Expired Title')]/td[1]/a</td>
 	<td>Announcements Entry Expired Title</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[contains(.,'Announcements Entry Expired Title')]/td[2]/a</td>
+	<td>General</td>
 </tr>
 </tbody></table>
 </body>

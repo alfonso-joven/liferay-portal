@@ -61,16 +61,21 @@ public class AddAnnouncementsEntryDisplayDateFutureTest extends BaseTestCase {
 		selenium.selectFrame("//td[@id='cke_contents__84_editor']/iframe");
 		selenium.waitForText("//body", "Announcements Entry Future Content");
 		selenium.selectFrame("relative=top");
+
+		String currentTime = selenium.getValue(
+				"//select[@name='_84_displayDateMinute']");
+		RuntimeVariables.setValue("currentTime", currentTime);
 		selenium.select("//select[@name='_84_displayDateMinute']",
-			RuntimeVariables.replace(":03"));
-		assertEquals(":03",
-			selenium.getSelectedLabel("//select[@name='_84_displayDateMinute']"));
+			RuntimeVariables.replace("value=${CurrentTimeIncremented}"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Announcements Entry Future Title"),
 			selenium.getText(
-				"//tr[@class='portlet-section-alternate results-row alt last']/td[1]/a"));
+				"//tr[contains(.,'Announcements Entry Future Title')]/td[1]/a"));
+		assertEquals(RuntimeVariables.replace("General"),
+			selenium.getText(
+				"//tr[contains(.,'Announcements Entry Future Title')]/td[2]/a"));
 	}
 }

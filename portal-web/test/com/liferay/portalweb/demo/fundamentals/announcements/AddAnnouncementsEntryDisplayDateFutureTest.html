@@ -104,14 +104,19 @@
 	<td>top</td>
 </tr>
 <tr>
-	<td>select</td>
+	<td>storeValue</td>
 	<td>//select[@name='_84_displayDateMinute']</td>
-	<td>:03</td>
+	<td>currentTime</td>
 </tr>
 <tr>
-	<td>assertSelectedLabel</td>
+	<td>storeEval</td>
+	<td>${currentTime} + 1</td>
+	<td>CurrentTimeIncremented</td>
+</tr>
+<tr>
+	<td>select</td>
 	<td>//select[@name='_84_displayDateMinute']</td>
-	<td>:03</td>
+	<td>value=${CurrentTimeIncremented}</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -120,8 +125,13 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//tr[@class='portlet-section-alternate results-row alt last']/td[1]/a</td>
+	<td>//tr[contains(.,'Announcements Entry Future Title')]/td[1]/a</td>
 	<td>Announcements Entry Future Title</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[contains(.,'Announcements Entry Future Title')]/td[2]/a</td>
+	<td>General</td>
 </tr>
 </tbody></table>
 </body>

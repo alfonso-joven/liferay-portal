@@ -61,22 +61,27 @@ public class AddAnnouncementsEntryExpirationDateExpiredTest extends BaseTestCase
 		selenium.selectFrame("//td[@id='cke_contents__84_editor']/iframe");
 		selenium.waitForText("//body", "Announcements Entry Expired Content");
 		selenium.selectFrame("relative=top");
-		selenium.select("//select[@name='_84_expirationDateMinute']",
-			RuntimeVariables.replace(":07"));
-		assertEquals(":07",
-			selenium.getSelectedLabel(
-				"//select[@name='_84_expirationDateMinute']"));
+
+		String expirationMonth = selenium.getValue(
+				"//select[@name='_84_expirationDateMonth']");
+		RuntimeVariables.setValue("expirationMonth", expirationMonth);
 		selenium.select("//select[@name='_84_expirationDateMonth']",
-			RuntimeVariables.replace("November"));
-		assertEquals("November",
-			selenium.getSelectedLabel(
-				"//select[@name='_84_expirationDateMonth']"));
+			RuntimeVariables.replace("value=${ExpirationMonthDecremented}"));
+
+		String currentTime = selenium.getValue(
+				"//select[@name='_84_expirationDateMinute']");
+		RuntimeVariables.setValue("currentTime", currentTime);
+		selenium.select("//select[@name='_84_expirationDateMinute']",
+			RuntimeVariables.replace("value=${CurrentTimeDecremented}"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Announcements Entry Expired Title"),
 			selenium.getText(
-				"//tr[@class='portlet-section-body results-row last']/td[1]/a"));
+				"//tr[contains(.,'Announcements Entry Expired Title')]/td[1]/a"));
+		assertEquals(RuntimeVariables.replace("General"),
+			selenium.getText(
+				"//tr[contains(.,'Announcements Entry Expired Title')]/td[2]/a"));
 	}
 }

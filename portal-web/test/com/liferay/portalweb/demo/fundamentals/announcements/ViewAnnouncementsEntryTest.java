@@ -30,6 +30,20 @@ public class ViewAnnouncementsEntryTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isPartialText("//h3[@class='entry-title']",
 				"Announcements Entry Title"));
+		assertEquals(RuntimeVariables.replace("Entries"),
+			selenium.getText(
+				"//li[contains(@class,'aui-state-active')]/span/a[contains(.,'Entries')]"));
+		assertEquals(RuntimeVariables.replace("Manage Entries"),
+			selenium.getText(
+				"//li[contains(@class,'aui-state-default')]/span/a[contains(.,'Manage Entries')]"));
+		assertEquals(RuntimeVariables.replace("Edit"),
+			selenium.getText("//td[@class='edit-entry']/span/a"));
+		assertEquals(RuntimeVariables.replace("Delete"),
+			selenium.getText("//td[@class='delete-entry']/span/a"));
+		assertEquals(RuntimeVariables.replace("Mark as Read"),
+			selenium.getText("//td[@class='control-entry']/a"));
+		assertEquals(RuntimeVariables.replace("General"),
+			selenium.getText("//span[@class='entry-scope']"));
 		assertEquals(RuntimeVariables.replace("Announcements Entry Content"),
 			selenium.getText(
 				"//div[@class=' entry-content entry-type-general']/p"));
