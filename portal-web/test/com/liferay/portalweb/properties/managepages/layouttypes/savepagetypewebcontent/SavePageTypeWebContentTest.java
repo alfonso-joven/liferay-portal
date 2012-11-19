@@ -65,6 +65,8 @@ public class SavePageTypeWebContentTest extends BaseTestCase {
 					"//iframe[contains(@id,'manageContentDialog')]");
 				selenium.selectFrame(
 					"//iframe[contains(@id,'manageContentDialog')]");
+				selenium.waitForElementPresent(
+					"//script[contains(@src,'/liferay/search_container.js')]");
 				selenium.waitForText("//a[@class='layout-tree']", "Public Pages");
 				assertEquals(RuntimeVariables.replace("Public Pages"),
 					selenium.getText("//a[@class='layout-tree']"));

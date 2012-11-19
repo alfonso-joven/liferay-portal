@@ -67,6 +67,10 @@ public class TearDownWCWebContentTest extends BaseTestCase {
 								   .matches("^Are you sure you want to delete the selected web content[\\s\\S]$"));
 
 			case 2:
+				assertEquals(RuntimeVariables.replace(
+						"No Web Content was found."),
+					selenium.getText("//div[@class='portlet-msg-info']"));
+
 			case 100:
 				label = -1;
 			}
