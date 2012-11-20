@@ -14,8 +14,8 @@
 
 package com.liferay.portal.cluster;
 
-import java.io.DataInput;
-import java.io.DataOutput;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
@@ -105,10 +105,14 @@ public class BaseClusterTestCase {
 			return 0;
 		}
 
+		public boolean isMulticastAddress() {
+			return false;
+		}
+
 		public void readExternal(ObjectInput objectInput) {
 		}
 
-		public void readFrom(DataInput dataInput) throws Exception {
+		public void readFrom(DataInputStream dataInputStream) {
 		}
 
 		public int size() {
@@ -118,7 +122,7 @@ public class BaseClusterTestCase {
 		public void writeExternal(ObjectOutput objectOutput) {
 		}
 
-		public void writeTo(DataOutput dataOutput) throws Exception {
+		public void writeTo(DataOutputStream dataOutputStream) {
 		}
 
 	}

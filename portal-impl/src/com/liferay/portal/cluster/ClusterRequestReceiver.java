@@ -95,7 +95,7 @@ public class ClusterRequestReceiver extends BaseReceiver {
 			ClusterNodeResponse clusterNodeResponse = (ClusterNodeResponse)obj;
 
 			processClusterResponse(
-				clusterNodeResponse, sourceAddress, localAddress);
+				clusterNodeResponse, sourceAddress);
 		}
 		else if (_log.isWarnEnabled()) {
 			_log.warn(
@@ -200,7 +200,7 @@ public class ClusterRequestReceiver extends BaseReceiver {
 
 		try {
 			channel.send(
-				(org.jgroups.Address)address.getRealAddress(),
+				(org.jgroups.Address)address.getRealAddress(), null,
 				clusterNodeResponse);
 		}
 		catch (Exception e) {
@@ -344,8 +344,7 @@ public class ClusterRequestReceiver extends BaseReceiver {
 		}
 	}
 
-	protected boolean processLocalMessage(
-		Object message, org.jgroups.Address sourceAddress) {
+	protected boolean processLocalMessage(Object message) {
 
 		if (message instanceof ClusterRequest) {
 			ClusterRequest clusterRequest = (ClusterRequest)message;

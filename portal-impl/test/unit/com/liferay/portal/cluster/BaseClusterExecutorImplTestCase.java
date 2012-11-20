@@ -52,6 +52,7 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.logging.Level;
+import java.util.Vector;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -264,8 +265,8 @@ public abstract class BaseClusterExecutorImplTestCase
 
 		org.jgroups.Address jAddress = localJChannel.getAddress();
 
-		List<org.jgroups.Address> jAddresses =
-			new ArrayList<org.jgroups.Address>();
+		Vector<org.jgroups.Address> jAddresses =
+			new Vector<org.jgroups.Address>();
 
 		jAddresses.add(jAddress);
 

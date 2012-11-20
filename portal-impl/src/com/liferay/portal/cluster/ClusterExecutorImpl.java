@@ -139,7 +139,7 @@ public class ClusterExecutorImpl
 
 		if (clusterRequest.isMulticast()) {
 			try {
-				_controlJChannel.send(null, clusterRequest);
+				_controlJChannel.send(null, null, clusterRequest);
 			}
 			catch (Exception e) {
 				throw new SystemException(
@@ -152,7 +152,7 @@ public class ClusterExecutorImpl
 					(org.jgroups.Address)address.getRealAddress();
 
 				try {
-					_controlJChannel.send(jGroupsAddress, clusterRequest);
+					_controlJChannel.send(jGroupsAddress, null, clusterRequest);
 				}
 				catch (Exception e) {
 					throw new SystemException(
@@ -376,7 +376,7 @@ public class ClusterExecutorImpl
 	}
 
 	@Override
-	protected void initChannels() throws Exception {
+	protected void initChannels() throws ChannelException {
 		Properties controlProperties = PropsUtil.getProperties(
 			PropsKeys.CLUSTER_LINK_CHANNEL_PROPERTIES_CONTROL, false);
 
