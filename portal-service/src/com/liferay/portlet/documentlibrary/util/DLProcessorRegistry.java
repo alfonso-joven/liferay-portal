@@ -42,6 +42,8 @@ public interface DLProcessorRegistry {
 
 	public void trigger(FileEntry fileEntry);
 
+	public void trigger(FileEntry fileEntry, boolean trusted);
+
 	public void unregister(DLProcessor dlProcessor);
 
 }

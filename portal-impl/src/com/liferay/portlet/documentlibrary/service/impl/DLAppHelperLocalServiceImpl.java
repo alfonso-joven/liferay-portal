@@ -623,7 +623,7 @@ public class DLAppHelperLocalServiceImpl
 			new Callable<Void>() {
 
 				public Void call() throws Exception {
-					DLProcessorRegistryUtil.trigger(fileEntry);
+					DLProcessorRegistryUtil.trigger(fileEntry, true);
 
 					return null;
 				}
