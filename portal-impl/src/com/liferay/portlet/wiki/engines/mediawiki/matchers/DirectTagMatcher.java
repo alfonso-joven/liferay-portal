@@ -68,7 +68,7 @@ public class DirectTagMatcher extends CallbackMatcher {
 				return null;
 			}
 
-			return StringUtil.replace(fileName, StringPool.UNDERLINE, "$5F");
+			return StringUtil.replace(fileName, StringPool.UNDERLINE, "%5F");
 		}
 
 	};
