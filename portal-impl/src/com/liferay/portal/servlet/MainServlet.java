@@ -1150,9 +1150,9 @@ public class MainServlet extends ActionServlet {
 
 		html = StringUtil.replace(html, "[$MESSAGE$]", message);
 
-		PrintWriter writer = response.getWriter();
+		PrintWriter printWriter = response.getWriter();
 
-		writer.print(html);
+		printWriter.print(html);
 	}
 
 	protected boolean processMaintenanceRequest(
