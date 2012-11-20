@@ -127,8 +127,7 @@ public class VerifyPermission
 				ResourceCodeLocalServiceUtil.getResourceCode(
 					resource.getCodeId());
 
-			if (isControlPanelLayout(
-					String.valueOf(plid), resource.getPrimKey()) ||
+			if (isControlPanelLayout(plid, resource.getPrimKey()) ||
 				isPrivateLayout(
 					resourceCode.getName(), resource.getPrimKey())) {
 
@@ -161,8 +160,7 @@ public class VerifyPermission
 				ResourceCodeLocalServiceUtil.getResourceCode(
 					resource.getCodeId());
 
-			if (isControlPanelLayout(
-					String.valueOf(plid), resource.getPrimKey()) ||
+			if (isControlPanelLayout(plid, resource.getPrimKey()) ||
 				isPrivateLayout(
 					resourceCode.getName(), resource.getPrimKey())) {
 
@@ -187,8 +185,7 @@ public class VerifyPermission
 				role.getRoleId());
 
 		for (ResourcePermission resourcePermission : resourcePermissions) {
-			if (isControlPanelLayout(
-					String.valueOf(plid), resourcePermission.getPrimKey()) ||
+			if (isControlPanelLayout(plid, resourcePermission.getPrimKey()) ||
 				isPrivateLayout(
 					resourcePermission.getName(),
 					resourcePermission.getPrimKey())) {
@@ -443,7 +440,7 @@ public class VerifyPermission
 		}
 	}
 
-	protected boolean isControlPanelLayout(String plid, String primKey)
+	protected boolean isControlPanelLayout(long plid, String primKey)
 		throws Exception {
 
 		if (primKey.startsWith(plid + PortletConstants.LAYOUT_SEPARATOR)) {
