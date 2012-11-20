@@ -124,6 +124,9 @@ public class EditGroupAction extends PortletAction {
 			}
 
 			if (Validator.isNotNull(closeRedirect)) {
+				redirect = HttpUtil.setParameter(
+					redirect, "closeRedirect", closeRedirect);
+
 				LiferayPortletConfig liferayPortletConfig =
 					(LiferayPortletConfig)portletConfig;
 
