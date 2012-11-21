@@ -54,17 +54,15 @@ public class SiteAdmin_RemoveGuestViewPortletPermissionsTest
 					"//iframe[contains(@id,'configurationIframeDialog')]");
 				selenium.waitForElementPresent(
 					"//script[contains(@src,'/liferay/navigation_interaction.js')]");
-				selenium.waitForVisible(
-					"//ul[contains(@class,'tabview-list')]/li/span/a[contains(.,'Permissions')]");
+				selenium.waitForVisible("link=Permissions");
 				assertEquals(RuntimeVariables.replace("Permissions"),
-					selenium.getText(
-						"//ul[contains(@class,'tabview-list')]/li/span/a[contains(.,'Permissions')]"));
-				selenium.clickAt("//ul[contains(@class,'tabview-list')]/li/span/a[contains(.,'Permissions')]",
+					selenium.getText("link=Permissions"));
+				selenium.clickAt("link=Permissions",
 					RuntimeVariables.replace("Permissions"));
 				selenium.waitForVisible("//input[@name='16_ACTION_VIEW']");
 
 				boolean actionViewCheckbox = selenium.isChecked(
-						"//input[contains(@name,'ACTION_VIEW')]");
+						"//input[@name='16_ACTION_VIEW']");
 
 				if (!actionViewCheckbox) {
 					label = 2;
@@ -72,16 +70,15 @@ public class SiteAdmin_RemoveGuestViewPortletPermissionsTest
 					continue;
 				}
 
-				selenium.clickAt("//input[contains(@name,'ACTION_VIEW')]",
+				selenium.clickAt("//input[@name='16_ACTION_VIEW']",
 					RuntimeVariables.replace("Action View Checkbox"));
 
 			case 2:
 				assertFalse(selenium.isChecked(
-						"//input[contains(@name,'ACTION_VIEW')]"));
+						"//input[@name='16_ACTION_VIEW']"));
 				selenium.clickAt("//input[@value='Save']",
 					RuntimeVariables.replace("Save"));
 				selenium.waitForPageToLoad("30000");
-				Thread.sleep(5000);
 				assertEquals(RuntimeVariables.replace(
 						"Your request completed successfully."),
 					selenium.getText("//div[@class='portlet-msg-success']"));

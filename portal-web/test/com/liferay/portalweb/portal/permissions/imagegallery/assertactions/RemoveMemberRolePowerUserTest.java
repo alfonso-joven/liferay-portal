@@ -45,13 +45,15 @@ public class RemoveMemberRolePowerUserTest extends BaseTestCase {
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Member"),
-			selenium.getText("link=Member"));
-		selenium.clickAt("link=Member", RuntimeVariables.replace("Member"));
+			selenium.getText("//tr[contains(.,'Member')]/td[2]/a"));
+		selenium.clickAt("//tr[contains(.,'Member')]/td[2]/a",
+			RuntimeVariables.replace("Member"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isPartialText("//a[@id='_125_rolesLink']", "Roles"));
 		selenium.clickAt("//a[@id='_125_rolesLink']",
 			RuntimeVariables.replace("Roles"));
-		selenium.click("link=Remove");
+		selenium.waitForVisible("//a[contains(.,'Remove')]/span");
+		selenium.click("//a[contains(.,'Remove')]/span");
 		assertFalse(selenium.isTextPresent("Power User"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));

@@ -58,12 +58,13 @@ public class SiteAdmin_RemoveGuestViewImagePermissionsTest extends BaseTestCase 
 				selenium.clickAt("//a[@title='Permissions Image Test Edited - ']",
 					RuntimeVariables.replace("Permissions Image Test Edited"));
 				Thread.sleep(5000);
+				assertTrue(selenium.isVisible("//img[@title='Permissions']"));
 				selenium.clickAt("//img[@title='Permissions']",
 					RuntimeVariables.replace("Permissions"));
 				Thread.sleep(5000);
 
 				boolean actionViewCheckbox = selenium.isChecked(
-						"//input[contains(@name,'ACTION_VIEW')]");
+						"//input[@name='16_ACTION_VIEW']");
 
 				if (!actionViewCheckbox) {
 					label = 2;
@@ -71,12 +72,12 @@ public class SiteAdmin_RemoveGuestViewImagePermissionsTest extends BaseTestCase 
 					continue;
 				}
 
-				selenium.clickAt("//input[contains(@name,'ACTION_VIEW')]",
+				selenium.clickAt("//input[@name='16_ACTION_VIEW']",
 					RuntimeVariables.replace("Action View Checkbox"));
 
 			case 2:
 				assertFalse(selenium.isChecked(
-						"//input[contains(@name,'ACTION_VIEW')]"));
+						"//input[@name='16_ACTION_VIEW']"));
 				selenium.clickAt("//input[@value='Save']",
 					RuntimeVariables.replace("Save"));
 				selenium.waitForPageToLoad("30000");

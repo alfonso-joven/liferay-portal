@@ -30,20 +30,22 @@ public class Guest_AssertCannotViewImageTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Media Gallery Permissions Test Folder 2 Edited"),
-			selenium.getText("//a[@class='image-thumbnail']"));
-		selenium.clickAt("//a[@class='image-thumbnail']",
+			selenium.getText(
+				"//a[@title='Media Gallery Permissions Test Folder 2 Edited - ']"));
+		selenium.clickAt("//a[@title='Media Gallery Permissions Test Folder 2 Edited - ']",
 			RuntimeVariables.replace(
 				"Media Gallery Permissions Test Folder 2 Edited"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Media Gallery Permissions Test Subfolder 2"),
-			selenium.getText("//span[@class='image-title']"));
-		selenium.clickAt("//span[@class='image-title']",
+			selenium.getText(
+				"//a[@title='Media Gallery Permissions Test Subfolder 2 - ']"));
+		selenium.clickAt("//a[@title='Media Gallery Permissions Test Subfolder 2 - ']",
 			RuntimeVariables.replace(
 				"Media Gallery Permissions Test Subfolder 2"));
 		selenium.waitForPageToLoad("30000");
-		assertFalse(selenium.isTextPresent("//h1[@class='header-title']/span"));
-		Thread.sleep(5000);
+		assertTrue(selenium.isElementNotPresent(
+				"//a[@title='Permissions Image Test Edited - ']"));
 		assertEquals(RuntimeVariables.replace(
 				"There are no media files in this folder."),
 			selenium.getText("//div[@class='portlet-msg-info']"));

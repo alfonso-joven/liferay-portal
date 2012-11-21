@@ -49,11 +49,10 @@ public class SiteAdmin_RestoreGuestViewFolderTest extends BaseTestCase {
 				selenium.clickAt("//div[@class='lfr-component lfr-menu-list lfr-menu-expanded align-right null']/ul/li/a[contains(.,'Permissions')]",
 					RuntimeVariables.replace("Permissions"));
 				selenium.waitForPageToLoad("30000");
-				selenium.waitForVisible(
-					"//input[contains(@name,'ACTION_VIEW')]");
+				selenium.waitForVisible("//input[@name='16_ACTION_VIEW']");
 
 				boolean actionViewCheckbox = selenium.isChecked(
-						"//input[contains(@name,'ACTION_VIEW')]");
+						"//input[@name='16_ACTION_VIEW']");
 
 				if (actionViewCheckbox) {
 					label = 2;
@@ -61,12 +60,11 @@ public class SiteAdmin_RestoreGuestViewFolderTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("//input[contains(@name,'ACTION_VIEW')]",
+				selenium.clickAt("//input[@name='16_ACTION_VIEW']",
 					RuntimeVariables.replace("Action View Checkbox"));
 
 			case 2:
-				assertTrue(selenium.isChecked(
-						"//input[contains(@name,'ACTION_VIEW')]"));
+				assertTrue(selenium.isChecked("//input[@name='16_ACTION_VIEW']"));
 				selenium.clickAt("//input[@value='Save']",
 					RuntimeVariables.replace("Save"));
 				selenium.waitForPageToLoad("30000");

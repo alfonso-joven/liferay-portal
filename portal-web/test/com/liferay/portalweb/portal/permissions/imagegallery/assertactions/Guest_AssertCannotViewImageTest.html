@@ -20,33 +20,28 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//a[@class='image-thumbnail']</td>
+	<td>//a[@title='Media Gallery Permissions Test Folder 2 Edited - ']</td>
 	<td>Media Gallery Permissions Test Folder 2 Edited</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>//a[@class='image-thumbnail']</td>
+	<td>//a[@title='Media Gallery Permissions Test Folder 2 Edited - ']</td>
 	<td>Media Gallery Permissions Test Folder 2 Edited</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//span[@class='image-title']</td>
+	<td>//a[@title='Media Gallery Permissions Test Subfolder 2 - ']</td>
 	<td>Media Gallery Permissions Test Subfolder 2</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>//span[@class='image-title']</td>
+	<td>//a[@title='Media Gallery Permissions Test Subfolder 2 - ']</td>
 	<td>Media Gallery Permissions Test Subfolder 2</td>
 </tr>
 <tr>
-	<td>assertTextNotPresent</td>
-	<td>//h1[@class='header-title']/span</td>
-	<td>Media Gallery Permissions Test Folder 2 Edited </td>
-</tr>
-<tr>
-	<td>pause</td>
-	<td>5000</td>
-	<td></td>
+	<td>assertElementNotPresent</td>
+	<td>//a[@title='Permissions Image Test Edited - ']</td>
+	<td>Permissions Image Test Edited</td>
 </tr>
 <tr>
 	<td>assertText</td>

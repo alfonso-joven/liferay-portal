@@ -60,11 +60,10 @@ public class SiteAdmin_RestoreGuestViewImageTest extends BaseTestCase {
 				selenium.waitForVisible("//img[@title='Permissions']");
 				selenium.clickAt("//img[@title='Permissions']",
 					RuntimeVariables.replace("Permissions"));
-				selenium.waitForVisible(
-					"//input[contains(@name,'ACTION_VIEW')]");
+				selenium.waitForVisible("//input[@name='16_ACTION_VIEW']");
 
 				boolean actionViewCheckbox = selenium.isChecked(
-						"//input[contains(@name,'ACTION_VIEW')]");
+						"//input[@name='16_ACTION_VIEW']");
 
 				if (actionViewCheckbox) {
 					label = 2;
@@ -72,12 +71,11 @@ public class SiteAdmin_RestoreGuestViewImageTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("//input[contains(@name,'ACTION_VIEW')]",
+				selenium.clickAt("//input[@name='16_ACTION_VIEW']",
 					RuntimeVariables.replace("Action View Checkbox"));
 
 			case 2:
-				assertTrue(selenium.isChecked(
-						"//input[contains(@name,'ACTION_VIEW')]"));
+				assertTrue(selenium.isChecked("//input[@name='16_ACTION_VIEW']"));
 				selenium.clickAt("//input[@value='Save']",
 					RuntimeVariables.replace("Save"));
 				selenium.waitForPageToLoad("30000");

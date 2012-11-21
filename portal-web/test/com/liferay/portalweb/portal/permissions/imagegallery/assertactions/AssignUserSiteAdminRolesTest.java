@@ -45,8 +45,9 @@ public class AssignUserSiteAdminRolesTest extends BaseTestCase {
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("SiteAdmin"),
-			selenium.getText("link=SiteAdmin"));
-		selenium.clickAt("link=SiteAdmin", RuntimeVariables.replace("SiteAdmin"));
+			selenium.getText("//tr[contains(.,'SiteAdmin')]/td[2]/a"));
+		selenium.clickAt("//tr[contains(.,'SiteAdmin')]/td[2]/a",
+			RuntimeVariables.replace("SiteAdmin"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isPartialText("//a[@id='_125_rolesLink']", "Roles"));
 		selenium.clickAt("//a[@id='_125_rolesLink']",
@@ -65,13 +66,14 @@ public class AssignUserSiteAdminRolesTest extends BaseTestCase {
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("SiteAdmin"),
-			selenium.getText("link=SiteAdmin"));
-		selenium.clickAt("link=SiteAdmin", RuntimeVariables.replace("SiteAdmin"));
+			selenium.getText("//tr[contains(.,'SiteAdmin')]/td[1]/a"));
+		selenium.clickAt("//tr[contains(.,'SiteAdmin')]/td[1]/a",
+			RuntimeVariables.replace("SiteAdmin"));
 		selenium.selectWindow("null");
-		selenium.waitForPartialText("//tr[contains(.,'SiteAdmin')]/td",
+		selenium.waitForPartialText("//tr[contains(.,'SiteAdmin')]/td[1]",
 			"SiteAdmin");
-		assertTrue(selenium.isPartialText("//tr[contains(.,'SiteAdmin')]/td",
-				"SiteAdmin"));
+		assertTrue(selenium.isPartialText(
+				"//tr[contains(.,'SiteAdmin')]/td[1]", "SiteAdmin"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");

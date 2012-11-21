@@ -45,8 +45,9 @@ public class AssignUserMemberRolesTest extends BaseTestCase {
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Member"),
-			selenium.getText("link=Member"));
-		selenium.clickAt("link=Member", RuntimeVariables.replace("Member"));
+			selenium.getText("//tr[contains(.,'Member')]/td[2]/a"));
+		selenium.clickAt("//tr[contains(.,'Member')]/td[2]/a",
+			RuntimeVariables.replace("Member"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isPartialText("//a[@id='_125_rolesLink']", "Roles"));
 		selenium.clickAt("//a[@id='_125_rolesLink']",
@@ -65,11 +66,12 @@ public class AssignUserMemberRolesTest extends BaseTestCase {
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Member"),
-			selenium.getText("link=Member"));
-		selenium.clickAt("link=Member", RuntimeVariables.replace("Member"));
+			selenium.getText("//tr[contains(.,'Member')]/td[1]/a"));
+		selenium.clickAt("//tr[contains(.,'Member')]/td[1]/a",
+			RuntimeVariables.replace("Member"));
 		selenium.selectWindow("null");
-		selenium.waitForPartialText("//tr[contains(.,'Member')]/td", "Member");
-		assertTrue(selenium.isPartialText("//tr[contains(.,'Member')]/td",
+		selenium.waitForPartialText("//tr[contains(.,'Member')]/td[1]", "Member");
+		assertTrue(selenium.isPartialText("//tr[contains(.,'Member')]/td[1]",
 				"Member"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));

@@ -51,7 +51,7 @@ public class SiteAdmin_RemoveGuestViewFolderPermissionsTest extends BaseTestCase
 				selenium.waitForPageToLoad("30000");
 
 				boolean actionViewCheckbox = selenium.isChecked(
-						"//input[contains(@name,'ACTION_VIEW')]");
+						"//input[@name='16_ACTION_VIEW']");
 
 				if (!actionViewCheckbox) {
 					label = 2;
@@ -59,12 +59,12 @@ public class SiteAdmin_RemoveGuestViewFolderPermissionsTest extends BaseTestCase
 					continue;
 				}
 
-				selenium.clickAt("//input[contains(@name,'ACTION_VIEW')]",
+				selenium.clickAt("//input[@name='16_ACTION_VIEW']",
 					RuntimeVariables.replace("Action View Checkbox"));
 
 			case 2:
 				assertFalse(selenium.isChecked(
-						"//input[contains(@name,'ACTION_VIEW')]"));
+						"//input[@name='16_ACTION_VIEW']"));
 				selenium.clickAt("//input[@value='Save']",
 					RuntimeVariables.replace("Save"));
 				selenium.waitForPageToLoad("30000");

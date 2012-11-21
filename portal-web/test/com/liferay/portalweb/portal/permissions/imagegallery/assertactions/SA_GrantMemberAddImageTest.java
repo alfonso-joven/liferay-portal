@@ -56,11 +56,9 @@ public class SA_GrantMemberAddImageTest extends BaseTestCase {
 				selenium.clickAt("//div[@class='lfr-component lfr-menu-list lfr-menu-expanded align-right null']/ul/li/a[contains(.,'Permissions')]",
 					RuntimeVariables.replace("Permissions"));
 				selenium.waitForPageToLoad("30000");
-				selenium.waitForVisible(
-					"//input[contains(@id,'member_ACTION_ADD')]");
 
 				boolean memberActionAddCheckbox = selenium.isChecked(
-						"//input[contains(@id,'member_ACTION_ADD')]");
+						"//input[@id='member_ACTION_ADD_DOCUMENT']");
 
 				if (memberActionAddCheckbox) {
 					label = 2;
@@ -68,12 +66,12 @@ public class SA_GrantMemberAddImageTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("//input[contains(@id,'member_ACTION_ADD')]",
+				selenium.clickAt("//input[@id='member_ACTION_ADD_DOCUMENT']",
 					RuntimeVariables.replace("Member Action Add Checkbox"));
 
 			case 2:
 				assertTrue(selenium.isChecked(
-						"//input[contains(@id,'member_ACTION_ADD')]"));
+						"//input[@id='member_ACTION_ADD_DOCUMENT']"));
 				selenium.clickAt("//input[@value='Save']",
 					RuntimeVariables.replace("Save"));
 				selenium.waitForPageToLoad("30000");
