@@ -34,7 +34,6 @@ import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
 import org.jgroups.Channel;
-import org.jgroups.ChannelException;
 import org.jgroups.Message;
 import org.jgroups.View;
 
@@ -94,8 +93,7 @@ public class ClusterRequestReceiver extends BaseReceiver {
 		else if (obj instanceof ClusterNodeResponse) {
 			ClusterNodeResponse clusterNodeResponse = (ClusterNodeResponse)obj;
 
-			processClusterResponse(
-				clusterNodeResponse, sourceAddress);
+			processClusterResponse(clusterNodeResponse, sourceAddress);
 		}
 		else if (_log.isWarnEnabled()) {
 			_log.warn(

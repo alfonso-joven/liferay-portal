@@ -45,6 +45,7 @@ import java.lang.reflect.InvocationTargetException;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Exchanger;
 import java.util.concurrent.ExecutionException;
@@ -52,7 +53,6 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.logging.Level;
-import java.util.Vector;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -379,10 +379,12 @@ public abstract class BaseClusterExecutorImplTestCase
 			Object object = message.getObject();
 
 			try {
-				if (message.getSrc().equals(
-					_clusterExecutorImpl.getLocalClusterNodeAddress().
-						getRealAddress())) {
+				org.jgroups.Address srcJAddress = message.getSrc();
 
+				Address clusterNodeAddress =
+					_clusterExecutorImpl.getLocalClusterNodeAddress();
+
+				if (srcJAddress.equals(clusterNodeAddress.getRealAddress())) {
 					if (object instanceof ClusterRequest) {
 						_localRequestExchanger.exchange((ClusterRequest)object);
 					}
