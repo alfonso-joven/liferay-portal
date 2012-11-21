@@ -208,7 +208,7 @@ public class PortletExportImportTest extends BaseExportImportTestCase {
 		Group companyGroup = company.getGroup();
 
 		JournalArticle globalScopeJournalArticle = addJournalArticle(
-			companyGroup.getGroupId(), 0, "Global Article", "Global Content");
+			companyGroup.getGroupId(), "Global Article", "Global Content");
 
 		layoutSetprototypeJxPreferences.setValue(
 			"articleId", globalScopeJournalArticle.getArticleId());
