@@ -24,11 +24,9 @@ import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.model.Group;
-import com.liferay.portal.model.GroupConstants;
 import com.liferay.portal.model.Layout;
 import com.liferay.portal.model.Organization;
 import com.liferay.portal.model.Permission;
-import com.liferay.portal.model.PortletConstants;
 import com.liferay.portal.model.Resource;
 import com.liferay.portal.model.ResourceCode;
 import com.liferay.portal.model.ResourceConstants;
@@ -38,7 +36,6 @@ import com.liferay.portal.model.RoleConstants;
 import com.liferay.portal.security.permission.ActionKeys;
 import com.liferay.portal.security.permission.PermissionCacheUtil;
 import com.liferay.portal.security.permission.ResourceActionsUtil;
-import com.liferay.portal.service.GroupLocalServiceUtil;
 import com.liferay.portal.service.LayoutLocalServiceUtil;
 import com.liferay.portal.service.PermissionLocalServiceUtil;
 import com.liferay.portal.service.ResourceActionLocalServiceUtil;
@@ -84,19 +81,19 @@ public class VerifyPermission
 		}
 	}
 
-	protected void deletePermissions() throws Exception {
+	protected void deleteDefaultPrivateLayoutPermissions() throws Exception {
 		long[] companyIds = PortalInstances.getCompanyIdsBySQL();
 
 		for (long companyId : companyIds) {
 			try {
 				if (PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM == 5) {
-					deletePermissions_5(companyId);
+					deleteDefaultPrivateLayoutPermissions_5(companyId);
 				}
 				else if (PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM == 6) {
-					deletePermissions_6(companyId);
+					deleteDefaultPrivateLayoutPermissions_6(companyId);
 				}
 				else {
-					deletePermissions_1to4(companyId);
+					deleteDefaultPrivateLayoutPermissions_1to4(companyId);
 				}
 			}
 			catch (Exception e) {
@@ -107,12 +104,8 @@ public class VerifyPermission
 		}
 	}
 
-	protected void deletePermissions_1to4(long companyId) throws Exception {
-		Group group = GroupLocalServiceUtil.getGroup(
-			companyId, GroupConstants.CONTROL_PANEL);
-
-		long plid = LayoutLocalServiceUtil.getDefaultPlid(
-			group.getGroupId(), true);
+	protected void deleteDefaultPrivateLayoutPermissions_1to4(long companyId)
+		throws Exception {
 
 		long defaultUserId = UserLocalServiceUtil.getDefaultUserId(companyId);
 
@@ -127,9 +120,7 @@ public class VerifyPermission
 				ResourceCodeLocalServiceUtil.getResourceCode(
 					resource.getCodeId());
 
-			if (isControlPanelLayout(
-					String.valueOf(plid), resource.getPrimKey()) ||
-				isPrivateLayout(
+			if (isPrivateLayout(
 					resourceCode.getName(), resource.getPrimKey())) {
 
 				String[] actionIds = new String[] {permission.getActionId()};
@@ -140,12 +131,8 @@ public class VerifyPermission
 		}
 	}
 
-	protected void deletePermissions_5(long companyId) throws Exception {
-		Group group = GroupLocalServiceUtil.getGroup(
-			companyId, GroupConstants.CONTROL_PANEL);
-
-		long plid = LayoutLocalServiceUtil.getDefaultPlid(
-			group.getGroupId(), true);
+	protected void deleteDefaultPrivateLayoutPermissions_5(long companyId)
+		throws Exception {
 
 		Role role = RoleLocalServiceUtil.getRole(
 			companyId, RoleConstants.GUEST);
@@ -161,9 +148,7 @@ public class VerifyPermission
 				ResourceCodeLocalServiceUtil.getResourceCode(
 					resource.getCodeId());
 
-			if (isControlPanelLayout(
-					String.valueOf(plid), resource.getPrimKey()) ||
-				isPrivateLayout(
+			if (isPrivateLayout(
 					resourceCode.getName(), resource.getPrimKey())) {
 
 				PermissionLocalServiceUtil.unsetRolePermission(
@@ -172,12 +157,8 @@ public class VerifyPermission
 		}
 	}
 
-	protected void deletePermissions_6(long companyId) throws Exception {
-		Group group = GroupLocalServiceUtil.getGroup(
-			companyId, GroupConstants.CONTROL_PANEL);
-
-		long plid = LayoutLocalServiceUtil.getDefaultPlid(
-			group.getGroupId(), true);
+	protected void deleteDefaultPrivateLayoutPermissions_6(long companyId)
+		throws Exception {
 
 		Role role = RoleLocalServiceUtil.getRole(
 			companyId, RoleConstants.GUEST);
@@ -187,9 +168,7 @@ public class VerifyPermission
 				role.getRoleId());
 
 		for (ResourcePermission resourcePermission : resourcePermissions) {
-			if (isControlPanelLayout(
-					String.valueOf(plid), resourcePermission.getPrimKey()) ||
-				isPrivateLayout(
+			if (isPrivateLayout(
 					resourcePermission.getName(),
 					resourcePermission.getPrimKey())) {
 
@@ -201,7 +180,7 @@ public class VerifyPermission
 
 	@Override
 	protected void doVerify() throws Exception {
-		deletePermissions();
+		deleteDefaultPrivateLayoutPermissions();
 
 		if ((PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM != 5) &&
 			(PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM != 6)) {
@@ -441,16 +420,6 @@ public class VerifyPermission
 				_log.error(e, e);
 			}
 		}
-	}
-
-	protected boolean isControlPanelLayout(String plid, String primKey)
-		throws Exception {
-
-		if (primKey.startsWith(plid + PortletConstants.LAYOUT_SEPARATOR)) {
-			return true;
-		}
-
-		return false;
 	}
 
 	protected boolean isPrivateLayout(String name, String primKey)
