@@ -1004,7 +1004,9 @@ public class ClusterSchedulerEngineTest {
 			_timestamp = objectInput.readLong();
 		}
 
-		public void readFrom(DataInputStream dataInputStream) throws IOException {
+		public void readFrom(DataInputStream dataInputStream)
+			throws IOException {
+
 			_timestamp = dataInputStream.readLong();
 		}
 
@@ -1018,7 +1020,9 @@ public class ClusterSchedulerEngineTest {
 			objectOutput.writeLong(_timestamp);
 		}
 
-		public void writeTo(DataOutputStream dataOutputStream) throws IOException {
+		public void writeTo(DataOutputStream dataOutputStream)
+			throws IOException {
+
 			dataOutputStream.writeLong(_timestamp);
 		}
 
