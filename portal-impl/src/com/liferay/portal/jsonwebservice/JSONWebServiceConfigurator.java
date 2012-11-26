@@ -41,7 +41,9 @@ import java.lang.reflect.Modifier;
 import java.net.URL;
 import java.net.URLDecoder;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -126,22 +128,26 @@ public class JSONWebServiceConfigurator extends ClassFinder {
 				libDir = new File(classPathFile.getParent(), "lib");
 			}
 
-			classPathFiles = new File[2];
+			List<File> classPaths = new ArrayList<File>();
 
-			classPathFiles[0] = classPathFile;
+			classPaths.add(classPathFile);
 
 			FindFile findFile = new RegExpFindFile(
 				".*-(hook|portlet|web)-service.*\\.jar");
 
 			findFile.searchPath(libDir);
 
-			classPathFiles[1] = findFile.nextFile();
+			File file = null;
 
-			if (classPathFiles[1] == null) {
-				File classesDir = new File(libDir.getParent(), "classes");
-
-				classPathFiles[1] = classesDir;
+			while ((file = findFile.nextFile()) != null) {
+				classPaths.add(file);
 			}
+
+			File classesDir = new File(libDir.getParent(), "classes");
+
+			classPaths.add(classesDir);
+
+			classPathFiles = classPaths.toArray(new File[classPaths.size()]);
 		}
 		else {
 			classLoader = PACLClassLoaderUtil.getContextClassLoader();
