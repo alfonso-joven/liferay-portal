@@ -197,7 +197,7 @@ private String[] _getCategoryIdsTitles(String categoryIds, String categoryNames,
 
 				categoryIdsSb.append(categoryId);
 				categoryIdsSb.append(StringPool.COMMA);
-				
+
 				categoryNamesSb.append(category.getTitle(themeDisplay.getLocale()));
 				categoryNamesSb.append(_CATEGORY_SEPARATOR);
 			}
@@ -205,10 +205,10 @@ private String[] _getCategoryIdsTitles(String categoryIds, String categoryNames,
 			if(categoryIdsSb.index() > 0){
 				categoryIdsSb.setIndex(categoryIdsSb.index() - 1);
 				categoryNamesSb.setIndex(categoryNamesSb.index() - 1);
-	
+
 				categoryIds = categoryIdsSb.toString();
 				categoryNames = categoryNamesSb.toString();
-			} 
+			}
 		}
 	}
 
