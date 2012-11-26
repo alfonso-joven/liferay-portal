@@ -82,7 +82,7 @@ String templateTypeValue = StringPool.BLANK;
 if (scopeTemplateType.equals(DDMTemplateConstants.TEMPLATE_TYPE_DETAIL)) {
 	templateTypeValue = DDMTemplateConstants.TEMPLATE_TYPE_DETAIL;
 }
-else if (scopeStorageType.equals(DDMTemplateConstants.TEMPLATE_TYPE_LIST)) {
+else if (scopeTemplateType.equals(DDMTemplateConstants.TEMPLATE_TYPE_LIST)) {
 	templateTypeValue = DDMTemplateConstants.TEMPLATE_TYPE_LIST;
 }
 
