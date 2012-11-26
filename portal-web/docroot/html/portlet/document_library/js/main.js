@@ -206,6 +206,11 @@ AUI.add(
 							entryPage = config.entryEnd / config.entryRowsPerPage;
 						}
 
+						var TPL = {
+							pageReportLabel: Lang.sub(Liferay.Language.get('x-of-x'), ['{page}', '{totalPages}']),
+							totalLabel: '(' + Liferay.Language.get('total') + ' {total})'
+						};
+
 						var entryPaginator = new A.Paginator(
 							{
 								circular: false,
@@ -217,7 +222,8 @@ AUI.add(
 								prevPageLinkLabel: PREV_PAGE_LINK_LABEL,
 								rowsPerPage: config.entryRowsPerPage,
 								rowsPerPageOptions: config.entryRowsPerPageOptions,
-								total: config.entriesTotal
+								total: config.entriesTotal,
+								TPL: TPL
 							}
 						).render();
 
@@ -241,7 +247,8 @@ AUI.add(
 								prevPageLinkLabel: PREV_PAGE_LINK_LABEL,
 								rowsPerPage: config.folderRowsPerPage,
 								rowsPerPageOptions: config.folderRowsPerPageOptions,
-								total: config.foldersTotal
+								total: config.foldersTotal,
+								TPL: TPL
 							}
 						).render();
 
