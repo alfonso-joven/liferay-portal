@@ -187,8 +187,8 @@ public class ClusterableAdvice
 	private static Log _log = LogFactoryUtil.getLog(ClusterableAdvice.class);
 
 	private static MethodKey _invokeMethodKey = new MethodKey(
-		ClusterableAdvice.class, "_invoke", MethodHandler.class, String.class,
-		String.class, Class.class, Map.class);
+		ClusterableAdvice.class.getName(), "_invoke", MethodHandler.class,
+		String.class, String.class, Class.class, Map.class);
 
 	private static Clusterable _nullClusterable = new Clusterable() {
 
