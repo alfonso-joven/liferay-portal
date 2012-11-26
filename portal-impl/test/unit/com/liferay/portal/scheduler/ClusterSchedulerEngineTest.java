@@ -53,8 +53,8 @@ import com.liferay.portal.util.PortalImpl;
 import com.liferay.portal.util.PortalUtil;
 import com.liferay.portal.uuid.PortalUUIDImpl;
 
-import java.io.DataInput;
-import java.io.DataOutput;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
@@ -996,12 +996,16 @@ public class ClusterSchedulerEngineTest {
 			return _timestamp;
 		}
 
+		public boolean isMulticastAddress() {
+			return false;
+		}
+
 		public void readExternal(ObjectInput objectInput) throws IOException {
 			_timestamp = objectInput.readLong();
 		}
 
-		public void readFrom(DataInput dataInput) throws Exception {
-			_timestamp = dataInput.readLong();
+		public void readFrom(DataInputStream dataInputStream) throws IOException {
+			_timestamp = dataInputStream.readLong();
 		}
 
 		public int size() {
@@ -1014,8 +1018,8 @@ public class ClusterSchedulerEngineTest {
 			objectOutput.writeLong(_timestamp);
 		}
 
-		public void writeTo(DataOutput dataOutput) throws Exception {
-			dataOutput.writeLong(_timestamp);
+		public void writeTo(DataOutputStream dataOutputStream) throws IOException {
+			dataOutputStream.writeLong(_timestamp);
 		}
 
 		private long _timestamp;
