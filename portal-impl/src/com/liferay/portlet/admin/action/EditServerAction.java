@@ -412,8 +412,9 @@ public class EditServerAction extends PortletAction {
 					catch (Exception e) {
 						_log.error(e, e);
 					}
-
-					ShardUtil.popCompanyService();
+					finally {
+						ShardUtil.popCompanyService();
+					}
 				}
 			}
 		}
