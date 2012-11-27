@@ -3195,9 +3195,12 @@ public class PortalImpl implements Portal {
 	public String getPortalURL(
 		String serverName, int serverPort, boolean secure) {
 
+		boolean https =
+			secure || Http.HTTPS.equals(PropsValues.WEB_SERVER_PROTOCOL);
+
 		StringBundler sb = new StringBundler();
 
-		if (secure || Http.HTTPS.equals(PropsValues.WEB_SERVER_PROTOCOL)) {
+		if (https) {
 			sb.append(Http.HTTPS_WITH_SLASH);
 		}
 		else {
@@ -3211,7 +3214,7 @@ public class PortalImpl implements Portal {
 			sb.append(PropsValues.WEB_SERVER_HOST);
 		}
 
-		if (!secure) {
+		if (!https) {
 			if (PropsValues.WEB_SERVER_HTTP_PORT == -1) {
 				if ((serverPort != Http.HTTP_PORT) &&
 					(serverPort != Http.HTTPS_PORT)) {
@@ -3228,7 +3231,7 @@ public class PortalImpl implements Portal {
 			}
 		}
 
-		if (secure) {
+		if (https) {
 			if (PropsValues.WEB_SERVER_HTTPS_PORT == -1) {
 				if ((serverPort != Http.HTTP_PORT) &&
 					(serverPort != Http.HTTPS_PORT)) {
