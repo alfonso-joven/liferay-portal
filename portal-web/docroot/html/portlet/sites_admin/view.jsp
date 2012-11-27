@@ -44,7 +44,7 @@ pageContext.setAttribute("portletURL", portletURL);
 
 		groupParams.put("site", Boolean.TRUE);
 
-		if (!permissionChecker.isCompanyAdmin()) {
+		if (!permissionChecker.isCompanyAdmin() && !GroupPermissionUtil.contains(permissionChecker, ActionKeys.VIEW)) {
 			groupParams.put("usersGroups", new Long(user.getUserId()));
 			//groupParams.put("active", Boolean.TRUE);
 		}
