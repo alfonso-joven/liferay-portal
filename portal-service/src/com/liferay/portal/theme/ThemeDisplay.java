@@ -477,8 +477,7 @@ public class ThemeDisplay implements Cloneable, Serializable {
 	}
 
 	/**
-	 * @deprecated Use <code>htmlUtil.escape(
-	$theme_display.getURLPageSettings().toString()) + "#layout")</code>.
+	 * @deprecated Use <code>getURLPageSettings().toString() + "#layout"</code>.
 	 */
 	public String getURLLayoutTemplates() {
 		return _urlLayoutTemplates;
