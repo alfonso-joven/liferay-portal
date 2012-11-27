@@ -765,7 +765,9 @@ public class EditLayoutsAction extends PortletAction {
 				value = ParamUtil.getString(actionRequest, property);
 			}
 
-			if (!value.equals(layoutSet.getThemeSetting(key, device))) {
+			if ((value != null) &&
+				!value.equals(layoutSet.getThemeSetting(key, device))) {
+
 				typeSettingsProperties.setProperty(
 					ThemeSettingImpl.namespaceProperty(device, key), value);
 			}
