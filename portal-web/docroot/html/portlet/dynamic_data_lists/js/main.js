@@ -80,7 +80,7 @@ AUI.add(
 						);
 					},
 
-					_selectFileEntry: function(groupId, url, uuid, title, version) {
+					_selectFileEntry: function(url, uuid, groupId, title, version) {
 						var instance = this;
 
 						instance.selectedTitle = title;
@@ -91,8 +91,8 @@ AUI.add(
 							JSON.stringify(
 								{
 									groupId: groupId,
-									uuid: uuid,
 									title: title,
+									uuid: uuid,
 									version: version
 								}
 							)
