@@ -626,12 +626,12 @@
 }
 
 .ie6, .ie7 {
-	.add-article-selector {
-		display: inline
-	}
-
 	.journal-article-helper {
 		filter: alpha(opacity=80);
+	}
+
+	.portlet-journal .add-article-selector {
+		display: inline;
 	}
 }
 
