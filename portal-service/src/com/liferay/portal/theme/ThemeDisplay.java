@@ -476,9 +476,6 @@ public class ThemeDisplay implements Cloneable, Serializable {
 		return _urlHome;
 	}
 
-	/**
-	 * @deprecated Use <code>getURLPageSettings().toString() + "#layout"</code>.
-	 */
 	public String getURLLayoutTemplates() {
 		return _urlLayoutTemplates;
 	}
