@@ -1027,6 +1027,8 @@ public class ServicePreAction extends Action {
 
 				themeDisplay.setURLPageSettings(pageSettingsURL);
 
+				themeDisplay.setURLLayoutTemplates(pageSettingsURL + "#layout");
+
 				boolean site = group.isSite();
 
 				if (!site && group.isStagingGroup()) {
