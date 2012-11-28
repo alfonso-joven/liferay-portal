@@ -24,6 +24,7 @@ import com.liferay.portal.model.Layout;
 import com.liferay.portal.struts.ActionConstants;
 import com.liferay.portal.struts.PortletAction;
 import com.liferay.portal.theme.ThemeDisplay;
+import com.liferay.portal.util.Portal;
 import com.liferay.portal.util.PortalUtil;
 import com.liferay.portal.util.PortletKeys;
 import com.liferay.portal.util.WebKeys;
@@ -98,8 +99,6 @@ public class RSSAction extends PortletAction {
 		ThemeDisplay themeDisplay = (ThemeDisplay)request.getAttribute(
 			WebKeys.THEME_DISPLAY);
 
-		Layout layout = themeDisplay.getLayout();
-
 		long companyId = ParamUtil.getLong(request, "companyId");
 		long nodeId = ParamUtil.getLong(request, "nodeId");
 		String title = ParamUtil.getString(request, "title");
@@ -112,18 +111,14 @@ public class RSSAction extends PortletAction {
 		String displayStyle = ParamUtil.getString(
 			request, "displayStyle", RSSUtil.DISPLAY_STYLE_FULL_CONTENT);
 
-		PortletURL feedURL = new PortletURLImpl(
-			request, PortletKeys.WIKI, layout.getPlid(),
-			PortletRequest.RENDER_PHASE);
+		String layoutFullURL = PortalUtil.getLayoutFullURL(
+			themeDisplay.getScopeGroupId(), PortletKeys.WIKI);
 
-		feedURL.setParameter("nodeId", String.valueOf(nodeId));
+		String feedURL =
+			layoutFullURL + Portal.FRIENDLY_URL_SEPARATOR + "wiki/" +
+				String.valueOf(nodeId);
 
-		PortletURL entryURL = new PortletURLImpl(
-			request, PortletKeys.WIKI, layout.getPlid(),
-			PortletRequest.RENDER_PHASE);
-
-		entryURL.setParameter("nodeId", String.valueOf(nodeId));
-		entryURL.setParameter("title", title);
+		String entryURL = feedURL + StringPool.SLASH + title;
 
 		Locale locale = themeDisplay.getLocale();
 
@@ -132,12 +127,11 @@ public class RSSAction extends PortletAction {
 		if ((nodeId > 0) && Validator.isNotNull(title)) {
 			rss = WikiPageServiceUtil.getPagesRSS(
 				companyId, nodeId, title, max, type, version, displayStyle,
-				feedURL.toString(), entryURL.toString(), locale);
+				feedURL, entryURL, locale);
 		}
 		else if (nodeId > 0) {
 			rss = WikiPageServiceUtil.getNodePagesRSS(
-				nodeId, max, type, version, displayStyle, feedURL.toString(),
-				entryURL.toString());
+				nodeId, max, type, version, displayStyle, feedURL, entryURL);
 		}
 
 		return rss.getBytes(StringPool.UTF8);
