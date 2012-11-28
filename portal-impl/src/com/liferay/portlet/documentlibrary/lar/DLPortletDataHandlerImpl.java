@@ -42,7 +42,6 @@ import com.liferay.portal.kernel.xml.SAXReaderUtil;
 import com.liferay.portal.model.Group;
 import com.liferay.portal.model.Repository;
 import com.liferay.portal.model.RepositoryEntry;
-import com.liferay.portal.repository.liferayrepository.LiferayRepository;
 import com.liferay.portal.repository.liferayrepository.model.LiferayFileEntry;
 import com.liferay.portal.service.GroupLocalServiceUtil;
 import com.liferay.portal.service.RepositoryEntryLocalServiceUtil;
@@ -593,14 +592,6 @@ public class DLPortletDataHandlerImpl extends BasePortletDataHandler {
 					repository.getUuid(), portletDataContext.getScopeGroupId());
 
 				if (existingRepository == null) {
-					existingRepository =
-						RepositoryLocalServiceUtil.fetchRepository(
-							portletDataContext.getScopeGroupId(),
-							repository.getName());
-				}
-
-				if ((existingRepository == null) ||
-					!(existingRepository instanceof LiferayRepository)) {
 					serviceContext.setUuid(repository.getUuid());
 
 					importedRepositoryId =
