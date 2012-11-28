@@ -1559,6 +1559,12 @@ public class SourceFormatter {
 
 							if (excluded == null) {
 								excluded = _javaTermSortExclusions.getProperty(
+									fileNameWithForwardSlashes + StringPool.AT +
+										javaTermName);
+							}
+
+							if (excluded == null) {
+								excluded = _javaTermSortExclusions.getProperty(
 									fileNameWithForwardSlashes);
 							}
 						}
