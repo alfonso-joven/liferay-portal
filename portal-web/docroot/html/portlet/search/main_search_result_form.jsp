@@ -33,6 +33,8 @@ AssetRendererFactory assetRendererFactory = AssetRendererFactoryRegistryUtil.get
 
 AssetRenderer assetRenderer = null;
 
+boolean inheritRedirect = false;
+
 if (assetRendererFactory != null) {
 	long classPK = GetterUtil.getLong(document.get(Field.ENTRY_CLASS_PK));
 
@@ -66,6 +68,8 @@ if (assetRendererFactory != null) {
 	}
 
 	if (viewInContext) {
+		inheritRedirect = true;
+
 		String viewFullContentURLString = viewFullContentURL.toString();
 
 		viewFullContentURLString = HttpUtil.setParameter(viewFullContentURLString, "redirect", currentURL);
@@ -106,7 +110,7 @@ else {
 
 entrySummary = StringUtil.shorten(entrySummary, 200);
 
-viewURL = _checkViewURL(themeDisplay, viewURL, currentURL);
+viewURL = _checkViewURL(inheritRedirect, themeDisplay, viewURL, currentURL);
 
 String[] queryTerms = (String[])request.getAttribute("search.jsp-queryTerms");
 
