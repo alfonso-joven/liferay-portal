@@ -477,6 +477,10 @@ public class ThemeDisplay implements Cloneable, Serializable {
 	}
 
 	public String getURLLayoutTemplates() {
+		if (Validator.isNull(_urlLayoutTemplates)) {
+			return _urlPageSettings + "#layout";
+		}
+
 		return _urlLayoutTemplates;
 	}
 
