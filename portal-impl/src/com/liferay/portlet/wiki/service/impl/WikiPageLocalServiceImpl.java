@@ -911,19 +911,14 @@ public class WikiPageLocalServiceImpl extends WikiPageLocalServiceBaseImpl {
 	}
 
 	/**
-	 * @deprecated {@link #getRecentChanges(long, long, int, int)}
+	 * @deprecated
 	 */
 	public List<WikiPage> getRecentChanges(long nodeId, int start, int end)
 		throws PortalException, SystemException {
 
 		WikiNode node = wikiNodePersistence.findByPrimaryKey(nodeId);
 
-		Calendar cal = CalendarFactoryUtil.getCalendar();
-
-		cal.add(Calendar.WEEK_OF_YEAR, -1);
-
-		return wikiPageFinder.findByCreateDate(
-			node.getGroupId(), nodeId, cal.getTime(), false, start, end);
+		return getRecentChanges(node.getGroupId(), nodeId, start, end);
 	}
 
 	public List<WikiPage> getRecentChanges(
@@ -939,19 +934,14 @@ public class WikiPageLocalServiceImpl extends WikiPageLocalServiceBaseImpl {
 	}
 
 	/**
-	 * @deprecated {@link #getRecentChangesCount(long, long)}
+	 * @deprecated
 	 */
 	public int getRecentChangesCount(long nodeId)
 		throws PortalException, SystemException {
 
 		WikiNode node = wikiNodePersistence.findByPrimaryKey(nodeId);
 
-		Calendar cal = CalendarFactoryUtil.getCalendar();
-
-		cal.add(Calendar.WEEK_OF_YEAR, -1);
-
-		return wikiPageFinder.countByCreateDate(
-			node.getGroupId(), nodeId, cal.getTime(), false);
+		return getRecentChangesCount(node.getGroupId(), nodeId);
 	}
 
 	public int getRecentChangesCount(long groupId, long nodeId)
