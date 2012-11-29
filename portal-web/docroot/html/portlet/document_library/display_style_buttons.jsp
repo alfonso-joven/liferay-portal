@@ -102,7 +102,13 @@ String keywords = ParamUtil.getString(request, "keywords");
 		}
 		%>
 
-		var displayStyleToolbar = new A.Toolbar(
+		var displayStyleToolbar = buttonRow.getData('displayStyleToolbar');
+
+		if (displayStyleToolbar) {
+			displayStyleToolbar.removeAll();
+		}
+
+		displayStyleToolbar = new A.Toolbar(
 			{
 				activeState: true,
 				boundingBox: buttonRow,
