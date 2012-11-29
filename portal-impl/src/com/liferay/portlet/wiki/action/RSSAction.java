@@ -18,9 +18,9 @@ import com.liferay.portal.kernel.dao.search.SearchContainer;
 import com.liferay.portal.kernel.servlet.ServletResponseUtil;
 import com.liferay.portal.kernel.util.ContentTypes;
 import com.liferay.portal.kernel.util.ParamUtil;
+import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.Validator;
-import com.liferay.portal.model.Layout;
 import com.liferay.portal.struts.ActionConstants;
 import com.liferay.portal.struts.PortletAction;
 import com.liferay.portal.theme.ThemeDisplay;
@@ -28,7 +28,6 @@ import com.liferay.portal.util.Portal;
 import com.liferay.portal.util.PortalUtil;
 import com.liferay.portal.util.PortletKeys;
 import com.liferay.portal.util.WebKeys;
-import com.liferay.portlet.PortletURLImpl;
 import com.liferay.portlet.wiki.service.WikiPageServiceUtil;
 import com.liferay.util.RSSUtil;
 
@@ -37,8 +36,6 @@ import java.util.Locale;
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
 import javax.portlet.PortletConfig;
-import javax.portlet.PortletRequest;
-import javax.portlet.PortletURL;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -114,9 +111,14 @@ public class RSSAction extends PortletAction {
 		String layoutFullURL = PortalUtil.getLayoutFullURL(
 			themeDisplay.getScopeGroupId(), PortletKeys.WIKI);
 
-		String feedURL =
-			layoutFullURL + Portal.FRIENDLY_URL_SEPARATOR + "wiki/" +
-				String.valueOf(nodeId);
+		StringBundler sb = new StringBundler(4);
+
+		sb.append(layoutFullURL);
+		sb.append(Portal.FRIENDLY_URL_SEPARATOR);
+		sb.append("wiki/");
+		sb.append(String.valueOf(nodeId));
+
+		String feedURL = sb.toString();
 
 		String entryURL = feedURL + StringPool.SLASH + title;
 
