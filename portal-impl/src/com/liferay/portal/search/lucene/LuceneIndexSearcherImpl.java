@@ -288,14 +288,7 @@ public class LuceneIndexSearcherImpl implements IndexSearcher {
 			throw new SearchException(e);
 		}
 		finally {
-			if (browsable != null) {
-				try {
-					browsable.close();
-				}
-				catch (IOException ioe) {
-					_log.error(ioe, ioe);
-				}
-			}
+			close(browsable);
 
 			if (indexSearcher != null) {
 				try {
@@ -418,6 +411,18 @@ public class LuceneIndexSearcherImpl implements IndexSearcher {
 		}
 
 		return hits;
+	}
+
+	@SuppressWarnings("deprecation")
+	protected void close(Browsable browsable) {
+		if (browsable != null) {
+			try {
+				browsable.close();
+			}
+			catch (IOException ioe) {
+				_log.error(ioe, ioe);
+			}
+		}
 	}
 
 	protected DocumentImpl getDocument(

@@ -73,6 +73,7 @@ import org.apache.commons.lang.time.StopWatch;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.document.Document;
+import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.queryParser.QueryParser;
 import org.apache.lucene.search.BooleanClause;
@@ -187,11 +188,10 @@ public class LuceneHelperImpl implements LuceneHelper {
 
 		Analyzer analyzer = getAnalyzer();
 
-		if (analyzer instanceof PerFieldAnalyzerWrapper) {
-			PerFieldAnalyzerWrapper perFieldAnalyzerWrapper =
-				(PerFieldAnalyzerWrapper)analyzer;
+		if (analyzer instanceof PerFieldAnalyzer) {
+			PerFieldAnalyzer perFieldAnalyzer = (PerFieldAnalyzer)analyzer;
 
-			Analyzer fieldAnalyzer = perFieldAnalyzerWrapper.getAnalyzer(field);
+			Analyzer fieldAnalyzer = perFieldAnalyzer.getAnalyzer(field);
 
 			if (fieldAnalyzer instanceof LikeKeywordAnalyzer) {
 				like = true;
@@ -415,8 +415,10 @@ public class LuceneHelperImpl implements LuceneHelper {
 
 		IndexAccessor indexAccessor = _getIndexAccessor(companyId);
 
-		IndexSearcher indexSearcher = new IndexSearcher(
+		IndexReader indexReader = IndexReader.open(
 			indexAccessor.getLuceneDir(), readOnly);
+
+		IndexSearcher indexSearcher = new IndexSearcher(indexReader);
 
 		indexSearcher.setDefaultFieldSortScoring(true, true);
 		indexSearcher.setSimilarity(new FieldWeightSimilarity());
