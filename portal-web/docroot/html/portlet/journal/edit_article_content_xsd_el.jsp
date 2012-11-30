@@ -202,7 +202,7 @@ Element contentEl = (Element)request.getAttribute(WebKeys.JOURNAL_ARTICLE_CONTEN
 							String journalImageContentInputName = "journalImageContent_" + elName + elRepeatCount;
 							%>
 
-							<aui:input name="<%= journalImageContentInputName %>" type="hidden" value="<%= elContent %>" />
+							<aui:input inputCssClass="journal-image-preview-content" name="<%= journalImageContentInputName %>" type="hidden" value="<%= elContent %>" />
 
 							<aui:input name="journalImageDelete" type="hidden" value="" />
 
