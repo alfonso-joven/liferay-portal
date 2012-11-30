@@ -13,6 +13,7 @@
 		<constructor-arg>
 			<map>
 				<entry key="parentChainableMethodAdvice" value-ref="serviceAdvice" />
+				<entry key="servletContextName" value-ref="servletContextName" />
 			</map>
 		</constructor-arg>
 	</bean>
