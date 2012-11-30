@@ -1266,6 +1266,8 @@ Liferay.Service.registerClass(
 		getPages: true,
 		getPagesCount: true,
 		getPagesRSS: true,
+		getRecentChanges: true,
+		getRecentChangesCount: true,
 		getTempPageAttachmentNames: true,
 		movePage: true,
 		revertPage: true,
