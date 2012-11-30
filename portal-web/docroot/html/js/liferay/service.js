@@ -1261,6 +1261,7 @@ Liferay.Service.registerClass(
 		getDraftPage: true,
 		getNodePages: true,
 		getNodePagesRSS: true,
+		getOrphans: true,
 		getPage: true,
 		getPages: true,
 		getPagesCount: true,
