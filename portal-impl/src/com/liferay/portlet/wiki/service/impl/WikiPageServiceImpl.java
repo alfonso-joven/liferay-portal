@@ -25,11 +25,13 @@ import com.liferay.portal.kernel.util.DiffUtil;
 import com.liferay.portal.kernel.util.HtmlUtil;
 import com.liferay.portal.kernel.util.HttpUtil;
 import com.liferay.portal.kernel.util.ObjectValuePair;
+import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.velocity.VelocityContext;
 import com.liferay.portal.kernel.velocity.VelocityEngineUtil;
+import com.liferay.portal.kernel.workflow.WorkflowConstants;
 import com.liferay.portal.security.permission.ActionKeys;
 import com.liferay.portal.service.ServiceContext;
 import com.liferay.portal.util.PortalUtil;
@@ -286,6 +288,34 @@ public class WikiPageServiceImpl extends WikiPageServiceBaseImpl {
 			getPermissionChecker(), nodeId, title, ActionKeys.VIEW);
 
 		return wikiPageLocalService.getPage(nodeId, title, version);
+	}
+
+	public List<WikiPage> getPages(
+			long groupId, long nodeId, boolean head, int status, int start,
+			int end, OrderByComparator obc)
+		throws PortalException, SystemException {
+
+		WikiNodePermission.check(
+			getPermissionChecker(), nodeId, ActionKeys.VIEW);
+
+		if (status == WorkflowConstants.STATUS_ANY) {
+			return wikiPagePersistence.filterFindByG_N_H(
+				groupId, nodeId, head, start, end, obc);
+		}
+		else {
+			return wikiPagePersistence.filterFindByG_N_H_S(
+				groupId, nodeId, head, status, start, end, obc);
+		}
+	}
+
+	public int getPagesCount(long groupId, long nodeId, boolean head)
+		throws PortalException, SystemException {
+
+		WikiNodePermission.check(
+			getPermissionChecker(), nodeId, ActionKeys.VIEW);
+
+		return wikiPagePersistence.filterCountByG_N_H_S(
+			groupId, nodeId, head, WorkflowConstants.STATUS_APPROVED);
 	}
 
 	public String getPagesRSS(

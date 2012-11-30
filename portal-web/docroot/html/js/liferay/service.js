@@ -1262,6 +1262,8 @@ Liferay.Service.registerClass(
 		getNodePages: true,
 		getNodePagesRSS: true,
 		getPage: true,
+		getPages: true,
+		getPagesCount: true,
 		getPagesRSS: true,
 		getTempPageAttachmentNames: true,
 		movePage: true,
