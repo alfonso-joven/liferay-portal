@@ -40,6 +40,8 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 
+import org.jgroups.ChannelClosedException;
+import org.jgroups.ChannelNotConnectedException;
 import org.jgroups.JChannel;
 import org.jgroups.View;
 import org.jgroups.util.UUID;
@@ -374,7 +376,7 @@ public class ClusterLinkImplTest extends BaseClusterTestCase {
 
 		assertLogger(
 			logRecords, "Unable to send multicast message " + message,
-			Exception.class);
+			ChannelClosedException.class);
 
 		clusterLinkImpl.destroy();
 	}
@@ -407,7 +409,7 @@ public class ClusterLinkImplTest extends BaseClusterTestCase {
 
 		assertLogger(
 			logRecords, "Unable to send multicast message " + message,
-			Exception.class);
+			ChannelNotConnectedException.class);
 
 		clusterLinkImpl.destroy();
 	}
@@ -496,7 +498,7 @@ public class ClusterLinkImplTest extends BaseClusterTestCase {
 
 		assertLogger(
 			logRecords, "Unable to send unicast message " + message,
-			Exception.class);
+			ChannelClosedException.class);
 
 		clusterLinkImpl.destroy();
 	}
@@ -530,7 +532,7 @@ public class ClusterLinkImplTest extends BaseClusterTestCase {
 
 		assertLogger(
 			logRecords, "Unable to send unicast message " + message,
-			Exception.class);
+			ChannelNotConnectedException.class);
 
 		clusterLinkImpl.destroy();
 	}
