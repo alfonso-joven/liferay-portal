@@ -19,6 +19,7 @@ import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.io.unsync.UnsyncStringReader;
 import com.liferay.portal.kernel.io.unsync.UnsyncStringWriter;
 import com.liferay.portal.kernel.language.LanguageUtil;
+import com.liferay.portal.kernel.util.CalendarFactoryUtil;
 import com.liferay.portal.kernel.util.Diff;
 import com.liferay.portal.kernel.util.DiffResult;
 import com.liferay.portal.kernel.util.DiffUtil;
@@ -62,6 +63,7 @@ import java.io.File;
 import java.io.InputStream;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -383,6 +385,35 @@ public class WikiPageServiceImpl extends WikiPageServiceBaseImpl {
 		return exportToRSS(
 			companyId, title, description, type, version, displayStyle, feedURL,
 			entryURL, pages, diff, locale);
+	}
+
+	public List<WikiPage> getRecentChanges(
+			long groupId, long nodeId, int start, int end)
+		throws PortalException, SystemException {
+
+		WikiNodePermission.check(
+			getPermissionChecker(), nodeId, ActionKeys.VIEW);
+
+		Calendar cal = CalendarFactoryUtil.getCalendar();
+
+		cal.add(Calendar.WEEK_OF_YEAR, -1);
+
+		return wikiPageFinder.filterFindByCreateDate(
+			groupId, nodeId, cal.getTime(), false, start, end);
+	}
+
+	public int getRecentChangesCount(long groupId, long nodeId)
+		throws PortalException, SystemException {
+
+		WikiNodePermission.check(
+			getPermissionChecker(), nodeId, ActionKeys.VIEW);
+
+		Calendar cal = CalendarFactoryUtil.getCalendar();
+
+		cal.add(Calendar.WEEK_OF_YEAR, -1);
+
+		return wikiPageFinder.filterCountByCreateDate(
+			groupId, nodeId, cal.getTime(), false);
 	}
 
 	public String[] getTempPageAttachmentNames(
