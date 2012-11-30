@@ -14555,7 +14555,7 @@ public class WikiPagePersistenceImpl extends BasePersistenceImpl<WikiPage>
 	private static final String _FINDER_COLUMN_N_H_P_S_PARENTTITLE_2 = "lower(wikiPage.parentTitle) = lower(CAST_TEXT(?)) AND ";
 	private static final String _FINDER_COLUMN_N_H_P_S_PARENTTITLE_3 = "(wikiPage.parentTitle IS NULL OR lower(wikiPage.parentTitle) = lower(CAST_TEXT(?))) AND ";
 	private static final String _FINDER_COLUMN_N_H_P_S_STATUS_2 = "wikiPage.status = ?";
-	private static final String _FILTER_ENTITY_TABLE_FILTER_PK_COLUMN = "wikiPage.pageId";
+	private static final String _FILTER_ENTITY_TABLE_FILTER_PK_COLUMN = "wikiPage.resourcePrimKey";
 	private static final String _FILTER_SQL_SELECT_WIKIPAGE_WHERE = "SELECT DISTINCT {wikiPage.*} FROM WikiPage wikiPage WHERE ";
 	private static final String _FILTER_SQL_SELECT_WIKIPAGE_NO_INLINE_DISTINCT_WHERE_1 =
 		"SELECT {WikiPage.*} FROM (SELECT DISTINCT wikiPage.pageId FROM WikiPage wikiPage WHERE ";
