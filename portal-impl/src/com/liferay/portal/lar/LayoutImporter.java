@@ -1256,10 +1256,10 @@ public class LayoutImporter {
 				}
 			}
 
-			importedLayout.setTypeSettings(layout.getTypeSettings());
+			updateTypeSettings(importedLayout, layout);
 		}
 		else {
-			importedLayout.setTypeSettings(layout.getTypeSettings());
+			updateTypeSettings(importedLayout, layout);
 		}
 
 		importedLayout.setHidden(layout.isHidden());
@@ -1585,6 +1585,30 @@ public class LayoutImporter {
 		catch (IOException ioe) {
 			layout.setTypeSettings(newTypeSettings);
 		}
+	}
+
+	protected void updateTypeSettings(Layout importedLayout, Layout layout)
+		throws PortalException, SystemException {
+	
+		LayoutTypePortlet importedLayoutType =
+			(LayoutTypePortlet)importedLayout.getLayoutType();
+	
+		LayoutTypePortlet layoutType =
+						(LayoutTypePortlet)layout.getLayoutType();
+	
+		List<String> oldPortletIds = importedLayoutType.getPortletIds();
+		List<String> newPortletIds = layoutType.getPortletIds();
+	
+		oldPortletIds.removeAll(newPortletIds);
+	
+		if(!oldPortletIds.isEmpty()) {
+			PortletLocalServiceUtil.deletePortlets(
+				importedLayout.getCompanyId(),
+				oldPortletIds.toArray(new String[oldPortletIds.size()]),
+				importedLayout.getPlid());
+		}
+	
+		importedLayout.setTypeSettings(layout.getTypeSettings());
 	}
 
 	protected void validateLayoutPrototypes(
