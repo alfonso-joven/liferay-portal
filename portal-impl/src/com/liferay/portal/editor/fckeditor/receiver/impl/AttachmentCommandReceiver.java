@@ -151,8 +151,8 @@ public class AttachmentCommandReceiver extends BaseCommandReceiver {
 
 			String[] parts = StringUtil.split(fileName, StringPool.SLASH);
 
-			if (parts.length>0) {
-				fileName = parts[parts.length-1];
+			if (parts.length > 0) {
+				fileName = parts[parts.length - 1];
 			}
 
 			Element fileElement = document.createElement("File");
