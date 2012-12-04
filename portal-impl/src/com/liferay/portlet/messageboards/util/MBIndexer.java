@@ -329,7 +329,9 @@ public class MBIndexer extends BaseIndexer {
 		String content = message.getBody();
 
 		try {
-			content = BBCodeTranslatorUtil.getHTML(content);
+			if (message.isFormatBBCode()) {
+				content = BBCodeTranslatorUtil.getHTML(content);
+			}
 		}
 		catch (Exception e) {
 			_log.error(

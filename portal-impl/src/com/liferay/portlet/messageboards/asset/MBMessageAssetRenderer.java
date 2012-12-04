@@ -68,7 +68,7 @@ public class MBMessageAssetRenderer extends BaseAssetRenderer {
 	}
 
 	public String getSummary(Locale locale) {
-		return HtmlUtil.stripHtml(_message.getBody());
+		return HtmlUtil.extractText(_message.getBody());
 	}
 
 	public String getTitle(Locale locale) {
