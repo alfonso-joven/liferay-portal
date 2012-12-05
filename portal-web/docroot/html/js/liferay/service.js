@@ -1258,6 +1258,7 @@ Liferay.Service.registerClass(
 		deletePage: true,
 		deletePageAttachment: true,
 		deleteTempPageAttachment: true,
+		getChildren: true,
 		getDraftPage: true,
 		getNodePages: true,
 		getNodePagesRSS: true,
