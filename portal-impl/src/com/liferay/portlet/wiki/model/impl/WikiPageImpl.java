@@ -28,6 +28,8 @@ import com.liferay.portlet.wiki.service.WikiNodeLocalServiceUtil;
 import com.liferay.portlet.wiki.service.WikiPageLocalServiceUtil;
 import com.liferay.portlet.wiki.service.WikiPageServiceUtil;
 
+import edu.emory.mathcs.backport.java.util.Collections;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,34 +66,26 @@ public class WikiPageImpl extends WikiPageBaseImpl {
 	}
 
 	public List<WikiPage> getChildPages() {
-		List<WikiPage> pages = null;
-
 		try {
-			pages = WikiPageLocalServiceUtil.getChildren(
+			return WikiPageLocalServiceUtil.getChildren(
 				getNodeId(), true, getTitle());
 		}
 		catch (Exception e) {
-			pages = new ArrayList<WikiPage>();
+			_log.error(e, e);
 
-			_log.error(e);
+			return Collections.emptyList();
 		}
-
-		return pages;
 	}
 
 	public WikiNode getNode() {
-		WikiNode node = null;
-
 		try {
-			node = WikiNodeLocalServiceUtil.getNode(getNodeId());
+			return WikiNodeLocalServiceUtil.getNode(getNodeId());
 		}
 		catch (Exception e) {
-			node = new WikiNodeImpl();
+			_log.error(e, e);
 
-			_log.error(e);
+			return new WikiNodeImpl();
 		}
-
-		return node;
 	}
 
 	public WikiPage getParentPage() {
@@ -99,17 +93,15 @@ public class WikiPageImpl extends WikiPageBaseImpl {
 			return null;
 		}
 
-		WikiPage page = null;
-
 		try {
-			page = WikiPageLocalServiceUtil.getPage(
+			return WikiPageLocalServiceUtil.getPage(
 				getNodeId(), getParentTitle());
 		}
 		catch (Exception e) {
-			_log.error(e);
-		}
+			_log.error(e, e);
 
-		return page;
+			return null;
+		}
 	}
 
 	public List<WikiPage> getParentPages() {
@@ -130,33 +122,27 @@ public class WikiPageImpl extends WikiPageBaseImpl {
 			return null;
 		}
 
-		WikiPage page = null;
-
 		try {
-			page = WikiPageLocalServiceUtil.getPage(
+			return WikiPageLocalServiceUtil.getPage(
 				getNodeId(), getRedirectTitle());
 		}
 		catch (Exception e) {
-			_log.error(e);
-		}
+			_log.error(e, e);
 
-		return page;
+			return null;
+		}
 	}
 
 	public List<WikiPage> getViewableChildPages() {
-		List<WikiPage> pages = null;
-
 		try {
-			pages = WikiPageServiceUtil.getChildren(
+			return WikiPageServiceUtil.getChildren(
 				getGroupId(), getNodeId(), true, getTitle());
 		}
 		catch (Exception e) {
-			pages = new ArrayList<WikiPage>();
+			_log.error(e, e);
 
-			_log.error(e);
+			return Collections.emptyList();
 		}
-
-		return pages;
 	}
 
 	public WikiPage getViewableParentPage() {
@@ -164,30 +150,28 @@ public class WikiPageImpl extends WikiPageBaseImpl {
 			return null;
 		}
 
-		WikiPage page = null;
-
 		try {
-			page = WikiPageServiceUtil.getPage(
+			return WikiPageServiceUtil.getPage(
 				getGroupId(), getNodeId(), getParentTitle());
 		}
 		catch (Exception e) {
-			_log.error(e);
-		}
+			_log.error(e, e);
 
-		return page;
+			return null;
+		}
 	}
 
 	public List<WikiPage> getViewableParentPages() {
-		List<WikiPage> parentPages = new ArrayList<WikiPage>();
+		List<WikiPage> pages = new ArrayList<WikiPage>();
 
-		WikiPage parentPage = getViewableParentPage();
+		WikiPage page = getViewableParentPage();
 
-		if (parentPage != null) {
-			parentPages.addAll(parentPage.getViewableParentPages());
-			parentPages.add(parentPage);
+		if (page != null) {
+			pages.addAll(page.getViewableParentPages());
+			pages.add(page);
 		}
 
-		return parentPages;
+		return pages;
 	}
 
 	@Override
