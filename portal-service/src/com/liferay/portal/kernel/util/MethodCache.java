@@ -120,7 +120,7 @@ public class MethodCache {
 				classesMap.put(className, clazz);
 			}
 
-			method = clazz.getMethod(methodName, parameterTypes);
+			method = clazz.getDeclaredMethod(methodName, parameterTypes);
 
 			if (!method.isAccessible()) {
 				method.setAccessible(true);
