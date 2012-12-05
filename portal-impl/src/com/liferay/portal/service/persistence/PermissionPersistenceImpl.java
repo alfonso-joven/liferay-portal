@@ -207,12 +207,56 @@ public class PermissionPersistenceImpl extends BasePersistenceImpl<Permission>
 		}
 	}
 
+	protected void cacheUniqueFindersCache(Permission permission) {
+		if (permission.isNew()) {
+			Object[] args = new Object[] {
+					permission.getActionId(),
+					Long.valueOf(permission.getResourceId())
+				};
+
+			FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_A_R, args,
+				Long.valueOf(1));
+			FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_A_R, args, permission);
+		}
+		else {
+			PermissionModelImpl permissionModelImpl = (PermissionModelImpl)permission;
+
+			if ((permissionModelImpl.getColumnBitmask() &
+					FINDER_PATH_FETCH_BY_A_R.getColumnBitmask()) != 0) {
+				Object[] args = new Object[] {
+						permission.getActionId(),
+						Long.valueOf(permission.getResourceId())
+					};
+
+				FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_A_R, args,
+					Long.valueOf(1));
+				FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_A_R, args,
+					permission);
+			}
+		}
+	}
+
 	protected void clearUniqueFindersCache(Permission permission) {
-		FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_A_R,
-			new Object[] {
+		PermissionModelImpl permissionModelImpl = (PermissionModelImpl)permission;
+
+		Object[] args = new Object[] {
 				permission.getActionId(),
 				Long.valueOf(permission.getResourceId())
-			});
+			};
+
+		FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_A_R, args);
+		FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_A_R, args);
+
+		if ((permissionModelImpl.getColumnBitmask() &
+				FINDER_PATH_FETCH_BY_A_R.getColumnBitmask()) != 0) {
+			args = new Object[] {
+					permissionModelImpl.getOriginalActionId(),
+					Long.valueOf(permissionModelImpl.getOriginalResourceId())
+				};
+
+			FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_A_R, args);
+			FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_A_R, args);
+		}
 	}
 
 	/**
@@ -396,32 +440,8 @@ public class PermissionPersistenceImpl extends BasePersistenceImpl<Permission>
 		EntityCacheUtil.putResult(PermissionModelImpl.ENTITY_CACHE_ENABLED,
 			PermissionImpl.class, permission.getPrimaryKey(), permission);
 
-		if (isNew) {
-			FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_A_R,
-				new Object[] {
-					permission.getActionId(),
-					Long.valueOf(permission.getResourceId())
-				}, permission);
-		}
-		else {
-			if ((permissionModelImpl.getColumnBitmask() &
-					FINDER_PATH_FETCH_BY_A_R.getColumnBitmask()) != 0) {
-				Object[] args = new Object[] {
-						permissionModelImpl.getOriginalActionId(),
-						Long.valueOf(permissionModelImpl.getOriginalResourceId())
-					};
-
-				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_A_R, args);
-
-				FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_A_R, args);
-
-				FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_A_R,
-					new Object[] {
-						permission.getActionId(),
-						Long.valueOf(permission.getResourceId())
-					}, permission);
-			}
-		}
+		clearUniqueFindersCache(permission);
+		cacheUniqueFindersCache(permission);
 
 		return permission;
 	}

@@ -218,13 +218,60 @@ public class ResourcePersistenceImpl extends BasePersistenceImpl<Resource>
 		}
 	}
 
+	protected void cacheUniqueFindersCache(Resource resource) {
+		if (resource.isNew()) {
+			Object[] args = new Object[] {
+					Long.valueOf(resource.getCodeId()),
+					
+					resource.getPrimKey()
+				};
+
+			FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_C_P, args,
+				Long.valueOf(1));
+			FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_C_P, args, resource);
+		}
+		else {
+			ResourceModelImpl resourceModelImpl = (ResourceModelImpl)resource;
+
+			if ((resourceModelImpl.getColumnBitmask() &
+					FINDER_PATH_FETCH_BY_C_P.getColumnBitmask()) != 0) {
+				Object[] args = new Object[] {
+						Long.valueOf(resource.getCodeId()),
+						
+						resource.getPrimKey()
+					};
+
+				FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_C_P, args,
+					Long.valueOf(1));
+				FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_C_P, args,
+					resource);
+			}
+		}
+	}
+
 	protected void clearUniqueFindersCache(Resource resource) {
-		FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_C_P,
-			new Object[] {
+		ResourceModelImpl resourceModelImpl = (ResourceModelImpl)resource;
+
+		Object[] args = new Object[] {
 				Long.valueOf(resource.getCodeId()),
 				
-			resource.getPrimKey()
-			});
+				resource.getPrimKey()
+			};
+
+		FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_C_P, args);
+		FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_C_P, args);
+
+		if ((resourceModelImpl.getColumnBitmask() &
+				FINDER_PATH_FETCH_BY_C_P.getColumnBitmask()) != 0) {
+			args = new Object[] {
+					Long.valueOf(resourceModelImpl.getOriginalCodeId()),
+					
+					resourceModelImpl.getOriginalPrimKey()
+				};
+
+			FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_C_P, args);
+			FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_C_P, args);
+		}
 	}
 
 	/**
@@ -389,35 +436,8 @@ public class ResourcePersistenceImpl extends BasePersistenceImpl<Resource>
 		EntityCacheUtil.putResult(ResourceModelImpl.ENTITY_CACHE_ENABLED,
 			ResourceImpl.class, resource.getPrimaryKey(), resource);
 
-		if (isNew) {
-			FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_C_P,
-				new Object[] {
-					Long.valueOf(resource.getCodeId()),
-					
-				resource.getPrimKey()
-				}, resource);
-		}
-		else {
-			if ((resourceModelImpl.getColumnBitmask() &
-					FINDER_PATH_FETCH_BY_C_P.getColumnBitmask()) != 0) {
-				Object[] args = new Object[] {
-						Long.valueOf(resourceModelImpl.getOriginalCodeId()),
-						
-						resourceModelImpl.getOriginalPrimKey()
-					};
-
-				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_C_P, args);
-
-				FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_C_P, args);
-
-				FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_C_P,
-					new Object[] {
-						Long.valueOf(resource.getCodeId()),
-						
-					resource.getPrimKey()
-					}, resource);
-			}
-		}
+		clearUniqueFindersCache(resource);
+		cacheUniqueFindersCache(resource);
 
 		return resource;
 	}
