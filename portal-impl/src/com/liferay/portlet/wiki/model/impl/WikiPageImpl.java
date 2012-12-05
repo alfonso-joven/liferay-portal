@@ -28,9 +28,8 @@ import com.liferay.portlet.wiki.service.WikiNodeLocalServiceUtil;
 import com.liferay.portlet.wiki.service.WikiPageLocalServiceUtil;
 import com.liferay.portlet.wiki.service.WikiPageServiceUtil;
 
-import edu.emory.mathcs.backport.java.util.Collections;
-
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
