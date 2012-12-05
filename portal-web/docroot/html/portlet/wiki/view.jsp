@@ -38,7 +38,7 @@ if (wikiPage != null) {
 	parentTitle = wikiPage.getParentTitle();
 }
 
-List childPages = wikiPage.getChildPages();
+List childPages = wikiPage.getViewableChildPages();
 
 String[] attachments = new String[0];
 
@@ -380,7 +380,7 @@ if ((wikiPage != null) && !wikiPage.getTitle().equals(WikiPageConstants.FRONT_PA
 	PortalUtil.setPageDescription(description, request);
 	PortalUtil.setPageKeywords(AssetUtil.getAssetKeywords(WikiPage.class.getName(), wikiPage.getResourcePrimKey()), request);
 
-	List<WikiPage> parentPages = wikiPage.getParentPages();
+	List<WikiPage> parentPages = wikiPage.getViewableParentPages();
 
 	for (WikiPage curParentPage : parentPages) {
 		viewPageURL.setParameter("title", curParentPage.getTitle());
