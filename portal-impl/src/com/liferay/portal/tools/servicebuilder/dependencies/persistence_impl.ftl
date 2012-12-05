@@ -381,7 +381,6 @@ public class ${entity.name}PersistenceImpl extends BasePersistenceImpl<${entity.
 					};
 
 					FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_${finder.name?upper_case}, args, Long.valueOf(1));
-
 					FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_${finder.name?upper_case}, args, ${entity.varName});
 				</#list>
 			}
@@ -411,7 +410,6 @@ public class ${entity.name}PersistenceImpl extends BasePersistenceImpl<${entity.
 						};
 
 						FinderCacheUtil.putResult(FINDER_PATH_COUNT_BY_${finder.name?upper_case}, args, Long.valueOf(1));
-
 						FinderCacheUtil.putResult(FINDER_PATH_FETCH_BY_${finder.name?upper_case}, args, ${entity.varName});
 					}
 				</#list>
@@ -446,7 +444,6 @@ public class ${entity.name}PersistenceImpl extends BasePersistenceImpl<${entity.
 				};
 
 				FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_${finder.name?upper_case}, args);
-
 				FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_${finder.name?upper_case}, args);
 
 				if ((${entity.varName}ModelImpl.getColumnBitmask() & FINDER_PATH_FETCH_BY_${finder.name?upper_case}.getColumnBitmask()) != 0) {
@@ -469,7 +466,6 @@ public class ${entity.name}PersistenceImpl extends BasePersistenceImpl<${entity.
 					};
 
 					FinderCacheUtil.removeResult(FINDER_PATH_COUNT_BY_${finder.name?upper_case}, args);
-
 					FinderCacheUtil.removeResult(FINDER_PATH_FETCH_BY_${finder.name?upper_case}, args);
 				}
 			</#list>
