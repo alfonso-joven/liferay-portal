@@ -5237,7 +5237,7 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 			public Void call() throws Exception {
 				try {
 					ShardUtil.pushCompanyService(user.getCompanyId());
-					
+
 					indexer.reindex(user);
 				}
 				finally {
