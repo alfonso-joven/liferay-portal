@@ -65,14 +65,26 @@ public class AddAnnouncementsEntryExpirationDateExpiredTest extends BaseTestCase
 		String expirationMonth = selenium.getValue(
 				"//select[@name='_84_expirationDateMonth']");
 		RuntimeVariables.setValue("expirationMonth", expirationMonth);
+
+		String ExpirationMonthDecremented = selenium.getNumberDecrement(RuntimeVariables.getValue(
+					"expirationMonth"));
+		RuntimeVariables.setValue("ExpirationMonthDecremented",
+			ExpirationMonthDecremented);
 		selenium.select("//select[@name='_84_expirationDateMonth']",
-			RuntimeVariables.replace("value=${ExpirationMonthDecremented}"));
+			RuntimeVariables.replace("value=" +
+				RuntimeVariables.getValue("ExpirationMonthDecremented")));
 
 		String currentTime = selenium.getValue(
 				"//select[@name='_84_expirationDateMinute']");
 		RuntimeVariables.setValue("currentTime", currentTime);
+
+		String CurrentTimeDecremented = selenium.getNumberDecrement(RuntimeVariables.getValue(
+					"currentTime"));
+		RuntimeVariables.setValue("CurrentTimeDecremented",
+			CurrentTimeDecremented);
 		selenium.select("//select[@name='_84_expirationDateMinute']",
-			RuntimeVariables.replace("value=${CurrentTimeDecremented}"));
+			RuntimeVariables.replace("value=" +
+				RuntimeVariables.getValue("CurrentTimeDecremented")));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");

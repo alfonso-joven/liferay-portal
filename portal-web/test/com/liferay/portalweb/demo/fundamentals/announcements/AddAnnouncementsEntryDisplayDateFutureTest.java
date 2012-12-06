@@ -65,8 +65,14 @@ public class AddAnnouncementsEntryDisplayDateFutureTest extends BaseTestCase {
 		String currentTime = selenium.getValue(
 				"//select[@name='_84_displayDateMinute']");
 		RuntimeVariables.setValue("currentTime", currentTime);
+
+		String CurrentTimeIncremented = selenium.getNumberIncrement(RuntimeVariables.getValue(
+					"currentTime"));
+		RuntimeVariables.setValue("CurrentTimeIncremented",
+			CurrentTimeIncremented);
 		selenium.select("//select[@name='_84_displayDateMinute']",
-			RuntimeVariables.replace("value=${CurrentTimeIncremented}"));
+			RuntimeVariables.replace("value=" +
+				RuntimeVariables.getValue("CurrentTimeIncremented")));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
