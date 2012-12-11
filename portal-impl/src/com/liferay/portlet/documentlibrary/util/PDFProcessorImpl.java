@@ -31,7 +31,6 @@ import com.liferay.portal.kernel.repository.model.FileVersion;
 import com.liferay.portal.kernel.util.ContentTypes;
 import com.liferay.portal.kernel.util.FileUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
-import com.liferay.portal.kernel.util.InstancePool;
 import com.liferay.portal.kernel.util.MimeTypesUtil;
 import com.liferay.portal.kernel.util.OSDetector;
 import com.liferay.portal.kernel.util.PropsKeys;
@@ -83,12 +82,20 @@ import org.im4java.core.IMOperation;
 public class PDFProcessorImpl
 	extends DLPreviewableProcessor implements PDFProcessor {
 
-	public static PDFProcessorImpl getInstance() {
-		return _instance;
+	public PDFProcessorImpl() {
+		try {
+			FileUtil.mkdirs(PREVIEW_TMP_PATH);
+			FileUtil.mkdirs(THUMBNAIL_TMP_PATH);
+
+			reset();
+		}
+		catch (Exception e) {
+			_log.warn(e, e);
+		}
 	}
 
 	public void generateImages(FileVersion fileVersion) throws Exception {
-		Initializer._initializedInstance._generateImages(fileVersion);
+		_generateImages(fileVersion);
 	}
 
 	public String getGlobalSearchPath() throws Exception {
@@ -120,14 +127,12 @@ public class PDFProcessorImpl
 	public InputStream getPreviewAsStream(FileVersion fileVersion, int index)
 		throws Exception {
 
-		return Initializer._initializedInstance.doGetPreviewAsStream(
-			fileVersion, index, PREVIEW_TYPE);
+		return doGetPreviewAsStream(fileVersion, index, PREVIEW_TYPE);
 	}
 
 	public int getPreviewFileCount(FileVersion fileVersion) {
 		try {
-			return Initializer._initializedInstance.doGetPreviewFileCount(
-				fileVersion);
+			return doGetPreviewFileCount(fileVersion);
 		}
 		catch (Exception e) {
 			_log.error(e, e);
@@ -139,8 +144,7 @@ public class PDFProcessorImpl
 	public long getPreviewFileSize(FileVersion fileVersion, int index)
 		throws Exception {
 
-		return Initializer._initializedInstance.doGetPreviewFileSize(
-			fileVersion, index);
+		return doGetPreviewFileSize(fileVersion, index);
 	}
 
 	public Properties getResourceLimitsProperties() throws Exception {
@@ -174,7 +178,7 @@ public class PDFProcessorImpl
 			hasImages = _hasImages(fileVersion);
 
 			if (!hasImages && isSupported(fileVersion)) {
-				Initializer._initializedInstance._queueGeneration(fileVersion);
+				_queueGeneration(fileVersion);
 			}
 		}
 		catch (Exception e) {
@@ -185,11 +189,11 @@ public class PDFProcessorImpl
 	}
 
 	public boolean isDocumentSupported(FileVersion fileVersion) {
-		return Initializer._initializedInstance.isSupported(fileVersion);
+		return isSupported(fileVersion);
 	}
 
 	public boolean isDocumentSupported(String mimeType) {
-		return Initializer._initializedInstance.isSupported(mimeType);
+		return isSupported(mimeType);
 	}
 
 	public boolean isImageMagickEnabled() throws Exception {
@@ -253,7 +257,7 @@ public class PDFProcessorImpl
 	}
 
 	public void trigger(FileVersion fileVersion) {
-		Initializer._initializedInstance._queueGeneration(fileVersion);
+		_queueGeneration(fileVersion);
 	}
 
 	@Override
@@ -294,8 +298,7 @@ public class PDFProcessorImpl
 		}
 
 		if (!portletDataContext.isPerformDirectBinaryImport()) {
-			int previewFileCount = PDFProcessorUtil.getPreviewFileCount(
-				fileVersion);
+			int previewFileCount = getPreviewFileCount(fileVersion);
 
 			fileEntryElement.addAttribute(
 				"bin-path-pdf-preview-count", String.valueOf(previewFileCount));
@@ -331,21 +334,6 @@ public class PDFProcessorImpl
 				portletDataContext, fileEntry, importedFileEntry,
 				fileEntryElement, "pdf", PREVIEW_TYPE, i);
 		}
-	}
-
-	protected void initialize() {
-		try {
-			FileUtil.mkdirs(PREVIEW_TMP_PATH);
-			FileUtil.mkdirs(THUMBNAIL_TMP_PATH);
-
-			reset();
-		}
-		catch (Exception e) {
-			_log.warn(e, e);
-		}
-	}
-
-	private PDFProcessorImpl() {
 	}
 
 	private void _generateImages(FileVersion fileVersion) throws Exception {
@@ -782,12 +770,6 @@ public class PDFProcessorImpl
 
 	private static Log _log = LogFactoryUtil.getLog(PDFProcessorImpl.class);
 
-	private static PDFProcessorImpl _instance = new PDFProcessorImpl();
-
-	static {
-		InstancePool.put(PDFProcessorImpl.class.getName(), _instance);
-	}
-
 	private List<Long> _fileVersionIds = new Vector<Long>();
 	private String _globalSearchPath;
 	private Properties _resourceLimitsProperties;
@@ -824,18 +806,6 @@ public class PDFProcessorImpl
 		private LinkedList<String> _commandArguments;
 		private String _globalSearchPath;
 		private Properties _resourceLimits;
-
-	}
-
-	private static class Initializer {
-
-		private static PDFProcessorImpl _initializedInstance;
-
-		static {
-			_instance.initialize();
-
-			_initializedInstance = _instance;
-		}
 
 	}
 
