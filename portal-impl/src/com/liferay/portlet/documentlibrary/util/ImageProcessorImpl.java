@@ -54,7 +54,7 @@ import java.util.Vector;
 public class ImageProcessorImpl
 	extends DLPreviewableProcessor implements ImageProcessor {
 
-	public ImageProcessorImpl() {
+	public void afterPropertiesSet() {
 	}
 
 	@Override
