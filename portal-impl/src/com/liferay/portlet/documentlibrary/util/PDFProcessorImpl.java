@@ -192,11 +192,16 @@ public class PDFProcessorImpl
 	}
 
 	public boolean isImageMagickEnabled() throws Exception {
-		if (PrefsPropsUtil.getBoolean(PropsKeys.IMAGEMAGICK_ENABLED)) {
-			return true;
+		boolean enabled = false;
+
+		try {
+			enabled = PrefsPropsUtil.getBoolean(PropsKeys.IMAGEMAGICK_ENABLED);
+		}
+		catch (Exception e) {
+			enabled = PropsValues.IMAGEMAGICK_ENABLED;
 		}
 
-		if (!_warned) {
+		if (!enabled && !_warned) {
 			StringBundler sb = new StringBundler(6);
 
 			sb.append("Liferay is not configured to use ImageMagick. For ");
@@ -211,7 +216,7 @@ public class PDFProcessorImpl
 			_warned = true;
 		}
 
-		return false;
+		return enabled;
 	}
 
 	public boolean isSupported(String mimeType) {
