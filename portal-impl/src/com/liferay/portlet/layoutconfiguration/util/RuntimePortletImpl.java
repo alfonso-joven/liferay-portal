@@ -74,15 +74,29 @@ import javax.servlet.jsp.PageContext;
  */
 public class RuntimePortletImpl implements RuntimePortlet {
 
+	public StringBundler getProcessedTemplate(
+		ServletContext servletContext, HttpServletRequest request,
+		HttpServletResponse response, PageContext pageContext,
+		JspWriter jspWriter, String portletId, String velocityTemplateId,
+		String velocityTemplateContent)
+	throws Exception {
+
+		return doDispatch(
+			servletContext, request, response, pageContext, jspWriter,
+			portletId, velocityTemplateId, velocityTemplateContent, true);
+	}
+
 	public String processCustomizationSettings(
 			ServletContext servletContext, HttpServletRequest request,
 			HttpServletResponse response, PageContext pageContext,
 			String velocityTemplateId, String velocityTemplateContent)
 		throws Exception {
 
-		return doDispatch(
+		StringBundler sb = doDispatch(
 			servletContext, request, response, pageContext, null, null,
 			velocityTemplateId, velocityTemplateContent, false);
+
+		return sb.toString();
 	}
 
 	public String processPortlet(
@@ -223,9 +237,11 @@ public class RuntimePortletImpl implements RuntimePortlet {
 			String velocityTemplateContent)
 		throws Exception {
 
-		doDispatch(
+		StringBundler sb = doDispatch(
 			servletContext, request, response, pageContext, jspWriter,
 			portletId, velocityTemplateId, velocityTemplateContent, true);
+
+		sb.writeTo(pageContext.getOut());
 	}
 
 	public String processXML(
@@ -332,7 +348,7 @@ public class RuntimePortletImpl implements RuntimePortlet {
 		return content;
 	}
 
-	protected String doDispatch(
+	protected StringBundler doDispatch(
 			ServletContext servletContext, HttpServletRequest request,
 			HttpServletResponse response, PageContext pageContext,
 			JspWriter jspWriter, String portletId, String velocityTemplateId,
@@ -377,17 +393,15 @@ public class RuntimePortletImpl implements RuntimePortlet {
 			}
 
 			if (processTemplate) {
-				doProcessTemplate(
+				return doProcessTemplate(
 					servletContext, request, response, pageContext, jspWriter,
 					portletId, velocityTemplateId, velocityTemplateContent);
 			}
 			else {
-				return doProcessCustomizationSettings(
+				return new StringBundler(doProcessCustomizationSettings(
 					servletContext, request, response, pageContext,
-					velocityTemplateId, velocityTemplateContent);
+					velocityTemplateId, velocityTemplateContent));
 			}
-
-			return null;
 		}
 		finally {
 			if ((pluginClassLoader != null) &&
@@ -450,7 +464,7 @@ public class RuntimePortletImpl implements RuntimePortlet {
 		return unsyncStringWriter.toString();
 	}
 
-	protected void doProcessTemplate(
+	protected StringBundler doProcessTemplate(
 			ServletContext servletContext, HttpServletRequest request,
 			HttpServletResponse response, PageContext pageContext,
 			JspWriter jspWriter, String portletId, String velocityTemplateId,
@@ -458,7 +472,7 @@ public class RuntimePortletImpl implements RuntimePortlet {
 		throws Exception {
 
 		if (Validator.isNull(velocityTemplateContent)) {
-			return;
+			return null;
 		}
 
 		TemplateProcessor processor = new TemplateProcessor(
@@ -530,7 +544,7 @@ public class RuntimePortletImpl implements RuntimePortlet {
 		StringBundler sb = StringUtil.replaceWithStringBundler(
 			output, "[$TEMPLATE_PORTLET_", "$]", contentsMap);
 
-		sb.writeTo(jspWriter);
+		return sb;
 	}
 
 	protected LayoutTemplate getLayoutTemplate(String velocityTemplateId) {
