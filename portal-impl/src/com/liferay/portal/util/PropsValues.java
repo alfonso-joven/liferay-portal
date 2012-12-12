@@ -73,6 +73,8 @@ public class PropsValues {
 	public static final String[] ASSET_CATEGORIES_PROPERTIES_DEFAULT = PropsUtil.getArray(PropsKeys.ASSET_CATEGORIES_PROPERTIES_DEFAULT);
 
 	public static final boolean ASSET_CATEGORIES_SEARCH_HIERARCHICAL = GetterUtil.getBoolean(PropsUtil.get(PropsKeys.ASSET_CATEGORIES_SEARCH_HIERARCHICAL));
+	
+	public static final int ASSET_CATEGORIES_SELECTOR_MAX_ENTRIES = GetterUtil.getInteger(PropsUtil.get(PropsKeys.ASSET_CATEGORIES_SELECTOR_MAX_ENTRIES));
 
 	public static final boolean ASSET_ENTRY_INCREMENT_VIEW_COUNTER_ENABLED = GetterUtil.getBoolean(PropsUtil.get(PropsKeys.ASSET_ENTRY_INCREMENT_VIEW_COUNTER_ENABLED));
 

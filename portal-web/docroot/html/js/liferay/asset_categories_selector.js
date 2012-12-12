@@ -50,6 +50,7 @@ AUI.add(
 		 * vocabularyGroupIds (string): The groupIds of the vocabularies.
 		 *
 		 * Optional
+		 * maxEntries {Number}: The maximum number of entries that will be loaded. The default value is -1, which will load all categories.
 		 * portalModelResource {boolean}: Whether the asset model is on the portal level.
 		 */
 
@@ -85,6 +86,10 @@ AUI.add(
 							return A.one(value) || A.Attribute.INVALID_VALUE;
 						},
 						value: null
+					},
+					maxEntries: {
+						validator: Lang.isNumber,
+						value: -1
 					},
 					singleSelect: {
 						validator: Lang.isBoolean,
@@ -267,13 +272,23 @@ AUI.add(
 						];
 
 						if (vocabularyIds.length > 0) {
-							Liferay.Service.Asset.AssetVocabulary.getVocabularies(
-								{
-									vocabularyIds: vocabularyIds,
-									serviceParameterTypes: A.JSON.stringify(serviceParameterTypesGetVocabularies)
-								},
-								callback
+							var vocabularyObjects = Liferay.Service.Asset.AssetVocabulary.getVocabularies(
+									{
+										vocabularyIds: vocabularyIds,
+										serviceParameterTypes: A.JSON.stringify(serviceParameterTypesGetVocabularies)
+									});
+
+							A.each( vocabularyObjects,
+									function(item, index, collection) {
+										var currentVocabulary = item;
+										currentVocabulary.categoriesCount = Liferay.Service.Asset.AssetCategory.getVocabularyCategoriesCount(
+												{
+													groupId: themeDisplay.getScopeGroupId(),
+													vocabularyId: currentVocabulary.vocabularyId
+												});
+									}
 							);
+							callback.call(this, vocabularyObjects);
 						}
 						else {
 							if (!portalModelResource && (themeDisplay.getParentGroupId() != themeDisplay.getCompanyGroupId())) {
@@ -282,14 +297,25 @@ AUI.add(
 
 							groupIds.push(themeDisplay.getCompanyGroupId());
 
-							Liferay.Service.Asset.AssetVocabulary.getGroupsVocabularies(
+							var vocabularyObjects = Liferay.Service.Asset.AssetVocabulary.getGroupsVocabularies(
 								{
 									groupIds: groupIds,
 									className: className,
 									serviceParameterTypes: A.JSON.stringify(serviceParameterTypesGetGroupVocabularies)
-								},
-								callback
+								});
+
+							A.each( vocabularyObjects,
+									function(item, index, collection) {
+										var currentVocabulary = item;
+										currentVocabulary.categoriesCount = Liferay.Service.Asset.AssetCategory.getVocabularyCategoriesCount(
+												{
+													groupId: currentVocabulary.groupId,
+													vocabularyId: currentVocabulary.vocabularyId
+												});
+									}
 							);
+
+							callback.call(this, vocabularyObjects);
 						}
 					},
 
@@ -568,6 +594,22 @@ AUI.add(
 							type: 'io'
 						};
 
+						var paginatorConfig = {
+							offsetParam: 'start'
+						};
+
+						var maxEntries = instance.get('maxEntries');
+
+						if (maxEntries > 0) {
+							paginatorConfig.limit = maxEntries;
+							paginatorConfig.moreResultsLabel = Liferay.Language.get('load-more-results');
+							paginatorConfig.total = item.categoriesCount;
+						}
+						else {
+							paginatorConfig.end = -1;
+							paginatorConfig.start = -1;
+						}
+
 						instance.TREEVIEWS[vocabularyId] = new A.TreeView(
 							{
 								children: [vocabularyRootNode],
@@ -593,11 +635,7 @@ AUI.add(
 									formatter: A.bind(instance._formatJSONResult, instance),
 									url: themeDisplay.getPathMain() + '/asset/get_categories'
 								},
-								paginator: {
-									end: -1,
-									offsetParam: 'start',
-									start: -1
-								}
+								paginator: paginatorConfig
 							}
 						).render(popup.entriesNode);
 					}
