@@ -75,11 +75,11 @@ import javax.servlet.jsp.PageContext;
 public class RuntimePortletImpl implements RuntimePortlet {
 
 	public StringBundler getProcessedTemplate(
-		ServletContext servletContext, HttpServletRequest request,
-		HttpServletResponse response, PageContext pageContext,
-		JspWriter jspWriter, String portletId, String velocityTemplateId,
-		String velocityTemplateContent)
-	throws Exception {
+			ServletContext servletContext, HttpServletRequest request,
+			HttpServletResponse response, PageContext pageContext,
+			JspWriter jspWriter, String portletId, String velocityTemplateId,
+			String velocityTemplateContent)
+		throws Exception {
 
 		return doDispatch(
 			servletContext, request, response, pageContext, jspWriter,
@@ -398,9 +398,10 @@ public class RuntimePortletImpl implements RuntimePortlet {
 					portletId, velocityTemplateId, velocityTemplateContent);
 			}
 			else {
-				return new StringBundler(doProcessCustomizationSettings(
-					servletContext, request, response, pageContext,
-					velocityTemplateId, velocityTemplateContent));
+				return new StringBundler(
+					doProcessCustomizationSettings(
+						servletContext, request, response, pageContext,
+						velocityTemplateId, velocityTemplateContent));
 			}
 		}
 		finally {

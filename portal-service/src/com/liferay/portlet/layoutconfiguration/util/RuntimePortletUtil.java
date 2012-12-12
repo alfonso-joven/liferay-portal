@@ -36,11 +36,11 @@ import javax.servlet.jsp.PageContext;
 public class RuntimePortletUtil {
 
 	public static StringBundler getProcessedTemplate(
-		ServletContext servletContext, HttpServletRequest request,
-		HttpServletResponse response, PageContext pageContext,
-		JspWriter jspWriter, String portletId, String velocityTemplateId,
-		String velocityTemplateContent)
-	throws Exception {
+			ServletContext servletContext, HttpServletRequest request,
+			HttpServletResponse response, PageContext pageContext,
+			JspWriter jspWriter, String portletId, String velocityTemplateId,
+			String velocityTemplateContent)
+		throws Exception {
 
 		return getRuntimePortlet().getProcessedTemplate(
 			servletContext, request, response, pageContext, jspWriter,
