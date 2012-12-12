@@ -1972,10 +1972,14 @@ public class JournalArticleLocalServiceImpl
 
 		if (imported) {
 			if (latestVersion > version) {
-				article = journalArticlePersistence.fetchByG_A_V(
-					groupId, articleId, version);
+				JournalArticle existingArticle =
+					journalArticlePersistence.fetchByG_A_V(
+						groupId, articleId, version);
 
-				if (article == null) {
+				if (existingArticle != null) {
+					article = existingArticle;
+				}
+				else {
 					addNewVersion = true;
 				}
 			}
