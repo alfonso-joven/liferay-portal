@@ -94,13 +94,17 @@ public class PDFProcessorImpl
 	}
 
 	public String getGlobalSearchPath() throws Exception {
-		PortletPreferences preferences = PrefsPropsUtil.getPreferences();
+		try {
+			PortletPreferences preferences = PrefsPropsUtil.getPreferences();
 
-		String globalSearchPath = preferences.getValue(
-			PropsKeys.IMAGEMAGICK_GLOBAL_SEARCH_PATH, null);
+			String globalSearchPath = preferences.getValue(
+				PropsKeys.IMAGEMAGICK_GLOBAL_SEARCH_PATH, null);
 
-		if (Validator.isNotNull(globalSearchPath)) {
-			return globalSearchPath;
+			if (Validator.isNotNull(globalSearchPath)) {
+				return globalSearchPath;
+			}
+		}
+		catch (Exception e) {
 		}
 
 		String filterName = null;
@@ -143,15 +147,19 @@ public class PDFProcessorImpl
 	}
 
 	public Properties getResourceLimitsProperties() throws Exception {
-		Properties resourceLimitsProperties = PrefsPropsUtil.getProperties(
-			PropsKeys.IMAGEMAGICK_RESOURCE_LIMIT, true);
-
-		if (resourceLimitsProperties.isEmpty()) {
-			resourceLimitsProperties = PropsUtil.getProperties(
+		try {
+			Properties resourceLimitsProperties = PrefsPropsUtil.getProperties(
 				PropsKeys.IMAGEMAGICK_RESOURCE_LIMIT, true);
+
+			if (!resourceLimitsProperties.isEmpty()) {
+				return resourceLimitsProperties;
+			}
+		}
+		catch (Exception e) {
 		}
 
-		return resourceLimitsProperties;
+		return PropsUtil.getProperties(
+			PropsKeys.IMAGEMAGICK_RESOURCE_LIMIT, true);
 	}
 
 	public InputStream getThumbnailAsStream(FileVersion fileVersion, int index)
