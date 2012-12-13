@@ -365,21 +365,15 @@ public class DLWebDAVStorageImpl extends BaseWebDAVStorageImpl {
 				long groupId = webDavRequest.getGroupId();
 				long parentFolderId = getParentFolderId(companyId, pathArray);
 				String title = WebDAVUtil.getResourceName(pathArray);
+				String extension = FileUtil.getExtension(title);
 
-				String contentType = GetterUtil.get(
-					request.getHeader(HttpHeaders.CONTENT_TYPE),
-					ContentTypes.APPLICATION_OCTET_STREAM);
-
-				if (contentType.equals(ContentTypes.APPLICATION_OCTET_STREAM)) {
-					contentType = MimeTypesUtil.getContentType(
-						request.getInputStream(), title);
-				}
+				String contentType = getContentType(
+					request, null, title, extension);
 
 				String description = StringPool.BLANK;
 				String changeLog = StringPool.BLANK;
 
-				File file = FileUtil.createTempFile(
-					FileUtil.getExtension(title));
+				File file = FileUtil.createTempFile(extension);
 
 				file.createNewFile();
 
@@ -670,19 +664,14 @@ public class DLWebDAVStorageImpl extends BaseWebDAVStorageImpl {
 				isAddGroupPermissions(groupId));
 			serviceContext.setAddGuestPermissions(true);
 
-			String contentType = GetterUtil.get(
-				request.getHeader(HttpHeaders.CONTENT_TYPE),
-				ContentTypes.APPLICATION_OCTET_STREAM);
-
 			String extension = FileUtil.getExtension(title);
 
 			file = FileUtil.createTempFile(extension);
 
 			FileUtil.write(file, request.getInputStream());
 
-			if (contentType.equals(ContentTypes.APPLICATION_OCTET_STREAM)) {
-				contentType = MimeTypesUtil.getContentType(file, title);
-			}
+			String contentType = getContentType(
+				request, file, title, extension);
 
 			try {
 				FileEntry fileEntry = DLAppServiceUtil.getFileEntry(
@@ -844,6 +833,22 @@ public class DLWebDAVStorageImpl extends BaseWebDAVStorageImpl {
 		}
 
 		return false;
+	}
+
+	protected String getContentType(
+		HttpServletRequest request, File file, String title, String extension) {
+
+		String contentType = GetterUtil.get(
+			request.getHeader(HttpHeaders.CONTENT_TYPE),
+			ContentTypes.APPLICATION_OCTET_STREAM);
+
+		if (contentType.equals(ContentTypes.APPLICATION_OCTET_STREAM) ||
+			contentType.equals(ContentTypes.TEXT_XML_UTF8_2)) {
+
+			contentType = MimeTypesUtil.getContentType(file, title);
+		}
+
+		return contentType;
 	}
 
 	protected List<Resource> getFileEntries(
