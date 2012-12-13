@@ -36,6 +36,8 @@ AUI.add(
 
 		var TPL_SEARCH_RESULTS = '<div class="lfr-categories-selector-search-results"></div>';
 
+		var URL_INVOKER = themeDisplay.getPathContext() + '/api/jsonws/invoke';
+
 		/**
 		 * OPTIONS
 		 *
@@ -262,33 +264,20 @@ AUI.add(
 
 						var vocabularyIds = instance.get('vocabularyIds');
 
-						var serviceParameterTypesGetVocabularies = [
-							'[J'
-						];
-
-						var serviceParameterTypesGetGroupVocabularies = [
-							'[J',
-							'java.lang.String'
-						];
-
 						if (vocabularyIds.length > 0) {
-							var vocabularyObjects = Liferay.Service.Asset.AssetVocabulary.getVocabularies(
-									{
-										vocabularyIds: vocabularyIds,
-										serviceParameterTypes: A.JSON.stringify(serviceParameterTypesGetVocabularies)
-									});
+							instance._invokeService(
+								{
+									'$vocabularies = /assetvocabulary/get-vocabularies': {
+										vocabularyIds: vocabularyIds.join(),
 
-							A.each( vocabularyObjects,
-									function(item, index, collection) {
-										var currentVocabulary = item;
-										currentVocabulary.categoriesCount = Liferay.Service.Asset.AssetCategory.getVocabularyCategoriesCount(
-												{
-													groupId: themeDisplay.getScopeGroupId(),
-													vocabularyId: currentVocabulary.vocabularyId
-												});
+										'$categoriesCount = /assetcategory/get-vocabulary-categories-count': {
+											'groupId': themeDisplay.getScopeGroupId(),
+											'@vocabularyId': '$vocabularies.vocabularyId'
+										}
 									}
+								},
+								callback
 							);
-							callback.call(this, vocabularyObjects);
 						}
 						else {
 							if (!portalModelResource && (themeDisplay.getParentGroupId() != themeDisplay.getCompanyGroupId())) {
@@ -297,25 +286,20 @@ AUI.add(
 
 							groupIds.push(themeDisplay.getCompanyGroupId());
 
-							var vocabularyObjects = Liferay.Service.Asset.AssetVocabulary.getGroupsVocabularies(
+							instance._invokeService(
 								{
-									groupIds: groupIds,
-									className: className,
-									serviceParameterTypes: A.JSON.stringify(serviceParameterTypesGetGroupVocabularies)
-								});
+									'$vocabularies = /assetvocabulary/get-groups-vocabularies': {
+										groupIds: groupIds.join(),
+										className: className,
 
-							A.each( vocabularyObjects,
-									function(item, index, collection) {
-										var currentVocabulary = item;
-										currentVocabulary.categoriesCount = Liferay.Service.Asset.AssetCategory.getVocabularyCategoriesCount(
-												{
-													groupId: currentVocabulary.groupId,
-													vocabularyId: currentVocabulary.vocabularyId
-												});
+										'$categoriesCount = /assetcategory/get-vocabulary-categories-count': {
+											'groupId': '$vocabularies.groupId',
+											'@vocabularyId': '$vocabularies.vocabularyId'
+										}
 									}
+								},
+								callback
 							);
-
-							callback.call(this, vocabularyObjects);
 						}
 					},
 
@@ -372,6 +356,30 @@ AUI.add(
 						popup.entriesNode.append(searchResults);
 
 						instance._searchBuffer = [];
+					},
+
+					_invokeService: function(payload, callback) {
+						var instance = this;
+
+						A.io.request(
+							URL_INVOKER,
+							{
+								data: {
+									cmd: A.JSON.stringify(payload),
+									p_auth: Liferay.authToken
+								},
+								dataType: 'json',
+								on: {
+									success: function(event) {
+										if (callback) {
+											var data = this.get('responseData');
+
+											callback.call(this, data);
+										}
+									}
+								}
+							}
+						);
 					},
 
 					_onBoundingBoxClick: EMPTY_FN,
