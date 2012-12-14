@@ -1664,6 +1664,8 @@ public class PropsValues {
 
 	public static final int WEBDAV_NONCE_EXPIRATION = GetterUtil.getInteger(PropsUtil.get(PropsKeys.WEBDAV_NONCE_EXPIRATION));
 
+	public static final boolean WEBDAV_SERVLET_HTTPS_REQUIRED = GetterUtil.getBoolean(PropsUtil.get(PropsKeys.WEBDAV_SERVLET_HTTPS_REQUIRED));
+
 	public static final String WIDGET_SERVLET_MAPPING = PropsUtil.get(PropsKeys.WIDGET_SERVLET_MAPPING);
 
 	public static final String WIKI_EMAIL_FROM_ADDRESS = PropsUtil.get(PropsKeys.WIKI_EMAIL_FROM_ADDRESS);

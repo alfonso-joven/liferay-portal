@@ -44,6 +44,7 @@ import com.liferay.portal.service.GroupLocalServiceUtil;
 import com.liferay.portal.service.WorkflowDefinitionLinkLocalServiceUtil;
 import com.liferay.portal.theme.ThemeDisplay;
 import com.liferay.portal.util.PortalUtil;
+import com.liferay.portal.util.PropsValues;
 import com.liferay.portlet.PortletPreferencesFactoryUtil;
 import com.liferay.portlet.documentlibrary.model.DLFileEntryType;
 import com.liferay.portlet.documentlibrary.model.DLFileEntryTypeConstants;
@@ -614,6 +615,29 @@ public class DLUtil {
 			ThemeDisplay themeDisplay, Folder folder, FileEntry fileEntry)
 		throws PortalException, SystemException {
 
+		StringBundler webDavURL = new StringBundler(6);
+
+		boolean secure = false;
+
+		if (themeDisplay.isSecure() ||
+			PropsValues.WEBDAV_SERVLET_HTTPS_REQUIRED) {
+
+			secure = true;
+		}
+
+		String portalURL = PortalUtil.getPortalURL(
+			themeDisplay.getServerName(), themeDisplay.getServerPort(), secure);
+
+		webDavURL.append(portalURL);
+
+		webDavURL.append(themeDisplay.getPathContext());
+		webDavURL.append("/api/secure/webdav");
+
+		Group group = themeDisplay.getScopeGroup();
+
+		webDavURL.append(group.getFriendlyURL());
+		webDavURL.append("/document_library");
+
 		StringBuilder sb = new StringBuilder();
 
 		if (folder != null) {
@@ -640,11 +664,9 @@ public class DLUtil {
 			sb.append(HttpUtil.encodeURL(fileEntry.getTitle(), true));
 		}
 
-		Group group = themeDisplay.getScopeGroup();
+		webDavURL.append(sb.toString());
 
-		return themeDisplay.getPortalURL() + themeDisplay.getPathContext() +
-			"/api/secure/webdav" + group.getFriendlyURL() +
-				"/document_library" + sb.toString();
+		return webDavURL.toString();
 	}
 
 	public static boolean hasWorkflowDefinitionLink(
