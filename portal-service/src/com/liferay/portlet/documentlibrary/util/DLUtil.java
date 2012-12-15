@@ -44,7 +44,6 @@ import com.liferay.portal.service.GroupLocalServiceUtil;
 import com.liferay.portal.service.WorkflowDefinitionLinkLocalServiceUtil;
 import com.liferay.portal.theme.ThemeDisplay;
 import com.liferay.portal.util.PortalUtil;
-import com.liferay.portal.util.PropsValues;
 import com.liferay.portlet.PortletPreferencesFactoryUtil;
 import com.liferay.portlet.documentlibrary.model.DLFileEntryType;
 import com.liferay.portlet.documentlibrary.model.DLFileEntryTypeConstants;
@@ -619,9 +618,7 @@ public class DLUtil {
 
 		boolean secure = false;
 
-		if (themeDisplay.isSecure() ||
-			PropsValues.WEBDAV_SERVLET_HTTPS_REQUIRED) {
-
+		if (themeDisplay.isSecure() || _WEBDAV_SERVLET_HTTPS_REQUIRED) {
 			secure = true;
 		}
 
@@ -808,6 +805,10 @@ public class DLUtil {
 	private static final String _DEFAULT_GENERIC_NAME = "default";
 
 	private static final long _DIVISOR = 256;;
+
+	private static final boolean _WEBDAV_SERVLET_HTTPS_REQUIRED =
+		GetterUtil.getBoolean(
+			PropsUtil.get(PropsKeys.WEBDAV_SERVLET_HTTPS_REQUIRED));
 
 	private static Log _log = LogFactoryUtil.getLog(DLUtil.class);
 
