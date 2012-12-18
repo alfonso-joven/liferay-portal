@@ -172,7 +172,7 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 		String password2 = password1;
 		boolean autoScreenName = false;
 
-		screenName = trimString(screenName);
+		screenName = getScreenName(screenName);
 
 		for (int i = 1;; i++) {
 			User screenNameUser = userPersistence.fetchByC_SN(
@@ -666,8 +666,7 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 		// User
 
 		Company company = companyPersistence.findByPrimaryKey(companyId);
-		screenName = trimString(screenName);
-		emailAddress = trimString(emailAddress);
+		screenName = getScreenName(screenName);
 		openId = openId.trim();
 		Date now = new Date();
 
@@ -682,8 +681,13 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 		EmailAddressGenerator emailAddressGenerator =
 			EmailAddressGeneratorFactory.getInstance();
 
-		if (emailAddressGenerator.isGenerated(emailAddress)) {
+		if ((emailAddress == null) ||
+			emailAddressGenerator.isGenerated(emailAddress)) {
+
 			emailAddress = StringPool.BLANK;
+		}
+		else {
+			emailAddress = emailAddress.trim().toLowerCase();
 		}
 
 		if (!PropsValues.USERS_EMAIL_ADDRESS_REQUIRED &&
@@ -1901,7 +1905,7 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 	public User fetchUserByScreenName(long companyId, String screenName)
 		throws SystemException {
 
-		screenName = trimString(screenName);
+		screenName = getScreenName(screenName);
 
 		return userPersistence.fetchByC_SN(companyId, screenName);
 	}
@@ -2616,7 +2620,7 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 	public User getUserByScreenName(long companyId, String screenName)
 		throws PortalException, SystemException {
 
-		screenName = trimString(screenName);
+		screenName = getScreenName(screenName);
 
 		return userPersistence.findByC_SN(companyId, screenName);
 	}
@@ -2723,7 +2727,7 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 	public long getUserIdByScreenName(long companyId, String screenName)
 		throws PortalException, SystemException {
 
-		screenName = trimString(screenName);
+		screenName = getScreenName(screenName);
 
 		User user = userPersistence.findByC_SN(companyId, screenName);
 
@@ -3312,11 +3316,11 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 			return;
 		}
 
+		emailAddress = emailAddress.trim().toLowerCase();
+
 		if (Validator.isNull(emailAddress)) {
 			throw new UserEmailAddressException();
 		}
-
-		emailAddress = emailAddress.trim().toLowerCase();
 
 		User user = userPersistence.findByC_EA(companyId, emailAddress);
 
@@ -4527,7 +4531,7 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 
 		User user = userPersistence.findByPrimaryKey(userId);
 
-		screenName = trimString(screenName);
+		screenName = getScreenName(screenName);
 
 		validateScreenName(user.getCompanyId(), userId, screenName);
 
@@ -4654,8 +4658,8 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 		Company company = companyPersistence.findByPrimaryKey(
 			user.getCompanyId());
 		String password = oldPassword;
-		screenName = trimString(screenName);
-		emailAddress = trimString(emailAddress);
+		screenName = getScreenName(screenName);
+		emailAddress = emailAddress.trim().toLowerCase();
 		openId = openId.trim();
 		String oldFullName = user.getFullName();
 		aimSn = aimSn.trim().toLowerCase();
@@ -5218,6 +5222,10 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 		return birthday;
 	}
 
+	protected String getScreenName(String screenName) {
+		return StringUtil.lowerCase(StringUtil.trim(screenName));
+	}
+
 	protected long[] getUserIds(List<User> users) {
 		long[] userIds = new long[users.size()];
 
@@ -5405,10 +5413,6 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 
 		user.setEmailAddress(emailAddress);
 		user.setDigest(StringPool.BLANK);
-	}
-
-	protected String trimString(String value) {
-		return StringUtil.lowerCase(StringUtil.trim(value));
 	}
 
 	protected void updateGroups(
