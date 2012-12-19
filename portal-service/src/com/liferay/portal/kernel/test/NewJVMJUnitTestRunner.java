@@ -43,6 +43,7 @@ import java.util.List;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.runner.manipulation.Sorter;
 import org.junit.runners.BlockJUnit4ClassRunner;
 import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.InitializationError;
@@ -58,6 +59,8 @@ public class NewJVMJUnitTestRunner extends BlockJUnit4ClassRunner {
 		super(clazz);
 
 		_classPath = ClassPathUtil.getJVMClassPath(false);
+
+		sort(new Sorter(new AlphabetizingDescriptionComparator()));
 	}
 
 	protected List<String> createArguments(FrameworkMethod frameworkMethod) {
