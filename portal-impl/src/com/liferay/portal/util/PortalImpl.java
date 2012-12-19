@@ -48,6 +48,7 @@ import com.liferay.portal.kernel.servlet.HttpMethods;
 import com.liferay.portal.kernel.servlet.NonSerializableObjectRequestWrapper;
 import com.liferay.portal.kernel.servlet.PipingServletResponse;
 import com.liferay.portal.kernel.servlet.PortalSessionThreadLocal;
+import com.liferay.portal.kernel.servlet.PersistentHttpServletRequestWrapper;
 import com.liferay.portal.kernel.servlet.SessionErrors;
 import com.liferay.portal.kernel.servlet.StringServletResponse;
 import com.liferay.portal.kernel.servlet.taglib.ui.BreadcrumbEntry;
@@ -2894,16 +2895,40 @@ public class PortalImpl implements Portal {
 	public HttpServletRequest getOriginalServletRequest(
 		HttpServletRequest request) {
 
+		List<HttpServletRequestWrapper> persistentHttpServletRequestWrappers =
+			new ArrayList<HttpServletRequestWrapper>();
+
 		HttpServletRequest originalRequest = request;
 
 		while (originalRequest.getClass().getName().startsWith(
 					"com.liferay.")) {
 
+			if (originalRequest instanceof
+					PersistentHttpServletRequestWrapper) {
+
+				persistentHttpServletRequestWrappers.add(
+					(HttpServletRequestWrapper)originalRequest);
+			}
+
 			// Get original request so that portlets inside portlets render
 			// properly
 
-			originalRequest = (HttpServletRequest)
-				((HttpServletRequestWrapper)originalRequest).getRequest();
+			HttpServletRequestWrapper httpServletRequestWrapper =
+				(HttpServletRequestWrapper)originalRequest;
+
+			originalRequest =
+				(HttpServletRequest)httpServletRequestWrapper.getRequest();
+		}
+
+		for (int i = persistentHttpServletRequestWrappers.size() - 1; i >= 0;
+				i--) {
+
+			HttpServletRequestWrapper httpServletRequestWrapper =
+				persistentHttpServletRequestWrappers.get(i);
+
+			httpServletRequestWrapper.setRequest(originalRequest);
+
+			originalRequest = httpServletRequestWrapper;
 		}
 
 		if (ServerDetector.isWebLogic()) {
