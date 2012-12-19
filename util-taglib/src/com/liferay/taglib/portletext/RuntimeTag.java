@@ -17,6 +17,7 @@ package com.liferay.taglib.portletext;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.portlet.PortletLayoutListener;
+import com.liferay.portal.kernel.portlet.RestrictPortletServletRequest;
 import com.liferay.portal.kernel.servlet.PipingServletResponse;
 import com.liferay.portal.kernel.util.JavaConstants;
 import com.liferay.portal.kernel.util.WebKeys;
@@ -106,6 +107,11 @@ public class RuntimeTag extends TagSupport {
 
 		String portletId = portletName;
 
+		RestrictPortletServletRequest restrictPortletServletRequest =
+			new RestrictPortletServletRequest(request);
+
+		request = restrictPortletServletRequest;
+
 		try {
 			request.setAttribute(WebKeys.RENDER_PORTLET_RESOURCE, Boolean.TRUE);
 
@@ -161,7 +167,7 @@ public class RuntimeTag extends TagSupport {
 				WebKeys.RUNTIME_PORTLET_IDS, runtimePortletIds);
 		}
 		finally {
-			request.removeAttribute(WebKeys.RENDER_PORTLET_RESOURCE);
+			restrictPortletServletRequest.mergeSharedAttributes();
 		}
 	}
 
