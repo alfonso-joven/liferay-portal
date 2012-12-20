@@ -113,6 +113,10 @@ hr, .separator {
 	z-index: 2;
 }
 
+.ie7 .portlet-message-boards .thread-body {
+	word-wrap: break-word;
+}
+
 .ie6 #banner {
 	height: 1%;
 }
