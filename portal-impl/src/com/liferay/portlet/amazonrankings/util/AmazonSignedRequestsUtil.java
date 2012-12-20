@@ -16,6 +16,7 @@ package com.liferay.portlet.amazonrankings.util;
 
 import com.liferay.portal.kernel.util.Base64;
 import com.liferay.portal.kernel.util.StringBundler;
+import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
 
 import java.net.URLEncoder;
@@ -27,8 +28,6 @@ import java.util.TreeMap;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
-
-import jodd.util.StringPool;
 
 /**
  * @author Barrie Selack
@@ -54,7 +53,7 @@ public class AmazonSignedRequestsUtil {
 		throws Exception {
 
 		if (parameters.isEmpty()) {
-			return StringPool.EMPTY;
+			return StringPool.BLANK;
 		}
 
 		StringBundler sb = new StringBundler();
@@ -69,7 +68,7 @@ public class AmazonSignedRequestsUtil {
 			Map.Entry<String, String> parameter = itr.next();
 
 			sb.append(_rfc3986Encode(parameter.getKey()));
-			sb.append(StringPool.EQUALS);
+			sb.append(StringPool.EQUAL);
 			sb.append(_rfc3986Encode(parameter.getValue()));
 
 			if (itr.hasNext()) {
@@ -100,7 +99,7 @@ public class AmazonSignedRequestsUtil {
 		String signature = Base64.encode(bytes);
 
 		return StringUtil.replace(
-			signature, new String[] {StringPool.EQUALS, StringPool.PLUS},
+			signature, new String[] {StringPool.EQUAL, StringPool.PLUS},
 			new String[] {"%3D", "%2B"});
 	}
 
@@ -109,10 +108,10 @@ public class AmazonSignedRequestsUtil {
 			return null;
 		}
 
-		string = URLEncoder.encode(string, StringPool.UTF_8);
+		string = URLEncoder.encode(string, StringPool.UTF8);
 
 		string = StringUtil.replace(
-			string, new String[] {StringPool.ASTERISK, StringPool.PLUS, "%7E"},
+			string, new String[] {StringPool.STAR, StringPool.PLUS, "%7E"},
 			new String[] {"%2A", "%2B", "~"});
 
 		return string;
