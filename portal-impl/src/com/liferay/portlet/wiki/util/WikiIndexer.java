@@ -75,16 +75,6 @@ public class WikiIndexer extends BaseIndexer {
 	}
 
 	@Override
-	public boolean isFilterSearch() {
-		return _FILTER_SEARCH;
-	}
-
-	@Override
-	public boolean isPermissionAware() {
-		return _PERMISSION_AWARE;
-	}
-
-	@Override
 	public boolean hasPermission(
 			PermissionChecker permissionChecker, long entryClassPK,
 			String actionId)
@@ -94,6 +84,16 @@ public class WikiIndexer extends BaseIndexer {
 
 		return WikiPagePermission.contains(
 			permissionChecker, page, ActionKeys.VIEW);
+	}
+
+	@Override
+	public boolean isFilterSearch() {
+		return _FILTER_SEARCH;
+	}
+
+	@Override
+	public boolean isPermissionAware() {
+		return _PERMISSION_AWARE;
 	}
 
 	@Override
