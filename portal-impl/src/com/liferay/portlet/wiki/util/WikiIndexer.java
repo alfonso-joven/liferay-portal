@@ -37,11 +37,14 @@ import com.liferay.portal.kernel.util.HtmlUtil;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.kernel.workflow.WorkflowConstants;
+import com.liferay.portal.security.permission.ActionKeys;
+import com.liferay.portal.security.permission.PermissionChecker;
 import com.liferay.portal.util.PortletKeys;
 import com.liferay.portlet.wiki.model.WikiNode;
 import com.liferay.portlet.wiki.model.WikiPage;
 import com.liferay.portlet.wiki.service.WikiNodeServiceUtil;
 import com.liferay.portlet.wiki.service.WikiPageLocalServiceUtil;
+import com.liferay.portlet.wiki.service.permission.WikiPagePermission;
 import com.liferay.portlet.wiki.service.persistence.WikiNodeActionableDynamicQuery;
 import com.liferay.portlet.wiki.service.persistence.WikiPageActionableDynamicQuery;
 
@@ -72,8 +75,25 @@ public class WikiIndexer extends BaseIndexer {
 	}
 
 	@Override
+	public boolean isFilterSearch() {
+		return _FILTER_SEARCH;
+	}
+
+	@Override
 	public boolean isPermissionAware() {
 		return _PERMISSION_AWARE;
+	}
+
+	@Override
+	public boolean hasPermission(
+			PermissionChecker permissionChecker, long entryClassPK,
+			String actionId)
+		throws Exception {
+
+		WikiPage page = WikiPageLocalServiceUtil.getPage(entryClassPK);
+
+		return WikiPagePermission.contains(
+			permissionChecker, page, ActionKeys.VIEW);
 	}
 
 	@Override
@@ -299,6 +319,8 @@ public class WikiIndexer extends BaseIndexer {
 		SearchEngineUtil.updateDocuments(
 			getSearchEngineId(), companyId, documents);
 	}
+
+	private static final boolean _FILTER_SEARCH = true;
 
 	private static final boolean _PERMISSION_AWARE = true;
 
