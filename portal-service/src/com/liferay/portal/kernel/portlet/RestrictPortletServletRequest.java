@@ -133,7 +133,7 @@ public class RestrictPortletServletRequest
 		_attributes.put(name, value);
 	}
 
-	private static final Log _log = LogFactoryUtil.getLog(
+	private static Log _log = LogFactoryUtil.getLog(
 		RestrictPortletServletRequest.class);
 
 	private static Object _nullValue = new Object();
