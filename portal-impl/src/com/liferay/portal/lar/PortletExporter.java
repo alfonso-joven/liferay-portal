@@ -1074,9 +1074,10 @@ public class PortletExporter {
 			}
 			catch (UnsupportedOperationException uoe) {
 				if (_log.isDebugEnabled()) {
-					_log.debug("Not updating the portlet setup for " +
-						portletId + " because no setup was returned for" +
-							" the current page");
+					_log.debug(
+						"Not updating the portlet setup for " + portletId +
+							" because no setup was returned for the current " +
+								"page");
 				}
 			}
 			catch (Exception e) {
