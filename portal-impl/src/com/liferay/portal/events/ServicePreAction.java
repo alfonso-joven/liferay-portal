@@ -1829,8 +1829,8 @@ public class ServicePreAction extends Action {
 
 		long layoutGroupId = layout.getGroupId();
 
-		Group guestGroup = GroupLocalServiceUtil.getGuestGroup(
-			user.getCompanyId());
+		Group guestGroup = GroupLocalServiceUtil.getGroup(
+			user.getCompanyId(), GroupConstants.GUEST);
 
 		if (layoutGroupId != guestGroup.getGroupId()) {
 			Group layoutGroup = GroupLocalServiceUtil.getGroup(layoutGroupId);
