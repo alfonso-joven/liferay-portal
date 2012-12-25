@@ -275,7 +275,9 @@ public class GroupLocalServiceImpl extends GroupLocalServiceBaseImpl {
 		}
 
 		if (className.equals(Group.class.getName())) {
-			if (!site && (liveGroupId == 0)) {
+			if (!site && (liveGroupId == 0) &&
+				!name.equals(GroupConstants.CONTROL_PANEL)) {
+
 				throw new IllegalArgumentException();
 			}
 		}
@@ -502,6 +504,7 @@ public class GroupLocalServiceImpl extends GroupLocalServiceBaseImpl {
 				if (name.equals(GroupConstants.CONTROL_PANEL)) {
 					type = GroupConstants.TYPE_SITE_PRIVATE;
 					friendlyURL = GroupConstants.CONTROL_PANEL_FRIENDLY_URL;
+					site = false;
 				}
 				else if (name.equals(GroupConstants.GUEST)) {
 					friendlyURL = "/guest";
