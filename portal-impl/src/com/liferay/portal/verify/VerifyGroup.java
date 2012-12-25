@@ -259,6 +259,20 @@ public class VerifyGroup extends VerifyProcess {
 				GroupLocalServiceUtil.updateGroup(group);
 			}
 		}
+
+		dynamicQuery = DynamicQueryFactoryUtil.forClass(Group.class);
+
+		dynamicQuery.add(
+			RestrictionsFactoryUtil.eq("name", GroupConstants.CONTROL_PANEL));
+		dynamicQuery.add(RestrictionsFactoryUtil.eq("site", true));
+
+		groups = GroupLocalServiceUtil.dynamicQuery(dynamicQuery);
+
+		for (Group group : groups) {
+			group.setSite(false);
+
+			GroupLocalServiceUtil.updateGroup(group);
+		}
 	}
 
 	protected void verifyStagedGroups() throws Exception {
