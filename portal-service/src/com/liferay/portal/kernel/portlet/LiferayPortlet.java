@@ -22,8 +22,6 @@ import com.liferay.portal.kernel.servlet.SessionMessages;
 import com.liferay.portal.kernel.util.ContentTypes;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.JavaConstants;
-import com.liferay.portal.kernel.util.MethodCache;
-import com.liferay.portal.kernel.util.MethodKey;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.kernel.util.WebKeys;
@@ -35,8 +33,8 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
@@ -145,9 +143,7 @@ public class LiferayPortlet extends GenericPortlet {
 		}
 
 		try {
-			Method method = MethodCache.get(
-				_classesMap, _methodsMap, getClass().getName(), actionName,
-				new Class[] {ActionRequest.class, ActionResponse.class});
+			Method method = getActionMethod(actionName);
 
 			method.invoke(this, actionRequest, actionResponse);
 
@@ -277,6 +273,23 @@ public class LiferayPortlet extends GenericPortlet {
 		throw new PortletException("doPrint method not implemented");
 	}
 
+	protected Method getActionMethod(String actionName)
+		throws NoSuchMethodException {
+
+		Method method = actionMethodMap.get(actionName);
+
+		if (method != null) {
+			return method;
+		}
+
+		method = getClass().getMethod(
+			actionName, ActionRequest.class, ActionResponse.class);
+
+		actionMethodMap.put(actionName, method);
+
+		return method;
+	}
+
 	protected String getRedirect(
 		ActionRequest actionRequest, ActionResponse actionResponse) {
 
@@ -388,12 +401,10 @@ public class LiferayPortlet extends GenericPortlet {
 		PortletResponseUtil.write(mimeResponse, json.toString());
 	}
 
+	protected Map<String, Method> actionMethodMap =
+		new ConcurrentHashMap<String, Method>();
 	protected boolean addProcessActionSuccessMessage;
 
 	private static final boolean _PROCESS_PORTLET_REQUEST = true;
-
-	private Map<String, Class<?>> _classesMap = new HashMap<String, Class<?>>();
-	private Map<MethodKey, Method> _methodsMap =
-		new HashMap<MethodKey, Method>();
 
 }
