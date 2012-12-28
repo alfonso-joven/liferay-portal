@@ -15,8 +15,6 @@
 package com.liferay.portal.util;
 
 import com.liferay.portal.NoSuchCompanyException;
-import com.liferay.portal.dao.shard.ShardDataSourceTargetSource;
-import com.liferay.portal.dao.shard.ShardSessionFactoryTargetSource;
 import com.liferay.portal.events.EventsProcessorUtil;
 import com.liferay.portal.kernel.dao.jdbc.DataAccess;
 import com.liferay.portal.kernel.dao.shard.ShardUtil;
@@ -25,7 +23,6 @@ import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.util.ArrayUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.HttpUtil;
-import com.liferay.portal.kernel.util.InfrastructureUtil;
 import com.liferay.portal.kernel.util.PropsKeys;
 import com.liferay.portal.kernel.util.SetUtil;
 import com.liferay.portal.kernel.util.Validator;
@@ -289,25 +286,10 @@ public class PortalInstances {
 	private long[] _getCompanyIdsBySQL() throws SQLException {
 		List<Long> companyIds = new ArrayList<Long>();
 
-		String currentShardName = ShardUtil.getCurrentShardName();
+		String currentShardName = ShardUtil.setTargetSource(
+			PropsValues.SHARD_DEFAULT_NAME);
 
-		ShardDataSourceTargetSource shardDataSourceTargetSource =
-			(ShardDataSourceTargetSource)
-				InfrastructureUtil.getShardDataSourceTargetSource();
-
-		ShardSessionFactoryTargetSource shardSessionFactoryTargetSource = null;
-
-		if (shardDataSourceTargetSource != null) {
-			shardDataSourceTargetSource.setDataSource(
-				PropsValues.SHARD_DEFAULT_NAME);
-
-			shardSessionFactoryTargetSource =
-				(ShardSessionFactoryTargetSource)
-					InfrastructureUtil.getShardSessionFactoryTargetSource();
-
-			shardSessionFactoryTargetSource.setSessionFactory(
-				PropsValues.SHARD_DEFAULT_NAME);
-
+		if (Validator.isNotNull(currentShardName)) {
 			ShardUtil.pushCompanyService(PropsValues.SHARD_DEFAULT_NAME);
 		}
 
@@ -331,13 +313,10 @@ public class PortalInstances {
 			}
 		}
 		finally {
-			if (shardDataSourceTargetSource != null) {
+			if (Validator.isNotNull(currentShardName)) {
 				ShardUtil.popCompanyService();
 
-				shardSessionFactoryTargetSource.setSessionFactory(
-					currentShardName);
-
-				shardDataSourceTargetSource.setDataSource(currentShardName);
+				ShardUtil.setTargetSource(currentShardName);
 			}
 
 			DataAccess.cleanUp(con, ps, rs);
