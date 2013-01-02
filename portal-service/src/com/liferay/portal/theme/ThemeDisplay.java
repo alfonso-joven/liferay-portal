@@ -85,6 +85,33 @@ public class ThemeDisplay implements Cloneable, Serializable {
 		return _account;
 	}
 
+	public String getCDNBaseURL() {
+		if (_cdnBaseURL != null) {
+			return _cdnBaseURL;
+		}
+
+		String host = getCDNHost();
+
+		String portalURL = getPortalURL();
+
+		if (getServerName() != null) {
+			try {
+				portalURL = PortalUtil.getPortalURL(getLayout(), this);
+			}
+			catch (Exception e) {
+				_log.error(e, e);
+			}
+		}
+
+		if (Validator.isNull(host)) {
+			host = portalURL;
+		}
+
+		_cdnBaseURL = host;
+
+		return _cdnBaseURL;
+	}
+
 	public String getCDNDynamicResourcesHost() {
 		return _cdnDynamicResourcesHost;
 	}
@@ -739,6 +766,10 @@ public class ThemeDisplay implements Cloneable, Serializable {
 		_ajax = ajax;
 	}
 
+	public void setCDNBaseURL(String cdnBase) {
+		_cdnBaseURL = cdnBase;
+	}
+
 	public void setCDNDynamicResourcesHost(String cdnDynamicResourcesHost) {
 		_cdnDynamicResourcesHost = cdnDynamicResourcesHost;
 	}
@@ -895,8 +926,15 @@ public class ThemeDisplay implements Cloneable, Serializable {
 		if ((theme != null) && (colorScheme != null)) {
 			String themeStaticResourcePath = theme.getStaticResourcePath();
 
-			String host = getCDNHost();
+			String cdnBaseURL = getCDNBaseURL();
 
+			setPathColorSchemeImages(
+				cdnBaseURL + themeStaticResourcePath +
+					colorScheme.getColorSchemeImagesPath());
+
+			String dynamicResourcesHost = getCDNDynamicResourcesHost();
+
+			if (Validator.isNull(dynamicResourcesHost)) {
 			String portalURL = getPortalURL();
 
 			if (getServerName() != null) {
@@ -908,17 +946,6 @@ public class ThemeDisplay implements Cloneable, Serializable {
 				}
 			}
 
-			if (Validator.isNull(host)) {
-				host = portalURL;
-			}
-
-			setPathColorSchemeImages(
-				host + themeStaticResourcePath +
-					colorScheme.getColorSchemeImagesPath());
-
-			String dynamicResourcesHost = getCDNDynamicResourcesHost();
-
-			if (Validator.isNull(dynamicResourcesHost)) {
 				dynamicResourcesHost = portalURL;
 			}
 
@@ -927,12 +954,14 @@ public class ThemeDisplay implements Cloneable, Serializable {
 					theme.getCssPath());
 
 			setPathThemeImages(
-				host + themeStaticResourcePath + theme.getImagesPath());
+				cdnBaseURL + themeStaticResourcePath + theme.getImagesPath());
 			setPathThemeJavaScript(
-				host + themeStaticResourcePath + theme.getJavaScriptPath());
+				cdnBaseURL + themeStaticResourcePath +
+					theme.getJavaScriptPath());
 			setPathThemeRoot(themeStaticResourcePath + theme.getRootPath());
 			setPathThemeTemplates(
-				host + themeStaticResourcePath + theme.getTemplatesPath());
+				cdnBaseURL + themeStaticResourcePath +
+					theme.getTemplatesPath());
 		}
 	}
 
@@ -1320,6 +1349,7 @@ public class ThemeDisplay implements Cloneable, Serializable {
 	private Account _account;
 	private boolean _addSessionIdToURL;
 	private boolean _ajax;
+	private String _cdnBaseURL;
 	private String _cdnDynamicResourcesHost = StringPool.BLANK;
 	private String _cdnHost = StringPool.BLANK;
 	private ColorScheme _colorScheme;

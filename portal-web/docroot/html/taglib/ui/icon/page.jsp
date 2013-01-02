@@ -30,7 +30,9 @@ if (Validator.isNotNull(src) && themeDisplay.isThemeImagesFastLoad() && !auiImag
 
 	String imageFileName = StringUtil.replace(src, "common/../", "");
 
-	String imagesPath = theme.getContextPath().concat(theme.getImagesPath());
+	String contextPath = theme.getContextPath();
+
+	String imagesPath = contextPath.concat(theme.getImagesPath());
 
 	if (imageFileName.startsWith(imagesPath)) {
 		imageFileName = imageFileName.substring(imagesPath.length());
@@ -44,7 +46,9 @@ if (Validator.isNotNull(src) && themeDisplay.isThemeImagesFastLoad() && !auiImag
 				spriteFileName = StringUtil.replace(spriteFileName, ".png", ".gif");
 			}
 
-			spriteFileURL = themeDisplay.getPathThemeImages().concat(spriteFileName);
+			String cdnBaseURL = themeDisplay.getCDNBaseURL();
+
+			spriteFileURL = cdnBaseURL.concat(spriteFileName);
 		}
 	}
 
@@ -58,14 +62,6 @@ if (Validator.isNotNull(src) && themeDisplay.isThemeImagesFastLoad() && !auiImag
 		if (portlet != null) {
 			PortletApp portletApp = portlet.getPortletApp();
 
-			imageFileName = src;
-
-			if ((portletApp.isWARFile() || !portlet.getContextPath().equals(StringPool.SLASH)) &&
-				imageFileName.startsWith(portlet.getContextPath())) {
-
-				imageFileName = imageFileName.substring(portlet.getContextPath().length());
-			}
-
 			spriteImage = portletApp.getSpriteImage(imageFileName);
 
 			if (spriteImage != null) {
@@ -75,13 +71,17 @@ if (Validator.isNotNull(src) && themeDisplay.isThemeImagesFastLoad() && !auiImag
 					spriteFileName = StringUtil.replace(spriteFileName, ".png", ".gif");
 				}
 
-				spriteFileURL = portlet.getStaticResourcePath().concat(spriteFileName);
+				String cdnBaseURL = themeDisplay.getCDNBaseURL();
+
+				spriteFileURL = cdnBaseURL.concat(spriteFileName);
 			}
 		}
 	}
 
 	if (spriteImage != null) {
-		src = themeDisplay.getPathThemeImages().concat("/spacer.png");
+		String themeImagesPath = themeDisplay.getPathThemeImages();
+
+		src = themeImagesPath.concat("/spacer.png");
 
 		StringBundler sb = new StringBundler(10);
 
