@@ -1200,7 +1200,7 @@ public class LayoutImporter {
 		if (layout.isTypeArticle()) {
 			importJournalArticle(portletDataContext, layout, layoutElement);
 
-			importedLayout.setTypeSettings(layout.getTypeSettings());
+			updateTypeSettings(importedLayout, layout);
 		}
 		else if (layout.isTypePortlet() &&
 				 Validator.isNotNull(layout.getTypeSettings()) &&
