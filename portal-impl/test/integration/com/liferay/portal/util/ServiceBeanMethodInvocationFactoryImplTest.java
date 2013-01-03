@@ -113,7 +113,7 @@ public class ServiceBeanMethodInvocationFactoryImplTest {
 	)
 	protected void save(boolean rollback) throws Exception {
 		for (EmailAddress emailAddress : _emailAddresses) {
-			EmailAddressUtil.update(emailAddress);
+			EmailAddressUtil.update(emailAddress, false);
 		}
 
 		if (rollback) {
