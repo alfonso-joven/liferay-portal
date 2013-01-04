@@ -570,9 +570,6 @@ public class CharPipeTest extends TestCase {
 
 			assertTrue(timestampAfterSkip1 >= timestampBeforeWrite);
 			assertTrue(timestampAfterSkip2 >= timestampAfterSkip1);
-			assertTrue(
-				(timestampAfterSkip1 - timestampBeforeWrite) >=
-					(timestampAfterSkip2 - timestampAfterSkip1));
 		}
 
 		charPipe.close();
