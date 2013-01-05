@@ -81,6 +81,11 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class DLUtil {
 
+	public static final String OFFICE_EXTENSION = "officeExtension";
+
+	public static final String OFFICE_EXTENSION_PATH =
+		StringPool.SLASH + OFFICE_EXTENSION;
+
 	public static void addPortletBreadcrumbEntries(
 			DLFileShortcut dlFileShortcut, HttpServletRequest request,
 			RenderResponse renderResponse)
@@ -614,7 +619,15 @@ public class DLUtil {
 			ThemeDisplay themeDisplay, Folder folder, FileEntry fileEntry)
 		throws PortalException, SystemException {
 
-		StringBundler webDavURL = new StringBundler(6);
+		return getWebDavURL(themeDisplay, folder, fileEntry, false);
+	}
+
+	public static String getWebDavURL(
+			ThemeDisplay themeDisplay, Folder folder, FileEntry fileEntry,
+			boolean openDocumentUrl)
+		throws PortalException, SystemException {
+
+		StringBundler webDavURL = new StringBundler(7);
 
 		boolean secure = false;
 
@@ -629,6 +642,22 @@ public class DLUtil {
 
 		webDavURL.append(themeDisplay.getPathContext());
 		webDavURL.append("/api/secure/webdav");
+
+		String fileEntryTitle = null;
+
+		if (fileEntry != null) {
+			String extension = fileEntry.getExtension();
+
+			fileEntryTitle = fileEntry.getTitle();
+
+			if (openDocumentUrl && isOfficeExtension(extension) &&
+				!fileEntryTitle.endsWith(StringPool.PERIOD + extension)) {
+
+				webDavURL.append(OFFICE_EXTENSION_PATH);
+
+				fileEntryTitle += StringPool.PERIOD + extension;
+			}
+		}
 
 		Group group = themeDisplay.getScopeGroup();
 
@@ -658,7 +687,7 @@ public class DLUtil {
 
 		if (fileEntry != null) {
 			sb.append(StringPool.SLASH);
-			sb.append(HttpUtil.encodeURL(fileEntry.getTitle(), true));
+			sb.append(HttpUtil.encodeURL(fileEntryTitle, true));
 		}
 
 		webDavURL.append(sb.toString());
@@ -702,6 +731,21 @@ public class DLUtil {
 		String ddmStructureKey) {
 
 		if (ddmStructureKey.startsWith("auto_")) {
+			return true;
+		}
+
+		return false;
+	}
+
+	public static boolean isOfficeExtension(String extension) {
+		if (extension.equalsIgnoreCase("doc") ||
+			extension.equalsIgnoreCase("docx") ||
+			extension.equalsIgnoreCase("dot") ||
+			extension.equalsIgnoreCase("ppt") ||
+			extension.equalsIgnoreCase("pptx") ||
+			extension.equalsIgnoreCase("xls") ||
+			extension.equalsIgnoreCase("xlsx")) {
+
 			return true;
 		}
 
