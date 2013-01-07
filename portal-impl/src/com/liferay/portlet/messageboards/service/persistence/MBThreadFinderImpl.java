@@ -531,7 +531,7 @@ public class MBThreadFinderImpl
 	}
 
 	public List<MBThread> findByS_G_U_S(
-		long groupId, long userId, int status, int start, int end)
+			long groupId, long userId, int status, int start, int end)
 		throws SystemException {
 
 		Session session = null;

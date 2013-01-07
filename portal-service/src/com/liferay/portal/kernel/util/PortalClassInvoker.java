@@ -105,7 +105,7 @@ public class PortalClassInvoker {
 	 * @deprecated
 	 */
 	public static Object invoke(
-		String className, String methodName, boolean newInstance)
+			String className, String methodName, boolean newInstance)
 		throws Exception {
 
 		return invoke(className, methodName, new Object[] {}, newInstance);

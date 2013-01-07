@@ -32,7 +32,7 @@ public class AdminPollerProcessor extends BasePollerProcessor {
 
 	@Override
 	protected void doReceive(
-		PollerRequest pollerRequest, PollerResponse pollerResponse)
+			PollerRequest pollerRequest, PollerResponse pollerResponse)
 		throws Exception {
 
 		pollerResponse.setParameter(
