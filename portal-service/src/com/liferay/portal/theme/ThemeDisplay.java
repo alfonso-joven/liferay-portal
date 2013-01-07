@@ -935,16 +935,16 @@ public class ThemeDisplay implements Cloneable, Serializable {
 			String dynamicResourcesHost = getCDNDynamicResourcesHost();
 
 			if (Validator.isNull(dynamicResourcesHost)) {
-			String portalURL = getPortalURL();
+				String portalURL = getPortalURL();
 
-			if (getServerName() != null) {
-				try {
-					portalURL = PortalUtil.getPortalURL(getLayout(), this);
+				if (getServerName() != null) {
+					try {
+						portalURL = PortalUtil.getPortalURL(getLayout(), this);
+					}
+					catch (Exception e) {
+						_log.error(e, e);
+					}
 				}
-				catch (Exception e) {
-					_log.error(e, e);
-				}
-			}
 
 				dynamicResourcesHost = portalURL;
 			}
