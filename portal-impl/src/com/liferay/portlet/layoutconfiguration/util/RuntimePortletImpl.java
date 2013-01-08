@@ -359,20 +359,22 @@ public class RuntimePortletImpl implements RuntimePortlet {
 			return null;
 		}
 
-		LayoutTemplate layoutTemplate = getLayoutTemplate(velocityTemplateId);
-
-		String pluginServletContextName = GetterUtil.getString(
-			layoutTemplate.getServletContextName());
-
-		ServletContext pluginServletContext = ServletContextPool.get(
-			pluginServletContextName);
-
 		ClassLoader pluginClassLoader = null;
 
-		if (pluginServletContext != null) {
-			pluginClassLoader =
-				(ClassLoader)pluginServletContext.getAttribute(
-					PluginContextListener.PLUGIN_CLASS_LOADER);
+		LayoutTemplate layoutTemplate = getLayoutTemplate(velocityTemplateId);
+
+		if (layoutTemplate != null) {
+			String pluginServletContextName = GetterUtil.getString(
+				layoutTemplate.getServletContextName());
+
+			ServletContext pluginServletContext = ServletContextPool.get(
+				pluginServletContextName);
+
+			if (pluginServletContext != null) {
+				pluginClassLoader =
+					(ClassLoader)pluginServletContext.getAttribute(
+						PluginContextListener.PLUGIN_CLASS_LOADER);
+			}
 		}
 
 		ClassLoader contextClassLoader =
