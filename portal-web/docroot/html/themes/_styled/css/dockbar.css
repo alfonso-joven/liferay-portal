@@ -37,6 +37,10 @@
 	visibility: hidden;
 }
 
+.ie.rtl .dockbar .menu-button span {
+	background-position-x: -25px;
+}
+
 .ie7 .dockbar {
 	zoom: 1;
 }
