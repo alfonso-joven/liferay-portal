@@ -519,6 +519,18 @@ public class LayoutServiceImpl extends LayoutServiceBaseImpl {
 		return LayoutConstants.DEFAULT_PLID;
 	}
 
+	public Layout getLayoutByUuidAndGroupId(String uuid, long groupId)
+		throws PortalException, SystemException {
+
+		Layout layout = layoutLocalService.getLayoutByUuidAndGroupId(
+			uuid, groupId);
+
+		LayoutPermissionUtil.check(
+			getPermissionChecker(), layout, ActionKeys.VIEW);
+
+		return layout;
+	}
+
 	/**
 	 * Returns the name of the layout.
 	 *

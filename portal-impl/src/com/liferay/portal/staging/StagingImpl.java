@@ -293,8 +293,8 @@ public class StagingImpl implements Staging {
 					layouts.add(layout);
 				}
 
-				Iterator<Layout> itr2 = getMissingParentLayouts(
-					layout, sourceGroupId).iterator();
+				Iterator<Layout> itr2 = getMissingRemoteParentLayouts(
+					httpPrincipal, layout, remoteGroupId).iterator();
 
 				while (itr2.hasNext()) {
 					Layout parentLayout = itr2.next();
@@ -627,6 +627,9 @@ public class StagingImpl implements Staging {
 		return group.getGroupId();
 	}
 
+	/**
+	 * @see #getMissingRemoteParentLayouts(HttpPrincipal, Layout, long)
+	 */
 	public List<Layout> getMissingParentLayouts(Layout layout, long liveGroupId)
 		throws Exception {
 
@@ -1588,6 +1591,39 @@ public class StagingImpl implements Staging {
 		return ParamUtil.getLong(
 			portletRequest, param,
 			GetterUtil.getLong(group.getTypeSettingsProperty(param)));
+	}
+
+	/**
+	 * @see #getMissingParentLayouts(Layout, long)
+	 */
+	protected List<Layout> getMissingRemoteParentLayouts(
+			HttpPrincipal httpPrincipal, Layout layout, long remoteGroupId)
+		throws Exception {
+
+		List<Layout> missingRemoteParentLayouts = new ArrayList<Layout>();
+
+		long parentLayoutId = layout.getParentLayoutId();
+
+		while (parentLayoutId > 0) {
+			Layout parentLayout = LayoutLocalServiceUtil.getLayout(
+				layout.getGroupId(), layout.isPrivateLayout(), parentLayoutId);
+
+			try {
+				LayoutServiceHttp.getLayoutByUuidAndGroupId(
+					httpPrincipal, parentLayout.getUuid(), remoteGroupId);
+
+				// If one parent is found all others are assumed to exist
+
+				break;
+			}
+			catch (NoSuchLayoutException nsle) {
+				missingRemoteParentLayouts.add(parentLayout);
+
+				parentLayoutId = parentLayout.getParentLayoutId();
+			}
+		}
+
+		return missingRemoteParentLayouts;
 	}
 
 	protected PortalPreferences getPortalPreferences(User user)
