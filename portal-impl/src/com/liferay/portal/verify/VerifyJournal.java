@@ -163,15 +163,33 @@ public class VerifyJournal extends VerifyProcess {
 	}
 
 	protected void verifyContentSearch() throws Exception {
-		List<JournalContentSearch> contentSearches =
-			JournalContentSearchLocalServiceUtil.getArticleContentSearches();
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
 
-		for (JournalContentSearch contentSearch : contentSearches) {
-			verifyContentSearch(contentSearch);
+		try {
+			con = DataAccess.getUpgradeOptimizedConnection();
+
+			ps = con.prepareStatement(
+				"select groupId, portletId from JournalContentSearch group " +
+					"by groupId, portletId having count(groupId) > 1 and " +
+						"count(portletId) > 1");
+
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				long groupId = rs.getLong("groupId");
+				String portletId = rs.getString("portletId");
+
+				verifyContentSearch(groupId, portletId);
+			}
+		}
+		finally {
+			DataAccess.cleanUp(con, ps, rs);
 		}
 	}
 
-	protected void verifyContentSearch(JournalContentSearch contentSearch)
+	protected void verifyContentSearch(long groupId, String portletId)
 		throws Exception {
 
 		Connection con = null;
@@ -182,10 +200,12 @@ public class VerifyJournal extends VerifyProcess {
 			con = DataAccess.getUpgradeOptimizedConnection();
 
 			ps = con.prepareStatement(
-				"select preferences from PortletPreferences where portletId " +
-					"= ?");
+				"select preferences from PortletPreferences inner join " +
+					"Layout on PortletPreferences.plid = Layout.plid where " +
+						"groupId = ? and portletId = ?");
 
-			ps.setString(1, contentSearch.getPortletId());
+			ps.setLong(1, groupId);
+			ps.setString(2, portletId);
 
 			rs = ps.executeQuery();
 
@@ -197,6 +217,12 @@ public class VerifyJournal extends VerifyProcess {
 
 				String articleId = portletPreferences.getValue(
 					"articleId", null);
+
+				List<JournalContentSearch> contentSearches =
+					JournalContentSearchLocalServiceUtil.
+						getArticleContentSearches(groupId, articleId);
+
+				JournalContentSearch contentSearch = contentSearches.get(0);
 
 				JournalContentSearchLocalServiceUtil.updateContentSearch(
 					contentSearch.getGroupId(), contentSearch.isPrivateLayout(),
