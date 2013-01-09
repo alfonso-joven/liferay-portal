@@ -879,8 +879,8 @@ public class ResourceBlockLocalServiceImpl
 			name, primKey);
 
 		ResourceBlock resourceBlock =
-				resourceBlockPersistence.fetchByPrimaryKey(
-			permissionedModel.getResourceBlockId());
+			resourceBlockPersistence.fetchByPrimaryKey(
+				permissionedModel.getResourceBlockId());
 
 		if (resourceBlock == null) {
 			if (_log.isWarnEnabled()) {

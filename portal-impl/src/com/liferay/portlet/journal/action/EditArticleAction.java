@@ -574,8 +574,8 @@ public class EditArticleAction extends PortletAction {
 		String content = ParamUtil.getString(uploadPortletRequest, "content");
 
 		Boolean fileItemThresholdSizeExceeded =
-				(Boolean)uploadPortletRequest.getAttribute(
-			WebKeys.FILE_ITEM_THRESHOLD_SIZE_EXCEEDED);
+			(Boolean)uploadPortletRequest.getAttribute(
+				WebKeys.FILE_ITEM_THRESHOLD_SIZE_EXCEEDED);
 
 		if ((fileItemThresholdSizeExceeded != null) &&
 			fileItemThresholdSizeExceeded.booleanValue()) {

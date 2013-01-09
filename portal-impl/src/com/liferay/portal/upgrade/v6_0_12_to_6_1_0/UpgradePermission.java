@@ -62,7 +62,7 @@ public class UpgradePermission extends UpgradeProcess {
 
 		ResourceBlockPermissionsContainer resourceBlockPermissionsContainer =
 			getResourceBlockPermissionsContainer(
-					companyId, groupId, name, primKey);
+				companyId, groupId, name, primKey);
 
 		String permissionsHash =
 			resourceBlockPermissionsContainer.getPermissionsHash();
