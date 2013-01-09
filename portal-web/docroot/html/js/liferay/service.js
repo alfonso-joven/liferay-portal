@@ -107,6 +107,7 @@ Liferay.Service.registerClass(
 		addLayout: true,
 		deleteLayout: true,
 		getDefaultPlid: true,
+		getLayoutByUuidAndGroupId: true,
 		getLayoutName: true,
 		getLayoutReferences: true,
 		getLayouts: true,
