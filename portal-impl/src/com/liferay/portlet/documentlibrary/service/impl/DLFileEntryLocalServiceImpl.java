@@ -184,8 +184,12 @@ public class DLFileEntryLocalServiceImpl
 		// Folder
 
 		if (folderId != DLFolderConstants.DEFAULT_PARENT_FOLDER_ID) {
-			dlFolderLocalService.updateLastPostDate(
-				dlFileEntry.getFolderId(), dlFileEntry.getModifiedDate());
+			DLFolder dlFolder = dlFolderPersistence.findByPrimaryKey(
+				dlFileEntry.getFolderId());
+
+			dlFolder.setLastPostDate(dlFileEntry.getModifiedDate());
+
+			dlFolderPersistence.update(dlFolder, false);
 		}
 
 		// File
@@ -234,6 +238,17 @@ public class DLFileEntryLocalServiceImpl
 
 		lockLocalService.unlock(DLFileEntry.class.getName(), fileEntryId);
 
+		if (dlFileEntry.getFolderId() !=
+				DLFolderConstants.DEFAULT_PARENT_FOLDER_ID) {
+
+			DLFolder dlFolder = dlFolderPersistence.findByPrimaryKey(
+				dlFileEntry.getFolderId());
+
+			dlFolder.setLastPostDate(new Date());
+
+			dlFolderPersistence.update(dlFolder, false);
+		}
+
 		return dlFileVersion;
 	}
 
@@ -270,8 +285,12 @@ public class DLFileEntryLocalServiceImpl
 		if (dlFileEntry.getFolderId() !=
 				DLFolderConstants.DEFAULT_PARENT_FOLDER_ID) {
 
-			dlFolderLocalService.updateLastPostDate(
-				dlFileEntry.getFolderId(), dlFileEntry.getModifiedDate());
+			DLFolder dlFolder = dlFolderPersistence.findByPrimaryKey(
+				dlFileEntry.getFolderId());
+
+			dlFolder.setLastPostDate(dlFileEntry.getModifiedDate());
+
+			dlFolderPersistence.update(dlFolder, false);
 		}
 
 		// File
@@ -439,6 +458,17 @@ public class DLFileEntryLocalServiceImpl
 				dlFileEntry.getCompanyId(), dlFileVersion.getFileEntryTypeId(),
 				fileEntryId, dlFileVersionId, dlFileVersion.getFileVersionId(),
 				serviceContext);
+		}
+
+		if (dlFileEntry.getFolderId() !=
+				DLFolderConstants.DEFAULT_PARENT_FOLDER_ID) {
+
+			DLFolder dlFolder = dlFolderPersistence.findByPrimaryKey(
+				dlFileEntry.getFolderId());
+
+			dlFolder.setLastPostDate(dlFileVersion.getModifiedDate());
+
+			dlFolderPersistence.update(dlFolder, false);
 		}
 
 		return dlFileEntry;
@@ -1738,6 +1768,19 @@ public class DLFileEntryLocalServiceImpl
 				description, changeLog, extraSettings, fileEntryTypeId,
 				fieldsMap, version, size, dlFileVersion.getStatus(),
 				serviceContext.getModifiedDate(now), serviceContext);
+
+			// Folder
+
+			if (dlFileEntry.getFolderId() !=
+					DLFolderConstants.DEFAULT_PARENT_FOLDER_ID) {
+
+				DLFolder dlFolder = dlFolderPersistence.findByPrimaryKey(
+					dlFileEntry.getFolderId());
+
+				dlFolder.setLastPostDate(serviceContext.getModifiedDate(now));
+
+				dlFolderPersistence.update(dlFolder, false);
+			}
 
 			// App helper
 
