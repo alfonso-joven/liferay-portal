@@ -328,7 +328,7 @@ public class WebDAVUtil {
 	}
 
 	public static String stripToken(String url, String token) {
-		if(Validator.isNull(url)) {
+		if (Validator.isNull(url)) {
 			return StringPool.BLANK;
 		}
 
