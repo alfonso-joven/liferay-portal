@@ -290,6 +290,9 @@ if (folder != null) {
 							<%
 								}
 								catch (Exception e) {
+									if (_log.isWarnEnabled()) {
+										_log.warn("Unable to access repository", e);
+									}
 							%>
 
 									<li class="folder error" title="<%= LanguageUtil.get(pageContext, "an-unexpected-error-occurred-while-connecting-to-the-repository") %>">
@@ -404,3 +407,7 @@ if (folder != null) {
 		</div>
 	</div>
 </div>
+
+<%!
+private static Log _log = LogFactoryUtil.getLog("portal-web.docroot.html.portlet.document_library.view_folders_jsp");
+%>
