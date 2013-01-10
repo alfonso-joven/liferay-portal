@@ -23,8 +23,22 @@ import javax.servlet.http.HttpServletRequestWrapper;
 public class NonSerializableObjectRequestWrapper extends
 	HttpServletRequestWrapper {
 
+	public static boolean isWrapped(HttpServletRequest request) {
+		Boolean wrapped = (Boolean)request.getAttribute(
+			NonSerializableObjectRequestWrapper.class.getName());
+
+		if (wrapped == null) {
+			return false;
+		}
+
+		return wrapped.booleanValue();
+	}
+
 	public NonSerializableObjectRequestWrapper(HttpServletRequest request) {
 		super(request);
+
+		request.setAttribute(
+			NonSerializableObjectRequestWrapper.class.getName(), Boolean.TRUE);
 	}
 
 	@Override
