@@ -652,7 +652,7 @@ public class Validator {
 	/**
 	 * Returns <code>true</code> if the file extension is valid.
 	 *
-	 * @param  fileExtension file extension
+	 * @param  fileExtension string to check
 	 * @return <code>true</code> if the extension is valid; <code>false</code>
 	 *         otherwise
 	 */
@@ -890,8 +890,8 @@ public class Validator {
 	 * @param  month the month (0-based, meaning 0 for January)
 	 * @param  day the day of the month
 	 * @param  year the year
-	 * @return <code>true</code> if the date is valid; <code>false</code>
-	 *         otherwise
+	 * @return <code>true</code> if the date is valid in the Julian calendar;
+	 *         <code>false</code> otherwise
 	 */
 	public static boolean isJulianDate(int month, int day, int year) {
 		if ((month < 0) || (month > 11)) {
@@ -1174,6 +1174,7 @@ public class Validator {
 	 * is at least four characters long and contains only letters and decimal
 	 * digits.
 	 *
+	 * @param  password the string to check
 	 * @return <code>true</code> if the string is a valid password;
 	 *         <code>false</code> otherwise
 	 */
