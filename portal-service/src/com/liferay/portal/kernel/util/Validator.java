@@ -1343,7 +1343,6 @@ public class Validator {
 	private static Pattern _emailAddressPattern = Pattern.compile(
 		"[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@" +
 		"(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?");
-
 	private static Pattern _ipv4AddressPattern = Pattern.compile(
 		"^" +
 		"(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\." +
@@ -1352,7 +1351,7 @@ public class Validator {
 		"(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)" +
 		"$");
 
-	// For more details about the regex pattern see LPS-29422
+	// see LPS-29422 for more details about this regex pattern
 
 	private static Pattern _ipv6AddressPattern = Pattern.compile(
 		"^" +
@@ -1379,7 +1378,6 @@ public class Validator {
 		"((25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)(\\." +
 		"(25[0-5]|2[0-4]\\d|1\\d\\d|[1-9]?\\d)){3}))|:)))(%.+)?\\s*" +
 		"$");
-
 	private static Pattern _variableNamePattern = Pattern.compile(
 		"[_a-zA-Z]+[_a-zA-Z0-9]*");
 
