@@ -64,7 +64,7 @@ else {
 	<c:if test="<%= upe.getType() == UserPasswordException.PASSWORD_LENGTH %>">
 
 		<%
-		int passwordPolicyMinLength = 6;
+		int passwordPolicyMinLength = _PASSWORDS_DEFAULT_POLICY_MIN_LENGTH;
 
 		if (passwordPolicy != null) {
 			passwordPolicyMinLength = passwordPolicy.getMinLength();
@@ -89,7 +89,7 @@ else {
 	<c:if test="<%= upe.getType() == UserPasswordException.PASSWORD_TOO_YOUNG %>">
 
 		<%
-		long passwordPolicyMinAge = 0;
+		long passwordPolicyMinAge = _PASSWORDS_DEFAULT_POLICY_MIN_AGE;
 
 		if (passwordPolicy != null) {
 			passwordPolicyMinAge = passwordPolicy.getMinAge();
@@ -186,3 +186,9 @@ else {
 		}
 	</aui:script>
 </c:if>
+
+<%!
+private static final int _PASSWORDS_DEFAULT_POLICY_MIN_AGE = 0;
+
+private static final int _PASSWORDS_DEFAULT_POLICY_MIN_LENGTH = 6;
+%>
