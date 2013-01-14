@@ -28,6 +28,8 @@ import com.liferay.portal.kernel.language.LanguageUtil;
 import com.liferay.portal.kernel.lar.PortletDataContext;
 import com.liferay.portal.kernel.lar.PortletDataHandlerKeys;
 import com.liferay.portal.kernel.lar.UserIdStrategy;
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.messaging.DestinationNames;
 import com.liferay.portal.kernel.messaging.MessageBusUtil;
 import com.liferay.portal.kernel.messaging.MessageStatus;
@@ -1477,6 +1479,11 @@ public class StagingImpl implements Staging {
 				}
 			}
 			catch (LayoutSetBranchNameException lsbne) {
+				if (_log.isWarnEnabled()) {
+					_log.warn(
+						"Unable to create master branch for public layouts",
+						lsbne);
+				}
 			}
 		}
 
@@ -1507,6 +1514,11 @@ public class StagingImpl implements Staging {
 				}
 			}
 			catch (LayoutSetBranchNameException lsbne) {
+				if (_log.isWarnEnabled()) {
+					_log.warn(
+						"Unable to create master branch for private layouts",
+						lsbne);
+				}
 			}
 		}
 	}
@@ -2179,6 +2191,9 @@ public class StagingImpl implements Staging {
 			}
 		}
 		catch (PortalException pe) {
+			if (_log.isWarnEnabled()) {
+				_log.warn("Unable to set recent layout revision id", pe);
+			}
 		}
 
 		portalPreferences.setValue(
@@ -2324,5 +2339,7 @@ public class StagingImpl implements Staging {
 		}
 
 	}
+
+	private static Log _log = LogFactoryUtil.getLog(StagingImpl.class);
 
 }
