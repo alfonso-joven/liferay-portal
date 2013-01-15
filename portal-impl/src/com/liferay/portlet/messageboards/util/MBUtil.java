@@ -14,10 +14,12 @@
 
 package com.liferay.portlet.messageboards.util;
 
+import com.liferay.portal.kernel.concurrent.PortalCallable;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.portlet.LiferayWindowState;
+import com.liferay.portal.kernel.transaction.TransactionCommitCallbackRegistryUtil;
 import com.liferay.portal.kernel.util.CharPool;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.Http;
@@ -29,6 +31,7 @@ import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.Validator;
+import com.liferay.portal.kernel.workflow.WorkflowConstants;
 import com.liferay.portal.model.Group;
 import com.liferay.portal.model.Organization;
 import com.liferay.portal.model.Role;
@@ -52,8 +55,11 @@ import com.liferay.portlet.messageboards.model.MBMailingList;
 import com.liferay.portlet.messageboards.model.MBMessage;
 import com.liferay.portlet.messageboards.model.MBMessageConstants;
 import com.liferay.portlet.messageboards.model.MBStatsUser;
+import com.liferay.portlet.messageboards.model.MBThread;
 import com.liferay.portlet.messageboards.service.MBCategoryLocalServiceUtil;
 import com.liferay.portlet.messageboards.service.MBMailingListLocalServiceUtil;
+import com.liferay.portlet.messageboards.service.MBMessageLocalServiceUtil;
+import com.liferay.portlet.messageboards.service.MBThreadLocalServiceUtil;
 import com.liferay.portlet.messageboards.service.permission.MBMessagePermission;
 import com.liferay.util.ContentUtil;
 import com.liferay.util.mail.JavaMailUtil;
@@ -64,6 +70,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 import javax.mail.BodyPart;
 import javax.mail.Message;
@@ -759,6 +766,100 @@ public class MBUtil {
 				"href=\"" + themeDisplay.getURLPortal() + "/",
 				"src=\"" + themeDisplay.getURLPortal() + "/"
 			});
+	}
+
+	public static void updateCategoryMessageCount(final MBCategory category) {
+		Callable<Void> callable = new PortalCallable<Void>(
+			category.getCompanyId()) {
+
+			@Override
+			protected Void doCall() throws Exception {
+				int messageCount =
+					MBMessageLocalServiceUtil.getCategoryMessagesCount(
+						category.getGroupId(), category.getCategoryId(),
+						WorkflowConstants.STATUS_APPROVED);
+
+				category.setMessageCount(messageCount);
+
+				MBCategoryLocalServiceUtil.updateMBCategory(category);
+
+				return null;
+			}
+		};
+
+		TransactionCommitCallbackRegistryUtil.registerCallback(callable);
+	}
+
+	public static void updateCategoryStatistics(final MBCategory category) {
+		Callable<Void> callable = new PortalCallable<Void>(
+			category.getCompanyId()) {
+
+			@Override
+			protected Void doCall() throws Exception {
+				int messageCount =
+					MBMessageLocalServiceUtil.getCategoryMessagesCount(
+						category.getGroupId(), category.getCategoryId(),
+						WorkflowConstants.STATUS_APPROVED);
+
+				int threadCount =
+					MBThreadLocalServiceUtil.getCategoryThreadsCount(
+						category.getGroupId(), category.getCategoryId(),
+						WorkflowConstants.STATUS_APPROVED);
+
+				category.setMessageCount(messageCount);
+				category.setThreadCount(threadCount);
+
+				MBCategoryLocalServiceUtil.updateMBCategory(category);
+
+				return null;
+			}
+		};
+
+		TransactionCommitCallbackRegistryUtil.registerCallback(callable);
+	}
+
+	public static void updateCategoryThreadCount(final MBCategory category) {
+		Callable<Void> callable = new PortalCallable<Void>(
+			category.getCompanyId()) {
+
+			@Override
+			protected Void doCall() throws Exception {
+				int threadCount =
+					MBThreadLocalServiceUtil.getCategoryThreadsCount(
+						category.getGroupId(), category.getCategoryId(),
+						WorkflowConstants.STATUS_APPROVED);
+
+				category.setThreadCount(threadCount);
+
+				MBCategoryLocalServiceUtil.updateMBCategory(category);
+
+				return null;
+			}
+		};
+
+		TransactionCommitCallbackRegistryUtil.registerCallback(callable);
+	}
+
+	public static void updateThreadMessageCount(final MBThread thread) {
+		Callable<Void> callable = new PortalCallable<Void>(
+			thread.getCompanyId()) {
+
+			@Override
+			protected Void doCall() throws Exception {
+				int messageCount =
+					MBMessageLocalServiceUtil.getThreadMessagesCount(
+						thread.getThreadId(),
+						WorkflowConstants.STATUS_APPROVED);
+
+				thread.setMessageCount(messageCount);
+
+				MBThreadLocalServiceUtil.updateMBThread(thread);
+
+				return null;
+			}
+		};
+
+		TransactionCommitCallbackRegistryUtil.registerCallback(callable);
 	}
 
 	private static String[] _findThreadPriority(

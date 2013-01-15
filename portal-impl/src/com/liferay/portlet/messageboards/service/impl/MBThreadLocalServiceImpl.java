@@ -43,6 +43,7 @@ import com.liferay.portlet.messageboards.model.MBThread;
 import com.liferay.portlet.messageboards.model.MBThreadConstants;
 import com.liferay.portlet.messageboards.model.MBTreeWalker;
 import com.liferay.portlet.messageboards.service.base.MBThreadLocalServiceBaseImpl;
+import com.liferay.portlet.messageboards.util.MBUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -207,11 +208,7 @@ public class MBThreadLocalServiceImpl extends MBThreadLocalServiceBaseImpl {
 			MBCategory category = mbCategoryPersistence.findByPrimaryKey(
 				thread.getCategoryId());
 
-			category.setThreadCount(category.getThreadCount() - 1);
-			category.setMessageCount(
-				category.getMessageCount() - thread.getMessageCount());
-
-			mbCategoryPersistence.update(category, false);
+			MBUtil.updateCategoryStatistics(category);
 		}
 
 		// Thread Asset
@@ -532,19 +529,11 @@ public class MBThreadLocalServiceImpl extends MBThreadLocalServiceBaseImpl {
 		// Category
 
 		if ((oldCategory != null) && (categoryId != oldCategoryId)) {
-			oldCategory.setThreadCount(oldCategory.getThreadCount() - 1);
-			oldCategory.setMessageCount(
-				oldCategory.getMessageCount() - thread.getMessageCount());
-
-			mbCategoryPersistence.update(oldCategory, false);
+			MBUtil.updateCategoryStatistics(oldCategory);
 		}
 
 		if ((category != null) && (categoryId != oldCategoryId)) {
-			category.setThreadCount(category.getThreadCount() + 1);
-			category.setMessageCount(
-				category.getMessageCount() + thread.getMessageCount());
-
-			mbCategoryPersistence.update(category, false);
+			MBUtil.updateCategoryStatistics(category);
 		}
 
 		return thread;
@@ -633,22 +622,15 @@ public class MBThreadLocalServiceImpl extends MBThreadLocalServiceBaseImpl {
 
 		// Update children
 
-		int messagesMoved = 1;
-
-		messagesMoved += moveChildrenMessages(
-			message, category, oldThread.getThreadId());
+		moveChildrenMessages(message, category, oldThread.getThreadId());
 
 		// Update new thread
 
-		thread.setMessageCount(messagesMoved);
-
-		mbThreadPersistence.update(thread, false);
+		MBUtil.updateThreadMessageCount(thread);
 
 		// Update old thread
 
-		oldThread.setMessageCount(oldThread.getMessageCount() - messagesMoved);
-
-		mbThreadPersistence.update(oldThread, false);
+		MBUtil.updateThreadMessageCount(oldThread);
 
 		// Category
 
@@ -657,9 +639,7 @@ public class MBThreadLocalServiceImpl extends MBThreadLocalServiceBaseImpl {
 			(message.getCategoryId() !=
 				MBCategoryConstants.DISCUSSION_CATEGORY_ID)) {
 
-			category.setThreadCount(category.getThreadCount() + 1);
-
-			mbCategoryPersistence.update(category, false);
+			MBUtil.updateCategoryThreadCount(category);
 		}
 
 		return thread;
