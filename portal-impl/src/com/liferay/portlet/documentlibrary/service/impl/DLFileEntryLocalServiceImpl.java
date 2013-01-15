@@ -215,10 +215,6 @@ public class DLFileEntryLocalServiceImpl
 			return null;
 		}
 
-		if (!hasFileEntryLock(userId, fileEntryId)) {
-			lockFileEntry(userId, fileEntryId);
-		}
-
 		DLFileEntry dlFileEntry = dlFileEntryPersistence.findByPrimaryKey(
 			fileEntryId);
 
@@ -261,11 +257,8 @@ public class DLFileEntryLocalServiceImpl
 			return;
 		}
 
-		if (!hasFileEntryLock(userId, fileEntryId)) {
-			lockFileEntry(userId, fileEntryId);
-		}
-
 		User user = userPersistence.findByPrimaryKey(userId);
+
 		DLFileEntry dlFileEntry = dlFileEntryPersistence.findByPrimaryKey(
 			fileEntryId);
 
@@ -1817,9 +1810,8 @@ public class DLFileEntryLocalServiceImpl
 			}
 
 			if (autoCheckIn) {
-				checkInFileEntry(
-					userId, fileEntryId, majorVersion, changeLog,
-					serviceContext);
+				dlFileEntryService.checkInFileEntry(
+					fileEntryId, majorVersion, changeLog, serviceContext);
 			}
 			else if (!checkedOut &&
 					 (serviceContext.getWorkflowAction() ==
@@ -1839,14 +1831,14 @@ public class DLFileEntryLocalServiceImpl
 		}
 		catch (PortalException pe) {
 			if (autoCheckIn) {
-				cancelCheckOut(userId, fileEntryId);
+				dlFileEntryService.cancelCheckOut(fileEntryId);
 			}
 
 			throw pe;
 		}
 		catch (SystemException se) {
 			if (autoCheckIn) {
-				cancelCheckOut(userId, fileEntryId);
+				dlFileEntryService.cancelCheckOut(fileEntryId);
 			}
 
 			throw se;
