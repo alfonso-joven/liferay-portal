@@ -211,7 +211,7 @@ Element contentEl = (Element)request.getAttribute(WebKeys.JOURNAL_ARTICLE_CONTEN
 							<br /><br />
 
 							<div class="journal-image-wrapper results-grid">
-								<img class="journal-image" hspace="0" src="<%= elContent %>" vspace="0" />
+								<img class="journal-image" hspace="0" src="<%= themeDisplay.getPathContext() + elContent %>" vspace="0" />
 							</div>
 						</div>
 					</c:if>
