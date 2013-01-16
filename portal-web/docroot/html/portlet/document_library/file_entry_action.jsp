@@ -68,7 +68,6 @@ else {
 			if (request.getAttribute("view_entries.jsp-fileShortcut") != null) {
 				fileShortcut = (DLFileShortcut)request.getAttribute("view_entries.jsp-fileShortcut");
 			}
-
 		}
 		else {
 			fileShortcut = (DLFileShortcut)request.getAttribute("view_file_shortcut.jsp-fileShortcut");
@@ -84,6 +83,9 @@ if (fileEntry != null) {
 else if (fileShortcut != null) {
 	folderId = fileShortcut.getFolderId();
 }
+
+boolean checkedOut = fileEntry.isCheckedOut();
+boolean hasLock = fileEntry.hasLock();
 
 PortletURL viewFolderURL = liferayPortletResponse.createRenderURL();
 
@@ -105,7 +107,7 @@ viewFolderURL.setParameter("folderId", String.valueOf(folderId));
 
 				<%@ include file="/html/portlet/document_library/file_entry_action_open_document.jspf" %>
 
-				<c:if test="<%= showActions && DLFileEntryPermission.contains(permissionChecker, fileEntry, ActionKeys.UPDATE) %>">
+				<c:if test="<%= (!checkedOut || hasLock) && showActions && DLFileEntryPermission.contains(permissionChecker, fileEntry, ActionKeys.UPDATE) %>">
 					<portlet:renderURL var="editURL">
 						<portlet:param name="struts_action" value="/document_library/edit_file_entry" />
 						<portlet:param name="redirect" value="<%= currentURL %>" />
@@ -119,7 +121,7 @@ viewFolderURL.setParameter("folderId", String.valueOf(folderId));
 					/>
 				</c:if>
 
-				<c:if test="<%= showActions && DLFileEntryPermission.contains(permissionChecker, fileEntry, ActionKeys.UPDATE) %>">
+				<c:if test="<%= (!checkedOut || hasLock) && showActions && DLFileEntryPermission.contains(permissionChecker, fileEntry, ActionKeys.UPDATE) %>">
 					<portlet:renderURL var="moveURL">
 						<portlet:param name="struts_action" value="/document_library/move_file_entry" />
 						<portlet:param name="redirect" value="<%= viewFolderURL.toString() %>" />
@@ -152,7 +154,7 @@ viewFolderURL.setParameter("folderId", String.valueOf(folderId));
 					/>
 				</c:if>
 
-				<c:if test="<%= showActions && DLFileEntryPermission.contains(permissionChecker, fileEntry, ActionKeys.DELETE) %>">
+				<c:if test="<%= (!checkedOut || hasLock) && showActions && DLFileEntryPermission.contains(permissionChecker, fileEntry, ActionKeys.DELETE) %>">
 					<portlet:actionURL var="deleteURL">
 						<portlet:param name="struts_action" value="/document_library/edit_file_entry" />
 						<portlet:param name="<%= Constants.CMD %>" value="<%= Constants.DELETE %>" />
