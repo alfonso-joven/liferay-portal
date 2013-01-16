@@ -756,11 +756,9 @@ public class MBThreadLocalServiceImpl extends MBThreadLocalServiceBaseImpl {
 		}
 	}
 
-	protected int moveChildrenMessages(
+	protected void moveChildrenMessages(
 			MBMessage parentMessage, MBCategory category, long oldThreadId)
 		throws PortalException, SystemException {
-
-		int messagesMoved = 0;
 
 		List<MBMessage> messages = mbMessagePersistence.findByT_P(
 			oldThreadId, parentMessage.getMessageId());
@@ -784,13 +782,8 @@ public class MBThreadLocalServiceImpl extends MBThreadLocalServiceBaseImpl {
 				indexer.reindex(message);
 			}
 
-			messagesMoved++;
-
-			messagesMoved += moveChildrenMessages(
-				message, category, oldThreadId);
+			moveChildrenMessages(message, category, oldThreadId);
 		}
-
-		return messagesMoved;
 	}
 
 	private static Log _log = LogFactoryUtil.getLog(
