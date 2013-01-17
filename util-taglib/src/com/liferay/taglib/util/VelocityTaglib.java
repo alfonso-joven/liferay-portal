@@ -478,7 +478,7 @@ public class VelocityTaglib {
 
 	public void permissionsURL(
 			String redirect, String modelResource,
-			String modelResourceDescription, long resourceGroupId,
+			String modelResourceDescription, Object resourceGroupId,
 			String resourcePrimKey, String windowState, int[] roleTypes)
 		throws Exception {
 
