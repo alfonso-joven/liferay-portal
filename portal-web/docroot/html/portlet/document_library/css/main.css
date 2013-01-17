@@ -336,6 +336,10 @@
 			height: 20px;
 		}
 
+		.locked-icon {
+			float: right;
+		}
+
 		&.selected a {
 			color: #FFF;
 		}

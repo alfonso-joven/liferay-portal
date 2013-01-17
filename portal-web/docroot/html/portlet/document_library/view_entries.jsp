@@ -340,6 +340,13 @@ for (int i = 0; i < results.size(); i++) {
 								(<liferay-ui:message key="<%= statusLabel %>" />)
 							</span>
 						</c:if>
+
+						<c:if test="<%= fileEntry.isCheckedOut() %>">
+							<liferay-ui:icon
+								cssClass="document-display-style locked-icon"
+								image="lock"
+							/>
+						</c:if>
 					</liferay-util:buffer>
 
 					<%
