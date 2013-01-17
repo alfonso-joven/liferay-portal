@@ -19,6 +19,8 @@ import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.portlet.LiferayWindowState;
+import com.liferay.portal.kernel.sanitizer.Sanitizer;
+import com.liferay.portal.kernel.sanitizer.SanitizerUtil;
 import com.liferay.portal.kernel.transaction.TransactionCommitCallbackRegistryUtil;
 import com.liferay.portal.kernel.util.CharPool;
 import com.liferay.portal.kernel.util.GetterUtil;
@@ -69,7 +71,11 @@ import java.io.InputStream;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.Callable;
 
 import javax.mail.BodyPart;
@@ -231,11 +237,19 @@ public class MBUtil {
 				collectMultipartContent(mimeMultipart, mbMailMessage);
 			}
 			else if (partContent instanceof String) {
+				Map<String, Object> options = new HashMap<String, Object>();
+
+				options.put("mb.email", "receive");
+
+				String messageBody = SanitizerUtil.sanitize(
+					0, 0, 0, MBMessage.class.getName(), 0, contentType,
+					Sanitizer.MODE_ALL, (String)partContent, options);
+
 				if (contentType.startsWith("text/html")) {
-					mbMailMessage.setHtmlBody((String)partContent);
+					mbMailMessage.setHtmlBody(messageBody);
 				}
 				else {
-					mbMailMessage.setPlainBody((String)partContent);
+					mbMailMessage.setPlainBody(messageBody);
 				}
 			}
 		}
