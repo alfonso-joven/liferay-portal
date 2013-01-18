@@ -337,7 +337,7 @@ public class DDMImpl implements DDM {
 		try {
 			DLStoreUtil.addFile(
 				serviceContext.getCompanyId(), CompanyConstants.SYSTEM,
-				fileName, inputStream);
+				fileName, false, inputStream);
 		}
 		catch (DuplicateFileException dfe) {
 		}
