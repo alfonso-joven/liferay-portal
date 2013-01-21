@@ -442,7 +442,7 @@ String signature = ParamUtil.getString(request, "signature");
 								);
 							}
 
-							if (value && !ignoreFields[key]) {
+							if (!ignoreFields[key]) {
 								scriptData.push(
 									{
 										key: key,
