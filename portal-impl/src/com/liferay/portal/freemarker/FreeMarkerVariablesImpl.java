@@ -74,7 +74,7 @@ import com.liferay.portlet.expando.service.ExpandoRowLocalService;
 import com.liferay.portlet.expando.service.ExpandoTableLocalService;
 import com.liferay.portlet.expando.service.ExpandoValueLocalService;
 import com.liferay.portlet.journalcontent.util.JournalContentUtil;
-import com.liferay.taglib.util.VelocityTaglib;
+import com.liferay.taglib.util.VelocityTaglibImpl;
 import com.liferay.util.portlet.PortletRequestUtil;
 
 import freemarker.ext.beans.BeansWrapper;
@@ -400,7 +400,7 @@ public class FreeMarkerVariablesImpl implements FreeMarkerVariables {
 		// VelocityTaglib methods
 
 		try {
-			Class<?> clazz = VelocityTaglib.class;
+			Class<?> clazz = VelocityTaglibImpl.class;
 
 			Method method = clazz.getMethod(
 				"layoutIcon", new Class[] {Layout.class});

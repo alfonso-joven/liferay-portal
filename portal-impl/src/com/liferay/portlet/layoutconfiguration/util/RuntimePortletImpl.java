@@ -51,7 +51,7 @@ import com.liferay.portlet.layoutconfiguration.util.xml.ActionURLLogic;
 import com.liferay.portlet.layoutconfiguration.util.xml.PortletLogic;
 import com.liferay.portlet.layoutconfiguration.util.xml.RenderURLLogic;
 import com.liferay.portlet.layoutconfiguration.util.xml.RuntimeLogic;
-import com.liferay.taglib.util.VelocityTaglib;
+import com.liferay.taglib.util.VelocityTaglibImpl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -445,7 +445,7 @@ public class RuntimePortletImpl implements RuntimePortlet {
 
 		// liferay:include tag library
 
-		Object velocityTaglib = new VelocityTaglib(
+		Object velocityTaglib = new VelocityTaglibImpl(
 			pageContext.getServletContext(), request,
 			new PipingServletResponse(response, unsyncStringWriter),
 			pageContext);
@@ -494,7 +494,7 @@ public class RuntimePortletImpl implements RuntimePortlet {
 
 		UnsyncStringWriter unsyncStringWriter = new UnsyncStringWriter();
 
-		Object velocityTaglib = new VelocityTaglib(
+		Object velocityTaglib = new VelocityTaglibImpl(
 			pageContext.getServletContext(), request,
 			new PipingServletResponse(response, unsyncStringWriter),
 			pageContext);
