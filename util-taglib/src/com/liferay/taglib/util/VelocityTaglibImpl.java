@@ -373,18 +373,6 @@ public class VelocityTaglibImpl implements VelocityTaglib {
 		requestDispatcher.include(_request, _response);
 	}
 
-	public VelocityTaglibImpl init(
-		ServletContext servletContext, HttpServletRequest request,
-		HttpServletResponse response, PageContext pageContext) {
-
-		_servletContext = servletContext;
-		_request = request;
-		_response = response;
-		_pageContext = pageContext;
-
-		return this;
-	}
-
 	public void journalContentSearch() throws Exception {
 		JournalContentSearchTag journalContentSearchTag =
 			new JournalContentSearchTag();
@@ -646,6 +634,18 @@ public class VelocityTaglibImpl implements VelocityTaglib {
 		return WrapPortletTag.doTag(
 			wrapPage, portletPage, _servletContext, _request, _response,
 			_pageContext);
+	}
+
+	protected VelocityTaglibImpl init(
+		ServletContext servletContext, HttpServletRequest request,
+		HttpServletResponse response, PageContext pageContext) {
+
+		_servletContext = servletContext;
+		_request = request;
+		_response = response;
+		_pageContext = pageContext;
+
+		return this;
 	}
 
 	protected void setUp(TagSupport tagSupport) throws Exception {
