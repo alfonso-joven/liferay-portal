@@ -45,7 +45,6 @@ import com.liferay.portal.kernel.servlet.DynamicServletRequest;
 import com.liferay.portal.kernel.servlet.FileTimestampUtil;
 import com.liferay.portal.kernel.servlet.HttpHeaders;
 import com.liferay.portal.kernel.servlet.HttpMethods;
-import com.liferay.portal.kernel.servlet.NonSerializableObjectRequestWrapper;
 import com.liferay.portal.kernel.servlet.PersistentHttpServletRequestWrapper;
 import com.liferay.portal.kernel.servlet.PipingServletResponse;
 import com.liferay.portal.kernel.servlet.PortalSessionThreadLocal;
@@ -2929,11 +2928,6 @@ public class PortalImpl implements Portal {
 			httpServletRequestWrapper.setRequest(originalRequest);
 
 			originalRequest = httpServletRequestWrapper;
-		}
-
-		if (ServerDetector.isWebLogic()) {
-			originalRequest = new NonSerializableObjectRequestWrapper(
-				originalRequest);
 		}
 
 		return originalRequest;

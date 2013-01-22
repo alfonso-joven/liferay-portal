@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletRequestWrapper;
  * @author Igor Spasic
  */
 public class NonSerializableObjectRequestWrapper extends
-	HttpServletRequestWrapper {
+	PersistentHttpServletRequestWrapper {
 
 	public static boolean isWrapped(HttpServletRequest request) {
 		Boolean wrapped = (Boolean)request.getAttribute(
