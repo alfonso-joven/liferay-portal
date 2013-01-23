@@ -5925,9 +5925,16 @@ public class PortalImpl implements Portal {
 			}
 		}
 		catch (NoSuchResourceException nsre) {
-			ResourceLocalServiceUtil.addResources(
-				companyId, groupId, 0, name, primaryKey, portletActions, true,
-				!layout.isPrivateLayout());
+			if (portletActions) {
+				ResourceLocalServiceUtil.addResources(
+					companyId, groupId, 0, name, primaryKey, portletActions,
+					true, !layout.isPrivateLayout());
+			}
+			else {
+				ResourceLocalServiceUtil.addResources(
+					companyId, groupId, 0, name, primaryKey, portletActions,
+					true, true);
+			}
 		}
 	}
 
