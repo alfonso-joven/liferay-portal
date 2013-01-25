@@ -379,7 +379,7 @@ public class RepositoryLocalServiceImpl extends RepositoryLocalServiceBaseImpl {
 		}
 		else if (baseRepository instanceof BaseRepositoryProxyBean) {
 			BaseRepositoryProxyBean baseRepositoryProxyBean =
-				(BaseRepositoryProxyBean) baseRepository;
+				(BaseRepositoryProxyBean)baseRepository;
 
 			ClassLoaderBeanHandler classLoaderBeanHandler =
 				(ClassLoaderBeanHandler)ProxyUtil.getInvocationHandler(
