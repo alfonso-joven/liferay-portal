@@ -338,6 +338,21 @@ public interface LayoutService extends BaseService {
 			com.liferay.portal.kernel.exception.SystemException;
 
 	/**
+	* Returns a list with all the ancestors of the of the layout matching the
+	* primary key
+	*
+	* @param plid the primary key of the layout
+	* @return the list of ancestor layouts
+	* @throws PortalException if a matching layout could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<com.liferay.portal.model.Layout> getAncestorLayouts(
+		long plid)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException;
+
+	/**
 	* Returns the primary key of the default layout for the group.
 	*
 	* @param groupId the primary key of the group
@@ -401,12 +416,17 @@ public interface LayoutService extends BaseService {
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public java.util.List<com.liferay.portal.model.Layout> getLayouts(
 		long groupId, boolean privateLayout)
-		throws com.liferay.portal.kernel.exception.PortalException,
-			com.liferay.portal.kernel.exception.SystemException;
+		throws com.liferay.portal.kernel.exception.SystemException;
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public java.util.List<com.liferay.portal.model.Layout> getLayouts(
 		long groupId, boolean privateLayout, long parentLayoutId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public java.util.List<com.liferay.portal.model.Layout> getLayouts(
+		long groupId, boolean privateLayout, long parentLayoutId,
+		boolean incomplete, int start, int end)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
