@@ -481,7 +481,8 @@ public class LayoutServiceHttp {
 	}
 
 	public static com.liferay.portal.model.Layout getLayoutByUuidAndGroupId(
-		HttpPrincipal httpPrincipal, java.lang.String uuid, long groupId)
+		HttpPrincipal httpPrincipal, java.lang.String uuid, long groupId,
+		boolean privateLayout)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
@@ -490,7 +491,7 @@ public class LayoutServiceHttp {
 					_getLayoutByUuidAndGroupIdParameterTypes11);
 
 			MethodHandler methodHandler = new MethodHandler(methodKey, uuid,
-					groupId);
+					groupId, privateLayout);
 
 			Object returnObj = null;
 
@@ -1462,7 +1463,7 @@ public class LayoutServiceHttp {
 			long.class, long.class, boolean.class, java.lang.String.class
 		};
 	private static final Class<?>[] _getLayoutByUuidAndGroupIdParameterTypes11 = new Class[] {
-			java.lang.String.class, long.class
+			java.lang.String.class, long.class, boolean.class
 		};
 	private static final Class<?>[] _getLayoutNameParameterTypes12 = new Class[] {
 			long.class, boolean.class, long.class, java.lang.String.class

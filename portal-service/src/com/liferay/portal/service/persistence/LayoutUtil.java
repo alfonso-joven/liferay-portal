@@ -184,6 +184,57 @@ public class LayoutUtil {
 	}
 
 	/**
+	* Returns the layout where uuid = &#63; and groupId = &#63; and privateLayout = &#63; or throws a {@link com.liferay.portal.NoSuchLayoutException} if it could not be found.
+	*
+	* @param uuid the uuid
+	* @param groupId the group ID
+	* @param privateLayout the private layout
+	* @return the matching layout
+	* @throws com.liferay.portal.NoSuchLayoutException if a matching layout could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static com.liferay.portal.model.Layout findByUUID_G_P(
+		java.lang.String uuid, long groupId, boolean privateLayout)
+		throws com.liferay.portal.NoSuchLayoutException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().findByUUID_G_P(uuid, groupId, privateLayout);
+	}
+
+	/**
+	* Returns the layout where uuid = &#63; and groupId = &#63; and privateLayout = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
+	*
+	* @param uuid the uuid
+	* @param groupId the group ID
+	* @param privateLayout the private layout
+	* @return the matching layout, or <code>null</code> if a matching layout could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static com.liferay.portal.model.Layout fetchByUUID_G_P(
+		java.lang.String uuid, long groupId, boolean privateLayout)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().fetchByUUID_G_P(uuid, groupId, privateLayout);
+	}
+
+	/**
+	* Returns the layout where uuid = &#63; and groupId = &#63; and privateLayout = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
+	*
+	* @param uuid the uuid
+	* @param groupId the group ID
+	* @param privateLayout the private layout
+	* @param retrieveFromCache whether to use the finder cache
+	* @return the matching layout, or <code>null</code> if a matching layout could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static com.liferay.portal.model.Layout fetchByUUID_G_P(
+		java.lang.String uuid, long groupId, boolean privateLayout,
+		boolean retrieveFromCache)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .fetchByUUID_G_P(uuid, groupId, privateLayout,
+			retrieveFromCache);
+	}
+
+	/**
 	* Returns all the layouts where uuid = &#63;.
 	*
 	* @param uuid the uuid
@@ -317,51 +368,6 @@ public class LayoutUtil {
 			com.liferay.portal.kernel.exception.SystemException {
 		return getPersistence()
 				   .findByUuid_PrevAndNext(plid, uuid, orderByComparator);
-	}
-
-	/**
-	* Returns the layout where uuid = &#63; and groupId = &#63; or throws a {@link com.liferay.portal.NoSuchLayoutException} if it could not be found.
-	*
-	* @param uuid the uuid
-	* @param groupId the group ID
-	* @return the matching layout
-	* @throws com.liferay.portal.NoSuchLayoutException if a matching layout could not be found
-	* @throws SystemException if a system exception occurred
-	*/
-	public static com.liferay.portal.model.Layout findByUUID_G(
-		java.lang.String uuid, long groupId)
-		throws com.liferay.portal.NoSuchLayoutException,
-			com.liferay.portal.kernel.exception.SystemException {
-		return getPersistence().findByUUID_G(uuid, groupId);
-	}
-
-	/**
-	* Returns the layout where uuid = &#63; and groupId = &#63; or returns <code>null</code> if it could not be found. Uses the finder cache.
-	*
-	* @param uuid the uuid
-	* @param groupId the group ID
-	* @return the matching layout, or <code>null</code> if a matching layout could not be found
-	* @throws SystemException if a system exception occurred
-	*/
-	public static com.liferay.portal.model.Layout fetchByUUID_G(
-		java.lang.String uuid, long groupId)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		return getPersistence().fetchByUUID_G(uuid, groupId);
-	}
-
-	/**
-	* Returns the layout where uuid = &#63; and groupId = &#63; or returns <code>null</code> if it could not be found, optionally using the finder cache.
-	*
-	* @param uuid the uuid
-	* @param groupId the group ID
-	* @param retrieveFromCache whether to use the finder cache
-	* @return the matching layout, or <code>null</code> if a matching layout could not be found
-	* @throws SystemException if a system exception occurred
-	*/
-	public static com.liferay.portal.model.Layout fetchByUUID_G(
-		java.lang.String uuid, long groupId, boolean retrieveFromCache)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		return getPersistence().fetchByUUID_G(uuid, groupId, retrieveFromCache);
 	}
 
 	/**
@@ -2000,6 +2006,22 @@ public class LayoutUtil {
 	}
 
 	/**
+	* Removes the layout where uuid = &#63; and groupId = &#63; and privateLayout = &#63; from the database.
+	*
+	* @param uuid the uuid
+	* @param groupId the group ID
+	* @param privateLayout the private layout
+	* @return the layout that was removed
+	* @throws SystemException if a system exception occurred
+	*/
+	public static com.liferay.portal.model.Layout removeByUUID_G_P(
+		java.lang.String uuid, long groupId, boolean privateLayout)
+		throws com.liferay.portal.NoSuchLayoutException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().removeByUUID_G_P(uuid, groupId, privateLayout);
+	}
+
+	/**
 	* Removes all the layouts where uuid = &#63; from the database.
 	*
 	* @param uuid the uuid
@@ -2008,21 +2030,6 @@ public class LayoutUtil {
 	public static void removeByUuid(java.lang.String uuid)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		getPersistence().removeByUuid(uuid);
-	}
-
-	/**
-	* Removes the layout where uuid = &#63; and groupId = &#63; from the database.
-	*
-	* @param uuid the uuid
-	* @param groupId the group ID
-	* @return the layout that was removed
-	* @throws SystemException if a system exception occurred
-	*/
-	public static com.liferay.portal.model.Layout removeByUUID_G(
-		java.lang.String uuid, long groupId)
-		throws com.liferay.portal.NoSuchLayoutException,
-			com.liferay.portal.kernel.exception.SystemException {
-		return getPersistence().removeByUUID_G(uuid, groupId);
 	}
 
 	/**
@@ -2189,6 +2196,21 @@ public class LayoutUtil {
 	}
 
 	/**
+	* Returns the number of layouts where uuid = &#63; and groupId = &#63; and privateLayout = &#63;.
+	*
+	* @param uuid the uuid
+	* @param groupId the group ID
+	* @param privateLayout the private layout
+	* @return the number of matching layouts
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByUUID_G_P(java.lang.String uuid, long groupId,
+		boolean privateLayout)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().countByUUID_G_P(uuid, groupId, privateLayout);
+	}
+
+	/**
 	* Returns the number of layouts where uuid = &#63;.
 	*
 	* @param uuid the uuid
@@ -2198,19 +2220,6 @@ public class LayoutUtil {
 	public static int countByUuid(java.lang.String uuid)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return getPersistence().countByUuid(uuid);
-	}
-
-	/**
-	* Returns the number of layouts where uuid = &#63; and groupId = &#63;.
-	*
-	* @param uuid the uuid
-	* @param groupId the group ID
-	* @return the number of matching layouts
-	* @throws SystemException if a system exception occurred
-	*/
-	public static int countByUUID_G(java.lang.String uuid, long groupId)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		return getPersistence().countByUUID_G(uuid, groupId);
 	}
 
 	/**

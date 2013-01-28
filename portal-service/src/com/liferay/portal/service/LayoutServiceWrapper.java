@@ -392,10 +392,11 @@ public class LayoutServiceWrapper implements LayoutService,
 	}
 
 	public com.liferay.portal.model.Layout getLayoutByUuidAndGroupId(
-		java.lang.String uuid, long groupId)
+		java.lang.String uuid, long groupId, boolean privateLayout)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
-		return _layoutService.getLayoutByUuidAndGroupId(uuid, groupId);
+		return _layoutService.getLayoutByUuidAndGroupId(uuid, groupId,
+			privateLayout);
 	}
 
 	/**

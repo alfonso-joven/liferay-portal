@@ -374,7 +374,7 @@ public interface LayoutService extends BaseService {
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public com.liferay.portal.model.Layout getLayoutByUuidAndGroupId(
-		java.lang.String uuid, long groupId)
+		java.lang.String uuid, long groupId, boolean privateLayout)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 

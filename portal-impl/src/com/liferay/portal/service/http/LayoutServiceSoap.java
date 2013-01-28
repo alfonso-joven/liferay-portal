@@ -330,10 +330,11 @@ public class LayoutServiceSoap {
 	}
 
 	public static com.liferay.portal.model.LayoutSoap getLayoutByUuidAndGroupId(
-		java.lang.String uuid, long groupId) throws RemoteException {
+		java.lang.String uuid, long groupId, boolean privateLayout)
+		throws RemoteException {
 		try {
 			com.liferay.portal.model.Layout returnValue = LayoutServiceUtil.getLayoutByUuidAndGroupId(uuid,
-					groupId);
+					groupId, privateLayout);
 
 			return com.liferay.portal.model.LayoutSoap.toSoapModel(returnValue);
 		}
