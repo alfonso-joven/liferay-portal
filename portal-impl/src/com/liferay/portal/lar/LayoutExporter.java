@@ -885,7 +885,8 @@ public class LayoutExporter {
 						scopeLayout = LayoutLocalServiceUtil.
 							fetchLayoutByUuidAndGroupId(
 								scopeLayoutUuid,
-								portletDataContext.getGroupId());
+								portletDataContext.getGroupId(),
+								portletDataContext.isPrivateLayout());
 
 						if (scopeLayout == null) {
 							continue;

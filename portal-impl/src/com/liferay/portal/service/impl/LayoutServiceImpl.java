@@ -538,11 +538,12 @@ public class LayoutServiceImpl extends LayoutServiceBaseImpl {
 		return LayoutConstants.DEFAULT_PLID;
 	}
 
-	public Layout getLayoutByUuidAndGroupId(String uuid, long groupId)
+	public Layout getLayoutByUuidAndGroupId(
+			String uuid, long groupId, boolean privateLayout)
 		throws PortalException, SystemException {
 
 		Layout layout = layoutLocalService.getLayoutByUuidAndGroupId(
-			uuid, groupId);
+			uuid, groupId, privateLayout);
 
 		LayoutPermissionUtil.check(
 			getPermissionChecker(), layout, ActionKeys.VIEW);
