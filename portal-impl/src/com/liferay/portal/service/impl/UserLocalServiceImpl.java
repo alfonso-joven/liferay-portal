@@ -3627,7 +3627,12 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 
 		Role role = rolePersistence.findByPrimaryKey(roleId);
 
-		if (role.getName().equals(RoleConstants.USER)) {
+		String roleName = role.getName();
+
+		if (roleName.equals(RoleConstants.USER) ||
+			(roleName.equals(RoleConstants.ADMINISTRATOR) &&
+				getRoleUsersCount(role.getRoleId()) <= 1)) {
+
 			return;
 		}
 
@@ -3653,7 +3658,12 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 
 		Role role = rolePersistence.findByPrimaryKey(roleId);
 
-		if (role.getName().equals(RoleConstants.USER)) {
+		String roleName = role.getName();
+
+		if (roleName.equals(RoleConstants.USER) ||
+			(roleName.equals(RoleConstants.ADMINISTRATOR) &&
+				getRoleUsersCount(role.getRoleId()) <= 1)) {
+
 			return;
 		}
 
