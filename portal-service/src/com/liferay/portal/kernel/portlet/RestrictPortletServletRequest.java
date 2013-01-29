@@ -17,6 +17,7 @@ package com.liferay.portal.kernel.portlet;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.servlet.PersistentHttpServletRequestWrapper;
+import com.liferay.portal.kernel.servlet.RequestDispatcherAttributeNames;
 
 import java.util.Collections;
 import java.util.Enumeration;
@@ -40,6 +41,10 @@ public class RestrictPortletServletRequest
 
 	@Override
 	public Object getAttribute(String name) {
+		if (RequestDispatcherAttributeNames.contains(name)) {
+			return super.getAttribute(name);
+		}
+
 		Object value = _attributes.get(name);
 
 		if (value == _nullValue) {
@@ -124,16 +129,26 @@ public class RestrictPortletServletRequest
 
 	@Override
 	public void removeAttribute(String name) {
-		_attributes.put(name, _nullValue);
+		if (RequestDispatcherAttributeNames.contains(name)) {
+			super.removeAttribute(name);
+		}
+		else {
+			_attributes.put(name, _nullValue);
+		}
 	}
 
 	@Override
 	public void setAttribute(String name, Object value) {
-		if (value == null) {
-			value = _nullValue;
+		if (RequestDispatcherAttributeNames.contains(name)) {
+			super.setAttribute(name, value);
 		}
+		else {
+			if (value == null) {
+				value = _nullValue;
+			}
 
-		_attributes.put(name, value);
+			_attributes.put(name, value);
+		}
 	}
 
 	private static Log _log = LogFactoryUtil.getLog(
