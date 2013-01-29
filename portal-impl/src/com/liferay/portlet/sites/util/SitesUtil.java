@@ -622,7 +622,7 @@ public class SitesUtil {
 
 			if (LayoutLocalServiceUtil.hasLayoutSetPrototypeLayout(
 					layoutSet.getLayoutSetPrototypeUuid(),
-					layout.getSourcePrototypeLayoutUuid(), true)) {
+					layout.getSourcePrototypeLayoutUuid())) {
 
 				return false;
 			}
