@@ -136,7 +136,7 @@ public class RSSAction extends PortletAction {
 
 			syndEntry.setLink(link);
 
-			syndEntry.setPublishedDate(assetEntry.getCreateDate());
+			syndEntry.setPublishedDate(assetEntry.getPublishDate());
 			syndEntry.setTitle(assetEntry.getTitle(languageId, true));
 			syndEntry.setUpdatedDate(assetEntry.getModifiedDate());
 			syndEntry.setUri(syndEntry.getLink());
