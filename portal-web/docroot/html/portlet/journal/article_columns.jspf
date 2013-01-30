@@ -30,20 +30,17 @@ row.addText(LanguageUtil.get(pageContext, WorkflowConstants.toLabel(article.getS
 
 // Version
 
-double version = article.getVersion();
 double latestVersion = JournalArticleLocalServiceUtil.getLatestVersion(article.getGroupId(), article.getArticleId());
 String versionInfo = String.valueOf(article.getVersion());
 
-if (version != latestVersion) {
-	StringBundler sb = new StringBundler(9);
+if (article.getVersion() != latestVersion) {
+	StringBundler sb = new StringBundler(8);
 
 	sb.append(versionInfo);
-
 	sb.append("<br /><i>");
 	sb.append(StringPool.OPEN_PARENTHESIS);
 	sb.append(LanguageUtil.get(pageContext, "last"));
-	sb.append(StringPool.COLON);
-	sb.append(StringPool.SPACE);
+	sb.append(": ");
 	sb.append(String.valueOf(latestVersion));
 	sb.append(StringPool.CLOSE_PARENTHESIS);
 	sb.append("</i>");
