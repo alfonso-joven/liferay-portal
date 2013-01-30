@@ -28,6 +28,31 @@ row.addText(article.getTitle(locale), rowURL);
 
 row.addText(LanguageUtil.get(pageContext, WorkflowConstants.toLabel(article.getStatus())), rowURL);
 
+// Version
+
+double version = article.getVersion();
+double latestVersion = JournalArticleLocalServiceUtil.getLatestVersion(article.getGroupId(), article.getArticleId());
+String versionInfo = String.valueOf(article.getVersion());
+
+if (version != latestVersion) {
+	StringBundler sb = new StringBundler(9);
+
+	sb.append(versionInfo);
+
+	sb.append("<br /><i>");
+	sb.append(StringPool.OPEN_PARENTHESIS);
+	sb.append(LanguageUtil.get(pageContext, "last"));
+	sb.append(StringPool.COLON);
+	sb.append(StringPool.SPACE);
+	sb.append(String.valueOf(latestVersion));
+	sb.append(StringPool.CLOSE_PARENTHESIS);
+	sb.append("</i>");
+
+	versionInfo = sb.toString();
+}
+
+row.addText(versionInfo, rowURL);
+
 // Modified date
 
 row.addText(dateFormatDateTime.format(article.getModifiedDate()), rowURL);

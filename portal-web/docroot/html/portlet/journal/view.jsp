@@ -44,6 +44,7 @@ portletURL.setParameter("tabs1", tabs1);
 			List headerNames = searchContainer.getHeaderNames();
 
 			headerNames.add(2, "status");
+			headerNames.add(3, "version");
 			headerNames.add(StringPool.BLANK);
 
 			searchContainer.setRowChecker(new RowChecker(renderResponse));
