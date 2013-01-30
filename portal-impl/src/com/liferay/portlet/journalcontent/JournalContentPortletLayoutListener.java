@@ -23,7 +23,6 @@ import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.Layout;
 import com.liferay.portal.service.LayoutLocalServiceUtil;
 import com.liferay.portlet.PortletPreferencesFactoryUtil;
-import com.liferay.portlet.journal.NoSuchContentSearchException;
 import com.liferay.portlet.journal.service.JournalContentSearchLocalServiceUtil;
 
 import javax.portlet.PortletPreferences;
@@ -80,13 +79,9 @@ public class JournalContentPortletLayoutListener
 			return;
 		}
 
-		try {
-			JournalContentSearchLocalServiceUtil.deleteArticleContentSearch(
-				layout.getGroupId(), layout.isPrivateLayout(),
-				layout.getLayoutId(), portletId, articleId);
-		}
-		catch (NoSuchContentSearchException nscse) {
-		}
+		JournalContentSearchLocalServiceUtil.deleteArticleContentSearch(
+			layout.getGroupId(), layout.isPrivateLayout(), layout.getLayoutId(),
+			portletId, articleId);
 	}
 
 	private static Log _log = LogFactoryUtil.getLog(
