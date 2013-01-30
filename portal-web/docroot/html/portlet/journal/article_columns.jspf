@@ -31,12 +31,11 @@ row.addText(LanguageUtil.get(pageContext, WorkflowConstants.toLabel(article.getS
 // Version
 
 double latestVersion = JournalArticleLocalServiceUtil.getLatestVersion(article.getGroupId(), article.getArticleId());
-String versionInfo = String.valueOf(article.getVersion());
 
 if (article.getVersion() != latestVersion) {
 	StringBundler sb = new StringBundler(8);
 
-	sb.append(versionInfo);
+	sb.append(article.getVersion());
 	sb.append("<br /><i>");
 	sb.append(StringPool.OPEN_PARENTHESIS);
 	sb.append(LanguageUtil.get(pageContext, "last"));
@@ -45,10 +44,11 @@ if (article.getVersion() != latestVersion) {
 	sb.append(StringPool.CLOSE_PARENTHESIS);
 	sb.append("</i>");
 
-	versionInfo = sb.toString();
+	row.addText(sb.toString(), rowURL);
 }
-
-row.addText(versionInfo, rowURL);
+else {
+	row.addText(String.valueOf(article.getVersion()), rowURL);
+}
 
 // Modified date
 
