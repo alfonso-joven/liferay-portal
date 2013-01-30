@@ -1,3 +1,12 @@
+.taglib-form-navigator {
+	&:after {
+		clear: both;
+		content: "";
+		display: block;
+		height: 0;
+	}
+}
+
 .taglib-form-navigator .form-navigator {
 	background-color: #D7F1FF;
 	border: 1px solid #88C5D9;
@@ -111,6 +120,10 @@
 
 .taglib-form-navigator .form-section .aui-field-input, .taglib-form-navigator .lfr-change-logo img {
 	max-width: 100%;
+}
+
+.ie6, .ie7 {
+	zoom: 1;
 }
 
 .ie6 .taglib-form-navigator .form-section {
