@@ -41,13 +41,15 @@ public class UserGroupRoleLocalServiceImpl
 		checkGroupResource(groupId);
 
 		for (long roleId : roleIds) {
-			UserGroupRolePK pk = new UserGroupRolePK(userId, groupId, roleId);
+			UserGroupRolePK userGroupRolePK = new UserGroupRolePK(
+				userId, groupId, roleId);
 
 			UserGroupRole userGroupRole =
-				userGroupRolePersistence.fetchByPrimaryKey(pk);
+				userGroupRolePersistence.fetchByPrimaryKey(userGroupRolePK);
 
 			if (userGroupRole == null) {
-				userGroupRole = userGroupRolePersistence.create(pk);
+				userGroupRole = userGroupRolePersistence.create(
+					userGroupRolePK);
 
 				userGroupRolePersistence.update(userGroupRole, false);
 			}
@@ -62,13 +64,15 @@ public class UserGroupRoleLocalServiceImpl
 		checkGroupResource(groupId);
 
 		for (long userId : userIds) {
-			UserGroupRolePK pk = new UserGroupRolePK(userId, groupId, roleId);
+			UserGroupRolePK userGroupRolePK = new UserGroupRolePK(
+				userId, groupId, roleId);
 
 			UserGroupRole userGroupRole =
-				userGroupRolePersistence.fetchByPrimaryKey(pk);
+				userGroupRolePersistence.fetchByPrimaryKey(userGroupRolePK);
 
 			if (userGroupRole == null) {
-				userGroupRole = userGroupRolePersistence.create(pk);
+				userGroupRole = userGroupRolePersistence.create(
+					userGroupRolePK);
 
 				userGroupRolePersistence.update(userGroupRole, false);
 			}
@@ -92,10 +96,11 @@ public class UserGroupRoleLocalServiceImpl
 		throws SystemException {
 
 		for (long roleId : roleIds) {
-			UserGroupRolePK pk = new UserGroupRolePK(userId, groupId, roleId);
+			UserGroupRolePK userGroupRolePK = new UserGroupRolePK(
+				userId, groupId, roleId);
 
 			try {
-				userGroupRolePersistence.remove(pk);
+				userGroupRolePersistence.remove(userGroupRolePK);
 			}
 			catch (NoSuchUserGroupRoleException nsugre) {
 			}
@@ -124,18 +129,19 @@ public class UserGroupRoleLocalServiceImpl
 		PermissionCacheUtil.clearCache();
 	}
 
-	public void deleteUserGroupRoles(long[] userIds, long groupId, int type)
+	public void deleteUserGroupRoles(long[] userIds, long groupId, int roleType)
 		throws SystemException {
 
-		List<Role> roles = roleLocalService.getRoles(type, StringPool.BLANK);
+		List<Role> roles = rolePersistence.findByT_S(
+			roleType, StringPool.BLANK);
 
 		for (long userId : userIds) {
 			for (Role role : roles) {
-				UserGroupRolePK pk = new UserGroupRolePK(
+				UserGroupRolePK userGroupRolePK = new UserGroupRolePK(
 					userId, groupId, role.getRoleId());
 
 				try {
-					userGroupRolePersistence.remove(pk);
+					userGroupRolePersistence.remove(userGroupRolePK);
 				}
 				catch (NoSuchUserGroupRoleException nsugre) {
 				}
@@ -222,10 +228,11 @@ public class UserGroupRoleLocalServiceImpl
 			long userId, long groupId, long roleId, boolean inherit)
 		throws SystemException {
 
-		UserGroupRolePK pk = new UserGroupRolePK(userId, groupId, roleId);
+		UserGroupRolePK userGroupRolePK = new UserGroupRolePK(
+			userId, groupId, roleId);
 
 		UserGroupRole userGroupRole =
-			userGroupRolePersistence.fetchByPrimaryKey(pk);
+			userGroupRolePersistence.fetchByPrimaryKey(userGroupRolePK);
 
 		if (userGroupRole != null) {
 			return true;
