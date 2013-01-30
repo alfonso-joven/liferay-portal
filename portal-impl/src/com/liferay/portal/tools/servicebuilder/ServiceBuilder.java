@@ -4843,7 +4843,7 @@ public class ServiceBuilder {
 					finderColumnElement.addAttribute("name", "privateLayout");
 				}
 
-				finderElements.add(0, finderElement);
+				finderElements.add(1, finderElement);
 			}
 		}
 
