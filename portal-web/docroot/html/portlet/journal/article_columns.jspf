@@ -40,7 +40,7 @@ if (article.getVersion() != latestVersion) {
 	sb.append(StringPool.OPEN_PARENTHESIS);
 	sb.append(LanguageUtil.get(pageContext, "last"));
 	sb.append(": ");
-	sb.append(String.valueOf(latestVersion));
+	sb.append(latestVersion);
 	sb.append(StringPool.CLOSE_PARENTHESIS);
 	sb.append("</i>");
 
