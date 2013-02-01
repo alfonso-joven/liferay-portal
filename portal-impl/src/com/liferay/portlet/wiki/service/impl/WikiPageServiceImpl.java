@@ -39,8 +39,6 @@ import com.liferay.portal.util.PortalUtil;
 import com.liferay.portal.util.PortletKeys;
 import com.liferay.portal.util.PropsValues;
 import com.liferay.portlet.wiki.NoSuchPageException;
-import com.liferay.portlet.wiki.PageContentException;
-import com.liferay.portlet.wiki.WikiFormatException;
 import com.liferay.portlet.wiki.model.WikiNode;
 import com.liferay.portlet.wiki.model.WikiPage;
 import com.liferay.portlet.wiki.model.WikiPageConstants;
@@ -520,7 +518,7 @@ public class WikiPageServiceImpl extends WikiPageServiceBaseImpl {
 			long companyId, String name, String description, String type,
 			double version, String displayStyle, String feedURL,
 			String entryURL, List<WikiPage> pages, boolean diff, Locale locale)
-		throws PageContentException, SystemException, WikiFormatException {
+		throws PortalException, SystemException {
 
 		SyndFeed syndFeed = new SyndFeedImpl();
 
@@ -640,7 +638,7 @@ public class WikiPageServiceImpl extends WikiPageServiceBaseImpl {
 
 	protected String getPageDiff(
 			long companyId, WikiPage latestPage, WikiPage page, Locale locale)
-		throws PageContentException, SystemException, WikiFormatException {
+		throws PortalException, SystemException {
 
 		String sourceContent = WikiUtil.convert(latestPage, null, null, null);
 		String targetContent = WikiUtil.convert(page, null, null, null);
