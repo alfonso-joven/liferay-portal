@@ -866,7 +866,7 @@ public class ServicePreAction extends Action {
 
 		long controlPanelPlid = 0;
 
-		if (signedIn) {
+		if (signedIn && PropsValues.DOCKBAR_SHOW_SITE_CONTENT_ICON) {
 			Group controlPanelGroup = GroupLocalServiceUtil.getGroup(
 				companyId, GroupConstants.CONTROL_PANEL);
 
