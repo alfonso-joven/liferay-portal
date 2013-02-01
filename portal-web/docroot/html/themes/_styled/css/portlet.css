@@ -645,7 +645,7 @@ body.portlet {
 	background-image: url(../images/portlet/options_selected.png);
 }
 
-/*------ Breadcrumbs taglib ------*/
+/* ---------- Breadcrumbs taglib ---------- */
 
 .breadcrumbs {
 	&:before, &:after {
