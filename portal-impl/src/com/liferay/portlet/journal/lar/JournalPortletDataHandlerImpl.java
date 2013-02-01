@@ -200,19 +200,31 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 				dlRepositoriesElement, dlRepositoryEntriesElement, template);
 		}
 
-		Image smallImage = ImageUtil.fetchByPrimaryKey(
-			article.getSmallImageId());
+		if (article.isSmallImage()) {
+			Image smallImage = ImageUtil.fetchByPrimaryKey(
+				article.getSmallImageId());
 
-		if (article.isSmallImage() && (smallImage != null)) {
-			String smallImagePath = getArticleSmallImagePath(
-				portletDataContext, article);
+			if (Validator.isNotNull(article.getSmallImageURL())) {
+				String smallImageURL = exportReferencedContent(
+					portletDataContext, dlFileEntryTypesElement,
+					dlFoldersElement, dlFileEntriesElement, dlFileRanksElement,
+					dlRepositoriesElement, dlRepositoryEntriesElement,
+					articleElement,
+					article.getSmallImageURL().concat(StringPool.SPACE));
 
-			articleElement.addAttribute("small-image-path", smallImagePath);
+				article.setSmallImageURL(smallImageURL);
+			}
+			else if (smallImage != null) {
+				String smallImagePath = getArticleSmallImagePath(
+					portletDataContext, article);
 
-			article.setSmallImageType(smallImage.getType());
+				articleElement.addAttribute("small-image-path", smallImagePath);
 
-			portletDataContext.addZipEntry(
-				smallImagePath, smallImage.getTextObj());
+				article.setSmallImageType(smallImage.getType());
+
+				portletDataContext.addZipEntry(
+					smallImagePath, smallImage.getTextObj());
+			}
 		}
 
 		if (portletDataContext.getBooleanParameter(_NAMESPACE, "images")) {
@@ -579,16 +591,28 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 
 		File smallFile = null;
 
-		String smallImagePath = articleElement.attributeValue(
-			"small-image-path");
+		if (article.isSmallImage()) {
+			String smallImagePath = articleElement.attributeValue(
+				"small-image-path");
 
-		if (article.isSmallImage() && Validator.isNotNull(smallImagePath)) {
-			byte[] bytes = portletDataContext.getZipEntryAsByteArray(
-				smallImagePath);
+			if (Validator.isNotNull(article.getSmallImageURL())) {
+				String smallImageURL = importReferencedContent(
+					portletDataContext, articleElement,
+					article.getSmallImageURL());
 
-			smallFile = FileUtil.createTempFile(article.getSmallImageType());
+				article.setSmallImageURL(smallImageURL);
+			}
+			else if (Validator.isNotNull(smallImagePath)) {
+				byte[] bytes = portletDataContext.getZipEntryAsByteArray(
+					smallImagePath);
 
-			FileUtil.write(smallFile, bytes);
+				if (bytes != null) {
+					smallFile = FileUtil.createTempFile(
+						article.getSmallImageType());
+
+					FileUtil.write(smallFile, bytes);
+				}
+			}
 		}
 
 		Map<String, byte[]> images = new HashMap<String, byte[]>();
