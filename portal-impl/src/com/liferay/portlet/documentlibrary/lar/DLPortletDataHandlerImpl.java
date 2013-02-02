@@ -1726,9 +1726,17 @@ public class DLPortletDataHandlerImpl extends BasePortletDataHandler {
 			fileEntryTypeUuid, portletDataContext.getScopeGroupId());
 
 		if (dlFileEntryType == null) {
-			serviceContext.setAttribute("fileEntryTypeId", -1);
+			Group group = GroupLocalServiceUtil.getCompanyGroup(
+				portletDataContext.getCompanyId());
 
-			return;
+			dlFileEntryType = DLFileEntryTypeUtil.fetchByUUID_G(
+				fileEntryTypeUuid, group.getGroupId());
+
+			if (dlFileEntryType == null) {
+				serviceContext.setAttribute("fileEntryTypeId", -1);
+
+				return;
+			}
 		}
 
 		serviceContext.setAttribute(
