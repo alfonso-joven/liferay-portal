@@ -26,12 +26,15 @@ if (GetterUtil.getBoolean((String)request.getAttribute("liferay-ui:input-date:di
 String cssClass = GetterUtil.getString((String)request.getAttribute("liferay-ui:input-date:cssClass"));
 String formName = namespace + request.getAttribute("liferay-ui:input-date:formName");
 String monthParam = namespace + request.getAttribute("liferay-ui:input-date:monthParam");
+String monthParamId = namespace + request.getAttribute("liferay-ui:input-date:monthParamId");
 int monthValue = GetterUtil.getInteger((String)request.getAttribute("liferay-ui:input-date:monthValue"));
 boolean monthNullable = GetterUtil.getBoolean((String)request.getAttribute("liferay-ui:input-date:monthNullable"));
 String dayParam = namespace + request.getAttribute("liferay-ui:input-date:dayParam");
+String dayParamId = namespace + request.getAttribute("liferay-ui:input-date:dayParamId");
 int dayValue = GetterUtil.getInteger((String)request.getAttribute("liferay-ui:input-date:dayValue"));
 boolean dayNullable = GetterUtil.getBoolean((String)request.getAttribute("liferay-ui:input-date:dayNullable"));
 String yearParam = namespace + request.getAttribute("liferay-ui:input-date:yearParam");
+String yearParamId = namespace + request.getAttribute("liferay-ui:input-date:yearParamId");
 int yearValue = GetterUtil.getInteger((String)request.getAttribute("liferay-ui:input-date:yearValue"));
 boolean yearNullable = GetterUtil.getBoolean((String)request.getAttribute("liferay-ui:input-date:yearNullable"));
 int yearRangeStart = GetterUtil.getInteger((String)request.getAttribute("liferay-ui:input-date:yearRangeStart"));
@@ -200,9 +203,9 @@ else if (yearNullable) {
 							today: '<liferay-ui:message key="today" />'
 						}
 					},
-					dayNode: '#<%= dayParam %>',
+					dayNode: '#<%= dayParamId %>',
 					disabled: <%= disabled %>,
-					monthNode: '#<%= monthParam %>',
+					monthNode: '#<%= monthParamId %>',
 					nullableDay: <%= dayNullable %>,
 					nullableMonth: <%= monthNullable %>,
 					nullableYear: <%= yearNullable %>,
@@ -214,7 +217,7 @@ else if (yearNullable) {
 						}
 					},
 					srcNode: '#<%= randomNamespace %>displayDateContent',
-					yearNode: '#<%= yearParam %>',
+					yearNode: '#<%= yearParamId %>',
 					yearRange: [<%= yearRangeStart %>, <%= yearRangeEnd %>]
 				}
 			).render();
