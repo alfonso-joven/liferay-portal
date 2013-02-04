@@ -282,8 +282,7 @@ public class AssetPublisherExportImportTest extends BaseExportImportTestCase {
 		}
 
 		return GroupLocalServiceUtil.addGroup(
-			userId, GroupConstants.DEFAULT_PARENT_GROUP_ID,
-			Layout.class.getName(), layout.getPlid(),
+			userId, Layout.class.getName(), layout.getPlid(),
 			GroupConstants.DEFAULT_LIVE_GROUP_ID,
 			String.valueOf(layout.getPlid()), null, 0, null, false, true, null);
 	}
