@@ -95,20 +95,26 @@ public class DLFileEntryPermission {
 			}
 		}
 
-		if (PropsValues.PERMISSIONS_VIEW_DYNAMIC_INHERITANCE) {
-			if (dlFileEntry.getFolderId() !=
-					DLFolderConstants.DEFAULT_PARENT_FOLDER_ID) {
+		if (dlFileEntry.getFolderId() !=
+				DLFolderConstants.DEFAULT_PARENT_FOLDER_ID) {
 
-				DLFolder dlFolder = DLFolderLocalServiceUtil.getFolder(
-					dlFileEntry.getFolderId());
+			DLFolder dlFolder = DLFolderLocalServiceUtil.getFolder(
+				dlFileEntry.getFolderId());
 
-				if (!DLFolderPermission.contains(
-						permissionChecker, dlFolder, ActionKeys.ACCESS) &&
-					!DLFolderPermission.contains(
-						permissionChecker, dlFolder, ActionKeys.VIEW)) {
+			if (PropsValues.PERMISSIONS_VIEW_DYNAMIC_INHERITANCE &&
+				!DLFolderPermission.contains(
+					permissionChecker, dlFolder, ActionKeys.ACCESS) &&
+				!DLFolderPermission.contains(
+					permissionChecker, dlFolder, ActionKeys.VIEW)) {
 
-					return false;
-				}
+				return false;
+			}
+
+			if (!actionId.equals(ActionKeys.OVERRIDE_CHECKOUT) &&
+				DLFolderPermission.contains(
+					permissionChecker, dlFolder, actionId)) {
+
+				return true;
 			}
 		}
 
