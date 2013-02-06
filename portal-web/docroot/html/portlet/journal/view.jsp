@@ -175,8 +175,6 @@ portletURL.setParameter("tabs1", tabs1);
 			for (int i = 0; i < results.size(); i++) {
 				JournalStructure structure = (JournalStructure)results.get(i);
 
-				structure = structure.toEscapedModel();
-
 				ResultRow row = new ResultRow(structure, structure.getStructureId(), i);
 
 				PortletURL rowURL = renderResponse.createRenderURL();
@@ -254,8 +252,6 @@ portletURL.setParameter("tabs1", tabs1);
 
 			for (int i = 0; i < results.size(); i++) {
 				JournalTemplate template = (JournalTemplate)results.get(i);
-
-				template = template.toEscapedModel();
 
 				ResultRow row = new ResultRow(template, template.getTemplateId(), i);
 
