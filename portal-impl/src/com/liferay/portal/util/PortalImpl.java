@@ -4739,13 +4739,7 @@ public class PortalImpl implements Portal {
 				return true;
 			}
 
-			String resourcePrimKey = PortletPermissionUtil.getPrimaryKey(
-				themeDisplay.getPlid(), portletId);
-
-			if (ResourcePermissionLocalServiceUtil.getResourcePermissionsCount(
-					themeDisplay.getCompanyId(), portlet.getPortletName(),
-					ResourceConstants.SCOPE_INDIVIDUAL, resourcePrimKey) > 0) {
-
+			if (hasPortletDefaultResource(themeDisplay, layout, portlet)) {
 				return true;
 			}
 		}
@@ -6175,6 +6169,44 @@ public class PortalImpl implements Portal {
 
 			return 0;
 		}
+	}
+
+	protected boolean hasPortletDefaultResource(
+			ThemeDisplay themeDisplay, Layout layout, Portlet portlet)
+		throws PortalException, SystemException {
+
+		String rootPortletId = portlet.getRootPortletId();
+
+		String portletPrimaryKey = PortletPermissionUtil.getPrimaryKey(
+			layout.getPlid(), portlet.getPortletId());
+
+		String name = rootPortletId;
+		String primaryKey = portletPrimaryKey;
+
+		try {
+			if (PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM == 6) {
+				int count =
+					ResourcePermissionLocalServiceUtil.
+						getResourcePermissionsCount(
+							themeDisplay.getCompanyId(), name,
+							ResourceConstants.SCOPE_INDIVIDUAL,
+							primaryKey);
+
+				if (count == 0) {
+					return false;
+				}
+			}
+			else if (!portlet.isUndeployedPortlet()) {
+				ResourceLocalServiceUtil.getResource(
+					themeDisplay.getCompanyId(), name,
+					ResourceConstants.SCOPE_INDIVIDUAL, primaryKey);
+			}
+		}
+		catch (NoSuchResourceException nsre) {
+			return false;
+		}
+
+		return true;
 	}
 
 	protected String getGroupFriendlyURL(
