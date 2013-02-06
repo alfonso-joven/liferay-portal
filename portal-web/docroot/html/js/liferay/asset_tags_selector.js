@@ -110,6 +110,10 @@ AUI.add(
 							return instance._getTagsDataSource();
 						}
 					},
+					groupIds: {
+						setter: '_setGroupIds',
+						validator: Lang.isString
+					},
 					guid: {
 						value: ''
 					},
@@ -266,19 +270,9 @@ AUI.add(
 					_getEntries: function(callback) {
 						var instance = this;
 
-						var portalModelResource = instance.get('portalModelResource');
-
-						var groupIds = [];
-
-						if (!portalModelResource && (themeDisplay.getParentGroupId() != themeDisplay.getCompanyGroupId())) {
-							groupIds.push(themeDisplay.getParentGroupId());
-						}
-
-						groupIds.push(themeDisplay.getCompanyGroupId());
-
 						Liferay.Service.Asset.AssetTag.getGroupsTags(
 							{
-								groupIds: groupIds
+								groupIds: instance.get('groupIds')
 							},
 							callback
 						);
@@ -309,7 +303,7 @@ AUI.add(
 
 										if (!serviceQueryObj) {
 											serviceQueryObj = {
-												groupId: themeDisplay.getParentGroupId(),
+												groupIds: instance.get('groupIds'),
 												name: '%' + term + '%',
 												properties: '',
 												begin: 0,
@@ -480,6 +474,10 @@ AUI.add(
 						var iconsBoundingBox = instance.icons.get('boundingBox');
 
 						instance.entryHolder.placeAfter(iconsBoundingBox);
+					},
+
+					_setGroupIds: function(value) {
+						return value.split(',');
 					},
 
 					_showPopup: function(event) {

@@ -106,7 +106,10 @@ String selectScope = (String) request.getAttribute("configuration.jsp-selectScop
 
 				String className = AssetPublisherUtil.getClassName(assetRendererFactory);
 
-				Long[] assetAvailableClassTypeIds = ArrayUtil.toLongArray(assetAvailableClassTypes.keySet().toArray());
+				Set<Long> assetAvailableClassTypeIdsSet = assetAvailableClassTypes.keySet();
+
+				Long[] assetAvailableClassTypeIds = assetAvailableClassTypeIdsSet.toArray(new Long[assetAvailableClassTypeIdsSet.size()]);
+
 				Long[] assetSelectedClassTypeIds = AssetPublisherUtil.getClassTypeIds(preferences, className, assetAvailableClassTypeIds);
 
 				// Left list
@@ -215,6 +218,7 @@ String selectScope = (String) request.getAttribute("configuration.jsp-selectScop
 					String categoryIds = ParamUtil.getString(request, "queryCategoryIds" + queryLogicIndex, queryValues);
 
 					if (Validator.isNotNull(tagNames) || Validator.isNotNull(categoryIds) || (queryLogicIndexes.length == 1)) {
+						request.setAttribute("configuration.jsp-categorizableGroupIds", _getCategorizableGroupIds(groupIds));
 						request.setAttribute("configuration.jsp-index", String.valueOf(index));
 						request.setAttribute("configuration.jsp-queryLogicIndex", String.valueOf(queryLogicIndex));
 				%>
@@ -470,3 +474,21 @@ String selectScope = (String) request.getAttribute("configuration.jsp-selectScop
 		}
 	);
 </aui:script>
+
+<%!
+private long[] _getCategorizableGroupIds(long[] groupIds) throws Exception {
+	Set<Long> categorizableGroupIds = new HashSet<Long>(groupIds.length);
+
+	for (long groupId : groupIds) {
+		Group group = GroupLocalServiceUtil.getGroup(groupId);
+
+		if (group.isLayout()) {
+			groupId = group.getParentGroupId();
+		}
+
+		categorizableGroupIds.add(groupId);
+	}
+
+	return ArrayUtil.toLongArray(categorizableGroupIds);
+}
+%>
