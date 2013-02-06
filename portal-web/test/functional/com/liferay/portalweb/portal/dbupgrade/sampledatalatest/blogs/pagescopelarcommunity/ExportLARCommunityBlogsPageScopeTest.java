@@ -15,6 +15,7 @@
 package com.liferay.portalweb.portal.dbupgrade.sampledatalatest.blogs.pagescopelarcommunity;
 
 import com.liferay.portalweb.portal.BaseTestCase;
+import com.liferay.portalweb.portal.util.BrowserCommands;
 import com.liferay.portalweb.portal.util.RuntimeVariables;
 
 /**
@@ -76,7 +77,7 @@ public class ExportLARCommunityBlogsPageScopeTest extends BaseTestCase {
 		Thread.sleep(5000);
 		selenium.clickAt("//input[@value='Export']",
 			RuntimeVariables.replace("Export"));
-		selenium.downloadTempFile("Blogs_Page_Scope.Community.lar");
+		BrowserCommands.downloadTempFile("Blogs_Page_Scope.Community.lar");
 		selenium.selectFrame("relative=top");
 		Thread.sleep(15000);
 	}

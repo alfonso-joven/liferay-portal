@@ -15,6 +15,7 @@
 package com.liferay.portalweb.demo.fundamentals.wsrp;
 
 import com.liferay.portalweb.portal.BaseTestCase;
+import com.liferay.portalweb.portal.util.BrowserCommands;
 import com.liferay.portalweb.portal.util.RuntimeVariables;
 
 /**
@@ -37,7 +38,7 @@ public class ViewWSRPClickToInvokeResourceServingPhaseDPTest
 			selenium.getText("//div[@class='portlet-body']/p[4]/a[2]"));
 		selenium.clickAt("//div[@class='portlet-body']/p[4]/a[2]",
 			RuntimeVariables.replace("Download File"));
-		selenium.downloadTempFile("logo.png");
+		BrowserCommands.downloadTempFile("logo.png");
 		Thread.sleep(5000);
 		selenium.open("/web/guest/home/");
 		selenium.waitForVisible("link=Documents and Media Test Page");

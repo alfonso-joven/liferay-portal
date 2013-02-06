@@ -15,6 +15,7 @@
 package com.liferay.portalweb.portal.dbupgrade.sampledatalatest.wiki.usecaselarcommunity;
 
 import com.liferay.portalweb.portal.BaseTestCase;
+import com.liferay.portalweb.portal.util.BrowserCommands;
 import com.liferay.portalweb.portal.util.RuntimeVariables;
 
 /**
@@ -76,7 +77,7 @@ public class ExportLARCommunityWikiUseCaseTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Export']",
 			RuntimeVariables.replace("Export"));
 		Thread.sleep(5000);
-		selenium.downloadTempFile("Wiki_Use_Case.Community.lar");
+		BrowserCommands.downloadTempFile("Wiki_Use_Case.Community.lar");
 		Thread.sleep(15000);
 		selenium.selectFrame("relative=top");
 	}
