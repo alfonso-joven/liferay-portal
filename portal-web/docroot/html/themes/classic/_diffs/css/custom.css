@@ -340,7 +340,7 @@ hr, .separator {
 	text-decoration: none;
 }
 
-.site-breadcrumbs li.first a {
+.site-breadcrumbs li.first a, .site-breadcrumbs li.only a {
 	color: #369;
 	font-weight: bold;
 }
