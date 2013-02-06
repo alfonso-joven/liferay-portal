@@ -63,6 +63,7 @@ if (queryLogicIndex >= 0) {
 		<liferay-ui:asset-tags-selector
 			curTags='<%= Validator.equals(queryName, "assetTags") ? queryValues : null %>'
 			focus="<%= false %>"
+			groupIds="<%= categorizableGroupIds %>"
 			hiddenInput='<%= "queryTagNames" + index %>'
 		/>
 	</div>
@@ -71,7 +72,6 @@ if (queryLogicIndex >= 0) {
 		<liferay-ui:asset-categories-selector
 			curCategoryIds='<%= Validator.equals(queryName, "assetCategories") ? queryValues : null %>'
 			focus="<%= false %>"
-			groupIds="<%= categorizableGroupIds %>"
 			hiddenInput='<%= "queryCategoryIds" + index %>'
 		/>
 	</div>
