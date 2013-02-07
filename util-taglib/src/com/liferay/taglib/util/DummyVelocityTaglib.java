@@ -155,6 +155,11 @@ public class DummyVelocityTaglib implements VelocityTaglib {
 	public void journalContentSearch() throws Exception {
 	}
 
+	public void journalContentSearch(
+			boolean showListed, String targetPortletId, String type)
+		throws Exception {
+	}
+
 	public void language() throws Exception {
 	}
 
