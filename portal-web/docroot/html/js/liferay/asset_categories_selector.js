@@ -519,13 +519,22 @@ AUI.add(
 
 							searchResults.addClass('loading-animation');
 
+							var serviceParameterTypesSearch = [
+   								'[J',
+   								'java.lang.String',
+   								'[J',
+   								'int',
+   								'int'
+   							];
+
 							Liferay.Service.Asset.AssetCategory.search(
 								{
 									groupIds: vocabularyGroupIds,
 									name: Lang.sub(TPL_SEARCH_QUERY, [searchValue]),
 									vocabularyIds: vocabularyIds,
 									start: -1,
-									end: -1
+									end: -1,
+									serviceParameterTypes: A.JSON.stringify(serviceParameterTypesSearch)
 								},
 								callback
 							);
