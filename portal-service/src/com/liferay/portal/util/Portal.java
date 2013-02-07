@@ -875,8 +875,6 @@ public interface Portal {
 	public HttpServletRequest getOriginalServletRequest(
 		HttpServletRequest request);
 
-	public String getOuterPortletId(HttpServletRequest request);
-
 	public long getParentGroupId(long scopeGroupId)
 		throws PortalException, SystemException;
 

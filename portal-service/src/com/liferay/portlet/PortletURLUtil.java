@@ -250,15 +250,6 @@ public class PortletURLUtil {
 			}
 		}
 
-		String outerPortletId = PortalUtil.getOuterPortletId(request);
-
-		if (outerPortletId != null) {
-			sb.append(StringPool.AMPERSAND);
-			sb.append("p_o_p_id");
-			sb.append(StringPool.EQUAL);
-			sb.append(HttpUtil.encodeURL(outerPortletId));
-		}
-
 		return sb.toString();
 	}
 
