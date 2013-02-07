@@ -329,6 +329,7 @@ if (template == null) {
 	Liferay.Util.inlineEditor(
 		{
 			button: '#<portlet:namespace />editorButton',
+			cache: false,
 			id: '<portlet:namespace />xslContentIFrame',
 			textarea: '<portlet:namespace />xslContent',
 			title: '<%= UnicodeLanguageUtil.get(pageContext, "editor") %>',

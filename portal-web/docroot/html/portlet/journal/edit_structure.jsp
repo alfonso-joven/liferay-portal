@@ -470,6 +470,7 @@ int tabIndex = 1;
 	Liferay.Util.inlineEditor(
 		{
 			button: '#<portlet:namespace />editorButton',
+			cache: false,
 			dialog: {
 				after: {
 					init: function(event) {
