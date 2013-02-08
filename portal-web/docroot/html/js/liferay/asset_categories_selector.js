@@ -520,12 +520,12 @@ AUI.add(
 							searchResults.addClass('loading-animation');
 
 							var serviceParameterTypesSearch = [
-   								'[J',
-   								'java.lang.String',
-   								'[J',
-   								'int',
-   								'int'
-   							];
+								'[J',
+								'java.lang.String',
+								'[J',
+								'int',
+								'int'
+							];
 
 							Liferay.Service.Asset.AssetCategory.search(
 								{
