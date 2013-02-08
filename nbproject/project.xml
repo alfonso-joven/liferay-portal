@@ -81,7 +81,7 @@
                     <location>util-java/test/integration</location>
                     <encoding>UTF-8</encoding>
                 </source-folder-->
-				<source-folder>
+                <source-folder>
                     <label>util-java\test\unit</label>
                     <type>java</type>
                     <location>util-java/test/unit</location>
@@ -173,7 +173,7 @@
                         <label>util-java\test\integration</label>
                         <location>util-java/test/integration</location>
                     </source-folder>-->
-					<source-folder style="packages">
+                    <source-folder style="packages">
                         <label>util-java\test\unit</label>
                         <location>util-java/test/unit</location>
                     </source-folder>
@@ -215,7 +215,7 @@
                 <package-root>util-bridges/src</package-root>
                 <package-root>util-java/src</package-root>
                 <!--<package-root>util-java/test/integration</package-root>-->
-				<package-root>util-java/test/unit</package-root>
+                <package-root>util-java/test/unit</package-root>
                 <package-root>util-taglib/src</package-root>
                 <classpath mode="compile">lib/development/activation.jar</classpath>
                 <classpath mode="compile">lib/development/annotations.jar</classpath>
