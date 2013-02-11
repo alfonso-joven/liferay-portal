@@ -363,6 +363,8 @@ public class ServicePreAction extends Action {
 		String doAsUserLanguageId = ParamUtil.getString(
 			request, "doAsUserLanguageId");
 		long doAsGroupId = ParamUtil.getLong(request, "doAsGroupId");
+		
+		long refererGroupId = ParamUtil.getLong(request, "refererGroupId");  // not sure how to add refererGroupId to request
 
 		long refererPlid = ParamUtil.getLong(request, "refererPlid");
 
@@ -925,6 +927,11 @@ public class ServicePreAction extends Action {
 		if (scopeGroupId > 0) {
 			urlControlPanel = HttpUtil.addParameter(
 				urlControlPanel, "doAsGroupId", scopeGroupId);
+		}
+		
+		if (refererGroupId > 0) {
+			urlControlPanel = HttpUtil.addParameter(
+				urlControlPanel, "refererGroupId", refererGroupId);
 		}
 
 		if (refererPlid > 0) {
