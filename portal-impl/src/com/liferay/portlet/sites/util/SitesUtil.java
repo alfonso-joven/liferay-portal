@@ -679,8 +679,10 @@ public class SitesUtil {
 			settingsProperties.getProperty(LAST_MERGE_TIME));
 
 		LayoutSetPrototype layoutSetPrototype =
-			LayoutSetPrototypeLocalServiceUtil.getLayoutSetPrototypeByUuid(
-				layoutSet.getLayoutSetPrototypeUuid());
+			LayoutSetPrototypeLocalServiceUtil.
+				getLayoutSetPrototypeByUuidAndCompanyId(
+					layoutSet.getLayoutSetPrototypeUuid(),
+					layoutSet.getCompanyId());
 
 		Date modifiedDate = layoutSetPrototype.getModifiedDate();
 
