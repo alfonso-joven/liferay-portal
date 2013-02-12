@@ -41,7 +41,6 @@ import com.liferay.portal.model.LayoutTypePortletConstants;
 import com.liferay.portal.model.Plugin;
 import com.liferay.portal.model.Portlet;
 import com.liferay.portal.model.PortletConstants;
-import com.liferay.portal.model.PortletPreferences;
 import com.liferay.portal.model.PortletPreferencesIds;
 import com.liferay.portal.model.Theme;
 import com.liferay.portal.security.permission.ActionKeys;
@@ -71,7 +70,6 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * @author Brian Wing Shun Chan
@@ -166,8 +164,126 @@ public class LayoutTypePortletImpl
 			boolean checkPermission)
 		throws PortalException, SystemException {
 
-		return addPortletId(
-			userId, portletId, columnId, columnPos, checkPermission, false);
+		portletId = JS.getSafeName(portletId);
+
+		Layout layout = getLayout();
+
+		Portlet portlet = null;
+
+		try {
+			portlet = PortletLocalServiceUtil.getPortletById(
+				layout.getCompanyId(), portletId);
+
+			if (portlet == null) {
+				if (_log.isWarnEnabled()) {
+					_log.warn(
+						"Portlet " + portletId +
+							" cannot be added because it is not registered");
+				}
+
+				return null;
+			}
+
+			PermissionChecker permissionChecker =
+				PermissionThreadLocal.getPermissionChecker();
+
+			if (checkPermission &&
+				!PortletPermissionUtil.contains(
+					permissionChecker, layout, portlet,
+					ActionKeys.ADD_TO_PAGE)) {
+
+				return null;
+			}
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+		}
+
+		if (portlet.isSystem()) {
+			return null;
+		}
+
+		if (portlet.isInstanceable() &&
+			!PortletConstants.hasInstanceId(portletId)) {
+
+			portletId = portletId + getFullInstanceSeparator();
+		}
+
+		if (hasPortletId(portletId)) {
+			return null;
+		}
+
+		if (columnId == null) {
+			LayoutTemplate layoutTemplate = getLayoutTemplate();
+
+			List<String> columns = layoutTemplate.getColumns();
+
+			if (columns.size() > 0) {
+				columnId = columns.get(0);
+			}
+		}
+
+		if (columnId != null) {
+			if (isCustomizable() && isColumnDisabled(columnId)) {
+				return null;
+			}
+
+			String columnValue = StringPool.BLANK;
+
+			if (hasUserPreferences()) {
+				columnValue = getUserPreference(columnId);
+			}
+			else {
+				columnValue = getTypeSettingsProperty(columnId);
+			}
+
+			if ((columnValue == null) &&
+				columnId.startsWith(_nestedPortletsNamespace)) {
+
+				addNestedColumn(columnId);
+			}
+
+			if (columnPos >= 0) {
+				List<String> portletIds = ListUtil.fromArray(
+					StringUtil.split(columnValue));
+
+				if (columnPos <= portletIds.size()) {
+					portletIds.add(columnPos, portletId);
+				}
+				else {
+					portletIds.add(portletId);
+				}
+
+				columnValue = StringUtil.merge(portletIds);
+			}
+			else {
+				columnValue = StringUtil.add(columnValue, portletId);
+			}
+
+			if (hasUserPreferences()) {
+				setUserPreference(columnId, columnValue);
+			}
+			else {
+				setTypeSettingsProperty(columnId, columnValue);
+			}
+		}
+
+		try {
+			PortletLayoutListener portletLayoutListener =
+				portlet.getPortletLayoutListenerInstance();
+
+			if (_enablePortletLayoutListener &&
+				(portletLayoutListener != null)) {
+
+				portletLayoutListener.onAddToLayout(
+					portletId, layout.getPlid());
+			}
+		}
+		catch (Exception e) {
+			_log.error("Unable to fire portlet layout listener event", e);
+		}
+
+		return portletId;
 	}
 
 	public void addPortletIds(
@@ -263,10 +379,7 @@ public class LayoutTypePortletImpl
 		List<Portlet> staticPortlets = getStaticPortlets(
 			PropsKeys.LAYOUT_STATIC_PORTLETS_ALL);
 
-		List<Portlet> embeddedPortlets = getEmbeddedPortlets(
-			portlets, staticPortlets);
-
-		return addStaticPortlets(portlets, staticPortlets, embeddedPortlets);
+		return addStaticPortlets(portlets, staticPortlets, null);
 	}
 
 	public List<Portlet> getAllPortlets(String columnId)
@@ -525,7 +638,25 @@ public class LayoutTypePortletImpl
 	public boolean hasPortletId(String portletId)
 		throws PortalException, SystemException {
 
-		return hasPortletId(portletId, false);
+		List<String> columns = getColumns();
+
+		for (String columnId : columns) {
+			if (hasNonstaticPortletId(columnId, portletId)) {
+				return true;
+			}
+
+			if (hasStaticPortletId(columnId, portletId)) {
+				return true;
+			}
+		}
+
+		Layout layout = getLayout();
+
+		if (layout.isTypeControlPanel() || layout.isTypePanel()) {
+			return true;
+		}
+
+		return false;
 	}
 
 	public boolean hasStateMax() {
@@ -687,7 +818,7 @@ public class LayoutTypePortletImpl
 
 		try {
 			removePortletId(userId, portletId, false);
-			addPortletId(userId, portletId, columnId, columnPos, false, true);
+			addPortletId(userId, portletId, columnId, columnPos, false);
 		}
 		finally {
 			_enablePortletLayoutListener = true;
@@ -1108,133 +1239,6 @@ public class LayoutTypePortletImpl
 		}
 	}
 
-	protected String addPortletId(
-			long userId, String portletId, String columnId, int columnPos,
-			boolean checkPermission, boolean strictHasPortlet)
-		throws PortalException, SystemException {
-
-		portletId = JS.getSafeName(portletId);
-
-		Layout layout = getLayout();
-
-		Portlet portlet = null;
-
-		try {
-			portlet = PortletLocalServiceUtil.getPortletById(
-				layout.getCompanyId(), portletId);
-
-			if (portlet == null) {
-				if (_log.isWarnEnabled()) {
-					_log.warn(
-						"Portlet " + portletId +
-							" cannot be added because it is not registered");
-				}
-
-				return null;
-			}
-
-			PermissionChecker permissionChecker =
-				PermissionThreadLocal.getPermissionChecker();
-
-			if (checkPermission &&
-				!PortletPermissionUtil.contains(
-					permissionChecker, layout, portlet,
-					ActionKeys.ADD_TO_PAGE)) {
-
-				return null;
-			}
-		}
-		catch (Exception e) {
-			_log.error(e, e);
-		}
-
-		if (portlet.isSystem()) {
-			return null;
-		}
-
-		if (portlet.isInstanceable() &&
-			!PortletConstants.hasInstanceId(portletId)) {
-
-			portletId = portletId + getFullInstanceSeparator();
-		}
-
-		if (hasPortletId(portletId, strictHasPortlet)) {
-			return null;
-		}
-
-		if (columnId == null) {
-			LayoutTemplate layoutTemplate = getLayoutTemplate();
-
-			List<String> columns = layoutTemplate.getColumns();
-
-			if (columns.size() > 0) {
-				columnId = columns.get(0);
-			}
-		}
-
-		if (columnId != null) {
-			if (isCustomizable() && isColumnDisabled(columnId)) {
-				return null;
-			}
-
-			String columnValue = StringPool.BLANK;
-
-			if (hasUserPreferences()) {
-				columnValue = getUserPreference(columnId);
-			}
-			else {
-				columnValue = getTypeSettingsProperty(columnId);
-			}
-
-			if ((columnValue == null) &&
-				columnId.startsWith(_nestedPortletsNamespace)) {
-
-				addNestedColumn(columnId);
-			}
-
-			if (columnPos >= 0) {
-				List<String> portletIds = ListUtil.fromArray(
-					StringUtil.split(columnValue));
-
-				if (columnPos <= portletIds.size()) {
-					portletIds.add(columnPos, portletId);
-				}
-				else {
-					portletIds.add(portletId);
-				}
-
-				columnValue = StringUtil.merge(portletIds);
-			}
-			else {
-				columnValue = StringUtil.add(columnValue, portletId);
-			}
-
-			if (hasUserPreferences()) {
-				setUserPreference(columnId, columnValue);
-			}
-			else {
-				setTypeSettingsProperty(columnId, columnValue);
-			}
-		}
-
-		try {
-			if (_enablePortletLayoutListener) {
-				PortletLayoutListener portletLayoutListener =
-					portlet.getPortletLayoutListenerInstance();
-
-				if (portletLayoutListener != null) {
-					portletLayoutListener.onAddToLayout(
-						portletId, layout.getPlid());
-				}
-			}
-		}
-		catch (Exception e) {
-			_log.error("Unable to fire portlet layout listener event", e);
-		}
-
-		return portletId;
-	}
-
 	protected void copyPreferences(
 		String sourcePortletId, String targetPortletId) {
 
@@ -1292,21 +1296,13 @@ public class LayoutTypePortletImpl
 	}
 
 	protected List<String> getColumns() {
+		LayoutTemplate layoutTemplate = getLayoutTemplate();
+
 		List<String> columns = new ArrayList<String>();
 
-		Layout layout = getLayout();
-
-		if (layout.isTypePortlet()) {
-			LayoutTemplate layoutTemplate = getLayoutTemplate();
-
-			columns.addAll(layoutTemplate.getColumns());
-
-			columns.addAll(getNestedColumns());
-			columns.addAll(getRuntimeColumns());
-		}
-		else if (layout.isTypePanel()) {
-			columns.add("panelSelectedPortlets");
-		}
+		columns.addAll(layoutTemplate.getColumns());
+		columns.addAll(getNestedColumns());
+		columns.addAll(getRuntimeColumns());
 
 		return columns;
 	}
@@ -1342,80 +1338,6 @@ public class LayoutTypePortletImpl
 		Layout layout = getLayout();
 
 		return layout.getCompanyId();
-	}
-
-	protected List<Portlet> getEmbeddedPortlets(
-			List<Portlet> columnPortlets, List<Portlet> staticPortlets)
-		throws SystemException {
-
-		if (_embeddedPortlets != null) {
-			return _embeddedPortlets;
-		}
-
-		List<Portlet> portlets = new ArrayList<Portlet>();
-
-		Layout layout = getLayout();
-
-		List<PortletPreferences> portletPreferences =
-			PortletPreferencesLocalServiceUtil.getPortletPreferences(
-				PortletKeys.PREFS_OWNER_ID_DEFAULT,
-				PortletKeys.PREFS_OWNER_TYPE_LAYOUT, layout.getPlid());
-
-		if (isCustomizable() && hasUserPreferences()) {
-			portletPreferences = ListUtil.copy(portletPreferences);
-
-			portletPreferences.addAll(
-				PortletPreferencesLocalServiceUtil.getPortletPreferences(
-					_portalPreferences.getUserId(),
-					PortletKeys.PREFS_OWNER_TYPE_USER, layout.getPlid()));
-		}
-
-		Set<String> portletAddDefaultResourceCheckWhiteList =
-			PortalUtil.getPortletAddDefaultResourceCheckWhitelist();
-
-		for (PortletPreferences portletPreference : portletPreferences) {
-			String portletId = portletPreference.getPortletId();
-
-			Portlet portlet = PortletLocalServiceUtil.getPortletById(
-				getCompanyId(), portletId);
-
-			if (Validator.isNull(portletId) ||
-				columnPortlets.contains(portlet) ||
-				staticPortlets.contains(portlet) ||
-				portlet.isSystem() || portlet.isUndeployedPortlet() ||
-				!portlet.isActive() ||
-				portletAddDefaultResourceCheckWhiteList.contains(portletId)) {
-
-				continue;
-			}
-
-			if (portlet != null) {
-				Portlet embeddedPortlet = portlet;
-
-				if (portlet.isInstanceable()) {
-
-					// Instanceable portlets do not need to be cloned because
-					// they are already cloned. See the method getPortletById in
-					// the class PortletLocalServiceImpl and how it references
-					// the method getClonedInstance in the class PortletImpl.
-
-				}
-				else {
-					embeddedPortlet = (Portlet)embeddedPortlet.clone();
-				}
-
-				// We set embedded portlets as static on order to avoid adding
-				// the close and/or move icons.
-
-				embeddedPortlet.setStatic(true);
-
-				portlets.add(embeddedPortlet);
-			}
-		}
-
-		_embeddedPortlets = portlets;
-
-		return _embeddedPortlets;
 	}
 
 	protected List<String> getNestedColumns() {
@@ -1625,41 +1547,6 @@ public class LayoutTypePortletImpl
 		return false;
 	}
 
-	protected boolean hasPortletId(String portletId, boolean strict)
-		throws PortalException, SystemException {
-
-		List<String> columns = getColumns();
-
-		for (String columnId : columns) {
-			if (hasNonstaticPortletId(columnId, portletId)) {
-				return true;
-			}
-
-			if (hasStaticPortletId(columnId, portletId)) {
-				return true;
-			}
-		}
-
-		Layout layout = getLayout();
-
-		if (layout.isTypeControlPanel()) {
-			return true;
-		}
-
-		if (!strict &&
-			((PortletPreferencesLocalServiceUtil.getPortletPreferencesCount(
-				PortletKeys.PREFS_OWNER_TYPE_LAYOUT, layout.getPlid(),
-				portletId) > 0) ||
-			 (PortletPreferencesLocalServiceUtil.getPortletPreferencesCount(
-				PortletKeys.PREFS_OWNER_TYPE_USER, layout.getPlid(),
-				portletId) > 0))) {
-
-			return true;
-		}
-
-		return false;
-	}
-
 	protected boolean hasStaticPortletId(String columnId, String portletId)
 		throws PortalException, SystemException {
 
@@ -1796,7 +1683,6 @@ public class LayoutTypePortletImpl
 	private boolean _customizedView;
 	private Format _dateFormat = FastDateFormatFactoryUtil.getSimpleDateFormat(
 		PropsValues.INDEX_DATE_FORMAT_PATTERN);
-	private List<Portlet> _embeddedPortlets;
 	private boolean _enablePortletLayoutListener = true;
 	private Layout _layoutSetPrototypeLayout;
 	private PortalPreferences _portalPreferences;
