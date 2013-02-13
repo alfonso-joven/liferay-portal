@@ -107,6 +107,8 @@ boolean view = false;
 if ((row == null) && (portletName.equals(PortletKeys.DOCUMENT_LIBRARY_DISPLAY) || portletName.equals(PortletKeys.MEDIA_GALLERY_DISPLAY))) {
 	view = true;
 }
+
+String iconMenuId = null;
 %>
 
 <liferay-util:buffer var="iconMenu">
@@ -367,6 +369,11 @@ if ((row == null) && (portletName.equals(PortletKeys.DOCUMENT_LIBRARY_DISPLAY) |
 		</c:if>
 
 		<c:if test="<%= hasViewPermission && portletDisplay.isWebDAVEnabled() && ((folder == null) || (folder.getRepositoryId() == scopeGroupId)) %>">
+
+			<%
+			iconMenuId = GetterUtil.getString((String)request.getAttribute("liferay-ui:icon-menu:id"));
+			%>
+
 			<liferay-ui:icon
 				cssClass='<%= randomNamespace + "-webdav-action" %>'
 				image="desktop"
@@ -414,6 +421,7 @@ if ((row == null) && (portletName.equals(PortletKeys.DOCUMENT_LIBRARY_DISPLAY) |
 			<label><liferay-ui:message key="webdav-url" /></label>
 
 			<liferay-ui:input-resource
+				cssClass="webdav-url-resource"
 				url="<%= DLUtil.getWebDavURL(themeDisplay, folder, null) %>"
 			/>
 		</div>
@@ -453,17 +461,38 @@ if ((row == null) && (portletName.equals(PortletKeys.DOCUMENT_LIBRARY_DISPLAY) |
 			function(event) {
 				event.preventDefault();
 
-				new A.Dialog(
+				var webdavDialog = new A.Dialog(
 					{
 						align: Liferay.Util.Window.ALIGN_CENTER,
 						bodyContent: A.one('#<%= randomNamespace %>webDav').html(),
 						destroyOnClose: true,
-                        focused: true,
 						modal: true,
 						title: '<%= UnicodeLanguageUtil.get(pageContext, "access-from-desktop") %>',
 						width: 500
 					}
-				).render();
+				);
+
+				webdavDialog.after(
+					'render',
+					function(event) {
+						var webdavURLInput = webdavDialog.get('boundingBox').one('.webdav-url-resource');
+
+						webdavURLInput.focus();
+					}
+				);
+
+				webdavDialog.on(
+					'close',
+					function(event) {
+						var trigger = A.one('#<portlet:namespace /><%= iconMenuId %>Button');
+
+						if (trigger) {
+							trigger.focus();
+						}
+					}
+				);
+
+				webdavDialog.render();
 			}
 		);
 	}
