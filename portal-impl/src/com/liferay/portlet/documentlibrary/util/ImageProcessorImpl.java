@@ -325,6 +325,7 @@ public class ImageProcessorImpl
 	private void _queueGeneration(FileVersion fileVersion) {
 		if (!_fileVersionIds.contains(fileVersion.getFileVersionId()) &&
 			isSupported(fileVersion) && !hasThumbnails(fileVersion)) {
+
 			_fileVersionIds.add(fileVersion.getFileVersionId());
 
 			if (PropsValues.DL_FILE_ENTRY_PROCESSORS_TRIGGER_SYNCHRONOUSLY) {

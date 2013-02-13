@@ -1447,6 +1447,7 @@ public class DLPortletDataHandlerImpl extends BasePortletDataHandler {
 
 				if (ddmStructureKey.equals(
 						importedDLFileEntryDDMStructureKey)) {
+
 					continue;
 				}
 
