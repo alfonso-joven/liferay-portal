@@ -6152,22 +6152,17 @@ public class PortalImpl implements Portal {
 			ThemeDisplay themeDisplay, Layout layout, Portlet portlet)
 		throws PortalException, SystemException {
 
-		String rootPortletId = portlet.getRootPortletId();
-
-		String portletPrimaryKey = PortletPermissionUtil.getPrimaryKey(
+		String primaryKey = PortletPermissionUtil.getPrimaryKey(
 			layout.getPlid(), portlet.getPortletId());
-
-		String name = rootPortletId;
-		String primaryKey = portletPrimaryKey;
 
 		try {
 			if (PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM == 6) {
 				int count =
 					ResourcePermissionLocalServiceUtil.
 						getResourcePermissionsCount(
-							themeDisplay.getCompanyId(), name,
-							ResourceConstants.SCOPE_INDIVIDUAL,
-							primaryKey);
+							themeDisplay.getCompanyId(),
+							portlet.getRootPortletId(),
+							ResourceConstants.SCOPE_INDIVIDUAL, primaryKey);
 
 				if (count == 0) {
 					return false;
@@ -6175,7 +6170,7 @@ public class PortalImpl implements Portal {
 			}
 			else if (!portlet.isUndeployedPortlet()) {
 				ResourceLocalServiceUtil.getResource(
-					themeDisplay.getCompanyId(), name,
+					themeDisplay.getCompanyId(), portlet.getRootPortletId(),
 					ResourceConstants.SCOPE_INDIVIDUAL, primaryKey);
 			}
 		}
