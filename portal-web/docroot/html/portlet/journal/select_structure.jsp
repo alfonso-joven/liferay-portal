@@ -67,7 +67,7 @@ long groupId = ParamUtil.getLong(request, "groupId");
 		sb.append("selectStructure('");
 		sb.append(structure.getStructureId());
 		sb.append("', '");
-		sb.append(HtmlUtil.escape(structure.getName(locale)));
+		sb.append(HtmlUtil.escapeJS(structure.getName(locale)));
 		sb.append("', Liferay.Util.getWindow());");
 
 		String rowHREF = sb.toString();
