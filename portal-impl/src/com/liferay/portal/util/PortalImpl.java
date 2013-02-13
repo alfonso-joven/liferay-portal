@@ -6148,39 +6148,6 @@ public class PortalImpl implements Portal {
 		}
 	}
 
-	protected boolean hasPortletDefaultResource(
-			ThemeDisplay themeDisplay, Layout layout, Portlet portlet)
-		throws PortalException, SystemException {
-
-		String primaryKey = PortletPermissionUtil.getPrimaryKey(
-			layout.getPlid(), portlet.getPortletId());
-
-		try {
-			if (PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM == 6) {
-				int count =
-					ResourcePermissionLocalServiceUtil.
-						getResourcePermissionsCount(
-							themeDisplay.getCompanyId(),
-							portlet.getRootPortletId(),
-							ResourceConstants.SCOPE_INDIVIDUAL, primaryKey);
-
-				if (count == 0) {
-					return false;
-				}
-			}
-			else if (!portlet.isUndeployedPortlet()) {
-				ResourceLocalServiceUtil.getResource(
-					themeDisplay.getCompanyId(), portlet.getRootPortletId(),
-					ResourceConstants.SCOPE_INDIVIDUAL, primaryKey);
-			}
-		}
-		catch (NoSuchResourceException nsre) {
-			return false;
-		}
-
-		return true;
-	}
-
 	protected String getGroupFriendlyURL(
 			Group group, boolean privateLayoutSet, ThemeDisplay themeDisplay,
 			boolean canonicalURL)
@@ -6418,6 +6385,39 @@ public class PortalImpl implements Portal {
 		}
 
 		return sb.toString();
+	}
+
+	protected boolean hasPortletDefaultResource(
+			ThemeDisplay themeDisplay, Layout layout, Portlet portlet)
+		throws PortalException, SystemException {
+
+		String primaryKey = PortletPermissionUtil.getPrimaryKey(
+			layout.getPlid(), portlet.getPortletId());
+
+		try {
+			if (PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM == 6) {
+				int count =
+					ResourcePermissionLocalServiceUtil.
+						getResourcePermissionsCount(
+							themeDisplay.getCompanyId(),
+							portlet.getRootPortletId(),
+							ResourceConstants.SCOPE_INDIVIDUAL, primaryKey);
+
+				if (count == 0) {
+					return false;
+				}
+			}
+			else if (!portlet.isUndeployedPortlet()) {
+				ResourceLocalServiceUtil.getResource(
+					themeDisplay.getCompanyId(), portlet.getRootPortletId(),
+					ResourceConstants.SCOPE_INDIVIDUAL, primaryKey);
+			}
+		}
+		catch (NoSuchResourceException nsre) {
+			return false;
+		}
+
+		return true;
 	}
 
 	protected boolean isAlwaysAllowDoAsUser(HttpServletRequest request)
