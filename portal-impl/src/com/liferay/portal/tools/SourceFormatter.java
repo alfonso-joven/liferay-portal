@@ -3522,7 +3522,9 @@ public class SourceFormatter {
 					_TYPE_METHOD_PUBLIC_STATIC);
 			}
 
-			if (line.startsWith(StringPool.TAB + "public static class ")) {
+			if (line.startsWith(StringPool.TAB + "public static class ") ||
+				line.startsWith(StringPool.TAB + "public static enum")) {
+
 				return new Tuple(
 					_getClassName(line), _TYPE_CLASS_PUBLIC_STATIC);
 			}
@@ -3550,7 +3552,9 @@ public class SourceFormatter {
 						_TYPE_METHOD_PUBLIC);
 				}
 			}
-			else if (line.startsWith(StringPool.TAB + "public class ")) {
+			else if (line.startsWith(StringPool.TAB + "public class ") ||
+					 line.startsWith(StringPool.TAB + "public enum")) {
+
 				return new Tuple(_getClassName(line), _TYPE_CLASS_PUBLIC);
 			}
 		}
@@ -3577,7 +3581,9 @@ public class SourceFormatter {
 					_TYPE_METHOD_PROTECTED_STATIC);
 			}
 
-			if (line.startsWith(StringPool.TAB + "protected static class ")) {
+			if (line.startsWith(StringPool.TAB + "protected static class ") ||
+				line.startsWith(StringPool.TAB + "protected static enum ")) {
+
 				return new Tuple(
 					_getClassName(line), _TYPE_CLASS_PROTECTED_STATIC);
 			}
@@ -3601,7 +3607,9 @@ public class SourceFormatter {
 					}
 				}
 			}
-			else if (line.startsWith(StringPool.TAB + "protected class ")) {
+			else if (line.startsWith(StringPool.TAB + "protected class ") ||
+					 line.startsWith(StringPool.TAB + "protected enum ")) {
+
 				return new Tuple(_getClassName(line), _TYPE_CLASS_PROTECTED);
 			}
 
@@ -3630,7 +3638,9 @@ public class SourceFormatter {
 					_TYPE_METHOD_PRIVATE_STATIC);
 			}
 
-			if (line.startsWith(StringPool.TAB + "private static class ")) {
+			if (line.startsWith(StringPool.TAB + "private static class ") ||
+				line.startsWith(StringPool.TAB + "private static enum ")) {
+
 				return new Tuple(
 					_getClassName(line), _TYPE_CLASS_PRIVATE_STATIC);
 			}
@@ -3659,7 +3669,9 @@ public class SourceFormatter {
 						_TYPE_METHOD_PRIVATE);
 				}
 			}
-			else if (line.startsWith(StringPool.TAB + "private class ")) {
+			else if (line.startsWith(StringPool.TAB + "private class ") ||
+					 line.startsWith(StringPool.TAB + "private enum ")) {
+
 				return new Tuple(_getClassName(line), _TYPE_CLASS_PRIVATE);
 			}
 		}
