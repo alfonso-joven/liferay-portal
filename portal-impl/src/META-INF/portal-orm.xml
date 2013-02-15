@@ -4100,6 +4100,7 @@
 	<entity class="com.liferay.portlet.documentlibrary.model.impl.DLFileVersionImpl" name="DLFileVersion">
 		<table name="DLFileVersion" />
 		<attributes>
+			<transient name="checksum" />
 			<transient name="extraSettingsProperties" />
 		</attributes>
 	</entity>

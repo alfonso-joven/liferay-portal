@@ -867,6 +867,12 @@ public class DLFileVersionWrapper implements DLFileVersion,
 		_dlFileVersion.persist();
 	}
 
+	public java.lang.String getChecksum()
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _dlFileVersion.getChecksum();
+	}
+
 	public java.io.InputStream getContentStream(boolean incrementCounter)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
@@ -889,6 +895,12 @@ public class DLFileVersionWrapper implements DLFileVersion,
 
 	public java.lang.String getIcon() {
 		return _dlFileVersion.getIcon();
+	}
+
+	public void setChecksum(java.lang.String checksum)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_dlFileVersion.setChecksum(checksum);
 	}
 
 	public void setExtraSettingsProperties(
