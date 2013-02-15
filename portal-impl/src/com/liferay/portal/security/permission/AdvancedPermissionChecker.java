@@ -704,6 +704,17 @@ public class AdvancedPermissionChecker extends BasePermissionChecker {
 		}
 	}
 
+	public boolean isOrganizationOwner(long organizationId) {
+		try {
+			return isOrganizationOwnerImpl(organizationId);
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			return false;
+		}
+	}
+
 	protected void addTeamRoles(long userId, Group group, List<Role> roles)
 		throws Exception {
 
@@ -1212,6 +1223,47 @@ public class AdvancedPermissionChecker extends BasePermissionChecker {
 		}
 
 		if (bag.isOrganizationAdmin(this, organization)) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	protected boolean isOrganizationOwnerImpl(long organizationId)
+		throws Exception {
+
+		if (!signedIn) {
+			return false;
+		}
+
+		if (isOmniadmin()) {
+			return true;
+		}
+
+		if (organizationId <= 0) {
+			return false;
+		}
+
+		Organization organization =
+			OrganizationLocalServiceUtil.fetchOrganization(organizationId);
+
+		if (organization == null) {
+			return false;
+		}
+
+		if (isCompanyAdmin(organization.getCompanyId())) {
+			return true;
+		}
+
+		PermissionCheckerBag bag = getUserBag(
+			user.getUserId(), organization.getGroupId());
+
+		if (bag == null) {
+			_log.error("Bag should never be null");
+		}
+
+		if (bag.isOrganizationOwner(this, organization)) {
 			return true;
 		}
 		else {
