@@ -113,25 +113,33 @@ public class DLCheckInCheckOutTest {
 
 	@Test
 	public void testCheckIn() throws Exception {
-		DLAppServiceUtil.checkOutFileEntry(
-			_fileEntry.getFileEntryId(), _serviceContext);
+		ServiceContext serviceContext = new ServiceContext();
 
-		FileVersion fileVersion = _fileEntry.getLatestFileVersion();
+		for (int i = 0; i < 2; i++) {
+			DLAppServiceUtil.checkOutFileEntry(
+				_fileEntry.getFileEntryId(), serviceContext);
 
-		Assert.assertEquals("PWC", fileVersion.getVersion());
+			FileVersion fileVersion = _fileEntry.getLatestFileVersion();
 
-		getAssetEntry(fileVersion.getFileVersionId(), true);
+			Assert.assertEquals("PWC", fileVersion.getVersion());
 
-		DLAppServiceUtil.checkInFileEntry(
-			_fileEntry.getFileEntryId(), false, StringPool.BLANK,
-			_serviceContext);
+			getAssetEntry(fileVersion.getFileVersionId(), true);
 
-		FileEntry fileEntry = DLAppServiceUtil.getFileEntry(
-			_fileEntry.getFileEntryId());
+			if (i == 1) {
+				updateFileEntry(_fileEntry.getFileEntryId());
+			}
 
-		Assert.assertEquals("1.1", fileEntry.getVersion());
+			DLAppServiceUtil.checkInFileEntry(
+				_fileEntry.getFileEntryId(), false, StringPool.BLANK,
+				_serviceContext);
 
-		getAssetEntry(fileVersion.getFileVersionId(), false);
+			FileEntry fileEntry = DLAppServiceUtil.getFileEntry(
+				_fileEntry.getFileEntryId());
+
+			fileVersion = fileEntry.getFileVersion();
+
+			getAssetEntry(fileVersion.getFileVersionId(), false);
+		}
 	}
 
 	@Test
@@ -328,12 +336,14 @@ public class DLCheckInCheckOutTest {
 	protected FileEntry updateFileEntry(long fileEntryId, String fileName)
 		throws Exception {
 
+		String newContent = _TEST_CONTENT + "\n" + System.currentTimeMillis();
+
 		InputStream inputStream = new UnsyncByteArrayInputStream(
-			_TEST_CONTENT.getBytes());
+			newContent.getBytes());
 
 		return DLAppServiceUtil.updateFileEntry(
 			fileEntryId, fileName, ContentTypes.TEXT_PLAIN, fileName, null,
-			null, false, inputStream, _TEST_CONTENT.length(), _serviceContext);
+			null, false, inputStream, newContent.length(), _serviceContext);
 	}
 
 	private static final String _FILE_NAME = "test1.txt";

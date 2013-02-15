@@ -76,9 +76,11 @@ public class RawMetadataProcessorImpl
 	public void generateMetadata(FileVersion fileVersion)
 		throws SystemException {
 
+		long fileVersionId = fileVersion.getFileVersionId();
+
 		long fileEntryMetadataCount =
-			DLFileEntryMetadataLocalServiceUtil.getFileEntryMetadataCount(
-				fileVersion.getFileEntryId(), fileVersion.getFileVersionId());
+			DLFileEntryMetadataLocalServiceUtil.
+				getFileVersionFileEntryMetadatasCount(fileVersionId);
 
 		if (fileEntryMetadataCount == 0) {
 			trigger(fileVersion);

@@ -19,11 +19,15 @@ import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.util.UnicodeProperties;
+import com.liferay.portal.model.CompanyConstants;
 import com.liferay.portal.security.auth.PrincipalThreadLocal;
+import com.liferay.portlet.documentlibrary.DuplicateDirectoryException;
+import com.liferay.portlet.documentlibrary.NoSuchFileException;
 import com.liferay.portlet.documentlibrary.model.DLFileEntry;
 import com.liferay.portlet.documentlibrary.model.DLFolder;
 import com.liferay.portlet.documentlibrary.service.DLFileEntryLocalServiceUtil;
 import com.liferay.portlet.documentlibrary.service.DLFolderLocalServiceUtil;
+import com.liferay.portlet.documentlibrary.store.DLStoreUtil;
 import com.liferay.portlet.documentlibrary.util.DLUtil;
 import com.liferay.portlet.expando.model.ExpandoBridge;
 import com.liferay.portlet.expando.util.ExpandoBridgeFactoryUtil;
@@ -38,6 +42,24 @@ import java.io.InputStream;
 public class DLFileVersionImpl extends DLFileVersionBaseImpl {
 
 	public DLFileVersionImpl() {
+	}
+
+	public String getChecksum() throws PortalException, SystemException {
+		String dirName = "checksum/" + getFileEntryId();
+		String fileName = dirName + "/" + getFileVersionId() + ".hash";
+
+		String checkSum = null;
+
+		try {
+			byte[] bytes = DLStoreUtil.getFileAsBytes(
+				getCompanyId(), CompanyConstants.SYSTEM, fileName);
+
+			checkSum = new String(bytes);
+		}
+		catch (NoSuchFileException nsfe) {
+		}
+
+		return checkSum;
 	}
 
 	public InputStream getContentStream(boolean incrementCounter)
@@ -109,6 +131,34 @@ public class DLFileVersionImpl extends DLFileVersionBaseImpl {
 
 	public String getIcon() {
 		return DLUtil.getFileIcon(getExtension());
+	}
+
+	public void setChecksum(String checksum)
+		throws PortalException, SystemException {
+
+		String dirName = "checksum/" + getFileEntryId();
+		String fileName = dirName + "/" + getFileVersionId() + ".hash";
+
+		try {
+			DLStoreUtil.addDirectory(
+				getCompanyId(), CompanyConstants.SYSTEM, dirName);
+		}
+		catch (DuplicateDirectoryException dde) {
+		}
+
+		try {
+			DLStoreUtil.deleteFile(
+				getCompanyId(), CompanyConstants.SYSTEM, fileName);
+		}
+		catch (Exception e) {
+			if (_log.isWarnEnabled()) {
+				_log.warn(e, e);
+			}
+		}
+
+		DLStoreUtil.addFile(
+			getCompanyId(), CompanyConstants.SYSTEM, fileName,
+			checksum.getBytes());
 	}
 
 	@Override
