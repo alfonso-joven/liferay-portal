@@ -1718,7 +1718,7 @@ public class DLFileEntryLocalServiceImpl
 						dlFileEntry.getDataRepositoryId(),
 						dlFileEntry.getName(), lastDLFileVersion.getVersion());
 
-					lastChecksum = DigesterUtil.digest(lastInputStream);
+					lastChecksum = DigesterUtil.digestBase64(lastInputStream);
 
 					lastDLFileVersion.setChecksum(lastChecksum);
 
@@ -1732,7 +1732,7 @@ public class DLFileEntryLocalServiceImpl
 					dlFileEntry.getDataRepositoryId(), dlFileEntry.getName(),
 					latestDLFileVersion.getVersion());
 
-				latestChecksum = DigesterUtil.digest(latestInputStream);
+				latestChecksum = DigesterUtil.digestBase64(latestInputStream);
 
 				if (lastChecksum.equals(latestChecksum)) {
 					return true;
