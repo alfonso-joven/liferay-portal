@@ -87,6 +87,7 @@ import com.liferay.portlet.dynamicdatamapping.storage.Fields;
 import com.liferay.portlet.dynamicdatamapping.storage.StorageEngineUtil;
 import com.liferay.portlet.expando.model.ExpandoBridge;
 import com.liferay.portlet.expando.model.ExpandoColumnConstants;
+import com.liferay.portlet.expando.util.ExpandoBridgeFactoryUtil;
 
 import java.awt.image.RenderedImage;
 
@@ -433,14 +434,22 @@ public class DLFileEntryLocalServiceImpl
 		User user = userPersistence.findByPrimaryKey(userId);
 
 		serviceContext.setCompanyId(user.getCompanyId());
-		serviceContext.setUserId(userId);
-
-		dlFileEntryPersistence.update(dlFileEntry, false);
 
 		DLFileVersion dlFileVersion =
 			dlFileVersionLocalService.getLatestFileVersion(fileEntryId, false);
 
 		long dlFileVersionId = dlFileVersion.getFileVersionId();
+
+		ExpandoBridge expandoBridge = ExpandoBridgeFactoryUtil.getExpandoBridge(
+			serviceContext.getCompanyId(), DLFileEntry.class.getName(),
+				dlFileVersionId);
+
+		serviceContext.setExpandoBridgeAttributes(
+			expandoBridge.getAttributes());
+
+		serviceContext.setUserId(userId);
+
+		dlFileEntryPersistence.update(dlFileEntry, false);
 
 		String version = dlFileVersion.getVersion();
 
