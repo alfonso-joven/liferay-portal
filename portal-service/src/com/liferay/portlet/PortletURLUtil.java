@@ -211,7 +211,7 @@ public class PortletURLUtil {
 		}
 
 		sb.append("&p_p_isolated=1&p_v_l_s_g_id=");
-		sb.append(themeDisplay.getSiteGroupId());
+		sb.append(themeDisplay.getParentGroupId());
 
 		String doAsUserId = themeDisplay.getDoAsUserId();
 
