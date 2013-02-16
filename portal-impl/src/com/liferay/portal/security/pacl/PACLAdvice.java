@@ -121,7 +121,7 @@ public class PACLAdvice extends ChainableMethodAdvice {
 			Class<?> thisObjectClass = thisObject.getClass();
 
 			if (paclPolicy.getClassLoader() !=
-					PACLClassLoaderUtil.getClassLoader(thisObjectClass)) {
+					ClassLoaderUtil.getClassLoader(thisObjectClass)) {
 
 				// Disable the portal security manager so that PACLDataSource
 				// does not try to check access to tables that can be accessed

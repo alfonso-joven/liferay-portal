@@ -16,7 +16,7 @@ package com.liferay.portal.security.permission;
 
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
-import com.liferay.portal.security.pacl.PACLClassLoaderUtil;
+import com.liferay.portal.util.ClassLoaderUtil;
 import com.liferay.portal.util.PropsValues;
 
 /**
@@ -31,8 +31,7 @@ public class PermissionsListFilterFactory {
 					"Instantiate " + PropsValues.PERMISSIONS_LIST_FILTER);
 			}
 
-			ClassLoader classLoader =
-				PACLClassLoaderUtil.getPortalClassLoader();
+			ClassLoader classLoader = ClassLoaderUtil.getPortalClassLoader();
 
 			try {
 				_permissionsListFilter =

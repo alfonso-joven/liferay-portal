@@ -21,7 +21,7 @@ import com.liferay.portal.kernel.util.InstanceFactory;
 import com.liferay.portal.kernel.util.SetUtil;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.security.lang.PortalSecurityManagerThreadLocal;
-import com.liferay.portal.security.pacl.PACLClassLoaderUtil;
+import com.liferay.portal.util.ClassLoaderUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -78,7 +78,7 @@ public class SpringFactoryImpl implements SpringFactory {
 			PortalSecurityManagerThreadLocal.setEnabled(false);
 
 			Object bean = InstanceFactory.newInstance(
-				PACLClassLoaderUtil.getPortalClassLoader(), className);
+				ClassLoaderUtil.getPortalClassLoader(), className);
 
 			if (properties == null) {
 				return bean;

@@ -24,9 +24,9 @@ import com.liferay.portal.kernel.velocity.VelocityContext;
 import com.liferay.portal.kernel.velocity.VelocityEngine;
 import com.liferay.portal.kernel.velocity.VelocityVariablesUtil;
 import com.liferay.portal.security.lang.PortalSecurityManagerThreadLocal;
-import com.liferay.portal.security.pacl.PACLClassLoaderUtil;
 import com.liferay.portal.security.pacl.PACLPolicy;
 import com.liferay.portal.security.pacl.PACLPolicyManager;
+import com.liferay.portal.util.ClassLoaderUtil;
 import com.liferay.portal.util.PropsUtil;
 import com.liferay.portal.util.PropsValues;
 
@@ -83,7 +83,7 @@ public class VelocityEngineImpl implements VelocityEngine {
 		// class loader of the current thread
 
 		ClassLoader contextClassLoader =
-			PACLClassLoaderUtil.getContextClassLoader();
+			ClassLoaderUtil.getContextClassLoader();
 
 		PACLPolicy threadLocalPACLPolicy =
 			PortalSecurityManagerThreadLocal.getPACLPolicy();

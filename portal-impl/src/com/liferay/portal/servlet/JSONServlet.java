@@ -21,12 +21,12 @@ import com.liferay.portal.kernel.servlet.PluginContextListener;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.model.User;
 import com.liferay.portal.security.auth.PrincipalThreadLocal;
-import com.liferay.portal.security.pacl.PACLClassLoaderUtil;
 import com.liferay.portal.security.permission.PermissionChecker;
 import com.liferay.portal.security.permission.PermissionCheckerFactoryUtil;
 import com.liferay.portal.security.permission.PermissionThreadLocal;
 import com.liferay.portal.service.UserLocalServiceUtil;
 import com.liferay.portal.struts.JSONAction;
+import com.liferay.portal.util.ClassLoaderUtil;
 
 import java.io.IOException;
 
@@ -66,17 +66,15 @@ public class JSONServlet extends HttpServlet {
 			}
 			else {
 				ClassLoader contextClassLoader =
-					PACLClassLoaderUtil.getContextClassLoader();
+					ClassLoaderUtil.getContextClassLoader();
 
 				try {
-					PACLClassLoaderUtil.setContextClassLoader(
-						_pluginClassLoader);
+					ClassLoaderUtil.setContextClassLoader(_pluginClassLoader);
 
 					_jsonAction.execute(null, null, request, response);
 				}
 				finally {
-					PACLClassLoaderUtil.setContextClassLoader(
-						contextClassLoader);
+					ClassLoaderUtil.setContextClassLoader(contextClassLoader);
 				}
 			}
 		}

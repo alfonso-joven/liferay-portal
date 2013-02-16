@@ -116,7 +116,7 @@ public class PACLBeanHandler implements InvocationHandler {
 			Class<?> beanClass = _bean.getClass();
 
 			if (paclPolicy.getClassLoader() !=
-					PACLClassLoaderUtil.getClassLoader(beanClass)) {
+					ClassLoaderUtil.getClassLoader(beanClass)) {
 
 				// Disable the portal security manager so that PACLDataSource
 				// does not try to check access to tables that can be accessed

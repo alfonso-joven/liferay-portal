@@ -27,8 +27,8 @@ import com.liferay.portal.kernel.util.ClassLoaderPool;
 import com.liferay.portal.kernel.util.MethodHandler;
 import com.liferay.portal.kernel.util.MethodKey;
 import com.liferay.portal.kernel.util.Validator;
-import com.liferay.portal.security.pacl.PACLClassLoaderUtil;
 import com.liferay.portal.spring.aop.AnnotationChainableMethodAdvice;
+import com.liferay.portal.util.ClassLoaderUtil;
 import com.liferay.portal.util.PropsValues;
 
 import java.io.Serializable;
@@ -160,14 +160,14 @@ public class ClusterableAdvice
 		}
 
 		ClassLoader contextClassLoader =
-			PACLClassLoaderUtil.getContextClassLoader();
+			ClassLoaderUtil.getContextClassLoader();
 
 		try {
 			ClassLoader classLoader =
 				(ClassLoader)PortletBeanLocatorUtil.locate(
 					servletContextName, "portletClassLoader");
 
-			PACLClassLoaderUtil.setContextClassLoader(classLoader);
+			ClassLoaderUtil.setContextClassLoader(classLoader);
 
 			if (Validator.isNull(beanIdentifier)) {
 				return methodHandler.invoke(true);
@@ -180,7 +180,7 @@ public class ClusterableAdvice
 			}
 		}
 		finally {
-			PACLClassLoaderUtil.setContextClassLoader(contextClassLoader);
+			ClassLoaderUtil.setContextClassLoader(contextClassLoader);
 		}
 	}
 

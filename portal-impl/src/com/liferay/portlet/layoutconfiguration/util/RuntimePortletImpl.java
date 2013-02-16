@@ -35,7 +35,6 @@ import com.liferay.portal.model.LayoutTemplateConstants;
 import com.liferay.portal.model.Portlet;
 import com.liferay.portal.model.PortletConstants;
 import com.liferay.portal.security.lang.PortalSecurityManagerThreadLocal;
-import com.liferay.portal.security.pacl.PACLClassLoaderUtil;
 import com.liferay.portal.security.pacl.PACLPolicy;
 import com.liferay.portal.security.pacl.PACLPolicyManager;
 import com.liferay.portal.service.LayoutTemplateLocalServiceUtil;
@@ -43,6 +42,7 @@ import com.liferay.portal.service.PortletLocalServiceUtil;
 import com.liferay.portal.theme.PortletDisplay;
 import com.liferay.portal.theme.PortletDisplayFactory;
 import com.liferay.portal.theme.ThemeDisplay;
+import com.liferay.portal.util.ClassLoaderUtil;
 import com.liferay.portal.util.PortalUtil;
 import com.liferay.portal.util.WebKeys;
 import com.liferay.portlet.layoutconfiguration.util.velocity.CustomizationSettingsProcessor;
@@ -379,7 +379,7 @@ public class RuntimePortletImpl implements RuntimePortlet {
 		}
 
 		ClassLoader contextClassLoader =
-			PACLClassLoaderUtil.getContextClassLoader();
+			ClassLoaderUtil.getContextClassLoader();
 
 		PACLPolicy contextClassLoaderPACLPolicy =
 			PACLPolicyManager.getPACLPolicy(contextClassLoader);
@@ -390,7 +390,7 @@ public class RuntimePortletImpl implements RuntimePortlet {
 			if ((pluginClassLoader != null) &&
 				(pluginClassLoader != contextClassLoader)) {
 
-				PACLClassLoaderUtil.setContextClassLoader(pluginClassLoader);
+				ClassLoaderUtil.setContextClassLoader(pluginClassLoader);
 				PortalSecurityManagerThreadLocal.setPACLPolicy(
 					pluginClassLoaderPACLPolicy);
 			}
@@ -413,7 +413,7 @@ public class RuntimePortletImpl implements RuntimePortlet {
 
 				PortalSecurityManagerThreadLocal.setPACLPolicy(
 					contextClassLoaderPACLPolicy);
-				PACLClassLoaderUtil.setContextClassLoader(contextClassLoader);
+				ClassLoaderUtil.setContextClassLoader(contextClassLoader);
 			}
 		}
 	}

@@ -27,7 +27,7 @@ import com.liferay.portal.kernel.util.StreamUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
-import com.liferay.portal.security.pacl.PACLClassLoaderUtil;
+import com.liferay.portal.util.ClassLoaderUtil;
 import com.liferay.portal.util.PortalUtil;
 import com.liferay.portal.util.PropsValues;
 
@@ -150,7 +150,7 @@ public class JSONWebServiceConfigurator extends ClassFinder {
 			classPathFiles = classPaths.toArray(new File[classPaths.size()]);
 		}
 		else {
-			classLoader = PACLClassLoaderUtil.getContextClassLoader();
+			classLoader = ClassLoaderUtil.getContextClassLoader();
 
 			File portalImplJarFile = new File(
 				PortalUtil.getPortalLibDir(), "portal-impl.jar");
