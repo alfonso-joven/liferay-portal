@@ -19,6 +19,7 @@ import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.security.lang.PortalSecurityManagerThreadLocal;
 import com.liferay.portal.service.persistence.GroupPersistenceImpl;
 import com.liferay.portal.service.persistence.UserPersistenceImpl;
+import com.liferay.portal.util.ClassLoaderUtil;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;

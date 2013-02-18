@@ -20,6 +20,7 @@ import com.liferay.portal.security.lang.PortalSecurityManagerThreadLocal;
 import com.liferay.portal.service.impl.PortalServiceImpl;
 import com.liferay.portal.spring.aop.ChainableMethodAdvice;
 import com.liferay.portal.spring.aop.ServiceBeanAopProxy;
+import com.liferay.portal.util.ClassLoaderUtil;
 
 import java.lang.reflect.Method;
 

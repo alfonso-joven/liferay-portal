@@ -51,8 +51,6 @@ import jodd.io.findfile.ClassFinder;
 import jodd.io.findfile.FindFile;
 import jodd.io.findfile.RegExpFindFile;
 
-import jodd.util.ClassLoaderUtil;
-
 import org.apache.commons.lang.time.StopWatch;
 
 import org.objectweb.asm.ClassReader;
@@ -164,7 +162,7 @@ public class JSONWebServiceConfigurator extends ClassFinder {
 				classPathFiles[1] = portalServiceJarFile;
 			}
 			else {
-				classPathFiles = ClassLoaderUtil.getDefaultClasspath(
+				classPathFiles = jodd.util.ClassLoaderUtil.getDefaultClasspath(
 					classLoader);
 			}
 		}
