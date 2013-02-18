@@ -595,6 +595,8 @@ public class VideoProcessorImpl
 			return StringPool.BLANK;
 		}
 
+		private static final long serialVersionUID = 1L;
+
 		private Map<String, String> _customLogSettings;
 		private Properties _ffpresetProperties;
 		private String _inputURL;
@@ -652,6 +654,8 @@ public class VideoProcessorImpl
 
 			return StringPool.BLANK;
 		}
+
+		private static final long serialVersionUID = 1L;
 
 		private Map<String, String> _customLogSettings;
 		private String _extension;

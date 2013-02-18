@@ -917,6 +917,8 @@ public class FileImpl implements com.liferay.portal.kernel.util.File {
 			}
 		}
 
+		private static final long serialVersionUID = 1L;
+
 		private byte[] _data;
 
 	}

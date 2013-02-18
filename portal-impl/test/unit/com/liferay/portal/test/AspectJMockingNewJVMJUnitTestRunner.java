@@ -169,6 +169,8 @@ public class AspectJMockingNewJVMJUnitTestRunner extends NewJVMJUnitTestRunner {
 			return _toString;
 		}
 
+		private static final long serialVersionUID = 1L;
+
 		private File _dumpDir;
 		private byte[] _encodedProcessCallable;
 		private String _toString;

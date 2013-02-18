@@ -464,6 +464,8 @@ public class AudioProcessorImpl
 			return StringPool.BLANK;
 		}
 
+		private static final long serialVersionUID = 1L;
+
 		private String _audioContainer;
 		private Properties _audioProperties;
 		private Map<String, String> _customLogSettings;
