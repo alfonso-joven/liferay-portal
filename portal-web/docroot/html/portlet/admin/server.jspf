@@ -831,7 +831,7 @@ serverURL.setParameter("tabs3", tabs3);
 								<liferay-ui:message key="run-the-garbage-collector-to-free-up-memory" />
 							</td>
 							<td>
-								<input type="button" value="<liferay-ui:message key="execute" />" onClick="<portlet:namespace />saveServer('gc');" />
+								<input onClick="<portlet:namespace />saveServer('gc');" type="button" value="<liferay-ui:message key="execute" />" />
 							</td>
 						</tr>
 						<tr>
@@ -839,7 +839,7 @@ serverURL.setParameter("tabs3", tabs3);
 								<liferay-ui:message key="clear-content-cached-by-this-vm" />
 							</td>
 							<td>
-								<input type="button" value="<liferay-ui:message key="execute" />" onClick="<portlet:namespace />saveServer('cacheSingle');" />
+								<input onClick="<portlet:namespace />saveServer('cacheSingle');" type="button" value="<liferay-ui:message key="execute" />" />
 							</td>
 						</tr>
 						<tr>
@@ -847,7 +847,7 @@ serverURL.setParameter("tabs3", tabs3);
 								<liferay-ui:message key="clear-content-cached-across-the-cluster" />
 							</td>
 							<td>
-								<input type="button" value="<liferay-ui:message key="execute" />" onClick="<portlet:namespace />saveServer('cacheMulti');" />
+								<input onClick="<portlet:namespace />saveServer('cacheMulti');" type="button" value="<liferay-ui:message key="execute" />" />
 							</td>
 						</tr>
 						<tr>
@@ -855,7 +855,7 @@ serverURL.setParameter("tabs3", tabs3);
 								<liferay-ui:message key="clear-the-database-cache" />
 							</td>
 							<td>
-								<input type="button" value="<liferay-ui:message key="execute" />" onClick="<portlet:namespace />saveServer('cacheDb');" />
+								<input onClick="<portlet:namespace />saveServer('cacheDb');" type="button" value="<liferay-ui:message key="execute" />" />
 							</td>
 						</tr>
 						<tr>
@@ -863,7 +863,7 @@ serverURL.setParameter("tabs3", tabs3);
 								<liferay-ui:message key="reindex-all-search-indexes" />
 							</td>
 							<td>
-								<input type="button" value="<liferay-ui:message key="execute" />" onClick="<portlet:namespace />saveServer('reindex');" />
+								<input onClick="<portlet:namespace />saveServer('reindex');" type="button" value="<liferay-ui:message key="execute" />" />
 							</td>
 						</tr>
 						<tr>
@@ -871,7 +871,7 @@ serverURL.setParameter("tabs3", tabs3);
 								<liferay-ui:message key="reset-preview-and-thumbnail-files-for-documents-and-media-portlet" />
 							</td>
 							<td>
-								<input type="button" value="<liferay-ui:message key="execute" />" onClick="<portlet:namespace />saveServer('dlPreviews');" />
+								<input onClick="<portlet:namespace />saveServer('dlPreviews');" type="button" value="<liferay-ui:message key="execute" />" />
 							</td>
 						</tr>
 						<tr>
@@ -879,7 +879,7 @@ serverURL.setParameter("tabs3", tabs3);
 								<liferay-ui:message key="generate-thread-dump" />
 							</td>
 							<td>
-								<input type="button" value="<liferay-ui:message key="execute" />" onClick="<portlet:namespace />saveServer('threadDump');" />
+								<input onClick="<portlet:namespace />saveServer('threadDump');" type="button" value="<liferay-ui:message key="execute" />" />
 							</td>
 						</tr>
 						<tr>
@@ -887,7 +887,7 @@ serverURL.setParameter("tabs3", tabs3);
 								<liferay-ui:message key="verify-database-tables-of-all-plugins" />
 							</td>
 							<td>
-								<input type="button" value="<liferay-ui:message key="execute" />" onClick="<portlet:namespace />saveServer('verifyPluginTables');" />
+								<input onClick="<portlet:namespace />saveServer('verifyPluginTables');" type="button" value="<liferay-ui:message key="execute" />" />
 							</td>
 						</tr>
 						<tr>
@@ -895,7 +895,7 @@ serverURL.setParameter("tabs3", tabs3);
 								<liferay-ui:message key="clean-up-permissions" /> <liferay-ui:icon-help message="clean-up-permissions-help" />
 							</td>
 							<td>
-								<input type="button" value="<liferay-ui:message key="execute" />" onClick="<portlet:namespace />saveServer('cleanUpPermissions');" />
+								<input onClick="<portlet:namespace />saveServer('cleanUpPermissions');" type="button" value="<liferay-ui:message key="execute" />" />
 							</td>
 						</tr>
 						</table>
