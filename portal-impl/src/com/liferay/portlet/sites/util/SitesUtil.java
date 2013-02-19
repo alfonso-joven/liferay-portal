@@ -636,26 +636,22 @@ public class SitesUtil {
 		return true;
 	}
 
-	public static boolean isLayoutModifiedSinceLastMerge(Layout layout)
-		throws PortalException, SystemException {
-
+	public static boolean isLayoutModifiedSinceLastMerge(Layout layout) {
 		if ((layout == null) ||
 			Validator.isNull(layout.getSourcePrototypeLayoutUuid()) ||
-			layout.isLayoutPrototypeLinkActive()) {
+			layout.isLayoutPrototypeLinkActive() ||
+			!isLayoutUpdateable(layout)) {
 
 			return false;
 		}
 
-		LayoutSet existingLayoutSet = layout.getLayoutSet();
-
 		long lastMergeTime = GetterUtil.getLong(
-			existingLayoutSet.getSettingsProperty(LAST_MERGE_TIME));
+			layout.getTypeSettingsProperty(LAST_MERGE_TIME));
 
 		Date existingLayoutModifiedDate = layout.getModifiedDate();
 
 		if ((existingLayoutModifiedDate != null) &&
-			(existingLayoutModifiedDate.getTime() > lastMergeTime) &&
-			isLayoutUpdateable(layout)) {
+			(existingLayoutModifiedDate.getTime() > lastMergeTime)) {
 
 			return true;
 		}
