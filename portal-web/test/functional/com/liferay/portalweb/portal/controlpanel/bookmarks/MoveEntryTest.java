@@ -60,7 +60,7 @@ public class MoveEntryTest extends BaseTestCase {
 			selenium.getText("//a[@id='_28_folderName']"));
 		selenium.clickAt("//input[@value='Select']",
 			RuntimeVariables.replace("Select"));
-		selenium.waitForPopUp("Bookmarks", RuntimeVariables.replace("30000"));
+		selenium.waitForPopUp("", RuntimeVariables.replace("5000"));
 		selenium.selectPopUp("");
 		selenium.waitForElementPresent("link=Home");
 		selenium.clickAt("link=Home", RuntimeVariables.replace("Home"));
