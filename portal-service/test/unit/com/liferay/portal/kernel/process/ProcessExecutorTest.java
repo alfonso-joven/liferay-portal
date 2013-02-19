@@ -265,6 +265,8 @@ public class ProcessExecutorTest extends BaseTestCase {
 				DummyExceptionProcessCallable.class.getName());
 		}
 
+		private static final long serialVersionUID = 1L;
+
 	}
 
 	private static class DummyJob implements Callable<Void> {
@@ -296,6 +298,8 @@ public class ProcessExecutorTest extends BaseTestCase {
 			return DummyReturnProcessCallable.class.getName();
 		}
 
+		private static final long serialVersionUID = 1L;
+
 	}
 
 	private static class KillJVMProcessCallable
@@ -310,6 +314,8 @@ public class ProcessExecutorTest extends BaseTestCase {
 
 			return null;
 		}
+
+		private static final long serialVersionUID = 1L;
 
 		private final int _exitCode;
 
@@ -346,6 +352,8 @@ public class ProcessExecutorTest extends BaseTestCase {
 
 			return null;
 		}
+
+		private static final long serialVersionUID = 1L;
 
 		private final String _logMessage;
 		private final File _signalFile;

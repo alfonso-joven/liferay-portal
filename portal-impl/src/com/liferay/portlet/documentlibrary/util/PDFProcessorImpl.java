@@ -811,6 +811,8 @@ public class PDFProcessorImpl
 			return StringPool.BLANK;
 		}
 
+		private static final long serialVersionUID = 1L;
+
 		private LinkedList<String> _commandArguments;
 		private String _globalSearchPath;
 		private Properties _resourceLimits;
