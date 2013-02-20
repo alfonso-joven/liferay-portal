@@ -17,6 +17,7 @@ package com.liferay.portlet.layoutconfiguration.util;
 import com.liferay.portal.kernel.io.unsync.UnsyncStringWriter;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.security.pacl.DoPrivileged;
 import com.liferay.portal.kernel.servlet.PipingPageContext;
 import com.liferay.portal.kernel.servlet.PipingServletResponse;
 import com.liferay.portal.kernel.servlet.PluginContextListener;
@@ -73,6 +74,7 @@ import javax.servlet.jsp.PageContext;
  * @author Raymond Augé
  * @author Shuyang Zhou
  */
+@DoPrivileged
 public class RuntimePortletImpl implements RuntimePortlet {
 
 	public StringBundler getProcessedTemplate(

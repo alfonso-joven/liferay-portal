@@ -19,6 +19,7 @@ import com.liferay.portal.kernel.atom.AtomCollectionAdapterRegistry;
 import com.liferay.portal.kernel.atom.AtomException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.security.pacl.DoPrivileged;
 import com.liferay.portal.kernel.util.ListUtil;
 
 import java.util.List;
@@ -28,6 +29,7 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * @author Igor Spasic
  */
+@DoPrivileged
 public class AtomCollectionAdapterRegistryImpl
 	implements AtomCollectionAdapterRegistry {
 
