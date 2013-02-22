@@ -43,7 +43,7 @@ String keywords = ParamUtil.getString(request, "keywords");
 				'<portlet:namespace />folderId': '<%= folderId %>',
 				'<portlet:namespace />displayStyle': displayStyle,
 				'<portlet:namespace />viewEntries': <%= Boolean.FALSE.toString() %>,
-				'<portlet:namespace />viewEntriesPage': <%= Boolean.TRUE.toString() %>,
+				'<portlet:namespace />viewEntriesPage': <%= Boolean.FALSE.toString() %>,
 				'<portlet:namespace />viewFolders': <%= Boolean.FALSE.toString() %>,
 				'<portlet:namespace />saveDisplayStyle': <%= Boolean.TRUE.toString() %>
 			};
