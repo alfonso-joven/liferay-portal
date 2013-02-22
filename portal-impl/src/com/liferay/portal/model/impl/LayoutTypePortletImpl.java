@@ -448,22 +448,9 @@ public class LayoutTypePortletImpl
 	}
 
 	public String getLayoutTemplateId() {
-		String layoutTemplateId = StringPool.BLANK;
-
-		if (hasLayoutSetPrototypeLayout()) {
-			layoutTemplateId = getLayoutSetPrototypeLayoutProperty(
-				LayoutTypePortletConstants.LAYOUT_TEMPLATE_ID);
-		}
-		else {
-			layoutTemplateId = getTypeSettingsProperty(
-				LayoutTypePortletConstants.LAYOUT_TEMPLATE_ID);
-		}
-
-		if (Validator.isNull(layoutTemplateId)) {
-			layoutTemplateId = StringPool.BLANK;
-		}
-
-		return layoutTemplateId;
+		return GetterUtil.getString(
+			getTypeSettingsProperty(
+				LayoutTypePortletConstants.LAYOUT_TEMPLATE_ID));
 	}
 
 	public String getModeAbout() {
