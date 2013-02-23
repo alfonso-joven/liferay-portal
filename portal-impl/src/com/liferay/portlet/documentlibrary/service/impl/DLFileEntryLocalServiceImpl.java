@@ -442,7 +442,7 @@ public class DLFileEntryLocalServiceImpl
 
 		ExpandoBridge expandoBridge = ExpandoBridgeFactoryUtil.getExpandoBridge(
 			serviceContext.getCompanyId(), DLFileEntry.class.getName(),
-				dlFileVersionId);
+			dlFileVersionId);
 
 		serviceContext.setExpandoBridgeAttributes(
 			expandoBridge.getAttributes());
