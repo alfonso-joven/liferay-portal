@@ -764,8 +764,6 @@ AUI.add(
 							instance._setParentFolderTitle(content);
 							instance._syncDisplayStyleToolbar(content);
 							instance._setSearchResults(content);
-
-							instance._parseContent(content);
 						}
 					},
 
@@ -995,7 +993,7 @@ AUI.add(
 						customParams[instance.ns(STR_ENTRY_START)] = startEndParams[0];
 						customParams[instance.ns(STR_ENTRY_END)] = startEndParams[1];
 						customParams[instance.ns(VIEW_ENTRIES)] = false;
-						customParams[instance.ns(VIEW_ENTRIES_PAGE)] = false;
+						customParams[instance.ns(VIEW_ENTRIES_PAGE)] = true;
 						customParams[instance.ns(VIEW_FOLDERS)] = false;
 
 						if (AObject.owns(requestParams, instance.ns('searchType'))) {
@@ -1130,16 +1128,6 @@ AUI.add(
 						}
 					},
 
-					_parseContent: function(content) {
-						var instance = this;
-
-						var tmpNode = A.Node.create('<div></div>');
-
-						tmpNode.plug(A.Plugin.ParseContent);
-
-						tmpNode.ParseContent.parseContent(content);
-					},
-
 					_processDefaultParams: function(event) {
 						var instance = this;
 
@@ -1255,6 +1243,8 @@ AUI.add(
 						if (addButton) {
 							var addButtonContainer = instance.byId('addButtonContainer');
 
+							addButtonContainer.plug(A.Plugin.ParseContent);
+
 							addButtonContainer.setContent(addButton);
 						}
 
@@ -1265,6 +1255,8 @@ AUI.add(
 
 							var displayStyleButtonsContainer = instance.byId('displayStyleButtonsContainer');
 
+							displayStyleButtonsContainer.plug(A.Plugin.ParseContent);
+
 							displayStyleButtonsContainer.setContent(displayStyleButtons);
 						}
 
@@ -1272,6 +1264,8 @@ AUI.add(
 
 						if (sortButton) {
 							var sortButtonContainer = instance.byId('sortButtonContainer');
+
+							sortButtonContainer.plug(A.Plugin.ParseContent);
 
 							sortButtonContainer.setContent(sortButton);
 						}
@@ -1286,6 +1280,8 @@ AUI.add(
 							var entriesContainer = instance._entriesContainer;
 
 							entriesContainer.empty();
+
+							entriesContainer.plug(A.Plugin.ParseContent);
 
 							entriesContainer.setContent(entries);
 
@@ -1304,6 +1300,8 @@ AUI.add(
 							if (fileEntrySearchContainer) {
 								fileEntrySearchContainer.purge(true);
 
+								fileEntrySearchContainer.plug(A.Plugin.ParseContent);
+
 								fileEntrySearchContainer.setContent(fileEntrySearch);
 							}
 						}
@@ -1316,6 +1314,8 @@ AUI.add(
 
 						if (folders) {
 							var listViewDataContainer = A.one('.lfr-list-view-data-container');
+
+							listViewDataContainer.plug(A.Plugin.ParseContent);
 
 							instance._listView.set(STR_DATA, folders.html());
 						}
@@ -1371,6 +1371,8 @@ AUI.add(
 						var fragmentSearchResults = instance.one('#' + instance.ns('fragmentSearchResults'), content);
 
 						if (searchInfo && searchType != SRC_SEARCH_FRAGMENT) {
+							entriesContainer.plug(A.Plugin.ParseContent);
+
 							entriesContainer.setContent(searchInfo);
 						}
 
@@ -1380,12 +1382,16 @@ AUI.add(
 							var multipleSearchResults = entriesContainer.one('#' + instance.ns('searchResults') + repositoryId);
 
 							if (multipleSearchResults) {
+								multipleSearchResults.plug(A.Plugin.ParseContent);
+
 								multipleSearchResults.setContent(fragmentSearchResults.html());
 							}
 							else {
 								singleSearchResults = entriesContainer.one('#' + instance.ns('singleSearchResults'));
 
 								if (singleSearchResults) {
+									singleSearchResults.plug(A.Plugin.ParseContent);
+
 									singleSearchResults.setContent(fragmentSearchResults.html());
 								}
 							}
@@ -1394,6 +1400,8 @@ AUI.add(
 						singleSearchResults = instance.one('#' + instance.ns('singleSearchResults'), content);
 
 						if (singleSearchResults) {
+							entriesContainer.plug(A.Plugin.ParseContent);
+
 							entriesContainer.append(singleSearchResults);
 						}
 
@@ -1401,6 +1409,8 @@ AUI.add(
 
 						if (searchResults) {
 							var searchResultsContainer = instance.one('#' + instance.ns('searchResultsContainer'), content);
+
+							entriesContainer.plug(A.Plugin.ParseContent);
 
 							entriesContainer.append(searchResultsContainer);
 						}
@@ -1411,6 +1421,8 @@ AUI.add(
 							var repositorySearchResultsContainer = entriesContainer.one('#' + instance.ns('repositorySearchResultsContainer') + repositoryId);
 
 							repositorySearchResultsContainer.empty();
+
+							repositorySearchResultsContainer.plug(A.Plugin.ParseContent);
 
 							repositorySearchResultsContainer.append(repositorySearchResults);
 						}
