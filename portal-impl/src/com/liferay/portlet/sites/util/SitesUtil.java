@@ -659,6 +659,62 @@ public class SitesUtil {
 		return false;
 	}
 
+	public static boolean isLayoutSetMergeable(Group group, LayoutSet layoutSet)
+		throws PortalException, SystemException {
+
+		if (!layoutSet.isLayoutSetPrototypeLinkActive() ||
+			group.isLayoutPrototype() || group.isLayoutSetPrototype()) {
+
+			return false;
+		}
+
+		UnicodeProperties settingsProperties =
+			layoutSet.getSettingsProperties();
+
+		long lastMergeTime = GetterUtil.getLong(
+			settingsProperties.getProperty(LAST_MERGE_TIME));
+
+		LayoutSetPrototype layoutSetPrototype =
+			LayoutSetPrototypeLocalServiceUtil.getLayoutSetPrototypeByUuid(
+				layoutSet.getLayoutSetPrototypeUuid());
+
+		Date modifiedDate = layoutSetPrototype.getModifiedDate();
+
+		if (lastMergeTime >= modifiedDate.getTime()) {
+			return false;
+		}
+
+		LayoutSet layoutSetPrototypeLayoutSet =
+			layoutSetPrototype.getLayoutSet();
+
+		UnicodeProperties layoutSetPrototypeSettingsProperties =
+			layoutSetPrototypeLayoutSet.getSettingsProperties();
+
+		int mergeFailCount = GetterUtil.getInteger(
+			layoutSetPrototypeSettingsProperties.getProperty(MERGE_FAIL_COUNT));
+
+		if (mergeFailCount >
+				PropsValues.LAYOUT_SET_PROTOTYPE_MERGE_FAIL_THRESHOLD) {
+
+			if (_log.isWarnEnabled()) {
+				StringBundler sb = new StringBundler(6);
+
+				sb.append("Merge not performed because the fail threshold ");
+				sb.append("was reached for layoutSetPrototypeId ");
+				sb.append(layoutSetPrototype.getLayoutSetPrototypeId());
+				sb.append(" and layoutId ");
+				sb.append(layoutSetPrototypeLayoutSet.getLayoutSetId());
+				sb.append(". Update the count in the database to try again.");
+
+				_log.warn(sb.toString());
+			}
+
+			return false;
+		}
+
+		return true;
+	}
+
 	public static boolean isLayoutSetPrototypeUpdateable(LayoutSet layoutSet) {
 		if (!layoutSet.isLayoutSetPrototypeLinkActive()) {
 			return true;
