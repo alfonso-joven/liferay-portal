@@ -139,7 +139,7 @@ public class EditPageAttachmentAction extends EditFileEntryAction {
 				}
 			}
 			else if (e instanceof FileExtensionException ||
-					e instanceof FileSizeException) {
+					 e instanceof FileSizeException) {
 
 				SessionErrors.add(actionRequest, e.getClass().getName());
 			}
