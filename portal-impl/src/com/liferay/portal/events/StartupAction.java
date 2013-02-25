@@ -30,14 +30,11 @@ import com.liferay.portal.kernel.scheduler.SchedulerEngineHelperUtil;
 import com.liferay.portal.kernel.search.IndexerRegistryUtil;
 import com.liferay.portal.kernel.servlet.JspFactorySwapper;
 import com.liferay.portal.kernel.util.ReleaseInfo;
-import com.liferay.portal.kernel.util.ServerDetector;
 import com.liferay.portal.kernel.velocity.VelocityEngineUtil;
 import com.liferay.portal.plugin.PluginPackageIndexer;
-import com.liferay.portal.security.lang.PortalSecurityManager;
 import com.liferay.portal.security.lang.PortalSecurityManagerThreadLocal;
 import com.liferay.portal.service.LockLocalServiceUtil;
 import com.liferay.portal.tools.DBUpgrader;
-import com.liferay.portal.util.PropsValues;
 import com.liferay.portlet.messageboards.util.MBIndexer;
 
 /**
@@ -99,30 +96,7 @@ public class StartupAction extends SimpleAction {
 
 		runtime.addShutdownHook(new Thread(new ShutdownHook()));
 
-		// Security manager
-
-		String portalSecurityManagerStrategy =
-			PropsValues.PORTAL_SECURITY_MANAGER_STRATEGY;
-
-		if (portalSecurityManagerStrategy.equals("smart")) {
-			if (ServerDetector.isWebSphere()) {
-				portalSecurityManagerStrategy = "none";
-			}
-			else {
-				portalSecurityManagerStrategy = "default";
-			}
-		}
-
-		if (portalSecurityManagerStrategy.equals("liferay")) {
-			if (System.getSecurityManager() == null) {
-				System.setSecurityManager(new PortalSecurityManager());
-			}
-		}
-		else if (portalSecurityManagerStrategy.equals("none")) {
-			System.setSecurityManager(null);
-		}
-
-		// FreeMarker
+		// Template manager
 
 		if (_log.isDebugEnabled()) {
 			_log.debug("Initialize FreeMarker engine");
