@@ -39,15 +39,9 @@ List<Folder> mountFolders = DLAppServiceUtil.getMountFolders(repositoryId, DLFol
 		String taglibOnClick = "javascript:" + liferayPortletResponse.getNamespace() + "searchFileEntry();";
 		%>
 
-		<aui:layout>
-			<aui:column columnWidth="70">
-				<aui:input cssClass="keywords lfr-search-combobox-item" id="keywords" label="" name="keywords" type="text" />
-			</aui:column>
+		<aui:input cssClass="keywords lfr-search-combobox-item" id="keywords" label="" name="keywords" type="text" />
 
-			<aui:column columnWidth="30">
-				<aui:button cssClass="lfr-search-combobox-item" name="search" onClick="<%= taglibOnClick %>" value="search" />
-			</aui:column>
-		</aui:layout>
+		<aui:button cssClass="lfr-search-combobox-item" name="search" onClick="<%= taglibOnClick %>" value="search" />
 	</aui:form>
 </div>
 
