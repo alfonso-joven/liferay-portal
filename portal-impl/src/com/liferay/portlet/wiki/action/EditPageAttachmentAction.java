@@ -35,6 +35,7 @@ import com.liferay.portal.theme.ThemeDisplay;
 import com.liferay.portal.util.PortalUtil;
 import com.liferay.portal.util.WebKeys;
 import com.liferay.portlet.documentlibrary.DuplicateFileException;
+import com.liferay.portlet.documentlibrary.FileExtensionException;
 import com.liferay.portlet.documentlibrary.FileNameException;
 import com.liferay.portlet.documentlibrary.FileSizeException;
 import com.liferay.portlet.documentlibrary.action.EditFileEntryAction;
@@ -137,7 +138,9 @@ public class EditPageAttachmentAction extends EditFileEntryAction {
 						ServletResponseConstants.SC_FILE_NAME_EXCEPTION);
 				}
 			}
-			else if (e instanceof FileSizeException) {
+			else if (e instanceof FileExtensionException ||
+					e instanceof FileSizeException) {
+
 				SessionErrors.add(actionRequest, e.getClass().getName());
 			}
 			else {
