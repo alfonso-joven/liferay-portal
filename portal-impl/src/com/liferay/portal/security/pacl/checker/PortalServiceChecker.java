@@ -93,7 +93,7 @@ public class PortalServiceChecker extends BaseChecker {
 			return null;
 		}
 
-		ClassLoader classLoader = PACLClassLoaderUtil.getClassLoader(clazz);
+		ClassLoader classLoader = ClassLoaderUtil.getClassLoader(clazz);
 
 		PACLPolicy paclPolicy = PACLPolicyManager.getPACLPolicy(classLoader);
 
