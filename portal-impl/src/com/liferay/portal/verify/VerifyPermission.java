@@ -460,28 +460,55 @@ public class VerifyPermission
 		for (Permission permission : permissions) {
 			for (Object[] actionIdToMask : _ORGANIZATION_ACTION_IDS_TO_MASKS) {
 				String actionId = (String)actionIdToMask[0];
+				String resourcePermissionActionId = permission.getActionId();
 				long mask = (Long)actionIdToMask[2];
+				long resourcePermissionResourceId = permission.getResourceId();
 
-				if (!actionId.equals(permission.getActionId())) {
+				if (!actionId.equals(resourcePermissionActionId)) {
 					continue;
 				}
 
+				Connection con = null;
+				PreparedStatement ps = null;
+				ResultSet rs = null;
+
 				try {
-					if (mask != 0L) {
-						permission.resetOriginalValues();
+					con = DataAccess.getUpgradeOptimizedConnection();
 
-						permission.setResourceId(groupResource.getResourceId());
+					StringBundler sb = new StringBundler(3);
 
-						PermissionLocalServiceUtil.updatePermission(
-							permission, false);
+					sb.append("select actionId from Permission_ where ");
+					sb.append("Permission_.actionId = ? and ");
+					sb.append("Permission_.resourceId = ?");
+
+					ps = con.prepareStatement(sb.toString());
+
+					ps.setString(1, resourcePermissionActionId);
+					ps.setLong(2, resourcePermissionResourceId);
+
+					rs = ps.executeQuery();
+
+					try {
+						if ((mask != 0L) && (rs == null)) {
+							permission.resetOriginalValues();
+
+							permission.setResourceId(
+								groupResource.getResourceId());
+
+							PermissionLocalServiceUtil.updatePermission(
+								permission, false);
+						}
+						else {
+							PermissionLocalServiceUtil.deletePermission(
+								permission.getPermissionId());
+						}
 					}
-					else {
-						PermissionLocalServiceUtil.deletePermission(
-							permission.getPermissionId());
+					catch (Exception e) {
+						_log.error(e, e);
 					}
 				}
-				catch (Exception e) {
-					_log.error(e, e);
+				finally {
+					DataAccess.cleanUp(con, ps, rs);
 				}
 
 				break;
