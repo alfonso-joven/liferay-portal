@@ -33,6 +33,7 @@ import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.portlet.FriendlyURLMapper;
 import com.liferay.portal.kernel.portlet.FriendlyURLMapperThreadLocal;
+import com.liferay.portal.kernel.portlet.LiferayPortletConfig;
 import com.liferay.portal.kernel.portlet.LiferayPortletMode;
 import com.liferay.portal.kernel.portlet.LiferayPortletRequest;
 import com.liferay.portal.kernel.portlet.LiferayPortletResponse;
@@ -152,12 +153,12 @@ import com.liferay.portal.upload.UploadPortletRequestImpl;
 import com.liferay.portal.upload.UploadServletRequestImpl;
 import com.liferay.portal.util.comparator.PortletControlPanelWeightComparator;
 import com.liferay.portal.webserver.WebServerServlet;
+
 import com.liferay.portlet.ActionResponseImpl;
 import com.liferay.portlet.ControlPanelEntry;
 import com.liferay.portlet.DefaultControlPanelEntryFactory;
 import com.liferay.portlet.PortletConfigFactoryUtil;
-import com.liferay.portlet.PortletConfigImpl;
-import com.liferay.portlet.PortletContextImpl;
+import com.liferay.portlet.PortletInstanceFactoryUtil;
 import com.liferay.portlet.PortletPreferencesFactoryUtil;
 import com.liferay.portlet.PortletPreferencesImpl;
 import com.liferay.portlet.PortletPreferencesThreadLocal;
@@ -191,6 +192,7 @@ import com.liferay.portlet.messageboards.model.MBThread;
 import com.liferay.portlet.social.model.SocialRelationConstants;
 import com.liferay.portlet.social.util.FacebookUtil;
 import com.liferay.portlet.wiki.model.WikiPage;
+
 import com.liferay.util.Encryptor;
 import com.liferay.util.JS;
 import com.liferay.util.PwdGenerator;
@@ -3489,12 +3491,12 @@ public class PortalImpl implements Portal {
 	}
 
 	public String getPortletId(HttpServletRequest request) {
-		PortletConfigImpl portletConfigImpl =
-			(PortletConfigImpl)request.getAttribute(
+		LiferayPortletConfig liferayPortletConfig =
+			(LiferayPortletConfig)request.getAttribute(
 				JavaConstants.JAVAX_PORTLET_CONFIG);
 
-		if (portletConfigImpl != null) {
-			return portletConfigImpl.getPortletId();
+		if (liferayPortletConfig != null) {
+			return liferayPortletConfig.getPortletId();
 		}
 		else {
 			return null;
@@ -3502,12 +3504,12 @@ public class PortalImpl implements Portal {
 	}
 
 	public String getPortletId(PortletRequest portletRequest) {
-		PortletConfigImpl portletConfigImpl =
-			(PortletConfigImpl)portletRequest.getAttribute(
+		LiferayPortletConfig liferayPortletConfig =
+			(LiferayPortletConfig)portletRequest.getAttribute(
 				JavaConstants.JAVAX_PORTLET_CONFIG);
 
-		if (portletConfigImpl != null) {
-			return portletConfigImpl.getPortletId();
+		if (liferayPortletConfig != null) {
+			return liferayPortletConfig.getPortletId();
 		}
 		else {
 			return null;
