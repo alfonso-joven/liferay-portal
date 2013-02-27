@@ -253,6 +253,16 @@ public class WikiPageServiceImpl extends WikiPageServiceBaseImpl {
 			String displayStyle, String feedURL, String entryURL)
 		throws PortalException, SystemException {
 
+		return getNodePagesRSS(
+			nodeId, max, type, version, displayStyle, feedURL, entryURL, null);
+	}
+
+	public String getNodePagesRSS(
+			long nodeId, int max, String type, double version,
+			String displayStyle, String feedURL, String entryURL,
+			String attachmentURLPrefix)
+		throws PortalException, SystemException {
+
 		WikiNodePermission.check(
 			getPermissionChecker(), nodeId, ActionKeys.VIEW);
 
@@ -262,7 +272,8 @@ public class WikiPageServiceImpl extends WikiPageServiceBaseImpl {
 
 		return exportToRSS(
 			node.getCompanyId(), node.getName(), node.getDescription(), type,
-			version, displayStyle, feedURL, entryURL, pages, false, null);
+			version, displayStyle, feedURL, entryURL, attachmentURLPrefix,
+			pages, false, null);
 	}
 
 	public List<WikiPage> getOrphans(long groupId, long nodeId)
@@ -388,6 +399,17 @@ public class WikiPageServiceImpl extends WikiPageServiceBaseImpl {
 			String entryURL, Locale locale)
 		throws PortalException, SystemException {
 
+		return getPagesRSS(
+			companyId, nodeId, title, max, type, version, displayStyle, feedURL,
+			entryURL, null, locale);
+	}
+
+	public String getPagesRSS(
+			long companyId, long nodeId, String title, int max, String type,
+			double version, String displayStyle, String feedURL,
+			String entryURL, String attachmentURLPrefix, Locale locale)
+		throws PortalException, SystemException {
+
 		WikiPagePermission.check(
 			getPermissionChecker(), nodeId, title, ActionKeys.VIEW);
 
@@ -396,7 +418,7 @@ public class WikiPageServiceImpl extends WikiPageServiceBaseImpl {
 
 		return exportToRSS(
 			companyId, title, title, type, version, displayStyle, feedURL,
-			entryURL, pages, true, locale);
+			entryURL, attachmentURLPrefix, pages, true, locale);
 	}
 
 	public List<WikiPage> getRecentChanges(
@@ -502,7 +524,8 @@ public class WikiPageServiceImpl extends WikiPageServiceBaseImpl {
 	protected String exportToRSS(
 			long companyId, String name, String description, String type,
 			double version, String displayStyle, String feedURL,
-			String entryURL, List<WikiPage> pages, boolean diff, Locale locale)
+			String entryURL, String attachmentURLPrefix, List<WikiPage> pages,
+			boolean diff, Locale locale)
 		throws PortalException, SystemException {
 
 		SyndFeed syndFeed = new SyndFeedImpl();
@@ -551,7 +574,8 @@ public class WikiPageServiceImpl extends WikiPageServiceBaseImpl {
 					else {
 						try {
 							value = WikiUtil.diffHtml(
-								latestPage, page, null, null, null);
+								latestPage, page, null, null,
+								attachmentURLPrefix);
 						}
 						catch (PortalException pe) {
 							throw pe;
