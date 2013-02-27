@@ -285,7 +285,7 @@ public class VerifyJournal extends VerifyProcess {
 
 		if (!checkNewLine) {
 			if (_log.isInfoEnabled()) {
-				_log.debug("Do not fix oracle new line");
+				_log.info("Do not fix oracle new line");
 			}
 
 			return;
