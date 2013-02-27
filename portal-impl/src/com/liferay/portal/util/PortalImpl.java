@@ -34,6 +34,7 @@ import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.portlet.FriendlyURLMapper;
 import com.liferay.portal.kernel.portlet.FriendlyURLMapperThreadLocal;
 import com.liferay.portal.kernel.portlet.LiferayPortletConfig;
+import com.liferay.portal.kernel.portlet.LiferayPortletContext;
 import com.liferay.portal.kernel.portlet.LiferayPortletMode;
 import com.liferay.portal.kernel.portlet.LiferayPortletRequest;
 import com.liferay.portal.kernel.portlet.LiferayPortletResponse;
@@ -157,7 +158,6 @@ import com.liferay.portlet.ActionResponseImpl;
 import com.liferay.portlet.ControlPanelEntry;
 import com.liferay.portlet.DefaultControlPanelEntryFactory;
 import com.liferay.portlet.PortletConfigFactoryUtil;
-import com.liferay.portlet.PortletInstanceFactoryUtil;
 import com.liferay.portlet.PortletPreferencesFactoryUtil;
 import com.liferay.portlet.PortletPreferencesImpl;
 import com.liferay.portlet.PortletPreferencesThreadLocal;
@@ -3904,10 +3904,10 @@ public class PortalImpl implements Portal {
 		PortletConfig portletConfig = PortletConfigFactoryUtil.create(
 			portlet, servletContext);
 
-		PortletContextImpl portletContextImpl =
-			(PortletContextImpl)portletConfig.getPortletContext();
+		LiferayPortletContext liferayPortletContext =
+			(LiferayPortletContext)portletConfig.getPortletContext();
 
-		return portletContextImpl.getServletContext();
+		return liferayPortletContext.getServletContext();
 	}
 
 	public String getSiteLoginURL(ThemeDisplay themeDisplay)

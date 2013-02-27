@@ -67,7 +67,6 @@ import com.liferay.portal.velocity.ServiceLocator;
 import com.liferay.portal.velocity.UtilLocator;
 import com.liferay.portal.velocity.VelocityPortletPreferences;
 import com.liferay.portal.webserver.WebServerServletTokenUtil;
-import com.liferay.portlet.PortletConfigImpl;
 import com.liferay.portlet.PortletURLFactoryUtil;
 import com.liferay.portlet.expando.service.ExpandoColumnLocalService;
 import com.liferay.portlet.expando.service.ExpandoRowLocalService;
@@ -84,6 +83,7 @@ import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
 
+import javax.portlet.PortletConfig;
 import javax.portlet.PortletRequest;
 import javax.portlet.PortletResponse;
 import javax.portlet.RenderRequest;
@@ -539,12 +539,11 @@ public class FreeMarkerVariablesImpl implements FreeMarkerVariables {
 
 		// Portlet config
 
-		PortletConfigImpl portletConfigImpl =
-			(PortletConfigImpl)request.getAttribute(
-				JavaConstants.JAVAX_PORTLET_CONFIG);
+		PortletConfig portletConfig = (PortletConfig)request.getAttribute(
+			JavaConstants.JAVAX_PORTLET_CONFIG);
 
-		if (portletConfigImpl != null) {
-			freeMarkerContext.put("portletConfig", portletConfigImpl);
+		if (portletConfig != null) {
+			freeMarkerContext.put("portletConfig", portletConfig);
 		}
 
 		// Render request

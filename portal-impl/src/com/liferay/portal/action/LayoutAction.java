@@ -26,6 +26,7 @@ import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.messaging.DestinationNames;
 import com.liferay.portal.kernel.messaging.MessageBusUtil;
+import com.liferay.portal.kernel.portlet.LiferayPortletConfig;
 import com.liferay.portal.kernel.portlet.LiferayPortletMode;
 import com.liferay.portal.kernel.portlet.PortletModeFactory;
 import com.liferay.portal.kernel.portlet.WindowStateFactory;
@@ -89,7 +90,6 @@ import com.liferay.portlet.EventResponseImpl;
 import com.liferay.portlet.InvokerPortlet;
 import com.liferay.portlet.InvokerPortletImpl;
 import com.liferay.portlet.PortletConfigFactoryUtil;
-import com.liferay.portlet.PortletConfigImpl;
 import com.liferay.portlet.PortletInstanceFactoryUtil;
 import com.liferay.portlet.PortletPreferencesFactoryUtil;
 import com.liferay.portlet.PortletQName;
@@ -896,12 +896,12 @@ public class LayoutAction extends Action {
 				if ((contentType != null) &&
 					contentType.startsWith(ContentTypes.MULTIPART_FORM_DATA)) {
 
-					PortletConfigImpl invokerPortletConfigImpl =
-						(PortletConfigImpl)invokerPortlet.getPortletConfig();
+					LiferayPortletConfig liferayPortletConfig =
+						(LiferayPortletConfig)invokerPortlet.getPortletConfig();
 
 					if (invokerPortlet.isStrutsPortlet() ||
-						((invokerPortletConfigImpl != null) &&
-						 !invokerPortletConfigImpl.isWARFile())) {
+						((liferayPortletConfig != null) &&
+						 !liferayPortletConfig.isWARFile())) {
 
 						uploadServletRequest = new UploadServletRequestImpl(
 							request);
