@@ -69,6 +69,7 @@ import javax.portlet.filter.RenderFilter;
 import javax.portlet.filter.ResourceFilter;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -513,9 +514,11 @@ public class InvokerPortletImpl implements InvokerPortlet {
 
 			String path = StringPool.SLASH + invokerPortletName + "/invoke";
 
+			ServletContext servletContext =
+				_liferayPortletContext.getServletContext();
+
 			RequestDispatcher requestDispatcher =
-				_liferayPortletContext.getServletContext().
-					getRequestDispatcher(path);
+				servletContext.getRequestDispatcher(path);
 
 			HttpServletRequest request = portletRequest.getHttpServletRequest();
 			HttpServletResponse response =
