@@ -166,6 +166,16 @@ public class WikiPageServiceWrapper implements WikiPageService,
 			displayStyle, feedURL, entryURL);
 	}
 
+	public java.lang.String getNodePagesRSS(long nodeId, int max,
+		java.lang.String type, double version, java.lang.String displayStyle,
+		java.lang.String feedURL, java.lang.String entryURL,
+		java.lang.String attachmentURLPrefix)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _wikiPageService.getNodePagesRSS(nodeId, max, type, version,
+			displayStyle, feedURL, entryURL, attachmentURLPrefix);
+	}
+
 	public java.util.List<com.liferay.portlet.wiki.model.WikiPage> getOrphans(
 		long groupId, long nodeId)
 		throws com.liferay.portal.kernel.exception.PortalException,
@@ -238,6 +248,18 @@ public class WikiPageServiceWrapper implements WikiPageService,
 			com.liferay.portal.kernel.exception.SystemException {
 		return _wikiPageService.getPagesRSS(companyId, nodeId, title, max,
 			type, version, displayStyle, feedURL, entryURL, locale);
+	}
+
+	public java.lang.String getPagesRSS(long companyId, long nodeId,
+		java.lang.String title, int max, java.lang.String type, double version,
+		java.lang.String displayStyle, java.lang.String feedURL,
+		java.lang.String entryURL, java.lang.String attachmentURLPrefix,
+		java.util.Locale locale)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _wikiPageService.getPagesRSS(companyId, nodeId, title, max,
+			type, version, displayStyle, feedURL, entryURL,
+			attachmentURLPrefix, locale);
 	}
 
 	public java.util.List<com.liferay.portlet.wiki.model.WikiPage> getRecentChanges(
