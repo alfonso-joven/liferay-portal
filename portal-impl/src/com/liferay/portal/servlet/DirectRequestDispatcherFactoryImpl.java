@@ -22,6 +22,8 @@ import com.liferay.portal.kernel.servlet.DirectServletRegistryUtil;
 import com.liferay.portal.kernel.util.CharPool;
 import com.liferay.portal.kernel.util.ContextPathUtil;
 import com.liferay.portal.kernel.util.WebKeys;
+import com.liferay.portal.security.lang.PortalSecurityManagerThreadLocal;
+import com.liferay.portal.security.pacl.PACLPolicyManager;
 import com.liferay.portal.security.pacl.servlet.PACLRequestDispatcherWrapper;
 import com.liferay.portal.util.PropsValues;
 
@@ -32,6 +34,7 @@ import javax.servlet.ServletRequest;
 
 /**
  * @author Raymond Augé
+ * @author Shuyang Zhou
  */
 @DoPrivileged
 public class DirectRequestDispatcherFactoryImpl
@@ -40,8 +43,17 @@ public class DirectRequestDispatcherFactoryImpl
 	public RequestDispatcher getRequestDispatcher(
 		ServletContext servletContext, String path) {
 
-		return new PACLRequestDispatcherWrapper(
-			servletContext, doGetRequestDispatcher(servletContext, path));
+		RequestDispatcher requestDispatcher = doGetRequestDispatcher(
+			servletContext, path);
+
+		if (PACLPolicyManager.isActive() &&
+			PortalSecurityManagerThreadLocal.isEnabled()) {
+
+			requestDispatcher = new PACLRequestDispatcherWrapper(
+				servletContext, requestDispatcher);
+		}
+
+		return requestDispatcher;
 	}
 
 	public RequestDispatcher getRequestDispatcher(
