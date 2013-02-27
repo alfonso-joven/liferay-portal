@@ -16,13 +16,8 @@ package com.liferay.portlet.wiki.service.impl;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
-import com.liferay.portal.kernel.io.unsync.UnsyncStringReader;
-import com.liferay.portal.kernel.io.unsync.UnsyncStringWriter;
 import com.liferay.portal.kernel.language.LanguageUtil;
 import com.liferay.portal.kernel.util.CalendarFactoryUtil;
-import com.liferay.portal.kernel.util.Diff;
-import com.liferay.portal.kernel.util.DiffResult;
-import com.liferay.portal.kernel.util.DiffUtil;
 import com.liferay.portal.kernel.util.HtmlUtil;
 import com.liferay.portal.kernel.util.HttpUtil;
 import com.liferay.portal.kernel.util.ObjectValuePair;
@@ -30,8 +25,6 @@ import com.liferay.portal.kernel.util.OrderByComparator;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
-import com.liferay.portal.kernel.velocity.VelocityContext;
-import com.liferay.portal.kernel.velocity.VelocityEngineUtil;
 import com.liferay.portal.kernel.workflow.WorkflowConstants;
 import com.liferay.portal.security.permission.ActionKeys;
 import com.liferay.portal.service.ServiceContext;
@@ -47,7 +40,6 @@ import com.liferay.portlet.wiki.service.permission.WikiNodePermission;
 import com.liferay.portlet.wiki.service.permission.WikiPagePermission;
 import com.liferay.portlet.wiki.util.WikiUtil;
 import com.liferay.portlet.wiki.util.comparator.PageCreateDateComparator;
-import com.liferay.util.ContentUtil;
 import com.liferay.util.RSSUtil;
 
 import com.sun.syndication.feed.synd.SyndContent;
@@ -557,8 +549,19 @@ public class WikiPageServiceImpl extends WikiPageServiceBaseImpl {
 						value = page.getContent();
 					}
 					else {
-						value = getPageDiff(
-							companyId, latestPage, page, locale);
+						try {
+							value = WikiUtil.diffHtml(
+								latestPage, page, null, null, null);
+						}
+						catch (PortalException pe) {
+							throw pe;
+						}
+						catch (SystemException se) {
+							throw se;
+						}
+						catch (Exception e) {
+							throw new SystemException(e);
+						}
 					}
 
 					syndContent.setValue(value);
@@ -633,46 +636,6 @@ public class WikiPageServiceImpl extends WikiPageServiceBaseImpl {
 		}
 		catch (FeedException fe) {
 			throw new SystemException(fe);
-		}
-	}
-
-	protected String getPageDiff(
-			long companyId, WikiPage latestPage, WikiPage page, Locale locale)
-		throws PortalException, SystemException {
-
-		String sourceContent = WikiUtil.convert(latestPage, null, null, null);
-		String targetContent = WikiUtil.convert(page, null, null, null);
-
-		List<DiffResult>[] diffResults = DiffUtil.diff(
-			new UnsyncStringReader(sourceContent),
-			new UnsyncStringReader(targetContent));
-
-		String velocityTemplateId =
-			"com/liferay/portlet/wiki/dependencies/rss.vm";
-		String velocityTemplateContent = ContentUtil.get(velocityTemplateId);
-
-		VelocityContext velocityContext =
-			VelocityEngineUtil.getWrappedStandardToolsContext();
-
-		velocityContext.put("companyId", companyId);
-		velocityContext.put("contextLine", Diff.CONTEXT_LINE);
-		velocityContext.put("diffUtil", new DiffUtil());
-		velocityContext.put("languageUtil", LanguageUtil.getLanguage());
-		velocityContext.put("locale", locale);
-		velocityContext.put("sourceResults", diffResults[0]);
-		velocityContext.put("targetResults", diffResults[1]);
-
-		try {
-			UnsyncStringWriter unsyncStringWriter = new UnsyncStringWriter();
-
-			VelocityEngineUtil.mergeTemplate(
-				velocityTemplateId, velocityTemplateContent, velocityContext,
-				unsyncStringWriter);
-
-			return unsyncStringWriter.toString();
-		}
-		catch (Exception e) {
-			throw new SystemException(e);
 		}
 	}
 
