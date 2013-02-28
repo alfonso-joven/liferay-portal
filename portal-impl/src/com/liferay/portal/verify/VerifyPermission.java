@@ -481,7 +481,7 @@ public class VerifyPermission
 
 						rs = ps.executeQuery();
 
-						if ((mask != 0L) && (rs == null)) {
+						if ((mask != 0L) && !rs.next()) {
 							permission.resetOriginalValues();
 
 							permission.setResourceId(
