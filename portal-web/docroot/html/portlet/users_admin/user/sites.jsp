@@ -77,7 +77,7 @@ List<Group> groups = (List<Group>)request.getAttribute("user.groups");
 
 		</liferay-ui:search-container-column-text>
 
-		<c:if test="<%= !portletName.equals(PortletKeys.MY_ACCOUNT) %>">
+		<c:if test="<%= !portletName.equals(PortletKeys.MY_ACCOUNT) && !UserPermissionUtil.hasMembershipProtected(permissionChecker, group, selUser) %>">
 			<liferay-ui:search-container-column-text>
 				<a class="modify-link" data-rowId="<%= group.getGroupId() %>" href="javascript:;"><%= removeGroupIcon %></a>
 			</liferay-ui:search-container-column-text>
