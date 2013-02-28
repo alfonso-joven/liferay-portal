@@ -14,7 +14,6 @@
 
 package com.liferay.portal.verify;
 
-import com.liferay.portal.NoSuchResourceException;
 import com.liferay.portal.kernel.dao.jdbc.DataAccess;
 import com.liferay.portal.kernel.dao.orm.DynamicQuery;
 import com.liferay.portal.kernel.dao.orm.DynamicQueryFactoryUtil;
@@ -444,51 +443,44 @@ public class VerifyPermission
 			Resource resource, List<Permission> permissions)
 		throws Exception {
 
-		Resource groupResource = null;
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
 
 		try {
-			groupResource = ResourceLocalServiceUtil.getResource(
+			con = DataAccess.getUpgradeOptimizedConnection();
+
+			Resource groupResource = ResourceLocalServiceUtil.fetchResource(
 				resource.getCompanyId(), Group.class.getName(),
 				resource.getScope(), resource.getPrimKey());
-		}
-		catch (NoSuchResourceException nsre) {
-			groupResource = ResourceLocalServiceUtil.addResource(
-				resource.getCompanyId(), Group.class.getName(),
-				resource.getScope(), resource.getPrimKey());
-		}
 
-		for (Permission permission : permissions) {
-			for (Object[] actionIdToMask : _ORGANIZATION_ACTION_IDS_TO_MASKS) {
-				String actionId = (String)actionIdToMask[0];
-				String resourcePermissionActionId = permission.getActionId();
-				long mask = (Long)actionIdToMask[2];
-				long resourcePermissionResourceId = permission.getResourceId();
+			if (groupResource == null) {
+				groupResource = ResourceLocalServiceUtil.addResource(
+					resource.getCompanyId(), Group.class.getName(),
+					resource.getScope(), resource.getPrimKey());
+			}
 
-				if (!actionId.equals(resourcePermissionActionId)) {
-					continue;
-				}
+			for (Permission permission : permissions) {
+				for (Object[] actionIdToMask :
+						_ORGANIZATION_ACTION_IDS_TO_MASKS) {
 
-				Connection con = null;
-				PreparedStatement ps = null;
-				ResultSet rs = null;
+					String actionId = (String)actionIdToMask[0];
+					long mask = (Long)actionIdToMask[2];
 
-				try {
-					con = DataAccess.getUpgradeOptimizedConnection();
-
-					StringBundler sb = new StringBundler(3);
-
-					sb.append("select actionId from Permission_ where ");
-					sb.append("Permission_.actionId = ? and ");
-					sb.append("Permission_.resourceId = ?");
-
-					ps = con.prepareStatement(sb.toString());
-
-					ps.setString(1, resourcePermissionActionId);
-					ps.setLong(2, resourcePermissionResourceId);
-
-					rs = ps.executeQuery();
+					if (!actionId.equals(permission.getActionId())) {
+						continue;
+					}
 
 					try {
+						ps = con.prepareStatement(
+							"select 1 from Permission_ where actionId = ? " +
+								"and resourceId = ?");
+
+						ps.setString(1, permission.getActionId());
+						ps.setLong(2, permission.getResourceId());
+
+						rs = ps.executeQuery();
+
 						if ((mask != 0L) && (rs == null)) {
 							permission.resetOriginalValues();
 
@@ -506,13 +498,13 @@ public class VerifyPermission
 					catch (Exception e) {
 						_log.error(e, e);
 					}
-				}
-				finally {
-					DataAccess.cleanUp(con, ps, rs);
-				}
 
-				break;
+					break;
+				}
 			}
+		}
+		finally {
+			DataAccess.cleanUp(con, ps, rs);
 		}
 	}
 
