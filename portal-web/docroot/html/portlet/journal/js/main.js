@@ -1369,16 +1369,22 @@ AUI.add(
 				var form = instance.getPrincipalForm();
 
 				var cmdInput = instance.getByName(form, 'cmd');
-
-				cmdInput.val('translate');
-
 				var contentInput = instance.getByName(form, 'content');
+				var classNameIdInput = instance.getByName(form, 'classNameId');
 
-				var content = instance.getArticleContentXML();
+				var classNameId = Liferay.Util.toNumber(classNameIdInput.val());
 
-				contentInput.val(content);
+				var canSubmit = classNameId || instance.validateRequiredFields();
 
-				submitForm(form);
+				if (canSubmit) {
+					cmdInput.val('translate');
+
+					var content = instance.getArticleContentXML();
+
+					contentInput.val(content);
+
+					submitForm(form);
+				}
 			},
 
 			unselectFields: function() {
