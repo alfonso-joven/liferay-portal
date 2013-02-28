@@ -14,18 +14,22 @@
 
 package com.liferay.portal.service.permission;
 
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.model.Contact;
 import com.liferay.portal.model.Group;
 import com.liferay.portal.model.Organization;
 import com.liferay.portal.model.ResourceConstants;
+import com.liferay.portal.model.Role;
 import com.liferay.portal.model.RoleConstants;
 import com.liferay.portal.model.User;
 import com.liferay.portal.security.auth.PrincipalException;
 import com.liferay.portal.security.permission.ActionKeys;
 import com.liferay.portal.security.permission.PermissionChecker;
 import com.liferay.portal.service.OrganizationLocalServiceUtil;
+import com.liferay.portal.service.RoleLocalServiceUtil;
 import com.liferay.portal.service.UserGroupRoleLocalServiceUtil;
 import com.liferay.portal.service.UserLocalServiceUtil;
 import com.liferay.portal.util.PortalUtil;
@@ -183,6 +187,135 @@ public class UserPermissionImpl implements UserPermission {
 		PermissionChecker permissionChecker, long userId, String actionId) {
 
 		return contains(permissionChecker, userId, null, actionId);
+	}
+
+	public boolean hasMembershipProtected(
+			PermissionChecker permissionChecker, Group group, Role role,
+			User user)
+		throws PortalException, SystemException {
+
+		if (role.getType() == RoleConstants.TYPE_ORGANIZATION) {
+			Organization organization =
+				OrganizationLocalServiceUtil.getOrganization(
+					group.getClassPK());
+
+			return hasMembershipProtected(
+				permissionChecker, organization, role, user);
+		}
+
+		if (permissionChecker.isGroupOwner(group.getGroupId())) {
+			return false;
+		}
+
+		String roleName = role.getName();
+
+		if (!roleName.equals(RoleConstants.SITE_ADMINISTRATOR) &&
+			!roleName.equals(RoleConstants.SITE_OWNER)) {
+
+			return false;
+		}
+
+		if (UserGroupRoleLocalServiceUtil.hasUserGroupRole(
+				user.getUserId(), group.getGroupId(), role.getRoleId())) {
+
+			return true;
+		}
+
+		return false;
+	}
+
+	public boolean hasMembershipProtected(
+			PermissionChecker permissionChecker, Group group, User user)
+		throws PortalException, SystemException {
+
+		if (permissionChecker.isGroupOwner(group.getGroupId())) {
+			return false;
+		}
+
+		Role siteAdministratorRole = RoleLocalServiceUtil.getRole(
+			permissionChecker.getCompanyId(), RoleConstants.SITE_ADMINISTRATOR);
+
+		if (UserGroupRoleLocalServiceUtil.hasUserGroupRole(
+				user.getUserId(), group.getGroupId(),
+				siteAdministratorRole.getRoleId())) {
+
+			return true;
+		}
+
+		Role siteOwnerRole = RoleLocalServiceUtil.getRole(
+			permissionChecker.getCompanyId(), RoleConstants.SITE_OWNER);
+
+		if (UserGroupRoleLocalServiceUtil.hasUserGroupRole(
+				user.getUserId(), group.getGroupId(),
+				siteOwnerRole.getRoleId())) {
+
+			return true;
+		}
+
+		return false;
+	}
+
+	public boolean hasMembershipProtected(
+			PermissionChecker permissionChecker, Organization organization,
+			Role role, User user)
+		throws SystemException {
+
+		Group group = organization.getGroup();
+
+		if (permissionChecker.isOrganizationOwner(group.getOrganizationId())) {
+			return false;
+		}
+
+		String roleName = role.getName();
+
+		if (!roleName.equals(RoleConstants.ORGANIZATION_ADMINISTRATOR) &&
+			!roleName.equals(RoleConstants.ORGANIZATION_OWNER)) {
+
+			return false;
+		}
+
+		if (UserGroupRoleLocalServiceUtil.hasUserGroupRole(
+				user.getUserId(), group.getGroupId(), role.getRoleId())) {
+
+			return true;
+		}
+
+		return false;
+	}
+
+	public boolean hasMembershipProtected(
+			PermissionChecker permissionChecker, Organization organization,
+			User user)
+		throws PortalException, SystemException {
+
+		Group group = organization.getGroup();
+
+		if (permissionChecker.isOrganizationOwner(group.getOrganizationId())) {
+			return false;
+		}
+
+		Role organizationAdministratorRole = RoleLocalServiceUtil.getRole(
+			permissionChecker.getCompanyId(),
+			RoleConstants.ORGANIZATION_ADMINISTRATOR);
+
+		if (UserGroupRoleLocalServiceUtil.hasUserGroupRole(
+				user.getUserId(), group.getGroupId(),
+				organizationAdministratorRole.getRoleId())) {
+
+			return true;
+		}
+
+		Role organizationOwnerRole = RoleLocalServiceUtil.getRole(
+			permissionChecker.getCompanyId(), RoleConstants.ORGANIZATION_OWNER);
+
+		if (UserGroupRoleLocalServiceUtil.hasUserGroupRole(
+				user.getUserId(), group.getGroupId(),
+				organizationOwnerRole.getRoleId())) {
+
+			return true;
+		}
+
+		return false;
 	}
 
 	private static Log _log = LogFactoryUtil.getLog(UserPermissionImpl.class);
