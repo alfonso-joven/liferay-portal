@@ -1368,9 +1368,9 @@ AUI.add(
 
 				var form = instance.getPrincipalForm();
 
+				var classNameIdInput = instance.getByName(form, 'classNameId');
 				var cmdInput = instance.getByName(form, 'cmd');
 				var contentInput = instance.getByName(form, 'content');
-				var classNameIdInput = instance.getByName(form, 'classNameId');
 
 				var classNameId = Liferay.Util.toNumber(classNameIdInput.val());
 
