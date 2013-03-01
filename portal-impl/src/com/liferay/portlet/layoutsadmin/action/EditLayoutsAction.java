@@ -173,8 +173,6 @@ public class EditLayoutsAction extends PortletAction {
 				boolean privateLayout = ParamUtil.getBoolean(
 					actionRequest, "privateLayout");
 
-				long refererPlid = themeDisplay.getRefererPlid();
-
 				layout = LayoutLocalServiceUtil.fetchLayout(
 					groupId, privateLayout, layoutId);
 
@@ -188,9 +186,11 @@ public class EditLayoutsAction extends PortletAction {
 				redirect = updateCloseRedirect(
 					redirect, group, null, oldFriendlyURL);
 
+				long refererPlid = themeDisplay.getRefererPlid();
+
 				if (layout.getPlid() == refererPlid) {
 					redirect = HttpUtil.setParameter(
-							redirect, "refererPlid", newRefererPlid);
+						redirect, "refererPlid", newRefererPlid);
 				}
 
 				closeRedirect = updateCloseRedirect(
