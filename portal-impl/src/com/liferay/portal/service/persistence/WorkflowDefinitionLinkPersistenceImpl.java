@@ -2122,7 +2122,7 @@ public class WorkflowDefinitionLinkPersistenceImpl extends BasePersistenceImpl<W
 
 				for (String listenerClassName : listenerClassNames) {
 					listenersList.add((ModelListener<WorkflowDefinitionLink>)InstanceFactory.newInstance(
-							listenerClassName));
+							getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

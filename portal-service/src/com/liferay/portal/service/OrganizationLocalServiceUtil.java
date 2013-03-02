@@ -516,20 +516,6 @@ public class OrganizationLocalServiceUtil {
 	}
 
 	/**
-	* Returns the suborganizations of the organization.
-	*
-	* @param companyId the primary key of the organization's company
-	* @param organizationId the primary key of the organization
-	* @return the suborganizations of the organization
-	* @throws SystemException if a system exception occurred
-	*/
-	public static java.util.List<com.liferay.portal.model.Organization> getSuborganizations(
-		long companyId, long organizationId)
-		throws com.liferay.portal.kernel.exception.SystemException {
-		return getService().getSuborganizations(companyId, organizationId);
-	}
-
-	/**
 	* Returns the suborganizations of the organizations.
 	*
 	* @param organizations the organizations from which to get
@@ -541,6 +527,20 @@ public class OrganizationLocalServiceUtil {
 		java.util.List<com.liferay.portal.model.Organization> organizations)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return getService().getSuborganizations(organizations);
+	}
+
+	/**
+	* Returns the suborganizations of the organization.
+	*
+	* @param companyId the primary key of the organization's company
+	* @param organizationId the primary key of the organization
+	* @return the suborganizations of the organization
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<com.liferay.portal.model.Organization> getSuborganizations(
+		long companyId, long organizationId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().getSuborganizations(companyId, organizationId);
 	}
 
 	/**

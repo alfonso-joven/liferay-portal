@@ -2217,7 +2217,7 @@ public class MBMailingListPersistenceImpl extends BasePersistenceImpl<MBMailingL
 
 				for (String listenerClassName : listenerClassNames) {
 					listenersList.add((ModelListener<MBMailingList>)InstanceFactory.newInstance(
-							listenerClassName));
+							getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

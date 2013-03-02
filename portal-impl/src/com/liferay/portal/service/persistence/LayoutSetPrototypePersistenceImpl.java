@@ -3215,7 +3215,7 @@ public class LayoutSetPrototypePersistenceImpl extends BasePersistenceImpl<Layou
 
 				for (String listenerClassName : listenerClassNames) {
 					listenersList.add((ModelListener<LayoutSetPrototype>)InstanceFactory.newInstance(
-							listenerClassName));
+							getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

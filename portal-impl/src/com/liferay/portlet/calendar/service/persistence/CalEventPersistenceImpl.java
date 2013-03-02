@@ -7328,7 +7328,7 @@ public class CalEventPersistenceImpl extends BasePersistenceImpl<CalEvent>
 
 				for (String listenerClassName : listenerClassNames) {
 					listenersList.add((ModelListener<CalEvent>)InstanceFactory.newInstance(
-							listenerClassName));
+							getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

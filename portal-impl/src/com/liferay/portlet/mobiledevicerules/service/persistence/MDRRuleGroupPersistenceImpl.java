@@ -2257,7 +2257,7 @@ public class MDRRuleGroupPersistenceImpl extends BasePersistenceImpl<MDRRuleGrou
 
 				for (String listenerClassName : listenerClassNames) {
 					listenersList.add((ModelListener<MDRRuleGroup>)InstanceFactory.newInstance(
-							listenerClassName));
+							getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

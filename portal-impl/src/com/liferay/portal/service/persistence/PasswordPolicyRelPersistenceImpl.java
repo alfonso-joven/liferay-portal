@@ -1707,7 +1707,7 @@ public class PasswordPolicyRelPersistenceImpl extends BasePersistenceImpl<Passwo
 
 				for (String listenerClassName : listenerClassNames) {
 					listenersList.add((ModelListener<PasswordPolicyRel>)InstanceFactory.newInstance(
-							listenerClassName));
+							getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

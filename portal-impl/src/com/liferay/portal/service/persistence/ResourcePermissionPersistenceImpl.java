@@ -8368,7 +8368,7 @@ public class ResourcePermissionPersistenceImpl extends BasePersistenceImpl<Resou
 
 				for (String listenerClassName : listenerClassNames) {
 					listenersList.add((ModelListener<ResourcePermission>)InstanceFactory.newInstance(
-							listenerClassName));
+							getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

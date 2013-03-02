@@ -1847,7 +1847,7 @@ public class PollsVotePersistenceImpl extends BasePersistenceImpl<PollsVote>
 
 				for (String listenerClassName : listenerClassNames) {
 					listenersList.add((ModelListener<PollsVote>)InstanceFactory.newInstance(
-							listenerClassName));
+							getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

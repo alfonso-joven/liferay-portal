@@ -37,5 +37,4 @@ public interface ResourcePermissionFinder {
 	public java.util.List<com.liferay.portal.model.ResourcePermission> findByR_S(
 		long roleId, int[] scopes, int start, int end)
 		throws com.liferay.portal.kernel.exception.SystemException;
-
 }

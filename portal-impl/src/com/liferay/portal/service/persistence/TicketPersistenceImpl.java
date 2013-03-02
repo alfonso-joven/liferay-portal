@@ -870,7 +870,7 @@ public class TicketPersistenceImpl extends BasePersistenceImpl<Ticket>
 
 				for (String listenerClassName : listenerClassNames) {
 					listenersList.add((ModelListener<Ticket>)InstanceFactory.newInstance(
-							listenerClassName));
+							getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);
