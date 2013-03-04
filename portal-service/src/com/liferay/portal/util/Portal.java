@@ -1312,6 +1312,8 @@ public interface Portal {
 
 	public String transformCustomSQL(String sql);
 
+	public String transformSQL(String sql);
+
 	public PortletMode updatePortletMode(
 		String portletId, User user, Layout layout, PortletMode portletMode,
 		HttpServletRequest request);

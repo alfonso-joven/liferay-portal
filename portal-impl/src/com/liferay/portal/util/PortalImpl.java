@@ -20,6 +20,7 @@ import com.liferay.portal.NoSuchLayoutException;
 import com.liferay.portal.NoSuchResourceException;
 import com.liferay.portal.NoSuchUserException;
 import com.liferay.portal.cluster.ClusterInvokeThreadLocal;
+import com.liferay.portal.dao.orm.common.SQLTransformer;
 import com.liferay.portal.kernel.bean.BeanPropertiesUtil;
 import com.liferay.portal.kernel.cluster.ClusterExecutorUtil;
 import com.liferay.portal.kernel.cluster.ClusterRequest;
@@ -5611,6 +5612,10 @@ public class PortalImpl implements Portal {
 		}
 
 		return StringUtil.replace(sql, _customSqlKeys, _customSqlValues);
+	}
+
+	public String transformSQL(String sql) {
+		return SQLTransformer.transform(sql);
 	}
 
 	public PortletMode updatePortletMode(
