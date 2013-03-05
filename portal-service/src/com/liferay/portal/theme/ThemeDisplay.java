@@ -403,6 +403,10 @@ public class ThemeDisplay implements Cloneable, Serializable {
 		return _sessionId;
 	}
 
+	public long getSiteGroupId() {
+		return _siteGroupId;
+	}
+
 	public Theme getTheme() {
 		return _theme;
 	}
@@ -1410,6 +1414,7 @@ public class ThemeDisplay implements Cloneable, Serializable {
 	private boolean _showSiteSettingsIcon;
 	private boolean _showStagingIcon;
 	private boolean _signedIn;
+	private long _siteGroupId;
 	private boolean _stateExclusive;
 	private boolean _stateMaximized;
 	private boolean _statePopUp;
