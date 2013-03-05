@@ -187,7 +187,13 @@ String orderByColumn2 = GetterUtil.getString(preferences.getValue("orderByColumn
 String orderByType1 = GetterUtil.getString(preferences.getValue("orderByType1", "DESC"));
 String orderByType2 = GetterUtil.getString(preferences.getValue("orderByType2", "ASC"));
 boolean excludeZeroViewCount = GetterUtil.getBoolean(preferences.getValue("excludeZeroViewCount", null));
+
 int delta = GetterUtil.getInteger(preferences.getValue("delta", StringPool.BLANK), SearchContainer.DEFAULT_DELTA);
+
+if (portletName.equals(PortletKeys.RECENT_CONTENT)) {
+	delta = 5;
+}
+
 String paginationType = GetterUtil.getString(preferences.getValue("paginationType", "none"));
 boolean showAvailableLocales = GetterUtil.getBoolean(preferences.getValue("showAvailableLocales", null));
 boolean showMetadataDescriptions = GetterUtil.getBoolean(preferences.getValue("showMetadataDescriptions", null), true);
