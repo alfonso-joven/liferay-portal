@@ -51,7 +51,7 @@
 						<aui:button cssClass="add-tag-button" name="addTagButton" value="add-tag" />
 					</c:if>
 
-					<c:if test="<%= AssetPermission.contains(permissionChecker, themeDisplay.getSiteGroupId(), ActionKeys.PERMISSIONS) && GroupPermissionUtil.contains(permissionChecker, themeDisplay.getParentGroupId(), ActionKeys.PERMISSIONS) %>">
+					<c:if test="<%= AssetPermission.contains(permissionChecker, themeDisplay.getParentGroupId(), ActionKeys.PERMISSIONS) && GroupPermissionUtil.contains(permissionChecker, themeDisplay.getParentGroupId(), ActionKeys.PERMISSIONS) %>">
 						<liferay-security:permissionsURL
 							modelResource="com.liferay.portlet.asset"
 							modelResourceDescription="<%= themeDisplay.getScopeGroupName() %>"
