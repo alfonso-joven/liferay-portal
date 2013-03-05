@@ -154,7 +154,11 @@ public PortletURL getAddPortletURL(LiferayPortletRequest liferayPortletRequest, 
 		Map<Long, String> assetVocabularyAssetCategoryIds = new HashMap<Long, String>();
 
 		for (long assetCategoryId : allAssetCategoryIds) {
-			AssetCategory assetCategory = AssetCategoryLocalServiceUtil.getAssetCategory(assetCategoryId);
+			AssetCategory assetCategory = AssetCategoryLocalServiceUtil.fetchAssetCategory(assetCategoryId);
+
+			if (assetCategory == null) {
+				continue;
+			}
 
 			long assetVocabularyId = assetCategory.getVocabularyId();
 
