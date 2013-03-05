@@ -4306,9 +4306,11 @@ public class PortalImpl implements Portal {
 			userId = GetterUtil.getLong(remoteUser);
 		}
 
-		user = UserLocalServiceUtil.getUserById(userId);
+		if (userId > 0) {
+			user = UserLocalServiceUtil.getUserById(userId);
 
-		request.setAttribute(WebKeys.USER, user);
+			request.setAttribute(WebKeys.USER, user);
+		}
 
 		return user;
 	}
