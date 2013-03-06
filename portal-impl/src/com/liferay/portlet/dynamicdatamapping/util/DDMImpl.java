@@ -328,7 +328,7 @@ public class DDMImpl implements DDM {
 		String dirName = getFileUploadPath(baseModel);
 
 		if (!DLStoreUtil.hasDirectory(
-			companyId, CompanyConstants.SYSTEM, dirName)) {
+				companyId, CompanyConstants.SYSTEM, dirName)) {
 
 			DLStoreUtil.addDirectory(
 				companyId, CompanyConstants.SYSTEM, dirName);
@@ -339,8 +339,8 @@ public class DDMImpl implements DDM {
 		String fileName = dirName + StringPool.SLASH + fieldName;
 
 		if (DLStoreUtil.hasFile(
-			companyId, CompanyConstants.SYSTEM, fileName,
-			Store.VERSION_DEFAULT)) {
+				companyId, CompanyConstants.SYSTEM, fileName,
+				Store.VERSION_DEFAULT)) {
 
 			DLStoreUtil.deleteFile(
 				companyId, CompanyConstants.SYSTEM, fileName,
