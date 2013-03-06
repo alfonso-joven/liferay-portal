@@ -1223,8 +1223,10 @@ public class PasswordPolicyPersistenceImpl extends BasePersistenceImpl<PasswordP
 				List<ModelListener<PasswordPolicy>> listenersList = new ArrayList<ModelListener<PasswordPolicy>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<PasswordPolicy>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

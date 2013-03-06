@@ -4088,8 +4088,10 @@ public class BookmarksFolderPersistenceImpl extends BasePersistenceImpl<Bookmark
 				List<ModelListener<BookmarksFolder>> listenersList = new ArrayList<ModelListener<BookmarksFolder>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<BookmarksFolder>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

@@ -1998,8 +1998,10 @@ public class RatingsEntryPersistenceImpl extends BasePersistenceImpl<RatingsEntr
 				List<ModelListener<RatingsEntry>> listenersList = new ArrayList<ModelListener<RatingsEntry>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<RatingsEntry>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

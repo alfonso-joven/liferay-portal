@@ -2150,8 +2150,10 @@ public class UserNotificationEventPersistenceImpl extends BasePersistenceImpl<Us
 				List<ModelListener<UserNotificationEvent>> listenersList = new ArrayList<ModelListener<UserNotificationEvent>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<UserNotificationEvent>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

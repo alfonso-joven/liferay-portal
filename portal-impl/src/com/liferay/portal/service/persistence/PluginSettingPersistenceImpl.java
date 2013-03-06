@@ -1465,8 +1465,10 @@ public class PluginSettingPersistenceImpl extends BasePersistenceImpl<PluginSett
 				List<ModelListener<PluginSetting>> listenersList = new ArrayList<ModelListener<PluginSetting>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<PluginSetting>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

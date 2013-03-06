@@ -877,8 +877,10 @@ public class ReleasePersistenceImpl extends BasePersistenceImpl<Release>
 				List<ModelListener<Release>> listenersList = new ArrayList<ModelListener<Release>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<Release>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

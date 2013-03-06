@@ -6274,8 +6274,10 @@ public class RolePersistenceImpl extends BasePersistenceImpl<Role>
 				List<ModelListener<Role>> listenersList = new ArrayList<ModelListener<Role>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<Role>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

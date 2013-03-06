@@ -1386,8 +1386,10 @@ public class PortletPersistenceImpl extends BasePersistenceImpl<Portlet>
 				List<ModelListener<Portlet>> listenersList = new ArrayList<ModelListener<Portlet>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<Portlet>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

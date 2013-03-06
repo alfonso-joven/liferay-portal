@@ -4112,8 +4112,10 @@ public class UserGroupPersistenceImpl extends BasePersistenceImpl<UserGroup>
 				List<ModelListener<UserGroup>> listenersList = new ArrayList<ModelListener<UserGroup>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<UserGroup>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

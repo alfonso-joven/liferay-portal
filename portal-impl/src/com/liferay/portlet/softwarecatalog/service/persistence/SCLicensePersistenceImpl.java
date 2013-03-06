@@ -2835,8 +2835,10 @@ public class SCLicensePersistenceImpl extends BasePersistenceImpl<SCLicense>
 				List<ModelListener<SCLicense>> listenersList = new ArrayList<ModelListener<SCLicense>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<SCLicense>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

@@ -1903,8 +1903,10 @@ public class LayoutSetPersistenceImpl extends BasePersistenceImpl<LayoutSet>
 				List<ModelListener<LayoutSet>> listenersList = new ArrayList<ModelListener<LayoutSet>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<LayoutSet>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

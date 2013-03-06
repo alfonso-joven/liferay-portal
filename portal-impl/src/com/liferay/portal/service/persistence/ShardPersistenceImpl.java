@@ -1139,8 +1139,10 @@ public class ShardPersistenceImpl extends BasePersistenceImpl<Shard>
 				List<ModelListener<Shard>> listenersList = new ArrayList<ModelListener<Shard>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<Shard>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

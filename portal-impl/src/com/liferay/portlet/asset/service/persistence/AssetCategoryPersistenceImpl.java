@@ -10218,8 +10218,10 @@ public class AssetCategoryPersistenceImpl extends BasePersistenceImpl<AssetCateg
 				List<ModelListener<AssetCategory>> listenersList = new ArrayList<ModelListener<AssetCategory>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<AssetCategory>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

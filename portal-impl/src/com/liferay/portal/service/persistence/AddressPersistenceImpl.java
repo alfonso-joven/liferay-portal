@@ -3845,8 +3845,10 @@ public class AddressPersistenceImpl extends BasePersistenceImpl<Address>
 				List<ModelListener<Address>> listenersList = new ArrayList<ModelListener<Address>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<Address>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

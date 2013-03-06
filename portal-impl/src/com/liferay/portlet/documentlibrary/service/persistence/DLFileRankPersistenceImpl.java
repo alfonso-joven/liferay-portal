@@ -2412,8 +2412,10 @@ public class DLFileRankPersistenceImpl extends BasePersistenceImpl<DLFileRank>
 				List<ModelListener<DLFileRank>> listenersList = new ArrayList<ModelListener<DLFileRank>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<DLFileRank>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

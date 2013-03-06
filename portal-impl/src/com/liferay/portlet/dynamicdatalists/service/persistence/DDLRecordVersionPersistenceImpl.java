@@ -1933,8 +1933,10 @@ public class DDLRecordVersionPersistenceImpl extends BasePersistenceImpl<DDLReco
 				List<ModelListener<DDLRecordVersion>> listenersList = new ArrayList<ModelListener<DDLRecordVersion>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<DDLRecordVersion>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

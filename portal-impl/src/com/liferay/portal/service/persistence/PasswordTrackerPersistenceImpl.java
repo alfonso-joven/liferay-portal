@@ -1078,8 +1078,10 @@ public class PasswordTrackerPersistenceImpl extends BasePersistenceImpl<Password
 				List<ModelListener<PasswordTracker>> listenersList = new ArrayList<ModelListener<PasswordTracker>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<PasswordTracker>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

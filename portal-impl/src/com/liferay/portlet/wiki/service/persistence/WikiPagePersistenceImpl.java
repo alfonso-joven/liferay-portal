@@ -16710,8 +16710,10 @@ public class WikiPagePersistenceImpl extends BasePersistenceImpl<WikiPage>
 				List<ModelListener<WikiPage>> listenersList = new ArrayList<ModelListener<WikiPage>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<WikiPage>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

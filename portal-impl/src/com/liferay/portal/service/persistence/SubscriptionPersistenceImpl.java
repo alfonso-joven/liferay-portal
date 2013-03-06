@@ -2503,8 +2503,10 @@ public class SubscriptionPersistenceImpl extends BasePersistenceImpl<Subscriptio
 				List<ModelListener<Subscription>> listenersList = new ArrayList<ModelListener<Subscription>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<Subscription>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

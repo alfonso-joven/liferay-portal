@@ -869,8 +869,10 @@ public class TicketPersistenceImpl extends BasePersistenceImpl<Ticket>
 				List<ModelListener<Ticket>> listenersList = new ArrayList<ModelListener<Ticket>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<Ticket>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

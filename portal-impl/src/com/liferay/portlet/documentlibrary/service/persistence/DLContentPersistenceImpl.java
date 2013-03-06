@@ -2713,8 +2713,10 @@ public class DLContentPersistenceImpl extends BasePersistenceImpl<DLContent>
 				List<ModelListener<DLContent>> listenersList = new ArrayList<ModelListener<DLContent>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<DLContent>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

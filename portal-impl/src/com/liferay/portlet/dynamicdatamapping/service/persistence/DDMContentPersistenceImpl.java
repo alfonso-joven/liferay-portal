@@ -2389,8 +2389,10 @@ public class DDMContentPersistenceImpl extends BasePersistenceImpl<DDMContent>
 				List<ModelListener<DDMContent>> listenersList = new ArrayList<ModelListener<DDMContent>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<DDMContent>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

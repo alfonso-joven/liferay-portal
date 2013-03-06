@@ -3235,8 +3235,10 @@ public class WebsitePersistenceImpl extends BasePersistenceImpl<Website>
 				List<ModelListener<Website>> listenersList = new ArrayList<ModelListener<Website>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<Website>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

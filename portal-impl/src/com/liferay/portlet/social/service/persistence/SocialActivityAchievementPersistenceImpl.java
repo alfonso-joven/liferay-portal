@@ -3629,8 +3629,10 @@ public class SocialActivityAchievementPersistenceImpl
 				List<ModelListener<SocialActivityAchievement>> listenersList = new ArrayList<ModelListener<SocialActivityAchievement>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<SocialActivityAchievement>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

@@ -2842,8 +2842,10 @@ public class PermissionPersistenceImpl extends BasePersistenceImpl<Permission>
 				List<ModelListener<Permission>> listenersList = new ArrayList<ModelListener<Permission>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<Permission>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

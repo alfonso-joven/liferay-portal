@@ -1404,8 +1404,10 @@ public class DLSyncPersistenceImpl extends BasePersistenceImpl<DLSync>
 				List<ModelListener<DLSync>> listenersList = new ArrayList<ModelListener<DLSync>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<DLSync>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

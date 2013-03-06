@@ -1856,8 +1856,10 @@ public class CompanyPersistenceImpl extends BasePersistenceImpl<Company>
 				List<ModelListener<Company>> listenersList = new ArrayList<ModelListener<Company>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<Company>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

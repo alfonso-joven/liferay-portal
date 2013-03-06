@@ -8043,8 +8043,10 @@ public class LayoutPersistenceImpl extends BasePersistenceImpl<Layout>
 				List<ModelListener<Layout>> listenersList = new ArrayList<ModelListener<Layout>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<Layout>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

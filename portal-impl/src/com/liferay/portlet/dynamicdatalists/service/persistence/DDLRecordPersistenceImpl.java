@@ -2435,8 +2435,10 @@ public class DDLRecordPersistenceImpl extends BasePersistenceImpl<DDLRecord>
 				List<ModelListener<DDLRecord>> listenersList = new ArrayList<ModelListener<DDLRecord>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<DDLRecord>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

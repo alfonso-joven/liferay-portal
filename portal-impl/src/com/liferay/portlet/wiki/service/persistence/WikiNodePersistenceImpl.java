@@ -3072,8 +3072,10 @@ public class WikiNodePersistenceImpl extends BasePersistenceImpl<WikiNode>
 				List<ModelListener<WikiNode>> listenersList = new ArrayList<ModelListener<WikiNode>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<WikiNode>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

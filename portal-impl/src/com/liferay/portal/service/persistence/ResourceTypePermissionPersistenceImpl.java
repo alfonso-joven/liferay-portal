@@ -2072,8 +2072,10 @@ public class ResourceTypePermissionPersistenceImpl extends BasePersistenceImpl<R
 				List<ModelListener<ResourceTypePermission>> listenersList = new ArrayList<ModelListener<ResourceTypePermission>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<ResourceTypePermission>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

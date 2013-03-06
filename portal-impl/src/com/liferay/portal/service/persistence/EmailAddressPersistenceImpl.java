@@ -3260,8 +3260,10 @@ public class EmailAddressPersistenceImpl extends BasePersistenceImpl<EmailAddres
 				List<ModelListener<EmailAddress>> listenersList = new ArrayList<ModelListener<EmailAddress>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<EmailAddress>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

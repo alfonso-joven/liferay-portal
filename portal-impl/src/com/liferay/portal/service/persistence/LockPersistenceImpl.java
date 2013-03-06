@@ -2285,8 +2285,10 @@ public class LockPersistenceImpl extends BasePersistenceImpl<Lock>
 				List<ModelListener<Lock>> listenersList = new ArrayList<ModelListener<Lock>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<Lock>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

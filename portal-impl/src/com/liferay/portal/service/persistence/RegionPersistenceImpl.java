@@ -2388,8 +2388,10 @@ public class RegionPersistenceImpl extends BasePersistenceImpl<Region>
 				List<ModelListener<Region>> listenersList = new ArrayList<ModelListener<Region>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<Region>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

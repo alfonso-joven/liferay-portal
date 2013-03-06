@@ -1929,8 +1929,10 @@ public class ResourceCodePersistenceImpl extends BasePersistenceImpl<ResourceCod
 				List<ModelListener<ResourceCode>> listenersList = new ArrayList<ModelListener<ResourceCode>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<ResourceCode>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

@@ -18420,8 +18420,10 @@ public class MBMessagePersistenceImpl extends BasePersistenceImpl<MBMessage>
 				List<ModelListener<MBMessage>> listenersList = new ArrayList<ModelListener<MBMessage>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<MBMessage>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

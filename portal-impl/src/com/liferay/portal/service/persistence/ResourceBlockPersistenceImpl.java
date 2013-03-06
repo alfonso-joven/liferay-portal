@@ -2171,8 +2171,10 @@ public class ResourceBlockPersistenceImpl extends BasePersistenceImpl<ResourceBl
 				List<ModelListener<ResourceBlock>> listenersList = new ArrayList<ModelListener<ResourceBlock>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<ResourceBlock>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

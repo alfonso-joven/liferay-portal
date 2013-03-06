@@ -4507,8 +4507,10 @@ public class OrganizationPersistenceImpl extends BasePersistenceImpl<Organizatio
 				List<ModelListener<Organization>> listenersList = new ArrayList<ModelListener<Organization>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<Organization>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

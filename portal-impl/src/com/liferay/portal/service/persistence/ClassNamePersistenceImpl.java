@@ -866,8 +866,10 @@ public class ClassNamePersistenceImpl extends BasePersistenceImpl<ClassName>
 				List<ModelListener<ClassName>> listenersList = new ArrayList<ModelListener<ClassName>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<ClassName>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);

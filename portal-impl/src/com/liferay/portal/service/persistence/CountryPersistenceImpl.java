@@ -1890,8 +1890,10 @@ public class CountryPersistenceImpl extends BasePersistenceImpl<Country>
 				List<ModelListener<Country>> listenersList = new ArrayList<ModelListener<Country>>();
 
 				for (String listenerClassName : listenerClassNames) {
+					Class<?> clazz = getClass();
+
 					listenersList.add((ModelListener<Country>)InstanceFactory.newInstance(
-							getClassLoader(), listenerClassName));
+							clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);
