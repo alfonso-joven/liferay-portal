@@ -24,20 +24,10 @@ AUI.add(
 				event.preventDefault();
 			},
 
-			_onMouseHover: function(event) {
+			_onMouseHover: function(event, src) {
 				var instance = this;
 
-				var currentTarget = event.currentTarget;
-
-				var attr = 'data-src';
-
-				if (event.type == 'mouseenter') {
-					attr += '-hover';
-				}
-
-				var img = currentTarget.one('img');
-
-				var src = currentTarget.attr(attr);
+				var img = event.currentTarget.one('img');
 
 				if (img) {
 					img.attr('src', src);
@@ -48,11 +38,15 @@ AUI.add(
 		Icon._registerTask = A.debounce(
 			function(instance) {
 
-				var length = buffer.length;
+				if (buffer.length) {
+					var nodeList = A.all(buffer);
 
-				if (length) {
-					for (var i = length - 1; i >= 0 ; i--) {
-						var element = buffer[i];
+					buffer.length = 0;
+
+					var elements = nodeList._nodes;
+
+					for (var i = elements.length - 1; i >= 0 ; i--) {
+						var element = elements[i];
 
 						var forcePost = element.getAttribute('data-force-post');
 						var srcHover = element.getAttribute('data-src-hover');
@@ -67,14 +61,13 @@ AUI.add(
 							if (srcHover) {
 								var src = element.getAttribute('data-src');
 
-								var hoverFn = A.bind(instance._onMouseHover, instance);
+								instance._onMouseOver = A.rbind(instance._onMouseHover, instance, srcHover);
+								instance._onMouseOut = A.rbind(instance._onMouseHover, instance, src);
 
-								item.hover(hoverFn, hoverFn);
+								item.hover(instance._onMouseOver, instance._onMouseOut);
 							}
 						}
 					}
-
-					buffer.length = 0;
 				}
 			},
 			100
