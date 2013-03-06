@@ -259,6 +259,8 @@ public interface PropsKeys {
 
 	public static final String BROWSER_CACHE_SIGNED_IN_DISABLED = "browser.cache.signed.in.disabled";
 
+	public static final String BROWSER_COMPATIBILITY_IE_VERSIONS = "browser.compatibility.ie.versions";
+
 	public static final String BROWSER_LAUNCHER_URL = "browser.launcher.url";
 
 	public static final String BUFFERED_INCREMENT_PARALLEL_QUEUE_SIZE = "buffered.increment.parallel.queue.size";
