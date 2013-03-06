@@ -150,68 +150,82 @@ public class SourceFormatter {
 
 	public static void main(String[] args) {
 		try {
-			_excludes = StringUtil.split(
-				GetterUtil.getString(
-					System.getProperty("source.formatter.excludes")));
-
-			_portalSource = _isPortalSource();
-
-			_sourceFormatterHelper = new SourceFormatterHelper(false);
-
-			_sourceFormatterHelper.init();
-
-			Thread thread1 = new Thread () {
-
-				@Override
-				public void run() {
-					try {
-						_formatJSP();
-						_formatAntXML();
-						_formatDDLStructuresXML();
-						_formatFriendlyURLRoutesXML();
-						_formatFTL();
-						_formatJS();
-						_formatPortalProperties();
-						_formatPortletXML();
-						_formatServiceXML();
-						_formatSH();
-						_formatSQL();
-						_formatStrutsConfigXML();
-						_formatTilesDefsXML();
-						_formatTLD();
-						_formatWebXML();
-					}
-					catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
-
-			};
-
-			Thread thread2 = new Thread () {
-
-				@Override
-				public void run() {
-					try {
-						_formatJava();
-					}
-					catch (Exception e) {
-						e.printStackTrace();
-					}
-				}
-
-			};
-
-			thread1.start();
-			thread2.start();
-
-			thread1.join();
-			thread2.join();
-
-			_sourceFormatterHelper.close();
+			new SourceFormatter(false, false);
 		}
 		catch (Exception e) {
 			e.printStackTrace();
+		}
+	}
+
+	public SourceFormatter(boolean useProperties, boolean throwException)
+		throws Exception {
+
+		_errorMessages = new ArrayList<String>();
+
+		_excludes = StringUtil.split(
+			GetterUtil.getString(
+				System.getProperty("source.formatter.excludes")));
+
+		_portalSource = _isPortalSource();
+
+		_throwException = throwException;
+
+		_sourceFormatterHelper = new SourceFormatterHelper(useProperties);
+
+		_sourceFormatterHelper.init();
+
+		Thread thread1 = new Thread () {
+
+			@Override
+			public void run() {
+				try {
+					_formatJSP();
+					_formatAntXML();
+					_formatDDLStructuresXML();
+					_formatFriendlyURLRoutesXML();
+					_formatFTL();
+					_formatJS();
+					_formatPortalProperties();
+					_formatPortletXML();
+					_formatServiceXML();
+					_formatSH();
+					_formatSQL();
+					_formatStrutsConfigXML();
+					_formatTilesDefsXML();
+					_formatTLD();
+					_formatWebXML();
+				}
+				catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+
+		};
+
+		Thread thread2 = new Thread () {
+
+			@Override
+			public void run() {
+				try {
+					_formatJava();
+				}
+				catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+
+		};
+
+		thread1.start();
+		thread2.start();
+
+		thread1.join();
+		thread2.join();
+
+		_sourceFormatterHelper.close();
+
+		if (_throwException && !_errorMessages.isEmpty()) {
+			throw new Exception(StringUtil.merge(_errorMessages, "\n"));
 		}
 	}
 
@@ -492,7 +506,7 @@ public class SourceFormatter {
 							if (Validator.isNotNull(s) &&
 								!s.contains(StringPool.SPACE)) {
 
-								_sourceFormatterHelper.printError(
+								_processErrorMessage(
 									fileName,
 									"redundant parentheses: " + fileName + " " +
 										lineCount);
@@ -502,7 +516,7 @@ public class SourceFormatter {
 						if ((previousChar == CharPool.OPEN_PARENTHESIS) &&
 							(nextChar == CharPool.CLOSE_PARENTHESIS)) {
 
-							_sourceFormatterHelper.printError(
+							_processErrorMessage(
 								fileName,
 								"redundant parentheses: " + fileName + " " +
 									lineCount);
@@ -556,7 +570,7 @@ public class SourceFormatter {
 				}
 
 				if (!_portalLanguageKeysProperties.containsKey(languageKey)) {
-					_sourceFormatterHelper.printError(
+					_processErrorMessage(
 						fileName,
 						"missing language key: " + languageKey +
 							StringPool.SPACE + fileName);
@@ -588,7 +602,7 @@ public class SourceFormatter {
 			(containsAndOrOperator ||
 			 (containsMathOperator && !s.contains(StringPool.OPEN_BRACKET)))) {
 
-			_sourceFormatterHelper.printError(
+			_processErrorMessage(
 				fileName, "missing parentheses: " + fileName + " " + lineCount);
 		}
 	}
@@ -671,7 +685,7 @@ public class SourceFormatter {
 			}
 
 			if (xssVulnerable) {
-				_sourceFormatterHelper.printError(
+				_processErrorMessage(
 					fileName, "(xss): " + fileName + " (" + jspVariable + ")");
 			}
 		}
@@ -764,7 +778,7 @@ public class SourceFormatter {
 				content.substring(0, x) + correctProjectElementText +
 					content.substring(y);
 
-			_sourceFormatterHelper.printError(
+			_processErrorMessage(
 				fileName, fileName + " has an incorrect project name");
 
 			_fileUtil.write(basedir + fileName, content);
@@ -838,7 +852,7 @@ public class SourceFormatter {
 				}
 
 				if (name.compareTo(previousName) < -1) {
-					_sourceFormatterHelper.printError(
+					_processErrorMessage(
 						fileName,
 						fileName + " has an unordered target " + name);
 
@@ -1239,7 +1253,7 @@ public class SourceFormatter {
 			String newContent = content;
 
 			if (newContent.contains("$\n */")) {
-				_sourceFormatterHelper.printError(fileName, "*: " + fileName);
+				_processErrorMessage(fileName, "*: " + fileName);
 
 				newContent = StringUtil.replace(
 					newContent, "$\n */", "$\n *\n */");
@@ -1249,8 +1263,7 @@ public class SourceFormatter {
 				newContent = StringUtil.replace(
 					newContent, oldCopyright, copyright);
 
-				_sourceFormatterHelper.printError(
-					fileName, "old (c): " + fileName);
+				_processErrorMessage(fileName, "old (c): " + fileName);
 			}
 
 			if (!newContent.contains(copyright)) {
@@ -1259,14 +1272,12 @@ public class SourceFormatter {
 				if (Validator.isNull(customCopyright) ||
 					!newContent.contains(customCopyright)) {
 
-					_sourceFormatterHelper.printError(
-						fileName, "(c): " + fileName);
+					_processErrorMessage(fileName, "(c): " + fileName);
 				}
 			}
 
 			if (newContent.contains(className + ".java.html")) {
-				_sourceFormatterHelper.printError(
-					fileName, "Java2HTML: " + fileName);
+				_processErrorMessage(fileName, "Java2HTML: " + fileName);
 			}
 
 			if (newContent.contains(" * @author Raymond Aug") &&
@@ -1275,8 +1286,7 @@ public class SourceFormatter {
 				newContent = newContent.replaceFirst(
 					"Raymond Aug.++", "Raymond Aug\u00e9");
 
-				_sourceFormatterHelper.printError(
-					fileName, "UTF-8: " + fileName);
+				_processErrorMessage(fileName, "UTF-8: " + fileName);
 			}
 
 			newContent = _fixDataAccessConnection(className, newContent);
@@ -1310,28 +1320,25 @@ public class SourceFormatter {
 				});
 
 			if (newContent.contains("*/\npackage ")) {
-				_sourceFormatterHelper.printError(
-					fileName, "package: " + fileName);
+				_processErrorMessage(fileName, "package: " + fileName);
 			}
 
 			if (!newContent.endsWith("\n\n}") && !newContent.endsWith("{\n}")) {
-				_sourceFormatterHelper.printError(fileName, "}: " + fileName);
+				_processErrorMessage(fileName, "}: " + fileName);
 			}
 
 			if (portalJavaFiles && !className.equals("BaseServiceImpl") &&
 				className.endsWith("ServiceImpl") &&
 				newContent.contains("ServiceUtil.")) {
 
-				_sourceFormatterHelper.printError(
-					fileName, "ServiceUtil: " + fileName);
+				_processErrorMessage(fileName, "ServiceUtil: " + fileName);
 			}
 
 			if (!className.equals("DeepNamedValueScanner") &&
 				!className.equals("ProxyUtil") &&
 				newContent.contains("import java.lang.reflect.Proxy;")) {
 
-				_sourceFormatterHelper.printError(
-					fileName, "Proxy: " + fileName);
+				_processErrorMessage(fileName, "Proxy: " + fileName);
 			}
 
 			// LPS-28266
@@ -1360,7 +1367,7 @@ public class SourceFormatter {
 				}
 
 				if ((pos3 < pos4) && (pos4 < pos5)) {
-					_sourceFormatterHelper.printError(
+					_processErrorMessage(
 						fileName, "Use getInt(1) for count: " + fileName);
 				}
 			}
@@ -1371,7 +1378,7 @@ public class SourceFormatter {
 				!content.contains(
 					"private static final long serialVersionUID")) {
 
-				_sourceFormatterHelper.printError(
+				_processErrorMessage(
 					fileName,
 					"Assign ProcessCallable implementation a " +
 						"serialVersionUID: " + fileName);
@@ -1455,7 +1462,7 @@ public class SourceFormatter {
 
 			if (line.startsWith("import ")) {
 				if (line.endsWith(".*;")) {
-					_sourceFormatterHelper.printError(
+					_processErrorMessage(
 						fileName, "import: " + fileName + " " + lineCount);
 				}
 
@@ -1482,7 +1489,7 @@ public class SourceFormatter {
 			String trimmedLine = StringUtil.trimLeading(line);
 
 			if (trimmedLine.startsWith(StringPool.EQUAL)) {
-				_sourceFormatterHelper.printError(
+				_processErrorMessage(
 					fileName, "equal: " + fileName + " " + lineCount);
 			}
 
@@ -1691,7 +1698,7 @@ public class SourceFormatter {
 			if ((line.contains(" && ") || line.contains(" || ")) &&
 				line.endsWith(StringPool.OPEN_PARENTHESIS)) {
 
-				_sourceFormatterHelper.printError(
+				_processErrorMessage(
 					fileName, "line break: " + fileName + " " + lineCount);
 			}
 
@@ -1706,7 +1713,7 @@ public class SourceFormatter {
 					strippedQuotesLine, StringPool.OPEN_PARENTHESIS);
 
 				if (openParenthesisCount > closeParenthesisCount) {
-					_sourceFormatterHelper.printError(
+					_processErrorMessage(
 						fileName, "line break: " + fileName + " " + lineCount);
 				}
 			}
@@ -1717,7 +1724,7 @@ public class SourceFormatter {
 				!line.contains(StringPool.QUOTE) &&
 				line.endsWith(StringPool.OPEN_PARENTHESIS)) {
 
-				_sourceFormatterHelper.printError(
+				_processErrorMessage(
 					fileName, "line break: " + fileName + " " + lineCount);
 			}
 
@@ -1730,7 +1737,7 @@ public class SourceFormatter {
 					int y = line.indexOf(StringPool.QUOTE);
 
 					if ((y == -1) || (x < y)) {
-						_sourceFormatterHelper.printError(
+						_processErrorMessage(
 							fileName,
 							"line break: " + fileName + " " + lineCount);
 					}
@@ -1743,19 +1750,19 @@ public class SourceFormatter {
 				 line.contains(" throws " ) &&
 				 line.endsWith(StringPool.OPEN_CURLY_BRACE))) {
 
-				_sourceFormatterHelper.printError(
+				_processErrorMessage(
 					fileName, "line break: " + fileName + " " + lineCount);
 			}
 
 			if (line.contains("    ") && !line.matches("\\s*\\*.*")) {
 				if (!fileName.endsWith("StringPool.java")) {
-					_sourceFormatterHelper.printError(
+					_processErrorMessage(
 						fileName, "tab: " + fileName + " " + lineCount);
 				}
 			}
 
 			if (line.contains("  {") && !line.matches("\\s*\\*.*")) {
-				_sourceFormatterHelper.printError(
+				_processErrorMessage(
 					fileName, "{:" + fileName + " " + lineCount);
 			}
 
@@ -1789,7 +1796,7 @@ public class SourceFormatter {
 				}
 				else {
 					if (lineLength > 80) {
-						_sourceFormatterHelper.printError(
+						_processErrorMessage(
 							fileName, "> 80: " + fileName + " " + lineCount);
 					}
 					else if (!trimmedLine.startsWith("//")) {
@@ -1804,7 +1811,7 @@ public class SourceFormatter {
 							(lineLeadingTabCount >
 								previousLineLeadingTabCount)) {
 
-							_sourceFormatterHelper.printError(
+							_processErrorMessage(
 								fileName,
 								"line break: " + fileName + " " + lineCount);
 						}
@@ -1820,7 +1827,7 @@ public class SourceFormatter {
 								((previousLineLeadingTabCount + 2) !=
 									lineLeadingTabCount)) {
 
-							_sourceFormatterHelper.printError(
+							_processErrorMessage(
 								fileName,
 								"line break: " + fileName + " " + lineCount);
 							}
@@ -1832,7 +1839,7 @@ public class SourceFormatter {
 								((previousLineLeadingTabCount + 1) !=
 									lineLeadingTabCount)) {
 
-								_sourceFormatterHelper.printError(
+								_processErrorMessage(
 									fileName,
 									"tab: " + fileName + " " + lineCount);
 							}
@@ -1849,7 +1856,7 @@ public class SourceFormatter {
 								 (trimmedLine.charAt(x + 1) !=
 									 CharPool.CLOSE_PARENTHESIS))) {
 
-								_sourceFormatterHelper.printError(
+								_processErrorMessage(
 									fileName,
 									"line break: " + fileName + " " +
 										lineCount);
@@ -1860,7 +1867,7 @@ public class SourceFormatter {
 							(lineLeadingTabCount ==
 								previousLineLeadingTabCount)) {
 
-							_sourceFormatterHelper.printError(
+							_processErrorMessage(
 								fileName, "tab: " + fileName + " " + lineCount);
 						}
 
@@ -1872,7 +1879,7 @@ public class SourceFormatter {
 							!trimmedLine.startsWith(
 								StringPool.CLOSE_CURLY_BRACE)) {
 
-							_sourceFormatterHelper.printError(
+							_processErrorMessage(
 								fileName,
 								"new line: " + fileName + " " + lineCount);
 						}
@@ -1911,7 +1918,7 @@ public class SourceFormatter {
 								StringPool.TAB + linePart);
 						}
 						else {
-							_sourceFormatterHelper.printError(
+							_processErrorMessage(
 								fileName,
 								"line break: " + fileName + " " + lineCount);
 						}
@@ -2176,8 +2183,7 @@ public class SourceFormatter {
 					newContent = StringUtil.replace(
 						newContent, oldCopyright, copyright);
 
-					_sourceFormatterHelper.printError(
-						fileName, "old (c): " + fileName);
+					_processErrorMessage(fileName, "old (c): " + fileName);
 				}
 
 				if (!newContent.contains(copyright)) {
@@ -2186,8 +2192,7 @@ public class SourceFormatter {
 					if (Validator.isNull(customCopyright) ||
 						!newContent.contains(customCopyright)) {
 
-						_sourceFormatterHelper.printError(
-							fileName, "(c): " + fileName);
+						_processErrorMessage(fileName, "(c): " + fileName);
 					}
 					else {
 						newContent = StringUtil.replace(
@@ -2217,9 +2222,8 @@ public class SourceFormatter {
 				});
 
 			if (newContent.contains("    ")) {
-				if (!fileName.endsWith("template.vm")) {
-					_sourceFormatterHelper.printError(
-						fileName, "tab: " + fileName);
+				if (!fileName.matches(".*template.*\\.vm$")) {
+					_processErrorMessage(fileName, "tab: " + fileName);
 				}
 			}
 
@@ -2299,7 +2303,7 @@ public class SourceFormatter {
 			if (line.contains("<aui:button ") &&
 				line.contains("type=\"button\"")) {
 
-				_sourceFormatterHelper.printError(
+				_processErrorMessage(
 					fileName, "aui:button " + fileName + " " + lineCount);
 			}
 
@@ -2367,7 +2371,7 @@ public class SourceFormatter {
 						if (!trimmedLine.endsWith(StringPool.QUOTE) &&
 							!trimmedLine.endsWith(StringPool.APOSTROPHE)) {
 
-							_sourceFormatterHelper.printError(
+							_processErrorMessage(
 								fileName,
 								"attribute: " + fileName + " " + lineCount);
 
@@ -2375,7 +2379,7 @@ public class SourceFormatter {
 						}
 						else if (Validator.isNotNull(previousAttribute)) {
 							if (!_isJSPAttributName(attribute)) {
-								_sourceFormatterHelper.printError(
+								_processErrorMessage(
 									fileName,
 									"attribute: " + fileName + " " + lineCount);
 
@@ -2478,7 +2482,7 @@ public class SourceFormatter {
 						includeFileName);
 
 					if (!matcher.find()) {
-						_sourceFormatterHelper.printError(
+						_processErrorMessage(
 							fileName, "include: " + fileName + " " + lineCount);
 					}
 				}
@@ -2515,7 +2519,7 @@ public class SourceFormatter {
 			if ((StringUtil.count(content, currentException) > 1) ||
 				(StringUtil.count(content, previousException) > 1)) {
 
-				_sourceFormatterHelper.printError(
+				_processErrorMessage(
 					fileName, "unsorted exceptions: " + fileName);
 			}
 			else {
@@ -2611,7 +2615,7 @@ public class SourceFormatter {
 			}
 
 			if (pos < previousPos) {
-				_sourceFormatterHelper.printError(
+				_processErrorMessage(
 					fileName, "sort " + fileName + " " + lineCount);
 			}
 
@@ -2738,7 +2742,7 @@ public class SourceFormatter {
 			if (Validator.isNotNull(previousEntityName) &&
 				(previousEntityName.compareToIgnoreCase(entityName) > 0)) {
 
-				_sourceFormatterHelper.printError(
+				_processErrorMessage(
 					fileName, "sort: " + fileName + " " + entityName);
 			}
 
@@ -2762,7 +2766,7 @@ public class SourceFormatter {
 						 (previousReferenceEntity.compareToIgnoreCase(
 							 referenceEntity) > 0))) {
 
-						_sourceFormatterHelper.printError(
+						_processErrorMessage(
 							fileName,
 							"sort: " + fileName + " " + referencePackagePath);
 					}
@@ -2792,7 +2796,7 @@ public class SourceFormatter {
 			if (Validator.isNotNull(previousException) &&
 				(previousException.compareToIgnoreCase(exception) > 0)) {
 
-				_sourceFormatterHelper.printError(
+				_processErrorMessage(
 					fileName, "sort: " + fileName + " " + exception);
 			}
 
@@ -2818,8 +2822,7 @@ public class SourceFormatter {
 		String content = _fileUtil.read(new File(fileName), true);
 
 		if (content.contains("\r")) {
-			_sourceFormatterHelper.printError(
-				fileName, "Invalid new line character");
+			_processErrorMessage(fileName, "Invalid new line character");
 
 			content = StringUtil.replace(content, "\r", "");
 
@@ -2931,7 +2934,7 @@ public class SourceFormatter {
 				(!previousPath.startsWith("/portal/") ||
 				 path.startsWith("/portal/"))) {
 
-				_sourceFormatterHelper.printError(
+				_processErrorMessage(
 					fileName, "sort: " + fileName + " " + path);
 			}
 
@@ -2988,7 +2991,7 @@ public class SourceFormatter {
 						content = sb.toString();
 					}
 					else {
-						_sourceFormatterHelper.printError(
+						_processErrorMessage(
 							fileName, "taglib: " + fileName + " " + lineCount);
 					}
 				}
@@ -3038,7 +3041,7 @@ public class SourceFormatter {
 				(previousName.compareTo(name) > 0) &&
 				!previousName.equals("portlet")) {
 
-				_sourceFormatterHelper.printError(
+				_processErrorMessage(
 					fileName, "sort: " + fileName + " " + name);
 
 			}
@@ -3191,7 +3194,7 @@ public class SourceFormatter {
 				String content = _fileUtil.read(basedir + fileName);
 
 				if (content.equals(webXML)) {
-					_sourceFormatterHelper.printError(fileName, fileName);
+					_processErrorMessage(fileName, fileName);
 				}
 			}
 		}
@@ -4240,6 +4243,15 @@ public class SourceFormatter {
 		return false;
 	}
 
+	private static void _processErrorMessage(String fileName, String message) {
+		if (_throwException) {
+			_errorMessages.add(message);
+		}
+		else {
+			_sourceFormatterHelper.printError(fileName, message);
+		}
+	}
+
 	private static String _replacePrimitiveWrapperInstantiation(
 		String fileName, String line, int lineCount) {
 
@@ -4259,7 +4271,7 @@ public class SourceFormatter {
 			});
 
 		if (!line.equals(newLine)) {
-			_sourceFormatterHelper.printError(
+			_processErrorMessage(
 				fileName, "> new Primitive(: " + fileName + " " + lineCount);
 		}
 
@@ -4450,7 +4462,7 @@ public class SourceFormatter {
 			if ((delimeter != CharPool.APOSTROPHE) &&
 				(delimeter != CharPool.QUOTE)) {
 
-				_sourceFormatterHelper.printError(
+				_processErrorMessage(
 					fileName, "delimeter: " + fileName + " " + lineCount);
 
 				return line;
@@ -4751,6 +4763,7 @@ public class SourceFormatter {
 		"tiles"
 	};
 
+	private static List<String> _errorMessages;
 	private static String[] _excludes;
 	private static FileImpl _fileUtil = FileImpl.getInstance();
 	private static Pattern _javaImportPattern = Pattern.compile(
@@ -4774,6 +4787,7 @@ public class SourceFormatter {
 	private static Pattern _taglibLanguageKeyPattern = Pattern.compile(
 		"(?:confirmation|label|(?:M|m)essage|message key|names|title)=\"[^A-Z" +
 			"<=%\\[\\s]+\"");
+	private static boolean _throwException;
 	private static Pattern _xssPattern = Pattern.compile(
 		"String\\s+([^\\s]+)\\s*=\\s*(Bean)?ParamUtil\\.getString\\(");
 
