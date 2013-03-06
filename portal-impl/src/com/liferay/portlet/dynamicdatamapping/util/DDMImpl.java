@@ -323,8 +323,6 @@ public class DDMImpl implements DDM {
 
 		long companyId = serviceContext.getCompanyId();
 
-		// Add directory
-
 		String dirName = getFileUploadPath(baseModel);
 
 		if (!DLStoreUtil.hasDirectory(
@@ -333,8 +331,6 @@ public class DDMImpl implements DDM {
 			DLStoreUtil.addDirectory(
 				companyId, CompanyConstants.SYSTEM, dirName);
 		}
-
-		// Add file
 
 		String fileName = dirName + StringPool.SLASH + fieldName;
 
