@@ -152,15 +152,8 @@ public class LayoutAction extends Action {
 			HttpServletResponse response)
 		throws Exception {
 
-		HeaderCacheServletResponse headerCacheServletResponse = null;
-
-		if (response instanceof HeaderCacheServletResponse) {
-			headerCacheServletResponse = (HeaderCacheServletResponse)response;
-		}
-		else {
-			headerCacheServletResponse = new HeaderCacheServletResponse(
-				response);
-		}
+		HeaderCacheServletResponse headerCacheServletResponse =
+			new HeaderCacheServletResponse(response);
 
 		ThemeDisplay themeDisplay = (ThemeDisplay)request.getAttribute(
 			WebKeys.THEME_DISPLAY);
