@@ -3948,7 +3948,9 @@ public class ${entity.name}PersistenceImpl extends BasePersistenceImpl<${entity.
 				List<ModelListener<${entity.name}>> listenersList = new ArrayList<ModelListener<${entity.name}>>();
 
 				for (String listenerClassName : listenerClassNames) {
-					listenersList.add((ModelListener<${entity.name}>)InstanceFactory.newInstance(getClassLoader(), listenerClassName));
+					Class<?> clazz = getClass();
+
+					listenersList.add((ModelListener<${entity.name}>)InstanceFactory.newInstance(clazz.getClassLoader(), listenerClassName));
 				}
 
 				listeners = listenersList.toArray(new ModelListener[listenersList.size()]);
