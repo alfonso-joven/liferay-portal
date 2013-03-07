@@ -372,6 +372,11 @@ public class BookmarksEntryLocalServiceUtil {
 		return getService().getNoAssetEntries();
 	}
 
+	public static java.util.List<com.liferay.portlet.bookmarks.model.BookmarksEntry> getNoResourceBlockEntries()
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().getNoResourceBlockEntries();
+	}
+
 	public static com.liferay.portlet.bookmarks.model.BookmarksEntry openEntry(
 		long userId, long entryId)
 		throws com.liferay.portal.kernel.exception.PortalException,
