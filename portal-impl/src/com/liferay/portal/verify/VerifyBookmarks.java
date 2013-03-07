@@ -55,21 +55,19 @@ public class VerifyBookmarks extends VerifyProcess {
 			}
 		}
 
-		entries = BookmarksEntryLocalServiceUtil.getNoResourceEntries();
+		List<String> actionIds = ResourceActionsUtil.getModelResourceActions(
+			BookmarksEntry.class.getName());
+
+		entries = BookmarksEntryLocalServiceUtil.getNoResourceBlockEntries();
 
 		for (BookmarksEntry entry : entries) {
-			List<String> ownerActionIds =
-				ResourceActionsUtil.getModelResourceActions(
-					BookmarksEntry.class.getName());
-
 			Role ownerRole = RoleLocalServiceUtil.getRole(
 				entry.getCompanyId(), RoleConstants.OWNER);
 
 			ResourceBlockLocalServiceUtil.setIndividualScopePermissions(
 				entry.getCompanyId(), entry.getGroupId(),
 				BookmarksEntry.class.getName(), entry, ownerRole.getRoleId(),
-				ownerActionIds);
-
+				actionIds);
 		}
 
 		if (_log.isDebugEnabled()) {

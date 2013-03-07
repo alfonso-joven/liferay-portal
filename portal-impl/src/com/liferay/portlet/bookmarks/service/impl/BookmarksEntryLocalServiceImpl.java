@@ -247,8 +247,10 @@ public class BookmarksEntryLocalServiceImpl
 		return bookmarksEntryFinder.findByNoAssets();
 	}
 
-	public List<BookmarksEntry> getNoResourceEntries() throws SystemException {
-		return bookmarksEntryFinder.findByNoResource();
+	public List<BookmarksEntry> getNoResourceBlockEntries()
+		throws SystemException {
+
+		return bookmarksEntryFinder.findByNoResourceBlocks();
 	}
 
 	public BookmarksEntry openEntry(long userId, long entryId)

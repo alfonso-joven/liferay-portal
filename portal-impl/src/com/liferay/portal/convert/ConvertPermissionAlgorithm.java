@@ -60,6 +60,7 @@ import com.liferay.portal.service.CompanyLocalServiceUtil;
 import com.liferay.portal.service.GroupLocalServiceUtil;
 import com.liferay.portal.service.ReleaseLocalServiceUtil;
 import com.liferay.portal.service.ResourceActionLocalServiceUtil;
+import com.liferay.portal.service.ResourceBlockLocalServiceUtil;
 import com.liferay.portal.service.ResourceCodeLocalServiceUtil;
 import com.liferay.portal.service.RoleLocalServiceUtil;
 import com.liferay.portal.service.UserLocalServiceUtil;
@@ -68,6 +69,8 @@ import com.liferay.portal.upgrade.util.Table;
 import com.liferay.portal.util.MaintenanceUtil;
 import com.liferay.portal.util.PropsValues;
 import com.liferay.portal.util.ShutdownUtil;
+import com.liferay.portlet.bookmarks.model.BookmarksEntry;
+import com.liferay.portlet.bookmarks.service.BookmarksEntryLocalServiceUtil;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -213,25 +216,24 @@ public class ConvertPermissionAlgorithm extends ConvertProcess {
 		FileUtil.delete(legacyFile);
 	}
 
-	/*protected void convertResourceBlock() throws Exception {
+	protected void convertResourceBlock() throws Exception {
+		List<String> actionIds = ResourceActionsUtil.getModelResourceActions(
+			BookmarksEntry.class.getName());
+
 		List<BookmarksEntry> entries =
 			BookmarksEntryLocalServiceUtil.getBookmarksEntries(
 				QueryUtil.ALL_POS, QueryUtil.ALL_POS);
 
 		for (BookmarksEntry entry : entries) {
-			List<String> ownerActionIds =
-				ResourceActionsUtil.getModelResourceActions(
-					BookmarksEntry.class.getName());
-
 			Role ownerRole = RoleLocalServiceUtil.getRole(
 				entry.getCompanyId(), RoleConstants.OWNER);
 
 			ResourceBlockLocalServiceUtil.setIndividualScopePermissions(
 				entry.getCompanyId(), entry.getGroupId(),
 				BookmarksEntry.class.getName(), entry, ownerRole.getRoleId(),
-				ownerActionIds);
+				actionIds);
 		}
-	}*/
+	}
 
 	protected void convertResourcePermission(Writer writer, String name)
 		throws Exception {
@@ -712,7 +714,7 @@ public class ConvertPermissionAlgorithm extends ConvertProcess {
 
 			convertToBitwise();
 
-			//convertResourceBlock();
+			convertResourceBlock();
 
 			MaintenanceUtil.appendStatus(
 				"Please set " + PropsKeys.PERMISSIONS_USER_CHECK_ALGORITHM +
