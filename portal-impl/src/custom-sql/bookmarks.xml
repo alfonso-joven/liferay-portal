@@ -18,4 +18,21 @@
 				))
 		]]>
 	</sql>
+	<sql id="com.liferay.portlet.bookmarks.service.persistence.BookmarksEntryFinder.findByNoResource">
+		<![CDATA[
+	  SELECT
+		{BookmarksEntry.*}
+	  FROM
+		BookmarksEntry
+	  WHERE
+				(resourceBlockId NOT IN (
+					SELECT
+						resourceBlockId
+					FROM
+						ResourceBlock
+					WHERE
+						name = [$CLASS_NAME_ID_COM.LIFERAY.PORTLET.BOOKMARKS.MODEL.BOOKMARKSENTRY$]
+				))
+	]]>
+	</sql>
 </custom-sql>

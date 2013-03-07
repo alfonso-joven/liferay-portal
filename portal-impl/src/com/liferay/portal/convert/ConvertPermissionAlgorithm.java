@@ -213,6 +213,26 @@ public class ConvertPermissionAlgorithm extends ConvertProcess {
 		FileUtil.delete(legacyFile);
 	}
 
+	/*protected void convertResourceBlock() throws Exception {
+		List<BookmarksEntry> entries =
+			BookmarksEntryLocalServiceUtil.getBookmarksEntries(
+				QueryUtil.ALL_POS, QueryUtil.ALL_POS);
+
+		for (BookmarksEntry entry : entries) {
+			List<String> ownerActionIds =
+				ResourceActionsUtil.getModelResourceActions(
+					BookmarksEntry.class.getName());
+
+			Role ownerRole = RoleLocalServiceUtil.getRole(
+				entry.getCompanyId(), RoleConstants.OWNER);
+
+			ResourceBlockLocalServiceUtil.setIndividualScopePermissions(
+				entry.getCompanyId(), entry.getGroupId(),
+				BookmarksEntry.class.getName(), entry, ownerRole.getRoleId(),
+				ownerActionIds);
+		}
+	}*/
+
 	protected void convertResourcePermission(Writer writer, String name)
 		throws Exception {
 
@@ -691,6 +711,8 @@ public class ConvertPermissionAlgorithm extends ConvertProcess {
 			}
 
 			convertToBitwise();
+
+			//convertResourceBlock();
 
 			MaintenanceUtil.appendStatus(
 				"Please set " + PropsKeys.PERMISSIONS_USER_CHECK_ALGORITHM +

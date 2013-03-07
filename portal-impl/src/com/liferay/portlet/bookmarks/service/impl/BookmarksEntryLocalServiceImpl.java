@@ -247,6 +247,10 @@ public class BookmarksEntryLocalServiceImpl
 		return bookmarksEntryFinder.findByNoAssets();
 	}
 
+	public List<BookmarksEntry> getNoResourceEntries() throws SystemException {
+		return bookmarksEntryFinder.findByNoResource();
+	}
+
 	public BookmarksEntry openEntry(long userId, long entryId)
 		throws PortalException, SystemException {
 

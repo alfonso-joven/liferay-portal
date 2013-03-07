@@ -34,6 +34,9 @@ public class BookmarksEntryFinderImpl
 	public static final String FIND_BY_NO_ASSETS =
 		BookmarksEntryFinder.class.getName() + ".findByNoAssets";
 
+	public static final String FIND_BY_NO_RESOURCE =
+			BookmarksEntryFinder.class.getName() + ".findByNoResource";
+
 	public List<BookmarksEntry> findByNoAssets() throws SystemException {
 		Session session = null;
 
@@ -41,6 +44,28 @@ public class BookmarksEntryFinderImpl
 			session = openSession();
 
 			String sql = CustomSQLUtil.get(FIND_BY_NO_ASSETS);
+
+			SQLQuery q = session.createSQLQuery(sql);
+
+			q.addEntity("BookmarksEntry", BookmarksEntryImpl.class);
+
+			return q.list(true);
+		}
+		catch (Exception e) {
+			throw new SystemException(e);
+		}
+		finally {
+			closeSession(session);
+		}
+	}
+
+	public List<BookmarksEntry> findByNoResource() throws SystemException {
+		Session session = null;
+
+		try {
+			session = openSession();
+
+			String sql = CustomSQLUtil.get(FIND_BY_NO_RESOURCE);
 
 			SQLQuery q = session.createSQLQuery(sql);
 

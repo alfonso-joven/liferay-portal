@@ -16,6 +16,11 @@ package com.liferay.portal.verify;
 
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.model.Role;
+import com.liferay.portal.model.RoleConstants;
+import com.liferay.portal.security.permission.ResourceActionsUtil;
+import com.liferay.portal.service.ResourceBlockLocalServiceUtil;
+import com.liferay.portal.service.RoleLocalServiceUtil;
 import com.liferay.portlet.bookmarks.model.BookmarksEntry;
 import com.liferay.portlet.bookmarks.service.BookmarksEntryLocalServiceUtil;
 
@@ -48,6 +53,23 @@ public class VerifyBookmarks extends VerifyProcess {
 							entry.getEntryId() + ": " + e.getMessage());
 				}
 			}
+		}
+
+		entries = BookmarksEntryLocalServiceUtil.getNoResourceEntries();
+
+		for (BookmarksEntry entry : entries) {
+			List<String> ownerActionIds =
+				ResourceActionsUtil.getModelResourceActions(
+					BookmarksEntry.class.getName());
+
+			Role ownerRole = RoleLocalServiceUtil.getRole(
+				entry.getCompanyId(), RoleConstants.OWNER);
+
+			ResourceBlockLocalServiceUtil.setIndividualScopePermissions(
+				entry.getCompanyId(), entry.getGroupId(),
+				BookmarksEntry.class.getName(), entry, ownerRole.getRoleId(),
+				ownerActionIds);
+
 		}
 
 		if (_log.isDebugEnabled()) {
