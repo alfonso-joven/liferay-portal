@@ -820,8 +820,14 @@ public class SourceFormatter {
 		DirectoryScanner directoryScanner = new DirectoryScanner();
 
 		directoryScanner.setBasedir(basedir);
+
+		String[] excludes = {"**\\tools\\**"};
+
+		excludes = ArrayUtil.append(excludes, _excludes);
+
+		directoryScanner.setExcludes(excludes);
+
 		directoryScanner.setIncludes(new String[] {"**\\b*.xml"});
-		directoryScanner.setExcludes(new String[] {"**\\tools\\**"});
 
 		List<String> fileNames = _sourceFormatterHelper.scanForFiles(
 			directoryScanner);
@@ -882,6 +888,7 @@ public class SourceFormatter {
 		DirectoryScanner directoryScanner = new DirectoryScanner();
 
 		directoryScanner.setBasedir(basedir);
+		directoryScanner.setExcludes(_excludes);
 		directoryScanner.setIncludes(new String[] {"**\\*structures.xml"});
 
 		List<String> fileNames = _sourceFormatterHelper.scanForFiles(
@@ -945,9 +952,14 @@ public class SourceFormatter {
 		DirectoryScanner directoryScanner = new DirectoryScanner();
 
 		directoryScanner.setBasedir(basedir);
+
+		String[] excludes = {"**\\classes\\**", "**\\bin\\**"};
+
+		excludes = ArrayUtil.append(excludes, _excludes);
+
+		directoryScanner.setExcludes(excludes);
+
 		directoryScanner.setIncludes(new String[] {"**\\*routes.xml"});
-		directoryScanner.setExcludes(
-			new String[] {"**\\classes\\**", "**\\bin\\**"});
 
 		List<String> fileNames = _sourceFormatterHelper.scanForFiles(
 			directoryScanner);
@@ -1103,12 +1115,17 @@ public class SourceFormatter {
 		DirectoryScanner directoryScanner = new DirectoryScanner();
 
 		directoryScanner.setBasedir(basedir);
+
+		String[] excludes = {
+			"**\\journal\\dependencies\\template.ftl",
+			"**\\servicebuilder\\dependencies\\props.ftl"
+		};
+
+		excludes = ArrayUtil.append(excludes, _excludes);
+
+		directoryScanner.setExcludes(excludes);
+
 		directoryScanner.setIncludes(new String[] {"**\\*.ftl"});
-		directoryScanner.setExcludes(
-			new String[] {
-				"**\\journal\\dependencies\\template.ftl",
-				"**\\servicebuilder\\dependencies\\props.ftl"
-			});
 
 		List<String> fileNames = _sourceFormatterHelper.scanForFiles(
 			directoryScanner);
@@ -2552,9 +2569,12 @@ public class SourceFormatter {
 
 		directoryScanner.setBasedir(basedir);
 
+		String[] excludes = _excludes;
+
 		if (_portalSource) {
-			directoryScanner.setExcludes(
-				new String[] {"**\\classes\\**", "**\\bin\\**"});
+			excludes = ArrayUtil.append(
+				excludes, new String[] {"**\\classes\\**", "**\\bin\\**"});
+
 			directoryScanner.setIncludes(
 				new String[] {
 					"**\\portal-ext.properties",
@@ -2567,6 +2587,8 @@ public class SourceFormatter {
 					"**\\portal.properties", "**\\portal-ext.properties"
 				});
 		}
+
+		directoryScanner.setExcludes(excludes);
 
 		List<String> fileNames = _sourceFormatterHelper.scanForFiles(
 			directoryScanner);
@@ -2645,6 +2667,7 @@ public class SourceFormatter {
 			DirectoryScanner directoryScanner = new DirectoryScanner();
 
 			directoryScanner.setBasedir(basedir);
+			directoryScanner.setExcludes(_excludes);
 			directoryScanner.setIncludes(new String[] {"**\\portlet.xml"});
 
 			List<String> fileNames = _sourceFormatterHelper.scanForFiles(
@@ -2702,6 +2725,7 @@ public class SourceFormatter {
 		DirectoryScanner directoryScanner = new DirectoryScanner();
 
 		directoryScanner.setBasedir(basedir);
+		directoryScanner.setExcludes(_excludes);
 		directoryScanner.setIncludes(new String[] {"**\\service.xml"});
 
 		List<String> fileNames = _sourceFormatterHelper.scanForFiles(
@@ -2835,6 +2859,7 @@ public class SourceFormatter {
 		DirectoryScanner directoryScanner = new DirectoryScanner();
 
 		directoryScanner.setBasedir(basedir);
+		directoryScanner.setExcludes(_excludes);
 		directoryScanner.setIncludes(new String[] {"**\\sql\\*.sql"});
 
 		List<String> fileNames = _sourceFormatterHelper.scanForFiles(
@@ -3061,11 +3086,16 @@ public class SourceFormatter {
 		DirectoryScanner directoryScanner = new DirectoryScanner();
 
 		directoryScanner.setBasedir(basedir);
+
+		String[] excludes = {
+			"**\\classes\\**", "**\\bin\\**", "**\\WEB-INF\\tld\\**"
+		};
+
+		excludes = ArrayUtil.append(excludes, _excludes);
+
+		directoryScanner.setExcludes(excludes);
+
 		directoryScanner.setIncludes(new String[] {"**\\*.tld"});
-		directoryScanner.setExcludes(
-			new String[] {
-				"**\\classes\\**", "**\\bin\\**", "**\\WEB-INF\\tld\\**"
-			});
 
 		List<String> fileNames = _sourceFormatterHelper.scanForFiles(
 			directoryScanner);
@@ -3184,6 +3214,7 @@ public class SourceFormatter {
 			DirectoryScanner directoryScanner = new DirectoryScanner();
 
 			directoryScanner.setBasedir(basedir);
+			directoryScanner.setExcludes(_excludes);
 			directoryScanner.setIncludes(new String[] {"**\\web.xml"});
 
 			List<String> fileNames = _sourceFormatterHelper.scanForFiles(
