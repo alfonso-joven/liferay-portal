@@ -22,7 +22,6 @@ import com.liferay.portal.kernel.security.pacl.DoPrivileged;
 import com.liferay.portal.kernel.security.pacl.PACLConstants;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringPool;
-import com.liferay.portal.security.pacl.PACLBeanHandler;
 import com.liferay.portal.service.persistence.BasePersistence;
 
 import java.security.Permission;
@@ -96,10 +95,6 @@ public class BeanLocatorImpl implements BeanLocator {
 		_paclServletContextName = paclServletContextName;
 	}
 
-	public void setPACLWrapPersistence(boolean paclWrapPersistence) {
-		_paclWrapPersistence = paclWrapPersistence;
-	}
-
 	protected Object doLocate(String name) throws Exception {
 		if (_log.isDebugEnabled()) {
 			_log.debug("Locating " + name);
@@ -136,26 +131,7 @@ public class BeanLocatorImpl implements BeanLocator {
 			return velocityBean;
 		}
 
-		Object bean = _applicationContext.getBean(name);
-
-		if (_paclWrapPersistence && (bean != null) &&
-			(bean instanceof BasePersistence)) {
-
-			Object paclPersistenceBean = _paclPersistenceBeans.get(name);
-
-			if (paclPersistenceBean != null) {
-				return paclPersistenceBean;
-			}
-
-			paclPersistenceBean = ProxyUtil.newProxyInstance(
-				_classLoader, getInterfaces(bean), new PACLBeanHandler(bean));
-
-			_paclPersistenceBeans.put(name, paclPersistenceBean);
-
-			return paclPersistenceBean;
-		}
-
-		return bean;
+		return _applicationContext.getBean(name);
 	}
 
 	protected void getInterfaces(
@@ -193,10 +169,7 @@ public class BeanLocatorImpl implements BeanLocator {
 
 	private ApplicationContext _applicationContext;
 	private ClassLoader _classLoader;
-	private Map<String, Object> _paclPersistenceBeans =
-		new ConcurrentHashMap<String, Object>();
 	private String _paclServletContextName;
-	private boolean _paclWrapPersistence;
 	private Map<String, Object> _velocityBeans =
 		new ConcurrentHashMap<String, Object>();
 
