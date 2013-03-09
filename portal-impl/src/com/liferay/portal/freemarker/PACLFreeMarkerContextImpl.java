@@ -19,8 +19,8 @@ import com.liferay.portal.security.pacl.PACLPolicy;
 import java.util.Map;
 
 /**
- * @author Raymond Augé
- * @deprecated As of 6.1.3
+ * @author     Raymond Augé
+ * @deprecated As of 6.2.0
  */
 public class PACLFreeMarkerContextImpl extends FreeMarkerContextImpl {
 
