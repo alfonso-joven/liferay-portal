@@ -74,20 +74,20 @@ public class FreeMarkerEngineImpl implements FreeMarkerEngine {
 		ClassLoader contextClassLoader =
 			ClassLoaderUtil.getContextClassLoader();
 
-		FreeMarkerContextImpl classLoaderContext =
+		FreeMarkerContextImpl freeMarkerContextImpl =
 			_classLoaderFreeMarkerContexts.get(contextClassLoader);
 
-		if (classLoaderContext == null) {
-			classLoaderContext = new FreeMarkerContextImpl();
+		if (freeMarkerContextImpl == null) {
+			freeMarkerContextImpl = new FreeMarkerContextImpl();
 
 			FreeMarkerVariablesUtil.insertHelperUtilities(
-				classLoaderContext, null);
+				freeMarkerContextImpl, null);
 
 			_classLoaderFreeMarkerContexts.put(
-				contextClassLoader, classLoaderContext);
+				contextClassLoader, freeMarkerContextImpl);
 		}
 
-		return classLoaderContext;
+		return freeMarkerContextImpl;
 	}
 
 	public FreeMarkerContext getWrappedRestrictedToolsContext() {
