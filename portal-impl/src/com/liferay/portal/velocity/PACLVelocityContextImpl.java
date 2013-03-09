@@ -18,6 +18,7 @@ import com.liferay.portal.security.pacl.PACLPolicy;
 
 /**
  * @author Raymond Augé
+ * @deprecated As of 6.1.3
  */
 public class PACLVelocityContextImpl extends VelocityContextImpl {
 

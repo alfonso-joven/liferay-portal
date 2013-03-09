@@ -22,9 +22,6 @@ import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.Validator;
-import com.liferay.portal.security.lang.PortalSecurityManagerThreadLocal;
-import com.liferay.portal.security.pacl.PACLPolicy;
-import com.liferay.portal.security.pacl.PACLPolicyManager;
 import com.liferay.portal.util.ClassLoaderUtil;
 import com.liferay.portal.util.PropsValues;
 
@@ -77,37 +74,20 @@ public class FreeMarkerEngineImpl implements FreeMarkerEngine {
 		ClassLoader contextClassLoader =
 			ClassLoaderUtil.getContextClassLoader();
 
-		PACLPolicy threadLocalPACLPolicy =
-			PortalSecurityManagerThreadLocal.getPACLPolicy();
+		FreeMarkerContextImpl classLoaderContext =
+			_classLoaderFreeMarkerContexts.get(contextClassLoader);
 
-		PACLPolicy contextClassLoaderPACLPolicy =
-			PACLPolicyManager.getPACLPolicy(contextClassLoader);
+		if (classLoaderContext == null) {
+			classLoaderContext = new FreeMarkerContextImpl();
 
-		try {
-			PortalSecurityManagerThreadLocal.setPACLPolicy(
-				contextClassLoaderPACLPolicy);
+			FreeMarkerVariablesUtil.insertHelperUtilities(
+				classLoaderContext, null);
 
-			FreeMarkerContextImpl classLoaderContext =
-				_classLoaderFreeMarkerContexts.get(contextClassLoader);
-
-			if (classLoaderContext == null) {
-				classLoaderContext = new FreeMarkerContextImpl();
-
-				FreeMarkerVariablesUtil.insertHelperUtilities(
-					classLoaderContext, null);
-
-				_classLoaderFreeMarkerContexts.put(
-					contextClassLoader, classLoaderContext);
-			}
-
-			return new PACLFreeMarkerContextImpl(
-				classLoaderContext.getWrappedContext(),
-				contextClassLoaderPACLPolicy);
+			_classLoaderFreeMarkerContexts.put(
+				contextClassLoader, classLoaderContext);
 		}
-		finally {
-			PortalSecurityManagerThreadLocal.setPACLPolicy(
-				threadLocalPACLPolicy);
-		}
+
+		return classLoaderContext;
 	}
 
 	public FreeMarkerContext getWrappedRestrictedToolsContext() {
@@ -216,29 +196,10 @@ public class FreeMarkerEngineImpl implements FreeMarkerEngine {
 		FreeMarkerContextImpl freeMarkerContextImpl =
 			(FreeMarkerContextImpl)freeMarkerContext;
 
-		PACLPolicy threadLocalPACLPolicy =
-			PortalSecurityManagerThreadLocal.getPACLPolicy();
+		Template template = _configuration.getTemplate(
+			freeMarkerTemplateId, StringPool.UTF8);
 
-		try {
-			if (freeMarkerContextImpl instanceof PACLFreeMarkerContextImpl) {
-				PACLFreeMarkerContextImpl paclContextImpl =
-					(PACLFreeMarkerContextImpl)freeMarkerContextImpl;
-
-				PortalSecurityManagerThreadLocal.setPACLPolicy(
-					paclContextImpl.getPaclPolicy());
-			}
-
-			Template template = _configuration.getTemplate(
-				freeMarkerTemplateId, StringPool.UTF8);
-
-			template.process(freeMarkerContextImpl.getWrappedContext(), writer);
-		}
-		finally {
-			if (freeMarkerContextImpl instanceof PACLFreeMarkerContextImpl) {
-				PortalSecurityManagerThreadLocal.setPACLPolicy(
-					threadLocalPACLPolicy);
-			}
-		}
+		template.process(freeMarkerContextImpl.getWrappedContext(), writer);
 
 		return true;
 	}

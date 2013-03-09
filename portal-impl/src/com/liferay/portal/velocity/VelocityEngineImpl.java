@@ -23,9 +23,6 @@ import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.kernel.velocity.VelocityContext;
 import com.liferay.portal.kernel.velocity.VelocityEngine;
 import com.liferay.portal.kernel.velocity.VelocityVariablesUtil;
-import com.liferay.portal.security.lang.PortalSecurityManagerThreadLocal;
-import com.liferay.portal.security.pacl.PACLPolicy;
-import com.liferay.portal.security.pacl.PACLPolicyManager;
 import com.liferay.portal.util.ClassLoaderUtil;
 import com.liferay.portal.util.PropsUtil;
 import com.liferay.portal.util.PropsValues;
@@ -85,37 +82,20 @@ public class VelocityEngineImpl implements VelocityEngine {
 		ClassLoader contextClassLoader =
 			ClassLoaderUtil.getContextClassLoader();
 
-		PACLPolicy threadLocalPACLPolicy =
-			PortalSecurityManagerThreadLocal.getPACLPolicy();
+		VelocityContextImpl velocityContextImpl =
+			_classLoaderVelocityContexts.get(contextClassLoader);
 
-		PACLPolicy contextClassLoaderPACLPolicy =
-			PACLPolicyManager.getPACLPolicy(contextClassLoader);
+		if (velocityContextImpl == null) {
+			velocityContextImpl = new VelocityContextImpl();
 
-		try {
-			PortalSecurityManagerThreadLocal.setPACLPolicy(
-				contextClassLoaderPACLPolicy);
+			VelocityVariablesUtil.insertHelperUtilities(
+				velocityContextImpl, null);
 
-			VelocityContextImpl velocityContextImpl =
-				_classLoaderVelocityContexts.get(contextClassLoader);
-
-			if (velocityContextImpl == null) {
-				velocityContextImpl = new VelocityContextImpl();
-
-				VelocityVariablesUtil.insertHelperUtilities(
-					velocityContextImpl, null);
-
-				_classLoaderVelocityContexts.put(
-					contextClassLoader, velocityContextImpl);
-			}
-
-			return new PACLVelocityContextImpl(
-				velocityContextImpl.getWrappedVelocityContext(),
-				contextClassLoaderPACLPolicy);
+			_classLoaderVelocityContexts.put(
+				contextClassLoader, velocityContextImpl);
 		}
-		finally {
-			PortalSecurityManagerThreadLocal.setPACLPolicy(
-				threadLocalPACLPolicy);
-		}
+
+		return velocityContextImpl;
 	}
 
 	public VelocityContext getWrappedRestrictedToolsContext() {
@@ -249,28 +229,9 @@ public class VelocityEngineImpl implements VelocityEngine {
 		VelocityContextImpl velocityContextImpl =
 			(VelocityContextImpl)velocityContext;
 
-		PACLPolicy threadLocalPACLPolicy =
-			PortalSecurityManagerThreadLocal.getPACLPolicy();
-
-		try {
-			if (velocityContextImpl instanceof PACLVelocityContextImpl) {
-				PACLVelocityContextImpl paclContextImpl =
-					(PACLVelocityContextImpl)velocityContextImpl;
-
-				PortalSecurityManagerThreadLocal.setPACLPolicy(
-					paclContextImpl.getPaclPolicy());
-			}
-
-			return _velocityEngine.mergeTemplate(
-				velocityTemplateId, StringPool.UTF8,
-				velocityContextImpl.getWrappedVelocityContext(), writer);
-		}
-		finally {
-			if (velocityContextImpl instanceof PACLVelocityContextImpl) {
-				PortalSecurityManagerThreadLocal.setPACLPolicy(
-					threadLocalPACLPolicy);
-			}
-		}
+		return _velocityEngine.mergeTemplate(
+			velocityTemplateId, StringPool.UTF8,
+			velocityContextImpl.getWrappedVelocityContext(), writer);
 	}
 
 	public boolean mergeTemplate(
