@@ -22,7 +22,6 @@ import com.liferay.portal.kernel.security.pacl.DoPrivileged;
 import com.liferay.portal.kernel.security.pacl.PACLConstants;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringPool;
-import com.liferay.portal.service.persistence.BasePersistence;
 
 import java.security.Permission;
 
