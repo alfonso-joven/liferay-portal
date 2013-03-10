@@ -21,7 +21,6 @@ import com.liferay.portal.kernel.spring.util.SpringFactoryException;
 import com.liferay.portal.kernel.util.InstanceFactory;
 import com.liferay.portal.kernel.util.SetUtil;
 import com.liferay.portal.kernel.util.StringUtil;
-import com.liferay.portal.security.lang.PortalSecurityManagerThreadLocal;
 import com.liferay.portal.util.ClassLoaderUtil;
 
 import java.util.HashMap;
@@ -74,11 +73,6 @@ public class SpringFactoryImpl implements SpringFactory {
 			throw new SpringFactoryException("Undefined class " + className);
 		}
 
-		boolean enabled = PortalSecurityManagerThreadLocal.isEnabled();
-
-		try {
-			PortalSecurityManagerThreadLocal.setEnabled(false);
-
 			Object bean = InstanceFactory.newInstance(
 				ClassLoaderUtil.getPortalClassLoader(), className);
 
@@ -101,10 +95,6 @@ public class SpringFactoryImpl implements SpringFactory {
 			}
 
 			return bean;
-		}
-		finally {
-			PortalSecurityManagerThreadLocal.setEnabled(enabled);
-		}
 	}
 
 	private Map<String, Set<String>> _beanDefinitions;

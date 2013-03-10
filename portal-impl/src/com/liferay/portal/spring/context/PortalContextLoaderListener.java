@@ -142,8 +142,6 @@ public class PortalContextLoaderListener extends ContextLoaderListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent servletContextEvent) {
-		PortalSecurityManagerThreadLocal.setEnabled(false);
-
 		DBFactoryUtil.reset();
 		DeployManagerUtil.reset();
 		InstancePool.reset();
@@ -181,8 +179,6 @@ public class PortalContextLoaderListener extends ContextLoaderListener {
 		}
 		finally {
 			PortalContextLoaderLifecycleThreadLocal.setInitializing(false);
-
-			PortalSecurityManagerThreadLocal.setEnabled(true);
 		}
 
 		ApplicationContext applicationContext =

@@ -32,7 +32,6 @@ import com.liferay.portal.kernel.servlet.JspFactorySwapper;
 import com.liferay.portal.kernel.util.ReleaseInfo;
 import com.liferay.portal.kernel.velocity.VelocityEngineUtil;
 import com.liferay.portal.plugin.PluginPackageIndexer;
-import com.liferay.portal.security.lang.PortalSecurityManagerThreadLocal;
 import com.liferay.portal.service.LockLocalServiceUtil;
 import com.liferay.portal.tools.DBUpgrader;
 import com.liferay.portlet.messageboards.util.MBIndexer;
@@ -69,11 +68,7 @@ public class StartupAction extends SimpleAction {
 			_log.debug("Clear locks");
 		}
 
-		boolean enabled = PortalSecurityManagerThreadLocal.isEnabled();
-
 		try {
-			PortalSecurityManagerThreadLocal.setEnabled(false);
-
 			LockLocalServiceUtil.clear();
 		}
 		catch (Exception e) {
@@ -81,9 +76,6 @@ public class StartupAction extends SimpleAction {
 				_log.warn(
 					"Unable to clear locks because Lock table does not exist");
 			}
-		}
-		finally {
-			PortalSecurityManagerThreadLocal.setEnabled(enabled);
 		}
 
 		// Shutdown hook
@@ -123,16 +115,7 @@ public class StartupAction extends SimpleAction {
 			_log.debug("Upgrade database");
 		}
 
-		enabled = PortalSecurityManagerThreadLocal.isEnabled();
-
-		try {
-			PortalSecurityManagerThreadLocal.setEnabled(false);
-
-			DBUpgrader.upgrade();
-		}
-		finally {
-			PortalSecurityManagerThreadLocal.setEnabled(enabled);
-		}
+		DBUpgrader.upgrade();
 
 		// Messaging
 
