@@ -117,6 +117,8 @@ import com.liferay.portal.security.auth.ScreenNameValidator;
 import com.liferay.portal.security.auth.ScreenNameValidatorFactory;
 import com.liferay.portal.security.ldap.AttributesTransformer;
 import com.liferay.portal.security.ldap.AttributesTransformerFactory;
+import com.liferay.portal.security.pacl.PACLPolicy;
+import com.liferay.portal.security.pacl.PACLPolicyManager;
 import com.liferay.portal.security.pwd.PwdToolkitUtil;
 import com.liferay.portal.security.pwd.Toolkit;
 import com.liferay.portal.security.pwd.ToolkitWrapper;
@@ -134,6 +136,7 @@ import com.liferay.portal.util.PortalInstances;
 import com.liferay.portal.util.PortalUtil;
 import com.liferay.portal.util.PropsUtil;
 import com.liferay.portal.util.PropsValues;
+
 import com.liferay.portlet.ControlPanelEntry;
 import com.liferay.portlet.DefaultControlPanelEntryFactory;
 import com.liferay.portlet.documentlibrary.antivirus.AntivirusScanner;
@@ -289,6 +292,31 @@ public class HookHotDeployListener
 			throwHotDeployException(
 				hotDeployEvent, "Error unregistering hook for ", t);
 		}
+	}
+
+	protected boolean checkPermission(
+		String name, ClassLoader portletClassLoader, Object subject,
+		String comment) {
+
+		PACLPolicy paclPolicy = PACLPolicyManager.getPACLPolicy(
+			portletClassLoader);
+
+		if (paclPolicy == null) {
+			return true;
+		}
+
+		Permission permission = new PortalHookPermission(
+			name, portletClassLoader, subject);
+
+		if (paclPolicy.implies(permission)) {
+			return true;
+		}
+
+		if (_log.isInfoEnabled()) {
+			_log.info(comment);
+		}
+
+		return false;
 	}
 
 	protected boolean containsKey(Properties portalProperties, String key) {
@@ -580,23 +608,12 @@ public class HookHotDeployListener
 			String serviceType = serviceElement.elementText("service-type");
 			String serviceImpl = serviceElement.elementText("service-impl");
 
-			SecurityManager securityManager = System.getSecurityManager();
-
-			if (securityManager != null) {
-				Permission permission = new PortalHookPermission(
+			if (!checkPermission(
 					PACLConstants.PORTAL_HOOK_PERMISSION_SERVICE,
-					portletClassLoader, serviceType);
+					portletClassLoader, serviceType,
+					"Rejecting service " + serviceImpl)) {
 
-				try {
-					securityManager.checkPermission(permission);
-				}
-				catch (SecurityException se) {
-					if (_log.isInfoEnabled()) {
-						_log.info("Rejecting service " + serviceImpl);
-					}
-
-					continue;
-				}
+				continue;
 			}
 
 			Class<?> serviceTypeClass = portletClassLoader.loadClass(
@@ -1088,23 +1105,12 @@ public class HookHotDeployListener
 			Element rootElement)
 		throws Exception {
 
-		SecurityManager securityManager = System.getSecurityManager();
-
-		if (securityManager != null) {
-			Permission permission = new PortalHookPermission(
+		if (!checkPermission(
 				PACLConstants.PORTAL_HOOK_PERMISSION_CUSTOM_JSP_DIR,
-				portletClassLoader, null);
+				portletClassLoader, null,
+				"Rejecting custom JSP directory")) {
 
-			try {
-				securityManager.checkPermission(permission);
-			}
-			catch (SecurityException se) {
-				if (_log.isInfoEnabled()) {
-					_log.info("Rejecting custom JSP directory");
-				}
-
-				return;
-			}
+			return;
 		}
 
 		String customJspDir = rootElement.elementText("custom-jsp-dir");
@@ -1302,23 +1308,12 @@ public class HookHotDeployListener
 			String indexerClassName = indexerPostProcessorElement.elementText(
 				"indexer-class-name");
 
-			SecurityManager securityManager = System.getSecurityManager();
-
-			if (securityManager != null) {
-				Permission permission = new PortalHookPermission(
+			if (!checkPermission(
 					PACLConstants.PORTAL_HOOK_PERMISSION_INDEXER,
-					portletClassLoader, indexerClassName);
+					portletClassLoader, indexerClassName,
+					"Rejecting indexer " + indexerClassName)) {
 
-				try {
-					securityManager.checkPermission(permission);
-				}
-				catch (SecurityException se) {
-					if (_log.isInfoEnabled()) {
-						_log.info("Rejecting indexer " + indexerClassName);
-					}
-
-					continue;
-				}
+				continue;
 			}
 
 			String indexerPostProcessorImpl =
@@ -1367,24 +1362,13 @@ public class HookHotDeployListener
 			Locale locale = getLocale(languagePropertiesLocation);
 
 			if (locale != null) {
-				SecurityManager securityManager = System.getSecurityManager();
-
-				if (securityManager != null) {
-					Permission permission = new PortalHookPermission(
+				if (!checkPermission(
 						PACLConstants.
 							PORTAL_HOOK_PERMISSION_LANGUAGE_PROPERTIES_LOCALE,
-						portletClassLoader, locale);
+						portletClassLoader, locale,
+						"Rejecting locale " + locale)) {
 
-					try {
-						securityManager.checkPermission(permission);
-					}
-					catch (SecurityException se) {
-						if (_log.isInfoEnabled()) {
-							_log.info("Rejecting locale " + locale);
-						}
-
-						continue;
-					}
+					continue;
 				}
 			}
 
@@ -1540,23 +1524,12 @@ public class HookHotDeployListener
 		while (iterator.hasNext()) {
 			String key = (String)iterator.next();
 
-			SecurityManager securityManager = System.getSecurityManager();
-
-			if (securityManager != null) {
-				Permission permission = new PortalHookPermission(
+			if (!checkPermission(
 					PACLConstants.PORTAL_HOOK_PERMISSION_PORTAL_PROPERTIES_KEY,
-					portletClassLoader, key);
+					portletClassLoader, key,
+					"Rejecting portal.properties key " + key)) {
 
-				try {
-					securityManager.checkPermission(permission);
-				}
-				catch (SecurityException se) {
-					if (_log.isInfoEnabled()) {
-						_log.info("Rejecting portal.properties key " + key);
-					}
-
-					iterator.remove();
-				}
+				iterator.remove();
 			}
 		}
 
@@ -2016,23 +1989,12 @@ public class HookHotDeployListener
 			ClassLoader portletClassLoader, Element parentElement)
 		throws Exception {
 
-		SecurityManager securityManager = System.getSecurityManager();
-
-		if (securityManager != null) {
-			Permission permission = new PortalHookPermission(
+		if (!checkPermission(
 				PACLConstants.PORTAL_HOOK_PERMISSION_SERVLET_FILTERS,
-				portletClassLoader, null);
+				portletClassLoader, null,
+				"Rejecting servlet filters")) {
 
-			try {
-				securityManager.checkPermission(permission);
-			}
-			catch (SecurityException se) {
-				if (_log.isInfoEnabled()) {
-					_log.info("Rejecting servlet filters");
-				}
-
-				return;
-			}
+			return;
 		}
 
 		ServletFiltersContainer servletFiltersContainer =
@@ -2171,24 +2133,12 @@ public class HookHotDeployListener
 			String strutsActionPath = strutsActionElement.elementText(
 				"struts-action-path");
 
-			SecurityManager securityManager = System.getSecurityManager();
-
-			if (securityManager != null) {
-				Permission permission = new PortalHookPermission(
+			if (!checkPermission(
 					PACLConstants.PORTAL_HOOK_PERMISSION_STRUTS_ACTION_PATH,
-					portletClassLoader, strutsActionPath);
+					portletClassLoader, strutsActionPath,
+					"Rejecting struts action path " + strutsActionPath)) {
 
-				try {
-					securityManager.checkPermission(permission);
-				}
-				catch (SecurityException se) {
-					if (_log.isInfoEnabled()) {
-						_log.info(
-							"Rejecting struts action path " + strutsActionPath);
-					}
-
-					continue;
-				}
+				continue;
 			}
 
 			String strutsActionImpl = strutsActionElement.elementText(
