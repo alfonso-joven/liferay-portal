@@ -42,7 +42,6 @@ import com.liferay.portal.kernel.util.ReferenceRegistry;
 import com.liferay.portal.kernel.util.ReflectionUtil;
 import com.liferay.portal.kernel.webcache.WebCachePoolUtil;
 import com.liferay.portal.module.framework.ModuleFrameworkUtil;
-import com.liferay.portal.security.lang.PortalSecurityManagerThreadLocal;
 import com.liferay.portal.security.permission.PermissionCacheUtil;
 import com.liferay.portal.servlet.filters.cache.CacheUtil;
 import com.liferay.portal.spring.bean.BeanReferenceRefreshUtil;
