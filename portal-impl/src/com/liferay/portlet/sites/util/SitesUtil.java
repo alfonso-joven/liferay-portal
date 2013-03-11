@@ -741,6 +741,10 @@ public class SitesUtil {
 		return true;
 	}
 
+	public static boolean isLayoutSortable(Layout layout) {
+		return isLayoutDeleteable(layout);
+	}
+
 	public static boolean isLayoutUpdateable(Layout layout) {
 		try {
 			if (layout instanceof VirtualLayout) {
