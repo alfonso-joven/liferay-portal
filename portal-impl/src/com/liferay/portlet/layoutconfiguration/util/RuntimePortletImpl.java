@@ -35,9 +35,6 @@ import com.liferay.portal.model.LayoutTemplate;
 import com.liferay.portal.model.LayoutTemplateConstants;
 import com.liferay.portal.model.Portlet;
 import com.liferay.portal.model.PortletConstants;
-import com.liferay.portal.security.lang.PortalSecurityManagerThreadLocal;
-import com.liferay.portal.security.pacl.PACLPolicy;
-import com.liferay.portal.security.pacl.PACLPolicyManager;
 import com.liferay.portal.service.LayoutTemplateLocalServiceUtil;
 import com.liferay.portal.service.PortletLocalServiceUtil;
 import com.liferay.portal.theme.PortletDisplay;
@@ -383,18 +380,11 @@ public class RuntimePortletImpl implements RuntimePortlet {
 		ClassLoader contextClassLoader =
 			ClassLoaderUtil.getContextClassLoader();
 
-		PACLPolicy contextClassLoaderPACLPolicy =
-			PACLPolicyManager.getPACLPolicy(contextClassLoader);
-		PACLPolicy pluginClassLoaderPACLPolicy =
-			PACLPolicyManager.getPACLPolicy(pluginClassLoader);
-
 		try {
 			if ((pluginClassLoader != null) &&
 				(pluginClassLoader != contextClassLoader)) {
 
 				ClassLoaderUtil.setContextClassLoader(pluginClassLoader);
-				PortalSecurityManagerThreadLocal.setPACLPolicy(
-					pluginClassLoaderPACLPolicy);
 			}
 
 			if (processTemplate) {
@@ -413,8 +403,6 @@ public class RuntimePortletImpl implements RuntimePortlet {
 			if ((pluginClassLoader != null) &&
 				(pluginClassLoader != contextClassLoader)) {
 
-				PortalSecurityManagerThreadLocal.setPACLPolicy(
-					contextClassLoaderPACLPolicy);
 				ClassLoaderUtil.setContextClassLoader(contextClassLoader);
 			}
 		}
