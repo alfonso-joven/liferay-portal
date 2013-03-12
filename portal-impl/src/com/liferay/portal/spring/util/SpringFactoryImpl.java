@@ -73,28 +73,28 @@ public class SpringFactoryImpl implements SpringFactory {
 			throw new SpringFactoryException("Undefined class " + className);
 		}
 
-			Object bean = InstanceFactory.newInstance(
-				ClassLoaderUtil.getPortalClassLoader(), className);
+		Object bean = InstanceFactory.newInstance(
+			ClassLoaderUtil.getPortalClassLoader(), className);
 
-			if (properties == null) {
-				return bean;
-			}
-
-			for (Map.Entry<String, Object> entry : properties.entrySet()) {
-				String name = entry.getKey();
-
-				if (!allowedProperties.contains(name)) {
-					throw new SpringFactoryException(
-						"Undefined property " + name + " for class " +
-							className);
-				}
-
-				Object value = entry.getValue();
-
-				BeanPropertiesUtil.setProperty(bean, name, value);
-			}
-
+		if (properties == null) {
 			return bean;
+		}
+
+		for (Map.Entry<String, Object> entry : properties.entrySet()) {
+			String name = entry.getKey();
+
+			if (!allowedProperties.contains(name)) {
+				throw new SpringFactoryException(
+					"Undefined property " + name + " for class " +
+						className);
+			}
+
+			Object value = entry.getValue();
+
+			BeanPropertiesUtil.setProperty(bean, name, value);
+		}
+
+		return bean;
 	}
 
 	private Map<String, Set<String>> _beanDefinitions;
