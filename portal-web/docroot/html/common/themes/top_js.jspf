@@ -222,7 +222,7 @@
 					return "<%= themeDisplay.getURLControlPanel() %>";
 				},
 				getURLHome: function() {
-					return "<%= themeDisplay.getURLHome() %>";
+					return "<%= HtmlUtil.escapeJS(themeDisplay.getURLHome()) %>";
 				},
 				getSessionId: function() {
 					<c:choose>
