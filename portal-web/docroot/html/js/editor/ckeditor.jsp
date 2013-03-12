@@ -105,12 +105,10 @@ String toolbarSet = (String)request.getAttribute("liferay-ui:input-editor:toolba
 		destroy: function() {
 			CKEDITOR.instances['<%= name %>'].destroy();
 
-			try
-			{
+			try {
 				delete window['<%= name %>'];
 			}
-			catch(e)
-			{
+			catch(e) {
 				window['<%= name %>'] = undefined;
 			}
 		},
