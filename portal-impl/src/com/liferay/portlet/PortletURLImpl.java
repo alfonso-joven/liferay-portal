@@ -892,7 +892,7 @@ public class PortletURLImpl
 			String name = entry.getKey();
 
 			if (!isParameterIncludedInPath(name)) {
-				sb.append(name);
+				sb.append(HttpUtil.encodeURL(name));
 				sb.append(StringPool.EQUAL);
 				sb.append(processValue(key, entry.getValue()));
 				sb.append(StringPool.AMPERSAND);
@@ -1002,7 +1002,7 @@ public class PortletURLImpl
 
 			Map.Entry<String, String[]> entry = itr.next();
 
-			sb.append(entry.getKey());
+			sb.append(HttpUtil.encodeURL(entry.getKey()));
 			sb.append(StringPool.EQUAL);
 			sb.append(processValue(key, entry.getValue()[0]));
 			sb.append(StringPool.AMPERSAND);
@@ -1031,7 +1031,7 @@ public class PortletURLImpl
 				name = publicRenderParameterName;
 			}
 
-			name = prependNamespace(name);
+			name = HttpUtil.encodeURL(prependNamespace(name));
 
 			for (int i = 0; i < values.length; i++) {
 				sb.append(name);
@@ -1065,7 +1065,7 @@ public class PortletURLImpl
 				}
 
 				sb.append("#p_");
-				sb.append(_portletId);
+				sb.append(HttpUtil.encodeURL(_portletId));
 			}
 		}
 
@@ -1169,7 +1169,7 @@ public class PortletURLImpl
 				sb.append("wsrp-fragmentID");
 				sb.append(StringPool.EQUAL);
 				sb.append("#p_");
-				sb.append(_portletId);
+				sb.append(HttpUtil.encodeURL(_portletId));
 				sb.append(StringPool.AMPERSAND);
 			}
 		}
@@ -1200,7 +1200,7 @@ public class PortletURLImpl
 				name = publicRenderParameterName;
 			}
 
-			name = prependNamespace(name);
+			name = HttpUtil.encodeURL(prependNamespace(name));
 
 			for (int i = 0; i < values.length; i++) {
 				parameterSb.append(name);
