@@ -19,11 +19,8 @@ import com.liferay.portal.kernel.bean.BeanLocatorException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.security.pacl.DoPrivileged;
-import com.liferay.portal.kernel.security.pacl.PACLConstants;
+import com.liferay.portal.kernel.security.pacl.permission.PortalRuntimePermission;
 import com.liferay.portal.kernel.util.ProxyUtil;
-import com.liferay.portal.kernel.util.StringPool;
-
-import java.security.Permission;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +50,8 @@ public class BeanLocatorImpl implements BeanLocator {
 	}
 
 	public ClassLoader getClassLoader() {
+		PortalRuntimePermission.checkGetClassLoader(_paclServletContextName);
+
 		return _classLoader;
 	}
 
@@ -100,15 +99,8 @@ public class BeanLocatorImpl implements BeanLocator {
 		}
 
 		if (name.equals("portletClassLoader")) {
-			SecurityManager securityManager = System.getSecurityManager();
-
-			if (securityManager != null) {
-				Permission permission = new RuntimePermission(
-					PACLConstants.RUNTIME_PERMISSION_GET_CLASSLOADER.concat(
-						StringPool.PERIOD).concat(_paclServletContextName));
-
-				securityManager.checkPermission(permission);
-			}
+			PortalRuntimePermission.checkGetClassLoader(
+				_paclServletContextName);
 		}
 
 		if (name.endsWith(VELOCITY_SUFFIX)) {
