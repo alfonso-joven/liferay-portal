@@ -185,6 +185,10 @@ public class HeaderCacheServletResponse extends HttpServletResponseWrapper {
 
 	@Override
 	public void sendRedirect(String location) throws IOException {
+		if (isCommitted()) {
+			throw new IllegalStateException("Send redirect after commit");
+		}
+
 		super.sendRedirect(location);
 
 		setStatus(SC_MOVED_PERMANENTLY);
