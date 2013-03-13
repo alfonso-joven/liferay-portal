@@ -552,7 +552,7 @@ Format dateFormatDateTime = FastDateFormatFactoryUtil.getDateTime(locale, timeZo
 							modal: true
 						},
 						id: '<%= namespace %>signInDialog',
-						title: Liferay.Language.get('sign-in'),
+						title: '<%= UnicodeLanguageUtil.get(pageContext, "sign-in") %>',
 						uri: '<%= loginURL.toString() %>'
 					}
 				);
