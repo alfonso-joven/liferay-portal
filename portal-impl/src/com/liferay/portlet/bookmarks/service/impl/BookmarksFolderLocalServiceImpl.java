@@ -148,6 +148,10 @@ public class BookmarksFolderLocalServiceImpl
 		return bookmarksFolderPersistence.findByPrimaryKey(folderId);
 	}
 
+	public List<BookmarksFolder> getFolders() throws SystemException {
+		return bookmarksFolderPersistence.findAll();
+	}
+
 	public List<BookmarksFolder> getFolders(long groupId)
 		throws SystemException {
 
@@ -172,6 +176,12 @@ public class BookmarksFolderLocalServiceImpl
 		throws SystemException {
 
 		return bookmarksFolderPersistence.countByG_P(groupId, parentFolderId);
+	}
+
+	public List<BookmarksFolder> getNoResourceBlockFolders()
+		throws SystemException {
+
+		return bookmarksFolderFinder.findByNoResourceBlocks();
 	}
 
 	public void getSubfolderIds(

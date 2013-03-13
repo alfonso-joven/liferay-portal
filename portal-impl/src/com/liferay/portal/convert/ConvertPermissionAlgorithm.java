@@ -70,7 +70,9 @@ import com.liferay.portal.util.MaintenanceUtil;
 import com.liferay.portal.util.PropsValues;
 import com.liferay.portal.util.ShutdownUtil;
 import com.liferay.portlet.bookmarks.model.BookmarksEntry;
+import com.liferay.portlet.bookmarks.model.BookmarksFolder;
 import com.liferay.portlet.bookmarks.service.BookmarksEntryLocalServiceUtil;
+import com.liferay.portlet.bookmarks.service.BookmarksFolderLocalServiceUtil;
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -96,6 +98,7 @@ import java.util.Set;
  * </p>
  *
  * @author Alexander Chow
+ * @author Joshua Steven Rodriguez
  */
 public class ConvertPermissionAlgorithm extends ConvertProcess {
 
@@ -231,6 +234,22 @@ public class ConvertPermissionAlgorithm extends ConvertProcess {
 			ResourceBlockLocalServiceUtil.setIndividualScopePermissions(
 				entry.getCompanyId(), entry.getGroupId(),
 				BookmarksEntry.class.getName(), entry, ownerRole.getRoleId(),
+				actionIds);
+		}
+
+		actionIds = ResourceActionsUtil.getModelResourceActions(
+				BookmarksFolder.class.getName());
+
+		List<BookmarksFolder> folders =
+				BookmarksFolderLocalServiceUtil.getFolders();
+
+		for (BookmarksFolder folder : folders) {
+			Role ownerRole = RoleLocalServiceUtil.getRole(
+					folder.getCompanyId(), RoleConstants.OWNER);
+
+			ResourceBlockLocalServiceUtil.setIndividualScopePermissions(
+				folder.getCompanyId(), folder.getGroupId(),
+				BookmarksFolder.class.getName(), folder, ownerRole.getRoleId(),
 				actionIds);
 		}
 	}

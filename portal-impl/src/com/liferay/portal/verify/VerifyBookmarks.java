@@ -21,13 +21,17 @@ import com.liferay.portal.model.RoleConstants;
 import com.liferay.portal.security.permission.ResourceActionsUtil;
 import com.liferay.portal.service.ResourceBlockLocalServiceUtil;
 import com.liferay.portal.service.RoleLocalServiceUtil;
+import com.liferay.portal.util.PropsValues;
 import com.liferay.portlet.bookmarks.model.BookmarksEntry;
+import com.liferay.portlet.bookmarks.model.BookmarksFolder;
 import com.liferay.portlet.bookmarks.service.BookmarksEntryLocalServiceUtil;
+import com.liferay.portlet.bookmarks.service.BookmarksFolderLocalServiceUtil;
 
 import java.util.List;
 
 /**
  * @author Raymond Augé
+ * @author Joshua Steven Rodriguez
  */
 public class VerifyBookmarks extends VerifyProcess {
 
@@ -55,19 +59,39 @@ public class VerifyBookmarks extends VerifyProcess {
 			}
 		}
 
-		List<String> actionIds = ResourceActionsUtil.getModelResourceActions(
-			BookmarksEntry.class.getName());
+		if (PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM > 5) {
+			List<String> actionIds =
+				ResourceActionsUtil.getModelResourceActions(
+					BookmarksEntry.class.getName());
 
-		entries = BookmarksEntryLocalServiceUtil.getNoResourceBlockEntries();
+			entries =
+				BookmarksEntryLocalServiceUtil.getNoResourceBlockEntries();
 
-		for (BookmarksEntry entry : entries) {
-			Role ownerRole = RoleLocalServiceUtil.getRole(
-				entry.getCompanyId(), RoleConstants.OWNER);
+			for (BookmarksEntry entry : entries) {
+				Role ownerRole = RoleLocalServiceUtil.getRole(
+					entry.getCompanyId(), RoleConstants.OWNER);
 
-			ResourceBlockLocalServiceUtil.setIndividualScopePermissions(
-				entry.getCompanyId(), entry.getGroupId(),
-				BookmarksEntry.class.getName(), entry, ownerRole.getRoleId(),
-				actionIds);
+				ResourceBlockLocalServiceUtil.setIndividualScopePermissions(
+					entry.getCompanyId(), entry.getGroupId(),
+					BookmarksEntry.class.getName(), entry,
+					ownerRole.getRoleId(), actionIds);
+			}
+
+			actionIds = ResourceActionsUtil.getModelResourceActions(
+				BookmarksFolder.class.getName());
+
+			List<BookmarksFolder> folders =
+				BookmarksFolderLocalServiceUtil.getNoResourceBlockFolders();
+
+			for (BookmarksFolder folder : folders) {
+				Role ownerRole = RoleLocalServiceUtil.getRole(
+					folder.getCompanyId(), RoleConstants.OWNER);
+
+				ResourceBlockLocalServiceUtil.setIndividualScopePermissions(
+					folder.getCompanyId(), folder.getGroupId(),
+					BookmarksFolder.class.getName(), folder,
+					ownerRole.getRoleId(), actionIds);
+			}
 		}
 
 		if (_log.isDebugEnabled()) {
