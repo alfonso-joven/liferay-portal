@@ -19,15 +19,15 @@ package com.liferay.portal.kernel.security.pacl.permission;
  */
 public class PortalFilePermission {
 
-	public static void checkCopy(String source, String destination) {
+	public static void checkCopy(String sourcePath, String destinationPath) {
 		SecurityManager securityManager = System.getSecurityManager();
 
 		if (securityManager == null) {
 			return;
 		}
 
-		securityManager.checkRead(source);
-		securityManager.checkWrite(destination);
+		securityManager.checkRead(sourcePath);
+		securityManager.checkWrite(destinationPath);
 	}
 
 	public static void checkDelete(String path) {
@@ -40,17 +40,17 @@ public class PortalFilePermission {
 		securityManager.checkDelete(path);
 	}
 
-	public static void checkMove(String source, String destination) {
+	public static void checkMove(String sourcePath, String destinationPath) {
 		SecurityManager securityManager = System.getSecurityManager();
 
 		if (securityManager == null) {
 			return;
 		}
 
-		securityManager.checkRead(source);
-		securityManager.checkWrite(destination);
-		securityManager.checkDelete(source);
-		securityManager.checkDelete(destination);
+		securityManager.checkRead(sourcePath);
+		securityManager.checkWrite(destinationPath);
+		securityManager.checkDelete(sourcePath);
+		securityManager.checkDelete(destinationPath);
 	}
 
 	public static void checkRead(String path) {
