@@ -156,6 +156,8 @@ public class SimpleCaptchaImpl implements Captcha {
 		HttpServletResponse response = PortalUtil.getHttpServletResponse(
 			portletResponse);
 
+		response.setContentType(ContentTypes.IMAGE_PNG);
+
 		CaptchaServletUtil.writeImage(
 			response.getOutputStream(), simpleCaptcha.getImage());
 	}
