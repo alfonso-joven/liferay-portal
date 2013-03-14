@@ -56,6 +56,7 @@ import com.liferay.portlet.bookmarks.service.BookmarksFolderLocalService;
 import com.liferay.portlet.bookmarks.service.BookmarksFolderService;
 import com.liferay.portlet.bookmarks.service.persistence.BookmarksEntryFinder;
 import com.liferay.portlet.bookmarks.service.persistence.BookmarksEntryPersistence;
+import com.liferay.portlet.bookmarks.service.persistence.BookmarksFolderFinder;
 import com.liferay.portlet.bookmarks.service.persistence.BookmarksFolderPersistence;
 import com.liferay.portlet.expando.service.ExpandoValueLocalService;
 import com.liferay.portlet.expando.service.ExpandoValueService;
@@ -440,6 +441,25 @@ public abstract class BookmarksEntryLocalServiceBaseImpl
 	public void setBookmarksFolderPersistence(
 		BookmarksFolderPersistence bookmarksFolderPersistence) {
 		this.bookmarksFolderPersistence = bookmarksFolderPersistence;
+	}
+
+	/**
+	 * Returns the bookmarks folder finder.
+	 *
+	 * @return the bookmarks folder finder
+	 */
+	public BookmarksFolderFinder getBookmarksFolderFinder() {
+		return bookmarksFolderFinder;
+	}
+
+	/**
+	 * Sets the bookmarks folder finder.
+	 *
+	 * @param bookmarksFolderFinder the bookmarks folder finder
+	 */
+	public void setBookmarksFolderFinder(
+		BookmarksFolderFinder bookmarksFolderFinder) {
+		this.bookmarksFolderFinder = bookmarksFolderFinder;
 	}
 
 	/**
@@ -972,6 +992,8 @@ public abstract class BookmarksEntryLocalServiceBaseImpl
 	protected BookmarksFolderService bookmarksFolderService;
 	@BeanReference(type = BookmarksFolderPersistence.class)
 	protected BookmarksFolderPersistence bookmarksFolderPersistence;
+	@BeanReference(type = BookmarksFolderFinder.class)
+	protected BookmarksFolderFinder bookmarksFolderFinder;
 	@BeanReference(type = CounterLocalService.class)
 	protected CounterLocalService counterLocalService;
 	@BeanReference(type = ResourceLocalService.class)

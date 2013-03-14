@@ -354,6 +354,11 @@ public class BookmarksFolderLocalServiceUtil {
 		return getService().getFoldersCount(groupId, parentFolderId);
 	}
 
+	public static java.util.List<com.liferay.portlet.bookmarks.model.BookmarksFolder> getNoResourceBlockFolders()
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().getNoResourceBlockFolders();
+	}
+
 	public static void getSubfolderIds(
 		java.util.List<java.lang.Long> folderIds, long groupId, long folderId)
 		throws com.liferay.portal.kernel.exception.SystemException {

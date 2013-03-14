@@ -355,6 +355,11 @@ public class BookmarksFolderLocalServiceWrapper
 			parentFolderId);
 	}
 
+	public java.util.List<com.liferay.portlet.bookmarks.model.BookmarksFolder> getNoResourceBlockFolders()
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _bookmarksFolderLocalService.getNoResourceBlockFolders();
+	}
+
 	public void getSubfolderIds(java.util.List<java.lang.Long> folderIds,
 		long groupId, long folderId)
 		throws com.liferay.portal.kernel.exception.SystemException {
