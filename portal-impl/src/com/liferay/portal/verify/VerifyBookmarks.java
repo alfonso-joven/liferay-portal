@@ -37,6 +37,15 @@ public class VerifyBookmarks extends VerifyProcess {
 
 	@Override
 	protected void doVerify() throws Exception {
+		verifyAssets();
+
+		if (PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM > 5) {
+			verifyResourceBlocksForEntries();
+			verifyResourceBlocksForFolders();
+		}
+	}
+
+	protected void verifyAssets() throws Exception {
 		List<BookmarksEntry> entries =
 			BookmarksEntryLocalServiceUtil.getNoAssetEntries();
 
@@ -59,13 +68,25 @@ public class VerifyBookmarks extends VerifyProcess {
 			}
 		}
 
-		if (PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM > 5) {
+		if (_log.isDebugEnabled()) {
+			_log.debug("Assets verified for entries");
+		}
+	}
+
+	protected void verifyResourceBlocksForEntries() throws Exception {
+		List<BookmarksEntry> entries =
+			BookmarksEntryLocalServiceUtil.getNoResourceBlockEntries();
+
+		if (_log.isDebugEnabled()) {
+			_log.debug(
+				"Processing " + entries.size() +
+					" entries with no resource blocks");
+		}
+
+		if (!entries.isEmpty()) {
 			List<String> actionIds =
 				ResourceActionsUtil.getModelResourceActions(
 					BookmarksEntry.class.getName());
-
-			entries =
-				BookmarksEntryLocalServiceUtil.getNoResourceBlockEntries();
 
 			for (BookmarksEntry entry : entries) {
 				Role ownerRole = RoleLocalServiceUtil.getRole(
@@ -76,12 +97,27 @@ public class VerifyBookmarks extends VerifyProcess {
 					BookmarksEntry.class.getName(), entry,
 					ownerRole.getRoleId(), actionIds);
 			}
+		}
 
-			actionIds = ResourceActionsUtil.getModelResourceActions(
-				BookmarksFolder.class.getName());
+		if (_log.isDebugEnabled()) {
+			_log.debug("Resource blocks verified for entries");
+		}
+	}
 
-			List<BookmarksFolder> folders =
-				BookmarksFolderLocalServiceUtil.getNoResourceBlockFolders();
+	protected void verifyResourceBlocksForFolders() throws Exception {
+		List<BookmarksFolder> folders =
+			BookmarksFolderLocalServiceUtil.getNoResourceBlockFolders();
+
+		if (_log.isDebugEnabled()) {
+			_log.debug(
+				"Processing " + folders.size() +
+					" folders with no resource blocks");
+		}
+
+		if (!folders.isEmpty()) {
+			List<String> actionIds =
+				ResourceActionsUtil.getModelResourceActions(
+					BookmarksFolder.class.getName());
 
 			for (BookmarksFolder folder : folders) {
 				Role ownerRole = RoleLocalServiceUtil.getRole(
@@ -95,7 +131,7 @@ public class VerifyBookmarks extends VerifyProcess {
 		}
 
 		if (_log.isDebugEnabled()) {
-			_log.debug("Assets verified for entries");
+			_log.debug("Resource blocks verified for folders");
 		}
 	}
 
