@@ -148,10 +148,6 @@ public class BookmarksFolderLocalServiceImpl
 		return bookmarksFolderPersistence.findByPrimaryKey(folderId);
 	}
 
-	public List<BookmarksFolder> getFolders() throws SystemException {
-		return bookmarksFolderPersistence.findAll();
-	}
-
 	public List<BookmarksFolder> getFolders(long groupId)
 		throws SystemException {
 

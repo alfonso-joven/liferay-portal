@@ -241,7 +241,8 @@ public class ConvertPermissionAlgorithm extends ConvertProcess {
 				BookmarksFolder.class.getName());
 
 		List<BookmarksFolder> folders =
-				BookmarksFolderLocalServiceUtil.getFolders();
+			BookmarksFolderLocalServiceUtil.getBookmarksFolders(
+				QueryUtil.ALL_POS, QueryUtil.ALL_POS);
 
 		for (BookmarksFolder folder : folders) {
 			Role ownerRole = RoleLocalServiceUtil.getRole(
