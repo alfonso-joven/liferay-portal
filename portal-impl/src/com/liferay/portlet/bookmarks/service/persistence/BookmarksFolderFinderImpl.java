@@ -40,7 +40,6 @@ public class BookmarksFolderFinderImpl
 		Session session = null;
 
 		try {
-
 			session = openSession();
 
 			String sql = CustomSQLUtil.get(FIND_BY_NO_RESOURCE_BLOCKS);

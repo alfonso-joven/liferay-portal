@@ -39,7 +39,7 @@ public class VerifyBookmarks extends VerifyProcess {
 	protected void doVerify() throws Exception {
 		verifyAssets();
 
-		if (PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM > 5) {
+		if (PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM == 6) {
 			verifyResourceBlocksForEntries();
 			verifyResourceBlocksForFolders();
 		}

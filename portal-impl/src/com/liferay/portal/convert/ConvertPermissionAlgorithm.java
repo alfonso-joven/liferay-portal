@@ -238,7 +238,7 @@ public class ConvertPermissionAlgorithm extends ConvertProcess {
 		}
 
 		actionIds = ResourceActionsUtil.getModelResourceActions(
-				BookmarksFolder.class.getName());
+			BookmarksFolder.class.getName());
 
 		List<BookmarksFolder> folders =
 			BookmarksFolderLocalServiceUtil.getBookmarksFolders(
@@ -246,7 +246,7 @@ public class ConvertPermissionAlgorithm extends ConvertProcess {
 
 		for (BookmarksFolder folder : folders) {
 			Role ownerRole = RoleLocalServiceUtil.getRole(
-					folder.getCompanyId(), RoleConstants.OWNER);
+				folder.getCompanyId(), RoleConstants.OWNER);
 
 			ResourceBlockLocalServiceUtil.setIndividualScopePermissions(
 				folder.getCompanyId(), folder.getGroupId(),
