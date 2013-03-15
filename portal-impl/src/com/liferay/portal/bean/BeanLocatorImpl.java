@@ -125,6 +125,11 @@ public class BeanLocatorImpl implements BeanLocator {
 		return _applicationContext.getBean(name);
 	}
 
+	/**
+	 * @see {@link
+	 *      com.liferay.portal.security.lang.DoPrivilegedFactory#_getInterfaces(
+	 *      List, Class)}
+	 */
 	protected void getInterfaces(
 		List<Class<?>> interfaceClasses, Class<?> clazz) {
 
@@ -138,6 +143,11 @@ public class BeanLocatorImpl implements BeanLocator {
 		}
 	}
 
+	/**
+	 * @see {@link
+	 *      com.liferay.portal.security.lang.DoPrivilegedFactory#_getInterfaces(
+	 *      Object)}
+	 */
 	protected Class<?>[] getInterfaces(Object object) {
 		List<Class<?>> interfaceClasses = new ArrayList<Class<?>>();
 
