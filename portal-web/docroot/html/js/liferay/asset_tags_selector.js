@@ -320,12 +320,21 @@ AUI.add(
 										var serviceQueryObj = serviceQueryCache[key];
 
 										if (!serviceQueryObj) {
+											var serviceParameterTypes = [
+												'[J',
+												'java.lang.String',
+												'[Ljava.lang.String;',
+												'int',
+												'int'
+											];
+
 											serviceQueryObj = {
 												groupIds: instance.get('groupIds'),
 												name: '%' + term + '%',
 												properties: '',
 												begin: 0,
-												end: 20
+												end: 20,
+												serviceParameterTypes: A.JSON.stringify(serviceParameterTypes)
 											};
 
 											serviceQueryCache[key] = serviceQueryObj;
