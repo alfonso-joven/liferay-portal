@@ -80,7 +80,9 @@ public class PortalPolicy extends Policy {
 			location.contains(PropsValues.LIFERAY_LIB_GLOBAL_DIR) ||
 			location.contains(PropsValues.LIFERAY_LIB_GLOBAL_SHARED_DIR) ||
 			location.contains(PropsValues.LIFERAY_LIB_PORTAL_DIR) ||
-			location.contains(PropsValues.LIFERAY_WEB_PORTAL_DIR)) {
+			location.contains(PropsValues.LIFERAY_WEB_PORTAL_DIR) ||
+			location.contains(PropsValues.MODULE_FRAMEWORK_CORE_DIR) ||
+			location.contains(PropsValues.MODULE_FRAMEWORK_PORTAL_DIR)) {
 
 			if (permissionCollection == null) {
 				permissionCollection = new Permissions();
