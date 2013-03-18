@@ -154,7 +154,7 @@ html > .lfr-dockbar-pinned {
 
 	.approximate-date {
 		color: #999;
-    	font-weight: bold;
+		font-weight: bold;
 	}
 
 	.current-version {
@@ -185,8 +185,8 @@ html > .lfr-dockbar-pinned {
 
 	.real-date {
 		color: #999;
-    	display: block;
-    	text-align: right;
+		display: block;
+		text-align: right;
 	}
 
 	.taglib-workflow-status .workflow-status {
