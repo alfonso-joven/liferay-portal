@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2012 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -186,6 +186,11 @@ public class SourceFormatter {
 				int importY = line.lastIndexOf(".");
 
 				String importPackage = line.substring(importX + 1, importY);
+
+				if (importPackage.equals("java.lang")) {
+					continue;
+				}
+
 				String importClass = line.substring(
 					importY + 1, line.length() - 1);
 
@@ -1095,8 +1100,8 @@ public class SourceFormatter {
 
 		sb.append("<?xml version=\"1.0\"?>\n");
 		sb.append("<!DOCTYPE routes PUBLIC \"-//Liferay//DTD Friendly URL ");
-		sb.append("Routes 6.1.0//EN\" \"http://www.liferay.com/dtd/");
-		sb.append("liferay-friendly-url-routes_6_1_0.dtd\">\n\n<routes>\n");
+		sb.append("Routes 6.2.0//EN\" \"http://www.liferay.com/dtd/");
+		sb.append("liferay-friendly-url-routes_6_2_0.dtd\">\n\n<routes>\n");
 
 		for (ComparableRoute comparableRoute : comparableRoutes) {
 			sb.append("\t<route>\n");
@@ -1587,7 +1592,9 @@ public class SourceFormatter {
 						javaTermEndPosition = lastCommentOrAnnotationPos;
 					}
 
-					if (javaTermStartPosition != -1) {
+					if ((javaTermStartPosition != -1) &&
+						(javaTermEndPosition < content.length())) {
+
 						String javaTermContent = content.substring(
 							javaTermStartPosition, javaTermEndPosition);
 
