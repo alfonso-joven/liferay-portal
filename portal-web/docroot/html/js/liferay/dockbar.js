@@ -557,6 +557,7 @@ AUI.add(
 				instance._addMenu(
 					{
 						boundingBox: '#' + namespace + 'mySitesContainer',
+						constrain: true,
 						name: 'mySites',
 						trigger: '#' + namespace + 'mySites'
 					}
