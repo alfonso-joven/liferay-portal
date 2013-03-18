@@ -448,6 +448,7 @@ public class PermissionLocalServiceImpl extends PermissionLocalServiceBaseImpl {
 	 * @return the role's permissions
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public List<Permission> getRolePermissions(long roleId)
 		throws SystemException {
 
@@ -481,6 +482,7 @@ public class PermissionLocalServiceImpl extends PermissionLocalServiceBaseImpl {
 	 * @return the user's permissions
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public List<Permission> getUserPermissions(long userId)
 		throws SystemException {
 

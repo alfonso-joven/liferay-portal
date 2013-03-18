@@ -223,6 +223,7 @@ public class RoleLocalServiceImpl extends RoleLocalServiceBaseImpl {
 	 * @see    com.liferay.portal.service.persistence.UserPersistence#addRoles(
 	 *         long, long[])
 	 */
+	@Override
 	public void addUserRoles(long userId, long[] roleIds)
 		throws PortalException, SystemException {
 
@@ -512,6 +513,7 @@ public class RoleLocalServiceImpl extends RoleLocalServiceBaseImpl {
 	 * @return the roles associated with the group
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public List<Role> getGroupRoles(long groupId) throws SystemException {
 		return groupPersistence.getRoles(groupId);
 	}
@@ -775,6 +777,7 @@ public class RoleLocalServiceImpl extends RoleLocalServiceBaseImpl {
 	 * @return the roles associated with the user
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public List<Role> getUserRoles(long userId) throws SystemException {
 		return userPersistence.getRoles(userId);
 	}
@@ -788,6 +791,7 @@ public class RoleLocalServiceImpl extends RoleLocalServiceBaseImpl {
 	 *         <code>false</code> otherwise
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public boolean hasUserRole(long userId, long roleId)
 		throws SystemException {
 
@@ -1173,6 +1177,7 @@ public class RoleLocalServiceImpl extends RoleLocalServiceBaseImpl {
 	 *         if any one of the roles with the primary keys could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void setUserRoles(long userId, long[] roleIds)
 		throws PortalException, SystemException {
 

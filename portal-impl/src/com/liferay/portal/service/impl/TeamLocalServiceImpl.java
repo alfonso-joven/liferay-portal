@@ -130,6 +130,7 @@ public class TeamLocalServiceImpl extends TeamLocalServiceBaseImpl {
 		return teamPersistence.findByG_N(groupId, name);
 	}
 
+	@Override
 	public List<Team> getUserTeams(long userId) throws SystemException {
 		return userPersistence.getTeams(userId);
 	}
@@ -147,6 +148,7 @@ public class TeamLocalServiceImpl extends TeamLocalServiceBaseImpl {
 			null);
 	}
 
+	@Override
 	public boolean hasUserTeam(long userId, long teamId)
 		throws SystemException {
 

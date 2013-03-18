@@ -89,6 +89,7 @@ public class OrganizationLocalServiceImpl
 	 *         could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void addGroupOrganizations(long groupId, long[] organizationIds)
 		throws PortalException, SystemException {
 
@@ -410,6 +411,7 @@ public class OrganizationLocalServiceImpl
 	 * @return the organizations belonging to the group
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public List<Organization> getGroupOrganizations(long groupId)
 		throws SystemException {
 
@@ -679,6 +681,7 @@ public class OrganizationLocalServiceImpl
 	 * @throws PortalException if a user with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public List<Organization> getUserOrganizations(long userId)
 		throws PortalException, SystemException {
 
@@ -757,6 +760,7 @@ public class OrganizationLocalServiceImpl
 	 * @throws PortalException if a user with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public List<Organization> getUserOrganizations(
 			long userId, int start, int end)
 		throws PortalException, SystemException {
@@ -771,6 +775,7 @@ public class OrganizationLocalServiceImpl
 	 * @return the number of organizations associated with the user
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	@ThreadLocalCachable
 	public int getUserOrganizationsCount(long userId) throws SystemException {
 		return userPersistence.getOrganizationsSize(userId);
@@ -785,6 +790,7 @@ public class OrganizationLocalServiceImpl
 	 *         <code>false</code> otherwise
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public boolean hasGroupOrganization(long groupId, long organizationId)
 		throws SystemException {
 
@@ -820,6 +826,7 @@ public class OrganizationLocalServiceImpl
 	 *         <code>false</code> otherwise
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public boolean hasUserOrganization(long userId, long organizationId)
 		throws SystemException {
 
@@ -867,8 +874,8 @@ public class OrganizationLocalServiceImpl
 	 *
 	 * @param  userId the primary key of the organization's user
 	 * @param  organizationId the primary key of the organization
-	 * @param  inheritSuborganizations if <code>true</code> suborganizations
-	 *         are considered in the determination
+	 * @param  inheritSuborganizations if <code>true</code> suborganizations are
+	 *         considered in the determination
 	 * @param  includeSpecifiedOrganization if <code>true</code> the
 	 *         organization specified by <code>organizationId</code> is
 	 *         considered in the determination
@@ -1489,6 +1496,7 @@ public class OrganizationLocalServiceImpl
 	 * @throws PortalException if a portal exception occurred
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void setGroupOrganizations(long groupId, long[] organizationIds)
 		throws PortalException, SystemException {
 
