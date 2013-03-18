@@ -14,8 +14,6 @@
 
 package com.liferay.portal.kernel.bean;
 
-import java.lang.Object;
-
 /**
  * @author     Brian Wing Shun Chan
  * @deprecated
