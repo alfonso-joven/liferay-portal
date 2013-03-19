@@ -195,10 +195,6 @@ public class GroupFinderImpl
 			params = _emptyLinkedHashMap;
 		}
 
-		Long userId = (Long)params.get("usersGroups");
-
-		boolean doUnion = Validator.isNotNull(userId);
-
 		LinkedHashMap<String, Object> params1 = params;
 
 		LinkedHashMap<String, Object> params2 = null;
@@ -206,6 +202,10 @@ public class GroupFinderImpl
 		LinkedHashMap<String, Object> params3 = null;
 
 		LinkedHashMap<String, Object> params4 = null;
+
+		Long userId = (Long)params.get("usersGroups");
+
+		boolean doUnion = Validator.isNotNull(userId);
 
 		if (doUnion) {
 			params2 = new LinkedHashMap<String, Object>(params1);
@@ -372,11 +372,6 @@ public class GroupFinderImpl
 			params = _emptyLinkedHashMap;
 		}
 
-		Long userId = (Long)params.get("usersGroups");
-		boolean inherit = GetterUtil.getBoolean(params.get("inherit"), true);
-
-		boolean doUnion = Validator.isNotNull(userId) && inherit;
-
 		LinkedHashMap<String, Object> params1 = params;
 
 		LinkedHashMap<String, Object> params2 = null;
@@ -384,6 +379,11 @@ public class GroupFinderImpl
 		LinkedHashMap<String, Object> params3 = null;
 
 		LinkedHashMap<String, Object> params4 = null;
+
+		Long userId = (Long)params.get("usersGroups");
+		boolean inherit = GetterUtil.getBoolean(params.get("inherit"), true);
+
+		boolean doUnion = Validator.isNotNull(userId) && inherit;
 
 		if (doUnion) {
 			params2 = new LinkedHashMap<String, Object>(params1);
@@ -571,11 +571,6 @@ public class GroupFinderImpl
 			params = _emptyLinkedHashMap;
 		}
 
-		Long userId = (Long)params.get("usersGroups");
-		boolean inherit = GetterUtil.getBoolean(params.get("inherit"), true);
-
-		boolean doUnion = Validator.isNotNull(userId) && inherit;
-
 		LinkedHashMap<String, Object> params1 = params;
 
 		LinkedHashMap<String, Object> params2 = null;
@@ -583,6 +578,11 @@ public class GroupFinderImpl
 		LinkedHashMap<String, Object> params3 = null;
 
 		LinkedHashMap<String, Object> params4 = null;
+
+		Long userId = (Long)params.get("usersGroups");
+		boolean inherit = GetterUtil.getBoolean(params.get("inherit"), true);
+
+		boolean doUnion = Validator.isNotNull(userId) && inherit;
 
 		if (doUnion) {
 			params2 = new LinkedHashMap<String, Object>(params1);
