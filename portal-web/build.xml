@@ -425,6 +425,11 @@
 							</replacevalue>
 						</replace>
 
+						<replace file="docroot/html/js/editor/ckeditor/_source/plugins/resize/plugin.js">
+							<replacetoken><![CDATA[editor.resize( width, height );]]></replacetoken>
+							<replacevalue><![CDATA[editor.resize( resizeHorizontal ? width : null, height );]]></replacevalue>
+						</replace>
+
 						<replace file="docroot/html/js/editor/ckeditor/_source/themes/default/theme.js">
 							<replacetoken><![CDATA[container.clearCustomData();]]></replacetoken>
 							<replacevalue><![CDATA[]]></replacevalue>
