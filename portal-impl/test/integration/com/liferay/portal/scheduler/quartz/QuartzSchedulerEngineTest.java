@@ -24,6 +24,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import org.quartz.Trigger;
+
+/**
+ * @author Brian Wing Shun Chan
+ */
 @RunWith(LiferayIntegrationJUnitTestRunner.class)
 public class QuartzSchedulerEngineTest {
 
