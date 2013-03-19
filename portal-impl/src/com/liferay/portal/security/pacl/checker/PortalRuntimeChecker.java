@@ -29,7 +29,6 @@ import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.service.BaseLocalServiceImpl;
 import com.liferay.portal.service.BaseServiceImpl;
 import com.liferay.portal.service.persistence.impl.BasePersistenceImpl;
-import com.liferay.portal.template.TemplateContextHelper;
 
 import java.lang.reflect.Modifier;
 
@@ -285,9 +284,7 @@ public class PortalRuntimeChecker extends BaseChecker {
 
 			callerClass = Reflection.getCallerClass(stackIndex);
 
-			if (!callerClass.equals(TemplateContextHelper.class) &&
-				isTrustedCaller(callerClass, permission)) {
-
+			if (isTrustedCaller(callerClass, permission)) {
 				return true;
 			}
 		}
