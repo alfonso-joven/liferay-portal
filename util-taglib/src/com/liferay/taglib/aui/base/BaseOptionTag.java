@@ -121,6 +121,7 @@ public class BaseOptionTag extends com.liferay.taglib.util.IncludeTag {
 		_label = null;
 		_selected = false;
 		_style = null;
+		_useModelValue = true;
 		_value = null;
 	}
 
