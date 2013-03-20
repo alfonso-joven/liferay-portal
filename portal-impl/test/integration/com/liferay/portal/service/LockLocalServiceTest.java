@@ -143,8 +143,8 @@ public class LockLocalServiceTest {
 							continue;
 						}
 
-						// PostgreSQL fails to do row or table level locking.
-						// A unique index is required to enforce mutual exclude
+						// PostgreSQL fails to do row or table level locking. A
+						// unique index is required to enforce mutual exclude
 						// locking, but it may do so by violating a unique index
 						// constraint.
 

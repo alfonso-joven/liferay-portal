@@ -528,8 +528,8 @@ public class PDFProcessorImpl
 		}
 		else {
 
-			// ImageMagick converts single page PDFs without appending an
-			// index. Rename file for consistency.
+			// ImageMagick converts single page PDFs without appending an index.
+			// Rename file for consistency.
 
 			File singlePagePreviewFile = getPreviewTempFile(tempFileId, -1);
 

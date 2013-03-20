@@ -642,8 +642,8 @@ public class PortletRequestProcessor extends TilesRequestProcessor {
 
 		request.setAttribute(Globals.ERROR_KEY, errors);
 
-		// Struts normally calls internalModuleRelativeForward which breaks
-		// if called inside processAction
+		// Struts normally calls internalModuleRelativeForward which breaks if
+		// called inside processAction
 
 		request.setAttribute(PortletAction.getForwardKey(request), input);
 

@@ -541,8 +541,8 @@ public class PermissionLocalServiceImpl extends PermissionLocalServiceBaseImpl {
 		Permission permission = permissionPersistence.fetchByA_R(
 			actionId, resourceId);
 
-		// Return false if there is no permission based on the given action
-		// id and resource id
+		// Return false if there is no permission based on the given action id
+		// and resource id
 
 		if (permission == null) {
 			return false;
@@ -643,8 +643,8 @@ public class PermissionLocalServiceImpl extends PermissionLocalServiceBaseImpl {
 		Permission permission = permissionPersistence.fetchByA_R(
 			actionId, resourceId);
 
-		// Return false if there is no permission based on the given action
-		// id and resource id
+		// Return false if there is no permission based on the given action id
+		// and resource id
 
 		if (permission == null) {
 			return false;

@@ -1751,8 +1751,8 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 		if (userId != CompanyConstants.SYSTEM) {
 
 			// Add back any groups that the administrator does not have the
-			// rights to remove and check that he has the permission to add
-			// a new group
+			// rights to remove and check that he has the permission to add a
+			// new group
 
 			List<Group> oldGroups = groupLocalService.getUserGroups(userId);
 
