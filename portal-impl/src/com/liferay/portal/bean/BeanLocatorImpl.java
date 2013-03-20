@@ -22,6 +22,8 @@ import com.liferay.portal.kernel.security.pacl.DoPrivileged;
 import com.liferay.portal.kernel.security.pacl.permission.PortalRuntimePermission;
 import com.liferay.portal.kernel.util.ProxyUtil;
 
+import java.lang.reflect.InvocationHandler;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -131,7 +133,7 @@ public class BeanLocatorImpl implements BeanLocator {
 
 				velocityBean = ProxyUtil.newProxyInstance(
 					_classLoader, getInterfaces(curBean),
-					new VelocityBeanHandler(curBean, _classLoader));
+					_pacl.getInvocationHandler(curBean, _classLoader));
 
 				_velocityBeans.put(name, velocityBean);
 			}
@@ -195,10 +197,29 @@ public class BeanLocatorImpl implements BeanLocator {
 
 	private static Log _log = LogFactoryUtil.getLog(BeanLocatorImpl.class);
 
+	private static PACL _pacl = new NoPACL();
+
 	private ApplicationContext _applicationContext;
 	private ClassLoader _classLoader;
 	private String _paclServletContextName;
 	private Map<String, Object> _velocityBeans =
 		new ConcurrentHashMap<String, Object>();
+
+	public static interface PACL {
+
+		public InvocationHandler getInvocationHandler(
+			Object bean, ClassLoader classLoader);
+
+	}
+
+	private static class NoPACL implements PACL {
+
+		public InvocationHandler getInvocationHandler(
+			Object bean, ClassLoader classLoader) {
+
+			return new VelocityBeanHandler(bean, classLoader);
+		}
+
+	}
 
 }
