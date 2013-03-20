@@ -45,6 +45,10 @@ public class PortalPermissionCollection extends PermissionCollection {
 		return Collections.enumeration(Collections.EMPTY_LIST);
 	}
 
+	public ClassLoader getClassLoader() {
+		return _paclPolicy.getClassLoader();
+	}
+
 	public Policy getPolicy() {
 		return _paclPolicy.getPolicy();
 	}
