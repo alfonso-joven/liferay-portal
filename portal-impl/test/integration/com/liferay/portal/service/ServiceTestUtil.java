@@ -72,6 +72,7 @@ import com.liferay.portlet.journal.workflow.JournalArticleWorkflowHandler;
 import com.liferay.portlet.messageboards.util.MBIndexer;
 import com.liferay.portlet.messageboards.workflow.MBDiscussionWorkflowHandler;
 import com.liferay.portlet.messageboards.workflow.MBMessageWorkflowHandler;
+import com.liferay.portlet.usersadmin.util.OrganizationIndexer;
 import com.liferay.portlet.usersadmin.util.UserIndexer;
 import com.liferay.util.PwdGenerator;
 
@@ -399,10 +400,11 @@ public class ServiceTestUtil {
 		// Indexers
 
 		IndexerRegistryUtil.register(new BlogsIndexer());
-		IndexerRegistryUtil.register(new UserIndexer());
 		IndexerRegistryUtil.register(new BookmarksIndexer());
 		IndexerRegistryUtil.register(new DLIndexer());
 		IndexerRegistryUtil.register(new MBIndexer());
+		IndexerRegistryUtil.register(new OrganizationIndexer());
+		IndexerRegistryUtil.register(new UserIndexer());
 
 		// Upgrade
 
