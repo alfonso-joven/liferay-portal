@@ -328,7 +328,7 @@ public abstract class PortletRequestImpl implements LiferayPortletRequest {
 	}
 
 	public PortletPreferences getPreferences() {
-		return DoPrivilegedUtil.wrap(new PreferencesPrivilegedAction());
+		return DoPrivilegedUtil.wrap(new PortletPreferencesPrivilegedAction());
 	}
 
 	public PortletPreferencesImpl getPreferencesImpl() {
@@ -874,7 +874,7 @@ public abstract class PortletRequestImpl implements LiferayPortletRequest {
 	private boolean _wapTheme;
 	private WindowState _windowState;
 
-	private class PreferencesPrivilegedAction
+	private class PortletPreferencesPrivilegedAction
 		implements PrivilegedAction<PortletPreferences> {
 
 		public PortletPreferences run() {
