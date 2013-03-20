@@ -649,7 +649,7 @@ public class DLUtil {
 		if (fileEntry != null) {
 			String extension = fileEntry.getExtension();
 
-			fileEntryTitle = fileEntry.getTitle();
+			fileEntryTitle = HtmlUtil.unescape(fileEntry.getTitle());
 
 			if (openDocumentUrl && isOfficeExtension(extension) &&
 				!fileEntryTitle.endsWith(StringPool.PERIOD + extension)) {
@@ -667,7 +667,10 @@ public class DLUtil {
 
 		StringBuilder sb = new StringBuilder();
 
-		if (folder != null) {
+		if ((folder != null) &&
+			(folder.getFolderId() !=
+				DLFolderConstants.DEFAULT_PARENT_FOLDER_ID)) {
+
 			Folder curFolder = folder;
 
 			while (true) {
@@ -679,10 +682,9 @@ public class DLUtil {
 
 					break;
 				}
-				else {
-					curFolder = DLAppLocalServiceUtil.getFolder(
-						curFolder.getParentFolderId());
-				}
+
+				curFolder = DLAppLocalServiceUtil.getFolder(
+					curFolder.getParentFolderId());
 			}
 		}
 
