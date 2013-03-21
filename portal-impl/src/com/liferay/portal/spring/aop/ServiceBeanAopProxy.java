@@ -174,7 +174,11 @@ public class ServiceBeanAopProxy implements AopProxy, InvocationHandler {
 		Class<?>[] proxiedInterfaces = AopProxyUtils.completeProxiedInterfaces(
 			_advisedSupport);
 
-		return ProxyUtil.newProxyInstance(classLoader, proxiedInterfaces, this);
+		InvocationHandler invocationHandler = _pacl.getInvocationHandler(
+			this, _advisedSupport);
+
+		return ProxyUtil.newProxyInstance(
+			classLoader, proxiedInterfaces, invocationHandler);
 	}
 
 	public Object invoke(Object proxy, Method method, Object[] arguments)
@@ -287,6 +291,7 @@ public class ServiceBeanAopProxy implements AopProxy, InvocationHandler {
 	private static Map <ServiceBeanMethodInvocation, MethodInterceptorsBag>
 		_methodInterceptorBags = new ConcurrentHashMap
 			<ServiceBeanMethodInvocation, MethodInterceptorsBag>();
+	private static PACL _pacl = new NoPACL();
 
 	private AdvisedSupport _advisedSupport;
 	private AdvisorChainFactory _advisorChainFactory;
@@ -306,6 +311,24 @@ public class ServiceBeanAopProxy implements AopProxy, InvocationHandler {
 
 		private List<MethodInterceptor> _classLevelMethodInterceptors;
 		private List<MethodInterceptor> _mergedMethodInterceptors;
+
+	}
+
+	public static interface PACL {
+
+		public InvocationHandler getInvocationHandler(
+			InvocationHandler invocationHandler, AdvisedSupport advisedSupport);
+
+	}
+
+	private static class NoPACL implements PACL {
+
+		public InvocationHandler getInvocationHandler(
+			InvocationHandler invocationHandler,
+			AdvisedSupport advisedSupport) {
+
+			return invocationHandler;
+		}
 
 	}
 
