@@ -1529,6 +1529,15 @@ AUI.add(
 				);
 
 				if (firstEmptyField) {
+					var formSection = firstEmptyField.ancestors('.form-section');
+
+					Liferay.fire(
+						'requiredFieldEmpty',
+						{
+							sectionId: '#' + formSection.attr('id')
+						}
+					);
+
 					firstEmptyField.focus();
 				}
 

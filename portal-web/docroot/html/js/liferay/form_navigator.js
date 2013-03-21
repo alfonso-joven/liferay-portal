@@ -66,6 +66,12 @@ AUI.add(
 			);
 
 			Liferay.on(
+				'requiredFieldEmpty',
+				instance._revealRequiredEmptyFieldSection,
+				instance
+			);
+
+			Liferay.on(
 				'submitForm',
 				function(event, data) {
 					if (instance._modifiedSections) {
@@ -173,6 +179,12 @@ AUI.add(
 
 					instance._hash = hash;
 				}
+			},
+
+			_revealRequiredEmptyFieldSection: function(event) {
+				var instance = this;
+
+				instance._revealSection(event.sectionId);
 			},
 
 			_revealSection: function(id, currentNavItem) {
