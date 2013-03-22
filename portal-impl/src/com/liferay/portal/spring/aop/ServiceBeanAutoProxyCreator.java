@@ -76,9 +76,7 @@ public class ServiceBeanAutoProxyCreator
 	}
 
 	private static final String _FINDER_SUFFIX = "Finder";
-
 	private static final String _PERSISTENCE_SUFFIX = "Persistence";
-
 	private static final String _SERVICE_SUFFIX = "Service";
 
 	private MethodInterceptor _methodInterceptor;
