@@ -314,13 +314,6 @@ public class ServiceBeanAopProxy implements AopProxy, InvocationHandler {
 
 	}
 
-	public static interface PACL {
-
-		public InvocationHandler getInvocationHandler(
-			InvocationHandler invocationHandler, AdvisedSupport advisedSupport);
-
-	}
-
 	private static class NoPACL implements PACL {
 
 		public InvocationHandler getInvocationHandler(
@@ -329,6 +322,13 @@ public class ServiceBeanAopProxy implements AopProxy, InvocationHandler {
 
 			return invocationHandler;
 		}
+
+	}
+
+	public static interface PACL {
+
+		public InvocationHandler getInvocationHandler(
+			InvocationHandler invocationHandler, AdvisedSupport advisedSupport);
 
 	}
 
