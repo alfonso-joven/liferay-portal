@@ -296,9 +296,11 @@ public class PortalSecurityManagerImpl extends SecurityManager
 
 		// Load dependent classes to prevent ClassCircularityError
 
-		// this class' own inner classes
+		// This class' own inner classes
 
 		initClass(getClass());
+
+		// Other classes
 
 		initClass(ActivePACLPolicy.class);
 		initClass(CentralizedThreadLocal.class);
