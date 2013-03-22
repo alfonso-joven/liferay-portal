@@ -751,6 +751,14 @@ Please set the environment variable ANT_OPTS to the recommended value of
 			</else>
 		</if>
 
+		<ant target="test-cmd">
+			<property name="test.type" value="${test.type}" />
+		</ant>
+
+		<antcall target="report-test-coverage" />
+	</target>
+
+	<target name="test-cmd">
 		<if>
 			<not>
 				<isset property="test.dir" />
@@ -760,14 +768,6 @@ Please set the environment variable ANT_OPTS to the recommended value of
 			</then>
 		</if>
 
-		<ant target="test-cmd">
-			<property name="test.type" value="${test.type}" />
-		</ant>
-
-		<antcall target="report-test-coverage" />
-	</target>
-
-	<target name="test-cmd">
 		<if>
 			<available file="test/${test.type}" type="dir" />
 			<then>
