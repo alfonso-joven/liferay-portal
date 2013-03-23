@@ -412,6 +412,11 @@
 							</replacevalue>
 						</replace>
 
+						<replace file="docroot/html/js/editor/ckeditor/_source/plugins/resize/plugin.js">
+							<replacetoken><![CDATA[editor.resize( width, height );]]></replacetoken>
+							<replacevalue><![CDATA[editor.resize( resizeHorizontal ? width : null, height );]]></replacevalue>
+						</replace>
+
 						<replace file="docroot/html/js/editor/ckeditor/_source/plugins/wysiwygarea/plugin.js">
 							<replacetoken><![CDATA[var data = fullPage]]></replacetoken>
 							<replacevalue>
@@ -423,11 +428,6 @@
 									var data = fullPage
 								]]>
 							</replacevalue>
-						</replace>
-
-						<replace file="docroot/html/js/editor/ckeditor/_source/plugins/resize/plugin.js">
-							<replacetoken><![CDATA[editor.resize( width, height );]]></replacetoken>
-							<replacevalue><![CDATA[editor.resize( resizeHorizontal ? width : null, height );]]></replacevalue>
 						</replace>
 
 						<replace file="docroot/html/js/editor/ckeditor/_source/themes/default/theme.js">
