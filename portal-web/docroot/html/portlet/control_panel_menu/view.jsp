@@ -228,7 +228,7 @@
 					</c:choose>
 				</liferay-util:buffer>
 
-				<%
+			<%
 				scopeLayouts.addAll(LayoutLocalServiceUtil.getScopeGroupLayouts(curGroup.getGroupId(), false));
 				scopeLayouts.addAll(LayoutLocalServiceUtil.getScopeGroupLayouts(curGroup.getGroupId(), true));
 
@@ -242,7 +242,7 @@
 			}
 
 			List<Portlet> portlets = PortalUtil.getControlPanelPortlets(curCategory, themeDisplay);
-		%>
+			%>
 
 			<liferay-util:buffer var="categoryPortletsContent">
 				<c:if test="<%= !scopeLayouts.isEmpty() && curCategory.equals(PortletCategoryKeys.CONTENT) %>">
@@ -281,7 +281,14 @@
 					%>
 
 							<li class="<%= ppid.equals(portletId) ? "selected-portlet" : "" %>">
-								<a href="<liferay-portlet:renderURL doAsGroupId="<%= themeDisplay.getScopeGroupId() %>" portletName="<%= portlet.getRootPortletId() %>" windowState="<%= WindowState.MAXIMIZED.toString() %>" />" id="<portlet:namespace />portlet_<%= portletId %>">
+								<liferay-portlet:renderURL
+									doAsGroupId="<%= themeDisplay.getScopeGroupId() %>"
+									portletName="<%= portlet.getRootPortletId() %>"
+									var="portletURL"
+									windowState="<%= WindowState.MAXIMIZED.toString() %>"
+								/>
+
+								<a href="<%= portletURL %>" id="<portlet:namespace />portlet_<%= portletId %>">
 									<c:choose>
 										<c:when test="<%= Validator.isNull(portlet.getIcon()) %>">
 											<liferay-ui:icon src='<%= themeDisplay.getPathContext() + "/html/icons/default.png" %>' />
@@ -294,6 +301,30 @@
 									<%= PortalUtil.getPortletTitle(portlet, application, locale) %>
 								</a>
 							</li>
+
+							<c:if test="<%= !ppid.equals(portletId) %>">
+
+								<%
+								String portletClassName = portlet.getPortletClass();
+								%>
+
+								<%
+								if (portletClassName.equals(AlloyPortlet.class.getName())) {
+									PortletConfig alloyPortletConfig = PortletConfigFactoryUtil.create(portlet, application);
+
+									PortletContext alloyPortletContext = alloyPortletConfig.getPortletContext();
+
+									if (alloyPortletContext.getAttribute(BaseAlloyControllerImpl.TOUCH + portlet.getRootPortletId()) != Boolean.FALSE) {
+								%>
+
+										<iframe height="0" src="<%= portletURL %>" style="display: none; visibility: hidden;" width="0"></iframe>
+
+								<%
+									}
+								}
+								%>
+
+							</c:if>
 
 					<%
 						}
