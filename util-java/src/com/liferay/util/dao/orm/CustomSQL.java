@@ -119,6 +119,17 @@ public class CustomSQL {
 	}
 
 	/**
+	 * Returns <code>true</code> if Hibernate is connecting to an HSQL
+	 * database.
+	 *
+	 * @return <code>true</code> if Hibernate is connecting to an HSQL
+	 *         database
+	 */
+	public boolean isVendorHSQL() {
+		return _vendorHSQL;
+	}
+
+	/**
 	 * Returns <code>true</code> if Hibernate is connecting to an Informix
 	 * database.
 	 *
@@ -258,6 +269,13 @@ public class CustomSQL {
 
 					if (_log.isInfoEnabled()) {
 						_log.info("Detected DB2 with database name " + dbName);
+					}
+				}
+				else if (dbName.startsWith("HSQL")) {
+					_vendorHSQL = true;
+
+					if (_log.isInfoEnabled()) {
+						_log.info("Detected HSQL with database name " + dbName);
 					}
 				}
 				else if (dbName.startsWith("Informix")) {
@@ -701,6 +719,7 @@ public class CustomSQL {
 	private String _functionIsNull;
 	private Map<String, String> _sqlPool;
 	private boolean _vendorDB2;
+	private boolean _vendorHSQL;
 	private boolean _vendorInformix;
 	private boolean _vendorMySQL;
 	private boolean _vendorOracle;
