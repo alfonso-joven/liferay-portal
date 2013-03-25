@@ -223,7 +223,7 @@
 							var portletOptions = {
 								beforePortletLoaded: beforePortletLoaded,
 								onComplete: function(portlet) {
-									Layout.fire(
+									Liferay.fire(
 										'addPortlet',
 										{
 											portlet: portlet
