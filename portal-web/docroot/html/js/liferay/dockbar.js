@@ -521,14 +521,6 @@ AUI.add(
 
 							Portlet.add(
 								{
-									onComplete: function(portlet) {
-										Liferay.fire(
-											'addPortlet',
-											{
-												portlet: portlet
-											}
-										);
-									},
 									portletId: portletId
 								}
 							);
