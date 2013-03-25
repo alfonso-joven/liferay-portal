@@ -67,7 +67,8 @@ public class JournalTemplateVelocityResourceListener
 		}
 
 		JournalTemplate journalTemplate =
-			JournalTemplateLocalServiceUtil.getTemplate(groupId, templateId);
+			JournalTemplateLocalServiceUtil.getTemplate(
+				groupId, templateId, true);
 
 		String xsl = journalTemplate.getXsl();
 
