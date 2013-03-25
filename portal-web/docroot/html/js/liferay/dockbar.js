@@ -396,6 +396,8 @@ AUI.add(
 			function() {
 				var instance = this;
 
+				var Layout = Liferay.Layout;
+
 				var dockBar = instance.dockBar;
 				var namespace = instance._namespace;
 
@@ -521,6 +523,14 @@ AUI.add(
 
 							Portlet.add(
 								{
+									onComplete: function(portlet) {
+										Layout.fire(
+											'addPortlet',
+											{
+												portlet: portlet
+											}
+										);
+									},
 									portletId: portletId
 								}
 							);
@@ -790,7 +800,7 @@ AUI.add(
 
 				Liferay.fire('dockbarLoaded');
 			},
-			['aui-io-request', 'aui-overlay-context', 'liferay-dockbar-underlay', 'node-focusmanager']
+			['aui-io-request', 'aui-overlay-context', 'liferay-dockbar-underlay', 'liferay-layout', 'node-focusmanager']
 		);
 
 		Liferay.provide(
