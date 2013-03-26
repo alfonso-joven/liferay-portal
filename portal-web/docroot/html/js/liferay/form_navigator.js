@@ -66,8 +66,8 @@ AUI.add(
 			);
 
 			Liferay.on(
-				'requiredFieldEmpty',
-				instance._revealRequiredEmptyFieldSection,
+				'requiredFieldError',
+				instance._onRequiredFieldError,
 				instance
 			);
 
@@ -160,6 +160,12 @@ AUI.add(
 				}
 			},
 
+			_onRequiredFieldError: function(event) {
+				var instance = this;
+
+				instance._revealSection(event.sectionId);
+			},
+
 			_pollHash: function() {
 				var instance = this;
 
@@ -179,12 +185,6 @@ AUI.add(
 
 					instance._hash = hash;
 				}
-			},
-
-			_revealRequiredEmptyFieldSection: function(event) {
-				var instance = this;
-
-				instance._revealSection(event.sectionId);
 			},
 
 			_revealSection: function(id, currentNavItem) {

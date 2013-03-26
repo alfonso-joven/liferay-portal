@@ -1532,7 +1532,7 @@ AUI.add(
 					var formSection = firstEmptyField.ancestors('.form-section');
 
 					Liferay.fire(
-						'requiredFieldEmpty',
+						'requiredFieldError',
 						{
 							sectionId: '#' + formSection.attr('id')
 						}
