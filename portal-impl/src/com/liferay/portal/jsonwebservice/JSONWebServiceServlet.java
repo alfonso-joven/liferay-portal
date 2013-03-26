@@ -134,9 +134,7 @@ public class JSONWebServiceServlet extends JSONServlet {
 
 		String portalContextPath = PropsValues.PORTAL_CTX;
 
-		String requestContextPath = request.getContextPath();
-
-		if (portalContextPath.equals(requestContextPath)) {
+		if (portalContextPath.equals(request.getContextPath())) {
 			if (!portalContextPath.equals(StringPool.SLASH) &&
 				apiPath.startsWith(portalContextPath)) {
 
