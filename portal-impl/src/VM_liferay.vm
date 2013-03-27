@@ -87,3 +87,7 @@ img, .png {
 		$theme.runtime("170")
 	#end
 #end
+
+#macro (silently $foo)
+	#set ($foo = $foo)
+#end
