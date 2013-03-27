@@ -150,6 +150,7 @@ if (!selectableTree) {
 					var childLayouts = [];
 					var total = 0;
 
+					var hasChildren = node.hasChildren;
 					var nodeChildren = node.children;
 
 					if (nodeChildren) {
@@ -191,10 +192,11 @@ if (!selectableTree) {
 								}
 							},
 						</c:if>
-						alwaysShowHitArea: node.hasChildren,
+						alwaysShowHitArea: hasChildren,
 						draggable: node.sortable,
 						expanded: expanded,
 						id: TreeUtil.createListItemId(node.groupId, node.layoutId, node.plid),
+						leaf: !hasChildren,
 						paginator: {
 							limit: TreeUtil.PAGINATION_LIMIT,
 							offsetParam: 'start',
