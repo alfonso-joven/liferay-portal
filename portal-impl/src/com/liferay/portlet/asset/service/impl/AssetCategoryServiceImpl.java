@@ -28,6 +28,7 @@ import com.liferay.portal.security.permission.ActionKeys;
 import com.liferay.portal.security.permission.PermissionChecker;
 import com.liferay.portal.service.ServiceContext;
 import com.liferay.portlet.asset.model.AssetCategory;
+import com.liferay.portlet.asset.model.AssetCategoryConstants;
 import com.liferay.portlet.asset.model.AssetVocabulary;
 import com.liferay.portlet.asset.service.base.AssetCategoryServiceBaseImpl;
 import com.liferay.portlet.asset.service.permission.AssetCategoryPermission;
@@ -256,13 +257,37 @@ public class AssetCategoryServiceImpl extends AssetCategoryServiceBaseImpl {
 		}
 	}
 
+	/**
+	 * @deprecated replaced by {@link #getVocabularyRootCategories(long, long,
+	 *             int, int, OrderByComparator)}
+	 */
 	public List<AssetCategory> getVocabularyRootCategories(
 			long vocabularyId, int start, int end, OrderByComparator obc)
 		throws PortalException, SystemException {
 
-		return filterCategories(
-			assetCategoryLocalService.getVocabularyRootCategories(
-				vocabularyId, start, end, obc));
+		AssetVocabulary vocabulary = assetVocabularyLocalService.getVocabulary(
+			vocabularyId);
+
+		return getVocabularyRootCategories(
+			vocabulary.getGroupId(), vocabularyId, start, end, obc);
+	}
+
+	public List<AssetCategory> getVocabularyRootCategories(
+			long groupId, long vocabularyId, int start, int end,
+			OrderByComparator obc)
+		throws SystemException {
+
+		return assetCategoryPersistence.filterFindByG_P_V(
+			groupId, AssetCategoryConstants.DEFAULT_PARENT_CATEGORY_ID,
+			vocabularyId, start, end, obc);
+	}
+
+	public int getVocabularyRootCategoriesCount(long groupId, long vocabularyId)
+		throws SystemException {
+
+		return assetCategoryPersistence.filterCountByG_P_V(
+			groupId, AssetCategoryConstants.DEFAULT_PARENT_CATEGORY_ID,
+			vocabularyId);
 	}
 
 	public AssetCategory moveCategory(
