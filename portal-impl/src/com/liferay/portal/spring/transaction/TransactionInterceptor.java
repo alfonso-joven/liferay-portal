@@ -19,6 +19,7 @@ import com.liferay.portal.kernel.dao.orm.EntityCacheUtil;
 import com.liferay.portal.kernel.dao.orm.FinderCacheUtil;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.spring.hibernate.LastSessionRecorderUtil;
 
 import java.lang.reflect.Method;
 
@@ -61,7 +62,9 @@ public class TransactionInterceptor implements MethodInterceptor {
 		TransactionStatus transactionStatus =
 			_platformTransactionManager.getTransaction(transactionAttribute);
 
-		if (transactionStatus.isNewTransaction()) {
+		boolean newTransaction = transactionStatus.isNewTransaction();
+
+		if (newTransaction) {
 			TransactionalPortalCacheHelper.begin();
 
 			TransactionCommitCallbackUtil.pushCallbackList();
@@ -70,14 +73,19 @@ public class TransactionInterceptor implements MethodInterceptor {
 		Object returnValue = null;
 
 		try {
+			if (newTransaction) {
+				LastSessionRecorderUtil.syncLastSessionState();
+			}
+
 			returnValue = methodInvocation.proceed();
 		}
 		catch (Throwable throwable) {
 			processThrowable(
-				throwable, transactionAttribute, transactionStatus);
+				newTransaction, throwable, transactionAttribute,
+				transactionStatus);
 		}
 
-		processCommit(transactionStatus);
+		processCommit(newTransaction, transactionStatus);
 
 		return returnValue;
 	}
@@ -118,7 +126,9 @@ public class TransactionInterceptor implements MethodInterceptor {
 		}
 	}
 
-	protected void processCommit(TransactionStatus transactionStatus) {
+	protected void processCommit(
+		boolean newTransaction, TransactionStatus transactionStatus) {
+
 		boolean hasError = false;
 
 		try {
@@ -148,7 +158,7 @@ public class TransactionInterceptor implements MethodInterceptor {
 			throw e;
 		}
 		finally {
-			if (transactionStatus.isNewTransaction()) {
+			if (newTransaction) {
 				if (hasError) {
 					TransactionalPortalCacheHelper.rollback();
 
@@ -167,7 +177,8 @@ public class TransactionInterceptor implements MethodInterceptor {
 	}
 
 	protected void processThrowable(
-			Throwable throwable, TransactionAttribute transactionAttribute,
+			boolean newTransaction, Throwable throwable,
+			TransactionAttribute transactionAttribute,
 			TransactionStatus transactionStatus)
 		throws Throwable {
 
@@ -196,7 +207,7 @@ public class TransactionInterceptor implements MethodInterceptor {
 				throw e;
 			}
 			finally {
-				if (transactionStatus.isNewTransaction()) {
+				if (newTransaction) {
 					TransactionalPortalCacheHelper.rollback();
 
 					TransactionCommitCallbackUtil.popCallbackList();
@@ -207,7 +218,7 @@ public class TransactionInterceptor implements MethodInterceptor {
 			}
 		}
 		else {
-			processCommit(transactionStatus);
+			processCommit(newTransaction, transactionStatus);
 		}
 
 		throw throwable;
