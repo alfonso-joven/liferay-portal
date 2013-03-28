@@ -46,7 +46,6 @@ hr, .separator {
 	height: auto;
 	margin-top: 1.4em;
 	position: relative;
-	z-index: 210;
 }
 
 .site-title .site-name {
@@ -134,7 +133,7 @@ hr, .separator {
 	min-height: 2.2em;
 	padding: 0 5px;
 	position: relative;
-	z-index: 1;
+	z-index: 210;
 }
 
 #navigation ul {
