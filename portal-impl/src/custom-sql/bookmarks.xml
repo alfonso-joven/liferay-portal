@@ -31,7 +31,7 @@
 					FROM
 						ResourceBlock
 					WHERE
-						name = [$CLASS_NAME_ID_COM.LIFERAY.PORTLET.BOOKMARKS.MODEL.BOOKMARKSENTRY$]
+						(name = ?)
 				))
 		]]>
 	</sql>
@@ -48,7 +48,7 @@
 					FROM
 						ResourceBlock
 					WHERE
-						name = [$CLASS_NAME_ID_COM.LIFERAY.PORTLET.BOOKMARKS.MODEL.BOOKMARKSFOLDER$]
+						(name = ?)
 				))
 		]]>
 	</sql>

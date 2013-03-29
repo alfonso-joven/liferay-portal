@@ -14,6 +14,7 @@
 
 package com.liferay.portlet.bookmarks.service.persistence;
 
+import com.liferay.portal.kernel.dao.orm.QueryPos;
 import com.liferay.portal.kernel.dao.orm.SQLQuery;
 import com.liferay.portal.kernel.dao.orm.Session;
 import com.liferay.portal.kernel.exception.SystemException;
@@ -47,6 +48,10 @@ public class BookmarksFolderFinderImpl
 			SQLQuery q = session.createSQLQuery(sql);
 
 			q.addEntity("BookmarksFolder", BookmarksFolderImpl.class);
+
+			QueryPos qPos = QueryPos.getInstance(q);
+
+			qPos.add(BookmarksFolder.class.getName());
 
 			return q.list(true);
 		}
