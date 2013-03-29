@@ -333,8 +333,16 @@ public class JournalIndexer extends BaseIndexer {
 		reindexArticles(companyId);
 	}
 
-	protected String encodeFieldName(String name) {
-		return _FIELD_NAMESPACE.concat(StringPool.FORWARD_SLASH).concat(name);
+	protected String encodeFieldName(Element element) {
+		StringBundler sb = new StringBundler(5);
+
+		sb.append(_FIELD_NAMESPACE);
+		sb.append(StringPool.FORWARD_SLASH);
+		sb.append(element.attributeValue("name"));
+		sb.append(StringPool.FORWARD_SLASH);
+		sb.append(element.attributeValue("instance-id"));
+
+		return sb.toString();
 	}
 
 	protected String extractContent(JournalArticle article, String languageId) {
@@ -442,7 +450,7 @@ public class JournalIndexer extends BaseIndexer {
 		String defaultLocale = GetterUtil.getString(
 			rootElement.attributeValue("default-locale"));
 
-		String name = encodeFieldName(element.attributeValue("name"));
+		String name = encodeFieldName(element);
 
 		List<Element> dynamicContentElements = element.elements(
 			"dynamic-content");
@@ -509,6 +517,11 @@ public class JournalIndexer extends BaseIndexer {
 
 		while ((element = queue.poll()) != null) {
 			String elName = element.attributeValue("name", StringPool.BLANK);
+
+			if (Validator.isNull(elName)) {
+				continue;
+			}
+
 			String elType = element.attributeValue("type", StringPool.BLANK);
 			String elIndexType = element.attributeValue(
 				"index-type", StringPool.BLANK);
