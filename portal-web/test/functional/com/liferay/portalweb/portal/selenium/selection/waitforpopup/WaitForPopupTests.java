@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.portalweb.portal.selenium.assertions.assertvisible;
+package com.liferay.portalweb.portal.selenium.selection.waitforpopup;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
 
@@ -22,15 +22,11 @@ import junit.framework.TestSuite;
 /**
  * @author Brian Wing Shun Chan
  */
-public class AssertVisibleTests extends BaseTestSuite {
+public class WaitForPopupTests extends BaseTestSuite {
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
-		testSuite.addTestSuite(AssertVisible1Test.class);
-		testSuite.addTestSuite(AssertVisible2Test.class);
-		testSuite.addTestSuite(AssertVisible3Test.class);
-		testSuite.addTestSuite(AssertNotVisible1Test.class);
-		testSuite.addTestSuite(AssertNotVisible2Test.class);
-		testSuite.addTestSuite(AssertNotVisible3Test.class);
+		testSuite.addTestSuite(WaitForPopup1Test.class);
+		testSuite.addTestSuite(WaitForPopup2Test.class);
 
 		return testSuite;
 	}

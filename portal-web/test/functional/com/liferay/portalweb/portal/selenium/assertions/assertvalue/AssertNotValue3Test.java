@@ -12,18 +12,18 @@
  * details.
  */
 
-package com.liferay.portalweb.portal.selenium.javascript.runscript;
+package com.liferay.portalweb.portal.selenium.assertions.assertvalue;
 
 import com.liferay.portalweb.portal.BaseTestCase;
 
 /**
  * @author Brian Wing Shun Chan
  */
-public class RunScript1Test extends BaseTestCase {
-	public void testRunScript1() throws Exception {
+public class AssertNotValue3Test extends BaseTestCase {
+	public void testAssertNotValue3() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
-		selenium.runScript("alert('test');");
-		assertEquals("test", selenium.getAlert());
+		selenium.open("/web/guest/home/");
+		assertNotEquals("Catherine", selenium.getValue("//div[@id='Catherine']"));
 	}
 }

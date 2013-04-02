@@ -12,22 +12,18 @@
  * details.
  */
 
-package com.liferay.portalweb.portal.selenium.waitfor.waitforpopup;
+package com.liferay.portalweb.portal.selenium.assertions.assertchecked;
 
-import com.liferay.portalweb.portal.BaseTestSuite;
-
-import junit.framework.Test;
-import junit.framework.TestSuite;
+import com.liferay.portalweb.portal.BaseTestCase;
 
 /**
  * @author Brian Wing Shun Chan
  */
-public class WaitForPopupTests extends BaseTestSuite {
-	public static Test suite() {
-		TestSuite testSuite = new TestSuite();
-		testSuite.addTestSuite(WaitForPopup1Test.class);
-		testSuite.addTestSuite(WaitForPopup2Test.class);
-
-		return testSuite;
+public class AssertNotChecked3Test extends BaseTestCase {
+	public void testAssertNotChecked3() throws Exception {
+		selenium.selectWindow("null");
+		selenium.selectFrame("relative=top");
+		selenium.open("/web/guest/home/");
+		assertFalse(selenium.isChecked("//input[@value='Catherine']"));
 	}
 }

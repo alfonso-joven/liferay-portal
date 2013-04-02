@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.portalweb.portal.selenium.assertions.assertvisible;
+package com.liferay.portalweb.portal.selenium.assertions.assertpartialtext;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
 
@@ -22,15 +22,15 @@ import junit.framework.TestSuite;
 /**
  * @author Brian Wing Shun Chan
  */
-public class AssertVisibleTests extends BaseTestSuite {
+public class AssertPartialTextTests extends BaseTestSuite {
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
-		testSuite.addTestSuite(AssertVisible1Test.class);
-		testSuite.addTestSuite(AssertVisible2Test.class);
-		testSuite.addTestSuite(AssertVisible3Test.class);
-		testSuite.addTestSuite(AssertNotVisible1Test.class);
-		testSuite.addTestSuite(AssertNotVisible2Test.class);
-		testSuite.addTestSuite(AssertNotVisible3Test.class);
+		testSuite.addTestSuite(AssertPartialText1Test.class);
+		testSuite.addTestSuite(AssertPartialText2Test.class);
+		testSuite.addTestSuite(AssertPartialText3Test.class);
+		testSuite.addTestSuite(AssertNotPartialText1Test.class);
+		testSuite.addTestSuite(AssertNotPartialText2Test.class);
+		testSuite.addTestSuite(AssertNotPartialText3Test.class);
 
 		return testSuite;
 	}
