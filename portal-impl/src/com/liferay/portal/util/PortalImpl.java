@@ -49,6 +49,7 @@ import com.liferay.portal.kernel.servlet.DynamicServletRequest;
 import com.liferay.portal.kernel.servlet.FileTimestampUtil;
 import com.liferay.portal.kernel.servlet.HttpHeaders;
 import com.liferay.portal.kernel.servlet.HttpMethods;
+import com.liferay.portal.kernel.servlet.NonSerializableObjectRequestWrapper;
 import com.liferay.portal.kernel.servlet.PersistentHttpServletRequestWrapper;
 import com.liferay.portal.kernel.servlet.PipingServletResponse;
 import com.liferay.portal.kernel.servlet.PortalSessionThreadLocal;
@@ -77,6 +78,7 @@ import com.liferay.portal.kernel.util.MethodKey;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.PropsKeys;
 import com.liferay.portal.kernel.util.ReleaseInfo;
+import com.liferay.portal.kernel.util.ServerDetector;
 import com.liferay.portal.kernel.util.SetUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringComparator;
@@ -4208,6 +4210,19 @@ public class PortalImpl implements Portal {
 
 					// This block should never be reached unless this method is
 					// called from a hot deployable portlet. See LayoutAction.
+
+					if (ServerDetector.isWebLogic()) {
+						if (requestWrapper instanceof
+								NonSerializableObjectRequestWrapper) {
+
+							parentRequest = requestWrapper;
+						}
+						else {
+							parentRequest =
+								new NonSerializableObjectRequestWrapper(
+									parentRequest);
+						}
+					}
 
 					uploadServletRequest = new UploadServletRequestImpl(
 						parentRequest);
