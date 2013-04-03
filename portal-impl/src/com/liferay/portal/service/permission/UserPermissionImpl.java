@@ -111,9 +111,9 @@ public class UserPermissionImpl implements UserPermission {
 
 				if ((((PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM == 5) ||
 					  (PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM == 6)) &&
-					 (permissionChecker.hasOwnerPermission(
-						permissionChecker.getCompanyId(), User.class.getName(),
-						userId, contact.getUserId(), actionId))) ||
+					 permissionChecker.hasOwnerPermission(
+						 permissionChecker.getCompanyId(), User.class.getName(),
+						 userId, contact.getUserId(), actionId)) ||
 					(permissionChecker.getUserId() == userId)) {
 
 					return true;

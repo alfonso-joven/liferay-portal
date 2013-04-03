@@ -273,7 +273,7 @@ public class ImageLocalServiceImpl extends ImageLocalServiceBaseImpl {
 
 	public boolean isNullOrDefaultSpacer(byte[] bytes) {
 		if ((bytes == null) || (bytes.length == 0) ||
-			(Arrays.equals(bytes, getDefaultSpacer().getTextObj()))) {
+			Arrays.equals(bytes, getDefaultSpacer().getTextObj())) {
 
 			return true;
 		}

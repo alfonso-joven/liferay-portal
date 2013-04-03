@@ -456,8 +456,8 @@ public class PortletDataContextImpl implements PortletDataContext {
 
 		if (((PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM != 5) &&
 			 (PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM != 6)) ||
-			(!MapUtil.getBoolean(
-				_parameterMap, PortletDataHandlerKeys.PERMISSIONS))) {
+			!MapUtil.getBoolean(
+				_parameterMap, PortletDataHandlerKeys.PERMISSIONS)) {
 
 			return;
 		}
@@ -1135,8 +1135,8 @@ public class PortletDataContextImpl implements PortletDataContext {
 
 		if (((PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM != 5) &&
 			 (PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM != 6)) ||
-			(!MapUtil.getBoolean(
-				_parameterMap, PortletDataHandlerKeys.PERMISSIONS))) {
+			!MapUtil.getBoolean(
+				_parameterMap, PortletDataHandlerKeys.PERMISSIONS)) {
 
 			return;
 		}
