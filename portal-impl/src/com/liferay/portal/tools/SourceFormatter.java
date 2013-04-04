@@ -3450,6 +3450,10 @@ public class SourceFormatter {
 			return null;
 		}
 
+		if (previousLine.endsWith(" extends")) {
+			return new Tuple(previousLine, "extends ", false);
+		}
+
 		if (previousLine.endsWith(" implements")) {
 			return new Tuple(previousLine, "implements ", false);
 		}
