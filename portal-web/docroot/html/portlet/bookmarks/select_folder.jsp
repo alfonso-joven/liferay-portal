@@ -74,7 +74,7 @@ if (folder != null) {
 
 		// Name
 
-		row.addText(curFolder.getName(), rowURL);
+		row.addText(HtmlUtil.escape(curFolder.getName()), rowURL);
 
 		// Statistics
 
@@ -99,7 +99,7 @@ if (folder != null) {
 		sb.append("selectFolder('");
 		sb.append(curFolder.getFolderId());
 		sb.append("', '");
-		sb.append(UnicodeFormatter.toString(curFolder.getName()));
+		sb.append(UnicodeFormatter.toString(HtmlUtil.escape(curFolder.getName())));
 		sb.append("'); window.close();");
 
 		row.addButton("right", SearchEntry.DEFAULT_VALIGN, LanguageUtil.get(pageContext, "choose"), sb.toString());

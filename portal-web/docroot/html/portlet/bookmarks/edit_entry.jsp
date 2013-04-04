@@ -80,7 +80,7 @@ long folderId = BeanParamUtil.getLong(entry, request, "folderId");
 						<portlet:param name="folderId" value="<%= String.valueOf(folderId) %>" />
 					</portlet:renderURL>
 
-					<aui:a href="<%= viewFolderURL %>" id="folderName"><%= folderName %></aui:a>
+					<aui:a href="<%= viewFolderURL %>" id="folderName"><%= HtmlUtil.escape(folderName) %></aui:a>
 
 					<portlet:renderURL var="selectFolderURL" windowState="<%= LiferayWindowState.POP_UP.toString() %>">
 						<portlet:param name="struts_action" value="/bookmarks/select_folder" />
