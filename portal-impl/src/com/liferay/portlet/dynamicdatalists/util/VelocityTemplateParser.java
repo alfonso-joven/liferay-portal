@@ -22,8 +22,8 @@ import com.liferay.util.ContentUtil;
 /**
  * @author Marcellus Tavares
  */
-public class VelocityTemplateParser extends
-	com.liferay.portlet.journal.util.VelocityTemplateParser {
+public class VelocityTemplateParser
+	extends com.liferay.portlet.journal.util.VelocityTemplateParser {
 
 	@Override
 	protected String getErrorTemplateContent() {

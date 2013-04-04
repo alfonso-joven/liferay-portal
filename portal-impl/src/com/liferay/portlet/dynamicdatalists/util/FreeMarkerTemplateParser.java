@@ -22,8 +22,8 @@ import com.liferay.util.ContentUtil;
 /**
  * @author Marcellus Tavares
  */
-public class FreeMarkerTemplateParser extends
-	com.liferay.portlet.journal.util.FreeMarkerTemplateParser {
+public class FreeMarkerTemplateParser
+	extends com.liferay.portlet.journal.util.FreeMarkerTemplateParser {
 
 	@Override
 	protected String getErrorTemplateContent() {
