@@ -89,7 +89,7 @@ public class GetTemplateAction extends Action {
 				contentType = ContentTypes.TEXT_CSS_UTF8;
 			}
 			else if (Validator.equals(
-					extension, JournalTemplateConstants.LANG_TYPE_XSL)) {
+						extension, JournalTemplateConstants.LANG_TYPE_XSL)) {
 
 				contentType = ContentTypes.TEXT_XML_UTF8;
 			}

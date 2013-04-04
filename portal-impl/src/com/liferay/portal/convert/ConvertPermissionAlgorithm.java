@@ -282,7 +282,7 @@ public class ConvertPermissionAlgorithm extends ConvertProcess {
 			String line = null;
 
 			while (Validator.isNotNull(
-					line = resourcePermissionReader.readLine())) {
+						line = resourcePermissionReader.readLine())) {
 
 				String[] values = StringUtil.split(line);
 

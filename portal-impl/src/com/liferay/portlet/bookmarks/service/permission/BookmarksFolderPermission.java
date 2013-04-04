@@ -63,7 +63,7 @@ public class BookmarksFolderPermission {
 
 		if (actionId.equals(ActionKeys.VIEW)) {
 			while (folderId !=
-					BookmarksFolderConstants.DEFAULT_PARENT_FOLDER_ID) {
+						BookmarksFolderConstants.DEFAULT_PARENT_FOLDER_ID) {
 
 				folder = BookmarksFolderLocalServiceUtil.getFolder(folderId);
 
@@ -88,7 +88,7 @@ public class BookmarksFolderPermission {
 		}
 		else {
 			while (folderId !=
-					BookmarksFolderConstants.DEFAULT_PARENT_FOLDER_ID) {
+						BookmarksFolderConstants.DEFAULT_PARENT_FOLDER_ID) {
 
 				folder = BookmarksFolderLocalServiceUtil.getFolder(folderId);
 

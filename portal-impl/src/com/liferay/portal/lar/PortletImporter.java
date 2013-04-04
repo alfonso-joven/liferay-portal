@@ -2009,7 +2009,7 @@ public class PortletImporter {
 						}
 					}
 					else if (className.equals(
-							JournalStructure.class.getName())) {
+								JournalStructure.class.getName())) {
 
 						JournalStructure journalStructure =
 							JournalStructureUtil.fetchByUUID_G(

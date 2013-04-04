@@ -888,7 +888,7 @@ public class SitesUtil {
 			layoutSetPrototypeSettingsProperties.getProperty(MERGE_FAIL_COUNT));
 
 		if (mergeFailCount >
-			PropsValues.LAYOUT_SET_PROTOTYPE_MERGE_FAIL_THRESHOLD) {
+				PropsValues.LAYOUT_SET_PROTOTYPE_MERGE_FAIL_THRESHOLD) {
 
 			if (_log.isWarnEnabled()) {
 				StringBundler sb = new StringBundler(6);
@@ -919,7 +919,7 @@ public class SitesUtil {
 				Date createDate = lock.getCreateDate();
 
 				if ((System.currentTimeMillis() - createDate.getTime()) >=
-					PropsValues.LAYOUT_SET_PROTOTYPE_MERGE_LOCK_MAX_TIME) {
+						PropsValues.LAYOUT_SET_PROTOTYPE_MERGE_LOCK_MAX_TIME) {
 
 					// Acquire lock if the lock is older than the lock max time
 
