@@ -30,10 +30,6 @@ public class TearDownFileUploadsDMMaxFileSizeTest extends BaseTestCase {
 			RuntimeVariables.replace("Dockbar"));
 		selenium.waitForElementPresent(
 			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
-		selenium.clickAt("//div[@id='dockbar']",
-			RuntimeVariables.replace("Dockbar"));
-		selenium.waitForElementPresent(
-			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
