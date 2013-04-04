@@ -461,6 +461,108 @@
 							<replacevalue><![CDATA[]]></replacevalue>
 						</replace>
 
+						<replace file="docroot/html/js/editor/ckeditor/_source/plugins/undo/plugin.js">
+							<replacetoken><![CDATA[Update the undo stacks with any subsequent DOM changes after this call.]]></replacetoken>
+							<replacevalue><![CDATA[Amend the top of undo stack (last undo image) with the current DOM changes.]]></replacevalue>
+						</replace>
+						
+						<replace file="docroot/html/js/editor/ckeditor/_source/plugins/undo/plugin.js">
+							<replacetoken><![CDATA[* ...]]></replacetoken>
+							<replacevalue><![CDATA[]]></replacevalue>
+						</replace>
+
+						<replace file="docroot/html/js/editor/ckeditor/_source/plugins/undo/plugin.js">
+							<replacetoken><![CDATA[ * editor.fire( 'updateSnapshot' );]]></replacetoken>
+							<replacevalue>
+								<![CDATA[
+									* 	editor.fire( 'saveSnapshot' );
+									* 		editor.document.body.append(...);
+									* 	// Make new changes following the last undo snapshot part of it.
+								]]>
+							</replacevalue>
+						</replace>
+						
+						<replace file="docroot/html/js/editor/ckeditor/_source/plugins/undo/plugin.js">
+							<replacetoken><![CDATA[*  // Ask to include subsequent (in this call stack) DOM changes to be]]></replacetoken>
+							<replacevalue>
+								<![CDATA[]]>
+							</replacevalue>
+						</replace>
+						
+						<replace file="docroot/html/js/editor/ckeditor/_source/plugins/undo/plugin.js">
+							<replacetoken><![CDATA[* // considered as part of the first snapshot.]]></replacetoken>
+							<replacevalue>
+								<![CDATA[]]>
+							</replacevalue>
+						</replace>
+
+						<replace file="docroot/html/js/editor/ckeditor/_source/plugins/undo/plugin.js">
+							<replacetoken><![CDATA[ * 	editor.document.body.append(...);]]></replacetoken>
+							<replacevalue><![CDATA[* ... ]]></replacevalue>
+						</replace>
+
+						<replace file="docroot/html/js/editor/ckeditor/_source/plugins/undo/plugin.js">
+							<replacetoken><![CDATA[if ( undoManager.currentImage && new Image( editor ).equals( undoManager.currentImage ) )]]></replacetoken>
+							<replacevalue>
+								<![CDATA[if ( undoManager.currentImage )]]>
+							</replacevalue>
+						</replace>
+						
+						<replace file="docroot/html/js/editor/ckeditor/_source/plugins/undo/plugin.js">
+								<replacetoken><![CDATA[setTimeout( function() { undoManager.update(); }, 0 );]]></replacetoken>
+								<replacevalue>
+									<![CDATA[undoManager.update();]]>
+								</replacevalue>
+							</replace>
+
+						<replace file="docroot/html/js/editor/ckeditor/_source/plugins/wysiwygarea/plugin.js">
+							<replacetoken><![CDATA[editor.fire( 'updateSnapshot' );]]></replacetoken>
+							<replacevalue>
+								<![CDATA[]]>
+							</replacevalue>
+						</replace>
+						
+						<replace file="docroot/html/js/editor/ckeditor/_source/plugins/wysiwygarea/plugin.js">
+							<replacetoken><![CDATA[restoreDirty( editor );]]></replacetoken>
+							<replacevalue>
+								<![CDATA[]]>
+							</replacevalue>
+						</replace>
+
+						<replace file="docroot/html/js/editor/ckeditor/_source/plugins/wysiwygarea/plugin.js">
+							<replacetoken><![CDATA[CKEDITOR.env.ie && restoreSelection( selection );]]></replacetoken>
+							<replacevalue><![CDATA[]]></replacevalue>
+						</replace>
+						
+						<replace file="docroot/html/js/editor/ckeditor/_source/plugins/wysiwygarea/plugin.js">
+							<replacetoken><![CDATA[// Memorize scroll position to restore it later (#4472).]]></replacetoken>
+							<replacevalue><![CDATA[
+								restoreDirty( editor );
+								// Memorize scroll position to restore it later (#4472).
+								]]>
+							</replacevalue>
+						</replace>
+
+						<replace file="docroot/html/js/editor/ckeditor/_source/plugins/wysiwygarea/plugin.js">
+							<replacetoken><![CDATA[editor.on( 'selectionChange', onSelectionChangeFixBody, null, null, 1 );]]></replacetoken>
+							<replacevalue>
+								<![CDATA[
+									editor.on( 'selectionChange', function()
+									{
+										var sel = editor.getSelection();
+										// Do it only when selection is not locked. (#8222)
+										if ( sel && !sel.isLocked )
+										{
+											var isDirty = editor.checkDirty();
+											onSelectionChangeFixBody.apply( this, arguments );
+											editor.fire( 'updateSnapshot' );
+											!isDirty && editor.resetDirty();
+										}
+									}, null, null, 1 );
+								]]>
+							</replacevalue>
+						</replace>
+
 						<java
 							classname="ckpackager.ckpackager"
 							classpathref="project.classpath"
