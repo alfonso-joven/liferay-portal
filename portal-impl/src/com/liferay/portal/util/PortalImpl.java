@@ -5299,6 +5299,9 @@ public class PortalImpl implements Portal {
 			columnCount = Integer.valueOf(0);
 		}
 
+		Portlet renderPortlet = (Portlet)request.getAttribute(
+			WebKeys.RENDER_PORTLET);
+
 		request.setAttribute(WebKeys.RENDER_PORTLET, portlet);
 		request.setAttribute(WebKeys.RENDER_PORTLET_QUERY_STRING, queryString);
 		request.setAttribute(WebKeys.RENDER_PORTLET_COLUMN_ID, columnId);
@@ -5319,6 +5322,8 @@ public class PortalImpl implements Portal {
 			response, unsyncStringWriter);
 
 		requestDispatcher.include(request, pipingServletResponse);
+
+		request.setAttribute(WebKeys.RENDER_PORTLET, renderPortlet);
 
 		boolean showPortlet = true;
 
