@@ -15,6 +15,7 @@
 package com.liferay.portal.security.pacl.checker;
 
 import com.liferay.portal.bean.BeanLocatorImpl;
+import com.liferay.portal.freemarker.FreeMarkerVariablesImpl;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.portlet.PortletClassLoaderUtil;
@@ -29,6 +30,7 @@ import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.service.BaseLocalServiceImpl;
 import com.liferay.portal.service.BaseServiceImpl;
 import com.liferay.portal.service.persistence.impl.BasePersistenceImpl;
+import com.liferay.portal.velocity.VelocityVariablesImpl;
 
 import java.lang.reflect.Modifier;
 
@@ -284,7 +286,10 @@ public class PortalRuntimeChecker extends BaseChecker {
 
 			callerClass = Reflection.getCallerClass(stackIndex);
 
-			if (isTrustedCaller(callerClass, permission)) {
+			if (!callerClass.equals(FreeMarkerVariablesImpl.class) &&
+				!callerClass.equals(VelocityVariablesImpl.class) &&
+				isTrustedCaller(callerClass, permission)) {
+
 				return true;
 			}
 		}
