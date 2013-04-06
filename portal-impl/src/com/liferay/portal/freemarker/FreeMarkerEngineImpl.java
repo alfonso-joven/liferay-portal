@@ -20,6 +20,7 @@ import com.liferay.portal.kernel.freemarker.FreeMarkerEngine;
 import com.liferay.portal.kernel.freemarker.FreeMarkerVariablesUtil;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.util.ReflectionUtil;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.util.ClassLoaderUtil;
@@ -37,6 +38,7 @@ import java.io.IOException;
 import java.io.Writer;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 
 import java.util.Locale;
 import java.util.Map;
@@ -138,6 +140,25 @@ public class FreeMarkerEngineImpl implements FreeMarkerEngine {
 		_configuration.setTemplateLoader(multiTemplateLoader);
 		_configuration.setTemplateUpdateDelay(
 			PropsValues.FREEMARKER_ENGINE_MODIFICATION_CHECK_INTERVAL);
+
+		try {
+
+			// This must take place after setting properties above otherwise the
+			// cache is reset to the original implementation
+
+			Field field = ReflectionUtil.getDeclaredField(
+				Configuration.class, "cache");
+
+			TemplateCache templateCache = (TemplateCache)field.get(
+				_configuration);
+
+			templateCache = new LiferayTemplateCache(templateCache);
+
+			field.set(_configuration, templateCache);
+		}
+		catch (Exception e) {
+			throw new Exception("Unable to Initialize Freemarker manager");
+		}
 
 		_encoding = _configuration.getEncoding(_configuration.getLocale());
 		_locale = _configuration.getLocale();
