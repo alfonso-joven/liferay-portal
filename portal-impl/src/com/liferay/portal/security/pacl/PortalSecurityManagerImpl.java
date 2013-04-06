@@ -18,6 +18,8 @@ import com.liferay.portal.bean.BeanLocatorImpl;
 import com.liferay.portal.dao.jdbc.DataSourceFactoryImpl;
 import com.liferay.portal.dao.orm.hibernate.DynamicQueryFactoryImpl;
 import com.liferay.portal.deploy.hot.HotDeployImpl;
+import com.liferay.portal.freemarker.FreeMarkerEngineImpl;
+import com.liferay.portal.freemarker.LiferayTemplateCache;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.portlet.PortletClassLoaderUtil;
@@ -53,9 +55,11 @@ import com.liferay.portal.servlet.DirectRequestDispatcherFactoryImpl;
 import com.liferay.portal.spring.aop.ServiceBeanAopProxy;
 import com.liferay.portal.spring.context.PortletApplicationContext;
 import com.liferay.portal.spring.util.FilterClassLoader;
+import com.liferay.portal.template.TemplateControlContext;
 import com.liferay.portal.util.ClassLoaderUtil;
 import com.liferay.portal.util.PropsValues;
 import com.liferay.portal.velocity.LiferayResourceManager;
+import com.liferay.portal.velocity.VelocityEngineImpl;
 import com.liferay.portlet.PortletRequestImpl;
 import com.liferay.portlet.PortletResponseImpl;
 import com.liferay.portlet.PortletURLImpl;
@@ -68,11 +72,13 @@ import java.lang.reflect.ReflectPermission;
 
 import java.net.SocketPermission;
 
+import java.security.AccessControlContext;
 import java.security.AccessController;
 import java.security.Permission;
 import java.security.Policy;
 import java.security.PrivilegedAction;
 import java.security.PrivilegedExceptionAction;
+import java.security.ProtectionDomain;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -310,9 +316,11 @@ public class PortalSecurityManagerImpl extends SecurityManager
 		initClass(DoPrivilegedHandler.class);
 		initClass(DynamicQueryFactoryImpl.class);
 		initClass(FileAvailabilityUtil.class);
+		initClass(FreeMarkerEngineImpl.class);
 		initClass(GeneratingPACLPolicy.class);
 		initClass(InactivePACLPolicy.class);
 		initClass(LiferayResourceManager.class);
+		initClass(LiferayTemplateCache.class);
 		initClass(PACLConnectionHandler.class);
 		initClass(PACLContext.class);
 		initClass(PACLDataSource.class);
@@ -329,6 +337,8 @@ public class PortalSecurityManagerImpl extends SecurityManager
 		initClass(PortletResponseImpl.class);
 		initClass(PortletURLImpl.class);
 		initClass(Profile.class);
+		initClass(TemplateControlContext.class);
+		initClass(VelocityEngineImpl.class);
 	}
 
 	protected void initInitialContextFactoryBuilder() throws Exception {
@@ -398,6 +408,8 @@ public class PortalSecurityManagerImpl extends SecurityManager
 			DirectRequestDispatcherFactoryImpl.class,
 			new DoDirectRequestDispatcherFactoryImplPACL());
 		initPACLImpl(DoPrivilegedUtil.class, new DoDoPrivilegedPACL());
+		initPACLImpl(
+			FreeMarkerEngineImpl.class, new DoTemplateContextHelperPACL());
 		initPACLImpl(HotDeployImpl.class, new DoHotDeployImplPACL());
 		initPACLImpl(
 			PortalFilePermission.class, new DoPortalFilePermissionPACL());
@@ -417,6 +429,8 @@ public class PortalSecurityManagerImpl extends SecurityManager
 			new DoPortletApplicationContextPACL());
 		initPACLImpl(
 			ServiceBeanAopProxy.class, new DoServiceBeanAopProxyPACL());
+		initPACLImpl(
+			VelocityEngineImpl.class, new DoTemplateContextHelperPACL());
 	}
 
 	private static Log _log = LogFactoryUtil.getLog(
@@ -913,6 +927,37 @@ public class PortalSecurityManagerImpl extends SecurityManager
 			AdvisedSupport advisedSupport) {
 
 			return new PACLInvocationHandler(invocationHandler, advisedSupport);
+		}
+
+	}
+
+	private static class DoTemplateContextHelperPACL
+		implements FreeMarkerEngineImpl.PACL, VelocityEngineImpl.PACL {
+
+		public TemplateControlContext getTemplateControlContext() {
+			PACLPolicy paclPolicy = PACLUtil.getPACLPolicy();
+
+			ClassLoader contextClassLoader =
+				ClassLoaderUtil.getContextClassLoader();
+
+			if (paclPolicy == null) {
+				paclPolicy = PACLPolicyManager.getPACLPolicy(
+					contextClassLoader);
+			}
+
+			if ((paclPolicy == null) || !paclPolicy.isActive()) {
+				return new TemplateControlContext(null, contextClassLoader);
+			}
+
+			ProtectionDomain protectionDomain = new ProtectionDomain(
+				null, null, paclPolicy.getClassLoader(), null);
+
+			AccessControlContext accessControlContext =
+				new AccessControlContext(
+					new ProtectionDomain[] {protectionDomain});
+
+			return new TemplateControlContext(
+				accessControlContext, paclPolicy.getClassLoader());
 		}
 
 	}

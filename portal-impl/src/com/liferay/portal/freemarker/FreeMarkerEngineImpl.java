@@ -23,6 +23,7 @@ import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.util.ReflectionUtil;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.Validator;
+import com.liferay.portal.template.TemplateControlContext;
 import com.liferay.portal.util.ClassLoaderUtil;
 import com.liferay.portal.util.PropsValues;
 
@@ -66,6 +67,10 @@ public class FreeMarkerEngineImpl implements FreeMarkerEngine {
 		PortalCache portalCache = LiferayCacheStorage.getPortalCache();
 
 		portalCache.remove(_getResourceCacheKey(freeMarkerTemplateId));
+	}
+
+	public TemplateControlContext getTemplateControlContext() {
+		return _pacl.getTemplateControlContext();
 	}
 
 	public FreeMarkerContext getWrappedClassLoaderToolsContext() {
@@ -261,6 +266,8 @@ public class FreeMarkerEngineImpl implements FreeMarkerEngine {
 
 	private static Log _log = LogFactoryUtil.getLog(FreeMarkerEngineImpl.class);
 
+	private static PACL _pacl = new NoPACL();
+
 	private Map<ClassLoader, FreeMarkerContextImpl>
 		_classLoaderFreeMarkerContexts =
 			new ConcurrentHashMap<ClassLoader, FreeMarkerContextImpl>();
@@ -271,5 +278,22 @@ public class FreeMarkerEngineImpl implements FreeMarkerEngine {
 	private FreeMarkerContextImpl _standardToolsContext;
 	private StringTemplateLoader _stringTemplateLoader;
 	private Constructor<?> _templateKeyConstructor;
+
+	private static class NoPACL implements PACL {
+
+		public TemplateControlContext getTemplateControlContext() {
+			ClassLoader contextClassLoader =
+				ClassLoaderUtil.getContextClassLoader();
+
+			return new TemplateControlContext(null, contextClassLoader);
+		}
+
+	}
+
+	public static interface PACL {
+
+		public TemplateControlContext getTemplateControlContext();
+
+	}
 
 }

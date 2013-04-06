@@ -23,6 +23,7 @@ import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.kernel.velocity.VelocityContext;
 import com.liferay.portal.kernel.velocity.VelocityEngine;
 import com.liferay.portal.kernel.velocity.VelocityVariablesUtil;
+import com.liferay.portal.template.TemplateControlContext;
 import com.liferay.portal.util.ClassLoaderUtil;
 import com.liferay.portal.util.PropsUtil;
 import com.liferay.portal.util.PropsValues;
@@ -72,6 +73,10 @@ public class VelocityEngineImpl implements VelocityEngine {
 
 	public VelocityContext getStandardToolsContext() {
 		return _standardToolsContext;
+	}
+
+	public TemplateControlContext getTemplateControlContext() {
+		return _pacl.getTemplateControlContext();
 	}
 
 	public VelocityContext getWrappedClassLoaderToolsContext() {
@@ -258,10 +263,29 @@ public class VelocityEngineImpl implements VelocityEngine {
 
 	private static Log _log = LogFactoryUtil.getLog(VelocityEngineImpl.class);
 
+	private static PACL _pacl = new NoPACL();
+
 	private Map<ClassLoader, VelocityContextImpl> _classLoaderVelocityContexts =
 		new ConcurrentHashMap<ClassLoader, VelocityContextImpl>();
 	private VelocityContextImpl _restrictedToolsContext;
 	private VelocityContextImpl _standardToolsContext;
 	private org.apache.velocity.app.VelocityEngine _velocityEngine;
+
+	private static class NoPACL implements PACL {
+
+		public TemplateControlContext getTemplateControlContext() {
+			ClassLoader contextClassLoader =
+				ClassLoaderUtil.getContextClassLoader();
+
+			return new TemplateControlContext(null, contextClassLoader);
+		}
+
+	}
+
+	public static interface PACL {
+
+		public TemplateControlContext getTemplateControlContext();
+
+	}
 
 }
