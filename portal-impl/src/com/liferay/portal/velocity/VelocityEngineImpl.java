@@ -16,6 +16,8 @@ package com.liferay.portal.velocity;
 
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.security.pacl.DoPrivileged;
+import com.liferay.portal.kernel.security.pacl.NotPrivileged;
 import com.liferay.portal.kernel.util.PropsKeys;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
@@ -42,6 +44,7 @@ import org.apache.velocity.runtime.resource.util.StringResourceRepository;
 /**
  * @author Raymond Augé
  */
+@DoPrivileged
 public class VelocityEngineImpl implements VelocityEngine {
 
 	public VelocityEngineImpl() {
@@ -63,14 +66,17 @@ public class VelocityEngineImpl implements VelocityEngine {
 			_getResourceCacheKey(velocityTemplateId));
 	}
 
+	@NotPrivileged
 	public VelocityContext getEmptyContext() {
 		return new VelocityContextImpl();
 	}
 
+	@NotPrivileged
 	public VelocityContext getRestrictedToolsContext() {
 		return _restrictedToolsContext;
 	}
 
+	@NotPrivileged
 	public VelocityContext getStandardToolsContext() {
 		return _standardToolsContext;
 	}
@@ -79,6 +85,7 @@ public class VelocityEngineImpl implements VelocityEngine {
 		return _pacl.getTemplateControlContext();
 	}
 
+	@NotPrivileged
 	public VelocityContext getWrappedClassLoaderToolsContext() {
 
 		// This context will have all of its utilities initialized within the
@@ -103,11 +110,13 @@ public class VelocityEngineImpl implements VelocityEngine {
 		return velocityContextImpl;
 	}
 
+	@NotPrivileged
 	public VelocityContext getWrappedRestrictedToolsContext() {
 		return new VelocityContextImpl(
 			_restrictedToolsContext.getWrappedVelocityContext());
 	}
 
+	@NotPrivileged
 	public VelocityContext getWrappedStandardToolsContext() {
 		return new VelocityContextImpl(
 			_standardToolsContext.getWrappedVelocityContext());
@@ -209,6 +218,7 @@ public class VelocityEngineImpl implements VelocityEngine {
 			_standardToolsContext, null);
 	}
 
+	@NotPrivileged
 	public boolean mergeTemplate(
 			String velocityTemplateId, String velocityTemplateContent,
 			VelocityContext velocityContext, Writer writer)
@@ -239,6 +249,7 @@ public class VelocityEngineImpl implements VelocityEngine {
 			velocityContextImpl.getWrappedVelocityContext(), writer);
 	}
 
+	@NotPrivileged
 	public boolean mergeTemplate(
 			String velocityTemplateId, VelocityContext velocityContext,
 			Writer writer)
@@ -247,6 +258,7 @@ public class VelocityEngineImpl implements VelocityEngine {
 		return mergeTemplate(velocityTemplateId, null, velocityContext, writer);
 	}
 
+	@NotPrivileged
 	public boolean resourceExists(String resource) {
 		return _velocityEngine.resourceExists(resource);
 	}

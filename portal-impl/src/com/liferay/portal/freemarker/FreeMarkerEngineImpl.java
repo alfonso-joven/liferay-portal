@@ -20,6 +20,8 @@ import com.liferay.portal.kernel.freemarker.FreeMarkerEngine;
 import com.liferay.portal.kernel.freemarker.FreeMarkerVariablesUtil;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.security.pacl.DoPrivileged;
+import com.liferay.portal.kernel.security.pacl.NotPrivileged;
 import com.liferay.portal.kernel.util.ReflectionUtil;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.Validator;
@@ -49,6 +51,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @author Mika Koivisto
  * @author Raymond Augé
  */
+@DoPrivileged
 public class FreeMarkerEngineImpl implements FreeMarkerEngine {
 
 	public void clearClassLoader(ClassLoader classLoader) {
@@ -73,6 +76,7 @@ public class FreeMarkerEngineImpl implements FreeMarkerEngine {
 		return _pacl.getTemplateControlContext();
 	}
 
+	@NotPrivileged
 	public FreeMarkerContext getWrappedClassLoaderToolsContext() {
 
 		// This context will have all of its utilities initialized within the
@@ -97,11 +101,13 @@ public class FreeMarkerEngineImpl implements FreeMarkerEngine {
 		return freeMarkerContextImpl;
 	}
 
+	@NotPrivileged
 	public FreeMarkerContext getWrappedRestrictedToolsContext() {
 		return new FreeMarkerContextImpl(
 			_restrictedToolsContext.getWrappedContext());
 	}
 
+	@NotPrivileged
 	public FreeMarkerContext getWrappedStandardToolsContext() {
 		return new FreeMarkerContextImpl(
 			_standardToolsContext.getWrappedContext());
@@ -190,6 +196,7 @@ public class FreeMarkerEngineImpl implements FreeMarkerEngine {
 		_templateKeyConstructor.setAccessible(true);
 	}
 
+	@NotPrivileged
 	public boolean mergeTemplate(
 			String freeMarkerTemplateId, FreeMarkerContext freeMarkerContext,
 			Writer writer)
@@ -199,6 +206,7 @@ public class FreeMarkerEngineImpl implements FreeMarkerEngine {
 			freeMarkerTemplateId, null, freeMarkerContext, writer);
 	}
 
+	@NotPrivileged
 	public boolean mergeTemplate(
 			String freeMarkerTemplateId, String freemarkerTemplateContent,
 			FreeMarkerContext freeMarkerContext, Writer writer)
@@ -230,6 +238,7 @@ public class FreeMarkerEngineImpl implements FreeMarkerEngine {
 		return true;
 	}
 
+	@NotPrivileged
 	public boolean resourceExists(String resource) {
 		try {
 			Template template = _configuration.getTemplate(resource);
