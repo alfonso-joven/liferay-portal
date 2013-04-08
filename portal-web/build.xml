@@ -509,11 +509,11 @@
 						</replace>
 
 						<replace file="docroot/html/js/editor/ckeditor/_source/plugins/undo/plugin.js">
-								<replacetoken><![CDATA[setTimeout( function() { undoManager.update(); }, 0 );]]></replacetoken>
-								<replacevalue>
-									<![CDATA[undoManager.update();]]>
-								</replacevalue>
-							</replace>
+							<replacetoken><![CDATA[setTimeout( function() { undoManager.update(); }, 0 );]]></replacetoken>
+							<replacevalue>
+								<![CDATA[undoManager.update();]]>
+							</replacevalue>
+						</replace>
 
 						<replace file="docroot/html/js/editor/ckeditor/_source/plugins/wysiwygarea/plugin.js">
 							<replacetoken><![CDATA[editor.fire( 'updateSnapshot' );]]></replacetoken>
