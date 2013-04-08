@@ -465,7 +465,7 @@
 							<replacetoken><![CDATA[Update the undo stacks with any subsequent DOM changes after this call.]]></replacetoken>
 							<replacevalue><![CDATA[Amend the top of undo stack (last undo image) with the current DOM changes.]]></replacevalue>
 						</replace>
-						
+
 						<replace file="docroot/html/js/editor/ckeditor/_source/plugins/undo/plugin.js">
 							<replacetoken><![CDATA[* ...]]></replacetoken>
 							<replacevalue><![CDATA[]]></replacevalue>
@@ -481,14 +481,14 @@
 								]]>
 							</replacevalue>
 						</replace>
-						
+
 						<replace file="docroot/html/js/editor/ckeditor/_source/plugins/undo/plugin.js">
 							<replacetoken><![CDATA[*  // Ask to include subsequent (in this call stack) DOM changes to be]]></replacetoken>
 							<replacevalue>
 								<![CDATA[]]>
 							</replacevalue>
 						</replace>
-						
+
 						<replace file="docroot/html/js/editor/ckeditor/_source/plugins/undo/plugin.js">
 							<replacetoken><![CDATA[* // considered as part of the first snapshot.]]></replacetoken>
 							<replacevalue>
@@ -507,7 +507,7 @@
 								<![CDATA[if ( undoManager.currentImage )]]>
 							</replacevalue>
 						</replace>
-						
+
 						<replace file="docroot/html/js/editor/ckeditor/_source/plugins/undo/plugin.js">
 								<replacetoken><![CDATA[setTimeout( function() { undoManager.update(); }, 0 );]]></replacetoken>
 								<replacevalue>
@@ -521,7 +521,7 @@
 								<![CDATA[]]>
 							</replacevalue>
 						</replace>
-						
+
 						<replace file="docroot/html/js/editor/ckeditor/_source/plugins/wysiwygarea/plugin.js">
 							<replacetoken><![CDATA[restoreDirty( editor );]]></replacetoken>
 							<replacevalue>
@@ -533,7 +533,7 @@
 							<replacetoken><![CDATA[CKEDITOR.env.ie && restoreSelection( selection );]]></replacetoken>
 							<replacevalue><![CDATA[]]></replacevalue>
 						</replace>
-						
+
 						<replace file="docroot/html/js/editor/ckeditor/_source/plugins/wysiwygarea/plugin.js">
 							<replacetoken><![CDATA[// Memorize scroll position to restore it later (#4472).]]></replacetoken>
 							<replacevalue><![CDATA[
