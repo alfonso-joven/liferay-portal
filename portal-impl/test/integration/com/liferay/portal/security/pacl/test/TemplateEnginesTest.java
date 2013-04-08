@@ -90,8 +90,8 @@ public class TemplateEnginesTest {
 		UnsyncStringWriter unsyncStringWriter = new UnsyncStringWriter();
 
 		FreeMarkerEngineUtil.mergeTemplate(
-			"123.ftl", "<#if !httpUtil??>PASS</#if>",
-			freeMarkerContext, unsyncStringWriter);
+			"123.ftl", "<#if !httpUtil??>PASS</#if>", freeMarkerContext,
+			unsyncStringWriter);
 
 		String result = unsyncStringWriter.toString();
 
@@ -106,8 +106,8 @@ public class TemplateEnginesTest {
 		UnsyncStringWriter unsyncStringWriter = new UnsyncStringWriter();
 
 		FreeMarkerEngineUtil.mergeTemplate(
-			"123.ftl", "<#if languageUtil??>PASS</#if>",
-			freeMarkerContext, unsyncStringWriter);
+			"123.ftl", "<#if languageUtil??>PASS</#if>", freeMarkerContext,
+			unsyncStringWriter);
 
 		String result = unsyncStringWriter.toString();
 
@@ -138,8 +138,7 @@ public class TemplateEnginesTest {
 		UnsyncStringWriter unsyncStringWriter = new UnsyncStringWriter();
 
 		VelocityEngineUtil.mergeTemplate(
-			"123.vm", "Hello World!", velocityContext,
-			unsyncStringWriter);
+			"123.vm", "Hello World!", velocityContext, unsyncStringWriter);
 
 		String result = unsyncStringWriter.toString();
 
