@@ -86,18 +86,6 @@ public class LiferayResourceManager extends ResourceManagerImpl {
 		return doGetResource(resourceName, resourceType, encoding);
 	}
 
-	private Resource doGetResource(
-			String resourceName, int resourceType, String encoding)
-		throws Exception {
-
-		if (resourceName.contains(SandboxHandler.SANDBOX_MARKER)) {
-			return loadResource(resourceName, resourceType, encoding);
-		}
-		else {
-			return super.getResource(resourceName, resourceType, encoding);
-		}
-	}
-
 	@Override
 	public synchronized void initialize(RuntimeServices runtimeServices)
 		throws Exception {
@@ -112,6 +100,18 @@ public class LiferayResourceManager extends ResourceManagerImpl {
 			runtimeServices, new FastExtendedProperties(extendedProperties));
 
 		super.initialize(runtimeServices);
+	}
+
+	private Resource doGetResource(
+			String resourceName, int resourceType, String encoding)
+		throws Exception {
+
+		if (resourceName.contains(SandboxHandler.SANDBOX_MARKER)) {
+			return loadResource(resourceName, resourceType, encoding);
+		}
+		else {
+			return super.getResource(resourceName, resourceType, encoding);
+		}
 	}
 
 	private class ResourcePrivilegedExceptionAction

@@ -231,8 +231,7 @@ public class FreeMarkerEngineImpl implements FreeMarkerEngine {
 			toolsContextMap =
 				new ConcurrentHashMap<String, FreeMarkerContextImpl>();
 
-			_classLoaderToolsContextsMap.put(
-				classLoader, toolsContextMap);
+			_classLoaderToolsContextsMap.put(classLoader, toolsContextMap);
 		}
 
 		FreeMarkerContextImpl freeMarkerContextImpl = toolsContextMap.get(
