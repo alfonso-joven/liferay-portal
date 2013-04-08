@@ -215,8 +215,7 @@ public class VelocityEngineImpl implements VelocityEngine {
 		VelocityContextImpl velocityContextImpl =
 			(VelocityContextImpl)velocityContext;
 
-		template.merge(
-			velocityContextImpl.getWrappedVelocityContext(), writer);
+		template.merge(velocityContextImpl.getWrappedVelocityContext(), writer);
 
 		return true;
 	}
@@ -245,8 +244,7 @@ public class VelocityEngineImpl implements VelocityEngine {
 			toolsContextMap =
 				new ConcurrentHashMap<String, VelocityContextImpl>();
 
-			_classLoaderToolsContextsMap.put(
-				classLoader, toolsContextMap);
+			_classLoaderToolsContextsMap.put(classLoader, toolsContextMap);
 		}
 
 		VelocityContextImpl velocityContextImpl = toolsContextMap.get(
@@ -273,6 +271,10 @@ public class VelocityEngineImpl implements VelocityEngine {
 		return velocityContextImpl;
 	}
 
+	private String _getResourceCacheKey(String velocityTemplateId) {
+		return _RESOURCE_TEMPLATE_NAME_SPACE.concat(velocityTemplateId);
+	}
+
 	private VelocityContextImpl _getToolsContext(String templateContextType) {
 		TemplateControlContext templateControlContext =
 			getTemplateControlContext();
@@ -289,10 +291,6 @@ public class VelocityEngineImpl implements VelocityEngine {
 			new DoGetToolsContextPrivilegedAction(
 				classLoader, templateContextType),
 			accessControlContext);
-	}
-
-	private String _getResourceCacheKey(String velocityTemplateId) {
-		return _RESOURCE_TEMPLATE_NAME_SPACE.concat(velocityTemplateId);
 	}
 
 	private static final String _RESOURCE_LOADER =
