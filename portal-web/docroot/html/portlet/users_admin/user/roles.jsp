@@ -123,7 +123,7 @@ userGroupRoles.addAll(organizationRoles);
 			/>
 			<liferay-ui:search-container-column-text
 				name="title"
-				value='<%= HtmlUtil.escape(ListUtil.toString(groupRoles, Role.NAME_ACCESSOR)) %>'
+				value="<%= HtmlUtil.escape(ListUtil.toString(groupRoles, Role.NAME_ACCESSOR)) %>"
 			/>
 
 		<%
