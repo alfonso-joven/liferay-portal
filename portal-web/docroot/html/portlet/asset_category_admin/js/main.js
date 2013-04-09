@@ -1621,7 +1621,16 @@ AUI.add(
 											item[STR_SELECTED] = STR_SELECTED;
 										}
 
-										buffer.push(Lang.sub(TPL_VOCABULARY_OPTION, item));
+										buffer.push(
+											Lang.sub(
+												TPL_VOCABULARY_OPTION,
+												{
+													selected: item.selected,
+													vocabularyId: item.vocabularyId,
+													titleCurrentValue: A.Escape.html(item.titleCurrentValue)
+												}
+											)
+										);
 									}
 								);
 

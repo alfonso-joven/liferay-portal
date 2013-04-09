@@ -77,7 +77,7 @@ if (filterManageableOrganizations) {
 
 						if (OrganizationPermissionUtil.contains(permissionChecker, parentOrganization, ActionKeys.VIEW)) {
 							parentOrganizationId = parentOrganization.getOrganizationId();
-							parentOrganizationName = parentOrganization.getName();
+							parentOrganizationName = HtmlUtil.escape(parentOrganization.getName());
 						}
 					}
 					%>
@@ -90,8 +90,9 @@ if (filterManageableOrganizations) {
 					<liferay-ui:header
 						backLabel="<%= parentOrganizationName %>"
 						backURL="<%= headerBackURL.toString() %>"
+						escapeXml="<%= false %>"
 						localizeTitle="<%= false %>"
-						title="<%= organization.getName() %>"
+						title="<%= HtmlUtil.escape(organization.getName()) %>"
 					/>
 				</c:when>
 				<c:otherwise>

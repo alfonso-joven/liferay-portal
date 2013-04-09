@@ -77,7 +77,7 @@ portletURL.setParameter("struts_action", "/roles_admin/select_regular_role");
 			sb.append("selectRole('");
 			sb.append(role.getRoleId());
 			sb.append("', '");
-			sb.append(UnicodeFormatter.toString(role.getTitle(locale)));
+			sb.append(HtmlUtil.escapeJS(role.getTitle(locale)));
 			sb.append("', '");
 			sb.append("roles");
 			sb.append("');");
