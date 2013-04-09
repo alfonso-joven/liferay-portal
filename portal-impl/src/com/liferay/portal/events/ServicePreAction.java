@@ -1769,7 +1769,7 @@ public class ServicePreAction extends Action {
 		if (accessibleLayouts.isEmpty()) {
 			layouts = null;
 
-			if (!hasViewLayoutPermission) {
+			if (!isLoginRequest(request) && !hasViewLayoutPermission) {
 				SessionErrors.add(
 					request, LayoutPermissionException.class.getName());
 			}
