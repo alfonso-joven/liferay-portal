@@ -253,7 +253,7 @@ request.setAttribute("edit_article.jsp-toLanguageId", toLanguageId);
 						<c:when test="<%= Validator.isNull(toLanguageId) %>">
 							<c:if test="<%= hasSavePermission %>">
 								<c:if test="<%= classNameId == 0 %>">
-									<aui:button name="saveButton" onClick='<%= renderResponse.getNamespace() + "saveArticle()" %>' type="submit" value="<%= saveButtonLabel %>" />
+									<aui:button name="saveButton" type="submit" value="<%= saveButtonLabel %>" />
 								</c:if>
 
 								<aui:button disabled="<%= pending %>" name="publishButton" onClick='<%= renderResponse.getNamespace() + "publishArticle()" %>' type="submit" value="<%= publishButtonLabel %>" />
@@ -343,10 +343,6 @@ request.setAttribute("edit_article.jsp-toLanguageId", toLanguageId);
 			document.<portlet:namespace />fm1.<portlet:namespace />redirect.value = "<portlet:renderURL><portlet:param name="redirect" value="<%= redirect %>" /><portlet:param name="struts_action" value="/journal/edit_article" /><portlet:param name="groupId" value="<%= String.valueOf(groupId) %>" /><portlet:param name="articleId" value="<%= articleId %>" /><portlet:param name="version" value="<%= String.valueOf(version) %>" /></portlet:renderURL>&<portlet:namespace />languageId=<%= defaultLanguageId %>";
 			submitForm(document.<portlet:namespace />fm1);
 		}
-	}
-
-	function <portlet:namespace />saveArticle() {
-		document.<portlet:namespace />fm1.<portlet:namespace /><%= Constants.CMD %>.value = "<%= Constants.SAVE %>";
 	}
 
 	function <portlet:namespace />selectDocumentLibrary(url) {
