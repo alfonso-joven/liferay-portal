@@ -403,6 +403,13 @@ public class LayoutServiceUtil {
 			portletId);
 	}
 
+	public static long getDefaultPlid(long groupId, long scopeGroupId,
+		java.lang.String portletId)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService().getDefaultPlid(groupId, scopeGroupId, portletId);
+	}
+
 	public static com.liferay.portal.model.Layout getLayoutByUuidAndGroupId(
 		java.lang.String uuid, long groupId, boolean privateLayout)
 		throws com.liferay.portal.kernel.exception.PortalException,

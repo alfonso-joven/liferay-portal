@@ -325,6 +325,21 @@ public class LayoutServiceSoap {
 		}
 	}
 
+	public static long getDefaultPlid(long groupId, long scopeGroupId,
+		java.lang.String portletId) throws RemoteException {
+		try {
+			long returnValue = LayoutServiceUtil.getDefaultPlid(groupId,
+					scopeGroupId, portletId);
+
+			return returnValue;
+		}
+		catch (Exception e) {
+			_log.error(e, e);
+
+			throw new RemoteException(e.getMessage());
+		}
+	}
+
 	public static com.liferay.portal.model.LayoutSoap getLayoutByUuidAndGroupId(
 		java.lang.String uuid, long groupId, boolean privateLayout)
 		throws RemoteException {
