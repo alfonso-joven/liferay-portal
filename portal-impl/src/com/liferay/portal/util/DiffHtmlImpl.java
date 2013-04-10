@@ -55,8 +55,11 @@ public class DiffHtmlImpl implements DiffHtml {
 	/**
 	 * This is a diff method with default values.
 	 *
+	 * @param  source the source text
+	 * @param  target the modified version of the source text
 	 * @return a string containing the HTML code of the source text showing the
 	 *         differences with the target text
+	 * @throws Exception if an exception occurred
 	 */
 	public String diff(Reader source, Reader target) throws Exception {
 		InputSource oldSource = new InputSource(source);

@@ -1333,6 +1333,8 @@ public class PortletImpl extends PortletBaseImpl {
 	 * Returns the supported processing event from a namespace URI and a local
 	 * part.
 	 *
+	 * @param  uri the namespace URI
+	 * @param  localPart the local part
 	 * @return the supported processing event from a namespace URI and a local
 	 *         part
 	 */
@@ -1353,6 +1355,7 @@ public class PortletImpl extends PortletBaseImpl {
 	/**
 	 * Returns the supported public render parameter from an identifier.
 	 *
+	 * @param  identifier the identifier
 	 * @return the supported public render parameter from an identifier
 	 */
 	public PublicRenderParameter getPublicRenderParameter(String identifier) {
@@ -1363,6 +1366,8 @@ public class PortletImpl extends PortletBaseImpl {
 	 * Returns the supported public render parameter from a namespace URI and a
 	 * local part.
 	 *
+	 * @param  uri the namespace URI
+	 * @param  localPart the local part
 	 * @return the supported public render parameter from a namespace URI and a
 	 *         local part
 	 */
@@ -1834,6 +1839,7 @@ public class PortletImpl extends PortletBaseImpl {
 	 * Returns <code>true</code> if the user has the permission to add the
 	 * portlet to a layout.
 	 *
+	 * @param  userId the primary key of the user
 	 * @return <code>true</code> if the user has the permission to add the
 	 *         portlet to a layout
 	 */
@@ -1883,6 +1889,8 @@ public class PortletImpl extends PortletBaseImpl {
 	 * Returns <code>true</code> if the portlet supports the specified mime type
 	 * and portlet mode.
 	 *
+	 * @param  mimeType the mime type
+	 * @param  portletMode the portlet mode
 	 * @return <code>true</code> if the portlet supports the specified mime type
 	 *         and portlet mode
 	 */
@@ -1909,6 +1917,7 @@ public class PortletImpl extends PortletBaseImpl {
 	 * Returns <code>true</code> if the portlet has a role with the specified
 	 * name.
 	 *
+	 * @param  roleName the role name
 	 * @return <code>true</code> if the portlet has a role with the specified
 	 *         name
 	 */
@@ -1930,6 +1939,8 @@ public class PortletImpl extends PortletBaseImpl {
 	 * Returns <code>true</code> if the portlet supports the specified mime type
 	 * and window state.
 	 *
+	 * @param  mimeType the mime type
+	 * @param  windowState the window state
 	 * @return <code>true</code> if the portlet supports the specified mime type
 	 *         and window state
 	 */
