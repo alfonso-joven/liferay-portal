@@ -3577,6 +3577,8 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 	 *
 	 * @param  groupId the primary key of the group
 	 * @param  userIds the primary keys of the users
+	 * @param  serviceContext the service context to be applied (optionally
+	 *         <code>null</code>)
 	 * @throws PortalException if a portal exception occurred
 	 * @throws SystemException if a system exception occurred
 	 */
@@ -3937,6 +3939,8 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 	 *
 	 * @param  userId the primary key of the user
 	 * @param  newGroupIds the primary keys of the groups
+	 * @param  serviceContext the service context to be applied (optionally
+	 *         <code>null</code>)
 	 * @throws PortalException if a portal exception occurred
 	 * @throws SystemException if a system exception occurred
 	 */

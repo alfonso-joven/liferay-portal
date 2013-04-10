@@ -77,6 +77,8 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *
 	 * @param  groupId the primary key of the group
 	 * @param  userIds the primary keys of the users
+	 * @param  serviceContext the service context to be applied (optionally
+	 *         <code>null</code>)
 	 * @throws PortalException if a group or user with the primary key could not
 	 *         be found, or if the user did not have permission to assign group
 	 *         members
@@ -1018,6 +1020,8 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *
 	 * @param  groupId the primary key of the group
 	 * @param  userIds the primary keys of the users
+	 * @param  serviceContext the service context to be applied (optionally
+	 *         <code>null</code>)
 	 * @throws PortalException if the current user did not have permission to
 	 *         modify group assignments
 	 * @throws SystemException if a system exception occurred
