@@ -4345,6 +4345,8 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 	 *
 	 * @param  userId the primary key of the user
 	 * @param  newOrganizationIds the primary keys of the organizations
+	 * @param  serviceContext the service context to be applied. Must set
+	 *         whether user indexing is enabled.
 	 * @throws PortalException if a user with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
