@@ -133,7 +133,7 @@
 	<sql id="com.liferay.portal.service.persistence.GroupFinder.countByGroupId">
 		<![CDATA[
 			SELECT
-				COUNT(*) AS COUNT_VALUE
+				COUNT(DISTINCT Group_.groupId) AS COUNT_VALUE
 			FROM
 				Group_
 			[$JOIN$]
@@ -147,7 +147,7 @@
 	<sql id="com.liferay.portal.service.persistence.GroupFinder.countByC_N_D">
 		<![CDATA[
 			SELECT
-				Group_.groupId AS groupId
+				DISTINCT Group_.groupId AS groupId
 			FROM
 				Group_
 			[$JOIN$]
@@ -226,7 +226,7 @@
 	<sql id="com.liferay.portal.service.persistence.GroupFinder.findByC_C">
 		<![CDATA[
 			SELECT
-				Group_.groupId AS groupId, Group_.name AS groupName
+				DISTINCT Group_.groupId AS groupId, Group_.name AS groupName
 			FROM
 				Group_
 			[$JOIN$]
@@ -254,7 +254,7 @@
 	<sql id="com.liferay.portal.service.persistence.GroupFinder.findByC_N_D">
 		<![CDATA[
 			SELECT
-				Group_.groupId AS groupId, Group_.name AS groupName, Group_.type_ AS groupType, Group_.friendlyURL AS groupFriendlyURL
+				DISTINCT Group_.groupId AS groupId, Group_.name AS groupName, Group_.type_ AS groupType, Group_.friendlyURL AS groupFriendlyURL
 			FROM
 				Group_
 			[$JOIN$]
