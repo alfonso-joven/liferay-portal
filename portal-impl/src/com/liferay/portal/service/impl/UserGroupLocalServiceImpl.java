@@ -249,6 +249,7 @@ public class UserGroupLocalServiceImpl extends UserGroupLocalServiceBaseImpl {
 	 * Deletes the user group.
 	 *
 	 * @param  userGroupId the primary key of the user group
+	 * @return the deleted user group
 	 * @throws PortalException if a user group with the primary key could not be
 	 *         found or if the user group had a workflow in approved status
 	 * @throws SystemException if a system exception occurred
@@ -267,6 +268,7 @@ public class UserGroupLocalServiceImpl extends UserGroupLocalServiceBaseImpl {
 	 * Deletes the user group.
 	 *
 	 * @param  userGroup the user group
+	 * @return the deleted user group
 	 * @throws PortalException if the organization had a workflow in approved
 	 *         status
 	 * @throws SystemException if a system exception occurred

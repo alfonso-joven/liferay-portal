@@ -562,6 +562,7 @@ public class GroupLocalServiceImpl extends GroupLocalServiceBaseImpl {
 	 * </p>
 	 *
 	 * @param  group the group
+	 * @return the deleted group
 	 * @throws PortalException if the group was a system group, or if the user
 	 *         did not have permission to delete the group or its assets or its
 	 *         resources
@@ -744,6 +745,7 @@ public class GroupLocalServiceImpl extends GroupLocalServiceBaseImpl {
 	 * </p>
 	 *
 	 * @param  groupId the primary key of the group
+	 * @return the deleted group
 	 * @throws PortalException if a group with the primary key could not be
 	 *         found, if the group was a system group, or if the user did not
 	 *         have permission to delete the group, its assets, or its resources

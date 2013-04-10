@@ -1707,6 +1707,7 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 	 * Deletes the user.
 	 *
 	 * @param  userId the primary key of the user
+	 * @return the deleted user
 	 * @throws PortalException if a user with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
@@ -1723,6 +1724,7 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 	 * Deletes the user.
 	 *
 	 * @param  user the user
+	 * @return the deleted user
 	 * @throws PortalException if a portal exception occurred
 	 * @throws SystemException if a system exception occurred
 	 */
