@@ -290,8 +290,6 @@ public class EditEntryAction extends PortletAction {
 			actionRequest, portletConfig.getPortletName(),
 			themeDisplay.getPlid(), PortletRequest.RENDER_PHASE);
 
-		portletURL.setWindowState(actionRequest.getWindowState());
-
 		String portletName = portletConfig.getPortletName();
 
 		if (portletName.equals(PortletKeys.BLOGS_ADMIN)) {
@@ -309,6 +307,7 @@ public class EditEntryAction extends PortletAction {
 		portletURL.setParameter(
 			"entryId", String.valueOf(entry.getEntryId()), false);
 		portletURL.setParameter("preview", String.valueOf(preview), false);
+		portletURL.setWindowState(actionRequest.getWindowState());
 
 		return portletURL.toString();
 	}

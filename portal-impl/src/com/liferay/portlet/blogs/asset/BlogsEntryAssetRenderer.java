@@ -102,10 +102,9 @@ public class BlogsEntryAssetRenderer extends BaseAssetRenderer {
 		PortletURL portletURL = liferayPortletResponse.createLiferayPortletURL(
 			PortletKeys.BLOGS, PortletRequest.RENDER_PHASE);
 
-		portletURL.setWindowState(windowState);
-
 		portletURL.setParameter("struts_action", "/blogs/view_entry");
 		portletURL.setParameter("entryId", String.valueOf(_entry.getEntryId()));
+		portletURL.setWindowState(windowState);
 
 		return portletURL;
 	}
