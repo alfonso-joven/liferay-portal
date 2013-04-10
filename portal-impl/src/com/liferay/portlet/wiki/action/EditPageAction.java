@@ -277,6 +277,7 @@ public class EditPageAction extends PortletAction {
 		portletURL.setParameter(
 			"nodeId", String.valueOf(page.getNodeId()), false);
 		portletURL.setParameter("title", page.getTitle(), false);
+		portletURL.setWindowState(actionRequest.getWindowState());
 
 		return portletURL.toString();
 	}
