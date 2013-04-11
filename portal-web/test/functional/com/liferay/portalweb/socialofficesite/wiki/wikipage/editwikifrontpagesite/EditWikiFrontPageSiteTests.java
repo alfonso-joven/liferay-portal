@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2012 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -12,13 +12,12 @@
  * details.
  */
 
-package com.liferay.portalweb.socialofficesite.home;
+package com.liferay.portalweb.socialofficesite.wiki.wikipage.editwikifrontpagesite;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
-import com.liferay.portalweb.socialofficesite.home.activities.ActivitiesTestPlan;
-import com.liferay.portalweb.socialofficesite.home.announcement.AnnouncementTestPlan;
-import com.liferay.portalweb.socialofficesite.home.bookmarks.BookmarksTestPlan;
-import com.liferay.portalweb.socialofficesite.home.events.EventsTestPlan;
+import com.liferay.portalweb.socialofficehome.sites.site.addsitessite.AddSitesSiteTest;
+import com.liferay.portalweb.socialofficehome.sites.site.addsitessite.TearDownSOSitesTest;
+import com.liferay.portalweb.socialofficesite.wiki.wikipage.addwikifrontpagesite.AddWikiFrontPageSiteTest;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -26,18 +25,14 @@ import junit.framework.TestSuite;
 /**
  * @author Brian Wing Shun Chan
  */
-public class HomeTestPlan extends BaseTestSuite {
-
+public class EditWikiFrontPageSiteTests extends BaseTestSuite {
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
-
-		testSuite.addTest(ActivitiesTestPlan.suite());
-		testSuite.addTest(AnnouncementTestPlan.suite());
-		testSuite.addTest(BookmarksTestPlan.suite());
-		testSuite.addTest(EventsTestPlan.suite());
-		//testSuite.addTest(HomeLARTestPlan.suite());
+		testSuite.addTestSuite(AddSitesSiteTest.class);
+		testSuite.addTestSuite(AddWikiFrontPageSiteTest.class);
+		testSuite.addTestSuite(EditWikiFrontPageSiteTest.class);
+		testSuite.addTestSuite(TearDownSOSitesTest.class);
 
 		return testSuite;
 	}
-
 }
