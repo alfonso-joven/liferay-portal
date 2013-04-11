@@ -369,6 +369,8 @@ public interface SocialActivityLocalService extends BaseLocalService,
 	* Removes stored activities for the asset identified by the class name ID
 	* and class primary key.
 	*
+	* @param assetEntry the asset from which to remove stored activities
+	* @throws PortalException if a portal exception occurred
 	* @throws SystemException if a system exception occurred
 	*/
 	public void deleteActivities(

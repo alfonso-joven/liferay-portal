@@ -796,8 +796,8 @@ public interface OrganizationLocalService extends BaseLocalService,
 	*
 	* @param userId the primary key of the organization's user
 	* @param organizationId the primary key of the organization
-	* @param inheritSuborganizations if <code>true</code> suborganizations
-	are considered in the determination
+	* @param inheritSuborganizations if <code>true</code> suborganizations are
+	considered in the determination
 	* @param includeSpecifiedOrganization if <code>true</code> the
 	organization specified by <code>organizationId</code> is
 	considered in the determination

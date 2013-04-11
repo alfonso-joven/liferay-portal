@@ -640,6 +640,7 @@ public class ResourceLocalServiceUtil {
 	com.liferay.portal.model.ResourceConstants}.
 	* @param primKey the primary key string of the resource instance
 	* @param newPrimKey the new primary key string of the resource
+	* @throws PortalException if a portal exception occurred
 	* @throws SystemException if a system exception occurred
 	*/
 	public static void updateResources(long companyId, java.lang.String name,
