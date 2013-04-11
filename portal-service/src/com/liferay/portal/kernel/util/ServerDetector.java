@@ -17,6 +17,9 @@ package com.liferay.portal.kernel.util;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import javax.management.MBeanServer;
 import javax.management.MBeanServerFactory;
 import javax.management.ObjectName;
@@ -284,8 +287,11 @@ public class ServerDetector {
 
 	private boolean _isJBoss5() {
 		try {
-			for (MBeanServer mBeanServer :
-					MBeanServerFactory.findMBeanServer(null)) {
+			ArrayList mBeanServers = MBeanServerFactory.findMBeanServer(null);
+
+			Iterator<Object> mBeanServerIter = mBeanServers.iterator();
+			while (mBeanServerIter.hasNext()) {
+				MBeanServer mBeanServer = (MBeanServer)mBeanServerIter.next();
 
 				String defaultDomain = mBeanServer.getDefaultDomain();
 
