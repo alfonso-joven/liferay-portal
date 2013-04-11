@@ -41,7 +41,7 @@ if (editable) {
 
 <liferay-ui:header
 	backURL="<%= backURL %>"
-	title='view-record'
+	title="view-record"
 />
 
 <c:if test="<%= recordVersion != null %>">

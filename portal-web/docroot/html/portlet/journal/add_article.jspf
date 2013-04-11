@@ -51,7 +51,7 @@ Map<String, PortletURL> addArticleURLs = getAddArticleURLs(liferayPortletRequest
 				%>
 
 					<liferay-ui:icon
-						message='<%= message %>'
+						message="<%= message %>"
 						src="<%= assetRendererFactory.getIconPath(renderRequest) %>"
 						url="<%= addArticleURL.toString() %>"
 					/>

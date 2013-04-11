@@ -77,7 +77,7 @@ assetBrowserURL.setWindowState(LiferayWindowState.POP_UP);
 		%>
 
 			<liferay-ui:icon
-				message='<%= ResourceActionsUtil.getModelResource(locale, assetRendererFactory.getClassName()) %>'
+				message="<%= ResourceActionsUtil.getModelResource(locale, assetRendererFactory.getClassName()) %>"
 				src="<%= assetRendererFactory.getIconPath(portletRequest) %>"
 				url="<%= href %>"
 			/>

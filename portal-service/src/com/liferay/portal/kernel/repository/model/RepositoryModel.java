@@ -14,11 +14,12 @@
 
 package com.liferay.portal.kernel.repository.model;
 
-import java.io.Serializable;
-import java.util.Map;
-
 import com.liferay.portal.model.ClassedModel;
 import com.liferay.portal.model.GroupedModel;
+
+import java.io.Serializable;
+
+import java.util.Map;
 
 /**
  * @author Alexander Chow
