@@ -2677,7 +2677,7 @@
 
 	<target name="copy-optional-jars">
 		<if>
-			<equals arg1="${db.type}" arg2="db2" />
+			<equals arg1="${database}" arg2="db2" />
 			<then>
 				<delete includeemptydirs="true" failonerror="false">
 					<fileset
@@ -2695,7 +2695,7 @@
 			</then>
 			<elseif>
 				<and>
-					<equals arg1="${db.type}" arg2="mysql" />
+					<equals arg1="${database}" arg2="mysql" />
 					<not>
 						<available file="${simple.server.lib.global.dir}/mysql.jar" />
 					</not>
@@ -2710,7 +2710,7 @@
 				</then>
 			</elseif>
 			<elseif>
-				<equals arg1="${db.type}" arg2="oracle-10" />
+				<equals arg1="${database}" arg2="oracle-10" />
 				<then>
 					<delete includeemptydirs="true" failonerror="false">
 						<fileset
@@ -2728,7 +2728,7 @@
 				</then>
 			</elseif>
 			<elseif>
-				<equals arg1="${db.type}" arg2="oracle-11" />
+				<equals arg1="${database}" arg2="oracle-11" />
 				<then>
 					<delete includeemptydirs="true" failonerror="false">
 						<fileset
@@ -2905,7 +2905,7 @@
 	</target>
 
 	<target name="prepare-common">
-		<echo file="test.${user.name}.properties">db.type=${db.type}</echo>
+		<echo file="test.${user.name}.properties">database=${database}</echo>
 
 		<antcall target="prepare-portal-properties" inheritAll="false" />
 
@@ -2957,10 +2957,10 @@
 
 jdbc.default.jndi.name=
 
-jdbc.default.driverClassName=${db.driver}
-jdbc.default.url=${db.url}
-jdbc.default.username=${db.username}
-jdbc.default.password=${db.password}
+jdbc.default.driverClassName=${database.driver}
+jdbc.default.url=${database.url}
+jdbc.default.username=${database.username}
+jdbc.default.password=${database.password}
 
 captcha.max.challenges=0
 
@@ -2979,7 +2979,7 @@ tunnel.servlet.hosts.allowed=
 resource.repositories.root=$${user.home}/liferay</echo>
 
 		<if>
-			<contains string="${db.type}" substring="db2" />
+			<contains string="${database}" substring="db2" />
 			<then>
 				<echo file="portal-impl/src/portal-ext.properties" append="true">
 
@@ -2988,7 +2988,7 @@ custom.sql.function.isnull=CAST(? AS VARCHAR(32672)) IS NULL
 custom.sql.function.isnotnull=CAST(? AS VARCHAR(32672)) IS NOT NULL</echo>
 			</then>
 			<elseif>
-				<contains string="${db.type}" substring="oracle" />
+				<contains string="${database}" substring="oracle" />
 				<then>
 					<echo file="portal-impl/src/portal-ext.properties" append="true">
 
@@ -2999,7 +2999,7 @@ jdbc.default.numHelperThreads=1</echo>
 				</then>
 			</elseif>
 			<elseif>
-				<contains string="${db.type}" substring="sybase" />
+				<contains string="${database}" substring="sybase" />
 				<then>
 					<echo file="portal-impl/src/portal-ext.properties" append="true">
 
@@ -3342,10 +3342,10 @@ svn --username ${svn.username} --password ${svn.password} update -r ${svn.info.r
 	name="jdbc/LiferayPool"
 	auth="Container"
 	type="javax.sql.DataSource"
-	driverClassName="${db.driver}"
-	url="${db.url}"
-	username="${db.username}"
-	password="${db.password}"
+	driverClassName="${database.driver}"
+	url="${database.url}"
+	username="${database.username}"
+	password="${database.password}"
 	maxActive="20"
 />
 </Context>]]></echo>
@@ -3459,14 +3459,14 @@ svn --username ${svn.username} --password ${svn.password} update -r ${svn.info.r
 
 	<target name="prepare-test-properties">
 		<echo file="portal-impl/test/portal-test-ext.properties">
-jdbc.default.driverClassName=${db.driver}
-jdbc.default.url=${db.url}
-jdbc.default.username=${db.username}
-jdbc.default.password=${db.password}
+jdbc.default.driverClassName=${database.driver}
+jdbc.default.url=${database.url}
+jdbc.default.username=${database.username}
+jdbc.default.password=${database.password}
 		</echo>
 
 		<if>
-			<contains string="${db.type}" substring="db2" />
+			<contains string="${database}" substring="db2" />
 			<then>
 				<echo file="portal-impl/test/portal-test-ext.properties" append="true">
 
@@ -3475,7 +3475,7 @@ custom.sql.function.isnull=CAST(? AS VARCHAR(32672)) IS NULL
 custom.sql.function.isnotnull=CAST(? AS VARCHAR(32672)) IS NOT NULL</echo>
 			</then>
 			<elseif>
-				<contains string="${db.type}" substring="oracle" />
+				<contains string="${database}" substring="oracle" />
 				<then>
 					<echo file="portal-impl/test/portal-test-ext.properties" append="true">
 
@@ -3486,7 +3486,7 @@ jdbc.default.numHelperThreads=1</echo>
 				</then>
 			</elseif>
 			<elseif>
-				<contains string="${db.type}" substring="sybase" />
+				<contains string="${database}" substring="sybase" />
 				<then>
 					<echo file="portal-impl/test/portal-test-ext.properties" append="true">
 
@@ -3509,36 +3509,36 @@ custom.sql.function.isnotnull=CONVERT(VARCHAR,?) IS NOT NULL</echo>
 				<property name="sql.dir" value="sql\legacy\${sql.version}\create\" />
 
 				<if>
-					<contains string="${db.type}" substring="db2" />
+					<contains string="${database}" substring="db2" />
 					<then>
 						<property name="sql.file" value="create-db2.sql" />
 					</then>
 					<elseif>
-						<contains string="${db.type}" substring="mysql" />
+						<contains string="${database}" substring="mysql" />
 						<then>
 							<property name="sql.file" value="create-mysql.sql" />
 						</then>
 					</elseif>
 					<elseif>
-						<contains string="${db.type}" substring="oracle" />
+						<contains string="${database}" substring="oracle" />
 						<then>
 							<property name="sql.file" value="create-oracle.sql" />
 						</then>
 					</elseif>
 					<elseif>
-						<contains string="${db.type}" substring="postgresql" />
+						<contains string="${database}" substring="postgresql" />
 						<then>
 							<property name="sql.file" value="create-postgresql.sql" />
 						</then>
 					</elseif>
 					<elseif>
-						<contains string="${db.type}" substring="sql-server" />
+						<contains string="${database}" substring="sql-server" />
 						<then>
 							<property name="sql.file" value="create-sql-server.sql" />
 						</then>
 					</elseif>
 					<elseif>
-						<contains string="${db.type}" substring="sybase" />
+						<contains string="${database}" substring="sybase" />
 						<then>
 							<property name="sql.file" value="create-sybase.sql" />
 						</then>
@@ -3554,55 +3554,55 @@ custom.sql.function.isnotnull=CONVERT(VARCHAR,?) IS NOT NULL</echo>
 	</target>
 
 	<target name="prepare-versioned-db2">
-		<echo file="test.${user.name}.properties">db.type=db2</echo>
+		<echo file="test.${user.name}.properties">database=db2</echo>
 
 		<antcall target="prepare-versioned-common" inheritAll="false" />
 	</target>
 
 	<target name="prepare-versioned-mysql">
-		<echo file="test.${user.name}.properties">db.type=mysql</echo>
+		<echo file="test.${user.name}.properties">database=mysql</echo>
 
 		<antcall target="prepare-versioned-common" inheritAll="false" />
 	</target>
 
 	<target name="prepare-versioned-oracle-10">
-		<echo file="test.${user.name}.properties">db.type=oracle-10</echo>
+		<echo file="test.${user.name}.properties">database=oracle-10</echo>
 
 		<antcall target="prepare-versioned-common" inheritAll="false" />
 	</target>
 
 	<target name="prepare-versioned-oracle-11">
-		<echo file="test.${user.name}.properties">db.type=oracle-11</echo>
+		<echo file="test.${user.name}.properties">database=oracle-11</echo>
 
 		<antcall target="prepare-versioned-common" inheritAll="false" />
 	</target>
 
 	<target name="prepare-versioned-postgresql-8.4">
-		<echo file="test.${user.name}.properties">db.type=postgresql-8.4</echo>
+		<echo file="test.${user.name}.properties">database=postgresql-8.4</echo>
 
 		<antcall target="prepare-versioned-common" inheritAll="false" />
 	</target>
 
 	<target name="prepare-versioned-postgresql-9.0">
-		<echo file="test.${user.name}.properties">db.type=postgresql-9.0</echo>
+		<echo file="test.${user.name}.properties">database=postgresql-9.0</echo>
 
 		<antcall target="prepare-versioned-common" inheritAll="false" />
 	</target>
 
 	<target name="prepare-versioned-sql-server-2005">
-		<echo file="test.${user.name}.properties">db.type=sql-server-2005</echo>
+		<echo file="test.${user.name}.properties">database=sql-server-2005</echo>
 
 		<antcall target="prepare-versioned-common" inheritAll="false" />
 	</target>
 
 	<target name="prepare-versioned-sql-server-2008">
-		<echo file="test.${user.name}.properties">db.type=sql-server-2008</echo>
+		<echo file="test.${user.name}.properties">database=sql-server-2008</echo>
 
 		<antcall target="prepare-versioned-common" inheritAll="false" />
 	</target>
 
 	<target name="prepare-versioned-sybase">
-		<echo file="test.${user.name}.properties">db.type=sybase</echo>
+		<echo file="test.${user.name}.properties">database=sybase</echo>
 
 		<antcall target="prepare-versioned-common" inheritAll="false" />
 	</target>
@@ -3868,7 +3868,7 @@ custom.sql.function.isnotnull=CONVERT(VARCHAR,?) IS NOT NULL</echo>
 			<and>
 				<equals arg1="${test.class}" arg2="PortalWebTestSuite" />
 				<not>
-					<equals arg1="${db.type}" arg2="hsql" />
+					<equals arg1="${database}" arg2="hsql" />
 				</not>
 			</and>
 			<then>
@@ -4216,7 +4216,7 @@ Please set "ie.driver.zip" in test.properties to point to "IEDriverServer_x64_2.
 		<antcall target="clean-up-plugins" />
 
 		<antcall target="prepare-common">
-			<param name="db.type" value="mysql" />
+			<param name="database" value="mysql" />
 		</antcall>
 
 		<antcall target="rebuild-database" inheritAll="false">
