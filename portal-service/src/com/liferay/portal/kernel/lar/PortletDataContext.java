@@ -144,6 +144,8 @@ public interface PortletDataContext extends Serializable {
 
 	public long getCompanyId();
 
+	public long getCompanyGroupId();
+
 	public String getDataStrategy();
 
 	public Date getEndDate();
