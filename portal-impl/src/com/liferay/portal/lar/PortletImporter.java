@@ -78,7 +78,6 @@ import com.liferay.portal.util.PropsValues;
 import com.liferay.portlet.PortletPreferencesFactoryUtil;
 import com.liferay.portlet.PortletPreferencesImpl;
 import com.liferay.portlet.asset.NoSuchCategoryException;
-import com.liferay.portlet.asset.NoSuchEntryException;
 import com.liferay.portlet.asset.NoSuchTagException;
 import com.liferay.portlet.asset.model.AssetCategory;
 import com.liferay.portlet.asset.model.AssetCategoryConstants;
@@ -1366,13 +1365,11 @@ public class PortletImporter {
 			List<Long> assetEntryIds = new ArrayList<Long>();
 
 			for (String assetEntryUuid : assetEntryUuidArray) {
-				try {
-					AssetEntry assetEntry = AssetEntryLocalServiceUtil.getEntry(
-						portletDataContext.getScopeGroupId(), assetEntryUuid);
+				AssetEntry assetEntry = AssetEntryLocalServiceUtil.fetchEntry(
+					portletDataContext.getScopeGroupId(), assetEntryUuid);
 
+				if (assetEntry != null) {
 					assetEntryIds.add(assetEntry.getEntryId());
-				}
-				catch (NoSuchEntryException nsee) {
 				}
 			}
 
@@ -1383,15 +1380,13 @@ public class PortletImporter {
 			long[] assetEntryIdsArray = ArrayUtil.toArray(
 				assetEntryIds.toArray(new Long[assetEntryIds.size()]));
 
-			try {
-				AssetEntry assetEntry = AssetEntryLocalServiceUtil.getEntry(
-					portletDataContext.getScopeGroupId(), sourceUuid);
+			AssetEntry assetEntry = AssetEntryLocalServiceUtil.fetchEntry(
+				portletDataContext.getScopeGroupId(), sourceUuid);
 
+			if (assetEntry != null) {
 				AssetLinkLocalServiceUtil.updateLinks(
 					assetEntry.getUserId(), assetEntry.getEntryId(),
 					assetEntryIdsArray, assetLinkType);
-			}
-			catch (NoSuchEntryException nsee) {
 			}
 		}
 	}
