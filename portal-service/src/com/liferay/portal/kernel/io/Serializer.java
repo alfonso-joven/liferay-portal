@@ -25,8 +25,6 @@ import java.io.Serializable;
 
 import java.nio.ByteBuffer;
 
-import java.util.Arrays;
-
 /**
  * @author Shuyang Zhou
  * @see    Deserializer
@@ -40,7 +38,11 @@ public class Serializer {
 	}
 
 	public ByteBuffer toByteBuffer() {
-		ByteBuffer byteBuffer = ByteBuffer.wrap(Arrays.copyOf(buffer, index));
+		byte[] tempBuffer = new byte[index];
+
+		System.arraycopy(buffer, 0, tempBuffer, 0, index);
+
+		ByteBuffer byteBuffer = ByteBuffer.wrap(tempBuffer);
 
 		if (buffer.length <= THREADLOCAL_BUFFER_SIZE_LIMIT) {
 			BufferQueue bufferQueue = bufferQueueThreadLocal.get();
@@ -275,7 +277,11 @@ public class Serializer {
 				newSize = minSize;
 			}
 
-			buffer = Arrays.copyOf(buffer, newSize);
+			byte[] tempBuffer = new byte[newSize];
+
+			System.arraycopy(buffer, 0, tempBuffer, 0, newSize);
+
+			buffer = tempBuffer;
 		}
 
 		return buffer;
