@@ -852,6 +852,10 @@ public class PortletDataContextImpl implements PortletDataContext {
 		return _scopeType;
 	}
 
+	public long getSourceCompanyGroupId() {
+		return _sourceCompanyGroupId;
+	}
+
 	public long getSourceGroupId() {
 		return _sourceGroupId;
 	}
@@ -1363,6 +1367,10 @@ public class PortletDataContextImpl implements PortletDataContext {
 		_scopeType = scopeType;
 	}
 
+	public void setSourceCompanyGroupId(long sourceCompanyGroupId) {
+		_sourceCompanyGroupId = sourceCompanyGroupId;
+	}
+
 	public void setSourceGroupId(long sourceGroupId) {
 		_sourceGroupId = sourceGroupId;
 	}
@@ -1648,6 +1656,7 @@ public class PortletDataContextImpl implements PortletDataContext {
 	private long _scopeGroupId;
 	private String _scopeLayoutUuid;
 	private String _scopeType;
+	private long _sourceCompanyGroupId;
 	private long _sourceGroupId;
 	private Date _startDate;
 	private UserIdStrategy _userIdStrategy;
