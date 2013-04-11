@@ -12,15 +12,15 @@
  * details.
  */
 
-package com.liferay.portalweb.socialofficehome.sites.site.addsiteviewccusertest;
+package com.liferay.portalweb.socialofficehome.sites.site.addsiteviewccuser;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
 import com.liferay.portalweb.socialoffice.users.user.addsouser.AddSOUserTest;
 import com.liferay.portalweb.socialoffice.users.user.addsouser.TearDownSOUserTest;
 import com.liferay.portalweb.socialoffice.users.user.editsouserpassword.EditSOUserPasswordTest;
 import com.liferay.portalweb.socialoffice.users.user.selectregularrolessouser.SelectRegularRolesSOUserTest;
-import com.liferay.portalweb.socialofficehome.sites.site.AddSiteViewCCUserTest.AddSiteViewCCUserTest;
 import com.liferay.portalweb.socialofficehome.sites.site.addsitessite.TearDownSOSitesTest;
+import com.liferay.portalweb.socialofficehome.sites.site.addsiteviewccuser.AddSiteViewCCUserTest;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
