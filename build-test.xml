@@ -419,7 +419,7 @@
 	</target>
 
 	<target name="build-test-ant-scripts">
-		<property name="build-test-ant-scripts.version" value="1" />
+		<property name="build-test-ant-scripts.version" value="3" />
 
 		<if>
 			<available file="portal-web/test-ant-scripts/version" />
@@ -2497,15 +2497,17 @@
 				<or>
 					<equals arg1="${database}" arg2="db2" />
 					<equals arg1="${database}" arg2="mysql" />
+					<equals arg1="${database}" arg2="oracle-10" />
+					<equals arg1="${database}" arg2="oracle-11" />
 					<equals arg1="${database}" arg2="postgresql-8.4" />
 					<equals arg1="${database}" arg2="postgresql-9.0" />
 					<equals arg1="${database}" arg2="sql-server-2005" />
-					<equals arg1="${database}" arg2="sql-server-2005" />
+					<equals arg1="${database}" arg2="sql-server-2008" />
 					<equals arg1="${database}" arg2="sybase" />
 				</or>
 			</not>
 			<then>
-				<fail>Please set "database" to one of the following:${line.separator}db2, mysql, postgresql-8.4, postgresql-9.0, sql-server-2005, sql-server-2005, sybase</fail>
+				<fail>Please set "database" to one of the following:${line.separator}db2, mysql, oracle-10, oracle-11, postgresql-8.4, postgresql-9.0, sql-server-2005, sql-server-2008, sybase</fail>
 			</then>
 		</if>
 	</target>
@@ -2809,7 +2811,7 @@
 		<delete file="execute-remote-command.bat" />
 	</target>
 
-	<target name="generate-test-properties">
+	<target name="generate-test-properties" depends="check-config">
 		<xmlproperty
 			file="portal-web/test-config/database.xml"
 			keeproot="true"
@@ -2952,7 +2954,7 @@
 		</if>
 	</target>
 
-	<target name="prepare-portal-ext-properties">
+	<target name="prepare-portal-ext-properties" depends="generate-test-properties">
 		<echo file="portal-impl/src/portal-ext.properties">plugin.notifications.enabled=false
 
 jdbc.default.jndi.name=
@@ -3769,11 +3771,11 @@ custom.sql.function.isnotnull=CONVERT(VARCHAR,?) IS NOT NULL</echo>
 					</elseif>
 					<else>
 						<exec executable="${plink.executable}">
-							<arg line="-pw ${vm.password} ${vm.username}@${database.host} cmd.exe /c mkdir C:\${tstamp.value}" />
+							<arg line="-pw ${vm.password} ${vm.username}@${database.host} cmd.exe /c mkdir C:\temporary" />
 						</exec>
 
 						<exec executable="${pscp.executable}">
-							<arg line="-pw ${vm.password} create.sql ${vm.username}@${database.host}:\${tstamp.value}" />
+							<arg line="-pw ${vm.password} create.sql ${vm.username}@${database.host}:\temporary" />
 						</exec>
 
 						<exec executable="${plink.executable}">
@@ -3781,14 +3783,14 @@ custom.sql.function.isnotnull=CONVERT(VARCHAR,?) IS NOT NULL</echo>
 						</exec>
 
 						<exec executable="${plink.executable}">
-							<arg line="-pw ${vm.password} ${vm.username}@${database.host} cmd.exe /c rmdir /q /s C:\${tstamp.value}" />
+							<arg line="-pw ${vm.password} ${vm.username}@${database.host} cmd.exe /c rmdir /q /s C:\temporary" />
 						</exec>
 					</else>
 				</if>
 			</then>
 		</if>
 
-		<!--<delete file="create.sql" />-->
+		<delete file="create.sql" />
 	</target>
 
 	<target name="record-java-processes">
