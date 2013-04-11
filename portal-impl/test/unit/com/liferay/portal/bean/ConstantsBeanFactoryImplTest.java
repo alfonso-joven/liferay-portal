@@ -16,7 +16,6 @@ package com.liferay.portal.bean;
 
 import com.liferay.portal.kernel.memory.EqualityWeakReference;
 import com.liferay.portal.kernel.process.ClassPathUtil;
-import com.liferay.portal.kernel.test.CodeCoverageAssertor;
 import com.liferay.portal.test.AdviseWith;
 import com.liferay.portal.test.AspectJMockingNewClassLoaderJUnitTestRunner;
 
@@ -37,7 +36,6 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 
 import org.junit.Assert;
-import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -46,10 +44,6 @@ import org.junit.runner.RunWith;
  */
 @RunWith(AspectJMockingNewClassLoaderJUnitTestRunner.class)
 public class ConstantsBeanFactoryImplTest {
-
-	@ClassRule
-	public static CodeCoverageAssertor codeCoverageAssertor =
-		new CodeCoverageAssertor();
 
 	@AdviseWith(adviceClasses = {ReflectionUtilAdvice.class})
 	@Test
