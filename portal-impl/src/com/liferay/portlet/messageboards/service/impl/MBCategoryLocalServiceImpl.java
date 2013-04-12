@@ -20,6 +20,7 @@ import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.search.Indexer;
 import com.liferay.portal.kernel.search.IndexerRegistryUtil;
 import com.liferay.portal.kernel.util.Validator;
+import com.liferay.portal.kernel.workflow.WorkflowConstants;
 import com.liferay.portal.model.ResourceConstants;
 import com.liferay.portal.model.User;
 import com.liferay.portal.service.ServiceContext;
@@ -266,6 +267,24 @@ public class MBCategoryLocalServiceImpl extends MBCategoryLocalServiceBaseImpl {
 
 		return mbCategoryPersistence.findByG_P(
 			groupId, parentCategoryIds, start, end);
+	}
+
+	public List<Object> getCategoriesAndThreads(long groupId, long categoryId)
+		throws SystemException {
+
+		List<MBCategory> categories = getCategories(
+			groupId, categoryId, QueryUtil.ALL_POS, QueryUtil.ALL_POS);
+
+		List<MBThread> threads = mbThreadLocalService.getThreads(
+			groupId, categoryId, WorkflowConstants.STATUS_ANY,
+			QueryUtil.ALL_POS, QueryUtil.ALL_POS);
+
+		List<Object> categoriesAndThreads = new ArrayList<Object>();
+
+		categoriesAndThreads.addAll(categories);
+		categoriesAndThreads.addAll(threads);
+
+		return categoriesAndThreads;
 	}
 
 	public int getCategoriesCount(long groupId) throws SystemException {
