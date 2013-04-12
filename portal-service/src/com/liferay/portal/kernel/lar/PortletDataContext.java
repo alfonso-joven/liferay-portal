@@ -142,9 +142,9 @@ public interface PortletDataContext extends Serializable {
 
 	public Map<String, List<MBMessage>> getComments();
 
-	public long getCompanyId();
-
 	public long getCompanyGroupId();
+
+	public long getCompanyId();
 
 	public String getDataStrategy();
 
