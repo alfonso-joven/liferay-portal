@@ -378,6 +378,12 @@ public class MBCategoryLocalServiceUtil {
 		return getService().getCategories(groupId, parentCategoryIds, start, end);
 	}
 
+	public static java.util.List<java.lang.Object> getCategoriesAndThreads(
+		long groupId, long categoryId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().getCategoriesAndThreads(groupId, categoryId);
+	}
+
 	public static int getCategoriesCount(long groupId)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return getService().getCategoriesCount(groupId);

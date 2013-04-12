@@ -374,6 +374,13 @@ public class MBCategoryLocalServiceWrapper implements MBCategoryLocalService,
 			parentCategoryIds, start, end);
 	}
 
+	public java.util.List<java.lang.Object> getCategoriesAndThreads(
+		long groupId, long categoryId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _mbCategoryLocalService.getCategoriesAndThreads(groupId,
+			categoryId);
+	}
+
 	public int getCategoriesCount(long groupId)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _mbCategoryLocalService.getCategoriesCount(groupId);
