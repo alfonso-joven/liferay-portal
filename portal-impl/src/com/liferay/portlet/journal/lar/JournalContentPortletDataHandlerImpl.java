@@ -291,6 +291,12 @@ public class JournalContentPortletDataHandlerImpl
 		if (importGroupId == portletDataContext.getSourceGroupId()) {
 			portletDataContext.setScopeGroupId(portletDataContext.getGroupId());
 		}
+		else if  (
+			importGroupId == portletDataContext.getSourceCompanyGroupId()) {
+
+			portletDataContext.setScopeGroupId(
+				portletDataContext.getCompanyGroupId());
+		}
 
 		Document document = SAXReaderUtil.read(data);
 
