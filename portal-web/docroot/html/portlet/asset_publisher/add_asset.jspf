@@ -100,7 +100,7 @@ addPortletURLs = getAddPortletURLs(liferayPortletRequest, liferayPortletResponse
 				addPortletURLString = HttpUtil.addParameter(addPortletURLString, "layoutUuid", layout.getUuid());
 			}
 
-			String taglibEditURL = "javascript:Liferay.Util.openWindow({dialog: {width: 960}, id: '" + liferayPortletResponse.getNamespace() + "editAsset', title: '" + ResourceActionsUtil.getModelResource(locale, className) + "', uri:'" + HtmlUtil.escapeJS(addPortletURLString) + "'});";
+			String taglibEditURL = "javascript:Liferay.Util.openWindow({dialog: {align: Liferay.Util.Window.ALIGN_CENTER, width: 960}, id: '" + liferayPortletResponse.getNamespace() + "editAsset', title: '" + ResourceActionsUtil.getModelResource(locale, className) + "', uri: '" + HtmlUtil.escapeJS(addPortletURLString) + "'});";
 		%>
 
 			<liferay-ui:icon

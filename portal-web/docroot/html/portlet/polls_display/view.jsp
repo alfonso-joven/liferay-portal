@@ -133,7 +133,7 @@ boolean showIconsActions = themeDisplay.isSignedIn() && (hasConfigurationPermiss
 				</liferay-portlet:renderURL>
 
 				<%
-				String editQuestionURL = "javascript:Liferay.Util.openWindow({dialog: {width: 960}, id: '" + liferayPortletResponse.getNamespace() + "editQuestion', title: '" + UnicodeFormatter.toString(ResourceActionsUtil.getModelResource(locale, PollsQuestion.class.getName())) + "', uri:'" + HtmlUtil.escapeURL(editPollURL.toString()) + "'});";
+				String editQuestionURL = "javascript:Liferay.Util.openWindow({dialog: {width: 960}, id: '" + liferayPortletResponse.getNamespace() + "editQuestion', title: '" + UnicodeFormatter.toString(ResourceActionsUtil.getModelResource(locale, PollsQuestion.class.getName())) + "', uri: '" + HtmlUtil.escapeURL(editPollURL.toString()) + "'});";
 				%>
 
 				<liferay-ui:icon

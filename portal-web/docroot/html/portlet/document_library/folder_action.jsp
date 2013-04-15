@@ -310,7 +310,7 @@ String iconMenuId = null;
 				</portlet:renderURL>
 
 				<%
-				String taglibEditURL = "javascript:Liferay.Util.openWindow({dialog: {width: 420}, id: '" + renderResponse.getNamespace() + "selectFileEntryType', title: '" + UnicodeLanguageUtil.get(pageContext, "select-document-type") + "', uri:'" + editFileEntryURL.toString() + "'});";
+				String taglibEditURL = "javascript:Liferay.Util.openWindow({dialog: {width: 420}, id: '" + renderResponse.getNamespace() + "selectFileEntryType', title: '" + UnicodeLanguageUtil.get(pageContext, "select-document-type") + "', uri: '" + editFileEntryURL.toString() + "'});";
 				%>
 
 				<liferay-ui:icon
