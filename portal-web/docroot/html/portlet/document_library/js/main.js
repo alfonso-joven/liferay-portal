@@ -177,7 +177,6 @@ AUI.add(
 						instance._eventDataRequest = instance.ns('dataRequest');
 						instance._eventDataRetrieveSuccess = instance.ns('dataRetrieveSuccess');
 						instance._eventEditFileEntry = instance.ns('editFileEntry');
-						instance._eventOpenDocument = instance.ns('openDocument');
 						instance._eventPageLoaded = instance.ns('pageLoaded');
 
 						instance._displayStyleToolbarNode = instance.byId(DISPLAY_STYLE_TOOLBAR);
@@ -260,7 +259,6 @@ AUI.add(
 							Liferay.on(instance._eventDataRequest, instance._onDataRequest, instance),
 							Liferay.on(instance._eventDataRetrieveSuccess, instance._onDataRetrieveSuccess, instance),
 							Liferay.on(instance._eventEditFileEntry, instance._editFileEntry, instance),
-							Liferay.on(instance._eventOpenDocument, instance._openDocument, instance),
 							Liferay.on(instance._eventPageLoaded, instance._onPageLoaded, instance)
 						];
 
@@ -1106,28 +1104,6 @@ AUI.add(
 								return repositoryNode;
 							}
 						);
-					},
-
-					_openDocument: function(event) {
-						var instance = this;
-
-						var webDavUrl = event.webDavUrl;
-
-						if (webDavUrl && UA.ie) {
-							try {
-								var executor = new WIN.ActiveXObject('SharePoint.OpenDocuments');
-
-								executor.EditDocument(webDavUrl);
-							}
-							catch (exception) {
-								var errorMessage = Lang.sub(
-									Liferay.Language.get('cannot-open-the-requested-document-due-to-the-following-reason'),
-									[exception.message]
-								);
-
-								instance._sendMessage(MESSAGE_TYPE_ERROR, errorMessage);
-							}
-						}
 					},
 
 					_parseContent: function(data) {
