@@ -86,8 +86,6 @@ portletURL.setParameter("callback", callback);
 				continue;
 			}
 
-			assetEntry = assetEntry.toEscapedModel();
-
 			String rowHREF = null;
 
 			Group group = GroupLocalServiceUtil.getGroup(assetEntry.getGroupId());
@@ -102,9 +100,9 @@ portletURL.setParameter("callback", callback);
 				sb.append("', '");
 				sb.append(ResourceActionsUtil.getModelResource(locale, assetEntry.getClassName()));
 				sb.append("', '");
-				sb.append(assetEntry.getTitle(locale));
+				sb.append(HtmlUtil.escapeJS(assetEntry.getTitle(locale)));
 				sb.append("', '");
-				sb.append(HtmlUtil.escape(group.getDescriptiveName(locale)));
+				sb.append(HtmlUtil.escapeJS(group.getDescriptiveName(locale)));
 				sb.append("');Liferay.Util.getWindow().close();");
 
 				rowHREF = sb.toString();
@@ -112,11 +110,11 @@ portletURL.setParameter("callback", callback);
 
 			// Title
 
-			row.addText(assetEntry.getTitle(locale), rowHREF);
+			row.addText(HtmlUtil.escape(assetEntry.getTitle(locale)), rowHREF);
 
 			// Description
 
-			row.addText(HtmlUtil.stripHtml(HtmlUtil.unescape(assetEntry.getDescription(locale))), rowHREF);
+			row.addText(HtmlUtil.stripHtml(assetEntry.getDescription(locale)), rowHREF);
 
 			// User name
 
