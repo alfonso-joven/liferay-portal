@@ -186,7 +186,7 @@ boolean expired = true;
 					</div>
 				</c:if>
 
-				<div class="journal-content-article" id="article_<%= articleDisplay.getCompanyId() %>_<%= articleDisplay.getGroupId() %>_<%= articleDisplay.getArticleId() %>_<%= articleDisplay.getVersion() %>">
+				<div class="journal-content-article">
 					<%= RuntimePortletUtil.processXML(application, request, response, renderRequest, renderResponse, articleDisplay.getContent()) %>
 				</div>
 
