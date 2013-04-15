@@ -242,19 +242,19 @@ public class UpgradeOptimizedResultSetHandler implements InvocationHandler {
 		else if (t == Types.LONGVARBINARY) {
 			value = _resultSet.getBytes(name);
 		}
-		else if (t == Types.LONGNVARCHAR) {
+		else if (t == _LONGNVARCHAR) {
 			value = GetterUtil.getString(_resultSet.getString(name));
 		}
-		else if (t == Types.NCHAR) {
+		else if (t == _NCHAR) {
 			value = GetterUtil.getString(_resultSet.getString(name));
 		}
-		else if (t == Types.NCLOB) {
+		else if (t == _NCLOB) {
 			value = GetterUtil.getString(_resultSet.getString(name));
 		}
 		else if (t == Types.NUMERIC) {
 			value = GetterUtil.getLong(_resultSet.getLong(name));
 		}
-		else if (t == Types.NVARCHAR) {
+		else if (t == _NVARCHAR) {
 			value = GetterUtil.getString(_resultSet.getString(name));
 		}
 		else if (t == Types.REAL) {
@@ -266,7 +266,7 @@ public class UpgradeOptimizedResultSetHandler implements InvocationHandler {
 		else if (t == Types.SMALLINT) {
 			value = GetterUtil.getShort(_resultSet.getShort(name));
 		}
-		else if (t == Types.SQLXML) {
+		else if (t == _SQLXML) {
 			value = GetterUtil.getString(_resultSet.getString(name));
 		}
 		else if (t == Types.TIME) {
@@ -291,6 +291,16 @@ public class UpgradeOptimizedResultSetHandler implements InvocationHandler {
 
 		return value;
 	}
+
+	private static final int _LONGNVARCHAR = -16;
+
+	private static final int _NCHAR = -15;
+
+	private static final int _NCLOB = 2011;
+
+	private static final int _NVARCHAR = -9;
+
+	private static final int _SQLXML = 2009;
 
 	private List<String> _columnNames = new ArrayList<String>();
 	private Map<Object, Integer> _columnTypes = new HashMap<Object, Integer>();
