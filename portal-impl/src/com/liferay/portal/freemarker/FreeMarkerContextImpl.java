@@ -34,6 +34,12 @@ public class FreeMarkerContextImpl implements FreeMarkerContext {
 		_context.putAll(context);
 	}
 
+	public FreeMarkerContextImpl(FreeMarkerContextImpl freeMarkerContextImpl) {
+		_context = new ConcurrentHashMap<String, Object>();
+
+		_context.putAll(freeMarkerContextImpl.getWrappedContext());
+	}
+
 	public Object get(String key) {
 		return _context.get(key);
 	}

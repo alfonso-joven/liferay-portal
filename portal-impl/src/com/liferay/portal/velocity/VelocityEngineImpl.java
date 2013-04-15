@@ -93,17 +93,17 @@ public class VelocityEngineImpl implements VelocityEngine {
 
 	@NotPrivileged
 	public VelocityContext getWrappedClassLoaderToolsContext() {
-		return _getToolsContext(_STANDARD);
+		return new VelocityContextImpl(_getToolsContext(_STANDARD));
 	}
 
 	@NotPrivileged
 	public VelocityContext getWrappedRestrictedToolsContext() {
-		return _getToolsContext(_RESTRICTED);
+		return new VelocityContextImpl(_getToolsContext(_RESTRICTED));
 	}
 
 	@NotPrivileged
 	public VelocityContext getWrappedStandardToolsContext() {
-		return _getToolsContext(_STANDARD);
+		return new VelocityContextImpl(_getToolsContext(_STANDARD));
 	}
 
 	public void init() throws Exception {

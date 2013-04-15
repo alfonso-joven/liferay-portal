@@ -81,17 +81,17 @@ public class FreeMarkerEngineImpl implements FreeMarkerEngine {
 
 	@NotPrivileged
 	public FreeMarkerContext getWrappedClassLoaderToolsContext() {
-		return _doGetToolsContext(_STANDARD);
+		return new FreeMarkerContextImpl(_doGetToolsContext(_STANDARD));
 	}
 
 	@NotPrivileged
 	public FreeMarkerContext getWrappedRestrictedToolsContext() {
-		return _doGetToolsContext(_RESTRICTED);
+		return new FreeMarkerContextImpl(_doGetToolsContext(_RESTRICTED));
 	}
 
 	@NotPrivileged
 	public FreeMarkerContext getWrappedStandardToolsContext() {
-		return _doGetToolsContext(_STANDARD);
+		return new FreeMarkerContextImpl(_doGetToolsContext(_STANDARD));
 	}
 
 	public void init() throws Exception {

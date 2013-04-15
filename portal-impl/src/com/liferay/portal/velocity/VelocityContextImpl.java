@@ -32,6 +32,11 @@ public class VelocityContextImpl implements VelocityContext {
 			velocityContext);
 	}
 
+	public VelocityContextImpl(VelocityContextImpl velocityContextImpl) {
+		_velocityContext = new org.apache.velocity.VelocityContext(
+			velocityContextImpl.getWrappedVelocityContext());
+	}
+
 	public Object get(String key) {
 		return _velocityContext.get(key);
 	}
