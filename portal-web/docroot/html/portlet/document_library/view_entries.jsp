@@ -586,8 +586,8 @@ for (int i = 0; i < results.size(); i++) {
 			paginator: {
 				name: 'entryPaginator',
 				state: {
-					page: <%= (total == 0) ? 0 : (entryEnd / (entryEnd - entryStart)) %>,
-					rowsPerPage: <%= (entryEnd - entryStart) %>,
+					page: <%= (total == 0) ? 0 : searchContainer.getCur() %>,
+					rowsPerPage: <%= searchContainer.getDelta() %>,
 					total: <%= total %>
 				}
 			}
