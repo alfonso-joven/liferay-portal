@@ -35,7 +35,7 @@
 		}
 	}
 	%>
-	
+
 	<aui:script>
 		Liferay.provide(
 			window,

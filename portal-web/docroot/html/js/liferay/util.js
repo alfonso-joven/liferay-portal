@@ -1311,7 +1311,7 @@
 		},
 		['liferay-portlet-url']
 	);
-	
+
 	Liferay.provide(
 		Util,
 		'openDocument',
