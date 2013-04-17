@@ -76,7 +76,7 @@ boolean showEditDetailTemplateIcon = (detailDDMTemplateId != 0) && DDMTemplatePe
 boolean showEditListTemplateIcon = (listDDMTemplateId != 0) && DDMTemplatePermission.contains(permissionChecker, listDDMTemplateId, ActionKeys.UPDATE);
 %>
 
-<c:if test="<%= themeDisplay.isSignedIn() && (showAddListIcon || showAddTemplateIcon || showEditDetailTemplateIcon || showEditListTemplateIcon || hasConfigurationPermission ) %>">
+<c:if test="<%= themeDisplay.isSignedIn() && !layout.isLayoutPrototypeLinkActive() && (showAddListIcon || showAddTemplateIcon || showEditDetailTemplateIcon || showEditListTemplateIcon || hasConfigurationPermission ) %>">
 	<div class="lfr-meta-actions icons-container">
 		<div class="icon-actions">
 			<c:if test="<%= showAddTemplateIcon %>">
