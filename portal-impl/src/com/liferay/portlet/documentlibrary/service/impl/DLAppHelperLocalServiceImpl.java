@@ -568,9 +568,7 @@ public class DLAppHelperLocalServiceImpl
 
 			int activityType = DLActivityKeys.UPDATE_FILE_ENTRY;
 
-			if (latestFileVersionVersion.equals(
-					DLFileEntryConstants.VERSION_DEFAULT)) {
-
+			if (event.equals(DLSyncConstants.EVENT_ADD)) {
 				activityType = DLActivityKeys.ADD_FILE_ENTRY;
 			}
 
