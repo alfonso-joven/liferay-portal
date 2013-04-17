@@ -1325,7 +1325,6 @@
 					if (Lang.isFunction(onSuccess)) {
 						onSuccess();
 					}
-
 				}
 				catch (exception) {
 					if (Lang.isFunction(onError)) {
