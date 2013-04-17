@@ -4,7 +4,7 @@
 			<execute function="Click#clickAtAndWait" />
 		</case>
 		<case locator-key1="PUBLISH">
-			<execute function="Click#valueClickAtAndWait" value1="Publish" />
+			<execute function="Click#valueClickAtAndWaitCKEditor" value1="Publish" />
 		</case>
 	</command>
 
