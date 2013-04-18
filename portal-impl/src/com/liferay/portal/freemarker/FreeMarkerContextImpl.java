@@ -28,16 +28,16 @@ public class FreeMarkerContextImpl implements FreeMarkerContext {
 		_context = new ConcurrentHashMap<String, Object>();
 	}
 
-	public FreeMarkerContextImpl(Map<String, Object> context) {
-		_context = new ConcurrentHashMap<String, Object>();
-
-		_context.putAll(context);
-	}
-
 	public FreeMarkerContextImpl(FreeMarkerContextImpl freeMarkerContextImpl) {
 		_context = new ConcurrentHashMap<String, Object>();
 
 		_context.putAll(freeMarkerContextImpl.getWrappedContext());
+	}
+
+	public FreeMarkerContextImpl(Map<String, Object> context) {
+		_context = new ConcurrentHashMap<String, Object>();
+
+		_context.putAll(context);
 	}
 
 	public Object get(String key) {
