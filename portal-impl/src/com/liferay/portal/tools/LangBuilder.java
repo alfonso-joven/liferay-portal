@@ -497,11 +497,11 @@ public class LangBuilder {
 				messages.add(key + "=" + value);
 			}
 			else {
-				if (begin && line.equals("")) {
+				if (begin && line.equals(StringPool.BLANK)) {
 					_sortAndWrite(unsyncBufferedWriter, messages, firstLine);
 				}
 
-				if (line.equals("")) {
+				if (line.equals(StringPool.BLANK)) {
 					begin = !begin;
 				}
 
