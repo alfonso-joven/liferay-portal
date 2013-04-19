@@ -129,7 +129,7 @@ public class SassToCssBuilder {
 
 			_rubyExecutor = new RubyExecutor();
 
-			_rubyExecutor.setResetRubyRuntimeThreadLocal(false);
+			_rubyExecutor.setExecuteInSeparateThread(false);
 
 			_parseSassDirectory(dirName);
 		}
