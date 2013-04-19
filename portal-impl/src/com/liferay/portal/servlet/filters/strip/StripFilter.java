@@ -328,7 +328,7 @@ public class StripFilter extends BasePortalFilter {
 			}
 		}
 
-		if (!Validator.isNull(minifiedContent)) {
+		if (Validator.isNotNull(minifiedContent)) {
 			writer.write(minifiedContent);
 		}
 
@@ -543,7 +543,7 @@ public class StripFilter extends BasePortalFilter {
 			}
 		}
 
-		if (!Validator.isNull(minifiedContent)) {
+		if (Validator.isNotNull(minifiedContent)) {
 			writer.write(minifiedContent);
 		}
 
