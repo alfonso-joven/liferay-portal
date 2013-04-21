@@ -15,6 +15,7 @@
 package com.liferay.portal.security.pacl.checker;
 
 import com.liferay.portal.bean.BeanLocatorImpl;
+import com.liferay.portal.dao.orm.hibernate.DynamicQueryFactoryImpl;
 import com.liferay.portal.freemarker.FreeMarkerVariablesImpl;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
@@ -335,6 +336,11 @@ public class PortalRuntimeChecker extends BaseChecker {
 				PortletClassLoaderUtil.class.getName())) {
 
 			callerClass = Reflection.getCallerClass(stackIndex + 1);
+		}
+		else if (callerClass.getName().equals(
+					DynamicQueryFactoryImpl.class.getName())) {
+
+			callerClass = Reflection.getCallerClass(stackIndex + 3);
 		}
 
 		if (isTrustedCaller(callerClass, permission)) {
