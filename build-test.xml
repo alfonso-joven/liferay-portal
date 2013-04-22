@@ -2843,8 +2843,9 @@
 
 	<target name="generate-tests">
 		<script classpathref="project.classpath" language="beanshell">
-			String testClass = project.getProperty("test.class");
 			String testName = "";
+
+			String testClass = project.getProperty("test.class");
 
 			if (testClass.endsWith("TestCase")) {
 				testName = testClass.replaceAll("TestCase", ".testcase");
