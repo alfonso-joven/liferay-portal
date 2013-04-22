@@ -599,7 +599,8 @@ public class ServletResponseUtil {
 		}
 
 		if (!response.containsHeader(HttpHeaders.CACHE_CONTROL)) {
-			response.setHeader(HttpHeaders.CACHE_CONTROL,
+			response.setHeader(
+				HttpHeaders.CACHE_CONTROL,
 				HttpHeaders.CACHE_CONTROL_PRIVATE_VALUE);
 		}
 
