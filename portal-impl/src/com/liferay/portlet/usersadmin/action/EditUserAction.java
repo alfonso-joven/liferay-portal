@@ -274,7 +274,9 @@ public class EditUserAction extends PortletAction {
 					SessionErrors.add(actionRequest, e.getClass(), e);
 				}
 
-				if (e instanceof RequiredUserException) {
+				if (e instanceof CompanyMaxUsersException ||
+					e instanceof RequiredUserException) {
+
 					String redirect = PortalUtil.escapeRedirect(
 						ParamUtil.getString(actionRequest, "redirect"));
 
