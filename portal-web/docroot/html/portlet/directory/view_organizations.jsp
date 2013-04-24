@@ -18,6 +18,12 @@
 
 <%
 PortletURL portletURL = (PortletURL)request.getAttribute("view.jsp-portletURL");
+
+long parentOrganizationId = ParamUtil.getLong(request, "parentOrganizationId", OrganizationConstants.DEFAULT_PARENT_ORGANIZATION_ID);
+
+if (parentOrganizationId > 0) {
+	portletURL.setParameter("parentOrganizationId", String.valueOf(parentOrganizationId));
+}
 %>
 
 <liferay-ui:search-container
@@ -34,10 +40,26 @@ PortletURL portletURL = (PortletURL)request.getAttribute("view.jsp-portletURL");
 
 	LinkedHashMap<String, Object> organizationParams = new LinkedHashMap<String, Object>();
 
-	long parentOrganizationId = ParamUtil.getLong(request, "parentOrganizationId", OrganizationConstants.DEFAULT_PARENT_ORGANIZATION_ID);
-
 	if (parentOrganizationId <= 0) {
 		parentOrganizationId = OrganizationConstants.ANY_PARENT_ORGANIZATION_ID;
+	}
+
+	if (Validator.isNotNull(searchTerms.getKeywords()) || searchTerms.isAdvancedSearch()) {
+		if (parentOrganizationId != OrganizationConstants.ANY_PARENT_ORGANIZATION_ID) {
+			List<Long> excludedOrganizationIds = new ArrayList<Long>();
+
+			excludedOrganizationIds.add(parentOrganizationId);
+
+			organizationParams.put("excludedOrganizationIds", excludedOrganizationIds);
+
+			Organization parentOrganization = OrganizationLocalServiceUtil.getOrganization(parentOrganizationId);
+
+			List<Organization> organizations = new ArrayList<Organization>();
+
+			organizations.add(parentOrganization);
+
+			organizationParams.put("organizationsTree", organizations);
+		}
 	}
 	%>
 
