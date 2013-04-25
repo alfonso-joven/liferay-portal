@@ -6453,12 +6453,11 @@ public class PortalImpl implements Portal {
 					if (count == 0) {
 						return false;
 					}
-					else if (!portlet.isUndeployedPortlet()) {
-						ResourceLocalServiceUtil.getResource(
-							themeDisplay.getCompanyId(),
-							portlet.getRootPortletId(),
-							ResourceConstants.SCOPE_INDIVIDUAL, primaryKey);
-					}
+				}
+				else if (!portlet.isUndeployedPortlet()) {
+					ResourceLocalServiceUtil.getResource(
+						themeDisplay.getCompanyId(), portlet.getRootPortletId(),
+						ResourceConstants.SCOPE_INDIVIDUAL, primaryKey);
 				}
 			}
 		}
