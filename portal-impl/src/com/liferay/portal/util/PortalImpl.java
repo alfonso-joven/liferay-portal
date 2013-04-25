@@ -6432,12 +6432,12 @@ public class PortalImpl implements Portal {
 
 		try {
 			List<com.liferay.portal.model.PortletPreferences>
-				portletPreferences =
+				portletPreferencesList =
 					PortletPreferencesLocalServiceUtil.getPortletPreferences(
 						PortletKeys.PREFS_OWNER_TYPE_LAYOUT, layout.getPlid(),
 						portlet.getPortletId());
 
-			if (portletPreferences.size() == 0) {
+			if (portletPreferencesList.isEmpty()) {
 				return false;
 			}
 
