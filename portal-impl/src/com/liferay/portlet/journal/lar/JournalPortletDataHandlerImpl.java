@@ -2149,6 +2149,7 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 			String dlReferencePath = dlReferenceElement.attributeValue("path");
 
 			String fileEntryUUID = null;
+			long fileEntryGroupId = 0;
 
 			try {
 				Object zipEntryObject = portletDataContext.getZipEntryAsObject(
@@ -2169,12 +2170,14 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 					FileEntry fileEntry = (FileEntry)zipEntryObject;
 
 					fileEntryUUID = fileEntry.getUuid();
+					fileEntryGroupId = fileEntry.getGroupId();
 				}
 				else {
 					RepositoryEntry repositoryEntry =
 						(RepositoryEntry)zipEntryObject;
 
 					fileEntryUUID = repositoryEntry.getUuid();
+					fileEntryGroupId = repositoryEntry.getGroupId();
 				}
 			}
 			catch (Exception e) {
@@ -2190,9 +2193,17 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 				continue;
 			}
 
+			long groupId = portletDataContext.getScopeGroupId();
+
+			if (fileEntryGroupId ==
+					portletDataContext.getSourceCompanyGroupId()) {
+
+				groupId = portletDataContext.getSourceCompanyGroupId();
+			}
+
 			FileEntry fileEntry =
 				DLAppLocalServiceUtil.getFileEntryByUuidAndGroupId(
-					fileEntryUUID, portletDataContext.getScopeGroupId());
+					fileEntryUUID, groupId);
 
 			if (fileEntry == null) {
 				continue;
