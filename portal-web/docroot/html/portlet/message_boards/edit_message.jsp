@@ -62,7 +62,12 @@ boolean splitThread = ParamUtil.getBoolean(request, "splitThread");
 String[] existingAttachments = new String[0];
 
 if ((message != null) && message.isAttachments()) {
-	existingAttachments = DLStoreUtil.getFileNames(message.getCompanyId(), CompanyConstants.SYSTEM, message.getAttachmentsDir());
+	try {
+		existingAttachments = DLStoreUtil.getFileNames(message.getCompanyId(), CompanyConstants.SYSTEM, message.getAttachmentsDir());
+	}
+	catch (NoSuchDirectoryException nsde) {
+		_log.error("The attachments storage path is not correct", nsde);
+	}
 }
 
 boolean allowPingbacks = PropsValues.MESSAGE_BOARDS_PINGBACK_ENABLED && BeanParamUtil.getBoolean(message, request, "allowPingbacks", true);
@@ -551,4 +556,8 @@ else {
 
 	PortalUtil.addPortletBreadcrumbEntry(request, LanguageUtil.get(pageContext, "add-message"), currentURL);
 }
+%>
+
+<%!
+private static Log _log = LogFactoryUtil.getLog("portal-web.docroot.html.portlet.message_boards.edit_message_jsp");
 %>
