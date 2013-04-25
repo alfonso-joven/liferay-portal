@@ -136,6 +136,7 @@ import com.liferay.portal.service.GroupServiceUtil;
 import com.liferay.portal.service.LayoutLocalServiceUtil;
 import com.liferay.portal.service.LayoutSetLocalServiceUtil;
 import com.liferay.portal.service.PortletLocalServiceUtil;
+import com.liferay.portal.service.PortletPreferencesLocalServiceUtil;
 import com.liferay.portal.service.ResourceCodeLocalServiceUtil;
 import com.liferay.portal.service.ResourceLocalServiceUtil;
 import com.liferay.portal.service.ResourcePermissionLocalServiceUtil;
@@ -6430,22 +6431,35 @@ public class PortalImpl implements Portal {
 			layout.getPlid(), portlet.getPortletId());
 
 		try {
-			if (PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM == 6) {
-				int count =
-					ResourcePermissionLocalServiceUtil.
-						getResourcePermissionsCount(
+			List<com.liferay.portal.model.PortletPreferences>
+				portletPreferences = PortletPreferencesLocalServiceUtil.
+					getPortletPreferences(
+						PortletKeys.PREFS_OWNER_TYPE_LAYOUT, layout.getPlid(),
+						portlet.getPortletId());
+
+			if (portletPreferences.size() == 0) {
+				return false;
+			}
+			else {
+				if (PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM == 6) {
+					int count =
+						ResourcePermissionLocalServiceUtil.
+							getResourcePermissionsCount(
+									themeDisplay.getCompanyId(),
+									portlet.getRootPortletId(),
+									ResourceConstants.SCOPE_INDIVIDUAL,
+									primaryKey);
+
+					if (count == 0) {
+						return false;
+					}
+					else if (!portlet.isUndeployedPortlet()) {
+						ResourceLocalServiceUtil.getResource(
 							themeDisplay.getCompanyId(),
 							portlet.getRootPortletId(),
 							ResourceConstants.SCOPE_INDIVIDUAL, primaryKey);
-
-				if (count == 0) {
-					return false;
+					}
 				}
-			}
-			else if (!portlet.isUndeployedPortlet()) {
-				ResourceLocalServiceUtil.getResource(
-					themeDisplay.getCompanyId(), portlet.getRootPortletId(),
-					ResourceConstants.SCOPE_INDIVIDUAL, primaryKey);
 			}
 		}
 		catch (NoSuchResourceException nsre) {
