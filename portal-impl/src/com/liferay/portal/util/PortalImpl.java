@@ -6432,33 +6432,31 @@ public class PortalImpl implements Portal {
 
 		try {
 			List<com.liferay.portal.model.PortletPreferences>
-				portletPreferences = PortletPreferencesLocalServiceUtil.
-					getPortletPreferences(
+				portletPreferences =
+					PortletPreferencesLocalServiceUtil.getPortletPreferences(
 						PortletKeys.PREFS_OWNER_TYPE_LAYOUT, layout.getPlid(),
 						portlet.getPortletId());
 
 			if (portletPreferences.size() == 0) {
 				return false;
 			}
-			else {
-				if (PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM == 6) {
-					int count =
-						ResourcePermissionLocalServiceUtil.
-							getResourcePermissionsCount(
-									themeDisplay.getCompanyId(),
-									portlet.getRootPortletId(),
-									ResourceConstants.SCOPE_INDIVIDUAL,
-									primaryKey);
 
-					if (count == 0) {
-						return false;
-					}
+			if (PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM == 6) {
+				int count =
+					ResourcePermissionLocalServiceUtil.
+						getResourcePermissionsCount(
+							themeDisplay.getCompanyId(),
+							portlet.getRootPortletId(),
+							ResourceConstants.SCOPE_INDIVIDUAL, primaryKey);
+
+				if (count == 0) {
+					return false;
 				}
-				else if (!portlet.isUndeployedPortlet()) {
-					ResourceLocalServiceUtil.getResource(
-						themeDisplay.getCompanyId(), portlet.getRootPortletId(),
-						ResourceConstants.SCOPE_INDIVIDUAL, primaryKey);
-				}
+			}
+			else if (!portlet.isUndeployedPortlet()) {
+				ResourceLocalServiceUtil.getResource(
+					themeDisplay.getCompanyId(), portlet.getRootPortletId(),
+					ResourceConstants.SCOPE_INDIVIDUAL, primaryKey);
 			}
 		}
 		catch (NoSuchResourceException nsre) {
