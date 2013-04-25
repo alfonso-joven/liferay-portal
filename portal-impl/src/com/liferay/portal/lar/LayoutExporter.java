@@ -871,8 +871,8 @@ public class LayoutExporter {
 					else if (scopeType.equals("layout")) {
 						Layout scopeLayout = null;
 
-						scopeLayout = LayoutLocalServiceUtil.
-							fetchLayoutByUuidAndGroupId(
+						scopeLayout =
+							LayoutLocalServiceUtil.fetchLayoutByUuidAndGroupId(
 								scopeLayoutUuid,
 								portletDataContext.getGroupId(),
 								portletDataContext.isPrivateLayout());
