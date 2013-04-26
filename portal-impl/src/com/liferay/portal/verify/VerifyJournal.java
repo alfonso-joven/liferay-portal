@@ -19,6 +19,7 @@ import com.liferay.portal.kernel.dao.db.DBFactoryUtil;
 import com.liferay.portal.kernel.dao.jdbc.DataAccess;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.util.FriendlyURLNormalizerUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.HtmlUtil;
 import com.liferay.portal.kernel.util.Validator;
@@ -55,6 +56,10 @@ public class VerifyJournal extends VerifyProcess {
 
 	@Override
 	protected void doVerify() throws Exception {
+
+		// URL title
+
+		verifyURLTitle();
 
 		// Oracle new line
 
@@ -160,6 +165,26 @@ public class VerifyJournal extends VerifyProcess {
 		// Content searches
 
 		verifyContentSearch();
+	}
+
+	protected void updateURLTitle(String urlTitle) throws Exception {
+		Connection con = null;
+		PreparedStatement ps = null;
+
+		try {
+			con = DataAccess.getUpgradeOptimizedConnection();
+
+			ps = con.prepareStatement(
+				"update JournalArticle set urlTitle = ? where urlTitle = ?");
+
+			ps.setString(1, FriendlyURLNormalizerUtil.normalize(urlTitle));
+			ps.setString(2, urlTitle);
+
+			ps.executeUpdate();
+		}
+		finally {
+			DataAccess.cleanUp(con, ps);
+		}
 	}
 
 	protected void verifyContentSearch() throws Exception {
@@ -338,6 +363,32 @@ public class VerifyJournal extends VerifyProcess {
 						template.getGroupId(), template.getTemplateId());
 				}
 			}
+		}
+	}
+
+	protected void verifyURLTitle() throws Exception {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		try {
+			con = DataAccess.getUpgradeOptimizedConnection();
+
+			ps = con.prepareStatement(
+				"select distinct urlTitle from JournalArticle where urlTitle " +
+					"like '%\u2018%' or urlTitle like '%\u2019%' or urlTitle " +
+						"like '%\u201c%' or urlTitle like '%\u201d%'");
+
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				String urlTitle = rs.getString("urlTitle");
+
+				updateURLTitle(urlTitle);
+			}
+		}
+		finally {
+			DataAccess.cleanUp(con, ps, rs);
 		}
 	}
 
