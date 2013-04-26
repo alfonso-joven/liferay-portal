@@ -58,7 +58,7 @@ public class ViewPageWhatWeDoTest extends BaseTestCase {
 			selenium.getText("//ul[@id='contentNav']/li[4]/a"));
 		assertEquals(RuntimeVariables.replace("Tools for Business"),
 			selenium.getText("//ul[@id='contentNav']/li[5]/a"));
-		assertEquals(RuntimeVariables.replace("Desktop &amp; Mobile Access"),
+		assertEquals(RuntimeVariables.replace("Desktop & Mobile Access"),
 			selenium.getText("//ul[@id='contentNav']/li[6]/a"));
 		assertEquals(RuntimeVariables.replace("Liferay Marketplace"),
 			selenium.getText("//ul[@id='contentNav']/li[7]/a"));

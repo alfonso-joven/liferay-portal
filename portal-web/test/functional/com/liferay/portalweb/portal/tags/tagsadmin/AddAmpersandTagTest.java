@@ -42,7 +42,7 @@ public class AddAmpersandTagTest extends BaseTestCase {
 			RuntimeVariables.replace("Add Tag"));
 		selenium.waitForVisible("//input[@id='_99_name']");
 		selenium.type("//input[@id='_99_name']",
-			RuntimeVariables.replace("&amp;test"));
+			RuntimeVariables.replace("&test"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForVisible(
@@ -56,6 +56,6 @@ public class AddAmpersandTagTest extends BaseTestCase {
 		assertTrue(selenium.isPartialText(
 				"//div[@class='lfr-message-response portlet-msg-error']",
 				"{ % | + # ? \" ; / * ~."));
-		assertFalse(selenium.isTextPresent("&amp;test"));
+		assertFalse(selenium.isTextPresent("&test"));
 	}
 }
