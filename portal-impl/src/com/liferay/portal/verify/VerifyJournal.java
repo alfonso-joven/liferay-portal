@@ -57,10 +57,6 @@ public class VerifyJournal extends VerifyProcess {
 	@Override
 	protected void doVerify() throws Exception {
 
-		// URL title
-
-		verifyURLTitle();
-
 		// Oracle new line
 
 		verifyOracleNewLine();
@@ -165,6 +161,10 @@ public class VerifyJournal extends VerifyProcess {
 		// Content searches
 
 		verifyContentSearch();
+
+		// URL title
+
+		verifyURLTitle();
 	}
 
 	protected void updateURLTitle(String urlTitle) throws Exception {
