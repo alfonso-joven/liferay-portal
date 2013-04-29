@@ -205,7 +205,7 @@ public class EditLDAPServerAction extends PortletAction {
 			actionRequest, "settings--");
 
 		validateLDAPServerName(
-			ldapServerId, themeDisplay.getCompanyId(),properties);
+			ldapServerId, themeDisplay.getCompanyId(), properties);
 
 		String filter = ParamUtil.getString(
 			actionRequest, "importUserSearchFilter");
