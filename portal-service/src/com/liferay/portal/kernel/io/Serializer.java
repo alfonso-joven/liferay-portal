@@ -279,7 +279,7 @@ public class Serializer {
 
 			byte[] tempBuffer = new byte[newSize];
 
-			System.arraycopy(buffer, 0, tempBuffer, 0, newSize);
+			System.arraycopy(buffer, 0, tempBuffer, 0, oldSize);
 
 			buffer = tempBuffer;
 		}
