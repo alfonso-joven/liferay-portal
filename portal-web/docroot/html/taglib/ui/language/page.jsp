@@ -112,7 +112,7 @@ for (int i = 0; i < locales.length; i++) {
 		for (int i = 0; i < locales.length; i++) {
 			String cssClassName = "taglib-language-list-text";
 
-			if ((i + 1) < locales.length) {
+			if ((i + 1) == locales.length) {
 				cssClassName += " last";
 			}
 
@@ -128,7 +128,7 @@ for (int i = 0; i < locales.length; i++) {
 
 			<c:choose>
 				<c:when test="<%= (displayStyle == LanguageTag.LIST_LONG_TEXT) || (displayStyle == LanguageTag.LIST_SHORT_TEXT) %>">
-					<aui:a class="<%= cssClassName %>" href="<%= HttpUtil.addParameter(formAction, name, LocaleUtil.toLanguageId(locales[i])) %>" lang="<%= LocaleUtil.toW3cLanguageId(locales[i]) %>"><%= localeDisplayName %></aui:a>
+					<aui:a cssClass="<%= cssClassName %>" href="<%= HttpUtil.addParameter(formAction, name, LocaleUtil.toLanguageId(locales[i])) %>" lang="<%= LocaleUtil.toW3cLanguageId(locales[i]) %>"><%= localeDisplayName %></aui:a>
 				</c:when>
 				<c:otherwise>
 					<liferay-ui:icon
