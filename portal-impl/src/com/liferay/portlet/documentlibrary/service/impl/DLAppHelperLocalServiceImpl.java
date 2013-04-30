@@ -389,7 +389,7 @@ public class DLAppHelperLocalServiceImpl
 			}
 
 			if (assetTagNames == null) {
-				assetTagNames = getAssetTagLocalService().getTagNames(
+				assetTagNames = assetTagLocalService.getTagNames(
 					DLFileEntryConstants.getClassName(),
 					fileEntry.getFileEntryId());
 			}
