@@ -61,7 +61,7 @@ ColorScheme selWapColorScheme = layoutSet.getWapColorScheme();
 			<h3><liferay-ui:message key="css" /></h3>
 
 			<aui:input label="insert-custom-css-that-will-be-loaded-after-the-theme" name="regularCss" type="textarea" value="<%= layoutSet.getCss() %>">
-				<%@ include file="/html/portlet/layouts_admin/validate_oracle.jspf"%>
+				<%@ include file="/html/portlet/layouts_admin/validate_oracle.jspf" %>
 			</aui:input>
 		</liferay-ui:section>
 

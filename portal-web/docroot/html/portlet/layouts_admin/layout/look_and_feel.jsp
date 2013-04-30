@@ -118,7 +118,7 @@ else {
 				<h3><liferay-ui:message key="css" /></h3>
 
 				<aui:input cssClass="lfr-textarea-container" label="insert-custom-css-that-will-be-loaded-after-the-theme" name="regularCss" type="textarea" value="<%= cssText %>">
-					<%@ include file="/html/portlet/layouts_admin/validate_oracle.jspf"%>
+					<%@ include file="/html/portlet/layouts_admin/validate_oracle.jspf" %>
 				</aui:input>
 			</div>
 		</liferay-ui:section>
