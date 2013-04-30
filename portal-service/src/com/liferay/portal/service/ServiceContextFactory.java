@@ -237,10 +237,10 @@ public class ServiceContextFactory {
 
 		serviceContext.setAssetEntryVisible(assetEntryVisible);
 
-		String assetLinkEntryIdsString =
-			request.getParameter("assetLinksSearchContainerPrimaryKeys");
+		String assetLinkEntryIdsString = request.getParameter(
+			"assetLinksSearchContainerPrimaryKeys");
 
-		if (assetLinkEntryIdsString != null){
+		if (assetLinkEntryIdsString != null) {
 			long[] assetLinkEntryIds = StringUtil.split(
 				assetLinkEntryIdsString, 0L);
 
@@ -432,10 +432,10 @@ public class ServiceContextFactory {
 
 		serviceContext.setAssetEntryVisible(assetEntryVisible);
 
-		String assetLinkEntryIdsString =
-			request.getParameter("assetLinksSearchContainerPrimaryKeys");
+		String assetLinkEntryIdsString = request.getParameter(
+			"assetLinksSearchContainerPrimaryKeys");
 
-		if (assetLinkEntryIdsString != null){
+		if (assetLinkEntryIdsString != null) {
 			long[] assetLinkEntryIds = StringUtil.split(
 				assetLinkEntryIdsString, 0L);
 
