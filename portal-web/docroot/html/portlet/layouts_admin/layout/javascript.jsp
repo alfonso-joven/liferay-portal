@@ -34,6 +34,6 @@ if (selLayout != null) {
 
 <aui:fieldset>
 	<aui:input cssClass="lfr-textarea-container" label="paste-javascript-code-that-will-be-executed-at-the-bottom-of-the-page" name="TypeSettingsProperties--javascript--" style="height: 300px" type="textarea" value='<%= layoutTypeSettings.getProperty("javascript") %>' wrap="soft">
-		<%@ include file="/html/portlet/layouts_admin/validate_oracle.jspf" %>
+		<%@ include file="/html/taglib/aui/input/validator_max_length_oracle.jspf" %>
 	</aui:input>
 </aui:fieldset>
