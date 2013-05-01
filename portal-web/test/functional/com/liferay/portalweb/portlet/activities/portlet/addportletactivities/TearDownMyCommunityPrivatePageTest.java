@@ -51,8 +51,8 @@ public class TearDownMyCommunityPrivatePageTest extends BaseTestCase {
 				assertEquals(RuntimeVariables.replace("X"),
 					selenium.getText(
 						"xPath=(//li[contains(@class,'lfr-nav-deletable')])[2]/span[@class='delete-tab']"));
-				selenium.click(
-					"xPath=(//li[contains(@class,'lfr-nav-deletable')])[2]/span[@class='delete-tab']");
+				selenium.clickAt("xPath=(//li[contains(@class,'lfr-nav-deletable')])[2]/span[@class='delete-tab']",
+					RuntimeVariables.replace("X"));
 				selenium.waitForConfirmation(
 					"Are you sure you want to delete this page?");
 				selenium.waitForElementNotPresent(
@@ -74,8 +74,8 @@ public class TearDownMyCommunityPrivatePageTest extends BaseTestCase {
 				assertEquals(RuntimeVariables.replace("X"),
 					selenium.getText(
 						"xPath=(//li[contains(@class,'lfr-nav-deletable')])[2]/span[@class='delete-tab']"));
-				selenium.click(
-					"xPath=(//li[contains(@class,'lfr-nav-deletable')])[2]/span[@class='delete-tab']");
+				selenium.clickAt("xPath=(//li[contains(@class,'lfr-nav-deletable')])[2]/span[@class='delete-tab']",
+					RuntimeVariables.replace("X"));
 				selenium.waitForConfirmation(
 					"Are you sure you want to delete this page?");
 				selenium.waitForElementNotPresent(
@@ -97,8 +97,8 @@ public class TearDownMyCommunityPrivatePageTest extends BaseTestCase {
 				assertEquals(RuntimeVariables.replace("X"),
 					selenium.getText(
 						"xPath=(//li[contains(@class,'lfr-nav-deletable')])[2]/span[@class='delete-tab']"));
-				selenium.click(
-					"xPath=(//li[contains(@class,'lfr-nav-deletable')])[2]/span[@class='delete-tab']");
+				selenium.clickAt("xPath=(//li[contains(@class,'lfr-nav-deletable')])[2]/span[@class='delete-tab']",
+					RuntimeVariables.replace("X"));
 				selenium.waitForConfirmation(
 					"Are you sure you want to delete this page?");
 				selenium.waitForElementNotPresent(
@@ -120,8 +120,8 @@ public class TearDownMyCommunityPrivatePageTest extends BaseTestCase {
 				assertEquals(RuntimeVariables.replace("X"),
 					selenium.getText(
 						"xPath=(//li[contains(@class,'lfr-nav-deletable')])[2]/span[@class='delete-tab']"));
-				selenium.click(
-					"xPath=(//li[contains(@class,'lfr-nav-deletable')])[2]/span[@class='delete-tab']");
+				selenium.clickAt("xPath=(//li[contains(@class,'lfr-nav-deletable')])[2]/span[@class='delete-tab']",
+					RuntimeVariables.replace("X"));
 				selenium.waitForConfirmation(
 					"Are you sure you want to delete this page?");
 				selenium.waitForElementNotPresent(
@@ -143,8 +143,8 @@ public class TearDownMyCommunityPrivatePageTest extends BaseTestCase {
 				assertEquals(RuntimeVariables.replace("X"),
 					selenium.getText(
 						"xPath=(//li[contains(@class,'lfr-nav-deletable')])[2]/span[@class='delete-tab']"));
-				selenium.click(
-					"xPath=(//li[contains(@class,'lfr-nav-deletable')])[2]/span[@class='delete-tab']");
+				selenium.clickAt("xPath=(//li[contains(@class,'lfr-nav-deletable')])[2]/span[@class='delete-tab']",
+					RuntimeVariables.replace("X"));
 				selenium.waitForConfirmation(
 					"Are you sure you want to delete this page?");
 				selenium.waitForElementNotPresent(
