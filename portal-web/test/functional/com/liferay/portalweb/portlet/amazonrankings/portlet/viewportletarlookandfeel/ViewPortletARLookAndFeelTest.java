@@ -133,11 +133,11 @@ public class ViewPortletARLookAndFeelTest extends BaseTestCase {
 		selenium.waitForVisible("//p[@id='lfr-portlet-info']");
 		selenium.waitForVisible("//input[@id='_113_lfr-custom-css-class-name']");
 		assertTrue(selenium.isPartialText("//p[@id='lfr-portlet-info']",
-				"Your current portlet information is as follows::\nPortlet ID: #portlet_67\nPortlet Classes: .portlet"));
+				"Your current portlet information is as follows:"));
 		assertTrue(selenium.isPartialText("//p[@id='lfr-portlet-info']",
 				"Portlet ID: #portlet_67"));
 		assertTrue(selenium.isPartialText("//p[@id='lfr-portlet-info']",
-				"Portlet Classes: .portlet"));
+				"Portlet Classes: .portlet-amazon-rankings"));
 		assertEquals("",
 			selenium.getValue("//input[@id='_113_lfr-custom-css-class-name']"));
 		assertEquals("",

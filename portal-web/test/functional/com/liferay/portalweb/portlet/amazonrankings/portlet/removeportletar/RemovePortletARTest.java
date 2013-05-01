@@ -29,7 +29,7 @@ public class RemovePortletARTest extends BaseTestCase {
 		selenium.clickAt("link=Amazon Rankings Test Page",
 			RuntimeVariables.replace("Amazon Rankings Test Page"));
 		selenium.waitForPageToLoad("30000");
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		selenium.waitForVisible("//img[@alt='Remove']");
 		selenium.click("//img[@alt='Remove']");
 		selenium.waitForConfirmation(
