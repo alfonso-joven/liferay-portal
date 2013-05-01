@@ -27,7 +27,8 @@ import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.test.AssertUtils;
 import com.liferay.portal.test.EnvironmentExecutionTestListener;
 import com.liferay.portal.test.LiferayIntegrationJUnitTestRunner;
-import com.liferay.portal.util.TestPropsValues;
+import com.liferay.portal.test.Sync;
+import com.liferay.portal.test.SynchronousDestinationExecutionTestListener;
 import com.liferay.portlet.bookmarks.model.BookmarksEntry;
 import com.liferay.portlet.bookmarks.model.BookmarksFolder;
 
@@ -40,8 +41,13 @@ import org.junit.runner.RunWith;
 /**
  * @author Brian Wing Shun Chan
  */
-@ExecutionTestListeners(listeners = {EnvironmentExecutionTestListener.class})
+@ExecutionTestListeners(
+	listeners = {
+		EnvironmentExecutionTestListener.class,
+		SynchronousDestinationExecutionTestListener.class
+	})
 @RunWith(LiferayIntegrationJUnitTestRunner.class)
+@Sync
 public class BookmarksFolderServiceTest extends BaseBookmarksServiceTestCase {
 
 	@Test
@@ -73,8 +79,6 @@ public class BookmarksFolderServiceTest extends BaseBookmarksServiceTestCase {
 	@Test
 	public void testSearch() throws Exception {
 		BookmarksEntry entry = addEntry();
-
-		Thread.sleep(1000 * TestPropsValues.JUNIT_DELAY_FACTOR);
 
 		long companyId = entry.getCompanyId();
 		long groupId = entry.getFolder().getGroupId();
@@ -125,8 +129,6 @@ public class BookmarksFolderServiceTest extends BaseBookmarksServiceTestCase {
 
 		BookmarksFolderLocalServiceUtil.deleteFolder(folderId);
 
-		Thread.sleep(1000 * TestPropsValues.JUNIT_DELAY_FACTOR);
-
 		hits = indexer.search(searchContext);
 
 		Query query = hits.getQuery();
@@ -137,8 +139,6 @@ public class BookmarksFolderServiceTest extends BaseBookmarksServiceTestCase {
 		addEntry();
 		addEntry();
 		addEntry();
-
-		Thread.sleep(1000 * TestPropsValues.JUNIT_DELAY_FACTOR);
 
 		searchContext.setEnd(3);
 		searchContext.setFolderIds(null);
