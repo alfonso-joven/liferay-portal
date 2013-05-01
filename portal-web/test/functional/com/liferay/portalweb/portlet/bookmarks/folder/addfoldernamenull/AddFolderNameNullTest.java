@@ -36,7 +36,6 @@ public class AddFolderNameNullTest extends BaseTestCase {
 		selenium.type("//input[@id='_28_name']", RuntimeVariables.replace(""));
 		selenium.type("//textarea[@id='_28_description']",
 			RuntimeVariables.replace("This is a null name folder."));
-		assertFalse(selenium.isTextPresent("This field is required."));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForVisible(

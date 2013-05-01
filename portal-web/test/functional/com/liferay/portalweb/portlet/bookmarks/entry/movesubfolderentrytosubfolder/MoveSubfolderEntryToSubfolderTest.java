@@ -41,7 +41,7 @@ public class MoveSubfolderEntryToSubfolderTest extends BaseTestCase {
 			selenium.getText("//td[1]/a"));
 		assertEquals(RuntimeVariables.replace("http://www.liferay.com"),
 			selenium.getText("//td[2]/a"));
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Actions"),
 			selenium.getText(
 				"//td[5]/span[@title='Actions']/ul/li/strong/a/span"));
@@ -57,7 +57,7 @@ public class MoveSubfolderEntryToSubfolderTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//input[@value='Select']",
 			RuntimeVariables.replace("Select"));
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		selenium.selectWindow("title=Bookmarks");
 		selenium.waitForVisible("link=Home");
 		selenium.clickAt("link=Home", RuntimeVariables.replace("Home"));

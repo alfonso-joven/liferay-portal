@@ -35,7 +35,7 @@ public class CombineSubfolderToFolderTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Test Subfolder"),
 			selenium.getText("//a/strong"));
 		assertFalse(selenium.isTextPresent("Test Subfolder Entry"));
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Actions"),
 			selenium.getText(
 				"//td[4]/span[@title='Actions']/ul/li/strong/a/span"));

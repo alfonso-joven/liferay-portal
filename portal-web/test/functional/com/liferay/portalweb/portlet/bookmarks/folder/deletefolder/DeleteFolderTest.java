@@ -31,7 +31,7 @@ public class DeleteFolderTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Test Folder"),
 			selenium.getText("//td[1]/a/strong"));
 		assertTrue(selenium.isPartialText("//td[1]/a", "This is a test folder."));
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Actions"),
 			selenium.getText(
 				"//td[4]/span[@title='Actions']/ul/li/strong/a/span"));

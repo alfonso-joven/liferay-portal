@@ -36,7 +36,7 @@ public class DeleteSubfolderTest extends BaseTestCase {
 			selenium.getText("//td[1]/a/strong"));
 		assertTrue(selenium.isPartialText("//td[1]/a",
 				"This is a test subfolder."));
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Actions"),
 			selenium.getText(
 				"//td[4]/span[@title='Actions']/ul/li/strong/a/span"));

@@ -43,7 +43,7 @@ public class TearDownBookmarksEntryTest extends BaseTestCase {
 					continue;
 				}
 
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//td[5]/span[@title='Actions']/ul/li/strong/a/span"));
@@ -72,7 +72,7 @@ public class TearDownBookmarksEntryTest extends BaseTestCase {
 					continue;
 				}
 
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//td[5]/span[@title='Actions']/ul/li/strong/a/span"));
@@ -101,7 +101,7 @@ public class TearDownBookmarksEntryTest extends BaseTestCase {
 					continue;
 				}
 
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//td[5]/span[@title='Actions']/ul/li/strong/a/span"));
@@ -130,7 +130,7 @@ public class TearDownBookmarksEntryTest extends BaseTestCase {
 					continue;
 				}
 
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//td[5]/span[@title='Actions']/ul/li/strong/a/span"));
@@ -159,7 +159,7 @@ public class TearDownBookmarksEntryTest extends BaseTestCase {
 					continue;
 				}
 
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//td[5]/span[@title='Actions']/ul/li/strong/a/span"));
