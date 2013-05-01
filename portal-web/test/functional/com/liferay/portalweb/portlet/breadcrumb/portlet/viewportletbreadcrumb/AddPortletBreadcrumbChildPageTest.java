@@ -52,6 +52,12 @@ public class AddPortletBreadcrumbChildPageTest extends BaseTestCase {
 			RuntimeVariables.replace("Add"));
 		selenium.waitForVisible("//section");
 		assertTrue(selenium.isVisible("//section"));
+		selenium.open("/web/guest/home/");
+		selenium.mouseOver("link=Breadcrumb Test Page");
+		selenium.waitForVisible("link=Child Test Page");
+		selenium.clickAt("link=Child Test Page",
+			RuntimeVariables.replace("Child Test Page"));
+		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Liferay"),
 			selenium.getText(
 				"//div/ul[@class='breadcrumbs breadcrumbs-horizontal lfr-component']/li[1]/span/a"));

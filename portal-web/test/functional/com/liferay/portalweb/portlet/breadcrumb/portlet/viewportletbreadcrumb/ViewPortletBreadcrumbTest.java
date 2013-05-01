@@ -41,6 +41,12 @@ public class ViewPortletBreadcrumbTest extends BaseTestCase {
 		selenium.clickAt("link=Child Test Page",
 			RuntimeVariables.replace("Child Test Page"));
 		selenium.waitForPageToLoad("30000");
+		selenium.open("/web/guest/home/");
+		selenium.mouseOver("link=Breadcrumb Test Page");
+		selenium.waitForVisible("link=Child Test Page");
+		selenium.clickAt("link=Child Test Page",
+			RuntimeVariables.replace("Child Test Page"));
+		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Liferay"),
 			selenium.getText(
 				"//div/ul[@class='breadcrumbs breadcrumbs-horizontal lfr-component']/li[1]/span/a"));
