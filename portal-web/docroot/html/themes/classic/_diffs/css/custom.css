@@ -171,6 +171,10 @@ hr, .separator {
 	text-decoration: none;
 }
 
+.touch #navigation a {
+	padding: 10px 20px;
+}
+
 .ie6 #navigation a, .ie7 #navigation a {
 	padding: 4px 15px;
 }
