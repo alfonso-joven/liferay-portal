@@ -43,7 +43,7 @@ public class TearDownBlogsEntryCPTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				selenium.clickAt("link=Blogs", RuntimeVariables.replace("Blogs"));
 				selenium.waitForPageToLoad("30000");
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 
 				boolean entry1Present = selenium.isElementPresent(
 						"//input[@name='_161_rowIds']");
@@ -62,9 +62,9 @@ public class TearDownBlogsEntryCPTest extends BaseTestCase {
 				selenium.clickAt("//input[@value='Delete']",
 					RuntimeVariables.replace("Delete"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete the selected entries[\\s\\S]$"));
-				Thread.sleep(5000);
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete the selected entries?");
+				Thread.sleep(1000);
 
 				boolean entry2Present = selenium.isElementPresent(
 						"//input[@name='_161_rowIds']");
@@ -83,9 +83,9 @@ public class TearDownBlogsEntryCPTest extends BaseTestCase {
 				selenium.clickAt("//input[@value='Delete']",
 					RuntimeVariables.replace("Delete"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete the selected entries[\\s\\S]$"));
-				Thread.sleep(5000);
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete the selected entries?");
+				Thread.sleep(1000);
 
 				boolean entry3Present = selenium.isElementPresent(
 						"//input[@name='_161_rowIds']");
@@ -104,9 +104,9 @@ public class TearDownBlogsEntryCPTest extends BaseTestCase {
 				selenium.clickAt("//input[@value='Delete']",
 					RuntimeVariables.replace("Delete"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete the selected entries[\\s\\S]$"));
-				Thread.sleep(5000);
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete the selected entries?");
+				Thread.sleep(1000);
 
 				boolean entry4Present = selenium.isElementPresent(
 						"//input[@name='_161_rowIds']");
@@ -125,8 +125,8 @@ public class TearDownBlogsEntryCPTest extends BaseTestCase {
 				selenium.clickAt("//input[@value='Delete']",
 					RuntimeVariables.replace("Delete"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete the selected entries[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete the selected entries?");
 				Thread.sleep(5000);
 
 				boolean entry5Present = selenium.isElementPresent(
@@ -146,8 +146,8 @@ public class TearDownBlogsEntryCPTest extends BaseTestCase {
 				selenium.clickAt("//input[@value='Delete']",
 					RuntimeVariables.replace("Delete"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete the selected entries[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete the selected entries?");
 
 			case 2:
 			case 3:
