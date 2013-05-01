@@ -34,7 +34,7 @@ public class ViewPortletScopeLayoutDefaultBlogsEntryPage1Test
 			selenium.getText("//span[@class='portlet-title-text']"));
 		assertFalse(selenium.isTextPresent("Blogs Entry Title"));
 		assertFalse(selenium.isTextPresent("Blogs Entry Content"));
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Options"),
 			selenium.getText("//span[@title='Options']/ul/li/strong/a"));
 		selenium.clickAt("//span[@title='Options']/ul/li/strong/a",

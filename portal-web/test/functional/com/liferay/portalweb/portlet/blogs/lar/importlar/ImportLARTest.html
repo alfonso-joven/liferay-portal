@@ -20,7 +20,7 @@
 </tr>
 <tr>
 	<td>pause</td>
-	<td>5000</td>
+	<td>1000</td>
 	<td></td>
 </tr>
 <tr>
@@ -64,14 +64,24 @@
 	<td>L:\portal\build\portal-web\test\com\liferay\portalweb\portlet\blogs\dependencies\Selenium-Blogs.portlet.lar</td>
 </tr>
 <tr>
-	<td>assertNotChecked</td>
+	<td>storeChecked</td>
 	<td>//input[@id='_86_DELETE_PORTLET_DATACheckbox']</td>
-	<td>Delete portlet data before importing.</td>
+	<td>deleteBeforeImportNotChecked</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>${deleteBeforeImportNotChecked}</td>
+	<td>DeleteBeforeImportChecked</td>
 </tr>
 <tr>
 	<td>clickAt</td>
 	<td>//input[@id='_86_DELETE_PORTLET_DATACheckbox']</td>
 	<td>Delete portlet data before importing.</td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>DeleteBeforeImportChecked</td>
+	<td></td>
 </tr>
 <tr>
 	<td>assertChecked</td>
@@ -79,14 +89,24 @@
 	<td>Delete portlet data before importing.</td>
 </tr>
 <tr>
-	<td>assertNotChecked</td>
+	<td>storeChecked</td>
 	<td>//input[@id='_86_PORTLET_DATACheckbox']</td>
-	<td>Data</td>
+	<td>dataNotChecked</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>${dataNotChecked}</td>
+	<td>DataChecked</td>
 </tr>
 <tr>
 	<td>clickAt</td>
 	<td>//input[@id='_86_PORTLET_DATACheckbox']</td>
 	<td>Data</td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>DataChecked</td>
+	<td></td>
 </tr>
 <tr>
 	<td>assertChecked</td>

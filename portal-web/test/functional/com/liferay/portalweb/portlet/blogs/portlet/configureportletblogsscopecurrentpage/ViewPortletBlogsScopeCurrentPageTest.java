@@ -31,7 +31,7 @@ public class ViewPortletBlogsScopeCurrentPageTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Blogs (Blogs Test Page)"),
 			selenium.getText("//h1[@class='portlet-title']/span[2]"));
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Options"),
 			selenium.getText("//span[@title='Options']/ul/li/strong/a"));
 		selenium.clickAt("//span[@title='Options']/ul/li/strong/a",

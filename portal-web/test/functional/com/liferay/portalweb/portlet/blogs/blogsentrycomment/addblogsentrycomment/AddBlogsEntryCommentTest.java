@@ -40,7 +40,7 @@ public class AddBlogsEntryCommentTest extends BaseTestCase {
 		selenium.waitForVisible("//textarea[@name='_33_postReplyBody0']");
 		selenium.type("//textarea[@name='_33_postReplyBody0']",
 			RuntimeVariables.replace("Blogs Entry Comment Body"));
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		selenium.clickAt("//input[@value='Reply']",
 			RuntimeVariables.replace("Reply"));
 		selenium.waitForText("//div[@class='lfr-message-response portlet-msg-success']",

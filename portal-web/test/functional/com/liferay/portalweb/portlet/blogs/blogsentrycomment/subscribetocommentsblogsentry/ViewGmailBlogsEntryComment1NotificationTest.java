@@ -56,7 +56,7 @@ public class ViewGmailBlogsEntryComment1NotificationTest extends BaseTestCase {
 				"Blogs Entry Comment Body"));
 		selenium.clickAt("link=liferay.qa.testing.trunk@gmail.com",
 			RuntimeVariables.replace("liferay.qa.testing.trunk@gmail.com"));
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		selenium.waitForVisible("//td[2]/a");
 		assertEquals(RuntimeVariables.replace("Sign out"),
 			selenium.getText("//td[2]/a"));

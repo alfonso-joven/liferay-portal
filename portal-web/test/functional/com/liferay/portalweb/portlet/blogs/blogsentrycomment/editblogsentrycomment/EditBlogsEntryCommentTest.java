@@ -35,9 +35,14 @@ public class EditBlogsEntryCommentTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Blogs Entry Comment Body"),
 			selenium.getText("//div[@class='lfr-discussion-message']"));
+		selenium.mouseOver("//div[@class='lfr-discussion first']");
+		selenium.waitForVisible(
+			"//ul[@class='lfr-discussion-actions']/li[3]/span/a/span");
 		assertEquals(RuntimeVariables.replace("Edit"),
-			selenium.getText("//li[3]/span/a/span"));
-		selenium.clickAt("//li[3]/span/a/span", RuntimeVariables.replace("Edit"));
+			selenium.getText(
+				"//ul[@class='lfr-discussion-actions']/li[3]/span/a/span"));
+		selenium.clickAt("//ul[@class='lfr-discussion-actions']/li[3]/span/a/span",
+			RuntimeVariables.replace("Edit"));
 		selenium.waitForVisible("//textarea[@name='_33_editReplyBody1']");
 		selenium.type("//textarea[@name='_33_editReplyBody1']",
 			RuntimeVariables.replace("Blogs Entry Comment Body Edit"));
