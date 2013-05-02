@@ -160,15 +160,17 @@ public class PasswordPolicyToolkit extends BasicToolkit {
 	}
 
 	protected String generateDynamic(PasswordPolicy passwordPolicy) {
-		int alphanumericMinLength = Math.max(
-			passwordPolicy.getMinAlphanumeric(),
+		int alphanumericActualMinLength =
 			passwordPolicy.getMinLowerCase() + passwordPolicy.getMinNumbers() +
-				passwordPolicy.getMinUpperCase());
+				passwordPolicy.getMinUpperCase();
+
+		int alphanumericMinLength = Math.max(
+			passwordPolicy.getMinAlphanumeric(), alphanumericActualMinLength);
 		int passwordMinLength = Math.max(
 			passwordPolicy.getMinLength(),
 			alphanumericMinLength + passwordPolicy.getMinSymbols());
 
-		StringBundler sb = new StringBundler(passwordMinLength);
+		StringBundler sb = new StringBundler(6);
 
 		if (passwordPolicy.getMinLowerCase() > 0) {
 			sb.append(
@@ -194,9 +196,8 @@ public class PasswordPolicyToolkit extends BasicToolkit {
 					passwordPolicy.getMinUpperCase(), _upperCaseCharsetArray));
 		}
 
-		if (alphanumericMinLength > passwordPolicy.getMinAlphanumeric()) {
-			int count =
-				alphanumericMinLength - passwordPolicy.getMinAlphanumeric();
+		if (alphanumericMinLength > alphanumericActualMinLength) {
+			int count = alphanumericMinLength - alphanumericActualMinLength;
 
 			sb.append(getRandomString(count, _alphanumericCharsetArray));
 		}
@@ -209,6 +210,12 @@ public class PasswordPolicyToolkit extends BasicToolkit {
 					(alphanumericMinLength + passwordPolicy.getMinSymbols());
 
 			sb.append(PwdGenerator.getPassword(_completeCharset, count));
+		}
+
+		if (sb.index() == 0) {
+			sb.append(
+				PwdGenerator.getPassword(
+					_completeCharset, _PASSWORDS_DEFAULT_POLICY_MIN_LENGTH));
 		}
 
 		Randomizer randomizer = Randomizer.getInstance();
@@ -253,6 +260,8 @@ public class PasswordPolicyToolkit extends BasicToolkit {
 
 		return count;
 	}
+
+	private static final int _PASSWORDS_DEFAULT_POLICY_MIN_LENGTH = 6;
 
 	private char[] _alphanumericCharsetArray;
 	private String _completeCharset;
