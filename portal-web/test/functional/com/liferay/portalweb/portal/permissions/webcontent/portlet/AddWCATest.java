@@ -60,11 +60,11 @@ public class AddWCATest extends BaseTestCase {
 			RuntimeVariables.replace("Liferay"));
 		selenium.select("//select[@id='_125_suffixId']",
 			RuntimeVariables.replace("label=Phd."));
-		selenium.select("//select[@id='_125_birthdayMonth']",
+		selenium.select("//select[@id='_125_birthdaymonth']",
 			RuntimeVariables.replace("label=July"));
-		selenium.select("//select[@id='_125_birthdayDay']",
+		selenium.select("//select[@id='_125_birthdayday']",
 			RuntimeVariables.replace("label=26"));
-		selenium.select("//select[@id='_125_birthdayYear']",
+		selenium.select("//select[@id='_125_birthdayyear']",
 			RuntimeVariables.replace("label=1987"));
 		selenium.select("//select[@id='_125_male']",
 			RuntimeVariables.replace("label=Female"));

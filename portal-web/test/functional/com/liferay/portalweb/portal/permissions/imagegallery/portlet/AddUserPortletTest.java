@@ -63,11 +63,11 @@ public class AddUserPortletTest extends BaseTestCase {
 					RuntimeVariables.replace("Portlet"));
 				selenium.type("//input[@id='_125_lastName']",
 					RuntimeVariables.replace("Liferay"));
-				selenium.select("//select[@id='_125_birthdayMonth']",
+				selenium.select("//select[@id='_125_birthdaymonth']",
 					RuntimeVariables.replace("label=April"));
-				selenium.select("//select[@id='_125_birthdayDay']",
+				selenium.select("//select[@id='_125_birthdayday']",
 					RuntimeVariables.replace("label=10"));
-				selenium.select("//select[@id='_125_birthdayYear']",
+				selenium.select("//select[@id='_125_birthdayyear']",
 					RuntimeVariables.replace("label=1986"));
 				selenium.select("//select[@id='_125_male']",
 					RuntimeVariables.replace("label=Male"));

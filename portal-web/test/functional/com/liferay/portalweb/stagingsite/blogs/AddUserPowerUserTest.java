@@ -70,11 +70,11 @@ public class AddUserPowerUserTest extends BaseTestCase {
 					RuntimeVariables.replace("User"));
 				selenium.select("//select[@id='_125_suffixId']",
 					RuntimeVariables.replace("label=Phd."));
-				selenium.select("//select[@id='_125_birthdayMonth']",
+				selenium.select("//select[@id='_125_birthdaymonth']",
 					RuntimeVariables.replace("label=April"));
-				selenium.select("//select[@id='_125_birthdayDay']",
+				selenium.select("//select[@id='_125_birthdayday']",
 					RuntimeVariables.replace("label=10"));
-				selenium.select("//select[@id='_125_birthdayYear']",
+				selenium.select("//select[@id='_125_birthdayyear']",
 					RuntimeVariables.replace("label=1986"));
 				selenium.select("//select[@id='_125_male']",
 					RuntimeVariables.replace("label=Male"));

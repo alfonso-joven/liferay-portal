@@ -65,11 +65,11 @@ public class AddUserTest extends BaseTestCase {
 					RuntimeVariables.replace("usermn"));
 				selenium.type("//input[@id='_125_lastName']",
 					RuntimeVariables.replace("userln"));
-				selenium.select("//select[@id='_125_birthdayMonth']",
+				selenium.select("//select[@id='_125_birthdaymonth']",
 					RuntimeVariables.replace("April"));
-				selenium.select("//select[@id='_125_birthdayDay']",
+				selenium.select("//select[@id='_125_birthdayday']",
 					RuntimeVariables.replace("10"));
-				selenium.select("//select[@id='_125_birthdayYear']",
+				selenium.select("//select[@id='_125_birthdayyear']",
 					RuntimeVariables.replace("1986"));
 				selenium.select("//select[@id='_125_male']",
 					RuntimeVariables.replace("Male"));
@@ -93,13 +93,13 @@ public class AddUserTest extends BaseTestCase {
 					selenium.getValue("//input[@id='_125_lastName']"));
 				assertEquals("April",
 					selenium.getSelectedLabel(
-						"//select[@id='_125_birthdayMonth']"));
+						"//select[@id='_125_birthdaymonth']"));
 				assertEquals("10",
 					selenium.getSelectedLabel(
-						"//select[@id='_125_birthdayDay']"));
+						"//select[@id='_125_birthdayday']"));
 				assertEquals("1986",
 					selenium.getSelectedLabel(
-						"//select[@id='_125_birthdayYear']"));
+						"//select[@id='_125_birthdayyear']"));
 				assertEquals("Male",
 					selenium.getSelectedLabel("//select[@id='_125_male']"));
 				selenium.clickAt("//a[@id='_125_passwordLink']",

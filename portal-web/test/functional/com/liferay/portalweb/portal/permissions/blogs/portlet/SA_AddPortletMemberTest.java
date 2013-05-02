@@ -63,11 +63,11 @@ public class SA_AddPortletMemberTest extends BaseTestCase {
 			RuntimeVariables.replace("Liferay"));
 		selenium.select("//select[@id='_125_suffixId']",
 			RuntimeVariables.replace("label=Jr."));
-		selenium.select("//select[@id='_125_birthdayMonth']",
+		selenium.select("//select[@id='_125_birthdaymonth']",
 			RuntimeVariables.replace("label=August"));
-		selenium.select("//select[@id='_125_birthdayDay']",
+		selenium.select("//select[@id='_125_birthdayday']",
 			RuntimeVariables.replace("label=5"));
-		selenium.select("//select[@id='_125_birthdayYear']",
+		selenium.select("//select[@id='_125_birthdayyear']",
 			RuntimeVariables.replace("label=1991"));
 		selenium.select("//select[@id='_125_male']",
 			RuntimeVariables.replace("label=Female"));

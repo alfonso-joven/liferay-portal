@@ -63,11 +63,11 @@ public class SA_AddUserScopeTest extends BaseTestCase {
 			RuntimeVariables.replace("Liferay"));
 		selenium.select("//select[@id='_125_suffixId']",
 			RuntimeVariables.replace("label=IV"));
-		selenium.select("//select[@id='_125_birthdayMonth']",
+		selenium.select("//select[@id='_125_birthdaymonth']",
 			RuntimeVariables.replace("label=May"));
-		selenium.select("//select[@id='_125_birthdayDay']",
+		selenium.select("//select[@id='_125_birthdayday']",
 			RuntimeVariables.replace("label=31"));
-		selenium.select("//select[@id='_125_birthdayYear']",
+		selenium.select("//select[@id='_125_birthdayyear']",
 			RuntimeVariables.replace("label=1986"));
 		selenium.select("//select[@id='_125_male']",
 			RuntimeVariables.replace("label=Male"));
