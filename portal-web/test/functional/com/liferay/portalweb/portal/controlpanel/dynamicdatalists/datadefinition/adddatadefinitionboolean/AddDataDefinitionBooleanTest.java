@@ -50,6 +50,7 @@ public class AddDataDefinitionBooleanTest extends BaseTestCase {
 		selenium.waitForVisible("link=Add");
 		selenium.clickAt("link=Add", RuntimeVariables.replace("Add"));
 		selenium.waitForPageToLoad("30000");
+		selenium.waitForVisible("//input[@id='_166_name_en_US']");
 		selenium.type("//input[@id='_166_name_en_US']",
 			RuntimeVariables.replace("Data Definition Boolean"));
 		assertEquals(RuntimeVariables.replace("Boolean"),
