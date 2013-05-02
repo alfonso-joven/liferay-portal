@@ -93,7 +93,7 @@ public class ViewPageTemplateTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Configuration"),
 			selenium.getText("//div/label"));
 		assertEquals(RuntimeVariables.replace("Open Page Template"),
-			selenium.getText("//span/a/span"));
+			selenium.getText("//fieldset//*/span/a/span"));
 		assertTrue(selenium.isVisible("//input[@value='Save']"));
 		assertTrue(selenium.isVisible("//input[@value='Cancel']"));
 	}
