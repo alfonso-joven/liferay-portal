@@ -33,7 +33,7 @@ import java.util.Date;
 public class UserCacheModel implements CacheModel<User>, Serializable {
 	@Override
 	public String toString() {
-		StringBundler sb = new StringBundler(81);
+		StringBundler sb = new StringBundler(79);
 
 		sb.append("{uuid=");
 		sb.append(uuid);
@@ -71,8 +71,6 @@ public class UserCacheModel implements CacheModel<User>, Serializable {
 		sb.append(emailAddress);
 		sb.append(", facebookId=");
 		sb.append(facebookId);
-		sb.append(", ldapServerId=");
-		sb.append(ldapServerId);
 		sb.append(", openId=");
 		sb.append(openId);
 		sb.append(", portraitId=");
@@ -205,7 +203,6 @@ public class UserCacheModel implements CacheModel<User>, Serializable {
 		}
 
 		userImpl.setFacebookId(facebookId);
-		userImpl.setLdapServerId(ldapServerId);
 
 		if (openId == null) {
 			userImpl.setOpenId(StringPool.BLANK);
@@ -344,7 +341,6 @@ public class UserCacheModel implements CacheModel<User>, Serializable {
 	public String screenName;
 	public String emailAddress;
 	public long facebookId;
-	public long ldapServerId;
 	public String openId;
 	public long portraitId;
 	public String languageId;

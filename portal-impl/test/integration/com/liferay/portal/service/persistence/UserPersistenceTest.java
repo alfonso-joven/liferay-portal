@@ -145,8 +145,6 @@ public class UserPersistenceTest {
 
 		newUser.setFacebookId(ServiceTestUtil.nextLong());
 
-		newUser.setLdapServerId(ServiceTestUtil.nextLong());
-
 		newUser.setOpenId(ServiceTestUtil.randomString());
 
 		newUser.setPortraitId(ServiceTestUtil.nextLong());
@@ -225,8 +223,6 @@ public class UserPersistenceTest {
 			newUser.getEmailAddress());
 		Assert.assertEquals(existingUser.getFacebookId(),
 			newUser.getFacebookId());
-		Assert.assertEquals(existingUser.getLdapServerId(),
-			newUser.getLdapServerId());
 		Assert.assertEquals(existingUser.getOpenId(), newUser.getOpenId());
 		Assert.assertEquals(existingUser.getPortraitId(),
 			newUser.getPortraitId());
@@ -486,8 +482,6 @@ public class UserPersistenceTest {
 		user.setEmailAddress(ServiceTestUtil.randomString());
 
 		user.setFacebookId(ServiceTestUtil.nextLong());
-
-		user.setLdapServerId(ServiceTestUtil.nextLong());
 
 		user.setOpenId(ServiceTestUtil.randomString());
 
