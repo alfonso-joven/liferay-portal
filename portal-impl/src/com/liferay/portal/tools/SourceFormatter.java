@@ -1970,6 +1970,13 @@ public class SourceFormatter {
 					_processErrorMessage(
 						fileName, "line break: " + fileName + " " + lineCount);
 				}
+
+				if (trimmedLine.startsWith(StringPool.CLOSE_CURLY_BRACE) &&
+					line.endsWith(StringPool.OPEN_CURLY_BRACE)) {
+
+					_processErrorMessage(
+						fileName, "line break: " + fileName + " " + lineCount);
+				}
 			}
 
 			if (line.contains("    ") && !line.matches("\\s*\\*.*")) {
