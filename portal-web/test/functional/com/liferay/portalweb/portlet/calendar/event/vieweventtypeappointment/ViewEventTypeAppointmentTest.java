@@ -31,14 +31,14 @@ public class ViewEventTypeAppointmentTest extends BaseTestCase {
 		selenium.clickAt("link=Day", RuntimeVariables.replace("Day"));
 		selenium.waitForPageToLoad("30000");
 		selenium.select("//select[@id='_8_eventType']",
-			RuntimeVariables.replace("Appointment"));
+			RuntimeVariables.replace("appointment"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Calendar Event Title"),
 			selenium.getText("//div[@class='event-title']"));
 		selenium.clickAt("link=Week", RuntimeVariables.replace("Week"));
 		selenium.waitForPageToLoad("30000");
 		selenium.select("//select[@id='_8_eventType']",
-			RuntimeVariables.replace("Appointment"));
+			RuntimeVariables.replace("appointment"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Calendar Event Title"),
 			selenium.getText(
@@ -46,7 +46,7 @@ public class ViewEventTypeAppointmentTest extends BaseTestCase {
 		selenium.clickAt("link=Month", RuntimeVariables.replace("Month"));
 		selenium.waitForPageToLoad("30000");
 		selenium.select("//select[@id='_8_eventType']",
-			RuntimeVariables.replace("Appointment"));
+			RuntimeVariables.replace("appointment"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Calendar Event Title"),
 			selenium.getText(

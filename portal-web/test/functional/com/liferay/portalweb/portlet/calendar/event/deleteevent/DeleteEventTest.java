@@ -36,7 +36,7 @@ public class DeleteEventTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Anniversary"),
 			selenium.getText(
 				"//td[@id='_8_ocerSearchContainer_col-type_row-1']"));
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		selenium.waitForVisible(
 			"//td[contains(.,'Actions')]/span/ul/li/strong/a");
 		selenium.clickAt("//td[contains(.,'Actions')]/span/ul/li/strong/a",

@@ -31,7 +31,7 @@ public class AddEventDateStartInvalidTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Add Event']",
 			RuntimeVariables.replace("Add Event"));
 		selenium.waitForPageToLoad("30000");
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		selenium.type("//input[@id='_8_title']",
 			RuntimeVariables.replace("Calendar Event Title"));
 		selenium.waitForElementPresent(
@@ -55,13 +55,13 @@ public class AddEventDateStartInvalidTest extends BaseTestCase {
 		selenium.selectFrame("//td[@id='cke_contents__8_editor']/iframe");
 		selenium.waitForText("//body", "Calendar Event Description");
 		selenium.selectFrame("relative=top");
-		selenium.waitForVisible("//select[@id='_8_startDateMonth']");
-		selenium.clickAt("//select[@id='_8_startDateMonth']",
+		selenium.waitForVisible("//select[@id='_8_startdatemonth']");
+		selenium.clickAt("//select[@id='_8_startdatemonth']",
 			RuntimeVariables.replace("End Date Month"));
-		selenium.select("//select[@id='_8_startDateMonth']",
+		selenium.select("//select[@id='_8_startdatemonth']",
 			RuntimeVariables.replace("February"));
-		Thread.sleep(5000);
-		assertFalse(selenium.isPartialText("//select[@id='_8_startDateDay']",
+		Thread.sleep(1000);
+		assertFalse(selenium.isPartialText("//select[@id='_8_startdateday']",
 				"30"));
 	}
 }

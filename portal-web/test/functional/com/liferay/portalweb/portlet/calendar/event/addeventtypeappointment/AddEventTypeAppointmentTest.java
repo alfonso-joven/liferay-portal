@@ -31,7 +31,7 @@ public class AddEventTypeAppointmentTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Add Event']",
 			RuntimeVariables.replace("Add Event"));
 		selenium.waitForPageToLoad("30000");
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		selenium.type("//input[@id='_8_title']",
 			RuntimeVariables.replace("Calendar Event Title"));
 		selenium.waitForElementPresent(
@@ -58,9 +58,9 @@ public class AddEventTypeAppointmentTest extends BaseTestCase {
 		selenium.clickAt("//input[@id='_8_timeZoneSensitiveCheckbox']",
 			RuntimeVariables.replace("Timezone Sensitive"));
 		selenium.clickAt("//select[@id='_8_type']",
-			RuntimeVariables.replace("Appointment"));
+			RuntimeVariables.replace("appointment"));
 		selenium.select("//select[@id='_8_type']",
-			RuntimeVariables.replace("Appointment"));
+			RuntimeVariables.replace("appointment"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");

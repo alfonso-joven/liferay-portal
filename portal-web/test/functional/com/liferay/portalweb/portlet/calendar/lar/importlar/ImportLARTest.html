@@ -20,7 +20,7 @@
 </tr>
 <tr>
 	<td>pause</td>
-	<td>5000</td>
+	<td>1000</td>
 	<td></td>
 </tr>
 <tr>
@@ -59,12 +59,52 @@
 	<td>L:\portal\build\portal-web\test\com\liferay\portalweb\portlet\calendar\lar\importlar\dependencies\Calendar-Selenium.portlet.lar</td>
 </tr>
 <tr>
-	<td>check</td>
+	<td>storeChecked</td>
 	<td>//input[@id='_86_DELETE_PORTLET_DATACheckbox']</td>
-	<td>Delete Portlet Data before importing.</td>
+	<td>deleteBeforeImportNotChecked</td>
 </tr>
 <tr>
-	<td>check</td>
+	<td>gotoIf</td>
+	<td>${deleteBeforeImportNotChecked}</td>
+	<td>DeleteBeforeImportChecked</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//input[@id='_86_DELETE_PORTLET_DATACheckbox']</td>
+	<td>Delete portlet data before importing.</td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>DeleteBeforeImportChecked</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertChecked</td>
+	<td>//input[@id='_86_DELETE_PORTLET_DATACheckbox']</td>
+	<td>Delete portlet data before importing.</td>
+</tr>
+<tr>
+	<td>storeChecked</td>
+	<td>//input[@id='_86_PORTLET_DATACheckbox']</td>
+	<td>dataNotChecked</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>${dataNotChecked}</td>
+	<td>DataChecked</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//input[@id='_86_PORTLET_DATACheckbox']</td>
+	<td>Data</td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>DataChecked</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertChecked</td>
 	<td>//input[@id='_86_PORTLET_DATACheckbox']</td>
 	<td>Data</td>
 </tr>

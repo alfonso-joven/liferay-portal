@@ -31,7 +31,7 @@ public class AddEventDateEndInvalidTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Add Event']",
 			RuntimeVariables.replace("Add Event"));
 		selenium.waitForPageToLoad("30000");
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		selenium.type("//input[@id='_8_title']",
 			RuntimeVariables.replace("Calendar Event Title"));
 		selenium.waitForElementPresent(
@@ -58,12 +58,13 @@ public class AddEventDateEndInvalidTest extends BaseTestCase {
 		selenium.waitForElementPresent("//input[@id='_8_recurrenceTypeDaily']");
 		selenium.clickAt("//input[@id='_8_recurrenceTypeDaily']",
 			RuntimeVariables.replace("Daily"));
-		selenium.waitForVisible("//select[@id='_8_endDateMonth']");
-		selenium.clickAt("//select[@id='_8_endDateMonth']",
+		selenium.waitForVisible("//select[@name='_8_endDateMonth']");
+		selenium.clickAt("//select[@name='_8_endDateMonth']",
 			RuntimeVariables.replace("End Date Month"));
-		selenium.select("//select[@id='_8_endDateMonth']",
+		selenium.select("//select[@name='_8_endDateMonth']",
 			RuntimeVariables.replace("February"));
-		Thread.sleep(5000);
-		assertFalse(selenium.isPartialText("//select[@id='_8_endDateDay']", "30"));
+		Thread.sleep(1000);
+		assertFalse(selenium.isPartialText("//select[@name='_8_endDateDay']",
+				"30"));
 	}
 }

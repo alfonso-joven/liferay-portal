@@ -31,7 +31,7 @@ public class AddEventRepeatingYearlyDayTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Add Event']",
 			RuntimeVariables.replace("Add Event"));
 		selenium.waitForPageToLoad("30000");
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		selenium.type("//input[@id='_8_title']",
 			RuntimeVariables.replace("Calendar Event Title"));
 		selenium.waitForElementPresent(
@@ -55,18 +55,18 @@ public class AddEventRepeatingYearlyDayTest extends BaseTestCase {
 		selenium.selectFrame("//td[@id='cke_contents__8_editor']/iframe");
 		selenium.waitForText("//body", "Calendar Event Description");
 		selenium.selectFrame("relative=top");
-		selenium.waitForVisible("//select[@id='_8_startDateMonth']");
-		selenium.clickAt("//select[@id='_8_startDateMonth']",
+		selenium.waitForVisible("//select[@id='_8_startdatemonth']");
+		selenium.clickAt("//select[@id='_8_startdatemonth']",
 			RuntimeVariables.replace("Start Date Month"));
-		selenium.select("//select[@id='_8_startDateMonth']",
+		selenium.select("//select[@id='_8_startdatemonth']",
 			RuntimeVariables.replace("January"));
-		selenium.clickAt("//select[@id='_8_startDateDay']",
+		selenium.clickAt("//select[@id='_8_startdateday']",
 			RuntimeVariables.replace("Start Date Day"));
-		selenium.select("//select[@id='_8_startDateDay']",
+		selenium.select("//select[@id='_8_startdateday']",
 			RuntimeVariables.replace("1"));
-		selenium.clickAt("//select[@id='_8_startDateYear']",
+		selenium.clickAt("//select[@id='_8_startdateyear']",
 			RuntimeVariables.replace("Start Date Year"));
-		selenium.select("//select[@id='_8_startDateYear']",
+		selenium.select("//select[@id='_8_startdateyear']",
 			RuntimeVariables.replace("2014"));
 		selenium.clickAt("//input[@id='_8_recurrenceTypeYearly']",
 			RuntimeVariables.replace("Yearly"));
@@ -90,18 +90,18 @@ public class AddEventRepeatingYearlyDayTest extends BaseTestCase {
 			RuntimeVariables.replace("1"));
 		selenium.clickAt("//input[@name='_8_endDateType' and @value='2']",
 			RuntimeVariables.replace("End by"));
-		selenium.waitForVisible("//select[@id='_8_endDateMonth']");
-		selenium.clickAt("//select[@id='_8_endDateMonth']",
+		selenium.waitForVisible("//select[@id='_8_enddatemonth']");
+		selenium.clickAt("//select[@id='_8_enddatemonth']",
 			RuntimeVariables.replace("End Date Month"));
-		selenium.select("//select[@id='_8_endDateMonth']",
+		selenium.select("//select[@id='_8_enddatemonth']",
 			RuntimeVariables.replace("January"));
-		selenium.clickAt("//select[@id='_8_endDateDay']",
+		selenium.clickAt("//select[@id='_8_enddateday']",
 			RuntimeVariables.replace("End Date Day"));
-		selenium.select("//select[@id='_8_endDateDay']",
+		selenium.select("//select[@id='_8_enddateday']",
 			RuntimeVariables.replace("1"));
-		selenium.clickAt("//select[@id='_8_endDateYear']",
+		selenium.clickAt("//select[@id='_8_enddateyear']",
 			RuntimeVariables.replace("End Date Year"));
-		selenium.select("//select[@id='_8_endDateYear']",
+		selenium.select("//select[@id='_8_enddateyear']",
 			RuntimeVariables.replace("2016"));
 		selenium.clickAt("//input[@value='Save']", RuntimeVariables.replace(""));
 		selenium.waitForPageToLoad("30000");
@@ -129,7 +129,7 @@ public class AddEventRepeatingYearlyDayTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Events", RuntimeVariables.replace("Events"));
 		selenium.waitForPageToLoad("30000");
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		selenium.waitForVisible(
 			"//td[contains(.,'Actions')]/span/ul/li/strong/a");
 		selenium.clickAt("//td[contains(.,'Actions')]/span/ul/li/strong/a",
@@ -143,11 +143,11 @@ public class AddEventRepeatingYearlyDayTest extends BaseTestCase {
 				"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals("January",
-			selenium.getSelectedLabel("//select[@id='_8_startDateMonth']"));
+			selenium.getSelectedLabel("//select[@id='_8_startdatemonth']"));
 		assertEquals("1",
-			selenium.getSelectedLabel("//select[@id='_8_startDateDay']"));
+			selenium.getSelectedLabel("//select[@id='_8_startdateday']"));
 		assertEquals("2014",
-			selenium.getSelectedLabel("//select[@id='_8_startDateYear']"));
+			selenium.getSelectedLabel("//select[@id='_8_startdateyear']"));
 		assertEquals("Calendar Event Title",
 			selenium.getValue("//input[@id='_8_title']"));
 		assertTrue(selenium.isChecked("//input[@id='_8_recurrenceTypeYearly']"));
@@ -163,11 +163,11 @@ public class AddEventRepeatingYearlyDayTest extends BaseTestCase {
 		assertTrue(selenium.isChecked(
 				"//input[@name='_8_endDateType' and @value='2']"));
 		assertEquals("January",
-			selenium.getSelectedLabel("//select[@id='_8_endDateMonth']"));
+			selenium.getSelectedLabel("//select[@id='_8_enddatemonth']"));
 		assertEquals("1",
-			selenium.getSelectedLabel("//select[@id='_8_endDateDay']"));
+			selenium.getSelectedLabel("//select[@id='_8_enddateday']"));
 		assertEquals("2016",
-			selenium.getSelectedLabel("//select[@id='_8_endDateYear']"));
+			selenium.getSelectedLabel("//select[@id='_8_enddateyear']"));
 		selenium.open(
 			"/web/guest/calendar-test-page?p_p_id=8&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-1&p_p_col_count=1&_8_tabs1=day&_8_month=1&_8_day=10&_8_year=2014");
 		assertTrue(selenium.isElementPresent("link=Calendar Event Title"));
