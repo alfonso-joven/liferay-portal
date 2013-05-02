@@ -43,14 +43,14 @@ public class AddInvalidStartDateEventTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_8_title']",
 			RuntimeVariables.replace("Invalid Start Date Test Event"));
-		selenium.clickAt("//select[@id='_8_startDateMonth']",
+		selenium.clickAt("//select[@id='_8_startdatemonth']",
 			RuntimeVariables.replace("Start Date"));
-		selenium.waitForVisible("//select[@id='_8_startDateMonth']");
-		selenium.select("//select[@id='_8_startDateMonth']",
+		selenium.waitForVisible("//select[@id='_8_startdatemonth']");
+		selenium.select("//select[@id='_8_startdatemonth']",
 			RuntimeVariables.replace("label=February"));
-		selenium.select("//select[@id='_8_startDateMonth']",
+		selenium.select("//select[@id='_8_startdatemonth']",
 			RuntimeVariables.replace("label=February"));
-		assertFalse(selenium.isPartialText("//select[@id='_8_startDateDay']",
+		assertFalse(selenium.isPartialText("//select[@id='_8_startdateday']",
 				"30"));
 	}
 }

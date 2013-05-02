@@ -53,11 +53,11 @@ public class AddWeeklyRepeatingEventTest extends BaseTestCase {
 				selenium.clickAt("//span[@title='Actions']/ul/li/strong/a/span",
 					RuntimeVariables.replace("Actions"));
 				selenium.waitForVisible(
-					"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Edit')]/a");
+					"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Edit')]");
 				assertEquals(RuntimeVariables.replace("Edit"),
 					selenium.getText(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Edit')]/a"));
-				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Edit')]/a",
+						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Edit')]"));
+				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Edit')]",
 					RuntimeVariables.replace("Edit"));
 				selenium.waitForPageToLoad("30000");
 				selenium.clickAt("//div/div/span[3]/span/span/input",
@@ -163,11 +163,11 @@ public class AddWeeklyRepeatingEventTest extends BaseTestCase {
 					RuntimeVariables.replace("Saturday Checkbox"));
 
 			case 8:
-				selenium.select("//select[@id='_8_endDateMonth']",
+				selenium.select("//select[@id='_8_enddatemonth']",
 					RuntimeVariables.replace("label=January"));
-				selenium.select("//select[@id='_8_endDateDay']",
+				selenium.select("//select[@id='_8_enddateday']",
 					RuntimeVariables.replace("label=1"));
-				selenium.select("//select[@id='_8_endDateYear']",
+				selenium.select("//select[@id='_8_enddateyear']",
 					RuntimeVariables.replace("label=2011"));
 				selenium.clickAt("//input[@value='Save']",
 					RuntimeVariables.replace("Save"));

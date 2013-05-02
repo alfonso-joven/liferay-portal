@@ -41,7 +41,7 @@ public class GetConcertEventsTest extends BaseTestCase {
 		selenium.clickAt("link=Day", RuntimeVariables.replace("Day"));
 		selenium.waitForPageToLoad("30000");
 		selenium.waitForVisible("//div[@class='day-grid']");
-		selenium.select("//select", RuntimeVariables.replace("label=Concert"));
+		selenium.select("//select", RuntimeVariables.replace("concert"));
 		selenium.waitForPageToLoad("30000");
 		selenium.waitForElementPresent("link=Caedmon's Call Concert!");
 		assertTrue(selenium.isElementPresent("link=Caedmon's Call Concert!"));
@@ -50,7 +50,7 @@ public class GetConcertEventsTest extends BaseTestCase {
 		selenium.clickAt("link=Week", RuntimeVariables.replace("Week"));
 		selenium.waitForPageToLoad("30000");
 		selenium.waitForVisible("//table[@class='calendar']");
-		selenium.select("//select", RuntimeVariables.replace("label=Concert"));
+		selenium.select("//select", RuntimeVariables.replace("concert"));
 		selenium.waitForPageToLoad("30000");
 		selenium.waitForElementPresent("link=Caedmon's Call Concert!");
 		assertTrue(selenium.isElementPresent("link=Caedmon's Call Concert!"));
@@ -59,7 +59,7 @@ public class GetConcertEventsTest extends BaseTestCase {
 		selenium.clickAt("link=Month", RuntimeVariables.replace("Month"));
 		selenium.waitForPageToLoad("30000");
 		selenium.waitForVisible("//table[@class='calendar']/tbody/tr[2]");
-		selenium.select("//select", RuntimeVariables.replace("label=Concert"));
+		selenium.select("//select", RuntimeVariables.replace("concert"));
 		selenium.waitForPageToLoad("30000");
 		selenium.waitForElementPresent("link=Caedmon's Call Concert!");
 		assertTrue(selenium.isElementPresent("link=Caedmon's Call Concert!"));

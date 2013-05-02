@@ -65,11 +65,11 @@ public class AddYearlyDateRepeatingEventTest extends BaseTestCase {
 			RuntimeVariables.replace("31"));
 		selenium.type("//input[@id='_8_yearlyInterval0']",
 			RuntimeVariables.replace("1"));
-		selenium.select("//select[@id='_8_endDateMonth']",
+		selenium.select("//select[@id='_8_enddatemonth']",
 			RuntimeVariables.replace("label=January"));
-		selenium.select("//select[@id='_8_endDateDay']",
+		selenium.select("//select[@id='_8_enddateday']",
 			RuntimeVariables.replace("label=1"));
-		selenium.select("//select[@id='_8_endDateYear']",
+		selenium.select("//select[@id='_8_enddateyear']",
 			RuntimeVariables.replace("label=2013"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));

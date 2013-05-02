@@ -68,7 +68,7 @@ public class AddConcertEventTest extends BaseTestCase {
 		selenium.clickAt("//input[@id='_8_timeZoneSensitiveCheckbox']",
 			RuntimeVariables.replace("Time Zone Sensitive Checkbox"));
 		selenium.select("//select[@id='_8_type']",
-			RuntimeVariables.replace("label=Concert"));
+			RuntimeVariables.replace("concert"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");

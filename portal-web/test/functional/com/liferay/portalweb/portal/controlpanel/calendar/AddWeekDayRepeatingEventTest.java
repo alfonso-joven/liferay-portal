@@ -57,11 +57,11 @@ public class AddWeekDayRepeatingEventTest extends BaseTestCase {
 		selenium.waitForVisible("//div[2]/span[3]/span/span/input");
 		selenium.clickAt("//div[2]/span[3]/span/span/input",
 			RuntimeVariables.replace("Every weekday"));
-		selenium.select("//select[@id='_8_endDateMonth']",
+		selenium.select("//select[@id='_8_enddatemonth']",
 			RuntimeVariables.replace("label=January"));
-		selenium.select("//select[@id='_8_endDateDay']",
+		selenium.select("//select[@id='_8_enddateday']",
 			RuntimeVariables.replace("label=1"));
-		selenium.select("//select[@id='_8_endDateYear']",
+		selenium.select("//select[@id='_8_enddateyear']",
 			RuntimeVariables.replace("label=2011"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));

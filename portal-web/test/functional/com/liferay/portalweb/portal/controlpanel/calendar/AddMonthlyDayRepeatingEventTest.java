@@ -61,11 +61,11 @@ public class AddMonthlyDayRepeatingEventTest extends BaseTestCase {
 			RuntimeVariables.replace("15"));
 		selenium.type("//input[@id='_8_monthlyInterval0']",
 			RuntimeVariables.replace("1"));
-		selenium.select("//select[@id='_8_endDateMonth']",
+		selenium.select("//select[@id='_8_enddatemonth']",
 			RuntimeVariables.replace("label=January"));
-		selenium.select("//select[@id='_8_endDateDay']",
+		selenium.select("//select[@id='_8_enddateday']",
 			RuntimeVariables.replace("label=1"));
-		selenium.select("//select[@id='_8_endDateYear']",
+		selenium.select("//select[@id='_8_enddateyear']",
 			RuntimeVariables.replace("label=2011"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
