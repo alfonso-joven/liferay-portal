@@ -49,7 +49,7 @@ public class AddOrganizationPrivatePageTest extends BaseTestCase {
 					RuntimeVariables.replace("Search"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace(
-						"Organization Name Belongs to an organization of type Regular Organization."),
+						"Organization Name\nBelongs to an organization of type Regular Organization."),
 					selenium.getText(
 						"//td[@id='_134_groupsSearchContainer_col-name_row--organization-name']/a"));
 				assertEquals(RuntimeVariables.replace("Private"),

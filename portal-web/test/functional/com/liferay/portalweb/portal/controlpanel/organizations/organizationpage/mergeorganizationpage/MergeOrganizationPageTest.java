@@ -44,7 +44,7 @@ public class MergeOrganizationPageTest extends BaseTestCase {
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
-				"Selenium Belongs to an organization of type Regular Organization."),
+				"Selenium\nBelongs to an organization of type Regular Organization."),
 			selenium.getText("//tr[contains(.,'Selenium')]/td[1]/a"));
 		assertEquals(RuntimeVariables.replace("Actions"),
 			selenium.getText(
