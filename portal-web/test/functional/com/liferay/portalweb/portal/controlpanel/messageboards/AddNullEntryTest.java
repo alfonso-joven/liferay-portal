@@ -73,7 +73,7 @@ public class AddNullEntryTest extends BaseTestCase {
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertEquals(RuntimeVariables.replace("Null Test Entry"),
-			selenium.getText("//div[1]/h1/span"));
+			selenium.getText("//div[contains(@class,'taglib-header')]/h1/span"));
 		assertEquals(RuntimeVariables.replace("Null Test Entry"),
 			selenium.getText("//div/a/strong"));
 		assertEquals(RuntimeVariables.replace("Null Test Entry"),

@@ -88,7 +88,7 @@ public class AddDeletableMessageTest extends BaseTestCase {
 			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertEquals(RuntimeVariables.replace(
 				"T\u00e9st M\u00e9ssag\u00e9 to b\u00e9 D\u00e9l\u00e9t\u00e9d"),
-			selenium.getText("//div[1]/h1/span"));
+			selenium.getText("//div[contains(@class,'taglib-header')]/h1/span"));
 		assertEquals(RuntimeVariables.replace(
 				"T\u00e9st M\u00e9ssag\u00e9 to b\u00e9 D\u00e9l\u00e9t\u00e9d"),
 			selenium.getText("//div/a/strong"));
