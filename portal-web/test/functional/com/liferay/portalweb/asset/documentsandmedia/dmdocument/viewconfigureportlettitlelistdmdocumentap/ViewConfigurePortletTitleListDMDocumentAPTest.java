@@ -29,6 +29,7 @@ public class ViewConfigurePortletTitleListDMDocumentAPTest extends BaseTestCase 
 		selenium.clickAt("link=Asset Publisher Test Page",
 			RuntimeVariables.replace("Asset Publisher Test Page"));
 		selenium.waitForPageToLoad("30000");
+		selenium.waitForVisible("//ul[@class='title-list']/li/span/a/span");
 		assertEquals(RuntimeVariables.replace("DM Folder Document Title"),
 			selenium.getText("//ul[@class='title-list']/li/span/a/span"));
 		selenium.clickAt("//ul[@class='title-list']/li/span/a/span",
