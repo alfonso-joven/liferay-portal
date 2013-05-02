@@ -75,7 +75,7 @@ public class RemoveTagThroughSelectTagTest extends BaseTestCase {
 						"xPath=(//span[@class='aui-textboxlistentry-text'])[1]"));
 				selenium.clickAt("//button[@id='select']",
 					RuntimeVariables.replace("Select"));
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				selenium.waitForVisible(
 					"//label[@title='selenium1 liferay1']/input");
 				selenium.clickAt("//label[@title='selenium1 liferay1']",
