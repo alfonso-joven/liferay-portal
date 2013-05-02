@@ -95,6 +95,12 @@ if (yearValue > 0) {
 else if (yearNullable) {
 	yearEmpty = true;
 }
+
+boolean allowNoneLink = false;
+
+if (dayNullable && monthNullable && yearNullable) {
+	allowNoneLink = true;
+}
 %>
 
 <div class="aui-datepicker aui-datepicker-display aui-helper-clearfix <%= Validator.isNotNull(cssClass) ? cssClass : StringPool.BLANK %>" id="<%= randomNamespace %>displayDate">
@@ -172,6 +178,7 @@ else if (yearNullable) {
 					appendOrder: '<%= dateFormatOrder %>',
 					boundingBox: displayDateNode,
 					calendar: {
+						allowNone: <%= allowNoneLink %>,
 						dates: [
 							<c:if test="<%= !monthEmpty && !dayEmpty && !yearEmpty %>">
 								new Date(
