@@ -15,6 +15,7 @@
 package com.liferay.portlet.expando.model.impl;
 
 import com.liferay.portal.kernel.bean.AutoEscapeBeanHandler;
+import com.liferay.portal.kernel.json.JSON;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ProxyUtil;
 import com.liferay.portal.kernel.util.StringBundler;
@@ -47,6 +48,7 @@ import java.util.Map;
  * @see com.liferay.portlet.expando.model.ExpandoTableModel
  * @generated
  */
+@JSON(strict = true)
 public class ExpandoTableModelImpl extends BaseModelImpl<ExpandoTable>
 	implements ExpandoTableModel {
 	/*
@@ -147,6 +149,7 @@ public class ExpandoTableModelImpl extends BaseModelImpl<ExpandoTable>
 		}
 	}
 
+	@JSON
 	public long getTableId() {
 		return _tableId;
 	}
@@ -155,6 +158,7 @@ public class ExpandoTableModelImpl extends BaseModelImpl<ExpandoTable>
 		_tableId = tableId;
 	}
 
+	@JSON
 	public long getCompanyId() {
 		return _companyId;
 	}
@@ -193,6 +197,7 @@ public class ExpandoTableModelImpl extends BaseModelImpl<ExpandoTable>
 		setClassNameId(classNameId);
 	}
 
+	@JSON
 	public long getClassNameId() {
 		return _classNameId;
 	}
@@ -213,6 +218,7 @@ public class ExpandoTableModelImpl extends BaseModelImpl<ExpandoTable>
 		return _originalClassNameId;
 	}
 
+	@JSON
 	public String getName() {
 		if (_name == null) {
 			return StringPool.BLANK;
