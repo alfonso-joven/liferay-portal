@@ -391,6 +391,8 @@ public class LiferayPortlet extends GenericPortlet {
 		response.setContentType(ContentTypes.APPLICATION_JSON);
 
 		ServletResponseUtil.write(response, json.toString());
+
+		response.flushBuffer();
 	}
 
 	protected void writeJSON(
@@ -401,6 +403,8 @@ public class LiferayPortlet extends GenericPortlet {
 		mimeResponse.setContentType(ContentTypes.APPLICATION_JSON);
 
 		PortletResponseUtil.write(mimeResponse, json.toString());
+
+		mimeResponse.flushBuffer();
 	}
 
 	protected boolean addProcessActionSuccessMessage;
