@@ -60,7 +60,7 @@ public class RemoveMembersSitesTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a"));
 				selenium.waitForPageToLoad("30000");
-				selenium.clickAt("//li[2]/span/a",
+				selenium.clickAt("//div[@id='main-content']//*/li[2]/span/a",
 					RuntimeVariables.replace("Users"));
 				selenium.waitForPageToLoad("30000");
 

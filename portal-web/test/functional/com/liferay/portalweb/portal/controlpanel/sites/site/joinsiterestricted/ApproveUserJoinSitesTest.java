@@ -75,8 +75,8 @@ public class ApproveUserJoinSitesTest extends BaseTestCase {
 			RuntimeVariables.replace("There are 1 membership requests pending."));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Reply"),
-			selenium.getText("//span/a/span"));
-		selenium.clickAt("//span/a/span", RuntimeVariables.replace("Reply"));
+			selenium.getText("//td/span/a/span"));
+		selenium.clickAt("//td/span/a/span", RuntimeVariables.replace("Reply"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//textarea[@id='_174_replyComments']",
 			RuntimeVariables.replace("You are welcome"));
