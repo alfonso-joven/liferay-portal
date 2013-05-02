@@ -65,7 +65,7 @@ public class ExpireQuestionTest extends BaseTestCase {
 		selenium.clickAt("//input[@id='_25_neverExpireCheckbox']",
 			RuntimeVariables.replace("Never Expire"));
 		assertFalse(selenium.isChecked("//input[@id='_25_neverExpireCheckbox']"));
-		selenium.clickAt("//select[@id='_25_expirationDateMonth']",
+		selenium.clickAt("//select[@name='_25_expirationDateMonth']",
 			RuntimeVariables.replace("Expiration Date Month"));
 		assertFalse(selenium.isChecked("//input[@id='_25_neverExpireCheckbox']"));
 		selenium.clickAt("//input[@id='_25_neverExpireCheckbox']",
@@ -74,12 +74,12 @@ public class ExpireQuestionTest extends BaseTestCase {
 		selenium.clickAt("//input[@id='_25_neverExpireCheckbox']",
 			RuntimeVariables.replace("Never Expire"));
 		assertFalse(selenium.isChecked("//input[@id='_25_neverExpireCheckbox']"));
-		selenium.waitForVisible("//select[@id='_25_expirationDateMonth']");
-		selenium.select("//select[@id='_25_expirationDateYear']",
+		selenium.waitForVisible("//select[@name='_25_expirationDateMonth']");
+		selenium.select("//select[@name='_25_expirationDateYear']",
 			RuntimeVariables.replace("label=2008"));
-		selenium.select("//select[@id='_25_expirationDateMonth']",
+		selenium.select("//select[@name='_25_expirationDateMonth']",
 			RuntimeVariables.replace("label=January"));
-		selenium.select("//select[@id='_25_expirationDateDay']",
+		selenium.select("//select[@name='_25_expirationDateDay']",
 			RuntimeVariables.replace("label=1"));
 		selenium.select("//select[@name='_25_expirationDateHour']",
 			RuntimeVariables.replace("label=12"));
