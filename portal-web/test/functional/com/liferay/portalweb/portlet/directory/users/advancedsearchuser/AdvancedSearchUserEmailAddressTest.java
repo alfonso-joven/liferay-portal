@@ -53,7 +53,7 @@ public class AdvancedSearchUserEmailAddressTest extends BaseTestCase {
 				selenium.select("//select[@id='_11_andOperator']",
 					RuntimeVariables.replace("Any"));
 				selenium.type("//input[@id='_11_emailAddress']",
-					RuntimeVariables.replace("userea@liferay.com"));
+					RuntimeVariables.replace("\"userea@liferay.com\""));
 				selenium.clickAt("xPath=(//input[@value='Search'])[2]",
 					RuntimeVariables.replace("Search"));
 				selenium.waitForPageToLoad("30000");
@@ -61,7 +61,7 @@ public class AdvancedSearchUserEmailAddressTest extends BaseTestCase {
 					RuntimeVariables.replace(""));
 				assertTrue(selenium.isElementPresent("link=userfn"));
 				selenium.type("//input[@id='_11_emailAddress']",
-					RuntimeVariables.replace("userea1@liferay.com"));
+					RuntimeVariables.replace("\"userea1@liferay.com\""));
 				selenium.clickAt("xPath=(//input[@value='Search'])[2]",
 					RuntimeVariables.replace("Search"));
 				selenium.waitForPageToLoad("30000");

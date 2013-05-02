@@ -36,8 +36,9 @@ public class ViewUserGroupUserTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("User Group Description"),
 			selenium.getText("//tr[3]/td[2]"));
 		assertEquals(RuntimeVariables.replace("View Users"),
-			selenium.getText("//span/a/span"));
-		selenium.clickAt("//span/a/span", RuntimeVariables.replace("View Users"));
+			selenium.getText("//td[3]/span/a/span"));
+		selenium.clickAt("//td[3]/span/a/span",
+			RuntimeVariables.replace("View Users"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("userfn"),
 			selenium.getText("//td[1]/a"));
