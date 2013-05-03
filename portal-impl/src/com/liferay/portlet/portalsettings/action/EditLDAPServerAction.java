@@ -205,7 +205,7 @@ public class EditLDAPServerAction extends PortletAction {
 			actionRequest, "settings--");
 
 		validateLDAPServerName(
-			ldapServerId, themeDisplay.getCompanyId(), properties);
+			themeDisplay.getCompanyId(), ldapServerId, properties);
 
 		String filter = ParamUtil.getString(
 			actionRequest, "importUserSearchFilter");
@@ -221,7 +221,7 @@ public class EditLDAPServerAction extends PortletAction {
 	}
 
 	protected void validateLDAPServerName(
-			long ldapServerId, long companyId, UnicodeProperties properties)
+			long companyId, long ldapServerId, UnicodeProperties properties)
 		throws Exception {
 
 		String ldapServerName = properties.getProperty(

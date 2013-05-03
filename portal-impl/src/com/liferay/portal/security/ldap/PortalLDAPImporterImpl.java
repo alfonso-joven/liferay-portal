@@ -51,7 +51,6 @@ import com.liferay.portal.service.CompanyLocalServiceUtil;
 import com.liferay.portal.service.GroupLocalServiceUtil;
 import com.liferay.portal.service.LockLocalServiceUtil;
 import com.liferay.portal.service.RoleLocalServiceUtil;
-import com.liferay.portal.service.ServiceContext;
 import com.liferay.portal.service.UserGroupLocalServiceUtil;
 import com.liferay.portal.service.UserLocalServiceUtil;
 import com.liferay.portal.util.PrefsPropsUtil;
@@ -232,9 +231,8 @@ public class PortalLDAPImporterImpl implements PortalLDAPImporter {
 			LDAPSettingsUtil.getContactExpandoMappings(ldapServerId, companyId);
 
 		User user = importUser(
-			ldapServerId, companyId, attributes, userMappings,
-			userExpandoMappings, contactMappings, contactExpandoMappings,
-			password);
+			companyId, attributes, userMappings, userExpandoMappings,
+			contactMappings, contactExpandoMappings, password);
 
 		Properties groupMappings = LDAPSettingsUtil.getGroupMappings(
 			ldapServerId, companyId);
@@ -697,7 +695,7 @@ public class PortalLDAPImporterImpl implements PortalLDAPImporter {
 								ldapServerId, companyId, searchResult));
 
 					User user = importUser(
-						ldapServerId, companyId, userAttributes, userMappings,
+						companyId, userAttributes, userMappings,
 						userExpandoMappings, contactMappings,
 						contactExpandoMappings, StringPool.BLANK);
 
@@ -883,10 +881,9 @@ public class PortalLDAPImporterImpl implements PortalLDAPImporter {
 	}
 
 	protected User importUser(
-			long ldapServerId, long companyId, Attributes attributes,
-			Properties userMappings, Properties userExpandoMappings,
-			Properties contactMappings, Properties contactExpandoMappings,
-			String password)
+			long companyId, Attributes attributes, Properties userMappings,
+			Properties userExpandoMappings, Properties contactMappings,
+			Properties contactExpandoMappings, String password)
 		throws Exception {
 
 		LDAPUserTransactionThreadLocal.setOriginatesFromLDAP(true);
@@ -906,9 +903,6 @@ public class PortalLDAPImporterImpl implements PortalLDAPImporter {
 			if ((user != null) && user.isDefaultUser()) {
 				return user;
 			}
-
-			ServiceContext serviceContext = ldapUser.getServiceContext();
-			serviceContext.setAttribute("ldapServerId", ldapServerId);
 
 			if (user == null) {
 				user = addUser(companyId, ldapUser, password);
@@ -1016,7 +1010,7 @@ public class PortalLDAPImporterImpl implements PortalLDAPImporter {
 
 			try {
 				User user = importUser(
-					ldapServerId, companyId, userAttributes, userMappings,
+					companyId, userAttributes, userMappings,
 					userExpandoMappings, contactMappings,
 					contactExpandoMappings, StringPool.BLANK);
 
