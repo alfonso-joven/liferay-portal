@@ -45,6 +45,8 @@ public class TearDownBMFolderTest extends BaseTestCase {
 				}
 
 				Thread.sleep(1000);
+				selenium.waitForVisible(
+					"//span[@title='Actions']/ul/li/strong/a");
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//span[@title='Actions']/ul/li/strong/a/span"));
@@ -71,6 +73,8 @@ public class TearDownBMFolderTest extends BaseTestCase {
 				}
 
 				Thread.sleep(1000);
+				selenium.waitForVisible(
+					"//span[@title='Actions']/ul/li/strong/a");
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//span[@title='Actions']/ul/li/strong/a/span"));
@@ -97,6 +101,8 @@ public class TearDownBMFolderTest extends BaseTestCase {
 				}
 
 				Thread.sleep(1000);
+				selenium.waitForVisible(
+					"//span[@title='Actions']/ul/li/strong/a");
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//span[@title='Actions']/ul/li/strong/a/span"));
@@ -123,6 +129,8 @@ public class TearDownBMFolderTest extends BaseTestCase {
 				}
 
 				Thread.sleep(1000);
+				selenium.waitForVisible(
+					"//span[@title='Actions']/ul/li/strong/a");
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//span[@title='Actions']/ul/li/strong/a/span"));
@@ -149,6 +157,8 @@ public class TearDownBMFolderTest extends BaseTestCase {
 				}
 
 				Thread.sleep(1000);
+				selenium.waitForVisible(
+					"//span[@title='Actions']/ul/li/strong/a");
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//span[@title='Actions']/ul/li/strong/a/span"));

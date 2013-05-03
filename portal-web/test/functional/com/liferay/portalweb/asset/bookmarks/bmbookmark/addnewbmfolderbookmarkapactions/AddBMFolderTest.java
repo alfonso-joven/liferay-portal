@@ -28,7 +28,7 @@ public class AddBMFolderTest extends BaseTestCase {
 		selenium.clickAt("link=Bookmarks Test Page",
 			RuntimeVariables.replace("Bookmarks Test Page"));
 		selenium.waitForPageToLoad("30000");
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		selenium.waitForVisible(
 			"//div[@class='lfr-component lfr-menu-list lfr-menu-expanded align-right null']/ul/li[2]/a");
 		assertEquals(RuntimeVariables.replace("Add Folder"),
@@ -42,14 +42,17 @@ public class AddBMFolderTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
+		selenium.waitForVisible(
+			"//tr[contains(.,'BM Folder Name')]/td[1]/a/strong");
+		assertEquals(RuntimeVariables.replace("BM Folder Name"),
+			selenium.getText(
+				"//tr[contains(.,'BM Folder Name')]/td[1]/a/strong"));
+		assertEquals(RuntimeVariables.replace("0"),
+			selenium.getText("//tr[contains(.,'BM Folder Name')]/td[2]/a"));
+		assertEquals(RuntimeVariables.replace("0"),
+			selenium.getText("//tr[contains(.,'BM Folder Name')]/td[3]/a"));
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
-		assertEquals(RuntimeVariables.replace("BM Folder Name"),
-			selenium.getText("//td[1]/a/strong"));
-		assertEquals(RuntimeVariables.replace("0"),
-			selenium.getText("//td[2]/a"));
-		assertEquals(RuntimeVariables.replace("0"),
-			selenium.getText("//td[3]/a"));
 	}
 }
