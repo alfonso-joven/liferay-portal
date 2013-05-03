@@ -54,7 +54,7 @@ public class SearchUserAddressStreetCPTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("usersn"),
 			selenium.getText("//td[4]/a"));
 		selenium.type("//input[@name='_125_keywords']",
-			RuntimeVariables.replace("1231 Street1 Dr.1"));
+			RuntimeVariables.replace("\"1231 Street1 Dr.1\""));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");

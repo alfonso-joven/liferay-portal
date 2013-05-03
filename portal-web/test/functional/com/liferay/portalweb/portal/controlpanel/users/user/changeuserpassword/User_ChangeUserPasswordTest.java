@@ -28,8 +28,8 @@ public class User_ChangeUserPasswordTest extends BaseTestCase {
 		selenium.clickAt("//div[@id='dockbar']",
 			RuntimeVariables.replace("Dockbar"));
 		assertEquals(RuntimeVariables.replace("userfn userln"),
-			selenium.getText("//li[@id='_145_userAvatar']/span/a[2]"));
-		selenium.clickAt("//li[@id='_145_userAvatar']/span/a[2]",
+			selenium.getText("//li[@id='_145_userAvatar']/span/a"));
+		selenium.clickAt("//li[@id='_145_userAvatar']/span/a",
 			RuntimeVariables.replace("userfn userln"));
 		Thread.sleep(5000);
 		selenium.waitForVisible("//iframe");

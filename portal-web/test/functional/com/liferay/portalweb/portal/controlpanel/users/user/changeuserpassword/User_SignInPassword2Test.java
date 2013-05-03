@@ -40,6 +40,6 @@ public class User_SignInPassword2Test extends BaseTestCase {
 			RuntimeVariables.replace("Sign In"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("userfn userln"),
-			selenium.getText("//li[@id='_145_userAvatar']/span/a[2]"));
+			selenium.getText("//li[@id='_145_userAvatar']/span/a"));
 	}
 }
