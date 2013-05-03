@@ -675,18 +675,15 @@ public class DLFileShortcutModelImpl extends BaseModelImpl<DLFileShortcut>
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == null) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof DLFileShortcut)) {
 			return false;
 		}
 
-		DLFileShortcut dlFileShortcut = null;
-
-		try {
-			dlFileShortcut = (DLFileShortcut)obj;
-		}
-		catch (ClassCastException cce) {
-			return false;
-		}
+		DLFileShortcut dlFileShortcut = (DLFileShortcut)obj;
 
 		long primaryKey = dlFileShortcut.getPrimaryKey();
 

@@ -318,18 +318,15 @@ public class RatingsStatsModelImpl extends BaseModelImpl<RatingsStats>
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == null) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof RatingsStats)) {
 			return false;
 		}
 
-		RatingsStats ratingsStats = null;
-
-		try {
-			ratingsStats = (RatingsStats)obj;
-		}
-		catch (ClassCastException cce) {
-			return false;
-		}
+		RatingsStats ratingsStats = (RatingsStats)obj;
 
 		long primaryKey = ratingsStats.getPrimaryKey();
 

@@ -116,18 +116,15 @@ public class OrgGroupPermissionPK implements Comparable<OrgGroupPermissionPK>,
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == null) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof OrgGroupPermissionPK)) {
 			return false;
 		}
 
-		OrgGroupPermissionPK pk = null;
-
-		try {
-			pk = (OrgGroupPermissionPK)obj;
-		}
-		catch (ClassCastException cce) {
-			return false;
-		}
+		OrgGroupPermissionPK pk = (OrgGroupPermissionPK)obj;
 
 		if ((organizationId == pk.organizationId) && (groupId == pk.groupId) &&
 				(permissionId == pk.permissionId)) {

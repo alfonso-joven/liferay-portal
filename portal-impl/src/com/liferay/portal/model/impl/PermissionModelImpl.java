@@ -341,18 +341,15 @@ public class PermissionModelImpl extends BaseModelImpl<Permission>
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == null) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof Permission)) {
 			return false;
 		}
 
-		Permission permission = null;
-
-		try {
-			permission = (Permission)obj;
-		}
-		catch (ClassCastException cce) {
-			return false;
-		}
+		Permission permission = (Permission)obj;
 
 		long primaryKey = permission.getPrimaryKey();
 

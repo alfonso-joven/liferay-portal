@@ -279,18 +279,15 @@ public class ResourceCodeModelImpl extends BaseModelImpl<ResourceCode>
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == null) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof ResourceCode)) {
 			return false;
 		}
 
-		ResourceCode resourceCode = null;
-
-		try {
-			resourceCode = (ResourceCode)obj;
-		}
-		catch (ClassCastException cce) {
-			return false;
-		}
+		ResourceCode resourceCode = (ResourceCode)obj;
 
 		long primaryKey = resourceCode.getPrimaryKey();
 

@@ -223,18 +223,15 @@ public class OrgGroupPermissionModelImpl extends BaseModelImpl<OrgGroupPermissio
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == null) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof OrgGroupPermission)) {
 			return false;
 		}
 
-		OrgGroupPermission orgGroupPermission = null;
-
-		try {
-			orgGroupPermission = (OrgGroupPermission)obj;
-		}
-		catch (ClassCastException cce) {
-			return false;
-		}
+		OrgGroupPermission orgGroupPermission = (OrgGroupPermission)obj;
 
 		OrgGroupPermissionPK primaryKey = orgGroupPermission.getPrimaryKey();
 

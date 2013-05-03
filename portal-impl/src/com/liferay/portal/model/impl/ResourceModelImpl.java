@@ -298,18 +298,15 @@ public class ResourceModelImpl extends BaseModelImpl<Resource>
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == null) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof Resource)) {
 			return false;
 		}
 
-		Resource resource = null;
-
-		try {
-			resource = (Resource)obj;
-		}
-		catch (ClassCastException cce) {
-			return false;
-		}
+		Resource resource = (Resource)obj;
 
 		long primaryKey = resource.getPrimaryKey();
 

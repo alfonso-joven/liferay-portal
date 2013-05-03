@@ -449,18 +449,15 @@ public class AssetCategoryPropertyModelImpl extends BaseModelImpl<AssetCategoryP
 
 	@Override
 	public boolean equals(Object obj) {
-		if (obj == null) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof AssetCategoryProperty)) {
 			return false;
 		}
 
-		AssetCategoryProperty assetCategoryProperty = null;
-
-		try {
-			assetCategoryProperty = (AssetCategoryProperty)obj;
-		}
-		catch (ClassCastException cce) {
-			return false;
-		}
+		AssetCategoryProperty assetCategoryProperty = (AssetCategoryProperty)obj;
 
 		long primaryKey = assetCategoryProperty.getPrimaryKey();
 
