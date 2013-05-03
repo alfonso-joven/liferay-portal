@@ -16,6 +16,7 @@ package com.liferay.portal.search.lucene;
 
 import com.browseengine.bobo.api.BoboBrowser;
 import com.browseengine.bobo.api.BoboIndexReader;
+import com.browseengine.bobo.api.BoboSubBrowser;
 import com.browseengine.bobo.api.Browsable;
 import com.browseengine.bobo.api.BrowseHit;
 import com.browseengine.bobo.api.BrowseRequest;
@@ -54,6 +55,7 @@ import com.liferay.portal.kernel.search.facet.SimpleFacet;
 import com.liferay.portal.kernel.search.facet.collector.FacetCollector;
 import com.liferay.portal.kernel.search.facet.config.FacetConfiguration;
 import com.liferay.portal.kernel.util.ArrayUtil;
+import com.liferay.portal.kernel.util.ReflectionUtil;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.Time;
@@ -92,8 +94,8 @@ public class LuceneIndexSearcherImpl implements IndexSearcher {
 
 		org.apache.lucene.search.IndexSearcher indexSearcher = null;
 		Map<String, Facet> facets = null;
+		BoboBrowser boboBrowser = null;
 		BrowseRequest browseRequest = null;
-		Browsable browsable = null;
 
 		try {
 			indexSearcher = LuceneHelperUtil.getSearcher(
@@ -205,11 +207,11 @@ public class LuceneIndexSearcherImpl implements IndexSearcher {
 					query));
 			browseRequest.setSort(sortFields);
 
-			browsable = new BoboBrowser(boboIndexReader);
+			boboBrowser = new BoboBrowser(boboIndexReader);
 
 			long startTime = System.currentTimeMillis();
 
-			BrowseResult browseResult = browsable.browse(browseRequest);
+			BrowseResult browseResult = boboBrowser.browse(browseRequest);
 
 			BrowseHit[] browseHits = browseResult.getHits();
 
@@ -244,9 +246,9 @@ public class LuceneIndexSearcherImpl implements IndexSearcher {
 			try {
 				long startTime = System.currentTimeMillis();
 
-				BrowseResult result = browsable.browse(browseRequest);
+				BrowseResult browseResult = boboBrowser.browse(browseRequest);
 
-				BrowseHit[] browseHits = result.getHits();
+				BrowseHit[] browseHits = browseResult.getHits();
 
 				long endTime = System.currentTimeMillis();
 
@@ -257,7 +259,8 @@ public class LuceneIndexSearcherImpl implements IndexSearcher {
 					searchTime, searchContext.getStart(),
 					searchContext.getEnd());
 
-				Map<String, FacetAccessible> facetMap = result.getFacetMap();
+				Map<String, FacetAccessible> facetMap =
+					browseResult.getFacetMap();
 
 				for (Map.Entry<String, FacetAccessible> entry :
 						facetMap.entrySet()) {
@@ -288,7 +291,7 @@ public class LuceneIndexSearcherImpl implements IndexSearcher {
 			throw new SearchException(e);
 		}
 		finally {
-			close(browsable);
+			close(boboBrowser);
 
 			if (indexSearcher != null) {
 				try {
@@ -413,14 +416,42 @@ public class LuceneIndexSearcherImpl implements IndexSearcher {
 		return hits;
 	}
 
-	@SuppressWarnings("deprecation")
-	protected void close(Browsable browsable) {
-		if (browsable != null) {
-			try {
-				browsable.close();
+	protected void close(BoboBrowser boboBrowser) {
+		if (boboBrowser == null) {
+			return;
+		}
+
+		try {
+			boboBrowser.close();
+		}
+		catch (IOException ioe) {
+			_log.error(ioe, ioe);
+		}
+
+		Browsable[] browsables = boboBrowser.getSubBrowsers();
+
+		for (Browsable browsable : browsables) {
+			if (!(browsable instanceof BoboSubBrowser)) {
+				continue;
 			}
-			catch (IOException ioe) {
-				_log.error(ioe, ioe);
+
+			BoboSubBrowser boboSubBrowser = (BoboSubBrowser)browsable;
+
+			BoboIndexReader boboIndexReader = boboSubBrowser.getIndexReader();
+
+			try {
+				ThreadLocal<?> threadLocal =
+					(ThreadLocal<?>)_runtimeFacetDataMapField.get(
+						boboIndexReader);
+
+				threadLocal.remove();
+
+				_runtimeFacetDataMapField.set(boboIndexReader, null);
+			}
+			catch (Exception e) {
+				_log.error(
+					"Unable to clean up BoboIndexReader#_runtimeFacetDataMap",
+					e);
 			}
 		}
 	}
@@ -619,6 +650,18 @@ public class LuceneIndexSearcherImpl implements IndexSearcher {
 
 	private static Log _log = LogFactoryUtil.getLog(
 		LuceneIndexSearcherImpl.class);
+
+	private static java.lang.reflect.Field _runtimeFacetDataMapField;
+
+	static {
+		try {
+			_runtimeFacetDataMapField = ReflectionUtil.getDeclaredField(
+				BoboIndexReader.class, "_runtimeFacetDataMap");
+		}
+		catch (Exception e) {
+			throw new ExceptionInInitializerError(e);
+		}
+	}
 
 	private class HitDocs {
 
