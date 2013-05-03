@@ -955,26 +955,6 @@ public class GetterUtil {
 	}
 
 	private static long _parseLong(String value, long defaultValue) {
-		if (_useJDKParseLong == null) {
-			if (OSDetector.isAIX() && ServerDetector.isWebSphere() &&
-				JavaDetector.isIBM() && JavaDetector.is64bit()) {
-
-				_useJDKParseLong = Boolean.TRUE;
-			}
-			else {
-				_useJDKParseLong = Boolean.FALSE;
-			}
-		}
-
-		if (_useJDKParseLong) {
-			try {
-				return Long.parseLong(value);
-			}
-			catch (NumberFormatException nfe) {
-				return defaultValue;
-			}
-		}
-
 		int length = value.length();
 
 		if (length <= 0) {
@@ -1070,7 +1050,5 @@ public class GetterUtil {
 
 		return sb.toString();
 	}
-
-	private static Boolean _useJDKParseLong;
 
 }
