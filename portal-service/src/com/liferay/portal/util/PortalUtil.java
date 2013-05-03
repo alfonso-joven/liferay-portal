@@ -819,6 +819,13 @@ public class PortalUtil {
 		return getPortal().getLocale(request);
 	}
 
+	public static Locale getLocale(
+		HttpServletRequest request, HttpServletResponse response,
+		boolean initialize) {
+
+		return getPortal().getLocale(request, response, initialize);
+	}
+
 	public static Locale getLocale(RenderRequest renderRequest) {
 		return getPortal().getLocale(renderRequest);
 	}
@@ -1406,6 +1413,10 @@ public class PortalUtil {
 
 	public static void initCustomSQL() {
 		getPortal().initCustomSQL();
+	}
+
+	public static User initUser(HttpServletRequest request) throws Exception {
+		return getPortal().initUser(request);
 	}
 
 	public static boolean isAllowAddPortletDefaultResource(
