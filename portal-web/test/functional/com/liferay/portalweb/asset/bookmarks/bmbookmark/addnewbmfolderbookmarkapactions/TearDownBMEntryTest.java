@@ -33,10 +33,10 @@ public class TearDownBMEntryTest extends BaseTestCase {
 				selenium.clickAt("link=Bookmarks Test Page",
 					RuntimeVariables.replace("Bookmarks Test Page"));
 				selenium.waitForPageToLoad("30000");
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 
 				boolean bookmarksEntry1Present = selenium.isElementPresent(
-						"//td[5]/span/ul/li/strong/a");
+						"//td[5]/span[@title='Actions']/ul/li/strong/a/span");
 
 				if (!bookmarksEntry1Present) {
 					label = 2;
@@ -44,26 +44,25 @@ public class TearDownBMEntryTest extends BaseTestCase {
 					continue;
 				}
 
-				Thread.sleep(5000);
-				selenium.waitForVisible(
-					"//span[@title='Actions']/ul/li/strong/a");
+				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Actions"),
-					selenium.getText("//td[5]/span/ul/li/strong/a"));
-				selenium.clickAt("//td[5]/span/ul/li/strong/a",
+					selenium.getText(
+						"//td[5]/span[@title='Actions']/ul/li/strong/a/span"));
+				selenium.clickAt("//td[5]/span[@title='Actions']/ul/li/strong/a/span",
 					RuntimeVariables.replace("Actions"));
 				selenium.waitForVisible(
-					"//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a");
+					"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]");
 				assertEquals(RuntimeVariables.replace("Delete"),
 					selenium.getText(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a"));
+						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]"));
 				selenium.click(RuntimeVariables.replace(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a"));
+						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]"));
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 
 				boolean bookmarksEntry2Present = selenium.isElementPresent(
-						"//td[5]/span/ul/li/strong/a");
+						"//td[5]/span[@title='Actions']/ul/li/strong/a/span");
 
 				if (!bookmarksEntry2Present) {
 					label = 3;
@@ -71,26 +70,25 @@ public class TearDownBMEntryTest extends BaseTestCase {
 					continue;
 				}
 
-				Thread.sleep(5000);
-				selenium.waitForVisible(
-					"//span[@title='Actions']/ul/li/strong/a");
+				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Actions"),
-					selenium.getText("//td[5]/span/ul/li/strong/a"));
-				selenium.clickAt("//td[5]/span/ul/li/strong/a",
+					selenium.getText(
+						"//td[5]/span[@title='Actions']/ul/li/strong/a/span"));
+				selenium.clickAt("//td[5]/span[@title='Actions']/ul/li/strong/a/span",
 					RuntimeVariables.replace("Actions"));
 				selenium.waitForVisible(
-					"//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a");
+					"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]");
 				assertEquals(RuntimeVariables.replace("Delete"),
 					selenium.getText(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a"));
+						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]"));
 				selenium.click(RuntimeVariables.replace(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a"));
+						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]"));
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 
 				boolean bookmarksEntry3Present = selenium.isElementPresent(
-						"//td[5]/span/ul/li/strong/a");
+						"//td[5]/span[@title='Actions']/ul/li/strong/a/span");
 
 				if (!bookmarksEntry3Present) {
 					label = 4;
@@ -98,26 +96,25 @@ public class TearDownBMEntryTest extends BaseTestCase {
 					continue;
 				}
 
-				Thread.sleep(5000);
-				selenium.waitForVisible(
-					"//span[@title='Actions']/ul/li/strong/a");
+				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Actions"),
-					selenium.getText("//td[5]/span/ul/li/strong/a"));
-				selenium.clickAt("//td[5]/span/ul/li/strong/a",
+					selenium.getText(
+						"//td[5]/span[@title='Actions']/ul/li/strong/a/span"));
+				selenium.clickAt("//td[5]/span[@title='Actions']/ul/li/strong/a/span",
 					RuntimeVariables.replace("Actions"));
 				selenium.waitForVisible(
-					"//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a");
+					"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]");
 				assertEquals(RuntimeVariables.replace("Delete"),
 					selenium.getText(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a"));
+						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]"));
 				selenium.click(RuntimeVariables.replace(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a"));
+						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]"));
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 
 				boolean bookmarksEntry4Present = selenium.isElementPresent(
-						"//td[5]/span/ul/li/strong/a");
+						"//td[5]/span[@title='Actions']/ul/li/strong/a/span");
 
 				if (!bookmarksEntry4Present) {
 					label = 5;
@@ -125,23 +122,25 @@ public class TearDownBMEntryTest extends BaseTestCase {
 					continue;
 				}
 
+				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Actions"),
-					selenium.getText("//td[5]/span/ul/li/strong/a"));
-				selenium.clickAt("//td[5]/span/ul/li/strong/a",
+					selenium.getText(
+						"//td[5]/span[@title='Actions']/ul/li/strong/a/span"));
+				selenium.clickAt("//td[5]/span[@title='Actions']/ul/li/strong/a/span",
 					RuntimeVariables.replace("Actions"));
 				selenium.waitForVisible(
-					"//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a");
+					"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]");
 				assertEquals(RuntimeVariables.replace("Delete"),
 					selenium.getText(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a"));
+						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]"));
 				selenium.click(RuntimeVariables.replace(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a"));
+						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]"));
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 
 				boolean bookmarksEntry5Present = selenium.isElementPresent(
-						"//td[5]/span/ul/li/strong/a");
+						"//td[5]/span[@title='Actions']/ul/li/strong/a/span");
 
 				if (!bookmarksEntry5Present) {
 					label = 6;
@@ -149,20 +148,19 @@ public class TearDownBMEntryTest extends BaseTestCase {
 					continue;
 				}
 
-				Thread.sleep(5000);
-				selenium.waitForVisible(
-					"//span[@title='Actions']/ul/li/strong/a");
+				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Actions"),
-					selenium.getText("//td[5]/span/ul/li/strong/a"));
-				selenium.clickAt("//td[5]/span/ul/li/strong/a",
+					selenium.getText(
+						"//td[5]/span[@title='Actions']/ul/li/strong/a/span"));
+				selenium.clickAt("//td[5]/span[@title='Actions']/ul/li/strong/a/span",
 					RuntimeVariables.replace("Actions"));
 				selenium.waitForVisible(
-					"//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a");
+					"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]");
 				assertEquals(RuntimeVariables.replace("Delete"),
 					selenium.getText(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a"));
+						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]"));
 				selenium.click(RuntimeVariables.replace(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a"));
+						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]"));
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
