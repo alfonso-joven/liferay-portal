@@ -94,7 +94,7 @@
 	</library>
 	<library>
 		<file-name>lib/development/ckpackager.jar</file-name>
-		<version>32768</version>
+		<version>7639</version>
 		<project-name>CKPackager</project-name>
 		<project-url>http://svn.fckeditor.net/CKPackager/trunk/bin</project-url>
 		<licenses>
