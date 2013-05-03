@@ -179,7 +179,7 @@
 		{
 			name: 'liferay-form-placeholders',
 			test: function(A) {
-				return !A.Object.owns(document.createElement('input'), 'placeholder');
+				return 'placeholder' in document.createElement('input');
 			},
 			trigger: 'liferay-form'
 		}
