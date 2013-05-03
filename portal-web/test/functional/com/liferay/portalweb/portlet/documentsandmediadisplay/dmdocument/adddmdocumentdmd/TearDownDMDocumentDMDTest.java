@@ -44,7 +44,7 @@ public class TearDownDMDocumentDMDTest extends BaseTestCase {
 					continue;
 				}
 
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//a[contains(@id,'objectsSearchContainer_1_menuButton')]/span"));
@@ -73,7 +73,7 @@ public class TearDownDMDocumentDMDTest extends BaseTestCase {
 					continue;
 				}
 
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//a[contains(@id,'objectsSearchContainer_1_menuButton')]/span"));
@@ -102,7 +102,7 @@ public class TearDownDMDocumentDMDTest extends BaseTestCase {
 					continue;
 				}
 
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//a[contains(@id,'objectsSearchContainer_1_menuButton')]/span"));
@@ -131,7 +131,7 @@ public class TearDownDMDocumentDMDTest extends BaseTestCase {
 					continue;
 				}
 
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//a[contains(@id,'objectsSearchContainer_1_menuButton')]/span"));
@@ -160,7 +160,7 @@ public class TearDownDMDocumentDMDTest extends BaseTestCase {
 					continue;
 				}
 
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//a[contains(@id,'objectsSearchContainer_1_menuButton')]/span"));

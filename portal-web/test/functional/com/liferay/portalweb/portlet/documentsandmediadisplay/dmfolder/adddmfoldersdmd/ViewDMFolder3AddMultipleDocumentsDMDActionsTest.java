@@ -32,7 +32,7 @@ public class ViewDMFolder3AddMultipleDocumentsDMDActionsTest
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("DM Folder3 Name"),
 			selenium.getText("//tr[5]/td[1]/a[2]/strong"));
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Actions"),
 			selenium.getText(
 				"xPath=(//span[@title='Actions']/ul/li/strong/a/span)[3]"));
@@ -50,7 +50,7 @@ public class ViewDMFolder3AddMultipleDocumentsDMDActionsTest
 			selenium.getText("//h1[@class='header-title']/span"));
 		assertEquals(RuntimeVariables.replace("\u00ab Back"),
 			selenium.getText("//span[@class='header-back-to']/a"));
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		selenium.waitForVisible("link=Browse (you can select multiple files).");
 		assertTrue(selenium.isVisible(
 				"link=Browse (you can select multiple files)."));

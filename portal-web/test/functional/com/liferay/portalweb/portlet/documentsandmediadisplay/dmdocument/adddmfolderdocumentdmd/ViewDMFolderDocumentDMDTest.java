@@ -104,7 +104,8 @@ public class ViewDMFolderDocumentDMDTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Content Encoding ISO-8859-1"),
 			selenium.getText(
 				"//div[@id='documentLibraryAssetMetadataPanel']/div[2]/div[1]"));
-		assertEquals(RuntimeVariables.replace("Content Type text/plain"),
+		assertEquals(RuntimeVariables.replace(
+				"Content Type text/plain; charset=ISO-8859-1"),
 			selenium.getText(
 				"//div[@id='documentLibraryAssetMetadataPanel']/div[2]/div[2]"));
 		assertEquals(RuntimeVariables.replace("Version History"),

@@ -45,7 +45,7 @@ public class ViewDMFolder1AddMultipleDocumentsDMDDetailsTest
 			selenium.getText("//h1[@class='header-title']/span"));
 		assertEquals(RuntimeVariables.replace("\u00ab Back"),
 			selenium.getText("//span[@class='header-back-to']/a"));
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		assertTrue(selenium.isVisible(
 				"link=Browse (you can select multiple files)."));
 		assertTrue(selenium.isVisible(
