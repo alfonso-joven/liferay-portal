@@ -72,8 +72,10 @@ public class SuggestionTagTest extends BaseTestCase {
 			case 2:
 				selenium.clickAt("//button[@id='suggest']",
 					RuntimeVariables.replace("Suggestion"));
-				selenium.waitForElementPresent("//label[1]/input");
-				assertTrue(selenium.isElementPresent("//label[1]/input"));
+				selenium.waitForElementPresent(
+					"//label[@title='title tags']/input");
+				assertTrue(selenium.isElementPresent(
+						"//label[@title='title tags']/input"));
 				selenium.clickAt("//button[@title='Close dialog']",
 					RuntimeVariables.replace("Close"));
 				selenium.clickAt("//input[@value='Cancel']",

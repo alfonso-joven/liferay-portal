@@ -70,7 +70,6 @@ public class AddUTFTagTest extends BaseTestCase {
 						"//input[@class='lfr-tag-selector-input aui-field-input-text']"));
 
 			case 2:
-				Thread.sleep(1000);
 				selenium.sendKeys("//input[@class='lfr-tag-selector-input aui-field-input-text']",
 					RuntimeVariables.replace("\u78521 liferay1"));
 				selenium.clickAt("//input[@value='Publish']",

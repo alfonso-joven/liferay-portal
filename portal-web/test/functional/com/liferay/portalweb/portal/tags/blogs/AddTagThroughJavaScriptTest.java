@@ -70,9 +70,8 @@ public class AddTagThroughJavaScriptTest extends BaseTestCase {
 						"//input[@class='lfr-tag-selector-input aui-field-input-text']"));
 
 			case 2:
-				Thread.sleep(1000);
 				selenium.sendKeys("//input[@class='lfr-tag-selector-input aui-field-input-text']",
-					RuntimeVariables.replace(" selenium2 liferay2"));
+					RuntimeVariables.replace("selenium2 liferay2"));
 				selenium.clickAt("//button[@id='add']",
 					RuntimeVariables.replace("Add"));
 				selenium.waitForText("xPath=(//span[@class='aui-textboxlistentry-text'])[3]",

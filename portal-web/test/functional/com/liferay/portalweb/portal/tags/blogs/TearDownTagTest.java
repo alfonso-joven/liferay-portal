@@ -53,8 +53,9 @@ public class TearDownTagTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.click("//input[2]");
-				assertTrue(selenium.isVisible("//input[2]"));
+				selenium.click("//input[@title='Check All Tags']");
+				assertTrue(selenium.isVisible(
+						"//input[@title='Check All Tags']"));
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//span[@title='Actions']/ul/li/strong/a/span"));
@@ -67,8 +68,8 @@ public class TearDownTagTest extends BaseTestCase {
 						"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a"));
 				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a",
 					RuntimeVariables.replace("Delete"));
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete the selected tags[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete the selected tags?");
 				selenium.waitForText("//div[@class='lfr-message-response portlet-msg-success']",
 					"Your request processed successfully.");
 				assertEquals(RuntimeVariables.replace(

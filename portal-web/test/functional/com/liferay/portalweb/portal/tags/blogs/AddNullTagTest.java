@@ -70,7 +70,6 @@ public class AddNullTagTest extends BaseTestCase {
 						"//input[@class='lfr-tag-selector-input aui-field-input-text']"));
 
 			case 2:
-				Thread.sleep(1000);
 				selenium.sendKeys("//input[@class='lfr-tag-selector-input aui-field-input-text']",
 					RuntimeVariables.replace(""));
 				selenium.clickAt("//input[@value='Publish']",

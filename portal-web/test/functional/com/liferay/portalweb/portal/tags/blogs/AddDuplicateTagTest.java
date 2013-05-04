@@ -70,9 +70,8 @@ public class AddDuplicateTagTest extends BaseTestCase {
 						"//input[@class='lfr-tag-selector-input aui-field-input-text']"));
 
 			case 2:
-				Thread.sleep(1000);
 				selenium.sendKeys("//input[@class='lfr-tag-selector-input aui-field-input-text']",
-					RuntimeVariables.replace(" selenium1 liferay1"));
+					RuntimeVariables.replace("selenium1 liferay1"));
 				selenium.clickAt("//input[@value='Publish']",
 					RuntimeVariables.replace("Publish"));
 				selenium.waitForPageToLoad("30000");

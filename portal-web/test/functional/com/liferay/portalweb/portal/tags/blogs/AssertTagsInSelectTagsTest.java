@@ -72,7 +72,7 @@ public class AssertTagsInSelectTagsTest extends BaseTestCase {
 			case 2:
 				selenium.clickAt("//button[@id='select']",
 					RuntimeVariables.replace("Select"));
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("selenium1 liferay1"),
 					selenium.getText("//label[@title='selenium1 liferay1']"));
 				assertTrue(selenium.isVisible(
