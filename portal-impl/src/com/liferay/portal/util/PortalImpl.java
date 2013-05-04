@@ -5954,16 +5954,21 @@ public class PortalImpl implements Portal {
 			}
 		}
 		catch (NoSuchResourceException nsre) {
+			boolean addGuestPermissions = true;
+
 			if (portletActions) {
-				ResourceLocalServiceUtil.addResources(
-					companyId, groupId, 0, name, primaryKey, portletActions,
-					true, !layout.isPrivateLayout());
+				Group layoutGroup = layout.getGroup();
+
+				if (layout.isPrivateLayout() &&
+					!layoutGroup.isLayoutPrototype()) {
+
+					addGuestPermissions = false;
+				}
 			}
-			else {
-				ResourceLocalServiceUtil.addResources(
-					companyId, groupId, 0, name, primaryKey, portletActions,
-					true, true);
-			}
+
+			ResourceLocalServiceUtil.addResources(
+				companyId, groupId, 0, name, primaryKey, portletActions, true,
+				addGuestPermissions);
 		}
 	}
 
