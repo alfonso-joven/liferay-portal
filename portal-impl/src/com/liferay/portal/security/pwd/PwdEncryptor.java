@@ -48,8 +48,8 @@ public class PwdEncryptor {
 				PropsKeys.PASSWORDS_ENCRYPTION_ALGORITHM)).toUpperCase();
 
 	public static final char[] SALT_CHARS =
-		"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789./"
-			.toCharArray();
+		"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789./".
+			toCharArray();
 
 	public static final String TYPE_BCRYPT = "BCRYPT";
 
