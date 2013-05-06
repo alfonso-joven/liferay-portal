@@ -1052,9 +1052,6 @@ public class PortalLDAPImporterImpl implements PortalLDAPImporter {
 		Map<String, Serializable> serializedExpandoAttributes =
 			new HashMap<String, Serializable>();
 
-		Set<String> ldapUserIgnoreAttributes = SetUtil.fromArray(
-			PropsValues.LDAP_USER_IGNORE_ATTRIBUTES);
-
 		for (Map.Entry<String, String[]> expandoAttribute :
 				expandoAttributes.entrySet()) {
 
@@ -1065,7 +1062,7 @@ public class PortalLDAPImporterImpl implements PortalLDAPImporter {
 			}
 
 			if (!expandoMappings.containsKey(name) ||
-				ldapUserIgnoreAttributes.contains(name)) {
+				_ldapUserIgnoreAttributes.contains(name)) {
 
 				int type = expandoBridge.getAttributeType(name);
 
@@ -1129,12 +1126,9 @@ public class PortalLDAPImporterImpl implements PortalLDAPImporter {
 
 		Contact contact = user.getContact();
 
-		Set<String> ldapUserIgnoreAttributes = SetUtil.fromArray(
-			PropsValues.LDAP_USER_IGNORE_ATTRIBUTES);
-
 		for (String propertyName : _CONTACT_PROPERTY_NAMES) {
 			if (!contactMappings.containsKey(propertyName) ||
-				ldapUserIgnoreAttributes.contains(propertyName)) {
+				_ldapUserIgnoreAttributes.contains(propertyName)) {
 
 				setProperty(ldapContact, contact, propertyName);
 			}
@@ -1142,7 +1136,7 @@ public class PortalLDAPImporterImpl implements PortalLDAPImporter {
 
 		for (String propertyName : _USER_PROPERTY_NAMES) {
 			if (!userMappings.containsKey(propertyName) ||
-				ldapUserIgnoreAttributes.contains(propertyName) ) {
+				_ldapUserIgnoreAttributes.contains(propertyName) ) {
 
 				setProperty(ldapUser, user, propertyName);
 			}
@@ -1313,6 +1307,8 @@ public class PortalLDAPImporterImpl implements PortalLDAPImporter {
 		PortalLDAPImporterImpl.class);
 
 	private LDAPToPortalConverter _ldapToPortalConverter;
+	private Set<String> _ldapUserIgnoreAttributes = SetUtil.fromArray(
+		PropsValues.LDAP_USER_IGNORE_ATTRIBUTES);
 	private PortalCache _portalCache = SingleVMPoolUtil.getCache(
 		PortalLDAPImporter.class.getName(), false);
 
