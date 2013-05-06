@@ -915,8 +915,8 @@ public class PortalLDAPImporterImpl implements PortalLDAPImporter {
 				companyId, ldapUser, user, userMappings, contactMappings,
 				password, modifiedDate);
 
-			updateExpandoAttributes(user, ldapUser, userExpandoMappings,
-				contactExpandoMappings);
+			updateExpandoAttributes(
+				user, ldapUser, userExpandoMappings, contactExpandoMappings);
 
 			return user;
 		}
@@ -1052,7 +1052,7 @@ public class PortalLDAPImporterImpl implements PortalLDAPImporter {
 		Map<String, Serializable> serializedExpandoAttributes =
 			new HashMap<String, Serializable>();
 
-		Set<String> ldapIgnoreAttributes = SetUtil.fromArray(
+		Set<String> ldapUserIgnoreAttributes = SetUtil.fromArray(
 			PropsValues.LDAP_USER_IGNORE_ATTRIBUTES);
 
 		for (Map.Entry<String, String[]> expandoAttribute :
@@ -1065,7 +1065,8 @@ public class PortalLDAPImporterImpl implements PortalLDAPImporter {
 			}
 
 			if (!expandoMappings.containsKey(name) ||
-				ldapIgnoreAttributes.contains(name)) {
+				ldapUserIgnoreAttributes.contains(name)) {
+
 				int type = expandoBridge.getAttributeType(name);
 
 				Serializable value =
@@ -1121,25 +1122,28 @@ public class PortalLDAPImporterImpl implements PortalLDAPImporter {
 			contactExpandoMappings);
 	}
 
-	protected void updateLDAPUser(User ldapUser, Contact ldapContact,
-			User user, Properties userMappings, Properties contactMappings)
+	protected void updateLDAPUser(
+			User ldapUser, Contact ldapContact, User user,
+			Properties userMappings, Properties contactMappings)
 		throws PortalException, SystemException {
 
 		Contact contact = user.getContact();
 
-		Set<String> ldapIgnoreAttributes = SetUtil.fromArray(
+		Set<String> ldapUserIgnoreAttributes = SetUtil.fromArray(
 			PropsValues.LDAP_USER_IGNORE_ATTRIBUTES);
 
 		for (String propertyName : _CONTACT_PROPERTY_NAMES) {
 			if (!contactMappings.containsKey(propertyName) ||
-				ldapIgnoreAttributes.contains(propertyName)) {
+				ldapUserIgnoreAttributes.contains(propertyName)) {
+
 				setProperty(ldapContact, contact, propertyName);
 			}
 		}
 
 		for (String propertyName : _USER_PROPERTY_NAMES) {
 			if (!userMappings.containsKey(propertyName) ||
-				ldapIgnoreAttributes.contains(propertyName) ) {
+				ldapUserIgnoreAttributes.contains(propertyName) ) {
+
 				setProperty(ldapUser, user, propertyName);
 			}
 		}
@@ -1243,7 +1247,8 @@ public class PortalLDAPImporterImpl implements PortalLDAPImporter {
 				user.getUserId(), password, password, passwordReset, true);
 		}
 
-		updateLDAPUser(ldapUser.getUser(), ldapContact, user, userMappings,
+		updateLDAPUser(
+			ldapUser.getUser(), ldapContact, user, userMappings,
 			contactMappings);
 
 		user = UserLocalServiceUtil.updateUser(
