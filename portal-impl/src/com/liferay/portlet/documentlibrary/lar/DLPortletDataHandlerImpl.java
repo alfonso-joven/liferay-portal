@@ -1667,6 +1667,10 @@ public class DLPortletDataHandlerImpl extends BasePortletDataHandler {
 			Folder folder, ServiceContext serviceContext)
 		throws Exception {
 
+		if (folderElement == null){
+			return;
+		}
+
 		String[] fileEntryTypeUuids = StringUtil.split(
 			folderElement.attributeValue("fileEntryTypeUuids"));
 
