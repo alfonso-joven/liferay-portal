@@ -45,7 +45,7 @@ public class ImportLARTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.uploadFile("//input[@id='_86_importFileName']",
 			RuntimeVariables.replace(
-				"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\portlet\\breadcrumb\\lar\\importlar\\dependencies\\Breadcrumb-Selenium.portlet.lar"));
+				"L:\\portal\\build\\portal-web\\test\\functional\\com\\liferay\\portalweb\\portlet\\breadcrumb\\lar\\importlar\\dependencies\\Breadcrumb-Selenium.portlet.lar"));
 		selenium.clickAt("//input[@value='Import']",
 			RuntimeVariables.replace("Import"));
 		selenium.waitForPageToLoad("30000");
