@@ -42,7 +42,7 @@ public class ViewBlogsEntry3Test extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Delete"),
 			selenium.getText("//td[contains(.,'Delete')]/span/a/span"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry3 Content"),
-			selenium.getText("//div[@class='entry-body']/p"));
+			selenium.getText("//div[@class='entry-body']"));
 		assertEquals(RuntimeVariables.replace("By Joe Bloggs"),
 			selenium.getText("//div[@class='entry-author']"));
 		assertEquals(RuntimeVariables.replace("0 Comments"),

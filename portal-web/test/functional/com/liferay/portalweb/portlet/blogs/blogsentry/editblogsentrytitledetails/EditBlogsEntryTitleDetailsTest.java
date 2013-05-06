@@ -31,22 +31,25 @@ public class EditBlogsEntryTitleDetailsTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Blogs Entry Title"),
 			selenium.getText("//div[@class='entry-title']/h2/a"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry Content"),
-			selenium.getText("//div[@class='entry-body']/p"));
+			selenium.getText("//div[@class='entry-body']"));
 		selenium.clickAt("//div[@class='entry-title']/h2/a",
 			RuntimeVariables.replace("Blogs Entry Title"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Blogs Entry Title"),
 			selenium.getText("//h1[@class='header-title']/span"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry Content"),
-			selenium.getText("//div[@class='entry-body']/p"));
+			selenium.getText("//div[@class='entry-body']"));
 		assertEquals(RuntimeVariables.replace("Edit"),
 			selenium.getText("//td[1]/span/a/span"));
 		selenium.clickAt("//td[1]/span/a/span", RuntimeVariables.replace("Edit"));
 		selenium.waitForPageToLoad("30000");
+		Thread.sleep(1000);
 		selenium.type("//input[@id='_33_title']",
 			RuntimeVariables.replace("Blogs Entry Title Edit"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_33_editor' and @style='display: none;']");
+		selenium.waitForVisible("//a[@class='cke_button_unlink cke_disabled']");
+		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
+		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
+			RuntimeVariables.replace("Blogs Entry Content"));
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");
@@ -58,6 +61,6 @@ public class EditBlogsEntryTitleDetailsTest extends BaseTestCase {
 		assertNotEquals(RuntimeVariables.replace("Blogs Entry Title"),
 			selenium.getText("//h1[@class='header-title']/span"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry Content"),
-			selenium.getText("//div[@class='entry-body']/p"));
+			selenium.getText("//div[@class='entry-body']"));
 	}
 }

@@ -44,28 +44,13 @@ public class AddBlogsEntry2TrackbackTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Add Blog Entry']",
 			RuntimeVariables.replace("Add Blog Entry"));
 		selenium.waitForPageToLoad("30000");
+		Thread.sleep(1000);
 		selenium.type("//input[@id='_33_title']",
 			RuntimeVariables.replace("Blogs Entry2 Title"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_33_editor' and @style='display: none;']");
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[.='Source']"));
-		selenium.clickAt("//span[.='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForVisible("//a[@class='cke_button_source cke_on']");
-		selenium.waitForVisible("//td[@id='cke_contents__33_editor']/textarea");
-		selenium.type("//td[@id='cke_contents__33_editor']/textarea",
+		selenium.waitForVisible("//a[@class='cke_button_unlink cke_disabled']");
+		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
+		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
 			RuntimeVariables.replace("Blogs Entry2 Content"));
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[.='Source']"));
-		selenium.clickAt("//span[.='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_33_editor' and @style='display: none;']");
-		selenium.waitForVisible("//td[@id='cke_contents__33_editor']/iframe");
-		selenium.selectFrame("//td[@id='cke_contents__33_editor']/iframe");
-		selenium.waitForText("//body", "Blogs Entry2 Content");
-		selenium.selectFrame("relative=top");
 		selenium.type("//input[@id='_33_trackbacks']",
 			RuntimeVariables.replace(RuntimeVariables.getValue("trackback")));
 		selenium.clickAt("//input[@value='Publish']",
@@ -77,6 +62,6 @@ public class AddBlogsEntry2TrackbackTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Blogs Entry2 Title"),
 			selenium.getText("//div[@class='entry-title']/h2/a"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry2 Content"),
-			selenium.getText("//div[@class='entry-body']/p"));
+			selenium.getText("//div[@class='entry-body']"));
 	}
 }

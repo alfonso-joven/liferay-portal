@@ -51,7 +51,7 @@ public class ImportLARTest extends BaseTestCase {
 				selenium.waitForVisible("//input[@id='_86_importFileName']");
 				selenium.uploadFile("//input[@id='_86_importFileName']",
 					RuntimeVariables.replace(
-						"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\portlet\\blogs\\dependencies\\Selenium-Blogs.portlet.lar"));
+						"L:\\portal\\build\\portal-web\\test\\functional\\com\\liferay\\portalweb\\portlet\\blogs\\dependencies\\Selenium-Blogs.portlet.lar"));
 
 				boolean deleteBeforeImportNotChecked = selenium.isChecked(
 						"//input[@id='_86_DELETE_PORTLET_DATACheckbox']");
