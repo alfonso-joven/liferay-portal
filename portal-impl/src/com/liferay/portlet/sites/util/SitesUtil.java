@@ -281,7 +281,10 @@ public class SitesUtil {
 			for (Role role : roles) {
 				String roleName = role.getName();
 
-				if (roleName.equals(RoleConstants.ADMINISTRATOR)) {
+				if (roleName.equals(RoleConstants.ADMINISTRATOR) ||
+					(targetLayout.isPrivateLayout() &&
+					 roleName.equals(RoleConstants.GUEST))) {
+
 					continue;
 				}
 
