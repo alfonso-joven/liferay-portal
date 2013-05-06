@@ -152,6 +152,8 @@ public class StringPool {
 
 	public static final String POUND = "#";
 
+	public static final String PRIME = "`";
+
 	public static final String QUESTION = "?";
 
 	public static final String QUOTE = "\"";
