@@ -1667,7 +1667,7 @@ public class DLPortletDataHandlerImpl extends BasePortletDataHandler {
 			Folder folder, ServiceContext serviceContext)
 		throws Exception {
 
-		if (folderElement == null){
+		if (folderElement == null) {
 			return;
 		}
 
