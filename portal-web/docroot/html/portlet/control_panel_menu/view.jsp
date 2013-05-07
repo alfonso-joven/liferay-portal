@@ -175,7 +175,7 @@
 									}
 									else if (group.isUser()) {
 										image = "user_icon";
-										message = LanguageUtil.format(pageContext, "x-personal-site", HtmlUtil.escape(group.getDescriptiveName(locale)));
+										message = LanguageUtil.format(pageContext, "x-personal-site", group.getDescriptiveName(locale));
 									}
 
 									String url = null;
