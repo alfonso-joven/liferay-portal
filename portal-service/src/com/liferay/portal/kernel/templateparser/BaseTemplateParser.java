@@ -27,6 +27,7 @@ import com.liferay.portal.kernel.xml.DocumentException;
 import com.liferay.portal.kernel.xml.Element;
 import com.liferay.portal.kernel.xml.SAXReaderUtil;
 import com.liferay.portal.model.Company;
+import com.liferay.portal.model.GroupConstants;
 import com.liferay.portal.security.permission.PermissionThreadLocal;
 import com.liferay.portal.service.CompanyLocalServiceUtil;
 import com.liferay.portal.theme.ThemeDisplay;
@@ -161,6 +162,10 @@ public abstract class BaseTemplateParser implements TemplateParser {
 		return unsyncStringWriter.toString();
 	}
 
+	protected long getArticleGroupId() {
+		return GetterUtil.getLong(_tokens.get("article_group_id"));
+	}
+
 	protected Company getCompany() throws Exception {
 		if (_themeDisplay != null) {
 			return _themeDisplay.getCompany();
@@ -194,11 +199,15 @@ public abstract class BaseTemplateParser implements TemplateParser {
 	}
 
 	protected long getGroupId() {
+		return GetterUtil.getLong(_tokens.get("group_id"));
+	}
+
+	protected long getScopeGroupId() {
 		if (_themeDisplay != null) {
 			return _themeDisplay.getScopeGroupId();
 		}
 
-		return GetterUtil.getLong(_tokens.get("group_id"));
+		return GroupConstants.DEFAULT_LIVE_GROUP_ID;
 	}
 
 	protected abstract TemplateContext getTemplateContext() throws Exception;
@@ -292,6 +301,7 @@ public abstract class BaseTemplateParser implements TemplateParser {
 	protected void populateTemplateContext(TemplateContext templateContext)
 		throws Exception {
 
+		templateContext.put("articleGroupId", getArticleGroupId());
 		templateContext.put("company", getCompany());
 		templateContext.put("companyId", getCompanyId());
 		templateContext.put("device", getDevice());
@@ -303,6 +313,7 @@ public abstract class BaseTemplateParser implements TemplateParser {
 
 		templateContext.put(
 			"permissionChecker", PermissionThreadLocal.getPermissionChecker());
+		templateContext.put("scopeGroupId", getScopeGroupId());
 		templateContext.put("viewMode", _viewMode);
 	}
 
