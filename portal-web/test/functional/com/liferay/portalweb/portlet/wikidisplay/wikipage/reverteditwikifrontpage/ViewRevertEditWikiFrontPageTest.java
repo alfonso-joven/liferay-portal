@@ -25,16 +25,9 @@ public class ViewRevertEditWikiFrontPageTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
+		selenium.waitForVisible("link=Wiki Display Test Page");
 		selenium.clickAt("link=Wiki Display Test Page",
 			RuntimeVariables.replace("Wiki Display Test Page"));
-		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=All Pages", RuntimeVariables.replace("All Pages"));
-		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace(
-				"Wiki FrontPage ChildPage Title Rename"),
-			selenium.getText("//tr[5]/td[1]/a"));
-		selenium.clickAt("//tr[5]/td[1]/a",
-			RuntimeVariables.replace("Wiki FrontPage ChildPage Title Rename"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("FrontPage"),
 			selenium.getText(
@@ -54,11 +47,8 @@ public class ViewRevertEditWikiFrontPageTest extends BaseTestCase {
 		assertTrue(selenium.isVisible(
 				"//span[@class='aui-search-bar']/span/span/span/input"));
 		assertTrue(selenium.isVisible("//input[@title='Search Pages']"));
-		assertEquals(RuntimeVariables.replace(
-				"Wiki FrontPage ChildPage Title Rename"),
+		assertEquals(RuntimeVariables.replace("FrontPage"),
 			selenium.getText("//h1[@class='header-title']/span"));
-		assertEquals(RuntimeVariables.replace("\u00ab Back to FrontPage"),
-			selenium.getText("//span[@class='header-back-to']/a"));
 		assertEquals(RuntimeVariables.replace("Edit"),
 			selenium.getText(
 				"//div[@class='page-actions top-actions']/span/a[contains(.,'Edit')]"));
@@ -68,8 +58,7 @@ public class ViewRevertEditWikiFrontPageTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Print"),
 			selenium.getText(
 				"//div[@class='page-actions top-actions']/span/a[contains(.,'Print')]"));
-		assertEquals(RuntimeVariables.replace(
-				"Wiki FrontPage ChildPage Content"),
+		assertEquals(RuntimeVariables.replace("Wiki FrontPage Content"),
 			selenium.getText("//div[@class='wiki-body']/p"));
 		assertEquals(RuntimeVariables.replace("Add Child Page"),
 			selenium.getText(

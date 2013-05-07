@@ -42,8 +42,9 @@ public class RevertEditWikiFrontPageTests extends BaseTestSuite {
 		testSuite.addTestSuite(AddWikiFrontPageTest.class);
 		testSuite.addTestSuite(SelectMainNodeTest.class);
 		testSuite.addTestSuite(EditWikiFrontPageTest.class);
-		testSuite.addTestSuite(RevertEditWikiFrontPageTest.class);
 		testSuite.addTestSuite(ViewEditWikiFrontPageTest.class);
+		testSuite.addTestSuite(RevertEditWikiFrontPageTest.class);
+		testSuite.addTestSuite(ViewRevertEditWikiFrontPageTest.class);
 		testSuite.addTestSuite(TearDownWikiNodeTest.class);
 		testSuite.addTestSuite(TearDownPageTest.class);
 
