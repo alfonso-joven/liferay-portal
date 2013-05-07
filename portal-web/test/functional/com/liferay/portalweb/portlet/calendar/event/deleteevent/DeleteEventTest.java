@@ -28,37 +28,24 @@ public class DeleteEventTest extends BaseTestCase {
 		selenium.clickAt("link=Calendar Test Page",
 			RuntimeVariables.replace("Calendar Test Page"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isElementPresent(
-				"//td[@id='_8_ocerSearchContainer_col-time_row-1']"));
-		assertEquals(RuntimeVariables.replace("Calendar Event Title"),
-			selenium.getText(
-				"//td[@id='_8_ocerSearchContainer_col-title_row-1']"));
-		assertEquals(RuntimeVariables.replace("Anniversary"),
-			selenium.getText(
-				"//td[@id='_8_ocerSearchContainer_col-type_row-1']"));
+		assertEquals(RuntimeVariables.replace("Test Event"),
+			selenium.getText("//tr[contains(.,'Test Event')]/td[2]/a"));
 		Thread.sleep(1000);
-		selenium.waitForVisible(
-			"//td[contains(.,'Actions')]/span/ul/li/strong/a");
-		selenium.clickAt("//td[contains(.,'Actions')]/span/ul/li/strong/a",
+		selenium.waitForVisible("//span[@title='Actions']/ul/li/strong/a/span");
+		selenium.clickAt("//span[@title='Actions']/ul/li/strong/a/span",
 			RuntimeVariables.replace("Actions"));
 		selenium.waitForVisible(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[4]/a");
+			"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]");
 		assertEquals(RuntimeVariables.replace("Delete"),
 			selenium.getText(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[4]/a"));
-		selenium.click(RuntimeVariables.replace(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[4]/a"));
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]"));
+		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]",
+			RuntimeVariables.replace("Delete"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.getConfirmation()
-						   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+		selenium.waitForConfirmation("Are you sure you want to delete this?");
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
-		assertTrue(selenium.isElementNotPresent(
-				"//td[@id='_8_ocerSearchContainer_col-time_row-1']"));
-		assertTrue(selenium.isElementNotPresent(
-				"//td[@id='_8_ocerSearchContainer_col-title_row-1']"));
-		assertTrue(selenium.isElementNotPresent(
-				"//td[@id='_8_ocerSearchContainer_col-type_row-1']"));
+		assertTrue(selenium.isElementNotPresent("link=Test Event"));
 	}
 }

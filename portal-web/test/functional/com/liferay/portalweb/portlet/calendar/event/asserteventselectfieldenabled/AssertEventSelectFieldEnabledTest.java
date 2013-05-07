@@ -48,13 +48,14 @@ public class AssertEventSelectFieldEnabledTest extends BaseTestCase {
 		assertTrue(selenium.isElementPresent(
 				"//select[@name='_8_durationMinute']"));
 		assertTrue(selenium.isElementPresent("//select[@name='_8_type']"));
-		selenium.clickAt("//input[@id='_8_recurrenceTypeMonthly']",
-			RuntimeVariables.replace("Monthly"));
+		selenium.clickAt("//input[@name='_8_recurrenceType' and @value='5']",
+			RuntimeVariables.replace(""));
 		selenium.waitForVisible("//input[@name='_8_monthlyType']");
 		assertTrue(selenium.isElementPresent("//select[@name='_8_monthlyPos']"));
 		assertTrue(selenium.isElementPresent("//select[@name='_8_monthlyDay1']"));
-		selenium.clickAt("//input[@id='_8_recurrenceTypeYearly']",
-			RuntimeVariables.replace("Yearly"));
+		assertTrue(selenium.isElementPresent("//select[@name='_8_monthlyDay1']"));
+		selenium.clickAt("//input[@name='_8_recurrenceType' and @value='6']",
+			RuntimeVariables.replace(""));
 		selenium.waitForVisible("//input[@name='_8_yearlyType']");
 		assertTrue(selenium.isElementPresent(
 				"//select[@name='_8_yearlyMonth0']"));
@@ -88,15 +89,17 @@ public class AssertEventSelectFieldEnabledTest extends BaseTestCase {
 				"//select[@name='_8_durationMinute' and @disabled='']"));
 		assertTrue(selenium.isElementNotPresent(
 				"//select[@name='_8_type' and @disabled='']"));
-		selenium.clickAt("//input[@id='_8_recurrenceTypeMonthly']",
-			RuntimeVariables.replace("Monthly"));
+		selenium.clickAt("//input[@name='_8_recurrenceType' and @value='5']",
+			RuntimeVariables.replace(""));
 		selenium.waitForVisible("//input[@name='_8_monthlyType']");
 		assertTrue(selenium.isElementNotPresent(
 				"//select[@name='_8_monthlyPos' and @disabled='']"));
 		assertTrue(selenium.isElementNotPresent(
 				"//select[@name='_8_monthlyDay1' and @disabled='']"));
-		selenium.clickAt("//input[@id='_8_recurrenceTypeYearly']",
-			RuntimeVariables.replace("Yearly"));
+		assertTrue(selenium.isElementNotPresent(
+				"//select[@name='_8_monthlyDay1' and @disabled='']"));
+		selenium.clickAt("//input[@name='_8_recurrenceType' and @value='6']",
+			RuntimeVariables.replace(""));
 		selenium.waitForVisible("//input[@name='_8_yearlyType']");
 		assertTrue(selenium.isElementNotPresent(
 				"//select[@name='_8_yearlyMonth0' and @disabled='']"));

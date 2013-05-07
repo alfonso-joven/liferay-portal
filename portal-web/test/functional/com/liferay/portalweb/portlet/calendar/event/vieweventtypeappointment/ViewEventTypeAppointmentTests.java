@@ -17,7 +17,6 @@ package com.liferay.portalweb.portlet.calendar.event.vieweventtypeappointment;
 import com.liferay.portalweb.portal.BaseTestSuite;
 import com.liferay.portalweb.portal.util.TearDownPageTest;
 import com.liferay.portalweb.portlet.calendar.event.addevent.TearDownEventTest;
-import com.liferay.portalweb.portlet.calendar.event.addeventtypeappointment.AddEventTypeAppointmentTest;
 import com.liferay.portalweb.portlet.calendar.portlet.addportletcalendar.AddPageCalendarTest;
 import com.liferay.portalweb.portlet.calendar.portlet.addportletcalendar.AddPortletCalendarTest;
 

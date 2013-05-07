@@ -31,29 +31,7 @@ public class AddEventTitleNullTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Add Event']",
 			RuntimeVariables.replace("Add Event"));
 		selenium.waitForPageToLoad("30000");
-		Thread.sleep(1000);
 		selenium.type("//input[@id='_8_title']", RuntimeVariables.replace(""));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_8_editor' and @style='display: none;']");
-		selenium.waitForVisible("//span[.='Source']");
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[.='Source']"));
-		selenium.clickAt("//span[.='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForVisible("//a[@class='cke_button_source cke_on']");
-		selenium.waitForVisible("//td[@id='cke_contents__8_editor']/textarea");
-		selenium.type("//td[@id='cke_contents__8_editor']/textarea",
-			RuntimeVariables.replace("Calendar Event Description"));
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[.='Source']"));
-		selenium.clickAt("//span[.='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_8_editor' and @style='display: none;']");
-		selenium.waitForVisible("//td[@id='cke_contents__8_editor']/iframe");
-		selenium.selectFrame("//td[@id='cke_contents__8_editor']/iframe");
-		selenium.waitForText("//body", "Calendar Event Description");
-		selenium.selectFrame("relative=top");
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");

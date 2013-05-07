@@ -50,7 +50,7 @@ public class ImportLARTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				selenium.uploadFile("//input[@id='_86_importFileName']",
 					RuntimeVariables.replace(
-						"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\portlet\\calendar\\lar\\importlar\\dependencies\\Calendar-Selenium.portlet.lar"));
+						"L:\\portal\\build\\portal-web\\test\\functional\\com\\liferay\\portalweb\\portlet\\calendar\\lar\\importlar\\dependencies\\Calendar-Selenium.portlet.lar"));
 
 				boolean deleteBeforeImportNotChecked = selenium.isChecked(
 						"//input[@id='_86_DELETE_PORTLET_DATACheckbox']");

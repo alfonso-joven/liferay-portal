@@ -31,40 +31,17 @@ public class AddEventDateEndInvalidTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Add Event']",
 			RuntimeVariables.replace("Add Event"));
 		selenium.waitForPageToLoad("30000");
-		Thread.sleep(1000);
 		selenium.type("//input[@id='_8_title']",
-			RuntimeVariables.replace("Calendar Event Title"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_8_editor' and @style='display: none;']");
-		selenium.waitForVisible("//span[.='Source']");
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[.='Source']"));
-		selenium.clickAt("//span[.='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForVisible("//a[@class='cke_button_source cke_on']");
-		selenium.waitForVisible("//td[@id='cke_contents__8_editor']/textarea");
-		selenium.type("//td[@id='cke_contents__8_editor']/textarea",
-			RuntimeVariables.replace("Calendar Event Description"));
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[.='Source']"));
-		selenium.clickAt("//span[.='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_8_editor' and @style='display: none;']");
-		selenium.waitForVisible("//td[@id='cke_contents__8_editor']/iframe");
-		selenium.selectFrame("//td[@id='cke_contents__8_editor']/iframe");
-		selenium.waitForText("//body", "Calendar Event Description");
-		selenium.selectFrame("relative=top");
-		selenium.waitForElementPresent("//input[@id='_8_recurrenceTypeDaily']");
-		selenium.clickAt("//input[@id='_8_recurrenceTypeDaily']",
-			RuntimeVariables.replace("Daily"));
-		selenium.waitForVisible("//select[@name='_8_endDateMonth']");
-		selenium.clickAt("//select[@name='_8_endDateMonth']",
+			RuntimeVariables.replace("Invalid End Date Test Event"));
+		selenium.clickAt("//input[@name='_8_recurrenceType' and @value='3']	",
+			RuntimeVariables.replace("Repeat Daily"));
+		selenium.waitForVisible("//input[@id='_8_dailyInterval']");
+		selenium.type("//input[@id='_8_dailyInterval']",
+			RuntimeVariables.replace("1"));
+		selenium.clickAt("//select[@id='_8_enddatemonth']",
 			RuntimeVariables.replace("End Date Month"));
-		selenium.select("//select[@name='_8_endDateMonth']",
+		selenium.select("//select[@id='_8_enddatemonth']",
 			RuntimeVariables.replace("February"));
-		Thread.sleep(1000);
-		assertFalse(selenium.isPartialText("//select[@name='_8_endDateDay']",
-				"30"));
+		assertFalse(selenium.isPartialText("//select[@id='_8_enddateday']", "30"));
 	}
 }
