@@ -42,11 +42,11 @@ public class ViewEditRecordDDLDTest extends BaseTestCase {
 			selenium.getText("//tr[3]/td[3]"));
 		assertEquals(RuntimeVariables.replace("Documents and Media"),
 			selenium.getText("//tr[1]/th[4]"));
-		assertEquals(RuntimeVariables.replace("document_edited.txt"),
+		assertEquals(RuntimeVariables.replace("Document_1.txt"),
 			selenium.getText("//tr[3]/td[4]"));
 		assertEquals(RuntimeVariables.replace("File Upload"),
 			selenium.getText("//tr[1]/th[5]"));
-		assertEquals(RuntimeVariables.replace("document.txt"),
+		assertEquals(RuntimeVariables.replace("Document_3.txt"),
 			selenium.getText("//tr[3]/td[5]"));
 		assertEquals(RuntimeVariables.replace("Integer"),
 			selenium.getText("//tr[1]/th[6]"));
@@ -94,12 +94,11 @@ public class ViewEditRecordDDLDTest extends BaseTestCase {
 				"//div[@class='aui-fieldset-content ']/div[4]",
 				"Documents and Media"));
 		assertTrue(selenium.isPartialText(
-				"//div[@class='aui-fieldset-content ']/div[4]",
-				"document_edited.txt"));
+				"//div[@class='aui-fieldset-content ']/div[4]", "Document_1.txt"));
 		assertTrue(selenium.isPartialText(
 				"//div[@class='aui-fieldset-content ']/div[5]", "File Upload"));
 		assertTrue(selenium.isPartialText(
-				"//div[@class='aui-fieldset-content ']/div[5]", "document.txt"));
+				"//div[@class='aui-fieldset-content ']/div[5]", "Document_3.txt"));
 		assertEquals(RuntimeVariables.replace("Integer 8910"),
 			selenium.getText("//div[@class='aui-fieldset-content ']/div[6]"));
 		assertEquals(RuntimeVariables.replace("Number 111213"),

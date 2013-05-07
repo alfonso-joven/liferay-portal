@@ -20,7 +20,7 @@
 </tr>
 <tr>
 	<td>pause</td>
-	<td>5000</td>
+	<td>1000</td>
 	<td></td>
 </tr>
 <tr>
@@ -54,9 +54,29 @@
 	<td>Boolean</td>
 </tr>
 <tr>
-	<td>click</td>
+	<td>storeChecked</td>
+	<td>//div[@class='aui-fieldset-content ']/div[1]/span/span/span/input[2]</td>
+	<td>booleanUnchecked</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>!${booleanUnchecked}</td>
+	<td>BooleanUnchecked</td>
+</tr>
+<tr>
+	<td>clickAt</td>
 	<td>//div[@class='aui-fieldset-content ']/div[1]/span/span/span/input[2]</td>
 	<td>checkbox</td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>BooleanUnchecked</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertNotChecked</td>
+	<td>//div[@class='aui-fieldset-content ']/div[1]/span/span/span/input[2]</td>
+	<td>Boolean</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -120,22 +140,22 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>link=document_edited.txt</td>
-	<td>document_edited.txt</td>
+	<td>link=Document_1.txt</td>
+	<td>Document_1.txt</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>link=document_edited.txt</td>
-	<td>document_edited.txt</td>
+	<td>link=Document_1.txt</td>
+	<td>Document_1.txt</td>
 </tr>
 <tr>
 	<td>assertVisible</td>
-	<td>//tr[4]/td[5]/input</td>
+	<td>//input[@value='Choose']</td>
 	<td>Choose</td>
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>//tr[4]/td[5]/input</td>
+	<td>//input[@value='Choose']</td>
 	<td>Choose</td>
 </tr>
 <tr>
@@ -149,9 +169,9 @@
 	<td>File Upload</td>
 </tr>
 <tr>
-	<td>uploadFile</td>
+	<td>uploadCommonFile</td>
 	<td>//div[@class='aui-fieldset-content ']/div[5]/span/span/span/input</td>
-	<td>L:\portal\build\portal-web\test\com\liferay\portalweb\portal\controlpanel\dynamicdatalists\dependencies\document.txt</td>
+	<td>Document_3.txt</td>
 </tr>
 <tr>
 	<td>assertText</td>

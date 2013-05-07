@@ -44,7 +44,7 @@ public class EditListDDLDTest extends BaseTestCase {
 			selenium.getText("//tr[contains(.,'List Name')]/td[2]/a"));
 		assertEquals(RuntimeVariables.replace("List Description"),
 			selenium.getText("//tr[contains(.,'List Name')]/td[3]/a"));
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Actions"),
 			selenium.getText("//span[@title='Actions']/ul/li/strong/a"));
 		selenium.clickAt("//span[@title='Actions']/ul/li/strong/a",

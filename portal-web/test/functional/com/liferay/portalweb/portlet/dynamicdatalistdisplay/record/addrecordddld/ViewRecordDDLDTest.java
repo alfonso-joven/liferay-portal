@@ -42,11 +42,11 @@ public class ViewRecordDDLDTest extends BaseTestCase {
 			selenium.getText("//tr[3]/td[3]"));
 		assertEquals(RuntimeVariables.replace("Documents and Media"),
 			selenium.getText("//tr[1]/th[4]"));
-		assertEquals(RuntimeVariables.replace("document.txt"),
+		assertEquals(RuntimeVariables.replace("Document_1.txt"),
 			selenium.getText("//tr[3]/td[4]"));
 		assertEquals(RuntimeVariables.replace("File Upload"),
 			selenium.getText("//tr[1]/th[5]"));
-		assertEquals(RuntimeVariables.replace("document2.txt"),
+		assertEquals(RuntimeVariables.replace("Document_2.txt"),
 			selenium.getText("//tr[3]/td[5]"));
 		assertEquals(RuntimeVariables.replace("Integer"),
 			selenium.getText("//tr[1]/th[6]"));
@@ -72,7 +72,7 @@ public class ViewRecordDDLDTest extends BaseTestCase {
 			selenium.getText("//tr[1]/th[11]"));
 		assertEquals(RuntimeVariables.replace("Text Box"),
 			selenium.getText("//tr[3]/td[11]"));
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Actions"),
 			selenium.getText("//span[@title='Actions']/ul/li/strong/a"));
 		selenium.clickAt("//span[@title='Actions']/ul/li/strong/a",
@@ -92,9 +92,9 @@ public class ViewRecordDDLDTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Decimal 1.23"),
 			selenium.getText("//div[@class='aui-fieldset-content ']/div[3]"));
 		assertEquals(RuntimeVariables.replace(
-				"Documents and Media document.txt"),
+				"Documents and Media Document_1.txt"),
 			selenium.getText("//div[@class='aui-fieldset-content ']/div[4]"));
-		assertEquals(RuntimeVariables.replace("File Upload document2.txt"),
+		assertEquals(RuntimeVariables.replace("File Upload Document_2.txt"),
 			selenium.getText("//div[@class='aui-fieldset-content ']/div[5]"));
 		assertEquals(RuntimeVariables.replace("Integer 123"),
 			selenium.getText("//div[@class='aui-fieldset-content ']/div[6]"));

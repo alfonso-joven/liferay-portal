@@ -41,7 +41,6 @@ public class EditRecordDDLDTests extends BaseTestSuite {
 		testSuite.addTestSuite(AddDataDefinitionTest.class);
 		testSuite.addTestSuite(AddListTest.class);
 		testSuite.addTestSuite(AddDMDocumentTest.class);
-		testSuite.addTestSuite(AddDMDocumentEditedTest.class);
 		testSuite.addTestSuite(SelectListDDLDTest.class);
 		testSuite.addTestSuite(AddRecordDDLDTest.class);
 		testSuite.addTestSuite(EditRecordDDLDTest.class);
