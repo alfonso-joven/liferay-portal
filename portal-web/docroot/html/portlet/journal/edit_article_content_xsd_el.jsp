@@ -447,13 +447,13 @@ Element contentEl = (Element)request.getAttribute(WebKeys.JOURNAL_ARTICLE_CONTEN
 				</c:if>
 			</div>
 
-			<c:if test='<%= Validator.isNull(toLanguageId) && !elType.equals("selection_break") %>'>
-				<aui:input cssClass="journal-article-localized-checkbox" label="localizable" name='<%= elInstanceId + "localized-checkbox" %>' type="checkbox" value="<%= !elLanguageId.equals(StringPool.BLANK) %>" />
-			</c:if>
-
 			<div class="journal-article-required-message portlet-msg-error">
 				<liferay-ui:message key="this-field-is-required" />
 			</div>
+
+			<c:if test='<%= Validator.isNull(toLanguageId) && !elType.equals("selection_break") %>'>
+				<aui:input cssClass="journal-article-localized-checkbox" label="localizable" name='<%= elInstanceId + "localized-checkbox" %>' type="checkbox" value="<%= !elLanguageId.equals(StringPool.BLANK) %>" />
+			</c:if>
 
 			<c:if test="<%= (Validator.isNotNull(elInstructions) && !displayAsTooltip) %>">
 				<div class="journal-article-instructions-container journal-article-instructions-message portlet-msg-info">
