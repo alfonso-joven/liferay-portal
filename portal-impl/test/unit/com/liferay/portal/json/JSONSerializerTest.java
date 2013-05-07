@@ -19,13 +19,23 @@ import com.liferay.portal.kernel.json.JSONSerializer;
 import com.liferay.portal.kernel.search.Hits;
 import com.liferay.portal.kernel.search.HitsImpl;
 
-import junit.framework.TestCase;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * @author Igor Spasic
  */
-public class JSONSerializerTest extends TestCase {
+public class JSONSerializerTest {
 
+	@Before
+	public void setUp() throws Exception {
+		JSONFactoryUtil jsonFactoryUtil = new JSONFactoryUtil();
+
+		jsonFactoryUtil.setJSONFactory(new JSONFactoryImpl());
+	}
+
+	@Test
 	public void testSerializeHits() {
 		JSONSerializer jsonSerializer = JSONFactoryUtil.createJSONSerializer();
 
@@ -33,13 +43,13 @@ public class JSONSerializerTest extends TestCase {
 
 		String json = jsonSerializer.serialize(hits);
 
-		assertTrue(json.contains("\"docs\":null"));
-		assertFalse(json.contains("\"query\""));
-		assertTrue(json.contains("\"queryTerms\":null"));
-		assertTrue(json.contains("\"scores\":[]"));
-		assertTrue(json.contains("\"snippets\":[]"));
-		assertTrue(json.contains("\"start\":0"));
-		assertTrue(json.contains("\"length\":0"));
+		Assert.assertTrue(json.contains("\"docs\":null"));
+		Assert.assertFalse(json.contains("\"query\""));
+		Assert.assertTrue(json.contains("\"queryTerms\":null"));
+		Assert.assertTrue(json.contains("\"scores\":[]"));
+		Assert.assertTrue(json.contains("\"snippets\":[]"));
+		Assert.assertTrue(json.contains("\"start\":0"));
+		Assert.assertTrue(json.contains("\"length\":0"));
 	}
 
 }
