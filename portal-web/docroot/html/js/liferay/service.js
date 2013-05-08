@@ -621,6 +621,7 @@ Liferay.Service.registerClass(
 		getGroupsVocabularies: true,
 		getGroupVocabularies: true,
 		getGroupVocabulariesCount: true,
+		getGroupVocabulariesDisplay: true,
 		getJSONGroupVocabularies: true,
 		getVocabularies: true,
 		getVocabulary: true,

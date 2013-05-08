@@ -80,11 +80,11 @@ public class JSONWebServiceServiceAction extends JSONServiceAction {
 			return JSONFactoryUtil.serializeException(uploadException);
 		}
 
-		JSONWebServiceAction jsonWebServiceAction = null;
-
 		String path = GetterUtil.getString(request.getPathInfo());
 
 		try {
+			JSONWebServiceAction jsonWebServiceAction = null;
+
 			if (path.equals("/invoke")) {
 				jsonWebServiceAction = new JSONWebServiceInvokerAction(request);
 			}
