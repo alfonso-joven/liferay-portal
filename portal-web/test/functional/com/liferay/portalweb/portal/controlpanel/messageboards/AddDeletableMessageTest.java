@@ -61,25 +61,11 @@ public class AddDeletableMessageTest extends BaseTestCase {
 		selenium.type("//input[@id='_162_subject']",
 			RuntimeVariables.replace(
 				"T\u00e9st M\u00e9ssag\u00e9 to b\u00e9 D\u00e9l\u00e9t\u00e9d"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_162_editor' and @style='display: none;']");
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//a[@id='cke_33']"));
-		selenium.clickAt("//a[@id='cke_33']", RuntimeVariables.replace("Source"));
-		selenium.waitForVisible("//td[@id='cke_contents__162_editor']/textarea");
-		selenium.type("//td[@id='cke_contents__162_editor']/textarea",
+		Thread.sleep(1000);
+		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
+		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
 			RuntimeVariables.replace(
 				"This m\u00e9ssag\u00e9 will b\u00e9 d\u00e9l\u00e9t\u00e9d!"));
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//a[@id='cke_33']"));
-		selenium.clickAt("//a[@id='cke_33']", RuntimeVariables.replace("Source"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_162_editor' and @style='display: none;']");
-		selenium.waitForVisible("//td[@id='cke_contents__162_editor']/iframe");
-		selenium.selectFrame("//td[@id='cke_contents__162_editor']/iframe");
-		selenium.waitForText("//body",
-			"This m\u00e9ssag\u00e9 will b\u00e9 d\u00e9l\u00e9t\u00e9d!");
-		selenium.selectFrame("relative=top");
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");
@@ -88,7 +74,7 @@ public class AddDeletableMessageTest extends BaseTestCase {
 			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertEquals(RuntimeVariables.replace(
 				"T\u00e9st M\u00e9ssag\u00e9 to b\u00e9 D\u00e9l\u00e9t\u00e9d"),
-			selenium.getText("//div[contains(@class,'taglib-header')]/h1/span"));
+			selenium.getText("//h1[@class='header-title']/span"));
 		assertEquals(RuntimeVariables.replace(
 				"T\u00e9st M\u00e9ssag\u00e9 to b\u00e9 D\u00e9l\u00e9t\u00e9d"),
 			selenium.getText("//div/a/strong"));

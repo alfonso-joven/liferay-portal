@@ -47,7 +47,9 @@ public class ViewDataDefinitionBooleanTest extends BaseTestCase {
 			RuntimeVariables.replace("Manage Data Definitions"));
 		selenium.waitForVisible("//iframe");
 		selenium.selectFrame("//iframe");
-		Thread.sleep(5000);
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/liferay/search_container.js')]");
+		Thread.sleep(1000);
 		selenium.waitForVisible("//span[@title='Actions']/ul/li/strong/a/span");
 		assertEquals(RuntimeVariables.replace("Actions"),
 			selenium.getText("//span[@title='Actions']/ul/li/strong/a/span"));

@@ -74,13 +74,13 @@
 	<td>Tést Méssagé</td>
 </tr>
 <tr>
-	<td>selectWindow</td>
-	<td>null</td>
-	<td></td>
+	<td>assertText</td>
+	<td>//ul[@class='edit-controls lfr-component']/li/span/a/span[contains(.,'Edit')]</td>
+	<td>Edit</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>//a[@id='_162_sslo']/span</td>
+	<td>//ul[@class='edit-controls lfr-component']/li/span/a/span[contains(.,'Edit')]</td>
 	<td>Edit</td>
 </tr>
 <tr>
@@ -89,64 +89,19 @@
 	<td>Tést Méssagé Edited</td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
-	<td>//textarea[@id='_162_editor' and @style='display: none;']</td>
-	<td>Text Area</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//a[@id='cke_33']</td>
-	<td>Source</td>
-</tr>
-<tr>
-	<td>clickAt</td>
-	<td>//a[@id='cke_33']</td>
-	<td>Source</td>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//td[@id='cke_contents__162_editor']/textarea</td>
+	<td>//iframe[contains(@title,'Rich text editor')]</td>
 	<td>CK Editor</td>
 </tr>
 <tr>
-	<td>type</td>
-	<td>//td[@id='cke_contents__162_editor']/textarea</td>
+	<td>typeFrame</td>
+	<td>//iframe[contains(@title,'Rich text editor')]</td>
 	<td>This is edited test Méssagé!</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//a[@id='cke_33']</td>
-	<td>Source</td>
-</tr>
-<tr>
-	<td>clickAt</td>
-	<td>//a[@id='cke_33']</td>
-	<td>Source</td>
-</tr>
-<tr>
-	<td>waitForElementPresent</td>
-	<td>//textarea[@id='_162_editor' and @style='display: none;']</td>
-	<td>Text Area</td>
-</tr>
-<tr>
-	<td>waitForVisible</td>
-	<td>//td[@id='cke_contents__162_editor']/iframe</td>
-	<td>CK Editor</td>
-</tr>
-<tr>
-	<td>selectFrame</td>
-	<td>//td[@id='cke_contents__162_editor']/iframe</td>
-	<td>CK Editor</td>
-</tr>
-<tr>
-	<td>waitForText</td>
-	<td>//body</td>
-	<td>This is edited test Méssagé!</td>
-</tr>
-<tr>
-	<td>selectFrame</td>
-	<td>relative=top</td>
-	<td>top</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>

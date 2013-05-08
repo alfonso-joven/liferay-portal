@@ -54,25 +54,11 @@ public class AddReplyMessageTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Reply", RuntimeVariables.replace("Reply"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForElementPresent(
-			"//textarea[@id='_162_editor' and @style='display: none;']");
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//a[@id='cke_33']"));
-		selenium.clickAt("//a[@id='cke_33']", RuntimeVariables.replace("Source"));
-		selenium.waitForVisible("//td[@id='cke_contents__162_editor']/textarea");
-		selenium.type("//td[@id='cke_contents__162_editor']/textarea",
+		Thread.sleep(1000);
+		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
+		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
 			RuntimeVariables.replace(
 				"This is a t\u00e9st r\u00e9ply m\u00e9ssag\u00e9!"));
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//a[@id='cke_33']"));
-		selenium.clickAt("//a[@id='cke_33']", RuntimeVariables.replace("Source"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_162_editor' and @style='display: none;']");
-		selenium.waitForVisible("//td[@id='cke_contents__162_editor']/iframe");
-		selenium.selectFrame("//td[@id='cke_contents__162_editor']/iframe");
-		selenium.waitForText("//body",
-			"This is a t\u00e9st r\u00e9ply m\u00e9ssag\u00e9!");
-		selenium.selectFrame("relative=top");
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");

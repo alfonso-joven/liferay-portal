@@ -43,10 +43,12 @@ public class ViewOrganizationSiteTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace(
-				"Organization Name\nBelongs to an organization of type Regular Organization."),
-			selenium.getText(
-				"//td[@id='_134_groupsSearchContainer_col-name_row--organization-name']/a"));
+		assertTrue(selenium.isPartialText(
+				"//td[@id='_134_groupsSearchContainer_col-name_row--organization-name']/a",
+				"Organization Name"));
+		assertTrue(selenium.isPartialText(
+				"//td[@id='_134_groupsSearchContainer_col-name_row--organization-name']/a",
+				"Belongs to an organization of type Regular Organization."));
 		assertEquals(RuntimeVariables.replace("Private"),
 			selenium.getText(
 				"//td[@id='_134_groupsSearchContainer_col-type_row--organization-name']/a"));

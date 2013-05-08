@@ -53,29 +53,18 @@ public class EditMessageTest extends BaseTestCase {
 		selenium.clickAt("link=T\u00e9st M\u00e9ssag\u00e9",
 			RuntimeVariables.replace("T\u00e9st M\u00e9ssag\u00e9"));
 		selenium.waitForPageToLoad("30000");
-		selenium.selectWindow("null");
-		selenium.clickAt("//a[@id='_162_sslo']/span",
+		assertEquals(RuntimeVariables.replace("Edit"),
+			selenium.getText(
+				"//ul[@class='edit-controls lfr-component']/li/span/a/span[contains(.,'Edit')]"));
+		selenium.clickAt("//ul[@class='edit-controls lfr-component']/li/span/a/span[contains(.,'Edit')]",
 			RuntimeVariables.replace("Edit"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_162_subject']",
 			RuntimeVariables.replace("T\u00e9st M\u00e9ssag\u00e9 Edited"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_162_editor' and @style='display: none;']");
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//a[@id='cke_33']"));
-		selenium.clickAt("//a[@id='cke_33']", RuntimeVariables.replace("Source"));
-		selenium.waitForVisible("//td[@id='cke_contents__162_editor']/textarea");
-		selenium.type("//td[@id='cke_contents__162_editor']/textarea",
+		Thread.sleep(1000);
+		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
+		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
 			RuntimeVariables.replace("This is edited test M\u00e9ssag\u00e9!"));
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//a[@id='cke_33']"));
-		selenium.clickAt("//a[@id='cke_33']", RuntimeVariables.replace("Source"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_162_editor' and @style='display: none;']");
-		selenium.waitForVisible("//td[@id='cke_contents__162_editor']/iframe");
-		selenium.selectFrame("//td[@id='cke_contents__162_editor']/iframe");
-		selenium.waitForText("//body", "This is edited test M\u00e9ssag\u00e9!");
-		selenium.selectFrame("relative=top");
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");

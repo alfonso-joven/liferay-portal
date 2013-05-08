@@ -47,25 +47,11 @@ public class AddAnswerThreadTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Reply", RuntimeVariables.replace("Reply"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForElementPresent(
-			"//textarea[@id='_162_editor' and @style='display: none;']");
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//a[@id='cke_33']"));
-		selenium.clickAt("//a[@id='cke_33']", RuntimeVariables.replace("Source"));
-		selenium.waitForVisible("//td[@id='cke_contents__162_editor']/textarea");
-		selenium.type("//td[@id='cke_contents__162_editor']/textarea",
+		Thread.sleep(1000);
+		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
+		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
 			RuntimeVariables.replace(
 				"I like green because it is so natural. Obviously."));
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//a[@id='cke_33']"));
-		selenium.clickAt("//a[@id='cke_33']", RuntimeVariables.replace("Source"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_162_editor' and @style='display: none;']");
-		selenium.waitForVisible("//td[@id='cke_contents__162_editor']/iframe");
-		selenium.selectFrame("//td[@id='cke_contents__162_editor']/iframe");
-		selenium.waitForText("//body",
-			"I like green because it is so natural. Obviously.");
-		selenium.selectFrame("relative=top");
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");
@@ -76,7 +62,7 @@ public class AddAnswerThreadTest extends BaseTestCase {
 		selenium.clickAt("link=T\u00e9st Cat\u00e9gory Edit\u00e9d",
 			RuntimeVariables.replace("T\u00e9st Cat\u00e9gory Edit\u00e9d"));
 		selenium.waitForPageToLoad("30000");
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		assertTrue(selenium.isElementPresent("link=Resolved"));
 		assertTrue(selenium.isElementNotPresent("link=Waiting for an Answer"));
 	}

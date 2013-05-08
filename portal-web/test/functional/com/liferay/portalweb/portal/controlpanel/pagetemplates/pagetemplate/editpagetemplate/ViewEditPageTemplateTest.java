@@ -95,7 +95,8 @@ public class ViewEditPageTemplateTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Configuration"),
 			selenium.getText("//div/label"));
 		assertEquals(RuntimeVariables.replace("Open Page Template"),
-			selenium.getText("//fieldset//*/span/a/span"));
+			selenium.getText(
+				"//div[@class='aui-field aui-field-wrapper']/div/span/a/span"));
 		assertTrue(selenium.isVisible("//input[@value='Save']"));
 		assertTrue(selenium.isVisible("//input[@value='Cancel']"));
 	}

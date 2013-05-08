@@ -49,23 +49,10 @@ public class AddNullEntryTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_162_subject']",
 			RuntimeVariables.replace("Null Test Entry"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_162_editor' and @style='display: none;']");
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//a[@id='cke_33']"));
-		selenium.clickAt("//a[@id='cke_33']", RuntimeVariables.replace("Source"));
-		selenium.waitForVisible("//td[@id='cke_contents__162_editor']/textarea");
-		selenium.type("//td[@id='cke_contents__162_editor']/textarea",
+		Thread.sleep(1000);
+		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
+		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
 			RuntimeVariables.replace(""));
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//a[@id='cke_33']"));
-		selenium.clickAt("//a[@id='cke_33']", RuntimeVariables.replace("Source"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_162_editor' and @style='display: none;']");
-		selenium.waitForVisible("//td[@id='cke_contents__162_editor']/iframe");
-		selenium.selectFrame("//td[@id='cke_contents__162_editor']/iframe");
-		selenium.waitForText("//body", "");
-		selenium.selectFrame("relative=top");
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");
@@ -73,7 +60,7 @@ public class AddNullEntryTest extends BaseTestCase {
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertEquals(RuntimeVariables.replace("Null Test Entry"),
-			selenium.getText("//div[contains(@class,'taglib-header')]/h1/span"));
+			selenium.getText("//h1[@class='header-title']/span"));
 		assertEquals(RuntimeVariables.replace("Null Test Entry"),
 			selenium.getText("//div/a/strong"));
 		assertEquals(RuntimeVariables.replace("Null Test Entry"),

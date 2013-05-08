@@ -39,7 +39,7 @@ public class ImportLARTest extends BaseTestCase {
 		selenium.clickAt("link=Message Boards",
 			RuntimeVariables.replace("Message Boards"));
 		selenium.waitForPageToLoad("30000");
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Options"),
 			selenium.getText("//menu/span/ul/li/strong/a"));
 		selenium.clickAt("//menu/span/ul/li/strong/a",
@@ -56,7 +56,7 @@ public class ImportLARTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.uploadFile("//input[@id='_86_importFileName']",
 			RuntimeVariables.replace(
-				"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\portal\\controlpanel\\messageboards\\dependencies\\Selenium-Message-Boards.portlet.lar"));
+				"L:\\portal\\build\\portal-web\\test\\functional\\com\\liferay\\portalweb\\portal\\controlpanel\\messageboards\\dependencies\\Selenium-Message-Boards.portlet.lar"));
 		assertFalse(selenium.isChecked(
 				"//input[@id='_86_DELETE_PORTLET_DATACheckbox']"));
 		selenium.clickAt("//input[@id='_86_DELETE_PORTLET_DATACheckbox']",

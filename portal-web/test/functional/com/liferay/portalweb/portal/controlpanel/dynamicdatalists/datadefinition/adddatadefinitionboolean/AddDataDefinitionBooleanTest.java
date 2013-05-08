@@ -47,6 +47,8 @@ public class AddDataDefinitionBooleanTest extends BaseTestCase {
 			RuntimeVariables.replace("Manage Data Definitions"));
 		selenium.waitForVisible("//iframe");
 		selenium.selectFrame("//iframe");
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/liferay/search_container.js')]");
 		selenium.waitForVisible("link=Add");
 		selenium.clickAt("link=Add", RuntimeVariables.replace("Add"));
 		selenium.waitForPageToLoad("30000");

@@ -15,6 +15,7 @@
 package com.liferay.portalweb.portal.controlpanel.dynamicdatalists.datadefinition.adddatadefinitiondecimal;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
+import com.liferay.portalweb.portal.controlpanel.dynamicdatalists.datadefinition.adddatadefinitionboolean.TearDownDataDefinitionTest;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;

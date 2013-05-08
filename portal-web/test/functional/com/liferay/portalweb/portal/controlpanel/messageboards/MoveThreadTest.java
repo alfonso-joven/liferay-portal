@@ -80,30 +80,12 @@ public class MoveThreadTest extends BaseTestCase {
 				selenium.waitForVisible("//input[@id='_162_subject']");
 				selenium.type("//input[@id='_162_subject']",
 					RuntimeVariables.replace("Moved to Sujr"));
-				selenium.waitForElementPresent(
-					"//textarea[@id='_162_editor' and contains(@style,'display: none;')]");
-				assertEquals(RuntimeVariables.replace("Source"),
-					selenium.getText("//a[@id='cke_33']"));
-				selenium.clickAt("//a[@id='cke_33']",
-					RuntimeVariables.replace("Source"));
+				Thread.sleep(1000);
 				selenium.waitForVisible(
-					"//td[@id='cke_contents__162_editor']/textarea");
-				selenium.type("//td[@id='cke_contents__162_editor']/textarea",
+					"//iframe[contains(@title,'Rich text editor')]");
+				selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
 					RuntimeVariables.replace(
 						"Trust and paths will be straightened."));
-				assertEquals(RuntimeVariables.replace("Source"),
-					selenium.getText("//a[@id='cke_33']"));
-				selenium.clickAt("//a[@id='cke_33']",
-					RuntimeVariables.replace("Source"));
-				selenium.waitForElementPresent(
-					"//textarea[@id='_162_editor' and contains(@style,'display: none;')]");
-				selenium.waitForVisible(
-					"//td[@id='cke_contents__162_editor']/iframe");
-				selenium.selectFrame(
-					"//td[@id='cke_contents__162_editor']/iframe");
-				selenium.waitForText("//body",
-					"Trust and paths will be straightened.");
-				selenium.selectFrame("relative=top");
 				selenium.clickAt("//input[@value='Select']",
 					RuntimeVariables.replace("Select"));
 				Thread.sleep(5000);
