@@ -96,10 +96,10 @@ else if (yearNullable) {
 	yearEmpty = true;
 }
 
-boolean allowNoneLink = false;
+boolean allowNone = false;
 
 if (dayNullable && monthNullable && yearNullable) {
-	allowNoneLink = true;
+	allowNone = true;
 }
 %>
 
@@ -178,7 +178,7 @@ if (dayNullable && monthNullable && yearNullable) {
 					appendOrder: '<%= dateFormatOrder %>',
 					boundingBox: displayDateNode,
 					calendar: {
-						allowNone: <%= allowNoneLink %>,
+						allowNone: <%= allowNone %>,
 						dates: [
 							<c:if test="<%= !monthEmpty && !dayEmpty && !yearEmpty %>">
 								new Date(
