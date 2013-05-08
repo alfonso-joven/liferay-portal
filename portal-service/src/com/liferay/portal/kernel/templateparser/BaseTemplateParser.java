@@ -199,7 +199,7 @@ public abstract class BaseTemplateParser implements TemplateParser {
 	}
 
 	protected long getGroupId() {
-		return GetterUtil.getLong(_tokens.get("group_id"));
+		return getArticleGroupId();
 	}
 
 	protected long getScopeGroupId() {
