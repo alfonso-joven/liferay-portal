@@ -30,6 +30,7 @@ public class RateWDFrontPageCommentTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("0 (0 Votes)"),
 			selenium.getText("//div[contains(@id,'ratingThumbContent')]/div"));
+		Thread.sleep(1000);
 		selenium.clickAt("//div[contains(@id,'ratingThumbContent')]/a[contains(@class,'thumb-down')]",
 			RuntimeVariables.replace("Thumb Down"));
 		selenium.waitForText("//div[contains(@id,'ratingThumbContent')]/div",
@@ -38,6 +39,7 @@ public class RateWDFrontPageCommentTest extends BaseTestCase {
 			selenium.getText("//div[contains(@id,'ratingThumbContent')]/div"));
 		selenium.clickAt("//div[contains(@id,'ratingThumbContent')]/a[contains(@class,'thumb-down')]",
 			RuntimeVariables.replace("Thumb Down"));
+		Thread.sleep(1000);
 		selenium.waitForText("//div[contains(@id,'ratingThumbContent')]/div",
 			"0 (0 Votes)");
 		assertEquals(RuntimeVariables.replace("0 (0 Votes)"),

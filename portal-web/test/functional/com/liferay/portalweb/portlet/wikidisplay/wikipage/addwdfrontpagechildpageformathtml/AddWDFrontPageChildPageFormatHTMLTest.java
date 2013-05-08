@@ -35,37 +35,19 @@ public class AddWDFrontPageChildPageFormatHTMLTest extends BaseTestCase {
 		selenium.clickAt("//div[@class='article-actions']/span/a[contains(.,'Add Child Page')]",
 			RuntimeVariables.replace("Add Child Page"));
 		selenium.waitForPageToLoad("30000");
-		selenium.select("//select", RuntimeVariables.replace("HTML"));
-		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.getConfirmation()
-						   .matches("^You may lose some formatting when switching from Creole to HTML. Do you want to continue[\\s\\S]$"));
-		assertEquals("HTML", selenium.getSelectedLabel("//select"));
 		selenium.type("//input[contains(@id,'_title')]",
 			RuntimeVariables.replace("Wiki FrontPage ChildPage Title"));
-		selenium.waitForVisible("//td[@class='cke_top']");
-		selenium.waitForElementPresent(
-			"//textarea[contains(@id,'_editor') and contains(@style,'display: none;')]");
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[.='Source']"));
-		selenium.clickAt("//span[.='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForVisible("//a[@class='cke_button_source cke_on']");
-		selenium.waitForVisible(
-			"//td[contains(@id,'cke_contents__54')]/textarea");
-		selenium.type("//td[contains(@id,'cke_contents__54')]/textarea",
+		selenium.select("//select", RuntimeVariables.replace("HTML"));
+		selenium.waitForPageToLoad("30000");
+		selenium.waitForConfirmation(
+			"You may lose some formatting when switching from Creole to HTML. Do you want to continue?");
+		assertEquals("HTML", selenium.getSelectedLabel("//select"));
+		Thread.sleep(1000);
+		selenium.waitForVisible("//a[@class='cke_button_cut cke_disabled']");
+		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
+		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
 			RuntimeVariables.replace(
-				"<a herf=http://www.liferay.com>Welcome to LIFERAY</a>"));
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[.='Source']"));
-		selenium.clickAt("//span[.='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForElementPresent(
-			"//textarea[contains(@id,'_editor') and contains(@style,'display: none;')]");
-		assertTrue(selenium.isVisible(
-				"//td[contains(@id,'cke_contents__54')]/iframe"));
-		selenium.selectFrame("//td[contains(@id,'cke_contents__54')]/iframe");
-		selenium.waitForText("//body", "Welcome to LIFERAY");
-		selenium.selectFrame("relative=top");
+				"<a herf=http://www.liferay.com>Welcome to LIFERAY"));
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");
@@ -84,7 +66,7 @@ public class AddWDFrontPageChildPageFormatHTMLTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Wiki FrontPage ChildPage Title"),
 			selenium.getText("//h1[@class='header-title']/span"));
 		assertEquals(RuntimeVariables.replace("Welcome to LIFERAY"),
-			selenium.getText("//div[@class='wiki-body']/p/a"));
+			selenium.getText("//div[@class='wiki-body']/a"));
 		assertEquals(RuntimeVariables.replace("Details"),
 			selenium.getText(
 				"//div[@class='page-actions top-actions']/span/a[contains(.,'Details')]"));

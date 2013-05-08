@@ -39,7 +39,7 @@ public class AddWDFrontPageAttachmentTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Add Attachments']",
 			RuntimeVariables.replace("Add Attachments"));
 		selenium.waitForPageToLoad("30000");
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		selenium.waitForVisible("//a[@class='use-fallback using-new-uploader']");
 		selenium.click("//a[@class='use-fallback using-new-uploader']");
 		selenium.waitForVisible("//input[@type='file']");

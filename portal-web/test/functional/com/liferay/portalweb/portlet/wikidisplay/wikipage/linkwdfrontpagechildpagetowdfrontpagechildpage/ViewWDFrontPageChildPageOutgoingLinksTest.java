@@ -37,9 +37,8 @@ public class ViewWDFrontPageChildPageOutgoingLinksTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Wiki FrontPage ChildPage2 Title"),
 			selenium.getText("//h1[@class='header-title']/span"));
-		assertEquals(RuntimeVariables.replace(
-				"Wiki FrontPage ChildPage2 Content"),
-			selenium.getText("//div[@class='wiki-body']/p"));
+		assertTrue(selenium.isPartialText("//div[@class='wiki-body']/p",
+				"Wiki FrontPage ChildPage2 Content"));
 		assertEquals(RuntimeVariables.replace("Details"),
 			selenium.getText(
 				"//div[@class='page-actions top-actions']/span/a[contains(.,'Details')]"));
@@ -52,6 +51,7 @@ public class ViewWDFrontPageChildPageOutgoingLinksTest extends BaseTestCase {
 		assertFalse(selenium.isTextPresent(
 				"There are no pages that link to this page."));
 		assertEquals(RuntimeVariables.replace("Wiki FrontPage ChildPage1 Title"),
-			selenium.getText("//td[1]/a"));
+			selenium.getText(
+				"//tr[contains(.,'Wiki FrontPage ChildPage1 Title')]/td[1]/a"));
 	}
 }
