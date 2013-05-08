@@ -28,13 +28,13 @@ public class InternationalizationVerifyTest extends BaseTestCase {
 		selenium.clickAt("link=Language Test Page",
 			RuntimeVariables.replace("Language Test Page"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//img[@alt='\u65e5\u672c\u8a9e (\u65e5\u672c) - Beta']",
-			RuntimeVariables.replace("\u65e5\u672c\u8a9e (\u65e5\u672c) - Beta"));
+		selenium.clickAt("//img[@alt='\u65e5\u672c\u8a9e [Beta]']",
+			RuntimeVariables.replace("\u65e5\u672c\u8a9e [Beta]"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isElementPresent(
 				"link=\u8a00\u8a9e\u30c6\u30b9\u30c8\u30da\u30fc\u30b8"));
-		selenium.clickAt("//img[@alt='espa\u00f1ol (Espa\u00f1a)']",
-			RuntimeVariables.replace("espa\u00f1ol (Espa\u00f1a)"));
+		selenium.clickAt("//img[@alt='espa\u00f1ol']",
+			RuntimeVariables.replace("espa\u00f1ol"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isElementPresent(
 				"link=P\u00e1gina de la prueba de lengua"));

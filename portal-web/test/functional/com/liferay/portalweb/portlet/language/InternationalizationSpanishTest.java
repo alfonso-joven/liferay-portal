@@ -28,8 +28,8 @@ public class InternationalizationSpanishTest extends BaseTestCase {
 		selenium.clickAt("link=Language Test Page",
 			RuntimeVariables.replace("Language Test Page"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//img[@alt='espa\u00f1ol (Espa\u00f1a)']",
-			RuntimeVariables.replace("espa\u00f1ol (Espa\u00f1a)"));
+		selenium.clickAt("//img[@alt='espa\u00f1ol']",
+			RuntimeVariables.replace("espa\u00f1ol"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//nav/ul/li[2]/a/span",
 			RuntimeVariables.replace("Edit Page Name"));
