@@ -66,11 +66,15 @@ import com.liferay.portlet.PortletPreferencesFactoryUtil;
 import com.liferay.portlet.asset.model.AssetCategory;
 import com.liferay.portlet.asset.model.AssetCategoryConstants;
 import com.liferay.portlet.asset.model.AssetCategoryProperty;
+import com.liferay.portlet.asset.model.AssetEntry;
+import com.liferay.portlet.asset.model.AssetLink;
 import com.liferay.portlet.asset.model.AssetTag;
 import com.liferay.portlet.asset.model.AssetTagProperty;
 import com.liferay.portlet.asset.model.AssetVocabulary;
 import com.liferay.portlet.asset.service.AssetCategoryLocalServiceUtil;
 import com.liferay.portlet.asset.service.AssetCategoryPropertyLocalServiceUtil;
+import com.liferay.portlet.asset.service.AssetEntryLocalServiceUtil;
+import com.liferay.portlet.asset.service.AssetLinkLocalServiceUtil;
 import com.liferay.portlet.asset.service.AssetTagLocalServiceUtil;
 import com.liferay.portlet.asset.service.AssetTagPropertyLocalServiceUtil;
 import com.liferay.portlet.asset.service.AssetVocabularyLocalServiceUtil;
@@ -87,6 +91,7 @@ import com.liferay.util.xml.DocUtil;
 import java.io.File;
 import java.io.IOException;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashSet;
@@ -504,6 +509,34 @@ public class PortletExporter {
 			assetElement.addAttribute("source-uuid", sourceAssetEntryUuid);
 			assetElement.addAttribute(
 				"target-uuids", StringUtil.merge(targetAssetEntryUuids));
+
+			AssetEntry sourceAssetEntry = AssetEntryLocalServiceUtil.getEntry(
+				portletDataContext.getGroupId(), sourceAssetEntryUuid);
+
+			List<AssetLink> directLinks =
+				AssetLinkLocalServiceUtil.getDirectLinks(
+					sourceAssetEntry.getEntryId(),
+					Integer.valueOf(assetLinkType));
+
+			List<String> linksWeight = new ArrayList<String>();
+
+			for (String target : targetAssetEntryUuids) {
+				for (AssetLink directLink : directLinks) {
+					AssetEntry targetEntry =
+						AssetEntryLocalServiceUtil.getEntry(
+							directLink.getEntryId2());
+
+					if (targetEntry.getClassUuid().equals(target)) {
+						linksWeight.add(String.valueOf(directLink.getWeight()));
+						break;
+					}
+				}
+			}
+
+			String linksWeightString = StringUtil.merge(
+				linksWeight.toArray(new String[linksWeight.size()]));
+
+			assetElement.addAttribute("weights", linksWeightString);
 			assetElement.addAttribute("type", assetLinkType);
 		}
 

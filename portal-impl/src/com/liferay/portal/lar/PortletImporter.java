@@ -82,6 +82,7 @@ import com.liferay.portlet.asset.NoSuchTagException;
 import com.liferay.portlet.asset.model.AssetCategory;
 import com.liferay.portlet.asset.model.AssetCategoryConstants;
 import com.liferay.portlet.asset.model.AssetEntry;
+import com.liferay.portlet.asset.model.AssetLink;
 import com.liferay.portlet.asset.model.AssetTag;
 import com.liferay.portlet.asset.model.AssetVocabulary;
 import com.liferay.portlet.asset.service.AssetCategoryLocalServiceUtil;
@@ -1368,6 +1369,24 @@ public class PortletImporter {
 					assetLinkElement.attributeValue("target-uuids")));
 			int assetLinkType = GetterUtil.getInteger(
 				assetLinkElement.attributeValue("type"));
+			String linksWeight = GetterUtil.getString(
+				assetLinkElement.attributeValue("weights"));
+
+			Map<String, String> assetLinkWeight = null;
+
+			Map<Long, AssetEntry> assetLinkTarget = null;
+
+			if (Validator.isNotNull(linksWeight)) {
+				assetLinkWeight = new HashMap<String, String>();
+
+				assetLinkTarget = new HashMap<Long, AssetEntry>();
+
+				String weights[] = StringUtil.split(linksWeight);
+
+				for (int i = 0; i<assetEntryUuidArray.length; i++) {
+					assetLinkWeight.put(assetEntryUuidArray[i], weights[i]);
+				}
+			}
 
 			List<Long> assetEntryIds = new ArrayList<Long>();
 
@@ -1382,6 +1401,11 @@ public class PortletImporter {
 
 				if (assetEntry != null) {
 					assetEntryIds.add(assetEntry.getEntryId());
+
+					if (Validator.isNotNull(linksWeight)) {
+						assetLinkTarget.put(
+							assetEntry.getEntryId(), assetEntry);
+					}
 				}
 			}
 
@@ -1404,6 +1428,26 @@ public class PortletImporter {
 				AssetLinkLocalServiceUtil.updateLinks(
 					assetEntry.getUserId(), assetEntry.getEntryId(),
 					assetEntryIdsArray, assetLinkType);
+
+				if (Validator.isNotNull(linksWeight)) {
+					List<AssetLink> directLinks =
+						AssetLinkLocalServiceUtil.getDirectLinks(
+							assetEntry.getEntryId(), assetLinkType);
+
+					for (AssetLink link : directLinks) {
+						AssetEntry linkTarget =
+							assetLinkTarget.get(link.getEntryId2());
+
+						if (Validator.isNotNull(linkTarget)) {
+							int weight = Integer.valueOf(
+								assetLinkWeight.get(linkTarget.getClassUuid()));
+
+							link.setWeight(weight);
+
+							AssetLinkLocalServiceUtil.updateAssetLink(link);
+						}
+					}
+				}
 			}
 		}
 	}
