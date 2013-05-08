@@ -177,6 +177,7 @@ AUI.add(
 					Liferay.Util.getTop().Liferay.fire(
 						'hashChange',
 						{
+							id: Liferay.Util.getWindowName() || A.guid(),
 							newVal: hash,
 							prevVal: instance._hash,
 							uri: location.href

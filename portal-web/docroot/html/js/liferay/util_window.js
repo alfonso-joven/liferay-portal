@@ -132,7 +132,9 @@ AUI.add(
 				Liferay.after(
 					'hashChange',
 					function(event) {
-						dialog.iframe.set('uri', event.uri);
+						if (event.id == id ) {
+							dialog.iframe.set('uri', event.uri);
+						}
 					}
 				);
 

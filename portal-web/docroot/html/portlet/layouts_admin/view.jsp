@@ -207,7 +207,22 @@ SitesUtil.addPortletBreadcrumbEntries(group, pagesName, redirectURL, request, re
 		layoutsContainer.plug(
 			A.Plugin.IO,
 			{
-				autoLoad: false
+				autoLoad: false,
+				after: {
+					'success': function(event) {
+						var dialog = Liferay.Util.getWindow();
+
+						if (dialog) {
+							dialog.iframe.set(
+								'uri',
+								location.href,
+								{
+									src: A.Widget.UI_SRC
+								}
+							);
+						}
+					}
+				}
 			}
 		);
 
