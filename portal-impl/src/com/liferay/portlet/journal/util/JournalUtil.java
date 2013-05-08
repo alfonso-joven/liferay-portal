@@ -1374,6 +1374,9 @@ public class JournalUtil {
 
 		tokens.put("cdn_host", themeDisplayElement.elementText("cdn-host"));
 		tokens.put("company_id", themeDisplayElement.elementText("company-id"));
+		tokens.put(
+			"scope_group_id",
+			themeDisplayElement.elementText("scope-group-id"));
 		tokens.put("friendly_url_current", friendlyUrlCurrent);
 		tokens.put(
 			"friendly_url_private_group",
@@ -1454,6 +1457,8 @@ public class JournalUtil {
 
 		tokens.put("cdn_host", themeDisplay.getCDNHost());
 		tokens.put("company_id", String.valueOf(themeDisplay.getCompanyId()));
+		tokens.put(
+			"scope_group_id", String.valueOf(themeDisplay.getScopeGroupId()));
 		tokens.put("friendly_url_current", friendlyUrlCurrent);
 		tokens.put(
 			"friendly_url_private_group",

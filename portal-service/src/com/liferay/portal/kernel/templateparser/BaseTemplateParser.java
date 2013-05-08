@@ -203,11 +203,7 @@ public abstract class BaseTemplateParser implements TemplateParser {
 	}
 
 	protected long getScopeGroupId() {
-		if (_themeDisplay != null) {
-			return _themeDisplay.getScopeGroupId();
-		}
-
-		return GroupConstants.DEFAULT_LIVE_GROUP_ID;
+		return GetterUtil.getLong(_tokens.get("scope_group_id"));
 	}
 
 	protected abstract TemplateContext getTemplateContext() throws Exception;
