@@ -149,6 +149,12 @@ public class DDLRecordSetLocalServiceImpl
 
 		ddmStructureLinkLocalService.deleteClassStructureLink(
 			recordSet.getRecordSetId());
+
+		// Workflow
+
+		workflowDefinitionLinkLocalService.deleteWorkflowDefinitionLink(
+			recordSet.getCompanyId(), recordSet.getGroupId(),
+			DDLRecordSet.class.getName(), recordSet.getRecordSetId(), 0);
 	}
 
 	public void deleteRecordSet(long recordSetId)
