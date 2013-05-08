@@ -45,7 +45,7 @@ public class ViewDMFolderImageNameNullMGTest extends BaseTestCase {
 			selenium.getText("//span[@class='image-title']"));
 		selenium.clickAt("//span[@class='image-title']",
 			RuntimeVariables.replace("Document_1.jpg"));
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		selenium.waitForVisible("//img[@class='aui-image-viewer-image']");
 		assertEquals(RuntimeVariables.replace(
 				"Document_1.jpg - DM Folder Image Description"),

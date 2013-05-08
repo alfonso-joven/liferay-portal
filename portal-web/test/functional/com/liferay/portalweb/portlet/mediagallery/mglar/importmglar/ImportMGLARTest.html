@@ -20,7 +20,7 @@
 </tr>
 <tr>
 	<td>pause</td>
-	<td>5000</td>
+	<td>1000</td>
 	<td></td>
 </tr>
 <tr>
@@ -56,22 +56,52 @@
 <tr>
 	<td>uploadFile</td>
 	<td>//input[@id='_86_importFileName']</td>
-	<td>L:\portal\build\portal-web\test\com\liferay\portalweb\portlet\mediagallery\dependencies\Media_Gallery-Selenium.portlet.lar</td>
+	<td>L:\portal\build\portal-web\test\functional\com\liferay\portalweb\portlet\mediagallery\dependencies\Media_Gallery-Selenium.portlet.lar</td>
 </tr>
 <tr>
-	<td>assertNotChecked</td>
+	<td>storeChecked</td>
+	<td>//input[@id='_86_DELETE_PORTLET_DATACheckbox']</td>
+	<td>deleteChecked</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>${deleteChecked}</td>
+	<td>DeleteChecked</td>
+</tr>
+<tr>
+	<td>clickAt</td>
 	<td>//input[@id='_86_DELETE_PORTLET_DATACheckbox']</td>
 	<td>Delete portlet data before importing.</td>
 </tr>
 <tr>
-	<td>check</td>
-	<td>//input[@id='_86_DELETE_PORTLET_DATACheckbox']</td>
-	<td>Delete portlet data before importing.</td>
+	<td>label</td>
+	<td>DeleteChecked</td>
+	<td></td>
 </tr>
 <tr>
 	<td>assertChecked</td>
 	<td>//input[@id='_86_DELETE_PORTLET_DATACheckbox']</td>
 	<td>Delete portlet data before importing.</td>
+</tr>
+<tr>
+	<td>storeChecked</td>
+	<td>//input[@id='_86_PORTLET_DATACheckbox']</td>
+	<td>dataChecked</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>${dataChecked}</td>
+	<td>DataChecked</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//input[@id='_86_PORTLET_DATACheckbox']</td>
+	<td>Data</td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>DataChecked</td>
+	<td></td>
 </tr>
 <tr>
 	<td>assertChecked</td>

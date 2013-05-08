@@ -64,7 +64,7 @@ public class TearDownDMFolderMGTest extends BaseTestCase {
 					continue;
 				}
 
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				selenium.clickAt("//a[@class='image-thumbnail']",
 					RuntimeVariables.replace("DM Folder 2"));
 				selenium.waitForPageToLoad("30000");
@@ -86,7 +86,7 @@ public class TearDownDMFolderMGTest extends BaseTestCase {
 					continue;
 				}
 
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				selenium.clickAt("//a[@class='image-thumbnail']",
 					RuntimeVariables.replace("DM Folder 3"));
 				selenium.waitForPageToLoad("30000");
@@ -108,7 +108,7 @@ public class TearDownDMFolderMGTest extends BaseTestCase {
 					continue;
 				}
 
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				selenium.clickAt("//a[@class='image-thumbnail']",
 					RuntimeVariables.replace("DM Folder 4"));
 				selenium.waitForPageToLoad("30000");
@@ -130,7 +130,7 @@ public class TearDownDMFolderMGTest extends BaseTestCase {
 					continue;
 				}
 
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				selenium.clickAt("//a[@class='image-thumbnail']",
 					RuntimeVariables.replace("DM Folder 5"));
 				selenium.waitForPageToLoad("30000");

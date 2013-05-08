@@ -45,7 +45,7 @@ public class ViewDMFolderImageMGTest extends BaseTestCase {
 			selenium.getText("//span[@class='image-title']"));
 		selenium.clickAt("//span[@class='image-title']",
 			RuntimeVariables.replace("DM Folder Image Title Edit"));
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		selenium.waitForVisible("//img[@class='aui-image-viewer-image']");
 		assertEquals(RuntimeVariables.replace(
 				"DM Folder Image Title Edit - DM Folder Image Description Edit"),

@@ -60,7 +60,7 @@ public class TearDownDMSubfolderMGTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 
 				boolean subfolder2present = selenium.isElementPresent(
 						"//a[@class='image-thumbnail']");
@@ -83,7 +83,7 @@ public class TearDownDMSubfolderMGTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 
 				boolean subfolder3present = selenium.isElementPresent(
 						"//a[@class='image-thumbnail']");
@@ -106,7 +106,7 @@ public class TearDownDMSubfolderMGTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 
 				boolean subfolder4present = selenium.isElementPresent(
 						"//a[@class='image-thumbnail']");
@@ -129,7 +129,7 @@ public class TearDownDMSubfolderMGTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 
 				boolean subfolder5present = selenium.isElementPresent(
 						"//a[@class='image-thumbnail']");
@@ -152,7 +152,7 @@ public class TearDownDMSubfolderMGTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 
 			case 2:
 			case 3:
