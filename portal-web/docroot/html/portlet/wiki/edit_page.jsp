@@ -309,7 +309,13 @@ if (Validator.isNull(redirect)) {
 						<%
 						for (int i = 0; i < attachments.length; i++) {
 							String fileName = FileUtil.getShortFileName(attachments[i]);
-							long fileSize = DLStoreUtil.getFileSize(company.getCompanyId(), CompanyConstants.SYSTEM, attachments[i]);
+							long fileSize = 0;
+
+							try {
+								fileSize = DLStoreUtil.getFileSize(company.getCompanyId(), CompanyConstants.SYSTEM, attachments[i]);
+							}
+							catch (NoSuchFileException nsfe) {
+							}
 						%>
 
 							<portlet:actionURL var="getPageAttachmentURL" windowState="<%= LiferayWindowState.EXCLUSIVE.toString() %>">

@@ -68,7 +68,13 @@ for (int i = 0; i < results.size(); i++) {
 
 	String shortFileName = FileUtil.getShortFileName(fileName);
 
-	long fileSize = DLStoreUtil.getFileSize(company.getCompanyId(), CompanyConstants.SYSTEM, fileName);
+	long fileSize = 0;
+
+	try {
+		fileSize = DLStoreUtil.getFileSize(company.getCompanyId(), CompanyConstants.SYSTEM, fileName);
+	}
+	catch (NoSuchFileException nsfe) {
+	}
 
 	ResultRow row = new ResultRow(new Object[] {node, wikiPage, fileName}, fileName, i);
 
