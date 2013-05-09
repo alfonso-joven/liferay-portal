@@ -56,6 +56,10 @@ public class Select1Test extends BaseTestCase {
 		assertEquals("September",
 			selenium.getSelectedLabel("//select[@id='_125_birthdaymonth']"));
 		selenium.select("//select[@id='_125_birthdayday']",
+			RuntimeVariables.replace("1"));
+		assertEquals("1",
+			selenium.getSelectedLabel("//select[@id='_125_birthdayday']"));
+		selenium.select("//select[@id='_125_birthdayday']",
 			RuntimeVariables.replace("2"));
 		assertEquals("2",
 			selenium.getSelectedLabel("//select[@id='_125_birthdayday']"));
