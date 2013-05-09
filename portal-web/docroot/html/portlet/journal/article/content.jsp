@@ -512,11 +512,11 @@ if (Validator.isNotNull(content)) {
 											<liferay-ui:input-editor editorImpl="<%= EDITOR_WYSIWYG_IMPL_KEY %>" name='<%= renderResponse.getNamespace() + "structure_el_TextAreaField_content" %>' toolbarSet="liferay-article" width="100%" />
 										</div>
 
+										<aui:input cssClass="journal-article-localized-checkbox" label="localizable" name="localized" type="hidden" value="<%= true %>" />
+
 										<div class="journal-article-required-message portlet-msg-error">
 											<liferay-ui:message key="this-field-is-required" />
 										</div>
-
-										<aui:input cssClass="journal-article-localized-checkbox" label="localizable" name="localized" type="hidden" value="<%= true %>" />
 
 										<div class="journal-article-buttons">
 											<aui:input cssClass="journal-article-variable-name" id="TextAreaFieldvariableName" inlineField="<%= true %>" label="variable-name" name="variableName" size="25" type="text" value="content" />
