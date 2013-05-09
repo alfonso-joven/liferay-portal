@@ -1374,9 +1374,6 @@ public class JournalUtil {
 
 		tokens.put("cdn_host", themeDisplayElement.elementText("cdn-host"));
 		tokens.put("company_id", themeDisplayElement.elementText("company-id"));
-		tokens.put(
-			"scope_group_id",
-			themeDisplayElement.elementText("scope-group-id"));
 		tokens.put("friendly_url_current", friendlyUrlCurrent);
 		tokens.put(
 			"friendly_url_private_group",
@@ -1404,6 +1401,9 @@ public class JournalUtil {
 				themeDisplayElement.elementText("url-portal")));
 		tokens.put(
 			"root_path", themeDisplayElement.elementText("path-context"));
+		tokens.put(
+			"scope_group_id",
+			themeDisplayElement.elementText("scope-group-id"));
 		tokens.put(
 			"theme_image_path",
 			themeDisplayElement.elementText("path-theme-images"));
@@ -1457,8 +1457,6 @@ public class JournalUtil {
 
 		tokens.put("cdn_host", themeDisplay.getCDNHost());
 		tokens.put("company_id", String.valueOf(themeDisplay.getCompanyId()));
-		tokens.put(
-			"scope_group_id", String.valueOf(themeDisplay.getScopeGroupId()));
 		tokens.put("friendly_url_current", friendlyUrlCurrent);
 		tokens.put(
 			"friendly_url_private_group",
@@ -1479,6 +1477,8 @@ public class JournalUtil {
 		tokens.put(
 			"protocol", HttpUtil.getProtocol(themeDisplay.getURLPortal()));
 		tokens.put("root_path", themeDisplay.getPathContext());
+		tokens.put(
+			"scope_group_id", String.valueOf(themeDisplay.getScopeGroupId()));
 		tokens.put("theme_image_path", themeDisplay.getPathThemeImages());
 
 		_populateCustomTokens(tokens);
