@@ -134,8 +134,8 @@ public class CookieKeys implements com.liferay.portal.kernel.util.CookieKeys {
 
 		// See LEP-4602 and	LEP-4618.
 
-		if (Validator.isNotNull(PropsValues.SESSION_COOKIE_DOMAIN)) {
-			return PropsValues.SESSION_COOKIE_DOMAIN;
+		if (Validator.isNotNull(_SESSION_COOKIE_DOMAIN)) {
+			return _SESSION_COOKIE_DOMAIN;
 		}
 
 		String host = request.getServerName();
@@ -222,6 +222,9 @@ public class CookieKeys implements com.liferay.portal.kernel.util.CookieKeys {
 			}
 		}
 	}
+
+	private static final String _SESSION_COOKIE_DOMAIN = PropsUtil.get(
+		PropsKeys.SESSION_COOKIE_DOMAIN);
 
 	private static final boolean _SESSION_COOKIE_USE_FULL_HOSTNAME =
 		GetterUtil.getBoolean(
