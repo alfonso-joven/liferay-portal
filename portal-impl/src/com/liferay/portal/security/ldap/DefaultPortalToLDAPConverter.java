@@ -422,27 +422,31 @@ public class DefaultPortalToLDAPConverter implements PortalToLDAPConverter {
 
 		String password = user.getPasswordUnencrypted();
 
+		if (Validator.isNull(password)) {
+			return password;
+		}
+
 		String algorithm = PrefsPropsUtil.getString(
 			user.getCompanyId(),
 			PropsKeys.LDAP_AUTH_PASSWORD_ENCRYPTION_ALGORITHM);
 
-		if (Validator.isNotNull(algorithm)) {
-			try {
-				StringBundler sb = new StringBundler(4);
-
-				sb.append(StringPool.OPEN_CURLY_BRACE);
-				sb.append(algorithm);
-				sb.append(StringPool.CLOSE_CURLY_BRACE);
-				sb.append(PwdEncryptor.encrypt(algorithm, password, null));
-
-				password = sb.toString();
-			}
-			catch (PwdEncryptorException pee) {
-				throw new SystemException(pee);
-			}
+		if (Validator.isNull(algorithm)) {
+			return password;
 		}
 
-		return password;
+		try {
+			StringBundler sb = new StringBundler(4);
+
+			sb.append(StringPool.OPEN_CURLY_BRACE);
+			sb.append(algorithm);
+			sb.append(StringPool.CLOSE_CURLY_BRACE);
+			sb.append(PwdEncryptor.encrypt(algorithm, password, null));
+
+			return sb.toString();
+		}
+		catch (PwdEncryptorException pee) {
+			throw new SystemException(pee);
+		}
 	}
 
 	protected Modifications getModifications(

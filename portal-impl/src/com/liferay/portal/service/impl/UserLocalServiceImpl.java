@@ -1570,11 +1570,14 @@ public class UserLocalServiceImpl extends UserLocalServiceBaseImpl {
 			}
 
 			user.setPassword(PwdEncryptor.encrypt(password));
-			user.setPasswordEncrypted(true);
 			user.setPasswordUnencrypted(password);
+			user.setPasswordEncrypted(true);
+			user.setPasswordModified(true);
+			user.setPasswordModifiedDate(new Date());
 
 			userPersistence.update(user, false);
 
+			user.setPasswordModified(false);
 		}
 
 		if (user.hasCompanyMx()) {
