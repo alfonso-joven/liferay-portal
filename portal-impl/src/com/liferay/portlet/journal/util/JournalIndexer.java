@@ -56,10 +56,12 @@ import com.liferay.portlet.journal.service.persistence.JournalArticleActionableD
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 import javax.portlet.PortletURL;
 
@@ -590,6 +592,8 @@ public class JournalIndexer extends BaseIndexer {
 
 		final Collection<Document> documents = new ArrayList<Document>();
 
+		final Set<String> latestArticleIds = new HashSet<String>();
+
 		ActionableDynamicQuery actionableDynamicQuery =
 			new JournalArticleActionableDynamicQuery() {
 
@@ -642,9 +646,15 @@ public class JournalIndexer extends BaseIndexer {
 							article.getResourcePrimKey(),
 							WorkflowConstants.STATUS_APPROVED);
 
-					if (!latestArticle.isIndexable()) {
+					String latestArticleId = latestArticle.getArticleId();
+
+					if (latestArticleIds.contains(latestArticleId)) {
 						return;
 					}
+
+					latestArticleIds.add(latestArticleId);
+
+					article = latestArticle;
 				}
 
 				Document document = getDocument(article);
