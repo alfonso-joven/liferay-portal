@@ -38,9 +38,9 @@ public class PostNewMBCategoryThreadSiteTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("New Message"),
 			selenium.getText("//h1[@class='header-title']/span"));
+		Thread.sleep(1000);
 		selenium.type("//input[@id='_19_subject']",
 			RuntimeVariables.replace("MB Message Subject"));
-		Thread.sleep(1000);
 		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
 		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
 			RuntimeVariables.replace("MB Message Body"));

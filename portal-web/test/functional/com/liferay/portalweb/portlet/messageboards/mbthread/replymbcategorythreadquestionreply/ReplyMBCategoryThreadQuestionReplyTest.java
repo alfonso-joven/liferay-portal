@@ -45,9 +45,9 @@ public class ReplyMBCategoryThreadQuestionReplyTest extends BaseTestCase {
 		selenium.clickAt("//li[contains(.,'Reply')]/span/a/span",
 			RuntimeVariables.replace("Reply"));
 		selenium.waitForPageToLoad("30000");
+		Thread.sleep(1000);
 		assertEquals("RE: MB Category Thread Message Subject",
 			selenium.getValue("//input[@id='_19_subject']"));
-		Thread.sleep(1000);
 		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
 		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
 			RuntimeVariables.replace("MB Category Thread Message Reply Body"));

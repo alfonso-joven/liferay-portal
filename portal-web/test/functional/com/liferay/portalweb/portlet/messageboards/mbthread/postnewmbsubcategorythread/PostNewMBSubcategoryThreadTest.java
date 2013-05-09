@@ -43,9 +43,9 @@ public class PostNewMBSubcategoryThreadTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Post New Thread']",
 			RuntimeVariables.replace("Post New Thread"));
 		selenium.waitForPageToLoad("30000");
+		Thread.sleep(1000);
 		selenium.type("//input[@id='_19_subject']",
 			RuntimeVariables.replace("MB Subcategory Thread Message Subject"));
-		Thread.sleep(1000);
 		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
 		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
 			RuntimeVariables.replace("MB Subcategory Thread Message Body"));
