@@ -48,6 +48,9 @@ import com.liferay.util.servlet.filters.CacheResponseUtil;
 import java.io.File;
 import java.io.IOException;
 
+import java.net.URL;
+import java.net.URLConnection;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -124,7 +127,19 @@ public class MinifierFilter extends BasePortalFilter {
 				String importFullFileName = dir.concat(StringPool.SLASH).concat(
 					importFileName);
 
-				String importContent = FileUtil.read(importFullFileName);
+				String importContent = null;
+
+				if (Validator.isUrl(importFileName)) {
+					URL resourceURL = new URL(importFileName);
+
+					URLConnection urlConnection = resourceURL.openConnection();
+
+					importContent = StringUtil.read(
+						urlConnection.getInputStream());
+				}
+				else {
+					importContent = FileUtil.read(importFullFileName);
+				}
 
 				if (importContent == null) {
 					if (_log.isWarnEnabled()) {
