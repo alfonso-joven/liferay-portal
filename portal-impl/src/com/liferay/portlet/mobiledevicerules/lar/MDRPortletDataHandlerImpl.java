@@ -576,7 +576,7 @@ public class MDRPortletDataHandlerImpl extends BasePortletDataHandler {
 				ruleGroupId = ruleGroup.getRuleGroupId();
 			}
 			catch (Exception e) {
-				if (_log.isErrorEnabled()) {
+				if (_log.isWarnEnabled()) {
 					_log.warn(
 						"Unable to import rule group instance " +
 							ruleGroupInstance,
