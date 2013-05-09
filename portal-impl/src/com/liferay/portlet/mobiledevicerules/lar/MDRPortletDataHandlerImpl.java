@@ -570,8 +570,8 @@ public class MDRPortletDataHandlerImpl extends BasePortletDataHandler {
 				String ruleGroupUuid = ruleGroupInstanceElement.attributeValue(
 					"rule-group-uuid");
 
-				MDRRuleGroup ruleGroup = MDRRuleGroupUtil.findByUuid(
-					ruleGroupUuid).get(0);
+				MDRRuleGroup ruleGroup = MDRRuleGroupUtil.findByUuid_First(
+					ruleGroupUuid, null);
 
 				ruleGroupId = ruleGroup.getRuleGroupId();
 			}
