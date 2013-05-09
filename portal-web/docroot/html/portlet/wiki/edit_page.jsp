@@ -309,6 +309,7 @@ if (Validator.isNull(redirect)) {
 						<%
 						for (int i = 0; i < attachments.length; i++) {
 							String fileName = FileUtil.getShortFileName(attachments[i]);
+
 							long fileSize = 0;
 
 							try {

@@ -308,6 +308,7 @@
 							<%
 							for (int j = 0; j < attachmentsFiles.length; j++) {
 								String fileName = FileUtil.getShortFileName(attachmentsFiles[j]);
+
 								long fileSize = 0;
 
 								try {
