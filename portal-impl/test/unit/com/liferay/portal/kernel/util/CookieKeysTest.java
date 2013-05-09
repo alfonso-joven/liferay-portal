@@ -14,6 +14,7 @@
 
 package com.liferay.portal.kernel.util;
 
+import com.liferay.portal.util.CookieKeys;
 import com.liferay.portal.util.PropsImpl;
 
 import java.lang.reflect.Field;
