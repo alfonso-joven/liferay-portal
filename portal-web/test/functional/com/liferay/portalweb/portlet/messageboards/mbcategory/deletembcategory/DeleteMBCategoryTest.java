@@ -31,7 +31,7 @@ public class DeleteMBCategoryTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("MB Category Name"),
 			selenium.getText("//a/strong"));
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Actions"),
 			selenium.getText("//span[@title='Actions']/ul/li/strong/a"));
 		selenium.clickAt("//span[@title='Actions']/ul/li/strong/a",

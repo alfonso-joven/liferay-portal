@@ -40,8 +40,7 @@ public class PostNewMBCategoryThreadTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_19_subject']",
 			RuntimeVariables.replace("MB Category Thread Message Subject"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_19_editor' and @style='display: none;']");
+		Thread.sleep(1000);
 		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
 		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
 			RuntimeVariables.replace("MB Category Thread Message Body"));

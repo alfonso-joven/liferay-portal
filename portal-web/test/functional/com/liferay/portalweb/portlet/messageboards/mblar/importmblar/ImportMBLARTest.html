@@ -14,93 +14,38 @@
 	<td></td>
 </tr>
 <tr>
-	<td>clickAt</td>
-	<td>//div[@id='dockbar']</td>
-	<td>Dockbar</td>
-</tr>
-<tr>
-	<td>waitForElementPresent</td>
-	<td>//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]</td>
-	<td>AUI Editable Min</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//li[@id='_145_manageContent']/a/span</td>
-	<td>Manage</td>
-</tr>
-<tr>
-	<td>mouseOver</td>
-	<td>//li[@id='_145_manageContent']/a/span</td>
-	<td>Manage</td>
-</tr>
-<tr>
-	<td>waitForVisible</td>
-	<td>//a[@title='Manage Site Content']</td>
-	<td>Site Content</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//a[@title='Manage Site Content']</td>
-	<td>Site Content</td>
-</tr>
-<tr>
-	<td>clickAt</td>
-	<td>//a[@title='Manage Site Content']</td>
-	<td>Site Content</td>
-</tr>
-<tr>
-	<td>waitForVisible</td>
-	<td>//iframe[@id='manageContentDialog']</td>
-	<td>Manage Site Content</td>
-</tr>
-<tr>
-	<td>selectFrame</td>
-	<td>//iframe[@id='manageContentDialog']</td>
-	<td>Manage Site Content</td>
-</tr>
-<tr>
-	<td>waitForElementPresent</td>
-	<td>//script[contains(@src,'/aui/transition/transition-min.js')]</td>
-	<td>Transition Min</td>
-</tr>
-<tr>
-	<td>waitForVisible</td>
-	<td>//ul[@class='category-portlets']/li[6]/a</td>
-	<td>Message Boards</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//ul[@class='category-portlets']/li[6]/a</td>
-	<td>Message Boards</td>
-</tr>
-<tr>
 	<td>clickAtAndWait</td>
-	<td>//ul[@class='category-portlets']/li[6]/a</td>
-	<td>Message Boards</td>
+	<td>link=Message Boards Test Page</td>
+	<td>Message Boards Test Page</td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//a[contains(@id,'_162_') and contains(@id,'menuButton')]</td>
+	<td>//span[@title='Options']/ul/li/strong/a</td>
 	<td>Options</td>
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>//a[contains(@id,'_162_') and contains(@id,'menuButton')]</td>
+	<td>//span[@title='Options']/ul/li/strong/a</td>
 	<td>Options</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//li[@class='portlet-export-import portlet-export-import-icon last']/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Export / Import')]</td>
 	<td>Export / Import</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//li[@class='portlet-export-import portlet-export-import-icon last']/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Export / Import')]</td>
 	<td>Export / Import</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>//li[@class='portlet-export-import portlet-export-import-icon last']/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Export / Import')]</td>
 	<td>Export / Import</td>
 </tr>
 <tr>
@@ -111,17 +56,27 @@
 <tr>
 	<td>uploadFile</td>
 	<td>//input[@id='_86_importFileName']</td>
-	<td>L:\portal\build\portal-web\test\com\liferay\portalweb\portlet\messageboards\dependencies\Message_Boards-Selenium.portlet.lar</td>
+	<td>L:\portal\build\portal-web\test\functional\com\liferay\portalweb\portlet\messageboards\dependencies\Message_Boards-Selenium.portlet.lar</td>
 </tr>
 <tr>
-	<td>assertNotChecked</td>
+	<td>storeChecked</td>
 	<td>//input[@id='_86_DELETE_PORTLET_DATACheckbox']</td>
-	<td>Delete portlet data before importing.</td>
+	<td>deleteChecked</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>${deleteChecked}</td>
+	<td>DeleteChecked</td>
 </tr>
 <tr>
 	<td>clickAt</td>
 	<td>//input[@id='_86_DELETE_PORTLET_DATACheckbox']</td>
 	<td>Delete portlet data before importing.</td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>DeleteChecked</td>
+	<td></td>
 </tr>
 <tr>
 	<td>assertChecked</td>
@@ -129,14 +84,24 @@
 	<td>Delete portlet data before importing.</td>
 </tr>
 <tr>
-	<td>assertNotChecked</td>
+	<td>storeChecked</td>
 	<td>//input[@id='_86_PORTLET_DATACheckbox']</td>
-	<td>Data</td>
+	<td>dataChecked</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>${dataChecked}</td>
+	<td>DataChecked</td>
 </tr>
 <tr>
 	<td>clickAt</td>
 	<td>//input[@id='_86_PORTLET_DATACheckbox']</td>
 	<td>Data</td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>DataChecked</td>
+	<td></td>
 </tr>
 <tr>
 	<td>assertChecked</td>
@@ -157,6 +122,11 @@
 	<td>selectFrame</td>
 	<td>relative=top</td>
 	<td>top</td>
+</tr>
+<tr>
+	<td>clickAtAndWait</td>
+	<td>link=Message Boards Test Page</td>
+	<td>Message Boards Test Page</td>
 </tr>
 </tbody></table>
 </body>

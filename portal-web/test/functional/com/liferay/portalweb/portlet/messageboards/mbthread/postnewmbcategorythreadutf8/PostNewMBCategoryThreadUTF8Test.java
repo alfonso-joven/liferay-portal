@@ -41,28 +41,11 @@ public class PostNewMBCategoryThreadUTF8Test extends BaseTestCase {
 		selenium.type("//input[@id='_19_subject']",
 			RuntimeVariables.replace(
 				"MB Cat\u00e8gory Thr\u00e8ad M\u00e8ssag\u00e8 Subj\u00e8ct"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_19_editor' and @style='display: none;']");
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[.='Source']"));
-		selenium.clickAt("//span[.='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForVisible("//a[@class='cke_button_source cke_on']");
-		selenium.waitForVisible("//td[@id='cke_contents__19_editor']/textarea");
-		selenium.type("//td[@id='cke_contents__19_editor']/textarea",
+		Thread.sleep(1000);
+		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
+		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
 			RuntimeVariables.replace(
 				"MB Cat\u00e8gory Thr\u00e8ad M\u00e8ssag\u00e8 Body"));
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[.='Source']"));
-		selenium.clickAt("//span[.='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_19_editor' and @style='display: none;']");
-		selenium.waitForVisible("//td[@id='cke_contents__19_editor']/iframe");
-		selenium.selectFrame("//td[@id='cke_contents__19_editor']/iframe");
-		selenium.waitForText("//body",
-			"MB Cat\u00e8gory Thr\u00e8ad M\u00e8ssag\u00e8 Body");
-		selenium.selectFrame("relative=top");
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");

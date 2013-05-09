@@ -22,66 +22,82 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
  */
 public class ImportMBLARTest extends BaseTestCase {
 	public void testImportMBLAR() throws Exception {
-		selenium.selectWindow("null");
-		selenium.selectFrame("relative=top");
-		selenium.open("/web/guest/home/");
-		selenium.clickAt("//div[@id='dockbar']",
-			RuntimeVariables.replace("Dockbar"));
-		selenium.waitForElementPresent(
-			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
-		assertEquals(RuntimeVariables.replace("Manage"),
-			selenium.getText("//li[@id='_145_manageContent']/a/span"));
-		selenium.mouseOver("//li[@id='_145_manageContent']/a/span");
-		selenium.waitForVisible("//a[@title='Manage Site Content']");
-		assertEquals(RuntimeVariables.replace("Site Content"),
-			selenium.getText("//a[@title='Manage Site Content']"));
-		selenium.clickAt("//a[@title='Manage Site Content']",
-			RuntimeVariables.replace("Site Content"));
-		selenium.waitForVisible("//iframe[@id='manageContentDialog']");
-		selenium.selectFrame("//iframe[@id='manageContentDialog']");
-		selenium.waitForElementPresent(
-			"//script[contains(@src,'/aui/transition/transition-min.js')]");
-		selenium.waitForVisible("//ul[@class='category-portlets']/li[6]/a");
-		assertEquals(RuntimeVariables.replace("Message Boards"),
-			selenium.getText("//ul[@class='category-portlets']/li[6]/a"));
-		selenium.clickAt("//ul[@class='category-portlets']/li[6]/a",
-			RuntimeVariables.replace("Message Boards"));
-		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Options"),
-			selenium.getText(
-				"//a[contains(@id,'_162_') and contains(@id,'menuButton')]"));
-		selenium.clickAt("//a[contains(@id,'_162_') and contains(@id,'menuButton')]",
-			RuntimeVariables.replace("Options"));
-		selenium.waitForVisible(
-			"//li[@class='portlet-export-import portlet-export-import-icon last']/a");
-		assertEquals(RuntimeVariables.replace("Export / Import"),
-			selenium.getText(
-				"//li[@class='portlet-export-import portlet-export-import-icon last']/a"));
-		selenium.clickAt("//li[@class='portlet-export-import portlet-export-import-icon last']/a",
-			RuntimeVariables.replace("Export / Import"));
-		selenium.waitForPageToLoad("30000");
-		selenium.click(RuntimeVariables.replace("link=Import"));
-		selenium.waitForPageToLoad("30000");
-		selenium.uploadFile("//input[@id='_86_importFileName']",
-			RuntimeVariables.replace(
-				"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\portlet\\messageboards\\dependencies\\Message_Boards-Selenium.portlet.lar"));
-		assertFalse(selenium.isChecked(
-				"//input[@id='_86_DELETE_PORTLET_DATACheckbox']"));
-		selenium.clickAt("//input[@id='_86_DELETE_PORTLET_DATACheckbox']",
-			RuntimeVariables.replace("Delete portlet data before importing."));
-		assertTrue(selenium.isChecked(
-				"//input[@id='_86_DELETE_PORTLET_DATACheckbox']"));
-		assertFalse(selenium.isChecked(
-				"//input[@id='_86_PORTLET_DATACheckbox']"));
-		selenium.clickAt("//input[@id='_86_PORTLET_DATACheckbox']",
-			RuntimeVariables.replace("Data"));
-		assertTrue(selenium.isChecked("//input[@id='_86_PORTLET_DATACheckbox']"));
-		selenium.clickAt("//input[@value='Import']",
-			RuntimeVariables.replace("Import"));
-		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace(
-				"Your request completed successfully."),
-			selenium.getText("//div[@class='portlet-msg-success']"));
-		selenium.selectFrame("relative=top");
+		int label = 1;
+
+		while (label >= 1) {
+			switch (label) {
+			case 1:
+				selenium.selectWindow("null");
+				selenium.selectFrame("relative=top");
+				selenium.open("/web/guest/home/");
+				selenium.clickAt("link=Message Boards Test Page",
+					RuntimeVariables.replace("Message Boards Test Page"));
+				selenium.waitForPageToLoad("30000");
+				Thread.sleep(1000);
+				assertEquals(RuntimeVariables.replace("Options"),
+					selenium.getText("//span[@title='Options']/ul/li/strong/a"));
+				selenium.clickAt("//span[@title='Options']/ul/li/strong/a",
+					RuntimeVariables.replace("Options"));
+				selenium.waitForVisible(
+					"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Export / Import')]");
+				assertEquals(RuntimeVariables.replace("Export / Import"),
+					selenium.getText(
+						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Export / Import')]"));
+				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Export / Import')]",
+					RuntimeVariables.replace("Export / Import"));
+				selenium.waitForPageToLoad("30000");
+				selenium.click(RuntimeVariables.replace("link=Import"));
+				selenium.waitForPageToLoad("30000");
+				selenium.uploadFile("//input[@id='_86_importFileName']",
+					RuntimeVariables.replace(
+						"L:\\portal\\build\\portal-web\\test\\functional\\com\\liferay\\portalweb\\portlet\\messageboards\\dependencies\\Message_Boards-Selenium.portlet.lar"));
+
+				boolean deleteChecked = selenium.isChecked(
+						"//input[@id='_86_DELETE_PORTLET_DATACheckbox']");
+
+				if (deleteChecked) {
+					label = 2;
+
+					continue;
+				}
+
+				selenium.clickAt("//input[@id='_86_DELETE_PORTLET_DATACheckbox']",
+					RuntimeVariables.replace(
+						"Delete portlet data before importing."));
+
+			case 2:
+				assertTrue(selenium.isChecked(
+						"//input[@id='_86_DELETE_PORTLET_DATACheckbox']"));
+
+				boolean dataChecked = selenium.isChecked(
+						"//input[@id='_86_PORTLET_DATACheckbox']");
+
+				if (dataChecked) {
+					label = 3;
+
+					continue;
+				}
+
+				selenium.clickAt("//input[@id='_86_PORTLET_DATACheckbox']",
+					RuntimeVariables.replace("Data"));
+
+			case 3:
+				assertTrue(selenium.isChecked(
+						"//input[@id='_86_PORTLET_DATACheckbox']"));
+				selenium.clickAt("//input[@value='Import']",
+					RuntimeVariables.replace("Import"));
+				selenium.waitForPageToLoad("30000");
+				assertEquals(RuntimeVariables.replace(
+						"Your request completed successfully."),
+					selenium.getText("//div[@class='portlet-msg-success']"));
+				selenium.selectFrame("relative=top");
+				selenium.clickAt("link=Message Boards Test Page",
+					RuntimeVariables.replace("Message Boards Test Page"));
+				selenium.waitForPageToLoad("30000");
+
+			case 100:
+				label = -1;
+			}
+		}
 	}
 }

@@ -36,7 +36,7 @@ public class MoveMBCategoryThreadToCategoryTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"MB Category1 Thread Message Subject"),
 			selenium.getText("//td[1]/a"));
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Actions"),
 			selenium.getText("//span[@title='Actions']/ul/li/strong/a/span"));
 		selenium.clickAt("//span[@title='Actions']/ul/li/strong/a/span",
@@ -53,7 +53,7 @@ public class MoveMBCategoryThreadToCategoryTest extends BaseTestCase {
 			selenium.getText("//a[@id='_19_categoryName']"));
 		selenium.clickAt("//input[@value='Select']",
 			RuntimeVariables.replace("Select"));
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		selenium.selectWindow("title=Message Boards");
 		selenium.waitForVisible("//tr[3]/td[1]/a");
 		assertEquals(RuntimeVariables.replace("MB Category1 Name"),
