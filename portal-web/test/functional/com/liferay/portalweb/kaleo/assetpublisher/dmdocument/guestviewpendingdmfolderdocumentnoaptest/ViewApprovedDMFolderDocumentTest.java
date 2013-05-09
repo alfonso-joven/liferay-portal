@@ -96,9 +96,9 @@ public class ViewApprovedDMFolderDocumentTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Content Encoding ISO-8859-1"),
 			selenium.getText(
 				"//div[@id='documentLibraryAssetMetadataPanel']/div/div[contains(.,'Content Encoding')]"));
-		assertEquals(RuntimeVariables.replace("Content Type text/plain"),
-			selenium.getText(
-				"//div[@id='documentLibraryAssetMetadataPanel']/div/div[contains(.,'Content Type')]"));
+		assertTrue(selenium.isPartialText(
+				"//div[@id='documentLibraryAssetMetadataPanel']/div/div[contains(.,'Content Type')]",
+				"Content Type text/plain"));
 		assertEquals(RuntimeVariables.replace("Version History"),
 			selenium.getText("xpath=(//div[@class='lfr-panel-title']/span)[3]"));
 		assertTrue(selenium.isVisible("//input[@value='Compare Versions']"));
