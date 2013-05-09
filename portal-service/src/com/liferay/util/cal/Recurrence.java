@@ -540,6 +540,8 @@ public class Recurrence implements Serializable {
 
 		dtStart.setMinimalDaysInFirstWeek(4);
 		dtStart.setFirstDayOfWeek(oldStart);
+		dtStart.set(Calendar.SECOND, 0);
+		dtStart.set(Calendar.MILLISECOND, 0);
 	}
 
 	/**
@@ -684,7 +686,7 @@ public class Recurrence implements Serializable {
 	protected static long getMonthNumber(Calendar cal) {
 		return
 			((cal.get(Calendar.YEAR) - 1970) * 12L) +
-				(cal.get(Calendar.MONTH) - Calendar.JANUARY);
+				((cal.get(Calendar.MONTH) - Calendar.JANUARY));
 	}
 
 	/**
@@ -718,7 +720,7 @@ public class Recurrence implements Serializable {
 
 		long weekEpoch =
 			(tempCal.getFirstDayOfWeek() - Calendar.THURSDAY) * 24L * 60 * 60 *
-				1000L;
+				1000;
 
 		return
 			(tempCal.getTime().getTime() - weekEpoch) /
