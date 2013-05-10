@@ -181,21 +181,21 @@
 
 	addPlugin(
 		{
-			name: 'liferay-navigation-interaction-touch',
-			test: function(A) {
-				return A.UA.touch;
-			},
-			trigger: 'liferay-navigation-interaction'
-		}
-	);
-
-	addPlugin(
-		{
 			name: 'liferay-navigation-touch',
 			test: function(A) {
 				return A.UA.touch;
 			},
 			trigger: 'liferay-navigation'
+		}
+	);
+
+	addPlugin(
+		{
+			name: 'liferay-navigation-interaction-touch',
+			test: function(A) {
+				return A.UA.touch;
+			},
+			trigger: 'liferay-navigation-interaction'
 		}
 	);
 
