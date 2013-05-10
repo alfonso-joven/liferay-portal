@@ -31,9 +31,9 @@ public class AddBlogsEntryPage2Test extends BaseTestCase {
 		selenium.clickAt("//input[@value='Add Blog Entry']",
 			RuntimeVariables.replace("Add Blog Entry"));
 		selenium.waitForPageToLoad("30000");
-		Thread.sleep(1000);
 		selenium.type("//input[@id='_33_title']",
 			RuntimeVariables.replace("Blogs Entry2 Title"));
+		Thread.sleep(1000);
 		selenium.waitForVisible("//a[@class='cke_button_unlink cke_disabled']");
 		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
 		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",

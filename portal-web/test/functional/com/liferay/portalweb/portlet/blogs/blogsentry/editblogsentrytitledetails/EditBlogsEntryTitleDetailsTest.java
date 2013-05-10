@@ -43,9 +43,9 @@ public class EditBlogsEntryTitleDetailsTest extends BaseTestCase {
 			selenium.getText("//td[1]/span/a/span"));
 		selenium.clickAt("//td[1]/span/a/span", RuntimeVariables.replace("Edit"));
 		selenium.waitForPageToLoad("30000");
-		Thread.sleep(1000);
 		selenium.type("//input[@id='_33_title']",
 			RuntimeVariables.replace("Blogs Entry Title Edit"));
+		Thread.sleep(1000);
 		selenium.waitForVisible("//a[@class='cke_button_unlink cke_disabled']");
 		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
 		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
