@@ -25,8 +25,10 @@ import com.liferay.portal.kernel.util.FileUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.Time;
+import com.liferay.portal.model.Layout;
 import com.liferay.portal.model.LayoutSet;
 import com.liferay.portal.security.auth.PrincipalException;
+import com.liferay.portal.service.LayoutLocalServiceUtil;
 import com.liferay.portal.service.LayoutServiceUtil;
 import com.liferay.portal.service.LayoutSetLocalServiceUtil;
 import com.liferay.portal.struts.ActionConstants;
@@ -41,6 +43,7 @@ import java.io.FileInputStream;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
@@ -153,8 +156,25 @@ public class ExportLayoutsAction extends PortletAction {
 				endDate = now;
 			}
 
+			long[] layoutIdsToExport = null;
+
+			if (layoutIds.length == 1) {
+				Layout selectedLayout = LayoutLocalServiceUtil.getLayout(
+					groupId, privateLayout, layoutIds[0]);
+
+				List<Layout> childLayouts = selectedLayout.getAllChildren();
+
+				layoutIdsToExport = new long[childLayouts.size() + 1];
+
+				layoutIdsToExport[0] = layoutIds[0];
+
+				for (int i = 1; i < childLayouts.size() + 1; i++) {
+					layoutIdsToExport[i] = childLayouts.get(i-1).getLayoutId();
+				}
+			}
+
 			file = LayoutServiceUtil.exportLayoutsAsFile(
-				groupId, privateLayout, layoutIds,
+				groupId, privateLayout, layoutIdsToExport,
 				actionRequest.getParameterMap(), startDate, endDate);
 
 			HttpServletRequest request = PortalUtil.getHttpServletRequest(
