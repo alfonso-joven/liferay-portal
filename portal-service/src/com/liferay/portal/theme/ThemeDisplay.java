@@ -959,11 +959,13 @@ public class ThemeDisplay implements Cloneable, Serializable {
 				cdnBaseURL + themeStaticResourcePath +
 					theme.getJavaScriptPath());
 
-			if (theme.getRootPath().equals(StringPool.SLASH)) {
+			String rootPath = theme.getRootPath();
+
+			if (rootPath.equals(StringPool.SLASH)) {
 				setPathThemeRoot(themeStaticResourcePath);
 			}
 			else {
-				setPathThemeRoot(themeStaticResourcePath + theme.getRootPath());
+				setPathThemeRoot(themeStaticResourcePath + rootPath);
 			}
 
 			setPathThemeTemplates(
