@@ -56,7 +56,7 @@ public class User_ViewUserStatisticsSubscribeBlogsEntry2Test
 		assertEquals(RuntimeVariables.replace("Contribution Score: 0"),
 			selenium.getText(
 				"//tr[contains(.,'userfn userln')]//div[@class='contribution-score']"));
-		assertEquals(RuntimeVariables.replace("Participation Score: 5"),
+		assertEquals(RuntimeVariables.replace("Participation Score: 3"),
 			selenium.getText(
 				"//tr[contains(.,'userfn userln')]//div[@class='participation-score']"));
 		assertEquals(RuntimeVariables.replace("User's Subscriptions: 1"),

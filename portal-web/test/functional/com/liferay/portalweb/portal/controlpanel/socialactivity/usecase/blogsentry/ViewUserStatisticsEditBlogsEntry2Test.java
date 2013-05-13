@@ -58,7 +58,7 @@ public class ViewUserStatisticsEditBlogsEntry2Test extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Contribution Score: 0"),
 			selenium.getText(
 				"//tr[contains(.,'userfn userln')]//div[@class='contribution-score']"));
-		assertEquals(RuntimeVariables.replace("Participation Score: 14"),
+		assertEquals(RuntimeVariables.replace("Participation Score: 12"),
 			selenium.getText(
 				"//tr[contains(.,'userfn userln')]//div[@class='participation-score']"));
 		assertTrue(selenium.isElementPresent(

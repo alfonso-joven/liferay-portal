@@ -35,7 +35,7 @@ public class User_VoteBlogsEntry2SiteTest extends BaseTestCase {
 		selenium.clickAt("//div[@class='entry-title']/h2/a",
 			RuntimeVariables.replace("Blogs Entry2 Title"));
 		selenium.waitForPageToLoad("30000");
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		selenium.waitForVisible(
 			"xPath=(//div[@class='aui-rating-label-element'])[2]");
 		assertEquals(RuntimeVariables.replace("Average (0 Votes)"),

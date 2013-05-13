@@ -58,7 +58,7 @@ public class User_ViewUserStatisticsCommentWikiPageTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Contribution Score: 0"),
 			selenium.getText(
 				"//tr[contains(.,'userfn userln')]//div[@class='contribution-score']"));
-		assertEquals(RuntimeVariables.replace("Participation Score: 19"),
+		assertEquals(RuntimeVariables.replace("Participation Score: 17"),
 			selenium.getText(
 				"//tr[contains(.,'userfn userln')]//div[@class='participation-score']"));
 		assertEquals(RuntimeVariables.replace("User's Comments: 1"),

@@ -39,6 +39,7 @@ public class ConfigurePortletShowHeaderTextOffTest extends BaseTestCase {
 				selenium.clickAt("//span[@class='portlet-title-text']",
 					RuntimeVariables.replace("User Statistics"));
 				selenium.waitForElementPresent("//div[@class='yui3-dd-shim']");
+				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Options"),
 					selenium.getText("//span[@title='Options']/ul/li/strong/a"));
 				selenium.clickAt("//span[@title='Options']/ul/li/strong/a",
