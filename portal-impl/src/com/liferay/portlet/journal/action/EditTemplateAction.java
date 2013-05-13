@@ -22,6 +22,7 @@ import com.liferay.portal.kernel.util.Constants;
 import com.liferay.portal.kernel.util.FileUtil;
 import com.liferay.portal.kernel.util.LocalizationUtil;
 import com.liferay.portal.kernel.util.ParamUtil;
+import com.liferay.portal.kernel.util.StreamUtil;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.security.auth.PrincipalException;
@@ -218,15 +219,13 @@ public class EditTemplateAction extends PortletAction {
 	}
 
 	protected String getXsl(UploadPortletRequest uploadPortletRequest) {
-		String xsl = null;
+		InputStream inputStream = null;
 
 		try {
-			InputStream is = uploadPortletRequest.getFileAsStream("xsl");
+			inputStream = uploadPortletRequest.getFileAsStream("xsl");
 
-			if (is != null) {
-				xsl = new String(FileUtil.getBytes(is));
-
-				is.close();
+			if (inputStream != null) {
+				return new String(FileUtil.getBytes(inputStream));
 			}
 		}
 		catch (IOException ioe) {
@@ -234,8 +233,11 @@ public class EditTemplateAction extends PortletAction {
 				_log.warn(ioe, ioe);
 			}
 		}
+		finally {
+			StreamUtil.cleanUp(inputStream);
+		}
 
-		return xsl;
+		return null;
 	}
 
 	protected JournalTemplate updateTemplate(ActionRequest actionRequest)
