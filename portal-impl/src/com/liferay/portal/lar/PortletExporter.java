@@ -509,6 +509,7 @@ public class PortletExporter {
 			assetElement.addAttribute("source-uuid", sourceAssetEntryUuid);
 			assetElement.addAttribute(
 				"target-uuids", StringUtil.merge(targetAssetEntryUuids));
+			assetElement.addAttribute("type", assetLinkType);
 
 			AssetEntry sourceAssetEntry = AssetEntryLocalServiceUtil.getEntry(
 				portletDataContext.getGroupId(), sourceAssetEntryUuid);
@@ -518,7 +519,7 @@ public class PortletExporter {
 					sourceAssetEntry.getEntryId(),
 					Integer.valueOf(assetLinkType));
 
-			List<String> linksWeight = new ArrayList<String>();
+			List<String> assetLinkWeights = new ArrayList<String>();
 
 			for (String target : targetAssetEntryUuids) {
 				for (AssetLink directLink : directLinks) {
@@ -526,18 +527,19 @@ public class PortletExporter {
 						AssetEntryLocalServiceUtil.getEntry(
 							directLink.getEntryId2());
 
-					if (targetEntry.getClassUuid().equals(target)) {
-						linksWeight.add(String.valueOf(directLink.getWeight()));
+					String classUuid = targetEntry.getClassUuid();
+
+					if (classUuid.equals(target)) {
+						assetLinkWeights.add(
+							String.valueOf(directLink.getWeight()));
+
 						break;
 					}
 				}
 			}
 
-			String linksWeightString = StringUtil.merge(
-				linksWeight.toArray(new String[linksWeight.size()]));
-
-			assetElement.addAttribute("weights", linksWeightString);
-			assetElement.addAttribute("type", assetLinkType);
+			assetElement.addAttribute(
+				"weights", StringUtil.merge(assetLinkWeights));
 		}
 
 		portletDataContext.addZipEntry(
@@ -1292,7 +1294,7 @@ public class PortletExporter {
 	protected String getAssetCategoryPath(
 		PortletDataContext portletDataContext, long assetCategoryId) {
 
-		StringBundler sb = new StringBundler(6);
+		StringBundler sb = new StringBundler(4);
 
 		sb.append(portletDataContext.getRootPath());
 		sb.append("/categories/");
@@ -1318,7 +1320,7 @@ public class PortletExporter {
 	protected String getAssetVocabulariesPath(
 		PortletDataContext portletDataContext, long assetVocabularyId) {
 
-		StringBundler sb = new StringBundler(8);
+		StringBundler sb = new StringBundler(4);
 
 		sb.append(portletDataContext.getRootPath());
 		sb.append("/vocabularies/");
