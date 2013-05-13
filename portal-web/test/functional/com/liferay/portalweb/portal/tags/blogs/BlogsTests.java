@@ -16,6 +16,11 @@ package com.liferay.portalweb.portal.tags.blogs;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
 import com.liferay.portalweb.portal.util.TearDownPageTest;
+import com.liferay.portalweb.portlet.blogs.blogsentry.addblogsentry.AddBlogsEntry1Test;
+import com.liferay.portalweb.portlet.blogs.blogsentry.addblogsentry.AddBlogsEntry2Test;
+import com.liferay.portalweb.portlet.blogs.blogsentry.addblogsentry.AddBlogsEntry3Test;
+import com.liferay.portalweb.portlet.blogs.portlet.addportletblogs.AddPageBlogsTest;
+import com.liferay.portalweb.portlet.blogs.portlet.addportletblogs.AddPortletBlogsTest;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -26,11 +31,15 @@ import junit.framework.TestSuite;
 public class BlogsTests extends BaseTestSuite {
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
-		testSuite.addTestSuite(SetupTest.class);
+		testSuite.addTestSuite(AddPageBlogsTest.class);
+		testSuite.addTestSuite(AddPortletBlogsTest.class);
+		testSuite.addTestSuite(AddBlogsEntry1Test.class);
+		testSuite.addTestSuite(AddBlogsEntry2Test.class);
+		testSuite.addTestSuite(AddBlogsEntry3Test.class);
 		testSuite.addTestSuite(AssertNoTagsInTagsAdminTest.class);
 		testSuite.addTestSuite(AssertNoTagsInSelectTagsTest.class);
-		testSuite.addTestSuite(AddTagTest.class);
 		testSuite.addTestSuite(AddAmpersandTagTest.class);
+		testSuite.addTestSuite(AddTagTest.class);
 		testSuite.addTestSuite(AddApostropheTagTest.class);
 		testSuite.addTestSuite(AddAsteriskTagTest.class);
 		testSuite.addTestSuite(AddAtTagTest.class);

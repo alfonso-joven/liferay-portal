@@ -30,14 +30,14 @@ public class SuggestionTagTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				selenium.clickAt("link=Blogs Tags Test Page",
-					RuntimeVariables.replace("Blogs Tags Test Page"));
+				selenium.clickAt("link=Blogs Test Page",
+					RuntimeVariables.replace("Blogs Test Page"));
 				selenium.waitForPageToLoad("30000");
-				assertEquals(RuntimeVariables.replace("Tags Blog Entry3 Title"),
+				assertEquals(RuntimeVariables.replace("Blogs Entry3 Title"),
 					selenium.getText(
 						"xPath=(//div[@class='entry-title']/h2/a)[1]"));
 				selenium.clickAt("xPath=(//div[@class='entry-title']/h2/a)[1]",
-					RuntimeVariables.replace("Tags Blog Entry3 Title"));
+					RuntimeVariables.replace("Blogs Entry3 Title"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("Edit"),
 					selenium.getText(
@@ -45,8 +45,8 @@ public class SuggestionTagTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//a[@class='taglib-icon']/span[contains(.,'Edit')]"));
 				selenium.waitForPageToLoad("30000");
-				selenium.waitForElementPresent(
-					"//textarea[@id='_33_editor' and @style='display: none;']");
+				selenium.waitForVisible(
+					"//a[@class='cke_button_unlink cke_disabled']");
 				selenium.waitForVisible(
 					"//td[@id='cke_contents__33_editor']/iframe");
 
@@ -70,12 +70,17 @@ public class SuggestionTagTest extends BaseTestCase {
 						"//input[@class='lfr-tag-selector-input aui-field-input-text']"));
 
 			case 2:
+				selenium.waitForVisible(
+					"//iframe[contains(@title,'Rich text editor')]");
+				selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
+					RuntimeVariables.replace("Blogs Entry3 Content Test"));
+				Thread.sleep(1000);
 				selenium.clickAt("//button[@id='suggest']",
 					RuntimeVariables.replace("Suggestion"));
-				selenium.waitForElementPresent(
-					"//label[@title='title tags']/input");
-				assertTrue(selenium.isElementPresent(
-						"//label[@title='title tags']/input"));
+				selenium.waitForVisible("//label[@title='content test']");
+				selenium.waitForVisible("//input[@value='content test']");
+				assertEquals(RuntimeVariables.replace("content test"),
+					selenium.getText("//label[@title='content test']"));
 				selenium.clickAt("//button[@title='Close dialog']",
 					RuntimeVariables.replace("Close"));
 				selenium.clickAt("//input[@value='Cancel']",

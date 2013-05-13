@@ -25,14 +25,14 @@ public class SearchRemovedTagTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.clickAt("link=Blogs Tags Test Page",
-			RuntimeVariables.replace("Blogs Tags Test Page"));
+		selenium.clickAt("link=Blogs Test Page",
+			RuntimeVariables.replace("Blogs Test Page"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_33_keywords']",
 			RuntimeVariables.replace("\"selenium3 liferay3\""));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
-		assertFalse(selenium.isTextPresent("Tags Blog Entry3 Title"));
+		assertFalse(selenium.isTextPresent("Blogs Entry3 Title"));
 	}
 }

@@ -30,14 +30,14 @@ public class AddAsteriskTagTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				selenium.clickAt("link=Blogs Tags Test Page",
-					RuntimeVariables.replace("Blogs Tags Test Page"));
+				selenium.clickAt("link=Blogs Test Page",
+					RuntimeVariables.replace("Blogs Test Page"));
 				selenium.waitForPageToLoad("30000");
-				assertEquals(RuntimeVariables.replace("Tags Blog Entry1 Title"),
+				assertEquals(RuntimeVariables.replace("Blogs Entry1 Title"),
 					selenium.getText(
 						"xPath=(//div[@class='entry-title']/h2/a)[3]"));
 				selenium.clickAt("xPath=(//div[@class='entry-title']/h2/a)[3]",
-					RuntimeVariables.replace("Tags Blog Entry1 Title"));
+					RuntimeVariables.replace("Blogs Entry1 Title"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("Edit"),
 					selenium.getText(
@@ -45,8 +45,8 @@ public class AddAsteriskTagTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//a[@class='taglib-icon']/span[contains(.,'Edit')]"));
 				selenium.waitForPageToLoad("30000");
-				selenium.waitForElementPresent(
-					"//textarea[@id='_33_editor' and @style='display: none;']");
+				selenium.waitForVisible(
+					"//a[@class='cke_button_unlink cke_disabled']");
 				selenium.waitForVisible(
 					"//td[@id='cke_contents__33_editor']/iframe");
 
