@@ -511,27 +511,27 @@ public class PortletExporter {
 				"target-uuids", StringUtil.merge(targetAssetEntryUuids));
 			assetElement.addAttribute("type", assetLinkType);
 
+			List<String> assetLinkWeights = new ArrayList<String>();
+
 			AssetEntry sourceAssetEntry = AssetEntryLocalServiceUtil.getEntry(
 				portletDataContext.getGroupId(), sourceAssetEntryUuid);
 
-			List<AssetLink> directLinks =
+			List<AssetLink> directAssetLinks =
 				AssetLinkLocalServiceUtil.getDirectLinks(
 					sourceAssetEntry.getEntryId(),
 					Integer.valueOf(assetLinkType));
 
-			List<String> assetLinkWeights = new ArrayList<String>();
-
-			for (String target : targetAssetEntryUuids) {
-				for (AssetLink directLink : directLinks) {
-					AssetEntry targetEntry =
+			for (String targetAssetEntryUuid : targetAssetEntryUuids) {
+				for (AssetLink directAssetLink : directAssetLinks) {
+					AssetEntry targetAssetEntry =
 						AssetEntryLocalServiceUtil.getEntry(
-							directLink.getEntryId2());
+							directAssetLink.getEntryId2());
 
-					String classUuid = targetEntry.getClassUuid();
+					String classUuid = targetAssetEntry.getClassUuid();
 
-					if (classUuid.equals(target)) {
+					if (classUuid.equals(targetAssetEntryUuid)) {
 						assetLinkWeights.add(
-							String.valueOf(directLink.getWeight()));
+							String.valueOf(directAssetLink.getWeight()));
 
 						break;
 					}

@@ -1372,21 +1372,23 @@ public class PortletImporter {
 			String assetLinkWeightsString = GetterUtil.getString(
 				assetLinkElement.attributeValue("weights"));
 
-			Map<Long, AssetEntry> assetLinkTargets =
-				new HashMap<Long, AssetEntry>();
 			Map<String, Integer> assetLinkWeights =
 				new HashMap<String, Integer>();
 
 			if (Validator.isNotNull(assetLinkWeightsString)) {
-				String weights[] = StringUtil.split(assetLinkWeightsString);
+				String[] assetLinkWeightsArray = StringUtil.split(
+					assetLinkWeightsString);
 
 				for (int i = 0; i < assetEntryUuidArray.length; i++) {
 					assetLinkWeights.put(
-						assetEntryUuidArray[i], Integer.valueOf(weights[i]));
+						assetEntryUuidArray[i],
+						GetterUtil.getInteger(assetLinkWeightsArray[i]));
 				}
 			}
 
 			List<Long> assetEntryIds = new ArrayList<Long>();
+			Map<Long, AssetEntry> targrtAssetEntries =
+				new HashMap<Long, AssetEntry>();
 
 			for (String assetEntryUuid : assetEntryUuidArray) {
 				AssetEntry assetEntry = AssetEntryLocalServiceUtil.fetchEntry(
@@ -1401,7 +1403,7 @@ public class PortletImporter {
 					assetEntryIds.add(assetEntry.getEntryId());
 
 					if (Validator.isNotNull(assetLinkWeightsString)) {
-						assetLinkTargets.put(
+						targrtAssetEntries.put(
 							assetEntry.getEntryId(), assetEntry);
 					}
 				}
@@ -1422,32 +1424,36 @@ public class PortletImporter {
 					portletDataContext.getCompanyGroupId(), sourceUuid);
 			}
 
-			if (assetEntry != null) {
-				AssetLinkLocalServiceUtil.updateLinks(
-					assetEntry.getUserId(), assetEntry.getEntryId(),
-					assetEntryIdsArray, assetLinkType);
+			if (assetEntry == null) {
+				continue;
+			}
 
-				if (Validator.isNull(assetLinkWeightsString)) {
+			AssetLinkLocalServiceUtil.updateLinks(
+				assetEntry.getUserId(), assetEntry.getEntryId(),
+				assetEntryIdsArray, assetLinkType);
+
+			if (Validator.isNull(assetLinkWeightsString)) {
+				continue;
+			}
+
+			List<AssetLink> directAssetLinks =
+				AssetLinkLocalServiceUtil.getDirectLinks(
+					assetEntry.getEntryId(), assetLinkType);
+
+			for (AssetLink directAssetLink : directAssetLinks) {
+				AssetEntry targetAssetEntry = targrtAssetEntries.get(
+					directAssetLink.getEntryId2());
+
+				if (targetAssetEntry == null) {
 					continue;
 				}
 
-				List<AssetLink> directLinks =
-					AssetLinkLocalServiceUtil.getDirectLinks(
-						assetEntry.getEntryId(), assetLinkType);
+				int assetLinkWeight = assetLinkWeights.get(
+					targetAssetEntry.getClassUuid());
 
-				for (AssetLink directLink : directLinks) {
-					AssetEntry linkTarget = assetLinkTargets.get(
-						directLink.getEntryId2());
+				directAssetLink.setWeight(assetLinkWeight);
 
-					if (Validator.isNotNull(linkTarget)) {
-						int weight = assetLinkWeights.get(
-							linkTarget.getClassUuid());
-
-						directLink.setWeight(weight);
-
-						AssetLinkLocalServiceUtil.updateAssetLink(directLink);
-					}
-				}
+				AssetLinkLocalServiceUtil.updateAssetLink(directAssetLink);
 			}
 		}
 	}
