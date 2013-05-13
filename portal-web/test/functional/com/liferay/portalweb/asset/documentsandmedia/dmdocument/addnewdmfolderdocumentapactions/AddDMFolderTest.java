@@ -50,7 +50,10 @@ public class AddDMFolderTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
+		assertTrue(selenium.isVisible(
+				"//div[@data-title='DM Folder Name']/a/span[@class='document-thumbnail']"));
 		assertEquals(RuntimeVariables.replace("DM Folder Name"),
-			selenium.getText("//div/a/span[2]"));
+			selenium.getText(
+				"//div[@data-title='DM Folder Name']/a/span[@class='entry-title']"));
 	}
 }
