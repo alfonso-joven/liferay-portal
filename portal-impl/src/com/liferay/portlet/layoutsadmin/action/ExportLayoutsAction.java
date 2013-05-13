@@ -41,6 +41,7 @@ import com.liferay.portlet.sites.action.ActionUtil;
 import java.io.File;
 import java.io.FileInputStream;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -162,14 +163,18 @@ public class ExportLayoutsAction extends PortletAction {
 				Layout selectedLayout = LayoutLocalServiceUtil.getLayout(
 					groupId, privateLayout, layoutIds[0]);
 
-				List<Layout> childLayouts = selectedLayout.getAllChildren();
+				List<Layout> layoutsToExport = new ArrayList<Layout>();
 
-				layoutIdsToExport = new long[childLayouts.size() + 1];
+				layoutsToExport.add(selectedLayout);
 
-				layoutIdsToExport[0] = layoutIds[0];
+				layoutsToExport.addAll(selectedLayout.getAllChildren());
 
-				for (int i = 1; i < childLayouts.size() + 1; i++) {
-					layoutIdsToExport[i] = childLayouts.get(i-1).getLayoutId();
+				layoutIdsToExport = new long[layoutsToExport.size()];
+
+				for (int i = 0; i < layoutsToExport.size(); i++) {
+					Layout curLayout = layoutsToExport.get(i);
+
+					layoutIdsToExport[i] = curLayout.getLayoutId();
 				}
 			}
 
