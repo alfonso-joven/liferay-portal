@@ -45,8 +45,8 @@ public class RemovePortletRolePowerUserTest extends BaseTestCase {
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Portlet"),
-			selenium.getText("//tbody/tr[3]/td[2]/a"));
-		selenium.clickAt("//tbody/tr[3]/td[2]/a",
+			selenium.getText("//tr[contains(.,'Portlet')]/td[2]/a"));
+		selenium.clickAt("//tr[contains(.,'Portlet')]/td[2]/a",
 			RuntimeVariables.replace("Portlet"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isPartialText("//a[@id='_125_rolesLink']", "Roles"));

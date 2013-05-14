@@ -221,7 +221,8 @@ public class DefineSiteAdminRoleTest extends BaseTestCase {
 						"The role permissions were updated."),
 					selenium.getText("//div[@class='portlet-msg-success']"));
 				selenium.select("//select[@id='_128_add-permissions']",
-					RuntimeVariables.replace("index=51"));
+					RuntimeVariables.replace(
+						"value=regexp:.*portletResource=31&.*showModelResources=0"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("Media Gallery"),
 					selenium.getText("//h3[contains(.,'Media Gallery')]"));

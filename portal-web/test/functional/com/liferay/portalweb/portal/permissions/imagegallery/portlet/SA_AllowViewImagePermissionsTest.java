@@ -25,14 +25,16 @@ public class SA_AllowViewImagePermissionsTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.clickAt("link=Media Gallery Permissions Test Page",
-			RuntimeVariables.replace("Media Gallery Permissions Test Page"));
+		selenium.clickAt("link=Media Gallery Test Page",
+			RuntimeVariables.replace("Media Gallery Test Page"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Media Gallery Temporary Folder"),
 			selenium.getText("//a[@title='Media Gallery Temporary Folder - ']"));
 		selenium.clickAt("//a[@title='Media Gallery Temporary Folder - ']",
 			RuntimeVariables.replace("Media Gallery Temporary Folder"));
 		selenium.waitForPageToLoad("30000");
+		selenium.waitForVisible(
+			"//a[@title='Portlet Permissions Image 2 Test Title - ']");
 		assertEquals(RuntimeVariables.replace(
 				"Portlet Permissions Image 2 Test Title"),
 			selenium.getText(

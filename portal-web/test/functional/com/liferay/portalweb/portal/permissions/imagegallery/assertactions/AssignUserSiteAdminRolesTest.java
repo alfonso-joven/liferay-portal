@@ -40,7 +40,7 @@ public class AssignUserSiteAdminRolesTest extends BaseTestCase {
 			RuntimeVariables.replace("Users and Organizations"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_125_keywords']",
-			RuntimeVariables.replace("siteadmin@liferay.com"));
+			RuntimeVariables.replace("siteadmin"));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");

@@ -40,22 +40,22 @@ public class AssignUserPortletRolesTest extends BaseTestCase {
 			RuntimeVariables.replace("Users and Organizations"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_125_keywords']",
-			RuntimeVariables.replace("portlet@liferay.com"));
+			RuntimeVariables.replace("portlet"));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Portlet"),
-			selenium.getText("//tbody/tr[3]/td[2]/a"));
-		selenium.clickAt("//tbody/tr[3]/td[2]/a",
+			selenium.getText("//tr[contains(.,'Portlet')]/td[2]/a"));
+		selenium.clickAt("//tr[contains(.,'Portlet')]/td[2]/a",
 			RuntimeVariables.replace("Portlet"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isPartialText("//a[@id='_125_rolesLink']", "Roles"));
 		selenium.clickAt("//a[@id='_125_rolesLink']",
 			RuntimeVariables.replace("Roles"));
-		selenium.waitForVisible("//div[6]/span[1]/a/span");
+		selenium.waitForVisible("//div[@id='_125_roles']/span/a");
 		assertEquals(RuntimeVariables.replace("Select"),
-			selenium.getText("//div[6]/span[1]/a/span"));
-		selenium.clickAt("//div[6]/span[1]/a/span",
+			selenium.getText("//div[@id='_125_roles']/span/a"));
+		selenium.clickAt("//div[@id='_125_roles']/span/a",
 			RuntimeVariables.replace("Select"));
 		Thread.sleep(5000);
 		selenium.selectWindow("title=Users and Organizations");

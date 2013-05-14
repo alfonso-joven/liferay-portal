@@ -25,8 +25,8 @@ public class Portlet_DeleteImageTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.clickAt("link=Media Gallery Permissions Test Page",
-			RuntimeVariables.replace("Media Gallery Permissions Test Page"));
+		selenium.clickAt("link=Media Gallery Test Page",
+			RuntimeVariables.replace("Media Gallery Test Page"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Media Gallery Temporary Folder"),
 			selenium.getText("//a[@title='Media Gallery Temporary Folder - ']"));
@@ -52,8 +52,8 @@ public class Portlet_DeleteImageTest extends BaseTestCase {
 				"There are no media files in this folder."),
 			selenium.getText("//div[@class='portlet-msg-info']"));
 		selenium.open("/web/guest/home/");
-		selenium.clickAt("link=Media Gallery Permissions Test Page",
-			RuntimeVariables.replace("Media Gallery Permissions Test Page"));
+		selenium.clickAt("link=Media Gallery Test Page",
+			RuntimeVariables.replace("Media Gallery Test Page"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Media Gallery Temporary Folder"),
 			selenium.getText("//a[@title='Media Gallery Temporary Folder - ']"));

@@ -30,9 +30,45 @@ public class SA_GrantMemberAddImageTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				selenium.clickAt("link=Media Gallery Permissions Test Page",
+				selenium.clickAt("link=Media Gallery Test Page",
+					RuntimeVariables.replace("Media Gallery Test Page"));
+				selenium.waitForPageToLoad("30000");
+				assertEquals(RuntimeVariables.replace(
+						"Media Gallery Permissions Test Folder"),
+					selenium.getText(
+						"//a[@title='Media Gallery Permissions Test Folder - ']"));
+				selenium.clickAt("//a[@title='Media Gallery Permissions Test Folder - ']",
 					RuntimeVariables.replace(
-						"Media Gallery Permissions Test Page"));
+						"Media Gallery Permissions Test Folder"));
+				selenium.waitForPageToLoad("30000");
+				assertEquals(RuntimeVariables.replace("Permissions"),
+					selenium.getText(
+						"//div[@class='lfr-component lfr-menu-list lfr-menu-expanded align-right null']/ul/li/a[contains(.,'Permissions')]"));
+				selenium.clickAt("//div[@class='lfr-component lfr-menu-list lfr-menu-expanded align-right null']/ul/li/a[contains(.,'Permissions')]",
+					RuntimeVariables.replace("Permissions"));
+				selenium.waitForPageToLoad("30000");
+
+				boolean memberActionAddCheckbox1 = selenium.isChecked(
+						"//input[@id='member_ACTION_ADD_DOCUMENT']");
+
+				if (memberActionAddCheckbox1) {
+					label = 2;
+
+					continue;
+				}
+
+				selenium.clickAt("//input[@id='member_ACTION_ADD_DOCUMENT']",
+					RuntimeVariables.replace("Member Action Add Checkbox"));
+
+			case 2:
+				assertTrue(selenium.isChecked(
+						"//input[@id='member_ACTION_ADD_DOCUMENT']"));
+				selenium.clickAt("//input[@value='Save']",
+					RuntimeVariables.replace("Save"));
+				selenium.waitForPageToLoad("30000");
+				selenium.open("/web/guest/home/");
+				selenium.clickAt("link=Media Gallery Test Page",
+					RuntimeVariables.replace("Media Gallery Test Page"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace(
 						"Media Gallery Permissions Test Folder"),
@@ -57,11 +93,11 @@ public class SA_GrantMemberAddImageTest extends BaseTestCase {
 					RuntimeVariables.replace("Permissions"));
 				selenium.waitForPageToLoad("30000");
 
-				boolean memberActionAddCheckbox = selenium.isChecked(
+				boolean memberActionAddCheckbox2 = selenium.isChecked(
 						"//input[@id='member_ACTION_ADD_DOCUMENT']");
 
-				if (memberActionAddCheckbox) {
-					label = 2;
+				if (memberActionAddCheckbox2) {
+					label = 3;
 
 					continue;
 				}
@@ -69,7 +105,7 @@ public class SA_GrantMemberAddImageTest extends BaseTestCase {
 				selenium.clickAt("//input[@id='member_ACTION_ADD_DOCUMENT']",
 					RuntimeVariables.replace("Member Action Add Checkbox"));
 
-			case 2:
+			case 3:
 				assertTrue(selenium.isChecked(
 						"//input[@id='member_ACTION_ADD_DOCUMENT']"));
 				selenium.clickAt("//input[@value='Save']",

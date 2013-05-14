@@ -25,8 +25,8 @@ public class Guest_AssertActionTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.clickAt("link=Media Gallery Permissions Test Page",
-			RuntimeVariables.replace("Media Gallery Permissions Test Page"));
+		selenium.clickAt("link=Media Gallery Test Page",
+			RuntimeVariables.replace("Media Gallery Test Page"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isElementNotPresent(
 				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Look and Feel')]"));
@@ -59,8 +59,8 @@ public class Guest_AssertActionTest extends BaseTestCase {
 		assertTrue(selenium.isElementNotPresent(
 				"//div[@class='lfr-component lfr-menu-list lfr-menu-expanded align-right null']/ul/li/a[contains(.,'Add Media')]"));
 		selenium.open("/web/guest/home/");
-		selenium.clickAt("link=Media Gallery Permissions Test Page",
-			RuntimeVariables.replace("Media Gallery Permissions Test Page"));
+		selenium.clickAt("link=Media Gallery Test Page",
+			RuntimeVariables.replace("Media Gallery Test Page"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Recent", RuntimeVariables.replace("Recent"));
 		selenium.waitForPageToLoad("30000");

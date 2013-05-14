@@ -25,8 +25,8 @@ public class Member_EditImageTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.clickAt("link=Media Gallery Permissions Test Page",
-			RuntimeVariables.replace("Media Gallery Permissions Test Page"));
+		selenium.clickAt("link=Media Gallery Test Page",
+			RuntimeVariables.replace("Media Gallery Test Page"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Media Gallery Permissions Test Folder"),
@@ -54,8 +54,8 @@ public class Member_EditImageTest extends BaseTestCase {
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
 		selenium.open("/web/guest/home/");
-		selenium.clickAt("link=Media Gallery Permissions Test Page",
-			RuntimeVariables.replace("Media Gallery Permissions Test Page"));
+		selenium.clickAt("link=Media Gallery Test Page",
+			RuntimeVariables.replace("Media Gallery Test Page"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Media Gallery Permissions Test Folder"),

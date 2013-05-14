@@ -100,6 +100,9 @@ public class AddMemberTest extends BaseTestCase {
 					RuntimeVariables.replace("Sign Out"));
 				selenium.waitForPageToLoad("30000");
 				selenium.open("/web/guest/home/");
+				selenium.clickAt("link=Welcome",
+					RuntimeVariables.replace("Welcome"));
+				selenium.waitForPageToLoad("30000");
 				selenium.waitForVisible("//input[@id='_58_login']");
 				selenium.type("//input[@id='_58_login']",
 					RuntimeVariables.replace("member@liferay.com"));
@@ -180,6 +183,9 @@ public class AddMemberTest extends BaseTestCase {
 					RuntimeVariables.replace("Sign Out"));
 				selenium.waitForPageToLoad("30000");
 				selenium.open("/web/guest/home/");
+				selenium.clickAt("link=Welcome",
+					RuntimeVariables.replace("Welcome"));
+				selenium.waitForPageToLoad("30000");
 				selenium.waitForVisible("//input[@id='_58_login']");
 				selenium.type("//input[@id='_58_login']",
 					RuntimeVariables.replace("test@liferay.com"));

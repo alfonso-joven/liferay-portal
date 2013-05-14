@@ -51,7 +51,7 @@
 <tr>
 	<td>type</td>
 	<td>//input[@id='_125_keywords']</td>
-	<td>portlet@liferay.com</td>
+	<td>portlet</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -60,12 +60,12 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//tbody/tr[3]/td[2]/a</td>
+	<td>//tr[contains(.,'Portlet')]/td[2]/a</td>
 	<td>Portlet</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>//tbody/tr[3]/td[2]/a</td>
+	<td>//tr[contains(.,'Portlet')]/td[2]/a</td>
 	<td>Portlet</td>
 </tr>
 <tr>
@@ -80,17 +80,17 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//div[6]/span[1]/a/span</td>
+	<td>//div[@id='_125_roles']/span/a</td>
 	<td>Select</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[6]/span[1]/a/span</td>
+	<td>//div[@id='_125_roles']/span/a</td>
 	<td>Select</td>
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>//div[6]/span[1]/a/span</td>
+	<td>//div[@id='_125_roles']/span/a</td>
 	<td>Select</td>
 </tr>
 <tr>
@@ -158,7 +158,6 @@
 	<td>//tr[3]/td[1]</td>
 	<td>Portlet</td>
 </tr>
-
 </tbody></table>
 </body>
 </html>

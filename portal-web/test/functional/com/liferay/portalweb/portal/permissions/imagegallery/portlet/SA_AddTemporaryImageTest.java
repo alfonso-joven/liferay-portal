@@ -25,10 +25,8 @@ public class SA_AddTemporaryImageTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent(
-			"link=Media Gallery Permissions Test Page");
-		selenium.clickAt("link=Media Gallery Permissions Test Page",
-			RuntimeVariables.replace("Media Gallery Permissions Test Page"));
+		selenium.clickAt("link=Media Gallery Test Page",
+			RuntimeVariables.replace("Media Gallery Test Page"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Media Gallery Temporary Folder"),
 			selenium.getText("//a[@title='Media Gallery Temporary Folder - ']"));
@@ -52,6 +50,7 @@ public class SA_AddTemporaryImageTest extends BaseTestCase {
 		selenium.selectFrame("relative=top");
 		selenium.waitForElementPresent(
 			"//script[contains(@src,'liferay/upload_progress.js')]");
+		Thread.sleep(1000);
 		selenium.waitForVisible("//input[@id='_31_file']");
 		selenium.uploadCommonFile("//input[@id='_31_file']",
 			RuntimeVariables.replace("Document_1.jpg"));
@@ -64,14 +63,16 @@ public class SA_AddTemporaryImageTest extends BaseTestCase {
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
 		selenium.open("/web/guest/home/");
-		selenium.clickAt("link=Media Gallery Permissions Test Page",
-			RuntimeVariables.replace("Media Gallery Permissions Test Page"));
+		selenium.clickAt("link=Media Gallery Test Page",
+			RuntimeVariables.replace("Media Gallery Test Page"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Media Gallery Temporary Folder"),
 			selenium.getText("//a[@title='Media Gallery Temporary Folder - ']"));
 		selenium.clickAt("//a[@title='Media Gallery Temporary Folder - ']",
 			RuntimeVariables.replace("Media Gallery Temporary Folder"));
 		selenium.waitForPageToLoad("30000");
+		selenium.waitForVisible(
+			"//a[@title='Portlet Permissions Image 2 Test Title - ']");
 		assertEquals(RuntimeVariables.replace(
 				"Portlet Permissions Image 2 Test Title"),
 			selenium.getText(

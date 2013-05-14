@@ -40,7 +40,7 @@ public class AssignUserMemberRolesTest extends BaseTestCase {
 			RuntimeVariables.replace("Users and Organizations"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@title='Search Users and Organizations']",
-			RuntimeVariables.replace("member@liferay.com"));
+			RuntimeVariables.replace("member"));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
