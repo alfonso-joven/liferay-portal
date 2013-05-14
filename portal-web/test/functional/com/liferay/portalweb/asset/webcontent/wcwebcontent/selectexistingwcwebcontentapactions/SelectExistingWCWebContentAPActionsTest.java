@@ -62,18 +62,21 @@ public class SelectExistingWCWebContentAPActionsTest extends BaseTestCase {
 		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Web Content')]/a",
 			RuntimeVariables.replace("Web Content"));
 		selenium.waitForPageToLoad("30000");
+		selenium.waitForVisible(
+			"//tr[contains(.,'WC Web Content Title')]/td[1]/a");
 		assertEquals(RuntimeVariables.replace("WC Web Content Title"),
-			selenium.getText("//td[1]/a"));
-		selenium.clickAt("//td[1]/a",
+			selenium.getText("//tr[contains(.,'WC Web Content Title')]/td[1]/a"));
+		selenium.clickAt("//tr[contains(.,'WC Web Content Title')]/td[1]/a",
 			RuntimeVariables.replace("WC Web Content Title"));
 		selenium.waitForPageToLoad("30000");
+		selenium.waitForVisible("//div[@class='portlet-msg-success']");
 		assertEquals(RuntimeVariables.replace(
 				"You have successfully updated the setup."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertEquals(RuntimeVariables.replace("Web Content"),
-			selenium.getText("//td[1]/a"));
+			selenium.getText("//tr[contains(.,'WC Web Content Title')]/td[1]/a"));
 		assertEquals(RuntimeVariables.replace("WC Web Content Title"),
-			selenium.getText("//td[2]/a"));
+			selenium.getText("//tr[contains(.,'WC Web Content Title')]/td[2]/a"));
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
 		selenium.clickAt("link=Asset Publisher Test Page",

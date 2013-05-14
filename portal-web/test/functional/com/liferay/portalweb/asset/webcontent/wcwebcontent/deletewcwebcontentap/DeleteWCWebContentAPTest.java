@@ -46,11 +46,12 @@ public class DeleteWCWebContentAPTest extends BaseTestCase {
 			"//iframe[contains(@id,'configurationIframeDialog')]");
 		selenium.waitForElementPresent(
 			"//script[contains(@src,'/liferay/navigation_interaction.js')]");
-		selenium.waitForVisible("//td[1]/a");
+		selenium.waitForVisible(
+			"//tr[contains(.,'WC Web Content Title')]/td[1]/a");
 		assertEquals(RuntimeVariables.replace("Web Content"),
-			selenium.getText("//td[1]/a"));
+			selenium.getText("//tr[contains(.,'WC Web Content Title')]/td[1]/a"));
 		assertEquals(RuntimeVariables.replace("WC Web Content Title"),
-			selenium.getText("//td[2]/a"));
+			selenium.getText("//tr[contains(.,'WC Web Content Title')]/td[2]/a"));
 		selenium.click(RuntimeVariables.replace("//img[@alt='Delete']"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.getConfirmation()

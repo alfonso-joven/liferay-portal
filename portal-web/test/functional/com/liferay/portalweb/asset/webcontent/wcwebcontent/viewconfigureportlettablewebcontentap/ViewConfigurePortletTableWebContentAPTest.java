@@ -29,11 +29,12 @@ public class ViewConfigurePortletTableWebContentAPTest extends BaseTestCase {
 		selenium.clickAt("link=Asset Publisher Test Page",
 			RuntimeVariables.replace("Asset Publisher Test Page"));
 		selenium.waitForPageToLoad("30000");
+		selenium.waitForVisible("//tr[contains(.,'Title')]/th[1]");
 		assertEquals(RuntimeVariables.replace("Title"),
-			selenium.getText("//th[1]"));
+			selenium.getText("//tr[contains(.,'Title')]/th[1]"));
 		assertEquals(RuntimeVariables.replace("WC Web Content Title"),
-			selenium.getText("//td[1]/a"));
-		selenium.clickAt("//td[1]/a",
+			selenium.getText("//tr[contains(.,'WC Web Content Title')]/td[1]/a"));
+		selenium.clickAt("//tr[contains(.,'WC Web Content Title')]/td[1]/a",
 			RuntimeVariables.replace("WC Web Content Title"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("WC Web Content Title"),

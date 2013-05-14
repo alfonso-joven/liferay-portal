@@ -55,8 +55,8 @@ public class AddWCWebContent1Test extends BaseTestCase {
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertEquals(RuntimeVariables.replace("WC WebContent1 Title"),
-			selenium.getText("//td[3]/a"));
+			selenium.getText("//tr[contains(.,'WC WebContent1 Title')]/td[3]/a"));
 		assertEquals(RuntimeVariables.replace("Approved"),
-			selenium.getText("//td[4]/a"));
+			selenium.getText("//tr[contains(.,'WC WebContent1 Title')]/td[4]/a"));
 	}
 }
