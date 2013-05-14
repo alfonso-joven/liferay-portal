@@ -45,8 +45,6 @@ public class TearDownBMEntryTest extends BaseTestCase {
 				}
 
 				Thread.sleep(1000);
-				selenium.waitForVisible(
-					"//span[@title='Actions']/ul/li/strong/a");
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//td[5]/span[@title='Actions']/ul/li/strong/a/span"));
@@ -60,8 +58,8 @@ public class TearDownBMEntryTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete this?");
 
 				boolean bookmarksEntry2Present = selenium.isElementPresent(
 						"//td[5]/span[@title='Actions']/ul/li/strong/a/span");
@@ -73,8 +71,6 @@ public class TearDownBMEntryTest extends BaseTestCase {
 				}
 
 				Thread.sleep(1000);
-				selenium.waitForVisible(
-					"//span[@title='Actions']/ul/li/strong/a");
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//td[5]/span[@title='Actions']/ul/li/strong/a/span"));
@@ -88,8 +84,8 @@ public class TearDownBMEntryTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete this?");
 
 				boolean bookmarksEntry3Present = selenium.isElementPresent(
 						"//td[5]/span[@title='Actions']/ul/li/strong/a/span");
@@ -101,8 +97,6 @@ public class TearDownBMEntryTest extends BaseTestCase {
 				}
 
 				Thread.sleep(1000);
-				selenium.waitForVisible(
-					"//span[@title='Actions']/ul/li/strong/a");
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//td[5]/span[@title='Actions']/ul/li/strong/a/span"));
@@ -116,8 +110,8 @@ public class TearDownBMEntryTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete this?");
 
 				boolean bookmarksEntry4Present = selenium.isElementPresent(
 						"//td[5]/span[@title='Actions']/ul/li/strong/a/span");
@@ -142,8 +136,8 @@ public class TearDownBMEntryTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete this?");
 
 				boolean bookmarksEntry5Present = selenium.isElementPresent(
 						"//td[5]/span[@title='Actions']/ul/li/strong/a/span");
@@ -155,8 +149,6 @@ public class TearDownBMEntryTest extends BaseTestCase {
 				}
 
 				Thread.sleep(1000);
-				selenium.waitForVisible(
-					"//span[@title='Actions']/ul/li/strong/a");
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//td[5]/span[@title='Actions']/ul/li/strong/a/span"));
@@ -170,8 +162,8 @@ public class TearDownBMEntryTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete this?");
 
 			case 2:
 			case 3:

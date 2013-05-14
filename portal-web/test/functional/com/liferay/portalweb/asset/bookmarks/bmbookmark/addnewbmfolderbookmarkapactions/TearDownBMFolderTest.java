@@ -45,8 +45,6 @@ public class TearDownBMFolderTest extends BaseTestCase {
 				}
 
 				Thread.sleep(1000);
-				selenium.waitForVisible(
-					"//span[@title='Actions']/ul/li/strong/a");
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//span[@title='Actions']/ul/li/strong/a/span"));
@@ -60,8 +58,8 @@ public class TearDownBMFolderTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete this?");
 
 				boolean bookmarksFolder2Present = selenium.isElementPresent(
 						"//span[@title='Actions']/ul/li/strong/a");
@@ -73,8 +71,6 @@ public class TearDownBMFolderTest extends BaseTestCase {
 				}
 
 				Thread.sleep(1000);
-				selenium.waitForVisible(
-					"//span[@title='Actions']/ul/li/strong/a");
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//span[@title='Actions']/ul/li/strong/a/span"));
@@ -88,8 +84,8 @@ public class TearDownBMFolderTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete this?");
 
 				boolean bookmarksFolder3Present = selenium.isElementPresent(
 						"//span[@title='Actions']/ul/li/strong/a");
@@ -101,8 +97,6 @@ public class TearDownBMFolderTest extends BaseTestCase {
 				}
 
 				Thread.sleep(1000);
-				selenium.waitForVisible(
-					"//span[@title='Actions']/ul/li/strong/a");
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//span[@title='Actions']/ul/li/strong/a/span"));
@@ -116,8 +110,8 @@ public class TearDownBMFolderTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete this?");
 
 				boolean bookmarksFolder4Present = selenium.isElementPresent(
 						"//span[@title='Actions']/ul/li/strong/a");
@@ -129,8 +123,6 @@ public class TearDownBMFolderTest extends BaseTestCase {
 				}
 
 				Thread.sleep(1000);
-				selenium.waitForVisible(
-					"//span[@title='Actions']/ul/li/strong/a");
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//span[@title='Actions']/ul/li/strong/a/span"));
@@ -144,8 +136,8 @@ public class TearDownBMFolderTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete this?");
 
 				boolean bookmarksFolder5Present = selenium.isElementPresent(
 						"//span[@title='Actions']/ul/li/strong/a");
@@ -157,8 +149,6 @@ public class TearDownBMFolderTest extends BaseTestCase {
 				}
 
 				Thread.sleep(1000);
-				selenium.waitForVisible(
-					"//span[@title='Actions']/ul/li/strong/a");
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//span[@title='Actions']/ul/li/strong/a/span"));
@@ -172,8 +162,8 @@ public class TearDownBMFolderTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete this?");
 
 			case 2:
 			case 3:
