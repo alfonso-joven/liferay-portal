@@ -35,13 +35,10 @@ public class AddWikiFrontPageTest extends BaseTestCase {
 		selenium.clickAt("//div[@class='portlet-msg-info']/a",
 			RuntimeVariables.replace(
 				"This page is empty. Edit it to add some text."));
-		Thread.sleep(5000);
-		assertTrue(selenium.isVisible(
-				"//td[@id='cke_contents__36_editor']/iframe"));
-		selenium.selectFrame("//td[@id='cke_contents__36_editor']/iframe");
-		selenium.type("//body",
+		Thread.sleep(1000);
+		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
+		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
 			RuntimeVariables.replace("Wiki FrontPage Content"));
-		selenium.selectFrame("relative=top");
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");

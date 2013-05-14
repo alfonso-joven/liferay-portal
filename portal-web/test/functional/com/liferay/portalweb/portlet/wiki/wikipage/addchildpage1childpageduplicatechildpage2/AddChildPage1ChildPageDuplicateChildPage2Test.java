@@ -46,28 +46,11 @@ public class AddChildPage1ChildPageDuplicateChildPage2Test extends BaseTestCase 
 				"Wiki Front Page Child Page1 Child Page Title"));
 		assertEquals("Creole",
 			selenium.getSelectedLabel("//select[@id='_36_format']"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_36_editor' and @style='display: none;']");
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[.='Source']"));
-		selenium.clickAt("//span[.='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForVisible("//a[@class='cke_button_source cke_on']");
-		selenium.waitForVisible("//td[@id='cke_contents__36_editor']/textarea");
-		selenium.type("//td[@id='cke_contents__36_editor']/textarea",
+		Thread.sleep(1000);
+		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
+		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
 			RuntimeVariables.replace(
 				"Wiki Front Page Child Page2 Child Page Content"));
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[.='Source']"));
-		selenium.clickAt("//span[.='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_36_editor' and @style='display: none;']");
-		selenium.waitForVisible("//td[@id='cke_contents__36_editor']/iframe");
-		selenium.selectFrame("//td[@id='cke_contents__36_editor']/iframe");
-		selenium.waitForText("//body",
-			"Wiki Front Page Child Page2 Child Page Content");
-		selenium.selectFrame("relative=top");
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");
@@ -91,28 +74,11 @@ public class AddChildPage1ChildPageDuplicateChildPage2Test extends BaseTestCase 
 						   .matches("^You may lose some formatting when switching from Creole to HTML. Do you want to continue[\\s\\S]$"));
 		assertEquals("HTML",
 			selenium.getSelectedLabel("//select[@id='_36_format']"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_36_editor' and @style='display: none;']");
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[.='Source']"));
-		selenium.clickAt("//span[.='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForVisible("//a[@class='cke_button_source cke_on']");
-		selenium.waitForVisible("//td[@id='cke_contents__36_editor']/textarea");
-		selenium.type("//td[@id='cke_contents__36_editor']/textarea",
+		Thread.sleep(1000);
+		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
+		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
 			RuntimeVariables.replace(
 				"Wiki Front Page Child Page2 Child Page Content"));
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[.='Source']"));
-		selenium.clickAt("//span[.='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_36_editor' and @style='display: none;']");
-		selenium.waitForVisible("//td[@id='cke_contents__36_editor']/iframe");
-		selenium.selectFrame("//td[@id='cke_contents__36_editor']/iframe");
-		selenium.waitForText("//body",
-			"Wiki Front Page Child Page2 Child Page Content");
-		selenium.selectFrame("relative=top");
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");

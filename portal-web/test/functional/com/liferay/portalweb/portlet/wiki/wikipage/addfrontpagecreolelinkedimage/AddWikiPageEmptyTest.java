@@ -36,7 +36,7 @@ public class AddWikiPageEmptyTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"This page does not exist yet. Use the form below to create it."),
 			selenium.getText("//div[@class='portlet-msg-info']"));
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		selenium.type("//input[@id='_36_title']",
 			RuntimeVariables.replace("Wiki Page Title"));
 		selenium.clickAt("//input[@value='Publish']",

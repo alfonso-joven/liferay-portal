@@ -40,7 +40,7 @@ public class AddFrontPageAttachmentTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Add Attachments']",
 			RuntimeVariables.replace("Add Attachments"));
 		selenium.waitForPageToLoad("30000");
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		selenium.waitForVisible("//a[@class='use-fallback using-new-uploader']");
 		assertEquals(RuntimeVariables.replace("Use the classic uploader."),
 			selenium.getText("//a[@class='use-fallback using-new-uploader']"));
@@ -48,7 +48,7 @@ public class AddFrontPageAttachmentTest extends BaseTestCase {
 		selenium.waitForVisible("//input[@id='_36_file1']");
 		selenium.uploadFile("//input[@id='_36_file1']",
 			RuntimeVariables.replace(
-				"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\portlet\\wiki\\attachment\\addfrontpageattachment\\dependencies\\Wiki_Attachment.jpg"));
+				"L:\\portal\\build\\portal-web\\test\\functional\\com\\liferay\\portalweb\\portlet\\wiki\\attachment\\addfrontpageattachment\\dependencies\\Wiki_Attachment.jpg"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");

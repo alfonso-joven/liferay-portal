@@ -36,7 +36,6 @@ public class AddWikiFrontPageTest extends BaseTestCase {
 				"This page is empty. Edit it to add some text."));
 		selenium.waitForPageToLoad("30000");
 		Thread.sleep(1000);
-		selenium.waitForVisible("//a[@class='cke_button_cut cke_disabled']");
 		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
 		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
 			RuntimeVariables.replace("Wiki FrontPage Content"));

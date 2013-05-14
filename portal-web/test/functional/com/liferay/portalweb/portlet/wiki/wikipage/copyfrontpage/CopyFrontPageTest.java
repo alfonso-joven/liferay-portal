@@ -40,8 +40,6 @@ public class CopyFrontPageTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_36_title']",
 			RuntimeVariables.replace("FrontPage2"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_36_editor' and @style='display: none;']");
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");

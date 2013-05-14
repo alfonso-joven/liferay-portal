@@ -35,8 +35,7 @@ public class AddFrontPageCreoleInternalLinksTest extends BaseTestCase {
 			RuntimeVariables.replace(
 				"This page is empty. Edit it to add some text."));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForElementPresent(
-			"//textarea[@id='_36_editor' and @style='display: none;']");
+		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Source"),
 			selenium.getText("//span[.='Source']"));
 		selenium.clickAt("//span[.='Source']",
@@ -49,8 +48,6 @@ public class AddFrontPageCreoleInternalLinksTest extends BaseTestCase {
 			selenium.getText("//span[.='Source']"));
 		selenium.clickAt("//span[.='Source']",
 			RuntimeVariables.replace("Source"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_36_editor' and @style='display: none;']");
 		selenium.waitForVisible("//td[@id='cke_contents__36_editor']/iframe");
 		selenium.selectFrame("//td[@id='cke_contents__36_editor']/iframe");
 		selenium.waitForText("//body", "Link to a page");
@@ -66,8 +63,6 @@ public class AddFrontPageCreoleInternalLinksTest extends BaseTestCase {
 		selenium.clickAt("//div[@class='wiki-body']/p/a",
 			RuntimeVariables.replace("Link to a page"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForElementPresent(
-			"//textarea[@id='_36_editor' and @style='display: none;']");
 		assertTrue(selenium.isVisible(
 				"//td[@id='cke_contents__36_editor']/iframe"));
 	}

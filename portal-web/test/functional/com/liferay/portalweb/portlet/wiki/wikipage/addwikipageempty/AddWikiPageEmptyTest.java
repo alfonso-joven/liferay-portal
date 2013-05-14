@@ -38,8 +38,6 @@ public class AddWikiPageEmptyTest extends BaseTestCase {
 			selenium.getText("//div[@class='portlet-msg-info']"));
 		selenium.type("//input[@id='_36_title']",
 			RuntimeVariables.replace("Wiki Page Title"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_36_editor' and @style='display: none;']");
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");

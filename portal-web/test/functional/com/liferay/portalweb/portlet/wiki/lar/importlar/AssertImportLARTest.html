@@ -20,153 +20,93 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='wiki-body']/h2</td>
-	<td>Test Wiki Article#</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//div[@class='wiki-body']/p/em</td>
-	<td>this is italics</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//div[@class='wiki-body']/p/strong</td>
-	<td>bold</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//div[@class='wiki-body']/p/a</td>
-	<td>Link to website</td>
-</tr>
-<tr>
-	<td>assertPartialText</td>
-	<td>//div[@class='wiki-body']/ul/li</td>
-	<td>this is a list item</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//div[@class='wiki-body']/ul/li/ul/li</td>
-	<td>this is a sub list item</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//div[@class='child-pages']/ul/li/a</td>
-	<td>Test</td>
-</tr>
-<tr>
-	<td>clickAtAndWait</td>
-	<td>//div[@class='child-pages']/ul/li/a</td>
-	<td>Test</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//div[@class='wiki-body']/h2</td>
-	<td>Test Child Article#</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//div[@class='wiki-body']/p/em</td>
-	<td>this is italics</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//div[@class='wiki-body']/p/strong</td>
-	<td>bold</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//div[@class='wiki-body']/p/a</td>
-	<td>Link to website</td>
-</tr>
-<tr>
-	<td>assertPartialText</td>
-	<td>//div[@class='wiki-body']/ul/li</td>
-	<td>this is a list item</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//div[@class='wiki-body']/ul/li/ul/li</td>
-	<td>this is a sub list item</td>
-</tr>
-<tr>
-	<td>clickAtAndWait</td>
-	<td>link=Second Edited Wiki Test</td>
-	<td>Second Edited Wiki Test</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//div[@class='wiki-body']/h4</td>
-	<td>Yes this is a second test article #</td>
+	<td>//h1[@class='header-title']</td>
+	<td>FrontPage</td>
 </tr>
 <tr>
 	<td>assertText</td>
 	<td>//div[@class='wiki-body']/p</td>
-	<td>I love Liferay! This Wiki has been EDITED!</td>
+	<td>Wiki FrontPage Content</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='child-pages']/h2</td>
+	<td>Children Pages</td>
 </tr>
 <tr>
 	<td>assertText</td>
 	<td>xPath=(//div[@class='child-pages']/ul/li/a)[1]</td>
-	<td>Link Me 1</td>
+	<td>Wiki Front Page Child Page1 Title</td>
 </tr>
 <tr>
 	<td>assertText</td>
 	<td>xPath=(//div[@class='child-pages']/ul/li/a)[2]</td>
-	<td>Link Me 2</td>
+	<td>Wiki Front Page Child Page2 Title</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xPath=(//div[@class='child-pages']/ul/li/a)[3]</td>
+	<td>Wiki Front Page Child Page3 Title</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>xPath=(//div[@class='child-pages']/ul/li/a)[1]</td>
-	<td>Link Me 1</td>
+	<td>Wiki Front Page Child Page1 Title</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//div[@class='wiki-body']/p)[1]</td>
-	<td>Hi Administrator! Hope you are well! Please link me to another page!</td>
+	<td>//h1[@class='header-title']</td>
+	<td>Wiki Front Page Child Page1 Title</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//div[@class='wiki-body']/p)[2]</td>
-	<td>-testing</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>xPath=(//div[@class='wiki-body']/p/a)[1]</td>
-	<td>FrontPage</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>xPath=(//div[@class='wiki-body']/p/a)[2]</td>
-	<td>Link Me 2</td>
+	<td>//div[@class='wiki-body']/p</td>
+	<td>Wiki Front Page Child Page1 Content</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>xPath=(//div[@class='wiki-body']/p/a)[2]</td>
-	<td>Link Me 2</td>
+	<td>//span[@class='header-back-to']/a</td>
+	<td>« Back to FrontPage</td>
+</tr>
+<tr>
+	<td>clickAtAndWait</td>
+	<td>xPath=(//div[@class='child-pages']/ul/li/a)[2]</td>
+	<td>Wiki Front Page Child Page2 Title</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//div[@class='wiki-body']/p)[1]</td>
-	<td>Hi Administrator!</td>
+	<td>//h1[@class='header-title']</td>
+	<td>Wiki Front Page Child Page2 Title</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//div[@class='wiki-body']/p)[2]</td>
-	<td>I made another mistake! Oh me. Please link this article to another!</td>
+	<td>//div[@class='wiki-body']/p</td>
+	<td>Wiki Front Page Child Page2 Content</td>
+</tr>
+<tr>
+	<td>clickAtAndWait</td>
+	<td>//span[@class='header-back-to']/a</td>
+	<td>« Back to FrontPage</td>
+</tr>
+<tr>
+	<td>clickAtAndWait</td>
+	<td>xPath=(//div[@class='child-pages']/ul/li/a)[3]</td>
+	<td>Wiki Front Page Child Page3 Title</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//div[@class='wiki-body']/p)[3]</td>
-	<td>-rj</td>
+	<td>//h1[@class='header-title']</td>
+	<td>Wiki Front Page Child Page3 Title</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//div[@class='wiki-body']/p/a)[1]</td>
-	<td>FrontPage</td>
+	<td>//div[@class='wiki-body']/p</td>
+	<td>Wiki Front Page Child Page3 Content</td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>xPath=(//div[@class='wiki-body']/p/a)[2]</td>
-	<td>Link Me 1</td>
+	<td>clickAtAndWait</td>
+	<td>//span[@class='header-back-to']/a</td>
+	<td>« Back to FrontPage</td>
 </tr>
 </tbody></table>
 </body>

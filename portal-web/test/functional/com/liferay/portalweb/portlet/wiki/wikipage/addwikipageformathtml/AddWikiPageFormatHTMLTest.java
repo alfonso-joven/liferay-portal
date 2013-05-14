@@ -40,27 +40,11 @@ public class AddWikiPageFormatHTMLTest extends BaseTestCase {
 						   .matches("^You may lose some formatting when switching from Creole to HTML. Do you want to continue[\\s\\S]$"));
 		selenium.type("//input[@id='_36_title']",
 			RuntimeVariables.replace("Wiki Page Title"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_36_editor' and @style='display: none;']");
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[.='Source']"));
-		selenium.clickAt("//span[.='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForVisible("//a[@class='cke_button_source cke_on']");
-		selenium.waitForVisible("//td[@id='cke_contents__36_editor']/textarea");
-		selenium.type("//td[@id='cke_contents__36_editor']/textarea",
+		Thread.sleep(1000);
+		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
+		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
 			RuntimeVariables.replace(
 				"<a herf=http://www.liferay.com>Welcome to LIFERAY</a>"));
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[.='Source']"));
-		selenium.clickAt("//span[.='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_36_editor' and @style='display: none;']");
-		selenium.waitForVisible("//td[@id='cke_contents__36_editor']/iframe");
-		selenium.selectFrame("//td[@id='cke_contents__36_editor']/iframe");
-		selenium.waitForText("//body", "Welcome to LIFERAY");
-		selenium.selectFrame("relative=top");
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");
@@ -81,7 +65,7 @@ public class AddWikiPageFormatHTMLTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Wiki Page Title"),
 			selenium.getText("//h1[@class='header-title']/span"));
 		assertEquals(RuntimeVariables.replace("Welcome to LIFERAY"),
-			selenium.getText("//div[@class='wiki-body']/p/a"));
+			selenium.getText("//div[@class='wiki-body']/a"));
 		assertEquals(RuntimeVariables.replace("Details"),
 			selenium.getText("//div[3]/span[2]/a/span"));
 		selenium.clickAt("//div[3]/span[2]/a/span",

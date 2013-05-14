@@ -49,7 +49,7 @@ public class RevertChangeParentWikiPageToWikiPageTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=History", RuntimeVariables.replace("History"));
 		selenium.waitForPageToLoad("30000");
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Changed parent from \".\""),
 			selenium.getText("//tr[3]/td[7]"));
 		assertEquals(RuntimeVariables.replace("Revert"),

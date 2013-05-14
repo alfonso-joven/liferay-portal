@@ -28,73 +28,56 @@ public class AssertImportLARTest extends BaseTestCase {
 		selenium.clickAt("link=Wiki Test Page",
 			RuntimeVariables.replace("Wiki Test Page"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Test Wiki Article#"),
-			selenium.getText("//div[@class='wiki-body']/h2"));
-		assertEquals(RuntimeVariables.replace("this is italics"),
-			selenium.getText("//div[@class='wiki-body']/p/em"));
-		assertEquals(RuntimeVariables.replace("bold"),
-			selenium.getText("//div[@class='wiki-body']/p/strong"));
-		assertEquals(RuntimeVariables.replace("Link to website"),
-			selenium.getText("//div[@class='wiki-body']/p/a"));
-		assertTrue(selenium.isPartialText("//div[@class='wiki-body']/ul/li",
-				"this is a list item"));
-		assertEquals(RuntimeVariables.replace("this is a sub list item"),
-			selenium.getText("//div[@class='wiki-body']/ul/li/ul/li"));
-		assertEquals(RuntimeVariables.replace("Test"),
-			selenium.getText("//div[@class='child-pages']/ul/li/a"));
-		selenium.clickAt("//div[@class='child-pages']/ul/li/a",
-			RuntimeVariables.replace("Test"));
-		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Test Child Article#"),
-			selenium.getText("//div[@class='wiki-body']/h2"));
-		assertEquals(RuntimeVariables.replace("this is italics"),
-			selenium.getText("//div[@class='wiki-body']/p/em"));
-		assertEquals(RuntimeVariables.replace("bold"),
-			selenium.getText("//div[@class='wiki-body']/p/strong"));
-		assertEquals(RuntimeVariables.replace("Link to website"),
-			selenium.getText("//div[@class='wiki-body']/p/a"));
-		assertTrue(selenium.isPartialText("//div[@class='wiki-body']/ul/li",
-				"this is a list item"));
-		assertEquals(RuntimeVariables.replace("this is a sub list item"),
-			selenium.getText("//div[@class='wiki-body']/ul/li/ul/li"));
-		selenium.clickAt("link=Second Edited Wiki Test",
-			RuntimeVariables.replace("Second Edited Wiki Test"));
-		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace(
-				"Yes this is a second test article #"),
-			selenium.getText("//div[@class='wiki-body']/h4"));
-		assertEquals(RuntimeVariables.replace(
-				"I love Liferay! This Wiki has been EDITED!"),
+		assertEquals(RuntimeVariables.replace("FrontPage"),
+			selenium.getText("//h1[@class='header-title']"));
+		assertEquals(RuntimeVariables.replace("Wiki FrontPage Content"),
 			selenium.getText("//div[@class='wiki-body']/p"));
-		assertEquals(RuntimeVariables.replace("Link Me 1"),
+		assertEquals(RuntimeVariables.replace("Children Pages"),
+			selenium.getText("//div[@class='child-pages']/h2"));
+		assertEquals(RuntimeVariables.replace(
+				"Wiki Front Page Child Page1 Title"),
 			selenium.getText("xPath=(//div[@class='child-pages']/ul/li/a)[1]"));
-		assertEquals(RuntimeVariables.replace("Link Me 2"),
+		assertEquals(RuntimeVariables.replace(
+				"Wiki Front Page Child Page2 Title"),
 			selenium.getText("xPath=(//div[@class='child-pages']/ul/li/a)[2]"));
+		assertEquals(RuntimeVariables.replace(
+				"Wiki Front Page Child Page3 Title"),
+			selenium.getText("xPath=(//div[@class='child-pages']/ul/li/a)[3]"));
 		selenium.clickAt("xPath=(//div[@class='child-pages']/ul/li/a)[1]",
-			RuntimeVariables.replace("Link Me 1"));
+			RuntimeVariables.replace("Wiki Front Page Child Page1 Title"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
-				"Hi Administrator! Hope you are well! Please link me to another page!"),
-			selenium.getText("xPath=(//div[@class='wiki-body']/p)[1]"));
-		assertEquals(RuntimeVariables.replace("-testing"),
-			selenium.getText("xPath=(//div[@class='wiki-body']/p)[2]"));
-		assertEquals(RuntimeVariables.replace("FrontPage"),
-			selenium.getText("xPath=(//div[@class='wiki-body']/p/a)[1]"));
-		assertEquals(RuntimeVariables.replace("Link Me 2"),
-			selenium.getText("xPath=(//div[@class='wiki-body']/p/a)[2]"));
-		selenium.clickAt("xPath=(//div[@class='wiki-body']/p/a)[2]",
-			RuntimeVariables.replace("Link Me 2"));
-		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Hi Administrator!"),
-			selenium.getText("xPath=(//div[@class='wiki-body']/p)[1]"));
+				"Wiki Front Page Child Page1 Title"),
+			selenium.getText("//h1[@class='header-title']"));
 		assertEquals(RuntimeVariables.replace(
-				"I made another mistake! Oh me. Please link this article to another!"),
-			selenium.getText("xPath=(//div[@class='wiki-body']/p)[2]"));
-		assertEquals(RuntimeVariables.replace("-rj"),
-			selenium.getText("xPath=(//div[@class='wiki-body']/p)[3]"));
-		assertEquals(RuntimeVariables.replace("FrontPage"),
-			selenium.getText("xPath=(//div[@class='wiki-body']/p/a)[1]"));
-		assertEquals(RuntimeVariables.replace("Link Me 1"),
-			selenium.getText("xPath=(//div[@class='wiki-body']/p/a)[2]"));
+				"Wiki Front Page Child Page1 Content"),
+			selenium.getText("//div[@class='wiki-body']/p"));
+		selenium.clickAt("//span[@class='header-back-to']/a",
+			RuntimeVariables.replace("\u00ab Back to FrontPage"));
+		selenium.waitForPageToLoad("30000");
+		selenium.clickAt("xPath=(//div[@class='child-pages']/ul/li/a)[2]",
+			RuntimeVariables.replace("Wiki Front Page Child Page2 Title"));
+		selenium.waitForPageToLoad("30000");
+		assertEquals(RuntimeVariables.replace(
+				"Wiki Front Page Child Page2 Title"),
+			selenium.getText("//h1[@class='header-title']"));
+		assertEquals(RuntimeVariables.replace(
+				"Wiki Front Page Child Page2 Content"),
+			selenium.getText("//div[@class='wiki-body']/p"));
+		selenium.clickAt("//span[@class='header-back-to']/a",
+			RuntimeVariables.replace("\u00ab Back to FrontPage"));
+		selenium.waitForPageToLoad("30000");
+		selenium.clickAt("xPath=(//div[@class='child-pages']/ul/li/a)[3]",
+			RuntimeVariables.replace("Wiki Front Page Child Page3 Title"));
+		selenium.waitForPageToLoad("30000");
+		assertEquals(RuntimeVariables.replace(
+				"Wiki Front Page Child Page3 Title"),
+			selenium.getText("//h1[@class='header-title']"));
+		assertEquals(RuntimeVariables.replace(
+				"Wiki Front Page Child Page3 Content"),
+			selenium.getText("//div[@class='wiki-body']/p"));
+		selenium.clickAt("//span[@class='header-back-to']/a",
+			RuntimeVariables.replace("\u00ab Back to FrontPage"));
+		selenium.waitForPageToLoad("30000");
 	}
 }

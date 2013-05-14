@@ -38,7 +38,7 @@ public class RevertEditFrontPageMinorChangeTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=History", RuntimeVariables.replace("History"));
 		selenium.waitForPageToLoad("30000");
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("1.2 (Minor Edit)"),
 			selenium.getText("//td[4]/a"));
 		assertFalse(selenium.isTextPresent("1.3"));
@@ -47,7 +47,7 @@ public class RevertEditFrontPageMinorChangeTest extends BaseTestCase {
 		selenium.clickAt("//td[8]/span/a/span",
 			RuntimeVariables.replace("Revert"));
 		selenium.waitForPageToLoad("30000");
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("1.3"),
 			selenium.getText("//td[4]/a"));
 		assertEquals(RuntimeVariables.replace("Reverted to 1.1"),

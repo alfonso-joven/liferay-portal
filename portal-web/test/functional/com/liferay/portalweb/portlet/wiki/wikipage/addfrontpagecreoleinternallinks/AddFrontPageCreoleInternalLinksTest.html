@@ -29,10 +29,11 @@
 	<td>This page is empty. Edit it to add some text.</td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
-	<td>//textarea[@id='_36_editor' and @style='display: none;']</td>
-	<td>Text Area</td>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
 </tr>
+<!--The wiki creole tests should be left to use the source button and not typeFrame. -->
 <tr>
 	<td>assertText</td>
 	<td>//span[.='Source']</td>
@@ -67,11 +68,6 @@
 	<td>clickAt</td>
 	<td>//span[.='Source']</td>
 	<td>Source</td>
-</tr>
-<tr>
-	<td>waitForElementPresent</td>
-	<td>//textarea[@id='_36_editor' and @style='display: none;']</td>
-	<td>Text Area</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
@@ -112,11 +108,6 @@
 	<td>clickAtAndWait</td>
 	<td>//div[@class='wiki-body']/p/a</td>
 	<td>Link to a page</td>
-</tr>
-<tr>
-	<td>waitForElementPresent</td>
-	<td>//textarea[@id='_36_editor' and @style='display: none;']</td>
-	<td>Text Area</td>
 </tr>
 <tr>
 	<td>assertVisible</td>
