@@ -22,33 +22,58 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
  */
 public class AddMessageBoardThreadSiteTest extends BaseTestCase {
 	public void testAddMessageBoardThreadSite() throws Exception {
-		selenium.selectWindow("null");
-		selenium.selectFrame("relative=top");
-		selenium.open("/web/site-name/");
-		selenium.clickAt("link=Message Boards Test Page",
-			RuntimeVariables.replace("Message Boards Test Page"));
-		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//input[@value='Post New Thread']",
-			RuntimeVariables.replace("Post New Thread"));
-		selenium.waitForPageToLoad("30000");
-		selenium.type("//input[@id='_19_subject']",
-			RuntimeVariables.replace("MB Thread Message Subject"));
-		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
-		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
-			RuntimeVariables.replace("MB Thread Message Body"));
-		assertTrue(selenium.isChecked("//input[@id='_19_subscribeCheckbox']"));
-		selenium.clickAt("//input[@id='_19_subscribeCheckbox']",
-			RuntimeVariables.replace("Subscribe"));
-		assertFalse(selenium.isChecked("//input[@id='_19_subscribeCheckbox']"));
-		selenium.clickAt("//input[@value='Publish']",
-			RuntimeVariables.replace("Publish"));
-		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace(
-				"Your request completed successfully."),
-			selenium.getText("//div[@class='portlet-msg-success']"));
-		assertEquals(RuntimeVariables.replace("MB Thread Message Subject"),
-			selenium.getText("//h1[@class='header-title']/span"));
-		assertEquals(RuntimeVariables.replace("MB Thread Message Body"),
-			selenium.getText("//div[@class='thread-body']"));
+		int label = 1;
+
+		while (label >= 1) {
+			switch (label) {
+			case 1:
+				selenium.selectWindow("null");
+				selenium.selectFrame("relative=top");
+				selenium.open("/web/site-name/");
+				selenium.clickAt("link=Message Boards Test Page",
+					RuntimeVariables.replace("Message Boards Test Page"));
+				selenium.waitForPageToLoad("30000");
+				selenium.clickAt("//input[@value='Post New Thread']",
+					RuntimeVariables.replace("Post New Thread"));
+				selenium.waitForPageToLoad("30000");
+				selenium.type("//input[@id='_19_subject']",
+					RuntimeVariables.replace("MB Thread Message Subject"));
+				Thread.sleep(1000);
+				selenium.waitForVisible(
+					"//iframe[contains(@title,'Rich text editor')]");
+				selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
+					RuntimeVariables.replace("MB Thread Message Body"));
+
+				boolean subscribeMeCheckbox = selenium.isChecked(
+						"//input[@id='_19_subscribeCheckbox']");
+
+				if (!subscribeMeCheckbox) {
+					label = 2;
+
+					continue;
+				}
+
+				selenium.clickAt("//input[@id='_19_subscribeCheckbox']",
+					RuntimeVariables.replace("Subscribe Me Checkbox"));
+
+			case 2:
+				assertFalse(selenium.isChecked(
+						"//input[@id='_19_subscribeCheckbox']"));
+				selenium.clickAt("//input[@value='Publish']",
+					RuntimeVariables.replace("Publish"));
+				selenium.waitForPageToLoad("30000");
+				assertEquals(RuntimeVariables.replace(
+						"Your request completed successfully."),
+					selenium.getText("//div[@class='portlet-msg-success']"));
+				assertEquals(RuntimeVariables.replace(
+						"MB Thread Message Subject"),
+					selenium.getText("//h1[@class='header-title']/span"));
+				assertEquals(RuntimeVariables.replace("MB Thread Message Body"),
+					selenium.getText("//div[@class='thread-body']"));
+
+			case 100:
+				label = -1;
+			}
+		}
 	}
 }

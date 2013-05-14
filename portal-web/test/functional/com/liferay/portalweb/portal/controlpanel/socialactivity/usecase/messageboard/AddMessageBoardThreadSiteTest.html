@@ -29,6 +29,11 @@
 	<td>MB Thread Message Subject</td>
 </tr>
 <tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
+</tr>
+<tr>
 	<td>waitForVisible</td>
 	<td>//iframe[contains(@title,'Rich text editor')]</td>
 	<td>CK Editor</td>
@@ -39,19 +44,29 @@
 	<td>MB Thread Message Body</td>
 </tr>
 <tr>
-	<td>assertChecked</td>
+	<td>storeChecked</td>
 	<td>//input[@id='_19_subscribeCheckbox']</td>
-	<td>Subscribe</td>
+	<td>subscribeMeCheckbox</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>!${subscribeMeCheckbox}</td>
+	<td>SubscribeMeCheckbox</td>
 </tr>
 <tr>
 	<td>clickAt</td>
 	<td>//input[@id='_19_subscribeCheckbox']</td>
-	<td>Subscribe</td>
+	<td>Subscribe Me Checkbox</td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>SubscribeMeCheckbox</td>
+	<td></td>
 </tr>
 <tr>
 	<td>assertNotChecked</td>
 	<td>//input[@id='_19_subscribeCheckbox']</td>
-	<td>Subscribe</td>
+	<td>Subscribe Me Checkbox</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>

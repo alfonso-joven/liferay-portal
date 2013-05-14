@@ -69,8 +69,8 @@ public class EditUserSiteTest extends BaseTestCase {
 					RuntimeVariables.replace("Search"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("userfn"),
-					selenium.getText("//tr[3]/td[2]/a"));
-				selenium.clickAt("//tr[3]/td[2]/a",
+					selenium.getText("//tr[contains(.,'userfn')]/td[2]/a"));
+				selenium.clickAt("//tr[contains(.,'userfn')]/td[2]/a",
 					RuntimeVariables.replace("userfn"));
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.isPartialText("//a[@id='_125_sitesLink']",
@@ -82,7 +82,7 @@ public class EditUserSiteTest extends BaseTestCase {
 					selenium.getText("//div[@id='_125_sites']/span/a/span"));
 				selenium.clickAt("//div[@id='_125_sites']/span/a/span",
 					RuntimeVariables.replace("Select"));
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				selenium.selectWindow("title=Users and Organizations");
 				selenium.waitForVisible("//input[@id='_125_name']");
 				selenium.type("//input[@id='_125_name']",
@@ -91,8 +91,8 @@ public class EditUserSiteTest extends BaseTestCase {
 					RuntimeVariables.replace("Search"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("Site Name"),
-					selenium.getText("//tr[3]/td[1]/a"));
-				selenium.clickAt("//tr[3]/td[1]/a",
+					selenium.getText("//tr[contains(.,'Site Name')]/td[1]/a"));
+				selenium.clickAt("//tr[contains(.,'Site Name')]/td[1]/a",
 					RuntimeVariables.replace("Site Name"));
 				selenium.selectWindow("null");
 				selenium.waitForText("//table[@data-searchcontainerid='_125_groupsSearchContainer']/tr/td",

@@ -54,14 +54,24 @@
 	<td>MBMessage</td>
 </tr>
 <tr>
-	<td>assertNotChecked</td>
+	<td>storeChecked</td>
 	<td>//input[@id='_179_com.liferay.portlet.messageboards.model.MBMessage.enabledCheckbox']</td>
-	<td>MBMessage</td>
+	<td>messageBoardsMessageEnabled</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>${messageBoardsMessageEnabled}</td>
+	<td>MessageBoardsMessageEnabled</td>
 </tr>
 <tr>
 	<td>clickAt</td>
 	<td>//input[@id='_179_com.liferay.portlet.messageboards.model.MBMessage.enabledCheckbox']</td>
 	<td>MBMessage</td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>MessageBoardsMessageEnabled</td>
+	<td></td>
 </tr>
 <tr>
 	<td>assertChecked</td>

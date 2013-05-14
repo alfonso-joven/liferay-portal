@@ -49,5 +49,6 @@ public class AddPortletMBSiteTest extends BaseTestCase {
 		selenium.clickAt("//div[@title='Message Boards']/p/a",
 			RuntimeVariables.replace("Add"));
 		selenium.waitForVisible("//section");
+		assertTrue(selenium.isVisible("//section"));
 	}
 }

@@ -37,6 +37,7 @@ public class EditBlogsEntry2SiteTest extends BaseTestCase {
 		selenium.clickAt("//span/a/span[.='Edit']",
 			RuntimeVariables.replace("Edit"));
 		selenium.waitForPageToLoad("30000");
+		Thread.sleep(1000);
 		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
 		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
 			RuntimeVariables.replace("Blogs Entry2 Content Edit"));
@@ -49,6 +50,6 @@ public class EditBlogsEntry2SiteTest extends BaseTestCase {
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry2 Content Edit"),
-			selenium.getText("//div[@class='entry-body']/p"));
+			selenium.getText("//div[@class='entry-body']"));
 	}
 }

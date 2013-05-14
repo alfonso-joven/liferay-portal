@@ -28,7 +28,11 @@ public class AddWikiPageSiteTest extends BaseTestCase {
 		selenium.clickAt("link=Wiki Test Page",
 			RuntimeVariables.replace("Wiki Test Page"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=All Pages", RuntimeVariables.replace("All Pages"));
+		assertEquals(RuntimeVariables.replace("All Pages"),
+			selenium.getText(
+				"//ul[@class='top-links-navigation']/li/span[contains(.,'All Pages')]/a/span"));
+		selenium.clickAt("//ul[@class='top-links-navigation']/li/span[contains(.,'All Pages')]/a/span",
+			RuntimeVariables.replace("All Pages"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//input[@value='Add Page']",
 			RuntimeVariables.replace("Add Page"));
@@ -38,6 +42,7 @@ public class AddWikiPageSiteTest extends BaseTestCase {
 			selenium.getText("//div[@class='portlet-msg-info']"));
 		selenium.type("//input[@id='_36_title']",
 			RuntimeVariables.replace("Wiki Page Title"));
+		Thread.sleep(1000);
 		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
 		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
 			RuntimeVariables.replace("Wiki Page Content"));

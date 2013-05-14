@@ -28,7 +28,11 @@ public class AddWikiPageAttachment2SiteTest extends BaseTestCase {
 		selenium.clickAt("link=Wiki Test Page",
 			RuntimeVariables.replace("Wiki Test Page"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=All Pages", RuntimeVariables.replace("All Pages"));
+		assertEquals(RuntimeVariables.replace("All Pages"),
+			selenium.getText(
+				"//ul[@class='top-links-navigation']/li/span[contains(.,'All Pages')]/a/span"));
+		selenium.clickAt("//ul[@class='top-links-navigation']/li/span[contains(.,'All Pages')]/a/span",
+			RuntimeVariables.replace("All Pages"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Wiki Page Title"),
 			selenium.getText("//tr[contains(.,'Wiki Page Title')]/td[1]/a"));
@@ -45,8 +49,7 @@ public class AddWikiPageAttachment2SiteTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Add Attachments']",
 			RuntimeVariables.replace("Add Attachments"));
 		selenium.waitForPageToLoad("30000");
-		selenium.selectWindow("null");
-		selenium.windowFocus();
+		Thread.sleep(1000);
 		selenium.waitForVisible("//a[@class='use-fallback using-new-uploader']");
 		selenium.click("//a[@class='use-fallback using-new-uploader']");
 		selenium.waitForVisible("//input[@id='_36_file1']");

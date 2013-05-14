@@ -28,7 +28,11 @@ public class EditWikiPageSiteTest extends BaseTestCase {
 		selenium.clickAt("link=Wiki Test Page",
 			RuntimeVariables.replace("Wiki Test Page"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=All Pages", RuntimeVariables.replace("All Pages"));
+		assertEquals(RuntimeVariables.replace("All Pages"),
+			selenium.getText(
+				"//ul[@class='top-links-navigation']/li/span[contains(.,'All Pages')]/a/span"));
+		selenium.clickAt("//ul[@class='top-links-navigation']/li/span[contains(.,'All Pages')]/a/span",
+			RuntimeVariables.replace("All Pages"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Wiki Page Title"),
 			selenium.getText("//tr[contains(.,'Wiki Page Title')]/td[1]/a"));
@@ -44,6 +48,7 @@ public class EditWikiPageSiteTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Wiki Page Title"),
 			selenium.getText("//h1[@class='header-title']/span"));
+		Thread.sleep(1000);
 		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
 		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
 			RuntimeVariables.replace("Wiki Page Content Edit"));

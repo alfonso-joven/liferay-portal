@@ -34,25 +34,24 @@ public class ConfigurePortletAddCounter1MBMessageTest extends BaseTestCase {
 		selenium.clickAt("//span[@class='portlet-title-text']",
 			RuntimeVariables.replace("User Statistics"));
 		selenium.waitForElementPresent("//div[@class='yui3-dd-shim']");
-		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Options"),
 			selenium.getText("//span[@title='Options']/ul/li/strong/a"));
 		selenium.clickAt("//span[@title='Options']/ul/li/strong/a",
 			RuntimeVariables.replace("Options"));
 		selenium.waitForVisible(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a");
+			"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]");
 		assertEquals(RuntimeVariables.replace("Configuration"),
 			selenium.getText(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a"));
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]"));
 		selenium.click(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Configuration')]/a");
+			"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]");
 		selenium.waitForVisible(
 			"//iframe[@id='_180_configurationIframeDialog']");
 		selenium.selectFrame("//iframe[@id='_180_configurationIframeDialog']");
 		selenium.waitForVisible(
 			"//select[@id='_86_displayActivityCounterName0']");
 		selenium.select("//select[@id='_86_displayActivityCounterName0']",
-			RuntimeVariables.replace("label=User's Message Board Posts"));
+			RuntimeVariables.replace("User's Message Board Posts"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");

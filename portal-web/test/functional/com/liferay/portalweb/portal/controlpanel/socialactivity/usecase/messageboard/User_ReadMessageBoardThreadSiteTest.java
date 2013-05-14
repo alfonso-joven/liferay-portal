@@ -28,7 +28,7 @@ public class User_ReadMessageBoardThreadSiteTest extends BaseTestCase {
 		selenium.clickAt("link=Message Boards Test Page",
 			RuntimeVariables.replace("Message Boards Test Page"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=MB Thread Message Subject",
+		selenium.clickAt("//tr[contains(.,'MB Thread Message Subject')]/td[1]/a",
 			RuntimeVariables.replace("MB Thread Message Subject"));
 		selenium.waitForPageToLoad("30000");
 	}
