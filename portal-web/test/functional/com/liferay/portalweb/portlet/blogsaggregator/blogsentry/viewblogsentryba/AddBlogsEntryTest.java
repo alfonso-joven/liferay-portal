@@ -38,30 +38,11 @@ public class AddBlogsEntryTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				selenium.type("//input[@id='_33_title']",
 					RuntimeVariables.replace("Blogs Entry Title"));
-				selenium.waitForElementPresent(
-					"//textarea[@id='_33_editor' and @style='display: none;']");
-				assertEquals(RuntimeVariables.replace("Source"),
-					selenium.getText("//span[.='Source']"));
-				selenium.clickAt("//span[.='Source']",
-					RuntimeVariables.replace("Source"));
+				Thread.sleep(1000);
 				selenium.waitForVisible(
-					"//a[@class='cke_button_source cke_on']");
-				selenium.waitForVisible(
-					"//td[@id='cke_contents__33_editor']/textarea");
-				selenium.type("//td[@id='cke_contents__33_editor']/textarea",
+					"//iframe[contains(@title,'Rich text editor')]");
+				selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
 					RuntimeVariables.replace("Blogs Entry Content"));
-				assertEquals(RuntimeVariables.replace("Source"),
-					selenium.getText("//span[.='Source']"));
-				selenium.clickAt("//span[.='Source']",
-					RuntimeVariables.replace("Source"));
-				selenium.waitForElementPresent(
-					"//textarea[@id='_33_editor' and @style='display: none;']");
-				selenium.waitForVisible(
-					"//td[@id='cke_contents__33_editor']/iframe");
-				selenium.selectFrame(
-					"//td[@id='cke_contents__33_editor']/iframe");
-				selenium.waitForText("//body", "Blogs Entry Content");
-				selenium.selectFrame("relative=top");
 
 				boolean descriptionVisible = selenium.isVisible(
 						"//input[@id='_33_description']");
@@ -72,8 +53,11 @@ public class AddBlogsEntryTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("//div[@id='blogsEntryAbstractPanel']/div",
-					RuntimeVariables.replace("Delete"));
+				assertEquals(RuntimeVariables.replace("Abstract"),
+					selenium.getText(
+						"//div[@id='blogsEntryAbstractPanel']/div/div/span"));
+				selenium.clickAt("//div[@id='blogsEntryAbstractPanel']/div/div/span",
+					RuntimeVariables.replace("Abstract"));
 				selenium.waitForVisible("//input[@id='_33_description']");
 
 			case 2:
@@ -88,7 +72,7 @@ public class AddBlogsEntryTest extends BaseTestCase {
 				assertEquals(RuntimeVariables.replace("Blogs Entry Title"),
 					selenium.getText("//div[@class='entry-title']/h2/a"));
 				assertEquals(RuntimeVariables.replace("Blogs Entry Content"),
-					selenium.getText("//div[@class='entry-body']/p"));
+					selenium.getText("//div[@class='entry-body']"));
 
 			case 100:
 				label = -1;

@@ -26,7 +26,6 @@ public class ViewPortletDisplayStyleTitleBlogsEntryBATest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Blogs Aggregator Test Page");
 		selenium.clickAt("link=Blogs Aggregator Test Page",
 			RuntimeVariables.replace("Blogs Aggregator Test Page"));
 		selenium.waitForPageToLoad("30000");
@@ -40,9 +39,7 @@ public class ViewPortletDisplayStyleTitleBlogsEntryBATest extends BaseTestCase {
 			"Blogs Entry Title");
 		assertEquals(RuntimeVariables.replace("Blogs Entry Title"),
 			selenium.getText("//h1[@class='header-title']/span"));
-		selenium.waitForText("//div[@class='entry-body']/p",
-			"Blogs Entry Content");
 		assertEquals(RuntimeVariables.replace("Blogs Entry Content"),
-			selenium.getText("//div[@class='entry-body']/p"));
+			selenium.getText("//div[@class='entry-body']"));
 	}
 }
