@@ -109,7 +109,7 @@ pageContext.setAttribute("portletURL", portletURL);
 			</liferay-portlet:renderURL>
 
 			<%
-			if (!GroupPermissionUtil.contains(permissionChecker, group, ActionKeys.UPDATE)) {
+			if (!GroupPermissionUtil.contains(permissionChecker, group, ActionKeys.VIEW)) {
 				rowURL = null;
 			}
 			%>
