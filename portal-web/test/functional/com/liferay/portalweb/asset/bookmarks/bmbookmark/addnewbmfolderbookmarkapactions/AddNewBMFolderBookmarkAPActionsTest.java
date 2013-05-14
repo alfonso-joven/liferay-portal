@@ -33,11 +33,7 @@ public class AddNewBMFolderBookmarkAPActionsTest extends BaseTestCase {
 				selenium.clickAt("link=Asset Publisher Test Page",
 					RuntimeVariables.replace("Asset Publisher Test Page"));
 				selenium.waitForPageToLoad("30000");
-				selenium.waitForElementPresent(
-					"//nav[@class='site-breadcrumbs aui-helper-hidden lfr-hudcrumbs']");
 				Thread.sleep(1000);
-				selenium.waitForVisible(
-					"//span[@title='Add New']/ul/li/strong/a");
 				assertEquals(RuntimeVariables.replace("Add New"),
 					selenium.getText("//span[@title='Add New']/ul/li/strong/a"));
 				selenium.clickAt("//span[@title='Add New']/ul/li/strong/a",

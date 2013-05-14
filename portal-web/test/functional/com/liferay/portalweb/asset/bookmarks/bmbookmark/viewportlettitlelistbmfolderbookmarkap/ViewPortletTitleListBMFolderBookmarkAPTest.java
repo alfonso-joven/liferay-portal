@@ -29,7 +29,6 @@ public class ViewPortletTitleListBMFolderBookmarkAPTest extends BaseTestCase {
 		selenium.clickAt("link=Asset Publisher Test Page",
 			RuntimeVariables.replace("Asset Publisher Test Page"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForVisible("//ul[@class='title-list']/li/span/a/span");
 		assertEquals(RuntimeVariables.replace("BM Folder Bookmark Name"),
 			selenium.getText("//ul[@class='title-list']/li/span/a/span"));
 		selenium.clickAt("//ul[@class='title-list']/li/span/a/span",

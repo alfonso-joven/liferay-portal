@@ -29,21 +29,21 @@ public class AddBMFolderTest extends BaseTestCase {
 			RuntimeVariables.replace("Bookmarks Test Page"));
 		selenium.waitForPageToLoad("30000");
 		Thread.sleep(1000);
-		selenium.waitForVisible(
-			"//div[@class='lfr-component lfr-menu-list lfr-menu-expanded align-right null']/ul/li[2]/a");
 		assertEquals(RuntimeVariables.replace("Add Folder"),
 			selenium.getText(
-				"//div[@class='lfr-component lfr-menu-list lfr-menu-expanded align-right null']/ul/li[2]/a"));
-		selenium.click(
-			"//div[@class='lfr-component lfr-menu-list lfr-menu-expanded align-right null']/ul/li[2]/a");
+				"//div[@class='lfr-component lfr-menu-list lfr-menu-expanded align-right null']/ul/li/a[contains(.,'Add Folder')]"));
+		selenium.clickAt("//div[@class='lfr-component lfr-menu-list lfr-menu-expanded align-right null']/ul/li/a[contains(.,'Add Folder')]",
+			RuntimeVariables.replace("Add Folder"));
 		selenium.waitForVisible("//input[@id='_28_name']");
 		selenium.type("//input[@id='_28_name']",
 			RuntimeVariables.replace("BM Folder Name"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForVisible(
-			"//tr[contains(.,'BM Folder Name')]/td[1]/a/strong");
+		selenium.waitForVisible("//div[@class='portlet-msg-success']");
+		assertEquals(RuntimeVariables.replace(
+				"Your request completed successfully."),
+			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertEquals(RuntimeVariables.replace("BM Folder Name"),
 			selenium.getText(
 				"//tr[contains(.,'BM Folder Name')]/td[1]/a/strong"));
@@ -51,8 +51,8 @@ public class AddBMFolderTest extends BaseTestCase {
 			selenium.getText("//tr[contains(.,'BM Folder Name')]/td[2]/a"));
 		assertEquals(RuntimeVariables.replace("0"),
 			selenium.getText("//tr[contains(.,'BM Folder Name')]/td[3]/a"));
-		assertEquals(RuntimeVariables.replace(
-				"Your request completed successfully."),
-			selenium.getText("//div[@class='portlet-msg-success']"));
+		assertEquals(RuntimeVariables.replace("Actions"),
+			selenium.getText(
+				"//tr[contains(.,'BM Folder Name')]/td[4]/span[@title='Actions']/ul/li/strong/a"));
 	}
 }
