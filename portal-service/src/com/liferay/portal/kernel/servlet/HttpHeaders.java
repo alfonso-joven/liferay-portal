@@ -93,14 +93,14 @@ public interface HttpHeaders {
 
 	public static final String CACHE_CONTROL_PUBLIC_VALUE = "public";
 
-	public static final String CONTENT_DISPOSITION_ATTACHMENT = "attachment";
-
-	public static final String CONTENT_DISPOSITION_INLINE = "inline";
-
 	/**
 	 * @deprecated Use <code>CONNECTION_CLOSE_VALUE</code>.
 	 */
 	public static final String CLOSE = CONNECTION_CLOSE_VALUE;
+
+	public static final String CONTENT_DISPOSITION_ATTACHMENT = "attachment";
+
+	public static final String CONTENT_DISPOSITION_INLINE = "inline";
 
 	public static final String EXPIRES_DEFAULT_VALUE = "315360000";
 
