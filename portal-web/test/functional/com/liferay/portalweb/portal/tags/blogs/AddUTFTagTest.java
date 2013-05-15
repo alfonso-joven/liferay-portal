@@ -45,8 +45,7 @@ public class AddUTFTagTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//a[@class='taglib-icon']/span[contains(.,'Edit')]"));
 				selenium.waitForPageToLoad("30000");
-				selenium.waitForVisible(
-					"//a[@class='cke_button_unlink cke_disabled']");
+				Thread.sleep(1000);
 				selenium.waitForVisible(
 					"//td[@id='cke_contents__33_editor']/iframe");
 
