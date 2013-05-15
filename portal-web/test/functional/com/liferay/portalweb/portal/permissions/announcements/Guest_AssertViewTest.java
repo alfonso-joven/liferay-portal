@@ -25,13 +25,17 @@ public class Guest_AssertViewTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/site-name/");
-		selenium.clickAt("link=Announcements Permissions Page",
-			RuntimeVariables.replace("Announcements Permissions Page"));
+		selenium.clickAt("link=Announcements Test Page",
+			RuntimeVariables.replace("Announcements Test Page"));
 		selenium.waitForPageToLoad("30000");
+		assertTrue(selenium.isTextPresent("Test Guest Announcement"));
+		assertTrue(selenium.isTextPresent("This is a test Guest Announcement."));
 		assertTrue(selenium.isTextPresent("Test General Announcement"));
 		assertTrue(selenium.isTextPresent(
 				"This is a test General Announcement."));
-		assertFalse(selenium.isTextPresent("Test CA Announcement"));
+		assertFalse(selenium.isTextPresent("Test AA Announcement"));
+		assertFalse(selenium.isTextPresent("This is a test AA Announcement."));
 		assertFalse(selenium.isTextPresent("Test Member Announcement"));
+		assertFalse(selenium.isTextPresent("This is a test Member Announcement"));
 	}
 }

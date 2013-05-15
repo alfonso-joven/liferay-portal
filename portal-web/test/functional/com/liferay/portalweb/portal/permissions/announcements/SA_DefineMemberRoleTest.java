@@ -81,7 +81,7 @@ public class SA_DefineMemberRoleTest extends BaseTestCase {
 				assertEquals(RuntimeVariables.replace(
 						"The role permissions were updated."),
 					selenium.getText("//div[@class='portlet-msg-success']"));
-				assertEquals(RuntimeVariables.replace("Announcements"),
+				assertEquals(RuntimeVariables.replace("Alerts"),
 					selenium.getText("//tr[3]/td[1]/a"));
 				assertEquals(RuntimeVariables.replace("Announcement"),
 					selenium.getText("//tr[3]/td[2]"));
@@ -89,6 +89,8 @@ public class SA_DefineMemberRoleTest extends BaseTestCase {
 					selenium.getText("//tr[3]/td[3]"));
 				assertEquals(RuntimeVariables.replace("Portal"),
 					selenium.getText("//tr[3]/td[4]"));
+				assertEquals(RuntimeVariables.replace("Delete"),
+					selenium.getText("//tr[3]/td[5]"));
 
 			case 100:
 				label = -1;

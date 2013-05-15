@@ -25,8 +25,8 @@ public class SA_AddMemberAnnouncementTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/site-name/");
-		selenium.clickAt("link=Announcements Permissions Page",
-			RuntimeVariables.replace("Announcements Permissions Page"));
+		selenium.clickAt("link=Announcements Test Page",
+			RuntimeVariables.replace("Announcements Test Page"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Manage Entries",
 			RuntimeVariables.replace("Manage Entries"));
@@ -41,35 +41,30 @@ public class SA_AddMemberAnnouncementTest extends BaseTestCase {
 			RuntimeVariables.replace("Test Member Announcement"));
 		selenium.type("//input[@id='_84_url']",
 			RuntimeVariables.replace("http://www.liferay.com"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_84_editor' and @style='display: none;']");
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[.='Source']"));
-		selenium.clickAt("//span[.='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForVisible("//a[@class='cke_button_source cke_on']");
-		selenium.waitForVisible("//td[@id='cke_contents__84_editor']/textarea");
-		selenium.type("//td[@id='cke_contents__84_editor']/textarea",
-			RuntimeVariables.replace("This is a test Member Announcement."));
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[.='Source']"));
-		selenium.clickAt("//span[.='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForVisible("//td[@id='cke_contents__84_editor']/iframe");
-		selenium.waitForElementPresent(
-			"//textarea[@id='_84_editor' and @style='display: none;']");
-		selenium.selectFrame("//td[@id='cke_contents__84_editor']/iframe");
-		selenium.waitForText("//body", "This is a test Member Announcement.");
-		selenium.selectFrame("relative=top");
+		Thread.sleep(1000);
+		selenium.waitForVisible("//a[@class='cke_button_unlink cke_disabled']");
+		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
+		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
+			RuntimeVariables.replace("This is a test Member Announcement"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
+		assertEquals("Site Member",
+			selenium.getSelectedLabel("//select[@id='_84_distributionScope']"));
 		assertEquals(RuntimeVariables.replace("Test Member Announcement"),
-			selenium.getText("//tr[3]/td[1]/a"));
+			selenium.getText(
+				"//tr[contains(.,'Test Member Announcement')]/td[1]/a"));
 		assertEquals(RuntimeVariables.replace("General"),
-			selenium.getText("//tr[3]/td[2]/a"));
-		assertTrue(selenium.isElementPresent("//tr[3]/td[3]/a"));
-		assertTrue(selenium.isElementPresent("//tr[3]/td[4]/a"));
-		assertTrue(selenium.isElementPresent("//tr[3]/td[5]/a"));
+			selenium.getText(
+				"//tr[contains(.,'Test Member Announcement')]/td[2]/a"));
+		assertTrue(selenium.isElementPresent(
+				"//tr[contains(.,'Test Member Announcement')]/td[3]/a"));
+		assertTrue(selenium.isElementPresent(
+				"//tr[contains(.,'Test Member Announcement')]/td[4]/a"));
+		assertTrue(selenium.isElementPresent(
+				"//tr[contains(.,'Test Member Announcement')]/td[5]/a"));
+		assertEquals(RuntimeVariables.replace("Actions"),
+			selenium.getText(
+				"//tr[contains(.,'Test Member Announcement')]/td[6]/span[@title='Actions']/ul/li/strong/a"));
 	}
 }

@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.portalweb.portlet.announcements.announcementsentry.addannouncementsentrygeneral;
+package com.liferay.portalweb.portal.permissions.announcements;
 
 import com.liferay.portalweb.portal.BaseTestCase;
 import com.liferay.portalweb.portal.util.RuntimeVariables;
@@ -29,7 +29,7 @@ public class TearDownAnnouncementsEntryTest extends BaseTestCase {
 			case 1:
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
-				selenium.open("/web/guest/home/");
+				selenium.open("/web/site-name/");
 				selenium.clickAt("link=Announcements Test Page",
 					RuntimeVariables.replace("Announcements Test Page"));
 				selenium.waitForPageToLoad("30000");

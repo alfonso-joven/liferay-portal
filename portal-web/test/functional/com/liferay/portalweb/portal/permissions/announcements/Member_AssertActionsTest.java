@@ -25,8 +25,8 @@ public class Member_AssertActionsTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/site-name/");
-		selenium.clickAt("link=Announcements Permissions Page",
-			RuntimeVariables.replace("Announcements Permissions Page"));
+		selenium.clickAt("link=Announcements Test Page",
+			RuntimeVariables.replace("Announcements Test Page"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isElementNotPresent("link=Manage Entries"));
 		assertTrue(selenium.isElementNotPresent("link=Edit"));

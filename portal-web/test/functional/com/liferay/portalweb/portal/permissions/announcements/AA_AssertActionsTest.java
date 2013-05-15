@@ -25,8 +25,8 @@ public class AA_AssertActionsTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/site-name/");
-		selenium.clickAt("link=Announcements Permissions Page",
-			RuntimeVariables.replace("Announcements Permissions Page"));
+		selenium.clickAt("link=Announcements Test Page",
+			RuntimeVariables.replace("Announcements Test Page"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isElementPresent("link=Edit"));
 		assertTrue(selenium.isElementPresent("link=Delete"));
@@ -42,6 +42,6 @@ public class AA_AssertActionsTest extends BaseTestCase {
 		selenium.clickAt("link=Manage Entries",
 			RuntimeVariables.replace("Manage Entries"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isElementPresent("//input[@value='Add Entry']"));
+		assertTrue(selenium.isVisible("//input[@value='Add Entry']"));
 	}
 }

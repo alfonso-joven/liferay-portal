@@ -25,23 +25,32 @@ public class AA_AssertViewTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/site-name/");
-		selenium.clickAt("link=Announcements Permissions Page",
-			RuntimeVariables.replace("Announcements Permissions Page"));
+		selenium.clickAt("link=Announcements Test Page",
+			RuntimeVariables.replace("Announcements Test Page"));
 		selenium.waitForPageToLoad("30000");
+		assertEquals(RuntimeVariables.replace("Test Guest Announcement"),
+			selenium.getText("xpath=(//h3[@class='entry-title']/a)[1]"));
 		assertEquals(RuntimeVariables.replace("Test AA Announcement"),
-			selenium.getText("xPath=(//h3[@class='entry-title'])[1]/a"));
+			selenium.getText("xpath=(//h3[@class='entry-title']/a)[2]"));
 		assertEquals(RuntimeVariables.replace("Test General Announcement"),
-			selenium.getText("xPath=(//h3[@class='entry-title'])[2]/a"));
-		assertEquals(RuntimeVariables.replace("Announcements Administrator"),
+			selenium.getText("xpath=(//h3[@class='entry-title']/a)[3]"));
+		assertEquals(RuntimeVariables.replace("Guest"),
 			selenium.getText("xPath=(//span[@class='entry-scope'])[1]"));
-		assertEquals(RuntimeVariables.replace("General"),
+		assertEquals(RuntimeVariables.replace("Announcements Administrator"),
 			selenium.getText("xPath=(//span[@class='entry-scope'])[2]"));
+		assertEquals(RuntimeVariables.replace("General"),
+			selenium.getText("xPath=(//span[@class='entry-scope'])[3]"));
 		assertTrue(selenium.isPartialText(
 				"xPath=(//div[@class=' entry-content entry-type-general'])[1]",
-				"This is a test AA Announcement."));
+				"This is a test Guest Announcement."));
 		assertTrue(selenium.isPartialText(
 				"xPath=(//div[@class=' entry-content entry-type-general'])[2]",
+				"This is a test AA Announcement."));
+		assertTrue(selenium.isPartialText(
+				"xPath=(//div[@class=' entry-content entry-type-general'])[3]",
 				"This is a test General Announcement."));
+		assertFalse(selenium.isTextPresent("Test Member Announcement"));
+		assertFalse(selenium.isTextPresent("This is a test Member Announcement"));
 		selenium.clickAt("link=Manage Entries",
 			RuntimeVariables.replace("Manage Entries"));
 		selenium.waitForPageToLoad("30000");

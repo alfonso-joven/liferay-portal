@@ -25,13 +25,30 @@ public class Member_AssertViewTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/site-name/");
-		selenium.clickAt("link=Announcements Permissions Page",
-			RuntimeVariables.replace("Announcements Permissions Page"));
+		selenium.clickAt("link=Announcements Test Page",
+			RuntimeVariables.replace("Announcements Test Page"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isTextPresent("Test General Announcement"));
-		assertTrue(selenium.isTextPresent(
+		assertEquals(RuntimeVariables.replace("Test Guest Announcement"),
+			selenium.getText("xpath=(//h3[@class='entry-title']/a)[1]"));
+		assertEquals(RuntimeVariables.replace("Test General Announcement"),
+			selenium.getText("xpath=(//h3[@class='entry-title']/a)[2]"));
+		assertEquals(RuntimeVariables.replace("Mark as Read"),
+			selenium.getText("xpath=(//td[@class='control-entry']/a)[1]"));
+		assertEquals(RuntimeVariables.replace("Mark as Read"),
+			selenium.getText("xpath=(//td[@class='control-entry']/a)[2]"));
+		assertEquals(RuntimeVariables.replace("Guest"),
+			selenium.getText("xPath=(//span[@class='entry-scope'])[1]"));
+		assertEquals(RuntimeVariables.replace("General"),
+			selenium.getText("xPath=(//span[@class='entry-scope'])[2]"));
+		assertTrue(selenium.isPartialText(
+				"xPath=(//div[@class=' entry-content entry-type-general'])[1]",
+				"This is a test Guest Announcement."));
+		assertTrue(selenium.isPartialText(
+				"xPath=(//div[@class=' entry-content entry-type-general'])[2]",
 				"This is a test General Announcement."));
-		assertTrue(selenium.isElementPresent("link=Mark as Read"));
 		assertFalse(selenium.isTextPresent("Test AA Announcement"));
+		assertFalse(selenium.isTextPresent("This is a test AA Announcement."));
+		assertFalse(selenium.isTextPresent("Test Member Announcement"));
+		assertFalse(selenium.isTextPresent("This is a test Member Announcement"));
 	}
 }

@@ -44,10 +44,11 @@ public class SA_AddPageTest extends BaseTestCase {
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Site Name"),
-			selenium.getText("//td[1]/a"));
+			selenium.getText("//tr[contains(.,'Site Name')]/td[1]/a"));
 		assertEquals(RuntimeVariables.replace("Actions"),
-			selenium.getText("//span[@title='Actions']/ul/li/strong/a"));
-		selenium.clickAt("//span[@title='Actions']/ul/li/strong/a",
+			selenium.getText(
+				"//tr[contains(.,'Site Name')]/td[7]/span[@title='Actions']/ul/li/strong/a"));
+		selenium.clickAt("//tr[contains(.,'Site Name')]/td[7]/span[@title='Actions']/ul/li/strong/a",
 			RuntimeVariables.replace("Actions"));
 		selenium.waitForVisible(
 			"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Manage Pages')]");
@@ -63,7 +64,7 @@ public class SA_AddPageTest extends BaseTestCase {
 			RuntimeVariables.replace("Add Page"));
 		selenium.waitForVisible("//input[@name='_156_name_en_US']");
 		selenium.type("//input[@name='_156_name_en_US']",
-			RuntimeVariables.replace("Announcements Permissions Page"));
+			RuntimeVariables.replace("Announcements Test Page"));
 		selenium.clickAt("//input[@value='Add Page']",
 			RuntimeVariables.replace("Add Page"));
 		selenium.waitForPageToLoad("30000");
