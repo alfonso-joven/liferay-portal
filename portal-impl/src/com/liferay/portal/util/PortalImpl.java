@@ -42,6 +42,7 @@ import com.liferay.portal.kernel.portlet.LiferayPortletResponse;
 import com.liferay.portal.kernel.portlet.LiferayWindowState;
 import com.liferay.portal.kernel.portlet.PortletBag;
 import com.liferay.portal.kernel.portlet.PortletBagPool;
+import com.liferay.portal.kernel.portlet.RestrictPortletServletRequest;
 import com.liferay.portal.kernel.security.pacl.DoPrivileged;
 import com.liferay.portal.kernel.servlet.BrowserSnifferUtil;
 import com.liferay.portal.kernel.servlet.DirectRequestDispatcherFactoryUtil;
@@ -5466,6 +5467,11 @@ public class PortalImpl implements Portal {
 		Portlet renderPortlet = (Portlet)request.getAttribute(
 			WebKeys.RENDER_PORTLET);
 
+		RestrictPortletServletRequest restrictPortletServletRequest =
+			new RestrictPortletServletRequest(request);
+
+		request = restrictPortletServletRequest;
+
 		request.setAttribute(WebKeys.RENDER_PORTLET, portlet);
 		request.setAttribute(WebKeys.RENDER_PORTLET_QUERY_STRING, queryString);
 		request.setAttribute(WebKeys.RENDER_PORTLET_COLUMN_ID, columnId);
@@ -5518,6 +5524,8 @@ public class PortalImpl implements Portal {
 
 			request.removeAttribute(WebKeys.PORTLET_CONFIGURATOR_VISIBILITY);
 		}
+
+		restrictPortletServletRequest.mergeSharedAttributes();
 
 		if (showPortlet) {
 			if (writeOutput) {
