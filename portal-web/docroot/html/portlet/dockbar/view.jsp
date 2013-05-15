@@ -213,7 +213,7 @@ boolean hasLayoutUpdatePermission = LayoutPermissionUtil.contains(permissionChec
 			<span></span>
 		</li>
 
-		<c:if test="<%= !group.isControlPanel() && hasLayoutUpdatePermission || (layoutTypePortlet.isCustomizable() && layoutTypePortlet.isCustomizedView() && hasLayoutCustomizePermission) %>">
+		<c:if test="<%= !group.isControlPanel() && (!group.hasStagingGroup() || group.isStagingGroup()) && (hasLayoutUpdatePermission || (layoutTypePortlet.isCustomizable() && layoutTypePortlet.isCustomizedView() && hasLayoutCustomizePermission) || PortletPermissionUtil.hasConfigurationPermission(permissionChecker, themeDisplay.getParentGroupId(), layout, ActionKeys.CONFIGURATION)) %>">
 			<li class="toggle-controls" id="<portlet:namespace />toggleControls">
 				<a href="javascript:;">
 					<liferay-ui:message key="edit-controls" />
