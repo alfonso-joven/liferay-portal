@@ -34,8 +34,6 @@ public abstract class BaseSeleniumImpl
 	public BaseSeleniumImpl(String projectDir, Selenium selenium) {
 		super(selenium);
 
-		_className = TestPropsValues.TEST_CLASS;
-
 		_projectDir = projectDir;
 
 		initCommandProcessor();
@@ -162,10 +160,6 @@ public abstract class BaseSeleniumImpl
 
 	public void fail(String message) {
 		LiferaySeleniumHelper.fail(message);
-	}
-
-	public String getClassName() {
-		return _className;
 	}
 
 	public String getCurrentDay() {
@@ -537,7 +531,6 @@ public abstract class BaseSeleniumImpl
 	private static final String _OUTPUT_SCREENSHOTS_DIR =
 		TestPropsValues.OUTPUT_DIR + "screenshots/";
 
-	private String _className;
 	private String _clipBoard = "";
 	private CommandProcessor _commandProcessor;
 	private String _projectDir;
