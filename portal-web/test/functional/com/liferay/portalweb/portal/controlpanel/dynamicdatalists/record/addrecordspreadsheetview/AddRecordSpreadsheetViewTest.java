@@ -46,19 +46,18 @@ public class AddRecordSpreadsheetViewTest extends BaseTestCase {
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("List Name"),
-			selenium.getText("//tr[3]/td[2]/a"));
-		Thread.sleep(5000);
+			selenium.getText("//tr[contains(.,'List Name')]/td[2]/a"));
 		assertEquals(RuntimeVariables.replace("Actions"),
 			selenium.getText("//span[@title='Actions']/ul/li/strong/a"));
 		selenium.clickAt("//span[@title='Actions']/ul/li/strong/a",
 			RuntimeVariables.replace("Actions"));
 		selenium.waitForVisible(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a");
+			"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Spreadsheet View')]");
 		assertEquals(RuntimeVariables.replace("Spreadsheet View"),
 			selenium.getText(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a"));
-		selenium.click(RuntimeVariables.replace(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a"));
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Spreadsheet View')]"));
+		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Spreadsheet View')]",
+			RuntimeVariables.replace("Spreadsheet View"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Boolean"),
 			selenium.getText(
@@ -155,7 +154,7 @@ public class AddRecordSpreadsheetViewTest extends BaseTestCase {
 				"//div[contains(@class,'aui-fileupload-cell-editor-focused')]/form/div[2]/span/span/button[1]"));
 		selenium.clickAt("//div[contains(@class,'aui-fileupload-cell-editor-focused')]/form/div[2]/span/span/button[1]",
 			RuntimeVariables.replace("Save"));
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Integer"),
 			selenium.getText(
 				"//thead[@class='yui3-datatable-columns']/tr/th[6]/div/a"));
@@ -235,7 +234,7 @@ public class AddRecordSpreadsheetViewTest extends BaseTestCase {
 				"//div[contains(@class,'aui-dropdowncelleditor-focused')]/form/div[2]/span/span/button[1]"));
 		selenium.clickAt("//div[contains(@class,'aui-dropdowncelleditor-focused')]/form/div[2]/span/span/button[1]",
 			RuntimeVariables.replace("Save"));
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		selenium.keyPress("//tbody[@class='yui3-datatable-data']/tr[1]/td[9]",
 			RuntimeVariables.replace("\\9"));
 		assertEquals(RuntimeVariables.replace("Text"),
@@ -253,7 +252,7 @@ public class AddRecordSpreadsheetViewTest extends BaseTestCase {
 				"//div[contains(@class,'aui-textcelleditor-focused')]/form/div[2]/span/span/button[1]"));
 		selenium.clickAt("//div[contains(@class,'aui-textcelleditor-focused')]/form/div[2]/span/span/button[1]",
 			RuntimeVariables.replace("Save"));
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		selenium.keyPress("//tbody[@class='yui3-datatable-data']/tr[1]/td[10]",
 			RuntimeVariables.replace("\\9"));
 		assertEquals(RuntimeVariables.replace("Text Box"),

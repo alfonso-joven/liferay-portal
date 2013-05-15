@@ -40,23 +40,28 @@ public class AddListTest extends BaseTestCase {
 		selenium.clickAt("link=Dynamic Data Lists",
 			RuntimeVariables.replace("Dynamic Data Lists"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Add", RuntimeVariables.replace("Add"));
+		assertEquals(RuntimeVariables.replace("Add"),
+			selenium.getText(
+				"//div[@class='lfr-portlet-toolbar']/span[contains(.,'Add')]/a"));
+		selenium.clickAt("//div[@class='lfr-portlet-toolbar']/span[contains(.,'Add')]/a",
+			RuntimeVariables.replace("Add"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_167_name_en_US']",
 			RuntimeVariables.replace("List Name"));
 		selenium.type("//textarea[@id='_167_description_en_US']",
 			RuntimeVariables.replace("List Description"));
 		selenium.clickAt("link=Select", RuntimeVariables.replace("Select"));
-		selenium.waitForVisible("//iframe");
-		selenium.selectFrame("//iframe");
+		selenium.waitForVisible("//iframe[contains(@src,'dynamicdatalists')]");
+		selenium.selectFrame("//iframe[contains(@src,'dynamicdatalists')]");
 		selenium.waitForVisible("//input[@name='_166_keywords']");
 		selenium.type("//input[@name='_166_keywords']",
 			RuntimeVariables.replace("Data Definition"));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isPartialText("//td[2]/a", "Data Definition"));
-		selenium.clickAt("//td[2]/a",
+		assertEquals(RuntimeVariables.replace("Data Definition"),
+			selenium.getText("//tr[contains(.,'Data Definition')]/td[2]/a"));
+		selenium.clickAt("//tr[contains(.,'Data Definition')]/td[2]/a",
 			RuntimeVariables.replace("Data Definition"));
 		selenium.selectFrame("relative=top");
 		selenium.clickAt("//input[@value='Save']",

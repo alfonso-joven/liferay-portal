@@ -54,38 +54,33 @@
 	<td>Dynamic Data Lists</td>
 </tr>
 <tr>
-	<td>waitForVisible</td>
-	<td>//a[@id='_167_manageDDMStructuresLink']</td>
-	<td>Manage Data Definitions</td>
-</tr>
-<tr>
 	<td>assertText</td>
-	<td>//a[@id='_167_manageDDMStructuresLink']</td>
+	<td>//div[@class='lfr-portlet-toolbar']/span[contains(.,'Manage Data Definitions')]/a</td>
 	<td>Manage Data Definitions</td>
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>//a[@id='_167_manageDDMStructuresLink']</td>
+	<td>//div[@class='lfr-portlet-toolbar']/span[contains(.,'Manage Data Definitions')]/a</td>
 	<td>Manage Data Definitions</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//iframe</td>
+	<td>//iframe[contains(@src,'dynamicdatalists')]</td>
 	<td>Data Definitions</td>
 </tr>
 <tr>
 	<td>selectFrame</td>
-	<td>//iframe</td>
+	<td>//iframe[contains(@src,'dynamicdatalists')]</td>
 	<td>Data Definitions</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>link=Add</td>
+	<td>//div[@class='lfr-portlet-toolbar']/span[contains(.,'Add')]/a</td>
 	<td>Add</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>link=Add</td>
+	<td>//div[@class='lfr-portlet-toolbar']/span[contains(.,'Add')]/a</td>
 	<td>Add</td>
 </tr>
 <tr>
@@ -163,7 +158,6 @@
 	<td>relative=top</td>
 	<td></td>
 </tr>
-
 </tbody></table>
 </body>
 </html>
