@@ -1,0 +1,7 @@
+<definition>
+	<command name="click">
+		<case locator-key1="TOOLBAR_MANAGE_DATA_DEFINITIONS">
+			<execute function="Click#textClickAt" value1="Manage Data Definitions"/>
+		</case>
+	</command>
+</definition>
