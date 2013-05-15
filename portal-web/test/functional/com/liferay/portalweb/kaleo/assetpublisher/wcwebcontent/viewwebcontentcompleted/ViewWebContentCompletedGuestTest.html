@@ -14,13 +14,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForVisible</td>
-	<td>link=Asset Publisher Page</td>
-	<td>Asset Publisher Page</td>
-</tr>
-<tr>
 	<td>clickAtAndWait</td>
-	<td>link=Asset Publisher Page</td>
+	<td>link=Asset Publisher Test Page</td>
 	<td>Asset Publisher Page</td>
 </tr>
 <tr>
@@ -30,12 +25,12 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//h1/span[2]</td>
+	<td>//h1[@class='portlet-title']/span[2]</td>
 	<td>Asset Publisher</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//h3/a</td>
+	<td>//h3[@class='asset-title']/a</td>
 	<td>Web Content Name</td>
 </tr>
 <tr>
@@ -50,12 +45,12 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[1]/h1/span</td>
+	<td>//h1[@class='header-title']/span</td>
 	<td>Web Content Name</td>
 </tr>
 <tr>
 	<td>assertPartialText</td>
-	<td>//div[@class='asset-content']/div</td>
+	<td>//div[@class='asset-content']</td>
 	<td>Web Content Content</td>
 </tr>
 </tbody></table>

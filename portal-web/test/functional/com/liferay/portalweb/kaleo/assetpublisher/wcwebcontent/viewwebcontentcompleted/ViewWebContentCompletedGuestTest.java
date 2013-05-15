@@ -25,23 +25,22 @@ public class ViewWebContentCompletedGuestTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Asset Publisher Page");
-		selenium.clickAt("link=Asset Publisher Page",
+		selenium.clickAt("link=Asset Publisher Test Page",
 			RuntimeVariables.replace("Asset Publisher Page"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isElementPresent("//section"));
 		assertEquals(RuntimeVariables.replace("Asset Publisher"),
-			selenium.getText("//h1/span[2]"));
+			selenium.getText("//h1[@class='portlet-title']/span[2]"));
 		assertEquals(RuntimeVariables.replace("Web Content Name"),
-			selenium.getText("//h3/a"));
+			selenium.getText("//h3[@class='asset-title']/a"));
 		assertTrue(selenium.isPartialText("//div[@class='asset-more']/a",
 				"Read More"));
 		selenium.clickAt("//div[@class='asset-more']/a",
 			RuntimeVariables.replace("Read More"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Web Content Name"),
-			selenium.getText("//div[1]/h1/span"));
-		assertTrue(selenium.isPartialText("//div[@class='asset-content']/div",
+			selenium.getText("//h1[@class='header-title']/span"));
+		assertTrue(selenium.isPartialText("//div[@class='asset-content']",
 				"Web Content Content"));
 	}
 }
