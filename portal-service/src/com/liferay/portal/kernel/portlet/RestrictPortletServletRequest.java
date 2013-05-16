@@ -95,7 +95,10 @@ public class RestrictPortletServletRequest
 			String name = entry.getKey();
 			Object value = entry.getValue();
 
-			if (name.startsWith("LIFERAY_SHARED_")) {
+			if (name.startsWith("LIFERAY_SHARED_") ||
+				name.startsWith("javax.portlet.") ||
+				name.startsWith("javax.servlet.")) {
+
 				if (value == _nullValue) {
 					servletRequest.removeAttribute(name);
 
