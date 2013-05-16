@@ -198,6 +198,7 @@ MBThreadFlag threadFlag = MBThreadFlagLocalServiceUtil.getThreadFlag(themeDispla
 
 					<liferay-ui:icon
 						image="permissions"
+						label="<%= true %>"
 						url="<%= permissionsURL %>"
 					/>
 				</td>
