@@ -760,3 +760,61 @@ input[type="text"], input[type="password"], select, textarea, .textarea, #breadc
 	@include filter-gradient(#427EAD, #154B75);
 	@include background-image(linear-gradient(#427EAD, #154B75));
 }
+
+/* ---------- RTL ---------- */
+
+.rtl body {
+	background: #EEF0F2 url(../images/custom/sidebar_bg_rtl.png) repeat-y 0 0;
+	background-position: right;
+}
+
+.rtl #breadcrumbs li.first a {
+	background-position: right;
+	padding-right: 21px;
+	padding-left: 0;
+}
+
+.rtl #breadcrumbs li, .rtl #breadcrumbs li.first a {
+	float: right;
+}
+
+.rtl #breadcrumbs li {
+	background: url(../images/custom/breadcrumb_item_bg_rtl.png) 100% 50% no-repeat;
+	background-position: left;
+	padding: 3px 15px 3px 20px;
+}
+
+.rtl #wrapper div.panel-page-body {
+	float: right;
+	padding: 15px 20px 0 0;
+	width: 75%;
+}
+
+.rtl .panel-page-menu .lfr-panel-content ul li a .icon {
+	float: right;
+	padding: 0 0 0 4px;
+}
+
+.rtl .panel-page-menu .lfr-panel-titlebar .lfr-panel-title {
+	padding-right: 20px;
+}
+
+.rtl .panel-page-menu #panel-manage-my .lfr-panel-title {
+	background-position-x: right;
+	background-position-y: 3px;
+}
+
+.rtl .panel-page-menu #panel-manage-marketplace .lfr-panel-title {
+	background-position-x: right;
+	background-position-y: -72px;
+}
+
+.rtl .panel-page-menu #panel-manage-portal .lfr-panel-title {
+	background-position-x: right;
+	background-position-y: -36px;
+}
+
+.rtl .panel-page-menu #panel-manage-server .lfr-panel-title {
+	background-position-x: right;
+	background-position-y: -55px;
+}

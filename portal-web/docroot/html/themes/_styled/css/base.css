@@ -277,3 +277,13 @@ hr, .separator {
 	font-weight: bold;
 	margin: 0 1px;
 }
+
+/* ---------- RTL ---------- */
+
+.rtl caption, .rtl th {
+	text-align: right;
+}
+
+.rtl .portal-add-content {
+	text-align: right;
+}

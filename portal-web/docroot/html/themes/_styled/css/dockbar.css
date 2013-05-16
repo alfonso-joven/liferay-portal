@@ -232,7 +232,7 @@ html > .lfr-dockbar-pinned {
 	visibility: hidden;
 }
 
-.dockbar .aui-toolbar {
+.dockbar .admin-toolbar {
 	float: left;
 }
 
@@ -502,4 +502,39 @@ html > .lfr-dockbar-pinned {
 .page-customization-bar .reset-prototype {
 	display: inline;
 	padding-left: 1em;
+}
+
+/* ---------- RTL ---------- */
+
+.rtl .dockbar .admin-toolbar {
+	float: right;
+}
+
+.rtl .dockbar .user-toolbar {
+	float: left;
+}
+
+.rtl .dockbar .menu-button {
+	background-position-x: 7%; 
+	padding: 5px 5px 5px 0;
+}
+
+.rtl .dockbar .menu-button span {
+	background-position: right;
+	padding-right: 20px;
+}
+
+.rtl .my-sites-menu .site-name {
+	float: right;
+}
+
+.rtl .my-sites-menu .site-type {
+	float: left;
+	margin-right: 10px;
+}
+
+.rtl .my-sites-menu .control-panel a {
+	margin-right: 3px;
+	background-position-x: right;
+	padding-right: 25px;
 }

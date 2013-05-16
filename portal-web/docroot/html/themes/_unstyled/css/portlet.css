@@ -455,3 +455,11 @@ body.portlet {
 
 .ie .taglib-calendar tr td.first a {
 }
+
+/* ---------- RTL ---------- */
+
+.rtl .breadcrumbs-horizontal li {
+}
+
+.rtl .portlet-msg {
+}

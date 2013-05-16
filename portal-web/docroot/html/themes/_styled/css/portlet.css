@@ -776,3 +776,24 @@ body.portlet {
 		zoom: 1;
 	}
 }
+
+/* ---------- RTL ---------- */
+
+.rtl .breadcrumbs-horizontal li {
+	float: right;
+}
+
+.rtl .portlet-msg {
+	background-position: right;
+	padding: 6px 24px 6px 6px;
+	text-align: right;
+}
+
+.rtl .results-row, .rtl .results-row.hover {
+	padding-right: 5px;
+
+	&.lfr-role .col-1 {
+		background-position-x: right;
+		padding-right: 30px;
+	}
+}

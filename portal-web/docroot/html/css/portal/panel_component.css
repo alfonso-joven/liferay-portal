@@ -121,3 +121,13 @@
 	border-top: none;
 	margin: -0.5em 0 10px;
 }
+
+/* ---------- RTL ---------- */
+
+.rtl .lfr-panel-titlebar .lfr-panel-title {
+	float: right;
+}
+
+.rtl .lfr-panel-titlebar .lfr-panel-button {
+	float: left;
+}

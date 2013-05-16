@@ -169,3 +169,33 @@
 .lfr-menu-list li.last {
 	border-bottom: none;
 }
+
+/* ---------- RTL ---------- */
+
+.rtl .lfr-actions {
+	float: left;
+	text-align: right;
+}
+
+.rtl .lfr-actions.align-left {
+	float: right;
+}
+
+.rtl .lfr-actions.show-arrow.direction-left .lfr-trigger strong a {
+	background-image: url(@theme_image_path@/arrows/05_right.png);
+	background-position: 98%;
+	padding-right: 20px;
+}
+
+.rtl .lfr-actions.show-arrow.direction-left.disabled .lfr-trigger strong a {
+	background-image: url(@theme_image_path@/arrows/09_right.png);
+}
+
+.rtl .lfr-actions.show-arrow.direction-right .lfr-trigger strong a {
+	background-image: url(@theme_image_path@/arrows/05_left.png);
+	background-position: 5%;
+}
+
+.rtl .lfr-actions.show-arrow.direction-right.disabled .lfr-trigger strong a {
+	background-image: url(@theme_image_path@/arrows/09_left.png);
+}
