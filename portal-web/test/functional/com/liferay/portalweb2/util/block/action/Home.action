@@ -12,6 +12,9 @@
 		<case comparator="startsWith" locator-key1="PAGE_DELETE">
 			<execute function="Click#textClick" value1="X" />
 		</case>
+		<case comparator="startsWith" locator1="//li[contains(@class,'lfr-nav-updateable')]/a[.='">
+			<execute function="Click#clickAtAndWait" />
+		</case>
 		<case comparator="startsWith" locator1="link=">
 			<execute function="Click#clickAtAndWait" />
 		</case>
