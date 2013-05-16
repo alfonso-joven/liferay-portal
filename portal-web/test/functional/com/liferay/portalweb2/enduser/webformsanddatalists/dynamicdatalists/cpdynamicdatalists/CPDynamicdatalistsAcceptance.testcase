@@ -1,0 +1,39 @@
+<definition>
+	<set-up>
+		<execute macro="User#pgFirstLogin" />
+	</set-up>
+
+	<command name="AddDataDefinition">
+		<var name="dataDefinitionDescription" value="Data Definition Description" />
+		<var name="dataDefinitionName" value="Data Definition" />
+
+		<execute macro="DataDefinition#cpAdd" />
+		<execute macro="DataDefinition#cpView" />
+	</command>
+
+	<command name="EditDataDefinition">
+		<var name="dataDefinitionDescription" value="Data Definition Description" />
+		<var name="dataDefinitionDescriptionEdit" value="Data Definition Description Edit" />
+		<var name="dataDefinitionName" value="Data Definition" />
+		<var name="dataDefinitionNameEdit" value="Data Definition Edit" />
+
+		<execute macro="DataDefinition#cpAdd" />
+		<execute macro="DataDefinition#cpEdit" />
+		<execute macro="DataDefinition#cpView">
+			<var name="dataDefintionName" value="${dataDefinitionNameEdit}" />
+			<var name="dataDefintionDescription" value="${dataDefinitionDescriptionEdit}" />
+		</execute>
+	</command>
+
+	<command name="DeleteDataDefinition">
+		<var name="dataDefinitionDescription" value="Data Definition Description" />
+		<var name="dataDefinitionName" value="Data Definition" />
+
+		<execute macro="DataDefinition#cpAdd" />
+		<execute macro="DataDefinition#cpDelete" />
+	</command>
+
+	<tear-down>
+		<execute macro="DataDefinition#cpTearDown" />
+	</tear-down>
+</definition>
