@@ -291,10 +291,6 @@ public class MVCPortlet extends LiferayPortlet {
 		return false;
 	}
 
-	protected void checkPermissions(PortletRequest portletRequest)
-		throws Exception {
-	}
-
 	protected void checkPath(String path) throws PortletException {
 		if (Validator.isNotNull(path) &&
 			(!path.startsWith(templatePath) ||
@@ -304,6 +300,10 @@ public class MVCPortlet extends LiferayPortlet {
 			throw new PortletException(
 				"Path " + path + " is not accessible by this portlet");
 		}
+	}
+
+	protected void checkPermissions(PortletRequest portletRequest)
+		throws Exception {
 	}
 
 	@Override
