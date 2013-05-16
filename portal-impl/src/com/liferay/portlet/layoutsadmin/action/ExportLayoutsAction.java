@@ -20,6 +20,7 @@ import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.servlet.ServletResponseUtil;
 import com.liferay.portal.kernel.servlet.SessionErrors;
+import com.liferay.portal.kernel.util.ArrayUtil;
 import com.liferay.portal.kernel.util.ContentTypes;
 import com.liferay.portal.kernel.util.FileUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
@@ -41,7 +42,6 @@ import com.liferay.portlet.sites.action.ActionUtil;
 import java.io.File;
 import java.io.FileInputStream;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -157,29 +157,19 @@ public class ExportLayoutsAction extends PortletAction {
 				endDate = now;
 			}
 
-			long[] layoutIdsToExport = null;
-
 			if (layoutIds.length == 1) {
-				Layout selectedLayout = LayoutLocalServiceUtil.getLayout(
+				Layout layout = LayoutLocalServiceUtil.getLayout(
 					groupId, privateLayout, layoutIds[0]);
 
-				List<Layout> layoutsToExport = new ArrayList<Layout>();
+				List<Layout> childLayouts = layout.getAllChildren();
 
-				layoutsToExport.add(selectedLayout);
-
-				layoutsToExport.addAll(selectedLayout.getAllChildren());
-
-				layoutIdsToExport = new long[layoutsToExport.size()];
-
-				for (int i = 0; i < layoutsToExport.size(); i++) {
-					Layout curLayout = layoutsToExport.get(i);
-
-					layoutIdsToExport[i] = curLayout.getLayoutId();
+				for (Layout childLayout : childLayouts) {
+					ArrayUtil.append(layoutIds, childLayout.getLayoutId());
 				}
 			}
 
 			file = LayoutServiceUtil.exportLayoutsAsFile(
-				groupId, privateLayout, layoutIdsToExport,
+				groupId, privateLayout, layoutIds,
 				actionRequest.getParameterMap(), startDate, endDate);
 
 			HttpServletRequest request = PortalUtil.getHttpServletRequest(
