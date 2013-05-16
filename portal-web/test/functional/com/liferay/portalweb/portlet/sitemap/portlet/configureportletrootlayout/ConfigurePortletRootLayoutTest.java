@@ -34,7 +34,7 @@ public class ConfigurePortletRootLayoutTest extends BaseTestCase {
 			selenium.getText("xPath=(//div[@class='portlet-body']/ul/li/a)[2]"));
 		assertEquals(RuntimeVariables.replace("Site Map Test Child Page"),
 			selenium.getText("//div[@class='portlet-body']/ul/li/ul/li/a"));
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Options"),
 			selenium.getText("//span[@title='Options']/ul/li/strong/a"));
 		selenium.clickAt("//span[@title='Options']/ul/li/strong/a",
