@@ -19,6 +19,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>HEADER_TITLE</td>
+	<td>//h3[@class='header-title']/span</td>
+	<td></td>
+</tr>
+<tr>
 	<td>ADD_RECORD_BUTTON</td>
 	<td>//button[contains(.,'Add')]</td>
 	<td></td>
