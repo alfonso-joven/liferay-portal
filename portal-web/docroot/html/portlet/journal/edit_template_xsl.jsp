@@ -146,6 +146,7 @@ else if (langType.equals("xml") || langType.equals("xsl") || langType.equals("xs
 
 				if (content != prevEditorContent) {
 					editorContentInputElement.val(encodeURIComponent(content));
+
 					dialog.fire('update');
 				}
 			}
