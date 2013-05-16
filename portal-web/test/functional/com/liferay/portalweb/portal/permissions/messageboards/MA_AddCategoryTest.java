@@ -25,21 +25,27 @@ public class MA_AddCategoryTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/site-name/");
-		selenium.clickAt("link=Message Boards Permissions Page",
-			RuntimeVariables.replace("Message Boards Permissions Page"));
+		selenium.clickAt("link=Message Boards Test Page",
+			RuntimeVariables.replace("Message Boards Test Page"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//input[@value='Add Category']",
 			RuntimeVariables.replace("Add Category"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_19_name']",
-			RuntimeVariables.replace("Category Name"));
+			RuntimeVariables.replace("MB Category Name"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
-		assertEquals(RuntimeVariables.replace("Category Name"),
-			selenium.getText("//a/strong"));
+		assertEquals(RuntimeVariables.replace("MB Category Name"),
+			selenium.getText("//td[1]/a/strong"));
+		assertEquals(RuntimeVariables.replace("0"),
+			selenium.getText("//td[2]/a"));
+		assertEquals(RuntimeVariables.replace("0"),
+			selenium.getText("//td[3]/a"));
+		assertEquals(RuntimeVariables.replace("0"),
+			selenium.getText("//td[4]/a"));
 	}
 }

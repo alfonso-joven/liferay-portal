@@ -25,49 +25,32 @@ public class Member_AddThreadTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/site-name/");
-		selenium.clickAt("link=Message Boards Permissions Page",
-			RuntimeVariables.replace("Message Boards Permissions Page"));
+		selenium.clickAt("link=Message Boards Test Page",
+			RuntimeVariables.replace("Message Boards Test Page"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Category Name"),
-			selenium.getText("//a/strong"));
-		selenium.clickAt("//a/strong", RuntimeVariables.replace("Category Name"));
+		assertEquals(RuntimeVariables.replace("MB Category Name"),
+			selenium.getText("//tr[contains(.,'MB Category Name')]/td[1]/a"));
+		selenium.clickAt("//tr[contains(.,'MB Category Name')]/td[1]/a",
+			RuntimeVariables.replace("MB Category Name"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//input[@value='Post New Thread']",
 			RuntimeVariables.replace("Post New Thread"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_19_subject']",
-			RuntimeVariables.replace("Thread Subject 2"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_19_editor' and @style='display: none;']");
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[.='Source']"));
-		selenium.clickAt("//span[.='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForVisible("//a[@class='cke_button_source cke_on']");
-		selenium.waitForVisible("//td[@id='cke_contents__19_editor']/textarea");
-		selenium.type("//td[@id='cke_contents__19_editor']/textarea",
-			RuntimeVariables.replace("Thread Body 2"));
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[.='Source']"));
-		selenium.clickAt("//span[.='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_19_editor' and @style='display: none;']");
-		selenium.waitForVisible("//td[@id='cke_contents__19_editor']/iframe");
-		selenium.selectFrame("//td[@id='cke_contents__19_editor']/iframe");
-		selenium.waitForText("//body", "Thread Body 2");
-		selenium.selectFrame("relative=top");
+			RuntimeVariables.replace("MB Thread2 Message Subject"));
+		Thread.sleep(1000);
+		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
+		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
+			RuntimeVariables.replace("MB Thread2 Message Body"));
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
-		assertEquals(RuntimeVariables.replace("Thread Subject 2"),
-			selenium.getText("//h1[@class='header-title']/span"));
-		assertEquals(RuntimeVariables.replace("Thread Subject 2"),
+		assertEquals(RuntimeVariables.replace("MB Thread2 Message Subject"),
 			selenium.getText("//div[@class='subject']/a/strong"));
-		assertEquals(RuntimeVariables.replace("Thread Body 2"),
+		assertEquals(RuntimeVariables.replace("MB Thread2 Message Body"),
 			selenium.getText("//div[@class='thread-body']"));
 	}
 }

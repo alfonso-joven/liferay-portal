@@ -24,25 +24,30 @@ public class Guest_ViewTest extends BaseTestCase {
 	public void testGuest_View() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
-		selenium.open("/web/guest/home/");
-		assertTrue(selenium.isVisible("//input[@id='_58_login']"));
-		assertTrue(selenium.isVisible("//input[@value='Sign In']"));
-		assertTrue(selenium.isVisible("//a[@id='sign-in']"));
 		selenium.open("/web/site-name/");
-		selenium.clickAt("link=Message Boards Permissions Page",
-			RuntimeVariables.replace("Message Boards Permissions Page"));
+		selenium.clickAt("link=Message Boards Test Page",
+			RuntimeVariables.replace("Message Boards Test Page"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Category Name"),
-			selenium.getText("//a/strong"));
-		selenium.clickAt("//a/strong", RuntimeVariables.replace("Category Name"));
+		assertEquals(RuntimeVariables.replace("MB Category Name"),
+			selenium.getText("//tr[contains(.,'MB Category Name')]/td[1]/a"));
+		selenium.clickAt("//tr[contains(.,'MB Category Name')]/td[1]/a",
+			RuntimeVariables.replace("MB Category Name"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Thread Subject"),
-			selenium.getText("//tr[3]/td/a"));
-		selenium.clickAt("//tr[3]/td/a",
-			RuntimeVariables.replace("Thread Subject"));
+		assertEquals(RuntimeVariables.replace("MB Thread Message Subject"),
+			selenium.getText(
+				"//tr[contains(.,'MB Thread Message Subject')]/td[1]/a"));
+		selenium.clickAt("//tr[contains(.,'MB Thread Message Subject')]/td[1]/a",
+			RuntimeVariables.replace("MB Thread Message Subject"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Thread Body"),
-			selenium.getText("//div[@class='thread-body']"));
-		assertTrue(selenium.isTextPresent("Thread Body Reply"));
+		assertEquals(RuntimeVariables.replace("MB Thread Message Subject"),
+			selenium.getText("//h1[@class='header-title']/span"));
+		assertEquals(RuntimeVariables.replace("MB Thread Message Subject"),
+			selenium.getText("xpath=(//div[@class='subject']/a/strong)[1]"));
+		assertEquals(RuntimeVariables.replace("MB Thread Message Body"),
+			selenium.getText("xpath=(//div[@class='thread-body'])[1]"));
+		assertEquals(RuntimeVariables.replace("RE: MB Thread Message Subject"),
+			selenium.getText("xpath=(//div[@class='subject']/a/strong)[2]"));
+		assertEquals(RuntimeVariables.replace("MB Thread Message Body Reply"),
+			selenium.getText("xpath=(//div[@class='thread-body'])[2]"));
 	}
 }

@@ -15,48 +15,48 @@
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>link=Message Boards Permissions Page</td>
-	<td>Message Boards Permissions Page</td>
+	<td>link=Message Boards Test Page</td>
+	<td>Message Boards Test Page</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//a/strong</td>
-	<td>Category Name</td>
+	<td>//tr[contains(.,'MB Category Name')]/td[1]/a</td>
+	<td>MB Category Name</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>//a/strong</td>
-	<td>Category Name</td>
+	<td>//tr[contains(.,'MB Category Name')]/td[1]/a</td>
+	<td>MB Category Name</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//tr[3]/td/a</td>
-	<td>Thread Subject</td>
+	<td>//tr[contains(.,'MB Thread Message Subject')]/td[1]/a</td>
+	<td>MB Thread Message Subject</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>//tr[3]/td/a</td>
-	<td>Thread Subject</td>
+	<td>//tr[contains(.,'MB Thread Message Subject')]/td[1]/a</td>
+	<td>MB Thread Message Subject</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@class='header-back-to']/a</td>
+	<td>« Back to MB Category Name</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//h1[@class='header-title']</td>
+	<td>MB Thread Message Subject</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='subject']/a/strong</td>
+	<td>MB Thread Message Subject</td>
 </tr>
 <tr>
 	<td>assertText</td>
 	<td>//div[@class='thread-body']</td>
-	<td>Thread Body</td>
-</tr>
-<tr>
-	<td>assertElementNotPresent</td>
-	<td>link=Edit</td>
-	<td>Edit</td>
-</tr>
-<tr>
-	<td>assertElementNotPresent</td>
-	<td>link=Delete</td>
-	<td>Delete</td>
-</tr>
-<tr>
-	<td>assertElementNotPresent</td>
-	<td>link=Permissions</td>
-	<td>Permissions</td>
+	<td>MB Thread Message Body</td>
 </tr>
 </tbody></table>
 </body>

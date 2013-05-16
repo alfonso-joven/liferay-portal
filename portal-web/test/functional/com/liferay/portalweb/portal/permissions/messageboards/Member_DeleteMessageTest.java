@@ -25,33 +25,38 @@ public class Member_DeleteMessageTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/site-name/");
-		selenium.clickAt("link=Message Boards Permissions Page",
-			RuntimeVariables.replace("Message Boards Permissions Page"));
+		selenium.clickAt("link=Message Boards Test Page",
+			RuntimeVariables.replace("Message Boards Test Page"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Category Name"),
-			selenium.getText("//a/strong"));
-		selenium.clickAt("//a/strong", RuntimeVariables.replace("Category Name"));
+		assertEquals(RuntimeVariables.replace("MB Category Name"),
+			selenium.getText("//tr[contains(.,'MB Category Name')]/td[1]/a"));
+		selenium.clickAt("//tr[contains(.,'MB Category Name')]/td[1]/a",
+			RuntimeVariables.replace("MB Category Name"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Thread Subject 2 Edited"),
-			selenium.getText("//tr[3]/td/a"));
-		Thread.sleep(5000);
+		Thread.sleep(1000);
+		assertEquals(RuntimeVariables.replace(
+				"MB Thread2 Message Subject Edited"),
+			selenium.getText(
+				"//tr[contains(.,'MB Thread2 Message Subject Edited')]/td[1]/a"));
 		assertEquals(RuntimeVariables.replace("Actions"),
-			selenium.getText("//span[@title='Actions']/ul/li/strong/a"));
-		selenium.clickAt("//span[@title='Actions']/ul/li/strong/a",
+			selenium.getText(
+				"//tr[contains(.,'MB Thread2 Message Subject Edited')]/td[7]/span[@title='Actions']/ul/li/strong/a"));
+		selenium.clickAt("//tr[contains(.,'MB Thread2 Message Subject Edited')]/td[7]/span[@title='Actions']/ul/li/strong/a",
 			RuntimeVariables.replace("Actions"));
 		selenium.waitForVisible(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Delete')]/a");
+			"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'RSS')]");
+		selenium.waitForVisible(
+			"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]");
 		assertEquals(RuntimeVariables.replace("Delete"),
 			selenium.getText(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Delete')]/a"));
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]"));
 		selenium.click(RuntimeVariables.replace(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Delete')]/a"));
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.getConfirmation()
-						   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+		selenium.waitForConfirmation("Are you sure you want to delete this?");
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
-		assertFalse(selenium.isTextPresent("Thread Subject 2 Edited"));
+		assertFalse(selenium.isTextPresent("MB Thread2 Message Subject Edited"));
 	}
 }

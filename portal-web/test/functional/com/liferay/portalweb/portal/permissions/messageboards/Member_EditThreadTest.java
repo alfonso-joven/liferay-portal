@@ -25,56 +25,45 @@ public class Member_EditThreadTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/site-name/");
-		selenium.clickAt("link=Message Boards Permissions Page",
-			RuntimeVariables.replace("Message Boards Permissions Page"));
+		selenium.clickAt("link=Message Boards Test Page",
+			RuntimeVariables.replace("Message Boards Test Page"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Category Name"),
-			selenium.getText("//a/strong"));
-		selenium.clickAt("//a/strong", RuntimeVariables.replace("Category Name"));
+		assertEquals(RuntimeVariables.replace("MB Category Name"),
+			selenium.getText("//tr[contains(.,'MB Category Name')]/td[1]/a"));
+		selenium.clickAt("//tr[contains(.,'MB Category Name')]/td[1]/a",
+			RuntimeVariables.replace("MB Category Name"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Thread Subject 2"),
-			selenium.getText("//tr[3]/td/a"));
-		selenium.clickAt("//tr[3]/td/a",
-			RuntimeVariables.replace("Thread Subject 2"));
+		assertEquals(RuntimeVariables.replace("MB Thread2 Message Subject"),
+			selenium.getText(
+				"//tr[contains(.,'MB Thread2 Message Subject')]/td[1]/a"));
+		selenium.clickAt("//tr[contains(.,'MB Thread2 Message Subject')]/td[1]/a",
+			RuntimeVariables.replace("MB Thread2 Message Subject"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isVisible(
-				"//td[@class='thread-bottom']/ul/li[2]/span/a"));
-		selenium.clickAt("//td[@class='thread-bottom']/ul/li[2]/span/a",
+		assertEquals(RuntimeVariables.replace("Edit"),
+			selenium.getText(
+				"//ul[@class='edit-controls lfr-component']/li/span/a[contains(.,'Edit')]"));
+		selenium.clickAt("//ul[@class='edit-controls lfr-component']/li/span/a[contains(.,'Edit')]",
 			RuntimeVariables.replace("Edit"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_19_subject']",
-			RuntimeVariables.replace("Thread Subject 2 Edited"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_19_editor' and @style='display: none;']");
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[.='Source']"));
-		selenium.clickAt("//span[.='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForVisible("//a[@class='cke_button_source cke_on']");
-		selenium.waitForVisible("//td[@id='cke_contents__19_editor']/textarea");
-		selenium.type("//td[@id='cke_contents__19_editor']/textarea",
-			RuntimeVariables.replace("Thread Body 2 Edited"));
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[.='Source']"));
-		selenium.clickAt("//span[.='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_19_editor' and @style='display: none;']");
-		selenium.waitForVisible("//td[@id='cke_contents__19_editor']/iframe");
-		selenium.selectFrame("//td[@id='cke_contents__19_editor']/iframe");
-		selenium.waitForText("//body", "Thread Body 2 Edited");
-		selenium.selectFrame("relative=top");
+			RuntimeVariables.replace("MB Thread2 Message Subject Edited"));
+		Thread.sleep(1000);
+		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
+		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
+			RuntimeVariables.replace("MB Thread2 Message Body Edited"));
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
-		assertEquals(RuntimeVariables.replace("Thread Subject 2 Edited"),
+		assertEquals(RuntimeVariables.replace(
+				"MB Thread2 Message Subject Edited"),
 			selenium.getText("//h1[@class='header-title']/span"));
-		assertEquals(RuntimeVariables.replace("Thread Subject 2 Edited"),
+		assertEquals(RuntimeVariables.replace(
+				"MB Thread2 Message Subject Edited"),
 			selenium.getText("//div[@class='subject']/a/strong"));
-		assertEquals(RuntimeVariables.replace("Thread Body 2 Edited"),
+		assertEquals(RuntimeVariables.replace("MB Thread2 Message Body Edited"),
 			selenium.getText("//div[@class='thread-body']"));
 	}
 }

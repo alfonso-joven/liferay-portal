@@ -15,128 +15,38 @@
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>link=Message Boards Permissions Page</td>
-	<td>Message Boards Permissions Page</td>
+	<td>link=Message Boards Test Page</td>
+	<td>Message Boards Test Page</td>
 </tr>
 <tr>
-	<td>assertElementPresent</td>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertVisible</td>
+	<td>//input[@title='Search Messages']</td>
+	<td>Search Messages Field</td>
+</tr>
+<tr>
+	<td>assertVisible</td>
 	<td>//input[@value='Search']</td>
 	<td>Search</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[2]/div/span/a/span[1]</td>
+	<td>//div[@class='category-subscription-types']/span/a/span[contains(.,'RSS')]</td>
 	<td>RSS</td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>5000</td>
-	<td></td>
-</tr>
-<tr>
 	<td>assertText</td>
-	<td>//span[@title='Actions']/ul/li/strong/a</td>
-	<td>Actions</td>
-</tr>
-<tr>
-	<td>clickAt</td>
-	<td>//span[@title='Actions']/ul/li/strong/a</td>
-	<td>Actions</td>
-</tr>
-<tr>
-	<td>waitForVisible</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Subscribe')]/a</td>
-	<td>Subscribe</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Subscribe')]/a</td>
+	<td>//div[@class='category-subscription-types']/span/a/span[contains(.,'Subscribe')]</td>
 	<td>Subscribe</td>
 </tr>
 <tr>
 	<td>assertElementNotPresent</td>
-	<td>link=Edit</td>
-	<td>Edit</td>
-</tr>
-<tr>
-	<td>assertElementNotPresent</td>
-	<td>link=Permissions</td>
-	<td>Permissions</td>
-</tr>
-<tr>
-	<td>assertElementNotPresent</td>
-	<td>link=Move Thread</td>
-	<td>Move Thread</td>
-</tr>
-<tr>
-	<td>assertElementNotPresent</td>
-	<td>link=Delete</td>
-	<td>Delete</td>
-</tr>
-<tr>
-	<td>assertElementNotPresent</td>
-	<td>link=Add Category</td>
+	<td>//input[@value='Add Category']</td>
 	<td>Add Category</td>
-</tr>
-<tr>
-	<td>assertElementNotPresent</td>
-	<td>link=Banned Users</td>
-	<td>Banned Users</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//a/strong</td>
-	<td>Category Name</td>
-</tr>
-<tr>
-	<td>clickAtAndWait</td>
-	<td>//a/strong</td>
-	<td>Category Name</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//tr[3]/td/a</td>
-	<td>Thread Subject</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//span[@title='Actions']/ul/li/strong/a</td>
-	<td>Actions</td>
-</tr>
-<tr>
-	<td>clickAt</td>
-	<td>//span[@title='Actions']/ul/li/strong/a</td>
-	<td>Actions</td>
-</tr>
-<tr>
-	<td>waitForVisible</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Subscribe')]/a</td>
-	<td>Subscribe</td>
-</tr>
-<tr>
-	<td>assertPartialText</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'RSS')]/a</td>
-	<td>RSS</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Subscribe')]/a</td>
-	<td>Subscribe</td>
-</tr>
-<tr>
-	<td>assertElementNotPresent</td>
-	<td>link=Edit</td>
-	<td>Edit</td>
-</tr>
-<tr>
-	<td>assertElementNotPresent</td>
-	<td>link=Move</td>
-	<td>Move</td>
-</tr>
-<tr>
-	<td>assertElementNotPresent</td>
-	<td>link=Delete</td>
-	<td>Delete</td>
 </tr>
 <tr>
 	<td>assertVisible</td>
@@ -144,34 +54,259 @@
 	<td>Post New Thread</td>
 </tr>
 <tr>
-	<td>clickAtAndWait</td>
-	<td>//tr[3]/td/a</td>
-	<td>Thread Subject</td>
-</tr>
-<tr>
-	<td>assertPartialText</td>
-	<td>//ul[@class='edit-controls lfr-component']/li[contains(.,'Reply')]/span/a</td>
-	<td>Reply</td>
+	<td>assertElementNotPresent</td>
+	<td>//input[@value='Permissions']</td>
+	<td>Permissions</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//ul[@class='edit-controls lfr-component']/li[contains(.,'Reply with Quote')]/span/a</td>
-	<td>Reply with Quote</td>
+	<td>//tr[contains(.,'MB Category Name')]/td[1]/a</td>
+	<td>MB Category Name</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[contains(.,'MB Category Name')]/td[2]</td>
+	<td>0</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[contains(.,'MB Category Name')]/td[3]</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[contains(.,'MB Category Name')]/td[4]</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[contains(.,'MB Category Name')]/td[5]/span[@title='Actions']/ul/li/strong/a</td>
+	<td>Actions</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//tr[contains(.,'MB Category Name')]/td[5]/span[@title='Actions']/ul/li/strong/a</td>
+	<td>Actions</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'RSS')]</td>
+	<td>RSS</td>
 </tr>
 <tr>
 	<td>assertElementNotPresent</td>
-	<td>link=Delete</td>
-	<td>Delete</td>
-</tr>
-<tr>
-	<td>assertElementNotPresent</td>
-	<td>link=Edit</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Edit')]</td>
 	<td>Edit</td>
 </tr>
 <tr>
 	<td>assertElementNotPresent</td>
-	<td>link=Permissions</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Permissions')]</td>
 	<td>Permissions</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'RSS')]</td>
+	<td>RSS (Opens New Window)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Subscribe')]</td>
+	<td>Subscribe</td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]</td>
+	<td>Delete</td>
+</tr>
+<tr>
+	<td>clickAtAndWait</td>
+	<td>//tr[contains(.,'MB Category Name')]/td[1]/a</td>
+	<td>MB Category Name</td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertVisible</td>
+	<td>//input[@title='Search Messages']</td>
+	<td>Search Messages Field</td>
+</tr>
+<tr>
+	<td>assertVisible</td>
+	<td>//input[@value='Search']</td>
+	<td>Search</td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>//input[@value='Add Subcategory']</td>
+	<td>Add Subcategory</td>
+</tr>
+<tr>
+	<td>assertVisible</td>
+	<td>//input[@value='Post New Thread']</td>
+	<td>Post New Thread</td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>//input[@value='Permissions']</td>
+	<td>Permissions</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@class='header-back-to']/a</td>
+	<td>« Back to Message Boards Home</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//h1[@class='header-title']</td>
+	<td>MB Category Name</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[contains(.,'MB Thread Message Subject')]/td[1]/a</td>
+	<td>MB Thread Message Subject</td>
+</tr>
+<tr>
+	<td>assertVisible</td>
+	<td>//tr[contains(.,'MB Thread Message Subject')]/td[2]</td>
+	<td>Flag</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[contains(.,'MB Thread Message Subject')]/td[3]</td>
+	<td>MA Liferay</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[contains(.,'MB Thread Message Subject')]/td[4]</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[contains(.,'MB Thread Message Subject')]/td[5]</td>
+	<td>1</td>
+</tr>
+<tr>
+	<td>assertVisible</td>
+	<td>//tr[contains(.,'MB Thread Message Subject')]/td[6]</td>
+	<td>Last Post</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[contains(.,'MB Thread Message Subject')]/td[7]/span[@title='Actions']/ul/li/strong/a</td>
+	<td>Actions</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//tr[contains(.,'MB Thread Message Subject')]/td[7]/span[@title='Actions']/ul/li/strong/a</td>
+	<td>Actions</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'RSS')]</td>
+	<td>RSS</td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Edit')]</td>
+	<td>Edit</td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Permissions')]</td>
+	<td>Permissions</td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Unsubscribe')]</td>
+	<td>Unsubscribe</td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Lock Thread')]</td>
+	<td>Lock Thread</td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Move Thread')]</td>
+	<td>Move Thread</td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]</td>
+	<td>Delete</td>
+</tr>
+<tr>
+	<td>assertVisible</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'RSS')]</td>
+	<td>RSS</td>
+</tr>
+<tr>
+	<td>assertVisible</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Subscribe')]</td>
+	<td>Subscribe</td>
+</tr>
+<tr>
+	<td>clickAtAndWait</td>
+	<td>//tr[contains(.,'MB Thread Message Subject')]/td[1]/a</td>
+	<td>MB Thread Message Subject</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@class='header-back-to']/a</td>
+	<td>« Back to MB Category Name</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//h1[@class='header-title']</td>
+	<td>MB Thread Message Subject</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='thread-actions']/table/tbody/tr/td/span/a[contains(.,'Post New Thread')]</td>
+	<td>Post New Thread</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='thread-actions']/table/tbody/tr/td/span/a[contains(.,'Subscribe')]</td>
+	<td>Subscribe</td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>//div[@class='thread-actions']/table/tbody/tr/td/span/a[contains(.,'Lock Thread')]</td>
+	<td>Lock Thread</td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>//div[@class='thread-actions']/table/tbody/tr/td/span/a[contains(.,'Move Thread')]</td>
+	<td>Move Thread</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//ul[@class='edit-controls lfr-component']/li[2]/span/a</td>
+	<td>Reply</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//ul[@class='edit-controls lfr-component']/li[3]/span/a</td>
+	<td>Reply with Quote</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//ul[@class='edit-controls lfr-component']/li[4]/span/a</td>
+	<td>Quick Reply</td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>//ul[@class='edit-controls lfr-component']/li/span/a[contains(.,'Edit')]</td>
+	<td>Edit</td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>//ul[@class='edit-controls lfr-component']/li/span/a[contains(.,'Delete')]</td>
+	<td>Delete</td>
 </tr>
 </tbody></table>
 </body>

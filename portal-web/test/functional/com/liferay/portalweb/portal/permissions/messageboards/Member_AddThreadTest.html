@@ -15,18 +15,18 @@
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>link=Message Boards Permissions Page</td>
-	<td>Message Boards Permissions Page</td>
+	<td>link=Message Boards Test Page</td>
+	<td>Message Boards Test Page</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//a/strong</td>
-	<td>Category Name</td>
+	<td>//tr[contains(.,'MB Category Name')]/td[1]/a</td>
+	<td>MB Category Name</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>//a/strong</td>
-	<td>Category Name</td>
+	<td>//tr[contains(.,'MB Category Name')]/td[1]/a</td>
+	<td>MB Category Name</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -36,72 +36,22 @@
 <tr>
 	<td>type</td>
 	<td>//input[@id='_19_subject']</td>
-	<td>Thread Subject 2</td>
+	<td>MB Thread2 Message Subject</td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
-	<td>//textarea[@id='_19_editor' and @style='display: none;']</td>
-	<td>Text Area</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//span[.='Source']</td>
-	<td>Source</td>
-</tr>
-<tr>
-	<td>clickAt</td>
-	<td>//span[.='Source']</td>
-	<td>Source</td>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//a[@class='cke_button_source cke_on']</td>
-	<td>Source Button On</td>
-</tr>
-<tr>
-	<td>waitForVisible</td>
-	<td>//td[@id='cke_contents__19_editor']/textarea</td>
+	<td>//iframe[contains(@title,'Rich text editor')]</td>
 	<td>CK Editor</td>
 </tr>
 <tr>
-	<td>type</td>
-	<td>//td[@id='cke_contents__19_editor']/textarea</td>
-	<td>Thread Body 2</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//span[.='Source']</td>
-	<td>Source</td>
-</tr>
-<tr>
-	<td>clickAt</td>
-	<td>//span[.='Source']</td>
-	<td>Source</td>
-</tr>
-<tr>
-	<td>waitForElementPresent</td>
-	<td>//textarea[@id='_19_editor' and @style='display: none;']</td>
-	<td>Text Area</td>
-</tr>
-<tr>
-	<td>waitForVisible</td>
-	<td>//td[@id='cke_contents__19_editor']/iframe</td>
-	<td>CK Editor</td>
-</tr>
-<tr>
-	<td>selectFrame</td>
-	<td>//td[@id='cke_contents__19_editor']/iframe</td>
-	<td>CK Editor</td>
-</tr>
-<tr>
-	<td>waitForText</td>
-	<td>//body</td>
-	<td>Thread Body 2</td>
-</tr>
-<tr>
-	<td>selectFrame</td>
-	<td>relative=top</td>
-	<td>top</td>
+	<td>typeFrame</td>
+	<td>//iframe[contains(@title,'Rich text editor')]</td>
+	<td>MB Thread2 Message Body</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -115,18 +65,13 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//h1[@class='header-title']/span</td>
-	<td>Thread Subject 2</td>
-</tr>
-<tr>
-	<td>assertText</td>
 	<td>//div[@class='subject']/a/strong</td>
-	<td>Thread Subject 2</td>
+	<td>MB Thread2 Message Subject</td>
 </tr>
 <tr>
 	<td>assertText</td>
 	<td>//div[@class='thread-body']</td>
-	<td>Thread Body 2</td>
+	<td>MB Thread2 Message Body</td>
 </tr>
 </tbody></table>
 </body>

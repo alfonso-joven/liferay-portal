@@ -25,17 +25,19 @@ public class Member_ReplyMessageTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/site-name/");
-		selenium.clickAt("link=Message Boards Permissions Page",
-			RuntimeVariables.replace("Message Boards Permissions Page"));
+		selenium.clickAt("link=Message Boards Test Page",
+			RuntimeVariables.replace("Message Boards Test Page"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Category Name"),
-			selenium.getText("//a/strong"));
-		selenium.clickAt("//a/strong", RuntimeVariables.replace("Category Name"));
+		assertEquals(RuntimeVariables.replace("MB Category Name"),
+			selenium.getText("//tr[contains(.,'MB Category Name')]/td[1]/a"));
+		selenium.clickAt("//tr[contains(.,'MB Category Name')]/td[1]/a",
+			RuntimeVariables.replace("MB Category Name"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Thread Subject"),
-			selenium.getText("//tr[3]/td/a"));
-		selenium.clickAt("//tr[3]/td/a",
-			RuntimeVariables.replace("Thread Subject"));
+		assertEquals(RuntimeVariables.replace("MB Thread Message Subject"),
+			selenium.getText(
+				"//tr[contains(.,'MB Thread Message Subject')]/td[1]/a"));
+		selenium.clickAt("//tr[contains(.,'MB Thread Message Subject')]/td[1]/a",
+			RuntimeVariables.replace("MB Thread Message Subject"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Reply"),
 			selenium.getText(
@@ -43,36 +45,27 @@ public class Member_ReplyMessageTest extends BaseTestCase {
 		selenium.clickAt("//ul[@class='edit-controls lfr-component']/li[contains(.,'Reply')]/span/a",
 			RuntimeVariables.replace("Reply"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForElementPresent(
-			"//textarea[@id='_19_editor' and @style='display: none;']");
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[.='Source']"));
-		selenium.clickAt("//span[.='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForVisible("//a[@class='cke_button_source cke_on']");
-		selenium.waitForVisible("//td[@id='cke_contents__19_editor']/textarea");
-		selenium.type("//td[@id='cke_contents__19_editor']/textarea",
-			RuntimeVariables.replace("Thread Body Reply"));
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[.='Source']"));
-		selenium.clickAt("//span[.='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_19_editor' and @style='display: none;']");
-		selenium.waitForVisible("//td[@id='cke_contents__19_editor']/iframe");
-		selenium.selectFrame("//td[@id='cke_contents__19_editor']/iframe");
-		selenium.waitForText("//body", "Thread Body Reply");
-		selenium.selectFrame("relative=top");
+		Thread.sleep(1000);
+		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
+		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
+			RuntimeVariables.replace("MB Thread Message Body Reply"));
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");
+		assertEquals(RuntimeVariables.replace("RE: MB Thread Message Subject"),
+			selenium.getText(
+				"//tbody[contains(.,'MB Thread Message Body Reply')]/tr/td/div/div[@class='subject']/a"));
+		assertEquals(RuntimeVariables.replace("MB Thread Message Body Reply"),
+			selenium.getText(
+				"//tbody[contains(.,'MB Thread Message Body Reply')]/tr/td/div[@class='thread-body']"));
 		assertEquals(RuntimeVariables.replace("Edit"),
-			selenium.getText("//div[5]/table/tbody/tr[2]/td/ul/li[2]/span/a"));
+			selenium.getText(
+				"//tbody[contains(.,'MB Thread Message Body Reply')]/tr/td/ul[@class='edit-controls lfr-component']/li/span/a[contains(.,'Edit')]"));
 		assertEquals(RuntimeVariables.replace("Permissions"),
-			selenium.getText("//div[5]/table/tbody/tr[2]/td/ul/li[3]/span/a"));
+			selenium.getText(
+				"//tbody[contains(.,'MB Thread Message Body Reply')]/tr/td/ul[@class='edit-controls lfr-component']/li/span/a[contains(.,'Permissions')]"));
 		assertEquals(RuntimeVariables.replace("Delete"),
-			selenium.getText("//div[5]/table/tbody/tr[2]/td/ul/li[4]/span/a"));
-		assertEquals(RuntimeVariables.replace("Thread Body Reply"),
-			selenium.getText("//div[5]/table/tbody/tr/td[2]/div[2]"));
+			selenium.getText(
+				"//tbody[contains(.,'MB Thread Message Body Reply')]/tr/td/ul[@class='edit-controls lfr-component']/li/span/a[contains(.,'Delete')]"));
 	}
 }

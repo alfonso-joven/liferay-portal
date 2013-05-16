@@ -25,22 +25,27 @@ public class Member_ViewMessageTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/site-name/");
-		selenium.clickAt("link=Message Boards Permissions Page",
-			RuntimeVariables.replace("Message Boards Permissions Page"));
+		selenium.clickAt("link=Message Boards Test Page",
+			RuntimeVariables.replace("Message Boards Test Page"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Category Name"),
-			selenium.getText("//a/strong"));
-		selenium.clickAt("//a/strong", RuntimeVariables.replace("Category Name"));
+		assertEquals(RuntimeVariables.replace("MB Category Name"),
+			selenium.getText("//tr[contains(.,'MB Category Name')]/td[1]/a"));
+		selenium.clickAt("//tr[contains(.,'MB Category Name')]/td[1]/a",
+			RuntimeVariables.replace("MB Category Name"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Thread Subject"),
-			selenium.getText("//tr[3]/td/a"));
-		selenium.clickAt("//tr[3]/td/a",
-			RuntimeVariables.replace("Thread Subject"));
+		assertEquals(RuntimeVariables.replace("MB Thread Message Subject"),
+			selenium.getText(
+				"//tr[contains(.,'MB Thread Message Subject')]/td[1]/a"));
+		selenium.clickAt("//tr[contains(.,'MB Thread Message Subject')]/td[1]/a",
+			RuntimeVariables.replace("MB Thread Message Subject"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Thread Body"),
+		assertEquals(RuntimeVariables.replace("\u00ab Back to MB Category Name"),
+			selenium.getText("//span[@class='header-back-to']/a"));
+		assertEquals(RuntimeVariables.replace("MB Thread Message Subject"),
+			selenium.getText("//h1[@class='header-title']"));
+		assertEquals(RuntimeVariables.replace("MB Thread Message Subject"),
+			selenium.getText("//div[@class='subject']/a/strong"));
+		assertEquals(RuntimeVariables.replace("MB Thread Message Body"),
 			selenium.getText("//div[@class='thread-body']"));
-		assertTrue(selenium.isElementNotPresent("link=Edit"));
-		assertTrue(selenium.isElementNotPresent("link=Delete"));
-		assertTrue(selenium.isElementNotPresent("link=Permissions"));
 	}
 }

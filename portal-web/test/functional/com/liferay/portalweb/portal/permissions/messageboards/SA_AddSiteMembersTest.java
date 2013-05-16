@@ -66,7 +66,7 @@ public class SA_AddSiteMembersTest extends BaseTestCase {
 			RuntimeVariables.replace("User"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@name='_174_keywords']",
-			RuntimeVariables.replace("MA@liferay.com"));
+			RuntimeVariables.replace("MA"));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
