@@ -39,8 +39,8 @@ public class AssignUserRoleWCATest extends BaseTestCase {
 		selenium.clickAt("link=Users and Organizations",
 			RuntimeVariables.replace("Users and Organizations"));
 		selenium.waitForPageToLoad("30000");
-		selenium.type("//input[@id='_125_keywords']",
-			RuntimeVariables.replace("userea@liferay.com"));
+		selenium.type("//input[@name='_125_keywords']",
+			RuntimeVariables.replace("userfn"));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");

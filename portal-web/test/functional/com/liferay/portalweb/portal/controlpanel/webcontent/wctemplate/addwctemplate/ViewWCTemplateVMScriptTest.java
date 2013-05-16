@@ -63,6 +63,7 @@ public class ViewWCTemplateVMScriptTest extends BaseTestCase {
 			RuntimeVariables.replace("Launch Editor"));
 		selenium.waitForVisible("//iframe[@id='_15_xslContentIFrame']");
 		selenium.selectFrame("//iframe[@id='_15_xslContentIFrame']");
+		selenium.waitForVisible("//textarea[@id='_15_plainEditorField']");
 		selenium.waitForValue("//textarea[@id='_15_plainEditorField']",
 			"<h3>$text.getData()</h3>");
 		assertEquals("<h3>$text.getData()</h3>",

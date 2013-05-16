@@ -48,13 +48,15 @@ public class ViewWCWebContentLocalizedTest extends BaseTestCase {
 			selenium.getText("//td[3]/a"));
 		assertEquals(RuntimeVariables.replace("Approved"),
 			selenium.getText("//td[4]/a"));
-		assertTrue(selenium.isVisible("//td[5]/a"));
+		assertEquals(RuntimeVariables.replace("1.0"),
+			selenium.getText("//td[5]/a"));
 		assertTrue(selenium.isVisible("//td[6]/a"));
+		assertTrue(selenium.isVisible("//td[7]/a"));
 		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
-			selenium.getText("//td[7]/a"));
+			selenium.getText("//td[8]/a"));
 		assertEquals(RuntimeVariables.replace("Actions"),
-			selenium.getText("//td[8]/span/ul/li/strong/a/span"));
-		selenium.clickAt("//td[8]/span/ul/li/strong/a/span",
+			selenium.getText("//span[@title='Actions']/ul/li/strong/a/span"));
+		selenium.clickAt("//span[@title='Actions']/ul/li/strong/a/span",
 			RuntimeVariables.replace("Actions"));
 		selenium.waitForVisible(
 			"//a[contains(@id,'SearchContainer_1_menu_edit')]");
@@ -108,6 +110,8 @@ public class ViewWCWebContentLocalizedTest extends BaseTestCase {
 			RuntimeVariables.replace("Chinese (China)"));
 		selenium.waitForVisible("//iframe[@id='_15_zh_CN']");
 		selenium.selectFrame("//iframe[@id='_15_zh_CN']");
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/html/js/editor/ckeditor/lang/en.js')]");
 		selenium.waitForText("//h1[@class='header-title']/span",
 			"WC WebContent Title \u4e16\u754c\u60a8\u597d");
 		assertEquals(RuntimeVariables.replace(
@@ -118,12 +122,9 @@ public class ViewWCWebContentLocalizedTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"Translating Web Content to Chinese (China)"),
 			selenium.getText("//div[@id='_15_availableTranslationContainer']"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_15__15_structure_el_TextAreaField_content' and @style='display: none;']");
-		selenium.waitForVisible(
-			"//td[@id='cke_contents__15__15_structure_el_TextAreaField_content']/iframe");
-		selenium.selectFrame(
-			"//td[@id='cke_contents__15__15_structure_el_TextAreaField_content']/iframe");
+		Thread.sleep(1000);
+		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
+		selenium.selectFrame("//iframe[contains(@title,'Rich text editor')]");
 		selenium.waitForText("//body",
 			"WC WebContent Content \u4e16\u754c\u60a8\u597d");
 		assertEquals(RuntimeVariables.replace(
@@ -135,12 +136,9 @@ public class ViewWCWebContentLocalizedTest extends BaseTestCase {
 			RuntimeVariables.replace("X"));
 		assertEquals("WC WebContent Title",
 			selenium.getValue("//input[@id='_15_title_en_US']"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_15__15_structure_el_TextAreaField_content' and @style='display: none;']");
-		selenium.waitForVisible(
-			"//td[@id='cke_contents__15__15_structure_el_TextAreaField_content']/iframe");
-		selenium.selectFrame(
-			"//td[@id='cke_contents__15__15_structure_el_TextAreaField_content']/iframe");
+		Thread.sleep(1000);
+		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
+		selenium.selectFrame("//iframe[contains(@title,'Rich text editor')]");
 		selenium.waitForText("//body", "WC WebContent Content");
 		assertEquals(RuntimeVariables.replace("WC WebContent Content"),
 			selenium.getText("//body"));

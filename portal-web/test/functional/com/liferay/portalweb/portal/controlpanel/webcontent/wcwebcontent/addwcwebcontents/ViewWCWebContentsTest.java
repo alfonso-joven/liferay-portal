@@ -52,12 +52,9 @@ public class ViewWCWebContentsTest extends BaseTestCase {
 			selenium.getText("//h1[@class='header-title']/span"));
 		assertEquals("WC WebContent1 Title",
 			selenium.getValue("//input[@id='_15_title_en_US']"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_15__15_structure_el_TextAreaField_content' and @style='display: none;']");
-		selenium.waitForVisible(
-			"//td[@id='cke_contents__15__15_structure_el_TextAreaField_content']/iframe");
-		selenium.selectFrame(
-			"//td[@id='cke_contents__15__15_structure_el_TextAreaField_content']/iframe");
+		Thread.sleep(1000);
+		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
+		selenium.selectFrame("//iframe[contains(@title,'Rich text editor')]");
 		selenium.waitForText("//body", "WC WebContent1 Content");
 		assertEquals(RuntimeVariables.replace("WC WebContent1 Content"),
 			selenium.getText("//body"));
@@ -86,12 +83,9 @@ public class ViewWCWebContentsTest extends BaseTestCase {
 			selenium.getText("//h1[@class='header-title']/span"));
 		assertEquals("WC WebContent2 Title",
 			selenium.getValue("//input[@id='_15_title_en_US']"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_15__15_structure_el_TextAreaField_content' and @style='display: none;']");
-		selenium.waitForVisible(
-			"//td[@id='cke_contents__15__15_structure_el_TextAreaField_content']/iframe");
-		selenium.selectFrame(
-			"//td[@id='cke_contents__15__15_structure_el_TextAreaField_content']/iframe");
+		Thread.sleep(1000);
+		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
+		selenium.selectFrame("//iframe[contains(@title,'Rich text editor')]");
 		selenium.waitForText("//body", "WC WebContent2 Content");
 		assertEquals(RuntimeVariables.replace("WC WebContent2 Content"),
 			selenium.getText("//body"));
@@ -120,12 +114,9 @@ public class ViewWCWebContentsTest extends BaseTestCase {
 			selenium.getText("//h1[@class='header-title']/span"));
 		assertEquals("WC WebContent3 Title",
 			selenium.getValue("//input[@id='_15_title_en_US']"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_15__15_structure_el_TextAreaField_content' and @style='display: none;']");
-		selenium.waitForVisible(
-			"//td[@id='cke_contents__15__15_structure_el_TextAreaField_content']/iframe");
-		selenium.selectFrame(
-			"//td[@id='cke_contents__15__15_structure_el_TextAreaField_content']/iframe");
+		Thread.sleep(1000);
+		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
+		selenium.selectFrame("//iframe[contains(@title,'Rich text editor')]");
 		selenium.waitForText("//body", "WC WebContent3 Content");
 		assertEquals(RuntimeVariables.replace("WC WebContent3 Content"),
 			selenium.getText("//body"));

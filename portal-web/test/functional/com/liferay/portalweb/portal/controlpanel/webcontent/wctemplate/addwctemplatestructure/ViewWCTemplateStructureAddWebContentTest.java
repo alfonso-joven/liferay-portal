@@ -42,8 +42,8 @@ public class ViewWCTemplateStructureAddWebContentTest extends BaseTestCase {
 		selenium.click(RuntimeVariables.replace(
 				"//div[@class='lfr-component lfr-menu-list']/ul/li/a"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForElementPresent(
-			"//textarea[@id='_15__15_structure_el_TextAreaField_content' and @style='display: none;']");
+		Thread.sleep(1000);
+		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
 		selenium.waitForVisible("//a[@id='_15_changeStructureButton']");
 		selenium.clickAt("//a[@id='_15_changeStructureButton']",
 			RuntimeVariables.replace("Change"));

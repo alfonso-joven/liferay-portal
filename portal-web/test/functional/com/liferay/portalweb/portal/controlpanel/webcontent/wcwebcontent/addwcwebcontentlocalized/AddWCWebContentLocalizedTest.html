@@ -59,69 +59,19 @@
 	<td>WC WebContent Title</td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
-	<td>//textarea[@id='_15__15_structure_el_TextAreaField_content' and @style='display: none;']</td>
-	<td>Text Area</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//span[.='Source']</td>
-	<td>Source</td>
-</tr>
-<tr>
-	<td>clickAt</td>
-	<td>//span[.='Source']</td>
-	<td>Source</td>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//a[@class='cke_button_source cke_on']</td>
-	<td>Source Button On</td>
-</tr>
-<tr>
-	<td>waitForVisible</td>
-	<td>//td[@id='cke_contents__15__15_structure_el_TextAreaField_content']/textarea</td>
+	<td>//iframe[contains(@title,'Rich text editor')]</td>
 	<td>CK Editor</td>
 </tr>
 <tr>
-	<td>type</td>
-	<td>//td[@id='cke_contents__15__15_structure_el_TextAreaField_content']/textarea</td>
+	<td>typeFrame</td>
+	<td>//iframe[contains(@title,'Rich text editor')]</td>
 	<td>WC WebContent Content</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//span[.='Source']</td>
-	<td>Source</td>
-</tr>
-<tr>
-	<td>clickAt</td>
-	<td>//span[.='Source']</td>
-	<td>Source</td>
-</tr>
-<tr>
-	<td>waitForElementPresent</td>
-	<td>//textarea[@id='_15__15_structure_el_TextAreaField_content' and @style='display: none;']</td>
-	<td>Text Area</td>
-</tr>
-<tr>
-	<td>waitForVisible</td>
-	<td>//td[@id='cke_contents__15__15_structure_el_TextAreaField_content']/iframe</td>
-	<td>CK Editor</td>
-</tr>
-<tr>
-	<td>selectFrame</td>
-	<td>//td[@id='cke_contents__15__15_structure_el_TextAreaField_content']/iframe</td>
-	<td>CK Editor</td>
-</tr>
-<tr>
-	<td>waitForText</td>
-	<td>//body</td>
-	<td>WC WebContent Content</td>
-</tr>
-<tr>
-	<td>selectFrame</td>
-	<td>relative=top</td>
-	<td>top</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -129,9 +79,14 @@
 	<td>Save as Draft</td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
-	<td>//textarea[@id='_15__15_structure_el_TextAreaField_content' and @style='display: none;']</td>
-	<td>Text Area</td>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//iframe[contains(@title,'Rich text editor')]</td>
+	<td>CK Editor</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -169,7 +124,7 @@
 	<td>Chinese (China)</td>
 </tr>
 <tr>
-	<td>click</td>
+	<td>clickAt</td>
 	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Chinese (China)')]/a</td>
 	<td>Chinese (China)</td>
 </tr>
@@ -182,6 +137,11 @@
 	<td>selectFrame</td>
 	<td>//iframe[@id='_15_zh_CN']</td>
 	<td>Web Content Translation</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//script[contains(@src,'/html/js/editor/ckeditor/lang/en.js')]</td>
+	<td>CK Editor Script</td>
 </tr>
 <tr>
 	<td>waitForText</td>
@@ -199,69 +159,19 @@
 	<td>WC WebContent Title 世界您好</td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
-	<td>//textarea[@id='_15__15_structure_el_TextAreaField_content' and @style='display: none;']</td>
-	<td>Text Area</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//span[.='Source']</td>
-	<td>Source</td>
-</tr>
-<tr>
-	<td>clickAt</td>
-	<td>//span[.='Source']</td>
-	<td>Source</td>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//a[@class='cke_button_source cke_on']</td>
-	<td>Source Button On</td>
-</tr>
-<tr>
-	<td>waitForVisible</td>
-	<td>//td[@id='cke_contents__15__15_structure_el_TextAreaField_content']/textarea</td>
+	<td>//iframe[contains(@title,'Rich text editor')]</td>
 	<td>CK Editor</td>
 </tr>
 <tr>
-	<td>type</td>
-	<td>//td[@id='cke_contents__15__15_structure_el_TextAreaField_content']/textarea</td>
+	<td>typeFrame</td>
+	<td>//iframe[contains(@title,'Rich text editor')]</td>
 	<td>WC WebContent Content 世界您好</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//span[.='Source']</td>
-	<td>Source</td>
-</tr>
-<tr>
-	<td>clickAt</td>
-	<td>//span[.='Source']</td>
-	<td>Source</td>
-</tr>
-<tr>
-	<td>waitForElementPresent</td>
-	<td>//textarea[@id='_15__15_structure_el_TextAreaField_content' and @style='display: none;']</td>
-	<td>Text Area</td>
-</tr>
-<tr>
-	<td>waitForVisible</td>
-	<td>//td[@id='cke_contents__15__15_structure_el_TextAreaField_content']/iframe</td>
-	<td>CK Editor</td>
-</tr>
-<tr>
-	<td>selectFrame</td>
-	<td>//td[@id='cke_contents__15__15_structure_el_TextAreaField_content']/iframe</td>
-	<td>CK Editor</td>
-</tr>
-<tr>
-	<td>waitForText</td>
-	<td>//body</td>
-	<td>WC WebContent Content 世界您好</td>
-</tr>
-<tr>
-	<td>selectFrame</td>
-	<td>relative=top</td>
-	<td>top</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
@@ -272,6 +182,11 @@
 	<td>selectFrame</td>
 	<td>//iframe[@id='_15_zh_CN']</td>
 	<td>Web Content Translation</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//script[contains(@src,'/html/js/editor/ckeditor/lang/en.js')]</td>
+	<td>CK Editor Script</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>

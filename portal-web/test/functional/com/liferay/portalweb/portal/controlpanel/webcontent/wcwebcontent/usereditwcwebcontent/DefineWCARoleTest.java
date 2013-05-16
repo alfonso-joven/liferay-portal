@@ -84,15 +84,18 @@ public class DefineWCARoleTest extends BaseTestCase {
 		selenium.clickAt("link=Define Permissions",
 			RuntimeVariables.replace("Define Permissions"));
 		selenium.waitForPageToLoad("30000");
-		selenium.typeKeys("_128_add-permissions",
-			RuntimeVariables.replace("wwwwwwwww"));
-		selenium.keyPress("_128_add-permissions",
-			RuntimeVariables.replace("\\13"));
+		selenium.select("//select[@id='_128_add-permissions']",
+			RuntimeVariables.replace(
+				"value=regexp:.*portletResource=15&.*showModelResources=0"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Web Content"),
 			selenium.getText("//form[@id='_128_fm']/h3"));
+		assertFalse(selenium.isChecked(
+				"xPath=(//input[@name='_128_allRowIds'])[1]"));
 		selenium.clickAt("xPath=(//input[@name='_128_allRowIds'])[1]",
 			RuntimeVariables.replace("Select All"));
+		assertTrue(selenium.isChecked(
+				"xPath=(//input[@name='_128_allRowIds'])[1]"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");

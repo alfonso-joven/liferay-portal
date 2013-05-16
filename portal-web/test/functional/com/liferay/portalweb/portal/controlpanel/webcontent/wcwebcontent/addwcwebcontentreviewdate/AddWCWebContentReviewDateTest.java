@@ -44,29 +44,10 @@ public class AddWCWebContentReviewDateTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_15_title_en_US']",
 			RuntimeVariables.replace("WC WebContent Title"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_15__15_structure_el_TextAreaField_content' and @style='display: none;']");
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[.='Source']"));
-		selenium.clickAt("//span[.='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForVisible("//a[@class='cke_button_source cke_on']");
-		selenium.waitForVisible(
-			"//td[@id='cke_contents__15__15_structure_el_TextAreaField_content']/textarea");
-		selenium.type("//td[@id='cke_contents__15__15_structure_el_TextAreaField_content']/textarea",
+		Thread.sleep(1000);
+		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
+		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
 			RuntimeVariables.replace("WC WebContent Content"));
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[.='Source']"));
-		selenium.clickAt("//span[.='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_15__15_structure_el_TextAreaField_content' and @style='display: none;']");
-		selenium.waitForVisible(
-			"//td[@id='cke_contents__15__15_structure_el_TextAreaField_content']/iframe");
-		selenium.selectFrame(
-			"//td[@id='cke_contents__15__15_structure_el_TextAreaField_content']/iframe");
-		selenium.waitForText("//body", "WC WebContent Content");
-		selenium.selectFrame("relative=top");
 		assertTrue(selenium.isPartialText("//a[@id='_15_scheduleLink']",
 				"Schedule"));
 		selenium.clickAt("//a[@id='_15_scheduleLink']",
@@ -74,13 +55,13 @@ public class AddWCWebContentReviewDateTest extends BaseTestCase {
 		selenium.waitForVisible(
 			"//div[@id='_15_schedule' and contains(@class,'selected')]");
 		selenium.waitForVisible(
-			"//select[@id='_15_reviewDateMonth' and @disabled='disabled']");
+			"//select[@name='_15_reviewDateMonth' and @disabled='disabled']");
 		assertTrue(selenium.isVisible(
-				"//select[@id='_15_reviewDateMonth' and @disabled='disabled']"));
+				"//select[@name='_15_reviewDateMonth' and @disabled='disabled']"));
 		assertTrue(selenium.isVisible(
-				"//select[@id='_15_reviewDateDay' and @disabled='disabled']"));
+				"//select[@name='_15_reviewDateDay' and @disabled='disabled']"));
 		assertTrue(selenium.isVisible(
-				"//select[@id='_15_reviewDateYear' and @disabled='disabled']"));
+				"//select[@name='_15_reviewDateYear' and @disabled='disabled']"));
 		assertTrue(selenium.isVisible(
 				"//select[@name='_15_reviewDateHour' and @disabled='disabled']"));
 		assertTrue(selenium.isVisible(
@@ -91,7 +72,7 @@ public class AddWCWebContentReviewDateTest extends BaseTestCase {
 		selenium.clickAt("//input[@id='_15_neverReviewCheckbox']",
 			RuntimeVariables.replace("Never Auto Review"));
 		assertFalse(selenium.isChecked("//input[@id='_15_neverReviewCheckbox']"));
-		selenium.clickAt("//select[@id='_15_reviewDateMonth']",
+		selenium.clickAt("//select[@name='_15_reviewDateMonth']",
 			RuntimeVariables.replace("Review Date Month"));
 		assertFalse(selenium.isChecked("//input[@id='_15_neverReviewCheckbox']"));
 		selenium.clickAt("//input[@id='_15_neverReviewCheckbox']",
@@ -101,24 +82,24 @@ public class AddWCWebContentReviewDateTest extends BaseTestCase {
 			RuntimeVariables.replace("Never Auto Review"));
 		assertFalse(selenium.isChecked("//input[@id='_15_neverReviewCheckbox']"));
 		selenium.waitForElementNotPresent(
-			"//select[@id='_15_reviewDateMonth' and @disabled='disabled']");
+			"//select[@name='_15_reviewDateMonth' and @disabled='disabled']");
 		assertTrue(selenium.isElementNotPresent(
-				"//select[@id='_15_reviewDateMonth' and @disabled='disabled']"));
+				"//select[@name='_15_reviewDateMonth' and @disabled='disabled']"));
 		assertTrue(selenium.isElementNotPresent(
-				"//select[@id='_15_reviewDateDay' and @disabled='disabled']"));
+				"//select[@name='_15_reviewDateDay' and @disabled='disabled']"));
 		assertTrue(selenium.isElementNotPresent(
-				"//select[@id='_15_reviewDateYear' and @disabled='disabled']"));
+				"//select[@name='_15_reviewDateYear' and @disabled='disabled']"));
 		assertTrue(selenium.isElementNotPresent(
 				"//select[@name='_15_reviewDateHour' and @disabled='disabled']"));
 		assertTrue(selenium.isElementNotPresent(
 				"//select[@name='_15_reviewDateMinute' and @disabled='disabled']"));
 		assertTrue(selenium.isElementNotPresent(
 				"//select[@name='_15_reviewDateAmPm' and @disabled='disabled']"));
-		selenium.select("//select[@id='_15_reviewDateMonth']",
+		selenium.select("//select[@name='_15_reviewDateMonth']",
 			RuntimeVariables.replace("label=December"));
-		selenium.select("//select[@id='_15_reviewDateDay']",
+		selenium.select("//select[@name='_15_reviewDateDay']",
 			RuntimeVariables.replace("label=31"));
-		selenium.select("//select[@id='_15_reviewDateYear']",
+		selenium.select("//select[@name='_15_reviewDateYear']",
 			RuntimeVariables.replace("label=2015"));
 		selenium.select("//select[@name='_15_reviewDateHour']",
 			RuntimeVariables.replace("label=12"));
@@ -139,21 +120,21 @@ public class AddWCWebContentReviewDateTest extends BaseTestCase {
 		selenium.clickAt("//td[3]/a",
 			RuntimeVariables.replace("Web Content Name"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForElementPresent(
-			"//textarea[@id='_15__15_structure_el_TextAreaField_content' and @style='display: none;']");
+		Thread.sleep(1000);
+		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
 		assertTrue(selenium.isPartialText("//a[@id='_15_scheduleLink']",
 				"Schedule"));
 		selenium.clickAt("//a[@id='_15_scheduleLink']",
 			RuntimeVariables.replace("Schedule"));
 		selenium.waitForVisible(
 			"//div[@id='_15_schedule' and contains(@class,'selected')]");
-		selenium.waitForVisible("//select[@id='_15_reviewDateMonth']");
+		selenium.waitForVisible("//select[@name='_15_reviewDateMonth']");
 		assertEquals("December",
-			selenium.getSelectedLabel("//select[@id='_15_reviewDateMonth']"));
+			selenium.getSelectedLabel("//select[@name='_15_reviewDateMonth']"));
 		assertEquals("31",
-			selenium.getSelectedLabel("//select[@id='_15_reviewDateDay']"));
+			selenium.getSelectedLabel("//select[@name='_15_reviewDateDay']"));
 		assertEquals("2015",
-			selenium.getSelectedLabel("//select[@id='_15_reviewDateYear']"));
+			selenium.getSelectedLabel("//select[@name='_15_reviewDateYear']"));
 		assertEquals("12",
 			selenium.getSelectedLabel("//select[@name='_15_reviewDateHour']"));
 		assertEquals(":00",

@@ -74,23 +74,28 @@
 	<td>Approved</td>
 </tr>
 <tr>
-	<td>assertVisible</td>
+	<td>assertText</td>
 	<td>//td[5]/a</td>
-	<td>Modified Date</td>
+	<td>1.1</td>
 </tr>
 <tr>
 	<td>assertVisible</td>
 	<td>//td[6]/a</td>
+	<td>Modified Date</td>
+</tr>
+<tr>
+	<td>assertVisible</td>
+	<td>//td[7]/a</td>
 	<td>Display Date</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//td[7]/a</td>
+	<td>//td[8]/a</td>
 	<td>Joe Bloggs</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//td[8]/span/ul/li/strong/a</td>
+	<td>//span[@title='Actions']/ul/li/strong/a/span</td>
 	<td>Actions</td>
 </tr>
 <tr>
@@ -124,13 +129,18 @@
 	<td>WC WebContent Title Edit</td>
 </tr>
 <tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
+</tr>
+<tr>
 	<td>waitForVisible</td>
-	<td>//td[@id='cke_contents__15__15_structure_el_TextAreaField_content']/iframe</td>
+	<td>//iframe[contains(@title,'Rich text editor,')]</td>
 	<td>CK Editor</td>
 </tr>
 <tr>
 	<td>selectFrame</td>
-	<td>//td[@id='cke_contents__15__15_structure_el_TextAreaField_content']/iframe</td>
+	<td>//iframe[contains(@title,'Rich text editor,')]</td>
 	<td>CK Editor</td>
 </tr>
 <tr>

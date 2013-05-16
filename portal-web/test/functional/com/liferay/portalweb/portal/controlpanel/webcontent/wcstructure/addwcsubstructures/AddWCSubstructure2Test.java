@@ -81,7 +81,7 @@ public class AddWCSubstructure2Test extends BaseTestCase {
 		selenium.waitForVisible("//select[@id='_15_structure_el0_type']");
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
-		selenium.waitForVisible("//div[@class='portlet-msg-success']");
+		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));

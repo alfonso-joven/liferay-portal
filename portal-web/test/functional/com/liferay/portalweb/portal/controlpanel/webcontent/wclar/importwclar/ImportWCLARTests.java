@@ -17,7 +17,10 @@ package com.liferay.portalweb.portal.controlpanel.webcontent.wclar.importwclar;
 import com.liferay.portalweb.portal.BaseTestSuite;
 import com.liferay.portalweb.portal.controlpanel.webcontent.wcstructure.addwcstructure.TearDownWCStructureTest;
 import com.liferay.portalweb.portal.controlpanel.webcontent.wctemplate.addwctemplate.TearDownWCTemplateTest;
+import com.liferay.portalweb.portal.controlpanel.webcontent.wctemplate.addwctemplatestructure.ViewWCTemplateStructureAddWebContentTest;
+import com.liferay.portalweb.portal.controlpanel.webcontent.wctemplate.addwctemplatestructure.ViewWCTemplateStructureTest;
 import com.liferay.portalweb.portal.controlpanel.webcontent.wcwebcontent.addwcwebcontent.TearDownWCWebContentTest;
+import com.liferay.portalweb.portal.controlpanel.webcontent.wcwebcontent.addwcwebcontent.ViewWCWebContentTest;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -29,7 +32,9 @@ public class ImportWCLARTests extends BaseTestSuite {
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
 		testSuite.addTestSuite(ImportWCLARTest.class);
-		testSuite.addTestSuite(ViewImportWCLARTest.class);
+		testSuite.addTestSuite(ViewWCWebContentTest.class);
+		testSuite.addTestSuite(ViewWCTemplateStructureTest.class);
+		testSuite.addTestSuite(ViewWCTemplateStructureAddWebContentTest.class);
 		testSuite.addTestSuite(TearDownWCWebContentTest.class);
 		testSuite.addTestSuite(TearDownWCTemplateTest.class);
 		testSuite.addTestSuite(TearDownWCStructureTest.class);

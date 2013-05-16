@@ -50,7 +50,7 @@ public class AddWCTemplateXSLTest extends BaseTestCase {
 			RuntimeVariables.replace("WC Template Description"));
 		selenium.uploadFile("//input[@id='_15_xsl']",
 			RuntimeVariables.replace(
-				"L:\\portal\\build\\portal-web\\test\\com\\liferay\\portalweb\\portal\\controlpanel\\webcontent\\dependencies\\vm_script_text.xml"));
+				"L:\\portal\\build\\portal-web\\test\\functional\\com\\liferay\\portalweb\\portal\\controlpanel\\webcontent\\dependencies\\vm_script_text.xml"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");

@@ -37,7 +37,15 @@ public class User_ViewEditWCWebContentTest extends BaseTestCase {
 		selenium.clickAt("link=Web Content",
 			RuntimeVariables.replace("Web Content"));
 		selenium.waitForPageToLoad("30000");
+		assertEquals(RuntimeVariables.replace("WC WebContent Title Edit"),
+			selenium.getText("//td[3]/a"));
+		assertEquals(RuntimeVariables.replace("Approved"),
+			selenium.getText("//td[4]/a"));
+		assertEquals(RuntimeVariables.replace("1.1"),
+			selenium.getText("//td[5]/a"));
+		assertTrue(selenium.isVisible("//td[6]/a"));
+		assertTrue(selenium.isVisible("//td[7]/a"));
 		assertEquals(RuntimeVariables.replace("userfn userln"),
-			selenium.getText("//td[7]/a"));
+			selenium.getText("//td[8]/a"));
 	}
 }
