@@ -315,7 +315,7 @@ if (template == null) {
 		var nameEl = document.getElementById("<portlet:namespace />structureName");
 
 		nameEl.href = "<portlet:renderURL><portlet:param name="struts_action" value="/journal/edit_structure" /><portlet:param name="redirect" value="<%= currentURL %>" /><portlet:param name="groupId" value="<%= String.valueOf(groupId) %>" /></portlet:renderURL>&<portlet:namespace />structureId=" + structureId;
-		nameEl.innerText = structureName + " ";
+		nameEl.innerHTML = structureName + " ";
 
 		document.getElementById("<portlet:namespace />removeStructureButton").disabled = false;
 

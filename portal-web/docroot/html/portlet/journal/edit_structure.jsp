@@ -456,7 +456,7 @@ int tabIndex = 1;
 		var nameEl = document.getElementById("<portlet:namespace />parentStructureName");
 
 		nameEl.href = "<portlet:renderURL><portlet:param name="struts_action" value="/journal/edit_structure" /><portlet:param name="redirect" value="<%= currentURL %>" /><portlet:param name="groupId" value="<%= String.valueOf(groupId) %>" /></portlet:renderURL>&<portlet:namespace />parentStructureId=" + parentStructureId;
-		nameEl.innerText = parentStructureName + " ";
+		nameEl.innerHTML = parentStructureName + " ";
 
 		document.getElementById("<portlet:namespace />removeParentStructureButton").disabled = false;
 
