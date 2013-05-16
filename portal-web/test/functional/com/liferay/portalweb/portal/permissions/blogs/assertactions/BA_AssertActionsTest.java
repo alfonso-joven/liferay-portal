@@ -28,15 +28,22 @@ public class BA_AssertActionsTest extends BaseTestCase {
 		selenium.clickAt("link=Blogs Test Page",
 			RuntimeVariables.replace("Blogs Test Page"));
 		selenium.waitForPageToLoad("30000");
+		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Options"),
-			selenium.getText("//span[@title='Options']/ul/li/strong/a/span"));
-		selenium.clickAt("//span[@title='Options']/ul/li/strong/a/span",
+			selenium.getText("//span[@title='Options']/ul/li/strong/a"));
+		selenium.clickAt("//span[@title='Options']/ul/li/strong/a",
 			RuntimeVariables.replace("Options"));
 		selenium.waitForVisible(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]");
+			"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Look and Feel')]");
+		assertEquals(RuntimeVariables.replace("Look and Feel"),
+			selenium.getText(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Look and Feel')]"));
 		assertEquals(RuntimeVariables.replace("Configuration"),
 			selenium.getText(
 				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]"));
+		assertEquals(RuntimeVariables.replace("Export / Import"),
+			selenium.getText(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Export / Import')]"));
 		assertTrue(selenium.isVisible("//input[@value='Search']"));
 		assertTrue(selenium.isVisible("//input[@value='Add Blog Entry']"));
 		assertTrue(selenium.isVisible("//input[@value='Permissions']"));

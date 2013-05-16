@@ -15,6 +15,8 @@
 package com.liferay.portalweb.portal.permissions.blogs.scope;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
+import com.liferay.portalweb.portal.controlpanel.sites.site.addsite.AddSiteTest;
+import com.liferay.portalweb.portal.controlpanel.sites.site.addsite.TearDownSiteTest;
 import com.liferay.portalweb.portal.controlpanel.users.user.signin.SignInTest;
 import com.liferay.portalweb.portal.controlpanel.users.user.signin.SignOutTest;
 import com.liferay.portalweb.portal.util.TearDownPageTest;
@@ -36,7 +38,7 @@ public class ScopeTests extends BaseTestSuite {
 		testSuite.addTestSuite(SA_AddUserScopeTest.class);
 		testSuite.addTestSuite(SA_AddScopeRoleTest.class);
 		testSuite.addTestSuite(SA_DefineScopeRoleTest.class);
-		testSuite.addTestSuite(SA_AddScopeSiteTest.class);
+		testSuite.addTestSuite(AddSiteTest.class);
 		testSuite.addTestSuite(SA_AddScopeSitePageTest.class);
 		testSuite.addTestSuite(SA_AddPortletScopeSiteTest.class);
 		testSuite.addTestSuite(SA_AssignScopeMemberToScopeSiteTest.class);
@@ -58,6 +60,7 @@ public class ScopeTests extends BaseTestSuite {
 		testSuite.addTestSuite(TearDownBlogsEntryTest.class);
 		testSuite.addTestSuite(TearDownBlogsRolesTest.class);
 		testSuite.addTestSuite(TearDownUserTest.class);
+		testSuite.addTestSuite(TearDownSiteTest.class);
 		testSuite.addTestSuite(TearDownPageTest.class);
 
 		return testSuite;

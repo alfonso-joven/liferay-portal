@@ -34,9 +34,11 @@ public class LoginUsersTest extends BaseTestCase {
 			RuntimeVariables.replace("password"));
 		selenium.clickAt("//input[@value='Sign In']",
 			RuntimeVariables.replace("Sign In"));
+		selenium.waitForPageToLoad("30000");
 		selenium.waitForVisible("//input[@value='I Agree']");
 		selenium.clickAt("//input[@value='I Agree']",
 			RuntimeVariables.replace("I Agree"));
+		selenium.waitForPageToLoad("30000");
 		selenium.waitForVisible("//input[@id='password1']");
 		selenium.type("//input[@id='password1']",
 			RuntimeVariables.replace("test"));
@@ -55,5 +57,7 @@ public class LoginUsersTest extends BaseTestCase {
 		selenium.waitForVisible("link=Sign Out");
 		selenium.clickAt("link=Sign Out", RuntimeVariables.replace("Sign Out"));
 		selenium.waitForPageToLoad("30000");
+		selenium.waitForVisible("//input[@value='Sign In']");
+		assertTrue(selenium.isVisible("//input[@value='Sign In']"));
 	}
 }

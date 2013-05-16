@@ -33,7 +33,7 @@ public class SA_AllowViewPortletPermissionsTest extends BaseTestCase {
 				selenium.clickAt("link=Blogs Test Page",
 					RuntimeVariables.replace("Blogs Test Page"));
 				selenium.waitForPageToLoad("30000");
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Options"),
 					selenium.getText("//span[@title='Options']/ul/li/strong/a"));
 				selenium.clickAt("//span[@title='Options']/ul/li/strong/a",
@@ -46,9 +46,11 @@ public class SA_AllowViewPortletPermissionsTest extends BaseTestCase {
 				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]",
 					RuntimeVariables.replace("Configuration"));
 				selenium.waitForVisible(
-					"//iframe[@id='_33_configurationIframeDialog']");
+					"//iframe[contains(@id,'configurationIframeDialog')]");
 				selenium.selectFrame(
-					"//iframe[@id='_33_configurationIframeDialog']");
+					"//iframe[contains(@id,'configurationIframeDialog')]");
+				selenium.waitForElementPresent(
+					"//script[contains(@src,'/liferay/navigation_interaction.js')]");
 				selenium.waitForVisible("link=Permissions");
 				selenium.clickAt("link=Permissions",
 					RuntimeVariables.replace("Permissions"));

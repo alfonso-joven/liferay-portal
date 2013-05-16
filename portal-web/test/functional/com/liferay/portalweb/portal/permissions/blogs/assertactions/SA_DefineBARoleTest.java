@@ -63,6 +63,8 @@ public class SA_DefineBARoleTest extends BaseTestCase {
 				selenium.select("//select[@id='_128_add-permissions']",
 					RuntimeVariables.replace("label=Blogs"));
 				selenium.waitForPageToLoad("30000");
+				assertEquals(RuntimeVariables.replace("Blogs"),
+					selenium.getText("//form/h3"));
 
 				boolean blogsAllChecked = selenium.isChecked(
 						"xPath=(//input[@name='_128_allRowIds'])[1]");
@@ -102,8 +104,11 @@ public class SA_DefineBARoleTest extends BaseTestCase {
 						"The role permissions were updated."),
 					selenium.getText("//div[@class='portlet-msg-success']"));
 				selenium.select("//select[@id='_128_add-permissions']",
-					RuntimeVariables.replace("index=32"));
+					RuntimeVariables.replace(
+						"value=regexp:.*portletResource=33&.*showModelResources=0"));
 				selenium.waitForPageToLoad("30000");
+				assertEquals(RuntimeVariables.replace("Blogs"),
+					selenium.getText("//form/h3"));
 
 				boolean blogsAllChecked2 = selenium.isChecked(
 						"//input[@name='_128_allRowIds']");

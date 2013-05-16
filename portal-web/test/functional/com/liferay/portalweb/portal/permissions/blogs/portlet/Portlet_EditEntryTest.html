@@ -24,8 +24,13 @@
 	<td>Blogs Entry Title Temporary</td>
 </tr>
 <tr>
+	<td>assertText</td>
+	<td>//div[@class='lfr-meta-actions edit-actions entry']/table/tbody/tr/td/span/a[contains(.,'Edit')]</td>
+	<td>Edit</td>
+</tr>
+<tr>
 	<td>clickAtAndWait</td>
-	<td>//tr/td[1]/span/a[contains(.,'Edit')]</td>
+	<td>//div[@class='lfr-meta-actions edit-actions entry']/table/tbody/tr/td/span/a[contains(.,'Edit')]</td>
 	<td>Edit</td>
 </tr>
 <tr>
@@ -34,69 +39,24 @@
 	<td>Blogs Entry Title Edited</td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
-	<td>//textarea[@id='_33_editor' and @style='display: none;']</td>
-	<td>Text Area</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//span[.='Source']</td>
-	<td>Source</td>
-</tr>
-<tr>
-	<td>clickAt</td>
-	<td>//span[.='Source']</td>
-	<td>Source</td>
-</tr>
-<tr>
-	<td>waitForVisible</td>
-	<td>//a[@class='cke_button_source cke_on']</td>
-	<td>Source Button On</td>
-</tr>
-<tr>
-	<td>waitForVisible</td>
-	<td>//td[@id='cke_contents__33_editor']/textarea</td>
-	<td>CK Editor</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>//td[@id='cke_contents__33_editor']/textarea</td>
-	<td>Blogs Entry Content Edited</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//span[.='Source']</td>
-	<td>Source</td>
-</tr>
-<tr>
-	<td>clickAt</td>
-	<td>//span[.='Source']</td>
-	<td>Source</td>
-</tr>
-<tr>
-	<td>waitForElementPresent</td>
-	<td>//textarea[@id='_33_editor' and @style='display: none;']</td>
-	<td>Text Area</td>
-</tr>
-<tr>
-	<td>waitForVisible</td>
-	<td>//td[@id='cke_contents__33_editor']/iframe</td>
-	<td>CK Editor</td>
-</tr>
-<tr>
-	<td>selectFrame</td>
-	<td>//td[@id='cke_contents__33_editor']/iframe</td>
-	<td>CK Editor</td>
-</tr>
-<tr>
-	<td>waitForText</td>
-	<td>//body</td>
-	<td>Blogs Entry Content Edited</td>
-</tr>
-<tr>
-	<td>selectFrame</td>
-	<td>relative=top</td>
+	<td>pause</td>
+	<td>1000</td>
 	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//a[@class='cke_button_unlink cke_disabled']</td>
+	<td>Cut Button Disabled</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//iframe[contains(@title,'Rich text editor')]</td>
+	<td>CK Editor</td>
+</tr>
+<tr>
+	<td>typeFrame</td>
+	<td>//iframe[contains(@title,'Rich text editor')]</td>
+	<td>Blogs Entry Content Edited</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -125,12 +85,12 @@
 </tr>
 <tr>
 	<td>waitForText</td>
-	<td>//div[@class='entry-body']/p</td>
+	<td>//div[@class='entry-body']</td>
 	<td>Blogs Entry Content Edited</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='entry-body']/p</td>
+	<td>//div[@class='entry-body']</td>
 	<td>Blogs Entry Content Edited</td>
 </tr>
 </tbody></table>

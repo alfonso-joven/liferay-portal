@@ -44,7 +44,7 @@ public class SA_AddScopeSitePageTest extends BaseTestCase {
 				selenium.clickAt("link=Sites", RuntimeVariables.replace("Sites"));
 				selenium.waitForPageToLoad("30000");
 				selenium.type("//input[@id='_134_name']",
-					RuntimeVariables.replace("Scope Site"));
+					RuntimeVariables.replace("Site Name"));
 				selenium.clickAt("//input[@value='Search']",
 					RuntimeVariables.replace("Search"));
 				selenium.waitForPageToLoad("30000");
@@ -65,7 +65,7 @@ public class SA_AddScopeSitePageTest extends BaseTestCase {
 					RuntimeVariables.replace("Add Page"));
 				selenium.waitForVisible("//input[@name='_156_name_en_US']");
 				selenium.type("//input[@name='_156_name_en_US']",
-					RuntimeVariables.replace("Scope Site Test Page"));
+					RuntimeVariables.replace("Site Name Test Page"));
 				selenium.clickAt("//input[@value='Add Page']",
 					RuntimeVariables.replace("Add Page"));
 				selenium.waitForPageToLoad("30000");
@@ -88,7 +88,7 @@ public class SA_AddScopeSitePageTest extends BaseTestCase {
 			case 2:
 				selenium.waitForVisible(
 					"//ul[@class='aui-tree-container']/li/div/div[3]/a");
-				assertEquals(RuntimeVariables.replace("Scope Site Test Page"),
+				assertEquals(RuntimeVariables.replace("Site Name Test Page"),
 					selenium.getText(
 						"//ul[@class='aui-tree-container']/li/div/div[3]/a"));
 

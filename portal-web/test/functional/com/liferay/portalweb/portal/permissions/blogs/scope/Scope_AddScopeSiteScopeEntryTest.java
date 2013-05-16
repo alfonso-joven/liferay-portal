@@ -24,35 +24,18 @@ public class Scope_AddScopeSiteScopeEntryTest extends BaseTestCase {
 	public void testScope_AddScopeSiteScopeEntry() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
-		selenium.open("/web/scope-site/scope-site-test-page/");
+		selenium.open("/web/site-name/site-name-test-page/");
 		selenium.clickAt("//input[@value='Add Blog Entry']",
 			RuntimeVariables.replace("Add Blog Entry"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_33_title']",
+			RuntimeVariables.replace("Site Name Scope Permissions Blogs Entry2"));
+		Thread.sleep(1000);
+		selenium.waitForVisible("//a[@class='cke_button_unlink cke_disabled']");
+		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
+		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
 			RuntimeVariables.replace(
-				"Scope Site Scope Permissions Blogs Entry2"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_33_editor' and @style='display: none;']");
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[.='Source']"));
-		selenium.clickAt("//span[.='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForVisible("//a[@class='cke_button_source cke_on']");
-		selenium.waitForVisible("//td[@id='cke_contents__33_editor']/textarea");
-		selenium.type("//td[@id='cke_contents__33_editor']/textarea",
-			RuntimeVariables.replace(
-				"Scope Site Scope Permissions Blogs Content2"));
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[.='Source']"));
-		selenium.clickAt("//span[.='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_33_editor' and @style='display: none;']");
-		selenium.waitForVisible("//td[@id='cke_contents__33_editor']/iframe");
-		selenium.selectFrame("//td[@id='cke_contents__33_editor']/iframe");
-		selenium.waitForText("//body",
-			"Scope Site Scope Permissions Blogs Content2");
-		selenium.selectFrame("relative=top");
+				"Site Name Scope Permissions Blogs Content2"));
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");
@@ -60,7 +43,7 @@ public class Scope_AddScopeSiteScopeEntryTest extends BaseTestCase {
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertEquals(RuntimeVariables.replace(
-				"Scope Site Scope Permissions Blogs Entry2"),
+				"Site Name Scope Permissions Blogs Entry2"),
 			selenium.getText("//div[@class='entry-title']"));
 	}
 }

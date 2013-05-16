@@ -34,7 +34,7 @@
 	<td>password</td>
 </tr>
 <tr>
-	<td>clickAt</td>
+	<td>clickAtAndWait</td>
 	<td>//input[@value='Sign In']</td>
 	<td>Sign In</td>
 </tr>
@@ -44,7 +44,7 @@
 	<td>I Agree</td>
 </tr>
 <tr>
-	<td>clickAt</td>
+	<td>clickAtAndWait</td>
 	<td>//input[@value='I Agree']</td>
 	<td>I Agree</td>
 </tr>
@@ -102,6 +102,16 @@
 	<td>clickAtAndWait</td>
 	<td>link=Sign Out</td>
 	<td>Sign Out</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//input[@value='Sign In']</td>
+	<td>Sign In</td>
+</tr>
+<tr>
+	<td>assertVisible</td>
+	<td>//input[@value='Sign In']</td>
+	<td>Sign In</td>
 </tr>
 </tbody></table>
 </body>

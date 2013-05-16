@@ -61,21 +61,20 @@ public class SA_LimitScopePermissionsScopeSiteTest extends BaseTestCase {
 		selenium.clickAt("//tr/td[4]/span/a[contains(.,'Limit Scope')]",
 			RuntimeVariables.replace("Limit Scope"));
 		Thread.sleep(5000);
-		selenium.waitForPopUp("null", RuntimeVariables.replace("30000"));
 		selenium.selectWindow("title=Roles");
 		selenium.waitForVisible("//input[@id='_128_name']");
 		selenium.type("//input[@id='_128_name']",
-			RuntimeVariables.replace("Scope Site"));
+			RuntimeVariables.replace("Site Name"));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//tr/td[1]/a[contains(.,'Scope')]",
-			RuntimeVariables.replace("Scope Site"));
+		selenium.clickAt("//tr/td[1]/a[contains(.,'Site Name')]",
+			RuntimeVariables.replace("Site Name"));
 		Thread.sleep(5000);
 		selenium.selectWindow("null");
 		selenium.waitForText("//span[@id='_128_groupHTMLcom.liferay.portlet.blogsADD_ENTRY']/span",
-			"Scope Site");
-		assertEquals(RuntimeVariables.replace("Scope Site"),
+			"Site Name");
+		assertEquals(RuntimeVariables.replace("Site Name"),
 			selenium.getText(
 				"//span[@id='_128_groupHTMLcom.liferay.portlet.blogsADD_ENTRY']/span"));
 		selenium.clickAt("//input[@value='Save']",
@@ -93,7 +92,7 @@ public class SA_LimitScopePermissionsScopeSiteTest extends BaseTestCase {
 				"//input[@value='com.liferay.portlet.blogsADD_ENTRY']"));
 		assertEquals(RuntimeVariables.replace("Add Entry"),
 			selenium.getText("//tr[contains(.,'Add Entry')]/td[2]"));
-		assertEquals(RuntimeVariables.replace("Scope Site"),
-			selenium.getText("//tr[contains(.,'Scope Site')]/td[3]"));
+		assertEquals(RuntimeVariables.replace("Site Name"),
+			selenium.getText("//tr[contains(.,'Site Name')]/td[3]"));
 	}
 }

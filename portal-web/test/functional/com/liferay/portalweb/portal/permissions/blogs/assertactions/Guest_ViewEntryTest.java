@@ -33,6 +33,8 @@ public class Guest_ViewEntryTest extends BaseTestCase {
 		selenium.clickAt("//div[@class='entry-title']/h2/a",
 			RuntimeVariables.replace("Permissions Blogs Test Entry"));
 		selenium.waitForPageToLoad("30000");
+		assertEquals(RuntimeVariables.replace("Permissions Blogs Test Entry"),
+			selenium.getText("//h1[@class='header-title']/span"));
 		assertEquals(RuntimeVariables.replace(
 				"This is a permissions blogs test entry"),
 			selenium.getText("//div[@class='entry-body']"));

@@ -28,8 +28,9 @@ public class Guest_AssertActionsTest extends BaseTestCase {
 		selenium.clickAt("link=Blogs Test Page",
 			RuntimeVariables.replace("Blogs Test Page"));
 		selenium.waitForPageToLoad("30000");
+		Thread.sleep(1000);
 		assertTrue(selenium.isElementNotPresent(
-				"//span[@title='Options']/ul/li/strong/a/span"));
+				"//span[@title='Options']/ul/li/strong/a"));
 		assertTrue(selenium.isVisible("//input[@value='Search']"));
 		assertTrue(selenium.isElementNotPresent(
 				"//input[@value='Add Blog Entry']"));

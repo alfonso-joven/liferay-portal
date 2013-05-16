@@ -45,7 +45,7 @@ public class SA_AssignScopeMemberToScopeSiteTest extends BaseTestCase {
 				selenium.clickAt("link=Sites", RuntimeVariables.replace("Sites"));
 				selenium.waitForPageToLoad("30000");
 				selenium.type("//input[@id='_134_name']",
-					RuntimeVariables.replace("Scope Site"));
+					RuntimeVariables.replace("Site Name"));
 				selenium.clickAt("//input[@value='Search']",
 					RuntimeVariables.replace("Search"));
 				selenium.waitForPageToLoad("30000");

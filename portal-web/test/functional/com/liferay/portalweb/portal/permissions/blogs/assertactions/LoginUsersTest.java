@@ -34,10 +34,11 @@ public class LoginUsersTest extends BaseTestCase {
 			RuntimeVariables.replace("password"));
 		selenium.clickAt("//input[@value='Sign In']",
 			RuntimeVariables.replace("Sign In"));
+		selenium.waitForPageToLoad("30000");
 		selenium.waitForVisible("//input[@value='I Agree']");
 		selenium.clickAt("//input[@value='I Agree']",
 			RuntimeVariables.replace("I Agree"));
-		selenium.waitForVisible("//input[@id='password1']");
+		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='password1']",
 			RuntimeVariables.replace("test"));
 		selenium.type("//input[@id='password2']",
@@ -50,12 +51,10 @@ public class LoginUsersTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
-		Thread.sleep(5000);
-		assertEquals(RuntimeVariables.replace("BA Liferay"),
-			selenium.getText(
-				"//div[@class='portlet-body']/a[contains(.,'BA Liferay')]"));
 		selenium.waitForVisible("link=Sign Out");
 		selenium.clickAt("link=Sign Out", RuntimeVariables.replace("Sign Out"));
+		selenium.waitForVisible("//input[@value='Sign In']");
+		assertTrue(selenium.isVisible("//input[@value='Sign In']"));
 		selenium.waitForElementPresent("//input[@id='_58_login']");
 		selenium.type("//input[@id='_58_login']",
 			RuntimeVariables.replace("member@liferay.com"));
@@ -63,10 +62,11 @@ public class LoginUsersTest extends BaseTestCase {
 			RuntimeVariables.replace("password"));
 		selenium.clickAt("//input[@value='Sign In']",
 			RuntimeVariables.replace("Sign In"));
+		selenium.waitForPageToLoad("30000");
 		selenium.waitForVisible("//input[@value='I Agree']");
 		selenium.clickAt("//input[@value='I Agree']",
 			RuntimeVariables.replace("I Agree"));
-		selenium.waitForVisible("//input[@id='password1']");
+		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='password1']",
 			RuntimeVariables.replace("test"));
 		selenium.type("//input[@id='password2']",
@@ -79,12 +79,10 @@ public class LoginUsersTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
-		Thread.sleep(5000);
-		assertEquals(RuntimeVariables.replace("Member Liferay"),
-			selenium.getText(
-				"//div[@class='portlet-body']/a[contains(.,'Member Liferay')]"));
 		selenium.waitForVisible("link=Sign Out");
 		selenium.clickAt("link=Sign Out", RuntimeVariables.replace("Sign Out"));
 		selenium.waitForPageToLoad("30000");
+		selenium.waitForVisible("//input[@value='Sign In']");
+		assertTrue(selenium.isVisible("//input[@value='Sign In']"));
 	}
 }

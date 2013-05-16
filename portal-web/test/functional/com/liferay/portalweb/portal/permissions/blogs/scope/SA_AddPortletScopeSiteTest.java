@@ -24,9 +24,9 @@ public class SA_AddPortletScopeSiteTest extends BaseTestCase {
 	public void testSA_AddPortletScopeSite() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
-		selenium.open("/web/scope-site/scope-site-test-page/");
-		selenium.clickAt("link=Scope Site Test Page",
-			RuntimeVariables.replace("Scope Site Test Page"));
+		selenium.open("/web/site-name/site-name-test-page/");
+		selenium.clickAt("link=Site Name Test Page",
+			RuntimeVariables.replace("Site Name Test Page"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//div[@id='dockbar']",
 			RuntimeVariables.replace("Dockbar"));

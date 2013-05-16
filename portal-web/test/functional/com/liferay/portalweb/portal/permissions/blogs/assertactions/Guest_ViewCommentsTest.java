@@ -33,13 +33,14 @@ public class Guest_ViewCommentsTest extends BaseTestCase {
 		selenium.clickAt("//div[@class='entry-title']/h2/a",
 			RuntimeVariables.replace("Permissions Blogs Test Entry"));
 		selenium.waitForPageToLoad("30000");
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace(
 				"BA Permissions Blogs Test Comment"),
-			selenium.getText("//div[@class='lfr-discussion-message']"));
+			selenium.getText(
+				"xpath=(//div[@class='lfr-discussion-message'])[1]"));
 		assertEquals(RuntimeVariables.replace(
 				"Member Permissions Blogs Test Comment"),
 			selenium.getText(
-				"//div[@class='lfr-discussion last']/div[3]/div/div"));
+				"xpath=(//div[@class='lfr-discussion-message'])[2]"));
 	}
 }

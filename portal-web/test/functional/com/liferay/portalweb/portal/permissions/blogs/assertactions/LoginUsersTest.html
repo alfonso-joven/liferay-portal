@@ -34,7 +34,7 @@
 	<td>password</td>
 </tr>
 <tr>
-	<td>clickAt</td>
+	<td>clickAtAndWait</td>
 	<td>//input[@value='Sign In']</td>
 	<td>Sign In</td>
 </tr>
@@ -44,14 +44,9 @@
 	<td>I Agree</td>
 </tr>
 <tr>
-	<td>clickAt</td>
+	<td>clickAtAndWait</td>
 	<td>//input[@value='I Agree']</td>
 	<td>I Agree</td>
-</tr>
-<tr>
-	<td>waitForVisible</td>
-	<td>//input[@id='password1']</td>
-	<td>Password</td>
 </tr>
 <tr>
 	<td>type</td>
@@ -84,16 +79,6 @@
 	<td>Save</td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>5000</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//div[@class='portlet-body']/a[contains(.,'BA Liferay')]</td>
-	<td>BA Liferay</td>
-</tr>
-<tr>
 	<td>waitForVisible</td>
 	<td>link=Sign Out</td>
 	<td>Sign Out</td>
@@ -102,6 +87,16 @@
 	<td>clickAt</td>
 	<td>link=Sign Out</td>
 	<td>Sign Out</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//input[@value='Sign In']</td>
+	<td>Sign In</td>
+</tr>
+<tr>
+	<td>assertVisible</td>
+	<td>//input[@value='Sign In']</td>
+	<td>Sign In</td>
 </tr>
 <tr>
 	<td>waitForElementPresent</td>
@@ -119,7 +114,7 @@
 	<td>password</td>
 </tr>
 <tr>
-	<td>clickAt</td>
+	<td>clickAtAndWait</td>
 	<td>//input[@value='Sign In']</td>
 	<td>Sign In</td>
 </tr>
@@ -129,14 +124,9 @@
 	<td>I Agree</td>
 </tr>
 <tr>
-	<td>clickAt</td>
+	<td>clickAtAndWait</td>
 	<td>//input[@value='I Agree']</td>
 	<td>I Agree</td>
-</tr>
-<tr>
-	<td>waitForVisible</td>
-	<td>//input[@id='password1']</td>
-	<td>Password</td>
 </tr>
 <tr>
 	<td>type</td>
@@ -169,16 +159,6 @@
 	<td>Save</td>
 </tr>
 <tr>
-	<td>pause</td>
-	<td>5000</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//div[@class='portlet-body']/a[contains(.,'Member Liferay')]</td>
-	<td>Member Liferay</td>
-</tr>
-<tr>
 	<td>waitForVisible</td>
 	<td>link=Sign Out</td>
 	<td>Sign Out</td>
@@ -187,6 +167,16 @@
 	<td>clickAtAndWait</td>
 	<td>link=Sign Out</td>
 	<td>Sign Out</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//input[@value='Sign In']</td>
+	<td>Sign In</td>
+</tr>
+<tr>
+	<td>assertVisible</td>
+	<td>//input[@value='Sign In']</td>
+	<td>Sign In</td>
 </tr>
 </tbody></table>
 </body>
