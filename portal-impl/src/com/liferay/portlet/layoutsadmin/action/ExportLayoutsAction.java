@@ -164,7 +164,8 @@ public class ExportLayoutsAction extends PortletAction {
 				List<Layout> childLayouts = layout.getAllChildren();
 
 				for (Layout childLayout : childLayouts) {
-					ArrayUtil.append(layoutIds, childLayout.getLayoutId());
+					layoutIds = ArrayUtil.append(
+						layoutIds, childLayout.getLayoutId());
 				}
 			}
 
