@@ -37,7 +37,7 @@ public class AddDocumentTypeTest extends BaseTestCase {
 		selenium.clickAt("link=Documents and Media",
 			RuntimeVariables.replace("Documents and Media"));
 		selenium.waitForPageToLoad("30000");
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Manage"),
 			selenium.getText("//span[@title='Manage']/ul/li/strong/a"));
 		selenium.clickAt("//span[@title='Manage']/ul/li/strong/a",
@@ -65,9 +65,12 @@ public class AddDocumentTypeTest extends BaseTestCase {
 		selenium.type("//input[@id='_20_name']",
 			RuntimeVariables.replace("Document Type Name"));
 		selenium.waitForVisible(
-			"xPath=(//div[@class='aui-diagram-builder-field-label'])[11]");
-		selenium.dragAndDropToObject("xPath=(//div[@class='aui-diagram-builder-field-label'])[11]",
-			"xPath=(//div[@class='aui-diagram-builder-field-label'])[11]");
+			"//div[@class='aui-tabview-content aui-widget-bd']/div/ul/li[@title=\"Text Box\"]/span");
+		assertEquals(RuntimeVariables.replace("Text Box"),
+			selenium.getText(
+				"//div[@class='aui-tabview-content aui-widget-bd']/div/ul/li[@title=\"Text Box\"]/div"));
+		selenium.dragAndDropToObject("//div[@class='aui-tabview-content aui-widget-bd']/div/ul/li[@title=\"Text Box\"]/div",
+			"//div[@class='aui-diagram-builder-drop-container']");
 		selenium.waitForVisible(
 			"//div[contains(@class,'aui-form-builder-text-field-content')]/label");
 		assertEquals(RuntimeVariables.replace("Text Box"),

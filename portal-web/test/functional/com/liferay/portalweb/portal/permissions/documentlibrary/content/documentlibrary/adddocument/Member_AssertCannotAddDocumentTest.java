@@ -37,6 +37,7 @@ public class Member_AssertCannotAddDocumentTest extends BaseTestCase {
 		selenium.clickAt("link=Documents and Media",
 			RuntimeVariables.replace("Documents and Media"));
 		selenium.waitForPageToLoad("30000");
+		Thread.sleep(1000);
 		assertTrue(selenium.isElementNotPresent(
 				"//span[@title='Add']/ul/li/strong/a"));
 	}

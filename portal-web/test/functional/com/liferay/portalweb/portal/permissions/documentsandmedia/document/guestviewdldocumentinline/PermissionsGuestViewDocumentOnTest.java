@@ -33,11 +33,8 @@ public class PermissionsGuestViewDocumentOnTest extends BaseTestCase {
 				selenium.clickAt("link=Documents and Media Test Page",
 					RuntimeVariables.replace("Documents and Media Test Page"));
 				selenium.waitForPageToLoad("30000");
-				Thread.sleep(5000);
-				assertEquals(RuntimeVariables.replace("DM Document Title"),
-					selenium.getText(
-						"//a[@class='document-link']/span[@class='entry-title']"));
-				selenium.clickAt("xPath=(//span[contains(@class,'document-action')])[2]/span/ul/li/strong/a",
+				Thread.sleep(1000);
+				selenium.clickAt("//div[@data-title='DM Document Title']/span[@class='overlay document-action']/span/ul/li/strong/a",
 					RuntimeVariables.replace("Actions"));
 				selenium.waitForVisible(
 					"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Permissions')]");
@@ -47,10 +44,7 @@ public class PermissionsGuestViewDocumentOnTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Permissions')]"));
 				selenium.waitForPageToLoad("30000");
-				assertEquals(RuntimeVariables.replace("Guest"),
-					selenium.getText("//tr[3]/td[1]/a"));
-				assertEquals(RuntimeVariables.replace("View"),
-					selenium.getText("//tr[1]/th[8]"));
+				selenium.waitForVisible("//input[@id='guest_ACTION_VIEW']");
 
 				boolean viewDocumentPermissionsChecked = selenium.isChecked(
 						"//input[@id='guest_ACTION_VIEW']");

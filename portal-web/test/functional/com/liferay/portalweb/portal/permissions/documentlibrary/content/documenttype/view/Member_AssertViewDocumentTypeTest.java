@@ -37,6 +37,9 @@ public class Member_AssertViewDocumentTypeTest extends BaseTestCase {
 		selenium.clickAt("link=Documents and Media",
 			RuntimeVariables.replace("Documents and Media"));
 		selenium.waitForPageToLoad("30000");
+		Thread.sleep(1000);
+		selenium.waitForVisible(
+			"//li[@class='folder file-entry-type ']/a/span[contains(.,'Document Type Name')]");
 		assertEquals(RuntimeVariables.replace("Document Type Name"),
 			selenium.getText(
 				"//li[@class='folder file-entry-type ']/a/span[contains(.,'Document Type Name')]"));

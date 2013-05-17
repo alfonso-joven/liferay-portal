@@ -56,19 +56,24 @@ public class AddDocumentTest extends BaseTestCase {
 				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Basic Document')]",
 					RuntimeVariables.replace("Basic Document"));
 				selenium.waitForPageToLoad("30000");
+				Thread.sleep(1000);
+				selenium.waitForVisible("//input[@id='_20_file']");
 				selenium.uploadCommonFile("//input[@id='_20_file']",
 					RuntimeVariables.replace("Document_1.txt"));
 				selenium.type("//input[@id='_20_title']",
 					RuntimeVariables.replace("Document_1.txt"));
 				selenium.select("//select[@name='_20_inputPermissionsViewRole']",
 					RuntimeVariables.replace("Owner"));
-				selenium.clickAt("link=More Options \u00bb",
+				assertEquals(RuntimeVariables.replace("More Options \u00bb"),
+					selenium.getText(
+						"//span[contains(@id,'inputPermissionsShowOptionsLink')]/a"));
+				selenium.clickAt("//span[contains(@id,'inputPermissionsShowOptionsLink')]/a",
 					RuntimeVariables.replace("More Options \u00bb"));
 				selenium.waitForVisible(
-					"//input[@id='_20__guestPermissions_ADD_DISCUSSION']");
+					"//input[@id='_20_guestPermissions_ADD_DISCUSSION']");
 
 				boolean guestAddDiscussion = selenium.isChecked(
-						"//input[@id='_20__guestPermissions_ADD_DISCUSSION']");
+						"//input[@id='_20_guestPermissions_ADD_DISCUSSION']");
 
 				if (!guestAddDiscussion) {
 					label = 2;
@@ -76,29 +81,29 @@ public class AddDocumentTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("//input[@id='_20__guestPermissions_ADD_DISCUSSION']",
+				selenium.clickAt("//input[@id='_20_guestPermissions_ADD_DISCUSSION']",
 					RuntimeVariables.replace("Guest Add Discussion"));
 
 			case 2:
 				assertFalse(selenium.isChecked(
-						"//input[@id='_20__guestPermissions_ADD_DISCUSSION']"));
+						"//input[@id='_20_guestPermissions_ADD_DISCUSSION']"));
 
-				boolean groupAddDiscussion = selenium.isChecked(
-						"//input[@id='_20__groupPermissions_ADD_DISCUSSION']");
+				boolean siteMemberAddDiscussion = selenium.isChecked(
+						"//input[@id='_20_groupPermissions_ADD_DISCUSSION']");
 
-				if (!groupAddDiscussion) {
+				if (!siteMemberAddDiscussion) {
 					label = 3;
 
 					continue;
 				}
 
-				selenium.clickAt("//input[@id='_20__groupPermissions_ADD_DISCUSSION']",
+				selenium.clickAt("//input[@id='_20_groupPermissions_ADD_DISCUSSION']",
 					RuntimeVariables.replace("Group Add Discussion"));
 
 			case 3:
 				assertFalse(selenium.isChecked(
-						"//input[@id='_20__groupPermissions_ADD_DISCUSSION']"));
-				Thread.sleep(5000);
+						"//input[@id='_20_groupPermissions_ADD_DISCUSSION']"));
+				Thread.sleep(1000);
 				selenium.clickAt("//input[@value='Publish']",
 					RuntimeVariables.replace("Publish"));
 				selenium.waitForPageToLoad("30000");

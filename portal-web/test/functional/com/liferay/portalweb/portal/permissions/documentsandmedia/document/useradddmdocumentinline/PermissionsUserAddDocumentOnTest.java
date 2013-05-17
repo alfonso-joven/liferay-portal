@@ -33,10 +33,11 @@ public class PermissionsUserAddDocumentOnTest extends BaseTestCase {
 				selenium.clickAt("link=Documents and Media Test Page",
 					RuntimeVariables.replace("Documents and Media Test Page"));
 				selenium.waitForPageToLoad("30000");
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Home"),
-					selenium.getText("//span[@class='entry-title']"));
-				selenium.clickAt("//span/span/ul/li/strong/a",
+					selenium.getText(
+						"//div[contains(@id,'folderContainer')]/ul/li[1]/a"));
+				selenium.clickAt("//div[contains(@id,'folderContainer')]/ul/li[1]/span[@class='overlay document-action']/span/ul/li/strong/a",
 					RuntimeVariables.replace("Actions"));
 				selenium.waitForVisible(
 					"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Permissions')]");

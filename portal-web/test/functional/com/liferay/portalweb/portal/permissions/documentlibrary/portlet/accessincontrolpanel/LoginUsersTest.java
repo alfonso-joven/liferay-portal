@@ -52,8 +52,9 @@ public class LoginUsersTest extends BaseTestCase {
 		selenium.waitForTextPresent("You are signed in as Member Liferay.");
 		assertTrue(selenium.isTextPresent(
 				"You are signed in as Member Liferay."));
-		selenium.waitForVisible("link=Sign Out");
 		selenium.clickAt("link=Sign Out", RuntimeVariables.replace("Sign Out"));
 		selenium.waitForPageToLoad("30000");
+		selenium.waitForVisible("//input[@value='Sign In']");
+		assertTrue(selenium.isVisible("//input[@value='Sign In']"));
 	}
 }

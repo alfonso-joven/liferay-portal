@@ -49,6 +49,8 @@ public class Member_AddDocumentTest extends BaseTestCase {
 		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Basic Document')]",
 			RuntimeVariables.replace("Basic Document"));
 		selenium.waitForPageToLoad("30000");
+		Thread.sleep(1000);
+		selenium.waitForVisible("//input[@id='_20_file']");
 		selenium.uploadCommonFile("//input[@id='_20_file']",
 			RuntimeVariables.replace("Document_1.txt"));
 		selenium.type("//input[@id='_20_title']",

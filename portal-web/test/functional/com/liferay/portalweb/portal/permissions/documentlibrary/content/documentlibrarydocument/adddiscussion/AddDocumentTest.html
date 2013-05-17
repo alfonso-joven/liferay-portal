@@ -74,6 +74,16 @@
 	<td>Basic Document</td>
 </tr>
 <tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//input[@id='_20_file']</td>
+	<td>Document_1.txt</td>
+</tr>
+<tr>
 	<td>uploadCommonFile</td>
 	<td>//input[@id='_20_file']</td>
 	<td>Document_1.txt</td>
@@ -89,18 +99,23 @@
 	<td>Owner</td>
 </tr>
 <tr>
+	<td>assertText</td>
+	<td>//span[contains(@id,'inputPermissionsShowOptionsLink')]/a</td>
+	<td>More Options »</td>
+</tr>
+<tr>
 	<td>clickAt</td>
-	<td>link=More Options »</td>
+	<td>//span[contains(@id,'inputPermissionsShowOptionsLink')]/a</td>
 	<td>More Options »</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//input[@id='_20__guestPermissions_ADD_DISCUSSION']</td>
+	<td>//input[@id='_20_guestPermissions_ADD_DISCUSSION']</td>
 	<td>Guest Add Discussion</td>
 </tr>
 <tr>
 	<td>storeChecked</td>
-	<td>//input[@id='_20__guestPermissions_ADD_DISCUSSION']</td>
+	<td>//input[@id='_20_guestPermissions_ADD_DISCUSSION']</td>
 	<td>guestAddDiscussion</td>
 </tr>
 <tr>
@@ -110,7 +125,7 @@
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>//input[@id='_20__guestPermissions_ADD_DISCUSSION']</td>
+	<td>//input[@id='_20_guestPermissions_ADD_DISCUSSION']</td>
 	<td>Guest Add Discussion</td>
 </tr>
 <tr>
@@ -120,37 +135,37 @@
 </tr>
 <tr>
 	<td>assertNotChecked</td>
-	<td>//input[@id='_20__guestPermissions_ADD_DISCUSSION']</td>
+	<td>//input[@id='_20_guestPermissions_ADD_DISCUSSION']</td>
 	<td>Guest Add Discussion</td>
 </tr>
 <tr>
 	<td>storeChecked</td>
-	<td>//input[@id='_20__groupPermissions_ADD_DISCUSSION']</td>
-	<td>groupAddDiscussion</td>
+	<td>//input[@id='_20_groupPermissions_ADD_DISCUSSION']</td>
+	<td>siteMemberAddDiscussion</td>
 </tr>
 <tr>
 	<td>gotoIf</td>
-	<td>!${groupAddDiscussion}</td>
-	<td>GroupAddDiscussionNotChecked</td>
+	<td>!${siteMemberAddDiscussion}</td>
+	<td>SiteMemberAddDiscussionNotChecked</td>
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>//input[@id='_20__groupPermissions_ADD_DISCUSSION']</td>
+	<td>//input[@id='_20_groupPermissions_ADD_DISCUSSION']</td>
 	<td>Group Add Discussion</td>
 </tr>
 <tr>
 	<td>label</td>
-	<td>GroupAddDiscussionNotChecked</td>
+	<td>SiteMemberAddDiscussionNotChecked</td>
 	<td></td>
 </tr>
 <tr>
 	<td>assertNotChecked</td>
-	<td>//input[@id='_20__groupPermissions_ADD_DISCUSSION']</td>
+	<td>//input[@id='_20_groupPermissions_ADD_DISCUSSION']</td>
 	<td>Group Add Discussion</td>
 </tr>
 <tr>
 	<td>pause</td>
-	<td>5000</td>
+	<td>1000</td>
 	<td></td>
 </tr>
 <tr>

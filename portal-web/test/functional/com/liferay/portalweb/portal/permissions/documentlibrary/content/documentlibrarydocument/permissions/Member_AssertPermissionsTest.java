@@ -37,10 +37,17 @@ public class Member_AssertPermissionsTest extends BaseTestCase {
 		selenium.clickAt("link=Documents and Media",
 			RuntimeVariables.replace("Documents and Media"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//form/div/div/span/span/ul/li/strong/a",
-			RuntimeVariables.replace("Actions"));
+		Thread.sleep(1000);
+		selenium.clickAt("//div[@data-title='Document_1.txt']/span[@class='overlay document-action']/span/ul/li/strong/a",
+			RuntimeVariables.replace("Document Actions Overlay"));
 		selenium.waitForVisible(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Permissions')]/a");
+			"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Download (0.3k)')]");
+		assertEquals(RuntimeVariables.replace("Download (0.3k)"),
+			selenium.getText(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Download (0.3k)')]"));
+		assertEquals(RuntimeVariables.replace("Permissions"),
+			selenium.getText(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Permissions')]"));
 		selenium.clickAt("//a[contains(@class,'document-link')]/span[@class='entry-title']",
 			RuntimeVariables.replace("Document_1.txt"));
 		selenium.waitForPageToLoad("30000");

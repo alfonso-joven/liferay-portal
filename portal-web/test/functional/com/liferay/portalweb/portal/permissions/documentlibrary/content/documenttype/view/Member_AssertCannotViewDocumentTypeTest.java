@@ -38,6 +38,7 @@ public class Member_AssertCannotViewDocumentTypeTest extends BaseTestCase {
 		selenium.clickAt("link=Documents and Media",
 			RuntimeVariables.replace("Documents and Media"));
 		selenium.waitForPageToLoad("30000");
+		Thread.sleep(1000);
 		assertTrue(selenium.isElementNotPresent(
 				"//li[@class='folder file-entry-type ']/a/span[contains(.,'Document Type Name')]"));
 		assertEquals(RuntimeVariables.replace("Manage"),
@@ -60,5 +61,6 @@ public class Member_AssertCannotViewDocumentTypeTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("There are no results."),
 			selenium.getText("//div[@class='portlet-msg-info']"));
 		assertFalse(selenium.isTextPresent("Document Type Name"));
+		selenium.selectFrame("relative=top");
 	}
 }

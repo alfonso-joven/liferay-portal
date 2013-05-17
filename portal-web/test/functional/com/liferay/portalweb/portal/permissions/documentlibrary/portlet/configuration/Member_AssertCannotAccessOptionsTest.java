@@ -29,6 +29,7 @@ public class Member_AssertCannotAccessOptionsTest extends BaseTestCase {
 		selenium.clickAt("link=Documents and Media Test Page",
 			RuntimeVariables.replace("Documents and Media Test Page"));
 		selenium.waitForPageToLoad("30000");
+		Thread.sleep(1000);
 		assertTrue(selenium.isElementNotPresent(
 				"//span[@title='Options']/ul/li/strong/a"));
 	}

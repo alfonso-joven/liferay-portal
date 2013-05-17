@@ -28,7 +28,7 @@ public class User_NoAddDmDocumentTest extends BaseTestCase {
 		selenium.clickAt("link=Documents and Media Test Page",
 			RuntimeVariables.replace("Documents and Media Test Page"));
 		selenium.waitForPageToLoad("30000");
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		assertTrue(selenium.isElementNotPresent(
 				"//span[@title='Add']/ul/li/strong/a/span"));
 	}

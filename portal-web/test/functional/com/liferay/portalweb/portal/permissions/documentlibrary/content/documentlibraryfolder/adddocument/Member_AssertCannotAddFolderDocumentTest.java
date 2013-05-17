@@ -45,6 +45,9 @@ public class Member_AssertCannotAddFolderDocumentTest extends BaseTestCase {
 			RuntimeVariables.replace("Folder Name"));
 		selenium.waitForPageToLoad("30000");
 		selenium.waitForVisible("//div[@class='portlet-msg-info']");
+		assertEquals(RuntimeVariables.replace(
+				"There are no documents or media files in this folder."),
+			selenium.getText("//div[@class='portlet-msg-info']"));
 		assertTrue(selenium.isElementNotPresent(
 				"//span[@title='Add']/ul/li/strong/a"));
 	}

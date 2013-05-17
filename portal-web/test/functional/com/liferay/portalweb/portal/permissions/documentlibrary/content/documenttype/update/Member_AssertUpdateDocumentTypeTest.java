@@ -37,7 +37,7 @@ public class Member_AssertUpdateDocumentTypeTest extends BaseTestCase {
 		selenium.clickAt("link=Documents and Media",
 			RuntimeVariables.replace("Documents and Media"));
 		selenium.waitForPageToLoad("30000");
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Manage"),
 			selenium.getText("//span[@title='Manage']/ul/li/strong/a"));
 		selenium.clickAt("//span[@title='Manage']/ul/li/strong/a",
@@ -59,13 +59,16 @@ public class Member_AssertUpdateDocumentTypeTest extends BaseTestCase {
 			RuntimeVariables.replace("Name"));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
-		Thread.sleep(5000);
-		selenium.waitForVisible("//tr[3]/td[1]");
+		Thread.sleep(1000);
+		selenium.waitForVisible("//tr[contains(.,'Document Type Name')]/td[1]");
 		assertEquals(RuntimeVariables.replace("Document Type Name"),
-			selenium.getText("//tr[3]/td[1]"));
+			selenium.getText("//tr[contains(.,'Document Type Name')]/td[1]"));
+		selenium.waitForVisible(
+			"//tr[contains(.,'Document Type Name')]/td[3]/span/a/span");
 		assertEquals(RuntimeVariables.replace("Edit"),
-			selenium.getText("//tr[3]/td[3]/span/a/span"));
-		selenium.clickAt("//tr[3]/td[3]/span/a/span",
+			selenium.getText(
+				"//tr[contains(.,'Document Type Name')]/td[3]/span/a/span"));
+		selenium.clickAt("//tr[contains(.,'Document Type Name')]/td[3]/span/a/span",
 			RuntimeVariables.replace("Edit"));
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_20_name']",
@@ -73,11 +76,13 @@ public class Member_AssertUpdateDocumentTypeTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
+		selenium.waitForVisible("//div[@class='portlet-msg-success']");
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertEquals(RuntimeVariables.replace("Document Type Name Edited"),
-			selenium.getText("//tr[3]/td[1]"));
+			selenium.getText(
+				"//tr[contains(.,'Document Type Name Edited ')]/td[1]"));
 		selenium.selectFrame("relative=top");
 	}
 }

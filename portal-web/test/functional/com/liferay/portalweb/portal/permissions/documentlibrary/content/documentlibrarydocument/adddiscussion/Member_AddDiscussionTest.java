@@ -40,7 +40,6 @@ public class Member_AddDiscussionTest extends BaseTestCase {
 		selenium.clickAt("//a[contains(@class,'document-link')]/span[@class='entry-title']",
 			RuntimeVariables.replace("Document_1.txt"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isVisible("link=Be the first."));
 		selenium.clickAt("link=Be the first.",
 			RuntimeVariables.replace("Be the first."));
 		selenium.waitForVisible("//textarea[@name='_20_postReplyBody0']");

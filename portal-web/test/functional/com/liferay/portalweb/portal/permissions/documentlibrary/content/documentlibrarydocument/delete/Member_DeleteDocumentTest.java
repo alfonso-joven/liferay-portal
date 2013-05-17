@@ -37,6 +37,7 @@ public class Member_DeleteDocumentTest extends BaseTestCase {
 		selenium.clickAt("link=Documents and Media",
 			RuntimeVariables.replace("Documents and Media"));
 		selenium.waitForPageToLoad("30000");
+		Thread.sleep(1000);
 		assertFalse(selenium.isChecked("//input[@id='_20_allRowIdsCheckbox']"));
 		selenium.clickAt("//input[@id='_20_allRowIdsCheckbox']",
 			RuntimeVariables.replace("All Rows"));

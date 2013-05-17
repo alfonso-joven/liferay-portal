@@ -60,8 +60,9 @@ public class AddShortcutTest extends BaseTestCase {
 					RuntimeVariables.replace("Select Site"));
 				Thread.sleep(5000);
 				selenium.selectWindow("title=Documents and Media");
-				selenium.waitForVisible("link=Liferay");
-				selenium.clickAt("link=Liferay",
+				selenium.waitForVisible(
+					"//tr[contains(.,'Liferay') and contains(.,'Open')]/td[1]/a");
+				selenium.clickAt("//tr[contains(.,'Liferay') and contains(.,'Open')]/td[1]/a",
 					RuntimeVariables.replace("Liferay"));
 				selenium.selectWindow("null");
 				selenium.waitForText("//span[@id='_20_toGroupName']", "Liferay");
@@ -71,8 +72,9 @@ public class AddShortcutTest extends BaseTestCase {
 					RuntimeVariables.replace("Select Site"));
 				Thread.sleep(5000);
 				selenium.selectWindow("title=Documents and Media");
-				selenium.waitForVisible("//tr[3]/td/a");
-				selenium.clickAt("//tr[3]/td/a",
+				selenium.waitForVisible(
+					"//tr[contains(.,'Document_1.txt')]/td/a");
+				selenium.clickAt("//tr[contains(.,'Document_1.txt')]/td/a",
 					RuntimeVariables.replace("Document_1.txt"));
 				selenium.selectWindow("null");
 				selenium.waitForText("//span[@id='_20_toFileEntryTitle']",
@@ -81,15 +83,15 @@ public class AddShortcutTest extends BaseTestCase {
 					selenium.getText("//span[@id='_20_toGroupName']"));
 				assertEquals(RuntimeVariables.replace("Document_1.txt"),
 					selenium.getText("//span[@id='_20_toFileEntryTitle']"));
-				selenium.select("//select[@id='_20__inputPermissionsViewRole']",
+				selenium.select("//select[@id='_20_inputPermissionsViewRole']",
 					RuntimeVariables.replace("Owner"));
 				selenium.clickAt("link=More Options \u00bb",
 					RuntimeVariables.replace("More Options \u00bb"));
 				selenium.waitForVisible(
-					"//input[@id='_20__guestPermissions_ADD_DISCUSSION']");
+					"//input[@id='_20_guestPermissions_ADD_DISCUSSION']");
 
 				boolean addGroupDiscussion = selenium.isChecked(
-						"//input[@id='_20__groupPermissions_ADD_DISCUSSION']");
+						"//input[@id='_20_guestPermissions_ADD_DISCUSSION']");
 
 				if (!addGroupDiscussion) {
 					label = 2;
@@ -97,12 +99,12 @@ public class AddShortcutTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("//input[@id='_20__groupPermissions_ADD_DISCUSSION']",
+				selenium.clickAt("//input[@id='_20_guestPermissions_ADD_DISCUSSION']",
 					RuntimeVariables.replace("Add Group Discussion"));
 
 			case 2:
 				assertFalse(selenium.isChecked(
-						"//input[@id='_20__groupPermissions_ADD_DISCUSSION']"));
+						"//input[@id='_20_guestPermissions_ADD_DISCUSSION']"));
 				selenium.clickAt("//input[@value='Save']",
 					RuntimeVariables.replace("Save"));
 				selenium.waitForPageToLoad("30000");
@@ -115,6 +117,8 @@ public class AddShortcutTest extends BaseTestCase {
 				assertEquals(RuntimeVariables.replace("Document_1.txt"),
 					selenium.getText(
 						"xPath=(//a[contains(@class,'document-link')]/span[@class='entry-title'])[2]"));
+				assertTrue(selenium.isVisible(
+						"//div[@data-title='Document_1.txt']/a/span/img[@class='shortcut-icon']"));
 
 			case 100:
 				label = -1;

@@ -38,10 +38,20 @@ public class Member_AssertCannotAccessPermissionsTest extends BaseTestCase {
 		selenium.clickAt("link=Documents and Media",
 			RuntimeVariables.replace("Documents and Media"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isElementNotPresent("link=Permissions"));
+		Thread.sleep(1000);
+		selenium.clickAt("//div[@data-title='Document_1.txt']/span[@class='overlay document-action']/span/ul/li/strong/a",
+			RuntimeVariables.replace("Document Actions Overlay"));
+		selenium.waitForVisible(
+			"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Download (0.3k)')]");
+		assertEquals(RuntimeVariables.replace("Download (0.3k)"),
+			selenium.getText(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Download (0.3k)')]"));
+		assertTrue(selenium.isElementNotPresent(
+				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Permissions')]"));
 		selenium.clickAt("//a[contains(@class,'document-link')]/span[@class='entry-title']",
 			RuntimeVariables.replace("Document_1.txt"));
 		selenium.waitForPageToLoad("30000");
+		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Download"),
 			selenium.getText("//div[@id='_20_fileEntryToolbar']/span/button[1]"));
 		assertTrue(selenium.isElementNotPresent(

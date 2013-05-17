@@ -38,9 +38,9 @@ public class Member_AssertUpdateDocumentTest extends BaseTestCase {
 			RuntimeVariables.replace("Documents and Media"));
 		selenium.waitForPageToLoad("30000");
 		selenium.waitForVisible(
-			"xpath=(//span[@class='overlay document-action']/span/ul/li/strong/a)[2]");
-		selenium.clickAt("xpath=(//span[@class='overlay document-action']/span/ul/li/strong/a)[2]",
-			RuntimeVariables.replace("Document Actions"));
+			"//div[@data-title='Document_1.txt']/span[@class='overlay document-action']/span/ul/li/strong/a");
+		selenium.clickAt("//div[@data-title='Document_1.txt']/span[@class='overlay document-action']/span/ul/li/strong/a",
+			RuntimeVariables.replace("Document Actions Overlay"));
 		selenium.waitForVisible(
 			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Edit')]/a");
 		assertEquals(RuntimeVariables.replace("Edit"),

@@ -44,6 +44,7 @@ public class TearDownDocumentTypeTest extends BaseTestCase {
 				selenium.clickAt("link=Documents and Media",
 					RuntimeVariables.replace("Documents and Media"));
 				selenium.waitForPageToLoad("30000");
+				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Manage"),
 					selenium.getText("//span[@title='Manage']/ul/li/strong/a"));
 				selenium.clickAt("//span[@title='Manage']/ul/li/strong/a",
@@ -53,8 +54,8 @@ public class TearDownDocumentTypeTest extends BaseTestCase {
 				assertEquals(RuntimeVariables.replace("Document Types"),
 					selenium.getText(
 						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Document Types')]"));
-				selenium.click(
-					"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Document Types')]");
+				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Document Types')]",
+					RuntimeVariables.replace("Document Types"));
 				selenium.waitForVisible(
 					"//iframe[contains(@id,'openFileEntryTypeView')]");
 				selenium.selectFrame(
@@ -93,8 +94,6 @@ public class TearDownDocumentTypeTest extends BaseTestCase {
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 
-			case 2:
-
 				boolean documentType2Present = selenium.isElementPresent(
 						"//span[@title='Actions']/ul/li/strong/a/span");
 
@@ -119,8 +118,6 @@ public class TearDownDocumentTypeTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
-
-			case 3:
 
 				boolean documentType3Present = selenium.isElementPresent(
 						"//span[@title='Actions']/ul/li/strong/a/span");
@@ -147,8 +144,6 @@ public class TearDownDocumentTypeTest extends BaseTestCase {
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 
-			case 4:
-
 				boolean documentType4Present = selenium.isElementPresent(
 						"//span[@title='Actions']/ul/li/strong/a/span");
 
@@ -174,8 +169,6 @@ public class TearDownDocumentTypeTest extends BaseTestCase {
 				assertTrue(selenium.getConfirmation()
 								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
 
-			case 5:
-
 				boolean documentType5Present = selenium.isElementPresent(
 						"//span[@title='Actions']/ul/li/strong/a/span");
 
@@ -198,9 +191,13 @@ public class TearDownDocumentTypeTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete this?");
 
+			case 2:
+			case 3:
+			case 4:
+			case 5:
 			case 6:
 				assertEquals(RuntimeVariables.replace("There are no results."),
 					selenium.getText("//div[@class='portlet-msg-info']"));

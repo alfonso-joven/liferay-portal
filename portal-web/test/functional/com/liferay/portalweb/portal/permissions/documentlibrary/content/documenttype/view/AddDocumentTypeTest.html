@@ -45,7 +45,7 @@
 </tr>
 <tr>
 	<td>pause</td>
-	<td>5000</td>
+	<td>1000</td>
 	<td></td>
 </tr>
 <tr>
@@ -115,13 +115,18 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>xPath=(//div[@class='aui-diagram-builder-field-label'])[11]</td>
-	<td>Test Box</td>
+	<td>//div[@class='aui-tabview-content aui-widget-bd']/div/ul/li[@title="Text Box"]/span</td>
+	<td>Text Box</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='aui-tabview-content aui-widget-bd']/div/ul/li[@title="Text Box"]/div</td>
+	<td>Text Box</td>
 </tr>
 <tr>
 	<td>dragAndDropToObject</td>
-	<td>xPath=(//div[@class='aui-diagram-builder-field-label'])[11]</td>
-	<td>xPath=(//div[@class='aui-diagram-builder-field-label'])[11]</td>
+	<td>//div[@class='aui-tabview-content aui-widget-bd']/div/ul/li[@title="Text Box"]/div</td>
+	<td>//div[@class='aui-diagram-builder-drop-container']</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>

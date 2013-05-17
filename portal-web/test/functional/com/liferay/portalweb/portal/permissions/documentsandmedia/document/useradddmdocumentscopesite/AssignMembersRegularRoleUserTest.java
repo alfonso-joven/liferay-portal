@@ -49,22 +49,26 @@ public class AssignMembersRegularRoleUserTest extends BaseTestCase {
 					RuntimeVariables.replace("Search"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("Roles Regrole Name"),
-					selenium.getText("//td[1]/a"));
+					selenium.getText(
+						"//tr[contains(.,'Roles Regrole Name')]/td[1]/a"));
 				assertEquals(RuntimeVariables.replace("Regular"),
-					selenium.getText("//td[2]/a"));
+					selenium.getText(
+						"//tr[contains(.,'Roles Regrole Name')]/td[2]/a"));
 				assertEquals(RuntimeVariables.replace(""),
-					selenium.getText("//td[3]/a"));
+					selenium.getText(
+						"//tr[contains(.,'Roles Regrole Name')]/td[3]/a"));
 				assertEquals(RuntimeVariables.replace("Actions"),
-					selenium.getText("//td[4]/span/ul/li/strong/a/span"));
-				selenium.clickAt("//td[4]/span/ul/li/strong/a/span",
+					selenium.getText(
+						"//tr[contains(.,'Roles Regrole Name')]/td[4]/span[@title='Actions']/ul/li/strong/a/span"));
+				selenium.clickAt("//tr[contains(.,'Roles Regrole Name')]/td[4]/span[@title='Actions']/ul/li/strong/a/span",
 					RuntimeVariables.replace("Actions"));
 				selenium.waitForVisible(
-					"//div[@class='lfr-component lfr-menu-list']/ul/li[4]/a");
+					"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Assign Members')]");
 				assertEquals(RuntimeVariables.replace("Assign Members"),
 					selenium.getText(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[4]/a"));
+						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Assign Members')]"));
 				selenium.click(RuntimeVariables.replace(
-						"//div[@class='lfr-component lfr-menu-list']/ul/li[4]/a"));
+						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Assign Members')]"));
 				selenium.waitForPageToLoad("30000");
 				selenium.clickAt("link=Available",
 					RuntimeVariables.replace("Available"));

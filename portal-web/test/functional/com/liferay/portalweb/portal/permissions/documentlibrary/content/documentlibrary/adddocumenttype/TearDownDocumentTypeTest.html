@@ -49,6 +49,11 @@
 	<td>Documents and Media</td>
 </tr>
 <tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
+</tr>
+<tr>
 	<td>assertText</td>
 	<td>//span[@title='Manage']/ul/li/strong/a</td>
 	<td>Manage</td>
@@ -69,7 +74,7 @@
 	<td>Document Types</td>
 </tr>
 <tr>
-	<td>click</td>
+	<td>clickAt</td>
 	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Document Types')]</td>
 	<td>Document Types</td>
 </tr>
@@ -149,11 +154,6 @@
 	<td></td>
 </tr>
 <tr>
-	<td>label</td>
-	<td>DocumentType1NotPresent</td>
-	<td></td>
-</tr>
-<tr>
 	<td>storeElementPresent</td>
 	<td>//span[@title='Actions']/ul/li/strong/a/span</td>
 	<td>documentType2Present</td>
@@ -191,11 +191,6 @@
 <tr>
 	<td>assertConfirmation</td>
 	<td>Are you sure you want to delete this?</td>
-	<td></td>
-</tr>
-<tr>
-	<td>label</td>
-	<td>DocumentType2NotPresent</td>
 	<td></td>
 </tr>
 <tr>
@@ -239,11 +234,6 @@
 	<td></td>
 </tr>
 <tr>
-	<td>label</td>
-	<td>DocumentType3NotPresent</td>
-	<td></td>
-</tr>
-<tr>
 	<td>storeElementPresent</td>
 	<td>//span[@title='Actions']/ul/li/strong/a/span</td>
 	<td>documentType4Present</td>
@@ -284,11 +274,6 @@
 	<td></td>
 </tr>
 <tr>
-	<td>label</td>
-	<td>DocumentType4NotPresent</td>
-	<td></td>
-</tr>
-<tr>
 	<td>storeElementPresent</td>
 	<td>//span[@title='Actions']/ul/li/strong/a/span</td>
 	<td>documentType5Present</td>
@@ -324,8 +309,28 @@
 	<td>Delete</td>
 </tr>
 <tr>
-	<td>assertConfirmation</td>
+	<td>waitForConfirmation</td>
 	<td>Are you sure you want to delete this?</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>DocumentType1NotPresent</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>DocumentType2NotPresent</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>DocumentType3NotPresent</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>DocumentType4NotPresent</td>
 	<td></td>
 </tr>
 <tr>

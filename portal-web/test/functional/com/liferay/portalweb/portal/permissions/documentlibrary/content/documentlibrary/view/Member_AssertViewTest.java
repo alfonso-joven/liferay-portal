@@ -37,6 +37,9 @@ public class Member_AssertViewTest extends BaseTestCase {
 		selenium.clickAt("link=Documents and Media",
 			RuntimeVariables.replace("Documents and Media"));
 		selenium.waitForPageToLoad("30000");
+		Thread.sleep(1000);
+		assertEquals(RuntimeVariables.replace("Documents and Media"),
+			selenium.getText("//span[@class='portlet-title-text']"));
 		assertTrue(selenium.isVisible(
 				"//div[@id='_20_documentLibraryContainer']"));
 	}

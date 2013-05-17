@@ -44,13 +44,28 @@
 	<td>Documents and Media</td>
 </tr>
 <tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
+</tr>
+<tr>
 	<td>clickAt</td>
-	<td>//form/div/div/span/span/ul/li/strong/a</td>
-	<td>Actions</td>
+	<td>//div[@data-title='Document_1.txt']/span[@class='overlay document-action']/span/ul/li/strong/a</td>
+	<td>Document Actions Overlay</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Permissions')]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Download (0.3k)')]</td>
+	<td>Download (0.3k)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Download (0.3k)')]</td>
+	<td>Download (0.3k)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Permissions')]</td>
 	<td>Permissions</td>
 </tr>
 <tr>

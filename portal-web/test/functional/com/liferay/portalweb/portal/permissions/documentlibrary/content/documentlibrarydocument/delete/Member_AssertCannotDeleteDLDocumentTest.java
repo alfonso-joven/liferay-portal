@@ -42,6 +42,7 @@ public class Member_AssertCannotDeleteDLDocumentTest extends BaseTestCase {
 			"xpath=(//span[@class='overlay document-action']/span/ul/li/strong/a)[2]");
 		selenium.clickAt("xpath=(//span[@class='overlay document-action']/span/ul/li/strong/a)[2]",
 			RuntimeVariables.replace("Document Actions"));
+		Thread.sleep(1000);
 		selenium.waitForVisible(
 			"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Download (0.3k)')]/a");
 		assertEquals(RuntimeVariables.replace("Download (0.3k)"),
@@ -51,6 +52,7 @@ public class Member_AssertCannotDeleteDLDocumentTest extends BaseTestCase {
 				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Delete')]/a"));
 		selenium.clickAt("//input[@id='_20_allRowIdsCheckbox']",
 			RuntimeVariables.replace("Select All"));
+		Thread.sleep(1000);
 		assertFalse(selenium.isVisible(
 				"//span[@title='Actions']/ul/li/strong/a"));
 		assertTrue(selenium.isElementNotPresent(

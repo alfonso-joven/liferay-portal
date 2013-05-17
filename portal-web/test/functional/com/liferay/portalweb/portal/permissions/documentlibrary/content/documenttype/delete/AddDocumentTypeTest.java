@@ -42,7 +42,7 @@ public class AddDocumentTypeTest extends BaseTestCase {
 				selenium.clickAt("link=Documents and Media",
 					RuntimeVariables.replace("Documents and Media"));
 				selenium.waitForPageToLoad("30000");
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Manage"),
 					selenium.getText("//span[@title='Manage']/ul/li/strong/a"));
 				selenium.clickAt("//span[@title='Manage']/ul/li/strong/a",
@@ -71,9 +71,12 @@ public class AddDocumentTypeTest extends BaseTestCase {
 				selenium.type("//input[@id='_20_name']",
 					RuntimeVariables.replace("Document Type Name"));
 				selenium.waitForVisible(
-					"xPath=(//div[@class='aui-diagram-builder-field-label'])[11]");
-				selenium.dragAndDropToObject("xPath=(//div[@class='aui-diagram-builder-field-label'])[11]",
-					"xPath=(//div[@class='aui-diagram-builder-field-label'])[11]");
+					"//div[@class='aui-tabview-content aui-widget-bd']/div/ul/li[@title=\"Text Box\"]/span");
+				assertEquals(RuntimeVariables.replace("Text Box"),
+					selenium.getText(
+						"//div[@class='aui-tabview-content aui-widget-bd']/div/ul/li[@title=\"Text Box\"]/div"));
+				selenium.dragAndDropToObject("//div[@class='aui-tabview-content aui-widget-bd']/div/ul/li[@title=\"Text Box\"]/div",
+					"//div[@class='aui-diagram-builder-drop-container']");
 				selenium.waitForVisible(
 					"//div[contains(@class,'aui-form-builder-text-field-content')]/label");
 				assertEquals(RuntimeVariables.replace("Text Box"),
@@ -82,6 +85,7 @@ public class AddDocumentTypeTest extends BaseTestCase {
 				selenium.clickAt("//input[@value='Save']",
 					RuntimeVariables.replace("Save"));
 				selenium.waitForPageToLoad("30000");
+				selenium.waitForVisible("//div[@class='portlet-msg-success']");
 				assertEquals(RuntimeVariables.replace(
 						"Your request completed successfully."),
 					selenium.getText("//div[@class='portlet-msg-success']"));
@@ -90,13 +94,18 @@ public class AddDocumentTypeTest extends BaseTestCase {
 					RuntimeVariables.replace("Name"));
 				selenium.clickAt("//input[@value='Search']",
 					RuntimeVariables.replace("Search"));
-				Thread.sleep(5000);
-				selenium.waitForVisible("//tr[3]/td[1]");
+				Thread.sleep(1000);
+				selenium.waitForVisible(
+					"//tr[contains(.,'Document Type Name')]/td[1]");
 				assertEquals(RuntimeVariables.replace("Document Type Name"),
-					selenium.getText("//tr[3]/td[1]"));
+					selenium.getText(
+						"//tr[contains(.,'Document Type Name')]/td[1]"));
+				selenium.waitForVisible(
+					"//tr[contains(.,'Document Type Name')]/td[3]/span[@title='Actions']/ul/li/strong/a");
 				assertEquals(RuntimeVariables.replace("Actions"),
-					selenium.getText("//span[@title='Actions']/ul/li/strong/a"));
-				selenium.clickAt("//span[@title='Actions']/ul/li/strong/a",
+					selenium.getText(
+						"//tr[contains(.,'Document Type Name')]/td[3]/span[@title='Actions']/ul/li/strong/a"));
+				selenium.clickAt("//tr[contains(.,'Document Type Name')]/td[3]/span[@title='Actions']/ul/li/strong/a",
 					RuntimeVariables.replace("Actions"));
 				selenium.waitForVisible(
 					"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Permissions')]");

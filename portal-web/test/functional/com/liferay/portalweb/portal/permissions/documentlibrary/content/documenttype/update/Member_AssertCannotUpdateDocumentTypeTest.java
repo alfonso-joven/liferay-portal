@@ -38,7 +38,7 @@ public class Member_AssertCannotUpdateDocumentTypeTest extends BaseTestCase {
 		selenium.clickAt("link=Documents and Media",
 			RuntimeVariables.replace("Documents and Media"));
 		selenium.waitForPageToLoad("30000");
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Manage"),
 			selenium.getText("//span[@title='Manage']/ul/li/strong/a"));
 		selenium.clickAt("//span[@title='Manage']/ul/li/strong/a",
@@ -61,10 +61,11 @@ public class Member_AssertCannotUpdateDocumentTypeTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		Thread.sleep(5000);
-		selenium.waitForVisible("//tr[3]/td[1]");
+		selenium.waitForVisible("//tr[contains(.,'Document Type Name')]/td[1]");
 		assertEquals(RuntimeVariables.replace("Document Type Name"),
-			selenium.getText("//tr[3]/td[1]"));
-		assertTrue(selenium.isElementNotPresent("//tr[3]/td[3]/span/a/span"));
+			selenium.getText("//tr[contains(.,'Document Type Name')]/td[1]"));
+		assertTrue(selenium.isElementNotPresent(
+				"//tr[contains(.,'Document Type Name')]/td[3]/span/a/span"));
 		assertTrue(selenium.isElementNotPresent("link=Edit"));
 		selenium.selectFrame("relative=top");
 	}

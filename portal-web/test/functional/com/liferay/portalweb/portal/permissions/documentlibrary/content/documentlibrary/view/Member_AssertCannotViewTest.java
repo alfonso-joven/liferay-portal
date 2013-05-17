@@ -37,10 +37,11 @@ public class Member_AssertCannotViewTest extends BaseTestCase {
 		selenium.clickAt("link=Documents and Media",
 			RuntimeVariables.replace("Documents and Media"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isElementNotPresent(
-				"//div[@id='_20_documentLibraryContainer']"));
+		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace(
 				"You do not have the roles required to access this portlet."),
 			selenium.getText("//div[@class='portlet-msg-error']"));
+		assertTrue(selenium.isElementNotPresent(
+				"//div[@id='_20_documentLibraryContainer']"));
 	}
 }

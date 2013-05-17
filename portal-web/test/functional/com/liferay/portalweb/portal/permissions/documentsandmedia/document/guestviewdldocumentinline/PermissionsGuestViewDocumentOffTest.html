@@ -20,17 +20,12 @@
 </tr>
 <tr>
 	<td>pause</td>
-	<td>5000</td>
+	<td>1000</td>
 	<td></td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>//a[@class='document-link']/span[@class='entry-title']</td>
-	<td>DM Document Title</td>
-</tr>
-<tr>
 	<td>clickAt</td>
-	<td>xPath=(//span[contains(@class,'document-action')])[2]/span/ul/li/strong/a</td>
+	<td>//div[@data-title='DM Document Title']/span[@class='overlay document-action']/span/ul/li/strong/a</td>
 	<td>Actions</td>
 </tr>
 <tr>
@@ -49,14 +44,9 @@
 	<td>Permissions</td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>//tr[3]/td[1]/a</td>
-	<td>Guest</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//tr[1]/th[8]</td>
-	<td>View</td>
+	<td>waitForVisible</td>
+	<td>//input[@id='guest_ACTION_VIEW']</td>
+	<td>Guest View</td>
 </tr>
 <tr>
 	<td>storeChecked</td>

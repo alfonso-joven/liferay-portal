@@ -44,6 +44,7 @@ public class Member_AssertCannotUpdateDiscussionTest extends BaseTestCase {
 		selenium.clickAt("//a[contains(@class,'document-link')]/span[@class='entry-title']",
 			RuntimeVariables.replace("Document_1.txt"));
 		selenium.waitForPageToLoad("30000");
+		Thread.sleep(1000);
 		assertTrue(selenium.isElementNotPresent(
 				"//li[@class='lfr-discussion-delete-reply']/span/a"));
 	}

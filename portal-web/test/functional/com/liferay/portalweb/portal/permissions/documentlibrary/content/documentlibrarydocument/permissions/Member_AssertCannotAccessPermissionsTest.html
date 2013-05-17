@@ -44,14 +44,39 @@
 	<td>Documents and Media</td>
 </tr>
 <tr>
-	<td>assertElementNotPresent</td>
-	<td>link=Permissions</td>
+	<td>pause</td>
+	<td>1000</td>
 	<td></td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//div[@data-title='Document_1.txt']/span[@class='overlay document-action']/span/ul/li/strong/a</td>
+	<td>Document Actions Overlay</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Download (0.3k)')]</td>
+	<td>Download (0.3k)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Download (0.3k)')]</td>
+	<td>Download (0.3k)</td>
+</tr>
+<tr>
+	<td>assertElementNotPresent</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Permissions')]</td>
+	<td>Permissions</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>//a[contains(@class,'document-link')]/span[@class='entry-title']</td>
 	<td>Document_1.txt</td>
+</tr>
+<tr>
+	<td>pause</td>
+	<td>1000</td>
+	<td></td>
 </tr>
 <tr>
 	<td>assertText</td>

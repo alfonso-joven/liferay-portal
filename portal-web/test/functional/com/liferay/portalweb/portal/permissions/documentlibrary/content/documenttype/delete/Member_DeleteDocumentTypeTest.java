@@ -37,7 +37,7 @@ public class Member_DeleteDocumentTypeTest extends BaseTestCase {
 		selenium.clickAt("link=Documents and Media",
 			RuntimeVariables.replace("Documents and Media"));
 		selenium.waitForPageToLoad("30000");
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Manage"),
 			selenium.getText("//span[@title='Manage']/ul/li/strong/a"));
 		selenium.clickAt("//span[@title='Manage']/ul/li/strong/a",
@@ -59,17 +59,17 @@ public class Member_DeleteDocumentTypeTest extends BaseTestCase {
 			RuntimeVariables.replace("Name"));
 		selenium.clickAt("//input[@value='Search']",
 			RuntimeVariables.replace("Search"));
-		Thread.sleep(5000);
-		selenium.waitForVisible("//tr[3]/td[1]");
+		Thread.sleep(1000);
+		selenium.waitForVisible("//tr[contains(.,'Document Type Name')]/td[1]");
 		assertEquals(RuntimeVariables.replace("Document Type Name"),
-			selenium.getText("//tr[3]/td[1]"));
+			selenium.getText("//tr[contains(.,'Document Type Name')]/td[1]"));
 		assertEquals(RuntimeVariables.replace("Delete"),
-			selenium.getText("//tr[3]/td[3]/span/a/span"));
-		selenium.clickAt("//tr[3]/td[3]/span/a/span",
+			selenium.getText(
+				"//tr[contains(.,'Document Type Name')]/td[3]/span/a/span"));
+		selenium.clickAt("//tr[contains(.,'Document Type Name')]/td[3]/span/a/span",
 			RuntimeVariables.replace("Delete"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.getConfirmation()
-						   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+		selenium.waitForConfirmation("Are you sure you want to delete this?");
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));

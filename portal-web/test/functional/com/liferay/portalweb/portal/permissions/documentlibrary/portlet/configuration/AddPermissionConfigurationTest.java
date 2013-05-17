@@ -57,7 +57,8 @@ public class AddPermissionConfigurationTest extends BaseTestCase {
 					RuntimeVariables.replace("Define Permissions"));
 				selenium.waitForPageToLoad("30000");
 				selenium.select("//select[@id='_128_add-permissions']",
-					RuntimeVariables.replace("index=93"));
+					RuntimeVariables.replace(
+						"value=regexp:.*portletResource=20&.*showModelResources=0"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("Documents and Media"),
 					selenium.getText("//h3"));

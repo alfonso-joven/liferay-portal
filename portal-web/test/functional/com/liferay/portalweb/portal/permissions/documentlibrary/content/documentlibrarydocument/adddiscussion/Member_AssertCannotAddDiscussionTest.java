@@ -44,6 +44,7 @@ public class Member_AssertCannotAddDiscussionTest extends BaseTestCase {
 		selenium.clickAt("//a[contains(@class,'document-link')]/span[@class='entry-title']",
 			RuntimeVariables.replace("Document_1.txt"));
 		selenium.waitForPageToLoad("30000");
+		Thread.sleep(1000);
 		assertTrue(selenium.isElementNotPresent("link=Be the first."));
 	}
 }
