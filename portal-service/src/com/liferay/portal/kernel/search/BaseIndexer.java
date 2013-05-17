@@ -21,12 +21,21 @@ import com.liferay.portal.kernel.configuration.Filter;
 import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.kernel.json.JSONArray;
+import com.liferay.portal.kernel.json.JSONFactoryUtil;
+import com.liferay.portal.kernel.json.JSONObject;
+import com.liferay.portal.kernel.language.LanguageUtil;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.search.facet.AssetEntriesFacet;
 import com.liferay.portal.kernel.search.facet.Facet;
 import com.liferay.portal.kernel.search.facet.MultiValueFacet;
 import com.liferay.portal.kernel.search.facet.ScopeFacet;
+import com.liferay.portal.kernel.search.facet.config.FacetConfiguration;
+import com.liferay.portal.kernel.trash.TrashHandler;
+import com.liferay.portal.kernel.trash.TrashHandlerRegistryUtil;
+import com.liferay.portal.kernel.trash.TrashRenderer;
+import com.liferay.portal.kernel.util.ArrayUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ListUtil;
 import com.liferay.portal.kernel.util.LocaleUtil;
@@ -577,6 +586,23 @@ public abstract class BaseIndexer implements Indexer {
 		multiValueFacet.setFieldName(Field.ASSET_CATEGORY_IDS);
 		multiValueFacet.setStatic(true);
 
+		long[] assetCategoryIds = searchContext.getAssetCategoryIds();
+
+		if (assetCategoryIds != null) {
+			JSONArray valuesJSONArray = JSONFactoryUtil.createJSONArray();
+
+			for (long assetCategoryId : assetCategoryIds) {
+				valuesJSONArray.put(assetCategoryId);
+			}
+
+			FacetConfiguration facetConfiguration =
+				multiValueFacet.getFacetConfiguration();
+
+			JSONObject dataJSONObject = facetConfiguration.getData();
+
+			dataJSONObject.put("values", valuesJSONArray);
+		}
+
 		searchContext.addFacet(multiValueFacet);
 	}
 
@@ -637,6 +663,23 @@ public abstract class BaseIndexer implements Indexer {
 
 		multiValueFacet.setFieldName(Field.ASSET_TAG_NAMES);
 		multiValueFacet.setStatic(true);
+
+		String[] assetTagNames = searchContext.getAssetTagNames();
+
+		if (assetTagNames != null) {
+			JSONArray valuesJSONArray = JSONFactoryUtil.createJSONArray();
+
+			for (String assetTagName : assetTagNames) {
+				valuesJSONArray.put(assetTagName);
+			}
+
+			FacetConfiguration facetConfiguration =
+				multiValueFacet.getFacetConfiguration();
+
+			JSONObject dataJSONObject = facetConfiguration.getData();
+
+			dataJSONObject.put("values", valuesJSONArray);
+		}
 
 		searchContext.addFacet(multiValueFacet);
 	}
