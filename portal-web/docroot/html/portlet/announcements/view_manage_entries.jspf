@@ -48,7 +48,7 @@ if ((classNameId == 0) && (classPK == 0) && !permissionChecker.isOmniadmin()) {
 			<aui:button onClick='<%= renderResponse.getNamespace() + "addEntry()" %>' value="add-entry" />
 		</c:when>
 		<c:otherwise>
-			<div class="alert alert-info">
+			<div class="portlet-msg-info">
 				<liferay-ui:message key="please-select-a-distribution-scope" />
 			</div>
 		</c:otherwise>
