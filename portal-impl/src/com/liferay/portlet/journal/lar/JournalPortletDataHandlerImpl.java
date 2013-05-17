@@ -1601,13 +1601,13 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 					}
 				}
 
+				beginPos = currentLocation;
+
 				if (fileEntry == null) {
 					beginPos--;
 
 					continue;
 				}
-
-				beginPos = currentLocation;
 
 				DLPortletDataHandlerImpl.exportFileEntry(
 					portletDataContext, dlFileEntryTypesElement,
@@ -1648,6 +1648,8 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 					_log.warn(e.getMessage());
 				}
 			}
+
+			beginPos = currentLocation;
 
 			beginPos--;
 		}
