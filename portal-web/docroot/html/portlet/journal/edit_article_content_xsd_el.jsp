@@ -25,6 +25,10 @@ if (Validator.isNotNull(toLanguageId)) {
 	languageId = toLanguageId;
 }
 
+Locale toLocale = LocaleUtil.fromLanguageId(languageId);
+
+String languageDir = LanguageUtil.get(toLocale, "lang.dir");
+
 long groupId = GetterUtil.getLong((String)request.getAttribute(WebKeys.JOURNAL_ARTICLE_GROUP_ID));
 
 Group group = GroupLocalServiceUtil.getGroup(groupId);
@@ -136,7 +140,7 @@ Element contentEl = (Element)request.getAttribute(WebKeys.JOURNAL_ARTICLE_CONTEN
 					}
 					%>
 
-					<aui:input cssClass="lfr-input-text-container" ignoreRequestValue="<%= true %>" label="" name="<%= textInputName %>" size="55" type="text" value="<%= elContent %>" />
+					<aui:input cssClass="lfr-input-text-container" dir="<%= languageDir %>" ignoreRequestValue="<%= true %>" label="" name="<%= textInputName %>" size="55" type="text" value="<%= elContent %>" />
 				</c:if>
 
 				<c:if test='<%= elType.equals("text_box") %>'>
@@ -149,7 +153,7 @@ Element contentEl = (Element)request.getAttribute(WebKeys.JOURNAL_ARTICLE_CONTEN
 					}
 					%>
 
-					<aui:input cols="60" cssClass="lfr-textarea-container" ignoreRequestValue="<%= true %>" label="" name="<%= textBoxInputName %>" rows="10" type="textarea" value="<%= elContent %>" />
+					<aui:input cols="60" cssClass="lfr-textarea-container" dir="<%= languageDir %>" ignoreRequestValue="<%= true %>" label="" name="<%= textBoxInputName %>" rows="10" type="textarea" value="<%= elContent %>" />
 				</c:if>
 
 				<c:if test='<%= elType.equals("text_area") %>'>
@@ -174,6 +178,7 @@ Element contentEl = (Element)request.getAttribute(WebKeys.JOURNAL_ARTICLE_CONTEN
 						editorImpl="<%= EDITOR_WYSIWYG_IMPL_KEY %>"
 						height="460"
 						initMethod='<%= "initEditor" + elInstanceId %>'
+						languageId="<%= languageId %>"
 						name="<%= textAreaInputName %>"
 						toolbarSet="liferay-article"
 						width="500"
