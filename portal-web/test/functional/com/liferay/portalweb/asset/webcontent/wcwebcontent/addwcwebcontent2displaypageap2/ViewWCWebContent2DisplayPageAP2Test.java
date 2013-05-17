@@ -42,7 +42,7 @@ public class ViewWCWebContent2DisplayPageAP2Test extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("WC WebContent2 Title"),
 			selenium.getText("//h1[@class='header-title']/span"));
 		assertEquals(RuntimeVariables.replace("WC WebContent2 Content"),
-			selenium.getText("//div[@class='journal-content-article']/p"));
+			selenium.getText("//div[@class='journal-content-article']"));
 		selenium.open("/web/guest/home/");
 		selenium.clickAt("link=Asset Publisher Test Page2",
 			RuntimeVariables.replace("Asset Publisher Test Page2"));
@@ -55,6 +55,6 @@ public class ViewWCWebContent2DisplayPageAP2Test extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("WC WebContent1 Title"),
 			selenium.getText("//h1[@class='header-title']/span"));
 		assertEquals(RuntimeVariables.replace("WC WebContent1 Content"),
-			selenium.getText("//div[@class='journal-content-article']/p"));
+			selenium.getText("//div[@class='journal-content-article']"));
 	}
 }

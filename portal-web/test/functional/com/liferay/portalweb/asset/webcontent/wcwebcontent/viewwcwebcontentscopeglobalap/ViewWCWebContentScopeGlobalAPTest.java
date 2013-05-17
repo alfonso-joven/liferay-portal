@@ -41,7 +41,7 @@ public class ViewWCWebContentScopeGlobalAPTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Web Content Name"),
 			selenium.getText("//h1[@class='header-title']/span"));
 		assertEquals(RuntimeVariables.replace("Web Content Content"),
-			selenium.getText("//div[@class='journal-content-article']/p"));
+			selenium.getText("//div[@class='journal-content-article']"));
 		assertTrue(selenium.isVisible(
 				"//li[@class='taglib-social-bookmark-twitter']"));
 		assertTrue(selenium.isVisible(

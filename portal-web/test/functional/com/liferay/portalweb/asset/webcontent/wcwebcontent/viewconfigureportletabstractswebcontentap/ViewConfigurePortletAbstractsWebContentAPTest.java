@@ -41,6 +41,6 @@ public class ViewConfigurePortletAbstractsWebContentAPTest extends BaseTestCase 
 		assertEquals(RuntimeVariables.replace("WC Web Content Title"),
 			selenium.getText("//h1[@class='header-title']/span"));
 		assertEquals(RuntimeVariables.replace("WC Web Content Content"),
-			selenium.getText("//div[@class='journal-content-article']/p"));
+			selenium.getText("//div[@class='journal-content-article']"));
 	}
 }
