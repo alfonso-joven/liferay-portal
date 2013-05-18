@@ -132,11 +132,13 @@ else if (langType.equals("xml") || langType.equals("xsl") || langType.equals("xs
 		if (editorContentOutputElement) {
 			var editorMode = '<%= editorMode %>';
 
+			var encodedContent = encodeURIComponent(content);
+
 			if (editorMode == 'xml') {
 				editorContentOutputElement.val(content);
 			}
 			else {
-				editorContentOutputElement.val(encodeURIComponent(content));
+				editorContentOutputElement.val(encodedContent);
 			}
 
 			var dialog = Liferay.Util.getWindow();
@@ -145,7 +147,7 @@ else if (langType.equals("xml") || langType.equals("xsl") || langType.equals("xs
 				dialog.close();
 
 				if (content != prevEditorContent) {
-					editorContentInputElement.val(encodeURIComponent(content));
+					editorContentInputElement.val(encodedContent);
 
 					dialog.fire('update');
 				}
