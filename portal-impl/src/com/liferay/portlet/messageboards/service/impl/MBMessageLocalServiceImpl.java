@@ -581,10 +581,8 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 				(message.getCategoryId() !=
 					MBCategoryConstants.DISCUSSION_CATEGORY_ID)) {
 
-				MBCategory category = mbCategoryPersistence.findByPrimaryKey(
-					message.getCategoryId());
-
-				MBUtil.updateCategoryStatistics(category);
+				MBUtil.updateCategoryStatistics(
+					message.getCompanyId(), message.getCategoryId());
 			}
 		}
 		else {
@@ -672,7 +670,8 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 			// Thread
 
 			if (message.isApproved()) {
-				MBUtil.updateThreadMessageCount(thread);
+				MBUtil.updateThreadMessageCount(
+					thread.getCompanyId(), thread.getThreadId());
 			}
 			else {
 				mbThreadPersistence.update(thread, false);
@@ -686,10 +685,8 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 					MBCategoryConstants.DISCUSSION_CATEGORY_ID) &&
 				!message.isDraft()) {
 
-				MBCategory category = mbCategoryPersistence.findByPrimaryKey(
-					message.getCategoryId());
-
-				MBUtil.updateCategoryMessageCount(category);
+				MBUtil.updateCategoryMessageCount(
+					message.getCompanyId(), message.getCategoryId());
 			}
 		}
 
@@ -2157,6 +2154,8 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 
 			if (category != null) {
 				category.setLastPostDate(modifiedDate);
+
+				category = mbCategoryPersistence.update(category, false);
 			}
 		}
 
@@ -2165,25 +2164,27 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 
 			// Thread
 
-			MBUtil.updateThreadMessageCount(thread);
+			MBUtil.updateThreadMessageCount(
+				thread.getCompanyId(), thread.getThreadId());
 
 			// Category
 
 			if ((category != null) &&
 				(thread.getRootMessageId() == message.getMessageId())) {
 
-				MBUtil.updateCategoryStatistics(category);
+				MBUtil.updateCategoryStatistics(
+					category.getCompanyId(), category.getCategoryId());
 			}
 
 			if ((category != null) &&
 				!(thread.getRootMessageId() == message.getMessageId())) {
 
-				MBUtil.updateCategoryMessageCount(category);
+				MBUtil.updateCategoryMessageCount(
+					category.getCompanyId(), category.getCategoryId());
 			}
 		}
-		else {
-			mbThreadPersistence.update(thread, false);
-		}
+
+		mbThreadPersistence.update(thread,false);
 	}
 
 	protected void validate(String subject, String body)
