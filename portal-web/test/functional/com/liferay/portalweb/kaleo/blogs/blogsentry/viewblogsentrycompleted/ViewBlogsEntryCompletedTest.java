@@ -34,6 +34,13 @@ public class ViewBlogsEntryCompletedTest extends BaseTestCase {
 			selenium.getText("//div[@class='entry-body']"));
 		assertFalse(selenium.isTextPresent("Pending Approval"));
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Go to"),
+			selenium.getText("//li[@id='_145_mySites']/a/span"));
+		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
 		selenium.waitForElementPresent("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));

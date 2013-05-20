@@ -33,17 +33,18 @@ public class AddBlogsEntryTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_33_title']",
 			RuntimeVariables.replace("Blogs Entry Title"));
-		Thread.sleep(1000);
-		selenium.waitForVisible("//a[@class='cke_button_unlink cke_disabled']");
+		Thread.sleep(5000);
 		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
 		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
 			RuntimeVariables.replace("Blogs Entry Content"));
-		selenium.clickAt("//input[@value='Publish']",
-			RuntimeVariables.replace("Publish"));
+		selenium.clickAt("//input[@value='Submit for Publication']",
+			RuntimeVariables.replace("Submit for Publication"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
+		assertEquals(RuntimeVariables.replace("Pending Approval"),
+			selenium.getText("//div[@class='entry-content']/h3"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry Title"),
 			selenium.getText("//div[@class='entry-title']/h2/a"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry Content"),
