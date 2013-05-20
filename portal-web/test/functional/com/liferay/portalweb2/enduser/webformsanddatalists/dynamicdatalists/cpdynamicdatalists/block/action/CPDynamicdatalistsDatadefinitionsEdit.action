@@ -6,7 +6,7 @@
 	</command>
 
 	<command name="type">
-		<case locator-key1="DESCRIPTION_FIELD">
+		<case locator-key1="DETAILS_DESCRIPTION_FIELD">
 			<execute function="Type#clickAtSendKeys" />
 		</case>
 		<case locator-key1="NAME_FIELD">
