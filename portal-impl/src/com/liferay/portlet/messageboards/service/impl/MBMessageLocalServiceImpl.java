@@ -2184,7 +2184,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 			}
 		}
 
-		mbThreadPersistence.update(thread,false);
+		mbThreadPersistence.update(thread, false);
 	}
 
 	protected void validate(String subject, String body)
