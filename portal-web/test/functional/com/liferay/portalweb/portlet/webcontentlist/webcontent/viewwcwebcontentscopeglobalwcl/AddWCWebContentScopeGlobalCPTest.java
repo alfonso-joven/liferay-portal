@@ -47,9 +47,10 @@ public class AddWCWebContentScopeGlobalCPTest extends BaseTestCase {
 		selenium.click(RuntimeVariables.replace(
 				"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Global')]"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForText("//strong/a/span", "Global");
+		selenium.waitForText("//span[@title='Global']/ul/li/strong/a/span",
+			"Global");
 		assertEquals(RuntimeVariables.replace("Global"),
-			selenium.getText("//strong/a/span"));
+			selenium.getText("//span[@title='Global']/ul/li/strong/a/span"));
 		selenium.clickAt("link=Web Content",
 			RuntimeVariables.replace("Web Content"));
 		selenium.waitForPageToLoad("30000");
@@ -68,10 +69,18 @@ public class AddWCWebContentScopeGlobalCPTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
+		assertTrue(selenium.isVisible(
+				"//tr[contains(.,'Web Content Name')]/td[2]/a"));
 		assertEquals(RuntimeVariables.replace("Web Content Name"),
 			selenium.getText("//tr[contains(.,'Web Content Name')]/td[3]/a"));
 		assertEquals(RuntimeVariables.replace("Approved"),
 			selenium.getText("//tr[contains(.,'Web Content Name')]/td[4]/a"));
+		assertTrue(selenium.isVisible(
+				"//tr[contains(.,'Web Content Name')]/td[5]/a"));
+		assertTrue(selenium.isVisible(
+				"//tr[contains(.,'Web Content Name')]/td[6]/a"));
+		assertTrue(selenium.isVisible(
+				"//tr[contains(.,'Web Content Name')]/td[7]/a"));
 		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
 			selenium.getText("//tr[contains(.,'Web Content Name')]/td[8]/a"));
 	}

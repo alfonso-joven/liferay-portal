@@ -28,10 +28,10 @@ public class BeTheFirstWCWebContentCommentAPTest extends BaseTestCase {
 		selenium.clickAt("link=Asset Publisher Test Page",
 			RuntimeVariables.replace("Asset Publisher Test Page"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForVisible("//fieldset/div/a");
+		selenium.waitForVisible("//fieldset[contains(.,'Be the first.')]/div/a");
 		assertEquals(RuntimeVariables.replace("Be the first."),
-			selenium.getText("//fieldset/div/a"));
-		selenium.clickAt("//fieldset/div/a",
+			selenium.getText("//fieldset[contains(.,'Be the first.')]/div/a"));
+		selenium.clickAt("//fieldset[contains(.,'Be the first.')]/div/a",
 			RuntimeVariables.replace("Be the first."));
 		selenium.waitForVisible("//textarea");
 		selenium.type("//textarea",

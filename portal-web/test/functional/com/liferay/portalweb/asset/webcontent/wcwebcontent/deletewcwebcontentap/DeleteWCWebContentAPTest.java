@@ -54,8 +54,7 @@ public class DeleteWCWebContentAPTest extends BaseTestCase {
 			selenium.getText("//tr[contains(.,'WC Web Content Title')]/td[2]/a"));
 		selenium.click(RuntimeVariables.replace("//img[@alt='Delete']"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.getConfirmation()
-						   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+		selenium.waitForConfirmation("Are you sure you want to delete this?");
 		selenium.waitForText("//div[@class='portlet-msg-success']",
 			"You have successfully updated the setup.");
 		assertEquals(RuntimeVariables.replace(

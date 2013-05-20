@@ -74,8 +74,8 @@ public class TearDownWCWebContentScopeGlobalCPTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//input[@value='Delete']"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete the selected web content[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete the selected web content?");
 
 			case 2:
 
@@ -93,8 +93,8 @@ public class TearDownWCWebContentScopeGlobalCPTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//input[@value='Delete']"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete the selected web content[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete the selected web content?");
 
 			case 3:
 
@@ -112,8 +112,8 @@ public class TearDownWCWebContentScopeGlobalCPTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//input[@value='Delete']"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete the selected web content[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete the selected web content?");
 
 			case 4:
 
@@ -131,8 +131,8 @@ public class TearDownWCWebContentScopeGlobalCPTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//input[@value='Delete']"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete the selected web content[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete the selected web content?");
 
 			case 5:
 
@@ -150,8 +150,8 @@ public class TearDownWCWebContentScopeGlobalCPTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//input[@value='Delete']"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete the selected web content[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete the selected web content?");
 
 			case 6:
 			case 100:

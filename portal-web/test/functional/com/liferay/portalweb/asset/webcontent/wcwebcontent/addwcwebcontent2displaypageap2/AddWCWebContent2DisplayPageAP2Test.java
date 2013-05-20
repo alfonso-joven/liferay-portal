@@ -85,9 +85,19 @@ public class AddWCWebContent2DisplayPageAP2Test extends BaseTestCase {
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");
+		assertTrue(selenium.isVisible(
+				"//tr[contains(.,'WC WebContent2 Title')]/td[2]/a"));
 		assertEquals(RuntimeVariables.replace("WC WebContent2 Title"),
 			selenium.getText("//tr[contains(.,'WC WebContent2 Title')]/td[3]/a"));
 		assertEquals(RuntimeVariables.replace("Approved"),
 			selenium.getText("//tr[contains(.,'WC WebContent2 Title')]/td[4]/a"));
+		assertTrue(selenium.isVisible(
+				"//tr[contains(.,'WC WebContent2 Title')]/td[5]/a"));
+		assertTrue(selenium.isVisible(
+				"//tr[contains(.,'WC WebContent2 Title')]/td[6]/a"));
+		assertTrue(selenium.isVisible(
+				"//tr[contains(.,'WC WebContent2 Title')]/td[7]/a"));
+		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
+			selenium.getText("//tr[contains(.,'WC WebContent2 Title')]/td[8]/a"));
 	}
 }

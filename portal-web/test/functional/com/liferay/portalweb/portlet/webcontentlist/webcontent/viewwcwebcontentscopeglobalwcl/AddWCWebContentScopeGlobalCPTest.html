@@ -73,12 +73,12 @@
 </tr>
 <tr>
 	<td>waitForText</td>
-	<td>//strong/a/span</td>
+	<td>//span[@title='Global']/ul/li/strong/a/span</td>
 	<td>Global</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//strong/a/span</td>
+	<td>//span[@title='Global']/ul/li/strong/a/span</td>
 	<td>Global</td>
 </tr>
 <tr>
@@ -122,6 +122,11 @@
 	<td>Your request completed successfully.</td>
 </tr>
 <tr>
+	<td>assertVisible</td>
+	<td>//tr[contains(.,'Web Content Name')]/td[2]/a</td>
+	<td>ID</td>
+</tr>
+<tr>
 	<td>assertText</td>
 	<td>//tr[contains(.,'Web Content Name')]/td[3]/a</td>
 	<td>Web Content Name</td>
@@ -130,6 +135,21 @@
 	<td>assertText</td>
 	<td>//tr[contains(.,'Web Content Name')]/td[4]/a</td>
 	<td>Approved</td>
+</tr>
+<tr>
+	<td>assertVisible</td>
+	<td>//tr[contains(.,'Web Content Name')]/td[5]/a</td>
+	<td>Version</td>
+</tr>
+<tr>
+	<td>assertVisible</td>
+	<td>//tr[contains(.,'Web Content Name')]/td[6]/a</td>
+	<td>Modified Date</td>
+</tr>
+<tr>
+	<td>assertVisible</td>
+	<td>//tr[contains(.,'Web Content Name')]/td[7]/a</td>
+	<td>Display Date</td>
 </tr>
 <tr>
 	<td>assertText</td>
