@@ -293,14 +293,7 @@ public class LuceneIndexSearcherImpl implements IndexSearcher {
 		finally {
 			close(boboBrowser);
 
-			if (indexSearcher != null) {
-				try {
-					indexSearcher.close();
-				}
-				catch (IOException ioe) {
-					_log.error(ioe, ioe);
-				}
-			}
+			close(indexSearcher);
 		}
 
 		if (_log.isDebugEnabled()) {
@@ -397,14 +390,7 @@ public class LuceneIndexSearcherImpl implements IndexSearcher {
 			throw new SearchException(e);
 		}
 		finally {
-			if (indexSearcher != null) {
-				try {
-					indexSearcher.close();
-				}
-				catch (IOException ioe) {
-					_log.error(ioe, ioe);
-				}
-			}
+			close(indexSearcher);
 		}
 
 		if (_log.isDebugEnabled()) {
@@ -453,6 +439,25 @@ public class LuceneIndexSearcherImpl implements IndexSearcher {
 					"Unable to clean up BoboIndexReader#_runtimeFacetDataMap",
 					e);
 			}
+		}
+	}
+
+	protected void close(org.apache.lucene.search.IndexSearcher indexSearcher) {
+		if (indexSearcher == null) {
+			return;
+		}
+
+		try {
+			indexSearcher.close();
+
+			IndexReader indexReader = indexSearcher.getIndexReader();
+
+			if (indexReader != null) {
+				indexReader.close();
+			}
+		}
+		catch (IOException ioe) {
+			_log.error(ioe, ioe);
 		}
 	}
 
