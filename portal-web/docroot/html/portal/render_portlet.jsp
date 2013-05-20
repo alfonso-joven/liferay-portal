@@ -725,7 +725,6 @@ else if (portletDisplay.isStateMax()) {
 	}
 	else {
 		urlBack = ParamUtil.getString(renderRequestImpl, "returnToFullPageURL");
-		urlBack = HtmlUtil.stripHtml(urlBack);
 		urlBack = PortalUtil.escapeRedirect(urlBack);
 	}
 
