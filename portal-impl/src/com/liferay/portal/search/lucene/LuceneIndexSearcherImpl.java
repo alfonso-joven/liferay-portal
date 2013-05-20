@@ -74,7 +74,6 @@ import org.apache.lucene.document.NumericField;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.search.BooleanQuery;
 import org.apache.lucene.search.Explanation;
-import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.SortField;
 import org.apache.lucene.search.TopFieldDocs;
@@ -93,7 +92,7 @@ public class LuceneIndexSearcherImpl implements IndexSearcher {
 
 		Hits hits = null;
 
-		IndexSearcher indexSearcher = null;
+		org.apache.lucene.search.IndexSearcher indexSearcher = null;
 		Map<String, Facet> facets = null;
 		BoboBrowser boboBrowser = null;
 		BrowseRequest browseRequest = null;
@@ -317,7 +316,7 @@ public class LuceneIndexSearcherImpl implements IndexSearcher {
 
 		Hits hits = null;
 
-		IndexSearcher indexSearcher = null;
+		org.apache.lucene.search.IndexSearcher indexSearcher = null;
 		org.apache.lucene.search.Sort luceneSort = null;
 
 		try {
@@ -443,7 +442,7 @@ public class LuceneIndexSearcherImpl implements IndexSearcher {
 		}
 	}
 
-	protected void close(IndexSearcher indexSearcher) {
+	protected void close(org.apache.lucene.search.IndexSearcher indexSearcher) {
 		if (indexSearcher == null) {
 			return;
 		}
@@ -544,8 +543,9 @@ public class LuceneIndexSearcherImpl implements IndexSearcher {
 	}
 
 	protected Hits toHits(
-			IndexSearcher indexSearcher, HitDocs hitDocs, Query query,
-			long startTime, float searchTime, int start, int end)
+			org.apache.lucene.search.IndexSearcher indexSearcher,
+			HitDocs hitDocs, Query query, long startTime, float searchTime,
+			int start, int end)
 		throws IOException, ParseException {
 
 		int length = hitDocs.getTotalHits();
@@ -571,84 +571,84 @@ public class LuceneIndexSearcherImpl implements IndexSearcher {
 
 		Hits hits = new HitsImpl();
 
-		if ((start < 0) || (start > end)) {
-			return hits;
-		}
-
-		if (end > length) {
-			end = length;
-		}
-
-		if (start > end) {
-			start = end;
-		}
-
-		int subsetTotal = end - start;
-
-		if (subsetTotal > PropsValues.INDEX_SEARCH_LIMIT) {
-			subsetTotal = PropsValues.INDEX_SEARCH_LIMIT;
-		}
-
-		List<Document> subsetDocs = new ArrayList<Document>(subsetTotal);
-		List<String> subsetSnippets = new ArrayList<String>(subsetTotal);
-		List<Float> subsetScores = new ArrayList<Float>(subsetTotal);
-
-		QueryConfig queryConfig = query.getQueryConfig();
-
-		for (int i = start; i < end; i++) {
-			if (i >= PropsValues.INDEX_SEARCH_LIMIT) {
-				break;
+		if ((start > -1) && (start <= end)) {
+			if (end > length) {
+				end = length;
 			}
 
-			int docId = hitDocs.getDocId(i);
-
-			org.apache.lucene.document.Document document = indexSearcher.doc(
-				docId);
-
-			Document subsetDocument = getDocument(document);
-
-			String subsetSnippet = StringPool.BLANK;
-
-			if (queryConfig.isHighlightEnabled()) {
-				subsetSnippet = getSnippet(
-					document, query, Field.CONTENT, queryConfig.getLocale());
+			if (start > end) {
+				start = end;
 			}
 
-			subsetDocument.addText(Field.SNIPPET, subsetSnippet);
+			int subsetTotal = end - start;
 
-			subsetSnippets.add(subsetSnippet);
-
-			subsetDocs.add(subsetDocument);
-
-			Float subsetScore = hitDocs.getScore(i);
-
-			if (scoredFieldNamesCount > 0) {
-				subsetScore = subsetScore / scoredFieldNamesCount;
+			if (subsetTotal > PropsValues.INDEX_SEARCH_LIMIT) {
+				subsetTotal = PropsValues.INDEX_SEARCH_LIMIT;
 			}
 
-			subsetScores.add(subsetScore);
+			List<Document> subsetDocs = new ArrayList<Document>(subsetTotal);
+			List<String> subsetSnippets = new ArrayList<String>(subsetTotal);
+			List<Float> subsetScores = new ArrayList<Float>(subsetTotal);
 
-			if (_log.isDebugEnabled()) {
-				try {
-					Explanation explanation = indexSearcher.explain(
-						luceneQuery, docId);
+			QueryConfig queryConfig = query.getQueryConfig();
 
-					_log.debug(explanation.toString());
+			for (int i = start; i < end; i++) {
+				if (i >= PropsValues.INDEX_SEARCH_LIMIT) {
+					break;
 				}
-				catch (Exception e) {
+
+				int docId = hitDocs.getDocId(i);
+
+				org.apache.lucene.document.Document document =
+					indexSearcher.doc(docId);
+
+				Document subsetDocument = getDocument(document);
+
+				String subsetSnippet = StringPool.BLANK;
+
+				if (queryConfig.isHighlightEnabled()) {
+					subsetSnippet = getSnippet(
+						document, query, Field.CONTENT,
+						queryConfig.getLocale());
+				}
+
+				subsetDocument.addText(Field.SNIPPET, subsetSnippet);
+
+				subsetSnippets.add(subsetSnippet);
+
+				subsetDocs.add(subsetDocument);
+
+				Float subsetScore = hitDocs.getScore(i);
+
+				if (scoredFieldNamesCount > 0) {
+					subsetScore = subsetScore / scoredFieldNamesCount;
+				}
+
+				subsetScores.add(subsetScore);
+
+				if (_log.isDebugEnabled()) {
+					try {
+						Explanation explanation = indexSearcher.explain(
+							luceneQuery, docId);
+
+						_log.debug(explanation.toString());
+					}
+					catch (Exception e) {
+					}
 				}
 			}
-		}
 
-		hits.setStart(startTime);
-		hits.setSearchTime(searchTime);
-		hits.setQuery(query);
-		hits.setQueryTerms(queryTerms);
-		hits.setDocs(subsetDocs.toArray(new Document[subsetDocs.size()]));
-		hits.setLength(length);
-		hits.setSnippets(
-			subsetSnippets.toArray(new String[subsetSnippets.size()]));
-		hits.setScores(subsetScores.toArray(new Float[subsetScores.size()]));
+			hits.setStart(startTime);
+			hits.setSearchTime(searchTime);
+			hits.setQuery(query);
+			hits.setQueryTerms(queryTerms);
+			hits.setDocs(subsetDocs.toArray(new Document[subsetDocs.size()]));
+			hits.setLength(length);
+			hits.setSnippets(
+				subsetSnippets.toArray(new String[subsetSnippets.size()]));
+			hits.setScores(
+				subsetScores.toArray(new Float[subsetScores.size()]));
+		}
 
 		return hits;
 	}
