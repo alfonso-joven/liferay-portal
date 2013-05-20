@@ -23,6 +23,21 @@
 		<execute macro="List#cpView" />
 	</command>
 
+	<command name="AddRecord">
+		<var name="dataDefinitionDescription" value="Data Definition Description" />
+		<var name="dataDefinitionName" value="Data Definition" />
+		<var name="listDescription" value="List Description" />
+		<var name="listName" value="List Name" />
+		<var name="recordText" value="Text Field" />
+
+		<execute macro="DataDefinition#cpAdd" />
+
+		<execute macro="List#cpAdd" />
+
+		<execute macro="ListRecord#cpAdd" />
+		<execute macro="ListRecord#cpView" />
+	</command>
+
 	<command name="EditDataDefinition">
 		<var name="dataDefinitionDescription" value="Data Definition Description" />
 		<var name="dataDefinitionDescriptionEdit" value="Data Definition Description Edit" />
@@ -55,6 +70,25 @@
 		</execute>
 	</command>
 
+	<command name="EditRecord">
+		<var name="dataDefinitionDescription" value="Data Definition Description" />
+		<var name="dataDefinitionName" value="Data Definition" />
+		<var name="listDescription" value="List Description" />
+		<var name="listName" value="List Name" />
+		<var name="recordText" value="Text Field" />
+		<var name="recordTextEdit" value="Text Field Edit" />
+
+		<execute macro="DataDefinition#cpAdd" />
+
+		<execute macro="List#cpAdd" />
+
+		<execute macro="ListRecord#cpAdd" />
+		<execute macro="ListRecord#cpEdit" />
+		<execute macro="ListRecord#cpView">
+			<var name="recordText" value="${recordTextEdit}" />
+		</execute>
+	</command>
+
 	<command name="DeleteDataDefinition">
 		<var name="dataDefinitionDescription" value="Data Definition Description" />
 		<var name="dataDefinitionName" value="Data Definition" />
@@ -73,6 +107,21 @@
 
 		<execute macro="List#cpAdd" />
 		<execute macro="List#cpDelete" />
+	</command>
+
+	<command name="DeleteRecord">
+		<var name="dataDefinitionDescription" value="Data Definition Description" />
+		<var name="dataDefinitionName" value="Data Definition" />
+		<var name="listDescription" value="List Description" />
+		<var name="listName" value="List Name" />
+		<var name="recordText" value="Text Field" />
+
+		<execute macro="DataDefinition#cpAdd" />
+
+		<execute macro="List#cpAdd" />
+
+		<execute macro="ListRecord#cpAdd" />
+		<execute macro="ListRecord#cpDelete" />
 	</command>
 
 	<tear-down>
