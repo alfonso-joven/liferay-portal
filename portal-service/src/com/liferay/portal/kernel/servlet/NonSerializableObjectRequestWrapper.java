@@ -14,6 +14,11 @@
 
 package com.liferay.portal.kernel.servlet;
 
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+
+import java.io.NotSerializableException;
+
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -53,7 +58,25 @@ public class NonSerializableObjectRequestWrapper
 
 	@Override
 	public Object getAttribute(String name) {
-		Object object = super.getAttribute(name);
+		Object object = null;
+
+		try {
+			object = super.getAttribute(name);
+		}
+		catch (Exception e) {
+			if (e instanceof NotSerializableException) {
+
+				// LPS-31885
+
+				String message = e.getMessage();
+
+				if ((message == null) || !message.contains("BEA-101362")) {
+					_log.error(e, e);
+				}
+			}
+
+			return null;
+		}
 
 		object = NonSerializableObjectHandler.getValue(object);
 
@@ -66,5 +89,8 @@ public class NonSerializableObjectRequestWrapper
 
 		super.setAttribute(name, object);
 	}
+
+	private static Log _log = LogFactoryUtil.getLog(
+		NonSerializableObjectRequestWrapper.class);
 
 }
