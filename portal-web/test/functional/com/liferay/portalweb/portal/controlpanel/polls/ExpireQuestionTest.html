@@ -49,29 +49,54 @@
 	<td>Polls</td>
 </tr>
 <tr>
-	<td>clickAtAndWait</td>
-	<td>link=Edited Test Question 2</td>
+	<td>assertText</td>
+	<td>//tr[contains(.,'Edited Test Question 2')]/td[1]/a</td>
 	<td>Edited Test Question 2</td>
 </tr>
 <tr>
-	<td>assertElementPresent</td>
-	<td>//div[2]/div/span[1]/span/span/input</td>
+	<td>clickAtAndWait</td>
+	<td>//tr[contains(.,'Edited Test Question 2')]/td[1]/a</td>
+	<td>Edited Test Question 2</td>
+</tr>
+<tr>
+	<td>assertVisible</td>
+	<td>//span[1]/span/span/input[@type='radio']</td>
 	<td>Choice A</td>
 </tr>
 <tr>
-	<td>assertElementPresent</td>
-	<td>//span[2]/span/span/input</td>
+	<td>assertText</td>
+	<td>//span[1]/span/label</td>
+	<td>a. Test Choice A</td>
+</tr>
+<tr>
+	<td>assertVisible</td>
+	<td>//span[2]/span/span/input[@type='radio']</td>
 	<td>Choice B</td>
 </tr>
 <tr>
-	<td>assertElementPresent</td>
-	<td>//span[3]/span/span/input</td>
+	<td>assertText</td>
+	<td>//span[2]/span/label</td>
+	<td>b. Test Choice B</td>
+</tr>
+<tr>
+	<td>assertVisible</td>
+	<td>//span[3]/span/span/input[@type='radio']</td>
 	<td>Choice C</td>
 </tr>
 <tr>
-	<td>assertElementPresent</td>
-	<td>//span[4]/span/span/input</td>
+	<td>assertText</td>
+	<td>//span[3]/span/label</td>
+	<td>c. Test Choice C</td>
+</tr>
+<tr>
+	<td>assertVisible</td>
+	<td>//span[4]/span/span/input[@type='radio']</td>
 	<td>Choice D</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[4]/span/label</td>
+	<td>d. NEW Test Choice D</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -90,24 +115,28 @@
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Edit')]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Edit')]</td>
 	<td>Edit</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Edit')]/a</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Edit')]</td>
 	<td>Edit</td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Edit')]/a</td>
+	<td>clickAtAndWait</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Edit')]</td>
 	<td>Edit</td>
 </tr>
-<!--Webdriver Workaround, please do not remove steps between these 2 comments.-->
 <tr>
-	<td>assertChecked</td>
+	<td>storeChecked</td>
 	<td>//input[@id='_25_neverExpireCheckbox']</td>
-	<td>Never Expire</td>
+	<td>neverExpireCheckbox</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>!${neverExpireCheckbox}</td>
+	<td>NeverExpireCheckbox</td>
 </tr>
 <tr>
 	<td>clickAt</td>
@@ -115,75 +144,49 @@
 	<td>Never Expire</td>
 </tr>
 <tr>
-	<td>assertNotChecked</td>
-	<td>//input[@id='_25_neverExpireCheckbox']</td>
-	<td>Never Expire</td>
-</tr>
-<tr>
-	<td>clickAt</td>
-	<td>//select[@name='_25_expirationDateMonth']</td>
-	<td>Expiration Date Month</td>
-</tr>
-<tr>
-	<td>assertNotChecked</td>
-	<td>//input[@id='_25_neverExpireCheckbox']</td>
-	<td>Never Expire</td>
-</tr>
-<tr>
-	<td>clickAt</td>
-	<td>//input[@id='_25_neverExpireCheckbox']</td>
-	<td>Never Expire</td>
-</tr>
-<tr>
-	<td>assertChecked</td>
-	<td>//input[@id='_25_neverExpireCheckbox']</td>
-	<td>Never Expire</td>
-</tr>
-<tr>
-	<td>clickAt</td>
-	<td>//input[@id='_25_neverExpireCheckbox']</td>
-	<td>Never Expire</td>
-</tr>
-<tr>
-	<td>assertNotChecked</td>
-	<td>//input[@id='_25_neverExpireCheckbox']</td>
-	<td>Never Expire</td>
-</tr>
-<!--Webdriver Workaround, please do not remove steps between these 2 comments.-->
-<tr>
-	<td>waitForVisible</td>
-	<td>//select[@name='_25_expirationDateMonth']</td>
+	<td>label</td>
+	<td>NeverExpireCheckbox</td>
 	<td></td>
 </tr>
 <tr>
-	<td>select</td>
-	<td>//select[@name='_25_expirationDateYear']</td>
-	<td>label=2008</td>
+	<td>assertNotChecked</td>
+	<td>//input[@id='_25_neverExpireCheckbox']</td>
+	<td>Never Expire</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//select[@id='_25_expirationdatemonth']</td>
+	<td>Expiration Month</td>
 </tr>
 <tr>
 	<td>select</td>
-	<td>//select[@name='_25_expirationDateMonth']</td>
-	<td>label=January</td>
+	<td>//select[@id='_25_expirationdateyear']</td>
+	<td>2008</td>
 </tr>
 <tr>
 	<td>select</td>
-	<td>//select[@name='_25_expirationDateDay']</td>
-	<td>label=1</td>
+	<td>//select[@id='_25_expirationdatemonth']</td>
+	<td>January</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>//select[@id='_25_expirationdateday']</td>
+	<td>1</td>
 </tr>
 <tr>
 	<td>select</td>
 	<td>//select[@name='_25_expirationDateHour']</td>
-	<td>label=12</td>
+	<td>12</td>
 </tr>
 <tr>
 	<td>select</td>
 	<td>//select[@name='_25_expirationDateMinute']</td>
-	<td>label=:00</td>
+	<td>:00</td>
 </tr>
 <tr>
 	<td>select</td>
 	<td>//select[@name='_25_expirationDateAmPm']</td>
-	<td>label=AM</td>
+	<td>AM</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -194,6 +197,31 @@
 	<td>assertText</td>
 	<td>//div[@class='portlet-msg-success']</td>
 	<td>Your request completed successfully.</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[contains(.,'Edited Test Question 2')]/td[1]/a</td>
+	<td>Edited Test Question 2</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[contains(.,'Edited Test Question 2')]/td[2]/a</td>
+	<td>0</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[contains(.,'Edited Test Question 2')]/td[3]/a</td>
+	<td>Never</td>
+</tr>
+<tr>
+	<td>assertNotText</td>
+	<td>//tr[contains(.,'Edited Test Question 2')]/td[4]/a</td>
+	<td>Never</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//tr[contains(.,'Edited Test Question 2')]/td[5]/span[@title='Actions']/ul/li/strong/a/span</td>
+	<td>Actions</td>
 </tr>
 </tbody></table>
 </body>
