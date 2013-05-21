@@ -64,10 +64,10 @@ if (Validator.isNull(mainLanguageValue)) {
 <span class="taglib-input-localized">
 	<c:choose>
 		<c:when test='<%= type.equals("input") %>'>
-			<input class="language-value <%= cssClass %>" <%= disabled ? "disabled=\"disabled\"" : "" %> id="<portlet:namespace /><%= id + StringPool.UNDERLINE + mainLanguageId %>" name="<portlet:namespace /><%= name + StringPool.UNDERLINE + mainLanguageId %>" type="text" value="<%= HtmlUtil.escape(mainLanguageValue) %>" <%= InlineUtil.buildDynamicAttributes(dynamicAttributes) %> />
+			<input class="language-value <%= cssClass %>" <%= disabled ? "disabled=\"disabled\"" : "" %> id="<portlet:namespace /><%= HtmlUtil.escapeAttribute(id + StringPool.UNDERLINE + mainLanguageId) %>" name="<portlet:namespace /><%= HtmlUtil.escapeAttribute(name + StringPool.UNDERLINE + mainLanguageId) %>" type="text" value="<%= HtmlUtil.escapeAttribute(mainLanguageValue) %>" <%= InlineUtil.buildDynamicAttributes(dynamicAttributes) %> />
 		</c:when>
 		<c:when test='<%= type.equals("textarea") %>'>
-			<textarea class="language-value <%= cssClass %>" <%= disabled ? "disabled=\"disabled\"" : "" %> id="<portlet:namespace /><%= id + StringPool.UNDERLINE + mainLanguageId %>" name="<portlet:namespace /><%= name + StringPool.UNDERLINE + mainLanguageId %>" <%= InlineUtil.buildDynamicAttributes(dynamicAttributes) %>><%= HtmlUtil.escape(mainLanguageValue) %></textarea>
+			<textarea class="language-value <%= cssClass %>" <%= disabled ? "disabled=\"disabled\"" : "" %> id="<portlet:namespace /><%= HtmlUtil.escapeAttribute(id + StringPool.UNDERLINE + mainLanguageId) %>" name="<portlet:namespace /><%= HtmlUtil.escapeAttribute(name + StringPool.UNDERLINE + mainLanguageId) %>" <%= InlineUtil.buildDynamicAttributes(dynamicAttributes) %>><%= HtmlUtil.escape(mainLanguageValue) %></textarea>
 		</c:when>
 	</c:choose>
 
@@ -75,7 +75,7 @@ if (Validator.isNull(mainLanguageValue)) {
 		<aui:script use="aui-char-counter">
 			new A.CharCounter(
 				{
-					input: '#<portlet:namespace /><%= id + StringPool.UNDERLINE + mainLanguageId %>',
+					input: '#<portlet:namespace /><%= HtmlUtil.escapeJS(id + StringPool.UNDERLINE + mainLanguageId) %>',
 					maxLength: <%= maxLength %>
 				}
 			);
@@ -174,10 +174,10 @@ if (Validator.isNull(mainLanguageValue)) {
 
 								<c:choose>
 									<c:when test='<%= type.equals("input") %>'>
-										<input class="language-value" <%= disabled ? "disabled=\"disabled\"" : "" %> id="<portlet:namespace /><%= id + StringPool.UNDERLINE + curLanguageId %>" name="<portlet:namespace /><%= name + StringPool.UNDERLINE + curLanguageId %>" type="text" value="<%= HtmlUtil.escape(languageValue) %>" />
+										<input class="language-value" <%= disabled ? "disabled=\"disabled\"" : "" %> id="<portlet:namespace /><%= HtmlUtil.escapeAttribute(id + StringPool.UNDERLINE + curLanguageId) %>" name="<portlet:namespace /><%= HtmlUtil.escapeAttribute(name + StringPool.UNDERLINE + curLanguageId) %>" type="text" value="<%= languageValue %>" />
 									</c:when>
 									<c:when test='<%= type.equals("textarea") %>'>
-										<textarea class="language-value" <%= disabled ? "disabled=\"disabled\"" : "" %> id="<portlet:namespace /><%= id + StringPool.UNDERLINE + curLanguageId %>" name="<portlet:namespace /><%= name + StringPool.UNDERLINE + curLanguageId %>"><%= HtmlUtil.escape(languageValue) %></textarea>
+										<textarea class="language-value" <%= disabled ? "disabled=\"disabled\"" : "" %> id="<portlet:namespace /><%= HtmlUtil.escapeAttribute(id + StringPool.UNDERLINE + curLanguageId) %>" name="<portlet:namespace /><%= HtmlUtil.escapeAttribute(name + StringPool.UNDERLINE + curLanguageId) %>"><%= languageValue %></textarea>
 									</c:when>
 								</c:choose>
 
@@ -185,7 +185,7 @@ if (Validator.isNull(mainLanguageValue)) {
 									<aui:script use="aui-char-counter">
 										new A.CharCounter(
 											{
-												input: '#<portlet:namespace /><%= id + StringPool.UNDERLINE + curLanguageId %>',
+												input: '#<portlet:namespace /><%= HtmlUtil.escapeAttribute(id + StringPool.UNDERLINE + curLanguageId) %>',
 												maxLength: <%= maxLength %>
 											}
 										);
@@ -295,7 +295,7 @@ if (Validator.isNull(mainLanguageValue)) {
 
 		if (languageSelectorTrigger) {
 			Liferay.component(
-				'<%= namespace + id %>languageSelector',
+				'<%= HtmlUtil.escapeJS(namespace + id) %>languageSelector',
 				function(event) {
 					if (handle) {
 						handle.detach();
@@ -321,7 +321,7 @@ if (Validator.isNull(mainLanguageValue)) {
 			var handle = languageSelectorTrigger.once(
 				'click',
 				function(event) {
-					Liferay.component('<%= namespace + id %>languageSelector');
+					Liferay.component('<%= HtmlUtil.escapeJS(namespace + id) %>languageSelector');
 				}
 			);
 		}
