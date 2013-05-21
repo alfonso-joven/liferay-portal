@@ -30,6 +30,13 @@ public class TearDownCommunityTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
+				selenium.clickAt("//div[@id='dockbar']",
+					RuntimeVariables.replace("Dockbar"));
+				selenium.waitForElementPresent(
+					"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+				assertEquals(RuntimeVariables.replace("Go to"),
+					selenium.getText("//li[@id='_145_mySites']/a/span"));
+				selenium.mouseOver("//li[@id='_145_mySites']/a/span");
 				selenium.waitForElementPresent("link=Control Panel");
 				selenium.clickAt("link=Control Panel",
 					RuntimeVariables.replace("Control Panel"));
@@ -51,7 +58,7 @@ public class TearDownCommunityTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("//td[6]/span/ul/li/strong/a/span",
+				selenium.clickAt("//td[7]/span/ul/li/strong/a/span",
 					RuntimeVariables.replace("Actions"));
 				selenium.waitForVisible(
 					"//div[@class='lfr-component lfr-menu-list']/ul/li[6]/a");
@@ -75,7 +82,7 @@ public class TearDownCommunityTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("//td[6]/span/ul/li/strong/a/span",
+				selenium.clickAt("//td[7]/span/ul/li/strong/a/span",
 					RuntimeVariables.replace("Actions"));
 				selenium.waitForVisible(
 					"//div[@class='lfr-component lfr-menu-list']/ul/li[6]/a");
@@ -99,7 +106,7 @@ public class TearDownCommunityTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("//td[6]/span/ul/li/strong/a/span",
+				selenium.clickAt("//td[7]/span/ul/li/strong/a/span",
 					RuntimeVariables.replace("Actions"));
 				selenium.waitForVisible(
 					"//div[@class='lfr-component lfr-menu-list']/ul/li[6]/a");
@@ -123,7 +130,7 @@ public class TearDownCommunityTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("//td[6]/span/ul/li/strong/a/span",
+				selenium.clickAt("//td[7]/span/ul/li/strong/a/span",
 					RuntimeVariables.replace("Actions"));
 				selenium.waitForVisible(
 					"//div[@class='lfr-component lfr-menu-list']/ul/li[6]/a");
@@ -147,7 +154,7 @@ public class TearDownCommunityTest extends BaseTestCase {
 					continue;
 				}
 
-				selenium.clickAt("//td[6]/span/ul/li/strong/a/span",
+				selenium.clickAt("//td[7]/span/ul/li/strong/a/span",
 					RuntimeVariables.replace("Actions"));
 				selenium.waitForVisible(
 					"//div[@class='lfr-component lfr-menu-list']/ul/li[6]/a");

@@ -26,6 +26,13 @@ public class DeleteWebContentCompletedDraftEditDetailsTest extends BaseTestCase 
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Go to"),
+			selenium.getText("//li[@id='_145_mySites']/a/span"));
+		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
 		selenium.waitForElementPresent("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
@@ -34,14 +41,19 @@ public class DeleteWebContentCompletedDraftEditDetailsTest extends BaseTestCase 
 			RuntimeVariables.replace("Web Content"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Web Content Name Edited"),
-			selenium.getText("//td[3]/a"));
-		assertTrue(selenium.isElementPresent("//td[5]/a"));
+			selenium.getText(
+				"//tr[contains(.,'Web Content Name Edited')]/td[3]/a"));
 		assertEquals(RuntimeVariables.replace("Draft"),
-			selenium.getText("//td[4]/a"));
-		assertTrue(selenium.isElementPresent("//td[6]/a"));
+			selenium.getText(
+				"//tr[contains(.,'Web Content Name Edited')]/td[4]/a"));
+		assertTrue(selenium.isElementPresent(
+				"//tr[contains(.,'Web Content Name Edited')]/td[6]/a"));
+		assertTrue(selenium.isElementPresent(
+				"//tr[contains(.,'Web Content Name Edited')]/td[6]/a"));
 		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
-			selenium.getText("//td[7]/a"));
-		selenium.clickAt("//td[3]/a",
+			selenium.getText(
+				"//tr[contains(.,'Web Content Name Edited')]/td[8]/a"));
+		selenium.clickAt("//tr[contains(.,'Web Content Name Edited')]/td[3]/a",
 			RuntimeVariables.replace("Web Content Name Edited"));
 		selenium.waitForPageToLoad("30000");
 		Thread.sleep(5000);
@@ -56,7 +68,7 @@ public class DeleteWebContentCompletedDraftEditDetailsTest extends BaseTestCase 
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
-		selenium.clickAt("//td[3]/a",
+		selenium.clickAt("//tr[contains(.,'Web Content Name')]/td[3]/a",
 			RuntimeVariables.replace("Web Content Name Edited"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isElementPresent("//button[2]"));
@@ -72,12 +84,14 @@ public class DeleteWebContentCompletedDraftEditDetailsTest extends BaseTestCase 
 			RuntimeVariables.replace("Web Content"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Web Content Name"),
-			selenium.getText("//td[3]/a"));
-		assertTrue(selenium.isElementPresent("//td[5]/a"));
+			selenium.getText("//tr[contains(.,'Web Content Name')]/td[3]/a"));
 		assertEquals(RuntimeVariables.replace("Approved"),
-			selenium.getText("//td[4]/a"));
-		assertTrue(selenium.isElementPresent("//td[6]/a"));
+			selenium.getText("//tr[contains(.,'Web Content Name')]/td[4]/a"));
+		assertTrue(selenium.isElementPresent(
+				"//tr[contains(.,'Web Content Name')]/td[6]/a"));
+		assertTrue(selenium.isElementPresent(
+				"//tr[contains(.,'Web Content Name')]/td[7]/a"));
 		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
-			selenium.getText("//td[7]/a"));
+			selenium.getText("//tr[contains(.,'Web Content Name')]/td[8]/a"));
 	}
 }

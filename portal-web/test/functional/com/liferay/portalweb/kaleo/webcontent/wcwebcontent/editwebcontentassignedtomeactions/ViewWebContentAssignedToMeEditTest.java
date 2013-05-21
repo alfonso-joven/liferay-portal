@@ -25,6 +25,13 @@ public class ViewWebContentAssignedToMeEditTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Go to"),
+			selenium.getText("//li[@id='_145_mySites']/a/span"));
+		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
 		selenium.waitForElementPresent("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
@@ -35,14 +42,15 @@ public class ViewWebContentAssignedToMeEditTest extends BaseTestCase {
 		selenium.clickAt("link=Pending", RuntimeVariables.replace("Pending"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Review"),
-			selenium.getText("//td[1]/a"));
+			selenium.getText("//tr[contains(.,'Web Content Name')]/td[1]/a"));
 		assertEquals(RuntimeVariables.replace("Web Content Name Edited"),
-			selenium.getText("//td[2]/a"));
+			selenium.getText("//tr[contains(.,'Web Content Name')]/td[2]/a"));
 		assertEquals(RuntimeVariables.replace("Web Content"),
-			selenium.getText("//td[3]/a"));
-		assertTrue(selenium.isElementPresent("//td[4]/a"));
+			selenium.getText("//tr[contains(.,'Web Content Name')]/td[3]/a"));
+		assertTrue(selenium.isElementPresent(
+				"//tr[contains(.,'Web Content Name')]/td[4]/a"));
 		assertEquals(RuntimeVariables.replace("Never"),
-			selenium.getText("//td[5]/a"));
+			selenium.getText("//tr[contains(.,'Web Content Name')]/td[5]/a"));
 		assertEquals(RuntimeVariables.replace(
 				"There are no pending tasks assigned to your roles."),
 			selenium.getText("//div[@class='portlet-msg-info']"));
@@ -55,18 +63,20 @@ public class ViewWebContentAssignedToMeEditTest extends BaseTestCase {
 		selenium.clickAt("link=Pending", RuntimeVariables.replace("Pending"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Single Approver"),
-			selenium.getText("//td[1]/a"));
+			selenium.getText("//tr[contains(.,'Web Content Name')]/td[1]/a"));
 		assertEquals(RuntimeVariables.replace("Web Content Name Edited"),
-			selenium.getText("//td[2]/a"));
+			selenium.getText("//tr[contains(.,'Web Content Name')]/td[2]/a"));
 		assertEquals(RuntimeVariables.replace("Web Content"),
-			selenium.getText("//td[3]/a"));
+			selenium.getText("//tr[contains(.,'Web Content Name')]/td[3]/a"));
 		assertEquals(RuntimeVariables.replace("Review"),
-			selenium.getText("//td[4]/a"));
-		assertTrue(selenium.isElementPresent("//td[5]/a"));
+			selenium.getText("//tr[contains(.,'Web Content Name')]/td[4]/a"));
+		assertTrue(selenium.isElementPresent(
+				"//tr[contains(.,'Web Content Name')]/td[5]/a"));
 		assertEquals(RuntimeVariables.replace("Never"),
-			selenium.getText("//td[6]/a"));
+			selenium.getText("//tr[contains(.,'Web Content Name')]/td[6]/a"));
 		assertEquals(RuntimeVariables.replace("Withdraw Submission"),
-			selenium.getText("//span/a/span"));
+			selenium.getText(
+				"//td[@class='align-right col-7 col-7 last valign-middle']/span/a/span"));
 		selenium.clickAt("link=Completed", RuntimeVariables.replace("Completed"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
@@ -75,15 +85,20 @@ public class ViewWebContentAssignedToMeEditTest extends BaseTestCase {
 		selenium.clickAt("link=Web Content",
 			RuntimeVariables.replace("Web Content"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isElementPresent("//td[2]/a"));
+		assertTrue(selenium.isElementPresent(
+				"//tr[contains(.,'Web Content Name')]/td[2]/a"));
 		assertEquals(RuntimeVariables.replace("Web Content Name Edited"),
-			selenium.getText("//td[3]/a"));
+			selenium.getText("//tr[contains(.,'Web Content Name')]/td[3]/a"));
 		assertEquals(RuntimeVariables.replace("Pending"),
-			selenium.getText("//td[4]/a"));
-		assertTrue(selenium.isElementPresent("//td[5]/a"));
-		assertTrue(selenium.isElementPresent("//td[6]/a"));
+			selenium.getText("//tr[contains(.,'Web Content Name')]/td[4]/a"));
+		assertTrue(selenium.isElementPresent(
+				"//tr[contains(.,'Web Content Name')]/td[5]/a"));
+		assertTrue(selenium.isElementPresent(
+				"//tr[contains(.,'Web Content Name')]/td[6]/a"));
+		assertTrue(selenium.isElementPresent(
+				"//tr[contains(.,'Web Content Name')]/td[7]/a"));
 		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
-			selenium.getText("//td[7]/a"));
+			selenium.getText("//tr[contains(.,'Web Content Name')]/td[8]/a"));
 		selenium.clickAt("link=Workflow", RuntimeVariables.replace("Workflow"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Submissions",
@@ -92,16 +107,22 @@ public class ViewWebContentAssignedToMeEditTest extends BaseTestCase {
 		selenium.clickAt("link=Pending", RuntimeVariables.replace("Pending"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Single Approver"),
-			selenium.getText("//td[1]/a"));
+			selenium.getText(
+				"//tr[contains(.,'Web Content Name Edited')]/td[1]/a"));
 		assertEquals(RuntimeVariables.replace("Web Content Name Edited"),
-			selenium.getText("//td[2]/a"));
+			selenium.getText(
+				"//tr[contains(.,'Web Content Name Edited')]/td[2]/a"));
 		assertEquals(RuntimeVariables.replace("Web Content"),
-			selenium.getText("//td[3]/a"));
+			selenium.getText(
+				"//tr[contains(.,'Web Content Name Edited')]/td[3]/a"));
 		assertEquals(RuntimeVariables.replace("Review"),
-			selenium.getText("//td[4]/a"));
-		assertTrue(selenium.isElementPresent("//td[5]/a"));
+			selenium.getText(
+				"//tr[contains(.,'Web Content Name Edited')]/td[4]/a"));
+		assertTrue(selenium.isElementPresent(
+				"//tr[contains(.,'Web Content Name Edited')]/td[5]/a"));
 		assertEquals(RuntimeVariables.replace("Never"),
-			selenium.getText("//td[6]/a"));
+			selenium.getText(
+				"//tr[contains(.,'Web Content Name Edited')]/td[6]/a"));
 		selenium.clickAt("link=Completed", RuntimeVariables.replace("Completed"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(

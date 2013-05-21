@@ -14,6 +14,12 @@
 
 package com.liferay.portalweb.kaleo.webcontent.wcwebcontent.deletewebcontentcompletededitedlist;
 
+import com.liferay.portalweb.kaleo.webcontent.wcwebcontent.addwebcontent.AddWebContentTest;
+import com.liferay.portalweb.kaleo.webcontent.wcwebcontent.addwebcontent.TearDownWebContentTest;
+import com.liferay.portalweb.kaleo.webcontent.wcwebcontent.deletewebcontentassignedtomeactions.AssignToMeWebContentActionsTest;
+import com.liferay.portalweb.kaleo.webcontent.wcwebcontent.deletewebcontentcompletedactions.ApproveWebContentActionsTest;
+import com.liferay.portalweb.kaleo.workflowconfiguration.resource.configurewebcontentsingleapprover.ConfigureWebContentSingleApproverTest;
+import com.liferay.portalweb.kaleo.workflowconfiguration.resource.configurewebcontentsingleapprover.TearDownWorkflowConfigurationTest;
 import com.liferay.portalweb.portal.BaseTestSuite;
 
 import junit.framework.Test;
