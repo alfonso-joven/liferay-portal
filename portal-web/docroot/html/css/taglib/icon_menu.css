@@ -193,8 +193,8 @@
 			.lfr-trigger strong a {
 				background-image: url(@theme_image_path@/arrows/05_right.png);
 				background-position: 98%;
-				padding-right: 20px;
 				padding-left: 20px;
+				padding-right: 20px;
 			}
 
 			&.disabled .lfr-trigger strong a {

@@ -765,7 +765,7 @@ input[type="text"], input[type="password"], select, textarea, .textarea, #breadc
 
 .rtl {
 	body {
-		background: #eef0f2 url(../images/custom/sidebar_bg_rtl.png) repeat-y 0 0;
+		background: #EEF0F2 url(../images/custom/sidebar_bg_rtl.png) repeat-y 0 0;
 		background-position: right;
 
 		&.portal-popup {
@@ -783,8 +783,8 @@ input[type="text"], input[type="password"], select, textarea, .textarea, #breadc
 
 		&.first a {
 			background-position: right;
-			padding-right: 21px;
 			padding-left: 0;
+			padding-right: 21px;
 			float: right;
 		}
 	}
@@ -810,23 +810,19 @@ input[type="text"], input[type="password"], select, textarea, .textarea, #breadc
 		}
 
 		#panel-manage-my .lfr-panel-title {
-			background-position-x: right;
-			background-position-y: 3px;
+			background-position: right 3px;
 		}
 
 		#panel-manage-marketplace .lfr-panel-title {
-			background-position-x: right;
-			background-position-y: -72px;
+			background-position: right -72px;
 		}
 
 		#panel-manage-portal .lfr-panel-title {
-			background-position-x: right;
-			background-position-y: -36px;
+			background-position: right -36px;
 		}
 
 		#panel-manage-server .lfr-panel-title {
-			background-position-x: right;
-			background-position-y: -55px;
+			background-position: right -55px;
 		}
 
 		#panel-manage-content .lfr-panel-title span a {
@@ -836,12 +832,12 @@ input[type="text"], input[type="password"], select, textarea, .textarea, #breadc
 	}
 
 	.panel-page-application .lfr-panel .lfr-panel-titlebar {
-		background-position-x: right;
+		background-position: 100% 0;
 		padding-left: 2px;
-		padding-right: 5px;
+		padding-right: 20px;
 
 		.lfr-panel-button {
-			background-position-x: right;
+			background-position: right;
 			padding-left: 2px;
 			padding-right: 5px;
 		}

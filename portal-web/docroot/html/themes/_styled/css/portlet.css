@@ -792,8 +792,8 @@ body.portlet {
 
 	.portlet-topper-toolbar {
 		left: 3px;
-		text-align: left;
 		right: auto;
+		text-align: left;
 
 		.nobr {
 			float: right;
@@ -813,8 +813,8 @@ body.portlet {
 	.lfr-message {
 		.lfr-message-controls {
 			left: auto;
-			right: 3px;
 			margin: -8px 3px 0 -4px;
+			right: 3px;
 		}
 	}
 
@@ -822,7 +822,7 @@ body.portlet {
 		padding-right: 5px;
 
 		&.lfr-role .col-1 {
-			background-position-x: right;
+			background-position: right;
 			padding-right: 30px;
 		}		
 	}

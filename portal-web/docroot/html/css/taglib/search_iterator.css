@@ -127,17 +127,19 @@
 /* ---------- RTL ---------- */
 
 .rtl {
-	.taglib-search-iterator td {
-		&.align-left {
-			text-align: right;
+	.taglib-search-iterator {
+		td {
+			&.align-left {
+				text-align: right;
+			}
+
+			&.align-right {
+				text-align: left;
+			}
 		}
 
-		&.align-right {
-			text-align: left;
+		.search-results {
+			float: right;
 		}
-	}
-
-	.taglib-page-iterator .search-results {
-		float: right;
 	}
 }

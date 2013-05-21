@@ -507,9 +507,7 @@ html > .lfr-dockbar-pinned {
 /* ---------- RTL ---------- */
 
 .rtl {
-
 	.dockbar {
-
 		.admin-toolbar {
 			float: right;
 		}
@@ -519,7 +517,7 @@ html > .lfr-dockbar-pinned {
 		}
 
 		.menu-button {
-			background-position-x: 7%;
+			background-position: 7%;
 			padding: 5px 5px 5px 0;
 			
 			span {
@@ -540,7 +538,7 @@ html > .lfr-dockbar-pinned {
 		}
 
 		.control-panel a {
-			background-position-x: right;
+			background-position: right;
 			margin-right: 3px;
 			padding-right: 25px;
 		}

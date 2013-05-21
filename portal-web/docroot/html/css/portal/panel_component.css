@@ -125,11 +125,13 @@
 /* ---------- RTL ---------- */
 
 .rtl {
-	.lfr-panel-titlebar .lfr-panel-title {
-		float: right;
-	}
+	.lfr-panel-titlebar {
+		.lfr-panel-title {
+			float: right;
+		}
 
-	.lfr-panel-titlebar .lfr-panel-button {
-		float: left;
+		.lfr-panel-button {
+			float: left;
+		}
 	}
 }

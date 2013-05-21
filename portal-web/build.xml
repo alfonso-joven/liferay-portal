@@ -172,13 +172,6 @@
 					overwrite="true"
 				/>
 
-				<concat append="true" destfile="docroot/html/css/portal/aui.css">
-					<filelist
-						dir="docroot/html/css/portal"
-						files="aui_rtl.css"
-					/>
-				</concat>
-
 				<!-- Images -->
 
 				<copy todir="docroot/html/themes/_unstyled/images/aui/">

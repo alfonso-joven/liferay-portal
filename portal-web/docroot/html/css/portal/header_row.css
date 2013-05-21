@@ -59,11 +59,13 @@
 /* ---------- RTL ---------- */
 
 .rtl {
-	.lfr-header-row .lfr-search-combobox {
-		float: left;
-	}
+	.lfr-header-row {
+		.lfr-search-combobox {
+			float: left;
+		}
 
-	.lfr-header-row .lfr-actions.show-arrow.direction-down .lfr-trigger strong a {
-		padding: 0 4px 0 20px;
+		.lfr-actions.show-arrow.direction-down .lfr-trigger strong a {
+			padding: 0 4px 0 20px;
+		}
 	}
 }

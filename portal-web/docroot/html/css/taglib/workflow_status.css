@@ -42,13 +42,13 @@
 
 .rtl .taglib-workflow-status {
 	.workflow-id, .workflow-version {
-		background-position-x: right;
+		background-position: right 50%;
 		margin-left: 5px;
 		margin-right: 0;
 	}
 	
 	.workflow-status {
-		background-position-x: right;
+		background-position: right 50%;
 		margin-left: 5px;
 		margin-right: 0;
 		padding: 2px 20px 2px 0;

@@ -907,7 +907,7 @@
 	.asset-details {
 		.asset-details-content {
 			.lfr-asset-icon {
-				background-position-x: right;
+				background-position: right;
 				padding: 2px 20px 2px 0;
 				margin-left: 25px;
 				margin-right: 0;
