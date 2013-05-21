@@ -493,3 +493,17 @@
 		}
 	}
 }
+
+/* ---------- RTL ---------- */
+
+.portlet-communities, .portlet-users-admin {
+	.lfr-available-themes {
+		.header-title {
+			float: left;
+		}
+
+		.install-themes {
+			float: left;
+		}
+	}
+}

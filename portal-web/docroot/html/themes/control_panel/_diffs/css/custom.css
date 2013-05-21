@@ -768,6 +768,10 @@ input[type="text"], input[type="password"], select, textarea, .textarea, #breadc
 	background-position: right;
 }
 
+.rtl body.portal-popup:after, .rtl body.portal-popup:before {
+	background-image: none;
+}
+
 .rtl #breadcrumbs li.first a {
 	background-position: right;
 	padding-right: 21px;
@@ -788,6 +792,10 @@ input[type="text"], input[type="password"], select, textarea, .textarea, #breadc
 	float: right;
 	padding: 15px 20px 0 0;
 	width: 75%;
+}
+
+.rtl .panel-page-menu #panel-manage-content .lfr-panel-title {
+	padding-right: 0;
 }
 
 .rtl .panel-page-menu .lfr-panel-content ul li a .icon {
@@ -817,4 +825,15 @@ input[type="text"], input[type="password"], select, textarea, .textarea, #breadc
 .rtl .panel-page-menu #panel-manage-server .lfr-panel-title {
 	background-position-x: right;
 	background-position-y: -55px;
+}
+
+.rtl .panel-page-menu #panel-manage-content .lfr-panel-title span a {
+	padding-left: 20px;
+	padding-right: 2px;
+}
+
+.rtl .panel-page-application .lfr-panel .lfr-panel-titlebar, .rtl .panel-page-application .lfr-panel .lfr-panel-titlebar .lfr-panel-button, .rtl .panel-page-application .lfr-panel .lfr-panel-titlebar .lfr-panel-button {
+	background-position-x: right;
+	padding-right: 5px;
+	padding-left: 2px;
 }

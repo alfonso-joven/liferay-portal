@@ -448,3 +448,19 @@ hr, .separator {
 	border-top-left-radius: 0;
 	border-bottom-left-radius: 0;
 }
+
+/* ---------- RTL ---------- */
+
+.rtl .portlet {
+	text-align: right;
+}
+
+.rtl .signed-in.controls-visible .portlet-title {
+	padding-left: 80px;
+	padding-right: 5px;
+}
+
+.rtl .site-breadcrumbs li span {
+	background: url(@theme_image_path@/common/breadcrumbs_rtl.png) no-repeat 100% 50%;
+	padding: 0.5em 0 0.5em 15px;
+}

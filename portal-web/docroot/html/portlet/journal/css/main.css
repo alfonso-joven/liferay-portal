@@ -860,3 +860,15 @@
 		}
 	}
 }
+
+/* ---------- RTL ---------- */
+
+.rtl .portlet-journal {
+	.add-permission-button-row {
+		float: right;
+	}
+
+	.subscribe-link {
+		float: left;
+	}
+}

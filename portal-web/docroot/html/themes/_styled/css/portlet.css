@@ -797,3 +797,31 @@ body.portlet {
 		padding-right: 30px;
 	}
 }
+
+.rtl .portlet-topper-toolbar {
+	left: 3px;
+	text-align: left;
+	right: auto;
+
+	.nobr {
+		float: right;
+	}
+}
+
+.rtl .lfr-actions {
+	&.portlet-options {
+		float: right;
+
+		.lfr-trigger strong a {
+			padding: 0;
+		}
+	}	
+}
+
+.rtl .lfr-message {
+	.lfr-message-controls {
+		left: auto;
+		right: 3px;
+		margin: -8px 3px 0 -4px;
+	}
+}
