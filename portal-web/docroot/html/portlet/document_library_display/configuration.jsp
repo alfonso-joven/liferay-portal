@@ -196,7 +196,7 @@ String portletNameSpace = PortalUtil.getPortletNamespace(portletResource);
 			nameValue: rootFolderName
 		};
 
-		Liferay.Util.selectFolder(folderData, '<liferay-portlet:renderURL portletName="<%= portletResource %>"><portlet:param name="struts_action" value='<%= strutsAction + "/view" %>' /></liferay-portlet:renderURL>', '<portlet:namespace />');
+		Liferay.Util.selectFolder(folderData, '<liferay-portlet:renderURL portletName="<%= HtmlUtil.escapeJS(portletResource) %>"><portlet:param name="struts_action" value='<%= strutsAction + "/view" %>' /></liferay-portlet:renderURL>', '<portlet:namespace />');
 	}
 
 	Liferay.provide(
