@@ -26,28 +26,12 @@
 </tr>
 <tr>
 	<td>ADD_PAGE</td>
-	<td>//a[@id='_145_addPage']</td>
+	<td>//a[@id='addPage']</td>
 	<td></td>
 </tr>
 <tr>
-	<td>ADD_CONTENT_AND_APPLICATIONS</td>
-	<td>//a[@id='_145_addPanel']</td>
-	<td></td>
-</tr>
-<tr>
-	<td></td>
-	<td></td>
-	<td></td>
-</tr>
-<!--ADD_CONTENT-->
-<tr>
-	<td>ADD_CONTENT_LINK</td>
-	<td>//div[@id='_145_addPanelContainer']/ul/li/a[contains(.,'Content')]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>ADD_CONTENT_SEARCH_FIELD</td>
-	<td>//input[@id='_145_searchContentInput']</td>
+	<td>ADD_APPLICATION</td>
+	<td>//a[@id='_145_addApplication']</td>
 	<td></td>
 </tr>
 <tr>
@@ -57,13 +41,8 @@
 </tr>
 <!--ADD_APPLICATION-->
 <tr>
-	<td>ADD_APPLICATION_LINK</td>
-	<td>//div[@id='_145_addPanelContainer']/ul/li/a[contains(.,'Applications')]</td>
-	<td></td>
-</tr>
-<tr>
 	<td>ADD_APPLICATION_SEARCH_FIELD</td>
-	<td>//input[@id='_145_searchApplication']</td>
+	<td>//input[@id='layout_configuration_content']</td>
 	<td></td>
 </tr>
 <tr>
@@ -105,7 +84,7 @@
 <!--GO_TO-->
 <tr>
 	<td>GO_TO</td>
-	<td>//li[@id='mySites']/a</td>
+	<td>//li[@id='_145_mySites']/a</td>
 	<td></td>
 </tr>
 <tr>
@@ -136,7 +115,7 @@
 </tr>
 <tr>
 	<td>USER_SIGN_OUT</td>
-	<td>//li[@class='sign-out']/a</td>
+	<td>//span[@class='sign-out']/a</td>
 	<td></td>
 </tr>
 </tbody>

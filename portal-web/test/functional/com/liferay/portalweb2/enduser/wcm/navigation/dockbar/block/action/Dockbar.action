@@ -1,10 +1,7 @@
 <definition>
 	<command name="click">
-		<case locator-key1="ADD_APPLICATION_LINK">
-			<execute function="Click#clickAtApplicationSearch" />
-		</case>
-		<case locator-key1="ADD_CONTENT_AND_APPLICATIONS">
-			<execute function="Click#partialTextClickAt" value1="Content and Applications" />
+		<case locator-key1="ADD_APPLICATION">
+			<execute function="Click#partialTextClickAt" value1="More" />
 		</case>
 		<case locator-key1="ADD_PAGE">
 			<execute function="Click#textClickAt" value1="Page" />

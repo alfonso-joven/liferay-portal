@@ -6,7 +6,7 @@
 		<execute action="Dockbar#click" locator-key1="GO_TO" />
 		<execute action="Dockbar#click" locator-key1="GO_TO_CONTROL_PANEL" />
 
-		<execute action="Home#click" locator1="//div[@class='navbar control-panel-bar-main']//a[contains(.,'${categoryName}')]" />
+		<execute action="Home#click" locator1="//ul[@class='category-portlets']/li/a[contains(.,'${portletName}')]" />
 	</command>
 
 	<command name="cpGotoConfiguration">
