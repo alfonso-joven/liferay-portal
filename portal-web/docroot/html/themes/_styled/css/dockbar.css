@@ -506,35 +506,43 @@ html > .lfr-dockbar-pinned {
 
 /* ---------- RTL ---------- */
 
-.rtl .dockbar .admin-toolbar {
-	float: right;
-}
+.rtl {
 
-.rtl .dockbar .user-toolbar {
-	float: left;
-}
+	.dockbar {
 
-.rtl .dockbar .menu-button {
-	background-position-x: 7%; 
-	padding: 5px 5px 5px 0;
-}
+		.admin-toolbar {
+			float: right;
+		}
 
-.rtl .dockbar .menu-button span {
-	background-position: right;
-	padding-right: 20px;
-}
+		.user-toolbar {
+			float: left;
+		}
 
-.rtl .my-sites-menu .site-name {
-	float: right;
-}
+		.menu-button {
+			background-position-x: 7%;
+			padding: 5px 5px 5px 0;
+			
+			span {
+				background-position: right;
+				padding-right: 20px;
+			}
+		}
+	}
 
-.rtl .my-sites-menu .site-type {
-	float: left;
-	margin-right: 10px;
-}
+	.my-sites-menu {
+		.site-name {
+			float: right;
+		}
 
-.rtl .my-sites-menu .control-panel a {
-	margin-right: 3px;
-	background-position-x: right;
-	padding-right: 25px;
+		.site-type {
+			float: left;
+			margin-right: 10px;
+		}
+
+		.control-panel a {
+			background-position-x: right;
+			margin-right: 3px;
+			padding-right: 25px;
+		}
+	}
 }

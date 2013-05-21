@@ -763,77 +763,87 @@ input[type="text"], input[type="password"], select, textarea, .textarea, #breadc
 
 /* ---------- RTL ---------- */
 
-.rtl body {
-	background: #EEF0F2 url(../images/custom/sidebar_bg_rtl.png) repeat-y 0 0;
-	background-position: right;
-}
+.rtl {
+	body {
+		background: #eef0f2 url(../images/custom/sidebar_bg_rtl.png) repeat-y 0 0;
+		background-position: right;
 
-.rtl body.portal-popup:after, .rtl body.portal-popup:before {
-	background-image: none;
-}
+		&.portal-popup {
+			&:after, &:before {
+				background-image: none;
+			}
+		}
+	}
 
-.rtl #breadcrumbs li.first a {
-	background-position: right;
-	padding-right: 21px;
-	padding-left: 0;
-}
+	#breadcrumbs li {
+		background: url(../images/custom/breadcrumb_item_bg_rtl.png) 100% 50% no-repeat;
+		background-position: left;
+		float: right;
+		padding: 3px 15px 3px 20px;
 
-.rtl #breadcrumbs li, .rtl #breadcrumbs li.first a {
-	float: right;
-}
+		&.first a {
+			background-position: right;
+			padding-right: 21px;
+			padding-left: 0;
+			float: right;
+		}
+	}
 
-.rtl #breadcrumbs li {
-	background: url(../images/custom/breadcrumb_item_bg_rtl.png) 100% 50% no-repeat;
-	background-position: left;
-	padding: 3px 15px 3px 20px;
-}
+	#wrapper div.panel-page-body {
+		float: right;
+		padding: 15px 20px 0 0;
+		width: 75%;
+	}
 
-.rtl #wrapper div.panel-page-body {
-	float: right;
-	padding: 15px 20px 0 0;
-	width: 75%;
-}
+	.panel-page-menu {
+		#panel-manage-content .lfr-panel-title {
+			padding-right: 0;
+		}
+		
+		.lfr-panel-content ul li a .icon {
+			float: right;
+			padding: 0 0 0 4px;
+		}
 
-.rtl .panel-page-menu #panel-manage-content .lfr-panel-title {
-	padding-right: 0;
-}
+		.lfr-panel-titlebar .lfr-panel-title {
+			padding-right: 20px;
+		}
 
-.rtl .panel-page-menu .lfr-panel-content ul li a .icon {
-	float: right;
-	padding: 0 0 0 4px;
-}
+		#panel-manage-my .lfr-panel-title {
+			background-position-x: right;
+			background-position-y: 3px;
+		}
 
-.rtl .panel-page-menu .lfr-panel-titlebar .lfr-panel-title {
-	padding-right: 20px;
-}
+		#panel-manage-marketplace .lfr-panel-title {
+			background-position-x: right;
+			background-position-y: -72px;
+		}
 
-.rtl .panel-page-menu #panel-manage-my .lfr-panel-title {
-	background-position-x: right;
-	background-position-y: 3px;
-}
+		#panel-manage-portal .lfr-panel-title {
+			background-position-x: right;
+			background-position-y: -36px;
+		}
 
-.rtl .panel-page-menu #panel-manage-marketplace .lfr-panel-title {
-	background-position-x: right;
-	background-position-y: -72px;
-}
+		#panel-manage-server .lfr-panel-title {
+			background-position-x: right;
+			background-position-y: -55px;
+		}
 
-.rtl .panel-page-menu #panel-manage-portal .lfr-panel-title {
-	background-position-x: right;
-	background-position-y: -36px;
-}
+		#panel-manage-content .lfr-panel-title span a {
+			padding-left: 20px;
+			padding-right: 2px;
+		}
+	}
 
-.rtl .panel-page-menu #panel-manage-server .lfr-panel-title {
-	background-position-x: right;
-	background-position-y: -55px;
-}
+	.panel-page-application .lfr-panel .lfr-panel-titlebar {
+		background-position-x: right;
+		padding-left: 2px;
+		padding-right: 5px;
 
-.rtl .panel-page-menu #panel-manage-content .lfr-panel-title span a {
-	padding-left: 20px;
-	padding-right: 2px;
-}
-
-.rtl .panel-page-application .lfr-panel .lfr-panel-titlebar, .rtl .panel-page-application .lfr-panel .lfr-panel-titlebar .lfr-panel-button, .rtl .panel-page-application .lfr-panel .lfr-panel-titlebar .lfr-panel-button {
-	background-position-x: right;
-	padding-right: 5px;
-	padding-left: 2px;
+		.lfr-panel-button {
+			background-position-x: right;
+			padding-left: 2px;
+			padding-right: 5px;
+		}
+	}
 }

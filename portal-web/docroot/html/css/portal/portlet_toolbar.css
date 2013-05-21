@@ -100,12 +100,14 @@
 
 /* ---------- RTL ---------- */
 
-.rtl .lfr-portlet-toolbar .lfr-toolbar-button a {
-	background-position-x: right;
-	float: right;
-	padding: 4px 29px 4px 14px;
-}
+.rtl {
+	.lfr-portlet-toolbar .lfr-toolbar-button a {
+		background-position-x: right;
+		float: right;
+		padding: 4px 29px 4px 14px;
+	}
 
-.rtl .lfr-portlet-toolbar .lfr-toolbar-button a:hover {
-	padding: 4px 29px 4px 14px;
+	.lfr-portlet-toolbar .lfr-toolbar-button a:hover {
+		padding: 4px 29px 4px 14px;
+	}
 }

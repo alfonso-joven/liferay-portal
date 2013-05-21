@@ -779,49 +779,51 @@ body.portlet {
 
 /* ---------- RTL ---------- */
 
-.rtl .breadcrumbs-horizontal li {
-	float: right;
-}
-
-.rtl .portlet-msg {
-	background-position: right;
-	padding: 6px 24px 6px 6px;
-	text-align: right;
-}
-
-.rtl .results-row, .rtl .results-row.hover {
-	padding-right: 5px;
-
-	&.lfr-role .col-1 {
-		background-position-x: right;
-		padding-right: 30px;
-	}
-}
-
-.rtl .portlet-topper-toolbar {
-	left: 3px;
-	text-align: left;
-	right: auto;
-
-	.nobr {
+.rtl { 
+	.breadcrumbs-horizontal li {
 		float: right;
 	}
-}
 
-.rtl .lfr-actions {
-	&.portlet-options {
-		float: right;
+	.portlet-msg {
+		background-position: right;
+		padding: 6px 24px 6px 6px;
+		text-align: right;
+	}
 
-		.lfr-trigger strong a {
-			padding: 0;
+	.portlet-topper-toolbar {
+		left: 3px;
+		text-align: left;
+		right: auto;
+
+		.nobr {
+			float: right;
 		}
-	}	
-}
+	}
 
-.rtl .lfr-message {
-	.lfr-message-controls {
-		left: auto;
-		right: 3px;
-		margin: -8px 3px 0 -4px;
+	.lfr-actions {
+		&.portlet-options {
+			float: right;
+
+			.lfr-trigger strong a {
+				padding: 0;
+			}
+		}	
+	}
+
+	.lfr-message {
+		.lfr-message-controls {
+			left: auto;
+			right: 3px;
+			margin: -8px 3px 0 -4px;
+		}
+	}
+
+	.results-row, .results-row.hover {
+		padding-right: 5px;
+
+		&.lfr-role .col-1 {
+			background-position-x: right;
+			padding-right: 30px;
+		}		
 	}
 }

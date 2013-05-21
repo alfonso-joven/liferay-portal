@@ -69,15 +69,17 @@
 
 /* ---------- RTL ---------- */
 
-.rtl .lfr-autorow-controls {
-	bottom: 0;
-	float: left;
-	left: 5px;
-	position: relative;
-	right: 0;
-	text-align: left;
-}
+.rtl {
+	.lfr-autorow-controls {
+		bottom: 0;
+		float: left;
+		left: 5px;
+		position: relative;
+		right: 0;
+		text-align: left;
+	}
 
-.rtl .row-names {
-	float: right;
+	.row-names {
+		float: right;
+	}
 }

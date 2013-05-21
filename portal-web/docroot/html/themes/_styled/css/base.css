@@ -280,10 +280,12 @@ hr, .separator {
 
 /* ---------- RTL ---------- */
 
-.rtl caption, .rtl th {
-	text-align: right;
-}
+.rtl {
+	caption, th {
+		text-align: right;
+	}
 
-.rtl .portal-add-content {
-	text-align: right;
+	.portal-add-content {
+		text-align: right;
+	}
 }
