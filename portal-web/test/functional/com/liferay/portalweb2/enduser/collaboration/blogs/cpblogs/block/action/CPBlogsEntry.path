@@ -20,12 +20,12 @@
 </tr>
 <tr>
 	<td>ENTRY_TITLE_HEADER</td>
-	<td>//h3[@class='header-title']/span</td>
+	<td>//h1[@class='header-title']/span</td>
 	<td></td>
 </tr>
 <tr>
 	<td>ENTRY_CONTENT</td>
-	<td>//div[@class='entry-body']/div</td>
+	<td>//div[@class='entry-body']</td>
 	<td></td>
 </tr>
 </tbody>
