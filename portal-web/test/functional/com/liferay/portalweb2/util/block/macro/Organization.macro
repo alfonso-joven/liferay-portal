@@ -109,7 +109,7 @@
 		<execute action="CPUsersandorganizations#click" locator-key1="SEARCH_BUTTON" />
 		<execute action="CPUsersandorganizations#click" locator-key1="ORGANIZATION_TABLE_ACTIONS_1" />
 		<execute action="CPUsersandorganizations#click" locator-key1="ORGANIZATION_MENULIST_DELETE" />
-		<execute action="CPUsersandorganizations#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this? It will be deleted immediately." />
+		<execute action="CPUsersandorganizations#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this?" />
 		<execute action="CPUsersandorganizations#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
 		<execute action="CPUsersandorganizations#assertTextNotPresent" value1="${orgName}" />
 	</command>
@@ -168,7 +168,7 @@
 				<execute action="CPUsersandorganizationsAssignmembers#click" locator-key1="BACK" />
 
 				<execute action="CPUsersandorganizationsOrganization#click" locator-key1="MENU_DELETE" />
-				<execute action="CPUsersandorganizationsOrganization#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this? It will be deleted immediately." />
+				<execute action="CPUsersandorganizationsOrganization#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this?" />
 			</then>
 		</while>
 	</command>
