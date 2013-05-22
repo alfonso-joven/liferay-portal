@@ -64,14 +64,14 @@
 	<td></td>
 	<td></td>
 </tr>
-<!--BASIC_SEARCH-->
+<!--SEARCH-->
 <tr>
-	<td>BASIC_SEARCH_FIELD</td>
+	<td>SEARCH_FIELD</td>
 	<td>//input[@id='_134_name']</td>
 	<td></td>
 </tr>
 <tr>
-	<td>BASIC_SEARCH_BUTTON</td>
+	<td>SEARCH_BUTTON</td>
 	<td>//input[@value='Search']</td>
 	<td></td>
 </tr>
