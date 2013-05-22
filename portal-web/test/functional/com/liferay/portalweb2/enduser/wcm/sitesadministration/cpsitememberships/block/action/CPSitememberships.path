@@ -20,7 +20,7 @@
 </tr>
 <tr>
 	<td>SUCCESS_MESSAGE</td>
-	<td>//div[@class='alert alert-success']</td>
+	<td>//div[@class='portlet-msg-success']</td>
 	<td></td>
 </tr>
 <tr>
@@ -31,22 +31,22 @@
 <!--TOOLBAR-->
 <tr>
 	<td>TOOLBAR_VIEW_MEMBERS</td>
-	<td>//div[@class='navbar ']//a[contains(.,'View Members')]</td>
+	<td>//div[@class='lfr-portlet-toolbar']/span[contains(.,'View Members')]/a</td>
 	<td></td>
 </tr>
 <tr>
 	<td>TOOLBAR_ADD_MEMBERS</td>
-	<td>//div[@class='navbar ']//a[contains(.,'Add Members')]</td>
+	<td>//div[@class='lfr-portlet-toolbar']/span[contains(.,'Add Members')]/ul</td>
 	<td></td>
 </tr>
 <tr>
 	<td>TOOLBAR_ADD_SITE_ROLES_TO</td>
-	<td>//div[@class='navbar ']//a[contains(.,'Add Site Roles to')]</td>
+	<td>//div[@class='lfr-portlet-toolbar']/span[contains(.,'Add Site Roles to')]/ul</td>
 	<td></td>
 </tr>
 <tr>
 	<td>TOOLBAR_VIEW_TEAMS</td>
-	<td>//div[@class='navbar ']//a[contains(.,'View Teams')]</td>
+	<td>//div[@class='lfr-portlet-toolbar']/span[contains(.,'View Teams')]/a</td>
 	<td></td>
 </tr>
 <tr>
@@ -57,17 +57,17 @@
 <!--ADD_MEMBERS_MENULIST-->
 <tr>
 	<td>ADD_MEMBERS_MENULIST_USER</td>
-	<td>//ul[@class='dropdown-menu']/li/a[contains(.,'User')]</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'User')]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>ADD_MEMBERS_MENULIST_ORGANIZATION</td>
-	<td>//ul[@class='dropdown-menu']/li/a[contains(.,'Organization')]</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Organization')]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>ADD_MEMBERS_MENULIST_USER_GROUPS</td>
-	<td>//ul[@class='dropdown-menu']/li/a[contains(.,'User Group')]</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'User Group')]</td>
 	<td></td>
 </tr>
 <tr>
@@ -78,12 +78,12 @@
 <!--ADD_SITE_ROLES_TO_MENULIST-->
 <tr>
 	<td>ADD_SITE_ROLES_TO_MENULIST_USERS</td>
-	<td>//ul[@class='dropdown-menu']/li/a[contains(.,'Users')]</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Users')]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>ADD_SITE_ROLES_TO_MENULIST_USER_GROUPS</td>
-	<td>//ul[@class='dropdown-menu']/li/a[contains(.,'User Groups')]</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'User Groups')]</td>
 	<td></td>
 </tr>
 <tr>
@@ -94,22 +94,22 @@
 <!--NAVIGATION-->
 <tr>
 	<td>NAVIGATION_SUMMARY</td>
-	<td>//ul[@class='nav nav-tabs']/li/a[contains(.,'Summary')]</td>
+	<td>//ul[@class='aui-tabview-list']/li/span/a[contains(.,'Summary')]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>NAVIGATION_USERS</td>
-	<td>//ul[@class='nav nav-tabs']/li/a[contains(.,'Users')]</td>
+	<td>//ul[@class='aui-tabview-list']/li/span/a[contains(.,'Users')]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>NAVIGATION_ORGANIZATIONS</td>
-	<td>//ul[@class='nav nav-tabs']/li/a[contains(.,'Organizations')]</td>
+	<td>//ul[@class='aui-tabview-list']/li/span/a[contains(.,'Organizations')]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>NAVIGATION_SITE_ROLES</td>
-	<td>//ul[@class='nav nav-tabs']/li/a[contains(.,'User Groups')]</td>
+	<td>//ul[@class='aui-tabview-list']/li/span/a[contains(.,'User Groups')]</td>
 	<td></td>
 </tr>
 <tr>
@@ -120,12 +120,12 @@
 <!--USER_SEARCH-->
 <tr>
 	<td>USER_SEARCH_FIELD</td>
-	<td>//input[@id='_174_keywords_users']</td>
+	<td>//input[@name='_174_keywords']</td>
 	<td></td>
 </tr>
 <tr>
 	<td>USER_SEARCH_BUTTON</td>
-	<td>//input[@id='_174_keywords_users']/../following-sibling::button[contains(.,'Search')]</td>
+	<td>//input[@value='Search']</td>
 	<td></td>
 </tr>
 <tr>
@@ -142,12 +142,12 @@
 <!--ORGANIZATION-->
 <tr>
 	<td>ORGANIZATION_SEARCH_FIELD</td>
-	<td>//input[@id='_174_keywords_organizations']</td>
+	<td>//input[@name='_174_keywords']</td>
 	<td></td>
 </tr>
 <tr>
 	<td>ORGANIZATION_SEARCH_BUTTON</td>
-	<td>//input[@id='_174_keywords_organizations']/../following-sibling::button[contains(.,'Search')]</td>
+	<td>//input[@value='Search']</td>
 	<td></td>
 </tr>
 <tr>
@@ -164,12 +164,12 @@
 <!--USER_GROUP-->
 <tr>
 	<td>USER_GROUP_SEARCH_FIELD</td>
-	<td>//input[@id='_174_keywords_user_groups']</td>
+	<td>//input[@id='_174_keywords']</td>
 	<td></td>
 </tr>
 <tr>
 	<td>USER_GROUP_SEARCH_BUTTON</td>
-	<td>//input[@id='_174_keywords_user_groups']/../following-sibling::button[contains(.,'Search')]</td>
+	<td>//input[@value='Search']</td>
 	<td></td>
 </tr>
 </tbody>
