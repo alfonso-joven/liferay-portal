@@ -895,7 +895,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 			UserPermissionUtil.check(
 				getPermissionChecker(), userId, ActionKeys.VIEW);
 		}
-		catch (PrincipalException e) {
+		catch (PrincipalException pe) {
 			GroupPermissionUtil.check(
 				getPermissionChecker(), groupId, ActionKeys.VIEW_MEMBERS);
 		}
@@ -921,7 +921,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 			UserPermissionUtil.check(
 				getPermissionChecker(), userId, ActionKeys.VIEW);
 		}
-		catch (PrincipalException e) {
+		catch (PrincipalException pe) {
 			RolePermissionUtil.check(
 				getPermissionChecker(), roleId, ActionKeys.VIEW_MEMBERS);
 		}
@@ -952,7 +952,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 			UserPermissionUtil.check(
 				getPermissionChecker(), userId, ActionKeys.VIEW);
 		}
-		catch (PrincipalException e) {
+		catch (PrincipalException pe) {
 			Role role = roleLocalService.getRole(companyId, name);
 
 			RolePermissionUtil.check(

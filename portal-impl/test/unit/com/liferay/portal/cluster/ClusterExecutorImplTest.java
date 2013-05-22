@@ -372,7 +372,7 @@ public class ClusterExecutorImplTest extends BaseClusterExecutorImplTestCase {
 
 			Assert.fail();
 		}
-		catch (TimeoutException e) {
+		catch (TimeoutException te) {
 			Assert.assertEquals(TestBean.TIMESTAMP, timestamp);
 		}
 		finally {
