@@ -3,6 +3,9 @@
 		<case locator-key1="INFO_MESSAGE">
 			<execute function="AssertTextEquals#assertText" value1="No sites were found." />
 		</case>
+		<case locator-key1="SITE_TABLE_NAME">
+			<execute function="AssertTextEquals#assertPartialText" />
+		</case>
 		<case locator-key1="SUCCESS_MESSAGE">
 			<execute function="AssertTextEquals#assertText" value1="Your request completed successfully." />
 		</case>
