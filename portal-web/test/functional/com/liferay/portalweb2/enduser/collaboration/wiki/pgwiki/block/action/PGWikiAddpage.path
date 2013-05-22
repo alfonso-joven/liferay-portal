@@ -25,12 +25,12 @@
 </tr>
 <tr>
 	<td>BODY_FIELD</td>
-	<td>//iframe[contains(@title,'Rich Text Editor')]</td>
+	<td>//iframe[contains(@title,'Rich text editor')]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>PUBLISH_BUTTON</td>
-	<td>//button[@id='_36_publishButton']</td>
+	<td>//input[@value='Publish']</td>
 	<td></td>
 </tr>
 </tbody>

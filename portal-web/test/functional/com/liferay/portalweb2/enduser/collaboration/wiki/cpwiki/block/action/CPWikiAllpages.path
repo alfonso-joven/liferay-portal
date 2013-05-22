@@ -19,9 +19,9 @@
 	<td></td>
 </tr>
 <tr>
-	<td>SUCCESS_MESSAGE_RECYCLE_BIN</td>
-	<td>//form[@id='_154_undoForm']</td>
-	<td>The selected item was moved to the Recycle Bin. Undo</td>
+	<td>CONFIRMATION</td>
+	<td></td>
+	<td></td>
 </tr>
 <tr>
 	<td></td>
@@ -36,7 +36,7 @@
 </tr>
 <tr>
 	<td>WIKI_PAGE_TABLE_ACTIONS_1</td>
-	<td>//tr[1]/td/div/a[@title='Actions']</td>
+	<td>//tr/td[6]/span[@title='Actions']/ul/li/strong/a/span</td>
 	<td>FrontPage</td>
 </tr>
 <tr>
@@ -71,8 +71,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>WIKI_PAGE_MENULIST_RECYCLE_BIN</td>
-	<td>//a[@role='menuitem' and contains(.,'Move to the Recycle Bin')]</td>
+	<td>WIKI_PAGE_MENULIST_DELETE</td>
+	<td>//a[@role='menuitem' and contains(.,'Delete')]</td>
 	<td></td>
 </tr>
 </tbody>
