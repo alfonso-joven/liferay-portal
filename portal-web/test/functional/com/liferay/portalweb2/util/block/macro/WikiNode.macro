@@ -22,8 +22,7 @@
 
 		<execute action="CPWiki#assertTextEquals" locator-key1="WIKI_NODE_TABLE_WIKI_2" value1="${wikiNodeName}" />
 		<execute action="CPWiki#click" locator-key1="WIKI_NODE_TABLE_ACTIONS_2" />
-		<execute action="CPWiki#click" locator-key1="WIKI_NODE_MENULIST_RECYCLE_BIN" />
-		<execute action="CPWiki#assertTextEquals" locator-key1="SUCCESS_MESSAGE_RECYCLE_BIN" />
+		<execute action="CPWiki#click" locator-key1="WIKI_NODE_MENULIST_DELETE" />
 		<execute action="CPWiki#assertTextNotPresent" value1="${wikiNodeName}" />
 	</command>
 
@@ -54,11 +53,9 @@
 			<condition action="CPWiki#isElementPresent" locator-key1="WIKI_NODE_TABLE_ACTIONS_2" />
 			<then>
 				<execute action="CPWiki#click" locator-key1="WIKI_NODE_TABLE_ACTIONS_2" />
-				<execute action="CPWiki#click" locator-key1="WIKI_NODE_MENULIST_RECYCLE_BIN" />
-				<execute action="CPWiki#assertTextEquals" locator-key1="SUCCESS_MESSAGE_RECYCLE_BIN" />
+				<execute action="CPWiki#click" locator-key1="WIKI_NODE_MENULIST_DELETE" />
 			</then>
 		</while>
 
-		<execute macro="RecycleBin#cpEmptyRecycleBin" />
 	</command>
 </definition>
