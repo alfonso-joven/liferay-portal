@@ -83,7 +83,7 @@ public class ReleaseInfo {
 
 	public static final int RELEASE_6_1_20_BUILD_NUMBER = 6120;
 
-	public static final int RELEASE_6_1_21_BUILD_NUMBER = 6121;
+	public static final int RELEASE_6_1_30_BUILD_NUMBER = 6130;
 
 	public static final Date getBuildDate() {
 		DateFormat df = DateFormat.getDateInstance(DateFormat.LONG);
@@ -134,13 +134,13 @@ public class ReleaseInfo {
 		return _VERSION;
 	}
 
-	private static final String _BUILD = "6121";
+	private static final String _BUILD = "6130";
 
 	private static final int _BUILD_NUMBER = GetterUtil.getInteger(_BUILD);
 
 	private static final String _CODE_NAME = "Paton";
 
-	private static final String _DATE = "April 29, 2013";
+	private static final String _DATE = "July 1, 2013";
 
 	private static final String _NAME = "Liferay Portal Community Edition";
 
@@ -154,9 +154,9 @@ public class ReleaseInfo {
 
 	private static final String _VENDOR = "Liferay, Inc.";
 
-	private static final String _VERSION = "6.1.21";
+	private static final String _VERSION = "6.1.30";
 
-	private static final String _VERSION_DISPLAY_NAME = "6.1.21 EE";
+	private static final String _VERSION_DISPLAY_NAME = "6.1.30 EE";
 
 	private static String _releaseInfo;
 	private static String _serverInfo;
