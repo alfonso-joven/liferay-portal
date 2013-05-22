@@ -53,15 +53,15 @@
 	<td></td>
 	<td></td>
 </tr>
-<!--BASIC_SEARCH-->
+<!--SEARCH-->
 <tr>
-	<td>BASIC_SEARCH_FIELD</td>
+	<td>SEARCH_FIELD</td>
 	<td>//input[@name='_127_keywords']</td>
 	<td></td>
 </tr>
 <tr>
-	<td>BASIC_SEARCH_BUTTON</td>
-	<td>xpath=(//input[@value='Search'])[1]</td>
+	<td>SEARCH_BUTTON</td>
+	<td>//input[@value='Search']</td>
 	<td></td>
 </tr>
 <tr>
@@ -113,22 +113,22 @@
 </tr>
 <tr>
 	<td>USER_GROUP_TABLE_CHECKBOX_1</td>
-	<td>xpath=(//tr[2]/td[1]/input[@name='_127_rowIds'])[1]</td>
+	<td>xpath=(//tr[3]/td[1]/input[@name='_127_rowIds'])[1]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>USER_GROUP_TABLE_NAME_1</td>
-	<td>xpath=(//tr[2]/td[2]/a)[1]</td>
+	<td>xpath=(//tr[3]/td[2]/a)[1]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>USER_GROUP_TABLE_DESCRIPTION_1</td>
-	<td>xpath=(//tr[2]/td[3]/a)[1]</td>
+	<td>xpath=(//tr[3]/td[3]/a)[1]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>USER_GROUP_TABLE_ACTIONS_1</td>
-	<td>xpath=(//tr[2]/td[4]/span[@title='Actions']/ul/li/strong/a/span)[1]</td>
+	<td>xpath=(//tr[3]/td[4]/span[@title='Actions']/ul/li/strong/a/span)[1]</td>
 	<td></td>
 </tr>
 <tr>
