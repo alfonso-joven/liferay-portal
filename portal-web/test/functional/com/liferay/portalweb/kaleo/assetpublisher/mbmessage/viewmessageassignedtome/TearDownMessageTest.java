@@ -46,7 +46,7 @@ public class TearDownMessageTest extends BaseTestCase {
 					continue;
 				}
 
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//span[@title='Actions']/ul/li/strong/a/span"));
@@ -62,8 +62,6 @@ public class TearDownMessageTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				selenium.waitForConfirmation(
 					"Are you sure you want to delete this?");
-
-			case 2:
 
 				boolean message2Present = selenium.isElementPresent(
 						"//span[@title='Actions']/ul/li/strong/a/span");
@@ -74,7 +72,7 @@ public class TearDownMessageTest extends BaseTestCase {
 					continue;
 				}
 
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//span[@title='Actions']/ul/li/strong/a/span"));
@@ -90,8 +88,6 @@ public class TearDownMessageTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				selenium.waitForConfirmation(
 					"Are you sure you want to delete this?");
-
-			case 3:
 
 				boolean message3Present = selenium.isElementPresent(
 						"//span[@title='Actions']/ul/li/strong/a/span");
@@ -102,7 +98,7 @@ public class TearDownMessageTest extends BaseTestCase {
 					continue;
 				}
 
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//span[@title='Actions']/ul/li/strong/a/span"));
@@ -118,8 +114,6 @@ public class TearDownMessageTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				selenium.waitForConfirmation(
 					"Are you sure you want to delete this?");
-
-			case 4:
 
 				boolean message4Present = selenium.isElementPresent(
 						"//span[@title='Actions']/ul/li/strong/a/span");
@@ -130,7 +124,7 @@ public class TearDownMessageTest extends BaseTestCase {
 					continue;
 				}
 
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//span[@title='Actions']/ul/li/strong/a/span"));
@@ -146,8 +140,6 @@ public class TearDownMessageTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				selenium.waitForConfirmation(
 					"Are you sure you want to delete this?");
-
-			case 5:
 
 				boolean message5Present = selenium.isElementPresent(
 						"//span[@title='Actions']/ul/li/strong/a/span");
@@ -158,7 +150,7 @@ public class TearDownMessageTest extends BaseTestCase {
 					continue;
 				}
 
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Actions"),
 					selenium.getText(
 						"//span[@title='Actions']/ul/li/strong/a/span"));
@@ -174,8 +166,19 @@ public class TearDownMessageTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				selenium.waitForConfirmation(
 					"Are you sure you want to delete this?");
+				assertEquals(RuntimeVariables.replace(
+						"Your request completed successfully."),
+					selenium.getText("//div[@class='portlet-msg-success']"));
 
+			case 2:
+			case 3:
+			case 4:
+			case 5:
 			case 6:
+				assertEquals(RuntimeVariables.replace(
+						"You do not have any posts."),
+					selenium.getText("//div[@class='portlet-msg-info']"));
+
 			case 100:
 				label = -1;
 			}

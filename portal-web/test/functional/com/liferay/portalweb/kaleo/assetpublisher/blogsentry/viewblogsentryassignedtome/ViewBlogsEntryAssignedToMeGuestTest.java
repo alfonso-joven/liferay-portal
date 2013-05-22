@@ -28,6 +28,8 @@ public class ViewBlogsEntryAssignedToMeGuestTest extends BaseTestCase {
 		selenium.clickAt("link=Asset Publisher Test Page",
 			RuntimeVariables.replace("Asset Publisher Page"));
 		selenium.waitForPageToLoad("30000");
+		Thread.sleep(1000);
+		assertTrue(selenium.isElementNotPresent("//section"));
 		assertFalse(selenium.isTextPresent("Blogs Entry Title"));
 		assertFalse(selenium.isTextPresent("Blogs Entry Content"));
 	}

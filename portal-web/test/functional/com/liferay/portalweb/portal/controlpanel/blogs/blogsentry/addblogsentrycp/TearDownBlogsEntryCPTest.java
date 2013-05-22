@@ -127,7 +127,7 @@ public class TearDownBlogsEntryCPTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				selenium.waitForConfirmation(
 					"Are you sure you want to delete the selected entries?");
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 
 				boolean entry5Present = selenium.isElementPresent(
 						"//input[@name='_161_rowIds']");
@@ -148,6 +148,9 @@ public class TearDownBlogsEntryCPTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				selenium.waitForConfirmation(
 					"Are you sure you want to delete the selected entries?");
+				assertEquals(RuntimeVariables.replace(
+						"Your request completed successfully."),
+					selenium.getText("//div[@class='portlet-msg-success']"));
 
 			case 2:
 			case 3:
