@@ -23,6 +23,7 @@
 		<execute action="CPWiki#assertTextEquals" locator-key1="WIKI_NODE_TABLE_WIKI_2" value1="${wikiNodeName}" />
 		<execute action="CPWiki#click" locator-key1="WIKI_NODE_TABLE_ACTIONS_2" />
 		<execute action="CPWiki#click" locator-key1="WIKI_NODE_MENULIST_DELETE" />
+		<execute action="CPWikiAllpages#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this?" />
 		<execute action="CPWiki#assertTextNotPresent" value1="${wikiNodeName}" />
 	</command>
 
@@ -54,6 +55,7 @@
 			<then>
 				<execute action="CPWiki#click" locator-key1="WIKI_NODE_TABLE_ACTIONS_2" />
 				<execute action="CPWiki#click" locator-key1="WIKI_NODE_MENULIST_DELETE" />
+				<execute action="CPWikiAllpages#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this?" />
 			</then>
 		</while>
 
