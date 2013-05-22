@@ -86,7 +86,7 @@
 	</command>
 
 	<command name="valueClickAtAndWaitCKEditor">
-		<execute selenium="waitForVisible" argument1="//a[contains(@class,'cke_button cke_button__cut') and contains(@class,'cke_button_disabled')]" />
+		<execute selenium="waitForVisible" argument1="//a[@class='cke_button_cut cke_disabled']" />
 
 		<execute function="Click#valueClickAtAndWait" />
 	</command>
