@@ -15,7 +15,7 @@
 		<case locator-key1="ADD_BLANK_SITE">
 			<execute function="Click#textClickAtAndWait" value1="Blank Site" />
 		</case>
-		<case locator-key1="BASIC_SEARCH_BUTTON">
+		<case locator-key1="SEARCH_BUTTON">
 			<execute function="Click#valueClickAtAndWait" value1="Search" />
 		</case>
 		<case locator-key1="SITE_MENULIST_DELETE">
