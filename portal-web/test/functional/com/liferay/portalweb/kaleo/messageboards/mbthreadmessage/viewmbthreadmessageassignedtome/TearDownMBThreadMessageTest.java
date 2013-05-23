@@ -36,6 +36,7 @@ public class TearDownMBThreadMessageTest extends BaseTestCase {
 				selenium.clickAt("link=My Posts",
 					RuntimeVariables.replace("My Posts"));
 				selenium.waitForPageToLoad("30000");
+				Thread.sleep(1000);
 
 				boolean mbMessage1Present = selenium.isElementPresent(
 						"//span[@title='Actions']/ul/li/strong/a/span");
@@ -64,8 +65,9 @@ public class TearDownMBThreadMessageTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				selenium.waitForConfirmation(
 					"Are you sure you want to delete this?");
-
-			case 2:
+				assertEquals(RuntimeVariables.replace(
+						"Your request completed successfully."),
+					selenium.getText("//div[@class='portlet-msg-success']"));
 
 				boolean mbMessage2Present = selenium.isElementPresent(
 						"//span[@title='Actions']/ul/li/strong/a/span");
@@ -94,8 +96,9 @@ public class TearDownMBThreadMessageTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				selenium.waitForConfirmation(
 					"Are you sure you want to delete this?");
-
-			case 3:
+				assertEquals(RuntimeVariables.replace(
+						"Your request completed successfully."),
+					selenium.getText("//div[@class='portlet-msg-success']"));
 
 				boolean mbMessage3Present = selenium.isElementPresent(
 						"//span[@title='Actions']/ul/li/strong/a/span");
@@ -124,8 +127,9 @@ public class TearDownMBThreadMessageTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				selenium.waitForConfirmation(
 					"Are you sure you want to delete this?");
-
-			case 4:
+				assertEquals(RuntimeVariables.replace(
+						"Your request completed successfully."),
+					selenium.getText("//div[@class='portlet-msg-success']"));
 
 				boolean mbMessage4Present = selenium.isElementPresent(
 						"//span[@title='Actions']/ul/li/strong/a/span");
@@ -154,8 +158,9 @@ public class TearDownMBThreadMessageTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				selenium.waitForConfirmation(
 					"Are you sure you want to delete this?");
-
-			case 5:
+				assertEquals(RuntimeVariables.replace(
+						"Your request completed successfully."),
+					selenium.getText("//div[@class='portlet-msg-success']"));
 
 				boolean mbMessage5Present = selenium.isElementPresent(
 						"//span[@title='Actions']/ul/li/strong/a/span");
@@ -184,8 +189,19 @@ public class TearDownMBThreadMessageTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				selenium.waitForConfirmation(
 					"Are you sure you want to delete this?");
+				assertEquals(RuntimeVariables.replace(
+						"Your request completed successfully."),
+					selenium.getText("//div[@class='portlet-msg-success']"));
 
+			case 2:
+			case 3:
+			case 4:
+			case 5:
 			case 6:
+				assertEquals(RuntimeVariables.replace(
+						"You do not have any posts."),
+					selenium.getText("//div[@class='portlet-msg-info']"));
+
 			case 100:
 				label = -1;
 			}

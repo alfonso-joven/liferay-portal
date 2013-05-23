@@ -25,10 +25,6 @@ public class PostNewMBThreadMessageTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.clickAt("//div[@id='dockbar']",
-			RuntimeVariables.replace("Dockbar"));
-		selenium.waitForElementPresent(
-			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
 		selenium.clickAt("link=Message Boards Test Page",
 			RuntimeVariables.replace("Message Boards Test Page"));
 		selenium.waitForPageToLoad("30000");
@@ -53,17 +49,5 @@ public class PostNewMBThreadMessageTest extends BaseTestCase {
 			selenium.getText("//strong[@class='workflow-status-pending']"));
 		assertEquals(RuntimeVariables.replace("MB Thread Message Body"),
 			selenium.getText("//div[@class='thread-body']"));
-		selenium.open("/web/guest/home/");
-		selenium.clickAt("link=Message Boards Test Page",
-			RuntimeVariables.replace("Message Boards Test Page"));
-		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace(
-				"There are no threads in this category."),
-			selenium.getText("//div[@class='portlet-msg-info']"));
-		assertTrue(selenium.isElementNotPresent(
-				"//h1[@class='header-title']/span"));
-		assertTrue(selenium.isElementNotPresent(
-				"//strong[@class='workflow-status-pending']"));
-		assertTrue(selenium.isElementNotPresent("//div[@class='thread-body']"));
 	}
 }
