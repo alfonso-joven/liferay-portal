@@ -505,7 +505,6 @@ public class DLFileEntryFinderImpl
 				sql = CustomSQLUtil.get(COUNT_BY_G_F_S);
 
 				if (inlineSQLHelper && InlineSQLHelperUtil.isEnabled()) {
-
 					sql = StringUtil.replace(
 						sql, "[$JOIN$]",
 						CustomSQLUtil.get(

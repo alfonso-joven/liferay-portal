@@ -81,7 +81,6 @@ public class TemplateProcessor implements ColumnProcessor {
 				WebKeys.PORTLET_PARALLEL_RENDER);
 
 			if (Boolean.FALSE.equals(portletParallelRender)) {
-
 				parallelRenderEnable = false;
 			}
 		}
