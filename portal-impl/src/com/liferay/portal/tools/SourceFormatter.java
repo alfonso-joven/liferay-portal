@@ -2319,8 +2319,7 @@ public class SourceFormatter {
 					break;
 				}
 
-				String match = newContent.substring(
-					matcher.start(), matcher.end());
+				String match = matcher.group();
 
 				int pos = match.indexOf("var ");
 
