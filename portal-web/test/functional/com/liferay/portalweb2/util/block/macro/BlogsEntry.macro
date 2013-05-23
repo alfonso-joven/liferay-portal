@@ -27,11 +27,10 @@
 			<condition action="CPBlogs#isElementPresent" locator-key1="ENTRY_TABLE_ALL_CHECKBOX" />
 			<then>
 				<execute action="CPBlogs#click" locator-key1="ENTRY_TABLE_ALL_CHECKBOX" />
-				<execute action="CPBlogs#click" locator-key1="RECYCLE_BIN_BUTTON" value1="Move to the Recycle Bin" />
+				<execute action="CPBlogs#click" locator-key1="DELETE_BUTTON" />
+				<execute action="CPBlogs#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete the selected entries?" />
 			</then>
 		</if>
-
-		<execute macro="RecycleBin#cpEmptyRecycleBin" />
 	</command>
 
 	<command name="pgAdd">
