@@ -61,8 +61,8 @@
 			<var name="portletName" value="Sites" />
 		</execute>
 
-		<execute action="CPSites#type" locator-key1="BASIC_SEARCH_FIELD" value1="${siteName}" />
-		<execute action="CPSites#click" locator-key1="BASIC_SEARCH_BUTTON" />
+		<execute action="CPSites#type" locator-key1="SEARCH_FIELD" value1="${siteName}" />
+		<execute action="CPSites#click" locator-key1="SEARCH_BUTTON" />
 		<execute action="CPSites#assertTextEquals" locator-key1="SITE_TABLE_NAME" value1="${siteName}" />
 		<execute action="CPSites#click" locator-key1="SITE_TABLE_ACTIONS" />
 		<execute action="CPSites#click" locator-key1="SITE_MENULIST_MANAGE_MEMBERSHIPS" />
@@ -84,8 +84,8 @@
 			<var name="portletName" value="Sites" />
 		</execute>
 
-		<execute action="CPSites#type" locator-key1="BASIC_SEARCH_FIELD" value1="${siteName}" />
-		<execute action="CPSites#click" locator-key1="BASIC_SEARCH_BUTTON" />
+		<execute action="CPSites#type" locator-key1="SEARCH_FIELD" value1="${siteName}" />
+		<execute action="CPSites#click" locator-key1="SEARCH_BUTTON" />
 		<execute action="CPSites#assertTextEquals" locator-key1="SITE_TABLE_NAME" value1="${siteName}" />
 		<execute action="CPSites#click" locator-key1="SITE_TABLE_ACTIONS" />
 		<execute action="CPSites#click" locator-key1="SITE_MENULIST_MANAGE_MEMBERSHIPS" />
@@ -117,8 +117,8 @@
 			<var name="portletName" value="Sites" />
 		</execute>
 
-		<execute action="CPSites#type" locator-key1="BASIC_SEARCH_FIELD" value1="Name" />
-		<execute action="CPSites#click" locator-key1="BASIC_SEARCH_BUTTON" />
+		<execute action="CPSites#type" locator-key1="SEARCH_FIELD" value1="Name" />
+		<execute action="CPSites#click" locator-key1="SEARCH_BUTTON" />
 		<execute action="CPSites#assertTextEquals" locator-key1="SITE_TABLE_NAME" value1="${siteName}" />
 		<execute action="CPSites#click" locator-key1="SITE_TABLE_ACTIONS" />
 		<execute action="CPSites#click" locator-key1="SITE_MENULIST_DELETE" />
@@ -132,8 +132,8 @@
 			<var name="portletName" value="Sites" />
 		</execute>
 
-		<execute action="CPSites#type" locator-key1="BASIC_SEARCH_FIELD" value1="Name" />
-		<execute action="CPSites#click" locator-key1="BASIC_SEARCH_BUTTON" />
+		<execute action="CPSites#type" locator-key1="SEARCH_FIELD" value1="Name" />
+		<execute action="CPSites#click" locator-key1="SEARCH_BUTTON" />
 
 		<while>
 			<condition action="CPSites#isElementPresent" locator-key1="SITE_TABLE_ACTIONS" />
@@ -150,8 +150,8 @@
 			<var name="portletName" value="Sites" />
 		</execute>
 
-		<execute action="CPSites#type" locator-key1="BASIC_SEARCH_FIELD" value1="${siteName}" />
-		<execute action="CPSites#click" locator-key1="BASIC_SEARCH_BUTTON" />
+		<execute action="CPSites#type" locator-key1="SEARCH_FIELD" value1="${siteName}" />
+		<execute action="CPSites#click" locator-key1="SEARCH_BUTTON" />
 		<execute action="CPSites#assertTextEquals" locator-key1="SITE_TABLE_NAME" value1="${siteName}" />
 		<execute action="CPSites#assertTextEquals" locator-key1="SITE_TABLE_TYPE" value1="${siteType}" />
 
@@ -160,14 +160,8 @@
 			<then>
 				<execute action="CPSites#assertTextEquals" locator-key1="SITE_TABLE_MEMBERS_ORGS" value1="1 ${siteMember}" />
 			</then>
-			<elseif>
-				<equals arg1="${siteMember}" arg2="User" />
-				<then>
-					<execute action="CPSites#assertTextEquals" locator-key1="SITE_TABLE_MEMBERS_USERS" value1="1 ${siteMember}" />
-				</then>
-			</elseif>
 			<else>
-				<fail message="Invalid var siteMember. Must be (Organization|User)." />
+				<execute action="CPSites#assertTextEquals" locator-key1="SITE_TABLE_MEMBERS_USERS" value1="1 User" />
 			</else>
 		</if>
 
