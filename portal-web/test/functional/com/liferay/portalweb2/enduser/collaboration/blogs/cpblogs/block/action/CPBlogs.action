@@ -6,8 +6,8 @@
 	</command>
 
 	<command name="click">
-		<case locator-key1="RECYCLE_BIN_BUTTON">
-			<execute function="Click#valueClickAtAndWait" value1="Move to the Recycle Bin" />
+		<case locator-key1="DELETE_BUTTON">
+			<execute function="Click#valueClickAtAndWait" value1="Delete" />
 		</case>
 	</command>
 
