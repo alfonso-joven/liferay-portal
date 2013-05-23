@@ -86,10 +86,11 @@ String languageId = (String)request.getAttribute("edit_article.jsp-languageId");
 String defaultLanguageId = (String)request.getAttribute("edit_article.jsp-defaultLanguageId");
 String toLanguageId = (String)request.getAttribute("edit_article.jsp-toLanguageId");
 
-String editorLanguageId = defaultLanguageId;
+String contentsLanguageId = defaultLanguageId;
 
-if (toLanguageId != "") {
-	editorLanguageId = toLanguageId;
+
+if (Validator.isNotNull(toLanguageId)) {
+	contentsLanguageId = toLanguageId;
 }
 
 String content = null;
@@ -515,7 +516,7 @@ if (Validator.isNotNull(content)) {
 										</label>
 
 										<div class="journal-article-component-container">
-											<liferay-ui:input-editor editorImpl="<%= EDITOR_WYSIWYG_IMPL_KEY %>" languageId='<%= editorLanguageId %>' name='<%= renderResponse.getNamespace() + "structure_el_TextAreaField_content" %>' toolbarSet="liferay-article" width="100%" />
+											<liferay-ui:input-editor contentsLanguageId="<%= contentsLanguageId %>" editorImpl="<%= EDITOR_WYSIWYG_IMPL_KEY %>" name='<%= renderResponse.getNamespace() + "structure_el_TextAreaField_content" %>' toolbarSet="liferay-article" width="100%" />
 										</div>
 
 										<aui:input cssClass="journal-article-localized-checkbox" label="localizable" name="localized" type="hidden" value="<%= true %>" />
