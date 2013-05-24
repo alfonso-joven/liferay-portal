@@ -17,7 +17,7 @@
 		<execute macro="BlogsEntry#pgAdd" />
 	</command>
 
-        <command name="AddBlogsEntryComment">
+	<command name="AddBlogsEntryComment">
 		<var name="entryComment" value="Blogs Entry Comment" />
 		<var name="entryContent" value="Blogs Entry Content" />
 		<var name="entryTitle" value="Blogs Entry Title" />
