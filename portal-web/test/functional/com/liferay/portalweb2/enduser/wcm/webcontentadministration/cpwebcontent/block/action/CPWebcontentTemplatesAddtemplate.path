@@ -1,0 +1,127 @@
+<html>
+<head>
+<title>CPWebcontentTemplatesAddtemplate</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">CPWebcontentTemplatesAddtemplate</td></tr>
+</thead>
+<tbody>
+<tr>
+	<td>PAGE_NAME</td>
+	<td></td>
+	<td>CPWebcontentTemplatesAddtemplate</td>
+</tr>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>NAME_FIELD</td>
+	<td>//input[@id='_15_name_en_US']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>DESCRIPTION_FIELD</td>
+	<td>//textarea[@id='_15_description_en_US']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>STRUCTURE_NAME</td>
+	<td>//a[@id='_15_structureName']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>SELECT_STRUCTURE_BUTTON</td>
+	<td>//input[@value='Select']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>LAUNCH_EDITOR_BUTTON</td>
+	<td>//input[@value='Launch Editor']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>SAVE_BUTTON</td>
+	<td>//input[@value='Save']</td>
+	<td></td>
+</tr>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+<!--STRUCTURES-->
+<tr>
+	<td>STRUCTURES_IFRAME</td>
+	<td>//iframe[@id='_15_structureSelector']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>STRUCTURES_SEARCH_FIELD</td>
+	<td>//input[@name='_15_keywords']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>STRUCTURES_SEARCH_BUTTON</td>
+	<td>//input[@value='Search']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>STRUCTURES_ADD_STRUCTURE_BUTTON</td>
+	<td>//input[@value='Add Structure']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>STRUCTURES_INFO_MESSAGE</td>
+	<td>//div[@class='portlet-msg-info']</td>
+	<td></td>
+</tr>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+<!--STRUCTURES_TABLE-->
+<tr>
+	<td>STRUCTURES_TABLE_ID_1</td>
+	<td>xpath=(//tbody/tr[3]/td[1]/a)[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>STRUCTURES_TABLE_NAME_1</td>
+	<td>xpath=(//tbody/tr[3]/td[2]/a)[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>STRUCTURES_TABLE_DESCRIPTION_1</td>
+	<td>xpath=(//tbody/tr[3]/td[3]/a)[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+<!--EDITOR-->
+<tr>
+	<td>EDITOR_IFRAME</td>
+	<td>//iframe[@id='_15_xslContentIFrame']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>EDITOR_FIELD</td>
+	<td>//textarea[@id='_15_plainEditorField']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>EDITOR_UPDATE_BUTTON</td>
+	<td>//input[@value='Update']</td>
+	<td></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
