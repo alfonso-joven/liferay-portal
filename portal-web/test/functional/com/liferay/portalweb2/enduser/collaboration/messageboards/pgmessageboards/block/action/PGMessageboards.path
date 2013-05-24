@@ -20,22 +20,22 @@
 </tr>
 <tr>
 	<td>SUCCESS_MESSAGE</td>
-	<td>//div[@class='alert alert-success']</td>
+	<td>//div[@class='portlet-msg-success']</td>
 	<td></td>
 </tr>
 <tr>
-	<td>SUCCESS_MESSAGE_RECYCLE_BIN</td>
-	<td>//form[@id='_19_undoForm']</td>
+	<td>CONFIRMATION</td>
+	<td></td>
 	<td></td>
 </tr>
 <tr>
 	<td>ADD_CATEGORY_BUTTON</td>
-	<td>//button[contains(.,'Add Category')]</td>
+	<td>//input[@value='Add Category']</td>
 	<td></td>
 </tr>
 <tr>
 	<td>POST_NEW_THREAD_BUTTON</td>
-	<td>//button[contains(.,'Post New Thread')]</td>
+	<td>//input[@value='Post New Thread']</td>
 	<td></td>
 </tr>
 <tr>
@@ -66,7 +66,7 @@
 </tr>
 <tr>
 	<td>CATEGORY_TABLE_ACTIONS_1</td>
-	<td>xpath=(//div[contains(@id,'mbCategoriesSearchContainer')]//tr/td/div/a[@title='Actions'])[1]</td>
+	<td>xpath=(//div[contains(@id,'mbCategoriesSearchContainer')]//tr/td[5]/span/ul/li/strong/a)[1]</td>
 	<td></td>
 </tr>
 <tr>
@@ -78,11 +78,6 @@
 <tr>
 	<td>CATEGORY_MENULIST_EDIT</td>
 	<td>//a[@role='menuitem' and contains(.,'Edit')]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>CATEGORY_MENULIST_MOVE</td>
-	<td>//a[@role='menuitem' and contains(.,'Move')]</td>
 	<td></td>
 </tr>
 <tr>
@@ -106,8 +101,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>CATEGORY_MENULIST_RECYCLE_BIN</td>
-	<td>//a[@role='menuitem' and contains(.,'Move to the Recycle Bin')]</td>
+	<td>CATEGORY_MENULIST_DELETE</td>
+	<td>//a[@role='menuitem' and contains(.,'Delete')]</td>
 	<td></td>
 </tr>
 <tr>
@@ -132,13 +127,18 @@
 	<td></td>
 </tr>
 <tr>
+	<td>THREAD_TABLE_VIEWS_1</td>
+	<td>xpath=(//div[contains(@id,'mbThreadsSearchContainer')]//tr/td[5]/a)[1]</td>
+	<td></td>
+</tr>
+<tr>
 	<td>THREAD_TABLE_LAST_POST_1</td>
 	<td>xpath=(//div[contains(@id,'mbThreadsSearchContainer')]//tr/td[6]/a)[1]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>THREAD_TABLE_ACTIONS_1</td>
-	<td>xpath=(//div[contains(@id,'mbThreadsSearchContainer')]//tr/td/div/a[@title='Actions'])[1]</td>
+	<td>xpath=(//div[contains(@id,'mbThreadsSearchContainer')]//tr/td[7]/span/ul/li/strong/a)[1]</td>
 	<td></td>
 </tr>
 <tr>
@@ -188,8 +188,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>THREAD_MENULIST_RECYCLE_BIN</td>
-	<td>//a[@role='menuitem' and contains(.,'Move to the Recycle Bin')]</td>
+	<td>THREAD_MENULIST_DELETE</td>
+	<td>//a[@role='menuitem' and contains(.,'Delete')]</td>
 	<td></td>
 </tr>
 </tbody>

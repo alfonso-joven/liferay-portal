@@ -20,7 +20,7 @@
 </tr>
 <tr>
 	<td>SUCCESS_MESSAGE</td>
-	<td>//div[@class='alert alert-success']</td>
+	<td>//div[@class='portlet-msg-success']</td>
 	<td></td>
 </tr>
 <tr>
@@ -35,8 +35,8 @@
 </tr>
 <!--CATEGORIES-->
 <tr>
-	<td>CATEGORIES_RECYCLE_BIN_BUTTON</td>
-	<td>//div[contains(@id,'messageBoardsCategoriesPanel')]//button[contains(.,'Move to the Recycle Bin')]</td>
+	<td>CATEGORIES_DELETE_BUTTON</td>
+	<td>//div[contains(@id,'messageBoardsCategoriesPanel')]//input[contains(@value,'Delete')]</td>
 	<td></td>
 </tr>
 <tr>
@@ -57,8 +57,8 @@
 </tr>
 <!--THREADS-->
 <tr>
-	<td>THREADS_RECYCLE_BIN_BUTTON</td>
-	<td>//div[contains(@id,'messageBoardsThreadsPanel')]//button[contains(.,'Move to the Recycle Bin')]</td>
+	<td>THREADS_DELETE_BUTTON</td>
+	<td>//div[contains(@id,'messageBoardsThreadsPanel')]//input[contains(@value,'Delete')]</td>
 	<td></td>
 </tr>
 <tr>
