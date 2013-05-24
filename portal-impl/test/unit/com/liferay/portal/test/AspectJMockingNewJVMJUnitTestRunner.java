@@ -121,6 +121,7 @@ public class AspectJMockingNewJVMJUnitTestRunner extends NewJVMJUnitTestRunner {
 			_toString = processCallable.toString();
 		}
 
+		@Override
 		public Serializable call() throws ProcessException {
 			String[] aspectClassNames = StringUtil.split(
 				System.getProperty("aspectClasses"));

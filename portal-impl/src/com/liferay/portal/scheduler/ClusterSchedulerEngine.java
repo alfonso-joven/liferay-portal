@@ -972,6 +972,7 @@ public class ClusterSchedulerEngine
 	private static class SchedulerClusterInvokeAcceptor
 		implements ClusterInvokeAcceptor {
 
+		@Override
 		public boolean accept(Map<String, Serializable> context) {
 			if (ClusterInvokeThreadLocal.isEnabled()) {
 				return true;
@@ -995,6 +996,7 @@ public class ClusterSchedulerEngine
 	private class MemorySchedulerClusterEventListener
 		implements ClusterEventListener {
 
+		@Override
 		public void processClusterEvent(ClusterEvent clusterEvent) {
 			try {
 				getMasterAddressString(true);

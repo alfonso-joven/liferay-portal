@@ -113,6 +113,7 @@ public class BatchablePipeTest extends TestCase {
 
 		Runnable putRunnable = new Runnable() {
 
+			@Override
 			public void run() {
 				for (int i = 0; i < 100; i++) {
 					batchablePipe.put(
@@ -124,6 +125,7 @@ public class BatchablePipeTest extends TestCase {
 
 		Runnable takeRunnable = new Runnable() {
 
+			@Override
 			public void run() {
 				while (true) {
 					try {

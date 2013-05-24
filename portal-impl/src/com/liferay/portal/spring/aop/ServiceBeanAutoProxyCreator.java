@@ -39,6 +39,7 @@ public class ServiceBeanAutoProxyCreator
 		proxyFactory.setAopProxyFactory(
 			new AopProxyFactory() {
 
+				@Override
 				public AopProxy createAopProxy(AdvisedSupport advisedSupport)
 					throws AopConfigException {
 

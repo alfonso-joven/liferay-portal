@@ -908,6 +908,7 @@ public class ResourceBlockLocalServiceImpl
 
 		Callable<Void> callable = new Callable<Void>() {
 
+			@Override
 			public Void call() throws Exception {
 				permissionedModel.persist();
 

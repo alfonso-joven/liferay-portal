@@ -438,6 +438,7 @@ public class AudioProcessorImpl
 			_audioProperties = audioProperties;
 		}
 
+		@Override
 		public String call() throws ProcessException {
 			Properties systemProperties = System.getProperties();
 

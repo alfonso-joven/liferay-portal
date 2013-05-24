@@ -145,6 +145,7 @@ public class LiferayTemplateCache extends TemplateCache {
 			_parse = parse;
 		}
 
+		@Override
 		public Template run() throws Exception {
 			return _templateCache.getTemplate(
 				_templateId, _locale, _encoding, _parse);

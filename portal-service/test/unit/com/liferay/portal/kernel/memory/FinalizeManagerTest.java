@@ -85,6 +85,7 @@ public class FinalizeManagerTest extends BaseTestCase {
 
 	private class MarkFinalizeAction implements FinalizeAction {
 
+		@Override
 		public void doFinalize() {
 			_marked = true;
 		}

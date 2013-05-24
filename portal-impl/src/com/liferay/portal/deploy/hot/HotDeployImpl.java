@@ -300,11 +300,13 @@ public class HotDeployImpl implements HotDeploy {
 
 	private static class NoPACL implements PACL {
 
+		@Override
 		public void initPolicy(
 			String servletContextName, ClassLoader classLoader,
 			Properties properties) {
 		}
 
+		@Override
 		public void unregister(ClassLoader classLoader) {
 		}
 

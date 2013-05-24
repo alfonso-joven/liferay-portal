@@ -87,6 +87,7 @@ public class ConstantsBeanFactoryImplTest {
 			methods,
 			new Comparator<Method>() {
 
+				@Override
 				public int compare(Method method1, Method method2) {
 					String name1 = method1.getName();
 					String name2 = method2.getName();

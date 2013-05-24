@@ -833,6 +833,7 @@ public class LuceneHelperImpl implements LuceneHelper {
 	private class LoadIndexClusterEventListener
 		implements ClusterEventListener {
 
+		@Override
 		public void processClusterEvent(ClusterEvent clusterEvent) {
 			ClusterEventType clusterEventType =
 				clusterEvent.getClusterEventType();

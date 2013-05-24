@@ -535,6 +535,7 @@ public class AssetCategoryLocalServiceImpl
 			TransactionCommitCallbackRegistryUtil.registerCallback(
 				new Callable<Void>() {
 
+					@Override
 					public Void call() throws Exception {
 						assetCategoryLocalService.rebuildTree(groupId, true);
 

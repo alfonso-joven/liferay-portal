@@ -87,6 +87,7 @@ public class EntityColumn implements Cloneable, Comparable<EntityColumn> {
 			isConvertNull(), isLazy(), isLocalized(), isJsonEnabled());
 	}
 
+	@Override
 	public int compareTo(EntityColumn entityColumn) {
 		return _name.compareTo(entityColumn._name);
 	}

@@ -796,6 +796,7 @@ public class CharPipeTest extends TestCase {
 			return _failed;
 		}
 
+		@Override
 		public void run() {
 			try {
 				for (int i = 0; i < 10; i++) {
@@ -857,6 +858,7 @@ public class CharPipeTest extends TestCase {
 			return _failed;
 		}
 
+		@Override
 		public void run() {
 			try {
 				for (int i = 0; i < 10; i++) {

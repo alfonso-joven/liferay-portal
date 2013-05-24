@@ -87,10 +87,12 @@ public class IndexableAdvice
 	private static Indexable _nullIndexable =
 		new Indexable() {
 
+			@Override
 			public Class<? extends Annotation> annotationType() {
 				return Indexable.class;
 			}
 
+			@Override
 			public IndexableType type() {
 				return null;
 			}

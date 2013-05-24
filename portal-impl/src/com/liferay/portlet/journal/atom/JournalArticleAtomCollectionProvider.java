@@ -49,6 +49,7 @@ public class JournalArticleAtomCollectionProvider
 		return _COLLECTION_NAME;
 	}
 
+	@Override
 	public List<String> getEntryAuthors(JournalArticle journalArticle) {
 		List<String> authors = new ArrayList<String>(1);
 
@@ -57,6 +58,7 @@ public class JournalArticleAtomCollectionProvider
 		return authors;
 	}
 
+	@Override
 	public AtomEntryContent getEntryContent(
 		JournalArticle journalArticle, AtomRequestContext atomRequestContext) {
 
@@ -64,18 +66,22 @@ public class JournalArticleAtomCollectionProvider
 			journalArticle.getContent(), AtomEntryContent.Type.XML);
 	}
 
+	@Override
 	public String getEntryId(JournalArticle journalArticle) {
 		return journalArticle.getArticleId();
 	}
 
+	@Override
 	public String getEntrySummary(JournalArticle entry) {
 		return null;
 	}
 
+	@Override
 	public String getEntryTitle(JournalArticle journalArticle) {
 		return journalArticle.getTitle();
 	}
 
+	@Override
 	public Date getEntryUpdated(JournalArticle journalArticle) {
 		return journalArticle.getModifiedDate();
 	}

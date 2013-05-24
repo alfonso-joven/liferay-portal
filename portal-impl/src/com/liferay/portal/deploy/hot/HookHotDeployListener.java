@@ -2911,6 +2911,7 @@ public class HookHotDeployListener
 			_portalStringArray = PropsUtil.getArray(key);
 		}
 
+		@Override
 		public String[] getStringArray() {
 			List<String> mergedStringList = new UniqueList<String>();
 
@@ -2928,6 +2929,7 @@ public class HookHotDeployListener
 				new String[mergedStringList.size()]);
 		}
 
+		@Override
 		public void setPluginStringArray(
 			String servletContextName, String[] pluginStringArray) {
 
@@ -2995,6 +2997,7 @@ public class HookHotDeployListener
 			_portalStringArray = PropsUtil.getArray(key);
 		}
 
+		@Override
 		public String[] getStringArray() {
 			if (_pluginStringArray != null) {
 				return _pluginStringArray;
@@ -3012,6 +3015,7 @@ public class HookHotDeployListener
 			}
 		}
 
+		@Override
 		public void setPluginStringArray(
 			String servletContextName, String[] pluginStringArray) {
 
