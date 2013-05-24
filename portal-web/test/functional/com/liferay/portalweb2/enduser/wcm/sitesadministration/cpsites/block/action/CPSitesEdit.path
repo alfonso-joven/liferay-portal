@@ -50,6 +50,107 @@
 	<td>//input[@value='Save']</td>
 	<td></td>
 </tr>
+<tr>
+	<td>MENU_STAGING</td>
+	<td>//a[@id='_165_stagingLink']</td>
+	<td></td>
+</tr>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+<!--STAGING-->
+<tr>
+	<td>SITE_SETTINGS_STAGING_LOCAL_LIVE</td>
+	<td>//input[@id='_165_local']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>STAGING_BLOGS_CHECKBOX</td>
+	<td>//span/span[contains(.,'Blogs')]/span/input[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>STAGING_BOOKMARKS_CHECKBOX</td>
+	<td>//span/span[contains(.,'Bookmarks')]/span/input[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>STAGING_CALENDAR_CHECKBOX</td>
+	<td>//span/span[contains(.,'Calendar')]/span/input[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>STAGING_DOCUMENTS_AND_MEDIA_CHECKBOX</td>
+	<td>//span/span[contains(.,'Documents and Media')]/span/input[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>STAGING_DOCUMENTS_AND_MEDIA_DISPLAY_CHECKBOX</td>
+	<td>//span/span[contains(.,'Documents and Media Display')]/span/input[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>STAGING_DYNAMIC_DATA_LIST_DISPLAY_CHECKBOX</td>
+	<td>//span/span[contains(.,'Dynamic Data List Display')]/span/input[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>STAGING_DYNAMIC_DATA_LISTS_CHECKBOX</td>
+	<td>//span/span[contains(.,'Dynamic Data Lists')]/span/input[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>STAGING_DYNAMIC_DATA_MAPPING_CHECKBOX</td>
+	<td>//span/span[contains(.,'Dynamic Data Mapping')]/span/input[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>STAGING_MESSAGE_BOARDS_CHECKBOX</td>
+	<td>//span/span[contains(.,'Message Boards')]/span/input[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>STAGING_PAGE_COMMENTS_CHECKBOX</td>
+	<td>//span/span[contains(.,'Page Comments')]/span/input[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>STAGING_PAGE_RATINGS_CHECKBOX</td>
+	<td>//span/span[contains(.,'Page Ratings')]/span/input[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>STAGING_POLLS_CHECKBOX</td>
+	<td>//span/span[contains(.,'Polls')]/span/input[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>STAGING_POLLS_CHECKBOX</td>
+	<td>//span/span[contains(.,'Polls Display')]/span/input[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>STAGING_WEB_CONTENT_CHECKBOX</td>
+	<td>//span/span[contains(.,'Web Content')]/span/input[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>STAGING_WEB_CONTENT_DISPLAY_CHECKBOX</td>
+	<td>//span/span[contains(.,'Web Content Display')]/span/input[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>STAGING_WIKI_CHECKBOX</td>
+	<td>//span/span[contains(.,'Wiki')]/span/input[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>STAGING_WIKI_DISPLAY_CHECKBOX</td>
+	<td>//span/span[contains(.,'Wiki Display')]/span/input[2]</td>
+	<td></td>
+</tr>
 </tbody>
 </table>
 </body>
