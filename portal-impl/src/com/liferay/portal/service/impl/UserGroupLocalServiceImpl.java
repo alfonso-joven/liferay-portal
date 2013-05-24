@@ -103,6 +103,7 @@ public class UserGroupLocalServiceImpl extends UserGroupLocalServiceBaseImpl {
 	 * @throws PortalException if the user group's information was invalid
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public UserGroup addUserGroup(
 			long userId, long companyId, String name, String description)
 		throws PortalException, SystemException {
@@ -168,6 +169,7 @@ public class UserGroupLocalServiceImpl extends UserGroupLocalServiceBaseImpl {
 	 * @throws     SystemException if a system exception occurred
 	 * @deprecated
 	 */
+	@Override
 	public void copyUserGroupLayouts(long userGroupId, long userId)
 		throws PortalException, SystemException {
 
@@ -200,6 +202,7 @@ public class UserGroupLocalServiceImpl extends UserGroupLocalServiceBaseImpl {
 	 * @throws     SystemException if a system exception occurred
 	 * @deprecated
 	 */
+	@Override
 	public void copyUserGroupLayouts(long userGroupId, long[] userIds)
 		throws PortalException, SystemException {
 
@@ -235,6 +238,7 @@ public class UserGroupLocalServiceImpl extends UserGroupLocalServiceBaseImpl {
 	 * @throws     SystemException if a system exception occurred
 	 * @deprecated
 	 */
+	@Override
 	public void copyUserGroupLayouts(long[] userGroupIds, long userId)
 		throws PortalException, SystemException {
 
@@ -325,6 +329,7 @@ public class UserGroupLocalServiceImpl extends UserGroupLocalServiceBaseImpl {
 	 * @throws PortalException if a user group with the name could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public UserGroup getUserGroup(long companyId, String name)
 		throws PortalException, SystemException {
 
@@ -338,6 +343,7 @@ public class UserGroupLocalServiceImpl extends UserGroupLocalServiceBaseImpl {
 	 * @return the user groups belonging to the company
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public List<UserGroup> getUserGroups(long companyId)
 		throws SystemException {
 
@@ -352,6 +358,7 @@ public class UserGroupLocalServiceImpl extends UserGroupLocalServiceBaseImpl {
 	 * @throws PortalException if any one of the user groups could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public List<UserGroup> getUserGroups(long[] userGroupIds)
 		throws PortalException, SystemException {
 
@@ -413,6 +420,7 @@ public class UserGroupLocalServiceImpl extends UserGroupLocalServiceBaseImpl {
 		return teamPersistence.containsUserGroup(teamId, userGroupId);
 	}
 
+	@Override
 	public List<UserGroup> search(
 			long companyId, String keywords,
 			LinkedHashMap<String, Object> params, int start, int end,
@@ -453,6 +461,7 @@ public class UserGroupLocalServiceImpl extends UserGroupLocalServiceBaseImpl {
 	 * @throws SystemException if a system exception occurred
 	 * @see    com.liferay.portal.service.persistence.UserGroupFinder
 	 */
+	@Override
 	public List<UserGroup> search(
 			long companyId, String name, String description,
 			LinkedHashMap<String, Object> params, int start, int end,
@@ -463,6 +472,7 @@ public class UserGroupLocalServiceImpl extends UserGroupLocalServiceBaseImpl {
 			companyId, name, description, params, false, start, end, obc);
 	}
 
+	@Override
 	public int searchCount(
 			long companyId, String keywords,
 			LinkedHashMap<String, Object> params)
@@ -485,6 +495,7 @@ public class UserGroupLocalServiceImpl extends UserGroupLocalServiceBaseImpl {
 	 * @throws SystemException if a system exception occurred
 	 * @see    com.liferay.portal.service.persistence.UserGroupFinder
 	 */
+	@Override
 	public int searchCount(
 			long companyId, String name, String description,
 			LinkedHashMap<String, Object> params)
@@ -526,6 +537,7 @@ public class UserGroupLocalServiceImpl extends UserGroupLocalServiceBaseImpl {
 	 * @param  userGroupIds the primary keys of the user groups
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void unsetGroupUserGroups(long groupId, long[] userGroupIds)
 		throws SystemException {
 
@@ -550,6 +562,7 @@ public class UserGroupLocalServiceImpl extends UserGroupLocalServiceBaseImpl {
 	 * @param  userGroupIds the primary keys of the user groups
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void unsetTeamUserGroups(long teamId, long[] userGroupIds)
 		throws SystemException {
 
@@ -570,6 +583,7 @@ public class UserGroupLocalServiceImpl extends UserGroupLocalServiceBaseImpl {
 	 *         found or if the new information was invalid
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public UserGroup updateUserGroup(
 			long companyId, long userGroupId, String name, String description)
 		throws PortalException, SystemException {

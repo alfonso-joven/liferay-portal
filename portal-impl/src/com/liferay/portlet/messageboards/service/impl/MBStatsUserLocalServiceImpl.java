@@ -37,6 +37,7 @@ import java.util.List;
 public class MBStatsUserLocalServiceImpl
 	extends MBStatsUserLocalServiceBaseImpl {
 
+	@Override
 	public MBStatsUser addStatsUser(long groupId, long userId)
 		throws SystemException {
 
@@ -68,6 +69,7 @@ public class MBStatsUserLocalServiceImpl
 		return statsUser;
 	}
 
+	@Override
 	public void deleteStatsUser(long statsUserId)
 		throws PortalException, SystemException {
 
@@ -77,10 +79,12 @@ public class MBStatsUserLocalServiceImpl
 		deleteStatsUser(statsUser);
 	}
 
+	@Override
 	public void deleteStatsUser(MBStatsUser statsUser) throws SystemException {
 		mbStatsUserPersistence.remove(statsUser);
 	}
 
+	@Override
 	public void deleteStatsUsersByGroupId(long groupId) throws SystemException {
 		List<MBStatsUser> statsUsers = mbStatsUserPersistence.findByGroupId(
 			groupId);
@@ -90,6 +94,7 @@ public class MBStatsUserLocalServiceImpl
 		}
 	}
 
+	@Override
 	public void deleteStatsUsersByUserId(long userId) throws SystemException {
 		List<MBStatsUser> statsUsers = mbStatsUserPersistence.findByUserId(
 			userId);
@@ -99,6 +104,7 @@ public class MBStatsUserLocalServiceImpl
 		}
 	}
 
+	@Override
 	public long getMessageCountByUserId(long userId) throws SystemException {
 		DynamicQuery dynamicQuery = DynamicQueryFactoryUtil.forClass(
 			MBStatsUser.class, MBStatsUserImpl.TABLE_NAME,
@@ -117,6 +123,7 @@ public class MBStatsUserLocalServiceImpl
 		return results.get(0);
 	}
 
+	@Override
 	public MBStatsUser getStatsUser(long groupId, long userId)
 		throws SystemException {
 
@@ -130,6 +137,7 @@ public class MBStatsUserLocalServiceImpl
 		return statsUser;
 	}
 
+	@Override
 	public List<MBStatsUser> getStatsUsersByGroupId(
 			long groupId, int start, int end)
 		throws PortalException, SystemException {
@@ -143,6 +151,7 @@ public class MBStatsUserLocalServiceImpl
 			groupId, defaultUserId, 0, start, end);
 	}
 
+	@Override
 	public int getStatsUsersByGroupIdCount(long groupId)
 		throws PortalException, SystemException {
 
@@ -155,18 +164,21 @@ public class MBStatsUserLocalServiceImpl
 			groupId, defaultUserId, 0);
 	}
 
+	@Override
 	public List<MBStatsUser> getStatsUsersByUserId(long userId)
 		throws SystemException {
 
 		return mbStatsUserPersistence.findByUserId(userId);
 	}
 
+	@Override
 	public MBStatsUser updateStatsUser(long groupId, long userId)
 		throws SystemException {
 
 		return updateStatsUser(groupId, userId, null);
 	}
 
+	@Override
 	public MBStatsUser updateStatsUser(
 			long groupId, long userId, Date lastPostDate)
 		throws SystemException {

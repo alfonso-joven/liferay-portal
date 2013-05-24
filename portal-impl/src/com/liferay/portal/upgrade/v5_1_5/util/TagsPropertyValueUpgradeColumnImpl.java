@@ -28,6 +28,7 @@ public class TagsPropertyValueUpgradeColumnImpl extends BaseUpgradeColumnImpl {
 		super(name);
 	}
 
+	@Override
 	public Object getNewValue(Object oldValue) throws Exception {
 		String value = (String)oldValue;
 

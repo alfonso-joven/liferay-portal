@@ -49,14 +49,17 @@ import javax.servlet.http.HttpServletRequest;
  */
 public abstract class BaseAssetRenderer implements AssetRenderer {
 
+	@Override
 	public String[] getAvailableLocales() {
 		return _AVAILABLE_LOCALES;
 	}
 
+	@Override
 	public String getDiscussionPath() {
 		return null;
 	}
 
+	@Override
 	public String getIconPath(PortletRequest portletRequest) {
 		ThemeDisplay themeDisplay = (ThemeDisplay)portletRequest.getAttribute(
 			WebKeys.THEME_DISPLAY);
@@ -64,10 +67,12 @@ public abstract class BaseAssetRenderer implements AssetRenderer {
 		return getIconPath(themeDisplay);
 	}
 
+	@Override
 	public String getSearchSummary(Locale locale) {
 		return getSummary(locale);
 	}
 
+	@Override
 	public PortletURL getURLEdit(
 			LiferayPortletRequest liferayPortletRequest,
 			LiferayPortletResponse liferayPortletResponse)
@@ -76,6 +81,7 @@ public abstract class BaseAssetRenderer implements AssetRenderer {
 		return null;
 	}
 
+	@Override
 	public PortletURL getURLEdit(
 			LiferayPortletRequest liferayPortletRequest,
 			LiferayPortletResponse liferayPortletResponse,
@@ -132,6 +138,7 @@ public abstract class BaseAssetRenderer implements AssetRenderer {
 		return editPortletURL;
 	}
 
+	@Override
 	public PortletURL getURLExport(
 			LiferayPortletRequest liferayPortletRequest,
 			LiferayPortletResponse liferayPortletResponse)
@@ -140,10 +147,12 @@ public abstract class BaseAssetRenderer implements AssetRenderer {
 		return null;
 	}
 
+	@Override
 	public String getUrlTitle() {
 		return null;
 	}
 
+	@Override
 	public PortletURL getURLView(
 			LiferayPortletResponse liferayPortletResponse,
 			WindowState windowState)
@@ -152,6 +161,7 @@ public abstract class BaseAssetRenderer implements AssetRenderer {
 		return null;
 	}
 
+	@Override
 	public String getURLViewInContext(
 			LiferayPortletRequest liferayPortletRequest,
 			LiferayPortletResponse liferayPortletResponse,
@@ -161,10 +171,12 @@ public abstract class BaseAssetRenderer implements AssetRenderer {
 		return null;
 	}
 
+	@Override
 	public String getViewInContextMessage() {
 		return "view-in-context";
 	}
 
+	@Override
 	@SuppressWarnings("unused")
 	public boolean hasEditPermission(PermissionChecker permissionChecker)
 		throws PortalException, SystemException {
@@ -172,6 +184,7 @@ public abstract class BaseAssetRenderer implements AssetRenderer {
 		return false;
 	}
 
+	@Override
 	@SuppressWarnings("unused")
 	public boolean hasViewPermission(PermissionChecker permissionChecker)
 		throws PortalException, SystemException {
@@ -179,22 +192,27 @@ public abstract class BaseAssetRenderer implements AssetRenderer {
 		return true;
 	}
 
+	@Override
 	public boolean isConvertible() {
 		return false;
 	}
 
+	@Override
 	public boolean isDisplayable() {
 		return true;
 	}
 
+	@Override
 	public boolean isLocalizable() {
 		return false;
 	}
 
+	@Override
 	public boolean isPreviewInContext() {
 		return false;
 	}
 
+	@Override
 	public boolean isPrintable() {
 		return false;
 	}

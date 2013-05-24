@@ -36,6 +36,7 @@ import java.util.List;
 public class SocialActivitySettingServiceImpl
 	extends SocialActivitySettingServiceBaseImpl {
 
+	@Override
 	public SocialActivityDefinition getActivityDefinition(
 			long groupId, String className, int activityType)
 		throws PortalException, SystemException {
@@ -46,6 +47,7 @@ public class SocialActivitySettingServiceImpl
 			groupId, className, activityType);
 	}
 
+	@Override
 	public List<SocialActivityDefinition> getActivityDefinitions(
 			long groupId, String className)
 		throws PortalException, SystemException {
@@ -56,6 +58,7 @@ public class SocialActivitySettingServiceImpl
 			groupId, className);
 	}
 
+	@Override
 	public JSONArray getJSONActivityDefinitions(long groupId, String className)
 		throws PortalException, SystemException {
 
@@ -103,6 +106,7 @@ public class SocialActivitySettingServiceImpl
 		return jsonArray;
 	}
 
+	@Override
 	public void updateActivitySetting(
 			long groupId, String className, boolean enabled)
 		throws PortalException, SystemException {
@@ -113,6 +117,7 @@ public class SocialActivitySettingServiceImpl
 			groupId, className, enabled);
 	}
 
+	@Override
 	public void updateActivitySetting(
 			long groupId, String className, int activityType,
 			SocialActivityCounterDefinition activityCounterDefinition)
@@ -124,6 +129,7 @@ public class SocialActivitySettingServiceImpl
 			groupId, className, activityType, activityCounterDefinition);
 	}
 
+	@Override
 	public void updateActivitySettings(
 			long groupId, String className, int activityType,
 			List<SocialActivityCounterDefinition> activityCounterDefinitions)

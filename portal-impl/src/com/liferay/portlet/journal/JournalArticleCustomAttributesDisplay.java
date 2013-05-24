@@ -26,6 +26,7 @@ public class JournalArticleCustomAttributesDisplay
 
 	public static final String CLASS_NAME = JournalArticle.class.getName();
 
+	@Override
 	public String getClassName() {
 		return CLASS_NAME;
 	}

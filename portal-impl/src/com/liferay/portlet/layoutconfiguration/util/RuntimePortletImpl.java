@@ -74,6 +74,7 @@ import javax.servlet.jsp.PageContext;
 @DoPrivileged
 public class RuntimePortletImpl implements RuntimePortlet {
 
+	@Override
 	public StringBundler getProcessedTemplate(
 			ServletContext servletContext, HttpServletRequest request,
 			HttpServletResponse response, PageContext pageContext,
@@ -86,6 +87,7 @@ public class RuntimePortletImpl implements RuntimePortlet {
 			portletId, velocityTemplateId, velocityTemplateContent, true);
 	}
 
+	@Override
 	public String processCustomizationSettings(
 			ServletContext servletContext, HttpServletRequest request,
 			HttpServletResponse response, PageContext pageContext,
@@ -99,6 +101,7 @@ public class RuntimePortletImpl implements RuntimePortlet {
 		return sb.toString();
 	}
 
+	@Override
 	public String processPortlet(
 			ServletContext servletContext, HttpServletRequest request,
 			HttpServletResponse response, Portlet portlet, String queryString,
@@ -112,6 +115,7 @@ public class RuntimePortletImpl implements RuntimePortlet {
 			columnCount, path, writeOutput);
 	}
 
+	@Override
 	public String processPortlet(
 			ServletContext servletContext, HttpServletRequest request,
 			HttpServletResponse response, RenderRequest renderRequest,
@@ -192,6 +196,7 @@ public class RuntimePortletImpl implements RuntimePortlet {
 		}
 	}
 
+	@Override
 	public String processPortlet(
 			ServletContext servletContext, HttpServletRequest request,
 			HttpServletResponse response, RenderRequest renderRequest,
@@ -204,6 +209,7 @@ public class RuntimePortletImpl implements RuntimePortlet {
 			portletId, queryString, null, null, null, writeOutput);
 	}
 
+	@Override
 	public String processPortlet(
 			ServletContext servletContext, HttpServletRequest request,
 			HttpServletResponse response, RenderRequest renderRequest,
@@ -218,6 +224,7 @@ public class RuntimePortletImpl implements RuntimePortlet {
 			null, writeOutput);
 	}
 
+	@Override
 	public void processTemplate(
 			ServletContext servletContext, HttpServletRequest request,
 			HttpServletResponse response, PageContext pageContext,
@@ -230,6 +237,7 @@ public class RuntimePortletImpl implements RuntimePortlet {
 			velocityTemplateId, velocityTemplateContent);
 	}
 
+	@Override
 	public void processTemplate(
 			ServletContext servletContext, HttpServletRequest request,
 			HttpServletResponse response, PageContext pageContext,
@@ -244,6 +252,7 @@ public class RuntimePortletImpl implements RuntimePortlet {
 		sb.writeTo(pageContext.getOut());
 	}
 
+	@Override
 	public String processXML(
 			HttpServletRequest request, String content,
 			RuntimeLogic runtimeLogic)
@@ -330,6 +339,7 @@ public class RuntimePortletImpl implements RuntimePortlet {
 		}
 	}
 
+	@Override
 	public String processXML(
 			ServletContext servletContext, HttpServletRequest request,
 			HttpServletResponse response, RenderRequest renderRequest,

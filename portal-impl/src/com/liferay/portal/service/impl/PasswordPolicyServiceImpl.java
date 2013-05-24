@@ -27,6 +27,7 @@ import com.liferay.portal.service.permission.PortalPermissionUtil;
  */
 public class PasswordPolicyServiceImpl extends PasswordPolicyServiceBaseImpl {
 
+	@Override
 	public PasswordPolicy addPasswordPolicy(
 			String name, String description, boolean changeable,
 			boolean changeRequired, long minAge, boolean checkSyntax,
@@ -50,6 +51,7 @@ public class PasswordPolicyServiceImpl extends PasswordPolicyServiceBaseImpl {
 			resetTicketMaxAge);
 	}
 
+	@Override
 	public void deletePasswordPolicy(long passwordPolicyId)
 		throws PortalException, SystemException {
 
@@ -59,6 +61,7 @@ public class PasswordPolicyServiceImpl extends PasswordPolicyServiceBaseImpl {
 		passwordPolicyLocalService.deletePasswordPolicy(passwordPolicyId);
 	}
 
+	@Override
 	public PasswordPolicy updatePasswordPolicy(
 			long passwordPolicyId, String name, String description,
 			boolean changeable, boolean changeRequired, long minAge,

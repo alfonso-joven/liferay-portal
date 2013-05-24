@@ -29,13 +29,16 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class StringTemplateLoader implements TemplateLoader {
 
+	@Override
 	public void closeTemplateSource(Object templateSource) {
 	}
 
+	@Override
 	public Object findTemplateSource(String name) {
 		return _templates.get(name);
 	}
 
+	@Override
 	public long getLastModified(Object templateSource) {
 		StringTemplateSource stringTemplateSource =
 			(StringTemplateSource)templateSource;
@@ -43,6 +46,7 @@ public class StringTemplateLoader implements TemplateLoader {
 		return stringTemplateSource._lastModified;
 	}
 
+	@Override
 	public Reader getReader(Object templateSource, String encoding) {
 		StringTemplateSource stringTemplateSource =
 			(StringTemplateSource)templateSource;

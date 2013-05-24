@@ -35,6 +35,7 @@ public class BookmarksFolderFinderImpl
 	public static final String FIND_BY_NO_RESOURCE_BLOCKS =
 		BookmarksFolderFinder.class.getName() + ".findByNoResourceBlocks";
 
+	@Override
 	public List<BookmarksFolder> findByNoResourceBlocks()
 		throws SystemException {
 

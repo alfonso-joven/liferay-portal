@@ -65,6 +65,7 @@ import java.util.Set;
 public class DDMStructureLocalServiceImpl
 	extends DDMStructureLocalServiceBaseImpl {
 
+	@Override
 	public DDMStructure addStructure(
 			long userId, long groupId, long classNameId, String structureKey,
 			Map<Locale, String> nameMap, Map<Locale, String> descriptionMap,
@@ -130,6 +131,7 @@ public class DDMStructureLocalServiceImpl
 		return structure;
 	}
 
+	@Override
 	public void addStructureResources(
 			DDMStructure structure, boolean addGroupPermissions,
 			boolean addGuestPermissions)
@@ -142,6 +144,7 @@ public class DDMStructureLocalServiceImpl
 			addGuestPermissions);
 	}
 
+	@Override
 	public void addStructureResources(
 			DDMStructure structure, String[] groupPermissions,
 			String[] guestPermissions)
@@ -153,6 +156,7 @@ public class DDMStructureLocalServiceImpl
 			structure.getStructureId(), groupPermissions, guestPermissions);
 	}
 
+	@Override
 	public DDMStructure copyStructure(
 			long userId, long structureId, Map<Locale, String> nameMap,
 			Map<Locale, String> descriptionMap, ServiceContext serviceContext)
@@ -166,6 +170,7 @@ public class DDMStructureLocalServiceImpl
 			structure.getStorageType(), structure.getType(), serviceContext);
 	}
 
+	@Override
 	public void deleteStructure(DDMStructure structure)
 		throws PortalException, SystemException {
 
@@ -186,6 +191,7 @@ public class DDMStructureLocalServiceImpl
 			ResourceConstants.SCOPE_INDIVIDUAL, structure.getStructureId());
 	}
 
+	@Override
 	public void deleteStructure(long structureId)
 		throws PortalException, SystemException {
 
@@ -195,6 +201,7 @@ public class DDMStructureLocalServiceImpl
 		deleteStructure(structure);
 	}
 
+	@Override
 	public void deleteStructure(long groupId, String structureKey)
 		throws PortalException, SystemException {
 
@@ -204,6 +211,7 @@ public class DDMStructureLocalServiceImpl
 		deleteStructure(structure);
 	}
 
+	@Override
 	public void deleteStructures(long groupId)
 		throws PortalException, SystemException {
 
@@ -215,12 +223,14 @@ public class DDMStructureLocalServiceImpl
 		}
 	}
 
+	@Override
 	public DDMStructure fetchStructure(long structureId)
 		throws SystemException {
 
 		return ddmStructurePersistence.fetchByPrimaryKey(structureId);
 	}
 
+	@Override
 	public DDMStructure fetchStructure(long groupId, String structureKey)
 		throws SystemException {
 
@@ -230,6 +240,7 @@ public class DDMStructureLocalServiceImpl
 	/**
 	 * @deprecated {@link #getClassStructures(long, long)}
 	 */
+	@Override
 	public List<DDMStructure> getClassStructures(long classNameId)
 		throws SystemException {
 
@@ -239,6 +250,7 @@ public class DDMStructureLocalServiceImpl
 	/**
 	 * @deprecated {@link #getClassStructures(long, long, int, int)}
 	 */
+	@Override
 	public List<DDMStructure> getClassStructures(
 			long classNameId, int start, int end)
 		throws SystemException {
@@ -247,6 +259,7 @@ public class DDMStructureLocalServiceImpl
 			classNameId, start, end);
 	}
 
+	@Override
 	public List<DDMStructure> getClassStructures(
 			long companyId, long classNameId)
 		throws SystemException {
@@ -254,6 +267,7 @@ public class DDMStructureLocalServiceImpl
 		return ddmStructurePersistence.findByC_C(companyId, classNameId);
 	}
 
+	@Override
 	public List<DDMStructure> getClassStructures(
 			long companyId, long classNameId, int start, int end)
 		throws SystemException {
@@ -262,6 +276,7 @@ public class DDMStructureLocalServiceImpl
 			companyId, classNameId, start, end);
 	}
 
+	@Override
 	public List<DDMStructure> getClassStructures(
 			long companyId, long classNameId,
 			OrderByComparator orderByComparator)
@@ -275,6 +290,7 @@ public class DDMStructureLocalServiceImpl
 	/**
 	 * @deprecated {@link #getClassStructures(long, long, OrderByComparator)}
 	 */
+	@Override
 	public List<DDMStructure> getClassStructures(
 			long classNameId, OrderByComparator orderByComparator)
 		throws SystemException {
@@ -284,6 +300,7 @@ public class DDMStructureLocalServiceImpl
 			orderByComparator);
 	}
 
+	@Override
 	public List<DDMStructure> getDLFileEntryTypeStructures(
 			long dlFileEntryTypeId)
 		throws SystemException {
@@ -291,18 +308,21 @@ public class DDMStructureLocalServiceImpl
 		return dlFileEntryTypePersistence.getDDMStructures(dlFileEntryTypeId);
 	}
 
+	@Override
 	public DDMStructure getStructure(long structureId)
 		throws PortalException, SystemException {
 
 		return ddmStructurePersistence.findByPrimaryKey(structureId);
 	}
 
+	@Override
 	public DDMStructure getStructure(long groupId, String structureKey)
 		throws PortalException, SystemException {
 
 		return ddmStructurePersistence.findByG_S(groupId, structureKey);
 	}
 
+	@Override
 	public List<DDMStructure> getStructure(
 			long groupId, String name, String description)
 		throws SystemException {
@@ -313,6 +333,7 @@ public class DDMStructureLocalServiceImpl
 	/**
 	 * @deprecated {@link #getStructures}
 	 */
+	@Override
 	public List<DDMStructure> getStructureEntries() throws SystemException {
 		return getStructures();
 	}
@@ -320,6 +341,7 @@ public class DDMStructureLocalServiceImpl
 	/**
 	 * @deprecated {@link #getStructures(long)}
 	 */
+	@Override
 	public List<DDMStructure> getStructureEntries(long groupId)
 		throws SystemException {
 
@@ -329,6 +351,7 @@ public class DDMStructureLocalServiceImpl
 	/**
 	 * @deprecated {@link #getStructures(long, int, int)}
 	 */
+	@Override
 	public List<DDMStructure> getStructureEntries(
 			long groupId, int start, int end)
 		throws SystemException {
@@ -336,26 +359,31 @@ public class DDMStructureLocalServiceImpl
 		return getStructures(groupId, start, end);
 	}
 
+	@Override
 	public List<DDMStructure> getStructures() throws SystemException {
 		return ddmStructurePersistence.findAll();
 	}
 
+	@Override
 	public List<DDMStructure> getStructures(long groupId)
 		throws SystemException {
 
 		return ddmStructurePersistence.findByGroupId(groupId);
 	}
 
+	@Override
 	public List<DDMStructure> getStructures(long groupId, int start, int end)
 		throws SystemException {
 
 		return ddmStructurePersistence.findByGroupId(groupId, start, end);
 	}
 
+	@Override
 	public int getStructuresCount(long groupId) throws SystemException {
 		return ddmStructurePersistence.countByGroupId(groupId);
 	}
 
+	@Override
 	public List<DDMStructure> search(
 			long companyId, long[] groupIds, long[] classNameIds,
 			String keywords, int start, int end,
@@ -367,6 +395,7 @@ public class DDMStructureLocalServiceImpl
 			orderByComparator);
 	}
 
+	@Override
 	public List<DDMStructure> search(
 			long companyId, long[] groupIds, long[] classNameIds, String name,
 			String description, String storageType, int type,
@@ -379,6 +408,7 @@ public class DDMStructureLocalServiceImpl
 			type, andOperator, start, end, orderByComparator);
 	}
 
+	@Override
 	public int searchCount(
 			long companyId, long[] groupIds, long[] classNameIds,
 			String keywords)
@@ -388,6 +418,7 @@ public class DDMStructureLocalServiceImpl
 			companyId, groupIds, classNameIds, keywords);
 	}
 
+	@Override
 	public int searchCount(
 			long companyId, long[] groupIds, long[] classNameIds, String name,
 			String description, String storageType, int type,
@@ -399,6 +430,7 @@ public class DDMStructureLocalServiceImpl
 			type, andOperator);
 	}
 
+	@Override
 	public DDMStructure updateStructure(
 			long structureId, Map<Locale, String> nameMap,
 			Map<Locale, String> descriptionMap, String xsd,
@@ -412,6 +444,7 @@ public class DDMStructureLocalServiceImpl
 			nameMap, descriptionMap, xsd, serviceContext, structure);
 	}
 
+	@Override
 	public DDMStructure updateStructure(
 			long groupId, String structureKey, Map<Locale, String> nameMap,
 			Map<Locale, String> descriptionMap, String xsd,

@@ -67,6 +67,7 @@ public class JournalArticleAssetRenderer extends BaseAssetRenderer {
 		return _article.getAvailableLocales();
 	}
 
+	@Override
 	public long getClassPK() {
 		if ((_article.isDraft() || _article.isPending()) &&
 			(_article.getVersion() !=
@@ -89,14 +90,17 @@ public class JournalArticleAssetRenderer extends BaseAssetRenderer {
 		}
 	}
 
+	@Override
 	public long getGroupId() {
 		return _article.getGroupId();
 	}
 
+	@Override
 	public String getSummary(Locale locale) {
 		return _article.getDescription(locale);
 	}
 
+	@Override
 	public String getTitle(Locale locale) {
 		return _article.getTitle(locale);
 	}
@@ -200,14 +204,17 @@ public class JournalArticleAssetRenderer extends BaseAssetRenderer {
 		return noSuchEntryRedirect;
 	}
 
+	@Override
 	public long getUserId() {
 		return _article.getUserId();
 	}
 
+	@Override
 	public String getUserName() {
 		return _article.getUserName();
 	}
 
+	@Override
 	public String getUuid() {
 		return _article.getUuid();
 	}
@@ -263,6 +270,7 @@ public class JournalArticleAssetRenderer extends BaseAssetRenderer {
 		return true;
 	}
 
+	@Override
 	public String render(
 			RenderRequest renderRequest, RenderResponse renderResponse,
 			String template)

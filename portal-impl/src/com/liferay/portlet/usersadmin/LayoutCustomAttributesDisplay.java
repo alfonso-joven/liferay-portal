@@ -25,6 +25,7 @@ public class LayoutCustomAttributesDisplay extends BaseCustomAttributesDisplay {
 
 	public static final String CLASS_NAME = Layout.class.getName();
 
+	@Override
 	public String getClassName() {
 		return CLASS_NAME;
 	}

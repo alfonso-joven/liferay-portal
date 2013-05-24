@@ -25,6 +25,7 @@ public class UserCustomAttributesDisplay extends BaseCustomAttributesDisplay {
 
 	public static final String CLASS_NAME = User.class.getName();
 
+	@Override
 	public String getClassName() {
 		return CLASS_NAME;
 	}

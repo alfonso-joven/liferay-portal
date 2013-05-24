@@ -58,6 +58,7 @@ import java.util.concurrent.Callable;
 public class DLAppHelperLocalServiceImpl
 	extends DLAppHelperLocalServiceBaseImpl {
 
+	@Override
 	public void addFileEntry(
 			long userId, FileEntry fileEntry, FileVersion fileVersion,
 			ServiceContext serviceContext)
@@ -94,6 +95,7 @@ public class DLAppHelperLocalServiceImpl
 		registerDLProcessorCallback(fileEntry);
 	}
 
+	@Override
 	public void addFolder(Folder folder, ServiceContext serviceContext)
 		throws PortalException, SystemException {
 
@@ -106,6 +108,7 @@ public class DLAppHelperLocalServiceImpl
 		}
 	}
 
+	@Override
 	public void cancelCheckOut(
 			long userId, FileEntry fileEntry,
 			FileVersion destinationFileVersion, FileVersion draftFileVersion,
@@ -132,6 +135,7 @@ public class DLAppHelperLocalServiceImpl
 		}
 	}
 
+	@Override
 	public void checkAssetEntry(
 			long userId, FileEntry fileEntry, FileVersion fileVersion)
 		throws PortalException, SystemException {
@@ -194,6 +198,7 @@ public class DLAppHelperLocalServiceImpl
 		}
 	}
 
+	@Override
 	public void deleteFileEntry(FileEntry fileEntry)
 		throws PortalException, SystemException {
 
@@ -242,6 +247,7 @@ public class DLAppHelperLocalServiceImpl
 			DLFileEntryConstants.getClassName(), fileEntry.getFileEntryId());
 	}
 
+	@Override
 	public void deleteFolder(Folder folder)
 		throws PortalException, SystemException {
 
@@ -253,6 +259,7 @@ public class DLAppHelperLocalServiceImpl
 		}
 	}
 
+	@Override
 	public void getFileAsStream(
 			long userId, FileEntry fileEntry, boolean incrementCounter)
 		throws SystemException {
@@ -286,6 +293,7 @@ public class DLAppHelperLocalServiceImpl
 		}
 	}
 
+	@Override
 	public List<DLFileShortcut> getFileShortcuts(
 			long groupId, long folderId, int status)
 		throws SystemException {
@@ -293,6 +301,7 @@ public class DLAppHelperLocalServiceImpl
 		return dlFileShortcutPersistence.findByG_F_S(groupId, folderId, status);
 	}
 
+	@Override
 	public int getFileShortcutsCount(long groupId, long folderId, int status)
 		throws SystemException {
 
@@ -300,10 +309,12 @@ public class DLAppHelperLocalServiceImpl
 			groupId, folderId, status);
 	}
 
+	@Override
 	public List<FileEntry> getNoAssetFileEntries() {
 		return null;
 	}
 
+	@Override
 	public void moveFileEntry(FileEntry fileEntry)
 		throws PortalException, SystemException {
 
@@ -315,6 +326,7 @@ public class DLAppHelperLocalServiceImpl
 		}
 	}
 
+	@Override
 	public void moveFolder(Folder folder)
 		throws PortalException, SystemException {
 
@@ -325,6 +337,7 @@ public class DLAppHelperLocalServiceImpl
 		}
 	}
 
+	@Override
 	public AssetEntry updateAsset(
 			long userId, FileEntry fileEntry, FileVersion fileVersion,
 			long assetClassPk)
@@ -349,6 +362,7 @@ public class DLAppHelperLocalServiceImpl
 			assetLinkIds);
 	}
 
+	@Override
 	public AssetEntry updateAsset(
 			long userId, FileEntry fileEntry, FileVersion fileVersion,
 			long[] assetCategoryIds, String[] assetTagNames,
@@ -456,6 +470,7 @@ public class DLAppHelperLocalServiceImpl
 		return assetEntry;
 	}
 
+	@Override
 	public void updateFileEntry(
 			long userId, FileEntry fileEntry, FileVersion fileVersion,
 			long assetClassPk)
@@ -476,6 +491,7 @@ public class DLAppHelperLocalServiceImpl
 		registerDLProcessorCallback(fileEntry);
 	}
 
+	@Override
 	public void updateFileEntry(
 			long userId, FileEntry fileEntry, FileVersion fileVersion,
 			ServiceContext serviceContext)
@@ -490,6 +506,7 @@ public class DLAppHelperLocalServiceImpl
 		registerDLProcessorCallback(fileEntry);
 	}
 
+	@Override
 	public void updateFolder(Folder folder, ServiceContext serviceContext)
 		throws PortalException, SystemException {
 
@@ -501,6 +518,7 @@ public class DLAppHelperLocalServiceImpl
 		}
 	}
 
+	@Override
 	public void updateStatus(
 			long userId, FileEntry fileEntry, FileVersion latestFileVersion,
 			int status, Map<String, Serializable> workflowContext)

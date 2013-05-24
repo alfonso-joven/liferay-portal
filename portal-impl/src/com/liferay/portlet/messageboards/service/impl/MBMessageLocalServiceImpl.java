@@ -114,6 +114,7 @@ import net.htmlparser.jericho.StartTag;
  */
 public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 
+	@Override
 	public MBMessage addDiscussionMessage(
 			long userId, String userName, long groupId, String className,
 			long classPK, int workflowAction)
@@ -142,6 +143,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public MBMessage addDiscussionMessage(
 			long userId, String userName, long groupId, String className,
 			long classPK, long threadId, long parentMessageId, String subject,
@@ -196,6 +198,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		return message;
 	}
 
+	@Override
 	public MBMessage addMessage(
 			long userId, String userName, long groupId, long categoryId,
 			long threadId, long parentMessageId, String subject, String body,
@@ -408,6 +411,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		return message;
 	}
 
+	@Override
 	public MBMessage addMessage(
 			long userId, String userName, long groupId, long categoryId,
 			String subject, String body, String format,
@@ -425,6 +429,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 			allowPingbacks, serviceContext);
 	}
 
+	@Override
 	public void addMessageResources(
 			long messageId, boolean addGroupPermissions,
 			boolean addGuestPermissions)
@@ -435,6 +440,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		addMessageResources(message, addGroupPermissions, addGuestPermissions);
 	}
 
+	@Override
 	public void addMessageResources(
 			long messageId, String[] groupPermissions,
 			String[] guestPermissions)
@@ -445,6 +451,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		addMessageResources(message, groupPermissions, guestPermissions);
 	}
 
+	@Override
 	public void addMessageResources(
 			MBMessage message, boolean addGroupPermissions,
 			boolean addGuestPermissions)
@@ -456,6 +463,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 			addGroupPermissions, addGuestPermissions);
 	}
 
+	@Override
 	public void addMessageResources(
 			MBMessage message, String[] groupPermissions,
 			String[] guestPermissions)
@@ -467,6 +475,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 			guestPermissions);
 	}
 
+	@Override
 	public void deleteDiscussionMessage(long messageId)
 		throws PortalException, SystemException {
 
@@ -477,6 +486,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		deleteMessage(message);
 	}
 
+	@Override
 	public void deleteDiscussionMessages(String className, long classPK)
 		throws PortalException, SystemException {
 
@@ -508,6 +518,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public void deleteMessage(long messageId)
 		throws PortalException, SystemException {
 
@@ -516,6 +527,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		deleteMessage(message);
 	}
 
+	@Override
 	public void deleteMessage(MBMessage message)
 		throws PortalException, SystemException {
 
@@ -731,6 +743,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 			message.getWorkflowClassName(), message.getMessageId());
 	}
 
+	@Override
 	public List<MBMessage> getCategoryMessages(
 			long groupId, long categoryId, int status, int start, int end)
 		throws SystemException {
@@ -745,6 +758,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public List<MBMessage> getCategoryMessages(
 			long groupId, long categoryId, int status, int start, int end,
 			OrderByComparator obc)
@@ -760,6 +774,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public int getCategoryMessagesCount(
 			long groupId, long categoryId, int status)
 		throws SystemException {
@@ -773,6 +788,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public List<MBMessage> getCompanyMessages(
 			long companyId, int status, int start, int end)
 		throws SystemException {
@@ -786,6 +802,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public List<MBMessage> getCompanyMessages(
 			long companyId, int status, int start, int end,
 			OrderByComparator obc)
@@ -801,6 +818,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public int getCompanyMessagesCount(long companyId, int status)
 		throws SystemException {
 
@@ -812,6 +830,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public MBMessageDisplay getDiscussionMessageDisplay(
 			long userId, long groupId, String className, long classPK,
 			int status)
@@ -822,6 +841,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 			MBThreadConstants.THREAD_VIEW_COMBINATION);
 	}
 
+	@Override
 	public MBMessageDisplay getDiscussionMessageDisplay(
 			long userId, long groupId, String className, long classPK,
 			int status, String threadView)
@@ -879,6 +899,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		return getMessageDisplay(userId, message, status, threadView, false);
 	}
 
+	@Override
 	public int getDiscussionMessagesCount(
 			long classNameId, long classPK, int status)
 		throws SystemException {
@@ -909,6 +930,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public int getDiscussionMessagesCount(
 			String className, long classPK, int status)
 		throws SystemException {
@@ -918,6 +940,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		return getDiscussionMessagesCount(classNameId, classPK, status);
 	}
 
+	@Override
 	public List<MBDiscussion> getDiscussions(String className)
 		throws SystemException {
 
@@ -926,6 +949,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		return mbDiscussionPersistence.findByClassNameId(classNameId);
 	}
 
+	@Override
 	public List<MBMessage> getGroupMessages(
 			long groupId, int status, int start, int end)
 		throws SystemException {
@@ -938,6 +962,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public List<MBMessage> getGroupMessages(
 			long groupId, int status, int start, int end, OrderByComparator obc)
 		throws SystemException {
@@ -951,6 +976,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public List<MBMessage> getGroupMessages(
 			long groupId, long userId, int status, int start, int end)
 		throws SystemException {
@@ -964,6 +990,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public List<MBMessage> getGroupMessages(
 			long groupId, long userId, int status, int start, int end,
 			OrderByComparator obc)
@@ -979,6 +1006,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public int getGroupMessagesCount(long groupId, int status)
 		throws SystemException {
 
@@ -990,6 +1018,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public int getGroupMessagesCount(long groupId, long userId, int status)
 		throws SystemException {
 
@@ -1001,12 +1030,14 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public MBMessage getMessage(long messageId)
 		throws PortalException, SystemException {
 
 		return mbMessagePersistence.findByPrimaryKey(messageId);
 	}
 
+	@Override
 	public MBMessageDisplay getMessageDisplay(
 			long userId, long messageId, int status, String threadView,
 			boolean includePrevAndNext)
@@ -1018,6 +1049,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 			userId, message, status, threadView, includePrevAndNext);
 	}
 
+	@Override
 	public MBMessageDisplay getMessageDisplay(
 			long userId, MBMessage message, int status, String threadView,
 			boolean includePrevAndNext)
@@ -1085,6 +1117,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 			nextThread, status, threadView, this);
 	}
 
+	@Override
 	public List<MBMessage> getMessages(
 			String className, long classPK, int status)
 		throws SystemException {
@@ -1100,10 +1133,12 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public List<MBMessage> getNoAssetMessages() throws SystemException {
 		return mbMessageFinder.findByNoAssets();
 	}
 
+	@Override
 	public int getPositionInThread(long messageId)
 		throws PortalException, SystemException {
 
@@ -1113,6 +1148,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 			message.getCreateDate(), message.getThreadId());
 	}
 
+	@Override
 	public List<MBMessage> getThreadMessages(long threadId, int status)
 		throws SystemException {
 
@@ -1120,6 +1156,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 			threadId, status, new MessageThreadComparator());
 	}
 
+	@Override
 	public List<MBMessage> getThreadMessages(
 			long threadId, int status, Comparator<MBMessage> comparator)
 		throws SystemException {
@@ -1136,6 +1173,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		return ListUtil.sort(messages, comparator);
 	}
 
+	@Override
 	public List<MBMessage> getThreadMessages(
 			long threadId, int status, int start, int end)
 		throws SystemException {
@@ -1148,6 +1186,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public int getThreadMessagesCount(long threadId, int status)
 		throws SystemException {
 
@@ -1159,6 +1198,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public List<MBMessage> getThreadRepliesMessages(
 			long threadId, int status, int start, int end)
 		throws SystemException {
@@ -1173,6 +1213,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public List<MBMessage> getUserDiscussionMessages(
 			long userId, long classNameId, long classPK, int status, int start,
 			int end, OrderByComparator obc)
@@ -1188,6 +1229,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public List<MBMessage> getUserDiscussionMessages(
 			long userId, long[] classNameIds, int status, int start, int end,
 			OrderByComparator obc)
@@ -1203,6 +1245,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public List<MBMessage> getUserDiscussionMessages(
 			long userId, String className, long classPK, int status, int start,
 			int end, OrderByComparator obc)
@@ -1214,6 +1257,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 			userId, classNameId, classPK, status, start, end, obc);
 	}
 
+	@Override
 	public int getUserDiscussionMessagesCount(
 			long userId, long classNameId, long classPK, int status)
 		throws SystemException {
@@ -1228,6 +1272,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public int getUserDiscussionMessagesCount(
 			long userId, long[] classNameIds, int status)
 		throws SystemException {
@@ -1241,6 +1286,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public int getUserDiscussionMessagesCount(
 			long userId, String className, long classPK, int status)
 		throws SystemException {
@@ -1251,6 +1297,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 			userId, classNameId, classPK, status);
 	}
 
+	@Override
 	public void subscribeMessage(long userId, long messageId)
 		throws PortalException, SystemException {
 
@@ -1261,6 +1308,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 			message.getThreadId());
 	}
 
+	@Override
 	public void unsubscribeMessage(long userId, long messageId)
 		throws PortalException, SystemException {
 
@@ -1270,6 +1318,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 			userId, MBThread.class.getName(), message.getThreadId());
 	}
 
+	@Override
 	public void updateAnswer(long messageId, boolean answer, boolean cascade)
 		throws PortalException, SystemException {
 
@@ -1278,6 +1327,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		updateAnswer(message, answer, cascade);
 	}
 
+	@Override
 	public void updateAnswer(MBMessage message, boolean answer, boolean cascade)
 		throws PortalException, SystemException {
 
@@ -1297,6 +1347,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public void updateAsset(
 			long userId, MBMessage message, long[] assetCategoryIds,
 			String[] assetTagNames, long[] assetLinkEntryIds)
@@ -1307,6 +1358,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 			true);
 	}
 
+	@Override
 	public MBMessage updateDiscussionMessage(
 			long userId, long messageId, String className, long classPK,
 			String subject, String body, ServiceContext serviceContext)
@@ -1337,6 +1389,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 			priority, allowPingbacks, serviceContext);
 	}
 
+	@Override
 	public MBMessage updateMessage(
 			long userId, long messageId, String subject, String body,
 			List<ObjectValuePair<String, InputStream>> inputStreamOVPs,
@@ -1501,6 +1554,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		return message;
 	}
 
+	@Override
 	public MBMessage updateMessage(long messageId, String body)
 		throws PortalException, SystemException {
 
@@ -1513,6 +1567,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		return message;
 	}
 
+	@Override
 	public MBMessage updateStatus(
 			long userId, long messageId, int status,
 			ServiceContext serviceContext)
@@ -1672,6 +1727,7 @@ public class MBMessageLocalServiceImpl extends MBMessageLocalServiceBaseImpl {
 		return message;
 	}
 
+	@Override
 	public void updateUserName(long userId, String userName)
 		throws SystemException {
 

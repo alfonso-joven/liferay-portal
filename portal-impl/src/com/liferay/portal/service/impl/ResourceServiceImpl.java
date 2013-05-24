@@ -24,6 +24,7 @@ import com.liferay.portal.service.base.ResourceServiceBaseImpl;
  */
 public class ResourceServiceImpl extends ResourceServiceBaseImpl {
 
+	@Override
 	public Resource getResource(
 			long companyId, String name, int scope, String primKey)
 		throws PortalException, SystemException {

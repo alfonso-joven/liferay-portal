@@ -27,6 +27,7 @@ public class XSLContext implements TemplateContext {
 		_transformer = transformer;
 	}
 
+	@Override
 	public Object get(String key) {
 		return _transformer.getParameter(key);
 	}
@@ -35,6 +36,7 @@ public class XSLContext implements TemplateContext {
 		return _transformer;
 	}
 
+	@Override
 	public void put(String key, Object value) {
 		_transformer.setParameter(key, value);
 	}

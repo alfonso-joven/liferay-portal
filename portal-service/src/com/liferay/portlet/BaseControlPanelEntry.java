@@ -28,6 +28,7 @@ import com.liferay.portal.util.PortletCategoryKeys;
  */
 public abstract class BaseControlPanelEntry implements ControlPanelEntry {
 
+	@Override
 	public boolean isVisible(
 			Portlet portlet, String category, ThemeDisplay themeDisplay)
 		throws Exception {

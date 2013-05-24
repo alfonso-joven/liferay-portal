@@ -37,26 +37,31 @@ public abstract class BasePermissionChecker implements PermissionChecker {
 	@Override
 	public abstract PermissionChecker clone();
 
+	@Override
 	public long getCompanyId() {
 		return user.getCompanyId();
 	}
 
+	@Override
 	public List<Long> getGuestResourceBlockIds(
 		long companyId, long groupId, String name, String actionId) {
 
 		return Collections.emptyList();
 	}
 
+	@Override
 	public List<Long> getOwnerResourceBlockIds(
 		long companyId, long groupId, String name, String actionId) {
 
 		return Collections.emptyList();
 	}
 
+	@Override
 	public long getOwnerRoleId() {
 		return ownerRole.getRoleId();
 	}
 
+	@Override
 	public List<Long> getResourceBlockIds(
 		long companyId, long groupId, long userId, String name,
 		String actionId) {
@@ -64,14 +69,17 @@ public abstract class BasePermissionChecker implements PermissionChecker {
 		return Collections.emptyList();
 	}
 
+	@Override
 	public long[] getRoleIds(long userId, long groupId) {
 		return PermissionChecker.DEFAULT_ROLE_IDS;
 	}
 
+	@Override
 	public long getUserId() {
 		return user.getUserId();
 	}
 
+	@Override
 	public boolean hasOwnerPermission(
 		long companyId, String name, long primKey, long ownerId,
 		String actionId) {
@@ -80,12 +88,14 @@ public abstract class BasePermissionChecker implements PermissionChecker {
 			companyId, name, String.valueOf(primKey), ownerId, actionId);
 	}
 
+	@Override
 	public boolean hasPermission(
 		long groupId, String name, long primKey, String actionId) {
 
 		return hasPermission(groupId, name, String.valueOf(primKey), actionId);
 	}
 
+	@Override
 	public void init(User user) {
 		this.user = user;
 
@@ -114,6 +124,7 @@ public abstract class BasePermissionChecker implements PermissionChecker {
 		}
 	}
 
+	@Override
 	public boolean isCheckGuest() {
 		return checkGuest;
 	}
@@ -121,6 +132,7 @@ public abstract class BasePermissionChecker implements PermissionChecker {
 	/**
 	 * @deprecated As of 6.1, renamed to {@link #isGroupAdmin(long)}
 	 */
+	@Override
 	public boolean isCommunityAdmin(long groupId) {
 		return isGroupAdmin(groupId);
 	}
@@ -128,10 +140,12 @@ public abstract class BasePermissionChecker implements PermissionChecker {
 	/**
 	 * @deprecated As of 6.1, renamed to {@link #isGroupOwner(long)}
 	 */
+	@Override
 	public boolean isCommunityOwner(long groupId) {
 		return isGroupOwner(groupId);
 	}
 
+	@Override
 	public boolean isOmniadmin() {
 		if (omniadmin == null) {
 			omniadmin = Boolean.valueOf(OmniadminUtil.isOmniadmin(getUserId()));
@@ -140,13 +154,16 @@ public abstract class BasePermissionChecker implements PermissionChecker {
 		return omniadmin.booleanValue();
 	}
 
+	@Override
 	public boolean isSignedIn() {
 		return signedIn;
 	}
 
+	@Override
 	public void resetValues() {
 	}
 
+	@Override
 	public void setValues(PortletRequest portletRequest) {
 	}
 

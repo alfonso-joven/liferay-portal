@@ -25,26 +25,32 @@ public class PermissionImpl extends PermissionBaseImpl {
 	public PermissionImpl() {
 	}
 
+	@Override
 	public String getName() {
 		return _name;
 	}
 
+	@Override
 	public String getPrimKey() {
 		return _primKey;
 	}
 
+	@Override
 	public int getScope() {
 		return _scope;
 	}
 
+	@Override
 	public void setName(String name) {
 		_name = name;
 	}
 
+	@Override
 	public void setPrimKey(String primKey) {
 		_primKey = primKey;
 	}
 
+	@Override
 	public void setScope(int scope) {
 		_scope = scope;
 	}

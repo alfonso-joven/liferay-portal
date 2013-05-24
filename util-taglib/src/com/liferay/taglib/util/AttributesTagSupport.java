@@ -72,6 +72,7 @@ public class AttributesTagSupport
 		_customAttributes = customAttributes;
 	}
 
+	@Override
 	public void setDynamicAttribute(
 		String uri, String localName, Object value) {
 

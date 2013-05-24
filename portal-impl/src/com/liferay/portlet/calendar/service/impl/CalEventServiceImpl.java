@@ -39,6 +39,7 @@ import java.util.List;
  */
 public class CalEventServiceImpl extends CalEventServiceBaseImpl {
 
+	@Override
 	public CalEvent addEvent(
 			String title, String description, String location,
 			int startDateMonth, int startDateDay, int startDateYear,
@@ -66,6 +67,7 @@ public class CalEventServiceImpl extends CalEventServiceBaseImpl {
 	 *             int, int, int, boolean, boolean, String, boolean,
 	 *             TZSRecurrence, int, int, int, ServiceContext)}
 	 */
+	@Override
 	public CalEvent addEvent(
 			String title, String description, String location,
 			int startDateMonth, int startDateDay, int startDateYear,
@@ -89,6 +91,7 @@ public class CalEventServiceImpl extends CalEventServiceBaseImpl {
 			firstReminder, secondReminder, serviceContext);
 	}
 
+	@Override
 	public void deleteEvent(long eventId)
 		throws PortalException, SystemException {
 
@@ -98,6 +101,7 @@ public class CalEventServiceImpl extends CalEventServiceBaseImpl {
 		calEventLocalService.deleteEvent(eventId);
 	}
 
+	@Override
 	public File exportEvent(long eventId)
 		throws PortalException, SystemException {
 
@@ -107,6 +111,7 @@ public class CalEventServiceImpl extends CalEventServiceBaseImpl {
 		return calEventLocalService.exportEvent(getGuestOrUserId(), eventId);
 	}
 
+	@Override
 	public File exportGroupEvents(long groupId, String fileName)
 		throws PortalException, SystemException {
 
@@ -117,6 +122,7 @@ public class CalEventServiceImpl extends CalEventServiceBaseImpl {
 			getGuestOrUserId(), groupId, fileName);
 	}
 
+	@Override
 	public CalEvent getEvent(long eventId)
 		throws PortalException, SystemException {
 
@@ -126,12 +132,14 @@ public class CalEventServiceImpl extends CalEventServiceBaseImpl {
 		return calEventLocalService.getEvent(eventId);
 	}
 
+	@Override
 	public List<CalEvent> getEvents(long groupId, Calendar cal, String type)
 		throws PortalException, SystemException {
 
 		return getEvents(groupId, cal, new String[] {type});
 	}
 
+	@Override
 	public List<CalEvent> getEvents(long groupId, Calendar cal, String[] types)
 		throws PortalException, SystemException {
 
@@ -155,6 +163,7 @@ public class CalEventServiceImpl extends CalEventServiceBaseImpl {
 		return events;
 	}
 
+	@Override
 	public List<CalEvent> getEvents(
 			long groupId, String type, int start, int end)
 		throws SystemException {
@@ -162,6 +171,7 @@ public class CalEventServiceImpl extends CalEventServiceBaseImpl {
 		return getEvents(groupId, new String[] {type}, start, end);
 	}
 
+	@Override
 	public List<CalEvent> getEvents(
 			long groupId, String[] types, int start, int end)
 		throws SystemException {
@@ -177,12 +187,14 @@ public class CalEventServiceImpl extends CalEventServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public int getEventsCount(long groupId, String type)
 		throws SystemException {
 
 		return getEventsCount(groupId, new String[] {type});
 	}
 
+	@Override
 	public int getEventsCount(long groupId, String[] types)
 		throws SystemException {
 
@@ -196,18 +208,21 @@ public class CalEventServiceImpl extends CalEventServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public boolean hasEvents(long groupId, Calendar cal)
 		throws PortalException, SystemException {
 
 		return hasEvents(groupId, cal, new String[0]);
 	}
 
+	@Override
 	public boolean hasEvents(long groupId, Calendar cal, String type)
 		throws PortalException, SystemException {
 
 		return hasEvents(groupId, cal, new String[] {type});
 	}
 
+	@Override
 	public boolean hasEvents(long groupId, Calendar cal, String[] types)
 		throws PortalException, SystemException {
 
@@ -221,6 +236,7 @@ public class CalEventServiceImpl extends CalEventServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public void importICal4j(long groupId, InputStream inputStream)
 		throws PortalException, SystemException {
 
@@ -230,6 +246,7 @@ public class CalEventServiceImpl extends CalEventServiceBaseImpl {
 		calEventLocalService.importICal4j(getUserId(), groupId, inputStream);
 	}
 
+	@Override
 	public CalEvent updateEvent(
 			long eventId, String title, String description, String location,
 			int startDateMonth, int startDateDay, int startDateYear,
@@ -256,6 +273,7 @@ public class CalEventServiceImpl extends CalEventServiceBaseImpl {
 	 *             int, int, int, int, int, boolean, boolean, String, boolean,
 	 *             TZSRecurrence, int, int, int, ServiceContext)}
 	 */
+	@Override
 	public CalEvent updateEvent(
 			long eventId, String title, String description, String location,
 			int startDateMonth, int startDateDay, int startDateYear,

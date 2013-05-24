@@ -80,7 +80,6 @@ public interface Folder extends RepositoryModel<Folder> {
 	@Override
 	public String getUserUuid() throws SystemException;
 
-	@Override
 	public String getUuid();
 
 	public boolean hasInheritableLock();

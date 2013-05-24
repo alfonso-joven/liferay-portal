@@ -51,6 +51,7 @@ import javax.naming.ldap.LdapContext;
 @DoPrivileged
 public class PortalLDAPExporterImpl implements PortalLDAPExporter {
 
+	@Override
 	public void exportToLDAP(
 			Contact contact, Map<String, Serializable> contactExpandoAttributes)
 		throws Exception {
@@ -131,10 +132,12 @@ public class PortalLDAPExporterImpl implements PortalLDAPExporter {
 	/**
 	 * @deprecated
 	 */
+	@Override
 	public void exportToLDAP(long userId, long userGroupId) throws Exception {
 		exportToLDAP(userId, userGroupId, LDAPOperation.ADD);
 	}
 
+	@Override
 	public void exportToLDAP(
 			long userId, long userGroupId, LDAPOperation ldapOperation)
 		throws Exception {
@@ -221,6 +224,7 @@ public class PortalLDAPExporterImpl implements PortalLDAPExporter {
 		}
 	}
 
+	@Override
 	public void exportToLDAP(
 			User user, Map<String, Serializable> userExpandoAttributes)
 		throws Exception {

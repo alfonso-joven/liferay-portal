@@ -57,10 +57,12 @@ import java.util.concurrent.ConcurrentHashMap;
 @DoPrivileged
 public class FreeMarkerEngineImpl implements FreeMarkerEngine {
 
+	@Override
 	public void clearClassLoader(ClassLoader classLoader) {
 		_classLoaderToolsContextsMap.remove(classLoader);
 	}
 
+	@Override
 	public void flushTemplate(String freeMarkerTemplateId) {
 		if (_configuration == null) {
 			return;
@@ -79,21 +81,25 @@ public class FreeMarkerEngineImpl implements FreeMarkerEngine {
 		return _pacl.getTemplateControlContext();
 	}
 
+	@Override
 	@NotPrivileged
 	public FreeMarkerContext getWrappedClassLoaderToolsContext() {
 		return new FreeMarkerContextImpl(_doGetToolsContext(_STANDARD));
 	}
 
+	@Override
 	@NotPrivileged
 	public FreeMarkerContext getWrappedRestrictedToolsContext() {
 		return new FreeMarkerContextImpl(_doGetToolsContext(_RESTRICTED));
 	}
 
+	@Override
 	@NotPrivileged
 	public FreeMarkerContext getWrappedStandardToolsContext() {
 		return new FreeMarkerContextImpl(_doGetToolsContext(_STANDARD));
 	}
 
+	@Override
 	public void init() throws Exception {
 		if (_configuration != null) {
 			return;
@@ -166,6 +172,7 @@ public class FreeMarkerEngineImpl implements FreeMarkerEngine {
 		_templateKeyConstructor.setAccessible(true);
 	}
 
+	@Override
 	@NotPrivileged
 	public boolean mergeTemplate(
 			String freeMarkerTemplateId, FreeMarkerContext freeMarkerContext,
@@ -176,6 +183,7 @@ public class FreeMarkerEngineImpl implements FreeMarkerEngine {
 			freeMarkerTemplateId, null, freeMarkerContext, writer);
 	}
 
+	@Override
 	@NotPrivileged
 	public boolean mergeTemplate(
 			String freeMarkerTemplateId, String freemarkerTemplateContent,
@@ -195,6 +203,7 @@ public class FreeMarkerEngineImpl implements FreeMarkerEngine {
 		return true;
 	}
 
+	@Override
 	@NotPrivileged
 	public boolean resourceExists(String resource) {
 		try {

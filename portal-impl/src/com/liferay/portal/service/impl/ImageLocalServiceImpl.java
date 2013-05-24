@@ -178,6 +178,7 @@ public class ImageLocalServiceImpl extends ImageLocalServiceBaseImpl {
 		//}
 	}
 
+	@Override
 	public Image getCompanyLogo(long imageId) {
 		Image image = getImage(imageId);
 
@@ -188,32 +189,39 @@ public class ImageLocalServiceImpl extends ImageLocalServiceBaseImpl {
 		return image;
 	}
 
+	@Override
 	public Image getDefaultCompanyLogo() {
 		return _defaultCompanyLogo;
 	}
 
+	@Override
 	public Image getDefaultOrganizationLogo() {
 		return _defaultOrganizationLogo;
 	}
 
+	@Override
 	public Image getDefaultSpacer() {
 		return _defaultSpacer;
 	}
 
+	@Override
 	public Image getDefaultUserFemalePortrait() {
 		return _defaultUserFemalePortrait;
 	}
 
+	@Override
 	public Image getDefaultUserMalePortrait() {
 		return _defaultUserMalePortrait;
 	}
 
+	@Override
 	public Image getImage(byte[] bytes)
 		throws PortalException, SystemException {
 
 		return getImage(null, bytes);
 	}
 
+	@Override
 	public Image getImage(File file) throws PortalException, SystemException {
 		try {
 			return getImage(new FileInputStream(file));
@@ -223,12 +231,14 @@ public class ImageLocalServiceImpl extends ImageLocalServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public Image getImage(InputStream is)
 		throws PortalException, SystemException {
 
 		return getImage(is, null);
 	}
 
+	@Override
 	public Image getImage(InputStream is, boolean cleanUpStream)
 		throws PortalException, SystemException {
 
@@ -253,6 +263,7 @@ public class ImageLocalServiceImpl extends ImageLocalServiceBaseImpl {
 		return null;
 	}
 
+	@Override
 	public Image getImageOrDefault(long imageId) {
 		Image image = getImage(imageId);
 
@@ -263,14 +274,17 @@ public class ImageLocalServiceImpl extends ImageLocalServiceBaseImpl {
 		return image;
 	}
 
+	@Override
 	public List<Image> getImages() throws SystemException {
 		return imagePersistence.findAll();
 	}
 
+	@Override
 	public List<Image> getImagesBySize(int size) throws SystemException {
 		return imagePersistence.findByLtSize(size);
 	}
 
+	@Override
 	public boolean isNullOrDefaultSpacer(byte[] bytes) {
 		if ((bytes == null) || (bytes.length == 0) ||
 			Arrays.equals(bytes, getDefaultSpacer().getTextObj())) {
@@ -282,6 +296,7 @@ public class ImageLocalServiceImpl extends ImageLocalServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public Image updateImage(long imageId, byte[] bytes)
 		throws PortalException, SystemException {
 
@@ -292,6 +307,7 @@ public class ImageLocalServiceImpl extends ImageLocalServiceBaseImpl {
 			image.getWidth(), image.getSize());
 	}
 
+	@Override
 	public Image updateImage(
 			long imageId, byte[] bytes, String type, int height, int width,
 			int size)
@@ -320,6 +336,7 @@ public class ImageLocalServiceImpl extends ImageLocalServiceBaseImpl {
 		return image;
 	}
 
+	@Override
 	public Image updateImage(long imageId, File file)
 		throws PortalException, SystemException {
 
@@ -330,6 +347,7 @@ public class ImageLocalServiceImpl extends ImageLocalServiceBaseImpl {
 			image.getWidth(), image.getSize());
 	}
 
+	@Override
 	public Image updateImage(long imageId, InputStream is)
 		throws PortalException, SystemException {
 
@@ -340,6 +358,7 @@ public class ImageLocalServiceImpl extends ImageLocalServiceBaseImpl {
 			image.getWidth(), image.getSize());
 	}
 
+	@Override
 	public Image updateImage(
 			long imageId, InputStream is, boolean cleanUpStream)
 		throws PortalException, SystemException {

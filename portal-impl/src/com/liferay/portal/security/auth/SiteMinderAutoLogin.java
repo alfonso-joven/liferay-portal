@@ -39,6 +39,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class SiteMinderAutoLogin implements AutoLogin {
 
+	@Override
 	public String[] login(
 		HttpServletRequest request, HttpServletResponse response) {
 

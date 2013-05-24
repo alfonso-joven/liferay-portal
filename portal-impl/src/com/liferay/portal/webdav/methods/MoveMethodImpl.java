@@ -32,6 +32,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class MoveMethodImpl implements Method {
 
+	@Override
 	public int process(WebDAVRequest webDavRequest) throws WebDAVException {
 		WebDAVStorage storage = webDavRequest.getWebDAVStorage();
 		HttpServletRequest request = webDavRequest.getHttpServletRequest();

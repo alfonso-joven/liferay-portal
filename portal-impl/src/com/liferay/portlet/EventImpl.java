@@ -33,10 +33,12 @@ public class EventImpl implements Event {
 		_value = value;
 	}
 
+	@Override
 	public String getName() {
 		return _name;
 	}
 
+	@Override
 	public QName getQName() {
 		return _qName;
 	}
@@ -49,6 +51,7 @@ public class EventImpl implements Event {
 		return _serializedValue;
 	}
 
+	@Override
 	public Serializable getValue() {
 		return _value;
 	}

@@ -43,6 +43,7 @@ import javax.servlet.http.HttpSession;
  */
 public class CASAutoLogin implements AutoLogin {
 
+	@Override
 	public String[] login(
 		HttpServletRequest request, HttpServletResponse response) {
 

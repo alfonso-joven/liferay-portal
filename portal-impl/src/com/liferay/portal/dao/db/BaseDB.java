@@ -65,6 +65,7 @@ import javax.naming.NamingException;
  */
 public abstract class BaseDB implements DB {
 
+	@Override
 	public void addIndexes(
 			Connection con, String indexesSQL, Set<String> validIndexNames)
 		throws IOException {
@@ -107,6 +108,7 @@ public abstract class BaseDB implements DB {
 		}
 	}
 
+	@Override
 	public void buildCreateFile(String sqlDir, String databaseName)
 		throws IOException {
 
@@ -115,6 +117,7 @@ public abstract class BaseDB implements DB {
 		buildCreateFile(sqlDir, databaseName, SHARDED);
 	}
 
+	@Override
 	public void buildCreateFile(
 			String sqlDir, String databaseName, int population)
 		throws IOException {
@@ -157,8 +160,10 @@ public abstract class BaseDB implements DB {
 		}
 	}
 
+	@Override
 	public abstract String buildSQL(String template) throws IOException;
 
+	@Override
 	public void buildSQLFile(String sqlDir, String fileName)
 		throws IOException {
 
@@ -176,65 +181,80 @@ public abstract class BaseDB implements DB {
 			template);
 	}
 
+	@Override
 	@SuppressWarnings("unused")
 	public List<Index> getIndexes(Connection con) throws SQLException {
 		return Collections.emptyList();
 	}
 
+	@Override
 	public String getTemplateFalse() {
 		return getTemplate()[2];
 	}
 
+	@Override
 	public String getTemplateTrue() {
 		return getTemplate()[1];
 	}
 
+	@Override
 	public String getType() {
 		return _type;
 	}
 
+	@Override
 	public long increment() throws SystemException {
 		return CounterLocalServiceUtil.increment();
 	}
 
+	@Override
 	public long increment(String name) throws SystemException {
 		return CounterLocalServiceUtil.increment(name);
 	}
 
+	@Override
 	public boolean isSupportsAlterColumnName() {
 		return _SUPPORTS_ALTER_COLUMN_NAME;
 	}
 
+	@Override
 	public boolean isSupportsAlterColumnType() {
 		return _SUPPORTS_ALTER_COLUMN_TYPE;
 	}
 
+	@Override
 	public boolean isSupportsDateMilliseconds() {
 		return _SUPPORTS_DATE_MILLISECONDS;
 	}
 
+	@Override
 	public boolean isSupportsInlineDistinct() {
 		return _SUPPORTS_INLINE_DISTINCT;
 	}
 
+	@Override
 	public boolean isSupportsScrollableResults() {
 		return _SUPPORTS_SCROLLABLE_RESULTS;
 	}
 
+	@Override
 	public boolean isSupportsStringCaseSensitiveQuery() {
 		return _supportsStringCaseSensitiveQuery;
 	}
 
+	@Override
 	public boolean isSupportsUpdateWithInnerJoin() {
 		return _SUPPORTS_UPDATE_WITH_INNER_JOIN;
 	}
 
+	@Override
 	public void runSQL(Connection con, String sql)
 		throws IOException, SQLException {
 
 		runSQL(con, new String[] {sql});
 	}
 
+	@Override
 	public void runSQL(Connection con, String[] sqls)
 		throws IOException, SQLException {
 
@@ -273,10 +293,12 @@ public abstract class BaseDB implements DB {
 		}
 	}
 
+	@Override
 	public void runSQL(String sql) throws IOException, SQLException {
 		runSQL(new String[] {sql});
 	}
 
+	@Override
 	public void runSQL(String[] sqls) throws IOException, SQLException {
 		Connection con = DataAccess.getConnection();
 
@@ -288,12 +310,14 @@ public abstract class BaseDB implements DB {
 		}
 	}
 
+	@Override
 	public void runSQLTemplate(String path)
 		throws IOException, NamingException, SQLException {
 
 		runSQLTemplate(path, true);
 	}
 
+	@Override
 	public void runSQLTemplate(String path, boolean failOnError)
 		throws IOException, NamingException, SQLException {
 
@@ -326,6 +350,7 @@ public abstract class BaseDB implements DB {
 		runSQLTemplateString(template, evaluate, failOnError);
 	}
 
+	@Override
 	public void runSQLTemplateString(
 			String template, boolean evaluate, boolean failOnError)
 		throws IOException, NamingException, SQLException {
@@ -444,6 +469,7 @@ public abstract class BaseDB implements DB {
 		unsyncBufferedReader.close();
 	}
 
+	@Override
 	public void setSupportsStringCaseSensitiveQuery(
 		boolean supportsStringCaseSensitiveQuery) {
 
@@ -459,6 +485,7 @@ public abstract class BaseDB implements DB {
 		_supportsStringCaseSensitiveQuery = supportsStringCaseSensitiveQuery;
 	}
 
+	@Override
 	public void updateIndexes(
 			Connection con, String tablesSQL, String indexesSQL,
 			String indexesProperties, boolean dropIndexes)

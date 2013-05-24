@@ -26,6 +26,7 @@ public class BookmarksEntryCustomAttributesDisplay
 
 	public static final String CLASS_NAME = BookmarksEntry.class.getName();
 
+	@Override
 	public String getClassName() {
 		return CLASS_NAME;
 	}

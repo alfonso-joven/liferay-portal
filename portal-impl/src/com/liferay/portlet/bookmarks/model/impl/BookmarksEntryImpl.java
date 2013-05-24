@@ -27,6 +27,7 @@ public class BookmarksEntryImpl extends BookmarksEntryBaseImpl {
 	public BookmarksEntryImpl() {
 	}
 
+	@Override
 	public BookmarksFolder getFolder() {
 		BookmarksFolder folder = null;
 

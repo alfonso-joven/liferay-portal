@@ -27,10 +27,12 @@ public class MBThreadImpl extends MBThreadBaseImpl {
 	public MBThreadImpl() {
 	}
 
+	@Override
 	public String getAttachmentsDir() {
 		return "messageboards/" + getThreadId();
 	}
 
+	@Override
 	public Lock getLock() {
 		try {
 			return LockLocalServiceUtil.getLock(
@@ -42,6 +44,7 @@ public class MBThreadImpl extends MBThreadBaseImpl {
 		return null;
 	}
 
+	@Override
 	public boolean hasLock(long userId) {
 		try {
 			return LockLocalServiceUtil.hasLock(
@@ -53,6 +56,7 @@ public class MBThreadImpl extends MBThreadBaseImpl {
 		return false;
 	}
 
+	@Override
 	public boolean isLocked() {
 		try {
 			return LockLocalServiceUtil.isLocked(

@@ -34,6 +34,7 @@ import javax.servlet.http.HttpSession;
  */
 public class FacebookAutoLogin implements AutoLogin {
 
+	@Override
 	public String[] login(
 		HttpServletRequest request, HttpServletResponse response) {
 

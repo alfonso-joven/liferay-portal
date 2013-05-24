@@ -102,6 +102,7 @@ public class PermissionServiceImpl extends PermissionServiceBaseImpl {
 	 *         not be found or was invalid
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void checkPermission(long groupId, long resourceId)
 		throws PortalException, SystemException {
 
@@ -155,6 +156,7 @@ public class PermissionServiceImpl extends PermissionServiceBaseImpl {
 	 *         action on the resource; <code>false</code> otherwise
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public boolean hasGroupPermission(
 			long groupId, String actionId, long resourceId)
 		throws SystemException {
@@ -174,6 +176,7 @@ public class PermissionServiceImpl extends PermissionServiceBaseImpl {
 	 *         action on the resource; <code>false</code> otherwise
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public boolean hasUserPermission(
 			long userId, String actionId, long resourceId)
 		throws SystemException {
@@ -205,6 +208,7 @@ public class PermissionServiceImpl extends PermissionServiceBaseImpl {
 	 *         resources and the action ID could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public boolean hasUserPermissions(
 			long userId, long groupId, List<Resource> resources,
 			String actionId, PermissionCheckerBag permissionCheckerBag)
@@ -225,6 +229,7 @@ public class PermissionServiceImpl extends PermissionServiceBaseImpl {
 	 *         found or if the group did not have permission to the resource
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void setGroupPermissions(
 			long groupId, String[] actionIds, long resourceId)
 		throws PortalException, SystemException {
@@ -252,6 +257,7 @@ public class PermissionServiceImpl extends PermissionServiceBaseImpl {
 	 *         found
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void setGroupPermissions(
 			String className, String classPK, long groupId, String[] actionIds,
 			long resourceId)
@@ -277,6 +283,7 @@ public class PermissionServiceImpl extends PermissionServiceBaseImpl {
 	 *         resource
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void setIndividualPermissions(
 			long groupId, long companyId,
 			Map<Long, String[]> roleIdsToActionIds, long resourceId)
@@ -303,6 +310,7 @@ public class PermissionServiceImpl extends PermissionServiceBaseImpl {
 	 *         found
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void setOrgGroupPermissions(
 			long organizationId, long groupId, String[] actionIds,
 			long resourceId)
@@ -329,6 +337,7 @@ public class PermissionServiceImpl extends PermissionServiceBaseImpl {
 	 *         com.liferay.portal.model.ResourceConstants#SCOPE_INDIVIDUAL}
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void setRolePermission(
 			long roleId, long groupId, String name, int scope, String primKey,
 			String actionId)
@@ -355,6 +364,7 @@ public class PermissionServiceImpl extends PermissionServiceBaseImpl {
 	 *         resource or if a role with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void setRolePermissions(
 			long roleId, long groupId, String[] actionIds, long resourceId)
 		throws PortalException, SystemException {
@@ -377,6 +387,7 @@ public class PermissionServiceImpl extends PermissionServiceBaseImpl {
 	 *         resource or if a user with the primary key could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void setUserPermissions(
 			long userId, long groupId, String[] actionIds, long resourceId)
 		throws PortalException, SystemException {
@@ -396,6 +407,7 @@ public class PermissionServiceImpl extends PermissionServiceBaseImpl {
 	 * @throws PortalException if the group did not have permission to the role
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void unsetRolePermission(
 			long roleId, long groupId, long permissionId)
 		throws PortalException, SystemException {
@@ -419,6 +431,7 @@ public class PermissionServiceImpl extends PermissionServiceBaseImpl {
 	 * @throws PortalException if the group did not have permission to the role
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void unsetRolePermission(
 			long roleId, long groupId, String name, int scope, String primKey,
 			String actionId)
@@ -445,6 +458,7 @@ public class PermissionServiceImpl extends PermissionServiceBaseImpl {
 	 * @throws PortalException if the group did not have permission to the role
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void unsetRolePermissions(
 			long roleId, long groupId, String name, int scope, String actionId)
 		throws PortalException, SystemException {
@@ -469,6 +483,7 @@ public class PermissionServiceImpl extends PermissionServiceBaseImpl {
 	 *         resource
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void unsetUserPermissions(
 			long userId, long groupId, String[] actionIds, long resourceId)
 		throws PortalException, SystemException {

@@ -31,6 +31,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class MultiVMKeyPoolPortalCacheManager implements PortalCacheManager {
 
+	@Override
 	public void clearAll() {
 		for (MultiVMKeyPoolPortalCache multiVMKeyPoolPortalCache :
 				_multiVMKeyPoolPortalCaches.values()) {
@@ -39,10 +40,12 @@ public class MultiVMKeyPoolPortalCacheManager implements PortalCacheManager {
 		}
 	}
 
+	@Override
 	public PortalCache getCache(String name) {
 		return getCache(name, false);
 	}
 
+	@Override
 	public PortalCache getCache(String name, boolean blocking) {
 		MultiVMKeyPoolPortalCache multiVMKeyPoolPortalCache =
 			_multiVMKeyPoolPortalCaches.get(name);
@@ -70,9 +73,11 @@ public class MultiVMKeyPoolPortalCacheManager implements PortalCacheManager {
 		return multiVMKeyPoolPortalCache;
 	}
 
+	@Override
 	public void reconfigureCaches(URL configurationURL) {
 	}
 
+	@Override
 	public void removeCache(String name) {
 		synchronized (_multiVMKeyPoolPortalCaches) {
 			MultiVMKeyPoolPortalCache multiVMKeyPoolPortalCache =

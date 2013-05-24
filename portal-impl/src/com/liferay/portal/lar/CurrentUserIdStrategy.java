@@ -31,6 +31,7 @@ public class CurrentUserIdStrategy implements UserIdStrategy {
 		_user = user;
 	}
 
+	@Override
 	public long getUserId(String userUuid) throws SystemException {
 		if (Validator.isNull(userUuid)) {
 			return _user.getUserId();

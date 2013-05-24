@@ -26,6 +26,7 @@ public class DLFileEntryCustomAttributesDisplay
 
 	public static final String CLASS_NAME = DLFileEntry.class.getName();
 
+	@Override
 	public String getClassName() {
 		return CLASS_NAME;
 	}

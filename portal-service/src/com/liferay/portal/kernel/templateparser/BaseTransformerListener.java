@@ -21,32 +21,41 @@ import java.util.Map;
  */
 public abstract class BaseTransformerListener implements TransformerListener {
 
+	@Override
 	public String getLanguageId() {
 		return _languageId;
 	}
 
+	@Override
 	public Map<String, String> getTokens() {
 		return _tokens;
 	}
 
+	@Override
 	public boolean isTemplateDriven() {
 		return _templateDriven;
 	}
 
+	@Override
 	public abstract String onOutput(String s);
 
+	@Override
 	public abstract String onScript(String s);
 
+	@Override
 	public abstract String onXml(String s);
 
+	@Override
 	public void setLanguageId(String languageId) {
 		_languageId = languageId;
 	}
 
+	@Override
 	public void setTemplateDriven(boolean templateDriven) {
 		_templateDriven = templateDriven;
 	}
 
+	@Override
 	public void setTokens(Map<String, String> tokens) {
 		_tokens = tokens;
 	}

@@ -61,6 +61,7 @@ import org.apache.commons.collections.map.ReferenceMap;
 @DoPrivileged
 public class LocalizationImpl implements Localization {
 
+	@Override
 	public Object deserialize(JSONObject jsonObject) {
 		Locale[] locales = LanguageUtil.getAvailableLocales();
 
@@ -79,6 +80,7 @@ public class LocalizationImpl implements Localization {
 		return map;
 	}
 
+	@Override
 	public String[] getAvailableLocales(String xml) {
 		String attributeValue = _getRootAttribute(
 			xml, _AVAILABLE_LOCALES, StringPool.BLANK);
@@ -86,6 +88,7 @@ public class LocalizationImpl implements Localization {
 		return StringUtil.split(attributeValue);
 	}
 
+	@Override
 	public Locale getDefaultImportLocale(
 		String className, long classPK, Locale contentDefaultLocale,
 		Locale[] contentAvailableLocales) {
@@ -127,6 +130,7 @@ public class LocalizationImpl implements Localization {
 		return defaultLocale;
 	}
 
+	@Override
 	public String getDefaultLocale(String xml) {
 		String defaultLanguageId = LocaleUtil.toLanguageId(
 			LocaleUtil.getDefault());
@@ -134,10 +138,12 @@ public class LocalizationImpl implements Localization {
 		return _getRootAttribute(xml, _DEFAULT_LOCALE, defaultLanguageId);
 	}
 
+	@Override
 	public String getLocalization(String xml, String requestedLanguageId) {
 		return getLocalization(xml, requestedLanguageId, true);
 	}
 
+	@Override
 	public String getLocalization(
 		String xml, String requestedLanguageId, boolean useDefault) {
 
@@ -290,6 +296,7 @@ public class LocalizationImpl implements Localization {
 		return value;
 	}
 
+	@Override
 	public Map<Locale, String> getLocalizationMap(
 		PortletPreferences preferences, String parameter) {
 
@@ -311,6 +318,7 @@ public class LocalizationImpl implements Localization {
 		return map;
 	}
 
+	@Override
 	public Map<Locale, String> getLocalizationMap(
 		PortletRequest portletRequest, String parameter) {
 
@@ -331,6 +339,7 @@ public class LocalizationImpl implements Localization {
 		return map;
 	}
 
+	@Override
 	public Map<Locale, String> getLocalizationMap(String xml) {
 		Locale[] locales = LanguageUtil.getAvailableLocales();
 
@@ -345,6 +354,7 @@ public class LocalizationImpl implements Localization {
 		return map;
 	}
 
+	@Override
 	public Map<Locale, String> getLocalizationMap(
 		String bundleName, ClassLoader classLoader, String key,
 		boolean includeBetaLocales) {
@@ -387,6 +397,7 @@ public class LocalizationImpl implements Localization {
 		return map;
 	}
 
+	@Override
 	public Map<Locale, String> getLocalizationMap(
 		String[] languageIds, String[] values) {
 
@@ -401,6 +412,7 @@ public class LocalizationImpl implements Localization {
 		return map;
 	}
 
+	@Override
 	public String getLocalizationXmlFromPreferences(
 		PortletPreferences preferences, PortletRequest portletRequest,
 		String parameter) {
@@ -437,12 +449,14 @@ public class LocalizationImpl implements Localization {
 		return xml;
 	}
 
+	@Override
 	public Map<Locale, String> getLocalizedParameter(
 		PortletRequest portletRequest, String parameter) {
 
 		return getLocalizationMap(portletRequest, parameter);
 	}
 
+	@Override
 	public String getPreferencesKey(String key, String languageId) {
 		String defaultLanguageId = LocaleUtil.toLanguageId(
 			LocaleUtil.getDefault());
@@ -454,12 +468,14 @@ public class LocalizationImpl implements Localization {
 		return key;
 	}
 
+	@Override
 	public String getPreferencesValue(
 		PortletPreferences preferences, String key, String languageId) {
 
 		return getPreferencesValue(preferences, key, languageId, true);
 	}
 
+	@Override
 	public String getPreferencesValue(
 		PortletPreferences preferences, String key, String languageId,
 		boolean useDefault) {
@@ -475,12 +491,14 @@ public class LocalizationImpl implements Localization {
 		return value;
 	}
 
+	@Override
 	public String[] getPreferencesValues(
 		PortletPreferences preferences, String key, String languageId) {
 
 		return getPreferencesValues(preferences, key, languageId, true);
 	}
 
+	@Override
 	public String[] getPreferencesValues(
 		PortletPreferences preferences, String key, String languageId,
 		boolean useDefault) {
@@ -496,18 +514,21 @@ public class LocalizationImpl implements Localization {
 		return values;
 	}
 
+	@Override
 	public String removeLocalization(
 		String xml, String key, String requestedLanguageId) {
 
 		return removeLocalization(xml, key, requestedLanguageId, false);
 	}
 
+	@Override
 	public String removeLocalization(
 		String xml, String key, String requestedLanguageId, boolean cdata) {
 
 		return removeLocalization(xml, key, requestedLanguageId, cdata, true);
 	}
 
+	@Override
 	public String removeLocalization(
 		String xml, String key, String requestedLanguageId, boolean cdata,
 		boolean localized) {
@@ -629,6 +650,7 @@ public class LocalizationImpl implements Localization {
 		return xml;
 	}
 
+	@Override
 	public void setLocalizedPreferencesValues(
 			PortletRequest portletRequest, PortletPreferences preferences,
 			String parameter)
@@ -644,6 +666,7 @@ public class LocalizationImpl implements Localization {
 		}
 	}
 
+	@Override
 	public void setPreferencesValue(
 			PortletPreferences preferences, String key, String languageId,
 			String value)
@@ -652,6 +675,7 @@ public class LocalizationImpl implements Localization {
 		preferences.setValue(getPreferencesKey(key, languageId), value);
 	}
 
+	@Override
 	public void setPreferencesValues(
 			PortletPreferences preferences, String key, String languageId,
 			String[] values)
@@ -660,6 +684,7 @@ public class LocalizationImpl implements Localization {
 		preferences.setValues(getPreferencesKey(key, languageId), values);
 	}
 
+	@Override
 	public String updateLocalization(String xml, String key, String value) {
 		String defaultLanguageId = LocaleUtil.toLanguageId(
 			LocaleUtil.getDefault());
@@ -668,6 +693,7 @@ public class LocalizationImpl implements Localization {
 			xml, key, value, defaultLanguageId, defaultLanguageId);
 	}
 
+	@Override
 	public String updateLocalization(
 		String xml, String key, String value, String requestedLanguageId) {
 
@@ -678,6 +704,7 @@ public class LocalizationImpl implements Localization {
 			xml, key, value, requestedLanguageId, defaultLanguageId);
 	}
 
+	@Override
 	public String updateLocalization(
 		String xml, String key, String value, String requestedLanguageId,
 		String defaultLanguageId) {
@@ -686,6 +713,7 @@ public class LocalizationImpl implements Localization {
 			xml, key, value, requestedLanguageId, defaultLanguageId, false);
 	}
 
+	@Override
 	public String updateLocalization(
 		String xml, String key, String value, String requestedLanguageId,
 		String defaultLanguageId, boolean cdata) {
@@ -695,6 +723,7 @@ public class LocalizationImpl implements Localization {
 			true);
 	}
 
+	@Override
 	public String updateLocalization(
 		String xml, String key, String value, String requestedLanguageId,
 		String defaultLanguageId, boolean cdata, boolean localized) {

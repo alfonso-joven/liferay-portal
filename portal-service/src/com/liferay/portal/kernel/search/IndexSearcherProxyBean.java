@@ -43,10 +43,12 @@ public class IndexSearcherProxyBean
 		return SearchEngineUtil.getSearchReaderDestinationName(searchEngineId);
 	}
 
+	@Override
 	public Hits search(SearchContext searchContext, Query query) {
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
 	public Hits search(
 		String searchEngineId, long companyId, Query query, Sort[] sort,
 		int start, int end) {

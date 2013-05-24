@@ -31,6 +31,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class NtlmAutoLogin implements AutoLogin {
 
+	@Override
 	public String[] login(
 		HttpServletRequest request, HttpServletResponse response) {
 

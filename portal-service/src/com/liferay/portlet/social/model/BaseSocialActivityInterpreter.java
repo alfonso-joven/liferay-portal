@@ -37,6 +37,7 @@ import com.liferay.portal.theme.ThemeDisplay;
 public abstract class BaseSocialActivityInterpreter
 	implements SocialActivityInterpreter {
 
+	@Override
 	public SocialActivityFeedEntry interpret(
 		SocialActivity activity, ThemeDisplay themeDisplay) {
 

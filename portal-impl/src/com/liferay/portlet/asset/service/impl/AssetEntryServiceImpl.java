@@ -49,6 +49,7 @@ import java.util.List;
  */
 public class AssetEntryServiceImpl extends AssetEntryServiceBaseImpl {
 
+	@Override
 	public List<AssetEntry> getCompanyEntries(
 			long companyId, int start, int end)
 		throws SystemException {
@@ -76,10 +77,12 @@ public class AssetEntryServiceImpl extends AssetEntryServiceBaseImpl {
 		return entries;
 	}
 
+	@Override
 	public int getCompanyEntriesCount(long companyId) throws SystemException {
 		return assetEntryLocalService.getCompanyEntriesCount(companyId);
 	}
 
+	@Override
 	public List<AssetEntry> getEntries(AssetEntryQuery entryQuery)
 		throws PortalException, SystemException {
 
@@ -95,6 +98,7 @@ public class AssetEntryServiceImpl extends AssetEntryServiceBaseImpl {
 		return (List<AssetEntry>)results[0];
 	}
 
+	@Override
 	public int getEntriesCount(AssetEntryQuery entryQuery)
 		throws PortalException, SystemException {
 
@@ -110,6 +114,7 @@ public class AssetEntryServiceImpl extends AssetEntryServiceBaseImpl {
 		return (Integer)results[1];
 	}
 
+	@Override
 	public AssetEntry getEntry(long entryId)
 		throws PortalException, SystemException {
 
@@ -119,6 +124,7 @@ public class AssetEntryServiceImpl extends AssetEntryServiceBaseImpl {
 		return assetEntryLocalService.getEntry(entryId);
 	}
 
+	@Override
 	public AssetEntry incrementViewCounter(String className, long classPK)
 		throws PortalException, SystemException {
 
@@ -133,6 +139,7 @@ public class AssetEntryServiceImpl extends AssetEntryServiceBaseImpl {
 			getGuestOrUserId(), className, classPK);
 	}
 
+	@Override
 	public AssetEntry updateEntry(
 			long groupId, Date createDate, Date modifiedDate, String className,
 			long classPK, String classUuid, long classTypeId,
@@ -159,6 +166,7 @@ public class AssetEntryServiceImpl extends AssetEntryServiceBaseImpl {
 	 *             String, String, String, String, String, String, int, int,
 	 *             Integer, boolean)}
 	 */
+	@Override
 	public AssetEntry updateEntry(
 			long groupId, String className, long classPK, String classUuid,
 			long classTypeId, long[] categoryIds, String[] tagNames,

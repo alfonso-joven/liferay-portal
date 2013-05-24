@@ -29,6 +29,7 @@ public class IGImageNameColumnImpl extends BaseUpgradeColumnImpl {
 		_imageIdColumn = imageIdColumn;
 	}
 
+	@Override
 	public Object getNewValue(Object oldValue) throws Exception {
 		String oldString = (String)oldValue;
 

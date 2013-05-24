@@ -37,6 +37,7 @@ public class LogBridge
 	implements BundleActivator, LogListener,
 			   ServiceTrackerCustomizer<LogReaderService, LogReaderService> {
 
+	@Override
 	public LogReaderService addingService(
 		ServiceReference<LogReaderService> serviceReference) {
 
@@ -48,6 +49,7 @@ public class LogBridge
 		return logReaderService;
 	}
 
+	@Override
 	public void logged(LogEntry logEntry) {
 		int level = logEntry.getLevel();
 
@@ -92,6 +94,7 @@ public class LogBridge
 		logReaderService.removeLogListener(this);
 	}
 
+	@Override
 	public void start(BundleContext bundleContext) throws Exception {
 		_bundleContext = bundleContext;
 
@@ -102,6 +105,7 @@ public class LogBridge
 		_serviceTracker.open();
 	}
 
+	@Override
 	public void stop(BundleContext bundleContext) throws Exception {
 		_serviceTracker.close();
 

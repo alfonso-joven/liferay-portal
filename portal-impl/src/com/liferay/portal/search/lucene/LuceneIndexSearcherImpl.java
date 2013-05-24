@@ -83,6 +83,7 @@ import org.apache.lucene.search.TopFieldDocs;
  */
 public class LuceneIndexSearcherImpl implements IndexSearcher {
 
+	@Override
 	public Hits search(SearchContext searchContext, Query query)
 		throws SearchException {
 
@@ -305,6 +306,7 @@ public class LuceneIndexSearcherImpl implements IndexSearcher {
 		return hits;
 	}
 
+	@Override
 	public Hits search(
 			String searchEngineId, long companyId, Query query, Sort[] sorts,
 			int start, int end)

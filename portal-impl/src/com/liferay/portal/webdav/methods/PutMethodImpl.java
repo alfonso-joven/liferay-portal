@@ -24,6 +24,7 @@ import com.liferay.portal.kernel.webdav.WebDAVStorage;
  */
 public class PutMethodImpl implements Method {
 
+	@Override
 	public int process(WebDAVRequest webDavRequest) throws WebDAVException {
 		WebDAVStorage storage = webDavRequest.getWebDAVStorage();
 

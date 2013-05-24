@@ -28,6 +28,7 @@ import com.liferay.portal.service.permission.UserPermissionUtil;
  */
 public class ContactServiceImpl extends ContactServiceBaseImpl {
 
+	@Override
 	public Contact getContact(long contactId)
 		throws PortalException, SystemException {
 

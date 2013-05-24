@@ -49,6 +49,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class OpenSSOAutoLogin implements AutoLogin {
 
+	@Override
 	public String[] login(
 		HttpServletRequest request, HttpServletResponse response) {
 

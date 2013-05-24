@@ -119,6 +119,7 @@ import java.util.Map;
 public class DLFileEntryLocalServiceImpl
 	extends DLFileEntryLocalServiceBaseImpl {
 
+	@Override
 	public DLFileEntry addFileEntry(
 			long userId, long groupId, long repositoryId, long folderId,
 			String sourceFileName, String mimeType, String title,
@@ -215,6 +216,7 @@ public class DLFileEntryLocalServiceImpl
 		return dlFileEntry;
 	}
 
+	@Override
 	public DLFileVersion cancelCheckOut(long userId, long fileEntryId)
 		throws PortalException, SystemException {
 
@@ -244,6 +246,7 @@ public class DLFileEntryLocalServiceImpl
 		return dlFileVersion;
 	}
 
+	@Override
 	public void checkInFileEntry(
 			long userId, long fileEntryId, boolean majorVersion,
 			String changeLog, ServiceContext serviceContext)
@@ -349,6 +352,7 @@ public class DLFileEntryLocalServiceImpl
 		lockLocalService.unlock(DLFileEntry.class.getName(), fileEntryId);
 	}
 
+	@Override
 	public void checkInFileEntry(long userId, long fileEntryId, String lockUuid)
 		throws PortalException, SystemException {
 
@@ -378,12 +382,14 @@ public class DLFileEntryLocalServiceImpl
 	/**
 	 * @deprecated {@link #checkOutFileEntry(long, long, ServiceContext)}
 	 */
+	@Override
 	public DLFileEntry checkOutFileEntry(long userId, long fileEntryId)
 		throws PortalException, SystemException {
 
 		return checkOutFileEntry(userId, fileEntryId, new ServiceContext());
 	}
 
+	@Override
 	public DLFileEntry checkOutFileEntry(
 			long userId, long fileEntryId, ServiceContext serviceContext)
 		throws PortalException, SystemException {
@@ -397,6 +403,7 @@ public class DLFileEntryLocalServiceImpl
 	 * @deprecated {@link #checkOutFileEntry(long, long, String, long,
 	 *             ServiceContext)}
 	 */
+	@Override
 	public DLFileEntry checkOutFileEntry(
 			long userId, long fileEntryId, String owner, long expirationTime)
 		throws PortalException, SystemException {
@@ -405,6 +412,7 @@ public class DLFileEntryLocalServiceImpl
 			userId, fileEntryId, owner, expirationTime, new ServiceContext());
 	}
 
+	@Override
 	public DLFileEntry checkOutFileEntry(
 			long userId, long fileEntryId, String owner, long expirationTime,
 			ServiceContext serviceContext)
@@ -520,6 +528,7 @@ public class DLFileEntryLocalServiceImpl
 		return dlFileEntry;
 	}
 
+	@Override
 	public void convertExtraSettings(String[] keys)
 		throws PortalException, SystemException {
 
@@ -540,6 +549,7 @@ public class DLFileEntryLocalServiceImpl
 		}
 	}
 
+	@Override
 	public void copyFileEntryMetadata(
 			long companyId, long fileEntryTypeId, long fileEntryId,
 			long fromFileVersionId, long toFileVersionId,
@@ -601,6 +611,7 @@ public class DLFileEntryLocalServiceImpl
 			toFileVersionId, fieldsMap, serviceContext);
 	}
 
+	@Override
 	public void deleteFileEntries(long groupId, long folderId)
 		throws PortalException, SystemException {
 
@@ -624,6 +635,7 @@ public class DLFileEntryLocalServiceImpl
 		}
 	}
 
+	@Override
 	public void deleteFileEntry(long fileEntryId)
 		throws PortalException, SystemException {
 
@@ -632,6 +644,7 @@ public class DLFileEntryLocalServiceImpl
 		deleteFileEntry(dlFileEntry);
 	}
 
+	@Override
 	public void deleteFileEntry(long userId, long fileEntryId)
 		throws PortalException, SystemException {
 
@@ -647,6 +660,7 @@ public class DLFileEntryLocalServiceImpl
 		}
 	}
 
+	@Override
 	@Indexable(type = IndexableType.DELETE)
 	public void deleteFileVersion(long userId, long fileEntryId, String version)
 		throws PortalException, SystemException {
@@ -733,12 +747,14 @@ public class DLFileEntryLocalServiceImpl
 		}
 	}
 
+	@Override
 	public DLFileEntry fetchFileEntryByAnyImageId(long imageId)
 		throws SystemException {
 
 		return dlFileEntryFinder.fetchByAnyImageId(imageId);
 	}
 
+	@Override
 	public DLFileEntry fetchFileEntryByName(
 			long groupId, long folderId, String name)
 		throws SystemException {
@@ -746,12 +762,14 @@ public class DLFileEntryLocalServiceImpl
 		return dlFileEntryPersistence.fetchByG_F_N(groupId, folderId, name);
 	}
 
+	@Override
 	public List<DLFileEntry> getExtraSettingsFileEntries(int start, int end)
 		throws SystemException {
 
 		return dlFileEntryFinder.findByExtraSettings(start, end);
 	}
 
+	@Override
 	public File getFile(
 			long userId, long fileEntryId, String version,
 			boolean incrementCounter)
@@ -774,6 +792,7 @@ public class DLFileEntryLocalServiceImpl
 			dlFileEntry.getName(), version);
 	}
 
+	@Override
 	public InputStream getFileAsStream(
 			long userId, long fileEntryId, String version)
 		throws PortalException, SystemException {
@@ -781,6 +800,7 @@ public class DLFileEntryLocalServiceImpl
 		return getFileAsStream(userId, fileEntryId, version, true);
 	}
 
+	@Override
 	public InputStream getFileAsStream(
 			long userId, long fileEntryId, String version,
 			boolean incrementCounter)
@@ -803,12 +823,14 @@ public class DLFileEntryLocalServiceImpl
 			dlFileEntry.getName(), version);
 	}
 
+	@Override
 	public List<DLFileEntry> getFileEntries(int start, int end)
 		throws SystemException {
 
 		return dlFileEntryPersistence.findAll(start, end);
 	}
 
+	@Override
 	public List<DLFileEntry> getFileEntries(
 			long groupId, long folderId, int start, int end,
 			OrderByComparator obc)
@@ -818,22 +840,26 @@ public class DLFileEntryLocalServiceImpl
 			groupId, folderId, start, end, obc);
 	}
 
+	@Override
 	public List<DLFileEntry> getFileEntries(long folderId, String name)
 		throws SystemException {
 
 		return dlFileEntryPersistence.findByF_N(folderId, name);
 	}
 
+	@Override
 	public int getFileEntriesCount() throws SystemException {
 		return dlFileEntryPersistence.countAll();
 	}
 
+	@Override
 	public int getFileEntriesCount(long groupId, long folderId)
 		throws SystemException {
 
 		return dlFileEntryPersistence.countByG_F(groupId, folderId);
 	}
 
+	@Override
 	public DLFileEntry getFileEntry(long fileEntryId)
 		throws PortalException, SystemException {
 
@@ -845,6 +871,7 @@ public class DLFileEntryLocalServiceImpl
 		return dlFileEntry;
 	}
 
+	@Override
 	public DLFileEntry getFileEntry(long groupId, long folderId, String title)
 		throws PortalException, SystemException {
 
@@ -884,6 +911,7 @@ public class DLFileEntryLocalServiceImpl
 		throw new NoSuchFileEntryException(sb.toString());
 	}
 
+	@Override
 	public DLFileEntry getFileEntryByName(
 			long groupId, long folderId, String name)
 		throws PortalException, SystemException {
@@ -896,6 +924,7 @@ public class DLFileEntryLocalServiceImpl
 		return dlFileEntry;
 	}
 
+	@Override
 	public DLFileEntry getFileEntryByUuidAndGroupId(String uuid, long groupId)
 		throws PortalException, SystemException {
 
@@ -907,6 +936,7 @@ public class DLFileEntryLocalServiceImpl
 		return dlFileEntry;
 	}
 
+	@Override
 	public List<DLFileEntry> getGroupFileEntries(
 			long groupId, int start, int end)
 		throws SystemException {
@@ -915,6 +945,7 @@ public class DLFileEntryLocalServiceImpl
 			groupId, start, end, new RepositoryModelModifiedDateComparator());
 	}
 
+	@Override
 	public List<DLFileEntry> getGroupFileEntries(
 			long groupId, int start, int end, OrderByComparator obc)
 		throws SystemException {
@@ -922,6 +953,7 @@ public class DLFileEntryLocalServiceImpl
 		return dlFileEntryPersistence.findByGroupId(groupId, start, end, obc);
 	}
 
+	@Override
 	public List<DLFileEntry> getGroupFileEntries(
 			long groupId, long userId, int start, int end)
 		throws SystemException {
@@ -931,6 +963,7 @@ public class DLFileEntryLocalServiceImpl
 			new RepositoryModelModifiedDateComparator());
 	}
 
+	@Override
 	public List<DLFileEntry> getGroupFileEntries(
 			long groupId, long userId, int start, int end,
 			OrderByComparator obc)
@@ -946,10 +979,12 @@ public class DLFileEntryLocalServiceImpl
 		}
 	}
 
+	@Override
 	public int getGroupFileEntriesCount(long groupId) throws SystemException {
 		return dlFileEntryPersistence.countByGroupId(groupId);
 	}
 
+	@Override
 	public int getGroupFileEntriesCount(long groupId, long userId)
 		throws SystemException {
 
@@ -961,20 +996,24 @@ public class DLFileEntryLocalServiceImpl
 		}
 	}
 
+	@Override
 	public List<DLFileEntry> getMisversionedFileEntries()
 		throws SystemException {
 
 		return dlFileEntryFinder.findByMisversioned();
 	}
 
+	@Override
 	public List<DLFileEntry> getNoAssetFileEntries() throws SystemException {
 		return dlFileEntryFinder.findByNoAssets();
 	}
 
+	@Override
 	public List<DLFileEntry> getOrphanedFileEntries() throws SystemException {
 		return dlFileEntryFinder.findByOrphanedFileEntries();
 	}
 
+	@Override
 	public boolean hasExtraSettings() throws SystemException {
 		if (dlFileEntryFinder.countByExtraSettings() > 0) {
 			return true;
@@ -984,6 +1023,7 @@ public class DLFileEntryLocalServiceImpl
 		}
 	}
 
+	@Override
 	public boolean hasFileEntryLock(long userId, long fileEntryId)
 		throws PortalException, SystemException {
 
@@ -1003,6 +1043,7 @@ public class DLFileEntryLocalServiceImpl
 		return hasLock;
 	}
 
+	@Override
 	public boolean isFileEntryCheckedOut(long fileEntryId)
 		throws PortalException, SystemException {
 
@@ -1019,6 +1060,7 @@ public class DLFileEntryLocalServiceImpl
 		}
 	}
 
+	@Override
 	public DLFileEntry moveFileEntry(
 			long userId, long fileEntryId, long newFolderId,
 			ServiceContext serviceContext)
@@ -1045,6 +1087,7 @@ public class DLFileEntryLocalServiceImpl
 		}
 	}
 
+	@Override
 	public void revertFileEntry(
 			long userId, long fileEntryId, String version,
 			ServiceContext serviceContext)
@@ -1100,6 +1143,7 @@ public class DLFileEntryLocalServiceImpl
 			dlFileVersion.getFileVersionId(), serviceContext);
 	}
 
+	@Override
 	public DLFileEntry updateFileEntry(
 			long userId, long fileEntryId, String sourceFileName,
 			String mimeType, String title, String description, String changeLog,
@@ -1129,6 +1173,7 @@ public class DLFileEntryLocalServiceImpl
 			fileEntryTypeId, fieldsMap, file, is, size, serviceContext);
 	}
 
+	@Override
 	public void updateSmallImage(long smallImageId, long largeImageId)
 		throws PortalException, SystemException {
 
@@ -1168,6 +1213,7 @@ public class DLFileEntryLocalServiceImpl
 		}
 	}
 
+	@Override
 	public DLFileEntry updateStatus(
 			long userId, long fileVersionId, int status,
 			Map<String, Serializable> workflowContext,
@@ -1264,6 +1310,7 @@ public class DLFileEntryLocalServiceImpl
 		return dlFileEntry;
 	}
 
+	@Override
 	public boolean verifyFileEntryCheckOut(long fileEntryId, String lockUuid)
 		throws PortalException, SystemException {
 
@@ -1277,6 +1324,7 @@ public class DLFileEntryLocalServiceImpl
 		}
 	}
 
+	@Override
 	public boolean verifyFileEntryLock(long fileEntryId, String lockUuid)
 		throws PortalException, SystemException {
 

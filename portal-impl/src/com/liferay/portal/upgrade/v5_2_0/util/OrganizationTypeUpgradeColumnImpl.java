@@ -28,6 +28,7 @@ public class OrganizationTypeUpgradeColumnImpl extends BaseUpgradeColumnImpl {
 		_locationColumn = locationColumn;
 	}
 
+	@Override
 	public Object getNewValue(Object oldValue) throws Exception {
 		Boolean type = (Boolean)_locationColumn.getOldValue();
 

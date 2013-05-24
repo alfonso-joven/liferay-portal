@@ -43,6 +43,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class PropfindMethodImpl extends BasePropMethodImpl implements Method {
 
+	@Override
 	public int process(WebDAVRequest webDavRequest) throws WebDAVException {
 		try {
 			Set<QName> props = getProps(webDavRequest);

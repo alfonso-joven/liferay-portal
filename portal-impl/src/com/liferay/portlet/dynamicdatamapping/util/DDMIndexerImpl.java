@@ -35,6 +35,7 @@ import java.util.Iterator;
  */
 public class DDMIndexerImpl implements DDMIndexer {
 
+	@Override
 	public void addAttributes(
 		Document document, DDMStructure ddmStructure, Fields fields) {
 
@@ -87,6 +88,7 @@ public class DDMIndexerImpl implements DDMIndexer {
 		}
 	}
 
+	@Override
 	public String encodeName(long ddmStructureId, String fieldName) {
 		StringBundler sb = new StringBundler(5);
 

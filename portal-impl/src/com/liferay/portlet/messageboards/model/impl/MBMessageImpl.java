@@ -38,11 +38,13 @@ public class MBMessageImpl extends MBMessageBaseImpl {
 	public MBMessageImpl() {
 	}
 
+	@Override
 	public String[] getAssetTagNames() throws SystemException {
 		return AssetTagLocalServiceUtil.getTagNames(
 			MBMessage.class.getName(), getMessageId());
 	}
 
+	@Override
 	public String getAttachmentsDir() {
 		if (_attachmentDirs == null) {
 			_attachmentDirs = getThreadAttachmentsDir() + "/" + getMessageId();
@@ -51,6 +53,7 @@ public class MBMessageImpl extends MBMessageBaseImpl {
 		return _attachmentDirs;
 	}
 
+	@Override
 	public String[] getAttachmentsFiles()
 		throws PortalException, SystemException {
 
@@ -66,6 +69,7 @@ public class MBMessageImpl extends MBMessageBaseImpl {
 		return fileNames;
 	}
 
+	@Override
 	public String getBody(boolean translate) {
 		String body = null;
 
@@ -79,18 +83,22 @@ public class MBMessageImpl extends MBMessageBaseImpl {
 		return body;
 	}
 
+	@Override
 	public MBCategory getCategory() throws PortalException, SystemException {
 		return MBCategoryLocalServiceUtil.getCategory(getCategoryId());
 	}
 
+	@Override
 	public MBThread getThread() throws PortalException, SystemException {
 		return MBThreadLocalServiceUtil.getThread(getThreadId());
 	}
 
+	@Override
 	public String getThreadAttachmentsDir() {
 		return "messageboards/" + getThreadId();
 	}
 
+	@Override
 	public String getWorkflowClassName() {
 		if (isDiscussion()) {
 			return MBDiscussion.class.getName();
@@ -100,6 +108,7 @@ public class MBMessageImpl extends MBMessageBaseImpl {
 		}
 	}
 
+	@Override
 	public boolean isDiscussion() {
 		if (getCategoryId() == MBCategoryConstants.DISCUSSION_CATEGORY_ID) {
 			return true;
@@ -109,6 +118,7 @@ public class MBMessageImpl extends MBMessageBaseImpl {
 		}
 	}
 
+	@Override
 	public boolean isFormatBBCode() {
 		String format = getFormat();
 
@@ -120,10 +130,12 @@ public class MBMessageImpl extends MBMessageBaseImpl {
 		}
 	}
 
+	@Override
 	public boolean isReply() {
 		return !isRoot();
 	}
 
+	@Override
 	public boolean isRoot() {
 		if (getParentMessageId() ==
 				MBMessageConstants.DEFAULT_PARENT_MESSAGE_ID) {
@@ -135,6 +147,7 @@ public class MBMessageImpl extends MBMessageBaseImpl {
 		}
 	}
 
+	@Override
 	public void setAttachmentsDir(String attachmentsDir) {
 		_attachmentDirs = attachmentsDir;
 	}

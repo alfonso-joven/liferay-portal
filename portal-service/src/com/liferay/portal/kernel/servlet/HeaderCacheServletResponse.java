@@ -144,6 +144,7 @@ public class HeaderCacheServletResponse extends HttpServletResponseWrapper {
 		return _contentType;
 	}
 
+	@Override
 	public String getHeader(String name) {
 		List<Header> values = _headers.get(name);
 
@@ -160,6 +161,7 @@ public class HeaderCacheServletResponse extends HttpServletResponseWrapper {
 		return _headers;
 	}
 
+	@Override
 	public int getStatus() {
 		return _status;
 	}

@@ -53,6 +53,7 @@ public class EntityCacheImpl implements CacheRegistryItem, EntityCache {
 		CacheRegistryUtil.register(this);
 	}
 
+	@Override
 	public void clearCache() {
 		clearLocalCache();
 
@@ -61,6 +62,7 @@ public class EntityCacheImpl implements CacheRegistryItem, EntityCache {
 		}
 	}
 
+	@Override
 	public void clearCache(String className) {
 		clearLocalCache();
 
@@ -71,16 +73,19 @@ public class EntityCacheImpl implements CacheRegistryItem, EntityCache {
 		}
 	}
 
+	@Override
 	public void clearLocalCache() {
 		if (_localCacheAvailable) {
 			_localCache.remove();
 		}
 	}
 
+	@Override
 	public String getRegistryName() {
 		return CACHE_NAME;
 	}
 
+	@Override
 	public Object getResult(
 		boolean entityCacheEnabled, Class<?> clazz, Serializable primaryKey) {
 
@@ -123,10 +128,12 @@ public class EntityCacheImpl implements CacheRegistryItem, EntityCache {
 		return _toEntityModel(result);
 	}
 
+	@Override
 	public void invalidate() {
 		clearCache();
 	}
 
+	@Override
 	public Object loadResult(
 		boolean entityCacheEnabled, Class<?> clazz, Serializable primaryKey,
 		SessionFactory sessionFactory) {
@@ -209,6 +216,7 @@ public class EntityCacheImpl implements CacheRegistryItem, EntityCache {
 		}
 	}
 
+	@Override
 	public void putResult(
 		boolean entityCacheEnabled, Class<?> clazz, Serializable primaryKey,
 		Object result) {
@@ -238,6 +246,7 @@ public class EntityCacheImpl implements CacheRegistryItem, EntityCache {
 		portalCache.put(cacheKey, result);
 	}
 
+	@Override
 	public void removeCache(String className) {
 		_portalCaches.remove(className);
 
@@ -246,6 +255,7 @@ public class EntityCacheImpl implements CacheRegistryItem, EntityCache {
 		_multiVMPool.removeCache(groupKey);
 	}
 
+	@Override
 	public void removeResult(
 		boolean entityCacheEnabled, Class<?> clazz, Serializable primaryKey) {
 

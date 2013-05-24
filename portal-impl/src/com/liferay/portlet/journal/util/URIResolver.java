@@ -35,6 +35,7 @@ public class URIResolver implements javax.xml.transform.URIResolver {
 		_languageId = languageId;
 	}
 
+	@Override
 	public Source resolve(String href, String base) {
 		try {
 			String content = null;

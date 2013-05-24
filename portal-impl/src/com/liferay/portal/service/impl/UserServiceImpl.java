@@ -682,6 +682,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         found
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public long getDefaultUserId(long companyId)
 		throws PortalException, SystemException {
 

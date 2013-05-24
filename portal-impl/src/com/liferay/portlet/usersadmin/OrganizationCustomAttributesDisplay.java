@@ -26,6 +26,7 @@ public class OrganizationCustomAttributesDisplay
 
 	public static final String CLASS_NAME = Organization.class.getName();
 
+	@Override
 	public String getClassName() {
 		return CLASS_NAME;
 	}

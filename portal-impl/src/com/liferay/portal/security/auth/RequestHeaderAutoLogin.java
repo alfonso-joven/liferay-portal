@@ -36,6 +36,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class RequestHeaderAutoLogin implements AutoLogin {
 
+	@Override
 	public String[] login(
 		HttpServletRequest request, HttpServletResponse response) {
 

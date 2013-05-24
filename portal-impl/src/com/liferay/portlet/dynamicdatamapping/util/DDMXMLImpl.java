@@ -35,10 +35,12 @@ import java.util.Locale;
  */
 public class DDMXMLImpl implements DDMXML {
 
+	@Override
 	public String formatXML(Document document) throws IOException {
 		return document.formattedString(_XML_INDENT);
 	}
 
+	@Override
 	public String formatXML(String xml) throws DocumentException, IOException {
 
 		// This is only supposed to format your xml, however, it will also
@@ -59,6 +61,7 @@ public class DDMXMLImpl implements DDMXML {
 		return xml;
 	}
 
+	@Override
 	public String updateXMLDefaultLocale(
 			String xml, Locale contentDefaultLocale,
 			Locale contentNewDefaultLocale)

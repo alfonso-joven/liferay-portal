@@ -26,6 +26,7 @@ import java.util.Comparator;
 public class PermissionActionIdComparator
 	implements Comparator<Object>, Serializable {
 
+	@Override
 	public int compare(Object obj1, Object obj2) {
 		String actionId1 = null;
 

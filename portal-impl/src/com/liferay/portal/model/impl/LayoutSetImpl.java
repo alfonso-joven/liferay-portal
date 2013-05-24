@@ -163,6 +163,7 @@ public class LayoutSetImpl extends LayoutSetBaseImpl {
 		return value;
 	}
 
+	@Override
 	public String getVirtualHostname() {
 		try {
 			VirtualHost virtualHost =

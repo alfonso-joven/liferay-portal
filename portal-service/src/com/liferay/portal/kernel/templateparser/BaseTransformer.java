@@ -38,6 +38,7 @@ import java.util.Map;
  */
 public abstract class BaseTransformer implements Transformer {
 
+	@Override
 	public String transform(
 			ThemeDisplay themeDisplay, Map<String, String> tokens,
 			String viewMode, String languageId, String xml, String script,

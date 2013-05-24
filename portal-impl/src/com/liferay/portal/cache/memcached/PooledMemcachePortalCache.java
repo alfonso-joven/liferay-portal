@@ -46,6 +46,7 @@ public class PooledMemcachePortalCache implements PortalCache {
 		_timeoutTimeUnit = timeoutTimeUnit;
 	}
 
+	@Override
 	public void destroy() {
 		try {
 			_memcachedClientFactory.close();
@@ -54,6 +55,7 @@ public class PooledMemcachePortalCache implements PortalCache {
 		}
 	}
 
+	@Override
 	public Collection<Object> get(Collection<Serializable> keys) {
 		MemcachedClientIF memcachedClient = null;
 
@@ -106,6 +108,7 @@ public class PooledMemcachePortalCache implements PortalCache {
 		return values.values();
 	}
 
+	@Override
 	public Object get(Serializable key) {
 		MemcachedClientIF memcachedClient = null;
 
@@ -146,14 +149,17 @@ public class PooledMemcachePortalCache implements PortalCache {
 		}
 	}
 
+	@Override
 	public String getName() {
 		return _name;
 	}
 
+	@Override
 	public void put(Serializable key, Object value) {
 		put(key, value, _timeToLive);
 	}
 
+	@Override
 	public void put(Serializable key, Object value, int timeToLive) {
 		MemcachedClientIF memcachedClient = null;
 
@@ -179,10 +185,12 @@ public class PooledMemcachePortalCache implements PortalCache {
 		}
 	}
 
+	@Override
 	public void put(Serializable key, Serializable value) {
 		put(key, value, _timeToLive);
 	}
 
+	@Override
 	public void put(Serializable key, Serializable value, int timeToLive) {
 		MemcachedClientIF memcachedClient = null;
 
@@ -208,16 +216,19 @@ public class PooledMemcachePortalCache implements PortalCache {
 		}
 	}
 
+	@Override
 	public void registerCacheListener(CacheListener cacheListener) {
 		registerCacheListener(cacheListener, CacheListenerScope.ALL);
 	}
 
+	@Override
 	public void registerCacheListener(
 		CacheListener cacheListener, CacheListenerScope cacheListenerScope) {
 
 		throw new UnsupportedOperationException();
 	}
 
+	@Override
 	public void remove(Serializable key) {
 		MemcachedClientIF memcachedClient = null;
 
@@ -243,6 +254,7 @@ public class PooledMemcachePortalCache implements PortalCache {
 		}
 	}
 
+	@Override
 	public void removeAll() {
 		MemcachedClientIF memcachedClient = null;
 
@@ -265,9 +277,11 @@ public class PooledMemcachePortalCache implements PortalCache {
 		_timeToLive = timeToLive;
 	}
 
+	@Override
 	public void unregisterCacheListener(CacheListener cacheListener) {
 	}
 
+	@Override
 	public void unregisterCacheListeners() {
 	}
 

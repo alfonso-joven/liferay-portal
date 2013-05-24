@@ -87,6 +87,7 @@ public abstract class BaseIndexer implements Indexer {
 	public static final int INDEX_FILTER_SEARCH_LIMIT = GetterUtil.getInteger(
 		PropsUtil.get(PropsKeys.INDEX_FILTER_SEARCH_LIMIT));
 
+	@Override
 	public void delete(long companyId, String uid) throws SearchException {
 		try {
 			SearchEngineUtil.deleteDocument(
@@ -100,6 +101,7 @@ public abstract class BaseIndexer implements Indexer {
 		}
 	}
 
+	@Override
 	public void delete(Object obj) throws SearchException {
 		try {
 			doDelete(obj);
@@ -112,6 +114,7 @@ public abstract class BaseIndexer implements Indexer {
 		}
 	}
 
+	@Override
 	public Document getDocument(Object obj) throws SearchException {
 		try {
 			Document document = doGetDocument(obj);
@@ -146,6 +149,7 @@ public abstract class BaseIndexer implements Indexer {
 		}
 	}
 
+	@Override
 	public BooleanQuery getFacetQuery(
 			String className, SearchContext searchContext)
 		throws Exception {
@@ -168,6 +172,7 @@ public abstract class BaseIndexer implements Indexer {
 		return facetQuery;
 	}
 
+	@Override
 	public BooleanQuery getFullQuery(SearchContext searchContext)
 		throws SearchException {
 
@@ -200,10 +205,12 @@ public abstract class BaseIndexer implements Indexer {
 		}
 	}
 
+	@Override
 	public IndexerPostProcessor[] getIndexerPostProcessors() {
 		return _indexerPostProcessors;
 	}
 
+	@Override
 	public String getSearchEngineId() {
 		if (_searchEngineId != null) {
 			return _searchEngineId;
@@ -237,6 +244,7 @@ public abstract class BaseIndexer implements Indexer {
 		return _searchEngineId;
 	}
 
+	@Override
 	public String getSortField(String orderByCol) {
 		String sortField = doGetSortField(orderByCol);
 
@@ -247,6 +255,7 @@ public abstract class BaseIndexer implements Indexer {
 		return sortField;
 	}
 
+	@Override
 	public Summary getSummary(
 			Document document, Locale locale, String snippet,
 			PortletURL portletURL)
@@ -273,6 +282,7 @@ public abstract class BaseIndexer implements Indexer {
 		}
 	}
 
+	@Override
 	public boolean hasPermission(
 			PermissionChecker permissionChecker, long entryClassPK,
 			String actionId)
@@ -281,6 +291,7 @@ public abstract class BaseIndexer implements Indexer {
 		return true;
 	}
 
+	@Override
 	public boolean isFilterSearch() {
 		return _FILTER_SEARCH;
 	}
@@ -289,19 +300,23 @@ public abstract class BaseIndexer implements Indexer {
 		return _INDEXER_ENABLED;
 	}
 
+	@Override
 	public boolean isPermissionAware() {
 		return _PERMISSION_AWARE;
 	}
 
+	@Override
 	public boolean isStagingAware() {
 		return _stagingAware;
 	}
 
+	@Override
 	public void postProcessContextQuery(
 			BooleanQuery contextQuery, SearchContext searchContext)
 		throws Exception {
 	}
 
+	@Override
 	public void postProcessSearchQuery(
 			BooleanQuery searchQuery, SearchContext searchContext)
 		throws Exception {
@@ -315,6 +330,7 @@ public abstract class BaseIndexer implements Indexer {
 		}
 	}
 
+	@Override
 	public void registerIndexerPostProcessor(
 		IndexerPostProcessor indexerPostProcessor) {
 
@@ -327,6 +343,7 @@ public abstract class BaseIndexer implements Indexer {
 			new IndexerPostProcessor[indexerPostProcessorsList.size()]);
 	}
 
+	@Override
 	public void reindex(Object obj) throws SearchException {
 		try {
 			if (SearchEngineUtil.isIndexReadOnly() || !isIndexerEnabled()) {
@@ -343,6 +360,7 @@ public abstract class BaseIndexer implements Indexer {
 		}
 	}
 
+	@Override
 	public void reindex(String className, long classPK) throws SearchException {
 		try {
 			if (SearchEngineUtil.isIndexReadOnly() || !isIndexerEnabled()) {
@@ -364,6 +382,7 @@ public abstract class BaseIndexer implements Indexer {
 		}
 	}
 
+	@Override
 	public void reindex(String[] ids) throws SearchException {
 		try {
 			if (SearchEngineUtil.isIndexReadOnly() || !isIndexerEnabled()) {
@@ -380,6 +399,7 @@ public abstract class BaseIndexer implements Indexer {
 		}
 	}
 
+	@Override
 	public Hits search(SearchContext searchContext) throws SearchException {
 		try {
 			searchContext.setSearchEngineId(getSearchEngineId());
@@ -418,6 +438,7 @@ public abstract class BaseIndexer implements Indexer {
 		}
 	}
 
+	@Override
 	public void unregisterIndexerPostProcessor(
 		IndexerPostProcessor indexerPostProcessor) {
 

@@ -38,6 +38,7 @@ public class BookmarksEntryFinderImpl
 	public static final String FIND_BY_NO_RESOURCE_BLOCKS =
 		BookmarksEntryFinder.class.getName() + ".findByNoResourceBlocks";
 
+	@Override
 	public List<BookmarksEntry> findByNoAssets() throws SystemException {
 		Session session = null;
 
@@ -60,6 +61,7 @@ public class BookmarksEntryFinderImpl
 		}
 	}
 
+	@Override
 	public List<BookmarksEntry> findByNoResourceBlocks()
 		throws SystemException {
 

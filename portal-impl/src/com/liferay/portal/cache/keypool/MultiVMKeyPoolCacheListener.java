@@ -29,36 +29,42 @@ public class MultiVMKeyPoolCacheListener implements CacheListener {
 		_localPortalCache = localPortalCache;
 	}
 
+	@Override
 	public void notifyEntryEvicted(
 		PortalCache portalCache, Serializable key, Object value) {
 
 		_localPortalCache.remove(key);
 	}
 
+	@Override
 	public void notifyEntryExpired(
 		PortalCache portalCache, Serializable key, Object value) {
 
 		_localPortalCache.remove(key);
 	}
 
+	@Override
 	public void notifyEntryPut(
 		PortalCache portalCache, Serializable key, Object value) {
 
 		_localPortalCache.put(key, value);
 	}
 
+	@Override
 	public void notifyEntryRemoved(
 		PortalCache portalCache, Serializable key, Object value) {
 
 		_localPortalCache.remove(key);
 	}
 
+	@Override
 	public void notifyEntryUpdated(
 		PortalCache portalCache, Serializable key, Object value) {
 
 		_localPortalCache.put(key, value);
 	}
 
+	@Override
 	public void notifyRemoveAll(PortalCache portalCache) {
 		_localPortalCache.removeAll();
 	}

@@ -28,6 +28,7 @@ import com.liferay.portal.kernel.messaging.MessageRunnable;
 public class BufferedIncrementDiscardPolicy
 	implements RejectedExecutionHandler {
 
+	@Override
 	@SuppressWarnings("rawtypes")
 	public void rejectedExecution(
 		Runnable runnable, ThreadPoolExecutor threadPoolExecutor) {

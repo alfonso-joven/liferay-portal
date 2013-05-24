@@ -26,6 +26,7 @@ public class BookmarksFolderCustomAttributesDisplay
 
 	public static final String CLASS_NAME = BookmarksFolder.class.getName();
 
+	@Override
 	public String getClassName() {
 		return CLASS_NAME;
 	}

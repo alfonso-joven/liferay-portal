@@ -63,6 +63,7 @@ import org.apache.commons.lang.time.StopWatch;
 public class AudioProcessorImpl
 	extends DLPreviewableProcessor implements AudioProcessor {
 
+	@Override
 	public void afterPropertiesSet() {
 		boolean valid = true;
 
@@ -94,26 +95,31 @@ public class AudioProcessorImpl
 		FileUtil.mkdirs(PREVIEW_TMP_PATH);
 	}
 
+	@Override
 	public void generateAudio(FileVersion fileVersion) throws Exception {
 		_generateAudio(fileVersion);
 	}
 
+	@Override
 	public Set<String> getAudioMimeTypes() {
 		return _audioMimeTypes;
 	}
 
+	@Override
 	public InputStream getPreviewAsStream(FileVersion fileVersion, String type)
 		throws Exception {
 
 		return doGetPreviewAsStream(fileVersion, type);
 	}
 
+	@Override
 	public long getPreviewFileSize(FileVersion fileVersion, String type)
 		throws Exception {
 
 		return doGetPreviewFileSize(fileVersion, type);
 	}
 
+	@Override
 	public boolean hasAudio(FileVersion fileVersion) {
 		boolean hasAudio = false;
 
@@ -131,14 +137,17 @@ public class AudioProcessorImpl
 		return hasAudio;
 	}
 
+	@Override
 	public boolean isAudioSupported(FileVersion fileVersion) {
 		return isSupported(fileVersion);
 	}
 
+	@Override
 	public boolean isAudioSupported(String mimeType) {
 		return isSupported(mimeType);
 	}
 
+	@Override
 	public boolean isSupported(String mimeType) {
 		if (Validator.isNull(mimeType)) {
 			return false;
@@ -155,6 +164,7 @@ public class AudioProcessorImpl
 		return false;
 	}
 
+	@Override
 	public void trigger(FileVersion fileVersion) {
 		_queueGeneration(fileVersion);
 	}

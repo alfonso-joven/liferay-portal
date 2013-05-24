@@ -31,6 +31,7 @@ public class MBCategoryImpl extends MBCategoryBaseImpl {
 	public MBCategoryImpl() {
 	}
 
+	@Override
 	public List<Long> getAncestorCategoryIds()
 		throws PortalException, SystemException {
 
@@ -53,6 +54,7 @@ public class MBCategoryImpl extends MBCategoryBaseImpl {
 		return ancestorCategoryIds;
 	}
 
+	@Override
 	public List<MBCategory> getAncestors()
 		throws PortalException, SystemException {
 
@@ -75,6 +77,7 @@ public class MBCategoryImpl extends MBCategoryBaseImpl {
 		return ancestors;
 	}
 
+	@Override
 	public boolean isRoot() {
 		if (getParentCategoryId() ==
 				MBCategoryConstants.DEFAULT_PARENT_CATEGORY_ID) {

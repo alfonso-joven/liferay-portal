@@ -133,6 +133,7 @@ import javax.portlet.PortletPreferences;
 public class JournalArticleLocalServiceImpl
 	extends JournalArticleLocalServiceBaseImpl {
 
+	@Override
 	public JournalArticle addArticle(
 			long userId, long groupId, long classNameId, long classPK,
 			String articleId, boolean autoArticleId, double version,
@@ -343,6 +344,7 @@ public class JournalArticleLocalServiceImpl
 		return article;
 	}
 
+	@Override
 	public void addArticleResources(
 			JournalArticle article, boolean addGroupPermissions,
 			boolean addGuestPermissions)
@@ -354,6 +356,7 @@ public class JournalArticleLocalServiceImpl
 			addGroupPermissions, addGuestPermissions);
 	}
 
+	@Override
 	public void addArticleResources(
 			JournalArticle article, String[] groupPermissions,
 			String[] guestPermissions)
@@ -365,6 +368,7 @@ public class JournalArticleLocalServiceImpl
 			groupPermissions, guestPermissions);
 	}
 
+	@Override
 	public void addArticleResources(
 			long groupId, String articleId, boolean addGroupPermissions,
 			boolean addGuestPermissions)
@@ -375,6 +379,7 @@ public class JournalArticleLocalServiceImpl
 		addArticleResources(article, addGroupPermissions, addGuestPermissions);
 	}
 
+	@Override
 	public void addArticleResources(
 			long groupId, String articleId, String[] groupPermissions,
 			String[] guestPermissions)
@@ -385,6 +390,7 @@ public class JournalArticleLocalServiceImpl
 		addArticleResources(article, groupPermissions, guestPermissions);
 	}
 
+	@Override
 	public JournalArticle checkArticleResourcePrimKey(
 			long groupId, String articleId, double version)
 		throws PortalException, SystemException {
@@ -407,6 +413,7 @@ public class JournalArticleLocalServiceImpl
 		return article;
 	}
 
+	@Override
 	public void checkArticles() throws PortalException, SystemException {
 		Date now = new Date();
 
@@ -491,6 +498,7 @@ public class JournalArticleLocalServiceImpl
 		_previousCheckDate = now;
 	}
 
+	@Override
 	public void checkNewLine(long groupId, String articleId, double version)
 		throws PortalException, SystemException {
 
@@ -510,6 +518,7 @@ public class JournalArticleLocalServiceImpl
 		}
 	}
 
+	@Override
 	public void checkStructure(long groupId, String articleId, double version)
 		throws PortalException, SystemException {
 
@@ -528,6 +537,7 @@ public class JournalArticleLocalServiceImpl
 		}
 	}
 
+	@Override
 	public JournalArticle copyArticle(
 			long userId, long groupId, String oldArticleId, String newArticleId,
 			boolean autoArticleId, double version)
@@ -646,6 +656,7 @@ public class JournalArticleLocalServiceImpl
 		return newArticle;
 	}
 
+	@Override
 	public void deleteArticle(
 			JournalArticle article, String articleURL,
 			ServiceContext serviceContext)
@@ -748,6 +759,7 @@ public class JournalArticleLocalServiceImpl
 		journalArticlePersistence.remove(article);
 	}
 
+	@Override
 	public void deleteArticle(
 			long groupId, String articleId, double version, String articleURL,
 			ServiceContext serviceContext)
@@ -759,6 +771,7 @@ public class JournalArticleLocalServiceImpl
 		deleteArticle(article, articleURL, serviceContext);
 	}
 
+	@Override
 	public void deleteArticle(
 			long groupId, String articleId, ServiceContext serviceContext)
 		throws PortalException, SystemException {
@@ -772,6 +785,7 @@ public class JournalArticleLocalServiceImpl
 		}
 	}
 
+	@Override
 	public void deleteArticles(long groupId)
 		throws PortalException, SystemException {
 
@@ -782,6 +796,7 @@ public class JournalArticleLocalServiceImpl
 		}
 	}
 
+	@Override
 	public void deleteLayoutArticleReferences(long groupId, String layoutUuid)
 		throws SystemException {
 
@@ -795,6 +810,7 @@ public class JournalArticleLocalServiceImpl
 		}
 	}
 
+	@Override
 	public JournalArticle expireArticle(
 			long userId, long groupId, String articleId, double version,
 			String articleURL, ServiceContext serviceContext)
@@ -805,6 +821,7 @@ public class JournalArticleLocalServiceImpl
 			WorkflowConstants.STATUS_EXPIRED, articleURL, serviceContext);
 	}
 
+	@Override
 	public void expireArticle(
 			long userId, long groupId, String articleId, String articleURL,
 			ServiceContext serviceContext)
@@ -831,12 +848,14 @@ public class JournalArticleLocalServiceImpl
 		}
 	}
 
+	@Override
 	public JournalArticle getArticle(long id)
 		throws PortalException, SystemException {
 
 		return journalArticlePersistence.findByPrimaryKey(id);
 	}
 
+	@Override
 	public JournalArticle getArticle(long groupId, String articleId)
 		throws PortalException, SystemException {
 
@@ -853,6 +872,7 @@ public class JournalArticleLocalServiceImpl
 		}
 	}
 
+	@Override
 	public JournalArticle getArticle(
 			long groupId, String articleId, double version)
 		throws PortalException, SystemException {
@@ -861,6 +881,7 @@ public class JournalArticleLocalServiceImpl
 			groupId, articleId, version);
 	}
 
+	@Override
 	public JournalArticle getArticle(
 			long groupId, String className, long classPK)
 		throws PortalException, SystemException {
@@ -880,6 +901,7 @@ public class JournalArticleLocalServiceImpl
 		return articles.get(0);
 	}
 
+	@Override
 	public JournalArticle getArticleByUrlTitle(long groupId, String urlTitle)
 		throws PortalException, SystemException {
 
@@ -896,6 +918,7 @@ public class JournalArticleLocalServiceImpl
 		}
 	}
 
+	@Override
 	public String getArticleContent(
 			JournalArticle article, String templateId, String viewMode,
 			String languageId, ThemeDisplay themeDisplay)
@@ -912,6 +935,7 @@ public class JournalArticleLocalServiceImpl
 		}
 	}
 
+	@Override
 	public String getArticleContent(
 			long groupId, String articleId, double version, String viewMode,
 			String templateId, String languageId, ThemeDisplay themeDisplay)
@@ -929,6 +953,7 @@ public class JournalArticleLocalServiceImpl
 		}
 	}
 
+	@Override
 	public String getArticleContent(
 			long groupId, String articleId, double version, String viewMode,
 			String languageId, ThemeDisplay themeDisplay)
@@ -939,6 +964,7 @@ public class JournalArticleLocalServiceImpl
 			themeDisplay);
 	}
 
+	@Override
 	public String getArticleContent(
 			long groupId, String articleId, String viewMode, String templateId,
 			String languageId, ThemeDisplay themeDisplay)
@@ -950,6 +976,7 @@ public class JournalArticleLocalServiceImpl
 		return articleDisplay.getContent();
 	}
 
+	@Override
 	public String getArticleContent(
 			long groupId, String articleId, String viewMode, String languageId,
 			ThemeDisplay themeDisplay)
@@ -959,6 +986,7 @@ public class JournalArticleLocalServiceImpl
 			groupId, articleId, viewMode, null, languageId, themeDisplay);
 	}
 
+	@Override
 	public JournalArticleDisplay getArticleDisplay(
 			JournalArticle article, String templateId, String viewMode,
 			String languageId, int page, String xmlRequest,
@@ -1160,6 +1188,7 @@ public class JournalArticleLocalServiceImpl
 			cacheable);
 	}
 
+	@Override
 	public JournalArticleDisplay getArticleDisplay(
 			long groupId, String articleId, double version, String templateId,
 			String viewMode, String languageId, int page, String xmlRequest,
@@ -1190,6 +1219,7 @@ public class JournalArticleLocalServiceImpl
 			themeDisplay);
 	}
 
+	@Override
 	public JournalArticleDisplay getArticleDisplay(
 			long groupId, String articleId, double version, String templateId,
 			String viewMode, String languageId, ThemeDisplay themeDisplay)
@@ -1200,6 +1230,7 @@ public class JournalArticleLocalServiceImpl
 			null, themeDisplay);
 	}
 
+	@Override
 	public JournalArticleDisplay getArticleDisplay(
 			long groupId, String articleId, String viewMode, String languageId,
 			int page, String xmlRequest, ThemeDisplay themeDisplay)
@@ -1210,6 +1241,7 @@ public class JournalArticleLocalServiceImpl
 			themeDisplay);
 	}
 
+	@Override
 	public JournalArticleDisplay getArticleDisplay(
 			long groupId, String articleId, String templateId, String viewMode,
 			String languageId, int page, String xmlRequest,
@@ -1223,6 +1255,7 @@ public class JournalArticleLocalServiceImpl
 			languageId, page, xmlRequest, themeDisplay);
 	}
 
+	@Override
 	public JournalArticleDisplay getArticleDisplay(
 			long groupId, String articleId, String templateId, String viewMode,
 			String languageId, ThemeDisplay themeDisplay)
@@ -1235,6 +1268,7 @@ public class JournalArticleLocalServiceImpl
 			languageId, themeDisplay);
 	}
 
+	@Override
 	public JournalArticleDisplay getArticleDisplay(
 			long groupId, String articleId, String viewMode, String languageId,
 			ThemeDisplay themeDisplay)
@@ -1244,22 +1278,26 @@ public class JournalArticleLocalServiceImpl
 			groupId, articleId, null, viewMode, languageId, themeDisplay);
 	}
 
+	@Override
 	public List<JournalArticle> getArticles() throws SystemException {
 		return journalArticlePersistence.findAll();
 	}
 
+	@Override
 	public List<JournalArticle> getArticles(long groupId)
 		throws SystemException {
 
 		return journalArticlePersistence.findByGroupId(groupId);
 	}
 
+	@Override
 	public List<JournalArticle> getArticles(long groupId, int start, int end)
 		throws SystemException {
 
 		return journalArticlePersistence.findByGroupId(groupId, start, end);
 	}
 
+	@Override
 	public List<JournalArticle> getArticles(
 			long groupId, int start, int end, OrderByComparator obc)
 		throws SystemException {
@@ -1268,22 +1306,26 @@ public class JournalArticleLocalServiceImpl
 			groupId, start, end, obc);
 	}
 
+	@Override
 	public List<JournalArticle> getArticles(long groupId, String articleId)
 		throws SystemException {
 
 		return journalArticlePersistence.findByG_A(groupId, articleId);
 	}
 
+	@Override
 	public List<JournalArticle> getArticlesBySmallImageId(long smallImageId)
 		throws SystemException {
 
 		return journalArticlePersistence.findBySmallImageId(smallImageId);
 	}
 
+	@Override
 	public int getArticlesCount(long groupId) throws SystemException {
 		return journalArticlePersistence.countByGroupId(groupId);
 	}
 
+	@Override
 	public List<JournalArticle> getCompanyArticles(
 			long companyId, double version, int status, int start, int end)
 		throws SystemException {
@@ -1299,6 +1341,7 @@ public class JournalArticleLocalServiceImpl
 		}
 	}
 
+	@Override
 	public List<JournalArticle> getCompanyArticles(
 			long companyId, int status, int start, int end)
 		throws SystemException {
@@ -1313,6 +1356,7 @@ public class JournalArticleLocalServiceImpl
 		}
 	}
 
+	@Override
 	public int getCompanyArticlesCount(
 			long companyId, double version, int status, int start, int end)
 		throws SystemException {
@@ -1326,6 +1370,7 @@ public class JournalArticleLocalServiceImpl
 		}
 	}
 
+	@Override
 	public int getCompanyArticlesCount(long companyId, int status)
 		throws SystemException {
 
@@ -1337,6 +1382,7 @@ public class JournalArticleLocalServiceImpl
 		}
 	}
 
+	@Override
 	public JournalArticle getDisplayArticle(long groupId, String articleId)
 		throws PortalException, SystemException {
 
@@ -1368,6 +1414,7 @@ public class JournalArticleLocalServiceImpl
 		return articles.get(0);
 	}
 
+	@Override
 	public JournalArticle getDisplayArticleByUrlTitle(
 			long groupId, String urlTitle)
 		throws PortalException, SystemException {
@@ -1402,18 +1449,21 @@ public class JournalArticleLocalServiceImpl
 		return articles.get(0);
 	}
 
+	@Override
 	public JournalArticle getLatestArticle(long resourcePrimKey)
 		throws PortalException, SystemException {
 
 		return getLatestArticle(resourcePrimKey, WorkflowConstants.STATUS_ANY);
 	}
 
+	@Override
 	public JournalArticle getLatestArticle(long resourcePrimKey, int status)
 		throws PortalException, SystemException {
 
 		return getLatestArticle(resourcePrimKey, status, true);
 	}
 
+	@Override
 	public JournalArticle getLatestArticle(
 			long resourcePrimKey, int status, boolean preferApproved)
 		throws PortalException, SystemException {
@@ -1448,6 +1498,7 @@ public class JournalArticleLocalServiceImpl
 		return articles.get(0);
 	}
 
+	@Override
 	public JournalArticle getLatestArticle(long groupId, String articleId)
 		throws PortalException, SystemException {
 
@@ -1455,6 +1506,7 @@ public class JournalArticleLocalServiceImpl
 			groupId, articleId, WorkflowConstants.STATUS_ANY);
 	}
 
+	@Override
 	public JournalArticle getLatestArticle(
 			long groupId, String articleId, int status)
 		throws PortalException, SystemException {
@@ -1481,6 +1533,7 @@ public class JournalArticleLocalServiceImpl
 		return articles.get(0);
 	}
 
+	@Override
 	public JournalArticle getLatestArticle(
 			long groupId, String className, long classPK)
 		throws PortalException, SystemException {
@@ -1500,6 +1553,7 @@ public class JournalArticleLocalServiceImpl
 		return articles.get(0);
 	}
 
+	@Override
 	public JournalArticle getLatestArticleByUrlTitle(
 			long groupId, String urlTitle, int status)
 		throws PortalException, SystemException {
@@ -1526,6 +1580,7 @@ public class JournalArticleLocalServiceImpl
 		return articles.get(0);
 	}
 
+	@Override
 	public double getLatestVersion(long groupId, String articleId)
 		throws PortalException, SystemException {
 
@@ -1534,6 +1589,7 @@ public class JournalArticleLocalServiceImpl
 		return article.getVersion();
 	}
 
+	@Override
 	public double getLatestVersion(long groupId, String articleId, int status)
 		throws PortalException, SystemException {
 
@@ -1542,6 +1598,7 @@ public class JournalArticleLocalServiceImpl
 		return article.getVersion();
 	}
 
+	@Override
 	public List<JournalArticle> getStructureArticles(
 			long groupId, String structureId)
 		throws SystemException {
@@ -1549,6 +1606,7 @@ public class JournalArticleLocalServiceImpl
 		return journalArticlePersistence.findByG_S(groupId, structureId);
 	}
 
+	@Override
 	public List<JournalArticle> getStructureArticles(
 			long groupId, String structureId, int start, int end,
 			OrderByComparator obc)
@@ -1558,12 +1616,14 @@ public class JournalArticleLocalServiceImpl
 			groupId, structureId, start, end, obc);
 	}
 
+	@Override
 	public int getStructureArticlesCount(long groupId, String structureId)
 		throws SystemException {
 
 		return journalArticlePersistence.countByG_S(groupId, structureId);
 	}
 
+	@Override
 	public List<JournalArticle> getTemplateArticles(
 			long groupId, String templateId)
 		throws SystemException {
@@ -1571,6 +1631,7 @@ public class JournalArticleLocalServiceImpl
 		return journalArticlePersistence.findByG_T(groupId, templateId);
 	}
 
+	@Override
 	public List<JournalArticle> getTemplateArticles(
 			long groupId, String templateId, int start, int end,
 			OrderByComparator obc)
@@ -1580,12 +1641,14 @@ public class JournalArticleLocalServiceImpl
 			groupId, templateId, start, end, obc);
 	}
 
+	@Override
 	public int getTemplateArticlesCount(long groupId, String templateId)
 		throws SystemException {
 
 		return journalArticlePersistence.countByG_T(groupId, templateId);
 	}
 
+	@Override
 	public boolean hasArticle(long groupId, String articleId)
 		throws SystemException {
 
@@ -1599,6 +1662,7 @@ public class JournalArticleLocalServiceImpl
 		}
 	}
 
+	@Override
 	public boolean isLatestVersion(
 			long groupId, String articleId, double version)
 		throws PortalException, SystemException {
@@ -1611,6 +1675,7 @@ public class JournalArticleLocalServiceImpl
 		}
 	}
 
+	@Override
 	public boolean isLatestVersion(
 			long groupId, String articleId, double version, int status)
 		throws PortalException, SystemException {
@@ -1623,6 +1688,7 @@ public class JournalArticleLocalServiceImpl
 		}
 	}
 
+	@Override
 	public JournalArticle removeArticleLocale(
 			long groupId, String articleId, double version, String languageId)
 		throws PortalException, SystemException {
@@ -1661,6 +1727,7 @@ public class JournalArticleLocalServiceImpl
 		return article;
 	}
 
+	@Override
 	public List<JournalArticle> search(
 			long companyId, long groupId, long classNameId, String keywords,
 			Double version, String type, String structureId, String templateId,
@@ -1674,6 +1741,7 @@ public class JournalArticleLocalServiceImpl
 			reviewDate, start, end, obc);
 	}
 
+	@Override
 	public List<JournalArticle> search(
 			long companyId, long groupId, long classNameId, String articleId,
 			Double version, String title, String description, String content,
@@ -1688,6 +1756,7 @@ public class JournalArticleLocalServiceImpl
 			displayDateLT, status, reviewDate, andOperator, start, end, obc);
 	}
 
+	@Override
 	public List<JournalArticle> search(
 			long companyId, long groupId, long classNameId, String articleId,
 			Double version, String title, String description, String content,
@@ -1703,6 +1772,7 @@ public class JournalArticleLocalServiceImpl
 			start, end, obc);
 	}
 
+	@Override
 	public Hits search(
 			long companyId, long groupId, long classNameId, String structureId,
 			String templateId, String keywords,
@@ -1737,6 +1807,7 @@ public class JournalArticleLocalServiceImpl
 			start, end, sort);
 	}
 
+	@Override
 	public Hits search(
 			long companyId, long groupId, long classNameId, String articleId,
 			String title, String description, String content, String type,
@@ -1798,6 +1869,7 @@ public class JournalArticleLocalServiceImpl
 		}
 	}
 
+	@Override
 	public int searchCount(
 			long companyId, long groupId, long classNameId, String keywords,
 			Double version, String type, String structureId, String templateId,
@@ -1810,6 +1882,7 @@ public class JournalArticleLocalServiceImpl
 			reviewDate);
 	}
 
+	@Override
 	public int searchCount(
 			long companyId, long groupId, long classNameId, String articleId,
 			Double version, String title, String description, String content,
@@ -1824,6 +1897,7 @@ public class JournalArticleLocalServiceImpl
 			displayDateLT, status, reviewDate, andOperator);
 	}
 
+	@Override
 	public int searchCount(
 			long companyId, long groupId, long classNameId, String articleId,
 			Double version, String title, String description, String content,
@@ -1838,6 +1912,7 @@ public class JournalArticleLocalServiceImpl
 			displayDateGT, displayDateLT, status, reviewDate, andOperator);
 	}
 
+	@Override
 	public void subscribe(long userId, long groupId)
 		throws PortalException, SystemException {
 
@@ -1845,6 +1920,7 @@ public class JournalArticleLocalServiceImpl
 			userId, groupId, JournalArticle.class.getName(), groupId);
 	}
 
+	@Override
 	public void unsubscribe(long userId, long groupId)
 		throws PortalException, SystemException {
 
@@ -1852,6 +1928,7 @@ public class JournalArticleLocalServiceImpl
 			userId, JournalArticle.class.getName(), groupId);
 	}
 
+	@Override
 	public JournalArticle updateArticle(
 			long userId, long groupId, String articleId, double version,
 			Map<Locale, String> titleMap, Map<Locale, String> descriptionMap,
@@ -1955,6 +2032,7 @@ public class JournalArticleLocalServiceImpl
 			null, serviceContext);
 	}
 
+	@Override
 	public JournalArticle updateArticle(
 			long userId, long groupId, String articleId, double version,
 			Map<Locale, String> titleMap, Map<Locale, String> descriptionMap,
@@ -2200,6 +2278,7 @@ public class JournalArticleLocalServiceImpl
 		return article;
 	}
 
+	@Override
 	public JournalArticle updateArticle(
 			long userId, long groupId, String articleId, double version,
 			String content, ServiceContext serviceContext)
@@ -2218,6 +2297,7 @@ public class JournalArticleLocalServiceImpl
 	 * @deprecated {@link #updateArticleTranslation(long, String, double,
 	 *             Locale, String, String, String, Map, ServiceContext)}
 	 */
+	@Override
 	public JournalArticle updateArticleTranslation(
 			long groupId, String articleId, double version, Locale locale,
 			String title, String description, String content,
@@ -2229,6 +2309,7 @@ public class JournalArticleLocalServiceImpl
 			images, null);
 	}
 
+	@Override
 	public JournalArticle updateArticleTranslation(
 			long groupId, String articleId, double version, Locale locale,
 			String title, String description, String content,
@@ -2333,6 +2414,7 @@ public class JournalArticleLocalServiceImpl
 		return article;
 	}
 
+	@Override
 	public void updateAsset(
 			long userId, JournalArticle article, long[] assetCategoryIds,
 			String[] assetTagNames, long[] assetLinkEntryIds)
@@ -2405,6 +2487,7 @@ public class JournalArticleLocalServiceImpl
 			AssetLinkConstants.TYPE_RELATED);
 	}
 
+	@Override
 	public JournalArticle updateContent(
 			long groupId, String articleId, double version, String content)
 		throws PortalException, SystemException {
@@ -2419,6 +2502,7 @@ public class JournalArticleLocalServiceImpl
 		return article;
 	}
 
+	@Override
 	public JournalArticle updateStatus(
 			long userId, JournalArticle article, int status, String articleURL,
 			ServiceContext serviceContext)
@@ -2591,6 +2675,7 @@ public class JournalArticleLocalServiceImpl
 		return article;
 	}
 
+	@Override
 	public JournalArticle updateStatus(
 			long userId, long classPK, int status,
 			ServiceContext serviceContext)
@@ -2601,6 +2686,7 @@ public class JournalArticleLocalServiceImpl
 		return updateStatus(userId, article, status, null, serviceContext);
 	}
 
+	@Override
 	public JournalArticle updateStatus(
 			long userId, long groupId, String articleId, double version,
 			int status, String articleURL, ServiceContext serviceContext)
@@ -2613,6 +2699,7 @@ public class JournalArticleLocalServiceImpl
 			userId, article, status, articleURL, serviceContext);
 	}
 
+	@Override
 	public void updateTemplateId(
 			long groupId, long classNameId, String oldTemplateId,
 			String newTemplateId)

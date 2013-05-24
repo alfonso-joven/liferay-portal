@@ -23,6 +23,7 @@ import java.util.List;
  */
 public class PermissionsListFilterImpl implements PermissionsListFilter {
 
+	@Override
 	public List<Permission> filterGroupPermissions(
 		long companyId, long groupId, long userId, String name, String primKey,
 		boolean portletActions, List<Permission> permissions) {
@@ -30,6 +31,7 @@ public class PermissionsListFilterImpl implements PermissionsListFilter {
 		return permissions;
 	}
 
+	@Override
 	public List<Permission> filterGuestPermissions(
 		long companyId, long groupId, long userId, String name, String primKey,
 		boolean portletActions, List<Permission> permissions) {
@@ -37,6 +39,7 @@ public class PermissionsListFilterImpl implements PermissionsListFilter {
 		return permissions;
 	}
 
+	@Override
 	public List<Permission> filterUserPermissions(
 		long companyId, long groupId, long userId, String name, String primKey,
 		boolean portletActions, List<Permission> permissions) {

@@ -32,14 +32,17 @@ public class MemoryPortalCacheManager implements PortalCacheManager {
 			_cacheManagerInitialCapacity);
 	}
 
+	@Override
 	public void clearAll() {
 		_portalCaches.clear();
 	}
 
+	@Override
 	public PortalCache getCache(String name) {
 		return getCache(name, false);
 	}
 
+	@Override
 	public PortalCache getCache(String name, boolean blocking) {
 		PortalCache portalCache = _portalCaches.get(name);
 
@@ -52,9 +55,11 @@ public class MemoryPortalCacheManager implements PortalCacheManager {
 		return portalCache;
 	}
 
+	@Override
 	public void reconfigureCaches(URL configurationURL) {
 	}
 
+	@Override
 	public void removeCache(String name) {
 		_portalCaches.remove(name);
 	}

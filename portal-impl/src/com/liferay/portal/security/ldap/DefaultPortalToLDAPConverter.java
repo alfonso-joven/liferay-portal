@@ -68,6 +68,7 @@ public class DefaultPortalToLDAPConverter implements PortalToLDAPConverter {
 			UserConverterKeys.SCREEN_NAME, UserConverterKeys.SCREEN_NAME);
 	}
 
+	@Override
 	public String getGroupDNName(
 			long ldapServerId, UserGroup userGroup, Properties groupMappings)
 		throws Exception {
@@ -94,6 +95,7 @@ public class DefaultPortalToLDAPConverter implements PortalToLDAPConverter {
 		return sb.toString();
 	}
 
+	@Override
 	public Modifications getLDAPContactModifications(
 			Contact contact, Map<String, Serializable> contactExpandoAttributes,
 			Properties contactMappings, Properties contactExpandoMappings)
@@ -113,6 +115,7 @@ public class DefaultPortalToLDAPConverter implements PortalToLDAPConverter {
 		return modifications;
 	}
 
+	@Override
 	public Attributes getLDAPGroupAttributes(
 			long ldapServerId, UserGroup userGroup, User user,
 			Properties groupMappings, Properties userMappings)
@@ -151,6 +154,7 @@ public class DefaultPortalToLDAPConverter implements PortalToLDAPConverter {
 	/**
 	 * @deprecated
 	 */
+	@Override
 	public Modifications getLDAPGroupModifications(
 			long ldapServerId, UserGroup userGroup, User user,
 			Properties groupMappings, Properties userMappings)
@@ -161,6 +165,7 @@ public class DefaultPortalToLDAPConverter implements PortalToLDAPConverter {
 			LDAPOperation.ADD);
 	}
 
+	@Override
 	public Modifications getLDAPGroupModifications(
 			long ldapServerId, UserGroup userGroup, User user,
 			Properties groupMappings, Properties userMappings,
@@ -192,6 +197,7 @@ public class DefaultPortalToLDAPConverter implements PortalToLDAPConverter {
 		return modifications;
 	}
 
+	@Override
 	public Attributes getLDAPUserAttributes(
 			long ldapServerId, User user, Properties userMappings)
 		throws SystemException {
@@ -250,6 +256,7 @@ public class DefaultPortalToLDAPConverter implements PortalToLDAPConverter {
 		return attributes;
 	}
 
+	@Override
 	public Modifications getLDAPUserGroupModifications(
 			long ldapServerId, List<UserGroup> userGroups, User user,
 			Properties userMappings)
@@ -286,6 +293,7 @@ public class DefaultPortalToLDAPConverter implements PortalToLDAPConverter {
 		return modifications;
 	}
 
+	@Override
 	public Modifications getLDAPUserModifications(
 			User user, Map<String, Serializable> userExpandoAttributes,
 			Properties userMappings, Properties userExpandoMappings)
@@ -334,6 +342,7 @@ public class DefaultPortalToLDAPConverter implements PortalToLDAPConverter {
 		return modifications;
 	}
 
+	@Override
 	public String getUserDNName(
 			long ldapServerId, User user, Properties userMappings)
 		throws Exception {

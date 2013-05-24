@@ -27,10 +27,12 @@ public class XugglerInstallStatus implements InstallStatus {
 
 	public static final int DOWNLOADING = 0;
 
+	@Override
 	public int getStatus() {
 		return _status;
 	}
 
+	@Override
 	public String getStatusLabel() {
 		int status = getStatus();
 
@@ -47,6 +49,7 @@ public class XugglerInstallStatus implements InstallStatus {
 		return "unknown";
 	}
 
+	@Override
 	public void setStatus(int status) {
 		_status = status;
 	}

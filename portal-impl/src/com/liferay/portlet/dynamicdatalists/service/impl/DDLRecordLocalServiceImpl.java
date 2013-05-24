@@ -60,6 +60,7 @@ import java.util.Map;
  */
 public class DDLRecordLocalServiceImpl extends DDLRecordLocalServiceBaseImpl {
 
+	@Override
 	public DDLRecord addRecord(
 			long userId, long groupId, long recordSetId, int displayIndex,
 			Fields fields, ServiceContext serviceContext)
@@ -122,6 +123,7 @@ public class DDLRecordLocalServiceImpl extends DDLRecordLocalServiceBaseImpl {
 		return record;
 	}
 
+	@Override
 	public DDLRecord addRecord(
 			long userId, long groupId, long recordSetId, int displayIndex,
 			Map<String, Serializable> fieldsMap, ServiceContext serviceContext)
@@ -138,6 +140,7 @@ public class DDLRecordLocalServiceImpl extends DDLRecordLocalServiceBaseImpl {
 			userId, groupId, recordSetId, displayIndex, fields, serviceContext);
 	}
 
+	@Override
 	public void deleteRecord(DDLRecord record)
 		throws PortalException, SystemException {
 
@@ -179,6 +182,7 @@ public class DDLRecordLocalServiceImpl extends DDLRecordLocalServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public void deleteRecord(long recordId)
 		throws PortalException, SystemException {
 
@@ -187,6 +191,7 @@ public class DDLRecordLocalServiceImpl extends DDLRecordLocalServiceBaseImpl {
 		deleteRecord(record);
 	}
 
+	@Override
 	public void deleteRecords(long recordSetId)
 		throws PortalException, SystemException {
 
@@ -198,10 +203,12 @@ public class DDLRecordLocalServiceImpl extends DDLRecordLocalServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public DDLRecord fetchRecord(long recordId) throws SystemException {
 		return ddlRecordPersistence.fetchByPrimaryKey(recordId);
 	}
 
+	@Override
 	public DDLRecordVersion getLatestRecordVersion(long recordId)
 		throws PortalException, SystemException {
 
@@ -221,16 +228,19 @@ public class DDLRecordLocalServiceImpl extends DDLRecordLocalServiceBaseImpl {
 		return recordVersions.get(0);
 	}
 
+	@Override
 	public DDLRecord getRecord(long recordId)
 		throws PortalException, SystemException {
 
 		return ddlRecordPersistence.findByPrimaryKey(recordId);
 	}
 
+	@Override
 	public List<DDLRecord> getRecords(long recordSetId) throws SystemException {
 		return ddlRecordPersistence.findByRecordSetId(recordSetId);
 	}
 
+	@Override
 	public List<DDLRecord> getRecords(
 			long recordSetId, int status, int start, int end,
 			OrderByComparator orderByComparator)
@@ -240,30 +250,35 @@ public class DDLRecordLocalServiceImpl extends DDLRecordLocalServiceBaseImpl {
 			recordSetId, status, start, end, orderByComparator);
 	}
 
+	@Override
 	public List<DDLRecord> getRecords(long recordSetId, long userId)
 		throws SystemException {
 
 		return ddlRecordPersistence.findByR_U(recordSetId, userId);
 	}
 
+	@Override
 	public int getRecordsCount(long recordSetId, int status)
 		throws SystemException {
 
 		return ddlRecordFinder.countByR_S(recordSetId, status);
 	}
 
+	@Override
 	public DDLRecordVersion getRecordVersion(long recordVersionId)
 		throws PortalException, SystemException {
 
 		return ddlRecordVersionPersistence.findByPrimaryKey(recordVersionId);
 	}
 
+	@Override
 	public DDLRecordVersion getRecordVersion(long recordId, String version)
 		throws PortalException, SystemException {
 
 		return ddlRecordVersionPersistence.findByR_V(recordId, version);
 	}
 
+	@Override
 	public List<DDLRecordVersion> getRecordVersions(
 			long recordId, int start, int end,
 			OrderByComparator orderByComparator)
@@ -273,10 +288,12 @@ public class DDLRecordLocalServiceImpl extends DDLRecordLocalServiceBaseImpl {
 			recordId, start, end, orderByComparator);
 	}
 
+	@Override
 	public int getRecordVersionsCount(long recordId) throws SystemException {
 		return ddlRecordVersionPersistence.countByRecordId(recordId);
 	}
 
+	@Override
 	public void revertRecordVersion(
 			long userId, long recordId, String version,
 			ServiceContext serviceContext)
@@ -296,6 +313,7 @@ public class DDLRecordLocalServiceImpl extends DDLRecordLocalServiceBaseImpl {
 			false, serviceContext);
 	}
 
+	@Override
 	public void updateAsset(
 			long userId, DDLRecord record, DDLRecordVersion recordVersion,
 			long[] assetCategoryIds, String[] assetTagNames, Locale locale)
@@ -349,6 +367,7 @@ public class DDLRecordLocalServiceImpl extends DDLRecordLocalServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public DDLRecord updateRecord(
 			long userId, long recordId, boolean majorVersion, int displayIndex,
 			Fields fields, boolean mergeFields, ServiceContext serviceContext)
@@ -404,6 +423,7 @@ public class DDLRecordLocalServiceImpl extends DDLRecordLocalServiceBaseImpl {
 		return record;
 	}
 
+	@Override
 	public DDLRecord updateRecord(
 			long userId, long recordId, int displayIndex,
 			Map<String, Serializable> fieldsMap, boolean mergeFields,
@@ -423,6 +443,7 @@ public class DDLRecordLocalServiceImpl extends DDLRecordLocalServiceBaseImpl {
 			serviceContext);
 	}
 
+	@Override
 	public DDLRecord updateStatus(
 			long userId, long recordVersionId, int status,
 			ServiceContext serviceContext)

@@ -48,18 +48,22 @@ public class MBCategoryAssetRenderer extends BaseAssetRenderer {
 		_category = category;
 	}
 
+	@Override
 	public long getClassPK() {
 		return _category.getCategoryId();
 	}
 
+	@Override
 	public long getGroupId() {
 		return _category.getGroupId();
 	}
 
+	@Override
 	public String getSummary(Locale locale) {
 		return HtmlUtil.stripHtml(_category.getDescription());
 	}
 
+	@Override
 	public String getTitle(Locale locale) {
 		return _category.getName();
 	}
@@ -111,14 +115,17 @@ public class MBCategoryAssetRenderer extends BaseAssetRenderer {
 			_category.getCategoryId());
 	}
 
+	@Override
 	public long getUserId() {
 		return _category.getUserId();
 	}
 
+	@Override
 	public String getUserName() {
 		return _category.getUserName();
 	}
 
+	@Override
 	public String getUuid() {
 		return _category.getUuid();
 	}
@@ -140,6 +147,7 @@ public class MBCategoryAssetRenderer extends BaseAssetRenderer {
 
 	}
 
+	@Override
 	public String render(
 			RenderRequest renderRequest, RenderResponse renderResponse,
 			String template)

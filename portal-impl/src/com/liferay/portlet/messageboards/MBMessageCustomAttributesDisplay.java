@@ -26,6 +26,7 @@ public class MBMessageCustomAttributesDisplay
 
 	public static final String CLASS_NAME = MBMessage.class.getName();
 
+	@Override
 	public String getClassName() {
 		return CLASS_NAME;
 	}

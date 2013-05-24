@@ -27,6 +27,7 @@ public class DDMTemplateImpl extends DDMTemplateBaseImpl {
 	public DDMTemplateImpl() {
 	}
 
+	@Override
 	public DDMStructure getStructure() throws PortalException, SystemException {
 		return DDMStructureLocalServiceUtil.getStructure(getStructureId());
 	}

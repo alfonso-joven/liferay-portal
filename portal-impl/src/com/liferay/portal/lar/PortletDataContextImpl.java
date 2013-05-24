@@ -202,6 +202,7 @@ public class PortletDataContextImpl implements PortletDataContext {
 		initXStream();
 	}
 
+	@Override
 	public void addAssetCategories(Class<?> clazz, long classPK)
 		throws SystemException {
 
@@ -221,6 +222,7 @@ public class PortletDataContextImpl implements PortletDataContext {
 					assetCategories, AssetCategory.CATEGORY_ID_ACCESSOR), 0L));
 	}
 
+	@Override
 	public void addAssetCategories(
 		String className, long classPK, long[] assetCategoryIds) {
 
@@ -291,6 +293,7 @@ public class PortletDataContextImpl implements PortletDataContext {
 		}
 	}
 
+	@Override
 	public void addAssetTags(Class<?> clazz, long classPK)
 		throws SystemException {
 
@@ -300,6 +303,7 @@ public class PortletDataContextImpl implements PortletDataContext {
 		_assetTagNamesMap.put(getPrimaryKeyString(clazz, classPK), tagNames);
 	}
 
+	@Override
 	public void addAssetTags(
 		String className, long classPK, String[] assetTagNames) {
 
@@ -307,6 +311,7 @@ public class PortletDataContextImpl implements PortletDataContext {
 			getPrimaryKeyString(className, classPK), assetTagNames);
 	}
 
+	@Override
 	public void addClassedModel(
 			Element element, String path, ClassedModel classedModel,
 			String namespace)
@@ -372,6 +377,7 @@ public class PortletDataContextImpl implements PortletDataContext {
 		addZipEntry(path, classedModel);
 	}
 
+	@Override
 	public void addComments(Class<?> clazz, long classPK)
 		throws SystemException {
 
@@ -410,12 +416,14 @@ public class PortletDataContextImpl implements PortletDataContext {
 		_commentsMap.put(getPrimaryKeyString(clazz, classPK), messages);
 	}
 
+	@Override
 	public void addComments(
 		String className, long classPK, List<MBMessage> messages) {
 
 		_commentsMap.put(getPrimaryKeyString(className, classPK), messages);
 	}
 
+	@Override
 	public void addExpando(
 			Element element, String path, ClassedModel classedModel)
 		throws PortalException, SystemException {
@@ -451,6 +459,7 @@ public class PortletDataContextImpl implements PortletDataContext {
 		}
 	}
 
+	@Override
 	public void addLocks(Class<?> clazz, String key)
 		throws PortalException, SystemException {
 
@@ -463,16 +472,19 @@ public class PortletDataContextImpl implements PortletDataContext {
 		}
 	}
 
+	@Override
 	public void addLocks(String className, String key, Lock lock) {
 		_locksMap.put(getPrimaryKeyString(className, key), lock);
 	}
 
+	@Override
 	public void addPermissions(Class<?> clazz, long classPK)
 		throws PortalException, SystemException {
 
 		addPermissions(clazz.getName(), classPK);
 	}
 
+	@Override
 	public void addPermissions(String resourceName, long resourcePK)
 		throws PortalException, SystemException {
 
@@ -565,6 +577,7 @@ public class PortletDataContextImpl implements PortletDataContext {
 			getPrimaryKeyString(resourceName, resourcePK), permissions);
 	}
 
+	@Override
 	public void addPermissions(
 		String resourceName, long resourcePK, List<KeyValuePair> permissions) {
 
@@ -578,6 +591,7 @@ public class PortletDataContextImpl implements PortletDataContext {
 			getPrimaryKeyString(resourceName, resourcePK), permissions);
 	}
 
+	@Override
 	public boolean addPrimaryKey(Class<?> clazz, String primaryKey) {
 		boolean value = hasPrimaryKey(clazz, primaryKey);
 
@@ -588,6 +602,7 @@ public class PortletDataContextImpl implements PortletDataContext {
 		return value;
 	}
 
+	@Override
 	public void addRatingsEntries(Class<?> clazz, long classPK)
 		throws SystemException {
 
@@ -610,6 +625,7 @@ public class PortletDataContextImpl implements PortletDataContext {
 			getPrimaryKeyString(clazz, classPK), ratingsEntries);
 	}
 
+	@Override
 	public void addRatingsEntries(
 		String className, long classPK, List<RatingsEntry> ratingsEntries) {
 
@@ -617,6 +633,7 @@ public class PortletDataContextImpl implements PortletDataContext {
 			getPrimaryKeyString(className, classPK), ratingsEntries);
 	}
 
+	@Override
 	public void addZipEntry(String path, byte[] bytes) throws SystemException {
 		if (_portletDataContextListener != null) {
 			_portletDataContextListener.onAddZipEntry(path);
@@ -632,6 +649,7 @@ public class PortletDataContextImpl implements PortletDataContext {
 		}
 	}
 
+	@Override
 	public void addZipEntry(String path, InputStream is)
 		throws SystemException {
 
@@ -649,10 +667,12 @@ public class PortletDataContextImpl implements PortletDataContext {
 		}
 	}
 
+	@Override
 	public void addZipEntry(String path, Object object) throws SystemException {
 		addZipEntry(path, toXML(object));
 	}
 
+	@Override
 	public void addZipEntry(String path, String s) throws SystemException {
 		if (_portletDataContextListener != null) {
 			_portletDataContextListener.onAddZipEntry(path);
@@ -668,6 +688,7 @@ public class PortletDataContextImpl implements PortletDataContext {
 		}
 	}
 
+	@Override
 	public void addZipEntry(String path, StringBuilder sb)
 		throws SystemException {
 
@@ -685,18 +706,21 @@ public class PortletDataContextImpl implements PortletDataContext {
 		}
 	}
 
+	@Override
 	public ServiceContext createServiceContext(
 		Element element, ClassedModel classedModel, String namespace) {
 
 		return createServiceContext(element, null, classedModel, namespace);
 	}
 
+	@Override
 	public ServiceContext createServiceContext(
 		String path, ClassedModel classedModel, String namespace) {
 
 		return createServiceContext(null, path, classedModel, namespace);
 	}
 
+	@Override
 	public Object fromXML(byte[] bytes) {
 		if ((bytes == null) || (bytes.length == 0)) {
 			return null;
@@ -705,6 +729,7 @@ public class PortletDataContextImpl implements PortletDataContext {
 		return _xStream.fromXML(new String(bytes));
 	}
 
+	@Override
 	public Object fromXML(String xml) {
 		if (Validator.isNull(xml)) {
 			return null;
@@ -713,34 +738,42 @@ public class PortletDataContextImpl implements PortletDataContext {
 		return _xStream.fromXML(xml);
 	}
 
+	@Override
 	public long[] getAssetCategoryIds(Class<?> clazz, long classPK) {
 		return _assetCategoryIdsMap.get(getPrimaryKeyString(clazz, classPK));
 	}
 
+	@Override
 	public Map<String, long[]> getAssetCategoryIdsMap() {
 		return _assetCategoryIdsMap;
 	}
 
+	@Override
 	public Map<String, String[]> getAssetCategoryUuidsMap() {
 		return _assetCategoryUuidsMap;
 	}
 
+	@Override
 	public Map<String, String[]> getAssetLinkUuidsMap() {
 		return _assetLinkUuidsMap;
 	}
 
+	@Override
 	public String[] getAssetTagNames(Class<?> clazz, long classPK) {
 		return _assetTagNamesMap.get(getPrimaryKeyString(clazz, classPK));
 	}
 
+	@Override
 	public String[] getAssetTagNames(String className, long classPK) {
 		return _assetTagNamesMap.get(getPrimaryKeyString(className, classPK));
 	}
 
+	@Override
 	public Map<String, String[]> getAssetTagNamesMap() {
 		return _assetTagNamesMap;
 	}
 
+	@Override
 	public boolean getBooleanParameter(String namespace, String name) {
 		boolean defaultValue = MapUtil.getBoolean(
 			getParameterMap(),
@@ -752,50 +785,62 @@ public class PortletDataContextImpl implements PortletDataContext {
 			defaultValue);
 	}
 
+	@Override
 	public ClassLoader getClassLoader() {
 		return _xStream.getClassLoader();
 	}
 
+	@Override
 	public Map<String, List<MBMessage>> getComments() {
 		return _commentsMap;
 	}
 
+	@Override
 	public long getCompanyGroupId() {
 		return _companyGroupId;
 	}
 
+	@Override
 	public long getCompanyId() {
 		return _companyId;
 	}
 
+	@Override
 	public String getDataStrategy() {
 		return _dataStrategy;
 	}
 
+	@Override
 	public Date getEndDate() {
 		return _endDate;
 	}
 
+	@Override
 	public Map<String, List<ExpandoColumn>> getExpandoColumns() {
 		return _expandoColumnsMap;
 	}
 
+	@Override
 	public long getGroupId() {
 		return _groupId;
 	}
 
+	@Override
 	public String getLayoutPath(long layoutId) {
 		return getRootPath() + ROOT_PATH_LAYOUTS + layoutId;
 	}
 
+	@Override
 	public Map<String, Lock> getLocks() {
 		return _locksMap;
 	}
 
+	@Override
 	public Map<?, ?> getNewPrimaryKeysMap(Class<?> clazz) {
 		return getNewPrimaryKeysMap(clazz.getName());
 	}
 
+	@Override
 	public Map<?, ?> getNewPrimaryKeysMap(String className) {
 		Map<?, ?> map = _newPrimaryKeysMaps.get(className);
 
@@ -808,86 +853,107 @@ public class PortletDataContextImpl implements PortletDataContext {
 		return map;
 	}
 
+	@Override
 	public long getOldPlid() {
 		return _oldPlid;
 	}
 
+	@Override
 	public Map<String, String[]> getParameterMap() {
 		return _parameterMap;
 	}
 
+	@Override
 	public Map<String, List<KeyValuePair>> getPermissions() {
 		return _permissionsMap;
 	}
 
+	@Override
 	public long getPlid() {
 		return _plid;
 	}
 
+	@Override
 	public String getPortletPath(String portletId) {
 		return getRootPath() + ROOT_PATH_PORTLETS + portletId;
 	}
 
+	@Override
 	public Set<String> getPrimaryKeys() {
 		return _primaryKeys;
 	}
 
+	@Override
 	public Map<String, List<RatingsEntry>> getRatingsEntries() {
 		return _ratingsEntriesMap;
 	}
 
+	@Override
 	public String getRootPath() {
 		return ROOT_PATH_GROUPS + getScopeGroupId();
 	}
 
+	@Override
 	public long getScopeGroupId() {
 		return _scopeGroupId;
 	}
 
+	@Override
 	public String getScopeLayoutUuid() {
 		return _scopeLayoutUuid;
 	}
 
+	@Override
 	public String getScopeType() {
 		return _scopeType;
 	}
 
+	@Override
 	public long getSourceCompanyGroupId() {
 		return _sourceCompanyGroupId;
 	}
 
+	@Override
 	public long getSourceGroupId() {
 		return _sourceGroupId;
 	}
 
+	@Override
 	public String getSourceLayoutPath(long layoutId) {
 		return getSourceRootPath() + ROOT_PATH_LAYOUTS + layoutId;
 	}
 
+	@Override
 	public String getSourcePortletPath(String portletId) {
 		return getSourceRootPath() + ROOT_PATH_PORTLETS + portletId;
 	}
 
+	@Override
 	public String getSourceRootPath() {
 		return ROOT_PATH_GROUPS + getSourceGroupId();
 	}
 
+	@Override
 	public Date getStartDate() {
 		return _startDate;
 	}
 
+	@Override
 	public long getUserId(String userUuid) throws SystemException {
 		return _userIdStrategy.getUserId(userUuid);
 	}
 
+	@Override
 	public UserIdStrategy getUserIdStrategy() {
 		return _userIdStrategy;
 	}
 
+	@Override
 	public List<String> getZipEntries() {
 		return getZipReader().getEntries();
 	}
 
+	@Override
 	public byte[] getZipEntryAsByteArray(String path) {
 		if (!Validator.isFilePath(path, false)) {
 			return null;
@@ -900,6 +966,7 @@ public class PortletDataContextImpl implements PortletDataContext {
 		return getZipReader().getEntryAsByteArray(path);
 	}
 
+	@Override
 	public InputStream getZipEntryAsInputStream(String path) {
 		if (!Validator.isFilePath(path, false)) {
 			return null;
@@ -912,6 +979,7 @@ public class PortletDataContextImpl implements PortletDataContext {
 		return getZipReader().getEntryAsInputStream(path);
 	}
 
+	@Override
 	public Object getZipEntryAsObject(Element element, String path) {
 		Object object = fromXML(getZipEntryAsString(path));
 
@@ -925,10 +993,12 @@ public class PortletDataContextImpl implements PortletDataContext {
 		return object;
 	}
 
+	@Override
 	public Object getZipEntryAsObject(String path) {
 		return fromXML(getZipEntryAsString(path));
 	}
 
+	@Override
 	public String getZipEntryAsString(String path) {
 		if (!Validator.isFilePath(path, false)) {
 			return null;
@@ -941,10 +1011,12 @@ public class PortletDataContextImpl implements PortletDataContext {
 		return getZipReader().getEntryAsString(path);
 	}
 
+	@Override
 	public List<String> getZipFolderEntries() {
 		return getZipFolderEntries(StringPool.SLASH);
 	}
 
+	@Override
 	public List<String> getZipFolderEntries(String path) {
 		if (!Validator.isFilePath(path, false)) {
 			return null;
@@ -953,14 +1025,17 @@ public class PortletDataContextImpl implements PortletDataContext {
 		return getZipReader().getFolderEntries(path);
 	}
 
+	@Override
 	public ZipReader getZipReader() {
 		return _zipReader;
 	}
 
+	@Override
 	public ZipWriter getZipWriter() {
 		return _zipWriter;
 	}
 
+	@Override
 	public boolean hasDateRange() {
 		if (_startDate != null) {
 			return true;
@@ -970,14 +1045,17 @@ public class PortletDataContextImpl implements PortletDataContext {
 		}
 	}
 
+	@Override
 	public boolean hasNotUniquePerLayout(String dataKey) {
 		return _notUniquePerLayout.contains(dataKey);
 	}
 
+	@Override
 	public boolean hasPrimaryKey(Class<?> clazz, String primaryKey) {
 		return _primaryKeys.contains(getPrimaryKeyString(clazz, primaryKey));
 	}
 
+	@Override
 	public void importClassedModel(
 			ClassedModel classedModel, ClassedModel newClassedModel,
 			String namespace)
@@ -1012,6 +1090,7 @@ public class PortletDataContextImpl implements PortletDataContext {
 		}
 	}
 
+	@Override
 	public void importComments(
 			Class<?> clazz, long classPK, long newClassPK, long groupId)
 		throws PortalException, SystemException {
@@ -1129,6 +1208,7 @@ public class PortletDataContextImpl implements PortletDataContext {
 		}
 	}
 
+	@Override
 	public void importLocks(Class<?> clazz, String key, String newKey)
 		throws PortalException, SystemException {
 
@@ -1153,12 +1233,14 @@ public class PortletDataContextImpl implements PortletDataContext {
 			lock.isInheritable(), expirationTime);
 	}
 
+	@Override
 	public void importPermissions(Class<?> clazz, long classPK, long newClassPK)
 		throws PortalException, SystemException {
 
 		importPermissions(clazz.getName(), classPK, newClassPK);
 	}
 
+	@Override
 	public void importPermissions(
 			String resourceName, long resourcePK, long newResourcePK)
 		throws PortalException, SystemException {
@@ -1250,6 +1332,7 @@ public class PortletDataContextImpl implements PortletDataContext {
 		}
 	}
 
+	@Override
 	public void importRatingsEntries(
 			Class<?> clazz, long classPK, long newClassPK)
 		throws PortalException, SystemException {
@@ -1275,6 +1358,7 @@ public class PortletDataContextImpl implements PortletDataContext {
 		}
 	}
 
+	@Override
 	public boolean isDataStrategyMirror() {
 		if (_dataStrategy.equals(PortletDataHandlerKeys.DATA_STRATEGY_MIRROR) ||
 			_dataStrategy.equals(
@@ -1287,6 +1371,7 @@ public class PortletDataContextImpl implements PortletDataContext {
 		}
 	}
 
+	@Override
 	public boolean isDataStrategyMirrorWithOverwriting() {
 		if (_dataStrategy.equals(
 				PortletDataHandlerKeys.DATA_STRATEGY_MIRROR_OVERWRITE)) {
@@ -1298,19 +1383,23 @@ public class PortletDataContextImpl implements PortletDataContext {
 		}
 	}
 
+	@Override
 	public boolean isPathNotProcessed(String path) {
 		return !addPrimaryKey(String.class, path);
 	}
 
+	@Override
 	public boolean isPerformDirectBinaryImport() {
 		return MapUtil.getBoolean(
 			_parameterMap, PortletDataHandlerKeys.PERFORM_DIRECT_BINARY_IMPORT);
 	}
 
+	@Override
 	public boolean isPrivateLayout() {
 		return _privateLayout;
 	}
 
+	@Override
 	public boolean isWithinDateRange(Date modifiedDate) {
 		if (!hasDateRange()) {
 			return true;
@@ -1325,60 +1414,74 @@ public class PortletDataContextImpl implements PortletDataContext {
 		}
 	}
 
+	@Override
 	public void putNotUniquePerLayout(String dataKey) {
 		_notUniquePerLayout.add(dataKey);
 	}
 
+	@Override
 	public void setClassLoader(ClassLoader classLoader) {
 		_xStream.setClassLoader(classLoader);
 	}
 
+	@Override
 	public void setGroupId(long groupId) {
 		_groupId = groupId;
 	}
 
+	@Override
 	public void setOldPlid(long oldPlid) {
 		_oldPlid = oldPlid;
 	}
 
+	@Override
 	public void setPlid(long plid) {
 		_plid = plid;
 	}
 
+	@Override
 	public void setPortetDataContextListener(
 		PortletDataContextListener portletDataContextListener) {
 
 		_portletDataContextListener = portletDataContextListener;
 	}
 
+	@Override
 	public void setPrivateLayout(boolean privateLayout) {
 		_privateLayout = privateLayout;
 	}
 
+	@Override
 	public void setScopeGroupId(long scopeGroupId) {
 		_scopeGroupId = scopeGroupId;
 	}
 
+	@Override
 	public void setScopeLayoutUuid(String scopeLayoutUuid) {
 		_scopeLayoutUuid = scopeLayoutUuid;
 	}
 
+	@Override
 	public void setScopeType(String scopeType) {
 		_scopeType = scopeType;
 	}
 
+	@Override
 	public void setSourceCompanyGroupId(long sourceCompanyGroupId) {
 		_sourceCompanyGroupId = sourceCompanyGroupId;
 	}
 
+	@Override
 	public void setSourceGroupId(long sourceGroupId) {
 		_sourceGroupId = sourceGroupId;
 	}
 
+	@Override
 	public void setStartDate(Date startDate) {
 		_startDate = startDate;
 	}
 
+	@Override
 	public String toXML(Object object) {
 		return _xStream.toXML(object);
 	}

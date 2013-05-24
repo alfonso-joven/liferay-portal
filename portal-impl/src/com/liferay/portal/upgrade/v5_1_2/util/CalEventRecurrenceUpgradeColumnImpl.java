@@ -39,6 +39,7 @@ public class CalEventRecurrenceUpgradeColumnImpl extends BaseUpgradeColumnImpl {
 		super(name);
 	}
 
+	@Override
 	public Object getNewValue(Object oldValue) throws Exception {
 		if (Validator.isNull(oldValue)) {
 			return StringPool.BLANK;

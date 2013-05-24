@@ -71,15 +71,18 @@ public class ModelHintsImpl implements ModelHints {
 		}
 	}
 
+	@Override
 	public String buildCustomValidatorName(String validatorName) {
 		return validatorName.concat(StringPool.UNDERLINE).concat(
 			PwdGenerator.getPassword(PwdGenerator.KEY3, 4));
 	}
 
+	@Override
 	public Map<String, String> getDefaultHints(String model) {
 		return _defaultHints.get(model);
 	}
 
+	@Override
 	public com.liferay.portal.kernel.xml.Element getFieldsEl(
 		String model, String field) {
 
@@ -101,6 +104,7 @@ public class ModelHintsImpl implements ModelHints {
 		}
 	}
 
+	@Override
 	public Map<String, String> getHints(String model, String field) {
 		Map<String, Object> fields = (Map<String, Object>)_modelFields.get(
 			model);
@@ -113,6 +117,7 @@ public class ModelHintsImpl implements ModelHints {
 		}
 	}
 
+	@Override
 	public int getMaxLength(String model, String field) {
 		Map<String, String> hints = getHints(model, field);
 
@@ -128,10 +133,12 @@ public class ModelHintsImpl implements ModelHints {
 		return maxLength;
 	}
 
+	@Override
 	public List<String> getModels() {
 		return ListUtil.fromCollection(_models);
 	}
 
+	@Override
 	public Tuple getSanitizeTuple(String model, String field) {
 		Map<String, Object> fields = (Map<String, Object>)_modelFields.get(
 			model);
@@ -144,6 +151,7 @@ public class ModelHintsImpl implements ModelHints {
 		}
 	}
 
+	@Override
 	public List<Tuple> getSanitizeTuples(String model) {
 		Map<String, Object> fields = (Map<String, Object>)_modelFields.get(
 			model);
@@ -168,6 +176,7 @@ public class ModelHintsImpl implements ModelHints {
 		}
 	}
 
+	@Override
 	public String getType(String model, String field) {
 		Map<String, Object> fields = (Map<String, Object>)_modelFields.get(
 			model);
@@ -180,6 +189,7 @@ public class ModelHintsImpl implements ModelHints {
 		}
 	}
 
+	@Override
 	public List<Tuple> getValidators(String model, String field) {
 		Map<String, Object> fields = (Map<String, Object>)_modelFields.get(
 			model);
@@ -194,6 +204,7 @@ public class ModelHintsImpl implements ModelHints {
 		}
 	}
 
+	@Override
 	public boolean isCustomValidator(String validatorName) {
 		if (validatorName.equals("custom")) {
 			return true;
@@ -202,6 +213,7 @@ public class ModelHintsImpl implements ModelHints {
 		return false;
 	}
 
+	@Override
 	public boolean isLocalized(String model, String field) {
 		Map<String, Object> fields = (Map<String, Object>)_modelFields.get(
 			model);
@@ -222,6 +234,7 @@ public class ModelHintsImpl implements ModelHints {
 		}
 	}
 
+	@Override
 	public void read(ClassLoader classLoader, String source) throws Exception {
 		InputStream is = classLoader.getResourceAsStream(source);
 
@@ -413,6 +426,7 @@ public class ModelHintsImpl implements ModelHints {
 		_saxReader = saxReader;
 	}
 
+	@Override
 	public String trimString(String model, String field, String value) {
 		if (value == null) {
 			return value;

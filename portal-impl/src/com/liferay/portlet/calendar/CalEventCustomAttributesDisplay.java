@@ -26,6 +26,7 @@ public class CalEventCustomAttributesDisplay
 
 	public static final String CLASS_NAME = CalEvent.class.getName();
 
+	@Override
 	public String getClassName() {
 		return CLASS_NAME;
 	}

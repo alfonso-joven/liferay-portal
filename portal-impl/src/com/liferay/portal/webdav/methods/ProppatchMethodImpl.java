@@ -51,6 +51,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ProppatchMethodImpl extends BasePropMethodImpl {
 
+	@Override
 	public int process(WebDAVRequest webDavRequest) throws WebDAVException {
 		try {
 			Set<QName> props = processInstructions(webDavRequest);

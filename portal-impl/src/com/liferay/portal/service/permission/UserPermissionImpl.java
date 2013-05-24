@@ -194,6 +194,7 @@ public class UserPermissionImpl implements UserPermission {
 		return contains(permissionChecker, userId, null, actionId);
 	}
 
+	@Override
 	public boolean hasMembershipProtected(
 			PermissionChecker permissionChecker, Group group, Role role,
 			User user)
@@ -229,6 +230,7 @@ public class UserPermissionImpl implements UserPermission {
 		return false;
 	}
 
+	@Override
 	public boolean hasMembershipProtected(
 			PermissionChecker permissionChecker, Group group, User user)
 		throws PortalException, SystemException {
@@ -260,6 +262,7 @@ public class UserPermissionImpl implements UserPermission {
 		return false;
 	}
 
+	@Override
 	public boolean hasMembershipProtected(
 			PermissionChecker permissionChecker, Organization organization,
 			Role role, User user)
@@ -288,6 +291,7 @@ public class UserPermissionImpl implements UserPermission {
 		return false;
 	}
 
+	@Override
 	public boolean hasMembershipProtected(
 			PermissionChecker permissionChecker, Organization organization,
 			User user)

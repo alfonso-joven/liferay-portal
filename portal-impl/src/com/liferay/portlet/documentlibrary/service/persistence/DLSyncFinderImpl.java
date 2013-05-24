@@ -40,6 +40,7 @@ public class DLSyncFinderImpl
 	public static final String FIND_BY_C_M_R_T =
 		DLSyncFinder.class.getName() + ".findByC_M_R_T";
 
+	@Override
 	public List<DLSync> filterFindByC_M_R(
 			long companyId, Date modifiedDate, long repositoryId)
 		throws SystemException {

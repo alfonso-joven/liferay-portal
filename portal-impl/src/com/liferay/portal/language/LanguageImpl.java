@@ -70,10 +70,12 @@ import javax.servlet.jsp.PageContext;
 @DoPrivileged
 public class LanguageImpl implements Language {
 
+	@Override
 	public String format(Locale locale, String pattern, Object argument) {
 		return format(locale, pattern, new Object[] {argument}, true);
 	}
 
+	@Override
 	public String format(
 		Locale locale, String pattern, Object argument,
 		boolean translateArguments) {
@@ -82,10 +84,12 @@ public class LanguageImpl implements Language {
 			locale, pattern, new Object[] {argument}, translateArguments);
 	}
 
+	@Override
 	public String format(Locale locale, String pattern, Object[] arguments) {
 		return format(locale, pattern, arguments, true);
 	}
 
+	@Override
 	public String format(
 		Locale locale, String pattern, Object[] arguments,
 		boolean translateArguments) {
@@ -129,6 +133,7 @@ public class LanguageImpl implements Language {
 		return value;
 	}
 
+	@Override
 	public String format(
 		PageContext pageContext, String pattern, LanguageWrapper argument) {
 
@@ -136,6 +141,7 @@ public class LanguageImpl implements Language {
 			pageContext, pattern, new LanguageWrapper[] {argument}, true);
 	}
 
+	@Override
 	public String format(
 		PageContext pageContext, String pattern, LanguageWrapper argument,
 		boolean translateArguments) {
@@ -145,12 +151,14 @@ public class LanguageImpl implements Language {
 			translateArguments);
 	}
 
+	@Override
 	public String format(
 		PageContext pageContext, String pattern, LanguageWrapper[] arguments) {
 
 		return format(pageContext, pattern, arguments, true);
 	}
 
+	@Override
 	public String format(
 		PageContext pageContext, String pattern, LanguageWrapper[] arguments,
 		boolean translateArguments) {
@@ -199,12 +207,14 @@ public class LanguageImpl implements Language {
 		return value;
 	}
 
+	@Override
 	public String format(
 		PageContext pageContext, String pattern, Object argument) {
 
 		return format(pageContext, pattern, new Object[] {argument}, true);
 	}
 
+	@Override
 	public String format(
 		PageContext pageContext, String pattern, Object argument,
 		boolean translateArguments) {
@@ -213,12 +223,14 @@ public class LanguageImpl implements Language {
 			pageContext, pattern, new Object[] {argument}, translateArguments);
 	}
 
+	@Override
 	public String format(
 		PageContext pageContext, String pattern, Object[] arguments) {
 
 		return format(pageContext, pattern, arguments, true);
 	}
 
+	@Override
 	public String format(
 		PageContext pageContext, String pattern, Object[] arguments,
 		boolean translateArguments) {
@@ -262,6 +274,7 @@ public class LanguageImpl implements Language {
 		return value;
 	}
 
+	@Override
 	public String format(
 		PortletConfig portletConfig, Locale locale, String pattern,
 		Object argument) {
@@ -270,6 +283,7 @@ public class LanguageImpl implements Language {
 		portletConfig, locale, pattern, new Object[] {argument}, true);
 	}
 
+	@Override
 	public String format(
 		PortletConfig portletConfig, Locale locale, String pattern,
 		Object argument, boolean translateArguments) {
@@ -279,6 +293,7 @@ public class LanguageImpl implements Language {
 			translateArguments);
 	}
 
+	@Override
 	public String format(
 		PortletConfig portletConfig, Locale locale, String pattern,
 		Object[] arguments) {
@@ -286,6 +301,7 @@ public class LanguageImpl implements Language {
 		return format(portletConfig, locale, pattern, arguments, true);
 	}
 
+	@Override
 	public String format(
 		PortletConfig portletConfig, Locale locale, String pattern,
 		Object[] arguments, boolean translateArguments) {
@@ -329,10 +345,12 @@ public class LanguageImpl implements Language {
 		return value;
 	}
 
+	@Override
 	public String get(Locale locale, String key) {
 		return get(locale, key, key);
 	}
 
+	@Override
 	public String get(Locale locale, String key, String defaultValue) {
 		if (PropsValues.TRANSLATIONS_DISABLED) {
 			return key;
@@ -369,10 +387,12 @@ public class LanguageImpl implements Language {
 		return value;
 	}
 
+	@Override
 	public String get(PageContext pageContext, String key) {
 		return get(pageContext, key, key);
 	}
 
+	@Override
 	public String get(
 		PageContext pageContext, String key, String defaultValue) {
 
@@ -388,10 +408,12 @@ public class LanguageImpl implements Language {
 		}
 	}
 
+	@Override
 	public String get(PortletConfig portletConfig, Locale locale, String key) {
 		return get(portletConfig, locale, key, key);
 	}
 
+	@Override
 	public String get(
 		PortletConfig portletConfig, Locale locale, String key,
 		String defaultValue) {
@@ -408,14 +430,17 @@ public class LanguageImpl implements Language {
 		}
 	}
 
+	@Override
 	public Locale[] getAvailableLocales() {
 		return _getInstance()._locales;
 	}
 
+	@Override
 	public String getCharset(Locale locale) {
 		return _getInstance()._getCharset(locale);
 	}
 
+	@Override
 	public String getLanguageId(HttpServletRequest request) {
 		String languageId = ParamUtil.getString(request, "languageId");
 
@@ -432,10 +457,12 @@ public class LanguageImpl implements Language {
 		return getLanguageId(locale);
 	}
 
+	@Override
 	public String getLanguageId(Locale locale) {
 		return LocaleUtil.toLanguageId(locale);
 	}
 
+	@Override
 	public String getLanguageId(PortletRequest portletRequest) {
 		HttpServletRequest request = PortalUtil.getHttpServletRequest(
 			portletRequest);
@@ -443,10 +470,12 @@ public class LanguageImpl implements Language {
 		return getLanguageId(request);
 	}
 
+	@Override
 	public Locale getLocale(String languageCode) {
 		return _getInstance()._getLocale(languageCode);
 	}
 
+	@Override
 	public Locale[] getSupportedLocales() {
 		List<Locale> supportedLocales = new ArrayList<Locale>();
 
@@ -461,10 +490,12 @@ public class LanguageImpl implements Language {
 		return supportedLocales.toArray(new Locale[supportedLocales.size()]);
 	}
 
+	@Override
 	public String getTimeDescription(Locale locale, long milliseconds) {
 		return getTimeDescription(locale, milliseconds, false);
 	}
 
+	@Override
 	public String getTimeDescription(
 		Locale locale, long milliseconds, boolean approximate) {
 
@@ -492,16 +523,19 @@ public class LanguageImpl implements Language {
 		return value;
 	}
 
+	@Override
 	public String getTimeDescription(Locale locale, Long milliseconds) {
 		return getTimeDescription(locale, milliseconds.longValue());
 	}
 
+	@Override
 	public String getTimeDescription(
 		PageContext pageContext, long milliseconds) {
 
 		return getTimeDescription(pageContext, milliseconds, false);
 	}
 
+	@Override
 	public String getTimeDescription(
 		PageContext pageContext, long milliseconds, boolean approximate) {
 
@@ -529,36 +563,44 @@ public class LanguageImpl implements Language {
 		return value;
 	}
 
+	@Override
 	public String getTimeDescription(
 		PageContext pageContext, Long milliseconds) {
 
 		return getTimeDescription(pageContext, milliseconds.longValue());
 	}
 
+	@Override
 	public void init() {
 		_instances.clear();
 	}
 
+	@Override
 	public boolean isAvailableLanguageCode(String languageCode) {
 		return _getInstance()._localesMap.containsKey(languageCode);
 	}
 
+	@Override
 	public boolean isAvailableLocale(Locale locale) {
 		return _getInstance()._localesSet.contains(locale);
 	}
 
+	@Override
 	public boolean isBetaLocale(Locale locale) {
 		return _getInstance()._localesBetaSet.contains(locale);
 	}
 
+	@Override
 	public boolean isDuplicateLanguageCode(String languageCode) {
 		return _getInstance()._duplicateLanguageCodes.contains(languageCode);
 	}
 
+	@Override
 	public void resetAvailableLocales(long companyId) {
 		_resetAvailableLocales(companyId);
 	}
 
+	@Override
 	public void updateCookie(
 		HttpServletRequest request, HttpServletResponse response,
 		Locale locale) {

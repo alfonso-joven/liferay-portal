@@ -40,6 +40,7 @@ public class IGFolderNameColumnImpl extends BaseUpgradeColumnImpl {
 		return _distinctNames;
 	}
 
+	@Override
 	public Object getNewValue(Object oldValue) throws Exception {
 		String newName = (String)oldValue;
 

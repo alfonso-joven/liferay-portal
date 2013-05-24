@@ -31,6 +31,7 @@ import java.util.LinkedHashMap;
  */
 public class SitesControlPanelEntry extends BaseControlPanelEntry {
 
+	@Override
 	public boolean isVisible(
 			PermissionChecker permissionChecker, Portlet portlet)
 		throws Exception {

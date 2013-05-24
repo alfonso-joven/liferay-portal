@@ -60,18 +60,22 @@ public class DDLRecordAssetRenderer extends BaseAssetRenderer {
 		}
 	}
 
+	@Override
 	public long getClassPK() {
 		return _record.getRecordId();
 	}
 
+	@Override
 	public long getGroupId() {
 		return _record.getGroupId();
 	}
 
+	@Override
 	public String getSummary(Locale locale) {
 		return StringPool.BLANK;
 	}
 
+	@Override
 	public String getTitle(Locale locale) {
 		String name = _recordSet.getName(locale);
 
@@ -96,14 +100,17 @@ public class DDLRecordAssetRenderer extends BaseAssetRenderer {
 		return portletURL;
 	}
 
+	@Override
 	public long getUserId() {
 		return _record.getUserId();
 	}
 
+	@Override
 	public String getUserName() {
 		return _record.getUserName();
 	}
 
+	@Override
 	public String getUuid() {
 		return _record.getUuid();
 	}
@@ -120,6 +127,7 @@ public class DDLRecordAssetRenderer extends BaseAssetRenderer {
 			permissionChecker, _recordSet, ActionKeys.VIEW);
 	}
 
+	@Override
 	public String render(
 			RenderRequest renderRequest, RenderResponse renderResponse,
 			String template)

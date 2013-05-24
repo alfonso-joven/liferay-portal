@@ -29,6 +29,7 @@ public class DLFileShortcutImpl extends DLFileShortcutBaseImpl {
 	public DLFileShortcutImpl() {
 	}
 
+	@Override
 	public Folder getFolder() {
 		Folder folder = null;
 
@@ -49,6 +50,7 @@ public class DLFileShortcutImpl extends DLFileShortcutBaseImpl {
 		return folder;
 	}
 
+	@Override
 	public String getToTitle() {
 		String toTitle = null;
 

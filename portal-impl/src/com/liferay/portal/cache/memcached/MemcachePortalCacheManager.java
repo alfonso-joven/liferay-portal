@@ -30,6 +30,7 @@ import net.spy.memcached.MemcachedClientIF;
  */
 public class MemcachePortalCacheManager implements PortalCacheManager {
 
+	@Override
 	public void clearAll() {
 		_memcachePortalCaches.clear();
 	}
@@ -42,10 +43,12 @@ public class MemcachePortalCacheManager implements PortalCacheManager {
 		}
 	}
 
+	@Override
 	public PortalCache getCache(String name) {
 		return getCache(name, false);
 	}
 
+	@Override
 	public PortalCache getCache(String name, boolean blocking) {
 		MemcachePortalCache memcachePortalCache = _memcachePortalCaches.get(
 			name);
@@ -69,9 +72,11 @@ public class MemcachePortalCacheManager implements PortalCacheManager {
 		return memcachePortalCache;
 	}
 
+	@Override
 	public void reconfigureCaches(URL configurationURL) {
 	}
 
+	@Override
 	public void removeCache(String name) {
 		_memcachePortalCaches.remove(name);
 	}

@@ -45,6 +45,7 @@ public class LayoutFinderImpl
 	public static final String FIND_BY_C_P_P =
 		LayoutFinder.class.getName() + ".findByC_P_P";
 
+	@Override
 	public List<Layout> findByNullFriendlyURL() throws SystemException {
 		Session session = null;
 
@@ -67,6 +68,7 @@ public class LayoutFinderImpl
 		}
 	}
 
+	@Override
 	public List<Layout> findByScopeGroup(long groupId, boolean privateLayout)
 		throws SystemException {
 
@@ -96,6 +98,7 @@ public class LayoutFinderImpl
 		}
 	}
 
+	@Override
 	public List<LayoutReference> findByC_P_P(
 			long companyId, String portletId, String preferencesKey,
 			String preferencesValue)

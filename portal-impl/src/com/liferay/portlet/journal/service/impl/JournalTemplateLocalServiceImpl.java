@@ -65,6 +65,7 @@ import java.util.Map;
 public class JournalTemplateLocalServiceImpl
 	extends JournalTemplateLocalServiceBaseImpl {
 
+	@Override
 	public JournalTemplate addTemplate(
 			long userId, long groupId, String templateId,
 			boolean autoTemplateId, String structureId,
@@ -164,6 +165,7 @@ public class JournalTemplateLocalServiceImpl
 		return template;
 	}
 
+	@Override
 	public void addTemplateResources(
 			JournalTemplate template, boolean addGroupPermissions,
 			boolean addGuestPermissions)
@@ -175,6 +177,7 @@ public class JournalTemplateLocalServiceImpl
 			template.getId(), false, addGroupPermissions, addGuestPermissions);
 	}
 
+	@Override
 	public void addTemplateResources(
 			JournalTemplate template, String[] groupPermissions,
 			String[] guestPermissions)
@@ -186,6 +189,7 @@ public class JournalTemplateLocalServiceImpl
 			template.getId(), groupPermissions, guestPermissions);
 	}
 
+	@Override
 	public void addTemplateResources(
 			long groupId, String templateId, boolean addGroupPermissions,
 			boolean addGuestPermissions)
@@ -198,6 +202,7 @@ public class JournalTemplateLocalServiceImpl
 			template, addGroupPermissions, addGuestPermissions);
 	}
 
+	@Override
 	public void addTemplateResources(
 			long groupId, String templateId, String[] groupPermissions,
 			String[] guestPermissions)
@@ -209,6 +214,7 @@ public class JournalTemplateLocalServiceImpl
 		addTemplateResources(template, groupPermissions, guestPermissions);
 	}
 
+	@Override
 	public void checkNewLine(long groupId, String templateId)
 		throws PortalException, SystemException {
 
@@ -227,6 +233,7 @@ public class JournalTemplateLocalServiceImpl
 		}
 	}
 
+	@Override
 	public JournalTemplate copyTemplate(
 			long userId, long groupId, String oldTemplateId,
 			String newTemplateId, boolean autoTemplateId)
@@ -306,6 +313,7 @@ public class JournalTemplateLocalServiceImpl
 		return newTemplate;
 	}
 
+	@Override
 	public void deleteTemplate(JournalTemplate template)
 		throws PortalException, SystemException {
 
@@ -359,6 +367,7 @@ public class JournalTemplateLocalServiceImpl
 		journalTemplatePersistence.remove(template);
 	}
 
+	@Override
 	public void deleteTemplate(long groupId, String templateId)
 		throws PortalException, SystemException {
 
@@ -370,6 +379,7 @@ public class JournalTemplateLocalServiceImpl
 		deleteTemplate(template);
 	}
 
+	@Override
 	public void deleteTemplates(long groupId)
 		throws PortalException, SystemException {
 
@@ -380,6 +390,7 @@ public class JournalTemplateLocalServiceImpl
 		}
 	}
 
+	@Override
 	public List<JournalTemplate> getStructureTemplates(
 			long groupId, String structureId)
 		throws SystemException {
@@ -387,6 +398,7 @@ public class JournalTemplateLocalServiceImpl
 		return journalTemplatePersistence.findByG_S(groupId, structureId);
 	}
 
+	@Override
 	public List<JournalTemplate> getStructureTemplates(
 			long groupId, String structureId, int start, int end)
 		throws SystemException {
@@ -395,24 +407,28 @@ public class JournalTemplateLocalServiceImpl
 			groupId, structureId, start, end);
 	}
 
+	@Override
 	public int getStructureTemplatesCount(long groupId, String structureId)
 		throws SystemException {
 
 		return journalTemplatePersistence.countByG_S(groupId, structureId);
 	}
 
+	@Override
 	public JournalTemplate getTemplate(long id)
 		throws PortalException, SystemException {
 
 		return journalTemplatePersistence.findByPrimaryKey(id);
 	}
 
+	@Override
 	public JournalTemplate getTemplate(long groupId, String templateId)
 		throws PortalException, SystemException {
 
 		return getTemplate(groupId, templateId, false);
 	}
 
+	@Override
 	public JournalTemplate getTemplate(
 			long groupId, String templateId, boolean includeGlobalTemplates)
 		throws PortalException, SystemException {
@@ -457,32 +473,38 @@ public class JournalTemplateLocalServiceImpl
 			companyGroup.getGroupId(), templateId);
 	}
 
+	@Override
 	public JournalTemplate getTemplateBySmallImageId(long smallImageId)
 		throws PortalException, SystemException {
 
 		return journalTemplatePersistence.findBySmallImageId(smallImageId);
 	}
 
+	@Override
 	public List<JournalTemplate> getTemplates() throws SystemException {
 		return journalTemplatePersistence.findAll();
 	}
 
+	@Override
 	public List<JournalTemplate> getTemplates(long groupId)
 		throws SystemException {
 
 		return journalTemplatePersistence.findByGroupId(groupId);
 	}
 
+	@Override
 	public List<JournalTemplate> getTemplates(long groupId, int start, int end)
 		throws SystemException {
 
 		return journalTemplatePersistence.findByGroupId(groupId, start, end);
 	}
 
+	@Override
 	public int getTemplatesCount(long groupId) throws SystemException {
 		return journalTemplatePersistence.countByGroupId(groupId);
 	}
 
+	@Override
 	public boolean hasTemplate(long groupId, String templateId)
 		throws SystemException {
 
@@ -496,6 +518,7 @@ public class JournalTemplateLocalServiceImpl
 		}
 	}
 
+	@Override
 	public List<JournalTemplate> search(
 			long companyId, long[] groupIds, String keywords,
 			String structureId, String structureIdComparator, int start,
@@ -507,6 +530,7 @@ public class JournalTemplateLocalServiceImpl
 			start, end, obc);
 	}
 
+	@Override
 	public List<JournalTemplate> search(
 			long companyId, long[] groupIds, String templateId,
 			String structureId, String structureIdComparator, String name,
@@ -519,6 +543,7 @@ public class JournalTemplateLocalServiceImpl
 			name, description, andOperator, start, end, obc);
 	}
 
+	@Override
 	public int searchCount(
 			long companyId, long[] groupIds, String keywords,
 			String structureId, String structureIdComparator)
@@ -528,6 +553,7 @@ public class JournalTemplateLocalServiceImpl
 			companyId, groupIds, keywords, structureId, structureIdComparator);
 	}
 
+	@Override
 	public int searchCount(
 			long companyId, long[] groupIds, String templateId,
 			String structureId, String structureIdComparator, String name,
@@ -539,6 +565,7 @@ public class JournalTemplateLocalServiceImpl
 			name, description, andOperator);
 	}
 
+	@Override
 	public JournalTemplate updateTemplate(
 			long groupId, String templateId, String structureId,
 			Map<Locale, String> nameMap, Map<Locale, String> descriptionMap,

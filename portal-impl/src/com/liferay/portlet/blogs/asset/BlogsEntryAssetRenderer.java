@@ -46,6 +46,7 @@ public class BlogsEntryAssetRenderer extends BaseAssetRenderer {
 		_entry = entry;
 	}
 
+	@Override
 	public long getClassPK() {
 		return _entry.getEntryId();
 	}
@@ -60,14 +61,17 @@ public class BlogsEntryAssetRenderer extends BaseAssetRenderer {
 		}
 	}
 
+	@Override
 	public long getGroupId() {
 		return _entry.getGroupId();
 	}
 
+	@Override
 	public String getSummary(Locale locale) {
 		return HtmlUtil.stripHtml(_entry.getDescription());
 	}
 
+	@Override
 	public String getTitle(Locale locale) {
 		return _entry.getTitle();
 	}
@@ -120,14 +124,17 @@ public class BlogsEntryAssetRenderer extends BaseAssetRenderer {
 			"entryId", _entry.getEntryId());
 	}
 
+	@Override
 	public long getUserId() {
 		return _entry.getUserId();
 	}
 
+	@Override
 	public String getUserName() {
 		return _entry.getUserName();
 	}
 
+	@Override
 	public String getUuid() {
 		return _entry.getUuid();
 	}
@@ -149,6 +156,7 @@ public class BlogsEntryAssetRenderer extends BaseAssetRenderer {
 		return true;
 	}
 
+	@Override
 	public String render(
 			RenderRequest renderRequest, RenderResponse renderResponse,
 			String template)

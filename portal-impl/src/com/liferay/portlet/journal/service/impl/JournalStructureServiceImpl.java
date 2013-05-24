@@ -35,6 +35,7 @@ import java.util.Map;
 public class JournalStructureServiceImpl
 	extends JournalStructureServiceBaseImpl {
 
+	@Override
 	public JournalStructure addStructure(
 			long groupId, String structureId, boolean autoStructureId,
 			String parentStructureId, Map<Locale, String> nameMap,
@@ -50,6 +51,7 @@ public class JournalStructureServiceImpl
 			parentStructureId, nameMap, descriptionMap, xsd, serviceContext);
 	}
 
+	@Override
 	public JournalStructure copyStructure(
 			long groupId, String oldStructureId, String newStructureId,
 			boolean autoStructureId)
@@ -63,6 +65,7 @@ public class JournalStructureServiceImpl
 			autoStructureId);
 	}
 
+	@Override
 	public void deleteStructure(long groupId, String structureId)
 		throws PortalException, SystemException {
 
@@ -72,6 +75,7 @@ public class JournalStructureServiceImpl
 		journalStructureLocalService.deleteStructure(groupId, structureId);
 	}
 
+	@Override
 	public JournalStructure getStructure(long groupId, String structureId)
 		throws PortalException, SystemException {
 
@@ -81,6 +85,7 @@ public class JournalStructureServiceImpl
 		return journalStructureLocalService.getStructure(groupId, structureId);
 	}
 
+	@Override
 	public JournalStructure getStructure(
 			long groupId, String structureId, boolean includeGlobalStructures)
 		throws PortalException, SystemException {
@@ -92,12 +97,14 @@ public class JournalStructureServiceImpl
 			groupId, structureId, includeGlobalStructures);
 	}
 
+	@Override
 	public List<JournalStructure> getStructures(long groupId)
 		throws SystemException {
 
 		return journalStructurePersistence.filterFindByGroupId(groupId);
 	}
 
+	@Override
 	public List<JournalStructure> search(
 			long companyId, long[] groupIds, String keywords, int start,
 			int end, OrderByComparator obc)
@@ -107,6 +114,7 @@ public class JournalStructureServiceImpl
 			companyId, groupIds, keywords, start, end, obc);
 	}
 
+	@Override
 	public List<JournalStructure> search(
 			long companyId, long[] groupIds, String structureId, String name,
 			String description, boolean andOperator, int start, int end,
@@ -118,6 +126,7 @@ public class JournalStructureServiceImpl
 			start, end, obc);
 	}
 
+	@Override
 	public int searchCount(long companyId, long[] groupIds, String keywords)
 		throws SystemException {
 
@@ -125,6 +134,7 @@ public class JournalStructureServiceImpl
 			companyId, groupIds, keywords);
 	}
 
+	@Override
 	public int searchCount(
 			long companyId, long[] groupIds, String structureId, String name,
 			String description, boolean andOperator)
@@ -134,6 +144,7 @@ public class JournalStructureServiceImpl
 			companyId, groupIds, structureId, name, description, andOperator);
 	}
 
+	@Override
 	public JournalStructure updateStructure(
 			long groupId, String structureId, String parentStructureId,
 			Map<Locale, String> nameMap, Map<Locale, String> descriptionMap,

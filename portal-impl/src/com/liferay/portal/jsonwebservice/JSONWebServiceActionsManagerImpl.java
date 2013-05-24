@@ -51,6 +51,7 @@ import javax.servlet.http.HttpSession;
 public class JSONWebServiceActionsManagerImpl
 	implements JSONWebServiceActionsManager {
 
+	@Override
 	public JSONWebServiceAction getJSONWebServiceAction(
 		HttpServletRequest request) {
 
@@ -118,6 +119,7 @@ public class JSONWebServiceActionsManagerImpl
 			jsonWebServiceActionConfig, jsonWebServiceActionParameters);
 	}
 
+	@Override
 	public JSONWebServiceAction getJSONWebServiceAction(
 		HttpServletRequest request, String path, String method,
 		Map<String, Object> parameterMap) {
@@ -160,6 +162,7 @@ public class JSONWebServiceActionsManagerImpl
 			jsonWebServiceActionConfig, jsonWebServiceActionParameters);
 	}
 
+	@Override
 	public JSONWebServiceActionMapping getJSONWebServiceActionMapping(
 		String signature) {
 
@@ -174,6 +177,7 @@ public class JSONWebServiceActionsManagerImpl
 		return null;
 	}
 
+	@Override
 	public List<JSONWebServiceActionMapping> getJSONWebServiceActionMappings(
 		String servletContextPath) {
 
@@ -195,6 +199,7 @@ public class JSONWebServiceActionsManagerImpl
 		return jsonWebServiceActionMappings;
 	}
 
+	@Override
 	public void registerJSONWebServiceAction(
 		String servletContextPath, Class<?> actionClass, Method actionMethod,
 		String path, String method) {
@@ -206,6 +211,7 @@ public class JSONWebServiceActionsManagerImpl
 		_jsonWebServiceActionConfigs.add(jsonWebServiceActionConfig);
 	}
 
+	@Override
 	public int unregisterJSONWebServiceActions(String servletContextPath) {
 		int count = 0;
 

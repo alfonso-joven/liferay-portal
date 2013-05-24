@@ -47,6 +47,7 @@ public class WikiPageAssetRenderer extends BaseAssetRenderer {
 		_page = page;
 	}
 
+	@Override
 	public long getClassPK() {
 		if (!_page.isApproved() && !_page.isDraft() && !_page.isPending() &&
 			(_page.getVersion() != WikiPageConstants.VERSION_DEFAULT)) {
@@ -68,10 +69,12 @@ public class WikiPageAssetRenderer extends BaseAssetRenderer {
 		}
 	}
 
+	@Override
 	public long getGroupId() {
 		return _page.getGroupId();
 	}
 
+	@Override
 	public String getSummary(Locale locale) {
 		String content = _page.getContent();
 
@@ -85,6 +88,7 @@ public class WikiPageAssetRenderer extends BaseAssetRenderer {
 		return content;
 	}
 
+	@Override
 	public String getTitle(Locale locale) {
 		return _page.getTitle();
 	}
@@ -150,14 +154,17 @@ public class WikiPageAssetRenderer extends BaseAssetRenderer {
 			"pageResourcePrimKey", _page.getResourcePrimKey());
 	}
 
+	@Override
 	public long getUserId() {
 		return _page.getUserId();
 	}
 
+	@Override
 	public String getUserName() {
 		return _page.getUserName();
 	}
 
+	@Override
 	public String getUuid() {
 		return _page.getUuid();
 	}
@@ -184,6 +191,7 @@ public class WikiPageAssetRenderer extends BaseAssetRenderer {
 		return true;
 	}
 
+	@Override
 	public String render(
 			RenderRequest renderRequest, RenderResponse renderResponse,
 			String template)

@@ -53,6 +53,7 @@ public class JournalArticleImpl extends JournalArticleBaseImpl {
 	public JournalArticleImpl() {
 	}
 
+	@Override
 	public JournalArticleResource getArticleResource()
 		throws PortalException, SystemException {
 
@@ -60,6 +61,7 @@ public class JournalArticleImpl extends JournalArticleBaseImpl {
 			getResourcePrimKey());
 	}
 
+	@Override
 	public String getArticleResourceUuid()
 		throws PortalException, SystemException {
 
@@ -68,6 +70,7 @@ public class JournalArticleImpl extends JournalArticleBaseImpl {
 		return articleResource.getUuid();
 	}
 
+	@Override
 	public String[] getAvailableLocales() {
 		Set<String> availableLocales = new TreeSet<String>();
 
@@ -109,10 +112,12 @@ public class JournalArticleImpl extends JournalArticleBaseImpl {
 		return availableLocales.toArray(new String[availableLocales.size()]);
 	}
 
+	@Override
 	public String getContentByLocale(String languageId) {
 		return getContentByLocale(getContent(), isTemplateDriven(), languageId);
 	}
 
+	@Override
 	public String getDefaultLocale() {
 		String xml = getContent();
 
@@ -130,6 +135,7 @@ public class JournalArticleImpl extends JournalArticleBaseImpl {
 		return defaultLanguageId;
 	}
 
+	@Override
 	public String getSmallImageType() throws PortalException, SystemException {
 		if ((_smallImageType == null) && isSmallImage()) {
 			Image smallImage = ImageLocalServiceUtil.getImage(
@@ -158,6 +164,7 @@ public class JournalArticleImpl extends JournalArticleBaseImpl {
 		}
 	}
 
+	@Override
 	public boolean isTemplateDriven() {
 		if (Validator.isNull(getStructureId())) {
 			return false;
@@ -175,6 +182,7 @@ public class JournalArticleImpl extends JournalArticleBaseImpl {
 		throws LocaleException {
 	}
 
+	@Override
 	public void setSmallImageType(String smallImageType) {
 		_smallImageType = smallImageType;
 	}

@@ -35,6 +35,7 @@ public class DLFolderImpl extends DLFolderBaseImpl {
 	public DLFolderImpl() {
 	}
 
+	@Override
 	public List<DLFolder> getAncestors()
 		throws PortalException, SystemException {
 
@@ -51,6 +52,7 @@ public class DLFolderImpl extends DLFolderBaseImpl {
 		return ancestors;
 	}
 
+	@Override
 	public DLFolder getParentFolder() throws PortalException, SystemException {
 		if (getParentFolderId() == DLFolderConstants.DEFAULT_PARENT_FOLDER_ID) {
 			return null;
@@ -59,6 +61,7 @@ public class DLFolderImpl extends DLFolderBaseImpl {
 		return DLFolderLocalServiceUtil.getFolder(getParentFolderId());
 	}
 
+	@Override
 	public String getPath() throws PortalException, SystemException {
 		StringBuilder sb = new StringBuilder();
 
@@ -74,6 +77,7 @@ public class DLFolderImpl extends DLFolderBaseImpl {
 		return sb.toString();
 	}
 
+	@Override
 	public String[] getPathArray() throws PortalException, SystemException {
 		String path = getPath();
 
@@ -84,6 +88,7 @@ public class DLFolderImpl extends DLFolderBaseImpl {
 		return StringUtil.split(path, CharPool.SLASH);
 	}
 
+	@Override
 	public boolean hasInheritableLock() {
 		try {
 			return DLFolderServiceUtil.hasInheritableLock(getFolderId());
@@ -94,6 +99,7 @@ public class DLFolderImpl extends DLFolderBaseImpl {
 		return false;
 	}
 
+	@Override
 	public boolean hasLock() {
 		try {
 			return DLFolderServiceUtil.hasFolderLock(getFolderId());
@@ -104,6 +110,7 @@ public class DLFolderImpl extends DLFolderBaseImpl {
 		return false;
 	}
 
+	@Override
 	public boolean isLocked() {
 		try {
 			return DLFolderServiceUtil.isFolderLocked(getFolderId());
@@ -114,6 +121,7 @@ public class DLFolderImpl extends DLFolderBaseImpl {
 		return false;
 	}
 
+	@Override
 	public boolean isRoot() {
 		if (getParentFolderId() == DLFolderConstants.DEFAULT_PARENT_FOLDER_ID) {
 			return true;

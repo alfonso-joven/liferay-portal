@@ -26,6 +26,7 @@ public class BlogsEntryCustomAttributesDisplay
 
 	public static final String CLASS_NAME = BlogsEntry.class.getName();
 
+	@Override
 	public String getClassName() {
 		return CLASS_NAME;
 	}

@@ -55,6 +55,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class RepositoryLocalServiceImpl extends RepositoryLocalServiceBaseImpl {
 
+	@Override
 	public long addRepository(
 			long userId, long groupId, long classNameId, long parentFolderId,
 			String name, String description, String portletId,
@@ -104,6 +105,7 @@ public class RepositoryLocalServiceImpl extends RepositoryLocalServiceBaseImpl {
 		return repositoryId;
 	}
 
+	@Override
 	public void checkRepository(long repositoryId) throws SystemException {
 		Group group = groupPersistence.fetchByPrimaryKey(repositoryId);
 
@@ -119,6 +121,7 @@ public class RepositoryLocalServiceImpl extends RepositoryLocalServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public void deleteRepositories(long groupId)
 		throws PortalException, SystemException {
 
@@ -157,6 +160,7 @@ public class RepositoryLocalServiceImpl extends RepositoryLocalServiceBaseImpl {
 		return repository;
 	}
 
+	@Override
 	public LocalRepository getLocalRepositoryImpl(long repositoryId)
 		throws PortalException, SystemException {
 
@@ -191,6 +195,7 @@ public class RepositoryLocalServiceImpl extends RepositoryLocalServiceBaseImpl {
 		return localRepositoryImpl;
 	}
 
+	@Override
 	public LocalRepository getLocalRepositoryImpl(
 			long folderId, long fileEntryId, long fileVersionId)
 		throws PortalException, SystemException {
@@ -232,6 +237,7 @@ public class RepositoryLocalServiceImpl extends RepositoryLocalServiceBaseImpl {
 		return localRepositoryImpl;
 	}
 
+	@Override
 	public com.liferay.portal.kernel.repository.Repository getRepositoryImpl(
 			long repositoryId)
 		throws PortalException, SystemException {
@@ -266,6 +272,7 @@ public class RepositoryLocalServiceImpl extends RepositoryLocalServiceBaseImpl {
 		return repositoryImpl;
 	}
 
+	@Override
 	public com.liferay.portal.kernel.repository.Repository getRepositoryImpl(
 			long folderId, long fileEntryId, long fileVersionId)
 		throws PortalException, SystemException {
@@ -303,6 +310,7 @@ public class RepositoryLocalServiceImpl extends RepositoryLocalServiceBaseImpl {
 		return repositoryImpl;
 	}
 
+	@Override
 	public UnicodeProperties getTypeSettingsProperties(long repositoryId)
 		throws PortalException, SystemException {
 
@@ -312,6 +320,7 @@ public class RepositoryLocalServiceImpl extends RepositoryLocalServiceBaseImpl {
 		return repository.getTypeSettingsProperties();
 	}
 
+	@Override
 	public void updateRepository(
 			long repositoryId, String name, String description)
 		throws PortalException, SystemException {

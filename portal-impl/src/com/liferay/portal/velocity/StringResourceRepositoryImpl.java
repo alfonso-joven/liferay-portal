@@ -26,10 +26,12 @@ import org.apache.velocity.runtime.resource.util.StringResourceRepository;
  */
 public class StringResourceRepositoryImpl implements StringResourceRepository {
 
+	@Override
 	public String getEncoding() {
 		return _encoding;
 	}
 
+	@Override
 	public StringResource getStringResource(String key) {
 		Object resource = _portalCache.get(key);
 
@@ -45,19 +47,23 @@ public class StringResourceRepositoryImpl implements StringResourceRepository {
 		return null;
 	}
 
+	@Override
 	public void putStringResource(String key, String body) {
 		_portalCache.put(
 			key, new SerializableStringResource(body, getEncoding()));
 	}
 
+	@Override
 	public void putStringResource(String key, String body, String encoding) {
 		_portalCache.put(key, new SerializableStringResource(body, encoding));
 	}
 
+	@Override
 	public void removeStringResource(String key) {
 		_portalCache.remove(key);
 	}
 
+	@Override
 	public void setEncoding(String encoding) {
 		_encoding = encoding;
 	}

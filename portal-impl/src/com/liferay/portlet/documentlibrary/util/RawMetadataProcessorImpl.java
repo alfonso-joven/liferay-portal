@@ -58,15 +58,19 @@ import java.util.Map;
 public class RawMetadataProcessorImpl
 	implements DLProcessor, RawMetadataProcessor {
 
+	@Override
 	public void afterPropertiesSet() {
 	}
 
+	@Override
 	public void cleanUp(FileEntry fileEntry) {
 	}
 
+	@Override
 	public void cleanUp(FileVersion fileVersion) {
 	}
 
+	@Override
 	public void exportGeneratedFiles(
 			PortletDataContext portletDataContext, FileEntry fileEntry,
 			Element fileEntryElement)
@@ -75,6 +79,7 @@ public class RawMetadataProcessorImpl
 		return;
 	}
 
+	@Override
 	public void generateMetadata(FileVersion fileVersion)
 		throws SystemException {
 
@@ -89,6 +94,7 @@ public class RawMetadataProcessorImpl
 		}
 	}
 
+	@Override
 	public void importGeneratedFiles(
 			PortletDataContext portletDataContext, FileEntry fileEntry,
 			FileEntry importedFileEntry, Element fileEntryElement)
@@ -97,14 +103,17 @@ public class RawMetadataProcessorImpl
 		return;
 	}
 
+	@Override
 	public boolean isSupported(FileVersion fileVersion) {
 		return true;
 	}
 
+	@Override
 	public boolean isSupported(String mimeType) {
 		return true;
 	}
 
+	@Override
 	public void saveMetadata(FileVersion fileVersion)
 		throws PortalException, SystemException {
 
@@ -178,6 +187,7 @@ public class RawMetadataProcessorImpl
 		}
 	}
 
+	@Override
 	public void trigger(FileVersion fileVersion) {
 		if (PropsValues.DL_FILE_ENTRY_PROCESSORS_TRIGGER_SYNCHRONOUSLY) {
 			try {

@@ -54,6 +54,7 @@ public class DDMStructureImpl extends DDMStructureBaseImpl {
 	public DDMStructureImpl() {
 	}
 
+	@Override
 	public List<String> getAvailableLocales() {
 		Document document = getDocument();
 
@@ -65,6 +66,7 @@ public class DDMStructureImpl extends DDMStructureBaseImpl {
 		return ListUtil.fromArray(StringUtil.split(availableLocales));
 	}
 
+	@Override
 	public String getDefaultLocale() {
 		Document document = getDocument();
 
@@ -103,18 +105,21 @@ public class DDMStructureImpl extends DDMStructureBaseImpl {
 		return _document;
 	}
 
+	@Override
 	public String getFieldDataType(String fieldName)
 		throws StructureFieldException {
 
 		return getFieldProperty(fieldName, "dataType");
 	}
 
+	@Override
 	public String getFieldLabel(String fieldName, Locale locale)
 		throws StructureFieldException {
 
 		return getFieldLabel(fieldName, LocaleUtil.toLanguageId(locale));
 	}
 
+	@Override
 	public String getFieldLabel(String fieldName, String locale)
 		throws StructureFieldException {
 
@@ -122,18 +127,21 @@ public class DDMStructureImpl extends DDMStructureBaseImpl {
 			getFieldProperty(fieldName, "label", locale), fieldName);
 	}
 
+	@Override
 	public Set<String> getFieldNames() {
 		Map<String, Map<String, String>> fieldsMap = getFieldsMap();
 
 		return fieldsMap.keySet();
 	}
 
+	@Override
 	public String getFieldProperty(String fieldName, String property)
 		throws StructureFieldException {
 
 		return getFieldProperty(fieldName, property, getDefaultLocale());
 	}
 
+	@Override
 	public String getFieldProperty(
 			String fieldName, String property, String locale)
 		throws StructureFieldException {
@@ -149,12 +157,14 @@ public class DDMStructureImpl extends DDMStructureBaseImpl {
 		return field.get(property);
 	}
 
+	@Override
 	public boolean getFieldRequired(String fieldName)
 		throws StructureFieldException {
 
 		return GetterUtil.getBoolean(getFieldProperty(fieldName, "required"));
 	}
 
+	@Override
 	public Map<String, String> getFields(
 		String fieldName, String attributeName, String attributeValue) {
 
@@ -162,6 +172,7 @@ public class DDMStructureImpl extends DDMStructureBaseImpl {
 			fieldName, attributeName, attributeValue, getDefaultLocale());
 	}
 
+	@Override
 	public Map<String, String> getFields(
 		String fieldName, String attributeName, String attributeValue,
 		String locale) {
@@ -194,10 +205,12 @@ public class DDMStructureImpl extends DDMStructureBaseImpl {
 		return null;
 	}
 
+	@Override
 	public Map<String, Map<String, String>> getFieldsMap() {
 		return getFieldsMap(getDefaultLocale());
 	}
 
+	@Override
 	public Map<String, Map<String, String>> getFieldsMap(String locale) {
 
 		_indexFieldsMap(locale);
@@ -208,6 +221,7 @@ public class DDMStructureImpl extends DDMStructureBaseImpl {
 		return fieldsMap;
 	}
 
+	@Override
 	public String getFieldType(String fieldName)
 		throws StructureFieldException {
 
@@ -228,10 +242,12 @@ public class DDMStructureImpl extends DDMStructureBaseImpl {
 		return _localizedTransientFieldsMap;
 	}
 
+	@Override
 	public List<DDMTemplate> getTemplates() throws SystemException {
 		return DDMTemplateLocalServiceUtil.getTemplates(getStructureId());
 	}
 
+	@Override
 	public Map<String, Map<String, String>> getTransientFieldsMap(
 		String locale) {
 
@@ -243,6 +259,7 @@ public class DDMStructureImpl extends DDMStructureBaseImpl {
 		return fieldsMap;
 	}
 
+	@Override
 	public boolean hasField(String fieldName) {
 		Map<String, Map<String, String>> fieldsMap = getFieldsMap();
 

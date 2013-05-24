@@ -41,6 +41,7 @@ import javax.portlet.PortletPreferences;
 public class DDLPortletDataHandlerImpl
 	extends BasePortletDataHandler implements DDLPortletDataHandler {
 
+	@Override
 	public void exportRecordSet(
 			PortletDataContext portletDataContext, Element recordSetsElement,
 			DDLRecordSet recordSet)
@@ -76,6 +77,7 @@ public class DDLPortletDataHandlerImpl
 		}
 	}
 
+	@Override
 	public void importRecordSet(
 			PortletDataContext portletDataContext, Element recordSetElement)
 		throws Exception {

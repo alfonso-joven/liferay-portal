@@ -35,6 +35,7 @@ public class OrgGroupPermissionFinderImpl
 	public static final String FIND_BY_O_G_R =
 		OrgGroupPermissionFinder.class.getName() + ".findByO_G_R";
 
+	@Override
 	public void removeByO_G_R(
 			long organizationId, long groupId, long resourceId)
 		throws SystemException {

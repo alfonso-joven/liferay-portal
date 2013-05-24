@@ -40,6 +40,7 @@ public class FreeMarkerContextImpl implements FreeMarkerContext {
 		_context.putAll(context);
 	}
 
+	@Override
 	public Object get(String key) {
 		return _context.get(key);
 	}
@@ -48,6 +49,7 @@ public class FreeMarkerContextImpl implements FreeMarkerContext {
 		return _context;
 	}
 
+	@Override
 	public void put(String key, Object value) {
 		_context.put(key, value);
 	}

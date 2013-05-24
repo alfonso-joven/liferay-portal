@@ -145,6 +145,7 @@ public class BaseDeployer implements AutoDeployer, Deployer {
 		}
 	}
 
+	@Override
 	public void addExtJar(List<String> jars, String resource) throws Exception {
 		Set<String> servletContextNames = ExtRegistry.getServletContextNames();
 
@@ -170,6 +171,7 @@ public class BaseDeployer implements AutoDeployer, Deployer {
 		}
 	}
 
+	@Override
 	public void addRequiredJar(List<String> jars, String resource)
 		throws Exception {
 
@@ -187,6 +189,7 @@ public class BaseDeployer implements AutoDeployer, Deployer {
 		jars.add(path);
 	}
 
+	@Override
 	public int autoDeploy(AutoDeploymentContext autoDeploymentContext)
 		throws AutoDeployException {
 
@@ -206,6 +209,7 @@ public class BaseDeployer implements AutoDeployer, Deployer {
 		}
 	}
 
+	@Override
 	public void checkArguments() {
 		if (Validator.isNull(baseDir)) {
 			throw new IllegalArgumentException(
@@ -250,12 +254,14 @@ public class BaseDeployer implements AutoDeployer, Deployer {
 		}
 	}
 
+	@Override
 	public void copyDependencyXml(String fileName, String targetDir)
 		throws Exception {
 
 		copyDependencyXml(fileName, targetDir, null);
 	}
 
+	@Override
 	public void copyDependencyXml(
 			String fileName, String targetDir, Map<String, String> filterMap)
 		throws Exception {
@@ -263,6 +269,7 @@ public class BaseDeployer implements AutoDeployer, Deployer {
 		copyDependencyXml(fileName, targetDir, filterMap, false);
 	}
 
+	@Override
 	public void copyDependencyXml(
 			String fileName, String targetDir, Map<String, String> filterMap,
 			boolean overwrite)
@@ -303,6 +310,7 @@ public class BaseDeployer implements AutoDeployer, Deployer {
 		}
 	}
 
+	@Override
 	public void copyJars(File srcFile, PluginPackage pluginPackage)
 		throws Exception {
 
@@ -414,6 +422,7 @@ public class BaseDeployer implements AutoDeployer, Deployer {
 		}
 	}
 
+	@Override
 	public void copyProperties(File srcFile, PluginPackage pluginPackage)
 		throws Exception {
 
@@ -454,6 +463,7 @@ public class BaseDeployer implements AutoDeployer, Deployer {
 			portletPropertiesFile, "plugin.package.name=" + pluginPackageName);
 	}
 
+	@Override
 	public void copyTlds(File srcFile, PluginPackage pluginPackage)
 		throws Exception {
 
@@ -520,6 +530,7 @@ public class BaseDeployer implements AutoDeployer, Deployer {
 		FileUtil.write(targetFile, content);
 	}
 
+	@Override
 	public void copyXmls(
 			File srcFile, String displayName, PluginPackage pluginPackage)
 		throws Exception {
@@ -1601,6 +1612,7 @@ public class BaseDeployer implements AutoDeployer, Deployer {
 		FileUtil.delete(wsadminFileName);
 	}
 
+	@Override
 	public Map<String, String> processPluginPackageProperties(
 			File srcFile, String displayName, PluginPackage pluginPackage)
 		throws Exception {
@@ -1633,6 +1645,7 @@ public class BaseDeployer implements AutoDeployer, Deployer {
 	 * @see {@link PluginPackageUtil#_readPluginPackageServletContext(
 	 *      javax.servlet.ServletContext)}
 	 */
+	@Override
 	public PluginPackage readPluginPackage(File file) {
 		if (!file.exists()) {
 			return null;
@@ -1886,66 +1899,82 @@ public class BaseDeployer implements AutoDeployer, Deployer {
 		return document.compactString();
 	}
 
+	@Override
 	public void setAppServerType(String appServerType) {
 		this.appServerType = appServerType;
 	}
 
+	@Override
 	public void setAuiTaglibDTD(String auiTaglibDTD) {
 		this.auiTaglibDTD = auiTaglibDTD;
 	}
 
+	@Override
 	public void setBaseDir(String baseDir) {
 		this.baseDir = baseDir;
 	}
 
+	@Override
 	public void setDestDir(String destDir) {
 		this.destDir = destDir;
 	}
 
+	@Override
 	public void setFilePattern(String filePattern) {
 		this.filePattern = filePattern;
 	}
 
+	@Override
 	public void setJars(List<String> jars) {
 		this.jars = jars;
 	}
 
+	@Override
 	public void setJbossPrefix(String jbossPrefix) {
 		this.jbossPrefix = jbossPrefix;
 	}
 
+	@Override
 	public void setPortletExtTaglibDTD(String portletExtTaglibDTD) {
 		this.portletExtTaglibDTD = portletExtTaglibDTD;
 	}
 
+	@Override
 	public void setPortletTaglibDTD(String portletTaglibDTD) {
 		this.portletTaglibDTD = portletTaglibDTD;
 	}
 
+	@Override
 	public void setSecurityTaglibDTD(String securityTaglibDTD) {
 		this.securityTaglibDTD = securityTaglibDTD;
 	}
 
+	@Override
 	public void setThemeTaglibDTD(String themeTaglibDTD) {
 		this.themeTaglibDTD = themeTaglibDTD;
 	}
 
+	@Override
 	public void setTomcatLibDir(String tomcatLibDir) {
 		this.tomcatLibDir = tomcatLibDir;
 	}
 
+	@Override
 	public void setUiTaglibDTD(String uiTaglibDTD) {
 		this.uiTaglibDTD = uiTaglibDTD;
 	}
 
+	@Override
 	public void setUnpackWar(boolean unpackWar) {
 		this.unpackWar = unpackWar;
 	}
 
+	@Override
 	public void setUtilTaglibDTD(String utilTaglibDTD) {
 		this.utilTaglibDTD = utilTaglibDTD;
 	}
 
+	@Override
 	public void setWars(List<String> wars) {
 		this.wars = wars;
 	}
@@ -2059,6 +2088,7 @@ public class BaseDeployer implements AutoDeployer, Deployer {
 		return webXmlContent;
 	}
 
+	@Override
 	public void updateWebXml(
 			File webXml, File srcFile, String displayName,
 			PluginPackage pluginPackage)

@@ -21,6 +21,7 @@ import java.util.concurrent.RejectedExecutionException;
  */
 public class AbortPolicy implements RejectedExecutionHandler {
 
+	@Override
 	public void rejectedExecution(
 		Runnable runnable, ThreadPoolExecutor threadPoolExecutor) {
 

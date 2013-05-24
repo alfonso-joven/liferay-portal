@@ -87,6 +87,7 @@ public class JournalWebDAVStorageImpl extends BaseWebDAVStorageImpl {
 		}
 	}
 
+	@Override
 	public Resource getResource(WebDAVRequest webDavRequest)
 		throws WebDAVException {
 
@@ -144,6 +145,7 @@ public class JournalWebDAVStorageImpl extends BaseWebDAVStorageImpl {
 		}
 	}
 
+	@Override
 	public List<Resource> getResources(WebDAVRequest webDavRequest)
 		throws WebDAVException {
 

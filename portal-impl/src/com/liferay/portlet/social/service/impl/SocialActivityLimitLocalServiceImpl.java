@@ -28,6 +28,7 @@ import com.liferay.portlet.social.service.base.SocialActivityLimitLocalServiceBa
 public class SocialActivityLimitLocalServiceImpl
 	extends SocialActivityLimitLocalServiceBaseImpl {
 
+	@Override
 	@Transactional(
 		propagation = Propagation.REQUIRES_NEW,
 		rollbackFor = {PortalException.class, SystemException.class})

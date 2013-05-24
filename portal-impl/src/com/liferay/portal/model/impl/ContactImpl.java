@@ -25,6 +25,7 @@ public class ContactImpl extends ContactBaseImpl {
 	public ContactImpl() {
 	}
 
+	@Override
 	public String getFullName() {
 		FullNameGenerator fullNameGenerator =
 			FullNameGeneratorFactory.getInstance();

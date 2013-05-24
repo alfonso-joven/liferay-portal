@@ -45,6 +45,7 @@ public class PortletSessionListenerManager implements HttpSessionListener {
 		_httpSessionListeners.remove(httpSessionListener);
 	}
 
+	@Override
 	public void sessionCreated(HttpSessionEvent httpSessionEvent) {
 		httpSessionEvent = getHttpSessionEvent(httpSessionEvent);
 
@@ -70,6 +71,7 @@ public class PortletSessionListenerManager implements HttpSessionListener {
 		}
 	}
 
+	@Override
 	public void sessionDestroyed(HttpSessionEvent httpSessionEvent) {
 		httpSessionEvent = getHttpSessionEvent(httpSessionEvent);
 

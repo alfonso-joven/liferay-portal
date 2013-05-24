@@ -41,6 +41,7 @@ import java.util.Map;
 public class ResourceActionLocalServiceImpl
 	extends ResourceActionLocalServiceBaseImpl {
 
+	@Override
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public void checkResourceActions() throws SystemException {
 		if (PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM != 6) {
@@ -58,12 +59,14 @@ public class ResourceActionLocalServiceImpl
 		}
 	}
 
+	@Override
 	public void checkResourceActions(String name, List<String> actionIds)
 		throws SystemException {
 
 		checkResourceActions(name, actionIds, false);
 	}
 
+	@Override
 	public void checkResourceActions(
 			String name, List<String> actionIds, boolean addDefaultActions)
 		throws SystemException {
@@ -81,12 +84,14 @@ public class ResourceActionLocalServiceImpl
 			name, actionIds, resourceActions, addDefaultActions);
 	}
 
+	@Override
 	public ResourceAction fetchResourceAction(String name, String actionId) {
 		String key = encodeKey(name, actionId);
 
 		return _resourceActions.get(key);
 	}
 
+	@Override
 	public ResourceAction getResourceAction(String name, String actionId)
 		throws PortalException {
 
@@ -101,6 +106,7 @@ public class ResourceActionLocalServiceImpl
 		return resourceAction;
 	}
 
+	@Override
 	public List<ResourceAction> getResourceActions(String name)
 		throws SystemException {
 

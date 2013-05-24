@@ -85,7 +85,6 @@ public interface FileVersion extends RepositoryModel<FileVersion> {
 	@Override
 	public String getUserUuid() throws SystemException;
 
-	@Override
 	public String getUuid();
 
 	public String getVersion();

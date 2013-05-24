@@ -35,6 +35,7 @@ import javax.servlet.http.HttpServletRequest;
 @DoPrivileged
 public class BrowserSnifferImpl implements BrowserSniffer {
 
+	@Override
 	public boolean acceptsGzip(HttpServletRequest request) {
 		String acceptEncoding = request.getHeader(HttpHeaders.ACCEPT_ENCODING);
 
@@ -46,6 +47,7 @@ public class BrowserSnifferImpl implements BrowserSniffer {
 		}
 	}
 
+	@Override
 	public String getBrowserId(HttpServletRequest request) {
 		if (isIe(request)) {
 			return BROWSER_ID_IE;
@@ -58,6 +60,7 @@ public class BrowserSnifferImpl implements BrowserSniffer {
 		}
 	}
 
+	@Override
 	public float getMajorVersion(HttpServletRequest request) {
 		float majorVersion = 0;
 
@@ -72,6 +75,7 @@ public class BrowserSnifferImpl implements BrowserSniffer {
 		return majorVersion;
 	}
 
+	@Override
 	public String getRevision(HttpServletRequest request) {
 		String revision = StringPool.BLANK;
 
@@ -86,6 +90,7 @@ public class BrowserSnifferImpl implements BrowserSniffer {
 		return revision;
 	}
 
+	@Override
 	public String getVersion(HttpServletRequest request) {
 		String userAgent = getUserAgent(request);
 
@@ -119,6 +124,7 @@ public class BrowserSnifferImpl implements BrowserSniffer {
 		return version;
 	}
 
+	@Override
 	public boolean isAir(HttpServletRequest request) {
 		String userAgent = getUserAgent(request);
 
@@ -129,6 +135,7 @@ public class BrowserSnifferImpl implements BrowserSniffer {
 		return false;
 	}
 
+	@Override
 	public boolean isChrome(HttpServletRequest request) {
 		String userAgent = getUserAgent(request);
 
@@ -139,6 +146,7 @@ public class BrowserSnifferImpl implements BrowserSniffer {
 		return false;
 	}
 
+	@Override
 	public boolean isFirefox(HttpServletRequest request) {
 		if (!isMozilla(request)) {
 			return false;
@@ -155,6 +163,7 @@ public class BrowserSnifferImpl implements BrowserSniffer {
 		return false;
 	}
 
+	@Override
 	public boolean isGecko(HttpServletRequest request) {
 		String userAgent = getUserAgent(request);
 
@@ -165,6 +174,7 @@ public class BrowserSnifferImpl implements BrowserSniffer {
 		return false;
 	}
 
+	@Override
 	public boolean isIe(HttpServletRequest request) {
 		String userAgent = getUserAgent(request);
 
@@ -175,6 +185,7 @@ public class BrowserSnifferImpl implements BrowserSniffer {
 		return false;
 	}
 
+	@Override
 	public boolean isIphone(HttpServletRequest request) {
 		String userAgent = getUserAgent(request);
 
@@ -185,6 +196,7 @@ public class BrowserSnifferImpl implements BrowserSniffer {
 		return false;
 	}
 
+	@Override
 	public boolean isLinux(HttpServletRequest request) {
 		String userAgent = getUserAgent(request);
 
@@ -195,6 +207,7 @@ public class BrowserSnifferImpl implements BrowserSniffer {
 		return false;
 	}
 
+	@Override
 	public boolean isMac(HttpServletRequest request) {
 		String userAgent = getUserAgent(request);
 
@@ -205,6 +218,7 @@ public class BrowserSnifferImpl implements BrowserSniffer {
 		return false;
 	}
 
+	@Override
 	public boolean isMobile(HttpServletRequest request) {
 		String userAgent = getUserAgent(request);
 
@@ -215,6 +229,7 @@ public class BrowserSnifferImpl implements BrowserSniffer {
 		return false;
 	}
 
+	@Override
 	public boolean isMozilla(HttpServletRequest request) {
 		String userAgent = getUserAgent(request);
 
@@ -228,6 +243,7 @@ public class BrowserSnifferImpl implements BrowserSniffer {
 		return false;
 	}
 
+	@Override
 	public boolean isOpera(HttpServletRequest request) {
 		String userAgent = getUserAgent(request);
 
@@ -238,6 +254,7 @@ public class BrowserSnifferImpl implements BrowserSniffer {
 		return false;
 	}
 
+	@Override
 	public boolean isRtf(HttpServletRequest request) {
 		float majorVersion = getMajorVersion(request);
 
@@ -262,6 +279,7 @@ public class BrowserSnifferImpl implements BrowserSniffer {
 		return false;
 	}
 
+	@Override
 	public boolean isSafari(HttpServletRequest request) {
 		String userAgent = getUserAgent(request);
 
@@ -272,6 +290,7 @@ public class BrowserSnifferImpl implements BrowserSniffer {
 		return false;
 	}
 
+	@Override
 	public boolean isSun(HttpServletRequest request) {
 		String userAgent = getUserAgent(request);
 
@@ -282,10 +301,12 @@ public class BrowserSnifferImpl implements BrowserSniffer {
 		return false;
 	}
 
+	@Override
 	public boolean isWap(HttpServletRequest request) {
 		return isWapXhtml(request);
 	}
 
+	@Override
 	public boolean isWapXhtml(HttpServletRequest request) {
 		String accept = getAccept(request);
 
@@ -296,6 +317,7 @@ public class BrowserSnifferImpl implements BrowserSniffer {
 		return false;
 	}
 
+	@Override
 	public boolean isWebKit(HttpServletRequest request) {
 		String userAgent = getUserAgent(request);
 
@@ -308,6 +330,7 @@ public class BrowserSnifferImpl implements BrowserSniffer {
 		return false;
 	}
 
+	@Override
 	public boolean isWindows(HttpServletRequest request) {
 		String userAgent = getUserAgent(request);
 
@@ -320,6 +343,7 @@ public class BrowserSnifferImpl implements BrowserSniffer {
 		return false;
 	}
 
+	@Override
 	public boolean isWml(HttpServletRequest request) {
 		String accept = getAccept(request);
 

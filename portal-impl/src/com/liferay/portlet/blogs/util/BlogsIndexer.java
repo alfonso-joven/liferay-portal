@@ -59,10 +59,12 @@ public class BlogsIndexer extends BaseIndexer {
 
 	public static final String PORTLET_ID = PortletKeys.BLOGS;
 
+	@Override
 	public String[] getClassNames() {
 		return CLASS_NAMES;
 	}
 
+	@Override
 	public String getPortletId() {
 		return PORTLET_ID;
 	}

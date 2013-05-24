@@ -26,6 +26,7 @@ public class DLFolderCustomAttributesDisplay
 
 	public static final String CLASS_NAME = DLFolder.class.getName();
 
+	@Override
 	public String getClassName() {
 		return CLASS_NAME;
 	}

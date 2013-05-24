@@ -44,6 +44,7 @@ public class DLFileVersionImpl extends DLFileVersionBaseImpl {
 	public DLFileVersionImpl() {
 	}
 
+	@Override
 	public String getChecksum() throws PortalException, SystemException {
 		String dirName = "checksum/" + getFileEntryId();
 		String fileName = dirName + "/" + getFileVersionId() + ".hash";
@@ -62,6 +63,7 @@ public class DLFileVersionImpl extends DLFileVersionBaseImpl {
 		return checkSum;
 	}
 
+	@Override
 	public InputStream getContentStream(boolean incrementCounter)
 		throws PortalException, SystemException {
 
@@ -90,6 +92,7 @@ public class DLFileVersionImpl extends DLFileVersionBaseImpl {
 		}
 	}
 
+	@Override
 	public UnicodeProperties getExtraSettingsProperties() {
 		if (_extraSettingsProperties == null) {
 			_extraSettingsProperties = new UnicodeProperties(true);
@@ -105,10 +108,12 @@ public class DLFileVersionImpl extends DLFileVersionBaseImpl {
 		return _extraSettingsProperties;
 	}
 
+	@Override
 	public DLFileEntry getFileEntry() throws PortalException, SystemException {
 		return DLFileEntryLocalServiceUtil.getFileEntry(getFileEntryId());
 	}
 
+	@Override
 	public DLFolder getFolder() {
 		DLFolder dlFolder = null;
 
@@ -129,10 +134,12 @@ public class DLFileVersionImpl extends DLFileVersionBaseImpl {
 		return dlFolder;
 	}
 
+	@Override
 	public String getIcon() {
 		return DLUtil.getFileIcon(getExtension());
 	}
 
+	@Override
 	public void setChecksum(String checksum)
 		throws PortalException, SystemException {
 
@@ -168,6 +175,7 @@ public class DLFileVersionImpl extends DLFileVersionBaseImpl {
 		super.setExtraSettings(extraSettings);
 	}
 
+	@Override
 	public void setExtraSettingsProperties(
 		UnicodeProperties extraSettingsProperties) {
 

@@ -32,6 +32,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ParameterAutoLogin implements AutoLogin {
 
+	@Override
 	public String[] login(
 			HttpServletRequest request, HttpServletResponse response)
 		throws AutoLoginException {

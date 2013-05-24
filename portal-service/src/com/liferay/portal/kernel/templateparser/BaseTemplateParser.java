@@ -45,26 +45,32 @@ import java.util.Map;
  */
 public abstract class BaseTemplateParser implements TemplateParser {
 
+	@Override
 	public String getLanguageId() {
 		return _languageId;
 	}
 
+	@Override
 	public String getScript() {
 		return _script;
 	}
 
+	@Override
 	public ThemeDisplay getThemeDisplay() {
 		return _themeDisplay;
 	}
 
+	@Override
 	public Map<String, String> getTokens() {
 		return _tokens;
 	}
 
+	@Override
 	public String getViewMode() {
 		return _viewMode;
 	}
 
+	@Override
 	public String getXML() {
 		return _xml;
 	}
@@ -73,30 +79,37 @@ public abstract class BaseTemplateParser implements TemplateParser {
 		_contextObjects = contextObjects;
 	}
 
+	@Override
 	public void setLanguageId(String languageId) {
 		_languageId = languageId;
 	}
 
+	@Override
 	public void setScript(String script) {
 		_script = script;
 	}
 
+	@Override
 	public void setThemeDisplay(ThemeDisplay themeDisplay) {
 		_themeDisplay = themeDisplay;
 	}
 
+	@Override
 	public void setTokens(Map<String, String> tokens) {
 		_tokens = tokens;
 	}
 
+	@Override
 	public void setViewMode(String viewMode) {
 		_viewMode = viewMode;
 	}
 
+	@Override
 	public void setXML(String xml) {
 		_xml = xml;
 	}
 
+	@Override
 	public String transform() throws TransformException {
 		UnsyncStringWriter unsyncStringWriter = new UnsyncStringWriter();
 

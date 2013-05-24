@@ -74,6 +74,7 @@ public class DDMImpl implements DDM {
 
 	public static final String TYPE_SELECT = "select";
 
+	@Override
 	public Fields getFields(
 			long ddmStructureId, long ddmTemplateId,
 			ServiceContext serviceContext)
@@ -83,6 +84,7 @@ public class DDMImpl implements DDM {
 			ddmStructureId, ddmTemplateId, StringPool.BLANK, serviceContext);
 	}
 
+	@Override
 	public Fields getFields(
 			long ddmStructureId, long ddmTemplateId, String fieldNamespace,
 			ServiceContext serviceContext)
@@ -161,12 +163,14 @@ public class DDMImpl implements DDM {
 		return fields;
 	}
 
+	@Override
 	public Fields getFields(long ddmStructureId, ServiceContext serviceContext)
 		throws PortalException, SystemException {
 
 		return getFields(ddmStructureId, 0, serviceContext);
 	}
 
+	@Override
 	public Fields getFields(
 			long ddmStructureId, String fieldNamespace,
 			ServiceContext serviceContext)
@@ -175,6 +179,7 @@ public class DDMImpl implements DDM {
 		return getFields(ddmStructureId, 0, fieldNamespace, serviceContext);
 	}
 
+	@Override
 	public String getFileUploadPath(BaseModel<?> baseModel) {
 		StringBundler sb = new StringBundler(7);
 
@@ -218,6 +223,7 @@ public class DDMImpl implements DDM {
 		return sb.toString();
 	}
 
+	@Override
 	public void sendFieldFile(
 			HttpServletRequest request, HttpServletResponse response,
 			Field field)
@@ -247,6 +253,7 @@ public class DDMImpl implements DDM {
 			request, response, fileName, is, contentLength, contentType);
 	}
 
+	@Override
 	public String uploadFieldFile(
 			long structureId, long storageId, BaseModel<?> baseModel,
 			String fieldName, ServiceContext serviceContext)
@@ -257,6 +264,7 @@ public class DDMImpl implements DDM {
 			serviceContext);
 	}
 
+	@Override
 	public String uploadFieldFile(
 			long structureId, long storageId, BaseModel<?> baseModel,
 			String fieldName, String fieldNamespace,

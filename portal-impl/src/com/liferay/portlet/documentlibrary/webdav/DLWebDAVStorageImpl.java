@@ -267,6 +267,7 @@ public class DLWebDAVStorageImpl extends BaseWebDAVStorageImpl {
 		}
 	}
 
+	@Override
 	public Resource getResource(WebDAVRequest webDavRequest)
 		throws WebDAVException {
 
@@ -315,6 +316,7 @@ public class DLWebDAVStorageImpl extends BaseWebDAVStorageImpl {
 		}
 	}
 
+	@Override
 	public List<Resource> getResources(WebDAVRequest webDavRequest)
 		throws WebDAVException {
 

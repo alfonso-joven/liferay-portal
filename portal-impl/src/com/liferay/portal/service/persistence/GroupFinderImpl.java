@@ -127,6 +127,7 @@ public class GroupFinderImpl
 	public static final String JOIN_BY_USERS_GROUPS =
 		GroupFinder.class.getName() + ".joinByUsersGroups";
 
+	@Override
 	public int countByG_U(long groupId, long userId, boolean inherit)
 		throws SystemException {
 
@@ -173,6 +174,7 @@ public class GroupFinderImpl
 		}
 	}
 
+	@Override
 	public int countByC_N_D(
 			long companyId, String name, String realName, String description,
 			LinkedHashMap<String, Object> params)
@@ -183,6 +185,7 @@ public class GroupFinderImpl
 			description, params);
 	}
 
+	@Override
 	public int countByC_C_N_D(
 			long companyId, long[] classNameIds, String name, String realName,
 			String description, LinkedHashMap<String, Object> params)
@@ -263,6 +266,7 @@ public class GroupFinderImpl
 		}
 	}
 
+	@Override
 	public List<Group> findByLiveGroups() throws SystemException {
 		Session session = null;
 
@@ -285,6 +289,7 @@ public class GroupFinderImpl
 		}
 	}
 
+	@Override
 	public List<Group> findByNoLayouts(
 			long classNameId, boolean privateLayout, int start, int end)
 		throws SystemException {
@@ -315,6 +320,7 @@ public class GroupFinderImpl
 		}
 	}
 
+	@Override
 	public List<Group> findByNullFriendlyURL() throws SystemException {
 		Session session = null;
 
@@ -337,6 +343,7 @@ public class GroupFinderImpl
 		}
 	}
 
+	@Override
 	public List<Group> findBySystem(long companyId) throws SystemException {
 		Session session = null;
 
@@ -363,6 +370,7 @@ public class GroupFinderImpl
 		}
 	}
 
+	@Override
 	public List<Group> findByCompanyId(
 			long companyId, LinkedHashMap<String, Object> params, int start,
 			int end, OrderByComparator obc)
@@ -502,6 +510,7 @@ public class GroupFinderImpl
 		}
 	}
 
+	@Override
 	public Group findByC_N(long companyId, String name)
 		throws NoSuchGroupException, SystemException {
 
@@ -547,6 +556,7 @@ public class GroupFinderImpl
 		throw new NoSuchGroupException(sb.toString());
 	}
 
+	@Override
 	public List<Group> findByC_N_D(
 			long companyId, String name, String realName, String description,
 			LinkedHashMap<String, Object> params, int start, int end,
@@ -558,6 +568,7 @@ public class GroupFinderImpl
 			description, params, start, end, obc);
 	}
 
+	@Override
 	public List<Group> findByC_C_N_D(
 			long companyId, long[] classNameIds, String name, String realName,
 			String description, LinkedHashMap<String, Object> params, int start,

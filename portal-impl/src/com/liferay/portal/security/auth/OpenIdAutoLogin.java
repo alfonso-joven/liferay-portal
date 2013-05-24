@@ -31,6 +31,7 @@ import javax.servlet.http.HttpSession;
  */
 public class OpenIdAutoLogin implements AutoLogin {
 
+	@Override
 	public String[] login(
 		HttpServletRequest request, HttpServletResponse response) {
 

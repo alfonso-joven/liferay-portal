@@ -56,10 +56,12 @@ public class VelocityEngineImpl implements VelocityEngine {
 	public VelocityEngineImpl() {
 	}
 
+	@Override
 	public void clearClassLoader(ClassLoader classLoader) {
 		_classLoaderToolsContextsMap.remove(classLoader);
 	}
 
+	@Override
 	public void flushTemplate(String velocityTemplateId) {
 		StringResourceRepository stringResourceRepository =
 			StringResourceLoader.getRepository();
@@ -72,16 +74,19 @@ public class VelocityEngineImpl implements VelocityEngine {
 			_getResourceCacheKey(velocityTemplateId));
 	}
 
+	@Override
 	@NotPrivileged
 	public VelocityContext getEmptyContext() {
 		return new VelocityContextImpl();
 	}
 
+	@Override
 	@NotPrivileged
 	public VelocityContext getRestrictedToolsContext() {
 		return _getToolsContext(_RESTRICTED);
 	}
 
+	@Override
 	@NotPrivileged
 	public VelocityContext getStandardToolsContext() {
 		return _getToolsContext(_STANDARD);
@@ -91,21 +96,25 @@ public class VelocityEngineImpl implements VelocityEngine {
 		return _pacl.getTemplateControlContext();
 	}
 
+	@Override
 	@NotPrivileged
 	public VelocityContext getWrappedClassLoaderToolsContext() {
 		return new VelocityContextImpl(_getToolsContext(_STANDARD));
 	}
 
+	@Override
 	@NotPrivileged
 	public VelocityContext getWrappedRestrictedToolsContext() {
 		return new VelocityContextImpl(_getToolsContext(_RESTRICTED));
 	}
 
+	@Override
 	@NotPrivileged
 	public VelocityContext getWrappedStandardToolsContext() {
 		return new VelocityContextImpl(_getToolsContext(_STANDARD));
 	}
 
+	@Override
 	public void init() throws Exception {
 		if (_velocityEngine != null) {
 			return;
@@ -202,6 +211,7 @@ public class VelocityEngineImpl implements VelocityEngine {
 			_standardToolsContext, null);
 	}
 
+	@Override
 	@NotPrivileged
 	public boolean mergeTemplate(
 			String velocityTemplateId, String velocityTemplateContent,
@@ -220,6 +230,7 @@ public class VelocityEngineImpl implements VelocityEngine {
 		return true;
 	}
 
+	@Override
 	@NotPrivileged
 	public boolean mergeTemplate(
 			String velocityTemplateId, VelocityContext velocityContext,
@@ -229,6 +240,7 @@ public class VelocityEngineImpl implements VelocityEngine {
 		return mergeTemplate(velocityTemplateId, null, velocityContext, writer);
 	}
 
+	@Override
 	@NotPrivileged
 	public boolean resourceExists(String resource) {
 		return _velocityEngine.resourceExists(resource);

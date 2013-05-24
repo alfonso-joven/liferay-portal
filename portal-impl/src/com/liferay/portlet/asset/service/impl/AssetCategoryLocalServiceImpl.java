@@ -57,6 +57,7 @@ import java.util.concurrent.Callable;
 public class AssetCategoryLocalServiceImpl
 	extends AssetCategoryLocalServiceBaseImpl {
 
+	@Override
 	public AssetCategory addCategory(
 			long userId, long parentCategoryId, Map<Locale, String> titleMap,
 			Map<Locale, String> descriptionMap, long vocabularyId,
@@ -144,6 +145,7 @@ public class AssetCategoryLocalServiceImpl
 		return category;
 	}
 
+	@Override
 	public void addCategoryResources(
 			AssetCategory category, boolean addGroupPermissions,
 			boolean addGuestPermissions)
@@ -156,6 +158,7 @@ public class AssetCategoryLocalServiceImpl
 			addGuestPermissions);
 	}
 
+	@Override
 	public void addCategoryResources(
 			AssetCategory category, String[] groupPermissions,
 			String[] guestPermissions)
@@ -167,12 +170,14 @@ public class AssetCategoryLocalServiceImpl
 			category.getCategoryId(), groupPermissions, guestPermissions);
 	}
 
+	@Override
 	public void deleteCategory(AssetCategory category)
 		throws PortalException, SystemException {
 
 		deleteCategory(category, false);
 	}
 
+	@Override
 	public void deleteCategory(long categoryId)
 		throws PortalException, SystemException {
 
@@ -182,6 +187,7 @@ public class AssetCategoryLocalServiceImpl
 		deleteCategory(category);
 	}
 
+	@Override
 	public void deleteVocabularyCategories(long vocabularyId)
 		throws PortalException, SystemException {
 
@@ -197,14 +203,17 @@ public class AssetCategoryLocalServiceImpl
 		}
 	}
 
+	@Override
 	public AssetCategory fetchCategory(long categoryId) throws SystemException {
 		return assetCategoryPersistence.fetchByPrimaryKey(categoryId);
 	}
 
+	@Override
 	public List<AssetCategory> getCategories() throws SystemException {
 		return assetCategoryPersistence.findAll();
 	}
 
+	@Override
 	@ThreadLocalCachable
 	public List<AssetCategory> getCategories(long classNameId, long classPK)
 		throws SystemException {
@@ -219,6 +228,7 @@ public class AssetCategoryLocalServiceImpl
 		return assetEntryPersistence.getAssetCategories(entry.getEntryId());
 	}
 
+	@Override
 	public List<AssetCategory> getCategories(String className, long classPK)
 		throws SystemException {
 
@@ -227,40 +237,47 @@ public class AssetCategoryLocalServiceImpl
 		return getCategories(classNameId, classPK);
 	}
 
+	@Override
 	public AssetCategory getCategory(long categoryId)
 		throws PortalException, SystemException {
 
 		return assetCategoryPersistence.findByPrimaryKey(categoryId);
 	}
 
+	@Override
 	public AssetCategory getCategory(String uuid, long groupId)
 		throws PortalException, SystemException {
 
 		return assetCategoryPersistence.findByUUID_G(uuid, groupId);
 	}
 
+	@Override
 	public long[] getCategoryIds(String className, long classPK)
 		throws SystemException {
 
 		return getCategoryIds(getCategories(className, classPK));
 	}
 
+	@Override
 	public String[] getCategoryNames() throws SystemException {
 		return getCategoryNames(getCategories());
 	}
 
+	@Override
 	public String[] getCategoryNames(long classNameId, long classPK)
 		throws SystemException {
 
 		return getCategoryNames(getCategories(classNameId, classPK));
 	}
 
+	@Override
 	public String[] getCategoryNames(String className, long classPK)
 		throws SystemException {
 
 		return getCategoryNames(getCategories(className, classPK));
 	}
 
+	@Override
 	public List<AssetCategory> getChildCategories(long parentCategoryId)
 		throws SystemException {
 
@@ -268,6 +285,7 @@ public class AssetCategoryLocalServiceImpl
 			parentCategoryId);
 	}
 
+	@Override
 	public List<AssetCategory> getChildCategories(
 			long parentCategoryId, int start, int end, OrderByComparator obc)
 		throws SystemException {
@@ -276,6 +294,7 @@ public class AssetCategoryLocalServiceImpl
 			parentCategoryId, start, end, obc);
 	}
 
+	@Override
 	public int getChildCategoriesCount(long parentCategoryId)
 		throws SystemException {
 
@@ -283,12 +302,14 @@ public class AssetCategoryLocalServiceImpl
 			parentCategoryId);
 	}
 
+	@Override
 	public List<AssetCategory> getEntryCategories(long entryId)
 		throws SystemException {
 
 		return assetEntryPersistence.getAssetCategories(entryId);
 	}
 
+	@Override
 	public List<AssetCategory> getVocabularyCategories(
 			long vocabularyId, int start, int end, OrderByComparator obc)
 		throws SystemException {
@@ -297,6 +318,7 @@ public class AssetCategoryLocalServiceImpl
 			vocabularyId, start, end, obc);
 	}
 
+	@Override
 	public List<AssetCategory> getVocabularyCategories(
 			long parentCategoryId, long vocabularyId, int start, int end,
 			OrderByComparator obc)
@@ -306,12 +328,14 @@ public class AssetCategoryLocalServiceImpl
 			parentCategoryId, vocabularyId, start, end, obc);
 	}
 
+	@Override
 	public int getVocabularyCategoriesCount(long vocabularyId)
 		throws SystemException {
 
 		return assetCategoryPersistence.countByVocabularyId(vocabularyId);
 	}
 
+	@Override
 	public List<AssetCategory> getVocabularyRootCategories(
 			long vocabularyId, int start, int end, OrderByComparator obc)
 		throws SystemException {
@@ -321,6 +345,7 @@ public class AssetCategoryLocalServiceImpl
 			start, end, obc);
 	}
 
+	@Override
 	public int getVocabularyRootCategoriesCount(long vocabularyId)
 		throws SystemException {
 
@@ -328,6 +353,7 @@ public class AssetCategoryLocalServiceImpl
 			AssetCategoryConstants.DEFAULT_PARENT_CATEGORY_ID, vocabularyId);
 	}
 
+	@Override
 	public void mergeCategories(long fromCategoryId, long toCategoryId)
 		throws PortalException, SystemException {
 
@@ -355,6 +381,7 @@ public class AssetCategoryLocalServiceImpl
 		deleteCategory(fromCategoryId);
 	}
 
+	@Override
 	public AssetCategory moveCategory(
 			long categoryId, long parentCategoryId, long vocabularyId,
 			ServiceContext serviceContext)
@@ -386,12 +413,14 @@ public class AssetCategoryLocalServiceImpl
 		return category;
 	}
 
+	@Override
 	public void rebuildTree(long groupId, boolean force)
 		throws SystemException {
 
 		assetCategoryPersistence.rebuildTree(groupId, force);
 	}
 
+	@Override
 	public List<AssetCategory> search(
 			long groupId, String name, String[] categoryProperties, int start,
 			int end)
@@ -401,6 +430,7 @@ public class AssetCategoryLocalServiceImpl
 			groupId, name, categoryProperties, start, end);
 	}
 
+	@Override
 	public AssetCategory updateCategory(
 			long userId, long categoryId, long parentCategoryId,
 			Map<Locale, String> titleMap, Map<Locale, String> descriptionMap,

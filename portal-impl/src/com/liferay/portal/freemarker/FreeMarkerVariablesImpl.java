@@ -100,6 +100,7 @@ import org.apache.struts.tiles.ComponentContext;
  */
 public class FreeMarkerVariablesImpl implements FreeMarkerVariables {
 
+	@Override
 	public void insertHelperUtilities(
 		FreeMarkerContext freeMarkerContext, String[] restrictedVariables) {
 
@@ -529,6 +530,7 @@ public class FreeMarkerVariablesImpl implements FreeMarkerVariables {
 		}
 	}
 
+	@Override
 	public void insertVariables(
 			FreeMarkerContext freeMarkerContext, HttpServletRequest request)
 		throws Exception {

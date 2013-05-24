@@ -60,6 +60,7 @@ public class JSONFactoryImpl implements JSONFactory {
 		}
 	}
 
+	@Override
 	public String convertJSONMLArrayToXML(String jsonml) {
 		try {
 			org.json.JSONArray jsonArray = new org.json.JSONArray(jsonml);
@@ -75,6 +76,7 @@ public class JSONFactoryImpl implements JSONFactory {
 		}
 	}
 
+	@Override
 	public String convertJSONMLObjectToXML(String jsonml) {
 		try {
 			org.json.JSONObject jsonObject = new org.json.JSONObject(jsonml);
@@ -90,6 +92,7 @@ public class JSONFactoryImpl implements JSONFactory {
 		}
 	}
 
+	@Override
 	public String convertXMLtoJSONMLArray(String xml) {
 		try {
 			org.json.JSONArray jsonArray = JSONML.toJSONArray(xml);
@@ -105,6 +108,7 @@ public class JSONFactoryImpl implements JSONFactory {
 		}
 	}
 
+	@Override
 	public String convertXMLtoJSONMLObject(String xml) {
 		try {
 			org.json.JSONObject jsonObject = JSONML.toJSONObject(xml);
@@ -120,6 +124,7 @@ public class JSONFactoryImpl implements JSONFactory {
 		}
 	}
 
+	@Override
 	public JSONTransformer createJavaScriptNormalizerJSONTransformer(
 		List<String> javaScriptAttributes) {
 
@@ -130,34 +135,42 @@ public class JSONFactoryImpl implements JSONFactory {
 		return stringTransformer;
 	}
 
+	@Override
 	public JSONArray createJSONArray() {
 		return new JSONArrayImpl();
 	}
 
+	@Override
 	public JSONArray createJSONArray(String json) throws JSONException {
 		return new JSONArrayImpl(json);
 	}
 
+	@Override
 	public <T> JSONDeserializer<T> createJSONDeserializer() {
 		return new JSONDeserializerImpl<T>();
 	}
 
+	@Override
 	public JSONObject createJSONObject() {
 		return new JSONObjectImpl();
 	}
 
+	@Override
 	public JSONObject createJSONObject(String json) throws JSONException {
 		return new JSONObjectImpl(json);
 	}
 
+	@Override
 	public JSONSerializer createJSONSerializer() {
 		return new JSONSerializerImpl();
 	}
 
+	@Override
 	public Object deserialize(JSONObject jsonObj) {
 		return deserialize(jsonObj.toString());
 	}
 
+	@Override
 	public Object deserialize(String json) {
 		try {
 			return _jsonSerializer.fromJSON(json);
@@ -171,10 +184,12 @@ public class JSONFactoryImpl implements JSONFactory {
 		}
 	}
 
+	@Override
 	public String getNullJSON() {
 		return _NULL_JSON;
 	}
 
+	@Override
 	public Object looseDeserialize(String json) {
 		try {
 			JSONDeserializer<?> jsonDeserializer = createJSONDeserializer();
@@ -190,6 +205,7 @@ public class JSONFactoryImpl implements JSONFactory {
 		}
 	}
 
+	@Override
 	public <T> T looseDeserialize(String json, Class<T> clazz) {
 		JSONDeserializer<?> jsonDeserializer = createJSONDeserializer();
 
@@ -198,6 +214,7 @@ public class JSONFactoryImpl implements JSONFactory {
 		return (T)jsonDeserializer.deserialize(json);
 	}
 
+	@Override
 	public Object looseDeserializeSafe(String json) {
 		try {
 			JSONDeserializer<?> jsonDeserializer = createJSONDeserializer();
@@ -215,6 +232,7 @@ public class JSONFactoryImpl implements JSONFactory {
 		}
 	}
 
+	@Override
 	public <T> T looseDeserializeSafe(String json, Class<T> clazz) {
 		JSONDeserializer<?> jsonDeserializer = createJSONDeserializer();
 
@@ -225,12 +243,14 @@ public class JSONFactoryImpl implements JSONFactory {
 		return (T)jsonDeserializer.deserialize(json);
 	}
 
+	@Override
 	public String looseSerialize(Object object) {
 		JSONSerializer jsonSerializer = createJSONSerializer();
 
 		return jsonSerializer.serialize(object);
 	}
 
+	@Override
 	public String looseSerialize(
 		Object object, JSONTransformer jsonTransformer, Class<?> clazz) {
 
@@ -250,12 +270,14 @@ public class JSONFactoryImpl implements JSONFactory {
 		return jsonSerializer.serialize(object);
 	}
 
+	@Override
 	public String looseSerializeDeep(Object object) {
 		JSONSerializer jsonSerializer = createJSONSerializer();
 
 		return jsonSerializer.serializeDeep(object);
 	}
 
+	@Override
 	public String looseSerializeDeep(
 		Object object, JSONTransformer jsonTransformer, Class<?> clazz) {
 
@@ -266,6 +288,7 @@ public class JSONFactoryImpl implements JSONFactory {
 		return jsonSerializer.serializeDeep(object);
 	}
 
+	@Override
 	public String serialize(Object object) {
 		try {
 			return _jsonSerializer.toJSON(object);
@@ -279,6 +302,7 @@ public class JSONFactoryImpl implements JSONFactory {
 		}
 	}
 
+	@Override
 	public String serializeException(Exception exception) {
 		JSONObject jsonObject = createJSONObject();
 
@@ -302,6 +326,7 @@ public class JSONFactoryImpl implements JSONFactory {
 		return jsonObject.toString();
 	}
 
+	@Override
 	public String serializeThrowable(Throwable throwable) {
 		if (throwable instanceof Exception) {
 			return serializeException((Exception)throwable);

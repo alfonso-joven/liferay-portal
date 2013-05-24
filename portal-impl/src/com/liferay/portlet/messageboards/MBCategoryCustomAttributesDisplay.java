@@ -26,6 +26,7 @@ public class MBCategoryCustomAttributesDisplay
 
 	public static final String CLASS_NAME = MBCategory.class.getName();
 
+	@Override
 	public String getClassName() {
 		return CLASS_NAME;
 	}

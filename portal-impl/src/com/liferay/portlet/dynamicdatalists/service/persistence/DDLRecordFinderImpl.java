@@ -43,6 +43,7 @@ public class DDLRecordFinderImpl extends BasePersistenceImpl<DDLRecord>
 	public static final String FIND_BY_R_S =
 		DDLRecordFinder.class.getName() + ".findByR_S";
 
+	@Override
 	public int countByR_S(long recordSetId, int status) throws SystemException {
 		Session session = null;
 
@@ -88,6 +89,7 @@ public class DDLRecordFinderImpl extends BasePersistenceImpl<DDLRecord>
 		}
 	}
 
+	@Override
 	public List<DDLRecord> findByR_S(
 			long recordSetId, int status, int start, int end,
 			OrderByComparator orderByComparator)

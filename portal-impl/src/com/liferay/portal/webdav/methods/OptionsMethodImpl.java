@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class OptionsMethodImpl implements Method {
 
+	@Override
 	public int process(WebDAVRequest webDavRequest) {
 		HttpServletResponse response = webDavRequest.getHttpServletResponse();
 

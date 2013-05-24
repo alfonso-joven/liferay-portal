@@ -92,6 +92,7 @@ public class EhcachePortalCacheManager implements PortalCacheManager {
 		}
 	}
 
+	@Override
 	public void clearAll() {
 		_cacheManager.clearAll();
 	}
@@ -107,10 +108,12 @@ public class EhcachePortalCacheManager implements PortalCacheManager {
 		}
 	}
 
+	@Override
 	public PortalCache getCache(String name) {
 		return getCache(name, false);
 	}
 
+	@Override
 	public PortalCache getCache(String name, boolean blocking) {
 		PortalCache portalCache = _ehcachePortalCaches.get(name);
 
@@ -142,6 +145,7 @@ public class EhcachePortalCacheManager implements PortalCacheManager {
 		return _cacheManager;
 	}
 
+	@Override
 	public void reconfigureCaches(URL configurationURL) {
 		Configuration configuration = EhcacheConfigurationUtil.getConfiguration(
 			configurationURL, _clusterAware, _usingDefault);
@@ -163,6 +167,7 @@ public class EhcachePortalCacheManager implements PortalCacheManager {
 		}
 	}
 
+	@Override
 	public void removeCache(String name) {
 		_ehcachePortalCaches.remove(name);
 

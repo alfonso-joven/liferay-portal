@@ -33,6 +33,7 @@ import java.util.List;
  */
 public class UsersControlPanelEntry extends BaseControlPanelEntry {
 
+	@Override
 	public boolean isVisible(
 			PermissionChecker permissionChecker, Portlet portlet)
 		throws Exception {

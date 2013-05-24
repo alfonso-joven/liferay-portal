@@ -38,6 +38,7 @@ import java.util.List;
  */
 public class TeamLocalServiceImpl extends TeamLocalServiceBaseImpl {
 
+	@Override
 	public Team addTeam(
 			long userId, long groupId, String name, String description)
 		throws PortalException, SystemException {
@@ -110,6 +111,7 @@ public class TeamLocalServiceImpl extends TeamLocalServiceBaseImpl {
 		return team;
 	}
 
+	@Override
 	public void deleteTeams(long groupId)
 		throws PortalException, SystemException {
 
@@ -120,10 +122,12 @@ public class TeamLocalServiceImpl extends TeamLocalServiceBaseImpl {
 		}
 	}
 
+	@Override
 	public List<Team> getGroupTeams(long groupId) throws SystemException {
 		return teamPersistence.findByGroupId(groupId);
 	}
 
+	@Override
 	public Team getTeam(long groupId, String name)
 		throws PortalException, SystemException {
 
@@ -135,6 +139,7 @@ public class TeamLocalServiceImpl extends TeamLocalServiceBaseImpl {
 		return userPersistence.getTeams(userId);
 	}
 
+	@Override
 	public List<Team> getUserTeams(long userId, long groupId)
 		throws SystemException {
 
@@ -155,6 +160,7 @@ public class TeamLocalServiceImpl extends TeamLocalServiceBaseImpl {
 		return userPersistence.containsTeam(userId, teamId);
 	}
 
+	@Override
 	public List<Team> search(
 			long groupId, String name, String description,
 			LinkedHashMap<String, Object> params, int start, int end,
@@ -165,6 +171,7 @@ public class TeamLocalServiceImpl extends TeamLocalServiceBaseImpl {
 			groupId, name, description, params, start, end, obc);
 	}
 
+	@Override
 	public int searchCount(
 			long groupId, String name, String description,
 			LinkedHashMap<String, Object> params)
@@ -173,6 +180,7 @@ public class TeamLocalServiceImpl extends TeamLocalServiceBaseImpl {
 		return teamFinder.countByG_N_D(groupId, name, description, params);
 	}
 
+	@Override
 	public Team updateTeam(long teamId, String name, String description)
 		throws PortalException, SystemException {
 

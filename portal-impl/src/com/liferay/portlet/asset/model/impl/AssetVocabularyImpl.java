@@ -39,6 +39,7 @@ public class AssetVocabularyImpl extends AssetVocabularyBaseImpl {
 		}
 	}
 
+	@Override
 	public UnicodeProperties getSettingsProperties() {
 		if (_settingsProperties == null) {
 			_settingsProperties = new UnicodeProperties(true);
@@ -71,6 +72,7 @@ public class AssetVocabularyImpl extends AssetVocabularyBaseImpl {
 		return value;
 	}
 
+	@Override
 	public boolean isMultiValued() {
 		if (Validator.isNull(_settingsProperties)) {
 			_settingsProperties = getSettingsProperties();
@@ -80,6 +82,7 @@ public class AssetVocabularyImpl extends AssetVocabularyBaseImpl {
 			_settingsProperties.getProperty("multiValued"), true);
 	}
 
+	@Override
 	public boolean isRequired(long classNameId) {
 		if (Validator.isNull(_settingsProperties)) {
 			_settingsProperties = getSettingsProperties();
@@ -98,6 +101,7 @@ public class AssetVocabularyImpl extends AssetVocabularyBaseImpl {
 		super.setSettings(settings);
 	}
 
+	@Override
 	public void setSettingsProperties(UnicodeProperties settingsProperties) {
 		_settingsProperties = settingsProperties;
 

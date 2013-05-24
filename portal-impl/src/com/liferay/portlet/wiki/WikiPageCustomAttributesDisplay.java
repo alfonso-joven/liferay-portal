@@ -26,6 +26,7 @@ public class WikiPageCustomAttributesDisplay
 
 	public static final String CLASS_NAME = WikiPage.class.getName();
 
+	@Override
 	public String getClassName() {
 		return CLASS_NAME;
 	}

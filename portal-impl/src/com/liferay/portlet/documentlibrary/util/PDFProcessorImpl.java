@@ -82,6 +82,7 @@ import org.im4java.core.IMOperation;
 public class PDFProcessorImpl
 	extends DLPreviewableProcessor implements PDFProcessor {
 
+	@Override
 	public void afterPropertiesSet() throws Exception {
 		FileUtil.mkdirs(PREVIEW_TMP_PATH);
 		FileUtil.mkdirs(THUMBNAIL_TMP_PATH);
@@ -89,10 +90,12 @@ public class PDFProcessorImpl
 		reset();
 	}
 
+	@Override
 	public void generateImages(FileVersion fileVersion) throws Exception {
 		_generateImages(fileVersion);
 	}
 
+	@Override
 	public String getGlobalSearchPath() throws Exception {
 		try {
 			PortletPreferences preferences = PrefsPropsUtil.getPreferences();
@@ -123,12 +126,14 @@ public class PDFProcessorImpl
 			PropsKeys.IMAGEMAGICK_GLOBAL_SEARCH_PATH, new Filter(filterName));
 	}
 
+	@Override
 	public InputStream getPreviewAsStream(FileVersion fileVersion, int index)
 		throws Exception {
 
 		return doGetPreviewAsStream(fileVersion, index, PREVIEW_TYPE);
 	}
 
+	@Override
 	public int getPreviewFileCount(FileVersion fileVersion) {
 		try {
 			return doGetPreviewFileCount(fileVersion);
@@ -140,12 +145,14 @@ public class PDFProcessorImpl
 		return 0;
 	}
 
+	@Override
 	public long getPreviewFileSize(FileVersion fileVersion, int index)
 		throws Exception {
 
 		return doGetPreviewFileSize(fileVersion, index);
 	}
 
+	@Override
 	public Properties getResourceLimitsProperties() throws Exception {
 		try {
 			Properties resourceLimitsProperties = PrefsPropsUtil.getProperties(
@@ -162,18 +169,21 @@ public class PDFProcessorImpl
 			PropsKeys.IMAGEMAGICK_RESOURCE_LIMIT, true);
 	}
 
+	@Override
 	public InputStream getThumbnailAsStream(FileVersion fileVersion, int index)
 		throws Exception {
 
 		return doGetThumbnailAsStream(fileVersion, index);
 	}
 
+	@Override
 	public long getThumbnailFileSize(FileVersion fileVersion, int index)
 		throws Exception {
 
 		return doGetThumbnailFileSize(fileVersion, index);
 	}
 
+	@Override
 	public boolean hasImages(FileVersion fileVersion) {
 		boolean hasImages = false;
 
@@ -191,14 +201,17 @@ public class PDFProcessorImpl
 		return hasImages;
 	}
 
+	@Override
 	public boolean isDocumentSupported(FileVersion fileVersion) {
 		return isSupported(fileVersion);
 	}
 
+	@Override
 	public boolean isDocumentSupported(String mimeType) {
 		return isSupported(mimeType);
 	}
 
+	@Override
 	public boolean isImageMagickEnabled() throws Exception {
 		boolean enabled = false;
 
@@ -227,6 +240,7 @@ public class PDFProcessorImpl
 		return enabled;
 	}
 
+	@Override
 	public boolean isSupported(String mimeType) {
 		if (Validator.isNull(mimeType)) {
 			return false;
@@ -256,6 +270,7 @@ public class PDFProcessorImpl
 		return false;
 	}
 
+	@Override
 	public void reset() throws Exception {
 		if (isImageMagickEnabled()) {
 			_globalSearchPath = getGlobalSearchPath();
@@ -264,6 +279,7 @@ public class PDFProcessorImpl
 		}
 	}
 
+	@Override
 	public void trigger(FileVersion fileVersion) {
 		_queueGeneration(fileVersion);
 	}

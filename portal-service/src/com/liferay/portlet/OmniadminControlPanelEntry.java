@@ -23,6 +23,7 @@ import com.liferay.portal.theme.ThemeDisplay;
  */
 public class OmniadminControlPanelEntry extends BaseControlPanelEntry {
 
+	@Override
 	public boolean isVisible(
 			PermissionChecker permissionChecker, Portlet portlet)
 		throws Exception {

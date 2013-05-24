@@ -103,6 +103,7 @@ import org.apache.velocity.tools.generic.SortTool;
  */
 public class VelocityVariablesImpl implements VelocityVariables {
 
+	@Override
 	public void insertHelperUtilities(
 		VelocityContext velocityContext, String[] restrictedVariables) {
 
@@ -583,6 +584,7 @@ public class VelocityVariablesImpl implements VelocityVariables {
 		}
 	}
 
+	@Override
 	public void insertVariables(
 			VelocityContext velocityContext, HttpServletRequest request)
 		throws Exception {

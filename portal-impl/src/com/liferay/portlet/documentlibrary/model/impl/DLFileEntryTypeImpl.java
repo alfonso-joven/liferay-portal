@@ -28,6 +28,7 @@ public class DLFileEntryTypeImpl extends DLFileEntryTypeBaseImpl {
 	public DLFileEntryTypeImpl() {
 	}
 
+	@Override
 	public List<DDMStructure> getDDMStructures() throws SystemException {
 		return DDMStructureLocalServiceUtil.getDLFileEntryTypeStructures(
 			getFileEntryTypeId());

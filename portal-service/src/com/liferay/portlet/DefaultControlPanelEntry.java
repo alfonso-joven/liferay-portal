@@ -22,6 +22,7 @@ import com.liferay.portal.security.permission.PermissionChecker;
  */
 public class DefaultControlPanelEntry extends BaseControlPanelEntry {
 
+	@Override
 	public boolean isVisible(
 			PermissionChecker permissionChecker, Portlet portlet)
 		throws Exception {

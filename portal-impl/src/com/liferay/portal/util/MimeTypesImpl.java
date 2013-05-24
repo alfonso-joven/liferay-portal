@@ -75,10 +75,12 @@ public class MimeTypesImpl implements MimeTypes, MimeTypesReaderMetKeys {
 		}
 	}
 
+	@Override
 	public String getContentType(File file) {
 		return getContentType(file, file.getName());
 	}
 
+	@Override
 	public String getContentType(File file, String fileName) {
 		if ((file == null) || !file.exists()) {
 			return getContentType(fileName);
@@ -99,6 +101,7 @@ public class MimeTypesImpl implements MimeTypes, MimeTypesReaderMetKeys {
 		}
 	}
 
+	@Override
 	public String getContentType(InputStream inputStream, String fileName) {
 		if (inputStream == null) {
 			return getContentType(fileName);
@@ -144,6 +147,7 @@ public class MimeTypesImpl implements MimeTypes, MimeTypesReaderMetKeys {
 		return contentType;
 	}
 
+	@Override
 	public String getContentType(String fileName) {
 		if (Validator.isNull(fileName)) {
 			return ContentTypes.APPLICATION_OCTET_STREAM;
@@ -172,6 +176,7 @@ public class MimeTypesImpl implements MimeTypes, MimeTypesReaderMetKeys {
 		return ContentTypes.APPLICATION_OCTET_STREAM;
 	}
 
+	@Override
 	public Set<String> getExtensions(String contentType) {
 		Set<String> extensions = _extensionsMap.get(contentType);
 

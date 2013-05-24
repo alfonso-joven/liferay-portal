@@ -41,6 +41,7 @@ public class SocialActivityInterpreterImpl
 		}
 	}
 
+	@Override
 	public String[] getClassNames() {
 		return _activityInterpreter.getClassNames();
 	}
@@ -58,6 +59,7 @@ public class SocialActivityInterpreterImpl
 		}
 	}
 
+	@Override
 	public SocialActivityFeedEntry interpret(
 		SocialActivity activity, ThemeDisplay themeDisplay) {
 

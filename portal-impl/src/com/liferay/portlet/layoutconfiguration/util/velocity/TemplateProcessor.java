@@ -58,10 +58,12 @@ public class TemplateProcessor implements ColumnProcessor {
 		return _portletsMap;
 	}
 
+	@Override
 	public String processColumn(String columnId) throws Exception {
 		return processColumn(columnId, StringPool.BLANK);
 	}
 
+	@Override
 	public String processColumn(String columnId, String classNames)
 		throws Exception {
 
@@ -156,16 +158,19 @@ public class TemplateProcessor implements ColumnProcessor {
 		return sb.toString();
 	}
 
+	@Override
 	public String processMax() throws Exception {
 		return processMax(StringPool.BLANK);
 	}
 
+	@Override
 	public String processMax(String classNames) throws Exception {
 		return RuntimePortletUtil.processPortlet(
 			_servletContext, _request, _response, null, null, _portletId, null,
 			false);
 	}
 
+	@Override
 	public String processPortlet(String portletId) throws Exception {
 		try {
 			_request.setAttribute(

@@ -55,6 +55,7 @@ public class LiferayPackageAutoDeployer implements AutoDeployer {
 		}
 	}
 
+	@Override
 	public int autoDeploy(AutoDeploymentContext autoDeploymentContext)
 		throws AutoDeployException {
 

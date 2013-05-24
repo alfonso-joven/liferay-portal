@@ -49,10 +49,12 @@ public class MBMessageAssetRenderer extends BaseAssetRenderer {
 		_message = message;
 	}
 
+	@Override
 	public long getClassPK() {
 		return _message.getMessageId();
 	}
 
+	@Override
 	public long getGroupId() {
 		return _message.getGroupId();
 	}
@@ -67,10 +69,12 @@ public class MBMessageAssetRenderer extends BaseAssetRenderer {
 		return getSummary(locale);
 	}
 
+	@Override
 	public String getSummary(Locale locale) {
 		return HtmlUtil.extractText(_message.getBody());
 	}
 
+	@Override
 	public String getTitle(Locale locale) {
 		return _message.getSubject();
 	}
@@ -123,14 +127,17 @@ public class MBMessageAssetRenderer extends BaseAssetRenderer {
 			_message.getMessageId());
 	}
 
+	@Override
 	public long getUserId() {
 		return _message.getUserId();
 	}
 
+	@Override
 	public String getUserName() {
 		return _message.getUserName();
 	}
 
+	@Override
 	public String getUuid() {
 		return _message.getUuid();
 	}
@@ -174,6 +181,7 @@ public class MBMessageAssetRenderer extends BaseAssetRenderer {
 		return true;
 	}
 
+	@Override
 	public String render(
 			RenderRequest renderRequest, RenderResponse renderResponse,
 			String template)

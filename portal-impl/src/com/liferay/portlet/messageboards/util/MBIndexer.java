@@ -76,10 +76,12 @@ public class MBIndexer extends BaseIndexer {
 
 	public static final String PORTLET_ID = PortletKeys.MESSAGE_BOARDS;
 
+	@Override
 	public String[] getClassNames() {
 		return CLASS_NAMES;
 	}
 
+	@Override
 	public String getPortletId() {
 		return PORTLET_ID;
 	}

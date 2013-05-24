@@ -193,6 +193,7 @@ public class CompanyImpl extends CompanyBaseImpl {
 		return getDefaultUser().getTimeZone();
 	}
 
+	@Override
 	public String getVirtualHostname() {
 		try {
 			VirtualHost virtualHost =

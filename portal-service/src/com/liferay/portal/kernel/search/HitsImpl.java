@@ -28,71 +28,87 @@ public class HitsImpl implements Hits {
 	public HitsImpl() {
 	}
 
+	@Override
 	public Document doc(int n) {
 		return _docs[n];
 	}
 
+	@Override
 	@JSON
 	public Document[] getDocs() {
 		return _docs;
 	}
 
+	@Override
 	public int getLength() {
 		return _length;
 	}
 
+	@Override
 	@JSON(include = false)
 	public Query getQuery() {
 		return _query;
 	}
 
+	@Override
 	@JSON
 	public String[] getQueryTerms() {
 		return _queryTerms;
 	}
 
+	@Override
 	@JSON
 	public float[] getScores() {
 		return _scores;
 	}
 
+	@Override
 	public float getSearchTime() {
 		return _searchTime;
 	}
 
+	@Override
 	@JSON
 	public String[] getSnippets() {
 		return _snippets;
 	}
 
+	@Override
 	public long getStart() {
 		return _start;
 	}
 
+	@Override
 	public float score(int n) {
 		return _scores[n];
 	}
 
+	@Override
 	public void setDocs(Document[] docs) {
 		_docs = docs;
 	}
 
+	@Override
 	public void setLength(int length) {
 		_length = length;
 	}
 
+	@Override
 	public void setQuery(Query query) {
 		_query = query;
 	}
 
+	@Override
 	public void setQueryTerms(String[] queryTerms) {
 		_queryTerms = queryTerms;
 	}
 
+	@Override
 	public void setScores(float[] scores) {
 		_scores = scores;
 	}
 
+	@Override
 	public void setScores(Float[] scores) {
 		float[] primScores = new float[scores.length];
 
@@ -103,22 +119,27 @@ public class HitsImpl implements Hits {
 		setScores(primScores);
 	}
 
+	@Override
 	public void setSearchTime(float time) {
 		_searchTime = time;
 	}
 
+	@Override
 	public void setSnippets(String[] snippets) {
 		_snippets = snippets;
 	}
 
+	@Override
 	public void setStart(long start) {
 		_start = start;
 	}
 
+	@Override
 	public String snippet(int n) {
 		return _snippets[n];
 	}
 
+	@Override
 	public List<Document> toList() {
 		List<Document> subset = new ArrayList<Document>(_docs.length);
 

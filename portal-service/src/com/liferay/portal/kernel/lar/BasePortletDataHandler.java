@@ -30,6 +30,7 @@ import javax.portlet.PortletPreferences;
  */
 public abstract class BasePortletDataHandler implements PortletDataHandler {
 
+	@Override
 	public PortletPreferences deleteData(
 			PortletDataContext portletDataContext, String portletId,
 			PortletPreferences portletPreferences)
@@ -59,6 +60,7 @@ public abstract class BasePortletDataHandler implements PortletDataHandler {
 		}
 	}
 
+	@Override
 	public String exportData(
 			PortletDataContext portletDataContext, String portletId,
 			PortletPreferences portletPreferences)
@@ -88,26 +90,32 @@ public abstract class BasePortletDataHandler implements PortletDataHandler {
 		}
 	}
 
+	@Override
 	public String[] getDataPortletPreferences() {
 		return new String[0];
 	}
 
+	@Override
 	public PortletDataHandlerControl[] getExportControls() {
 		return new PortletDataHandlerControl[0];
 	}
 
+	@Override
 	public PortletDataHandlerControl[] getExportMetadataControls() {
 		return new PortletDataHandlerControl[0];
 	}
 
+	@Override
 	public PortletDataHandlerControl[] getImportControls() {
 		return new PortletDataHandlerControl[0];
 	}
 
+	@Override
 	public PortletDataHandlerControl[] getImportMetadataControls() {
 		return new PortletDataHandlerControl[0];
 	}
 
+	@Override
 	public PortletPreferences importData(
 			PortletDataContext portletDataContext, String portletId,
 			PortletPreferences portletPreferences, String data)
@@ -154,18 +162,22 @@ public abstract class BasePortletDataHandler implements PortletDataHandler {
 		}
 	}
 
+	@Override
 	public boolean isAlwaysExportable() {
 		return _ALWAYS_EXPORTABLE;
 	}
 
+	@Override
 	public boolean isAlwaysStaged() {
 		return _ALWAYS_STAGED;
 	}
 
+	@Override
 	public boolean isDataLocalized() {
 		return _DATA_LOCALIZED;
 	}
 
+	@Override
 	public boolean isPublishToLiveByDefault() {
 		return _PUBLISH_TO_LIVE_BY_DEFAULT;
 	}

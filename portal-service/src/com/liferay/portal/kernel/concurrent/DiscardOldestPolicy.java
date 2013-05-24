@@ -19,6 +19,7 @@ package com.liferay.portal.kernel.concurrent;
  */
 public class DiscardOldestPolicy implements RejectedExecutionHandler {
 
+	@Override
 	public void rejectedExecution(
 		Runnable runnable, ThreadPoolExecutor threadPoolExecutor) {
 

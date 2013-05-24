@@ -34,6 +34,7 @@ public class DLFileRankFinderImpl
 	public static final String FIND_BY_STALE_RANKS =
 		DLFileRankFinder.class.getName() + ".findByStaleRanks";
 
+	@Override
 	public List<Object[]> findByStaleRanks(int count) throws SystemException {
 		Session session = null;
 

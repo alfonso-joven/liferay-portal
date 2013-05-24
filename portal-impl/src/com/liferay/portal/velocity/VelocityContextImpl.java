@@ -37,6 +37,7 @@ public class VelocityContextImpl implements VelocityContext {
 			velocityContextImpl.getWrappedVelocityContext());
 	}
 
+	@Override
 	public Object get(String key) {
 		return _velocityContext.get(key);
 	}
@@ -45,6 +46,7 @@ public class VelocityContextImpl implements VelocityContext {
 		return _velocityContext;
 	}
 
+	@Override
 	public void put(String key, Object value) {
 		_velocityContext.put(key, value);
 	}

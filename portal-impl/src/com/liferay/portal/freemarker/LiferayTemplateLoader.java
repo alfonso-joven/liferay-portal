@@ -33,6 +33,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class LiferayTemplateLoader implements TemplateLoader {
 
+	@Override
 	public void closeTemplateSource(Object templateSource) {
 		LiferayTemplateSource liferayTemplateSource =
 			(LiferayTemplateSource)templateSource;
@@ -40,6 +41,7 @@ public class LiferayTemplateLoader implements TemplateLoader {
 		liferayTemplateSource.close();
 	}
 
+	@Override
 	public Object findTemplateSource(String name) throws IOException {
 		FreeMarkerTemplateLoader freeMarkerTemplateLoader =
 			_freeMarkerTemplateLoadersMap.get(name);
@@ -72,6 +74,7 @@ public class LiferayTemplateLoader implements TemplateLoader {
 		return null;
 	}
 
+	@Override
 	public long getLastModified(Object templateSource) {
 		LiferayTemplateSource liferayTemplateSource =
 			(LiferayTemplateSource)templateSource;
@@ -79,6 +82,7 @@ public class LiferayTemplateLoader implements TemplateLoader {
 		return liferayTemplateSource.getLastModified();
 	}
 
+	@Override
 	public Reader getReader(Object templateSource, String encoding)
 		throws IOException {
 
