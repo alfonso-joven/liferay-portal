@@ -55,6 +55,7 @@ import sun.reflect.Reflection;
  */
 public class PortalRuntimeChecker extends BaseChecker {
 
+	@Override
 	public void afterPropertiesSet() {
 		initClassLoaderReferenceIds();
 		initExpandoBridgeClassNames();
@@ -143,6 +144,7 @@ public class PortalRuntimeChecker extends BaseChecker {
 		return authorizationProperty;
 	}
 
+	@Override
 	public boolean implies(Permission permission) {
 		PortalRuntimePermission portalRuntimePermission =
 			(PortalRuntimePermission)permission;
