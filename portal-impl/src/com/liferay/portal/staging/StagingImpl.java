@@ -406,8 +406,8 @@ public class StagingImpl implements Staging {
 			portalPreferences, layoutSetBranchId, plid);
 	}
 
-	@Override
 	@Deprecated
+	@Override
 	public void disableStaging(
 			Group scopeGroup, Group liveGroup, ServiceContext serviceContext)
 		throws Exception {
@@ -422,8 +422,8 @@ public class StagingImpl implements Staging {
 		disableStaging((PortletRequest)null, liveGroup, serviceContext);
 	}
 
-	@Override
 	@Deprecated
+	@Override
 	public void disableStaging(
 			PortletRequest portletRequest, Group scopeGroup, Group liveGroup,
 			ServiceContext serviceContext)

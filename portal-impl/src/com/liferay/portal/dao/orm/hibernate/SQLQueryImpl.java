@@ -65,8 +65,8 @@ public class SQLQueryImpl implements SQLQuery {
 		return this;
 	}
 
-	@Override
 	@NotPrivileged
+	@Override
 	public int executeUpdate() throws ORMException {
 		try {
 			return _sqlQuery.executeUpdate();
@@ -76,15 +76,15 @@ public class SQLQueryImpl implements SQLQuery {
 		}
 	}
 
-	@Override
 	@NotPrivileged
+	@Override
 	@SuppressWarnings("rawtypes")
 	public Iterator iterate() throws ORMException {
 		return iterate(true);
 	}
 
-	@Override
 	@NotPrivileged
+	@Override
 	@SuppressWarnings("rawtypes")
 	public Iterator iterate(boolean unmodifiable) throws ORMException {
 		try {
@@ -95,20 +95,20 @@ public class SQLQueryImpl implements SQLQuery {
 		}
 	}
 
-	@Override
 	@NotPrivileged
+	@Override
 	public List<?> list() throws ORMException {
 		return list(false, false);
 	}
 
-	@Override
 	@NotPrivileged
+	@Override
 	public List<?> list(boolean unmodifiable) throws ORMException {
 		return list(true, unmodifiable);
 	}
 
-	@Override
 	@NotPrivileged
+	@Override
 	public List<?> list(boolean copy, boolean unmodifiable)
 		throws ORMException {
 
@@ -129,8 +129,8 @@ public class SQLQueryImpl implements SQLQuery {
 		}
 	}
 
-	@Override
 	@NotPrivileged
+	@Override
 	public ScrollableResults scroll() throws ORMException {
 		try {
 			return new ScrollableResultsImpl(_sqlQuery.scroll());
@@ -344,8 +344,8 @@ public class SQLQueryImpl implements SQLQuery {
 		return this;
 	}
 
-	@Override
 	@NotPrivileged
+	@Override
 	public Object uniqueResult() throws ORMException {
 		try {
 			return _sqlQuery.uniqueResult();

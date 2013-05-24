@@ -490,8 +490,8 @@ public class MBThreadLocalServiceImpl extends MBThreadLocalServiceBaseImpl {
 		}
 	}
 
-	@Override
 	@BufferedIncrement(incrementClass = NumberIncrement.class)
+	@Override
 	public MBThread incrementViewCounter(long threadId, int increment)
 		throws PortalException, SystemException {
 

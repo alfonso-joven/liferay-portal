@@ -201,8 +201,8 @@ public class SocialActivityLocalServiceImpl
 			receiverUserId);
 	}
 
-	@Override
 	@Async
+	@Override
 	public void addActivity(
 			SocialActivity activity, SocialActivity mirrorActivity)
 		throws PortalException, SystemException {

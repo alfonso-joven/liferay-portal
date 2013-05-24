@@ -660,8 +660,8 @@ public class DLFileEntryLocalServiceImpl
 		}
 	}
 
-	@Override
 	@Indexable(type = IndexableType.DELETE)
+	@Override
 	public void deleteFileVersion(long userId, long fileEntryId, String version)
 		throws PortalException, SystemException {
 

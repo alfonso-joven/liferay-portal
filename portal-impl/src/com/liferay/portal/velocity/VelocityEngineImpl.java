@@ -74,20 +74,20 @@ public class VelocityEngineImpl implements VelocityEngine {
 			_getResourceCacheKey(velocityTemplateId));
 	}
 
-	@Override
 	@NotPrivileged
+	@Override
 	public VelocityContext getEmptyContext() {
 		return new VelocityContextImpl();
 	}
 
-	@Override
 	@NotPrivileged
+	@Override
 	public VelocityContext getRestrictedToolsContext() {
 		return _getToolsContext(_RESTRICTED);
 	}
 
-	@Override
 	@NotPrivileged
+	@Override
 	public VelocityContext getStandardToolsContext() {
 		return _getToolsContext(_STANDARD);
 	}
@@ -96,20 +96,20 @@ public class VelocityEngineImpl implements VelocityEngine {
 		return _pacl.getTemplateControlContext();
 	}
 
-	@Override
 	@NotPrivileged
+	@Override
 	public VelocityContext getWrappedClassLoaderToolsContext() {
 		return new VelocityContextImpl(_getToolsContext(_STANDARD));
 	}
 
-	@Override
 	@NotPrivileged
+	@Override
 	public VelocityContext getWrappedRestrictedToolsContext() {
 		return new VelocityContextImpl(_getToolsContext(_RESTRICTED));
 	}
 
-	@Override
 	@NotPrivileged
+	@Override
 	public VelocityContext getWrappedStandardToolsContext() {
 		return new VelocityContextImpl(_getToolsContext(_STANDARD));
 	}
@@ -211,8 +211,8 @@ public class VelocityEngineImpl implements VelocityEngine {
 			_standardToolsContext, null);
 	}
 
-	@Override
 	@NotPrivileged
+	@Override
 	public boolean mergeTemplate(
 			String velocityTemplateId, String velocityTemplateContent,
 			VelocityContext velocityContext, Writer writer)
@@ -230,8 +230,8 @@ public class VelocityEngineImpl implements VelocityEngine {
 		return true;
 	}
 
-	@Override
 	@NotPrivileged
+	@Override
 	public boolean mergeTemplate(
 			String velocityTemplateId, VelocityContext velocityContext,
 			Writer writer)
@@ -240,8 +240,8 @@ public class VelocityEngineImpl implements VelocityEngine {
 		return mergeTemplate(velocityTemplateId, null, velocityContext, writer);
 	}
 
-	@Override
 	@NotPrivileged
+	@Override
 	public boolean resourceExists(String resource) {
 		return _velocityEngine.resourceExists(resource);
 	}

@@ -33,8 +33,8 @@ public class HitsImpl implements Hits {
 		return _docs[n];
 	}
 
-	@Override
 	@JSON
+	@Override
 	public Document[] getDocs() {
 		return _docs;
 	}
@@ -44,20 +44,20 @@ public class HitsImpl implements Hits {
 		return _length;
 	}
 
-	@Override
 	@JSON(include = false)
+	@Override
 	public Query getQuery() {
 		return _query;
 	}
 
-	@Override
 	@JSON
+	@Override
 	public String[] getQueryTerms() {
 		return _queryTerms;
 	}
 
-	@Override
 	@JSON
+	@Override
 	public float[] getScores() {
 		return _scores;
 	}
@@ -67,8 +67,8 @@ public class HitsImpl implements Hits {
 		return _searchTime;
 	}
 
-	@Override
 	@JSON
+	@Override
 	public String[] getSnippets() {
 		return _snippets;
 	}

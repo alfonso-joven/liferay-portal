@@ -81,20 +81,20 @@ public class FreeMarkerEngineImpl implements FreeMarkerEngine {
 		return _pacl.getTemplateControlContext();
 	}
 
-	@Override
 	@NotPrivileged
+	@Override
 	public FreeMarkerContext getWrappedClassLoaderToolsContext() {
 		return new FreeMarkerContextImpl(_doGetToolsContext(_STANDARD));
 	}
 
-	@Override
 	@NotPrivileged
+	@Override
 	public FreeMarkerContext getWrappedRestrictedToolsContext() {
 		return new FreeMarkerContextImpl(_doGetToolsContext(_RESTRICTED));
 	}
 
-	@Override
 	@NotPrivileged
+	@Override
 	public FreeMarkerContext getWrappedStandardToolsContext() {
 		return new FreeMarkerContextImpl(_doGetToolsContext(_STANDARD));
 	}
@@ -172,8 +172,8 @@ public class FreeMarkerEngineImpl implements FreeMarkerEngine {
 		_templateKeyConstructor.setAccessible(true);
 	}
 
-	@Override
 	@NotPrivileged
+	@Override
 	public boolean mergeTemplate(
 			String freeMarkerTemplateId, FreeMarkerContext freeMarkerContext,
 			Writer writer)
@@ -183,8 +183,8 @@ public class FreeMarkerEngineImpl implements FreeMarkerEngine {
 			freeMarkerTemplateId, null, freeMarkerContext, writer);
 	}
 
-	@Override
 	@NotPrivileged
+	@Override
 	public boolean mergeTemplate(
 			String freeMarkerTemplateId, String freemarkerTemplateContent,
 			FreeMarkerContext freeMarkerContext, Writer writer)
@@ -203,8 +203,8 @@ public class FreeMarkerEngineImpl implements FreeMarkerEngine {
 		return true;
 	}
 
-	@Override
 	@NotPrivileged
+	@Override
 	public boolean resourceExists(String resource) {
 		try {
 			Template template = _configuration.getTemplate(resource);

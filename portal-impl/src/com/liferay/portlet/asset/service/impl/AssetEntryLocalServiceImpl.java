@@ -362,8 +362,8 @@ public class AssetEntryLocalServiceImpl extends AssetEntryLocalServiceBaseImpl {
 		return assetEntry;
 	}
 
-	@Override
 	@BufferedIncrement(incrementClass = NumberIncrement.class)
+	@Override
 	public AssetEntry incrementViewCounter(
 			long userId, String className, long classPK, int increment)
 		throws SystemException {
