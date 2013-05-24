@@ -219,28 +219,18 @@ public class AssetVocabularyServiceImpl extends AssetVocabularyServiceBaseImpl {
 
 		jsonObject.put("page", page);
 
-		List<AssetVocabulary> vocabularies;
-		int total = 0;
+		AssetVocabularyDisplay assetVocabularyDisplay =
+			getGroupVocabulariesDisplay(groupId, name, start, end, obc);
 
-		if (Validator.isNotNull(name)) {
-			name = (CustomSQLUtil.keywords(name))[0];
-
-			vocabularies = getGroupVocabularies(groupId, name, start, end, obc);
-			total = getGroupVocabulariesCount(groupId, name);
-		}
-		else {
-			vocabularies = getGroupVocabularies(groupId, start, end, obc);
-			total = getGroupVocabulariesCount(groupId);
-		}
-
-		String vocabulariesJSON = JSONFactoryUtil.looseSerialize(vocabularies);
+		String vocabulariesJSON = JSONFactoryUtil.looseSerialize(
+			assetVocabularyDisplay.getVocabularies());
 
 		JSONArray vocabulariesJSONArray = JSONFactoryUtil.createJSONArray(
 			vocabulariesJSON);
 
 		jsonObject.put("vocabularies", vocabulariesJSONArray);
 
-		jsonObject.put("total", total);
+		jsonObject.put("total", assetVocabularyDisplay.getTotal());
 
 		return jsonObject;
 	}
