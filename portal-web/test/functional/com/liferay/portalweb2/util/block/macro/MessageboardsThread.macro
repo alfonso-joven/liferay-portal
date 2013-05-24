@@ -6,16 +6,15 @@
 			<var name="portletName" value="Message Boards" />
 		</execute>
 
-		<while>
+		<if>
 			<condition action="CPMessageboards#isElementPresent" locator-key1="THREAD_TABLE_ALL_CHECKBOX" />
 			<then>
 				<execute action="CPMessageboards#click" locator-key1="THREAD_TABLE_ALL_CHECKBOX" />
-				<execute action="CPMessageboards#click" locator-key1="THREADS_RECYCLE_BIN_BUTTON" />
-				<execute action="CPMessageboards#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to move the selected entries to the Recycle Bin?" />
+				<execute action="CPMessageboards#click" locator-key1="THREADS_DELETE_BUTTON" />
+				<execute action="CPMessageboards#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this?" />
 			</then>
-		</while>
+		</if>
 
-		<execute macro="RecycleBin#cpEmptyRecycleBin" />
 	</command>
 
 	<command name="pgAdd">
@@ -54,11 +53,9 @@
 
 		<execute action="PGMessageboards#assertTextEquals" locator-key1="THREAD_TABLE_THREAD_1" value1="${threadSubject}" />
 		<execute action="PGMessageboards#click" locator-key1="THREAD_TABLE_ACTIONS_1" />
-		<execute action="PGMessageboards#click" locator-key1="THREAD_MENULIST_RECYCLE_BIN" />
-		<execute action="PGMessageboards#assertTextEquals" locator-key1="SUCCESS_MESSAGE_RECYCLE_BIN" />
+		<execute action="PGMessageboards#click" locator-key1="THREAD_MENULIST_DELETE" />
+		<execute action="PGMessageboards#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this?" />
 		<execute action="PGMessageboards#assertTextNotPresent" value1="${threadSubject}" />
-
-		<execute macro="RecycleBin#cpEmptyRecycleBin" />
 	</command>
 
 	<command name="pgEdit">
