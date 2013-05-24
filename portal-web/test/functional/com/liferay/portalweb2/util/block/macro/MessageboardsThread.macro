@@ -14,7 +14,6 @@
 				<execute action="CPMessageboards#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this?" />
 			</then>
 		</if>
-
 	</command>
 
 	<command name="pgAdd">
@@ -71,7 +70,7 @@
 		<execute action="PGMessageboardsPostthread#type" locator-key1="BODY_FIELD" value1="${threadBodyNew}" />
 		<execute action="PGMessageboardsPostthread#click" locator-key1="PUBLISH_BUTTON" />
 
-		<execute action="PGMessageboards#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="PGMessageboardsThread#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
 		<execute action="PGMessageboardsThread#assertTextEquals" locator-key1="MESSAGE_BODY_1" value1="${threadBodyNew}" />
 		<execute action="PGMessageboardsThread#assertTextNotEquals" locator-key1="MESSAGE_BODY_1" value1="${threadBody}" />
 	</command>
