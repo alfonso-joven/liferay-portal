@@ -928,10 +928,10 @@
 
 			inputs.each(
 				function(item, index, collection) {
-					if (!item.compareTo(allBox)) {
-						if (arrayIndexOf(name, item.getAttribute('name')) > -1) {
-							totalBoxes++;
-						}
+					var inArray = (arrayIndexOf(name, item.getAttribute('name')) > -1);
+
+					if (!item.compareTo(allBox) && inArray) {
+						totalBoxes++;
 
 						if (item.get('checked')) {
 							totalOn++;
