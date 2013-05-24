@@ -30,12 +30,12 @@
 </tr>
 <tr>
 	<td>CONTENT_FIELD</td>
-	<td>//iframe[contains(@title,'Rich Text Editor')]</td>
+	<td>//iframe[contains(@title,'Rich text editor')]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>SAVE_BUTTON</td>
-	<td>//button[contains(.,'Save')]</td>
+	<td>//input[@value='Save']</td>
 	<td></td>
 </tr>
 </tbody>
