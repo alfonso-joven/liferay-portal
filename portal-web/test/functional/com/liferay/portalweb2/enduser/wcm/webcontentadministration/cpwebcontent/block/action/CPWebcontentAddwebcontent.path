@@ -11,16 +11,11 @@
 <tr>
 	<td>PAGE_NAME</td>
 	<td></td>
-	<td>WCWebcontentAddwebcontent</td>
+	<td>CPWebcontentAddwebcontent</td>
 </tr>
 <tr>
 	<td></td>
 	<td></td>
-	<td></td>
-</tr>
-<tr>
-	<td>OPTIONS_MENULIST_WRENCH_ICON</td>
-	<td>//span[@title='Options']/ul/li/strong/a</td>
 	<td></td>
 </tr>
 <tr>
@@ -63,30 +58,14 @@
 	<td></td>
 	<td></td>
 </tr>
-<!--OPTIONS_MENULIST-->
-<tr>
-	<td>OPTIONS_MENULIST_CONFIGURATION</td>
-	<td></td>
-	<td></td>
-</tr>
-<tr>
-	<td>OPTIONS_MENULIST_EXPORT_IMPORT</td>
-	<td></td>
-	<td></td>
-</tr>
-<tr>
-	<td></td>
-	<td></td>
-	<td></td>
-</tr>
 <!--MENU-->
 <tr>
-	<td>MENU_ABSTRACT</td>
+	<td>MENU_CONTENT</td>
 	<td>//a[@id='_15_contentLink']</td>
 	<td></td>
 </tr>
 <tr>
-	<td>MENU_CONTENT</td>
+	<td>MENU_ABSTRACT</td>
 	<td>//a[@id='_15_abstractLink']</td>
 	<td></td>
 </tr>

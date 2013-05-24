@@ -43,24 +43,24 @@
 	<td></td>
 	<td></td>
 </tr>
-<!--ADD_ROW-->
+<!--ROW-->
 <tr>
-	<td>ADD_ROW_NAME_1</td>
+	<td>ROW_NAME_1</td>
 	<td>//input[@id='_15_structure_el0_name']</td>
 	<td></td>
 </tr>
 <tr>
-	<td>ADD_ROW_TYPE_1</td>
+	<td>ROW_TYPE_SELECT_1</td>
 	<td>//select[@id='_15_structure_el0_type']</td>
 	<td></td>
 </tr>
 <tr>
-	<td>ADD_ROW_INDEX_TYPE_1</td>
+	<td>ROW_INDEX_TYPE_SELECT_1</td>
 	<td>//select[@id='_15_structure_el0_index_type']</td>
 	<td></td>
 </tr>
 <tr>
-	<td>ADD_ROW_REPEATABLE_1</td>
+	<td>ROW_REPEATABLE_1</td>
 	<td>//input[@id='_15_structure_el0_repeatable']</td>
 	<td></td>
 </tr>

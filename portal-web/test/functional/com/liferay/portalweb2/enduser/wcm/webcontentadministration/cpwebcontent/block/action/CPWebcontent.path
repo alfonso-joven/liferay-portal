@@ -25,8 +25,13 @@
 	<td></td>
 </tr>
 <tr>
-	<td>INFO_MESSAGE</td>
-	<td>//div[@class='portlet-msg-info']</td>
+	<td>ADD_BUTTON</td>
+	<td>//input[@value='Add']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>ADD_DROPDOWN</td>
+	<td>//span[@title='Add']/ul/li/strong/a/span</td>
 	<td></td>
 </tr>
 <tr>
@@ -35,48 +40,16 @@
 	<td></td>
 </tr>
 <tr>
+	<td>INFO_MESSAGE</td>
+	<td>//div[@class='portlet-msg-info']</td>
+	<td></td>
+</tr>
+<tr>
 	<td>CONFIRMATION</td>
 	<td></td>
 	<td></td>
 </tr>
 <!---->
-<!--ADD-->
-<tr>
-	<td>ADD_BUTTON</td>
-	<td>//input[@value='Add']</td>
-	<td></td>
-</tr>
-<tr>
-	<td>ADD_MENULIST</td>
-	<td>//span[@title='Add']/ul/li/strong/a/span</td>
-	<td></td>
-</tr>
-<tr>
-	<td>ADD_MENULIST_BASIC_WEB_CONTENT</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Basic Web Content')]</td>
-	<td></td>
-</tr>
-<tr>
-	<td></td>
-	<td></td>
-	<td></td>
-</tr>
-<!--OPTIONS_MENULIST-->
-<tr>
-	<td>OPTIONS_MENULIST_CONFIGURATION</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>OPTIONS_MENULIST_EXPORT_IMPORT</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Export / Import')]</td>
-	<td></td>
-</tr>
-<tr>
-	<td></td>
-	<td></td>
-	<td></td>
-</tr>
 <!--NAVIGATION-->
 <tr>
 	<td>NAVIGATION_WEB_CONTENT</td>
@@ -108,15 +81,42 @@
 	<td></td>
 	<td></td>
 </tr>
-<!--SEARCH-->
+<!--BASIC_SEARCH-->
 <tr>
-	<td>SEARCH_FIELD</td>
+	<td>BASIC_SEARCH_FIELD</td>
 	<td>//input[@name='_15_keywords']</td>
 	<td></td>
 </tr>
 <tr>
-	<td>SEARCH_BUTTON</td>
-	<td>//input[@value='Search']</td>
+	<td>BASIC_SEARCH_BUTTON</td>
+	<td>xpath=(//input[@value='Search'])[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+<!--ADD_MENULIST-->
+<tr>
+	<td>ADD_MENULIST_BASIC_WEB_CONTENT</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Basic Web Content')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+<!--OPTIONS_MENULIST-->
+<tr>
+	<td>OPTIONS_MENULIST_CONFIGURATION</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>OPTIONS_MENULIST_EXPORT_IMPORT</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Export / Import')]</td>
 	<td></td>
 </tr>
 <tr>
@@ -194,11 +194,6 @@
 <tr>
 	<td>WEB_CONTENT_MENULIST_DELETE</td>
 	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]</td>
-	<td></td>
-</tr>
-<tr>
-	<td></td>
-	<td></td>
 	<td></td>
 </tr>
 </tbody>
