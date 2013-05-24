@@ -96,6 +96,7 @@ public class JavaScriptExecutor extends BaseScriptingExecutor {
 		}
 	}
 
+	@Override
 	public String getLanguage() {
 		return _LANGUAGE;
 	}

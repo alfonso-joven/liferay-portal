@@ -119,6 +119,7 @@ public class PermissionServiceImpl extends PermissionServiceBaseImpl {
 	 *         the permission information was invalid
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void checkPermission(long groupId, String name, long primKey)
 		throws PortalException, SystemException {
 
@@ -136,6 +137,7 @@ public class PermissionServiceImpl extends PermissionServiceBaseImpl {
 	 *         the permission information was invalid
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void checkPermission(long groupId, String name, String primKey)
 		throws PortalException, SystemException {
 

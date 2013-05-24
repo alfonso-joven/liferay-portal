@@ -31,6 +31,7 @@ import java.util.List;
 public class UserTrackerLocalServiceImpl
 	extends UserTrackerLocalServiceBaseImpl {
 
+	@Override
 	public UserTracker addUserTracker(
 			long companyId, long userId, Date modifiedDate, String sessionId,
 			String remoteAddr, String remoteHost, String userAgent,
@@ -99,6 +100,7 @@ public class UserTrackerLocalServiceImpl
 		return userTrackerPersistence.remove(userTracker);
 	}
 
+	@Override
 	public List<UserTracker> getUserTrackers(long companyId, int start, int end)
 		throws SystemException {
 

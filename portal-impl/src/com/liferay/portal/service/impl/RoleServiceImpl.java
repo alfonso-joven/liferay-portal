@@ -57,6 +57,7 @@ public class RoleServiceImpl extends RoleServiceBaseImpl {
 	 *         duplicate
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public Role addRole(
 			String className, long classPK, String name,
 			Map<Locale, String> titleMap, Map<Locale, String> descriptionMap,
@@ -89,6 +90,7 @@ public class RoleServiceImpl extends RoleServiceBaseImpl {
 	 * @throws     SystemException if a system exception occurred
 	 * @deprecated {@link #addRole(String, long, String, Map, Map, int, String)}
 	 */
+	@Override
 	public Role addRole(
 			String name, Map<Locale, String> titleMap,
 			Map<Locale, String> descriptionMap, int type)
@@ -108,6 +110,7 @@ public class RoleServiceImpl extends RoleServiceBaseImpl {
 	 *         of the roles
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void addUserRoles(long userId, long[] roleIds)
 		throws PortalException, SystemException {
 
@@ -126,6 +129,7 @@ public class RoleServiceImpl extends RoleServiceBaseImpl {
 	 *         not be found
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void deleteRole(long roleId)
 		throws PortalException, SystemException {
 
@@ -143,6 +147,7 @@ public class RoleServiceImpl extends RoleServiceBaseImpl {
 	 * @throws PortalException if a portal exception occurred
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public List<Role> getGroupRoles(long groupId)
 		throws PortalException, SystemException {
 
@@ -160,6 +165,7 @@ public class RoleServiceImpl extends RoleServiceBaseImpl {
 	 *         or if the user did not have permission to view the role
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public Role getRole(long roleId) throws PortalException, SystemException {
 		RolePermissionUtil.check(
 			getPermissionChecker(), roleId, ActionKeys.VIEW);
@@ -182,6 +188,7 @@ public class RoleServiceImpl extends RoleServiceBaseImpl {
 	 *         company or if the user did not have permission to view the role
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public Role getRole(long companyId, String name)
 		throws PortalException, SystemException {
 
@@ -202,6 +209,7 @@ public class RoleServiceImpl extends RoleServiceBaseImpl {
 	 * @throws PortalException if a portal exception occurred
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public List<Role> getUserGroupGroupRoles(long userId, long groupId)
 		throws PortalException, SystemException {
 
@@ -223,6 +231,7 @@ public class RoleServiceImpl extends RoleServiceBaseImpl {
 	 * @throws PortalException if a portal exception occurred
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public List<Role> getUserGroupRoles(long userId, long groupId)
 		throws PortalException, SystemException {
 
@@ -243,6 +252,7 @@ public class RoleServiceImpl extends RoleServiceBaseImpl {
 	 * @throws PortalException if a portal exception occurred
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public List<Role> getUserRelatedRoles(long userId, List<Group> groups)
 		throws PortalException, SystemException {
 
@@ -262,6 +272,7 @@ public class RoleServiceImpl extends RoleServiceBaseImpl {
 	 * @throws PortalException if a portal exception occurred
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public List<Role> getUserRoles(long userId)
 		throws PortalException, SystemException {
 
@@ -288,6 +299,7 @@ public class RoleServiceImpl extends RoleServiceBaseImpl {
 	 *         company or if a default user for the company could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public boolean hasUserRole(
 			long userId, long companyId, String name, boolean inherited)
 		throws PortalException, SystemException {
@@ -314,6 +326,7 @@ public class RoleServiceImpl extends RoleServiceBaseImpl {
 	 *         could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public boolean hasUserRoles(
 			long userId, long companyId, String[] names, boolean inherited)
 		throws PortalException, SystemException {
@@ -337,6 +350,7 @@ public class RoleServiceImpl extends RoleServiceBaseImpl {
 	 *         be found
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void unsetUserRoles(long userId, long[] roleIds)
 		throws PortalException, SystemException {
 
@@ -361,6 +375,7 @@ public class RoleServiceImpl extends RoleServiceBaseImpl {
 	 *         role's name was invalid
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public Role updateRole(
 			long roleId, String name, Map<Locale, String> titleMap,
 			Map<Locale, String> descriptionMap, String subtype)

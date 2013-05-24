@@ -40,24 +40,28 @@ import javax.servlet.http.HttpServletResponse;
 @DoPrivileged
 public class CaptchaImpl implements Captcha {
 
+	@Override
 	public void check(HttpServletRequest request) throws CaptchaException {
 		_initialize();
 
 		_captcha.check(request);
 	}
 
+	@Override
 	public void check(PortletRequest portletRequest) throws CaptchaException {
 		_initialize();
 
 		_captcha.check(portletRequest);
 	}
 
+	@Override
 	public String getTaglibPath() {
 		_initialize();
 
 		return _captcha.getTaglibPath();
 	}
 
+	@Override
 	public boolean isEnabled(HttpServletRequest request)
 		throws CaptchaException {
 
@@ -66,6 +70,7 @@ public class CaptchaImpl implements Captcha {
 		return _captcha.isEnabled(request);
 	}
 
+	@Override
 	public boolean isEnabled(PortletRequest portletRequest)
 		throws CaptchaException {
 
@@ -74,6 +79,7 @@ public class CaptchaImpl implements Captcha {
 		return _captcha.isEnabled(portletRequest);
 	}
 
+	@Override
 	public void serveImage(
 			HttpServletRequest request, HttpServletResponse response)
 		throws IOException {
@@ -83,6 +89,7 @@ public class CaptchaImpl implements Captcha {
 		_captcha.serveImage(request, response);
 	}
 
+	@Override
 	public void serveImage(
 			PortletRequest portletRequest, PortletResponse portletResponse)
 		throws IOException {

@@ -112,6 +112,7 @@ import org.apache.portals.bridges.struts.StrutsPortlet;
  */
 public class PortletHotDeployListener extends BaseHotDeployListener {
 
+	@Override
 	public void invokeDeploy(HotDeployEvent hotDeployEvent)
 		throws HotDeployException {
 
@@ -124,6 +125,7 @@ public class PortletHotDeployListener extends BaseHotDeployListener {
 		}
 	}
 
+	@Override
 	public void invokeUndeploy(HotDeployEvent hotDeployEvent)
 		throws HotDeployException {
 

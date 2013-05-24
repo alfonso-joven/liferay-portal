@@ -72,6 +72,7 @@ public class IndexAccessorImpl implements IndexAccessor {
 		_initCommitScheduler();
 	}
 
+	@Override
 	public void addDocument(Document document) throws IOException {
 		if (SearchEngineUtil.isIndexReadOnly()) {
 			return;
@@ -80,6 +81,7 @@ public class IndexAccessorImpl implements IndexAccessor {
 		_write(null, document);
 	}
 
+	@Override
 	public void close() {
 		try {
 			_indexWriter.close();
@@ -89,6 +91,7 @@ public class IndexAccessorImpl implements IndexAccessor {
 		}
 	}
 
+	@Override
 	public void delete() {
 		if (SearchEngineUtil.isIndexReadOnly()) {
 			return;
@@ -97,6 +100,7 @@ public class IndexAccessorImpl implements IndexAccessor {
 		_deleteDirectory();
 	}
 
+	@Override
 	public void deleteDocuments(Term term) throws IOException {
 		if (SearchEngineUtil.isIndexReadOnly()) {
 			return;
@@ -112,18 +116,22 @@ public class IndexAccessorImpl implements IndexAccessor {
 		}
 	}
 
+	@Override
 	public void dumpIndex(OutputStream outputStream) throws IOException {
 		_dumpIndexDeletionPolicy.dump(outputStream, _indexWriter, _commitLock);
 	}
 
+	@Override
 	public long getCompanyId() {
 		return _companyId;
 	}
 
+	@Override
 	public long getLastGeneration() {
 		return _dumpIndexDeletionPolicy.getLastGeneration();
 	}
 
+	@Override
 	public Directory getLuceneDir() {
 		if (_log.isDebugEnabled()) {
 			_log.debug("Lucene store type " + PropsValues.LUCENE_STORE_TYPE);
@@ -147,6 +155,7 @@ public class IndexAccessorImpl implements IndexAccessor {
 		}
 	}
 
+	@Override
 	public void loadIndex(InputStream inputStream) throws IOException {
 		File tempFile = FileUtil.createTempFile();
 
@@ -189,6 +198,7 @@ public class IndexAccessorImpl implements IndexAccessor {
 		FileUtil.deltree(tempFile);
 	}
 
+	@Override
 	public void updateDocument(Term term, Document document)
 		throws IOException {
 

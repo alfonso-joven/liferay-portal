@@ -33,6 +33,7 @@ import javax.portlet.PortletPreferences;
 public class JournalContentPortletLayoutListener
 	implements PortletLayoutListener {
 
+	@Override
 	public void onAddToLayout(String portletId, long plid)
 		throws PortletLayoutListenerException {
 
@@ -41,6 +42,7 @@ public class JournalContentPortletLayoutListener
 		}
 	}
 
+	@Override
 	public void onMoveInLayout(String portletId, long plid)
 		throws PortletLayoutListenerException {
 
@@ -49,6 +51,7 @@ public class JournalContentPortletLayoutListener
 		}
 	}
 
+	@Override
 	public void onRemoveFromLayout(String portletId, long plid)
 		throws PortletLayoutListenerException {
 

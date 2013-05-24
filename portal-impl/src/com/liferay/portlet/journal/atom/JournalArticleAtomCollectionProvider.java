@@ -44,6 +44,7 @@ import java.util.Map;
 public class JournalArticleAtomCollectionProvider
 	extends BaseAtomCollectionAdapter<JournalArticle> {
 
+	@Override
 	public String getCollectionName() {
 		return _COLLECTION_NAME;
 	}
@@ -79,6 +80,7 @@ public class JournalArticleAtomCollectionProvider
 		return journalArticle.getModifiedDate();
 	}
 
+	@Override
 	public String getFeedTitle(AtomRequestContext atomRequestContext) {
 		return AtomUtil.createFeedTitleFromPortletName(
 			atomRequestContext, PortletKeys.JOURNAL);

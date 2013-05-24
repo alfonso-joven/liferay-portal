@@ -84,6 +84,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         members
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void addGroupUsers(
 			long groupId, long[] userIds, ServiceContext serviceContext)
 		throws PortalException, SystemException {
@@ -136,6 +137,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         organization in common with a given user
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void addOrganizationUsers(long organizationId, long[] userIds)
 		throws PortalException, SystemException {
 
@@ -157,6 +159,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         policy members
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void addPasswordPolicyUsers(long passwordPolicyId, long[] userIds)
 		throws PortalException, SystemException {
 
@@ -177,6 +180,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         members
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void addRoleUsers(long roleId, long[] userIds)
 		throws PortalException, SystemException {
 
@@ -196,6 +200,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         members
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void addTeamUsers(long teamId, long[] userIds)
 		throws PortalException, SystemException {
 
@@ -254,6 +259,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         address was reserved
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public User addUser(
 			long companyId, boolean autoPassword, String password1,
 			String password2, boolean autoScreenName, String screenName,
@@ -336,6 +342,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         address was reserved, or some other portal exception occurred
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public User addUser(
 			long companyId, boolean autoPassword, String password1,
 			String password2, boolean autoScreenName, String screenName,
@@ -378,6 +385,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         permission to assign group members
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void addUserGroupUsers(long userGroupId, long[] userIds)
 		throws PortalException, SystemException {
 
@@ -436,6 +444,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         address was reserved
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public User addUserWithWorkflow(
 			long companyId, boolean autoPassword, String password1,
 			String password2, boolean autoScreenName, String screenName,
@@ -521,6 +530,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         address was reserved, or some other portal exception occurred
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public User addUserWithWorkflow(
 			long companyId, boolean autoPassword, String password1,
 			String password2, boolean autoScreenName, String screenName,
@@ -585,6 +595,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         current user did not have permission to update the user
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void deletePortrait(long userId)
 		throws PortalException, SystemException {
 
@@ -604,6 +615,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         assign role members
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void deleteRoleUser(long roleId, long userId)
 		throws PortalException, SystemException {
 
@@ -621,6 +633,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         or if the current user did not have permission to delete the user
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void deleteUser(long userId)
 		throws PortalException, SystemException {
 
@@ -634,6 +647,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 		userLocalService.deleteUser(userId);
 	}
 
+	@Override
 	public List<User> getCompanyUsers(long companyId, int start, int end)
 		throws PortalException, SystemException {
 
@@ -646,6 +660,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 		return userPersistence.findByCompanyId(companyId, start, end);
 	}
 
+	@Override
 	public int getCompanyUsersCount(long companyId)
 		throws PortalException, SystemException {
 
@@ -682,6 +697,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         view group assignments
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public long[] getGroupUserIds(long groupId)
 		throws PortalException, SystemException {
 
@@ -700,6 +716,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         view group assignments
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public List<User> getGroupUsers(long groupId)
 		throws PortalException, SystemException {
 
@@ -718,6 +735,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         view organization assignments
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public long[] getOrganizationUserIds(long organizationId)
 		throws PortalException, SystemException {
 
@@ -736,6 +754,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         view organization assignments
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public List<User> getOrganizationUsers(long organizationId)
 		throws PortalException, SystemException {
 
@@ -754,6 +773,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         view role members
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public long[] getRoleUserIds(long roleId)
 		throws PortalException, SystemException {
 
@@ -774,6 +794,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         user
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public User getUserByEmailAddress(long companyId, String emailAddress)
 		throws PortalException, SystemException {
 
@@ -795,6 +816,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         or if the current user did not have permission to view the user
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public User getUserById(long userId)
 		throws PortalException, SystemException {
 
@@ -816,6 +838,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         or if the current user did not have permission to veiw the user
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public User getUserByScreenName(long companyId, String screenName)
 		throws PortalException, SystemException {
 
@@ -827,6 +850,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 		return user;
 	}
 
+	@Override
 	public List<User> getUserGroupUsers(long userGroupId)
 		throws PortalException, SystemException {
 
@@ -846,6 +870,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         found
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public long getUserIdByEmailAddress(long companyId, String emailAddress)
 		throws PortalException, SystemException {
 
@@ -866,6 +891,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 * @throws PortalException if a user with the screen name could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public long getUserIdByScreenName(long companyId, String screenName)
 		throws PortalException, SystemException {
 
@@ -888,6 +914,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         view the user or group members
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public boolean hasGroupUser(long groupId, long userId)
 		throws PortalException, SystemException {
 
@@ -914,6 +941,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         view the user or role members
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public boolean hasRoleUser(long roleId, long userId)
 		throws PortalException, SystemException {
 
@@ -944,6 +972,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 * @throws PortalException if a role with the name could not be found
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public boolean hasRoleUser(
 			long companyId, String name, long userId, boolean inherited)
 		throws PortalException, SystemException {
@@ -973,6 +1002,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         assign role members
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void setRoleUsers(long roleId, long[] userIds)
 		throws PortalException, SystemException {
 
@@ -992,6 +1022,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         assign group members
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void setUserGroupUsers(long userGroupId, long[] userIds)
 		throws PortalException, SystemException {
 
@@ -1010,6 +1041,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         modify user group assignments
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void unsetGroupTeamsUsers(long groupId, long[] userIds)
 		throws PortalException, SystemException {
 
@@ -1030,6 +1062,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         modify group assignments
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void unsetGroupUsers(
 			long groupId, long[] userIds, ServiceContext serviceContext)
 		throws PortalException, SystemException {
@@ -1082,6 +1115,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         modify organization assignments
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void unsetOrganizationUsers(long organizationId, long[] userIds)
 		throws PortalException, SystemException {
 
@@ -1100,6 +1134,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         modify policy assignments
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void unsetPasswordPolicyUsers(long passwordPolicyId, long[] userIds)
 		throws PortalException, SystemException {
 
@@ -1119,6 +1154,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         modify role assignments
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void unsetRoleUsers(long roleId, long[] userIds)
 		throws PortalException, SystemException {
 
@@ -1137,6 +1173,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         modify team assignments
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void unsetTeamUsers(long teamId, long[] userIds)
 		throws PortalException, SystemException {
 
@@ -1155,6 +1192,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         modify user group assignments
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void unsetUserGroupUsers(long userGroupId, long[] userIds)
 		throws PortalException, SystemException {
 
@@ -1174,6 +1212,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         update the user's agreement to terms-of-use
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public User updateAgreedToTermsOfUse(
 			long userId, boolean agreedToTermsOfUse)
 		throws PortalException, SystemException {
@@ -1200,6 +1239,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         or if the current user did not have permission to update the user
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public User updateEmailAddress(
 			long userId, String password, String emailAddress1,
 			String emailAddress2, ServiceContext serviceContext)
@@ -1255,6 +1295,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         email address was reserved
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public User updateIncompleteUser(
 			long companyId, boolean autoPassword, String password1,
 			String password2, boolean autoScreenName, String screenName,
@@ -1295,6 +1336,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         the user
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public User updateLockoutById(long userId, boolean lockout)
 		throws PortalException, SystemException {
 
@@ -1314,6 +1356,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         or if the current user did not have permission to update the user
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public User updateOpenId(long userId, String openId)
 		throws PortalException, SystemException {
 
@@ -1335,6 +1378,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         or if the current user did not have permission to update the user
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public void updateOrganizations(
 			long userId, long[] organizationIds, ServiceContext serviceContext)
 		throws PortalException, SystemException {
@@ -1361,6 +1405,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         or if the current user did not have permission to update the user
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public User updatePassword(
 			long userId, String password1, String password2,
 			boolean passwordReset)
@@ -1384,6 +1429,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         did not have permission to update the user
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public User updatePortrait(long userId, byte[] bytes)
 		throws PortalException, SystemException {
 
@@ -1405,6 +1451,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         current user did not have permission to update the user
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public User updateReminderQuery(long userId, String question, String answer)
 		throws PortalException, SystemException {
 
@@ -1425,6 +1472,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         did not have permission to update the user
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public User updateScreenName(long userId, String screenName)
 		throws PortalException, SystemException {
 
@@ -1447,6 +1495,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         workflow status.
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public User updateStatus(long userId, int status)
 		throws PortalException, SystemException {
 
@@ -1524,6 +1573,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         did not have permission to update the user
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public User updateUser(
 			long userId, String oldPassword, String newPassword1,
 			String newPassword2, boolean passwordReset,
@@ -1678,6 +1728,7 @@ public class UserServiceImpl extends UserServiceBaseImpl {
 	 *         did not have permission to update the user
 	 * @throws SystemException if a system exception occurred
 	 */
+	@Override
 	public User updateUser(
 			long userId, String oldPassword, String newPassword1,
 			String newPassword2, boolean passwordReset,

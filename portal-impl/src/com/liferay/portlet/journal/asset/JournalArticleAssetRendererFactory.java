@@ -63,6 +63,7 @@ public class JournalArticleAssetRendererFactory
 
 	public static final String TYPE = "content";
 
+	@Override
 	public AssetRenderer getAssetRenderer(long classPK, int type)
 		throws PortalException, SystemException {
 
@@ -111,6 +112,7 @@ public class JournalArticleAssetRendererFactory
 		return new JournalArticleAssetRenderer(article);
 	}
 
+	@Override
 	public String getClassName() {
 		return CLASS_NAME;
 	}
@@ -133,6 +135,7 @@ public class JournalArticleAssetRendererFactory
 		return classTypes;
 	}
 
+	@Override
 	public String getType() {
 		return TYPE;
 	}

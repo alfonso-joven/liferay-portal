@@ -133,6 +133,7 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		}
 	}
 
+	@Override
 	public void addAttribute(String name) throws PortalException {
 		boolean secure =
 			PropsValues.PERMISSIONS_CUSTOM_ATTRIBUTE_WRITE_CHECK_BY_DEFAULT;
@@ -144,12 +145,14 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		addAttribute(name, ExpandoColumnConstants.STRING, null, secure);
 	}
 
+	@Override
 	public void addAttribute(String name, boolean secure)
 		throws PortalException {
 
 		addAttribute(name, ExpandoColumnConstants.STRING, null, secure);
 	}
 
+	@Override
 	public void addAttribute(String name, int type) throws PortalException {
 		boolean secure =
 			PropsValues.PERMISSIONS_CUSTOM_ATTRIBUTE_WRITE_CHECK_BY_DEFAULT;
@@ -161,12 +164,14 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		addAttribute(name, type, null, secure);
 	}
 
+	@Override
 	public void addAttribute(String name, int type, boolean secure)
 		throws PortalException {
 
 		addAttribute(name, type, null, secure);
 	}
 
+	@Override
 	public void addAttribute(String name, int type, Serializable defaultValue)
 		throws PortalException {
 
@@ -180,6 +185,7 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		addAttribute(name, type, defaultValue, secure);
 	}
 
+	@Override
 	public void addAttribute(
 			String name, int type, Serializable defaultValue, boolean secure)
 		throws PortalException {
@@ -241,6 +247,7 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		return true;
 	}
 
+	@Override
 	public Serializable getAttribute(String name) {
 		boolean secure =
 			PropsValues.PERMISSIONS_CUSTOM_ATTRIBUTE_READ_CHECK_BY_DEFAULT;
@@ -252,6 +259,7 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		return getAttribute(name, secure);
 	}
 
+	@Override
 	public Serializable getAttribute(String name, boolean secure) {
 		Serializable data = null;
 
@@ -276,6 +284,7 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		return data;
 	}
 
+	@Override
 	public Serializable getAttributeDefault(String name) {
 		try {
 			ExpandoColumn column =
@@ -291,6 +300,7 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		}
 	}
 
+	@Override
 	public Enumeration<String> getAttributeNames() {
 		List<String> columnNames = new ArrayList<String>();
 
@@ -301,6 +311,7 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		return Collections.enumeration(columnNames);
 	}
 
+	@Override
 	public UnicodeProperties getAttributeProperties(String name) {
 		try {
 			ExpandoColumn column =
@@ -318,6 +329,7 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		}
 	}
 
+	@Override
 	public Map<String, Serializable> getAttributes() {
 		boolean secure =
 			PropsValues.PERMISSIONS_CUSTOM_ATTRIBUTE_READ_CHECK_BY_DEFAULT;
@@ -329,6 +341,7 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		return getAttributes(secure);
 	}
 
+	@Override
 	public Map<String, Serializable> getAttributes(boolean secure) {
 		Map<String, Serializable> attributes =
 			new HashMap<String, Serializable>();
@@ -341,6 +354,7 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		return attributes;
 	}
 
+	@Override
 	public Map<String, Serializable> getAttributes(Collection<String> names) {
 		boolean secure =
 			PropsValues.PERMISSIONS_CUSTOM_ATTRIBUTE_READ_CHECK_BY_DEFAULT;
@@ -352,6 +366,7 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		return getAttributes(names, secure);
 	}
 
+	@Override
 	public Map<String, Serializable> getAttributes(
 		Collection<String> names, boolean secure) {
 
@@ -378,6 +393,7 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		return attributeValues;
 	}
 
+	@Override
 	public int getAttributeType(String name) {
 		try {
 			ExpandoColumn column =
@@ -393,18 +409,22 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		}
 	}
 
+	@Override
 	public String getClassName() {
 		return _className;
 	}
 
+	@Override
 	public long getClassPK() {
 		return _classPK;
 	}
 
+	@Override
 	public long getCompanyId() {
 		return _companyId;
 	}
 
+	@Override
 	public boolean hasAttribute(String name) {
 		ExpandoColumn column = null;
 
@@ -423,6 +443,7 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		}
 	}
 
+	@Override
 	public boolean isIndexEnabled() {
 		if (_indexEnabled && (_classPK > 0)) {
 			return true;
@@ -449,6 +470,7 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		}
 	}
 
+	@Override
 	public void setAttribute(String name, Serializable value) {
 		boolean secure =
 			PropsValues.PERMISSIONS_CUSTOM_ATTRIBUTE_WRITE_CHECK_BY_DEFAULT;
@@ -460,6 +482,7 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		setAttribute(name, value, secure);
 	}
 
+	@Override
 	public void setAttribute(String name, Serializable value, boolean secure) {
 		if (_classPK <= 0) {
 			throw new UnsupportedOperationException(
@@ -485,6 +508,7 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		}
 	}
 
+	@Override
 	public void setAttributeDefault(String name, Serializable defaultValue) {
 		try {
 			ExpandoColumn column =
@@ -500,6 +524,7 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		}
 	}
 
+	@Override
 	public void setAttributeProperties(
 		String name, UnicodeProperties properties) {
 
@@ -513,6 +538,7 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		setAttributeProperties(name, properties, secure);
 	}
 
+	@Override
 	public void setAttributeProperties(
 		String name, UnicodeProperties properties, boolean secure) {
 
@@ -535,6 +561,7 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		}
 	}
 
+	@Override
 	public void setAttributes(Map<String, Serializable> attributes) {
 		boolean secure =
 			PropsValues.PERMISSIONS_CUSTOM_ATTRIBUTE_WRITE_CHECK_BY_DEFAULT;
@@ -546,6 +573,7 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		setAttributes(attributes, secure);
 	}
 
+	@Override
 	public void setAttributes(
 		Map<String, Serializable> attributes, boolean secure) {
 
@@ -577,6 +605,7 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		}
 	}
 
+	@Override
 	public void setAttributes(ServiceContext serviceContext) {
 		boolean secure =
 			PropsValues.PERMISSIONS_CUSTOM_ATTRIBUTE_WRITE_CHECK_BY_DEFAULT;
@@ -588,6 +617,7 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		setAttributes(serviceContext, secure);
 	}
 
+	@Override
 	public void setAttributes(ServiceContext serviceContext, boolean secure) {
 		if (serviceContext == null) {
 			return;
@@ -596,18 +626,22 @@ public class ExpandoBridgeImpl implements ExpandoBridge {
 		setAttributes(serviceContext.getExpandoBridgeAttributes(), secure);
 	}
 
+	@Override
 	public void setClassName(String className) {
 		_className = className;
 	}
 
+	@Override
 	public void setClassPK(long classPK) {
 		_classPK = classPK;
 	}
 
+	@Override
 	public void setCompanyId(long companyId) {
 		_companyId = companyId;
 	}
 
+	@Override
 	public void setIndexEnabled(boolean indexEnabled) {
 		_indexEnabled = indexEnabled;
 	}

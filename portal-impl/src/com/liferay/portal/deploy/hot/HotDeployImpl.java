@@ -62,6 +62,7 @@ public class HotDeployImpl implements HotDeploy {
 		_hotDeployListeners = new CopyOnWriteArrayList<HotDeployListener>();
 	}
 
+	@Override
 	public synchronized void fireDeployEvent(
 		final HotDeployEvent hotDeployEvent) {
 
@@ -97,6 +98,7 @@ public class HotDeployImpl implements HotDeploy {
 		}
 	}
 
+	@Override
 	public synchronized void fireUndeployEvent(HotDeployEvent hotDeployEvent) {
 		for (HotDeployListener hotDeployListener : _hotDeployListeners) {
 			try {
@@ -127,10 +129,12 @@ public class HotDeployImpl implements HotDeploy {
 		_pacl.unregister(classLoader);
 	}
 
+	@Override
 	public void registerListener(HotDeployListener hotDeployListener) {
 		_hotDeployListeners.add(hotDeployListener);
 	}
 
+	@Override
 	public synchronized void reset() {
 		_capturePrematureEvents = true;
 		_dependentHotDeployEvents.clear();
@@ -138,16 +142,19 @@ public class HotDeployImpl implements HotDeploy {
 		_hotDeployListeners.clear();
 	}
 
+	@Override
 	public synchronized void setCapturePrematureEvents(
 		boolean capturePrematureEvents) {
 
 		_capturePrematureEvents = capturePrematureEvents;
 	}
 
+	@Override
 	public void unregisterListener(HotDeployListener hotDeployListener) {
 		_hotDeployListeners.remove(hotDeployListener);
 	}
 
+	@Override
 	public void unregisterListeners() {
 		_hotDeployListeners.clear();
 	}

@@ -37,6 +37,7 @@ public class MBCategoryAssetRendererFactory extends BaseAssetRendererFactory {
 
 	public static final String TYPE = "category";
 
+	@Override
 	public AssetRenderer getAssetRenderer(long classPK, int type)
 		throws PortalException, SystemException {
 
@@ -45,10 +46,12 @@ public class MBCategoryAssetRendererFactory extends BaseAssetRendererFactory {
 		return new MBCategoryAssetRenderer(category);
 	}
 
+	@Override
 	public String getClassName() {
 		return CLASS_NAME;
 	}
 
+	@Override
 	public String getType() {
 		return TYPE;
 	}

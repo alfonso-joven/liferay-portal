@@ -113,10 +113,12 @@ public class LiferayServletContext implements ServletContext {
 		_servletContext.declareRoles(roleNames);
 	}
 
+	@Override
 	public Object getAttribute(String name) {
 		return _servletContext.getAttribute(name);
 	}
 
+	@Override
 	public Enumeration<String> getAttributeNames() {
 		return _servletContext.getAttributeNames();
 	}
@@ -125,6 +127,7 @@ public class LiferayServletContext implements ServletContext {
 		return _servletContext.getClassLoader();
 	}
 
+	@Override
 	public ServletContext getContext(String uriPath) {
 		ServletContext servletContext = _servletContext.getContext(uriPath);
 
@@ -136,6 +139,7 @@ public class LiferayServletContext implements ServletContext {
 		}
 	}
 
+	@Override
 	public String getContextPath() {
 		return ContextPathUtil.getContextPath(_servletContext);
 	}
@@ -164,10 +168,12 @@ public class LiferayServletContext implements ServletContext {
 		return _servletContext.getFilterRegistrations();
 	}
 
+	@Override
 	public String getInitParameter(String name) {
 		return _servletContext.getInitParameter(name);
 	}
 
+	@Override
 	public Enumeration<String> getInitParameterNames() {
 		return _servletContext.getInitParameterNames();
 	}
@@ -176,18 +182,22 @@ public class LiferayServletContext implements ServletContext {
 		return _servletContext.getJspConfigDescriptor();
 	}
 
+	@Override
 	public int getMajorVersion() {
 		return _servletContext.getMajorVersion();
 	}
 
+	@Override
 	public String getMimeType(String file) {
 		return _servletContext.getMimeType(file);
 	}
 
+	@Override
 	public int getMinorVersion() {
 		return _servletContext.getMinorVersion();
 	}
 
+	@Override
 	public RequestDispatcher getNamedDispatcher(String name) {
 		RequestDispatcher requestDispatcher =
 			_servletContext.getNamedDispatcher(name);
@@ -200,10 +210,12 @@ public class LiferayServletContext implements ServletContext {
 		return requestDispatcher;
 	}
 
+	@Override
 	public String getRealPath(String path) {
 		return _servletContext.getRealPath(path);
 	}
 
+	@Override
 	public RequestDispatcher getRequestDispatcher(String path) {
 		RequestDispatcher requestDispatcher =
 			_servletContext.getRequestDispatcher(path);
@@ -216,30 +228,37 @@ public class LiferayServletContext implements ServletContext {
 		return requestDispatcher;
 	}
 
+	@Override
 	public URL getResource(String path) throws MalformedURLException {
 		return _servletContext.getResource(path);
 	}
 
+	@Override
 	public InputStream getResourceAsStream(String path) {
 		return _servletContext.getResourceAsStream(path);
 	}
 
+	@Override
 	public Set<String> getResourcePaths(String path) {
 		return _servletContext.getResourcePaths(path);
 	}
 
+	@Override
 	public String getServerInfo() {
 		return _servletContext.getServerInfo();
 	}
 
+	@Override
 	public Servlet getServlet(String name) {
 		return null;
 	}
 
+	@Override
 	public String getServletContextName() {
 		return _servletContext.getServletContextName();
 	}
 
+	@Override
 	public Enumeration<String> getServletNames() {
 		return Collections.enumeration(new ArrayList<String>());
 	}
@@ -254,6 +273,7 @@ public class LiferayServletContext implements ServletContext {
 		return _servletContext.getServletRegistrations();
 	}
 
+	@Override
 	public Enumeration<Servlet> getServlets() {
 		return Collections.enumeration(new ArrayList<Servlet>());
 	}
@@ -262,22 +282,27 @@ public class LiferayServletContext implements ServletContext {
 		return _servletContext.getSessionCookieConfig();
 	}
 
+	@Override
 	public void log(Exception exception, String message) {
 		_servletContext.log(message, exception);
 	}
 
+	@Override
 	public void log(String message) {
 		_servletContext.log(message);
 	}
 
+	@Override
 	public void log(String message, Throwable t) {
 		_servletContext.log(message, t);
 	}
 
+	@Override
 	public void removeAttribute(String name) {
 		_servletContext.removeAttribute(name);
 	}
 
+	@Override
 	public void setAttribute(String name, Object value) {
 		_servletContext.setAttribute(name, value);
 	}

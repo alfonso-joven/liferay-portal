@@ -35,6 +35,7 @@ import java.util.Properties;
  */
 public class PatcherImpl implements Patcher {
 
+	@Override
 	public boolean applyPatch(File patchFile) {
 		File patchDirectory = getPatchDirectory();
 
@@ -59,6 +60,7 @@ public class PatcherImpl implements Patcher {
 		}
 	}
 
+	@Override
 	public String[] getFixedIssues() {
 		if (_fixedIssueKeys != null) {
 			return _fixedIssueKeys;
@@ -72,6 +74,7 @@ public class PatcherImpl implements Patcher {
 		return _fixedIssueKeys;
 	}
 
+	@Override
 	public String[] getInstalledPatches() {
 		if (_installedPatchNames != null) {
 			return _installedPatchNames;
@@ -85,6 +88,7 @@ public class PatcherImpl implements Patcher {
 		return _installedPatchNames;
 	}
 
+	@Override
 	public File getPatchDirectory() {
 		if (_patchDirectory != null) {
 			return _patchDirectory;
@@ -109,6 +113,7 @@ public class PatcherImpl implements Patcher {
 		return _patchDirectory;
 	}
 
+	@Override
 	public Properties getProperties() {
 		if (_properties != null) {
 			return _properties;
@@ -147,6 +152,7 @@ public class PatcherImpl implements Patcher {
 		return _properties;
 	}
 
+	@Override
 	public boolean isConfigured() {
 		return _configured;
 	}

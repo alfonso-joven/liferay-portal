@@ -469,6 +469,7 @@ public class AdvancedPermissionChecker extends BasePermissionChecker {
 		}
 	}
 
+	@Override
 	public boolean hasOwnerPermission(
 		long companyId, String name, String primKey, long ownerId,
 		String actionId) {
@@ -539,6 +540,7 @@ public class AdvancedPermissionChecker extends BasePermissionChecker {
 		return false;
 	}
 
+	@Override
 	public boolean hasPermission(
 		long groupId, String name, String primKey, String actionId) {
 
@@ -624,6 +626,7 @@ public class AdvancedPermissionChecker extends BasePermissionChecker {
 		return value.booleanValue();
 	}
 
+	@Override
 	public boolean hasUserPermission(
 		long groupId, String name, String primKey, String actionId,
 		boolean checkAdmin) {
@@ -639,6 +642,7 @@ public class AdvancedPermissionChecker extends BasePermissionChecker {
 		}
 	}
 
+	@Override
 	public boolean isCompanyAdmin() {
 		try {
 			return isCompanyAdminImpl();
@@ -650,6 +654,7 @@ public class AdvancedPermissionChecker extends BasePermissionChecker {
 		}
 	}
 
+	@Override
 	public boolean isCompanyAdmin(long companyId) {
 		try {
 			return isCompanyAdminImpl(companyId);
@@ -661,6 +666,7 @@ public class AdvancedPermissionChecker extends BasePermissionChecker {
 		}
 	}
 
+	@Override
 	public boolean isGroupAdmin(long groupId) {
 		try {
 			return isGroupAdminImpl(groupId);
@@ -672,6 +678,7 @@ public class AdvancedPermissionChecker extends BasePermissionChecker {
 		}
 	}
 
+	@Override
 	public boolean isGroupMember(long groupId) {
 		try {
 			return isGroupMemberImpl(groupId);
@@ -683,6 +690,7 @@ public class AdvancedPermissionChecker extends BasePermissionChecker {
 		}
 	}
 
+	@Override
 	public boolean isGroupOwner(long groupId) {
 		try {
 			return isGroupOwnerImpl(groupId);
@@ -694,6 +702,7 @@ public class AdvancedPermissionChecker extends BasePermissionChecker {
 		}
 	}
 
+	@Override
 	public boolean isOrganizationAdmin(long organizationId) {
 		try {
 			return isOrganizationAdminImpl(organizationId);
@@ -705,6 +714,7 @@ public class AdvancedPermissionChecker extends BasePermissionChecker {
 		}
 	}
 
+	@Override
 	public boolean isOrganizationOwner(long organizationId) {
 		try {
 			return isOrganizationOwnerImpl(organizationId);

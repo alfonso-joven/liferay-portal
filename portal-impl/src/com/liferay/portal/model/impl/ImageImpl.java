@@ -33,6 +33,7 @@ public class ImageImpl extends ImageBaseImpl {
 	public ImageImpl() {
 	}
 
+	@Override
 	public byte[] getTextObj() {
 		if (_textObj != null) {
 			return _textObj;
@@ -69,6 +70,7 @@ public class ImageImpl extends ImageBaseImpl {
 		return _textObj;
 	}
 
+	@Override
 	public void setTextObj(byte[] textObj) {
 		_textObj = textObj;
 

@@ -43,6 +43,7 @@ import jodd.typeconverter.Convert;
 @DoPrivileged
 public class BeanPropertiesImpl implements BeanProperties {
 
+	@Override
 	public void copyProperties(Object source, Object target) {
 		try {
 			BeanTool.copyProperties(source, target);
@@ -52,6 +53,7 @@ public class BeanPropertiesImpl implements BeanProperties {
 		}
 	}
 
+	@Override
 	public void copyProperties(
 		Object source, Object target, Class<?> editable) {
 
@@ -63,6 +65,7 @@ public class BeanPropertiesImpl implements BeanProperties {
 		}
 	}
 
+	@Override
 	public void copyProperties(
 		Object source, Object target, String[] ignoreProperties) {
 
@@ -74,10 +77,12 @@ public class BeanPropertiesImpl implements BeanProperties {
 		}
 	}
 
+	@Override
 	public boolean getBoolean(Object bean, String param) {
 		return getBoolean(bean, param, GetterUtil.DEFAULT_BOOLEAN);
 	}
 
+	@Override
 	public boolean getBoolean(Object bean, String param, boolean defaultValue) {
 		boolean beanValue = defaultValue;
 
@@ -95,10 +100,12 @@ public class BeanPropertiesImpl implements BeanProperties {
 		return beanValue;
 	}
 
+	@Override
 	public boolean getBooleanSilent(Object bean, String param) {
 		return getBooleanSilent(bean, param, GetterUtil.DEFAULT_BOOLEAN);
 	}
 
+	@Override
 	public boolean getBooleanSilent(
 		Object bean, String param, boolean defaultValue) {
 
@@ -117,10 +124,12 @@ public class BeanPropertiesImpl implements BeanProperties {
 		return beanValue;
 	}
 
+	@Override
 	public byte getByte(Object bean, String param) {
 		return getByte(bean, param, GetterUtil.DEFAULT_BYTE);
 	}
 
+	@Override
 	public byte getByte(Object bean, String param, byte defaultValue) {
 		byte beanValue = defaultValue;
 
@@ -138,10 +147,12 @@ public class BeanPropertiesImpl implements BeanProperties {
 		return beanValue;
 	}
 
+	@Override
 	public byte getByteSilent(Object bean, String param) {
 		return getByteSilent(bean, param, GetterUtil.DEFAULT_BYTE);
 	}
 
+	@Override
 	public byte getByteSilent(Object bean, String param, byte defaultValue) {
 		byte beanValue = defaultValue;
 
@@ -158,10 +169,12 @@ public class BeanPropertiesImpl implements BeanProperties {
 		return beanValue;
 	}
 
+	@Override
 	public double getDouble(Object bean, String param) {
 		return getDouble(bean, param, GetterUtil.DEFAULT_DOUBLE);
 	}
 
+	@Override
 	public double getDouble(Object bean, String param, double defaultValue) {
 		double beanValue = defaultValue;
 
@@ -179,10 +192,12 @@ public class BeanPropertiesImpl implements BeanProperties {
 		return beanValue;
 	}
 
+	@Override
 	public double getDoubleSilent(Object bean, String param) {
 		return getDoubleSilent(bean, param, GetterUtil.DEFAULT_DOUBLE);
 	}
 
+	@Override
 	public double getDoubleSilent(
 		Object bean, String param, double defaultValue) {
 
@@ -201,10 +216,12 @@ public class BeanPropertiesImpl implements BeanProperties {
 		return beanValue;
 	}
 
+	@Override
 	public float getFloat(Object bean, String param) {
 		return getFloat(bean, param, GetterUtil.DEFAULT_FLOAT);
 	}
 
+	@Override
 	public float getFloat(Object bean, String param, float defaultValue) {
 		float beanValue = defaultValue;
 
@@ -222,10 +239,12 @@ public class BeanPropertiesImpl implements BeanProperties {
 		return beanValue;
 	}
 
+	@Override
 	public float getFloatSilent(Object bean, String param) {
 		return getFloatSilent(bean, param, GetterUtil.DEFAULT_FLOAT);
 	}
 
+	@Override
 	public float getFloatSilent(Object bean, String param, float defaultValue) {
 		float beanValue = defaultValue;
 
@@ -242,10 +261,12 @@ public class BeanPropertiesImpl implements BeanProperties {
 		return beanValue;
 	}
 
+	@Override
 	public int getInteger(Object bean, String param) {
 		return getInteger(bean, param, GetterUtil.DEFAULT_INTEGER);
 	}
 
+	@Override
 	public int getInteger(Object bean, String param, int defaultValue) {
 		int beanValue = defaultValue;
 
@@ -263,10 +284,12 @@ public class BeanPropertiesImpl implements BeanProperties {
 		return beanValue;
 	}
 
+	@Override
 	public int getIntegerSilent(Object bean, String param) {
 		return getIntegerSilent(bean, param, GetterUtil.DEFAULT_INTEGER);
 	}
 
+	@Override
 	public int getIntegerSilent(Object bean, String param, int defaultValue) {
 		int beanValue = defaultValue;
 
@@ -283,10 +306,12 @@ public class BeanPropertiesImpl implements BeanProperties {
 		return beanValue;
 	}
 
+	@Override
 	public long getLong(Object bean, String param) {
 		return getLong(bean, param, GetterUtil.DEFAULT_LONG);
 	}
 
+	@Override
 	public long getLong(Object bean, String param, long defaultValue) {
 		long beanValue = defaultValue;
 
@@ -304,10 +329,12 @@ public class BeanPropertiesImpl implements BeanProperties {
 		return beanValue;
 	}
 
+	@Override
 	public long getLongSilent(Object bean, String param) {
 		return getLongSilent(bean, param, GetterUtil.DEFAULT_LONG);
 	}
 
+	@Override
 	public long getLongSilent(Object bean, String param, long defaultValue) {
 		long beanValue = defaultValue;
 
@@ -324,10 +351,12 @@ public class BeanPropertiesImpl implements BeanProperties {
 		return beanValue;
 	}
 
+	@Override
 	public Object getObject(Object bean, String param) {
 		return getObject(bean, param, null);
 	}
 
+	@Override
 	public Object getObject(Object bean, String param, Object defaultValue) {
 		Object beanValue = null;
 
@@ -348,10 +377,12 @@ public class BeanPropertiesImpl implements BeanProperties {
 		}
 	}
 
+	@Override
 	public Object getObjectSilent(Object bean, String param) {
 		return getObjectSilent(bean, param, null);
 	}
 
+	@Override
 	public Object getObjectSilent(
 		Object bean, String param, Object defaultValue) {
 
@@ -373,10 +404,12 @@ public class BeanPropertiesImpl implements BeanProperties {
 		}
 	}
 
+	@Override
 	public Class<?> getObjectType(Object bean, String param) {
 		return getObjectType(bean, param, null);
 	}
 
+	@Override
 	public Class<?> getObjectType(
 		Object bean, String param, Class<?> defaultValue) {
 
@@ -399,10 +432,12 @@ public class BeanPropertiesImpl implements BeanProperties {
 		}
 	}
 
+	@Override
 	public Class<?> getObjectTypeSilent(Object bean, String param) {
 		return getObjectTypeSilent(bean, param, null);
 	}
 
+	@Override
 	public Class<?> getObjectTypeSilent(
 		Object bean, String param, Class<?> defaultValue) {
 
@@ -424,10 +459,12 @@ public class BeanPropertiesImpl implements BeanProperties {
 		}
 	}
 
+	@Override
 	public short getShort(Object bean, String param) {
 		return getShort(bean, param, GetterUtil.DEFAULT_SHORT);
 	}
 
+	@Override
 	public short getShort(Object bean, String param, short defaultValue) {
 		short beanValue = defaultValue;
 
@@ -445,10 +482,12 @@ public class BeanPropertiesImpl implements BeanProperties {
 		return beanValue;
 	}
 
+	@Override
 	public short getShortSilent(Object bean, String param) {
 		return getShortSilent(bean, param, GetterUtil.DEFAULT_SHORT);
 	}
 
+	@Override
 	public short getShortSilent(Object bean, String param, short defaultValue) {
 		short beanValue = defaultValue;
 
@@ -465,10 +504,12 @@ public class BeanPropertiesImpl implements BeanProperties {
 		return beanValue;
 	}
 
+	@Override
 	public String getString(Object bean, String param) {
 		return getString(bean, param, GetterUtil.DEFAULT_STRING);
 	}
 
+	@Override
 	public String getString(Object bean, String param, String defaultValue) {
 		String beanValue = defaultValue;
 
@@ -486,10 +527,12 @@ public class BeanPropertiesImpl implements BeanProperties {
 		return beanValue;
 	}
 
+	@Override
 	public String getStringSilent(Object bean, String param) {
 		return getStringSilent(bean, param, GetterUtil.DEFAULT_STRING);
 	}
 
+	@Override
 	public String getStringSilent(
 		Object bean, String param, String defaultValue) {
 
@@ -508,6 +551,7 @@ public class BeanPropertiesImpl implements BeanProperties {
 		return beanValue;
 	}
 
+	@Override
 	public void setProperties(Object bean, HttpServletRequest request) {
 		Enumeration<String> enu = request.getParameterNames();
 
@@ -543,6 +587,7 @@ public class BeanPropertiesImpl implements BeanProperties {
 		}
 	}
 
+	@Override
 	public void setProperty(Object bean, String param, Object value) {
 		try {
 			BeanUtil.setProperty(bean, param, value);

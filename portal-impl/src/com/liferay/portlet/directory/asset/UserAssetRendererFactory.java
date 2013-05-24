@@ -39,6 +39,7 @@ public class UserAssetRendererFactory extends BaseAssetRendererFactory {
 
 	public static final String TYPE = "user";
 
+	@Override
 	public AssetRenderer getAssetRenderer(long classPK, int type)
 		throws PortalException, SystemException {
 
@@ -59,10 +60,12 @@ public class UserAssetRendererFactory extends BaseAssetRendererFactory {
 		return new UserAssetRenderer(user);
 	}
 
+	@Override
 	public String getClassName() {
 		return CLASS_NAME;
 	}
 
+	@Override
 	public String getType() {
 		return TYPE;
 	}

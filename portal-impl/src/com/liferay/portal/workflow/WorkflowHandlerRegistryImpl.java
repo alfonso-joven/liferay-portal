@@ -30,18 +30,22 @@ import java.util.TreeMap;
 @DoPrivileged
 public class WorkflowHandlerRegistryImpl implements WorkflowHandlerRegistry {
 
+	@Override
 	public List<WorkflowHandler> getScopeableWorkflowHandlers() {
 		return ListUtil.fromMapValues(_scopeableWorkflowHandlerMap);
 	}
 
+	@Override
 	public WorkflowHandler getWorkflowHandler(String className) {
 		return _workflowHandlerMap.get(className);
 	}
 
+	@Override
 	public List<WorkflowHandler> getWorkflowHandlers() {
 		return ListUtil.fromMapValues(_workflowHandlerMap);
 	}
 
+	@Override
 	public void register(WorkflowHandler workflowHandler) {
 		synchronized (this) {
 			_workflowHandlerMap.put(
@@ -54,6 +58,7 @@ public class WorkflowHandlerRegistryImpl implements WorkflowHandlerRegistry {
 		}
 	}
 
+	@Override
 	public void unregister(WorkflowHandler workflowHandler) {
 		synchronized (this) {
 			_workflowHandlerMap.remove(workflowHandler.getClassName());

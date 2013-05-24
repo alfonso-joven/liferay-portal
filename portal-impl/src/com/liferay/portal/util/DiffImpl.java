@@ -51,6 +51,7 @@ public class DiffImpl implements com.liferay.portal.kernel.util.Diff {
 	 *         first element contains DiffResults related to changes in source
 	 *         and the second element to changes in target
 	 */
+	@Override
 	public List<DiffResult>[] diff(Reader source, Reader target) {
 		int margin = 2;
 
@@ -79,6 +80,7 @@ public class DiffImpl implements com.liferay.portal.kernel.util.Diff {
 	 *         first element contains DiffResults related to changes in source
 	 *         and the second element to changes in target
 	 */
+	@Override
 	public List<DiffResult>[] diff(
 		Reader source, Reader target, String addedMarkerStart,
 		String addedMarkerEnd, String deletedMarkerStart,

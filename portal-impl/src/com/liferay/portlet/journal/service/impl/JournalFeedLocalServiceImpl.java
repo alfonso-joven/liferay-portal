@@ -51,6 +51,7 @@ import java.util.List;
 public class JournalFeedLocalServiceImpl
 	extends JournalFeedLocalServiceBaseImpl {
 
+	@Override
 	public JournalFeed addFeed(
 			long userId, long groupId, String feedId, boolean autoFeedId,
 			String name, String description, String type, String structureId,
@@ -135,6 +136,7 @@ public class JournalFeedLocalServiceImpl
 		return feed;
 	}
 
+	@Override
 	public void addFeedResources(
 			JournalFeed feed, boolean addGroupPermissions,
 			boolean addGuestPermissions)
@@ -146,6 +148,7 @@ public class JournalFeedLocalServiceImpl
 			addGroupPermissions, addGuestPermissions);
 	}
 
+	@Override
 	public void addFeedResources(
 			JournalFeed feed, String[] groupPermissions,
 			String[] guestPermissions)
@@ -157,6 +160,7 @@ public class JournalFeedLocalServiceImpl
 			guestPermissions);
 	}
 
+	@Override
 	public void addFeedResources(
 			long feedId, boolean addGroupPermissions,
 			boolean addGuestPermissions)
@@ -167,6 +171,7 @@ public class JournalFeedLocalServiceImpl
 		addFeedResources(feed, addGroupPermissions, addGuestPermissions);
 	}
 
+	@Override
 	public void addFeedResources(
 			long feedId, String[] groupPermissions, String[] guestPermissions)
 		throws PortalException, SystemException {
@@ -176,6 +181,7 @@ public class JournalFeedLocalServiceImpl
 		addFeedResources(feed, groupPermissions, guestPermissions);
 	}
 
+	@Override
 	public void deleteFeed(JournalFeed feed)
 		throws PortalException, SystemException {
 
@@ -195,6 +201,7 @@ public class JournalFeedLocalServiceImpl
 		journalFeedPersistence.remove(feed);
 	}
 
+	@Override
 	public void deleteFeed(long feedId)
 		throws PortalException, SystemException {
 
@@ -203,6 +210,7 @@ public class JournalFeedLocalServiceImpl
 		deleteFeed(feed);
 	}
 
+	@Override
 	public void deleteFeed(long groupId, String feedId)
 		throws PortalException, SystemException {
 
@@ -211,36 +219,43 @@ public class JournalFeedLocalServiceImpl
 		deleteFeed(feed);
 	}
 
+	@Override
 	public JournalFeed getFeed(long feedId)
 		throws PortalException, SystemException {
 
 		return journalFeedPersistence.findByPrimaryKey(feedId);
 	}
 
+	@Override
 	public JournalFeed getFeed(long groupId, String feedId)
 		throws PortalException, SystemException {
 
 		return journalFeedPersistence.findByG_F(groupId, feedId);
 	}
 
+	@Override
 	public List<JournalFeed> getFeeds() throws SystemException {
 		return journalFeedPersistence.findAll();
 	}
 
+	@Override
 	public List<JournalFeed> getFeeds(long groupId) throws SystemException {
 		return journalFeedPersistence.findByGroupId(groupId);
 	}
 
+	@Override
 	public List<JournalFeed> getFeeds(long groupId, int start, int end)
 		throws SystemException {
 
 		return journalFeedPersistence.findByGroupId(groupId, start, end);
 	}
 
+	@Override
 	public int getFeedsCount(long groupId) throws SystemException {
 		return journalFeedPersistence.countByGroupId(groupId);
 	}
 
+	@Override
 	public List<JournalFeed> search(
 			long companyId, long groupId, String keywords, int start, int end,
 			OrderByComparator obc)
@@ -250,6 +265,7 @@ public class JournalFeedLocalServiceImpl
 			companyId, groupId, keywords, start, end, obc);
 	}
 
+	@Override
 	public List<JournalFeed> search(
 			long companyId, long groupId, String feedId, String name,
 			String description, boolean andOperator, int start, int end,
@@ -261,12 +277,14 @@ public class JournalFeedLocalServiceImpl
 			end, obc);
 	}
 
+	@Override
 	public int searchCount(long companyId, long groupId, String keywords)
 		throws SystemException {
 
 		return journalFeedFinder.countByKeywords(companyId, groupId, keywords);
 	}
 
+	@Override
 	public int searchCount(
 			long companyId, long groupId, String feedId, String name,
 			String description, boolean andOperator)
@@ -276,6 +294,7 @@ public class JournalFeedLocalServiceImpl
 			companyId, groupId, feedId, name, description, andOperator);
 	}
 
+	@Override
 	public JournalFeed updateFeed(
 			long groupId, String feedId, String name, String description,
 			String type, String structureId, String templateId,

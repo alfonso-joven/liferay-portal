@@ -25,17 +25,21 @@ import java.io.InputStream;
  */
 public class DatabaseHook extends BaseHook {
 
+	@Override
 	public void deleteImage(Image image) {
 	}
 
+	@Override
 	public byte[] getImageAsBytes(Image image) {
 		return (byte[])Base64.stringToObject(image.getText());
 	}
 
+	@Override
 	public InputStream getImageAsStream(Image image) {
 		return new UnsyncByteArrayInputStream(getImageAsBytes(image));
 	}
 
+	@Override
 	public void updateImage(Image image, String type, byte[] bytes) {
 		image.setTextObj(bytes);
 	}

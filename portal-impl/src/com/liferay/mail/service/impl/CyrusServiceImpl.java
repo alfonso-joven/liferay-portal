@@ -30,6 +30,7 @@ import com.liferay.portal.kernel.security.pacl.DoPrivileged;
 @DoPrivileged
 public class CyrusServiceImpl implements CyrusService, IdentifiableBean {
 
+	@Override
 	public void addUser(long userId, String emailAddress, String password)
 		throws SystemException {
 
@@ -46,12 +47,14 @@ public class CyrusServiceImpl implements CyrusService, IdentifiableBean {
 		CyrusVirtualUtil.update(virtual);
 	}
 
+	@Override
 	public void deleteEmailAddress(long companyId, long userId)
 		throws SystemException {
 
 		CyrusVirtualUtil.removeByUserId(userId);
 	}
 
+	@Override
 	public void deleteUser(long userId) throws SystemException {
 
 		// User
@@ -67,14 +70,17 @@ public class CyrusServiceImpl implements CyrusService, IdentifiableBean {
 		CyrusVirtualUtil.removeByUserId(userId);
 	}
 
+	@Override
 	public String getBeanIdentifier() {
 		return _beanIdentifier;
 	}
 
+	@Override
 	public void setBeanIdentifier(String beanIdentifier) {
 		_beanIdentifier = beanIdentifier;
 	}
 
+	@Override
 	public void updateEmailAddress(
 			long companyId, long userId, String emailAddress)
 		throws SystemException {
@@ -86,6 +92,7 @@ public class CyrusServiceImpl implements CyrusService, IdentifiableBean {
 		CyrusVirtualUtil.update(virtual);
 	}
 
+	@Override
 	public void updatePassword(long companyId, long userId, String password)
 		throws SystemException {
 

@@ -31,6 +31,7 @@ public class AssetCategoryImpl extends AssetCategoryBaseImpl {
 	public AssetCategoryImpl() {
 	}
 
+	@Override
 	public List<AssetCategory> getAncestors()
 		throws PortalException, SystemException {
 
@@ -75,6 +76,7 @@ public class AssetCategoryImpl extends AssetCategoryBaseImpl {
 		return value;
 	}
 
+	@Override
 	public boolean isRootCategory() {
 		if (getParentCategoryId() == 0) {
 			return true;

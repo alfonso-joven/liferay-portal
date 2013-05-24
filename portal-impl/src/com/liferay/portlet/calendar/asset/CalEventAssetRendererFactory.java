@@ -47,6 +47,7 @@ public class CalEventAssetRendererFactory extends BaseAssetRendererFactory {
 
 	public static final String TYPE = "event";
 
+	@Override
 	public AssetRenderer getAssetRenderer(long classPK, int type)
 		throws PortalException, SystemException {
 
@@ -55,10 +56,12 @@ public class CalEventAssetRendererFactory extends BaseAssetRendererFactory {
 		return new CalEventAssetRenderer(event);
 	}
 
+	@Override
 	public String getClassName() {
 		return CLASS_NAME;
 	}
 
+	@Override
 	public String getType() {
 		return TYPE;
 	}

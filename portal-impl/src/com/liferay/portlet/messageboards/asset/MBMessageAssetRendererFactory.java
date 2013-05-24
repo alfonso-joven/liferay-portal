@@ -36,6 +36,7 @@ public class MBMessageAssetRendererFactory extends BaseAssetRendererFactory {
 
 	public static final String TYPE = "message";
 
+	@Override
 	public AssetRenderer getAssetRenderer(long classPK, int type)
 		throws PortalException, SystemException {
 
@@ -44,10 +45,12 @@ public class MBMessageAssetRendererFactory extends BaseAssetRendererFactory {
 		return new MBMessageAssetRenderer(message);
 	}
 
+	@Override
 	public String getClassName() {
 		return CLASS_NAME;
 	}
 
+	@Override
 	public String getType() {
 		return TYPE;
 	}

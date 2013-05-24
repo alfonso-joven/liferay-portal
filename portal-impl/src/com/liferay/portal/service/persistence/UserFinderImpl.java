@@ -120,6 +120,7 @@ public class UserFinderImpl
 	public static final String JOIN_BY_SOCIAL_RELATION_TYPE =
 		UserFinder.class.getName() + ".joinBySocialRelationType";
 
+	@Override
 	public int countByUser(long userId, LinkedHashMap<String, Object> params)
 		throws SystemException {
 
@@ -162,6 +163,7 @@ public class UserFinderImpl
 		}
 	}
 
+	@Override
 	public int countByKeywords(
 			long companyId, String keywords, int status,
 			LinkedHashMap<String, Object> params)
@@ -190,6 +192,7 @@ public class UserFinderImpl
 			emailAddresses, status, params, andOperator);
 	}
 
+	@Override
 	public int countByC_FN_MN_LN_SN_EA_S(
 			long companyId, String firstName, String middleName,
 			String lastName, String screenName, String emailAddress, int status,
@@ -207,6 +210,7 @@ public class UserFinderImpl
 			emailAddresses, status, params, andOperator);
 	}
 
+	@Override
 	public int countByC_FN_MN_LN_SN_EA_S(
 			long companyId, String[] firstNames, String[] middleNames,
 			String[] lastNames, String[] screenNames, String[] emailAddresses,
@@ -332,6 +336,7 @@ public class UserFinderImpl
 		}
 	}
 
+	@Override
 	public List<User> findByKeywords(
 			long companyId, String keywords, int status,
 			LinkedHashMap<String, Object> params, int start, int end,
@@ -361,6 +366,7 @@ public class UserFinderImpl
 			emailAddresses, status, params, andOperator, start, end, obc);
 	}
 
+	@Override
 	public List<User> findByNoAnnouncementsDeliveries(String type)
 		throws SystemException {
 
@@ -389,6 +395,7 @@ public class UserFinderImpl
 		}
 	}
 
+	@Override
 	public List<User> findByNoContacts() throws SystemException {
 		Session session = null;
 
@@ -411,6 +418,7 @@ public class UserFinderImpl
 		}
 	}
 
+	@Override
 	public List<User> findByNoGroups() throws SystemException {
 		Session session = null;
 
@@ -433,6 +441,7 @@ public class UserFinderImpl
 		}
 	}
 
+	@Override
 	public List<User> findByC_FN_MN_LN_SN_EA_S(
 			long companyId, String firstName, String middleName,
 			String lastName, String screenName, String emailAddress, int status,
@@ -451,6 +460,7 @@ public class UserFinderImpl
 			emailAddresses, status, params, andOperator, start, end, obc);
 	}
 
+	@Override
 	public List<User> findByC_FN_MN_LN_SN_EA_S(
 			long companyId, String[] firstNames, String[] middleNames,
 			String[] lastNames, String[] screenNames, String[] emailAddresses,

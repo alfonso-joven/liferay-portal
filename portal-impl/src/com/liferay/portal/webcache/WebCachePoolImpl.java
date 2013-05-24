@@ -34,10 +34,12 @@ public class WebCachePoolImpl implements WebCachePool {
 		_portalCache = _singleVMPool.getCache(_CACHE_NAME);
 	}
 
+	@Override
 	public void clear() {
 		_portalCache.removeAll();
 	}
 
+	@Override
 	public Object get(String key, WebCacheItem wci) {
 		Object obj = _portalCache.get(key);
 
@@ -68,6 +70,7 @@ public class WebCachePoolImpl implements WebCachePool {
 		return obj;
 	}
 
+	@Override
 	public void remove(String key) {
 		_portalCache.remove(key);
 	}

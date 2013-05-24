@@ -32,6 +32,7 @@ public class LayoutTemplateAutoDeployListener extends BaseAutoDeployListener {
 		_autoDeployer = new LayoutTemplateAutoDeployer();
 	}
 
+	@Override
 	public void deploy(AutoDeploymentContext autoDeploymentContext)
 		throws AutoDeployException {
 

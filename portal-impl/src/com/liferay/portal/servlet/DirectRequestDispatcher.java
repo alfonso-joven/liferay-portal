@@ -73,6 +73,7 @@ public class DirectRequestDispatcher implements RequestDispatcher {
 		}
 	}
 
+	@Override
 	public void forward(
 			ServletRequest servletRequest, ServletResponse servletResponse)
 		throws IOException, ServletException {
@@ -85,6 +86,7 @@ public class DirectRequestDispatcher implements RequestDispatcher {
 		_servlet.service(servletRequest, servletResponse);
 	}
 
+	@Override
 	public void include(
 			ServletRequest servletRequest, ServletResponse servletResponse)
 		throws IOException, ServletException {

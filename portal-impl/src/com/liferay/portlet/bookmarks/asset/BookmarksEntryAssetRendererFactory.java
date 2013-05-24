@@ -50,6 +50,7 @@ public class BookmarksEntryAssetRendererFactory
 
 	public static final String TYPE = "bookmark";
 
+	@Override
 	public AssetRenderer getAssetRenderer(long classPK, int type)
 		throws PortalException, SystemException {
 
@@ -58,10 +59,12 @@ public class BookmarksEntryAssetRendererFactory
 		return new BookmarksEntryAssetRenderer(entry);
 	}
 
+	@Override
 	public String getClassName() {
 		return CLASS_NAME;
 	}
 
+	@Override
 	public String getType() {
 		return TYPE;
 	}

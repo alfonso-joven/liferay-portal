@@ -40,6 +40,7 @@ public class WikiPageAssetRendererFactory extends BaseAssetRendererFactory {
 
 	public static final String TYPE = "wiki";
 
+	@Override
 	public AssetRenderer getAssetRenderer(long classPK, int type)
 		throws PortalException, SystemException {
 
@@ -65,10 +66,12 @@ public class WikiPageAssetRendererFactory extends BaseAssetRendererFactory {
 		return new WikiPageAssetRenderer(page);
 	}
 
+	@Override
 	public String getClassName() {
 		return CLASS_NAME;
 	}
 
+	@Override
 	public String getType() {
 		return TYPE;
 	}

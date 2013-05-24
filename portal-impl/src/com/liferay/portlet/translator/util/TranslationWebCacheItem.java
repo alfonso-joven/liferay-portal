@@ -33,6 +33,7 @@ public class TranslationWebCacheItem implements WebCacheItem {
 		_fromText = fromText;
 	}
 
+	@Override
 	public Object convert(String key) throws WebCacheException {
 		Translation translation = new Translation(_translationId, _fromText);
 
@@ -71,6 +72,7 @@ public class TranslationWebCacheItem implements WebCacheItem {
 		return translation;
 	}
 
+	@Override
 	public long getRefreshTime() {
 		return _REFRESH_TIME;
 	}
