@@ -16,8 +16,8 @@ package com.liferay.portalweb.kaleo.webcontent.wcwebcontent.editwebcontentassign
 
 import com.liferay.portalweb.kaleo.webcontent.wcwebcontent.addwebcontent.AddWebContentTest;
 import com.liferay.portalweb.kaleo.webcontent.wcwebcontent.addwebcontent.TearDownWebContentTest;
+import com.liferay.portalweb.kaleo.workflowconfiguration.resource.configureblogsentrydefaultnoworkflow.TearDownWorkflowConfigurationTest;
 import com.liferay.portalweb.kaleo.workflowconfiguration.resource.configurewebcontentsingleapprover.ConfigureWebContentSingleApproverTest;
-import com.liferay.portalweb.kaleo.workflowconfiguration.resource.configurewebcontentsingleapprover.TearDownWorkflowConfigurationTest;
 import com.liferay.portalweb.portal.BaseTestSuite;
 
 import junit.framework.Test;
