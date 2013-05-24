@@ -82,11 +82,13 @@ public class LogBridge
 		}
 	}
 
+	@Override
 	public void modifiedService(
 		ServiceReference<LogReaderService> serviceReference,
 		LogReaderService logReaderService) {
 	}
 
+	@Override
 	public void removedService(
 		ServiceReference<LogReaderService> serviceReference,
 		LogReaderService logReaderService) {

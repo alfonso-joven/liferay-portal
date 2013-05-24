@@ -26,6 +26,7 @@ import java.util.Comparator;
 public class PortletRenderWeightComparator
 	implements Comparator<Portlet>, Serializable {
 
+	@Override
 	public int compare(Portlet portlet1, Portlet portlet2) {
 		int renderWeight1 = portlet1.getRenderWeight();
 		int renderWeight2 = portlet2.getRenderWeight();
