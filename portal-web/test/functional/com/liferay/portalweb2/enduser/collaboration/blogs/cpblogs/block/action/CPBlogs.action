@@ -3,6 +3,9 @@
 		<case locator-key1="PORTLET_TITLE">
 			<execute function="AssertTextEquals#assertText" value1="Blogs" />
 		</case>
+		<case locator-key1="SUCCESS_MESSAGE">
+			<execute function="AssertTextEquals#assertText" value1="Your request completed successfully." />
+		</case>
 	</command>
 
 	<command name="click">
