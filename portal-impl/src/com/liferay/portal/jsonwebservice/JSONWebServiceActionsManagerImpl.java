@@ -39,6 +39,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -51,7 +53,20 @@ import javax.servlet.http.HttpSession;
 public class JSONWebServiceActionsManagerImpl
 	implements JSONWebServiceActionsManager {
 
-	@Override
+	public Set<String> getContextPaths() {
+		Set<String> contextPaths = new TreeSet<String>();
+
+		for (JSONWebServiceActionConfig jsonWebServiceActionConfig :
+				_jsonWebServiceActionConfigs) {
+
+			String contextPath = jsonWebServiceActionConfig.getContextPath();
+
+			contextPaths.add(contextPath);
+		}
+
+		return contextPaths;
+	}
+
 	public JSONWebServiceAction getJSONWebServiceAction(
 		HttpServletRequest request) {
 
@@ -189,7 +204,7 @@ public class JSONWebServiceActionsManagerImpl
 				_jsonWebServiceActionConfigs) {
 
 			String jsonWebServiceServletContextPath =
-				jsonWebServiceActionConfig.getServletContextPath();
+				jsonWebServiceActionConfig.getContextPath();
 
 			if (servletContextPath.equals(jsonWebServiceServletContextPath)) {
 				jsonWebServiceActionMappings.add(jsonWebServiceActionConfig);
@@ -222,7 +237,7 @@ public class JSONWebServiceActionsManagerImpl
 			JSONWebServiceActionConfig jsonWebServiceActionConfig = itr.next();
 
 			if (servletContextPath.equals(
-					jsonWebServiceActionConfig.getServletContextPath())) {
+					jsonWebServiceActionConfig.getContextPath())) {
 
 				itr.remove();
 
