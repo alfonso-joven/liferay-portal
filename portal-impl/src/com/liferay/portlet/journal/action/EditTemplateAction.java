@@ -316,6 +316,6 @@ public class EditTemplateAction extends PortletAction {
 		return template;
 	}
 
-	private static Log _log = LogFactoryUtil.getLog(JournalTemplate.class);
+	private static Log _log = LogFactoryUtil.getLog(EditTemplateAction.class);
 
 }
