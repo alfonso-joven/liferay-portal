@@ -5282,7 +5282,7 @@ public class PortalImpl implements Portal {
 	}
 
 	/**
-	 * @deprecated As of 6.1, renamed to {@link #isGroupAdmin(User, long)}
+	 * @deprecated As of 6.1.0, renamed to {@link #isGroupAdmin(User, long)}
 	 */
 	@Override
 	public boolean isCommunityAdmin(User user, long groupId) throws Exception {
@@ -5290,7 +5290,7 @@ public class PortalImpl implements Portal {
 	}
 
 	/**
-	 * @deprecated As of 6.1, renamed to {@link #isGroupOwner(User, long)}
+	 * @deprecated As of 6.1.0, renamed to {@link #isGroupOwner(User, long)}
 	 */
 	@Override
 	public boolean isCommunityOwner(User user, long groupId) throws Exception {
