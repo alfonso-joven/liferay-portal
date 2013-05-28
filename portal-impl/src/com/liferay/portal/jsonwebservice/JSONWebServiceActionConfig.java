@@ -133,7 +133,7 @@ public class JSONWebServiceActionConfig
 	private String _fullPath;
 	private String _method;
 	private MethodParameter[] _methodParameters;
-	private String _path;	
+	private String _path;
 	private String _signature;
 
 }
