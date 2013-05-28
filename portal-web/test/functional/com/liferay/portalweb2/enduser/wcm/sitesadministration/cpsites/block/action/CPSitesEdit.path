@@ -62,8 +62,18 @@
 </tr>
 <!--STAGING-->
 <tr>
-	<td>SITE_SETTINGS_STAGING_LOCAL_LIVE</td>
+	<td>STAGING_NONE</td>
+	<td>//input[@id='_165_none']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>STAGING_LOCAL_LIVE</td>
 	<td>//input[@id='_165_local']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>STAGING_REMOTE_LIVE</td>
+	<td>//input[@id='_165_remote']</td>
 	<td></td>
 </tr>
 <tr>
