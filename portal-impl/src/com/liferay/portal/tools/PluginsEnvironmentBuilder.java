@@ -258,7 +258,6 @@ public class PluginsEnvironmentBuilder {
 			String gitIgnore = gitIgnores[i];
 
 			gitIgnore = "/lib/" + gitIgnore;
-			gitIgnore = gitIgnore.replace(".jar", "-*.jar");
 
 			gitIgnores[i] = gitIgnore;
 		}
