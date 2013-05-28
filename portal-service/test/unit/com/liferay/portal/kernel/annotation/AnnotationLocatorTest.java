@@ -29,15 +29,16 @@ import java.util.List;
 import java.util.Queue;
 
 /**
+ * <p>
  * <table>
- *	<tr>
- *		<th colspan = 3>
+ * <tr>
+ * <th colspan = 3>
  * Test Classes Inherited Hierarchy
- *		</th>
- *	</tr>
- *	<tr valign="top">
- *		<td>
- *			<pre>
+ * </th>
+ * </tr>
+ * <tr valign="top">
+ * <td>
+ * <pre>
  * &#64;Type(value = 5)
  * OriginClass {    -------->
  *   &#64;Method(value = 5)
@@ -45,49 +46,49 @@ import java.util.Queue;
  *   originMethod1()
  *   originMethod2()
  * }
- *			</pre>
- *		</td>
- *		<td>
- *			<pre>
+ * </pre>
+ * </td>
+ * <td>
+ * <pre>
  * &#64;Mix(value = 8)
  * OriginInterface2 {  -------->
  *   &#64;Method(value = 8)
  *   originMethod2()
  * }
- *			</pre>
- *		</td>
- *		<td>
- *			<pre>
+ * </pre>
+ * </td>
+ * <td>
+ * <pre>
  * &#64;Type(value = 9)
  * OriginInterface1 {
  *   &#64;Method(value = 9)
  *   &#64;Mix(value = 9)
  *   originMethod1()
  * }
- *			</pre>
- *		</td>
- *	</tr>
- *	<tr valign="top">
- *		<td>
- *			<pre>
+ * </pre>
+ * </td>
+ * </tr>
+ * <tr valign="top">
+ * <td>
+ * <pre>
  *   ^
  *   |
- *			</pre>
- *		</td>
- *		<td>
- *			<pre>
- *			</pre>
- *		</td>
- *		<td>
- *			<pre>
+ * </pre>
+ * </td>
+ * <td>
+ * <pre>
+ * </pre>
+ * </td>
+ * <td>
+ * <pre>
  *   ^
  *   |
- *			</pre>
- *		</td>
- *	</tr>
- *	<tr valign="top">
- *		<td>
- *			<pre>
+ * </pre>
+ * </td>
+ * </tr>
+ * <tr valign="top">
+ * <td>
+ * <pre>
  * &#64;Mix(value = 2)
  * SuperClass {    -------->
  *   &#64;Method(value = 2)
@@ -96,10 +97,10 @@ import java.util.Queue;
  *   superMethod1()
  *   superMethod2()
  * }
- *			</pre>
- *		</td>
- *		<td>
- *			<pre>
+ * </pre>
+ * </td>
+ * <td>
+ * <pre>
  * &#64;Type(value = 6)
  * SuperInterface2 {  -------->
  *   &#64;Method(value = 6)
@@ -109,39 +110,39 @@ import java.util.Queue;
  *   &#64;Mix(value = 6)
  *   superMethod2()
  * }
- *			</pre>
- *		</td>
- *		<td>
- *			<pre>
+ * </pre>
+ * </td>
+ * <td>
+ * <pre>
  * &#64;Mix(value = 7)
  * SuperInterface1 {
- *   &#64;Method(value = 7)
- *   superMethod1()
+ * &#64;Method(value = 7)
+ * superMethod1()
  * }
- *			</pre>
- *		</td>
- *	</tr>
- *	<tr valign="top">
- *		<td>
- *			<pre>
+ * </pre>
+ * </td>
+ * </tr>
+ * <tr valign="top">
+ * <td>
+ * <pre>
  *   ^
  *   |
- *			</pre>
- *		</td>
- *		<td>
- *			<pre>
+ * </pre>
+ * </td>
+ * <td>
+ * <pre>
  *   ^
  *   |
- *			</pre>
- *		</td>
- *		<td>
- *			<pre>
- *			</pre>
- *		</td>
- *	</tr>
- *	<tr valign="top">
- *		<td>
- *			<pre>
+ * </pre>
+ * </td>
+ * <td>
+ * <pre>
+ * </pre>
+ * </td>
+ * </tr>
+ * <tr valign="top">
+ * <td>
+ * <pre>
  * &#64;Type(value = 1)
  * TestClass {    -------->
  * &#64;Method(value = 1)
@@ -156,10 +157,10 @@ import java.util.Queue;
  *   testMethod1()
  *   testMethod2()
  * }
- *			</pre>
- *		</td>
- *		<td>
- *			<pre>
+ * </pre>
+ * </td>
+ * <td>
+ * <pre>
  * &#64;Mix(value = 3)
  * TestInterface2 {  -------->
  *   &#64;Method(value = 3)
@@ -167,20 +168,21 @@ import java.util.Queue;
  *   &#64;Method(value = 3)
  *   testMethod2()
  * }
- *			</pre>
- *		</td>
- *		<td>
- *			<pre>
+ * </pre>
+ * </td>
+ * <td>
+ * <pre>
  * &#64;Type(value = 4)
  * TestInterface1 {
  *   &#64;Method(value = 4)
  *   &#64;Mix(value = 4)
  *   testMethod1()
  * }
- *			</pre>
- *		</td>
- *	</tr>
+ * </pre>
+ * </td>
+ * </tr>
  * </table>
+ * </p>
  *
  * @author Shuyang Zhou
  */

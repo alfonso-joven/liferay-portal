@@ -78,6 +78,7 @@ import java.util.List;
  * the group and guests are passed in from the service context.
  * </p>
  *
+ * <p>
  * <pre>
  * <code>
  * resourceLocalService.addModelResources(
@@ -86,6 +87,7 @@ import java.util.List;
  * 		serviceContext.getGroupPermissions, serviceContext.getGuestPermissions);
  * </code>
  * </pre>
+ * </p>
  *
  * <p>
  * Just prior to deleting an entity instance, you should delete its resource at
@@ -94,6 +96,7 @@ import java.util.List;
  * individual scope.
  * </p>
  *
+ * <p>
  * <pre>
  * <code>
  * resourceLocalService.deleteResource(
@@ -101,6 +104,7 @@ import java.util.List;
  * 		ResourceConstants.SCOPE_INDIVIDUAL, SomeWidget.getPrimaryKey());
  * </code>
  * </pre>
+ * </p>
  *
  * @author Brian Wing Shun Chan
  * @author Wilson S. Man
