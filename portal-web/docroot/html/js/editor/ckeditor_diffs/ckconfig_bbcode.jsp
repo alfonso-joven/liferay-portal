@@ -68,6 +68,16 @@ CKEDITOR.config.bodyClass = 'html-editor <%= HtmlUtil.escapeJS(cssClasses) %>';
 
 CKEDITOR.config.contentsCss = '<%= HtmlUtil.escapeJS(cssPath) %>/main.css';
 
+<%
+Locale contentsLocale = LocaleUtil.fromLanguageId(contentsLanguageId);
+
+String contentsLanguageDir = LanguageUtil.get(contentsLocale, "lang.dir");
+%>
+
+CKEDITOR.config.contentsLangDirection = '<%= HtmlUtil.escapeJS(contentsLanguageDir) %>';
+
+CKEDITOR.config.contentsLanguage = '<%= HtmlUtil.escapeJS(contentsLanguageId.replace("iw_", "he_")) %>';
+
 CKEDITOR.config.enterMode = CKEDITOR.ENTER_BR;
 
 CKEDITOR.config.extraPlugins = 'bbcode,wikilink';
@@ -88,7 +98,7 @@ CKEDITOR.config.format_tags = 'p;pre';
 
 CKEDITOR.config.imagesPath = '<%= HtmlUtil.escapeJS(imagesPath) %>/message_boards/';
 
-CKEDITOR.config.language = '<%= HtmlUtil.escapeJS(languageId) %>';
+CKEDITOR.config.language = '<%= HtmlUtil.escapeJS(languageId.replace("iw_", "he_")) %>';
 
 CKEDITOR.config.newThreadURL = '<%= MBThreadConstants.NEW_THREAD_URL %>';
 

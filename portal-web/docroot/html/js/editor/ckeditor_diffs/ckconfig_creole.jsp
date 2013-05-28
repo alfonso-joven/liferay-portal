@@ -33,21 +33,21 @@ String linkButtonBar = "['Link', 'Unlink']";
 if (wikiPageResourcePrimKey > 0) {
 	linkButtonBar = "['Link', 'Unlink', 'Image']";
 }
-
-Locale contentsLocale = LocaleUtil.fromLanguageId(contentsLanguageId);
-String contentsLanguageDir = LanguageUtil.get(contentsLocale, "lang.dir");
-
-languageId = languageId.replace("iw_", "he_");
-contentsLanguageId = contentsLanguageId.replace("iw_", "he_");
 %>
 
 CKEDITOR.config.attachmentURLPrefix = '<%= HtmlUtil.escapeJS(attachmentURLPrefix) %>';
 
 CKEDITOR.config.bodyClass = 'html-editor <%= HtmlUtil.escapeJS(cssClasses) %>';
 
+<%
+Locale contentsLocale = LocaleUtil.fromLanguageId(contentsLanguageId);
+
+String contentsLanguageDir = LanguageUtil.get(contentsLocale, "lang.dir");
+%>
+
 CKEDITOR.config.contentsLangDirection = '<%= HtmlUtil.escapeJS(contentsLanguageDir) %>';
 
-CKEDITOR.config.contentsLanguage = '<%= HtmlUtil.escapeJS(contentsLanguageId) %>';
+CKEDITOR.config.contentsLanguage = '<%= HtmlUtil.escapeJS(contentsLanguageId.replace("iw_", "he_")) %>';
 
 CKEDITOR.config.decodeLinks = true;
 
@@ -59,7 +59,7 @@ CKEDITOR.config.format_tags = 'p;h1;h2;h3;h4;h5;h6;pre';
 
 CKEDITOR.config.height = 265;
 
-CKEDITOR.config.language = '<%= HtmlUtil.escapeJS(languageId) %>';
+CKEDITOR.config.language = '<%= HtmlUtil.escapeJS(languageId.replace("iw_", "he_")) %>';
 
 CKEDITOR.config.removePlugins = [
 	'elementspath',
