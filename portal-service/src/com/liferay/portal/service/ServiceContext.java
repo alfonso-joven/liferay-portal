@@ -93,6 +93,7 @@ public class ServiceContext implements Cloneable, Serializable {
 		serviceContext.setCreateDate(getCreateDate());
 		serviceContext.setCurrentURL(getCurrentURL());
 		serviceContext.setExpandoBridgeAttributes(getExpandoBridgeAttributes());
+		serviceContext.setFailOnPortalException(isFailOnPortalException());
 		serviceContext.setGroupPermissions(getGroupPermissions());
 		serviceContext.setGuestPermissions(getGuestPermissions());
 		serviceContext.setHeaders(getHeaders());
@@ -719,6 +720,10 @@ public class ServiceContext implements Cloneable, Serializable {
 		return _deriveDefaultPermissions;
 	}
 
+	public boolean isFailOnPortalException() {
+		return _failOnPortalException;
+	}
+
 	/**
 	 * Returns whether the primary entity of this service context is to be
 	 * indexed/re-indexed.
@@ -923,6 +928,10 @@ public class ServiceContext implements Cloneable, Serializable {
 		Map<String, Serializable> expandoBridgeAttributes) {
 
 		_expandoBridgeAttributes = expandoBridgeAttributes;
+	}
+
+	public void setFailOnPortalException(boolean failOnPortalException) {
+		_failOnPortalException = failOnPortalException;
 	}
 
 	/**
@@ -1229,6 +1238,7 @@ public class ServiceContext implements Cloneable, Serializable {
 	private String _currentURL;
 	private boolean _deriveDefaultPermissions;
 	private Map<String, Serializable> _expandoBridgeAttributes;
+	private boolean _failOnPortalException = true;
 	private Date _formDate;
 	private String[] _groupPermissions;
 	private String[] _guestPermissions;
