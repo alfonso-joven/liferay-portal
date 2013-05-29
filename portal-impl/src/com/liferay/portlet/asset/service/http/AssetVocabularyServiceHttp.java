@@ -136,8 +136,9 @@ public class AssetVocabularyServiceHttp {
 		}
 	}
 
-	public static void deleteVocabularies(HttpPrincipal httpPrincipal,
-		long[] vocabularyIds)
+	public static java.util.List<com.liferay.portlet.asset.model.AssetVocabulary> deleteVocabularies(
+		HttpPrincipal httpPrincipal, long[] vocabularyIds,
+		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
@@ -145,10 +146,12 @@ public class AssetVocabularyServiceHttp {
 					"deleteVocabularies", _deleteVocabulariesParameterTypes2);
 
 			MethodHandler methodHandler = new MethodHandler(methodKey,
-					vocabularyIds);
+					vocabularyIds, serviceContext);
+
+			Object returnObj = null;
 
 			try {
-				TunnelUtil.invoke(httpPrincipal, methodHandler);
+				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
 			}
 			catch (Exception e) {
 				if (e instanceof com.liferay.portal.kernel.exception.PortalException) {
@@ -161,6 +164,8 @@ public class AssetVocabularyServiceHttp {
 
 				throw new com.liferay.portal.kernel.exception.SystemException(e);
 			}
+
+			return (java.util.List<com.liferay.portlet.asset.model.AssetVocabulary>)returnObj;
 		}
 		catch (com.liferay.portal.kernel.exception.SystemException se) {
 			_log.error(se, se);
@@ -767,7 +772,7 @@ public class AssetVocabularyServiceHttp {
 			com.liferay.portal.service.ServiceContext.class
 		};
 	private static final Class<?>[] _deleteVocabulariesParameterTypes2 = new Class[] {
-			long[].class
+			long[].class, com.liferay.portal.service.ServiceContext.class
 		};
 	private static final Class<?>[] _deleteVocabularyParameterTypes3 = new Class[] {
 			long.class

@@ -96,8 +96,9 @@ public class AssetCategoryServiceHttp {
 		}
 	}
 
-	public static void deleteCategories(HttpPrincipal httpPrincipal,
-		long[] categoryIds)
+	public static java.util.List<com.liferay.portlet.asset.model.AssetCategory> deleteCategories(
+		HttpPrincipal httpPrincipal, long[] categoryIds,
+		com.liferay.portal.service.ServiceContext serviceContext)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
@@ -105,10 +106,12 @@ public class AssetCategoryServiceHttp {
 					"deleteCategories", _deleteCategoriesParameterTypes1);
 
 			MethodHandler methodHandler = new MethodHandler(methodKey,
-					categoryIds);
+					categoryIds, serviceContext);
+
+			Object returnObj = null;
 
 			try {
-				TunnelUtil.invoke(httpPrincipal, methodHandler);
+				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
 			}
 			catch (Exception e) {
 				if (e instanceof com.liferay.portal.kernel.exception.PortalException) {
@@ -121,6 +124,8 @@ public class AssetCategoryServiceHttp {
 
 				throw new com.liferay.portal.kernel.exception.SystemException(e);
 			}
+
+			return (java.util.List<com.liferay.portlet.asset.model.AssetCategory>)returnObj;
 		}
 		catch (com.liferay.portal.kernel.exception.SystemException se) {
 			_log.error(se, se);
@@ -951,7 +956,7 @@ public class AssetCategoryServiceHttp {
 			com.liferay.portal.service.ServiceContext.class
 		};
 	private static final Class<?>[] _deleteCategoriesParameterTypes1 = new Class[] {
-			long[].class
+			long[].class, com.liferay.portal.service.ServiceContext.class
 		};
 	private static final Class<?>[] _deleteCategoryParameterTypes2 = new Class[] {
 			long.class
