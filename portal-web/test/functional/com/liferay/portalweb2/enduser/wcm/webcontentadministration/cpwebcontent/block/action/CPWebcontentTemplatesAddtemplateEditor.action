@@ -1,0 +1,7 @@
+<definition> 
+	<command name="type">
+		<case locator-key1="EDITOR_FIELD">
+			<execute function="Type#typeWaitForNotValueNull" />
+		</case>
+	</command>
+</definition>
