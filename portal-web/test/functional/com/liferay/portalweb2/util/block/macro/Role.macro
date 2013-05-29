@@ -204,7 +204,6 @@
 		<execute action="CPRolesDefinepermissions#assertTextEquals" locator-key1="${roleTypeKey}_PERMISSION_TABLE_ACTION_1" value1="${rolePermission}" />
 		<execute action="CPRolesDefinepermissions#assertTextEquals" locator-key1="${roleTypeKey}_PERMISSION_TABLE_DELETE_1" value1="Delete" />
 		<execute action="CPRolesDefinepermissions#click" locator-key1="${roleTypeKey}_PERMISSION_TABLE_DELETE_1" />
-		<execute action="CPRolesDefinepermissions#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this? It will be deleted immediately." />
 		<execute action="CPRolesDefinepermissions#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="The permission was deleted." />
 		<execute action="CPRolesDefinepermissions#assertTextEquals" locator-key1="INFO_MESSAGE" />
 	</command>
@@ -258,7 +257,7 @@
 			<then>
 				<execute action="CPRoles#click" locator-key1="ROLE_TABLE_ACTIONS_1" />
 				<execute action="CPRoles#click" locator-key1="ROLE_MENULIST_DELETE" />
-				<execute action="CPRoles#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this? It will be deleted immediately." />
+				<execute action="CPRoles#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this?" />
 			</then>
 		</while>
 	</command>
