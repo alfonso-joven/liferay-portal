@@ -107,9 +107,9 @@ create table AssetCategoryProperty (
 );
 
 create table AssetEntries_AssetCategories (
-	categoryId LONG not null,
 	entryId LONG not null,
-	primary key (categoryId, entryId)
+	categoryId LONG not null,
+	primary key (entryId, categoryId)
 );
 
 create table AssetEntries_AssetTags (
@@ -1602,9 +1602,9 @@ create table Role_ (
 );
 
 create table Roles_Permissions (
-	permissionId LONG not null,
 	roleId LONG not null,
-	primary key (permissionId, roleId)
+	permissionId LONG not null,
+	primary key (roleId, permissionId)
 );
 
 create table SCFrameworkVersi_SCProductVers (
@@ -2063,9 +2063,9 @@ create table UserGroupRole (
 );
 
 create table UserGroups_Teams (
-	teamId LONG not null,
 	userGroupId LONG not null,
-	primary key (teamId, userGroupId)
+	teamId LONG not null,
+	primary key (userGroupId, teamId)
 );
 
 create table UserIdMapper (
@@ -2089,39 +2089,39 @@ create table UserNotificationEvent (
 );
 
 create table Users_Groups (
-	groupId LONG not null,
 	userId LONG not null,
-	primary key (groupId, userId)
+	groupId LONG not null,
+	primary key (userId, groupId)
 );
 
 create table Users_Orgs (
-	organizationId LONG not null,
 	userId LONG not null,
-	primary key (organizationId, userId)
+	organizationId LONG not null,
+	primary key (userId, organizationId)
 );
 
 create table Users_Permissions (
-	permissionId LONG not null,
 	userId LONG not null,
-	primary key (permissionId, userId)
+	permissionId LONG not null,
+	primary key (userId, permissionId)
 );
 
 create table Users_Roles (
-	roleId LONG not null,
 	userId LONG not null,
-	primary key (roleId, userId)
+	roleId LONG not null,
+	primary key (userId, roleId)
 );
 
 create table Users_Teams (
-	teamId LONG not null,
 	userId LONG not null,
-	primary key (teamId, userId)
+	teamId LONG not null,
+	primary key (userId, teamId)
 );
 
 create table Users_UserGroups (
-	userId LONG not null,
 	userGroupId LONG not null,
-	primary key (userId, userGroupId)
+	userId LONG not null,
+	primary key (userGroupId, userId)
 );
 
 create table UserTracker (
