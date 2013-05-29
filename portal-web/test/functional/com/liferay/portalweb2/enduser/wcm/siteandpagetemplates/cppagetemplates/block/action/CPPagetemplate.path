@@ -41,17 +41,17 @@
 <!--PAGE_TEMPLATE_TABLE-->
 <tr>
 	<td>PAGE_TEMPLATE_TABLE_NAME_1</td>
-	<td>xpath=(//tr/td[1]/a)[4]</td>
+	<td>xpath=(//tr/td[1]/a)[1]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>PAGE_TEMPLATE_TABLE_ACTIVE_1</td>
-	<td>xpath=(//tr/td[2]/a)[4]</td>
+	<td>xpath=(//tr/td[2]/a)[1]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>PAGE_TEMPLATE_TABLE_ACTIONS_1</td>
-	<td>xpath=(//tr/td[3]/span[@title='Actions']/ul/li/strong/a/span)[4]</td>
+	<td>xpath=(//tr/td[3]/span[@title='Actions']/ul/li/strong/a/span)[1]</td>
 	<td></td>
 </tr>
 <tr>
@@ -85,23 +85,6 @@
 	<td>//a[@role='menuitem' and contains(.,'Import')]</td>
 	<td></td>
 </tr>
-<tr>
-	<td></td>
-	<td></td>
-	<td></td>
-</tr>
-<!--PAGE_TEMPLATE_ACTIVE-->
-<tr>
-	<td>PAGE_TEMPLATE_ACTIVATE</td>
-	<td>xpath=(//tr/td[2]/a)[4]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>PAGE_TEMPLATE_DEACTIVATE</td>
-	<td>xpath=(//tr/td[2]/a)[4]</td>
-	<td></td>
-</tr>
-
 </tbody>
 </table>
 </body>
