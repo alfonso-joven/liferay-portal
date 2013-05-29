@@ -65,7 +65,8 @@
 		}
 
 		.lfr-actions.show-arrow.direction-down .lfr-trigger strong a {
-			padding: 0 4px 0 20px;
+			padding-left: 20px;
+			padding-right: 4px;
 		}
 	}
 }

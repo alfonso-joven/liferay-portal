@@ -13,7 +13,8 @@
 	}
 
 	.aui-tree-container {
-		margin: 0 20px 0 0;
+		margin-left: 0;
+		margin-right: 20px;
 	}
 
 	.aui-tree-hitarea, .aui-tree-icon {

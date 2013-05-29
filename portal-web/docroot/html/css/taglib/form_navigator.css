@@ -145,15 +145,17 @@
 
 		.form-navigator {
 			float: left;
-			margin: 0 15px 0 0;
-			padding: 10px;
+			margin-left: 0;
+			margin-right: 15px;
 
 			li.selected {
-				background: url(@theme_image_path@/control_panel/selected_rtl.png) no-repeat right 50%;
+				background-image: url(@theme_image_path@/control_panel/selected_rtl.png);
+				background-position: right 50%;
 				right: 0;
 
 				a {
-					margin: 0 11px 0 0;
+					margin-left: 0;
+					margin-right: 11px;
 				}
 			}
 		}

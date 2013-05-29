@@ -181,11 +181,13 @@
 	}
 
 	.lfr-trigger strong a {
-		padding: 2px 15px 2px 5px;
+		padding-left: 5px;
+		padding-right: 15px;
 	}
 
 	&.direction-down .lfr-trigger strong a {
-		padding: 2px 5px 2px 20px;
+		padding-left: 20px;
+		padding-right: 5px;
 	}
 
 	&.show-arrow {

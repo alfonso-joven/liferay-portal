@@ -786,7 +786,8 @@ body.portlet {
 
 	.portlet-msg {
 		background-position: right;
-		padding: 6px 24px 6px 6px;
+		padding-left: 6px;
+		padding-right: 24px;
 		text-align: right;
 	}
 
@@ -813,7 +814,8 @@ body.portlet {
 	.lfr-message {
 		.lfr-message-controls {
 			left: auto;
-			margin: -8px 3px 0 -4px;
+			margin-left: -4px;
+			margin-right: 3px;
 			right: 3px;
 		}
 	}

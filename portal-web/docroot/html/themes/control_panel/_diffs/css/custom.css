@@ -765,7 +765,8 @@ input[type="text"], input[type="password"], select, textarea, .textarea, #breadc
 
 .rtl {
 	body {
-		background: #EEF0F2 url(../images/custom/sidebar_bg_rtl.png) repeat-y 0 0;
+		background-color: #EEF0F2;
+		background-image: url(../images/custom/sidebar_bg_rtl.png);
 		background-position: right;
 
 		&.portal-popup {
@@ -776,10 +777,11 @@ input[type="text"], input[type="password"], select, textarea, .textarea, #breadc
 	}
 
 	#breadcrumbs li {
-		background: url(../images/custom/breadcrumb_item_bg_rtl.png) 100% 50% no-repeat;
+		background-image: url(../images/custom/breadcrumb_item_bg_rtl.png);
 		background-position: left;
 		float: right;
-		padding: 3px 15px 3px 20px;
+		padding-left: 20px;
+		padding-right: 15px;
 
 		&.first a {
 			background-position: right;
@@ -791,7 +793,8 @@ input[type="text"], input[type="password"], select, textarea, .textarea, #breadc
 
 	#wrapper div.panel-page-body {
 		float: right;
-		padding: 15px 20px 0 0;
+		padding-left: 0;
+		padding-right: 20px;
 		width: 75%;
 	}
 
@@ -802,7 +805,8 @@ input[type="text"], input[type="password"], select, textarea, .textarea, #breadc
 		
 		.lfr-panel-content ul li a .icon {
 			float: right;
-			padding: 0 0 0 4px;
+			padding-left: 4px;
+			padding-right: 0;
 		}
 
 		.lfr-panel-titlebar .lfr-panel-title {
