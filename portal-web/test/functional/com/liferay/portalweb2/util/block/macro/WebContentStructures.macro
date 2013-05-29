@@ -5,7 +5,7 @@
 		</execute>
 
 		<execute action="CPWebcontent#click" locator-key1="NAVIGATION_STRUCTURES" />
-		
+
 		<execute action="CPWebcontentStructures#click" locator-key1="ADD_STRUCTURE_BUTTON" />
 
 		<execute action="CPWebcontentStructuresAddstructure#type" locator-key1="NAME_FIELD" value1="${structureName}" />
@@ -15,7 +15,7 @@
 		<execute action="CPWebcontentStructuresAddstructure#select" locator-key1="ROW_TYPE_SELECT_1" value1="Text" />
 		<execute action="CPWebcontentStructuresAddstructure#click" locator-key1="SAVE_BUTTON" />
 
-		<execute action="CPWebcontentStructures#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
+		<execute action="CPWebcontentStructures#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
 		<execute action="CPWebcontentStructures#assertElementPresent" locator-key1="STRUCTURE_TABLE_ID_1" />
 		<execute action="CPWebcontentStructures#assertTextEquals" locator-key1="STRUCTURE_TABLE_NAME_1" value1="${structureName}" />
 		<execute action="CPWebcontentStructures#assertTextEquals" locator-key1="STRUCTURE_TABLE_DESCRIPTION_1" value1="${structureDescription}" />
@@ -34,7 +34,7 @@
 				<execute action="CPWebcontentStructures#check" locator-key1="STRUCTURE_TABLE_ALL_CHECKBOX" />
 				<execute action="CPWebcontentStructures#click" locator-key1="DELETE_BUTTON" />
 				<execute action="CPWebcontentStructures#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete the selected structures?" />
-				<execute action="CPWebcontentStructures#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
+				<execute action="CPWebcontentStructures#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
 			</then>
 		</if>
 

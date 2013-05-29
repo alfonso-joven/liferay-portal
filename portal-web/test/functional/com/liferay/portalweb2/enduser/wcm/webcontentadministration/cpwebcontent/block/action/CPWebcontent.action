@@ -1,13 +1,28 @@
 <definition>
+	<command name="assertTextEquals">
+		<case locator-key1="SUCCESS_MESSAGE">
+			<execute function="AssertTextEquals#assertText" value1="Your request completed successfully." />
+		</case>
+	</command>
+
 	<command name="click">
 		<case comparator="startsWith" locator1="//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains.,'">
 			<execute function="Click#clickAtAndWait" />
 		</case>
 		<case locator-key1="ADD_BUTTON">
-			<execute function="Click#clickAtAndWait" />
+			<execute function="Click#valueClickAtAndWait" value1="Add" />
+		</case>
+		<case locator-key1="ADD_DROPDOWN">
+			<execute function="Click#textClickAt" value1="Add" />
+		</case>
+		<case locator-key1="DELETE_BUTTON">
+			<execute function="Click#valueClickAtAndWait" value1="Delete" />
 		</case>
 		<case locator-key1="NAVIGATION_STRUCTURES">
-			<execute function="Click#clickAtAndWait" />
+			<execute function="Click#textClickAtAndWait" value1="Structures" />
+		</case>
+		<case locator-key1="NAVIGATION_TEMPLATES">
+			<execute function="Click#textClickAtAndWait" value1="Templates" />
 		</case>
 	</command>
 

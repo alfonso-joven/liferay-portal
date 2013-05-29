@@ -89,7 +89,7 @@
 </tr>
 <tr>
 	<td>GO_TO_CONTROL_PANEL</td>
-	<td>link=Control Panel</td>
+	<td>//li[contains(@class,'control-panel')]/a</td>
 	<td></td>
 </tr>
 <tr>

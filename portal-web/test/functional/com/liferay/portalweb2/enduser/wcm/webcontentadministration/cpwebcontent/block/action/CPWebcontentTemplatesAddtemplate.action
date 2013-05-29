@@ -1,0 +1,13 @@
+<definition>
+	<command name="click">
+		<case locator-key1="LAUNCH_EDITOR_BUTTON">
+			<execute function="Click#valueClickAt" value1="Launch Editor" />
+		</case>
+		<case locator-key1="SAVE_BUTTON">
+			<execute function="Click#valueClickAt" value1="Save" />
+		</case>
+		<case locator-key1="SELECT_STRUCTURE_BUTTON">
+			<execute function="Click#valueClickAt" value1="Select" />
+		</case>
+	</command>
+</definition>

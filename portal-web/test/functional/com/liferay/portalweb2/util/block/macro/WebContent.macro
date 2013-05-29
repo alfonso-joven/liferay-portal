@@ -9,7 +9,7 @@
 		<execute action="CPWebcontentAddwebcontent#type" locator-key1="CONTENT_FIELD" value1="${webContentContent}" />
 		<execute action="CPWebcontentAddwebcontent#click" locator-key1="PUBLISH_BUTTON" />
 
-		<execute action="CPWebcontent#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
+		<execute action="CPWebcontent#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
 		<execute action="CPWebcontent#assertTextEquals" locator-key1="WEB_CONTENT_TABLE_TITLE_1" value1="${webContentTitle}" />
 		<execute action="CPWebcontent#assertTextEquals" locator-key1="WEB_CONTENT_TABLE_STATUS_1" value1="Approved" />
 	</command>
@@ -26,7 +26,7 @@
 		<execute action="CPWebcontentAddwebcontent#type" locator1="//input[@name='_15_text_text']" value1="${webContentText}" />
 		<execute action="CPWebcontentAddwebcontent#click" locator-key1="PUBLISH_BUTTON" />
 
-		<execute action="CPWebcontent#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
+		<execute action="CPWebcontent#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
 		<execute action="CPWebcontent#assertTextEquals" locator-key1="WEB_CONTENT_TABLE_TITLE_1" value1="${webContentTitle}" />
 	</command>
 
@@ -41,7 +41,7 @@
 				<execute action="CPWebcontent#check" locator-key1="WEB_CONTENT_TABLE_ALL_CHECKBOX" />
 				<execute action="CPWebcontent#click" locator-key1="DELETE_BUTTON" />
 				<execute action="CPWebcontent#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete the selected web content?" />
-				<execute action="CPWebcontent#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
+				<execute action="CPWebcontent#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
 			</then>
 		</if>
 

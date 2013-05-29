@@ -10,29 +10,34 @@
 
 		<execute action="CPWebcontentTemplatesAddtemplate#type" locator-key1="NAME_FIELD" value1="${templateName}" />
 		<execute action="CPWebcontentTemplatesAddtemplate#type" locator-key1="DESCRIPTION_FIELD" value1="${templateDescription}" />
-		<execute action="CPWebcontentTemplatesAddtemplate#click" locator-key1="LAUNCH_EDITOR_BUTTON" />
-		<execute action="CPWebcontentTemplatesAddtemplateEditor#selectFrame" locator-key1="EDITOR_IFRAME" />
-		<execute action="CPWebcontentTemplatesAddtemplateEditor#type" locator-key1="EDITOR_FIELD" value1="$text.getData()" />
-		<execute action="CPWebcontentTemplatesAddtemplateEditor#click" locator-key1="UPDATE_BUTTON" />
-		<execute action="CPWebcontentTemplatesAddtemplate#selectFrame" />
 
 		<if>
 			<isset var="structureName" />
 			<then>
 				<execute action="CPWebcontentTemplatesAddtemplate#click" locator-key1="SELECT_STRUCTURE_BUTTON" />
+
 				<execute action="CPWebcontentTemplatesAddtemplateStructure#selectFrame" locator-key1="STRUCTURE_IFRAME" />
 				<execute action="CPWebcontentTemplatesAddtemplateStructure#assertElementPresent" locator-key1="STRUCTURE_TABLE_ID_1" />
 				<execute action="CPWebcontentTemplatesAddtemplateStructure#assertTextPresent" locator-key1="STRUCTURE_TABLE_NAME_1" value1="${structureName}" />
 				<execute action="CPWebcontentTemplatesAddtemplateStructure#assertTextPresent" locator-key1="STRUCTURE_TABLE_DESCRIPTION_1" value1="${structureDescription}" />
 				<execute action="CPWebcontentTemplatesAddtemplateStructure#click" locator-key1="STRUCTURE_TABLE_NAME_1" />
+
 				<execute action="CPWebcontentTemplatesAddtemplate#selectFrame" />
 				<execute action="CPWebcontentTemplatesAddtemplate#assertTextEquals" locator-key1="STRUCTURE_NAME" value1="${structureName}" />
 			</then>
 		</if>
 
+		<execute action="CPWebcontentTemplatesAddtemplate#click" locator-key1="LAUNCH_EDITOR_BUTTON" />
+
+		<execute action="CPWebcontentTemplatesAddtemplateEditor#selectFrame" locator-key1="EDITOR_IFRAME" />
+		<execute action="CPWebcontentTemplatesAddtemplateEditor#type" locator-key1="EDITOR_FIELD" value1="$text.getData()" />
+		<execute action="CPWebcontentTemplatesAddtemplateEditor#click" locator-key1="UPDATE_BUTTON" />
+
+		<execute action="CPWebcontentTemplatesAddtemplate#selectFrame" />
+
 		<execute action="CPWebcontentTemplatesAddtemplate#click" locator-key1="SAVE_BUTTON" />
 
-		<execute action="CPWebcontentTemplates#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
+		<execute action="CPWebcontentTemplates#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
 		<execute action="CPWebcontentTemplates#assertElementPresent" locator-key1="TEMPLATE_TABLE_ID_1" />
 		<execute action="CPWebcontentTemplates#assertTextEquals" locator-key1="TEMPLATE_TABLE_NAME_1" value1="${templateName}" />
 		<execute action="CPWebcontentTemplates#assertTextEquals" locator-key1="TEMPLATE_TABLE_DESCRIPTION_1" value1="${templateDescription}" />
@@ -51,7 +56,7 @@
 				<execute action="CPWebcontentTemplates#check" locator-key1="TEMPLATE_TABLE_ALL_CHECKBOX" />
 				<execute action="CPWebcontentTemplates#click" locator-key1="DELETE_BUTTON" />
 				<execute action="CPWebcontentTemplates#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete the selected templates?" />
-				<execute action="CPWebcontentTemplates#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
+				<execute action="CPWebcontentTemplates#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
 			</then>
 		</if>
 	</command>
