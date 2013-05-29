@@ -247,7 +247,6 @@ if (!selectableTree) {
 					}
 
 					var cssClass = '';
-
 					var title = '';
 
 					newNode.label = Util.escapeHTML(node.name);
@@ -554,7 +553,6 @@ if (!selectableTree) {
 			io: {
 				cfg: {
 					data: function(node) {
-	
 						return {
 							groupId: TreeUtil.extractGroupId(node),
 							incomplete: <%= incomplete %>,
