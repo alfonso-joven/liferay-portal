@@ -147,7 +147,6 @@ public class CleanUpPermissionsUtil {
 				roleId, ActionKeys.ADD_TO_PAGE);
 
 			if (!limitScope) {
-
 				continue;
 			}
 
