@@ -30,12 +30,12 @@
 </tr>
 <tr>
 	<td>CURRENT</td>
-	<td>link=Current</td>
+	<td>//ul[@class='aui-tabview-list']/li/span/a[contains(.,'Current')]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>AVAILABLE</td>
-	<td>link=Available</td>
+	<td>//ul[@class='aui-tabview-list']/li/span/a[contains(.,'Available')]</td>
 	<td></td>
 </tr>
 <tr>

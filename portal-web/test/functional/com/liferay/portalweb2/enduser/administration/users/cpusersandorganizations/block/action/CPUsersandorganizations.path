@@ -40,12 +40,12 @@
 </tr>
 <tr>
 	<td>SEARCH_ALL_ORGANIZATIONS</td>
-	<td>link=Search All Organizations</td>
+	<td>//a[@id='_125_allOrganizationsLink']</td>
 	<td></td>
 </tr>
 <tr>
 	<td>SEARCH_ALL_USERS</td>
-	<td>link=Search All Users</td>
+	<td>//a[@id='_125_allUsersLink']</td>
 	<td></td>
 </tr>
 <tr>
