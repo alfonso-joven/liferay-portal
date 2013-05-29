@@ -51,22 +51,6 @@ public class TemplateEnginesTest {
 	}
 
 	@Test
-	public void test10() throws Exception {
-		VelocityContext velocityContext =
-			VelocityEngineUtil.getStandardToolsContext();
-
-		UnsyncStringWriter unsyncStringWriter = new UnsyncStringWriter();
-
-		VelocityEngineUtil.mergeTemplate(
-			"123.vm", "#set($sum = 5 + 6)$sum", velocityContext,
-			unsyncStringWriter);
-
-		String result = unsyncStringWriter.toString();
-
-		Assert.assertEquals(11, GetterUtil.getInteger(result));
-	}
-
-	@Test
 	public void test2() throws Exception {
 		FreeMarkerContext freeMarkerContext =
 			FreeMarkerEngineUtil.getWrappedStandardToolsContext();
@@ -192,5 +176,22 @@ public class TemplateEnginesTest {
 
 		Assert.assertEquals("PASS", result);
 	}
+
+	@Test
+	public void test10() throws Exception {
+		VelocityContext velocityContext =
+			VelocityEngineUtil.getStandardToolsContext();
+
+		UnsyncStringWriter unsyncStringWriter = new UnsyncStringWriter();
+
+		VelocityEngineUtil.mergeTemplate(
+			"123.vm", "#set($sum = 5 + 6)$sum", velocityContext,
+			unsyncStringWriter);
+
+		String result = unsyncStringWriter.toString();
+
+		Assert.assertEquals(11, GetterUtil.getInteger(result));
+	}
+
 
 }
