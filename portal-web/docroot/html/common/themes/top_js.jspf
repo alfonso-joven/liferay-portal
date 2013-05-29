@@ -259,6 +259,9 @@
 		%>
 
 		Liferay.AUI = {
+			getAvailableLangPath: function () {
+				return '<%= PortalUtil.getStaticResourceURL(request, "available_languages.jsp", javaScriptLastModified) %>';
+			},
 			getBaseURL: function() {
 				return '<%= alloyBaseURL %>';
 			},

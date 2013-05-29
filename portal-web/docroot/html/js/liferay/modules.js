@@ -165,6 +165,12 @@
 			'portal-aui-lang': {
 				requires: ['aui-calendar'],
 				path: LiferayAUI.getLangPath()
+			},
+			'portal-available-languages': {
+				path: LiferayAUI.getAvailableLangPath(),
+				requires: [
+					'liferay-language'
+				]
 			}
 		}
 	};
