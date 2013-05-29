@@ -513,8 +513,14 @@ public class PortletExporter {
 
 			List<String> assetLinkWeights = new ArrayList<String>();
 
-			AssetEntry sourceAssetEntry = AssetEntryLocalServiceUtil.getEntry(
+			AssetEntry sourceAssetEntry = AssetEntryLocalServiceUtil.fetchEntry(
 				portletDataContext.getGroupId(), sourceAssetEntryUuid);
+
+			if (sourceAssetEntry == null) {
+				sourceAssetEntry = AssetEntryLocalServiceUtil.fetchEntry(
+					portletDataContext.getCompanyGroupId(),
+					sourceAssetEntryUuid);
+			}
 
 			List<AssetLink> directAssetLinks =
 				AssetLinkLocalServiceUtil.getDirectLinks(
