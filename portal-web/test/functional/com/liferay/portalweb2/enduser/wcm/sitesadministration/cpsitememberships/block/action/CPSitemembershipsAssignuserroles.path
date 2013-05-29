@@ -26,7 +26,7 @@
 </tr>
 <tr>
 	<td>ROLES_SEARCH_BUTTON</td>
-	<td>//button[contains(.,'Search')]</td>
+	<td>//input[@value='Search']</td>
 	<td></td>
 </tr>
 <tr>
@@ -37,17 +37,17 @@
 <!--ROLE_TABLE-->
 <tr>
 	<td>ROLE_TABLE_TITLE_1</td>
-	<td>xpath=(//div[@id='_174_ocerSearchContainer']//tr/td[1]/a)[1]</td>
+	<td>xpath=(//div[@id='_174_ocerSearchContainer']/div/table/tbody/tr[3]/td[1]/a)[1]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>ROLE_TABLE_TYPE_1</td>
-	<td>xpath=(//div[@id='_174_ocerSearchContainer']//tr/td[2]/a)[1]</td>
+	<td>xpath=(//div[@id='_174_ocerSearchContainer']/div/table/tbody/tr[3]/td[2]/a)[1]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>ROLE_TABLE_DESCRIPTION_1</td>
-	<td>xpath=(//div[@id='_174_ocerSearchContainer']//tr/td[3]/a)[1]</td>
+	<td>xpath=(//div[@id='_174_ocerSearchContainer']/div/table/tbody/tr[3]/td[3]/a)[1]</td>
 	<td></td>
 </tr>
 </tbody>

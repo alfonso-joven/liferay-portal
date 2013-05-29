@@ -46,27 +46,27 @@
 <!--REG_PERMISSION_TABLE-->
 <tr>
 	<td>REG_PERMISSION_TABLE_RESOURCE_SET_1</td>
-	<td>xpath=(//div[@id='_128_ocerSearchContainer']//tr/td[1]/a)[1]</td>
+	<td>xpath=(//div[@id='_128_ocerSearchContainer']/div/table/tbody/tr[3]/td[1]/a)[1]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>REG_PERMISSION_TABLE_RESOURCE_1</td>
-	<td>xpath=(//div[@id='_128_ocerSearchContainer']//tr/td[2])[1]</td>
+	<td>xpath=(//div[@id='_128_ocerSearchContainer']/div/table/tbody/tr[3]/td[2])[1]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>REG_PERMISSION_TABLE_ACTION_1</td>
-	<td>xpath=(//div[@id='_128_ocerSearchContainer']//tr/td[3])[1]</td>
+	<td>xpath=(//div[@id='_128_ocerSearchContainer']/div/table/tbody/tr[3]/td[3])[1]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>REG_PERMISSION_TABLE_SCOPE_1</td>
-	<td>xpath=(//div[@id='_128_ocerSearchContainer']//tr/td[4])[1]</td>
+	<td>xpath=(//div[@id='_128_ocerSearchContainer']/div/table/tbody/tr[3]/td[4])[1]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>REG_PERMISSION_TABLE_DELETE_1</td>
-	<td>xpath=(//div[@id='_128_ocerSearchContainer']//tr/td[5]/span/a/span)[1]</td>
+	<td>xpath=(//div[@id='_128_ocerSearchContainer']/div/table/tbody/tr[3]/td[5]/span/a/span)[1]</td>
 	<td></td>
 </tr>
 <tr>
@@ -77,22 +77,22 @@
 <!--ORG_PERMISSION_TABLE-->
 <tr>
 	<td>ORG_PERMISSION_TABLE_RESOURCE_SET_1</td>
-	<td>xpath=(//div[@id='_128_ocerSearchContainer']//tr/td[1]/a)[1]</td>
+	<td>xpath=(//div[@id='_128_ocerSearchContainer']/div/table/tbody/tr[3]/td[1]/a)[1]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>ORG_PERMISSION_TABLE_RESOURCE_1</td>
-	<td>xpath=(//div[@id='_128_ocerSearchContainer']//tr/td[2])[1]</td>
+	<td>xpath=(//div[@id='_128_ocerSearchContainer']/div/table/tbody/tr[3]/td[2])[1]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>ORG_PERMISSION_TABLE_ACTION_1</td>
-	<td>xpath=(//div[@id='_128_ocerSearchContainer']//tr/td[3])[1]</td>
+	<td>xpath=(//div[@id='_128_ocerSearchContainer']/div/table/tbody/tr[3]/td[3])[1]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>ORG_PERMISSION_TABLE_DELETE_1</td>
-	<td>xpath=(//div[@id='_128_ocerSearchContainer']//tr/td[4]/span/a/span)[1]</td>
+	<td>xpath=(//div[@id='_128_ocerSearchContainer']/div/table/tbody/tr[3]/td[4]/span/a/span)[1]</td>
 	<td></td>
 </tr>
 <tr>
@@ -103,22 +103,22 @@
 <!--SITE_PERMISSION_TABLE-->
 <tr>
 	<td>SITE_PERMISSION_TABLE_RESOURCE_SET_1</td>
-	<td>xpath=(//div[@id='_128_ocerSearchContainer']//tr/td[1]/a)[1]</td>
+	<td>xpath=(//div[@id='_128_ocerSearchContainer']/div/table/tbody/tr[3]/td[1]/a)[1]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>SITE_PERMISSION_TABLE_RESOURCE_1</td>
-	<td>xpath=(//div[@id='_128_ocerSearchContainer']//tr/td[2])[1]</td>
+	<td>xpath=(//div[@id='_128_ocerSearchContainer']/div/table/tbody/tr[3]/td[2])[1]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>SITE_PERMISSION_TABLE_ACTION_1</td>
-	<td>xpath=(//div[@id='_128_ocerSearchContainer']//tr/td[3])[1]</td>
+	<td>xpath=(//div[@id='_128_ocerSearchContainer']/div/table/tbody/tr[3]/td[3])[1]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>SITE_PERMISSION_TABLE_DELETE_1</td>
-	<td>xpath=(//div[@id='_128_ocerSearchContainer']//tr/td[4]/span/a/span)[1]</td>
+	<td>xpath=(//div[@id='_128_ocerSearchContainer']/div/table/tbody/tr[3]/td[4]/span/a/span)[1]</td>
 	<td></td>
 </tr>
 </tbody>

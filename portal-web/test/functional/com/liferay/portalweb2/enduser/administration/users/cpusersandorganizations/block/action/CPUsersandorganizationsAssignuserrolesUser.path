@@ -128,17 +128,17 @@
 </tr>
 <tr>
 	<td>USER_TABLE_CHECKBOX_1</td>
-	<td>xpath=(//div[@id='_125_usersSearchContainer']//tr/td[1]/input[@name='_125_rowIds'])[1]</td>
+	<td>xpath=(//div[@id='_125_usersSearchContainer']/div/table/tbody/tr[3]/td[1]/input[@name='_125_rowIds'])[1]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>USER_TABLE_USER_NAME_1</td>
-	<td>xpath=(//div[@id='_125_usersSearchContainer']//tr/td[2])[1]</td>
+	<td>xpath=(//div[@id='_125_usersSearchContainer']/div/table/tbody/tr[3]/td[2])[1]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>USER_TABLE_SCREEN_NAME_1</td>
-	<td>xpath=(//div[@id='_125_usersSearchContainer']//tr/td[3])[1]</td>
+	<td>xpath=(//div[@id='_125_usersSearchContainer']/div/table/tbody/tr[3]/td[3])[1]</td>
 	<td></td>
 </tr>
 </tbody>
