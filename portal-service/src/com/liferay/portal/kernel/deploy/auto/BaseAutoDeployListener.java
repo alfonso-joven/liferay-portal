@@ -40,8 +40,11 @@ public abstract class BaseAutoDeployListener implements AutoDeployListener {
 	}
 
 	public boolean isHookPlugin(File file) throws AutoDeployException {
+		String fileName = file.getName();
+
 		if (isMatchingFile(file, "WEB-INF/liferay-hook.xml") &&
-			!isMatchingFile(file, "WEB-INF/liferay-portlet.xml")) {
+			!isMatchingFile(file, "WEB-INF/liferay-portlet.xml") &&
+			!fileName.contains("-theme")) {
 
 			return true;
 		}
@@ -98,7 +101,9 @@ public abstract class BaseAutoDeployListener implements AutoDeployListener {
 	}
 
 	public boolean isMatchingFileExtension(File file) {
-		String fileName = file.getName().toLowerCase();
+		String fileName = file.getName();
+
+		fileName = fileName.toLowerCase();
 
 		if (fileName.endsWith(".war") || fileName.endsWith(".zip")) {
 			if (_log.isDebugEnabled()) {
