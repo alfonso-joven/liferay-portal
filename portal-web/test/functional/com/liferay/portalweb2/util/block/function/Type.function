@@ -40,4 +40,10 @@
 
 		<execute selenium="typeFrame" />
 	</command>
+
+	<command name="typeWaitForNotValueNull">
+		<execute selenium="waitForNotValue" />
+
+		<execute function="Type#type" />
+	</command>
 </definition>
