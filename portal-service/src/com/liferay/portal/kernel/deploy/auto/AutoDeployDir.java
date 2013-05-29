@@ -36,6 +36,16 @@ public class AutoDeployDir {
 
 	public static final String DEFAULT_NAME = "defaultAutoDeployDir";
 
+	public static void deploy(
+			AutoDeploymentContext autoDeploymentContext,
+			List<AutoDeployListener> autoDeployListeners)
+		throws AutoDeployException {
+
+		for (AutoDeployListener autoDeployListener : autoDeployListeners) {
+			autoDeployListener.deploy(autoDeploymentContext);
+		}
+	}
+
 	public AutoDeployDir(
 		String name, File deployDir, File destDir, long interval,
 		int blacklistThreshold, List<AutoDeployListener> autoDeployListeners) {
@@ -189,9 +199,7 @@ public class AutoDeployDir {
 			AutoDeploymentContext autoDeploymentContext =
 				buildAutoDeploymentContext(file);
 
-			for (AutoDeployListener autoDeployListener : _autoDeployListeners) {
-				autoDeployListener.deploy(autoDeploymentContext);
-			}
+			deploy(autoDeploymentContext, _autoDeployListeners);
 
 			if (file.delete()) {
 				_inProcessFiles.remove(fileName);
