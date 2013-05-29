@@ -10,12 +10,17 @@
 <tbody>
 <tr>
 	<td>PAGE_NAME</td>
-	<td>//iframe[@id='_15_structureSelector']</td>
+	<td></td>
 	<td>CPWebcontentTemplatesAddtemplateStructure</td>
 </tr>
 <tr>
 	<td></td>
 	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>STRUCTURE_IFRAME</td>
+	<td>//iframe[@id='_15_structureSelector']</td>
 	<td></td>
 </tr>
 <tr>

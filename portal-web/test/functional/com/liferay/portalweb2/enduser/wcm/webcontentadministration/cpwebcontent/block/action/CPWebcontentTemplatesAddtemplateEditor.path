@@ -10,12 +10,17 @@
 <tbody>
 <tr>
 	<td>PAGE_NAME</td>
-	<td>//iframe[@id='_15_xslContentIFrame']</td>
+	<td></td>
 	<td>CPWebcontentTemplatesAddtemplateEditor</td>
 </tr>
 <tr>
 	<td></td>
 	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>EDITOR_IFRAME</td>
+	<td>//iframe[@id='_15_xslContentIFrame']</td>
 	<td></td>
 </tr>
 <tr>
