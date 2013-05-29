@@ -42,8 +42,9 @@ if (!selectableTree) {
 
 	var Util = Liferay.Util;
 
-	var LAYOUT_URL = '<%= portletURL + StringPool.AMPERSAND + portletDisplay.getNamespace() + "selPlid={selPlid}" + StringPool.AMPERSAND + portletDisplay.getNamespace() + "historyKey={historyKey}" %>';
+	var GET_LAYOUTS_URL = themeDisplay.getPathMain() + '/layouts_admin/get_layouts';
 
+	var LAYOUT_URL = '<%= portletURL + StringPool.AMPERSAND + portletDisplay.getNamespace() + "selPlid={selPlid}" + StringPool.AMPERSAND + portletDisplay.getNamespace() + "historyKey={historyKey}" %>';
 	var STR_CHILDREN = 'children';
 
 	var TreeUtil = {
@@ -59,7 +60,7 @@ if (!selectableTree) {
 
 		String selectedLayoutIds = SessionTreeJSClicks.getOpenNodes(request, treeId + "SelectedNode");
 
-		if (selectedLayoutIds != null) {
+		if (Validator.isNotNull(selectedLayoutIds)) {
 			for (long selectedLayoutId : StringUtil.split(selectedLayoutIds, 0L)) {
 				try {
 					Layout selectedLayout = LayoutLocalServiceUtil.getLayout(groupId, privateLayout, selectedLayoutId);
@@ -154,12 +155,6 @@ if (!selectableTree) {
 
 					var expanded = (total > 0);
 
-					var type = 'task';
-
-					<c:if test="<%= !selectableTree %>">
-						type = (nodeChildren && expanded) ? 'node' : 'io';
-					</c:if>
-
 					var newNode = {
 						<c:if test="<%= saveState %>">
 							after: {
@@ -196,6 +191,47 @@ if (!selectableTree) {
 						draggable: node.sortable,
 						expanded: expanded,
 						id: TreeUtil.createListItemId(node.groupId, node.layoutId, node.plid),
+						io: {
+							cfg: {
+								data: function(node) {
+									return {
+										groupId: TreeUtil.extractGroupId(node),
+										incomplete: <%= incomplete %>,
+										p_auth: Liferay.authToken,
+										parentLayoutId: TreeUtil.extractLayoutId(node),
+										privateLayout: <%= privateLayout %>,
+										selPlid: '<%= selPlid %>',
+										treeId: '<%= HtmlUtil.escape(treeId) %>'
+									};
+								},
+								method: A.config.io.method,
+								on: {
+									success: function(event, id, xhr) {
+										var instance = this;
+
+										var response;
+
+										try {
+											response = A.JSON.parse(xhr.responseText);
+										}
+										catch (e) {
+										}
+
+										if (response) {
+											instance.get('paginator').total = response.total;
+
+											instance.syncUI();
+										}
+
+										<c:if test="<%= saveState %>">
+											TreeUtil.updatePagination(instance);
+										</c:if>
+									}
+								}
+							},
+							formatter: TreeUtil.formatJSONResults,
+							url: GET_LAYOUTS_URL
+						},
 						leaf: !node.parentable,
 						paginator: {
 							limit: TreeUtil.PAGINATION_LIMIT,
@@ -203,7 +239,7 @@ if (!selectableTree) {
 							start: Math.max(childLayouts.length - TreeUtil.PAGINATION_LIMIT, 0),
 							total: total
 						},
-						type: type
+						type: '<%= !selectableTree ? "io" : "task" %>'
 					};
 
 					if (nodeChildren && expanded) {
@@ -277,10 +313,9 @@ if (!selectableTree) {
 		},
 
 		updateLayout: function(data) {
-			var updateURL = themeDisplay.getPathMain() + '/layouts_admin/update_page';
 
 			A.io.request(
-				updateURL,
+				themeDisplay.getPathMain() + '/layouts_admin/update_page',
 				{
 					data: A.mix(
 						data,
@@ -407,7 +442,6 @@ if (!selectableTree) {
 			},
 
 			updateSessionTreeClick: function(treeId, data) {
-				var sessionClickURL = themeDisplay.getPathMain() + '/portal/session_tree_js_click';
 
 				data = A.merge(
 					{
@@ -420,7 +454,7 @@ if (!selectableTree) {
 				);
 
 				A.io.request(
-					sessionClickURL,
+					themeDisplay.getPathMain() + '/portal/session_tree_js_click',
 					{
 						data: data
 					}
@@ -438,8 +472,6 @@ if (!selectableTree) {
 		</c:if>
 	};
 
-	var getLayoutsURL = themeDisplay.getPathMain() + '/layouts_admin/get_layouts';
-	var rootId = TreeUtil.createListItemId(<%= groupId %>, TreeUtil.DEFAULT_PARENT_LAYOUT_ID, 0);
 	var rootLabel = '<%= HtmlUtil.escapeJS(rootNodeName) %>';
 	var treeElId = '<portlet:namespace /><%= HtmlUtil.escape(treeId) %>Output';
 
@@ -498,7 +530,7 @@ if (!selectableTree) {
 			%>
 
 			expanded: <%= rootNodeExpanded %>,
-			id: rootId,
+			id: TreeUtil.createListItemId(<%= groupId %>, TreeUtil.DEFAULT_PARENT_LAYOUT_ID, 0),
 			label: rootLabel,
 			leaf: false,
 			paginator: {
@@ -522,14 +554,12 @@ if (!selectableTree) {
 			io: {
 				cfg: {
 					data: function(node) {
-						var groupId = TreeUtil.extractGroupId(node);
-						var parentLayoutId = TreeUtil.extractLayoutId(node);
-
+	
 						return {
-							groupId: groupId,
+							groupId: TreeUtil.extractGroupId(node),
 							incomplete: <%= incomplete %>,
 							p_auth: Liferay.authToken,
-							parentLayoutId: parentLayoutId,
+							parentLayoutId: TreeUtil.extractLayoutId(node),
 							privateLayout: <%= privateLayout %>,
 							selPlid: '<%= selPlid %>'
 						};
@@ -539,7 +569,6 @@ if (!selectableTree) {
 						success: function(event, id, xhr) {
 							var instance = this;
 
-							var paginator = instance.get('paginator');
 							var response;
 
 							try {
@@ -548,7 +577,7 @@ if (!selectableTree) {
 							catch(e) {}
 
 							if (response) {
-								paginator.total = response.total;
+								instance.get('paginator').total = response.total;
 
 								instance.syncUI();
 							}
@@ -560,7 +589,7 @@ if (!selectableTree) {
 					}
 				},
 				formatter: TreeUtil.formatJSONResults,
-				url: getLayoutsURL
+				url: GET_LAYOUTS_URL
 			},
 			on: {
 				<c:if test="<%= saveState %>">
