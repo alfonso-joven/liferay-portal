@@ -2323,7 +2323,8 @@ public class PortletLocalServiceImpl extends PortletLocalServiceBaseImpl {
 
 	private static final int _PORTLET_ID_MAX_LENGTH =
 		ModelHintsUtil.getMaxLength(Portlet.class.getName(), "portletId") -
-		(PortletConstants.INSTANCE_SEPARATOR.length() + "_USER_".length() + 39);
+			PortletConstants.INSTANCE_SEPARATOR.length() + "_USER_".length() +
+				39;
 
 	private static Log _log = LogFactoryUtil.getLog(
 		PortletLocalServiceImpl.class);
