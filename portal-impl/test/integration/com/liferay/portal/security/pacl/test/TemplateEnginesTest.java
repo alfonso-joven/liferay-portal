@@ -193,5 +193,4 @@ public class TemplateEnginesTest {
 		Assert.assertEquals(11, GetterUtil.getInteger(result));
 	}
 
-
 }
