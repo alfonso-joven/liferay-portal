@@ -1,0 +1,25 @@
+<definition>
+	<set-up>
+		<execute macro="User#pgFirstLogin" />
+	</set-up>
+
+	<command name="AddPageTemplate">
+		<var name="pageTemplateName" value="Page Template Name" />
+		<var name="pageTemplateActive" value="Yes" />
+		
+		<execute macro="PageTemplates#cpTearDown" />
+		<execute macro="PageTemplates#cpAdd" />
+	</command>
+
+	<command name="EditPageTemplate">
+		<var name="pageTemplateName" value="Page Template Name" />
+		<var name="pageTemplateActive" value="Yes" />
+
+		<execute macro="PageTemplates#cpAdd" />
+		<execute macro="PageTemplates#cpEdit" />
+	</command>
+
+	<tear-down>
+		<execute macro="PageTemplates#cpTearDown" />
+	</tear-down>
+</definition>
