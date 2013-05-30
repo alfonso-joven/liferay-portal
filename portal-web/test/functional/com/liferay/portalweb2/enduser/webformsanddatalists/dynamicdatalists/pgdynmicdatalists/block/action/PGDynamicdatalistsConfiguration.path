@@ -10,12 +10,17 @@
 <tbody>
 <tr>
 	<td>PAGE_NAME</td>
-	<td>//iframe[contains(@src,'configuration')]</td>
+	<td></td>
 	<td>PGDynamicdatalistsConfiguration</td>
 </tr>
 <tr>
 	<td></td>
 	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>CONFIGURATION_IFRAME</td>
+	<td>//iframe[contains(@src,'configuration')]</td>
 	<td></td>
 </tr>
 <tr>

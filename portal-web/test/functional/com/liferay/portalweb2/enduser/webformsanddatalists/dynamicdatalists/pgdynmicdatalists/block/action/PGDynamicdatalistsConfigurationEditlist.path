@@ -1,17 +1,17 @@
 <html>
 <head>
-<title>PGDynamicdatalistsAddlist</title>
+<title>PGDynamicdatalistsConfigurationEditlist</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">PGDynamicdatalistsAddlist</td></tr>
+<tr><td rowspan="1" colspan="3">PGDynamicdatalistsConfigurationEditlist</td></tr>
 </thead>
 <tbody>
 <tr>
 	<td>PAGE_NAME</td>
-	<td></td>
-	<td>PGDynamicdatalistsAddlist</td>
+	<td>//iframe[contains(@src,'edit_configuration')]</td>
+	<td>PGDynamicdatalistsConfigurationEditlist</td>
 </tr>
 <tr>
 	<td></td>
