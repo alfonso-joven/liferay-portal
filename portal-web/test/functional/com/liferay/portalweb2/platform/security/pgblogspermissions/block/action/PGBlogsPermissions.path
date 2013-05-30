@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>PGBlogsPermissions</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">PGBlogsPermissions</td></tr>
+</thead>
+<tbody>
+<tr>
+	<td>PAGE_NAME</td>
+	<td></td>
+	<td>PGBlogsPermissions</td>
+</tr>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>ADD_ENTRY_BUTTON</td>
+	<td>//input[@value='Add Blog Entry']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>PERMISSIONS_BUTTON</td>
+	<td>//input[@value='Permissions']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>PORTLET_TITLE</td>
+	<td>//span[@class='portlet-title-text']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>RSS_LINK</td>
+	<td>//div[@class='subscribe']/span/a[contains(.,'RSS')]/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>SUBSCRIBE_LINK</td>
+	<td>//div[@class='subscribe']/span/a[contains(.,'Subscribe')]/span</td>
+	<td></td>
+</tr>
+
+</tbody>
+</table>
+</body>
+</html>
