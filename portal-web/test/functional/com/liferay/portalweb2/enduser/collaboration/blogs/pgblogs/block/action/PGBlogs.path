@@ -19,8 +19,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>ADD_ENTRY_BUTTON</td>
-	<td>//input[@value='Add Blog Entry']</td>
+	<td>SUCCESS_MESSAGE</td>
+	<td>//div[@class='portlet-msg-success']</td>
 	<td></td>
 </tr>
 <tr>
@@ -29,8 +29,23 @@
 	<td></td>
 </tr>
 <tr>
-	<td>SUCCESS_MESSAGE</td>
-	<td>//div[@class='portlet-msg-success']</td>
+	<td>ADD_ENTRY_BUTTON</td>
+	<td>//input[@value='Add Blog Entry']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>PERMISSIONS_BUTTON</td>
+	<td>//input[@value='Permissions']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>RSS_LINK</td>
+	<td>//div[@class='subscribe']/span/a[contains(.,'RSS')]/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>SUBSCRIBE_LINK</td>
+	<td>//div[@class='subscribe']/span/a[contains(.,'Subscribe')]/span</td>
 	<td></td>
 </tr>
 <tr>
