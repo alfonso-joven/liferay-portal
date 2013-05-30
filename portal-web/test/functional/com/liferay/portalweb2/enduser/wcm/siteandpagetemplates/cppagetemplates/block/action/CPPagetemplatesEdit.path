@@ -1,17 +1,17 @@
 <html>
 <head>
-<title>CPPagetemplateEdit</title>
+<title>CPPagetemplatesEdit</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">CPPagetemplateEdit</td></tr>
+<tr><td rowspan="1" colspan="3">CPPagetemplatesEdit</td></tr>
 </thead>
 <tbody>
 <tr>
 	<td>PAGE_NAME</td>
 	<td></td>
-	<td>CPPagetemplateEdit</td>
+	<td>CPPagetemplatesEdit</td>
 </tr>
 <tr>
 	<td></td>
