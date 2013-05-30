@@ -1,0 +1,81 @@
+<html>
+<head>
+<title>PGWebcontentlist</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">PGWebcontentlist</td></tr>
+</thead>
+<tbody>
+<tr>
+	<td>PAGE_NAME</td>
+	<td></td>
+	<td>PGWebcontentlist</td>
+</tr>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>OPTIONS_WRENCH_ICON</td>
+	<td>//span[@title='Options']/ul/li/strong/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>INFO_MESSAGE</td>
+	<td>//div[@class='portlet-configuration portlet-msg-info']/a	</td>
+	<td></td>
+</tr>
+<tr>
+	<td>SEARCH_RESULTS</td>
+	<td>//div[@class='search-results']</td>
+	<td></td>
+</tr>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+<!--OPTIONS_MENULIST-->
+<tr>
+	<td>OPTIONS_MENULIST_LOOK_AND_FEEL</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Look and Feel')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>OPTIONS_MENULIST_CONFIGURATION</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>OPTIONS_MENULIST_EXPORT_IMPORT</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Export / Import')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+<!--WEB_CONTENT_TABLE-->
+<tr>
+	<td>WEB_CONTENT_TABLE_TITLE_1</td>
+	<td>xpath=(//tbody/tr[3]/td[1])[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>WEB_CONTENT_TABLE_DISPLAY_DATE_1</td>
+	<td>xpath=(//tbody/tr[3]/td[2])[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>WEB_CONTENT_TABLE_AUTHOR_1</td>
+	<td>xpath=(//tbody/tr[3]/td[3])[1]</td>
+	<td></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
