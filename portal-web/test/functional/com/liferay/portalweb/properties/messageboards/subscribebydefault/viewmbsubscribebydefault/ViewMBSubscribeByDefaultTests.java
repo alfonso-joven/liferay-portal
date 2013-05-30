@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.portalweb.properties.messageboards.subscribebydefault.viewmbsubscribebydefaultno;
+package com.liferay.portalweb.properties.messageboards.subscribebydefault.viewmbsubscribebydefault;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
 import com.liferay.portalweb.portal.util.TearDownPageTest;
@@ -25,12 +25,12 @@ import junit.framework.TestSuite;
 /**
  * @author Brian Wing Shun Chan
  */
-public class ViewMBSubscribeByDefaultNoTests extends BaseTestSuite {
+public class ViewMBSubscribeByDefaultTests extends BaseTestSuite {
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
 		testSuite.addTestSuite(AddPageMBTest.class);
 		testSuite.addTestSuite(AddPortletMBTest.class);
-		testSuite.addTestSuite(ViewMBSubscribeByDefaultNoTest.class);
+		testSuite.addTestSuite(ViewMBSubscribeByDefaultTest.class);
 		testSuite.addTestSuite(TearDownPageTest.class);
 
 		return testSuite;

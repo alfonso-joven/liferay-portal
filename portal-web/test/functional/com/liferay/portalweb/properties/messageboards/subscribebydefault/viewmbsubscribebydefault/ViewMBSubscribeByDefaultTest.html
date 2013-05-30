@@ -14,11 +14,6 @@
 	<td></td>
 </tr>
 <tr>
-	<td>waitForVisible</td>
-	<td>link=Message Boards Test Page</td>
-	<td>Message Boards Test Page</td>
-</tr>
-<tr>
 	<td>clickAtAndWait</td>
 	<td>link=Message Boards Test Page</td>
 	<td>Message Boards Test Page</td>
@@ -29,12 +24,12 @@
 	<td>Post New Thread</td>
 </tr>
 <tr>
-	<td>waitForElementPresent</td>
-	<td>//textarea[@id='_19_editor' and @style='display: none;']</td>
-	<td>Text Area</td>
+	<td>waitForVisible</td>
+	<td>//a[contains(@class,'cke_button_unlink') and contains(@class,' cke_disabled')]</td>
+	<td>Unlink Button Disabled</td>
 </tr>
 <tr>
-	<td>assertNotChecked</td>
+	<td>assertChecked</td>
 	<td>//input[@id='_19_subscribeCheckbox']</td>
 	<td>Subscribe</td>
 </tr>

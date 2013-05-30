@@ -12,7 +12,7 @@
  * details.
  */
 
-package com.liferay.portalweb.properties.messageboards.subscribebydefault.viewmbsubscribebydefaultno;
+package com.liferay.portalweb.properties.messageboards.subscribebydefault.viewmbsubscribebydefault;
 
 import com.liferay.portalweb.portal.BaseTestCase;
 import com.liferay.portalweb.portal.util.RuntimeVariables;
@@ -20,20 +20,19 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 /**
  * @author Brian Wing Shun Chan
  */
-public class ViewMBSubscribeByDefaultNoTest extends BaseTestCase {
-	public void testViewMBSubscribeByDefaultNo() throws Exception {
+public class ViewMBSubscribeByDefaultTest extends BaseTestCase {
+	public void testViewMBSubscribeByDefault() throws Exception {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForVisible("link=Message Boards Test Page");
 		selenium.clickAt("link=Message Boards Test Page",
 			RuntimeVariables.replace("Message Boards Test Page"));
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//input[@value='Post New Thread']",
 			RuntimeVariables.replace("Post New Thread"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForElementPresent(
-			"//textarea[@id='_19_editor' and @style='display: none;']");
-		assertFalse(selenium.isChecked("//input[@id='_19_subscribeCheckbox']"));
+		selenium.waitForVisible(
+			"//a[contains(@class,'cke_button_unlink') and contains(@class,' cke_disabled')]");
+		assertTrue(selenium.isChecked("//input[@id='_19_subscribeCheckbox']"));
 	}
 }

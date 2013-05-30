@@ -15,7 +15,7 @@
 package com.liferay.portalweb.properties.messageboards.subscribebydefault;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
-import com.liferay.portalweb.properties.messageboards.subscribebydefault.viewmbsubscribebydefaultno.ViewMBSubscribeByDefaultNoTests;
+import com.liferay.portalweb.properties.messageboards.subscribebydefault.viewmbsubscribebydefault.ViewMBSubscribeByDefaultTests;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -28,7 +28,7 @@ public class SubscribeByDefaultTestPlan extends BaseTestSuite {
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
 
-		testSuite.addTest(ViewMBSubscribeByDefaultNoTests.suite());
+		testSuite.addTest(ViewMBSubscribeByDefaultTests.suite());
 
 		return testSuite;
 	}
