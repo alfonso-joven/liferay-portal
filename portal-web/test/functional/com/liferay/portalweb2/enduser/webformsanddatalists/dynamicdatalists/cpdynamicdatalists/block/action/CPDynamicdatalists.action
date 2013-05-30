@@ -6,26 +6,29 @@
 	</command>
 
 	<command name="click">
+		<case locator-key1="BASIC_SEARCH_BUTTON">
+			<execute function="Click#valueClickAtAndWait" value1="Search" />
+		</case>
 		<case locator-key1="LIST_MENULIST_DELETE">
 			<execute function="Click#textClickAt" value1="Delete" />
 		</case>
 		<case locator-key1="LIST_MENULIST_EDIT">
 			<execute function="Click#textClickAtAndWait" value1="Edit" />
 		</case>
+		<case locator-key1="LIST_MENULIST_SPREADSHEET_VIEW">
+			<execute function="Click#textClickAtAndWait" value1="Spreadsheet View" />
+		</case>
 		<case comparator="startsWith" locator-key1="LIST_TABLE_NAME_">
 			<execute function="Click#textClickAtAndWait" />
 		</case>
 		<case comparator="startsWith" locator-key1="LIST_TABLE_ACTIONS_">
-			<execute function="Click#pauseTextClickAt" value1="Actions" />
+			<execute function="Click#textClickAt" value1="Actions" />
 		</case>
 		<case locator-key1="TOOLBAR_ADD">
-			<execute function="Click#pauseTextClickAtAndWait" value1="Add" />
+			<execute function="Click#textClickAtAndWait" value1="Add" />
 		</case>
 		<case locator-key1="TOOLBAR_MANAGE_DATA_DEFINITIONS">
 			<execute function="Click#textClickAt" value1="Manage Data Definitions" />
-		</case>
-		<case locator-key1="TOOLBAR_SEARCH_BUTTON">
-			<execute function="Click#textClickAtAndWait" value1="Search" />
 		</case>
 	</command>
 </definition>

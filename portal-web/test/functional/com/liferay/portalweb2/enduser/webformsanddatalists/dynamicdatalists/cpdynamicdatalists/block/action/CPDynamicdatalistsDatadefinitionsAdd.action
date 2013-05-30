@@ -7,27 +7,15 @@
 			<execute function="Click#textClickAt" value1="Fields" />
 		</case>
 		<case locator-key1="SAVE_BUTTON">
-			<execute function="Click#textClickAtAndWait" value1="Save" />
+			<execute function="Click#valueClickAtAndWait" value1="Save" />
 		</case>
 		<case locator-key1="SETTINGS_CELL_EDITOR_SAVE_BUTTON">
 			<execute function="Click#textClickAt" value1="Save" />
 		</case>
 	</command>
 
-	<command name="isElementNotPresent">
-		<case locator-key1="DETAILS_DESCRIPTION_FIELD">
-			<execute function="IsElementNotPresent#isNotVisible" />
-		</case>
-	</command>
-
-	<command name="isElementPresent">
-		<case locator-key1="DETAILS_DESCRIPTION_FIELD">
-			<execute function="IsElementPresent#isVisible" />
-		</case>
-	</command>
-
 	<command name="type">
-		<case locator-key1="DETAILS_DESCRIPTION_FIELD">
+		<case locator-key1="DESCRIPTION_FIELD">
 			<execute function="Type#clickAtSendKeys" />
 		</case>
 		<case locator-key1="NAME_FIELD">

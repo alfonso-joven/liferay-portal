@@ -10,10 +10,7 @@
 		<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="TOOLBAR_ADD" />
 
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#type" locator-key1="NAME_FIELD" value1="${dataDefinitionName}" />
-
-		<execute macro="CPDynamicdatalistsDatadefinitionsAdd#showDetails" />
-
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#type" locator-key1="DETAILS_DESCRIPTION_FIELD" value1="${dataDefinitionDescription}" />
+		<execute action="CPDynamicdatalistsDatadefinitionsAdd#type" locator-key1="DESCRIPTION_FIELD" value1="${dataDefinitionDescription}" />
 
 		<execute macro="DataDefinition#cpAddTextCmd">
 			<var name="textNameLabel" value="text" />
@@ -28,7 +25,7 @@
 
 	<command name="cpAddBooleanCmd">
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#dragAndDrop" locator-key1="FIELDS_BOOLEAN" locator-key2="FORM_BUILDER" value1="Boolean" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="FORM_BOOLEAN_FIELD_1" />
+		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="FORM_BOOLEAN_FIELD_1" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="SETTINGS_NAME" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#type" locator-key1="SETTINGS_CELL_EDITOR_FIELD" value1="${booleanNameLabel}" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="SETTINGS_CELL_EDITOR_SAVE_BUTTON" />
@@ -39,7 +36,7 @@
 
 	<command name="cpAddDateCmd">
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#dragAndDrop" locator-key1="FIELDS_DATE" locator-key2="FORM_BUILDER" value1="Date" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="FORM_DATE_FIELD_1" />
+		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="FORM_DATE_FIELD_1" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="SETTINGS_NAME" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#type" locator-key1="SETTINGS_CELL_EDITOR_FIELD" value1="${dateNameLabel}" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="SETTINGS_CELL_EDITOR_SAVE_BUTTON" />
@@ -50,7 +47,7 @@
 
 	<command name="cpAddDecimalCmd">
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#dragAndDrop" locator-key1="FIELDS_DECIMAL" locator-key2="FORM_BUILDER" value1="Decimal" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="FORM_DECIMAL_FIELD_1" />
+		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="FORM_DECIMAL_FIELD_1" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="SETTINGS_NAME" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#type" locator-key1="SETTINGS_CELL_EDITOR_FIELD" value1="${decimalNameLabel}" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="SETTINGS_CELL_EDITOR_SAVE_BUTTON" />
@@ -61,7 +58,7 @@
 
 	<command name="cpAddDocumentsAndMediaCmd">
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#dragAndDrop" locator-key1="FIELDS_DOCUMENTS_AND_MEDIA" locator-key2="FORM_BUILDER" value1="Documents and Media" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="FORM_DOCUMENTS_AND_MEDIA_FIELD_1" />
+		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="FORM_DOCUMENTS_AND_MEDIA_FIELD_1" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="SETTINGS_NAME" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#type" locator-key1="SETTINGS_CELL_EDITOR_FIELD" value1="${documentsAndMediaNameLabel}" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="SETTINGS_CELL_EDITOR_SAVE_BUTTON" />
@@ -72,7 +69,7 @@
 
 	<command name="cpAddFileUploadCmd">
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#dragAndDrop" locator-key1="FIELDS_FILE_UPLOAD" locator-key2="FORM_BUILDER" value1="File Upload" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="FORM_FILE_UPLOAD_FIELD_1" />
+		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="FORM_FILE_UPLOAD_FIELD_1" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="SETTINGS_NAME" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#type" locator-key1="SETTINGS_CELL_EDITOR_FIELD" value1="${fileUploadNameLabel}" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="SETTINGS_CELL_EDITOR_SAVE_BUTTON" />
@@ -81,20 +78,9 @@
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="NAME_FIELD" />
 	</command>
 
-	<command name="cpAddHtmlCmd">
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#dragAndDrop" locator-key1="FIELDS_HTML" locator-key2="FORM_BUILDER" value1="HTML" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="FORM_HTML_FIELD_1" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="SETTINGS_NAME" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#type" locator-key1="SETTINGS_CELL_EDITOR_FIELD" value1="${htmlNameLabel}" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="SETTINGS_CELL_EDITOR_SAVE_BUTTON" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertTextEquals" locator-key1="SETTINGS_NAME" value1="${htmlNameLabel}" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="FIELDS_LINK" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="NAME_FIELD" />
-	</command>
-
 	<command name="cpAddIntegerCmd">
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#dragAndDrop" locator-key1="FIELDS_INTEGER" locator-key2="FORM_BUILDER" value1="Ingeger" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="FORM_INTEGER_FIELD_1" />
+		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="FORM_INTEGER_FIELD_1" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="SETTINGS_NAME" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#type" locator-key1="SETTINGS_CELL_EDITOR_FIELD" value1="${integerNameLabel}" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="SETTINGS_CELL_EDITOR_SAVE_BUTTON" />
@@ -103,20 +89,9 @@
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="NAME_FIELD" />
 	</command>
 
-	<command name="cpAddLinkToPageCmd">
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#dragAndDrop" locator-key1="FIELDS_LINK_TO_PAGE" locator-key2="FORM_BUILDER" value1="Link to Page" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="FORM_LINK_TO_PAGE_FIELD_1" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="SETTINGS_NAME" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#type" locator-key1="SETTINGS_CELL_EDITOR_FIELD" value1="${linkToPageNameLabel}" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="SETTINGS_CELL_EDITOR_SAVE_BUTTON" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertTextEquals" locator-key1="SETTINGS_NAME" value1="${linkToPageNameLabel}" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="FIELDS_LINK" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="NAME_FIELD" />
-	</command>
-
 	<command name="cpAddNumberCmd">
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#dragAndDrop" locator-key1="FIELDS_NUMBER" locator-key2="FORM_BUILDER" value1="Number" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="FORM_NUMBER_FIELD_1" />
+		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="FORM_NUMBER_FIELD_1" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="SETTINGS_NAME" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#type" locator-key1="SETTINGS_CELL_EDITOR_FIELD" value1="${numberNameLabel}" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="SETTINGS_CELL_EDITOR_SAVE_BUTTON" />
@@ -127,7 +102,7 @@
 
 	<command name="cpAddRadioCmd">
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#dragAndDrop" locator-key1="FIELDS_RADIO" locator-key2="FORM_BUILDER" value1="Radio" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="FORM_RADIO_FIELD_1" />
+		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="FORM_RADIO_FIELD_1" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="SETTINGS_NAME" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#type" locator-key1="SETTINGS_CELL_EDITOR_FIELD" value1="${radioNameLabel}" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="SETTINGS_CELL_EDITOR_SAVE_BUTTON" />
@@ -138,7 +113,7 @@
 
 	<command name="cpAddSelectCmd">
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#dragAndDrop" locator-key1="FIELDS_SELECT" locator-key2="FORM_BUILDER" value1="Select" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="FORM_SELECT_FIELD_1" />
+		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="FORM_SELECT_FIELD_1" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="SETTINGS_NAME" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#type" locator-key1="SETTINGS_CELL_EDITOR_FIELD" value1="${selectNameLabel}" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="SETTINGS_CELL_EDITOR_SAVE_BUTTON" />
@@ -149,7 +124,7 @@
 
 	<command name="cpAddTextCmd">
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#dragAndDrop" locator-key1="FIELDS_TEXT" locator-key2="FORM_BUILDER" value1="Text" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="FORM_TEXT_FIELD_1" />
+		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="FORM_TEXT_FIELD_1" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="SETTINGS_NAME" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#type" locator-key1="SETTINGS_CELL_EDITOR_FIELD" value1="${textNameLabel}" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="SETTINGS_CELL_EDITOR_SAVE_BUTTON" />
@@ -160,7 +135,7 @@
 
 	<command name="cpAddTextBoxCmd">
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#dragAndDrop" locator-key1="FIELDS_TEXT_BOX" locator-key2="FORM_BUILDER" value1="Text Box" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="FORM_TEXT_BOX_FIELD_1" />
+		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="FORM_TEXT_BOX_FIELD_1" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="SETTINGS_NAME" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#type" locator-key1="SETTINGS_CELL_EDITOR_FIELD" value1="${textBoxNameLabel}" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="SETTINGS_CELL_EDITOR_SAVE_BUTTON" />
@@ -177,11 +152,11 @@
 		<execute action="CPDynamicdatalists#click" locator-key1="TOOLBAR_MANAGE_DATA_DEFINITIONS" />
 
 		<execute action="CPDynamicdatalistsDatadefinitions#selectFrame" locator-key1="PAGE_NAME" />
-		<execute action="CPDynamicdatalistsDatadefinitions#type" locator-key1="TOOLBAR_SEARCH_FIELD" value1="${dataDefinitionName}" />
-		<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="TOOLBAR_SEARCH_BUTTON" />
+		<execute action="CPDynamicdatalistsDatadefinitions#type" locator-key1="BASIC_SEARCH_FIELD" value1="${dataDefinitionName}" />
+		<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="BASIC_SEARCH_BUTTON" />
 		<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="DATA_DEFINITION_TABLE_ACTIONS_1" />
 		<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="DATA_DEFINITION_MENULIST_DELETE" />
-		<execute action="CPDynamicdatalistsDatadefinitions#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this? It will be deleted immediately." />
+		<execute action="CPDynamicdatalistsDatadefinitions#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this?" />
 		<execute action="CPDynamicdatalistsDatadefinitions#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
 
 		<execute macro="Page#cpGoto">
@@ -191,8 +166,8 @@
 		<execute action="CPDynamicdatalists#click" locator-key1="TOOLBAR_MANAGE_DATA_DEFINITIONS" />
 
 		<execute action="CPDynamicdatalistsDatadefinitions#selectFrame" locator-key1="PAGE_NAME" />
-		<execute action="CPDynamicdatalistsDatadefinitions#type" locator-key1="TOOLBAR_SEARCH_FIELD" value1="${dataDefinitionName}" />
-		<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="TOOLBAR_SEARCH_BUTTON" />
+		<execute action="CPDynamicdatalistsDatadefinitions#type" locator-key1="BASIC_SEARCH_FIELD" value1="${dataDefinitionName}" />
+		<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="BASIC_SEARCH_BUTTON" />
 		<execute action="CPDynamicdatalistsDatadefinitions#assertTextNotPresent" value1="${dataDefinitionName}" />
 
 		<execute action="CPDynamicdatalists#selectFrameTop" />
@@ -206,13 +181,13 @@
 		<execute action="CPDynamicdatalists#click" locator-key1="TOOLBAR_MANAGE_DATA_DEFINITIONS" />
 
 		<execute action="CPDynamicdatalistsDatadefinitions#selectFrame" locator-key1="PAGE_NAME" />
-		<execute action="CPDynamicdatalistsDatadefinitions#type" locator-key1="TOOLBAR_SEARCH_FIELD" value1="${dataDefinitionName}" />
-		<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="TOOLBAR_SEARCH_BUTTON" />
+		<execute action="CPDynamicdatalistsDatadefinitions#type" locator-key1="BASIC_SEARCH_FIELD" value1="${dataDefinitionName}" />
+		<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="BASIC_SEARCH_BUTTON" />
 		<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="DATA_DEFINITION_TABLE_ACTIONS_1" />
 		<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="DATA_DEFINITION_MENULIST_EDIT" />
 
 		<execute action="CPDynamicdatalistsDatadefinitionsEdit#type" locator-key1="NAME_FIELD" value1="${dataDefinitionNameEdit}" />
-		<execute action="CPDynamicdatalistsDatadefinitionsEdit#type" locator-key1="DETAILS_DESCRIPTION_FIELD" value1="${dataDefinitionDescriptionEdit}" />
+		<execute action="CPDynamicdatalistsDatadefinitionsEdit#type" locator-key1="DESCRIPTION_FIELD" value1="${dataDefinitionDescriptionEdit}" />
 		<execute action="CPDynamicdatalistsDatadefinitionsEdit#click" locator-key1="SAVE_BUTTON" />
 
 		<execute action="CPDynamicdatalistsDatadefinitions#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
@@ -228,18 +203,18 @@
 		<execute action="CPDynamicdatalists#click" locator-key1="TOOLBAR_MANAGE_DATA_DEFINITIONS" />
 
 		<execute action="CPDynamicdatalistsDatadefinitions#selectFrame" locator-key1="PAGE_NAME" />
-		<execute action="CPDynamicdatalistsDatadefinitions#type" locator-key1="TOOLBAR_SEARCH_FIELD" value1="Data Definition" />
-		<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="TOOLBAR_SEARCH_BUTTON" />
+		<execute action="CPDynamicdatalistsDatadefinitions#type" locator-key1="BASIC_SEARCH_FIELD" value1="Data Definition" />
+		<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="BASIC_SEARCH_BUTTON" />
 
-		<if>
+		<while>
 			<condition action="CPDynamicdatalistsDatadefinitions#isElementPresent" locator-key1="DATA_DEFINITION_TABLE_ACTIONS_1" />
 			<then>
-				<execute action="CPDynamicdatalistsDatadefinitions#check" locator-key1="DATA_DEFINITION_TABLE_ALL_CHECKBOX" />
-				<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="DELETE_BUTTON" />
-				<execute action="CPDynamicdatalistsDatadefinitions#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this? It will be deleted immediately." />
+				<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="DATA_DEFINITION_TABLE_ACTIONS_1" />
+				<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="DATA_DEFINITION_MENULIST_DELETE" />
+				<execute action="CPDynamicdatalistsDatadefinitions#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this?" />
 				<execute action="CPDynamicdatalistsDatadefinitions#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
 			</then>
-		</if>
+		</while>
 	</command>
 
 	<command name="cpView">
@@ -250,13 +225,14 @@
 		<execute action="CPDynamicdatalists#click" locator-key1="TOOLBAR_MANAGE_DATA_DEFINITIONS" />
 
 		<execute action="CPDynamicdatalistsDatadefinitions#selectFrame" locator-key1="PAGE_NAME" />
-		<execute action="CPDynamicdatalistsDatadefinitions#type" locator-key1="TOOLBAR_SEARCH_FIELD" value1="${dataDefinitionName}" />
-		<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="TOOLBAR_SEARCH_BUTTON" />
-		<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="DATA_DEFINITION_TABLE_NAME_1" value1="${dataDefinitionName}" />
+		<execute action="CPDynamicdatalistsDatadefinitions#type" locator-key1="BASIC_SEARCH_FIELD" value1="${dataDefinitionName}" />
+		<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="BASIC_SEARCH_BUTTON" />
+		<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="DATA_DEFINITION_TABLE_ACTIONS_1" />
+		<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="DATA_DEFINITION_MENULIST_EDIT" />
 
 		<execute action="CPDynamicdatalistsDatadefinitionsEdit#assertTextEquals" locator-key1="HEADER_TITLE" value1="${dataDefinitionName}" />
 		<execute action="CPDynamicdatalistsDatadefinitionsEdit#assertTextEquals" locator-key1="NAME_FIELD" value1="${dataDefinitionName}" />
-		<execute action="CPDynamicdatalistsDatadefinitionsEdit#assertTextEquals" locator-key1="DETAILS_DESCRIPTION_FIELD" value1="${dataDefinitionDescription}" />
+		<execute action="CPDynamicdatalistsDatadefinitionsEdit#assertTextEquals" locator-key1="DESCRIPTION_FIELD" value1="${dataDefinitionDescription}" />
 		<execute action="CPDynamicdatalistsDatadefinitionsEdit#assertTextEquals" locator-key1="FORM_FIELD_1" value1="Text" />
 
 		<execute action="CPDynamicdatalists#selectFrameTop" />
