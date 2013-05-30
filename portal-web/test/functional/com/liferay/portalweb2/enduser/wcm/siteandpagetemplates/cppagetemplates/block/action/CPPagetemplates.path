@@ -55,6 +55,21 @@
 	<td></td>
 </tr>
 <tr>
+	<td>PAGE_TEMPLATE_TABLE_NAME_4</td>
+	<td>xpath=(//tr/td[1]/a)[4]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>PAGE_TEMPLATE_TABLE_ACTIVE_4</td>
+	<td>xpath=(//tr/td[2]/a)[4]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>PAGE_TEMPLATE_TABLE_ACTIONS_4</td>
+	<td>xpath=(//tr/td[3]/span[@title='Actions']/ul/li/strong/a/span)[4]</td>
+	<td></td>
+</tr>
+<tr>
 	<td></td>
 	<td></td>
 	<td></td>
