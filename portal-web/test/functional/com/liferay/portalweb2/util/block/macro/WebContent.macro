@@ -73,6 +73,6 @@
 			</then>
 		</if>
 
-		<execute action="CPWebcontent#assertTextEquals" locator-key1="INFO_MESSAGE" value1="No Web Content was found." />
+		<execute action="CPWebcontent#assertTextEquals" locator-key1="INFO_MESSAGE" />
 	</command>
 </definition>

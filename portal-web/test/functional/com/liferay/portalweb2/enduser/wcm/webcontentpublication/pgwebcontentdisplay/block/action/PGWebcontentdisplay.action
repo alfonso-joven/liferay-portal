@@ -3,5 +3,8 @@
 		<case locator-key1="ADD_WEB_CONTENT">
 			<execute function="Click#clickAtAndWait" />
 		</case>
+		<case locator-key1="EDIT_WEB_CONTENT">
+			<execute function="Click#clickAtAndWait" />
+		</case>
 	</command>
 </definition>
