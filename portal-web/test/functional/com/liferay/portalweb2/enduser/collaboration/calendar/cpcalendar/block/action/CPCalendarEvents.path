@@ -35,37 +35,37 @@
 </tr>
 <!--VIEW-->
 <tr>
-	<td>VIEW_SUMMARY_BUTTON</td>
+	<td>VIEW_SUMMARY</td>
 	<td>//ul[@class='aui-tabview-list']/li/span/a[contains(.,'Summary')]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>VIEW_DAY_BUTTON</td>
+	<td>VIEW_DAY</td>
 	<td>//ul[@class='aui-tabview-list']/li/span/a[contains(.,'Day')]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>VIEW_WEEK_BUTTON</td>
+	<td>VIEW_WEEK</td>
 	<td>//ul[@class='aui-tabview-list']/li/span/a[contains(.,'Week')]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>VIEW_MONTH_BUTTON</td>
+	<td>VIEW_MONTH</td>
 	<td>//ul[@class='aui-tabview-list']/li/span/a[contains(.,'Month')]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>VIEW_YEAR_BUTTON</td>
+	<td>VIEW_YEAR</td>
 	<td>//ul[@class='aui-tabview-list']/li/span/a[contains(.,'Year')]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>VIEW_EVENTS_BUTTON</td>
+	<td>VIEW_EVENTS</td>
 	<td>//ul[@class='aui-tabview-list']/li/span/a[contains(.,'Events')]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>VIEW_EXPORT_IMPORT_BUTTON</td>
+	<td>VIEW_EXPORT_IMPORT</td>
 	<td>//ul[@class='aui-tabview-list']/li/span/a[contains(.,'Export / Import')]</td>
 	<td></td>
 </tr>
