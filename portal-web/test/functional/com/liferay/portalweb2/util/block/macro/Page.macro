@@ -6,6 +6,14 @@
 		<execute action="Dockbar#click" locator-key1="GO_TO" />
 		<execute action="Dockbar#click" locator-key1="GO_TO_CONTROL_PANEL" />
 
+		<if>
+			<isset var="siteScopeName" />
+			<then>
+				<execute action="Home#click" locator-key1="SCOPE_SELECTOR" />
+				<execute action="Home#click" locator1="//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'${siteScopeName}')]"  value1="${siteScopeName}"/>
+			</then>
+		</if>
+
 		<execute action="Home#click" locator1="//ul[@class='category-portlets']/li/a[contains(.,'${portletName}')]" />
 	</command>
 

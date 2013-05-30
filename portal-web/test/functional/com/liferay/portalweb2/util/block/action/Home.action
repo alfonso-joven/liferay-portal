@@ -21,6 +21,9 @@
 		<case comparator="startsWith" locator1="//a[@role='menuitem' and contains(.,">
 			<execute function="Click#clickAtAndWait" />
 		</case>
+		<case comparator="startsWith" locator1="//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,">
+			<execute function="Click#textClickAtAndWait" />
+		</case>
 		<case comparator="startsWith" locator1="//ul[@class='category-portlets']/li/a[contains(.,">
 			<execute function="Click#clickAtAndWait" />
 		</case>

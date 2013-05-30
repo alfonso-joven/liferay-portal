@@ -29,6 +29,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>SCOPE_SELECTOR</td>
+	<td>//ul[@id='_160_groupSelector']/li/strong/a/span</td>
+	<td></td>
+</tr>
+<tr>
 	<td>SITE_URL_PRIVATE</td>
 	<td>/group/site-name/</td>
 	<td></td>
@@ -107,17 +112,17 @@
 <!--BREADCRUMB-->
 <tr>
 	<td>BREADCRUMB_1</td>
-	<td>xpath=(//nav[@id='breadcrumbs']/ul/li/a)[1]</td>
+	<td>xpath=(//nav[@id='breadcrumbs']/ul/li/span/a)[1]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>BREADCRUMB_2</td>
-	<td>xpath=(//nav[@id='breadcrumbs']/ul/li/a)[2]</td>
+	<td>xpath=(//nav[@id='breadcrumbs']/ul/li/span/a)[2]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>BREADCRUMB_3</td>
-	<td>xpath=(//nav[@id='breadcrumbs']/ul/li/a)[3]</td>
+	<td>xpath=(//nav[@id='breadcrumbs']/ul/li/span/a)[3]</td>
 	<td></td>
 </tr>
 <tr>
