@@ -6,20 +6,21 @@
 	<command name="AddPageTemplate">
 		<var name="pageTemplateName" value="Page Template Name" />
 		<var name="pageTemplateActive" value="Yes" />
-		
-		<execute macro="PageTemplates#cpTearDown" />
-		<execute macro="PageTemplates#cpAdd" />
+
+		<execute macro="PageTemplate#addCP" />
 	</command>
 
 	<command name="EditPageTemplate">
 		<var name="pageTemplateName" value="Page Template Name" />
 		<var name="pageTemplateActive" value="Yes" />
+		<var name="pageTemplateNameEdit" value="Page Template Name Edit" />
+		<var name="pageTemplateActiveEdit" value="No" />
 
-		<execute macro="PageTemplates#cpAdd" />
-		<execute macro="PageTemplates#cpEdit" />
+		<execute macro="PageTemplate#addCP" />
+		<execute macro="PageTemplate#editCP" />
 	</command>
 
 	<tear-down>
-		<execute macro="PageTemplates#cpTearDown" />
+		<execute macro="PageTemplate#tearDownCP" />
 	</tear-down>
 </definition>
