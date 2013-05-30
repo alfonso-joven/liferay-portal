@@ -10,7 +10,7 @@
 <tbody>
 <tr>
 	<td>PAGE_NAME</td>
-	<td>//iframe[@id='_156_importDialog_iframe_']</td>
+	<td>//iframe[@id='_156_importDialog']</td>
 	<td>CPSitepagesImport</td>
 </tr>
 <tr>
@@ -19,13 +19,24 @@
 	<td></td>
 </tr>
 <tr>
-	<td>SELECT_FILE_BUTTON</td>
-	<td>//button[@id='_156_selectFilesButton']</td>
+	<td>FILE_UPLOAD_FIELD</td>
+	<td>//input[@id='_156_importFileName']</td>
 	<td></td>
 </tr>
 <tr>
-	<td>CONTINUE_BUTTON</td>
-	<td>//button[@id='_156_continueButton']</td>
+	<td>IMPORT_BUTTON</td>
+	<td>//input[@value='Import']</td>
+	<td></td>
+</tr>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+<!--PAGES-->
+<tr>
+	<td>PAGES_DELETE_MISSING_PAGES_CHECKBOX</td>
+	<td>//input[@id='_156_DELETE_MISSING_LAYOUTSCheckbox']</td>
 	<td></td>
 </tr>
 </tbody>
