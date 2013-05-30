@@ -11,10 +11,9 @@
 		<execute action="CPDynamicdatalistsAddlist#click" locator-key1="DATA_DEFINITION_SELECT_LINK" />
 
 		<execute action="CPDynamicdatalistsAddlistDatadefinitions#selectFrame" locator-key1="PAGE_NAME" />
-		<execute action="CPDynamicdatalistsAddlistDatadefinitions#type" locator-key1="TOOLBAR_SEARCH_FIELD" value1="${dataDefinitionName}" />
-		<execute action="CPDynamicdatalistsAddlistDatadefinitions#click" locator-key1="TOOLBAR_SEARCH_BUTTON" />
-		<execute action="CPDynamicdatalistsAddlistDatadefinitions#assertTextEquals" locator-key1="DATA_DEFINITION_TABLE_NAME_1" value1="${dataDefinitionName}" />
-		<execute action="CPDynamicdatalistsAddlistDatadefinitions#click" locator-key1="DATA_DEFINITION_TABLE_CHOOSE_BUTTON_1" />
+		<execute action="CPDynamicdatalistsAddlistDatadefinitions#type" locator-key1="BASIC_SEARCH_FIELD" value1="${dataDefinitionName}" />
+		<execute action="CPDynamicdatalistsAddlistDatadefinitions#click" locator-key1="BASIC_SEARCH_BUTTON" />
+		<execute action="CPDynamicdatalistsAddlistDatadefinitions#click" locator-key1="DATA_DEFINITION_TABLE_NAME_1" value1="${dataDefinitionName}" />
 
 		<execute action="CPDynamicdatalists#selectFrameTop" />
 
@@ -29,12 +28,12 @@
 			<var name="portletName" value="Dynamic Data Lists" />
 		</execute>
 
-		<execute action="CPDynamicdatalists#type" locator-key1="TOOLBAR_SEARCH_FIELD" value1="${listName}" />
-		<execute action="CPDynamicdatalists#click" locator-key1="TOOLBAR_SEARCH_BUTTON" />
+		<execute action="CPDynamicdatalists#type" locator-key1="BASIC_SEARCH_FIELD" value1="${listName}" />
+		<execute action="CPDynamicdatalists#click" locator-key1="BASIC_SEARCH_BUTTON" />
 		<execute action="CPDynamicdatalists#assertTextEquals" locator-key1="LIST_TABLE_NAME_1" value1="${listName}" />
 		<execute action="CPDynamicdatalists#click" locator-key1="LIST_TABLE_ACTIONS_1" />
 		<execute action="CPDynamicdatalists#click" locator-key1="LIST_MENULIST_DELETE" />
-		<execute action="CPDynamicdatalists#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this? It will be deleted immediately." />
+		<execute action="CPDynamicdatalists#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this?" />
 		<execute action="CPDynamicdatalists#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
 		<execute action="CPDynamicdatalists#assertTextNotPresent" value1="${listName}" />
 	</command>
@@ -44,8 +43,8 @@
 			<var name="portletName" value="Dynamic Data Lists" />
 		</execute>
 
-		<execute action="CPDynamicdatalists#type" locator-key1="TOOLBAR_SEARCH_FIELD" value1="${listName}" />
-		<execute action="CPDynamicdatalists#click" locator-key1="TOOLBAR_SEARCH_BUTTON" />
+		<execute action="CPDynamicdatalists#type" locator-key1="BASIC_SEARCH_FIELD" value1="${listName}" />
+		<execute action="CPDynamicdatalists#click" locator-key1="BASIC_SEARCH_BUTTON" />
 		<execute action="CPDynamicdatalists#assertTextEquals" locator-key1="LIST_TABLE_NAME_1" value1="${listName}" />
 		<execute action="CPDynamicdatalists#click" locator-key1="LIST_TABLE_ACTIONS_1" />
 		<execute action="CPDynamicdatalists#click" locator-key1="LIST_MENULIST_EDIT" />
@@ -67,7 +66,7 @@
 			<then>
 				<execute action="CPDynamicdatalists#click" locator-key1="LIST_TABLE_ACTIONS_1" />
 				<execute action="CPDynamicdatalists#click" locator-key1="LIST_MENULIST_DELETE" />
-				<execute action="CPDynamicdatalists#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this? It will be deleted immediately." />
+				<execute action="CPDynamicdatalists#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this?" />
 				<execute action="CPDynamicdatalists#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
 			</then>
 		</while>
@@ -78,8 +77,8 @@
 			<var name="portletName" value="Dynamic Data Lists" />
 		</execute>
 
-		<execute action="CPDynamicdatalists#type" locator-key1="TOOLBAR_SEARCH_FIELD" value1="${listName}" />
-		<execute action="CPDynamicdatalists#click" locator-key1="TOOLBAR_SEARCH_BUTTON" />
+		<execute action="CPDynamicdatalists#type" locator-key1="BASIC_SEARCH_FIELD" value1="${listName}" />
+		<execute action="CPDynamicdatalists#click" locator-key1="BASIC_SEARCH_BUTTON" />
 		<execute action="CPDynamicdatalists#assertTextEquals" locator-key1="LIST_TABLE_NAME_1" value1="${listName}" />
 		<execute action="CPDynamicdatalists#assertTextEquals" locator-key1="LIST_TABLE_DESCRIPTION_1" value1="${listDescription}" />
 		<execute action="CPDynamicdatalists#click" locator-key1="LIST_TABLE_NAME_1" value1="${listName}" />
