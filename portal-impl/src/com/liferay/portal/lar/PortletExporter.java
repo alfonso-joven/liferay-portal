@@ -81,6 +81,8 @@ import com.liferay.portlet.asset.service.AssetVocabularyLocalServiceUtil;
 import com.liferay.portlet.asset.service.persistence.AssetCategoryUtil;
 import com.liferay.portlet.asset.service.persistence.AssetVocabularyUtil;
 import com.liferay.portlet.assetpublisher.util.AssetPublisherUtil;
+import com.liferay.portlet.documentlibrary.model.DLFileEntryType;
+import com.liferay.portlet.documentlibrary.service.DLFileEntryTypeLocalServiceUtil;
 import com.liferay.portlet.expando.model.ExpandoColumn;
 import com.liferay.portlet.journal.model.JournalStructure;
 import com.liferay.portlet.journal.service.JournalStructureLocalServiceUtil;
@@ -1541,19 +1543,25 @@ public class PortletExporter {
 			String value = GetterUtil.getString(
 				jxPreferences.getValue(name, null));
 
-			if (name.equals(
-					"anyClassTypeJournalArticleAssetRendererFactory") ||
-				name.equals(
-					"classTypeIdsJournalArticleAssetRendererFactory") ||
-				name.equals("classTypeIds")) {
+			if (name.equals("anyAssetType") || name.equals("classNameIds")) {
+				updateAssetPublisherClassNameIds(jxPreferences, name);
+			}
+			else if (name.equals(
+						"anyClassTypeDLFileEntryAssetRendererFactory") ||
+					 name.equals(
+						"classTypeIdsDLFileEntryAssetRendererFactory")) {
+
+				updatePreferencesClassPKs(
+					jxPreferences, name, DLFileEntryType.class.getName());
+			}
+			else if (name.equals(
+						"anyClassTypeJournalArticleAssetRendererFactory") ||
+					 name.equals(
+						"classTypeIdsJournalArticleAssetRendererFactory") ||
+					 name.equals("classTypeIds")) {
 
 				updatePreferencesClassPKs(
 					jxPreferences, name, JournalStructure.class.getName());
-			}
-			else if (name.equals("anyAssetType") ||
-					 name.equals("classNameIds")) {
-
-				updateAssetPublisherClassNameIds(jxPreferences, name);
 			}
 			else if (name.equals("assetVocabularyId")) {
 				updatePreferencesClassPKs(
@@ -1687,6 +1695,15 @@ public class PortletExporter {
 
 					if (journalStructure != null) {
 						uuid = journalStructure.getUuid();
+					}
+				}
+				else if (className.equals(DLFileEntryType.class.getName())) {
+					DLFileEntryType dlFileEntryType =
+						DLFileEntryTypeLocalServiceUtil.getFileEntryType(
+							primaryKeyLong);
+
+					if (dlFileEntryType != null) {
+						uuid = dlFileEntryType.getUuid();
 					}
 				}
 
