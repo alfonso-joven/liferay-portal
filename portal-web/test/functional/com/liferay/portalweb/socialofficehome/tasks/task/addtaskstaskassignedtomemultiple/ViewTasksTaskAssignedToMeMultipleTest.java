@@ -30,7 +30,8 @@ public class ViewTasksTaskAssignedToMeMultipleTest extends BaseTestCase {
 			RuntimeVariables.replace("Tasks"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Tasks"),
-			selenium.getText("//span[@class='portlet-title-default']"));
+			selenium.getText(
+				"xPath=(//span[@class='portlet-title-default'])[contains(.,'Tasks')]"));
 		assertEquals(RuntimeVariables.replace("Assigned to Me"),
 			selenium.getText("link=Assigned to Me"));
 		selenium.clickAt("link=Assigned to Me",
@@ -54,7 +55,8 @@ public class ViewTasksTaskAssignedToMeMultipleTest extends BaseTestCase {
 			RuntimeVariables.replace("Tasks"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Tasks"),
-			selenium.getText("//span[@class='portlet-title-default']"));
+			selenium.getText(
+				"xPath=(//span[@class='portlet-title-default'])[contains(.,'Tasks')]"));
 		assertEquals(RuntimeVariables.replace("Assigned to Me"),
 			selenium.getText("link=Assigned to Me"));
 		selenium.clickAt("link=Assigned to Me",
@@ -78,7 +80,8 @@ public class ViewTasksTaskAssignedToMeMultipleTest extends BaseTestCase {
 			RuntimeVariables.replace("Tasks"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Tasks"),
-			selenium.getText("//span[@class='portlet-title-default']"));
+			selenium.getText(
+				"xPath=(//span[@class='portlet-title-default'])[contains(.,'Tasks')]"));
 		assertEquals(RuntimeVariables.replace("Assigned to Me"),
 			selenium.getText("link=Assigned to Me"));
 		selenium.clickAt("link=Assigned to Me",

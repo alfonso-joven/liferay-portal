@@ -34,7 +34,8 @@ public class TearDownTasksTaskTest extends BaseTestCase {
 					RuntimeVariables.replace("Tasks"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("Tasks"),
-					selenium.getText("//span[@class='portlet-title-default']"));
+					selenium.getText(
+						"xPath=(//span[@class='portlet-title-default'])[contains(.,'Tasks')]"));
 				selenium.clickAt("link=I Have Created",
 					RuntimeVariables.replace("I Have Created"));
 				selenium.waitForPageToLoad("30000");

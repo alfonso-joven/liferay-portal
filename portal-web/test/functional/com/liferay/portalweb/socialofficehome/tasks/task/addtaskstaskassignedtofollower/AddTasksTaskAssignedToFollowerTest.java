@@ -29,7 +29,8 @@ public class AddTasksTaskAssignedToFollowerTest extends BaseTestCase {
 			RuntimeVariables.replace("Tasks"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Tasks"),
-			selenium.getText("//span[@class='portlet-title-default']"));
+			selenium.getText(
+				"xPath=(//span[@class='portlet-title-default'])[contains(.,'Tasks')]"));
 		assertEquals(RuntimeVariables.replace("No tasks were found."),
 			selenium.getText("//div[@class='portlet-msg-info']"));
 		assertEquals(RuntimeVariables.replace("Add Task"),

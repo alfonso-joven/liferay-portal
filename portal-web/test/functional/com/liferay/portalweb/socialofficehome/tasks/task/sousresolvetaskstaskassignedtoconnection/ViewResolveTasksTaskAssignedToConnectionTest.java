@@ -61,7 +61,8 @@ public class ViewResolveTasksTaskAssignedToConnectionTest extends BaseTestCase {
 					RuntimeVariables.replace("Tasks"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("Tasks"),
-					selenium.getText("//span[@class='portlet-title-default']"));
+					selenium.getText(
+						"xPath=(//span[@class='portlet-title-default'])[contains(.,'Tasks')]"));
 				assertEquals(RuntimeVariables.replace("I Have Created"),
 					selenium.getText("link=I Have Created"));
 				selenium.clickAt("link=I Have Created",

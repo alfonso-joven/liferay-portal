@@ -29,7 +29,8 @@ public class AddTasksTask3AssignedToMeTest extends BaseTestCase {
 			RuntimeVariables.replace("Tasks"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Tasks"),
-			selenium.getText("//span[@class='portlet-title-default']"));
+			selenium.getText(
+				"xPath=(//span[@class='portlet-title-default'])[contains(.,'Tasks')]"));
 		assertEquals(RuntimeVariables.replace("Add Task"),
 			selenium.getText("link=Add Task"));
 		selenium.clickAt("link=Add Task", RuntimeVariables.replace("Add Task"));

@@ -34,7 +34,8 @@ public class TearDownTasksTaskAssignedToMeTest extends BaseTestCase {
 					RuntimeVariables.replace("Tasks"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("Tasks"),
-					selenium.getText("//span[@class='portlet-title-default']"));
+					selenium.getText(
+						"xPath=(//span[@class='portlet-title-default'])[contains(.,'Tasks')]"));
 				selenium.clickAt("link=Assigned to Me",
 					RuntimeVariables.replace("Assigned to Me"));
 				selenium.waitForPageToLoad("30000");
