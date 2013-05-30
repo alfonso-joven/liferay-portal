@@ -47,7 +47,8 @@ public class SOUs_ViewPMMessageTest extends BaseTestCase {
 			RuntimeVariables.replace("Messages"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Private Messaging"),
-			selenium.getText("//span[@class='portlet-title-default']"));
+			selenium.getText(
+				"xPath=(//span[@class='portlet-title-default'])[contains(.,'Private Messaging')]"));
 		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
 			selenium.getText("//span[@class='author-sender']"));
 		assertEquals(RuntimeVariables.replace("Message Subject"),

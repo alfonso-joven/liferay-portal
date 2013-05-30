@@ -36,7 +36,8 @@ public class SelectAllPMMessageTest extends BaseTestCase {
 					RuntimeVariables.replace("Messages"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("Private Messaging"),
-					selenium.getText("//span[@class='portlet-title-default']"));
+					selenium.getText(
+						"xPath=(//span[@class='portlet-title-default'])[contains(.,'Private Messaging')]"));
 				assertEquals("Mark as Unread",
 					selenium.getValue("//input[@value='Mark as Unread']"));
 				assertEquals("Delete",
