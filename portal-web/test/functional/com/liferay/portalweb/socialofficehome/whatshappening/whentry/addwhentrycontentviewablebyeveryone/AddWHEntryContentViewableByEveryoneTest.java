@@ -27,7 +27,8 @@ public class AddWHEntryContentViewableByEveryoneTest extends BaseTestCase {
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/joebloggs/so/dashboard");
 		assertEquals(RuntimeVariables.replace("Microblogs Status Update"),
-			selenium.getText("//span[@class='portlet-title-default']"));
+			selenium.getText(
+				"xPath=(//span[@class='portlet-title-default'])[contains(.,'Microblogs Status Update')]"));
 		assertTrue(selenium.isElementPresent(
 				"//div[contains(@id,'_2_WAR_microblogsportlet_autocompleteContent')]"));
 		assertEquals(RuntimeVariables.replace(
@@ -37,7 +38,7 @@ public class AddWHEntryContentViewableByEveryoneTest extends BaseTestCase {
 			RuntimeVariables.replace("Update your status..."));
 		selenium.waitForElementPresent("//textarea");
 		selenium.clickAt("//textarea", RuntimeVariables.replace("Text area"));
-		selenium.typeKeys("//textarea",
+		selenium.sendKeys("//textarea",
 			RuntimeVariables.replace("Microblogs Post"));
 		selenium.waitForText("//span[@class='microblogs-countdown']", "135");
 		assertEquals(RuntimeVariables.replace("135"),

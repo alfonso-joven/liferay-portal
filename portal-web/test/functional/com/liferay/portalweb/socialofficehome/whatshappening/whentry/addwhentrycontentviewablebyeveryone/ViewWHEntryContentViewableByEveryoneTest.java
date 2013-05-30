@@ -27,7 +27,8 @@ public class ViewWHEntryContentViewableByEveryoneTest extends BaseTestCase {
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/joebloggs/so/dashboard");
 		assertEquals(RuntimeVariables.replace("Microblogs Status Update"),
-			selenium.getText("//span[@class='portlet-title-default']"));
+			selenium.getText(
+				"xPath=(//span[@class='portlet-title-default'])[contains(.,'Microblogs Status Update')]"));
 		assertTrue(selenium.isElementPresent(
 				"//div[contains(@id,'_2_WAR_microblogsportlet_autocompleteContent')]"));
 		assertEquals(RuntimeVariables.replace("Microblogs Post"),
