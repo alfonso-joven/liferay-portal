@@ -7,7 +7,7 @@
 		<var name="webContentTitle" value="WC WebContent Title" />
 		<var name="webContentContent" value="WC WebContent Content" />
 
-		<execute macro="WebContent#cpAdd" />
+		<execute macro="WebContent#addCP" />
 	</command>
 
 	<command name="AddWebContentStructure">
@@ -22,7 +22,7 @@
 
 		<execute macro="WebContentTemplates#cpAdd" />
 
-		<execute macro="WebContent#cpAddWithStructure" />
+		<execute macro="WebContent#addCPwithStructure" />
 	</command>
 
 	<command name="AddStructure">
@@ -51,7 +51,7 @@
 	</command>
 
 	<tear-down>
-		<execute macro="WebContent#cpTearDown" />
+		<execute macro="WebContent#tearDownCP" />
 
 		<execute macro="WebContentTemplates#cpTearDown" />
 

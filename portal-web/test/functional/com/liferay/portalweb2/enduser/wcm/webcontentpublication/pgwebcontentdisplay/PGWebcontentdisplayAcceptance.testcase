@@ -1,0 +1,35 @@
+<definition>
+	<var name="pageName" value="Web Content Display Page" />
+	<var name="portletName" value="Web Content Display" />
+
+	<set-up>
+		<execute macro="User#pgFirstLogin" />
+
+		<execute macro="Page#pgAdd" />
+
+		<execute macro="Portlet#pgAdd" />
+	</set-up>
+
+	<command name="AddWebContent">
+		<var name="webContentTitle" value="WC WebContent Title" />
+		<var name="webContentContent" value="WC WebContent Content" />
+
+		<execute macro="WebContent#addPGviaWCD" />
+	</command>
+
+	<command name="EditWebContent">
+		<var name="webContentTitle" value="WC WebContent Title" />
+		<var name="webContentContent" value="WC WebContent Content" />
+		<var name="webContentTitleEdit" value="WC WebContent Title Edit" />
+		<var name="webContentContentEdit" value="WC WebContent Content Edit" />
+
+		<execute macro="WebContent#addPGviaWCD" />
+		<execute macro="WebContent#editPGviaWCD" />
+	</command>
+
+	<tear-down>
+		<execute macro="WebContent#tearDownCP" />
+
+		<execute macro="Page#pgTearDown" />
+	</tear-down>
+</definition>

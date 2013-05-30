@@ -10,4 +10,6 @@
 	<execute test-case="CPWebcontentAcceptance" />
 
 	<execute test-case="DockbarAcceptance" />
+
+	<execute test-case="PGWebcontentdisplayAcceptance" />
 </definition>
