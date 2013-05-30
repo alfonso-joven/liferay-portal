@@ -25,10 +25,11 @@ public class ViewEventSiteEDTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/joebloggs/so/dashboard/");
-		selenium.waitForText("xPath=(//span[@class='portlet-title-text'])[4]",
+		selenium.waitForText("xPath=(//span[@class='portlet-title-text'])[contains(.,'Events')]",
 			"Events");
 		assertEquals(RuntimeVariables.replace("Events"),
-			selenium.getText("xPath=(//span[@class='portlet-title-text'])[4]"));
+			selenium.getText(
+				"xPath=(//span[@class='portlet-title-text'])[contains(.,'Events')]"));
 		assertTrue(selenium.isPartialText("//h2[contains(.,'Events')]", "Events"));
 		assertEquals(RuntimeVariables.replace("Calendar Event Title"),
 			selenium.getText("//span[@class='event-name']/a"));

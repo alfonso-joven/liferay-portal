@@ -25,10 +25,11 @@ public class ViewEventMultipleSiteEDTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/joebloggs/so/dashboard/");
-		selenium.waitForText("xPath=(//span[@class='portlet-title-text'])[4]",
+		selenium.waitForText("xPath=(//span[@class='portlet-title-text'])[contains(.,'Events')]",
 			"Events");
 		assertEquals(RuntimeVariables.replace("Events"),
-			selenium.getText("xPath=(//span[@class='portlet-title-text'])[4]"));
+			selenium.getText(
+				"xPath=(//span[@class='portlet-title-text'])[contains(.,'Events')]"));
 		assertTrue(selenium.isPartialText("//h2[contains(.,'Events')]", "Events"));
 		assertEquals(RuntimeVariables.replace("Calendar Event1 Title"),
 			selenium.getText("xPath=(//span[@class='event-name']/a)[1]"));
@@ -40,10 +41,11 @@ public class ViewEventMultipleSiteEDTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Calendar Event1 Title"),
 			selenium.getText("//h1[@class='header-title']"));
 		selenium.open("/user/joebloggs/so/dashboard/");
-		selenium.waitForText("xPath=(//span[@class='portlet-title-text'])[4]",
+		selenium.waitForText("xPath=(//span[@class='portlet-title-text'])[contains(.,'Events')]",
 			"Events");
 		assertEquals(RuntimeVariables.replace("Events"),
-			selenium.getText("xPath=(//span[@class='portlet-title-text'])[4]"));
+			selenium.getText(
+				"xPath=(//span[@class='portlet-title-text'])[contains(.,'Events')]"));
 		assertEquals(RuntimeVariables.replace("Today's Events"),
 			selenium.getText("//h2[contains(.,'Events')]"));
 		assertEquals(RuntimeVariables.replace("Calendar Event2 Title"),
@@ -56,10 +58,11 @@ public class ViewEventMultipleSiteEDTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Calendar Event2 Title"),
 			selenium.getText("//h1[@class='header-title']"));
 		selenium.open("/user/joebloggs/so/dashboard/");
-		selenium.waitForText("xPath=(//span[@class='portlet-title-text'])[4]",
+		selenium.waitForText("xPath=(//span[@class='portlet-title-text'])[contains(.,'Events')]",
 			"Events");
 		assertEquals(RuntimeVariables.replace("Events"),
-			selenium.getText("xPath=(//span[@class='portlet-title-text'])[4]"));
+			selenium.getText(
+				"xPath=(//span[@class='portlet-title-text'])[contains(.,'Events')]"));
 		assertEquals(RuntimeVariables.replace("Today's Events"),
 			selenium.getText("//h2[contains(.,'Events')]"));
 		assertEquals(RuntimeVariables.replace("Calendar Event3 Title"),

@@ -25,10 +25,11 @@ public class ViewDeleteEventEDTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/joebloggs/so/dashboard/");
-		selenium.waitForText("xPath=(//span[@class='portlet-title-text'])[4]",
+		selenium.waitForText("xPath=(//span[@class='portlet-title-text'])[contains(.,'Events')]",
 			"Events");
 		assertEquals(RuntimeVariables.replace("Events"),
-			selenium.getText("xPath=(//span[@class='portlet-title-text'])[4]"));
+			selenium.getText(
+				"xPath=(//span[@class='portlet-title-text'])[contains(.,'Events')]"));
 		assertEquals(RuntimeVariables.replace("There are no more events today."),
 			selenium.getText("//div[2]/div/div[2]/div/section/div/div/div"));
 		assertTrue(selenium.isElementNotPresent("//h2[contains(.,'Events')]"));

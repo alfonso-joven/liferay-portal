@@ -26,10 +26,11 @@ public class TearDownConfigurePortletDisplayDaysTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/joebloggs/so/dashboard/");
-		selenium.waitForText("xPath=(//span[@class='portlet-title-text'])[4]",
+		selenium.waitForText("xPath=(//span[@class='portlet-title-text'])[contains(.,'Events')]",
 			"Events");
 		assertEquals(RuntimeVariables.replace("Events"),
-			selenium.getText("xPath=(//span[@class='portlet-title-text'])[4]"));
+			selenium.getText(
+				"xPath=(//span[@class='portlet-title-text'])[contains(.,'Events')]"));
 		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Options"),
 			selenium.getText(
