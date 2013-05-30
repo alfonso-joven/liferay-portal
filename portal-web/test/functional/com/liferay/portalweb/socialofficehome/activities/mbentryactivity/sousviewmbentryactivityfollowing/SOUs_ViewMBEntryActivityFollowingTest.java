@@ -27,7 +27,8 @@ public class SOUs_ViewMBEntryActivityFollowingTest extends BaseTestCase {
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/socialoffice01/so/dashboard");
 		assertEquals(RuntimeVariables.replace("Activities"),
-			selenium.getText("xPath=(//h1[@class='portlet-title']/span)[2]"));
+			selenium.getText(
+				"xPath=(//h1[@class='portlet-title']/span)[contains(.,'Activities')]"));
 		assertEquals(RuntimeVariables.replace("Following"),
 			selenium.getText("link=Following"));
 		selenium.clickAt("link=Following", RuntimeVariables.replace("Following"));

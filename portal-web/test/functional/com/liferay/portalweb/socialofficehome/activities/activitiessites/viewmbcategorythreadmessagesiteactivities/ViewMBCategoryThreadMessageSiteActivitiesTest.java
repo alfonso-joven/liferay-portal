@@ -27,7 +27,8 @@ public class ViewMBCategoryThreadMessageSiteActivitiesTest extends BaseTestCase 
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/joebloggs/so/dashboard/");
 		assertEquals(RuntimeVariables.replace("Activities"),
-			selenium.getText("xPath=(//h1[@class='portlet-title']/span)[2]"));
+			selenium.getText(
+				"xPath=(//h1[@class='portlet-title']/span)[contains(.,'Activities')]"));
 		assertEquals(RuntimeVariables.replace("Me"), selenium.getText("link=Me"));
 		selenium.clickAt("link=Me", RuntimeVariables.replace("Me"));
 		selenium.waitForPageToLoad("30000");
@@ -75,7 +76,8 @@ public class ViewMBCategoryThreadMessageSiteActivitiesTest extends BaseTestCase 
 			selenium.getText("//div[contains(@id,'ratingThumbContent')]/div"));
 		selenium.open("/user/joebloggs/so/dashboard/");
 		assertEquals(RuntimeVariables.replace("Activities"),
-			selenium.getText("xPath=(//h1[@class='portlet-title']/span)[2]"));
+			selenium.getText(
+				"xPath=(//h1[@class='portlet-title']/span)[contains(.,'Activities')]"));
 		assertEquals(RuntimeVariables.replace("Me"), selenium.getText("link=Me"));
 		selenium.clickAt("link=Me", RuntimeVariables.replace("Me"));
 		selenium.waitForPageToLoad("30000");

@@ -26,7 +26,8 @@ public class SOUs1_ViewActivitiesSOUser3Test extends BaseTestCase {
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/socialoffice01/so/dashboard");
 		assertEquals(RuntimeVariables.replace("Activities"),
-			selenium.getText("xPath=(//h1[@class='portlet-title']/span)[2]"));
+			selenium.getText(
+				"xPath=(//h1[@class='portlet-title']/span)[contains(.,'Activities')]"));
 		assertEquals(RuntimeVariables.replace("Connections"),
 			selenium.getText("link=Connections"));
 		selenium.clickAt("link=Connections",

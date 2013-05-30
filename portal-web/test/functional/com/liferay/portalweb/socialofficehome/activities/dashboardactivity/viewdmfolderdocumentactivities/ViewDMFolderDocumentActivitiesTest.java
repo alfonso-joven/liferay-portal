@@ -26,7 +26,8 @@ public class ViewDMFolderDocumentActivitiesTest extends BaseTestCase {
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/joebloggs/so/dashboard/");
 		assertEquals(RuntimeVariables.replace("Activities"),
-			selenium.getText("xPath=(//h1[@class='portlet-title']/span)[2]"));
+			selenium.getText(
+				"xPath=(//h1[@class='portlet-title']/span)[contains(.,'Activities')]"));
 		assertEquals(RuntimeVariables.replace("Me"), selenium.getText("link=Me"));
 		selenium.clickAt("link=Me", RuntimeVariables.replace("Me"));
 		selenium.waitForPageToLoad("30000");
@@ -96,7 +97,8 @@ public class ViewDMFolderDocumentActivitiesTest extends BaseTestCase {
 			selenium.getText("//span[@class='webdav-url']"));
 		selenium.open("/user/joebloggs/so/dashboard/");
 		assertEquals(RuntimeVariables.replace("Activities"),
-			selenium.getText("xPath=(//h1[@class='portlet-title']/span)[2]"));
+			selenium.getText(
+				"xPath=(//h1[@class='portlet-title']/span)[contains(.,'Activities')]"));
 		assertEquals(RuntimeVariables.replace("Me"), selenium.getText("link=Me"));
 		selenium.clickAt("link=Me", RuntimeVariables.replace("Me"));
 		selenium.waitForPageToLoad("30000");
@@ -124,7 +126,8 @@ public class ViewDMFolderDocumentActivitiesTest extends BaseTestCase {
 				"xPath=(//a[contains(@class,'document-link')]/span[@class='entry-title'])[2]"));
 		selenium.open("/user/joebloggs/so/dashboard/");
 		assertEquals(RuntimeVariables.replace("Activities"),
-			selenium.getText("xPath=(//h1[@class='portlet-title']/span)[2]"));
+			selenium.getText(
+				"xPath=(//h1[@class='portlet-title']/span)[contains(.,'Activities')]"));
 		assertEquals(RuntimeVariables.replace("Me"), selenium.getText("link=Me"));
 		selenium.clickAt("link=Me", RuntimeVariables.replace("Me"));
 		selenium.waitForPageToLoad("30000");
@@ -194,7 +197,8 @@ public class ViewDMFolderDocumentActivitiesTest extends BaseTestCase {
 			selenium.getText("//span[@class='webdav-url']"));
 		selenium.open("/user/joebloggs/so/dashboard/");
 		assertEquals(RuntimeVariables.replace("Activities"),
-			selenium.getText("xPath=(//h1[@class='portlet-title']/span)[2]"));
+			selenium.getText(
+				"xPath=(//h1[@class='portlet-title']/span)[contains(.,'Activities')]"));
 		assertEquals(RuntimeVariables.replace("Me"), selenium.getText("link=Me"));
 		selenium.clickAt("link=Me", RuntimeVariables.replace("Me"));
 		selenium.waitForPageToLoad("30000");
