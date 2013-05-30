@@ -20,17 +20,17 @@
 </tr>
 <tr>
 	<td>FIELD_1</td>
-	<td>//div[@class='lfr-ddm-container']/div[1]</td>
+	<td>//div[@class='aui-fieldset-content ']/div[1]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>FIELD_2</td>
-	<td>//div[@class='lfr-ddm-container']/div[2]</td>
+	<td>//div[@class='aui-fieldset-content ']/div[2]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>FIELD_3</td>
-	<td>//div[@class='lfr-ddm-container']/div[3]</td>
+	<td>//div[@class='aui-fieldset-content ']/div[3]</td>
 	<td></td>
 </tr>
 </tbody>

@@ -36,6 +36,7 @@
 
 		<execute macro="ListRecord#cpAdd" />
 		<execute macro="ListRecord#cpView" />
+		<execute macro="ListRecord#cpSpreadsheetView" />
 	</command>
 
 	<command name="EditDataDefinition">
