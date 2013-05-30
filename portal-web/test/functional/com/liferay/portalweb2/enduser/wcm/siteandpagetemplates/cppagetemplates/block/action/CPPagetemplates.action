@@ -10,19 +10,13 @@
 			<execute function="Click#textClickAtAndWait" value1="Add" />
 		</case>
 		<case comparator="startsWith" locator-key1="PAGE_TEMPLATE_TABLE_ACTIONS_">
-			<execute function="Click#pauseTextClickAt" value1="Actions" />
+			<execute function="Click#textClickAt" value1="Actions" />
 		</case>
 		<case locator-key1="PAGE_TEMPLATE_MENULIST_EDIT">
 			<execute function="Click#textClickAtAndWait" value1="Edit" />
 		</case>
 		<case locator-key1="PAGE_TEMPLATE_MENULIST_DELETE">
 			<execute function="Click#textClickAtAndWait" value1="Delete" />
-		</case>
-	</command>
-
-	<command name="isElementPresent">
-		<case comparator="startsWith" locator-key1="PAGE_TEMPLATE_TABLE_ACTIONS_">
-			<execute function="IsElementPresent#pauseIsElementPresent" />
 		</case>
 	</command>
 </definition>
