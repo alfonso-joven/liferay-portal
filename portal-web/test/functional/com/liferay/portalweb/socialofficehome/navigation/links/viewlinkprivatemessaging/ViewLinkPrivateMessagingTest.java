@@ -30,7 +30,8 @@ public class ViewLinkPrivateMessagingTest extends BaseTestCase {
 			RuntimeVariables.replace("Messages"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Private Messaging"),
-			selenium.getText("//span[@class='portlet-title-default']"));
+			selenium.getText(
+				"xPath=(//span[@class='portlet-title-default'])[contains(.,'Private Messaging')]"));
 		assertEquals(RuntimeVariables.replace("No messages found."),
 			selenium.getText("//div[@class='portlet-msg-info']"));
 		assertEquals("Mark as Unread",

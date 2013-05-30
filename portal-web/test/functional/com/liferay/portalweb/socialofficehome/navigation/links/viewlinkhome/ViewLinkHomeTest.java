@@ -30,7 +30,7 @@ public class ViewLinkHomeTest extends BaseTestCase {
 			selenium.getText("//li[contains(@class, 'selected')]/a/span"));
 		assertEquals(RuntimeVariables.replace("Microblogs Status Update"),
 			selenium.getText(
-				"xPath=(//span[@class='portlet-title-default'])[1]"));
+				"xPath=(//span[@class='portlet-title-default'])[contains(.,'Microblogs Status Update')]"));
 		assertEquals(RuntimeVariables.replace("Update your status..."),
 			selenium.getText(
 				"//div[contains(@id,'_2_WAR_microblogsportlet_autocompleteContent')]"));
@@ -38,7 +38,8 @@ public class ViewLinkHomeTest extends BaseTestCase {
 				"You do not have any microblog entries."),
 			selenium.getText("xPath=(//div[@class='portlet-msg-info'])[1]"));
 		assertEquals(RuntimeVariables.replace("Activities"),
-			selenium.getText("xPath=(//h1[@class='portlet-title'])[2]"));
+			selenium.getText(
+				"xPath=(//h1[@class='portlet-title'])[contains(.,'Activities')]"));
 		assertEquals(RuntimeVariables.replace("There are no recent activities."),
 			selenium.getText("xPath=(//div[@class='portlet-msg-info'])[2]"));
 		assertEquals(RuntimeVariables.replace("Connections"),
@@ -49,11 +50,13 @@ public class ViewLinkHomeTest extends BaseTestCase {
 			selenium.getText("link=My Sites"));
 		assertEquals(RuntimeVariables.replace("Me"), selenium.getText("link=Me"));
 		assertEquals(RuntimeVariables.replace("Upcoming Tasks"),
-			selenium.getText("xPath=(//h1[@class='portlet-title'])[3]"));
+			selenium.getText(
+				"xPath=(//h1[@class='portlet-title'])[contains(.,'Upcoming Tasks')]"));
 		assertEquals(RuntimeVariables.replace("View All Tasks"),
 			selenium.getText("//div[@class='view-all-tasks']"));
 		assertEquals(RuntimeVariables.replace("Events"),
-			selenium.getText("xPath=(//h1[@class='portlet-title'])[4]"));
+			selenium.getText(
+				"xPath=(//h1[@class='portlet-title'])[contains(.,'Events')]"));
 		assertEquals(RuntimeVariables.replace("There are no more events today."),
 			selenium.getText("//div[2]/div/div[2]/div/section/div/div/div"));
 		assertEquals(RuntimeVariables.replace("Sites"),
