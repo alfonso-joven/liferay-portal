@@ -61,9 +61,9 @@ public class ViewUserPhoneNumbersTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Add"),
 			selenium.getText(
 				"//div[@class='lfr-portlet-toolbar']/span/ul/li/strong/a/span[contains(.,'Add')]"));
-		assertEquals(RuntimeVariables.replace("Export All Users"),
+		assertEquals(RuntimeVariables.replace("Export Users"),
 			selenium.getText(
-				"//div[@class='lfr-portlet-toolbar']/span/a[contains(.,'Export All Users')]"));
+				"//div[@class='lfr-portlet-toolbar']/span/a[contains(.,'Export Users')]"));
 		assertEquals(RuntimeVariables.replace("userfn userln"),
 			selenium.getText("//h1[@class='header-title']/span"));
 		assertEquals(RuntimeVariables.replace("\u00ab Back"),

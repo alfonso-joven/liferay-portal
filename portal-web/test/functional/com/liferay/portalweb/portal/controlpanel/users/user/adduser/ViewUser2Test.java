@@ -83,7 +83,7 @@ public class ViewUser2Test extends BaseTestCase {
 					selenium.getText("//a[@id='_125_TabsBack']"));
 				assertEquals(RuntimeVariables.replace("Details"),
 					selenium.getText("//div[@id='_125_details']/h3"));
-				assertEquals("",
+				assertEquals("0",
 					selenium.getValue("//select[@id='_125_prefixId']"));
 				assertEquals("usersn2",
 					selenium.getValue("//input[@id='_125_screenName']"));
