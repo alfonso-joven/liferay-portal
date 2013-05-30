@@ -153,6 +153,8 @@ public class BeanLocatorImpl implements BeanLocator {
 		}
 
 		if (bean instanceof DoPrivilegedBean) {
+			PortalRuntimePermission.checkGetBeanProperty(bean.getClass());
+
 			return bean;
 		}
 
