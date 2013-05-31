@@ -1,0 +1,33 @@
+<definition>
+	<var name="siteName" value="Site Name" />
+	<var name="sitePageName" value="Staging Test Page" />
+	<var name="sitePageType" value="Public" />
+	<var name="pageName" value="Staging Test Page 2" />
+	<var name="pageType" value="Staging" />
+
+	<set-up>
+		<execute macro="User#pgFirstLogin" />
+		
+		<execute macro="Site#cpAddBlank" />
+
+		<execute macro="SitePage#cpAdd" />
+	</set-up>
+
+	<command name="StagingPublishToLive">
+		<execute macro="Staging#cpActivateStaging" />
+
+		<execute macro="Page#pgAddStaging" />
+		
+		<execute macro="Staging#cpPublishToLiveNow" />
+
+		<execute action="Staging#click" locator-key1="LIVE_BUTTON" />
+		
+		<execute action="Home#assertTextEquals" locator-key1="PAGE_2_STAGING" value1="${pageName}" />
+	</command>
+
+	<tear-down>
+		<execute macro="Staging#cpDeactivateStaging" />
+
+		<execute macro="Site#cpTearDown" />
+	</tear-down>
+</definition>
