@@ -1,0 +1,67 @@
+<definition>
+
+	<command name="cpActivateStaging">
+		<execute macro="Page#cpGotoStaging">
+			<var name="portletName" value="Sites" />
+		</execute>
+		<execute action="CPSites#type" locator-key1="SEARCH_FIELD" value1="${siteName}" />
+		<execute action="CPSites#click" locator-key1="SEARCH_BUTTON" />
+		<execute action="CPSites#click" locator-key1="SITE_TABLE_ACTIONS" />
+		<execute action="CPSites#click" locator-key1="SITE_MENULIST_EDIT_SETTINGS" />
+		
+		<execute action="CPSitesEdit#click" locator-key1="MENU_STAGING" />
+		<execute action="CPSitesEdit#click" locator-key1="STAGING_LOCAL_LIVE" />
+		<execute action="CPSitesEdit#check" locator-key1="STAGING_BLOGS_CHECKBOX" />
+		<execute action="CPSitesEdit#check" locator-key1="STAGING_BOOKMARKS_CHECKBOX" />
+		<execute action="CPSitesEdit#check" locator-key1="STAGING_DOCUMENTS_AND_MEDIA_CHECKBOX" />
+		<execute action="CPSitesEdit#check" locator-key1="STAGING_DOCUMENTS_AND_MEDIA_DISPLAY_CHECKBOX" />
+		<execute action="CPSitesEdit#check" locator-key1="STAGING_DYNAMIC_DATA_LIST_DISPLAY_CHECKBOX" />
+		<execute action="CPSitesEdit#check" locator-key1="STAGING_DYNAMIC_DATA_LISTS_CHECKBOX" />
+		<execute action="CPSitesEdit#check" locator-key1="STAGING_DYNAMIC_DATA_MAPPING_CHECKBOX" />
+		<execute action="CPSitesEdit#check" locator-key1="STAGING_MESSAGE_BOARDS_CHECKBOX" />
+		<execute action="CPSitesEdit#check" locator-key1="STAGING_PAGE_COMMENTS_CHECKBOX" />
+		<execute action="CPSitesEdit#check" locator-key1="STAGING_PAGE_RATINGS_CHECKBOX" />
+		<execute action="CPSitesEdit#check" locator-key1="STAGING_POLLS_CHECKBOX" />
+		<execute action="CPSitesEdit#check" locator-key1="STAGING_POLLS_DISPLAY_CHECKBOX" />
+		<execute action="CPSitesEdit#check" locator-key1="STAGING_RSS_CHECKBOX" />
+		<execute action="CPSitesEdit#check" locator-key1="STAGING_WEB_CONTENT_CHECKBOX" />
+		<execute action="CPSitesEdit#check" locator-key1="STAGING_WEB_CONTENT_DISPLAY_CHECKBOX" />
+		<execute action="CPSitesEdit#check" locator-key1="STAGING_WIKI_CHECKBOX" />
+		<execute action="CPSitesEdit#check" locator-key1="STAGING_WIKI_DISPLAY_CHECKBOX" />
+		<execute action="CPSitesEdit#click" locator-key1="MENU_SAVE" />
+		<execute action="CPSitesEdit#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPSitesEdit#assertTextEquals" locator-key1="HEADER" value1="${siteName} (Staging)" />
+	</command>
+
+	<command name="cpDeactivateStaging">
+		<execute macro="Page#cpGotoStaging">
+			<var name="portletName" value="Sites" />
+		</execute>
+		<execute action="CPSites#type" locator-key1="SEARCH_FIELD" value1="${siteName}" />
+		<execute action="CPSites#click" locator-key1="SEARCH_BUTTON" />
+		<execute action="CPSites#click" locator-key1="SITE_TABLE_ACTIONS" />
+		<execute action="CPSites#click" locator-key1="SITE_MENULIST_EDIT_SETTINGS" />
+
+		<execute action="CPSitesEdit#assertTextEquals" locator-key1="HEADER" value1="${siteName} (Staging)" />
+		<execute action="CPSitesEdit#click" locator-key1="MENU_STAGING" />
+		<execute action="CPSitesEdit#click" locator-key1="STAGING_NONE" />
+		<execute action="CPSitesEdit#click" locator-key1="MENU_SAVE" />
+		<execute action="CPSitesEdit#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPSitesEdit#assertTextEquals" locator-key1="HEADER" value1="${siteName}" />
+	</command>
+
+	<command name="cpPublishToLiveNow">
+		<execute macro="Page#pgGotoStaging" />
+
+		<execute action="Staging#click" locator-key1="STAGING_BUTTON" />
+		<execute action="Staging#click" locator-key1="STAGING_DROP_DOWN_BUTTON" />
+		<execute action="Staging#click" locator-key1="STAGING_MENULIST_PUBLISH_TO_LIVE_NOW" />
+		
+		<execute action="PGStagingPublishToLiveNow#click" locator-key1="APPLICATIONS_EXPAND" />
+		<execute action="PGStagingPublishToLiveNow#click" locator-key1="PUBLISH_RANGE_ALL" />
+		<execute action="PGStagingPublishToLiveNow#click" locator-key1="PUBLISH_BUTTON" />
+		<execute action="PGStagingPublishToLiveNow#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to publish these pages?" />
+		<execute action="PGStagingPublishToLiveNow#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
+		<execute action="PGStagingPublishToLiveNow#click" locator-key1="CLOSE_BUTTON" />
+	</command>
+</definition>

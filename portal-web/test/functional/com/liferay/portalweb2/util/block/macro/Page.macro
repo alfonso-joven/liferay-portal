@@ -17,6 +17,16 @@
 		<execute action="Home#click" locator1="//ul[@class='category-portlets']/li/a[contains(.,'${portletName}')]" />
 	</command>
 
+	<command name="cpGotoStaging">
+		<execute action="Home#open" locator-key1="SITE_URL_STAGING" />
+		
+		<execute action="Dockbar#mouseOver" locator-key1="GO_TO_STAGING" />
+		<execute action="Dockbar#click" locator-key1="GO_TO" />
+		<execute action="Dockbar#click" locator-key1="GO_TO_CONTROL_PANEL" />
+
+		<execute action="Home#click" locator1="//ul[@class='category-portlets']/li/a[contains(.,'${portletName}')]" />
+	</command>
+
 	<command name="isPresent">
 		<execute action="Home#open" locator-key1="HOME_URL" />
 		<execute action="Home#isElementPresent" locator1="link=${pageName}" />
@@ -40,6 +50,10 @@
 	<command name="pgGotoSitePublic">
 		<execute action="Home#open" locator-key1="SITE_URL_PUBLIC" />
 		<execute action="Home#click" locator1="link=${pageName}" />
+	</command>
+
+	<command name="pgGotoStaging">
+		<execute action="Home#open" locator-key1="SITE_URL_STAGING" />
 	</command>
 
 	<command name="pgAdd">
@@ -92,6 +106,19 @@
 			<var name="pageName" value="${pageName}" />
 			<var name="pageType" value="Public" />
 		</execute>
+	</command>
+
+	<command name="pgAddStaging">
+		<execute action="Home#open" locator-key1="SITE_URL_STAGING" />
+
+		<execute action="Staging#click" locator-key1="STAGING_BUTTON" />
+
+		<execute action="Dockbar#mouseOver" locator-key1="ADD_STAGING" />
+		<execute action="Dockbar#click" locator-key1="ADD_PAGE" />
+
+		<execute action="Home#type" locator-key1="NEW_PAGE_FIELD" value1="${pageName}" />
+		<execute action="Home#click" locator-key1="NEW_PAGE_SAVE" />
+		<execute action="Home#click" locator1="link=${pageName}" />
 	</command>
 
 	<command name="pgTearDown">
