@@ -84,31 +84,31 @@
 	<td></td>
 	<td></td>
 </tr>
-<!--SELECT_ALL_MENULIST-->
+<!--ACTIONS_MENULIST-->
 <tr>
-	<td>SELECT_ALL_MENULIST_CANCEL_CHECKOUT</td>
-	<td>//a[@role='menuitem' and contains(.,'Cancel Checkout')]</td>
+	<td>ACTIONS_MENULIST_CANCEL_CHECKOUT</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a[contains(.,'Cancel Checkout')]</td>
 	<td>Cancel Checkout</td>
 </tr>
 <tr>
-	<td>SELECT_ALL_MENULIST_CHECKIN</td>
-	<td>//a[@role='menuitem' and contains(.,'Checkin')]</td>
+	<td>ACTIONS_MENULIST_CHECKIN</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a[contains(.,'Checkin')]</td>
 	<td>Checkin</td>
 </tr>
 <tr>
-	<td>SELECT_ALL_MENULIST_CHECKOUT</td>
-	<td>xpath=(//a[@role='menuitem' and contains(.,'Checkout')])[2]</td>
+	<td>ACTIONS_MENULIST_CHECKOUT</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[3]/a[contains(.,'Checkout')]</td>
 	<td>Checkout</td>
 </tr>
 <tr>
-	<td>SELECT_ALL_MENULIST_MOVE</td>
-	<td>//a[@role='menuitem' and contains(.,'Move')]</td>
+	<td>ACTIONS_MENULIST_MOVE</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[4]/a[contains(.,'Move')]</td>
 	<td>Move</td>
 </tr>
 <tr>
-	<td>SELECT_ALL_MENULIST_RECYCLE_BIN</td>
-	<td>//a[@role='menuitem' and contains(.,'Move to the Recycle Bin')]</td>
-	<td>Move to the Recycle Bin</td>
+	<td>ACTIONS_MENULIST_DELETE</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li[5]/a[contains(.,'Delete')]</td>
+	<td>Delete</td>
 </tr>
 <tr>
 	<td></td>
@@ -117,19 +117,14 @@
 </tr>
 <!--ADD_MENULIST-->
 <tr>
-	<td>ADD_MENULIST_FOLDER</td>
-	<td>//a[@role='menuitem' and contains(.,'Folder')]</td>
-	<td>Folder</td>
+	<td>ADD_MENULIST_SUBFOLDER</td>
+	<td>//a[@role='menuitem' and contains(.,'Subfolder')]</td>
+	<td>Subfolder</td>
 </tr>
 <tr>
 	<td>ADD_MENULIST_SHORTCUT</td>
 	<td>//a[@role='menuitem' and contains(.,'Shortcut')]</td>
 	<td>Shortcut</td>
-</tr>
-<tr>
-	<td>ADD_MENULIST_REPOSITORY</td>
-	<td>//a[@role='menuitem' and contains(.,'Repository')]</td>
-	<td>Repository</td>
 </tr>
 <tr>
 	<td>ADD_MENULIST_MULTIPLE_DOCUMENTS</td>
@@ -140,6 +135,26 @@
 	<td>ADD_MENULIST_BASIC_DOCUMENT</td>
 	<td>//a[@role='menuitem' and contains(.,'Basic Document')]</td>
 	<td>Basic Document</td>
+</tr>
+<tr>
+	<td>ADD_MENULIST_CONTRACT</td>
+	<td>//a[@role='menuitem' and contains(.,'Contract')]</td>
+	<td>Contract</td>
+</tr>
+<tr>
+	<td>ADD_MENULIST_MARKETING_BANNER</td>
+	<td>//a[@role='menuitem' and contains(.,'Marketing Banner')]</td>
+	<td>Marketing Banner</td>
+</tr>
+<tr>
+	<td>ADD_MENULIST_ONLINE_TRAINING</td>
+	<td>//a[@role='menuitem' and contains(.,'Online Training')]</td>
+	<td>Online Training</td>
+</tr>
+<tr>
+	<td>ADD_MENULIST_CONTRACT</td>
+	<td>//a[@role='menuitem' and contains(.,'Sales Presentation')]</td>
+	<td>Sales Presentation</td>
 </tr>
 <tr>
 	<td></td>
@@ -220,47 +235,6 @@
 	<td></td>
 	<td></td>
 </tr>
-<!--ENTRIES-->
-<tr>
-	<td>ENTRIES_SUBSCRIBE</td>
-	<td>//div[@id='_20_entriesContainer']/div[1]/span/a/span</td>
-	<td>Subscribe</td>
-</tr>
-<tr>
-	<td>ENTRIES_DOCUMENT</td>
-	<td>//div[@id='_20_entriesContainer']/div/div/a[@data-folder='false']/div</td>
-	<td>Document Entry</td>
-</tr>
-<tr>
-	<td>ENTRIES_DOCUMENT_SELECT</td>
-	<td>//div[@id='_20_entriesContainer']/div/div/a[@data-folder='false']/../span/span/span/input[2]</td>
-	<td>Select Document Entry</td>
-</tr>
-<tr>
-	<td>ENTRIES_DOCUMENT_ACTIONS</td>
-	<td>//div[@id='_20_entriesContainer']/div/div/a[@data-folder='false']/../span/span/ul/li/strong/a</td>
-	<td>Document Entry Actions</td>
-</tr>
-<tr>
-	<td>ENTRIES_FOLDER</td>
-	<td>//div[@id='_20_entriesContainer']/div/div/a[@data-folder='true']/div</td>
-	<td>Folder Entry</td>
-</tr>
-<tr>
-	<td>ENTRIES_FOLDER_SELECT</td>
-	<td>//div[@id='_20_entriesContainer']/div/div/a[@data-folder='true']/../span/span/span/input[2]</td>
-	<td>Select Folder Entry</td>
-</tr>
-<tr>
-	<td>ENTRIES_FOLDER_ACTIONS</td>
-	<td>//div[@id='_20_entriesContainer']/div/div/a[@data-folder='true']/../span/span/ul/li/strong/a</td>
-	<td>File Entry Actions</td>
-</tr>
-<tr>
-	<td></td>
-	<td></td>
-	<td></td>
-</tr>
 <!--FOLDER_MENULIST-->
 <tr>
 	<td>FOLDER_MENULIST_EDIT</td>
@@ -278,9 +252,9 @@
 	<td>Permissions</td>
 </tr>
 <tr>
-	<td>FOLDER_MENULIST_RECYCLE_BIN</td>
-	<td>//a[@role='menuitem' and contains(.,'Move to the Recycle Bin')]</td>
-	<td>Move to the Recycle Bin</td>
+	<td>FOLDER_MENULIST_DELTE</td>
+	<td>//a[@role='menuitem' and contains(.,'Delete')]</td>
+	<td>Delete</td>
 </tr>
 <tr>
 	<td>FOLDER_MENULIST_ADD_SUBFOLDER</td>
@@ -324,6 +298,11 @@
 	<td>Permissions</td>
 </tr>
 <tr>
+	<td>DOCUMENT_MENULIST_DELETE</td>
+	<td>//a[@role='menuitem' and contains(.,'Delete')]</td>
+	<td>Delete</td>
+</tr>
+<tr>
 	<td></td>
 	<td></td>
 	<td></td>
@@ -346,23 +325,18 @@
 </tr>
 <tr>
 	<td>PAGINATION_NEXT</td>
-	<td>//div[contains(@class,'document-entries-paginator')]/a[contains(@class,'aui-paginator-last-link')]</td>
+	<td>//div[contains(@class,'document-entries-paginator')]/a[contains(@class,'aui-paginator-next-link')]</td>
 	<td>Next Page</td>
 </tr>
 <tr>
 	<td>PAGINATION_LAST</td>
-	<td>//div[contains(@class,'document-entries-paginator')]/a[contains(@class,'aui-paginator-first-link')]</td>
+	<td>//div[contains(@class,'document-entries-paginator')]/a[contains(@class,'aui-paginator-last-link')]</td>
 	<td>Last Page</td>
 </tr>
 <tr>
 	<td>PAGINATION_SELECT</td>
 	<td>//div[contains(@class,'document-entries-paginator')]/select</td>
 	<td>Select Page</td>
-</tr>
-<tr>
-	<td>DOCUMENT_MENULIST_RECYCLE_BIN</td>
-	<td>//a[@role='menuitem' and contains(.,'Move to the Recycle Bin')]</td>
-	<td>Move to the Recycle Bin</td>
 </tr>
 </tbody>
 </table>
