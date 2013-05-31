@@ -1,0 +1,21 @@
+<definition>
+	<var name="pageName" value="Blogs Page" />
+	<var name="portletName" value="Blogs" />
+
+	<set-up>
+		<execute macro="User#pgFirstLogin" />
+
+		<execute macro="Page#pgAdd" />
+
+		<execute macro="Portlet#pgAdd" />
+	</set-up>
+
+	<command name="Guest_ViewPortletBlogsPermissionsNoTest">
+		<execute macro="BlogsEntry#pgGuestViewPortletBlogsPermisisonsNo" />
+		<execute macro="User#pgLogin" />
+	</command>
+
+	<tear-down>
+		<execute macro="Page#pgTearDown" />
+	</tear-down>
+</definition>
