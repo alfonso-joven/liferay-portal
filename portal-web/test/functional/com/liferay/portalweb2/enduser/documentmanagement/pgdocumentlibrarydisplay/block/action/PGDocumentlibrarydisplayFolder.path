@@ -24,8 +24,38 @@
 	<td></td>
 </tr>
 <tr>
+	<td>BACK</td>
+	<td>//span[@class='header-back-to']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>ASSET_DATE</td>
+	<td>//div[@class='lfr-asset-icon lfr-asset-date']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>ASSET_SUBFOLDERS</td>
+	<td>//div[@class='lfr-asset-icon lfr-asset-subfolders']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>ASSET_ITEMS</td>
+	<td>//div[@class='lfr-asset-icon lfr-asset-items last']</td>
+	<td></td>
+</tr>
+<tr>
 	<td>INFO_MESSAGE</td>
 	<td>//div[@class='portlet-msg-info']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>ASSET_THUMBNAIL</td>
+	<td>//span[@class='lfr-asset-avatar']/img</td>
+	<td></td>
+</tr>
+<tr>
+	<td>ASSET_NAME</td>
+	<td>//div[@class='lfr-asset-name']/h4</td>
 	<td></td>
 </tr>
 <tr>
@@ -51,23 +81,23 @@
 </tr>
 <!--SUBFOLDERS_TABLE-->
 <tr>
-	<td>SUBFOLDERS_TABLE_NAME</td>
-	<td>//div[contains(@id,'foldersSearchContainer')]/table/tbody/tr/td[1]/a</td>
+	<td>SUBFOLDERS_TABLE_NAME_1</td>
+	<td>xpath=(//div[contains(@id,'foldersSearchContainer')]/table/tbody/tr/td[1]/a/strong)[1]</td>
 	<td>Name</td>
 </tr>
 <tr>
-	<td>SUBFOLDERS_TABLE_NUMBER_OF_SUBFOLDERS</td>
-	<td>//div[contains(@id,'foldersSearchContainer')]/table/tbody/tr/td[2]/a</td>
+	<td>SUBFOLDERS_TABLE_NUMBER_OF_SUBFOLDERS_1</td>
+	<td>xpath=(//div[contains(@id,'foldersSearchContainer')]/table/tbody/tr/td[2]/a)[1]</td>
 	<td># of Folders</td>
 </tr>
 <tr>
-	<td>SUBFOLDERS_TABLE_NUMBER_OF_DOCUMENTS</td>
-	<td>//div[contains(@id,'foldersSearchContainer')]/table/tbody/tr/td[3]/a</td>
+	<td>SUBFOLDERS_TABLE_NUMBER_OF_DOCUMENTS_1</td>
+	<td>xpath=(//div[contains(@id,'foldersSearchContainer')]/table/tbody/tr/td[3]/a)</td>
 	<td># of Documents</td>
 </tr>
 <tr>
-	<td>SUBFOLDERS_TABLE_ACTIONS_BUTTON</td>
-	<td>//div[contains(@id,'foldersSearchContainer')]/table/tbody/tr/td[4]/span/ul/li/strong/a/span</td>
+	<td>SUBFOLDERS_TABLE_ACTIONS_BUTTON_1</td>
+	<td>xpath=(//div[contains(@id,'foldersSearchContainer')]/table/tbody/tr/td[4]/span/ul/li/strong/a/span)</td>
 	<td>Actions</td>
 </tr>
 <tr>
@@ -92,9 +122,9 @@
 	<td>Permissions</td>
 </tr>
 <tr>
-	<td>SUBFOLDER_MENULIST_RECYCLE_BIN</td>
-	<td>//a[@role='menuitem' and contains(.,'Move to the Recycle Bin')]</td>
-	<td>Move to the Recycle Bin</td>
+	<td>SUBFOLDER_MENULIST_DELETE</td>
+	<td>//a[@role='menuitem' and contains(.,'Delete')]</td>
+	<td>Delete</td>
 </tr>
 <tr>
 	<td>SUBFOLDER_MENULIST_ADD_SUBSUBFOLDER</td>
@@ -128,9 +158,9 @@
 </tr>
 <!--DOCUMENTS-->
 <tr>
-	<td>DOCUMENTS_RECYCLE_BIN</td>
-	<td>//input[@value='Move to the Recycle Bin']</td>
-	<td>Move to the Recycle Bin</td>
+	<td>DOCUMENTS_DELETE</td>
+	<td>//input[@value='Delete']</td>
+	<td>Delete</td>
 </tr>
 <tr>
 	<td></td>
@@ -139,28 +169,23 @@
 </tr>
 <!--DOCUMENTS_TABLE-->
 <tr>
-	<td>DOCUMENTS_TABLE_ALL_CHECKBOX</td>
-	<td>//div[contains(@id,'objectsSearchContainerSearchContainer')]/table/tbody/tr/th/input</td>
-	<td></td>
-</tr>
-<tr>
-	<td>DOCUMENTS_TABLE_CHECKBOX</td>
-	<td>//div[contains(@id,'objectsSearchContainerSearchContainer')]/table/tbody/tr/td[1]/a</td>
+	<td>DOCUMENTS_TABLE_CHECKBOX_1</td>
+	<td>xpath=(//div[contains(@id,'objectsSearchContainerSearchContainer')]/table/tbody/tr/td[1]/input)[1]</td>
 	<td>Checkbox</td>
 </tr>
 <tr>
-	<td>DOCUMENTS_TABLE_NAME</td>
-	<td>//div[contains(@id,'objectsSearchContainerSearchContainer')]/table/tbody/tr/td[2]/a</td>
+	<td>DOCUMENTS_TABLE_NAME_1</td>
+	<td>xpath=(//div[contains(@id,'objectsSearchContainerSearchContainer')]/table/tbody/tr/td[2]/a/span[@class='entry-title'])[1]</td>
 	<td>Name</td>
 </tr>
 <tr>
-	<td>DOCUMENTS_TABLE_SIZE</td>
-	<td>//div[contains(@id,'objectsSearchContainerSearchContainer')]/table/tbody/tr/td[2]/a</td>
+	<td>DOCUMENTS_TABLE_SIZE_1</td>
+	<td>xpath=(//div[contains(@id,'objectsSearchContainerSearchContainer')]/table/tbody/tr/td[3]/a)[1]</td>
 	<td>Size</td>
 </tr>
 <tr>
-	<td>DOCUMENTS_TABLE_ACTIONS_BUTTON</td>
-	<td>//div[contains(@id,'objectsSearchContainerSearchContainer')]/table/tbody/tr/td[4]/span/ul/li/strong/a/span</td>
+	<td>DOCUMENTS_TABLE_ACTIONS_BUTTON_1</td>
+	<td>xpath=(//div[contains(@id,'objectsSearchContainerSearchContainer')]/table/tbody/tr/td[4]/span/ul/li/strong/a/span)[1]</td>
 	<td>Actions</td>
 </tr>
 <tr>
@@ -195,9 +220,9 @@
 	<td>Permissions</td>
 </tr>
 <tr>
-	<td>DOCUMENT_MENULIST_RECYCLE_BIN</td>
-	<td>//a[@role='menuitem' and contains(.,'Move to the Recycle Bin')]</td>
-	<td>Move to the Recycle Bin</td>
+	<td>DOCUMENT_MENULIST_DELETE</td>
+	<td>//a[@role='menuitem' and contains(.,'Delete')]</td>
+	<td>Delete</td>
 </tr>
 <tr>
 	<td></td>
@@ -221,14 +246,14 @@
 	<td>Permissions </td>
 </tr>
 <tr>
-	<td>SUBFOLDER_MENU_ADD_SUBFOLDER</td>
-	<td>//div[@class='lfr-component lfr-menu-list lfr-menu-expanded align-right null']/ul/li/a[contains(.,'Add Folder')]</td>
-	<td>Add Folder</td>
+	<td>SUBFOLDER_MENU_DELETE</td>
+	<td>//div[@class='lfr-component lfr-menu-list lfr-menu-expanded align-right null']/ul/li/a[contains(.,'Delete')]</td>
+	<td>Delete</td>
 </tr>
 <tr>
-	<td>SUBFOLDER_MENU_ADD_REPOSITORY</td>
-	<td>//div[@class='lfr-component lfr-menu-list lfr-menu-expanded align-right null']/ul/li/a[contains(.,'Add Repository')]</td>
-	<td>Add Repository</td>
+	<td>SUBFOLDER_MENU_ADD_SUBFOLDER</td>
+	<td>//div[@class='lfr-component lfr-menu-list lfr-menu-expanded align-right null']/ul/li/a[contains(.,'Add Subfolder')]</td>
+	<td>Add Subfolder</td>
 </tr>
 <tr>
 	<td>SUBFOLDER_MENU_MULTIPLE_DOCUMENTS</td>

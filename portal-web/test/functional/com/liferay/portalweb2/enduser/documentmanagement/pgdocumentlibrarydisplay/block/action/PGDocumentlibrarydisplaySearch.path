@@ -51,75 +51,24 @@
 </tr>
 <!--SEARCH_RESULTS-->
 <tr>
-	<td>SEARCH_RESULTS_TITLE</td>
-	<td>//a[@class='entry-link']/span[@class='entry-title']/span</td>
-	<td>Search Result Title</td>
+	<td>SEARCH_RESULTS_NUMBER</td>
+	<td>xpath=(//tbody/tr[3]/td[1])[1]</td>
+	<td>Search Result #</td>
 </tr>
 <tr>
-	<td>SEARCH_RESULTS_PARENT_FOLDER</td>
-	<td>//a[@class='entry-link']/span[@class='entry-folder']/span</td>
-	<td>Search Result Parent Folder</td>
+	<td>SEARCH_RESULTS_FOLDER</td>
+	<td>xpath=(//tbody/tr[3]/td[2]/a)[1]</td>
+	<td>Search Result Folder</td>
 </tr>
 <tr>
-	<td>SEARCH_RESULTS_DESCRIPTION</td>
-	<td>//a[@class='entry-link']/span[@class='entry-description']</td>
-	<td>Search Result Description</td>
+	<td>SEARCH_RESULTS_DOCUMENT</td>
+	<td>xpath=(//tbody/tr[3]/td[3]/a)[1]</td>
+	<td>Search Result Document</td>
 </tr>
 <tr>
 	<td>SEARCH_RESULTS_ACTIONS</td>
-	<td>//span[@class='entry-action overlay']/span/ul/li/strong/a</td>
+	<td>xpath=(//span[@title='Actions']/ul/li/strong/a/span)[1]</td>
 	<td>Search Result Actions</td>
-</tr>
-<tr>
-	<td></td>
-	<td></td>
-	<td></td>
-</tr>
-<!--FOLDER_MENULIST-->
-<tr>
-	<td>FOLDER_MENULIST_EDIT</td>
-	<td>//a[@role='menuitem' and contains(.,'Edit')]</td>
-	<td>Edit</td>
-</tr>
-<tr>
-	<td>FOLDER_MENULIST_MOVE</td>
-	<td>//a[@role='menuitem' and contains(.,'Move')]</td>
-	<td>Move</td>
-</tr>
-<tr>
-	<td>FOLDER_MENULIST_PERMISSIONS</td>
-	<td>//a[@role='menuitem' and contains(.,'Permissions')]</td>
-	<td>Permissions</td>
-</tr>
-<tr>
-	<td>FOLDER_MENULIST_RECYCLE_BIN</td>
-	<td>//a[@role='menuitem' and contains(.,'Move to the Recycle Bin')]</td>
-	<td>Move to the Recycle Bin</td>
-</tr>
-<tr>
-	<td>FOLDER_MENULIST_ADD_SUBFOLDER</td>
-	<td>//a[@role='menuitem' and contains(.,'Add Subfolder')]</td>
-	<td>Add Subfolder</td>
-</tr>
-<tr>
-	<td>FOLDER_MENULIST_MULTIPLE_DOCUMENTS</td>
-	<td>//a[@role='menuitem' and contains(.,'Multiple Documents')]</td>
-	<td>Multiple Documents</td>
-</tr>
-<tr>
-	<td>FOLDER_MENULIST_ADD_DOCUMENT</td>
-	<td>//a[@role='menuitem' and contains(.,'Add Document')]</td>
-	<td>Add Document</td>
-</tr>
-<tr>
-	<td>FOLDER_MENULIST_ADD_SHORTCUT</td>
-	<td>//a[@role='menuitem' and contains(.,'Add Shortcut')]</td>
-	<td>Add Shortcut</td>
-</tr>
-<tr>
-	<td>FOLDER_MENULIST_ACCESS_FROM_DESKTOP</td>
-	<td>//a[@role='menuitem' and contains(.,'Access from Desktop')]</td>
-	<td>Access from Desktop</td>
 </tr>
 <tr>
 	<td></td>
@@ -153,9 +102,9 @@
 	<td>Permissions</td>
 </tr>
 <tr>
-	<td>DOCUMENT_MENULIST_RECYCLE_BIN</td>
-	<td>//a[@role='menuitem' and contains(.,'Move to the Recycle Bin')]</td>
-	<td>Move to the Recycle Bin</td>
+	<td>DOCUMENT_MENULIST_DELETE</td>
+	<td>//a[@role='menuitem' and contains(.,'Delete')]</td>
+	<td>Delete</td>
 </tr>
 </tbody>
 </table>
