@@ -29,8 +29,10 @@ import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.Group;
 import com.liferay.portal.model.Organization;
+import com.liferay.portal.model.ResourceAction;
 import com.liferay.portal.model.impl.GroupImpl;
 import com.liferay.portal.service.ClassNameLocalServiceUtil;
+import com.liferay.portal.service.ResourceActionLocalServiceUtil;
 import com.liferay.portal.service.ResourceBlockLocalServiceUtil;
 import com.liferay.portal.service.impl.GroupLocalServiceImpl;
 import com.liferay.portal.service.persistence.impl.BasePersistenceImpl;
@@ -741,7 +743,8 @@ public class GroupFinderImpl
 	}
 
 	protected int countByGroupId(
-		Session session, long groupId, LinkedHashMap<String, Object> params) {
+			Session session, long groupId, LinkedHashMap<String, Object> params)
+		throws Exception {
 
 		String sql = CustomSQLUtil.get(COUNT_BY_GROUP_ID);
 
@@ -771,9 +774,10 @@ public class GroupFinderImpl
 	}
 
 	protected List<Long> countByC_C_N_D(
-		Session session, long companyId, long[] classNameIds, String name,
-		String realName, String description,
-		LinkedHashMap<String, Object> params) {
+			Session session, long companyId, long[] classNameIds, String name,
+			String realName, String description,
+			LinkedHashMap<String, Object> params)
+		throws Exception {
 
 		String sql = CustomSQLUtil.get(COUNT_BY_C_N_D);
 
@@ -948,8 +952,8 @@ public class GroupFinderImpl
 		return sql;
 	}
 
-	protected void setJoin(
-		QueryPos qPos, LinkedHashMap<String, Object> params) {
+	protected void setJoin(QueryPos qPos, LinkedHashMap<String, Object> params)
+		throws Exception {
 
 		if (params == null) {
 			return;
@@ -975,6 +979,10 @@ public class GroupFinderImpl
 				String actionId = (String)values.get(2);
 				Long roleId = (Long)values.get(3);
 
+				ResourceAction resourceAction =
+					ResourceActionLocalServiceUtil.getResourceAction(
+						name, actionId);
+
 				if ((PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM == 6) &&
 					ResourceBlockLocalServiceUtil.isSupported(name)) {
 
@@ -982,13 +990,13 @@ public class GroupFinderImpl
 
 					qPos.add(name);
 					qPos.add(roleId);
-					qPos.add(actionId);
+					qPos.add(resourceAction.getBitwiseValue());
 				}
 				else {
 					qPos.add(name);
 					qPos.add(scope);
-					qPos.add(actionId);
 					qPos.add(roleId);
+					qPos.add(resourceAction.getBitwiseValue());
 				}
 			}
 			else if (key.equals("types")) {
