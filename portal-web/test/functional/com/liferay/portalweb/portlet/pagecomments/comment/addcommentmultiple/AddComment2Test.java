@@ -29,8 +29,8 @@ public class AddComment2Test extends BaseTestCase {
 			RuntimeVariables.replace("Page Comments Test Page"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Add Comment"),
-			selenium.getText("//span[1]/a/span"));
-		selenium.clickAt("//span[1]/a/span",
+			selenium.getText("//span/a/span[contains(.,'Add Comment')]"));
+		selenium.clickAt("//span/a/span[contains(.,'Add Comment')]",
 			RuntimeVariables.replace("Add Comment"));
 		selenium.waitForVisible("//textarea[@name='_107_postReplyBody0']");
 		assertTrue(selenium.isVisible("//textarea[@name='_107_postReplyBody0']"));

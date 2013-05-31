@@ -28,6 +28,7 @@ public class AddCommentReplyTest extends BaseTestCase {
 		selenium.clickAt("link=Page Comments Test Page",
 			RuntimeVariables.replace("Page Comments Test Page"));
 		selenium.waitForPageToLoad("30000");
+		selenium.mouseOver("//li[1]/span/a/span");
 		assertEquals(RuntimeVariables.replace("Post Reply"),
 			selenium.getText("//li[1]/span/a/span"));
 		selenium.clickAt("//li[1]/span/a/span",

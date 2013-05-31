@@ -30,9 +30,11 @@ public class EditCommentBodyNullTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("PC Comment"),
 			selenium.getText("//div[@class='lfr-discussion-message']"));
+		selenium.mouseOver("//li[3]/span/a/span[contains(.,'Edit')]");
 		assertEquals(RuntimeVariables.replace("Edit"),
-			selenium.getText("//li[3]/span/a/span"));
-		selenium.clickAt("//li[3]/span/a/span", RuntimeVariables.replace("Edit"));
+			selenium.getText("//li[3]/span/a/span[contains(.,'Edit')]"));
+		selenium.clickAt("//li[3]/span/a/span[contains(.,'Edit')]",
+			RuntimeVariables.replace("Edit"));
 		selenium.waitForVisible("//textarea[@name='_107_editReplyBody1']");
 		selenium.type("//textarea[@name='_107_editReplyBody1']",
 			RuntimeVariables.replace(""));
