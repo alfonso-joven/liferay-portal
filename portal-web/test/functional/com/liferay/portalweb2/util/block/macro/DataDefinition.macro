@@ -6,7 +6,7 @@
 
 		<execute action="CPDynamicdatalists#click" locator-key1="TOOLBAR_MANAGE_DATA_DEFINITIONS" />
 
-		<execute action="CPDynamicdatalistsDatadefinitions#selectFrame" locator-key1="PAGE_NAME" />
+		<execute action="CPDynamicdatalistsDatadefinitions#selectFrame" locator-key1="DATA_DEFINITIONS_IFRAME" />
 		<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="TOOLBAR_ADD" />
 
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#type" locator-key1="NAME_FIELD" value1="${dataDefinitionName}" />
@@ -151,7 +151,7 @@
 
 		<execute action="CPDynamicdatalists#click" locator-key1="TOOLBAR_MANAGE_DATA_DEFINITIONS" />
 
-		<execute action="CPDynamicdatalistsDatadefinitions#selectFrame" locator-key1="PAGE_NAME" />
+		<execute action="CPDynamicdatalistsDatadefinitions#selectFrame" locator-key1="DATA_DEFINITIONS_IFRAME" />
 		<execute action="CPDynamicdatalistsDatadefinitions#type" locator-key1="BASIC_SEARCH_FIELD" value1="${dataDefinitionName}" />
 		<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="BASIC_SEARCH_BUTTON" />
 		<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="DATA_DEFINITION_TABLE_ACTIONS_1" />
@@ -165,7 +165,7 @@
 
 		<execute action="CPDynamicdatalists#click" locator-key1="TOOLBAR_MANAGE_DATA_DEFINITIONS" />
 
-		<execute action="CPDynamicdatalistsDatadefinitions#selectFrame" locator-key1="PAGE_NAME" />
+		<execute action="CPDynamicdatalistsDatadefinitions#selectFrame" locator-key1="DATA_DEFINITIONS_IFRAME" />
 		<execute action="CPDynamicdatalistsDatadefinitions#type" locator-key1="BASIC_SEARCH_FIELD" value1="${dataDefinitionName}" />
 		<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="BASIC_SEARCH_BUTTON" />
 		<execute action="CPDynamicdatalistsDatadefinitions#assertTextNotPresent" value1="${dataDefinitionName}" />
@@ -180,7 +180,7 @@
 
 		<execute action="CPDynamicdatalists#click" locator-key1="TOOLBAR_MANAGE_DATA_DEFINITIONS" />
 
-		<execute action="CPDynamicdatalistsDatadefinitions#selectFrame" locator-key1="PAGE_NAME" />
+		<execute action="CPDynamicdatalistsDatadefinitions#selectFrame" locator-key1="DATA_DEFINITIONS_IFRAME" />
 		<execute action="CPDynamicdatalistsDatadefinitions#type" locator-key1="BASIC_SEARCH_FIELD" value1="${dataDefinitionName}" />
 		<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="BASIC_SEARCH_BUTTON" />
 		<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="DATA_DEFINITION_TABLE_ACTIONS_1" />
@@ -202,7 +202,7 @@
 
 		<execute action="CPDynamicdatalists#click" locator-key1="TOOLBAR_MANAGE_DATA_DEFINITIONS" />
 
-		<execute action="CPDynamicdatalistsDatadefinitions#selectFrame" locator-key1="PAGE_NAME" />
+		<execute action="CPDynamicdatalistsDatadefinitions#selectFrame" locator-key1="DATA_DEFINITIONS_IFRAME" />
 		<execute action="CPDynamicdatalistsDatadefinitions#type" locator-key1="BASIC_SEARCH_FIELD" value1="Data Definition" />
 		<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="BASIC_SEARCH_BUTTON" />
 
@@ -224,7 +224,7 @@
 
 		<execute action="CPDynamicdatalists#click" locator-key1="TOOLBAR_MANAGE_DATA_DEFINITIONS" />
 
-		<execute action="CPDynamicdatalistsDatadefinitions#selectFrame" locator-key1="PAGE_NAME" />
+		<execute action="CPDynamicdatalistsDatadefinitions#selectFrame" locator-key1="DATA_DEFINITIONS_IFRAME" />
 		<execute action="CPDynamicdatalistsDatadefinitions#type" locator-key1="BASIC_SEARCH_FIELD" value1="${dataDefinitionName}" />
 		<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="BASIC_SEARCH_BUTTON" />
 		<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="DATA_DEFINITION_TABLE_ACTIONS_1" />
