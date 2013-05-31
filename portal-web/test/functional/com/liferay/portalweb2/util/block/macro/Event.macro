@@ -1,7 +1,7 @@
 <definition>
-	<command name="cpAdd">
+	<command name="addCP">
 		<execute macro="Page#cpGoto">
-			<var name="portletName" value="${portletName}" />
+			<var name="portletName" value="Calendar" />
 		</execute>
 
 		<execute action="CPCalendar#click" locator-key1="VIEW_SUMMARY" />
@@ -17,60 +17,7 @@
 		<execute action="CPCalendar#assertElementPresent" locator-key1="EVENT_TABLE_ACTIONS" />
 	</command>
 
-	<command name="cpDelete">
-		<execute macro="Page#cpGoto">
-			<var name="portletName" value="${portletName}" />
-		</execute>
-
-		<execute action="CPCalendar#click" locator-key1="VIEW_SUMMARY" />
-		<execute action="CPCalendar#assertTextEquals" locator-key1="EVENT_TABLE_TITLE" value1="${eventTitle}" />
-		<execute action="CPCalendar#click" locator-key1="EVENT_TABLE_ACTIONS" />
-		<execute action="CPCalendar#click" locator-key1="EVENT_MENULIST_DELETE" />
-		<execute action="CPCalendar#confirm" locator-key1="CONFIRMATION" />
-		<execute action="CPCalendar#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
-	</command>
-
-	<command name="cpEdit">
-		<execute macro="Page#cpGoto">
-			<var name="portletName" value="${portletName}" />
-		</execute>
-
-		<execute action="CPCalendar#click" locator-key1="VIEW_SUMMARY" />
-		<execute action="CPCalendar#assertTextEquals" locator-key1="EVENT_TABLE_TITLE" value1="${eventTitle}" />
-		<execute action="CPCalendar#click" locator-key1="EVENT_TABLE_ACTIONS" />
-		<execute action="CPCalendar#click" locator-key1="EVENT_MENULIST_EDIT" />
-
-		<execute action="CPCalendarEditEvent#type" locator-key1="TITLE_FIELD" value1="${eventTitleEdit}" />
-		<execute action="CPCalendarEditEvent#click" locator-key1="SAVE_BUTTON" />
-
-		<execute action="CPCalendar#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
-		<execute action="CPCalendar#assertElementPresent" locator-key1="EVENT_TABLE_TIME" />
-		<execute action="CPCalendar#assertTextEquals" locator-key1="EVENT_TABLE_TITLE" value1="${eventTitleEdit}" />
-		<execute action="CPCalendar#assertTextEquals" locator-key1="EVENT_TABLE_TYPE" value1="Anniversary" />
-		<execute action="CPCalendar#assertElementPresent" locator-key1="EVENT_TABLE_ACTIONS" />
-	</command>
-
-	<command name="cpTearDown">
-		<execute macro="Page#cpGoto">
-			<var name="portletName" value="${portletName}" />
-		</execute>
-
-		<execute action="PGCalendar#click" locator-key1="VIEW_EVENTS" />
-
-		<while>
-			<condition action="CPCalendarEvents#isElementPresent" locator-key1="EVENT_TABLE_ACTIONS" />
-			<then>
-				<execute action="CPCalendarEvents#click" locator-key1="EVENT_TABLE_ACTIONS" />
-				<execute action="CPCalendarEvents#click" locator-key1="EVENT_MENULIST_DELETE" />
-				<execute action="CPCalendarEvents#confirm" locator-key1="CONFIRMATION" />
-				<execute action="CPCalendarEvents#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
-			</then>
-		</while>
-
-		<execute action="CPCalendarEvents#assertElementNotPresent" locator-key1="EVENT_TABLE_ACTIONS" />
-	</command>
-
-	<command name="pgAdd">
+	<command name="addPG">
 		<execute macro="Page#pgGoto">
 			<var name="pageName" value="${pageName}" />
 		</execute>
@@ -88,7 +35,20 @@
 		<execute action="PGCalendar#assertElementPresent" locator-key1="EVENT_TABLE_ACTIONS" />
 	</command>
 
-	<command name="pgDelete">
+	<command name="deleteCP">
+		<execute macro="Page#cpGoto">
+			<var name="portletName" value="Calendar" />
+		</execute>
+
+		<execute action="CPCalendar#click" locator-key1="VIEW_SUMMARY" />
+		<execute action="CPCalendar#assertTextEquals" locator-key1="EVENT_TABLE_TITLE" value1="${eventTitle}" />
+		<execute action="CPCalendar#click" locator-key1="EVENT_TABLE_ACTIONS" />
+		<execute action="CPCalendar#click" locator-key1="EVENT_MENULIST_DELETE" />
+		<execute action="CPCalendar#confirm" locator-key1="CONFIRMATION" />
+		<execute action="CPCalendar#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+	</command>
+
+	<command name="deletePG">
 		<execute macro="Page#pgGoto">
 			<var name="pageName" value="${pageName}" />
 		</execute>
@@ -101,7 +61,27 @@
 		<execute action="PGCalendar#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
 	</command>
 
-	<command name="pgEdit">
+	<command name="editCP">
+		<execute macro="Page#cpGoto">
+			<var name="portletName" value="Calendar" />
+		</execute>
+
+		<execute action="CPCalendar#click" locator-key1="VIEW_SUMMARY" />
+		<execute action="CPCalendar#assertTextEquals" locator-key1="EVENT_TABLE_TITLE" value1="${eventTitle}" />
+		<execute action="CPCalendar#click" locator-key1="EVENT_TABLE_ACTIONS" />
+		<execute action="CPCalendar#click" locator-key1="EVENT_MENULIST_EDIT" />
+
+		<execute action="CPCalendarEditEvent#type" locator-key1="TITLE_FIELD" value1="${eventTitleEdit}" />
+		<execute action="CPCalendarEditEvent#click" locator-key1="SAVE_BUTTON" />
+
+		<execute action="CPCalendar#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPCalendar#assertElementPresent" locator-key1="EVENT_TABLE_TIME" />
+		<execute action="CPCalendar#assertTextEquals" locator-key1="EVENT_TABLE_TITLE" value1="${eventTitleNew}" />
+		<execute action="CPCalendar#assertTextEquals" locator-key1="EVENT_TABLE_TYPE" value1="Anniversary" />
+		<execute action="CPCalendar#assertElementPresent" locator-key1="EVENT_TABLE_ACTIONS" />
+	</command>
+
+	<command name="editPG">
 		<execute macro="Page#pgGoto">
 			<var name="pageName" value="${pageName}" />
 		</execute>
@@ -111,7 +91,7 @@
 		<execute action="PGCalendar#click" locator-key1="EVENT_TABLE_ACTIONS" />
 		<execute action="PGCalendar#click" locator-key1="EVENT_MENULIST_EDIT" />
 
-		<execute action="PGCalendarEditEvent#type" locator-key1="TITLE_FIELD" value1="${eventTitleEdit}" />
+		<execute action="PGCalendarEditEvent#type" locator-key1="TITLE_FIELD" value1="${eventTitleNew}" />
 		<execute action="PGCalendarEditEvent#click" locator-key1="SAVE_BUTTON" />
 
 		<execute action="PGCalendar#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
@@ -119,5 +99,25 @@
 		<execute action="PGCalendar#assertTextEquals" locator-key1="EVENT_TABLE_TITLE" value1="${eventTitleEdit}" />
 		<execute action="PGCalendar#assertTextEquals" locator-key1="EVENT_TABLE_TYPE" value1="Anniversary" />
 		<execute action="PGCalendar#assertElementPresent" locator-key1="EVENT_TABLE_ACTIONS" />
+	</command>
+
+	<command name="tearDownCP">
+		<execute macro="Page#cpGoto">
+			<var name="portletName" value="Calendar" />
+		</execute>
+
+		<execute action="PGCalendar#click" locator-key1="VIEW_EVENTS" />
+
+		<while>
+			<condition action="CPCalendarEvents#isElementPresent" locator-key1="EVENT_TABLE_ACTIONS" />
+			<then>
+				<execute action="CPCalendarEvents#click" locator-key1="EVENT_TABLE_ACTIONS" />
+				<execute action="CPCalendarEvents#click" locator-key1="EVENT_MENULIST_DELETE" />
+				<execute action="CPCalendarEvents#confirm" locator-key1="CONFIRMATION" />
+				<execute action="CPCalendarEvents#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+			</then>
+		</while>
+
+		<execute action="CPCalendarEvents#assertElementNotPresent" locator-key1="EVENT_TABLE_ACTIONS" />
 	</command>
 </definition>

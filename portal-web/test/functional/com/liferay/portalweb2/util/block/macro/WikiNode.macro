@@ -1,5 +1,5 @@
 <definition>
-	<command name="cpAdd">
+	<command name="addCP">
 		<execute macro="Page#cpGoto">
 			<var name="portletName" value="Wiki" />
 		</execute>
@@ -15,7 +15,7 @@
 		<execute action="CPWiki#assertTextEquals" locator-key1="WIKI_NODE_TABLE_NUMBER_OF_PAGES_2" value1="0" />
 	</command>
 
-	<command name="cpDelete">
+	<command name="deleteCP">
 		<execute macro="Page#cpGoto">
 			<var name="portletName" value="Wiki" />
 		</execute>
@@ -27,7 +27,7 @@
 		<execute action="CPWiki#assertTextNotPresent" value1="${wikiNodeName}" />
 	</command>
 
-	<command name="cpEdit">
+	<command name="editCP">
 		<execute macro="Page#cpGoto">
 			<var name="portletName" value="Wiki" />
 		</execute>
@@ -45,7 +45,7 @@
 		<execute action="CPWiki#assertTextNotEquals" locator-key1="WIKI_NODE_TABLE_WIKI_2" value1="${wikiNodeName}" />
 	</command>
 
-	<command name="cpTearDown">
+	<command name="tearDownCP">
 		<execute macro="Page#cpGoto">
 			<var name="portletName" value="Wiki" />
 		</execute>
@@ -58,6 +58,5 @@
 				<execute action="CPWiki#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this?" />
 			</then>
 		</while>
-
 	</command>
 </definition>

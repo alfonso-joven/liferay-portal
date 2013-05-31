@@ -1,6 +1,4 @@
 <definition>
-	<var name="portletName" value="Calendar" />
-
 	<set-up>
 		<execute macro="User#pgFirstLogin" />
 	</set-up>
@@ -8,28 +6,39 @@
 	<command name="AddCalendarEvent">
 		<var name="eventTitle" value="Calendar Event Title" />
 
-		<execute macro="Event#cpAdd" />
+		<execute macro="Event#addCP">
+			<var name="eventTitle" value="${eventTitle}" />
+		</execute>
 	</command>
 
 	<command name="DeleteCalendarEvent">
 		<var name="eventTitle" value="Calendar Event Title" />
 
-		<execute macro="Event#cpAdd" />
+		<execute macro="Event#addCP">
+			<var name="eventTitle" value="${eventTitle}" />
+		</execute>
 
-		<execute macro="Event#cpDelete" />
+		<execute macro="Event#deleteCP">
+			<var name="eventTitle" value="${eventTitle}" />
+		</execute>
 	</command>
 
 	<command name="EditCalendarEvent">
 		<var name="eventTitle" value="Calendar Event Title" />
-		<var name="eventTitleEdit" value="Calendar Event Title Edit" />
+		<var name="eventTitleNew" value="Calendar Event Title Edit" />
 
-		<execute macro="Event#cpAdd" />
+		<execute macro="Event#addCP">
+			<var name="eventTitle" value="${eventTitle}" />
+		</execute>
 
-		<execute macro="Event#cpEdit" />
+		<execute macro="Event#editCP">
+			<var name="eventTitle" value="${eventTitle}" />
+			<var name="eventTitleNew" value="${eventTitleNew}" />
+		</execute>
 	</command>
 
 	<tear-down>
-		<execute macro="Event#cpTearDown" />
+		<execute macro="Event#tearDownCP" />
 
 		<execute macro="User#pgLogout" />
 	</tear-down>
