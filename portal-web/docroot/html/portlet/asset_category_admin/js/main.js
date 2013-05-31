@@ -1379,12 +1379,13 @@ AUI.add(
 						var start = currentPage * rowsPerPage;
 						var end = start + rowsPerPage;
 
-						Liferay.Service.Asset.AssetVocabulary.getJSONGroupVocabularies(
+						Liferay.Service.Asset.AssetVocabulary.getJSONGroupVocabulariesDisplay(
 							{
 								groupId: themeDisplay.getParentGroupId(),
 								name: query,
 								start: start,
 								end: end,
+								addDefaultVocabulary: true,
 								obc: null
 							},
 							function(result) {
