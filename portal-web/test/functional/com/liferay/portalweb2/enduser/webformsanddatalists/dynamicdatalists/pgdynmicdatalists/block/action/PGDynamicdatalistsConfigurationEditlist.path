@@ -10,7 +10,7 @@
 <tbody>
 <tr>
 	<td>PAGE_NAME</td>
-	<td>//iframe[contains(@src,'edit_configuration')]</td>
+	<td></td>
 	<td>PGDynamicdatalistsConfigurationEditlist</td>
 </tr>
 <tr>
