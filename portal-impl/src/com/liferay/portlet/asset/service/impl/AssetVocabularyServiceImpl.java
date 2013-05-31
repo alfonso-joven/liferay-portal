@@ -199,7 +199,7 @@ public class AssetVocabularyServiceImpl extends AssetVocabularyServiceBaseImpl {
 	@Override
 	public AssetVocabularyDisplay getGroupVocabulariesDisplay(
 			long groupId, String name, int start, int end,
-			OrderByComparator obc)
+			boolean addDefaultVocabulary, OrderByComparator obc)
 		throws PortalException, SystemException {
 
 		List<AssetVocabulary> vocabularies;
@@ -216,7 +216,7 @@ public class AssetVocabularyServiceImpl extends AssetVocabularyServiceBaseImpl {
 			total = getGroupVocabulariesCount(groupId);
 		}
 
-		if (total == 0) {
+		if (addDefaultVocabulary && (total == 0)) {
 			vocabularies = new ArrayList<AssetVocabulary>();
 
 			vocabularies.add(
