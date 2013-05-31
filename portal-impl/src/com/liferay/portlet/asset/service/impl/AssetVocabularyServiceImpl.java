@@ -44,6 +44,7 @@ import java.util.Map;
  * @author Eduardo Lundgren
  * @author Jorge Ferrer
  * @author Juan Fernández
+ * @author Tibor Lipusz
  */
 public class AssetVocabularyServiceImpl extends AssetVocabularyServiceBaseImpl {
 
@@ -234,6 +235,16 @@ public class AssetVocabularyServiceImpl extends AssetVocabularyServiceBaseImpl {
 			OrderByComparator obc)
 		throws PortalException, SystemException {
 
+		return getJSONGroupVocabulariesDisplay
+			(groupId, name, start, end, false, obc);
+	}
+
+	@Override
+	public JSONObject getJSONGroupVocabulariesDisplay(
+			long groupId, String name, int start, int end,
+			boolean addDefaultVocabulary, OrderByComparator obc)
+		throws PortalException, SystemException {
+
 		JSONObject jsonObject = JSONFactoryUtil.createJSONObject();
 
 		int page = end / (end - start);
@@ -241,7 +252,8 @@ public class AssetVocabularyServiceImpl extends AssetVocabularyServiceBaseImpl {
 		jsonObject.put("page", page);
 
 		AssetVocabularyDisplay assetVocabularyDisplay =
-			getGroupVocabulariesDisplay(groupId, name, start, end, obc);
+			getGroupVocabulariesDisplay(
+				groupId, name, start, end, addDefaultVocabulary, obc);
 
 		String vocabulariesJSON = JSONFactoryUtil.looseSerialize(
 			assetVocabularyDisplay.getVocabularies());
