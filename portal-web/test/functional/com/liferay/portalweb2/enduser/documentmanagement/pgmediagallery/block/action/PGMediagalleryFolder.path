@@ -52,12 +52,12 @@
 <!--ENTRY-->
 <tr>
 	<td>ENTRY_THUMBNAIL</td>
-	<td>//div[@class='image-icon']/a/span[@class='image-thumbnail']</td>
+	<td>//div[@id='_31_imageGalleryAssetInfo']/div[2]/a[contains(@class,'image-thumbnail')]/img</td>
 	<td></td>
 </tr>
 <tr>
 	<td>ENTRY_TITLE</td>
-	<td>//div[@class='image-icon']/a/span[@class='image-title']</td>
+	<td>//div[@id='_31_imageGalleryAssetInfo']/div[2]/a/span[@class='image-title']</td>
 	<td></td>
 </tr>
 <tr>
@@ -82,29 +82,24 @@
 	<td>Permissions </td>
 </tr>
 <tr>
-	<td>FOLDER_MENU_RECYCLE_BIN</td>
-	<td>//div[@class='lfr-component lfr-menu-list lfr-menu-expanded align-right null']/ul/li/a[contains(.,'Move to the Recycle Bin')]</td>
+	<td>FOLDER_MENU_DELETE</td>
+	<td>//div[@class='lfr-component lfr-menu-list lfr-menu-expanded align-right null']/ul/li/a[contains(.,'Delete')]</td>
 	<td>Move to the Recycle Bin</td>
 </tr>
 <tr>
 	<td>FOLDER_MENU_ADD_SUBFOLDER</td>
-	<td>//div[@class='lfr-component lfr-menu-list lfr-menu-expanded align-right null']/ul/li/a[contains(.,'Add Folder')]</td>
+	<td>//div[@class='lfr-component lfr-menu-list lfr-menu-expanded align-right null']/ul/li/a[contains(.,'Add Subfolder')]</td>
 	<td>Add Subfolder</td>
 </tr>
 <tr>
-	<td>FOLDER_MENU_MULTIPLE_DOCUMENTS</td>
+	<td>FOLDER_MENU_MULTIPLE_MEDIA</td>
 	<td>//div[@class='lfr-component lfr-menu-list lfr-menu-expanded align-right null']/ul/li/a[contains(.,'Multiple Media')]</td>
 	<td>Multiple Media</td>
 </tr>
 <tr>
-	<td>FOLDER_MENU_ADD_DOCUMENT</td>
+	<td>FOLDER_MENU_ADD_MEDIA</td>
 	<td>//div[@class='lfr-component lfr-menu-list lfr-menu-expanded align-right null']/ul/li/a[contains(.,'Add Media')]</td>
 	<td>Add Media</td>
-</tr>
-<tr>
-	<td>FOLDER_MENU_ADD_DOCUMENT</td>
-	<td>//div[@class='lfr-component lfr-menu-list lfr-menu-expanded align-right null']/ul/li/a[contains(.,'View Slide Show')]</td>
-	<td>View Slide Show</td>
 </tr>
 <tr>
 	<td>FOLDER_MENU_ADD_SHORTCUT</td>
@@ -116,7 +111,6 @@
 	<td>//div[@class='lfr-component lfr-menu-list lfr-menu-expanded align-right null']/ul/li/a[contains(.,'Access from Desktop')]</td>
 	<td>Access from Desktop</td>
 </tr>
-
 </tbody>
 </table>
 </body>

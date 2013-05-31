@@ -29,7 +29,7 @@
 	<td></td>
 </tr>
 <tr>
-	<td>NAME_FIELD</td>
+	<td>TITLE_FIELD</td>
 	<td>//div[@class='aui-fieldset-content ']/span[2]/span/span/input</td>
 	<td></td>
 </tr>
@@ -39,7 +39,7 @@
 	<td></td>
 </tr>
 <tr>
-	<td>SAVE_BUTTON</td>
+	<td>PUBLISH_BUTTON</td>
 	<td>//input[@value='Publish']</td>
 	<td>Publish</td>
 </tr>
@@ -48,7 +48,6 @@
 	<td>//input[@value='Cancel']</td>
 	<td>Cancel</td>
 </tr>
-
 </tbody>
 </table>
 </body>
