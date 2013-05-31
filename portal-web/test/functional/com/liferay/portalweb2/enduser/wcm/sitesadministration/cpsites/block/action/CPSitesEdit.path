@@ -77,6 +77,16 @@
 	<td></td>
 </tr>
 <tr>
+	<td>STAGING_ENABLED_ON_PUBLIC_PAGES_CHECKBOX</td>
+	<td>//input[@id='_165_branchingPublicCheckbox']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>STAGING_ENABLED_ON_PRIVATE_PAGES_CHECKBOX</td>
+	<td>//input[@id='_165_branchingPrivateCheckbox']</td>
+	<td></td>
+</tr>
+<tr>
 	<td>STAGING_BLOGS_CHECKBOX</td>
 	<td>//span/span[contains(.,'Blogs')]/span/input[2]</td>
 	<td></td>
@@ -137,8 +147,13 @@
 	<td></td>
 </tr>
 <tr>
-	<td>STAGING_POLLS_CHECKBOX</td>
+	<td>STAGING_POLLS_DISPLAY_CHECKBOX</td>
 	<td>//span/span[contains(.,'Polls Display')]/span/input[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>STAGING_RSS_CHECKBOX</td>
+	<td>//span/span[contains(.,'RSS')]/span/input[2]</td>
 	<td></td>
 </tr>
 <tr>

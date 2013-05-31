@@ -25,6 +25,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>ADD_STAGING</td>
+	<td>//li[@id='_145_addContent']/a</td>
+	<td></td>
+</tr>
+<tr>
 	<td>ADD_PAGE</td>
 	<td>//a[@id='addPage']</td>
 	<td></td>
@@ -84,6 +89,11 @@
 <!--GO_TO-->
 <tr>
 	<td>GO_TO</td>
+	<td>//li[@id='_145_mySites']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>GO_TO_STAGING</td>
 	<td>//li[@id='_145_mySites']/a</td>
 	<td></td>
 </tr>

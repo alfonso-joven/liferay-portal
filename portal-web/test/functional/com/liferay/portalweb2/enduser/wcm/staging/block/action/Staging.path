@@ -1,13 +1,13 @@
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>STAGING</title>
+<title>Staging</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">STAGING</td></tr>
-</thead><tbody>
+<tr><td rowspan="1" colspan="3">Staging</td></tr>
+</thead>
+<tbody>
 <tr>
 	<td>PAGE_NAME</td>
 	<td></td>
@@ -19,13 +19,18 @@
 	<td></td>
 </tr>
 <tr>
+	<td>LIVE_BUTTON</td>
+	<td>//div[@class='staging-bar']/ul/li/span/a[contains(.,'Live')]</td>
+	<td></td>
+</tr>
+<tr>
 	<td>LIVE_VIEW</td>
 	<td>//body[contains(@class,'live-view')]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>STAGING_BUTTON</td>
-	<td>//span/a[contains(.,'Staging')]</td>
+	<td>//div[@class='staging-bar']/ul/li[2]/span/a[contains(.,'Staging')]</td>
 	<td></td>
 </tr>
 <tr>
@@ -111,6 +116,7 @@
 	<td>//a[@id='_170_manageLayoutSetBranches']</td>
 	<td></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 </body>
 </html>
