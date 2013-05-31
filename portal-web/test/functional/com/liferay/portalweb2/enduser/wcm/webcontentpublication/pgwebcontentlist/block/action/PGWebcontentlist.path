@@ -62,17 +62,17 @@
 <!--WEB_CONTENT_TABLE-->
 <tr>
 	<td>WEB_CONTENT_TABLE_TITLE_1</td>
-	<td>xpath=(//tbody/tr[3]/td[1])[1]</td>
+	<td>xpath=(//tbody/tr[3]/td[1]/a)[1]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>WEB_CONTENT_TABLE_DISPLAY_DATE_1</td>
-	<td>xpath=(//tbody/tr[3]/td[2])[1]</td>
+	<td>xpath=(//tbody/tr[3]/td[2]/a)[1]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>WEB_CONTENT_TABLE_AUTHOR_1</td>
-	<td>xpath=(//tbody/tr[3]/td[3])[1]</td>
+	<td>xpath=(//tbody/tr[3]/td[3]/a)[1]</td>
 	<td></td>
 </tr>
 </tbody>
