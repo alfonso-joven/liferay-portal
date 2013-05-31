@@ -384,6 +384,8 @@ public class EditPermissionsAction extends EditConfigurationAction {
 				layout.setModifiedDate(new Date());
 
 				LayoutLocalServiceUtil.updateLayout(layout);
+
+				CacheUtil.clearCache(layout.getCompanyId());
 			}
 		}
 
