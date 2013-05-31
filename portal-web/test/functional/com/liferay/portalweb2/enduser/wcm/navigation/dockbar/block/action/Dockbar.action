@@ -30,8 +30,14 @@
 		<case locator-key1="ADD">
 			<execute function="MouseOver#textMouseOverClickDockbar" value1="Add" />
 		</case>
+		<case locator-key1="ADD_STAGING">
+			<execute function="MouseOver#textMouseOverClickDockbar" value1="Add" />
+		</case>
 		<case locator-key1="GO_TO">
 			<execute function="MouseOver#textMouseOverClickDockbar" value1="Go to" />
+		</case>
+		<case locator-key1="GO_TO_STAGING">
+			<execute function="MouseOver#mouseOver" value1="Go to" />
 		</case>
 		<case locator-key1="MANAGE">
 			<execute function="MouseOver#textMouseOverClickDockbar" value1="Manage" />
