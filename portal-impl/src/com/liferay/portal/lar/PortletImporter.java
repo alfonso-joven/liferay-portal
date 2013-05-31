@@ -2085,23 +2085,6 @@ public class PortletImporter {
 						}
 					}
 					else if (className.equals(
-								JournalStructure.class.getName())) {
-
-						JournalStructure journalStructure =
-							JournalStructureUtil.fetchByUUID_G(
-								uuid, portletDataContext.getScopeGroupId());
-
-						if (journalStructure == null) {
-							journalStructure =
-								JournalStructureUtil.fetchByUUID_G(
-									uuid, companyGroupId);
-						}
-
-						if (journalStructure != null) {
-							newPrimaryKey = journalStructure.getId();
-						}
-					}
-					else if (className.equals(
 								DLFileEntryType.class.getName())) {
 
 						DLFileEntryType dlFileEntryType =
@@ -2116,6 +2099,23 @@ public class PortletImporter {
 						if (dlFileEntryType != null) {
 							newPrimaryKey =
 								dlFileEntryType.getFileEntryTypeId();
+						}
+					}
+					else if (className.equals(
+								JournalStructure.class.getName())) {
+
+						JournalStructure journalStructure =
+							JournalStructureUtil.fetchByUUID_G(
+								uuid, portletDataContext.getScopeGroupId());
+
+						if (journalStructure == null) {
+							journalStructure =
+								JournalStructureUtil.fetchByUUID_G(
+									uuid, companyGroupId);
+						}
+
+						if (journalStructure != null) {
+							newPrimaryKey = journalStructure.getId();
 						}
 					}
 				}

@@ -1688,15 +1688,6 @@ public class PortletExporter {
 						uuid = assetVocabulary.getUuid();
 					}
 				}
-				else if (className.equals(JournalStructure.class.getName())) {
-					JournalStructure journalStructure =
-						JournalStructureLocalServiceUtil.fetchJournalStructure(
-							primaryKeyLong);
-
-					if (journalStructure != null) {
-						uuid = journalStructure.getUuid();
-					}
-				}
 				else if (className.equals(DLFileEntryType.class.getName())) {
 					DLFileEntryType dlFileEntryType =
 						DLFileEntryTypeLocalServiceUtil.getFileEntryType(
@@ -1704,6 +1695,15 @@ public class PortletExporter {
 
 					if (dlFileEntryType != null) {
 						uuid = dlFileEntryType.getUuid();
+					}
+				}
+				else if (className.equals(JournalStructure.class.getName())) {
+					JournalStructure journalStructure =
+						JournalStructureLocalServiceUtil.fetchJournalStructure(
+							primaryKeyLong);
+
+					if (journalStructure != null) {
+						uuid = journalStructure.getUuid();
 					}
 				}
 
