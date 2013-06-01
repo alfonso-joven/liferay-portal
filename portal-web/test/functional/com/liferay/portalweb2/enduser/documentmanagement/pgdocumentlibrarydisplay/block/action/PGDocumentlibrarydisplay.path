@@ -56,17 +56,17 @@
 <!--OPTIONS_MENULIST-->
 <tr>
 	<td>OPTIONS_MENULIST_LOOK_AND_FEEL</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Look and Feel')]</td>
+	<td>//a[@role='menuitem' and contains(.,'Look and Feel')]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>OPTIONS_MENULIST_CONFIGURATION</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]</td>
+	<td>//a[@role='menuitem' and contains(.,'Configuration')]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>OPTIONS_MENULIST_EXPORT_IMPORT</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Export / Import')]</td>
+	<td>//a[@role='menuitem' and contains(.,'Export / Import')]</td>
 	<td></td>
 </tr>
 <tr>
