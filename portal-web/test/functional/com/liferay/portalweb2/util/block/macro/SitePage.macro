@@ -108,6 +108,44 @@
 		</execute>
 	</command>
 
+	<command name="cpExportLar">
+		<execute macro="Page#cpGoto">
+			<var name="portletName" value="Site Pages" />
+			<var name="siteScopeName" value="${siteName}" />
+		</execute>
+
+		<execute action="CPSitepages#click" locator-key1="TOOLBAR_EXPORT" />
+
+		<execute action="CPSitepagesExport#selectFrame" locator-key1="EXPORT_IFRAME" />
+		<execute action="CPSitepagesExport#type" locator-key1="EXPORT_FILE_FIELD" value1="${file}" />
+		<execute action="CPSitepagesExport#check" locator-key1="APPLICATIONS_MESSAGE_BOARDS_CHECKBOX" />
+		<execute action="CPSitepagesExport#check" locator-key1="OTHER_PERMISSIONS_CHECKBOX" />
+		<execute action="CPSitepagesExport#check" locator-key1="OTHER_CATEGORIES_CHECKBOX" />
+		<execute action="CPSitepagesExport#click" locator-key1="EXPORT_BUTTON" />
+		<execute action="CPSitepagesExport#downloadTempFile" locator1="${file}" />
+		<execute action="CPSitepagesExport#selectFrame" />
+	</command>
+
+	<command name="cpImportLar">
+		<execute macro="Page#cpGoto">
+			<var name="portletName" value="Site Pages" />
+			<var name="siteScopeName" value="${siteName}" />
+		</execute>
+
+		<execute action="CPSitepages#click" locator-key1="TOOLBAR_IMPORT" />
+
+		<execute action="CPSitepagesImport#selectFrame" locator-key1="IMPORT_IFRAME" />
+		<execute action="CPSitepagesImport#uploadTempFile" locator-key1="FILE_UPLOAD_FIELD" value1="${file}" />
+		<execute action="CPSitepagesImport#check" locator-key1="PAGES_DELETE_MISSING_PAGES_CHECKBOX" />
+		<execute action="CPSitepagesImport#check" locator-key1="APPLICATIONS_DELETE_PORTLET_DATA_CHECKBOX" />
+		<execute action="CPSitepagesImport#check" locator-key1="OTHER_PERMISSIONS_CHECKBOX" />
+		<execute action="CPSitepagesImport#check" locator-key1="OTHER_CATEGORIES_CHECKBOX" />
+		<execute action="CPSitepagesImport#click" locator-key1="IMPORT_BUTTON" />
+		<execute action="CPSitepagesImport#selectFrame" />
+
+		<execute action="CPSitepages#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+	</command>
+
 	<command name="openPageCP">
 		<execute action="CPSitepages#click" locator-key1="PAGE_TREE_PAGE_ARROW_1" />
 

@@ -25,6 +25,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>DETAILS_MEMBERSHIP_TYPE_SELECT</td>
+	<td>//select[@id='_134_type']</td>
+	<td></td>
+</tr>
+<tr>
 	<td></td>
 	<td></td>
 	<td></td>

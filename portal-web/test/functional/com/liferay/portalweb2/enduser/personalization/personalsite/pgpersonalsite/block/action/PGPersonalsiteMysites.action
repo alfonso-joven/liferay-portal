@@ -1,0 +1,13 @@
+<definition>
+	<command name="assertTextEquals">
+		<case locator-key1="MY_SITES_INFO_MESSAGE">
+			<execute function="AssertTextEquals#assertText" value1="No sites were found." />
+		</case>
+	</command>
+
+	<command name="click">
+		<case locator-key1="MY_SITES_AVAILABLE_SITES">
+			<execute function="Click#textClickAtAndWait" value1="Available Sites" />
+		</case>
+	</command>
+</definition>

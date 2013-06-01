@@ -32,6 +32,20 @@
 		</if>
 
 		<execute action="CPSitesAdd#type" locator-key1="DETAILS_NAME" value1="${siteName}" />
+
+		<if>
+			<equals arg1="${membershipType}" arg2="Private" />
+			<then>
+				<execute action="CPSitesAdd#select" locator-key1="DETAILS_MEMBERSHIP_TYPE_SELECT" value1="Private" />
+			</then>
+			<elseif>
+				<equals arg1="${membershipType}" arg2="Restricted" />
+				<then>
+					<execute action="CPSitesAdd#select" locator-key1="DETAILS_MEMBERSHIP_TYPE_SELECT" value1="Restricted" />
+				</then>
+			</elseif>
+		</if>
+
 		<execute action="CPSitesAdd#click" locator-key1="MENU_SAVE" />
 
 		<execute action="CPSitesEdit#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />

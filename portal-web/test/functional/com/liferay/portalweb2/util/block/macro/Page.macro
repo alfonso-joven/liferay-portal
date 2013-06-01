@@ -33,8 +33,18 @@
 	</command>
 
 	<command name="pgGoto">
-		<execute action="Home#open" locator-key1="HOME_URL" />
-		<execute action="Home#click" locator1="link=${pageName}" />
+		<if>
+			<isset var="siteName" />
+			<then>
+				<execute macro="Page#pgGotoSitePublic">
+					<var name="pageName" value="${pageName}" />
+				</execute>
+			</then>
+			<else>
+				<execute action="Home#open" locator-key1="HOME_URL" />
+				<execute action="Home#click" locator1="link=${pageName}" />
+			</else>
+		</if>
 	</command>
 
 	<command name="pgGotoOrganization">

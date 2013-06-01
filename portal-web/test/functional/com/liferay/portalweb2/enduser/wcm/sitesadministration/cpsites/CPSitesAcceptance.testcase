@@ -27,7 +27,131 @@
 		</execute>
 	</command>
 
+	<command name="ImportLARSite">
+		<var name="file" value="Sites_Public_Pages.lar" />
+		<var name="threadSubject" value="MB Thread Message Subject" />
+		<var name="threadBody" value="MB Thread Message Body" />
+		<var name="threadReplyBody" value="MB Thread Reply Body" />
+		<var name="pageName" value="Message Boards Page" />
+		<var name="portletName" value="Message Boards" />
+		<var name="siteName" value="Site Name" />
+		<var name="sitePageName" value="Site Page" />
+
+		<execute macro="Site#addBlankCP">
+			<var name="siteName" value="${siteName}" />
+		</execute>
+
+		<execute macro="SitePage#addPublicCP">
+			<var name="sitePageName" value="${sitePageName}" />
+		</execute>
+
+		<execute macro="Page#pgAddSitePublic">
+			<var name="pageName" value="${pageName}" />
+		</execute>
+
+		<execute macro="Portlet#pgAddSitePublic">
+			<var name="pageName" value="${pageName}" />
+			<var name="portletName" value="${portletName}" />
+		</execute>
+
+		<execute macro="MessageboardsThread#addPG">
+			<var name="pageName" value="${pageName}" />
+			<var name="siteName" value="${siteName}" />
+			<var name="threadSubject" value="${threadSubject}" />
+			<var name="threadBody" value="${threadBody}" />
+		</execute>
+
+		<execute macro="MessageboardsThread#replyPG">
+			<var name="pageName" value="${pageName}" />
+			<var name="siteName" value="${siteName}" />
+			<var name="threadSubject" value="${threadSubject}" />
+			<var name="threadBody" value="${threadBody}" />
+		</execute>
+
+		<execute macro="MessageboardsThread#pgViewReply">
+			<var name="threadSubject" value="${threadSubject}" />
+			<var name="threadBody" value="${threadBody}" />
+			<var name="threadReplyBody" value="${threadReplyBody}" />
+		</execute>
+
+		<execute macro="SitePage#cpExportLar">
+			<var name="file" value="${file}" />
+			<var name="siteName" value="${siteName}" />
+		</execute>
+
+		<execute macro="Site#tearDownCP" />
+
+		<execute macro="Site#addBlankCP">
+			<var name="siteName" value="${siteName}" />
+		</execute>
+
+		<execute macro="SitePage#cpImportLar">
+			<var name="file" value="${file}" />
+			<var name="siteName" value="${siteName}" />
+		</execute>
+
+		<execute macro="Page#pgGoto">
+			<var name="siteName" value="${siteName}" />
+		</execute>
+
+		<execute macro="MessageboardsThread#pgViewReply">
+			<var name="threadSubject" value="${threadSubject}" />
+			<var name="threadBody" value="${threadBody}" />
+			<var name="threadReplyBody" value="${threadReplyBody}" />
+		</execute>
+	</command>
+
+	<command name="JoinSitePrivate">
+		<var name="membershipType" value="Private" />
+		<var name="siteName" value="Site Name" />
+		<var name="userEmailAddress" value="userea@liferay.com" />
+		<var name="userFirstName" value="userfn" />
+		<var name="userLastName" value="userln" />
+		<var name="userScreenName" value="usersn" />
+
+		<execute macro="Site#addBlankCP">
+			<var name="membershipType" value="${membershipType}" />
+			<var name="siteName" value="${siteName}" />
+		</execute>
+
+		<execute macro="User#addCP">
+			<var name="userEmailAddress" value="${userEmailAddress}" />
+			<var name="userFirstName" value="${userFirstName}" />
+			<var name="userLastName" value="${userLastName}" />
+			<var name="userScreenName" value="${userScreenName}" />
+		</execute>
+
+		<execute macro="User#editPasswordCP">
+			<var name="userEmailAddress" value="${userEmailAddress}" />
+			<var name="userScreenName" value="${userScreenName}" />
+		</execute>
+
+		<execute macro="User#pgLogout" />
+
+		<execute macro="User#pgLogin">
+			<var name="userEmailAddress" value="${userEmailAddress}" />
+			<var name="password" value="test" />
+		</execute>
+
+		<execute action="Home#open" locator1="/user/${userScreenName}/home" />
+
+		<execute action="PGPersonalsiteMysites#assertTextEquals" locator-key1="MY_SITES_INFO_MESSAGE" />
+		<execute action="PGPersonalsiteMysites#click" locator-key1="MY_SITES_AVAILABLE_SITES" />
+
+		<execute action="PGPersonalsiteAvailablesites#assertTextNotPresent" value1="${siteName}" />
+		<execute action="PGPersonalsiteAvailablesites#type" locator-key1="AVAILABLE_SITES_SEARCH_FIELD" value1="${siteName}" />
+		<execute action="PGPersonalsiteAvailablesites#click" locator-key1="AVAILABLE_SITES_SEARCH_BUTTON" />
+		<execute action="PGPersonalsiteAvailablesites#assertTextNotPresent" value1="${siteName}" />
+		<execute action="PGPersonalsiteAvailablesites#assertTextEquals" locator-key1="AVAILABLE_SITES_INFO_MESSAGE" />
+	</command>
+
 	<tear-down>
+		<execute macro="User#pgLogout" />
+
+		<execute macro="User#pgLogin" />
+
+		<execute macro="User#tearDownCP" />
+
 		<execute macro="Site#tearDownCP" />
 	</tear-down>
 </definition>
