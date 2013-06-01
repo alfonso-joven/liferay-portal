@@ -8,4 +8,10 @@
 	<command name="selectFrameTop">
 		<execute selenium="selectFrame" argument1="relative=top" />
 	</command>
+
+	<command name="selectFrameWaitForScript">
+		<execute function="SelectFrame#selectFrame" />
+
+		<execute selenium="waitForElementPresent" argument1="//script[contains(@src,'/liferay/navigation_interaction.js')]" />
+	</command>
 </definition>

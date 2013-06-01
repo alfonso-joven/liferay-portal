@@ -3,6 +3,7 @@
 		<execute macro="Page#cpGoto">
 			<var name="portletName" value="Web Content" />
 		</execute>
+
 		<execute action="CPWebcontent#click" locator-key1="ADD_BUTTON" />
 
 		<execute action="CPWebcontentAddwebcontent#type" locator-key1="TITLE_FIELD" value1="${webContentTitle}" />
@@ -31,7 +32,7 @@
 	</command>
 
 	<command name="addPGviaWCD">
-			<execute macro="Page#pgGoto">
+		<execute macro="Page#pgGoto">
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
