@@ -5,16 +5,24 @@
 	<set-up>
 		<execute macro="User#pgFirstLogin" />
 
-		<execute macro="Page#pgAdd" />
+		<execute macro="Page#pgAdd">
+			<var name="pageName" value="${pageName}" />
+		</execute>
 
-		<execute macro="Portlet#pgAdd" />
+		<execute macro="Portlet#pgAdd">
+			<var name="pageName" value="${pageName}" />
+			<var name="portletName" value="${portletName}" />
+		</execute>
 	</set-up>
 
 	<command name="AddWebContent">
 		<var name="webContentTitle" value="WC WebContent Title" />
 		<var name="webContentContent" value="WC WebContent Content" />
 
-		<execute macro="WebContent#addPGviaWCD" />
+		<execute macro="WebContent#addPGviaWCD">
+			<var name="webContentTitle" value="${webContentTitle}" />
+			<var name="webContentContent" value="${webContentContent}" />
+		</execute>
 	</command>
 
 	<command name="EditWebContent">
@@ -23,8 +31,14 @@
 		<var name="webContentTitleEdit" value="WC WebContent Title Edit" />
 		<var name="webContentContentEdit" value="WC WebContent Content Edit" />
 
-		<execute macro="WebContent#addPGviaWCD" />
-		<execute macro="WebContent#editPGviaWCD" />
+		<execute macro="WebContent#addPGviaWCD">
+			<var name="webContentContent" value="${webContentContent}" />
+			<var name="webContentTitle" value="${webContentTitle}" />
+		</execute>
+		<execute macro="WebContent#editPGviaWCD">
+			<var name="webContentContentEdit" value="${webContentContentEdit}" />
+			<var name="webContentTitleEdit" value="${webContentTitleEdit}" />
+		</execute>
 	</command>
 
 	<tear-down>
