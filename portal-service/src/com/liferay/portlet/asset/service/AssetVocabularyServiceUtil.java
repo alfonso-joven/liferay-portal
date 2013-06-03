@@ -56,7 +56,8 @@ public class AssetVocabularyServiceUtil {
 	}
 
 	/**
-	* @deprecated
+	* @deprecated As of 6.1.0 {@link #addVocabulary(String, Map, Map, String,
+	ServiceContext)}
 	*/
 	public static com.liferay.portlet.asset.model.AssetVocabulary addVocabulary(
 		java.util.Map<java.util.Locale, java.lang.String> titleMap,
@@ -160,11 +161,13 @@ public class AssetVocabularyServiceUtil {
 
 	public static com.liferay.portlet.asset.model.AssetVocabularyDisplay getGroupVocabulariesDisplay(
 		long groupId, java.lang.String name, int start, int end,
+		boolean addDefaultVocabulary,
 		com.liferay.portal.kernel.util.OrderByComparator obc)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return getService()
-				   .getGroupVocabulariesDisplay(groupId, name, start, end, obc);
+				   .getGroupVocabulariesDisplay(groupId, name, start, end,
+			addDefaultVocabulary, obc);
 	}
 
 	public static com.liferay.portal.kernel.json.JSONObject getJSONGroupVocabularies(
@@ -174,6 +177,17 @@ public class AssetVocabularyServiceUtil {
 			com.liferay.portal.kernel.exception.SystemException {
 		return getService()
 				   .getJSONGroupVocabularies(groupId, name, start, end, obc);
+	}
+
+	public static com.liferay.portal.kernel.json.JSONObject getJSONGroupVocabulariesDisplay(
+		long groupId, java.lang.String name, int start, int end,
+		boolean addDefaultVocabulary,
+		com.liferay.portal.kernel.util.OrderByComparator obc)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .getJSONGroupVocabulariesDisplay(groupId, name, start, end,
+			addDefaultVocabulary, obc);
 	}
 
 	public static java.util.List<com.liferay.portlet.asset.model.AssetVocabulary> getVocabularies(
@@ -191,7 +205,8 @@ public class AssetVocabularyServiceUtil {
 	}
 
 	/**
-	* @deprecated
+	* @deprecated As of 6.1.0, {@link #updateVocabulary(long, String, Map, Map,
+	String, ServiceContext)}
 	*/
 	public static com.liferay.portlet.asset.model.AssetVocabulary updateVocabulary(
 		long vocabularyId,
