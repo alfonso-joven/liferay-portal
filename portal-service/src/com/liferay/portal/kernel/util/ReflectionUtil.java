@@ -17,6 +17,7 @@ package com.liferay.portal.kernel.util;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 
 import java.util.List;
 
@@ -49,6 +50,15 @@ public class ReflectionUtil {
 
 		if (!field.isAccessible()) {
 			field.setAccessible(true);
+		}
+
+		int modifiers = field.getModifiers();
+
+		if ((modifiers & Modifier.FINAL) == Modifier.FINAL) {
+			Field modifiersField = ReflectionUtil.getDeclaredField(
+				Field.class, "modifiers");
+
+			modifiersField.setInt(field, modifiers & ~Modifier.FINAL);
 		}
 
 		return field;

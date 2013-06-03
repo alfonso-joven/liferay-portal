@@ -56,7 +56,7 @@ public class CookieKeysTest {
 
 		mockHttpServletRequest.setServerName("www.liferay.com");
 
-		Field field = StaticUtil.getSettableField(
+		Field field = ReflectionUtil.getDeclaredField(
 			CookieKeys.class, "_SESSION_COOKIE_DOMAIN");
 
 		Object value = field.get(null);
@@ -80,7 +80,7 @@ public class CookieKeysTest {
 
 		mockHttpServletRequest.setServerName("www.liferay.com");
 
-		Field field = StaticUtil.getSettableField(
+		Field field = ReflectionUtil.getDeclaredField(
 			CookieKeys.class, "_SESSION_COOKIE_USE_FULL_HOSTNAME");
 
 		Object value = field.get(null);
@@ -104,7 +104,7 @@ public class CookieKeysTest {
 
 		mockHttpServletRequest.setServerName("www.liferay.com");
 
-		Field field = StaticUtil.getSettableField(
+		Field field = ReflectionUtil.getDeclaredField(
 			CookieKeys.class, "_SESSION_COOKIE_USE_FULL_HOSTNAME");
 
 		Object value = field.get(null);
@@ -125,6 +125,5 @@ public class CookieKeysTest {
 	public void setup() {
 		PropsUtil.setProps(new PropsImpl());
 	}
-
 
 }
