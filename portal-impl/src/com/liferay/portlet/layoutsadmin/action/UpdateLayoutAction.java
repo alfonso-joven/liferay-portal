@@ -201,9 +201,6 @@ public class UpdateLayoutAction extends JSONAction {
 		String name = ParamUtil.getString(request, "name");
 		String languageId = ParamUtil.getString(request, "languageId");
 
-		LayoutLocalServiceUtil.updateScopedPortletNames(
-			groupId, privateLayout, layoutId, name, languageId);
-
 		if (plid <= 0) {
 			LayoutServiceUtil.updateName(
 				groupId, privateLayout, layoutId, name, languageId);

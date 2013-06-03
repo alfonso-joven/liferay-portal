@@ -36,7 +36,6 @@ import com.liferay.portal.kernel.util.FileUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ListUtil;
 import com.liferay.portal.kernel.util.LocaleUtil;
-import com.liferay.portal.kernel.util.LocalizationUtil;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
@@ -1829,9 +1828,6 @@ public class LayoutLocalServiceImpl extends LayoutLocalServiceBaseImpl {
 		Layout layout = layoutPersistence.findByG_P_L(
 			groupId, privateLayout, layoutId);
 
-		List<Locale> modifiedLocales = LocalizationUtil.getModifiedLocales(
-			layout.getNameMap(), nameMap);
-
 		if (parentLayoutId != layout.getParentLayoutId()) {
 			int priority = layoutLocalServiceHelper.getNextPriority(
 				groupId, privateLayout, parentLayoutId,
@@ -1898,13 +1894,6 @@ public class LayoutLocalServiceImpl extends LayoutLocalServiceBaseImpl {
 				imageLocalService.updateImage(
 					layout.getIconImageId(), iconBytes);
 			}
-		}
-
-		// Portlet preferences
-
-		if (!modifiedLocales.isEmpty()) {
-			updateScopedPortletNames(
-				groupId, privateLayout, layoutId, nameMap, modifiedLocales);
 		}
 
 		// Expando
