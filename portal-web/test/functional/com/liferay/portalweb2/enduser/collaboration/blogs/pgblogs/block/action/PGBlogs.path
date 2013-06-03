@@ -75,6 +75,21 @@
 	<td></td>
 </tr>
 <tr>
+	<td>ENTRY_WORKFLOW_STATUS_1</td>
+	<td>xpath=(//div[@class='entry-content']/h3)[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>ENTRY_WORKFLOW_STATUS_2</td>
+	<td>xpath=(//div[@class='entry-content']/h3)[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>ENTRY_WORKFLOW_STATUS_3</td>
+	<td>xpath=(//div[@class='entry-content']/h3)[3]</td>
+	<td></td>
+</tr>
+<tr>
 	<td>ENTRY_CONTENT_1</td>
 	<td>xpath=(//div[@class='entry-body'])[1]</td>
 	<td></td>

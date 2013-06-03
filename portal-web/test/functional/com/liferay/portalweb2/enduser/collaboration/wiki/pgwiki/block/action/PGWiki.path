@@ -41,6 +41,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>NAVIGATION_DRAFT_PAGES</td>
+	<td>//ul[@class='top-links-navigation']/li/span/a[contains(.,'Draft Pages')]/span</td>
+	<td></td>
+</tr>
+<tr>
 	<td></td>
 	<td></td>
 	<td></td>
