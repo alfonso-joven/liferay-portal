@@ -178,7 +178,7 @@ Element contentEl = (Element)request.getAttribute(WebKeys.JOURNAL_ARTICLE_CONTEN
 						editorImpl="<%= EDITOR_WYSIWYG_IMPL_KEY %>"
 						height="460"
 						initMethod='<%= "initEditor" + elInstanceId %>'
-						languageId="<%= languageId %>"
+						contentsLanguageId="<%= languageId %>"
 						name="<%= textAreaInputName %>"
 						toolbarSet="liferay-article"
 						width="500"
