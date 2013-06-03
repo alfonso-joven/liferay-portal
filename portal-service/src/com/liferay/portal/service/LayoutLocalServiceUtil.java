@@ -1475,6 +1475,9 @@ public class LayoutLocalServiceUtil {
 		return getService().updatePriority(plid, priority);
 	}
 
+	/**
+	* @deprecated As of 6.2.0, with no direct replacement
+	*/
 	public static void updateScopedPortletNames(long groupId,
 		boolean privateLayout, long layoutId,
 		java.util.Map<java.util.Locale, java.lang.String> nameMap,
@@ -1499,6 +1502,7 @@ public class LayoutLocalServiceUtil {
 	* @throws PortalException if a matching layout could not be found
 	* @throws SystemException if a system exception occurred
 	* @see com.liferay.portlet.portletconfiguration.action.EditScopeAction
+	* @deprecated As of 6.2.0, with no direct replacement
 	*/
 	public static void updateScopedPortletNames(long groupId,
 		boolean privateLayout, long layoutId, java.lang.String name,

@@ -1450,6 +1450,9 @@ public class LayoutLocalServiceWrapper implements LayoutLocalService,
 		return _layoutLocalService.updatePriority(plid, priority);
 	}
 
+	/**
+	* @deprecated As of 6.2.0, with no direct replacement
+	*/
 	public void updateScopedPortletNames(long groupId, boolean privateLayout,
 		long layoutId,
 		java.util.Map<java.util.Locale, java.lang.String> nameMap,
@@ -1473,6 +1476,7 @@ public class LayoutLocalServiceWrapper implements LayoutLocalService,
 	* @throws PortalException if a matching layout could not be found
 	* @throws SystemException if a system exception occurred
 	* @see com.liferay.portlet.portletconfiguration.action.EditScopeAction
+	* @deprecated As of 6.2.0, with no direct replacement
 	*/
 	public void updateScopedPortletNames(long groupId, boolean privateLayout,
 		long layoutId, java.lang.String name, java.lang.String languageId)
