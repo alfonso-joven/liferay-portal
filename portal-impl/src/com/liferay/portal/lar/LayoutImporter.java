@@ -17,6 +17,7 @@ package com.liferay.portal.lar;
 import com.liferay.counter.service.CounterLocalServiceUtil;
 import com.liferay.portal.LARFileException;
 import com.liferay.portal.LARTypeException;
+import com.liferay.portal.LayoutFriendlyURLException;
 import com.liferay.portal.LayoutImportException;
 import com.liferay.portal.LayoutPrototypeException;
 import com.liferay.portal.LocaleException;
@@ -1091,6 +1092,22 @@ public class LayoutImporter {
 				newLayoutsMap.put(oldLayoutId, existingLayout);
 
 				return;
+			}
+
+			for (Layout previousLayout : previousLayouts) {
+				String previousLayoutFriendlyURL =
+					previousLayout.getFriendlyURL();
+
+				String previousLayoutUuid = previousLayout.getUuid();
+
+				if (previousLayoutFriendlyURL.equals(friendlyURL) &&
+					((existingLayout == null) ||
+					 !previousLayoutUuid.equals(layout.getUuid()))) {
+
+					throw new LayoutFriendlyURLException(
+						previousLayout,
+						LayoutFriendlyURLException.POSSIBLE_DUPLICATE);
+				}
 			}
 		}
 		else {

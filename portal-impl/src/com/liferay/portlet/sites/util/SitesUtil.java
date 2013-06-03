@@ -14,6 +14,7 @@
 
 package com.liferay.portlet.sites.util;
 
+import com.liferay.portal.LayoutFriendlyURLException;
 import com.liferay.portal.RequiredLayoutException;
 import com.liferay.portal.events.EventsProcessorUtil;
 import com.liferay.portal.kernel.exception.PortalException;
@@ -689,14 +690,23 @@ public class SitesUtil {
 	public static boolean isLayoutSetMergeable(Group group, LayoutSet layoutSet)
 		throws PortalException, SystemException {
 
-		if (!layoutSet.isLayoutSetPrototypeLinkActive() ||
-			group.isLayoutPrototype() || group.isLayoutSetPrototype()) {
+		return isLayoutSetMergeable(group, layoutSet, false);
+	}
 
-			return false;
-		}
+	public static boolean isLayoutSetMergeable(
+			Group group, LayoutSet layoutSet, boolean ignoreLastMergeTime)
+		throws PortalException, SystemException {
 
 		UnicodeProperties settingsProperties =
 			layoutSet.getSettingsProperties();
+
+		if (!layoutSet.isLayoutSetPrototypeLinkActive() ||
+			group.isLayoutPrototype() || group.isLayoutSetPrototype() ||
+			Validator.isNotNull(
+				settingsProperties.getProperty(MERGE_FAIL_FRIENDLY_URL))) {
+
+			return false;
+		}
 
 		long lastMergeTime = GetterUtil.getLong(
 			settingsProperties.getProperty(LAST_MERGE_TIME));
@@ -707,7 +717,7 @@ public class SitesUtil {
 
 		Date modifiedDate = layoutSetPrototype.getModifiedDate();
 
-		if (lastMergeTime >= modifiedDate.getTime()) {
+		if (!ignoreLastMergeTime && (lastMergeTime >= modifiedDate.getTime())) {
 			return false;
 		}
 
@@ -995,6 +1005,11 @@ public class SitesUtil {
 			importLayoutSetPrototype(
 				layoutSetPrototype, layoutSet.getGroupId(),
 				layoutSet.isPrivateLayout(), parameterMap, importData);
+
+			removeMergeFailFriendlyURL(layoutSet.getLayoutSetId());
+		}
+		catch (LayoutFriendlyURLException lfue) {
+			SitesUtil.setMergeFailFriendlyURL(lfue.getLayout());
 		}
 		catch (Exception e) {
 			_log.error(e, e);
