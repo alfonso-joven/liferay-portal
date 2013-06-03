@@ -12,4 +12,6 @@
 	<execute test-case="DockbarAcceptance" />
 
 	<execute test-case="PGWebcontentdisplayAcceptance" />
+
+	<execute test-case="PGWebcontentlistAcceptance" />
 </definition>
