@@ -1,0 +1,54 @@
+<definition>
+	<var name="sitePageName" value="Asset Publisher Page" />
+	<var name="portletName" value="Asset Publisher" />
+
+	<set-up>
+		<execute macro="User#pgFirstLogin" />
+
+		<execute macro="Page#pgAdd">
+			<var name="pageName" value="${sitePageName}" />
+		</execute>
+
+		<execute macro="Portlet#pgAdd">
+			<var name="pageName" value="${sitePageName}" />
+			<var name="portletName" value="${portletName}" />
+		</execute>
+	</set-up>
+
+	<command name="AddWebContentViaAssetPublisher">
+		<var name="webContentContent" value="WC WebContent Content" />
+		<var name="webContentTitle" value="WC WebContent Title" />
+
+		<execute macro="WebContent#addPGviaAP">
+			<var name="pageName" value="${sitePageName}" />
+			<var name="webContentTitle" value="${webContentTitle}" />
+			<var name="webContentContent" value="${webContentContent}" />
+		</execute>
+	</command>
+
+	<command name="AddPortletAssetPublisherSite">
+		<var name="siteName" value="Site Name" />
+
+		<execute macro="Site#cpAddBlank">
+			<var name="siteName" value="${siteName}" />
+		</execute>
+
+		<execute macro="SitePage#cpAddPublic">
+			<var name="siteName" value="${siteName}" />
+			<var name="sitePageName" value="${sitePageName}" />
+		</execute>
+
+		<execute macro="Portlet#pgAddSitePublic">
+			<var name="pageName" value="${sitePageName}" />
+			<var name="portletName" value="${portletName}" />
+		</execute>
+	</command>
+
+	<tear-down>
+		<execute macro="WebContent#tearDownCP" />
+
+		<execute macro="Page#pgTearDown" />
+
+		<execute macro="Site#cpTearDown" />
+	</tear-down>
+</definition>

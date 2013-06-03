@@ -31,6 +31,25 @@
 		<execute action="CPWebcontent#assertTextEquals" locator-key1="WEB_CONTENT_TABLE_TITLE_1" value1="${webContentTitle}" />
 	</command>
 
+	<command name="addPGviaAP">
+		<execute macro="Page#pgGoto">
+			<var name="pageName" value="${pageName}" />
+		</execute>
+
+		<execute action="PGAssetpublisher#click" locator-key1="ADD_NEW_DROPDOWN" />
+		<execute action="PGAssetpublisher#click" locator-key1="ADD_NEW_MENULIST_WEB_CONTENT" value1="Web Content" />
+
+		<execute action="PGAssetpublisherAddnewwebcontent#selectFrame" locator-key1="WEB_CONTENT_IFRAME" />
+		<execute action="PGAssetpublisherAddnewwebcontent#type" locator-key1="TITLE_FIELD" value1="${webContentTitle}" />
+		<execute action="PGAssetpublisherAddnewwebcontent#type" locator-key1="CONTENT_FIELD" value1="${webContentContent}" />
+		<execute action="PGAssetpublisherAddnewwebcontent#selectFrame" locator-key1="WEB_CONTENT_IFRAME" />
+		<execute action="PGAssetpublisherAddnewwebcontent#click" locator-key1="PUBLISH_BUTTON" />
+
+		<execute action="PGAssetpublisher#selectFrame" />
+		<execute action="PGAssetpublisher#assertTextEquals" locator-key1="ASSET_TITLE_1" value1="${webContentTitle}" />
+		<execute action="PGAssetpublisher#assertTextEquals" locator-key1="ASSET_SUMMARY_1" value1="${webContentContent}" />
+	</command>
+
 	<command name="addPGviaWCD">
 		<execute macro="Page#pgGoto">
 			<var name="pageName" value="${pageName}" />
