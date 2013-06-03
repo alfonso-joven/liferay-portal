@@ -119,6 +119,9 @@ public class SitesUtil {
 
 	public static final String MERGE_FAIL_COUNT = "merge-fail-count";
 
+	public static final String MERGE_FAIL_FRIENDLY_URL =
+		"merge-fail-friendly-url";
+
 	public static void addPortletBreadcrumbEntries(
 			Group group, String pagesName, PortletURL redirectURL,
 			HttpServletRequest request, RenderResponse renderResponse)
@@ -589,6 +592,27 @@ public class SitesUtil {
 		return parameterMap;
 	}
 
+	public static Layout getMergeFailFriendlyURLLayout(long layoutSetId)
+		throws PortalException, SystemException {
+
+		LayoutSet layoutSet = LayoutSetLocalServiceUtil.getLayoutSet(
+			layoutSetId);
+
+		UnicodeProperties layoutSetSettingsProperties =
+			layoutSet.getSettingsProperties();
+
+		String uuid = layoutSetSettingsProperties.getProperty(
+			MERGE_FAIL_FRIENDLY_URL);
+
+		if (Validator.isNull(uuid)) {
+			return null;
+		}
+		else {
+			return LayoutLocalServiceUtil.getLayoutByUuidAndGroupId(
+				uuid, layoutSet.getGroupId(), layoutSet.isPrivateLayout());
+		}
+	}
+
 	public static void importLayoutSetPrototype(
 			LayoutSetPrototype layoutSetPrototype, InputStream inputStream,
 			ServiceContext serviceContext)
@@ -999,6 +1023,22 @@ public class SitesUtil {
 		mergeLayoutSetPrototypeLayouts(group, layoutSet);
 	}
 
+	public static void removeMergeFailFriendlyURL(long layoutSetId)
+		throws PortalException, SystemException {
+
+		LayoutSet layoutSet = LayoutSetLocalServiceUtil.getLayoutSet(
+			layoutSetId);
+
+		UnicodeProperties layoutSetSettingsProperties =
+			layoutSet.getSettingsProperties();
+
+		layoutSetSettingsProperties.remove(MERGE_FAIL_FRIENDLY_URL);
+
+		LayoutSetLocalServiceUtil.updateSettings(
+			layoutSet.getGroupId(), layoutSet.isPrivateLayout(),
+			layoutSetSettingsProperties.toString());
+	}
+
 	public static void resetPrototype(Layout layout)
 		throws PortalException, SystemException {
 
@@ -1016,6 +1056,25 @@ public class SitesUtil {
 			LAST_RESET_TIME, String.valueOf(System.currentTimeMillis()));
 
 		LayoutSetLocalServiceUtil.updateLayoutSet(layoutSet, false);
+	}
+
+	public static void setMergeFailFriendlyURL(Layout layout)
+		throws PortalException, SystemException {
+
+		LayoutSet layoutSet = layout.getLayoutSet();
+
+		layoutSet = LayoutSetLocalServiceUtil.getLayoutSet(
+			layoutSet.getGroupId(), layoutSet.isPrivateLayout());
+
+		UnicodeProperties layoutSetSettingsProperties =
+			layoutSet.getSettingsProperties();
+
+		layoutSetSettingsProperties.setProperty(
+			MERGE_FAIL_FRIENDLY_URL, layout.getUuid());
+
+		LayoutSetLocalServiceUtil.updateSettings(
+			layoutSet.getGroupId(), layoutSet.isPrivateLayout(),
+			layoutSetSettingsProperties.toString());
 	}
 
 	public static void updateLayoutScopes(
