@@ -14,4 +14,6 @@
 	<execute test-case="PGWebcontentdisplayAcceptance" />
 
 	<execute test-case="PGWebcontentlistAcceptance" />
+
+	<execute test-case="StagingAcceptance" />
 </definition>

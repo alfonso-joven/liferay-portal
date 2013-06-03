@@ -8,7 +8,7 @@
 		<execute action="CPSites#click" locator-key1="SEARCH_BUTTON" />
 		<execute action="CPSites#click" locator-key1="SITE_TABLE_ACTIONS" />
 		<execute action="CPSites#click" locator-key1="SITE_MENULIST_EDIT_SETTINGS" />
-		
+
 		<execute action="CPSitesEdit#click" locator-key1="MENU_STAGING" />
 		<execute action="CPSitesEdit#click" locator-key1="STAGING_LOCAL_LIVE" />
 		<execute action="CPSitesEdit#check" locator-key1="STAGING_BLOGS_CHECKBOX" />
@@ -37,6 +37,7 @@
 		<execute macro="Page#cpGotoStaging">
 			<var name="portletName" value="Sites" />
 		</execute>
+
 		<execute action="CPSites#type" locator-key1="SEARCH_FIELD" value1="${siteName}" />
 		<execute action="CPSites#click" locator-key1="SEARCH_BUTTON" />
 		<execute action="CPSites#click" locator-key1="SITE_TABLE_ACTIONS" />
@@ -51,12 +52,12 @@
 	</command>
 
 	<command name="cpPublishToLiveNow">
-		<execute macro="Page#pgGotoStaging" />
+		<execute action="Home#open" locator-key1="SITE_URL_STAGING" />
 
 		<execute action="Staging#click" locator-key1="STAGING_BUTTON" />
 		<execute action="Staging#click" locator-key1="STAGING_DROP_DOWN_BUTTON" />
 		<execute action="Staging#click" locator-key1="STAGING_MENULIST_PUBLISH_TO_LIVE_NOW" />
-		
+
 		<execute action="PGStagingPublishToLiveNow#click" locator-key1="APPLICATIONS_EXPAND" />
 		<execute action="PGStagingPublishToLiveNow#click" locator-key1="PUBLISH_RANGE_ALL" />
 		<execute action="PGStagingPublishToLiveNow#click" locator-key1="PUBLISH_BUTTON" />

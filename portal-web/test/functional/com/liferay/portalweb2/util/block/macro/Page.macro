@@ -19,7 +19,7 @@
 
 	<command name="cpGotoStaging">
 		<execute action="Home#open" locator-key1="SITE_URL_STAGING" />
-		
+
 		<execute action="Dockbar#mouseOver" locator-key1="GO_TO_STAGING" />
 		<execute action="Dockbar#click" locator-key1="GO_TO" />
 		<execute action="Dockbar#click" locator-key1="GO_TO_CONTROL_PANEL" />
@@ -54,6 +54,7 @@
 
 	<command name="pgGotoStaging">
 		<execute action="Home#open" locator-key1="SITE_URL_STAGING" />
+		<execute action="Home#click" locator1="link=${pageName}" />
 	</command>
 
 	<command name="pgAdd">
