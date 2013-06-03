@@ -49,7 +49,8 @@ import java.util.Map;
 public class AssetVocabularyServiceImpl extends AssetVocabularyServiceBaseImpl {
 
 	/**
-	 * @deprecated
+	 * @deprecated As of 6.1.0 {@link #addVocabulary(String, Map, Map, String,
+	 *             ServiceContext)}
 	 */
 	@Override
 	public AssetVocabulary addVocabulary(
@@ -287,7 +288,8 @@ public class AssetVocabularyServiceImpl extends AssetVocabularyServiceBaseImpl {
 	}
 
 	/**
-	 * @deprecated
+	 * @deprecated As of 6.1.0, {@link #updateVocabulary(long, String, Map, Map,
+	 *             String, ServiceContext)}
 	 */
 	@Override
 	public AssetVocabulary updateVocabulary(
