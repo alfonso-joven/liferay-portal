@@ -101,14 +101,14 @@
 	<td></td>
 	<td></td>
 </tr>
-<!--ADD_MEDIA_DIALOG-->
+<!--ADD_MEDIA-->
 <tr>
-	<td>ADD_MEDIA_DIALOG_CLOSE_BUTTON</td>
+	<td>ADD_MEDIA_CLOSE_ICON</td>
 	<td>//button[@title='Close dialog']</td>
 	<td>Close</td>
 </tr>
 <tr>
-	<td>ADD_MEDIA_DIALOG_MEDIA_TYPE</td>
+	<td>ADD_MEDIA_BASIC_DOCUMENT</td>
 	<td>//a[@class='select-file-entry-type']</td>
 	<td></td>
 </tr>

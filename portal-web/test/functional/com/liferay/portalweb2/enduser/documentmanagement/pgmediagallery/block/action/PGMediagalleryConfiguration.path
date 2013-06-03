@@ -10,7 +10,7 @@
 <tbody>
 <tr>
 	<td>PAGE_NAME</td>
-	<td>//iframe[contains(@id,'_configurationIframeDialog')]</td>
+	<td></td>
 	<td>PGMediagalleryConfiguration</td>
 </tr>
 <tr>
@@ -19,12 +19,17 @@
 	<td></td>
 </tr>
 <tr>
+	<td>MEDIA_GALLERY_CONFIGURATION_IFRAME</td>
+	<td>//iframe[contains(@id,'_configurationIframeDialog')]</td>
+	<td></td>
+</tr>
+<tr>
 	<td>SAVE_BUTTON</td>
 	<td>//input[@value='Save']</td>
 	<td>Save</td>
 </tr>
 <tr>
-	<td>CLOSE_BUTTON</td>
+	<td>CLOSE_ICON</td>
 	<td>//button[@title='Close dialog']</td>
 	<td>Close</td>
 </tr>
