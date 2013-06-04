@@ -1358,10 +1358,8 @@ public class MainServlet extends ActionServlet {
 				name = String.valueOf(remoteUserId);
 			}
 		}
-		else {
-			if (remoteUser != null) {
-				name = remoteUser;
-			}
+		else if (remoteUser != null) {
+			name = remoteUser;
 		}
 
 		PrincipalThreadLocal.setName(name);
