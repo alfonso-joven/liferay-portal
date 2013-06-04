@@ -1,5 +1,5 @@
 <definition>
-	<command name="cpAdd">
+	<command name="addCP">
 		<execute macro="Page#cpGoto">
 			<var name="portletName" value="Dynamic Data Lists" />
 		</execute>
@@ -12,7 +12,7 @@
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#type" locator-key1="NAME_FIELD" value1="${dataDefinitionName}" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#type" locator-key1="DESCRIPTION_FIELD" value1="${dataDefinitionDescription}" />
 
-		<execute macro="DataDefinition#cpAddTextCmd">
+		<execute macro="DataDefinition#addTextCmdCP">
 			<var name="textNameLabel" value="text" />
 		</execute>
 
@@ -23,7 +23,7 @@
 		<execute action="CPDynamicdatalists#selectFrameTop" />
 	</command>
 
-	<command name="cpAddBooleanCmd">
+	<command name="addBooleanCmdCP">
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#dragAndDrop" locator-key1="FIELDS_BOOLEAN" locator-key2="FORM_BUILDER" value1="Boolean" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="FORM_BOOLEAN_FIELD_1" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="SETTINGS_NAME" />
@@ -34,7 +34,7 @@
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="NAME_FIELD" />
 	</command>
 
-	<command name="cpAddDateCmd">
+	<command name="addDateCmdCP">
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#dragAndDrop" locator-key1="FIELDS_DATE" locator-key2="FORM_BUILDER" value1="Date" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="FORM_DATE_FIELD_1" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="SETTINGS_NAME" />
@@ -45,7 +45,7 @@
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="NAME_FIELD" />
 	</command>
 
-	<command name="cpAddDecimalCmd">
+	<command name="addDecimalCmdCP">
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#dragAndDrop" locator-key1="FIELDS_DECIMAL" locator-key2="FORM_BUILDER" value1="Decimal" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="FORM_DECIMAL_FIELD_1" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="SETTINGS_NAME" />
@@ -56,7 +56,7 @@
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="NAME_FIELD" />
 	</command>
 
-	<command name="cpAddDocumentsAndMediaCmd">
+	<command name="addDocumentsAndMediaCmdCP">
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#dragAndDrop" locator-key1="FIELDS_DOCUMENTS_AND_MEDIA" locator-key2="FORM_BUILDER" value1="Documents and Media" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="FORM_DOCUMENTS_AND_MEDIA_FIELD_1" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="SETTINGS_NAME" />
@@ -67,7 +67,7 @@
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="NAME_FIELD" />
 	</command>
 
-	<command name="cpAddFileUploadCmd">
+	<command name="addFileUploadCmdCP">
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#dragAndDrop" locator-key1="FIELDS_FILE_UPLOAD" locator-key2="FORM_BUILDER" value1="File Upload" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="FORM_FILE_UPLOAD_FIELD_1" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="SETTINGS_NAME" />
@@ -78,7 +78,7 @@
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="NAME_FIELD" />
 	</command>
 
-	<command name="cpAddIntegerCmd">
+	<command name="addIntegerCmdCP">
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#dragAndDrop" locator-key1="FIELDS_INTEGER" locator-key2="FORM_BUILDER" value1="Ingeger" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="FORM_INTEGER_FIELD_1" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="SETTINGS_NAME" />
@@ -89,7 +89,7 @@
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="NAME_FIELD" />
 	</command>
 
-	<command name="cpAddNumberCmd">
+	<command name="addNumberCmdCP">
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#dragAndDrop" locator-key1="FIELDS_NUMBER" locator-key2="FORM_BUILDER" value1="Number" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="FORM_NUMBER_FIELD_1" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="SETTINGS_NAME" />
@@ -100,7 +100,7 @@
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="NAME_FIELD" />
 	</command>
 
-	<command name="cpAddRadioCmd">
+	<command name="addRadioCmdCP">
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#dragAndDrop" locator-key1="FIELDS_RADIO" locator-key2="FORM_BUILDER" value1="Radio" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="FORM_RADIO_FIELD_1" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="SETTINGS_NAME" />
@@ -111,7 +111,7 @@
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="NAME_FIELD" />
 	</command>
 
-	<command name="cpAddSelectCmd">
+	<command name="addSelectCmdCP">
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#dragAndDrop" locator-key1="FIELDS_SELECT" locator-key2="FORM_BUILDER" value1="Select" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="FORM_SELECT_FIELD_1" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="SETTINGS_NAME" />
@@ -122,7 +122,7 @@
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="NAME_FIELD" />
 	</command>
 
-	<command name="cpAddTextCmd">
+	<command name="addTextCmdCP">
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#dragAndDrop" locator-key1="FIELDS_TEXT" locator-key2="FORM_BUILDER" value1="Text" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="FORM_TEXT_FIELD_1" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="SETTINGS_NAME" />
@@ -133,7 +133,7 @@
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="NAME_FIELD" />
 	</command>
 
-	<command name="cpAddTextBoxCmd">
+	<command name="addTextBoxCmdCP">
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#dragAndDrop" locator-key1="FIELDS_TEXT_BOX" locator-key2="FORM_BUILDER" value1="Text Box" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="FORM_TEXT_BOX_FIELD_1" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#doubleClick" locator-key1="SETTINGS_NAME" />
@@ -144,7 +144,7 @@
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="NAME_FIELD" />
 	</command>
 
-	<command name="cpDelete">
+	<command name="deleteCP">
 		<execute macro="Page#cpGoto">
 			<var name="portletName" value="Dynamic Data Lists" />
 		</execute>
@@ -173,7 +173,7 @@
 		<execute action="CPDynamicdatalists#selectFrameTop" />
 	</command>
 
-	<command name="cpEdit">
+	<command name="editCP">
 		<execute macro="Page#cpGoto">
 			<var name="portletName" value="Dynamic Data Lists" />
 		</execute>
@@ -186,8 +186,8 @@
 		<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="DATA_DEFINITION_TABLE_ACTIONS_1" />
 		<execute action="CPDynamicdatalistsDatadefinitions#click" locator-key1="DATA_DEFINITION_MENULIST_EDIT" />
 
-		<execute action="CPDynamicdatalistsDatadefinitionsEdit#type" locator-key1="NAME_FIELD" value1="${dataDefinitionNameEdit}" />
-		<execute action="CPDynamicdatalistsDatadefinitionsEdit#type" locator-key1="DESCRIPTION_FIELD" value1="${dataDefinitionDescriptionEdit}" />
+		<execute action="CPDynamicdatalistsDatadefinitionsEdit#type" locator-key1="NAME_FIELD" value1="${dataDefinitionNameNew}" />
+		<execute action="CPDynamicdatalistsDatadefinitionsEdit#type" locator-key1="DESCRIPTION_FIELD" value1="${dataDefinitionDescriptionNew}" />
 		<execute action="CPDynamicdatalistsDatadefinitionsEdit#click" locator-key1="SAVE_BUTTON" />
 
 		<execute action="CPDynamicdatalistsDatadefinitions#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
@@ -195,7 +195,7 @@
 		<execute action="CPDynamicdatalists#selectFrameTop" />
 	</command>
 
-	<command name="cpTearDown">
+	<command name="tearDownCP">
 		<execute macro="Page#cpGoto">
 			<var name="portletName" value="Dynamic Data Lists" />
 		</execute>
@@ -217,7 +217,7 @@
 		</while>
 	</command>
 
-	<command name="cpView">
+	<command name="viewCP">
 		<execute macro="Page#cpGoto">
 			<var name="portletName" value="Dynamic Data Lists" />
 		</execute>
@@ -233,7 +233,7 @@
 		<execute action="CPDynamicdatalistsDatadefinitionsEdit#assertTextEquals" locator-key1="HEADER_TITLE" value1="${dataDefinitionName}" />
 		<execute action="CPDynamicdatalistsDatadefinitionsEdit#assertTextEquals" locator-key1="NAME_FIELD" value1="${dataDefinitionName}" />
 		<execute action="CPDynamicdatalistsDatadefinitionsEdit#assertTextEquals" locator-key1="DESCRIPTION_FIELD" value1="${dataDefinitionDescription}" />
-		<execute action="CPDynamicdatalistsDatadefinitionsEdit#assertTextEquals" locator-key1="FORM_FIELD_1" value1="Text" />
+		<execute action="CPDynamicdatalistsDatadefinitionsEdit#assertTextEquals" locator-key1="FORM_FIELD_1" value1="Text*" />
 
 		<execute action="CPDynamicdatalists#selectFrameTop" />
 	</command>

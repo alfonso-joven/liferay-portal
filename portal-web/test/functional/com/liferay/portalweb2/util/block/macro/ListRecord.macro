@@ -1,5 +1,5 @@
 <definition>
-	<command name="cpAdd">
+	<command name="addCP">
 		<execute macro="Page#cpGoto">
 			<var name="portletName" value="Dynamic Data Lists" />
 		</execute>
@@ -12,7 +12,7 @@
 		<execute action="CPDynamicdatalistsList#assertTextEquals" locator-key1="HEADER_TITLE" value1="${listName}" />
 		<execute action="CPDynamicdatalistsList#click" locator-key1="ADD_RECORD_BUTTON" />
 
-		<execute macro="ListRecord#cpAddTextCmd">
+		<execute macro="ListRecord#addTextCmdCP">
 			<var name="textNameLabel" value="text" />
 		</execute>
 
@@ -21,7 +21,7 @@
 		<execute action="CPDynamicdatalistsList#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
 	</command>
 
-	<command name="cpAddBooleanCmd">
+	<command name="addBooleanCmdCP">
 		<if>
 			<equals arg1="${recordBoolean}" arg2="false" />
 			<then>
@@ -39,33 +39,33 @@
 		</if>
 	</command>
 
-	<command name="cpAddDateCmd">
+	<command name="addDateCmdCP">
 		<execute action="CPDynamicdatalistsListAddrecord#select" locator1="//select[contains(@id,'_167_${dateNameLabel}') and @class='datepicker-month']" value1="${recordDateMonth}" />
 		<execute action="CPDynamicdatalistsListAddrecord#select" locator1="//select[contains(@id,'_167_${dateNameLabel}') and @class='datepicker-day']" value1="${recordDateDay}" />
 		<execute action="CPDynamicdatalistsListAddrecord#select" locator1="//select[contains(@id,'_167_${dateNameLabel}') and @class='datepicker-year']" value1="${recordDateYear}" />
 	</command>
 
-	<command name="cpAddDecimalCmd">
+	<command name="addDecimalCmdCP">
 		<execute action="CPDynamicdatalistsListAddrecord#type" locator1="//input[contains(@id,'_167_${decimalNameLabel}')]" value1="${recordDecimal}" />
 	</command>
 
-	<command name="cpAddDocumentsAndMediaCmd">
+	<command name="addDocumentsAndMediaCmdCP">
 		<fail message="Add Documents and Media record not yet impletemented." />
 	</command>
 
-	<command name="cpAddFileUploadCmd">
+	<command name="addFileUploadCmdCP">
 		<fail message="Add File Upload record not yet implemented." />
 	</command>
 
-	<command name="cpAddIntegerCmd">
+	<command name="addIntegerCmdCP">
 		<execute action="CPDynamicdatalistsListAddrecord#type" locator1="//input[contains(@id,'_167_${integerNameLabel}')]" value1="${recordInteger}" />
 	</command>
 
-	<command name="cpAddNumberCmd">
+	<command name="addNumberCmdCP">
 		<execute action="CPDynamicdatalistsListAddrecord#type" locator1="//input[contains(@id,'_167_${numberNameLabel}')]" value1="${recordNumber}" />
 	</command>
 
-	<command name="cpAddRadioCmd">
+	<command name="addRadioCmdCP">
 		<if>
 			<equals arg1="${recordRadio}" arg2="1" />
 			<then>
@@ -89,19 +89,19 @@
 		</if>
 	</command>
 
-	<command name="cpAddSelectCmd">
+	<command name="addSelectCmdCP">
 		<execute action="CPDynamicdatalistsListAddrecord#select" locator1="//select[contains(@name,'_167_${selectNameLabel}')" value1="${recordSelect}" />
 	</command>
 
-	<command name="cpAddTextCmd">
+	<command name="addTextCmdCP">
 		<execute action="CPDynamicdatalistsListAddrecord#type" locator1="//input[contains(@id,'_167_${textNameLabel}')]" value1="${recordText}" />
 	</command>
 
-	<command name="cpAddTextBoxCmd">
+	<command name="addTextBoxCmdCP">
 		<execute action="CPDynamicdatalistsListAddrecord#type" locator1="//textarea[contains(@id,'_167_${textBoxNameLabel}')]" value1="${recordTextBox}" />
 	</command>
 
-	<command name="cpDelete">
+	<command name="deleteCP">
 		<execute macro="Page#cpGoto">
 			<var name="portletName" value="Dynamic Data Lists" />
 		</execute>
@@ -118,7 +118,7 @@
 		<execute action="CPDynamicdatalistsList#assertTextEquals" locator-key1="INFO_MESSAGE" />
 	</command>
 
-	<command name="cpEdit">
+	<command name="editCP">
 		<execute macro="Page#cpGoto">
 			<var name="portletName" value="Dynamic Data Lists" />
 		</execute>
@@ -131,7 +131,7 @@
 		<execute action="CPDynamicdatalistsList#click" locator-key1="RECORD_TABLE_ACTIONS_1" />
 		<execute action="CPDynamicdatalistsList#click" locator-key1="RECORD_MENULIST_EDIT" />
 
-		<execute macro="ListRecord#cpEditTextCmd">
+		<execute macro="ListRecord#editTextCmdCP">
 			<var name="textNameLabel" value="text" />
 		</execute>
 
@@ -140,75 +140,75 @@
 		<execute action="CPDynamicdatalistsList#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
 	</command>
 
-	<command name="cpEditBooleanCmd">
-		<execute macro="ListRecord#cpAddBooleanCmd">
-			<var name="recordBoolean" value="${recordBooleanEdit}" />
+	<command name="editBooleanCmdCP">
+		<execute macro="ListRecord#addBooleanCmdCP">
+			<var name="recordBoolean" value="${recordBooleanNew}" />
 		</execute>
 	</command>
 
-	<command name="cpEditDateCmd">
-		<execute macro="ListRecord#cpAddDateCmd">
-			<var name="recordDateMonth" value="${recordDateMonthEdit}" />
-			<var name="recordDateDay" value="${recordDateDayEdit}" />
-			<var name="recordDateYear" value="${recordDateYearEdit}" />
+	<command name="editDateCmdCP">
+		<execute macro="ListRecord#addDateCmdCP">
+			<var name="recordDateMonth" value="${recordDateMonthNew}" />
+			<var name="recordDateDay" value="${recordDateDayNew}" />
+			<var name="recordDateYear" value="${recordDateYearNew}" />
 		</execute>
 	</command>
 
-	<command name="cpEditDecimalCmd">
-		<execute macro="ListRecord#cpAddDecimalCmd">
-			<var name="recordDecimal" value="${recordDecimalEdit}" />
+	<command name="editDecimalCmdCP">
+		<execute macro="ListRecord#addDecimalCmdCP">
+			<var name="recordDecimal" value="${recordDecimalNew}" />
 		</execute>
 	</command>
 
-	<command name="cpEditDocumentsAndMediaCmd">
-		<execute macro="ListRecord#cpAddDocumentsAndMediaCmd">
-			<var name="recordDocument" value="${recordDocumentEdit}" />
+	<command name="editDocumentsAndMediaCmdCP">
+		<execute macro="ListRecord#addDocumentsAndMediaCmdCP">
+			<var name="recordDocument" value="${recordDocumentNew}" />
 		</execute>
 	</command>
 
-	<command name="cpEditFileUploadCmd">
-		<execute macro="ListRecord#cpAddFileUploadCmd">
-			<var name="recordFileUpload" value="${recordFileUploadEdit}" />
+	<command name="editFileUploadCmdCP">
+		<execute macro="ListRecord#addFileUploadCmdCP">
+			<var name="recordFileUpload" value="${recordFileUploadNew}" />
 		</execute>
 	</command>
 
-	<command name="cpEditIntegerCmd">
-		<execute macro="ListRecord#cpAddIntegerCmd">
-			<var name="recordInteger" value="${recordIntegerEdit}" />
+	<command name="editIntegerCmdCP">
+		<execute macro="ListRecord#addIntegerCmdCP">
+			<var name="recordInteger" value="${recordIntegerNew}" />
 		</execute>
 	</command>
 
-	<command name="cpEditNumberCmd">
-		<execute macro="ListRecord#cpAddNumberCmd">
-			<var name="recordNumber" value="${recordNumberEdit}" />
+	<command name="editNumberCmdCP">
+		<execute macro="ListRecord#addNumberCmdCP">
+			<var name="recordNumber" value="${recordNumberNew}" />
 		</execute>
 	</command>
 
-	<command name="cpEditRadioCmd">
-		<execute macro="ListRecord#cpAddRadioCmd">
-			<var name="recordRadio" value="${recordRadioEdit}" />
+	<command name="editRadioCmdCP">
+		<execute macro="ListRecord#addRadioCmdCP">
+			<var name="recordRadio" value="${recordRadioNew}" />
 		</execute>
 	</command>
 
-	<command name="cpEditSelectCmd">
-		<execute macro="ListRecord#cpAddSelectCmd">
-			<var name="recordSelect" value="${recordSelectEdit}" />
+	<command name="editSelectCmdCP">
+		<execute macro="ListRecord#addSelectCmdCP">
+			<var name="recordSelect" value="${recordSelectNew}" />
 		</execute>
 	</command>
 
-	<command name="cpEditTextCmd">
-		<execute macro="ListRecord#cpAddTextCmd">
-			<var name="recordText" value="${recordTextEdit}" />
+	<command name="editTextCmdCP">
+		<execute macro="ListRecord#addTextCmdCP">
+			<var name="recordText" value="${recordTextNew}" />
 		</execute>
 	</command>
 
-	<command name="cpEditTextBoxCmd">
-		<execute macro="ListRecord#cpAddTextBoxCmd">
-			<var name="recordTextBox" value="${recordTextBoxEdit}" />
+	<command name="editTextBoxCmdCP">
+		<execute macro="ListRecord#addTextBoxCmdCP">
+			<var name="recordTextBox" value="${recordTextBoxNew}" />
 		</execute>
 	</command>
 
-	<command name="cpSpreadsheetView">
+	<command name="spreadsheetViewCP">
 		<execute macro="Page#cpGoto">
 			<var name="portletName" value="Dynamic Data Lists" />
 		</execute>
@@ -224,7 +224,7 @@
 		<execute action="CPDynamicdatalistsListSpreadsheetview#assertTextEquals" locator-key1="RECORD_TABLE_COLUMN_ONE_RECORD_1" value1="${recordText}" />
 	</command>
 
-	<command name="cpView">
+	<command name="viewCP">
 		<execute macro="Page#cpGoto">
 			<var name="portletName" value="Dynamic Data Lists" />
 		</execute>

@@ -8,9 +8,9 @@
 	<set-up>
 		<execute macro="User#pgFirstLogin" />
 
-		<execute macro="Site#cpAddBlank" />
+		<execute macro="Site#addBlankCP" />
 
-		<execute macro="SitePage#cpAdd" />
+		<execute macro="SitePage#addCP" />
 	</set-up>
 
 	<command name="StagingPublishToLive">
@@ -26,6 +26,6 @@
 	</command>
 
 	<tear-down>
-		<execute macro="Site#cpTearDown" />
+		<execute macro="Site#tearDownCP" />
 	</tear-down>
 </definition>

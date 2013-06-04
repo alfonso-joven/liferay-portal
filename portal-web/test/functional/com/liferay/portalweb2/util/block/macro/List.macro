@@ -1,5 +1,5 @@
 <definition>
-	<command name="cpAdd">
+	<command name="addCP">
 		<execute macro="Page#cpGoto">
 			<var name="portletName" value="Dynamic Data Lists" />
 		</execute>
@@ -23,7 +23,7 @@
 		<execute action="CPDynamicdatalists#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
 	</command>
 
-	<command name="cpDelete">
+	<command name="deleteCP">
 		<execute macro="Page#cpGoto">
 			<var name="portletName" value="Dynamic Data Lists" />
 		</execute>
@@ -38,7 +38,7 @@
 		<execute action="CPDynamicdatalists#assertTextNotPresent" value1="${listName}" />
 	</command>
 
-	<command name="cpEdit">
+	<command name="editCP">
 		<execute macro="Page#cpGoto">
 			<var name="portletName" value="Dynamic Data Lists" />
 		</execute>
@@ -49,14 +49,14 @@
 		<execute action="CPDynamicdatalists#click" locator-key1="LIST_TABLE_ACTIONS_1" />
 		<execute action="CPDynamicdatalists#click" locator-key1="LIST_MENULIST_EDIT" />
 
-		<execute action="CPDynamicdatalistsEditlist#type" locator-key1="NAME_FIELD" value1="${listNameEdit}" />
-		<execute action="CPDynamicdatalistsEditlist#type" locator-key1="DESCRIPTION_FIELD" value1="${listDescriptionEdit}" />
+		<execute action="CPDynamicdatalistsEditlist#type" locator-key1="NAME_FIELD" value1="${listNameNew}" />
+		<execute action="CPDynamicdatalistsEditlist#type" locator-key1="DESCRIPTION_FIELD" value1="${listDescriptionNew}" />
 		<execute action="CPDynamicdatalistsEditlist#click" locator-key1="SAVE_BUTTON" />
 
 		<execute action="CPDynamicdatalists#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
 	</command>
 
-	<command name="cpTearDown">
+	<command name="tearDownCP">
 		<execute macro="Page#cpGoto">
 			<var name="portletName" value="Dynamic Data Lists" />
 		</execute>
@@ -72,7 +72,7 @@
 		</while>
 	</command>
 
-	<command name="cpView">
+	<command name="viewCP">
 		<execute macro="Page#cpGoto">
 			<var name="portletName" value="Dynamic Data Lists" />
 		</execute>

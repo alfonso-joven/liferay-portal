@@ -7,8 +7,15 @@
 		<var name="dataDefinitionDescription" value="Data Definition Description" />
 		<var name="dataDefinitionName" value="Data Definition" />
 
-		<execute macro="DataDefinition#cpAdd" />
-		<execute macro="DataDefinition#cpView" />
+		<execute macro="DataDefinition#addCP">
+			<var name="dataDefinitionDescription" value="${dataDefinitionDescription}" />
+			<var name="dataDefinitionName" value="${dataDefinitionName}" />
+		</execute>
+
+		<execute macro="DataDefinition#viewCP">
+			<var name="dataDefinitionDescription" value="${dataDefinitionDescription}" />
+			<var name="dataDefinitionName" value="${dataDefinitionName}" />
+		</execute>
 	</command>
 
 	<command name="AddList">
@@ -17,10 +24,21 @@
 		<var name="listDescription" value="List Description" />
 		<var name="listName" value="List Name" />
 
-		<execute macro="DataDefinition#cpAdd" />
+		<execute macro="DataDefinition#addCP">
+			<var name="dataDefinitionDescription" value="${dataDefinitionDescription}" />
+			<var name="dataDefinitionName" value="${dataDefinitionName}" />
+		</execute>
 
-		<execute macro="List#cpAdd" />
-		<execute macro="List#cpView" />
+		<execute macro="List#addCP">
+			<var name="dataDefinitionName" value="${dataDefinitionName}" />
+			<var name="listDescription" value="${listDescription}" />
+			<var name="listName" value="${listName}" />
+		</execute>
+
+		<execute macro="List#viewCP">
+			<var name="listDescription" value="${listDescription}" />
+			<var name="listName" value="${listName}" />
+		</execute>
 	</command>
 
 	<command name="AddRecord">
@@ -30,26 +48,53 @@
 		<var name="listName" value="List Name" />
 		<var name="recordText" value="Text Field" />
 
-		<execute macro="DataDefinition#cpAdd" />
+		<execute macro="DataDefinition#addCP">
+			<var name="dataDefinitionDescription" value="${dataDefinitionDescription}" />
+			<var name="dataDefinitionName" value="${dataDefinitionName}" />
+		</execute>
 
-		<execute macro="List#cpAdd" />
+		<execute macro="List#addCP">
+			<var name="dataDefinitionName" value="${dataDefinitionName}" />
+			<var name="listDescription" value="${listDescription}" />
+			<var name="listName" value="${listName}" />
+		</execute>
 
-		<execute macro="ListRecord#cpAdd" />
-		<execute macro="ListRecord#cpView" />
-		<execute macro="ListRecord#cpSpreadsheetView" />
+		<execute macro="ListRecord#addCP">
+			<var name="listName" value="${listName}" />
+			<var name="recordText" value="${recordText}" />
+		</execute>
+
+		<execute macro="ListRecord#viewCP">
+			<var name="listName" value="${listName}" />
+			<var name="recordText" value="${recordText}" />
+		</execute>
+
+		<execute macro="ListRecord#spreadsheetViewCP">
+			<var name="listName" value="${listName}" />
+			<var name="recordText" value="${recordText}" />
+		</execute>
 	</command>
 
 	<command name="EditDataDefinition">
 		<var name="dataDefinitionDescription" value="Data Definition Description" />
-		<var name="dataDefinitionDescriptionEdit" value="Data Definition Description Edit" />
+		<var name="dataDefinitionDescriptionNew" value="Data Definition Description Edit" />
 		<var name="dataDefinitionName" value="Data Definition" />
-		<var name="dataDefinitionNameEdit" value="Data Definition Edit" />
+		<var name="dataDefinitionNameNew" value="Data Definition Edit" />
 
-		<execute macro="DataDefinition#cpAdd" />
-		<execute macro="DataDefinition#cpEdit" />
-		<execute macro="DataDefinition#cpView">
-			<var name="dataDefinitionName" value="${dataDefinitionNameEdit}" />
-			<var name="dataDefinitionDescription" value="${dataDefinitionDescriptionEdit}" />
+		<execute macro="DataDefinition#addCP">
+			<var name="dataDefinitionDescription" value="${dataDefinitionDescription}" />
+			<var name="dataDefinitionName" value="${dataDefinitionName}" />
+		</execute>
+
+		<execute macro="DataDefinition#editCP">
+			<var name="dataDefinitionDescriptionNew" value="${dataDefinitionDescriptionNew}" />
+			<var name="dataDefinitionName" value="${dataDefinitionName}" />
+			<var name="dataDefinitionNameNew" value="${dataDefinitionNameNew}" />
+		</execute>
+
+		<execute macro="DataDefinition#viewCP">
+			<var name="dataDefinitionName" value="${dataDefinitionNameNew}" />
+			<var name="dataDefinitionDescription" value="${dataDefinitionDescriptionNew}" />
 		</execute>
 	</command>
 
@@ -57,17 +102,31 @@
 		<var name="dataDefinitionDescription" value="Data Definition Description" />
 		<var name="dataDefinitionName" value="Data Definition" />
 		<var name="listDescription" value="List Description" />
-		<var name="listDescriptionEdit" value="List Description Edit" />
+		<var name="listDescriptionNew" value="List Description Edit" />
 		<var name="listName" value="List Name" />
-		<var name="listNameEdit" value="List Name Edit" />
+		<var name="listNameNew" value="List Name Edit" />
 
-		<execute macro="DataDefinition#cpAdd" />
+		<execute macro="DataDefinition#addCP">
+			<var name="dataDefinitionDescription" value="${dataDefinitionDescription}" />
+			<var name="dataDefinitionName" value="${dataDefinitionName}" />
+		</execute>
 
-		<execute macro="List#cpAdd" />
-		<execute macro="List#cpEdit" />
-		<execute macro="List#cpView">
-			<var name="listName" value="${listNameEdit}" />
-			<var name="listDescription" value="${listDescriptionEdit}" />
+		<execute macro="List#addCP">
+			<var name="dataDefinitionName" value="${dataDefinitionName}" />
+			<var name="listDescription" value="${listDescription}" />
+			<var name="listName" value="${listName}" />
+		</execute>
+
+		<execute macro="List#editCP">
+			<var name="listDescription" value="${listDescription}" />
+			<var name="listDescriptionNew" value="${listDescriptionNew}" />
+			<var name="listName" value="${listName}" />
+			<var name="listNameNew" value="${listNameNew}" />
+		</execute>
+
+		<execute macro="List#viewCP">
+			<var name="listName" value="${listNameNew}" />
+			<var name="listDescription" value="${listDescriptionNew}" />
 		</execute>
 	</command>
 
@@ -77,16 +136,32 @@
 		<var name="listDescription" value="List Description" />
 		<var name="listName" value="List Name" />
 		<var name="recordText" value="Text Field" />
-		<var name="recordTextEdit" value="Text Field Edit" />
+		<var name="recordTextNew" value="Text Field Edit" />
 
-		<execute macro="DataDefinition#cpAdd" />
+		<execute macro="DataDefinition#addCP">
+			<var name="dataDefinitionDescription" value="${dataDefinitionDescription}" />
+			<var name="dataDefinitionName" value="${dataDefinitionName}" />
+		</execute>
 
-		<execute macro="List#cpAdd" />
+		<execute macro="List#addCP">
+			<var name="dataDefinitionName" value="${dataDefinitionName}" />
+			<var name="listDescription" value="${listDescription}" />
+			<var name="listName" value="${listName}" />
+		</execute>
 
-		<execute macro="ListRecord#cpAdd" />
-		<execute macro="ListRecord#cpEdit" />
-		<execute macro="ListRecord#cpView">
-			<var name="recordText" value="${recordTextEdit}" />
+		<execute macro="ListRecord#addCP">
+			<var name="listName" value="${listName}" />
+			<var name="recordText" value="${recordText}" />
+		</execute>
+
+		<execute macro="ListRecord#editCP">
+			<var name="listName" value="${listName}" />
+			<var name="recordTextNew" value="${recordTextNew}" />
+		</execute>
+
+		<execute macro="ListRecord#viewCP">
+			<var name="listName" value="${listName}" />
+			<var name="recordText" value="${recordTextNew}" />
 		</execute>
 	</command>
 
@@ -94,8 +169,14 @@
 		<var name="dataDefinitionDescription" value="Data Definition Description" />
 		<var name="dataDefinitionName" value="Data Definition" />
 
-		<execute macro="DataDefinition#cpAdd" />
-		<execute macro="DataDefinition#cpDelete" />
+		<execute macro="DataDefinition#addCP">
+			<var name="dataDefinitionDescription" value="${dataDefinitionDescription}" />
+			<var name="dataDefinitionName" value="${dataDefinitionName}" />
+		</execute>
+
+		<execute macro="DataDefinition#deleteCP">
+			<var name="dataDefinitionName" value="${dataDefinitionName}" />
+		</execute>
 	</command>
 
 	<command name="DeleteList">
@@ -104,10 +185,20 @@
 		<var name="listDescription" value="List Description" />
 		<var name="listName" value="List Name" />
 
-		<execute macro="DataDefinition#cpAdd" />
+		<execute macro="DataDefinition#addCP">
+			<var name="dataDefinitionDescription" value="${dataDefinitionDescription}" />
+			<var name="dataDefinitionName" value="${dataDefinitionName}" />
+		</execute>
 
-		<execute macro="List#cpAdd" />
-		<execute macro="List#cpDelete" />
+		<execute macro="List#addCP">
+			<var name="dataDefinitionName" value="${dataDefinitionName}" />
+			<var name="listDescription" value="${listDescription}" />
+			<var name="listName" value="${listName}" />
+		</execute>
+
+		<execute macro="List#deleteCP">
+			<var name="listName" value="${listName}" />
+		</execute>
 	</command>
 
 	<command name="DeleteRecord">
@@ -117,17 +208,30 @@
 		<var name="listName" value="List Name" />
 		<var name="recordText" value="Text Field" />
 
-		<execute macro="DataDefinition#cpAdd" />
+		<execute macro="DataDefinition#addCP">
+			<var name="dataDefinitionDescription" value="${dataDefinitionDescription}" />
+			<var name="dataDefinitionName" value="${dataDefinitionName}" />
+		</execute>
 
-		<execute macro="List#cpAdd" />
+		<execute macro="List#addCP">
+			<var name="dataDefinitionName" value="${dataDefinitionName}" />
+			<var name="listDescription" value="${listDescription}" />
+			<var name="listName" value="${listName}" />
+		</execute>
 
-		<execute macro="ListRecord#cpAdd" />
-		<execute macro="ListRecord#cpDelete" />
+		<execute macro="ListRecord#addCP">
+			<var name="listName" value="${listName}" />
+			<var name="recordText" value="${recordText}" />
+		</execute>
+
+		<execute macro="ListRecord#deleteCP">
+			<var name="listName" value="${listName}" />
+		</execute>
 	</command>
 
 	<tear-down>
-		<execute macro="List#cpTearDown" />
+		<execute macro="List#tearDownCP" />
 
-		<execute macro="DataDefinition#cpTearDown" />
+		<execute macro="DataDefinition#tearDownCP" />
 	</tear-down>
 </definition>
