@@ -56,7 +56,7 @@ public class TransactionalPortalCache implements PortalCache {
 		if (TransactionalPortalCacheHelper.isEnabled()) {
 			result = TransactionalPortalCacheHelper.get(_portalCache, key);
 
-			if (result == _nullHolder) {
+			if (result == NULL_HOLDER) {
 				return null;
 			}
 		}
@@ -77,7 +77,7 @@ public class TransactionalPortalCache implements PortalCache {
 	public void put(Serializable key, Object value) {
 		if (TransactionalPortalCacheHelper.isEnabled()) {
 			if (value == null) {
-				value = _nullHolder;
+				value = NULL_HOLDER;
 			}
 
 			TransactionalPortalCacheHelper.put(_portalCache, key, value);
@@ -91,7 +91,7 @@ public class TransactionalPortalCache implements PortalCache {
 	public void put(Serializable key, Object value, int timeToLive) {
 		if (TransactionalPortalCacheHelper.isEnabled()) {
 			if (value == null) {
-				value = _nullHolder;
+				value = NULL_HOLDER;
 			}
 
 			TransactionalPortalCacheHelper.put(_portalCache, key, value);
@@ -105,7 +105,7 @@ public class TransactionalPortalCache implements PortalCache {
 	public void put(Serializable key, Serializable value) {
 		if (TransactionalPortalCacheHelper.isEnabled()) {
 			if (value == null) {
-				value = _nullHolder;
+				value = NULL_HOLDER;
 			}
 
 			TransactionalPortalCacheHelper.put(_portalCache, key, value);
@@ -119,7 +119,7 @@ public class TransactionalPortalCache implements PortalCache {
 	public void put(Serializable key, Serializable value, int timeToLive) {
 		if (TransactionalPortalCacheHelper.isEnabled()) {
 			if (value == null) {
-				value = _nullHolder;
+				value = NULL_HOLDER;
 			}
 
 			TransactionalPortalCacheHelper.put(_portalCache, key, value);
@@ -144,10 +144,12 @@ public class TransactionalPortalCache implements PortalCache {
 	@Override
 	public void remove(Serializable key) {
 		if (TransactionalPortalCacheHelper.isEnabled()) {
-			TransactionalPortalCacheHelper.remove(_portalCache, key);
+			TransactionalPortalCacheHelper.put(
+				_portalCache, key, NULL_HOLDER);
 		}
-
-		_portalCache.remove(key);
+		else {
+			_portalCache.remove(key);
+		}
 	}
 
 	@Override
@@ -155,8 +157,9 @@ public class TransactionalPortalCache implements PortalCache {
 		if (TransactionalPortalCacheHelper.isEnabled()) {
 			TransactionalPortalCacheHelper.removeAll(_portalCache);
 		}
-
-		_portalCache.removeAll();
+		else {
+			_portalCache.removeAll();
+		}
 	}
 
 	@Override
@@ -169,7 +172,7 @@ public class TransactionalPortalCache implements PortalCache {
 		_portalCache.unregisterCacheListeners();
 	}
 
-	private static Serializable _nullHolder = new String();
+	protected static Serializable NULL_HOLDER = "NULL_HOLDER";
 
 	private PortalCache _portalCache;
 
