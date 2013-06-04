@@ -47,7 +47,7 @@ public class TransactionalPortalCacheHelper {
 			_popPortalCacheMap();
 
 		for (Map.Entry<PortalCache, UncommittedBuffer>
-			portalCacheMapEntry : portalCacheMap.entrySet()) {
+				portalCacheMapEntry : portalCacheMap.entrySet()) {
 
 			PortalCache portalCache = portalCacheMapEntry.getKey();
 
@@ -156,12 +156,11 @@ public class TransactionalPortalCacheHelper {
 	}
 
 	private static ThreadLocal<List<Map<PortalCache, UncommittedBuffer>>>
-			_portalCacheListThreadLocal = new InitialThreadLocal
-				<List<Map<PortalCache, UncommittedBuffer>>>(
-					TransactionalPortalCacheHelper.class.getName() +
-						"._portalCacheListThreadLocal",
-					new ArrayList
-						<Map<PortalCache, UncommittedBuffer>>());
+		_portalCacheListThreadLocal = new InitialThreadLocal
+			<List<Map<PortalCache, UncommittedBuffer>>>(
+				TransactionalPortalCacheHelper.class.getName() +
+					"._portalCacheListThreadLocal",
+				new ArrayList <Map<PortalCache, UncommittedBuffer>>());
 
 	private static class UncommittedBuffer {
 
