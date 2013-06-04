@@ -74,6 +74,7 @@ if (showPrototypes && (group != null)) {
 <liferay-ui:error exception="<%= DuplicateGroupException.class %>" message="please-enter-a-unique-name" />
 <liferay-ui:error exception="<%= GroupNameException.class %>" message="please-enter-a-valid-name" />
 <liferay-ui:error exception="<%= RequiredGroupException.class %>" message="old-group-name-is-a-required-system-group" />
+<liferay-ui:error key="retryMerge" message="unable-to-propagate-the-changes" />
 
 <aui:fieldset>
 	<c:choose>
@@ -182,6 +183,17 @@ boolean hasUnlinkLayoutSetPrototypePermission = PortalPermissionUtil.contains(pe
 											<aui:input name="publicLayoutSetPrototypeLinkEnabled" type="hidden" value="<%= publicLayoutSetPrototypeLinkEnabled %>" />
 										</c:when>
 									</c:choose>
+
+									<c:if test="<%= publicLayoutSetPrototype != null %>">
+
+										<%
+										request.setAttribute("merge_alert.jsp-groupId", String.valueOf(group.getGroupId()));
+										request.setAttribute("merge_alert.jsp-layoutSet", publicLayoutSet);
+										request.setAttribute("merge_alert.jsp-redirect", currentURL);
+										%>
+
+										<liferay-util:include page="/html/portlet/sites_admin/merge_alert.jsp" />
+									</c:if>
 								</c:when>
 							</c:choose>
 						</c:otherwise>
@@ -254,6 +266,17 @@ boolean hasUnlinkLayoutSetPrototypePermission = PortalPermissionUtil.contains(pe
 											<aui:input name="privateLayoutSetPrototypeLinkEnabled" type="hidden" value="<%= privateLayoutSetPrototypeLinkEnabled %>" />
 										</c:when>
 									</c:choose>
+
+									<c:if test="<%= privateLayoutSetPrototype != null %>">
+
+										<%
+										request.setAttribute("merge_alert.jsp-groupId", String.valueOf(group.getGroupId()));
+										request.setAttribute("merge_alert.jsp-layoutSet", privateLayoutSet);
+										request.setAttribute("merge_alert.jsp-redirect", currentURL);
+										%>
+
+										<liferay-util:include page="/html/portlet/sites_admin/merge_alert.jsp" />
+									</c:if>
 								</c:when>
 							</c:choose>
 						</c:otherwise>
