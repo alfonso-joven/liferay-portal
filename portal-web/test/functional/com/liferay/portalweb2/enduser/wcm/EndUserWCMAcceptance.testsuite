@@ -11,7 +11,7 @@
 
 	<execute test-case="DockbarAcceptance" />
 
-	<execute test-case="PGAssetpublisherAcceptance" />
+	<execute test-suite="PGAssetpublisherAcceptance" />
 
 	<execute test-case="PGWebcontentdisplayAcceptance" />
 
