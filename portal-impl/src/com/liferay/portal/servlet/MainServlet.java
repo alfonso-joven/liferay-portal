@@ -1047,7 +1047,7 @@ public class MainServlet extends ActionServlet {
 			userId = JAASHelper.getJaasUserId(companyId, remoteUser);
 		}
 		else {
-			userId = GetterUtil.getLong(remoteUser);			
+			userId = GetterUtil.getLong(remoteUser);
 		}
 
 		EventsProcessorUtil.process(
