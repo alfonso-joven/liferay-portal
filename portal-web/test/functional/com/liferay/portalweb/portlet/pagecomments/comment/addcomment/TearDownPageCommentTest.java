@@ -44,8 +44,8 @@ public class TearDownPageCommentTest extends BaseTestCase {
 				}
 
 				assertEquals(RuntimeVariables.replace("Delete"),
-					selenium.getText("//li[4]/span/a/span"));
-				selenium.click("//li[4]/span/a/span");
+					selenium.getText("//li[contains(.,'Delete')]/span/a/span"));
+				selenium.click("//li[contains(.,'Delete')]/span/a/span");
 				selenium.waitForConfirmation(
 					"Are you sure you want to delete this?");
 				selenium.waitForVisible(
@@ -66,8 +66,8 @@ public class TearDownPageCommentTest extends BaseTestCase {
 				}
 
 				assertEquals(RuntimeVariables.replace("Delete"),
-					selenium.getText("//li[4]/span/a/span"));
-				selenium.click("//li[4]/span/a/span");
+					selenium.getText("//li[contains(.,'Delete')]/span/a/span"));
+				selenium.click("//li[contains(.,'Delete')]/span/a/span");
 				selenium.waitForConfirmation(
 					"Are you sure you want to delete this?");
 				selenium.waitForVisible(
@@ -88,8 +88,8 @@ public class TearDownPageCommentTest extends BaseTestCase {
 				}
 
 				assertEquals(RuntimeVariables.replace("Delete"),
-					selenium.getText("//li[4]/span/a/span"));
-				selenium.click("//li[4]/span/a/span");
+					selenium.getText("//li[contains(.,'Delete')]/span/a/span"));
+				selenium.click("//li[contains(.,'Delete')]/span/a/span");
 				selenium.waitForConfirmation(
 					"Are you sure you want to delete this?");
 				selenium.waitForVisible(
@@ -110,8 +110,8 @@ public class TearDownPageCommentTest extends BaseTestCase {
 				}
 
 				assertEquals(RuntimeVariables.replace("Delete"),
-					selenium.getText("//li[4]/span/a/span"));
-				selenium.click("//li[4]/span/a/span");
+					selenium.getText("//li[contains(.,'Delete')]/span/a/span"));
+				selenium.click("//li[contains(.,'Delete')]/span/a/span");
 				selenium.waitForConfirmation(
 					"Are you sure you want to delete this?");
 				selenium.waitForVisible(
@@ -132,8 +132,8 @@ public class TearDownPageCommentTest extends BaseTestCase {
 				}
 
 				assertEquals(RuntimeVariables.replace("Delete"),
-					selenium.getText("//li[4]/span/a/span"));
-				selenium.click("//li[4]/span/a/span");
+					selenium.getText("//li[contains(.,'Delete')]/span/a/span"));
+				selenium.click("//li[contains(.,'Delete')]/span/a/span");
 				selenium.waitForConfirmation(
 					"Are you sure you want to delete this?");
 				selenium.waitForVisible(
