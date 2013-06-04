@@ -30,6 +30,9 @@
 		<case locator-key1="ORGANIZATION_MENULIST_EDIT">
 			<execute function="Click#textClickAtAndWait" value1="Edit" />
 		</case>
+		<case comparator="startsWith" locator-key1="ORGANIZATION_TABLE_NAME_">
+			<execute function="Click#clickAtAndWait" />
+		</case>
 		<case locator-key1="SEARCH_BUTTON">
 			<execute function="Click#valueClickAtAndWait" value1="Search" />
 		</case>

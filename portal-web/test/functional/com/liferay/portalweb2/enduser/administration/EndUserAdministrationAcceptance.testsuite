@@ -3,5 +3,5 @@
 
 	<execute test-case="CPUsersandorganizationsAcceptance" />
 
-	<execute test-case="CPUserGroupsAcceptance" />
+	<execute test-case="CPUsergroupsAcceptance" />
 </definition>
