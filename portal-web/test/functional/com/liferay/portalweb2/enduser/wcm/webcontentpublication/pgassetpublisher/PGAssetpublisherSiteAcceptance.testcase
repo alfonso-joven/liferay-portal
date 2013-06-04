@@ -8,11 +8,11 @@
 	</set-up>
 
 	<command name="AddPortletAssetPublisherSite">
-		<execute macro="Site#cpAddBlank">
+		<execute macro="Site#addBlankCP">
 			<var name="siteName" value="${siteName}" />
 		</execute>
 
-		<execute macro="SitePage#cpAddPublic">
+		<execute macro="SitePage#addPublicCP">
 			<var name="siteName" value="${siteName}" />
 			<var name="sitePageName" value="${pageName}" />
 		</execute>
@@ -24,6 +24,6 @@
 	</command>
 
 	<tear-down>
-		<execute macro="Site#cpTearDown" />
+		<execute macro="Site#tearDownCP" />
 	</tear-down>
 </definition>
