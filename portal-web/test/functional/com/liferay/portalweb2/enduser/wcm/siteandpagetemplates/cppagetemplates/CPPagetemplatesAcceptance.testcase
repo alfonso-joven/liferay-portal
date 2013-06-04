@@ -4,20 +4,31 @@
 	</set-up>
 
 	<command name="AddPageTemplate">
-		<var name="pageTemplateName" value="Page Template Name" />
 		<var name="pageTemplateActive" value="Yes" />
+		<var name="pageTemplateName" value="Page Template Name" />
 
-		<execute macro="PageTemplate#addCP" />
+		<execute macro="PageTemplate#addCP">
+			<var name="pageTemplateActive" value="${pageTemplateActive}" />
+			<var name="pageTemplateName" value="${pageTemplateName}" />
+		</execute>
 	</command>
 
 	<command name="EditPageTemplate">
-		<var name="pageTemplateName" value="Page Template Name" />
 		<var name="pageTemplateActive" value="Yes" />
-		<var name="pageTemplateNameEdit" value="Page Template Name Edit" />
-		<var name="pageTemplateActiveEdit" value="No" />
+		<var name="pageTemplateActiveNew" value="No" />
+		<var name="pageTemplateName" value="Page Template Name" />
+		<var name="pageTemplateNameNew" value="Page Template Name Edit" />
 
-		<execute macro="PageTemplate#addCP" />
-		<execute macro="PageTemplate#editCP" />
+		<execute macro="PageTemplate#addCP">
+			<var name="pageTemplateActive" value="${pageTemplateActive}" />
+			<var name="pageTemplateName" value="${pageTemplateName}" />
+		</execute>
+
+		<execute macro="PageTemplate#editCP">
+			<var name="pageTemplateActiveNew" value="${pageTemplateActiveNew}" />
+			<var name="pageTemplateName" value="${pageTemplateName}" />
+			<var name="pageTemplateNameNew" value="${pageTemplateNameNew}" />
+		</execute>
 	</command>
 
 	<tear-down>

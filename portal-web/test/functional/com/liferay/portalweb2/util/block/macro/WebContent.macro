@@ -71,11 +71,11 @@
 
 		<execute action="PGWebcontentdisplay#click" locator-key1="EDIT_WEB_CONTENT" />
 
-		<execute action="PGWebcontentdisplayEditwebcontent#type" locator-key1="TITLE_FIELD" value1="${webContentTitleEdit}" />
-		<execute action="PGWebcontentdisplayEditwebcontent#type" locator-key1="CONTENT_FIELD" value1="${webContentContentEdit}" />
+		<execute action="PGWebcontentdisplayEditwebcontent#type" locator-key1="TITLE_FIELD" value1="${webContentTitleNew}" />
+		<execute action="PGWebcontentdisplayEditwebcontent#type" locator-key1="CONTENT_FIELD" value1="${webContentContentNew}" />
 		<execute action="PGWebcontentdisplayEditwebcontent#click" locator-key1="PUBLISH_BUTTON" />
 
-		<execute action="PGWebcontentdisplay#assertTextEquals" locator-key1="WEB_CONTENT_CONTENT" value1="${webContentContentEdit}" />
+		<execute action="PGWebcontentdisplay#assertTextEquals" locator-key1="WEB_CONTENT_CONTENT" value1="${webContentContentNew}" />
 	</command>
 
 	<command name="tearDownCP">

@@ -1,5 +1,5 @@
 <definition>
-	<command name="cpAdd">
+	<command name="addCP">
 		<execute macro="Page#cpGoto">
 			<var name="portletName" value="Sites" />
 		</execute>
@@ -30,12 +30,12 @@
 		<execute action="CPSitepages#click" locator-key1="ADD_PAGE_BUTTON" />
 		<execute action="CPSitepages#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
 
-		<execute macro="SitePage#cpOpenRoot" />
+		<execute macro="SitePage#openRootCP" />
 
 		<execute action="CPSitepages#assertTextEquals" locator-key1="PAGE_TREE_PAGE_LINK_1" value1="${sitePageName}" />
 	</command>
 
-	<command name="cpAddChild">
+	<command name="addChildCP">
 		<execute macro="Page#cpGoto">
 			<var name="portletName" value="Sites" />
 		</execute>
@@ -61,7 +61,7 @@
 			</else>
 		</if>
 
-		<execute macro="SitePage#cpOpenRoot" />
+		<execute macro="SitePage#openRootCP" />
 
 		<execute action="CPSitepages#click" locator-key1="PAGE_TREE_PAGE_LINK_1" />
 
@@ -70,14 +70,14 @@
 		<execute action="CPSitepages#click" locator-key1="ADD_PAGE_BUTTON" />
 		<execute action="CPSitepages#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
 
-		<execute macro="SitePage#cpOpenPage" />
+		<execute macro="SitePage#openPageCP" />
 
 		<execute action="CPSitepages#assertTextEquals" locator-key1="PAGE_TREE_PAGE_LINK_1" value1="${sitePageName}" />
 		<execute action="CPSitepages#assertTextEquals" locator-key1="PAGE_TREE_PAGE_LINK_1_CHILD_PAGE_LINK_1" value1="${siteChildPageName}" />
 	</command>
 
-	<command name="cpAddChildPrivate">
-		<execute macro="SitePage#cpAddChild">
+	<command name="addChildPrivateCP">
+		<execute macro="SitePage#addChildCP">
 			<var name="siteName" value="${siteName}" />
 			<var name="siteChildPageName" value="${siteChildPageName}" />
 			<var name="sitePageName" value="${sitePageName}" />
@@ -85,8 +85,8 @@
 		</execute>
 	</command>
 
-	<command name="cpAddChildPublic">
-		<execute macro="SitePage#cpAddChild">
+	<command name="addChildPublicCP">
+		<execute macro="SitePage#addChildCP">
 			<var name="siteName" value="${siteName}" />
 			<var name="siteChildPageName" value="${siteChildPageName}" />
 			<var name="sitePageName" value="${sitePageName}" />
@@ -94,21 +94,21 @@
 		</execute>
 	</command>
 
-	<command name="cpAddPrivate">
-		<execute macro="SitePage#cpAdd">
+	<command name="addPrivateCP">
+		<execute macro="SitePage#addCP">
 			<var name="sitePageName" value="${sitePageName}" />
 			<var name="sitePageType" value="Private" />
 		</execute>
 	</command>
 
-	<command name="cpAddPublic">
-		<execute macro="SitePage#cpAdd">
+	<command name="addPublicCP">
+		<execute macro="SitePage#addCP">
 			<var name="sitePageName" value="${sitePageName}" />
 			<var name="sitePageType" value="Public" />
 		</execute>
 	</command>
 
-	<command name="cpOpenPage">
+	<command name="openPageCP">
 		<execute action="CPSitepages#click" locator-key1="PAGE_TREE_PAGE_ARROW_1" />
 
 		<if>
@@ -121,7 +121,7 @@
 		<execute action="CPSitepages#assertElementPresent" locator-key1="PAGE_TREE_PAGE_LINK_1_CHILD_PAGE_LINK_1" />
 	</command>
 
-	<command name="cpOpenRoot">
+	<command name="openRootCP">
 		<execute action="CPSitepages#click" locator-key1="PAGE_TREE_ROOT_ARROW" />
 		<execute action="CPSitepages#assertElementPresent" locator-key1="PAGE_TREE_PAGE_LINK_1" />
 
@@ -133,7 +133,7 @@
 		</if>
 	</command>
 
-	<command name="pgViewChildPrivate">
+	<command name="viewChildPrivatePG">
 		<execute macro="Page#pgGotoSitePrivate">
 			<var name="pageName" value="${sitePageName}" />
 		</execute>
@@ -147,7 +147,7 @@
 		<execute action="Home#assertLocation" value1="${sitePageURL}"/>
 	</command>
 
-	<command name="pgViewChildPublic">
+	<command name="viewChildPublicPG">
 		<execute macro="Page#pgGotoSitePublic">
 			<var name="pageName" value="${sitePageName}" />
 		</execute>
@@ -161,7 +161,7 @@
 		<execute action="Home#assertLocation" value1="${sitePageURL}"/>
 	</command>
 
-	<command name="pgViewPrivate">
+	<command name="viewPrivatePG">
 		<execute macro="Page#pgGotoSitePrivate">
 			<var name="pageName" value="${sitePageName}" />
 		</execute>
@@ -172,7 +172,7 @@
 		<execute action="Home#assertLocation" value1="${sitePageURL}"/>
 	</command>
 
-	<command name="pgViewPublic">
+	<command name="viewPublicPG">
 		<execute macro="Page#pgGotoSitePublic">
 			<var name="pageName" value="${sitePageName}" />
 		</execute>

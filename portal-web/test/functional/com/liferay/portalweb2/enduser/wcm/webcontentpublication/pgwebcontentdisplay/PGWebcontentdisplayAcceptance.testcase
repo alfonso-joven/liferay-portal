@@ -16,28 +16,32 @@
 	</set-up>
 
 	<command name="AddWebContent">
-		<var name="webContentTitle" value="WC WebContent Title" />
 		<var name="webContentContent" value="WC WebContent Content" />
+		<var name="webContentTitle" value="WC WebContent Title" />
 
 		<execute macro="WebContent#addPGviaWCD">
-			<var name="webContentTitle" value="${webContentTitle}" />
+			<var name="pageName" value="${pageName}" />
 			<var name="webContentContent" value="${webContentContent}" />
+			<var name="webContentTitle" value="${webContentTitle}" />
 		</execute>
 	</command>
 
 	<command name="EditWebContent">
-		<var name="webContentTitle" value="WC WebContent Title" />
 		<var name="webContentContent" value="WC WebContent Content" />
-		<var name="webContentTitleEdit" value="WC WebContent Title Edit" />
 		<var name="webContentContentEdit" value="WC WebContent Content Edit" />
+		<var name="webContentTitle" value="WC WebContent Title" />
+		<var name="webContentTitleEdit" value="WC WebContent Title Edit" />
 
 		<execute macro="WebContent#addPGviaWCD">
+			<var name="pageName" value="${pageName}" />
 			<var name="webContentContent" value="${webContentContent}" />
 			<var name="webContentTitle" value="${webContentTitle}" />
 		</execute>
+
 		<execute macro="WebContent#editPGviaWCD">
-			<var name="webContentContentEdit" value="${webContentContentEdit}" />
-			<var name="webContentTitleEdit" value="${webContentTitleEdit}" />
+			<var name="pageName" value="${pageName}" />
+			<var name="webContentContentNew" value="${webContentContentNew}" />
+			<var name="webContentTitleNew" value="${webContentTitleNew}" />
 		</execute>
 	</command>
 

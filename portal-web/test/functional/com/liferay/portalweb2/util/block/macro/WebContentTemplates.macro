@@ -1,5 +1,5 @@
 <definition>
-	<command name="cpAdd">
+	<command name="addCP">
 		<execute macro="Page#cpGoto">
 			<var name="portletName" value="Web Content" />
 		</execute>
@@ -43,7 +43,7 @@
 		<execute action="CPWebcontentTemplates#assertTextEquals" locator-key1="TEMPLATE_TABLE_DESCRIPTION_1" value1="${templateDescription}" />
 	</command>
 
-	<command name="cpTearDown">
+	<command name="tearDownCP">
 		<execute macro="Page#cpGoto">
 			<var name="portletName" value="Web Content" />
 		</execute>
