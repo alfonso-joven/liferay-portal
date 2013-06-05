@@ -2,22 +2,22 @@
 	<var name="userEmailAddress" value="test@liferay.com" />
 	<var name="password" value="test" />
 
-	<command name="pgFirstLogin">
+	<command name="firstLoginPG">
 		<execute action="Home#open" locator-key1="HOME_URL" />
 
 		<if>
 			<condition action="Dockbar#isElementPresent" locator-key1="USER_NAME" />
 			<then>
-				<execute macro="SOUser#pgLogout" />
-				<execute macro="SOUser#pgLogin" />
+				<execute macro="SOUser#logoutPG" />
+				<execute macro="SOUser#loginPG" />
 			</then>
 			<else>
-				<execute macro="User#pgLogin" />
+				<execute macro="SOUser#loginPG" />
 			</else>
 		</if>
 	</command>
 
-	<command name="pgLogin">
+	<command name="loginPG">
 		<execute action="Home#open" locator-key1="HOME_URL" />
 
 		<execute action="PGLogin#type" locator-key1="EMAIL_ADDRESS_FIELD" value1="${userEmailAddress}" />
@@ -43,14 +43,14 @@
 		</if>
 	</command>
 
-	<command name="pgLogout">
+	<command name="logoutPG">
 		<execute action="Home#open" locator-key1="HOME_URL" />
 
 		<if>
-			<condition action="UserBar#isElementPresent" locator-key1="USER_NAME" />
+			<condition action="SOUserBar#isElementPresent" locator-key1="USER_NAME" />
 			<then>
-				<execute action="UserBar#mouseOver" locator-key1="USER_NAME" />
-				<execute action="UserBar#click" locator-key1="USER_MENU_SIGN_OUT" />
+				<execute action="SOUserBar#mouseOver" locator-key1="USER_NAME" />
+				<execute action="SOUserBar#click" locator-key1="USER_MENU_SIGN_OUT" />
 			</then>
 		</if>
 	</command>

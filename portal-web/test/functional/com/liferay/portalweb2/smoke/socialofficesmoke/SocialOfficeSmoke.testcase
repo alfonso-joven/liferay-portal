@@ -1,6 +1,6 @@
 <definition>
 	<set-up>
-		<execute macro="SOUser#pgFirstLogin" />
+		<execute macro="SOUser#firstLoginPG" />
 	</set-up>
 
 	<command name="Smoke">
@@ -13,7 +13,7 @@
 			<var name="userScreenName" value="${userScreenName}" />
 		</execute>
 
-		<execute macro="UserBar#pgDashboard">
+		<execute macro="SOUserBar#dashboardPG">
 			<var name="userName" value="${userName}" />
 		</execute>
 	</command>
