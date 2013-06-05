@@ -1,0 +1,7 @@
+<definition>
+	<command name="type">
+		<case locator-key1="FILE_FIELD">
+			<execute function="Type#sendKeys" />
+		</case>
+	</command>
+</definition>

@@ -1,0 +1,267 @@
+<definition>
+	<command name="cpAdd">
+		<execute macro="Page#cpGoto">
+			<var name="portletName" value="Documents and Media" />
+		</execute>
+
+		<execute action="CPDocumentsandmedia#click" locator-key1="ADD" />
+		<execute action="CPDocumentsandmedia#click" locator-key1="ADD_MENULIST_BASIC_DOCUMENT" />
+
+		<execute action="CPDocumentsandmediaAdddocument#uploadCommonFile" locator-key1="FILE_FIELD" value1="${file}" />
+		<execute action="CPDocumentsandmediaAdddocument#type" locator-key1="TITLE_FIELD" value1="${title}" />
+		<execute action="CPDocumentsandmediaAdddocument#type" locator-key1="DESCRIPTION_FIELD" value1="${description}" />
+		<execute action="CPDocumentsandmediaAdddocument#click" locator-key1="PUBLISH_BUTTON" />
+
+		<execute action="CPDocumentsandmedia#assertTextEquals" locator-key1="REQUEST" value1="Your request completed successfully."/>
+		<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="DOCUMENT_CONTAINER_DOCUMENT1" />
+
+		<if>
+			<condition action="CPDocumentsandmedia#isElementNotPresent" locator-key1="DOCUMENT_CONTAINER_DOCUMENT2" />
+			<then>
+				<execute action="CPDocumentsandmedia#assertTextEquals" locator-key1="DOCUMENT_CONTAINER_DOCUMENT1_TITLE" value1="${title}"/>
+			</then>
+			<else>
+				<execute action="CPDocumentsandmedia#assertTextPresent" value1="${title}" />
+			</else>
+		</if>
+	</command>
+
+	<command name="cpAddFolder">
+		<execute macro="Page#cpGoto">
+			<var name="portletName" value="Documents and Media" />
+		</execute>
+
+		<execute action="CPDocumentsandmedia#click" locator-key1="ADD" />
+		<execute action="CPDocumentsandmedia#click" locator-key1="ADD_MENULIST_FOLDER" />
+
+		<execute action="CPDocumentsandmediaAddfolder#type" locator-key1="NAME_FIELD" value1="${title}" />
+		<execute action="CPDocumentsandmediaAddfolder#type" locator-key1="DESCRIPTION_FIELD" value1="${description}" />
+		<execute action="CPDocumentsandmediaAddfolder#click" locator-key1="SAVE_BUTTON" />
+
+		<execute action="CPDocumentsandmedia#assertTextEquals" locator-key1="REQUEST" value1="Your request completed successfully."/>
+
+		<if>
+			<condition action="CPDocumentsandmedia#isElementNotPresent" locator-key1="DOCUMENT_CONTAINER_FOLDER2" />
+			<then>
+				<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="DOCUMENT_CONTAINER_FOLDER1" />
+				<execute action="CPDocumentsandmedia#assertTextEquals" locator-key1="DOCUMENT_CONTAINER_FOLDER1_TITLE" value1="${title}"/>
+			</then>
+			<else>
+				<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="DOCUMENT_CONTAINER_FOLDER2" />
+				<execute action="CPDocumentsandmedia#assertTextEquals" locator-key1="DOCUMENT_CONTAINER_FOLDER2_TITLE" value1="${title}"/>
+			</else>
+		</if>
+	</command>
+
+	<command name="cpEdit">
+		<execute macro="Page#cpGoto">
+			<var name="portletName" value="Documents and Media" />
+		</execute>
+
+		<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="DOCUMENT_CONTAINER_DOCUMENT1" />
+		<execute action="CPDocumentsandmedia#assertTextEquals" locator-key1="DOCUMENT_CONTAINER_DOCUMENT1_TITLE" value1="${title}" />
+
+		<execute action="CPDocumentsandmedia#mouseOver" locator-key1="DOCUMENT_CONTAINER_DOCUMENT1" />
+		<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="DOCUMENT_CONTAINER_DOCUMENT1_DROPDOWN" />
+		<execute action="CPDocumentsandmedia#click" locator-key1="DOCUMENT_CONTAINER_DOCUMENT1_DROPDOWN" />
+		<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="DOCUMENT_MENULIST_EDIT" />
+		<execute action="CPDocumentsandmedia#click" locator-key1="DOCUMENT_MENULIST_EDIT" />
+
+		<execute action="CPDocumentsandmediaEditdocument#type" locator-key1="TITLE_FIELD" value1="${titleEdited}" />
+		<execute action="CPDocumentsandmediaEditdocument#type" locator-key1="DESCRIPTION_FIELD" value1="${descriptionEdited}" />
+		<execute action="CPDocumentsandmediaEditdocument#click" locator-key1="PUBLISH_BUTTON" />
+
+		<execute action="CPDocumentsandmedia#assertTextEquals" locator-key1="REQUEST" value1="Your request completed successfully."/>
+		<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="DOCUMENT_CONTAINER_DOCUMENT1" />
+		<execute action="CPDocumentsandmedia#assertTextEquals" locator-key1="DOCUMENT_CONTAINER_DOCUMENT1_TITLE" value1="${titleEdited}"/>
+	</command>
+
+	<command name="cpEditFolder">
+		<execute macro="Page#cpGoto">
+			<var name="portletName" value="Documents and Media" />
+		</execute>
+
+		<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="DOCUMENT_CONTAINER_FOLDER1" />
+		<execute action="CPDocumentsandmedia#assertTextEquals" locator-key1="DOCUMENT_CONTAINER_FOLDER1_TITLE" value1="${title}" />
+
+		<execute action="CPDocumentsandmedia#mouseOver" locator-key1="DOCUMENT_CONTAINER_FOLDER1" />
+		<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="DOCUMENT_CONTAINER_FOLDER1_DROPDOWN" />
+		<execute action="CPDocumentsandmedia#click" locator-key1="DOCUMENT_CONTAINER_FOLDER1_DROPDOWN" />
+		<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="FOLDER_MENULIST_EDIT" />
+		<execute action="CPDocumentsandmedia#click" locator-key1="FOLDER_MENULIST_EDIT" />
+
+		<execute action="CPDocumentsandmediaEditfolder#type" locator-key1="NAME_FIELD" value1="${titleEdited}" />
+		<execute action="CPDocumentsandmediaEditfolder#type" locator-key1="DESCRIPTION_FIELD" value1="${descriptionEdited}" />
+		<execute action="CPDocumentsandmediaEditfolder#click" locator-key1="SAVE_BUTTON" />
+
+		<execute action="CPDocumentsandmedia#assertTextEquals" locator-key1="REQUEST" value1="Your request completed successfully."/>
+		<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="DOCUMENT_CONTAINER_FOLDER1" />
+		<execute action="CPDocumentsandmedia#assertTextEquals" locator-key1="DOCUMENT_CONTAINER_FOLDER1_TITLE" value1="${titleEdited}"/>
+	</command>
+
+	<command name="cpMoveDocumentToFolder">
+		<execute macro="Page#cpGoto">
+			<var name="portletName" value="Documents and Media" />
+		</execute>
+
+		<execute macro="DocumentsAndMedia#cpAdd">
+			<var name="file" value="${file}" />
+			<var name="title" value="${title1}" />
+			<var name="description" value="${description1}" />
+		</execute>
+
+		<execute macro="DocumentsAndMedia#cpAddFolder">
+			<var name="title" value="${title2}" />
+			<var name="description" value="${description2}" />
+		</execute>
+
+		<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="DOCUMENT_CONTAINER_DOCUMENT1" />
+		<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="DOCUMENT_CONTAINER_FOLDER2" />
+		
+		<execute action="CPDocumentsandmedia#click" locator-key1="DOCUMENT_CONTAINER_DOCUMENT1_DROPDOWN" />
+		<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="DOCUMENT_MENULIST_MOVE" />
+		<execute action="CPDocumentsandmedia#click" locator-key1="DOCUMENT_MENULIST_MOVE" />
+
+		<execute action="CPDocumentsandmediaMovedocument#click" locator-key1="SELECT_PARENT_FOLDER_BUTTON" />
+		<execute action="CPDocumentsandmediaMovedocument#selectWindow" locator-key1="FOLDER_WINDOW_ID" />
+		<execute action="CPDocumentsandmediaMovedocument#click" locator-key1="FOLDER_WINDOW_FOLDER1_CHOOSE_BUTTON" />
+		<execute action="CPDocumentsandmediaMovedocument#selectWindow" locator1="null" />
+
+		<execute action="CPDocumentsandmediaMovedocument#assertTextEquals" locator-key1="PARENT_FOLDER" value1="${title2}" />
+		<execute action="CPDocumentsandmediaMovedocument#click" locator-key1="MOVE_BUTTON" />
+
+		<execute action="CPDocumentsandmedia#assertTextEquals" locator-key1="REQUEST" value1="Your request completed successfully." />
+		<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="DOCUMENT_CONTAINER_FOLDER1" />
+		<execute action="CPDocumentsandmedia#assertTextEquals" locator-key1="DOCUMENT_CONTAINER_FOLDER1_TITLE" value1="${title2}" />
+		<execute action="CPDocumentsandmedia#click" locator-key1="DOCUMENT_CONTAINER_FOLDER1" />		
+		<execute action="CPDocumentsandmedia#assertTextEquals" locator-key1="BREADCRUMB_LAST" value1="${title2}" />
+		<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="FOLDER_VIEW_DOCUMENT1" />
+		<execute action="CPDocumentsandmedia#assertTextEquals" locator-key1="FOLDER_VIEW_DOCUMENT1_TITLE" value1="${title1}" />
+	</command>
+
+	<command name="cpMoveFolderToFolder">
+		<execute macro="Page#cpGoto">
+			<var name="portletName" value="Documents and Media" />
+		</execute>
+
+		<execute macro="DocumentsAndMedia#cpAddFolder">
+			<var name="title" value="${title1}" />
+			<var name="description" value="${description1}" />
+		</execute>
+
+		<execute macro="DocumentsAndMedia#cpAddFolder">
+			<var name="title" value="${title2}" />
+			<var name="description" value="${description2}" />
+		</execute>
+
+		<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="DOCUMENT_CONTAINER_FOLDER1" />
+		<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="DOCUMENT_CONTAINER_FOLDER2" />
+		
+		<execute action="CPDocumentsandmedia#click" locator-key1="DOCUMENT_CONTAINER_FOLDER1_DROPDOWN" />
+		<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="FOLDER_MENULIST_MOVE" />
+		<execute action="CPDocumentsandmedia#click" locator-key1="FOLDER_MENULIST_MOVE" />
+
+		<execute action="CPDocumentsandmediaMovefolder#click" locator-key1="SELECT_PARENT_FOLDER_BUTTON" />
+		<execute action="CPDocumentsandmediaMovefolder#selectWindow" locator-key1="FOLDER_WINDOW_ID" />
+		<execute action="CPDocumentsandmediaMovefolder#click" locator-key1="FOLDER_WINDOW_FOLDER2_CHOOSE_BUTTON" />
+		<execute action="CPDocumentsandmediaMovefolder#selectWindow" locator1="null" />
+
+		<execute action="CPDocumentsandmediaMovefolder#assertTextEquals" locator-key1="PARENT_FOLDER" value1="${title2}" />
+		<execute action="CPDocumentsandmediaMovefolder#click" locator-key1="MOVE_BUTTON" />
+
+		<execute action="CPDocumentsandmedia#assertTextEquals" locator-key1="REQUEST" value1="Your request completed successfully."/>
+		<execute action="CPDocumentsandmedia#assertElementNotPresent" locator-key1="DOCUMENT_CONTAINER_FOLDER2" />
+		<execute action="CPDocumentsandmedia#click" locator-key1="DOCUMENT_CONTAINER_FOLDER1" />
+		<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="FOLDER_VIEW_FOLDER1" />
+	</command>
+
+	<command name="cpDelete">
+		<execute macro="Page#cpGoto">
+			<var name="portletName" value="Documents and Media" />
+		</execute>
+
+		<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="DOCUMENT_CONTAINER_DOCUMENT1" />
+		<execute action="CPDocumentsandmedia#assertTextEquals" locator-key1="DOCUMENT_CONTAINER_DOCUMENT1_TITLE" value1="${title}"/>
+
+		<execute action="CPDocumentsandmedia#mouseOver" locator-key1="DOCUMENT_CONTAINER_DOCUMENT1" />
+		<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="DOCUMENT_CONTAINER_DOCUMENT1_CHECKBOX" />
+		<execute action="CPDocumentsandmedia#click" locator-key1="DOCUMENT_CONTAINER_DOCUMENT1_CHECKBOX" />
+		<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="ACTIONS" />
+		<execute action="CPDocumentsandmedia#click" locator-key1="ACTIONS" />
+		<execute action="CPDocumentsandmedia#click" locator-key1="ACTIONS_MENULIST_DELETE" />
+		<execute action="CPDocumentsandmedia#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete the selected entries?" />
+		<execute action="CPDocumentsandmedia#assertTextEquals" locator-key1="REQUEST" value1="Your request completed successfully."/>
+
+		<if>
+			<condition action="CPDocumentsandmedia#isElementPresent" locator-key1="DOCUMENT_CONTAINER_DOCUMENT1" />
+			<then>
+				<execute action="CPDocumentsandmedia#assertTextNotEquals" locator-key1="DOCUMENT_CONTAINER_DOCUMENT1_TITLE" value1="${title}" />
+			</then>
+			<else>
+				<execute action="CPDocumentsandmedia#assertElementNotPresent" locator-key1="DOCUMENT_CONTAINER_DOCUMENT1" />
+			</else>
+		</if>
+	</command>
+
+	<command name="cpDeleteFolder">
+		<execute macro="Page#cpGoto">
+			<var name="portletName" value="Documents and Media" />
+		</execute>
+
+		<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="DOCUMENT_CONTAINER_FOLDER1" />
+		<execute action="CPDocumentsandmedia#assertTextEquals" locator-key1="DOCUMENT_CONTAINER_FOLDER1_TITLE" value1="${title}"/>
+
+		<execute action="CPDocumentsandmedia#mouseOver" locator-key1="DOCUMENT_CONTAINER_FOLDER1" />
+		<execute action="CPDocumentsandmedia#click" locator-key1="DOCUMENT_CONTAINER_FOLDER1_CHECKBOX" />
+		<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="ACTIONS" />
+		<execute action="CPDocumentsandmedia#click" locator-key1="ACTIONS" />
+		<execute action="CPDocumentsandmedia#click" locator-key1="ACTIONS_MENULIST_DELETE" />
+		<execute action="CPDocumentsandmedia#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete the selected entries?" />
+		<execute action="CPDocumentsandmedia#assertTextEquals" locator-key1="REQUEST" value1="Your request completed successfully."/>
+
+		<if>
+			<condition action="CPDocumentsandmedia#isElementPresent" locator-key1="DOCUMENT_CONTAINER_FOLDER1" />
+			<then>
+				<execute action="CPDocumentsandmedia#assertTextNotEquals" locator-key1="DOCUMENT_CONTAINER_FOLDER1_TITLE" value1="${title}" />
+			</then>
+			<else>
+				<execute action="CPDocumentsandmedia#assertElementNotPresent" locator-key1="DOCUMENT_CONTAINER_FOLDER1" />
+			</else>
+		</if>
+	</command>
+
+	<command name="cpTearDown">
+		<execute macro="Page#cpGoto">
+			<var name="portletName" value="Documents and Media" />
+		</execute>
+
+		<while>
+			<condition action="CPDocumentsandmedia#isElementPresent" locator-key1="DOCUMENT_CONTAINER_DOCUMENT1" />
+			<then>
+				<execute action="CPDocumentsandmedia#select" locator-key1="PAGINATION_ROWS_PER_PAGE_SELECT" value1="75" />
+				<execute action="CPDocumentsandmedia#check" locator-key1="SELECT_ALL_ROWS_CHECKBOX" />
+				<execute action="CPDocumentsandmedia#click" locator-key1="ACTIONS" />
+				<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="ACTIONS_MENULIST_DELETE" />
+				<execute action="CPDocumentsandmedia#click" locator-key1="ACTIONS_MENULIST_DELETE" />
+				<execute action="CPDocumentsandmedia#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete the selected entries?" />
+				<execute action="CPDocumentsandmedia#assertTextEquals" locator-key1="REQUEST" value1="Your request completed successfully."/>
+			</then>
+		</while>
+
+		<while>
+			<condition action="CPDocumentsandmedia#isElementPresent" locator-key1="DOCUMENT_CONTAINER_FOLDER1" />
+			<then>
+				<execute action="CPDocumentsandmedia#select" locator-key1="PAGINATION_ROWS_PER_PAGE_SELECT" value1="75" />
+				<execute action="CPDocumentsandmedia#check" locator-key1="SELECT_ALL_ROWS_CHECKBOX" />
+				<execute action="CPDocumentsandmedia#click" locator-key1="ACTIONS" />
+				<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="ACTIONS_MENULIST_DELETE" />
+				<execute action="CPDocumentsandmedia#click" locator-key1="ACTIONS_MENULIST_DELETE" />
+				<execute action="CPDocumentsandmedia#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete the selected entries?" />
+				<execute action="CPDocumentsandmedia#assertTextEquals" locator-key1="REQUEST" value1="Your request completed successfully."/>
+			</then>
+		</while>
+
+		<execute action="CPDocumentsandmedia#assertTextEquals" locator-key1="PORTAL_INFO" value1="There are no documents or media files in this folder." />
+	</command>
+</definition>
+

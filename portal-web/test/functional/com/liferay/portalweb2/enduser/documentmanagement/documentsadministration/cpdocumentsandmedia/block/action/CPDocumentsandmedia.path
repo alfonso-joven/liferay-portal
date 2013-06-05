@@ -80,6 +80,11 @@
 	<td> Your request completed successfully. </td>
 </tr>
 <tr>
+	<td>CONFIRMATION</td>
+	<td></td>
+	<td>Are you sure you want to delete the selected entries?</td>
+</tr>
+<tr>
 	<td></td>
 	<td></td>
 	<td></td>
@@ -244,25 +249,123 @@
 	<td>Mine</td>
 </tr>
 <!---->
+<!--BREADCRUMB-->
+<tr>
+	<td>BREADCRUMB_FIRST</td>
+	<td>//div[@id='_20_breadcrumbContainer']/ul/li[@class='first']/span/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>BREADCRUMB_LAST</td>
+	<td>//div[@id='_20_breadcrumbContainer']/ul/li[@class='last']/span/a</td>
+	<td></td>
+</tr>
+<!---->
 <!--DOCUMENT_CONTAINER-->
 <tr>
 	<td>DOCUMENT_CONTAINER_DOCUMENT1</td>
-	<td>//div[@id='_20_documentContainer']/div[2]/a/span[@class='document-thumbnail']</td>
+	<td>//div[@id='_20_documentContainer']/div[2]/a[@data-folder='false']/span</td>
 	<td></td>
 </tr>
 <tr>
 	<td>DOCUMENT_CONTAINER_DOCUMENT1_CHECKBOX</td>
-	<td>//input[@id='_20_rowIdsFileEntryCheckbox']</td>
+	<td>//div[@id='_20_documentContainer']/div[2]/span/span/span/input[@id='_20_rowIdsFileEntryCheckbox']</td>
 	<td></td>
 </tr>
 <tr>
 	<td>DOCUMENT_CONTAINER_DOCUMENT1_DROPDOWN</td>
-	<td>//span[@class='overlay document-action']/span/ul/li/strong/a</td>
+	<td>//div[@id='_20_documentContainer']/div[2]/span[2]/span/ul/li/strong/a</td>
 	<td></td>
 </tr>
 <tr>
 	<td>DOCUMENT_CONTAINER_DOCUMENT1_TITLE</td>
 	<td>//div[@id='_20_documentContainer']/div[2]/a/span[@class='entry-title']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>DOCUMENT_CONTAINER_DOCUMENT2</td>
+	<td>//div[@id='_20_documentContainer']/div[3]/a[@data-folder='false']/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>DOCUMENT_CONTAINER_DOCUMENT2_CHECKBOX</td>
+	<td>//div[@id='_20_documentContainer']/div[3]/span/span/span/input[@id='_20_rowIdsFileEntryCheckbox']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>DOCUMENT_CONTAINER_DOCUMENT2_DROPDOWN</td>
+	<td>//div[@id='_20_documentContainer']/div[3]/span[2]/span/ul/li/strong/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>DOCUMENT_CONTAINER_DOCUMENT2_TITLE</td>
+	<td>//div[@id='_20_documentContainer']/div[3]/a/span[@class='entry-title']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>DOCUMENT_CONTAINER_FOLDER1</td>
+	<td>//div[@id='_20_documentContainer']/div[2]/a[@data-folder='true']/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>DOCUMENT_CONTAINER_FOLDER1_CHECKBOX</td>
+	<td>//div[@id='_20_documentContainer']/div[2]/span/span/span/input[@id='_20_rowIdsFolderCheckbox']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>DOCUMENT_CONTAINER_FOLDER1_DROPDOWN</td>
+	<td>//div[@id='_20_documentContainer']/div[2]/span[2]/span/ul/li/strong/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>DOCUMENT_CONTAINER_FOLDER1_TITLE</td>
+	<td>//div[@id='_20_documentContainer']/div[2]/a[@data-folder='true']/span[@class='entry-title']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>DOCUMENT_CONTAINER_FOLDER2</td>
+	<td>//div[@id='_20_documentContainer']/div[3]/a[@data-folder='true']/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>DOCUMENT_CONTAINER_FOLDER2_CHECKBOX</td>
+	<td>//div[@id='_20_documentContainer']/div[3]/span/span/span/input[@id='_20_rowIdsFolderCheckbox']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>DOCUMENT_CONTAINER_FOLDER2_DROPDOWN</td>
+	<td>//div[@id='_20_documentContainer']/div[3]/span[2]/span/ul/li/strong/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>DOCUMENT_CONTAINER_FOLDER2_TITLE</td>
+	<td>//div[@id='_20_documentContainer']/div[3]/a[@data-folder='true']/span[@class='entry-title']</td>
+	<td></td>
+</tr>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+<!--FOLDER_VIEW-->
+<tr>
+	<td>FOLDER_VIEW_FOLDER1</td>
+	<td>//div[@id='_20_entries']/div[2]/a[@data-folder='true']/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>FOLDER_VIEW_FOLDER1_TITLE</td>
+	<td>//div[@id='_20_entries']/div[2]/a[@data-folder='true']/span[@class='entry-title']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>FOLDER_VIEW_DOCUMENT1</td>
+	<td>//div[@id='_20_entries']/div[2]/a[@data-folder='false']/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>FOLDER_VIEW_DOCUMENT1_TITLE</td>
+	<td>//div[@id='_20_entries']/div[2]/a[@data-folder='false']/span[@class='entry-title']</td>
 	<td></td>
 </tr>
 <tr>
@@ -370,10 +473,9 @@
 </tr>
 <tr>
 	<td>PAGINATION_ROWS_PER_PAGE_SELECT</td>
-	<td>//select[@class='aui-paginator-rows-per-page']</td>
+	<td>//div[contains(@class, 'document-entries-paginator')]/select[@class='aui-paginator-rows-per-page']</td>
 	<td></td>
 </tr>
-
 </tbody>
 </table>
 </body>

@@ -1,0 +1,87 @@
+<definition>
+	<var name="portletName" value="Documents and Media" />
+
+	<set-up>
+		<execute macro="User#pgFirstLogin" />
+	</set-up>
+
+	<command name="cpAdd">
+		<var name="file" value="Document_1.txt" />
+		<var name="title" value="Title1" />
+		<var name="description" value="Description1" />
+
+		<execute macro="DocumentsAndMedia#cpAdd" />
+	</command>
+
+	<command name="cpEdit">
+		<var name="file" value="Document_1.txt" />
+		<var name="title" value="Title1" />
+		<var name="description" value="Description1" />
+
+		<var name="titleEdited" value="Title1 Edited" />
+		<var name="descriptionEdited" value="Description1 Edited" />
+
+		<execute macro="DocumentsAndMedia#cpAdd" />
+		<execute macro="DocumentsAndMedia#cpEdit" />
+	</command>
+
+	<command name="cpDelete">
+		<var name="file" value="Document_1.txt" />
+		<var name="title" value="Title1" />
+		<var name="description" value="Description1" />
+
+		<execute macro="DocumentsAndMedia#cpAdd" />
+		<execute macro="DocumentsAndMedia#cpDelete" />
+	</command>
+
+	<command name="cpAddFolder">
+		<var name="title" value="Title1" />
+		<var name="description" value="Description1" />
+
+		<execute macro="DocumentsAndMedia#cpAddFolder" />
+	</command>
+
+	<command name="cpEditFolder">
+		<var name="title" value="Title1" />
+		<var name="description" value="Description1" />
+		<var name="titleEdited" value="Title1 Edited" />
+		<var name="descriptionEdited" value="Description1 Edited" />
+
+		<execute macro="DocumentsAndMedia#cpAddFolder" />
+		<execute macro="DocumentsAndMedia#cpEditFolder" />
+	</command>
+
+	<command name="cpDeleteFolder">
+		<var name="title" value="Title1" />
+		<var name="description" value="Description1" />
+
+		<execute macro="DocumentsAndMedia#cpAddFolder" />
+		<execute macro="DocumentsAndMedia#cpDeleteFolder" />
+	</command>
+
+	<command name="cpMoveDocumentToFolder">
+		<var name="file" value="Document_1.txt" />
+		<var name="title1" value="Document1" />
+		<var name="description1" value="Document1 Description" />
+
+		<var name="title2" value="Folder2" />
+		<var name="description2" value="Folder2 Description" />
+
+		<execute macro="DocumentsAndMedia#cpMoveDocumentToFolder" />
+	</command>
+
+	<command name="cpMoveFolderToFolder">
+		<var name="title1" value="Folder1" />
+		<var name="description1" value="Folder1 Description" />
+
+		<var name="title2" value="Folder2" />
+		<var name="description2" value="Folder2 Description" />
+
+		<execute macro="DocumentsAndMedia#cpMoveFolderToFolder" />
+	</command>
+
+	<tear-down>
+	<execute macro="DocumentsAndMedia#cpTearDown" />
+		<execute macro="User#pgLogout" />
+	</tear-down>
+</definition>
