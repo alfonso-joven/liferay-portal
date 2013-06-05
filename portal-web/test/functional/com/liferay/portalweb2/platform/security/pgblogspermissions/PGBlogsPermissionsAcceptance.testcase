@@ -5,17 +5,31 @@
 	<set-up>
 		<execute macro="User#pgFirstLogin" />
 
-		<execute macro="Page#pgAdd" />
+		<execute macro="Page#pgAdd">
+			<var name="pageName" value="${pageName}" />
+		</execute>
 
-		<execute macro="Portlet#pgAdd" />
+		<execute macro="Portlet#pgAdd">
+			<var name="pageName" value="${pageName}" />
+			<var name="portletName" value="${portletName}" />
+		</execute>
 	</set-up>
 
 	<command name="Guest_ViewPortletBlogsPermissionsNoTest">
-		<execute macro="BlogsEntry#pgGuestViewPortletBlogsPermisisonsNo" />
-		<execute macro="User#pgLogin" />
+		<execute macro="BlogsEntry#viewPortletPG">
+			<var name="pageName" value="${pageName}" />
+		</execute>
+
+		<execute macro="User#pgLogout" />
+
+		<execute macro="BlogsEntry#viewPortletPGasGuest">
+			<var name="pageName" value="${pageName}" />
+		</execute>
 	</command>
 
 	<tear-down>
+		<execute macro="User#pgFirstLogin" />
+
 		<execute macro="Page#pgTearDown" />
 	</tear-down>
 </definition>
