@@ -1013,7 +1013,6 @@ public class JournalArticleLocalServiceImpl
 			article.getGroupId(), themeDisplay, xmlRequest);
 
 		if ((themeDisplay == null) && xmlRequest.equals("<request />")) {
-
 			tokens.put("company_id", String.valueOf(article.getCompanyId()));
 
 			Group companyGroup = groupLocalService.getCompanyGroup(

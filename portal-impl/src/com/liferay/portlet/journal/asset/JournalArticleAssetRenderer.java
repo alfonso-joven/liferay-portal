@@ -117,7 +117,7 @@ public class JournalArticleAssetRenderer extends BaseAssetRenderer {
 			catch (Exception e) {
 			}
 		}
-		
+
 		return summary;
 	}
 
