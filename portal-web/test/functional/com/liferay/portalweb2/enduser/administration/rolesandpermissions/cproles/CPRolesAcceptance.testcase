@@ -124,7 +124,7 @@
 		<var name="entryTitle" value="Blogs Entry Title" />
 		<var name="pageName" value="Blogs Page" />
 		<var name="portletName" value="Blogs" />
-		<var name="roleName" value="Roles Regrole Name" />
+		<var name="roleName" value="Regrole Name" />
 		<var name="rolePermission" value="Add Entry" />
 		<var name="userEmailAddress" value="userea@liferay.com" />
 		<var name="userFirstName" value="userfn" />
@@ -157,6 +157,7 @@
 		</execute>
 
 		<execute macro="Role#assignRegRoleCP">
+			<var name="roleName" value="${roleName}" />
 			<var name="userScreenName" value="${userScreenName}" />
 		</execute>
 
@@ -475,7 +476,7 @@
 		<var name="entryTitle" value="Blogs Entry Title" />
 		<var name="pageName" value="Blogs Page" />
 		<var name="portletName" value="Blogs" />
-		<var name="roleName" value="Roles Regrole Name" />
+		<var name="roleName" value="Regrole Name" />
 		<var name="rolePermission" value="Delete" />
 		<var name="userEmailAddress" value="userea@liferay.com" />
 		<var name="userFirstName" value="userfn" />
@@ -508,6 +509,7 @@
 		</execute>
 
 		<execute macro="Role#assignRegRoleCP">
+			<var name="roleName" value="${roleName}" />
 			<var name="userScreenName" value="${userScreenName}" />
 		</execute>
 

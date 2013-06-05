@@ -1,0 +1,20 @@
+<definition>
+	<set-up>
+		<execute macro="SOUser#pgFirstLogin" />
+	</set-up>
+
+	<command name="Smoke">
+		<var name="roleName" value="Social Office" />
+		<var name="userName" value="Joe Bloggs" />
+		<var name="userScreenName" value="joebloggs" />
+
+		<execute macro="Role#assignRegRoleCP">
+			<var name="roleName" value="${roleName}" />
+			<var name="userScreenName" value="${userScreenName}" />
+		</execute>
+
+		<execute macro="UserBar#pgDashboard">
+			<var name="userName" value="${userName}" />
+		</execute>
+	</command>
+</definition>
