@@ -49,6 +49,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>CONFIRMATION</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
 	<td></td>
 	<td></td>
 	<td></td>
@@ -198,6 +203,16 @@
 	<td>DOCUMENTS_TABLE_ACTIONS_BUTTON_1</td>
 	<td>xpath=(//div[contains(@id,'objectsSearchContainerSearchContainer')]/table/tbody/tr/td[4]/span/ul/li/strong/a/span)[1]</td>
 	<td>Actions</td>
+</tr>
+<tr>
+	<td>DOCUMENTS_TABLE_NAME_2</td>
+	<td>xpath=(//div[contains(@id,'objectsSearchContainerSearchContainer')]/table/tbody/tr/td[2]/a/span[@class='entry-title'])[2]</td>
+	<td>Name</td>
+</tr>
+<tr>
+	<td>DOCUMENTS_TABLE_NAME_3</td>
+	<td>xpath=(//div[contains(@id,'objectsSearchContainerSearchContainer')]/table/tbody/tr/td[2]/a/span[@class='entry-title'])[3]</td>
+	<td>Name</td>
 </tr>
 <tr>
 	<td></td>

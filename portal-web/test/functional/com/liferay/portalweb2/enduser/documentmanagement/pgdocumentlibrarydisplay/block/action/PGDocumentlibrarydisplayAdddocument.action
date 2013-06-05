@@ -1,0 +1,16 @@
+<definition>
+	<command name="click">
+		<case locator-key1="PUBLISH_BUTTON">
+			<execute function="Click#valueClickAtAndWait" value1="Publish" />
+		</case>
+		<case locator-key1="SELECT_DOCUMENT_TYPE_BASIC_DOCUMENT">
+			<execute function="Click#textClickAtAndWait" value1="Basic Document" />
+		</case>
+	</command>
+
+	<command name="selectFrame">
+		<case locator-key1="SELECT_DOCUMENT_TYPE_IFRAME">
+			<execute function="SelectFrame#selectFrameWaitForScript" />
+		</case>
+	</command>
+</definition>

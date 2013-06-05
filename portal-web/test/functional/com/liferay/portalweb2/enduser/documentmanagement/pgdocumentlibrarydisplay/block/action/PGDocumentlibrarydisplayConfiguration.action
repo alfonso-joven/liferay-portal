@@ -1,0 +1,19 @@
+<definition>
+	<command name="assertTextEquals">
+		<case locator-key1="SUCCESS_MESSAGE">
+			<execute function="AssertTextEquals#assertText" value1="You have successfully updated the setup." />
+		</case>
+	</command>
+
+	<command name="click">
+		<case locator-key1="SAVE_BUTTON">
+			<execute function="Click#valueClickAtAndWait" value1="Save" />
+		</case>
+	</command>
+
+	<command name="selectFrame">
+		<case locator-key1="CONFIGURATION_IFRAME">
+			<execute function="SelectFrame#selectFrameWaitForScript" />
+		</case>
+	</command>
+</definition>

@@ -24,6 +24,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>FOLDER_NAME</td>
+	<td>//h1[@class='header-title']/span</td>
+	<td></td>
+</tr>
+<tr>
 	<td>BACK</td>
 	<td>//span[@class='header-back-to']/a</td>
 	<td></td>

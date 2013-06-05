@@ -1,0 +1,16 @@
+<definition>
+	<command name="assertTextEquals">
+		<case locator-key1="INFO_MESSAGE">
+			<execute function="AssertTextEquals#assertText" value1="There are no documents or media files in this folder." />
+		</case>
+		<case locator-key1="SUCCESS_MESSAGE">
+			<execute function="AssertTextEquals#assertText" value1="Your request completed successfully." />
+		</case>
+	</command>
+
+	<command name="click">
+		<case locator-key1="DOCUMENTS_TABLE_NAME_1">
+			<execute function="Click#textClickAtAndWait" />
+		</case>
+	</command>
+</definition>
