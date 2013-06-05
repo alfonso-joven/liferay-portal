@@ -160,7 +160,7 @@ public class TransactionalPortalCacheHelper {
 			<List<Map<PortalCache, UncommittedBuffer>>>(
 				TransactionalPortalCacheHelper.class.getName() +
 					"._portalCacheListThreadLocal",
-				new ArrayList <Map<PortalCache, UncommittedBuffer>>());
+				new ArrayList<Map<PortalCache, UncommittedBuffer>>());
 
 	private static class UncommittedBuffer {
 
