@@ -1,0 +1,144 @@
+<definition>
+	<var name="entryDescription" value="DM Folder Description" />
+	<var name="entryName" value="DM Folder Name" />
+	<var name="entryTitle" value="DM Folder Name" />
+	<var name="imageDescription" value="DM Folder Image Description" />
+	<var name="imageTitle" value="DM Folder Image Title" />
+	<var name="pageName" value="Media Gallery Test Page" />
+	<var name="portletName" value="Media Gallery" />
+	<var name="mediaTitle" value="DM Folder Image Title" />
+
+	<set-up>
+		<execute macro="User#pgFirstLogin" />
+
+		<execute macro="Page#pgAdd" />
+
+		<execute macro="Portlet#pgAdd" />
+	</set-up>
+
+	<command name="ConfigureMediaGallery">
+
+		<execute macro="MediaGallery#pgMediaGalleryConfiguration">
+			<var name="pageName" value="${pageName}" />
+		</execute>
+	</command>
+
+	<command name="AddDMFolder">
+		<execute macro="MediaGallery#pgMediaGalleryConfiguration">
+			<var name="pageName" value="${pageName}" />
+		</execute>
+
+		<execute macro="MediaGallery#pgAddDMFolder">
+			<var name="entryDescription" value="${entryDescription}" />
+			<var name="entryName" value="${entryName}" />
+			<var name="pageName" value="${pageName}" />
+		</execute>
+	</command>
+
+	<command name="EditDMFolderMG">
+		<execute macro="MediaGallery#pgMediaGalleryConfiguration">
+			<var name="pageName" value="${pageName}" />
+			<var name="portletName" value="${portletName}" />
+		</execute>
+
+		<execute macro="MediaGallery#pgAddDMFolder">
+			<var name="entryDescription" value="${entryDescription}" />
+			<var name="entryName" value="${entryName}" />
+			<var name="pageName" value="${pageName}" />
+		</execute>
+
+		<execute macro="MediaGallery#pgEditDMFolder">
+			<var name="entryDescription" value="${entryDescription}" />
+			<var name="pageName" value="${pageName}" />
+		</execute>
+	</command>
+
+	<command name="RemovePortletMG">
+		<execute macro="Portlet#pgRemove">
+			<var name="pageName" value="${pageName}" />
+		</execute>
+	</command>
+
+	<command name="AddFolderImageMG">
+		<execute macro="MediaGallery#pgMediaGalleryConfiguration">
+			<var name="pageName" value="${pageName}" />
+			<var name="portletName" value="${portletName}" />
+		</execute>
+
+		<execute macro="MediaGallery#pgAddDMFolder">
+			<var name="entryDescription" value="${entryDescription}" />
+			<var name="entryName" value="${entryName}" />
+			<var name="pageName" value="${pageName}" />
+		</execute>
+
+		<execute macro="MediaGallery#pgAddDMFolderImage">
+			<var name="entryDescription" value="${entryDescription}" />
+			<var name="entryTitle" value="${entryTitle}" />
+			<var name="imageDescription" value="DM Folder Image Description" />
+			<var name="imageTitle" value="DM Folder Image Title" />
+			<var name="mediaTitle" value="DM Folder Image Title" />
+			<var name="pageName" value="${pageName}" />
+		</execute>
+	</command>
+
+	<command name="EditFolderImageMG">
+		<execute macro="MediaGallery#pgMediaGalleryConfiguration">
+			<var name="pageName" value="${pageName}" />
+			<var name="portletName" value="${portletName}" />
+		</execute>
+
+		<execute macro="MediaGallery#pgAddDMFolder">
+			<var name="entryDescription" value="${entryDescription}" />
+			<var name="entryName" value="${entryName}" />
+			<var name="pageName" value="${pageName}" />
+		</execute>
+
+		<execute macro="MediaGallery#pgAddDMFolderImage">
+			<var name="entryDescription" value="${entryDescription}" />
+			<var name="entryTitle" value="${entryTitle}" />
+			<var name="imageTitle" value="${imageTitle}" />
+			<var name="imageDescription" value="${imageDescription}" />
+			<var name="mediaTitle" value="${imageTitle}" />
+			<var name="pageName" value="${pageName}" />
+		</execute>
+
+		<execute macro="MediaGallery#pgEditDMFolderImage">
+			<var name="entryTitle" value="${entryTitle}" />
+			<var name="imageDescription" value="${imageDescription}" />
+			<var name="imageTitle" value="${imageTitle}" />
+			<var name="mediaCaption" value="DM Folder Image Title - DM Folder Image Description" />
+		</execute>
+	</command>
+
+	<command name="RemoveFolderImage">
+		<execute macro="MediaGallery#pgMediaGalleryConfiguration">
+			<var name="pageName" value="${pageName}" />
+			<var name="portletName" value="${portletName}" />
+		</execute>
+
+		<execute macro="MediaGallery#pgAddDMFolder">
+			<var name="entryDescription" value="${entryDescription}" />
+			<var name="entryName" value="${entryName}" />
+			<var name="pageName" value="${pageName}" />
+		</execute>
+
+		<execute macro="MediaGallery#pgAddDMFolderImage">
+			<var name="entryDescription" value="${entryDescription}" />
+			<var name="entryTitle" value="${entryTitle}" />
+			<var name="imageDescription" value="DM Folder Image Description" />
+			<var name="imageTitle" value="DM Folder Image Title" />
+			<var name="mediaTitle" value="${mediaTitle}" />
+			<var name="pageName" value="${pageName}" />
+		</execute>
+
+		<execute macro="MediaGallery#pgRemoveFolderImage">
+			<var name="mediaTitle" value="${mediaTitle}" />
+		</execute>
+	</command>
+
+	<tear-down>
+		<execute macro="MediaGallery#pgTearDown" />
+
+		<execute macro="Page#pgTearDown" />
+	</tear-down>
+</definition>
