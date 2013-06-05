@@ -34,6 +34,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>INFO_MESSAGE</td>
+	<td>//div[@class='portlet-msg-info']</td>
+	<td></td>
+</tr>
+<tr>
 	<td>CONFIRMATION</td>
 	<td></td>
 	<td></td>
@@ -44,6 +49,36 @@
 	<td></td>
 </tr>
 <!--RECORD_TABLE-->
+<tr>
+	<td>RECORD_TABLE_COLUMN_ONE_NAME</td>
+	<td>xpath=(//div[contains(@id,'ocerSearchContainer')]//tbody/tr/th[1])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>RECORD_TABLE_COLUMN_ONE_RECORD_1</td>
+	<td>xpath=(//div[contains(@id,'ocerSearchContainer')]//tr/td[1]/a)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>RECORD_TABLE_COLUMN_TWO_NAME</td>
+	<td>xpath=(//div[contains(@id,'ocerSearchContainer')]//tbody/tr/th[2])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>RECORD_TABLE_COLUMN_TWO_RECORD_1</td>
+	<td>xpath=(//div[contains(@id,'ocerSearchContainer')]//tr/td[2]/a)</td>
+	<td></td>
+</tr>
+<tr>
+	<td>RECORD_TABLE_COLUMN_THREE_NAME</td>
+	<td>xpath=(//div[contains(@id,'ocerSearchContainer')]//tbody/tr/th[3])</td>
+	<td></td>
+</tr>
+<tr>
+	<td>RECORD_TABLE_COLUMN_THREE_RECORD_1</td>
+	<td>xpath=(//div[contains(@id,'ocerSearchContainer')]//tr/td[3]/a)</td>
+	<td></td>
+</tr>
 <tr>
 	<td>RECORD_TABLE_ACTIONS_1</td>
 	<td>xpath=(//span[@title='Actions']/ul/li/strong/a/span)[1]</td>

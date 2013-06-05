@@ -1,4 +1,22 @@
 <definition>
+	<command name="addBooleanCmdCP">
+		<if>
+			<equals arg1="${recordBoolean}" arg2="false" />
+			<then>
+				<execute action="CPDynamicdatalistsListAddrecord#uncheck" locator1="//input[contains(@id,'_167_${booleanNameLabel}')]" />
+			</then>
+			<elseif>
+				<equals arg1="${recordBoolean}" arg2="true" />
+				<then>
+					<execute action="CPDynamicdatalistsListAddrecord#check" locator1="//input[contains(@id,'_167_${booleanNameLabel}')]" />
+				</then>
+			</elseif>
+			<else>
+				<fail message="Invalid var recordBooleanValue. Must be (true|false)." />
+			</else>
+		</if>
+	</command>
+
 	<command name="addCP">
 		<execute macro="Page#cpGoto">
 			<var name="portletName" value="Dynamic Data Lists" />
@@ -19,24 +37,6 @@
 		<execute action="CPDynamicdatalistsListAddrecord#click" locator-key1="PUBLISH_BUTTON" />
 
 		<execute action="CPDynamicdatalistsList#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
-	</command>
-
-	<command name="addBooleanCmdCP">
-		<if>
-			<equals arg1="${recordBoolean}" arg2="false" />
-			<then>
-				<execute action="CPDynamicdatalistsListAddrecord#uncheck" locator1="//input[contains(@id,'_167_${booleanNameLabel}')]" />
-			</then>
-			<elseif>
-				<equals arg1="${recordBoolean}" arg2="true" />
-				<then>
-					<execute action="CPDynamicdatalistsListAddrecord#check" locator1="//input[contains(@id,'_167_${booleanNameLabel}')]" />
-				</then>
-			</elseif>
-			<else>
-				<fail message="Invalid var recordBooleanValue. Must be (true|false)." />
-			</else>
-		</if>
 	</command>
 
 	<command name="addDateCmdCP">
@@ -63,6 +63,22 @@
 
 	<command name="addNumberCmdCP">
 		<execute action="CPDynamicdatalistsListAddrecord#type" locator1="//input[contains(@id,'_167_${numberNameLabel}')]" value1="${recordNumber}" />
+	</command>
+
+	<command name="addPG">
+		<execute macro="Page#pgGoto">
+			<var name="portletName" value="{pageName}" />
+		</execute>
+
+		<execute action="PGDynamicdatalists#click" locator-key1="ADD_RECORD_BUTTON" />
+
+		<execute macro="ListRecord#addTextCmdPG">
+			<var name="textNameLabel" value="text" />
+		</execute>
+
+		<execute action="PGDynamicdatalistsAddrecord#click" locator-key1="PUBLISH_BUTTON" />
+
+		<execute action="PGDynamicdatalists#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
 	</command>
 
 	<command name="addRadioCmdCP">
@@ -97,6 +113,10 @@
 		<execute action="CPDynamicdatalistsListAddrecord#type" locator1="//input[contains(@id,'_167_${textNameLabel}')]" value1="${recordText}" />
 	</command>
 
+	<command name="addTextCmdPG">
+		<execute action="PGDynamicdatalistsAddrecord#type" locator1="//input[contains(@id,'_${textNameLabel}')]" value1="${recordText}" />
+	</command>
+
 	<command name="addTextBoxCmdCP">
 		<execute action="CPDynamicdatalistsListAddrecord#type" locator1="//textarea[contains(@id,'_167_${textBoxNameLabel}')]" value1="${recordTextBox}" />
 	</command>
@@ -116,6 +136,24 @@
 		<execute action="CPDynamicdatalistsList#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this?" />
 		<execute action="CPDynamicdatalistsList#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
 		<execute action="CPDynamicdatalistsList#assertTextEquals" locator-key1="INFO_MESSAGE" />
+	</command>
+
+	<command name="deletePG">
+		<execute macro="Page#pgGoto">
+			<var name="portletName" value="${pageName}" />
+		</execute>
+
+		<execute action="PGDynamicdatalists#click" locator-key1="RECORD_TABLE_ACTIONS_1" />
+		<execute action="PGDynamicdatalists#click" locator-key1="RECORD_MENULIST_DELETE" />
+		<execute action="PGDynamicdatalists#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this?" />
+		<execute action="PGDynamicdatalists#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="PGDynamicdatalists#assertTextEquals" locator-key1="INFO_MESSAGE" />
+	</command>
+
+	<command name="editBooleanCmdCP">
+		<execute macro="ListRecord#addBooleanCmdCP">
+			<var name="recordBoolean" value="${recordBooleanNew}" />
+		</execute>
 	</command>
 
 	<command name="editCP">
@@ -138,12 +176,6 @@
 		<execute action="CPDynamicdatalistsListEditrecord#click" locator-key1="PUBLISH_BUTTON" />
 
 		<execute action="CPDynamicdatalistsList#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
-	</command>
-
-	<command name="editBooleanCmdCP">
-		<execute macro="ListRecord#addBooleanCmdCP">
-			<var name="recordBoolean" value="${recordBooleanNew}" />
-		</execute>
 	</command>
 
 	<command name="editDateCmdCP">
@@ -184,6 +216,23 @@
 		</execute>
 	</command>
 
+	<command name="editPG">
+		<execute macro="Page#pgGoto">
+			<var name="portletName" value="${pageName}" />
+		</execute>
+
+		<execute action="PGDynamicdatalists#click" locator-key1="RECORD_TABLE_ACTIONS_1" />
+		<execute action="PGDynamicdatalists#click" locator-key1="RECORD_MENULIST_EDIT" />
+
+		<execute macro="ListRecord#editTextCmdPG">
+			<var name="textNameLabel" value="text" />
+		</execute>
+
+		<execute action="PGDynamicdatalistsEditrecord#click" locator-key1="PUBLISH_BUTTON" />
+
+		<execute action="PGDynamicdatalists#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+	</command>
+
 	<command name="editRadioCmdCP">
 		<execute macro="ListRecord#addRadioCmdCP">
 			<var name="recordRadio" value="${recordRadioNew}" />
@@ -198,6 +247,12 @@
 
 	<command name="editTextCmdCP">
 		<execute macro="ListRecord#addTextCmdCP">
+			<var name="recordText" value="${recordTextNew}" />
+		</execute>
+	</command>
+
+	<command name="editTextCmdPG">
+		<execute macro="ListRecord#addTextCmdPG">
 			<var name="recordText" value="${recordTextNew}" />
 		</execute>
 	</command>
@@ -241,5 +296,19 @@
 		<execute action="CPDynamicdatalistsList#click" locator-key1="RECORD_MENULIST_VIEW" />
 
 		<execute action="CPDynamicdatalistsListRecord#assertTextEquals" locator-key1="FIELD_1" value1="Text ${recordText}" />
+	</command>
+
+	<command name="viewPG">
+		<execute macro="Page#pgGoto">
+			<var name="portletName" value="${pageName}" />
+		</execute>
+
+		<execute action="PGDynamicdatalists#assertTextEquals" locator-key1="HEADER_TITLE" value1="${listName}" />
+		<execute action="PGDynamicdatalists#assertTextEquals" locator-key1="RECORD_TABLE_COLUMN_ONE_NAME" value1="Text" />
+		<execute action="PGDynamicdatalists#assertTextEquals" locator-key1="RECORD_TABLE_COLUMN_ONE_RECORD_1" value1="${recordText}" />
+		<execute action="PGDynamicdatalists#click" locator-key1="RECORD_TABLE_ACTIONS_1" />
+		<execute action="PGDynamicdatalists#click" locator-key1="RECORD_MENULIST_VIEW" />
+
+		<execute action="PGDynamicdatalistsRecord#assertTextEquals" locator-key1="FIELD_1" value1="Text ${recordText}" />
 	</command>
 </definition>
