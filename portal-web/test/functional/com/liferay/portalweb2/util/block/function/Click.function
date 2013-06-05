@@ -85,6 +85,14 @@
 		<execute selenium="clickAtAndWait" />
 	</command>
 
+	<command name="valueClickAtAndWaitClickAtAndWait">
+		<execute function="AssertTextEquals#assertValue" />
+
+		<execute selenium="clickAtAndWait" />
+
+		<execute selenium="clickAtAndWait" />
+	</command>
+
 	<command name="valueClickAtAndWaitCKEditor">
 		<execute selenium="waitForVisible" argument1="//a[@class='cke_button_cut cke_disabled']" />
 
