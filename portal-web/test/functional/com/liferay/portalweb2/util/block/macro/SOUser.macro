@@ -1,0 +1,57 @@
+<definition>
+	<var name="userEmailAddress" value="test@liferay.com" />
+	<var name="password" value="test" />
+
+	<command name="pgFirstLogin">
+		<execute action="Home#open" locator-key1="HOME_URL" />
+
+		<if>
+			<condition action="Dockbar#isElementPresent" locator-key1="USER_NAME" />
+			<then>
+				<execute macro="SOUser#pgLogout" />
+				<execute macro="SOUser#pgLogin" />
+			</then>
+			<else>
+				<execute macro="User#pgLogin" />
+			</else>
+		</if>
+	</command>
+
+	<command name="pgLogin">
+		<execute action="Home#open" locator-key1="HOME_URL" />
+
+		<execute action="PGLogin#type" locator-key1="EMAIL_ADDRESS_FIELD" value1="${userEmailAddress}" />
+		<execute action="PGLogin#type" locator-key1="PASSWORD_FIELD" value1="${password}" />
+		<execute action="PGLogin#click" locator-key1="REMEMBER_ME_CHECKBOX" />
+		<execute action="PGLogin#click" locator-key1="SIGN_IN_BUTTON" />
+
+		<if>
+			<condition action="PGLoginNewpassword#isElementPresent" locator-key1="PASSWORD_FIELD" />
+			<then>
+				<execute action="PGLoginNewpassword#type" locator-key1="PASSWORD_FIELD" value1="test" />
+				<execute action="PGLoginNewpassword#type" locator-key1="ENTER_AGAIN_FIELD" value1="test" />
+				<execute action="PGLoginNewpassword#click" locator-key1="SAVE_BUTTON" />
+			</then>
+		</if>
+
+		<if>
+			<condition action="PGLoginPasswordreminder#isElementPresent" locator-key1="ANSWER_FIELD" />
+			<then>
+				<execute action="PGLoginPasswordreminder#type" locator-key1="ANSWER_FIELD" value1="test" />
+				<execute action="PGLoginPasswordreminder#click" locator-key1="SAVE_BUTTON" />
+			</then>
+		</if>
+	</command>
+
+	<command name="pgLogout">
+		<execute action="Home#open" locator-key1="HOME_URL" />
+
+		<if>
+			<condition action="UserBar#isElementPresent" locator-key1="USER_NAME" />
+			<then>
+				<execute action="UserBar#mouseOver" locator-key1="USER_NAME" />
+				<execute action="UserBar#click" locator-key1="USER_MENU_SIGN_OUT" />
+			</then>
+		</if>
+	</command>
+</definition>

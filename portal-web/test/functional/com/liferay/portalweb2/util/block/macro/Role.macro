@@ -89,7 +89,7 @@
 			<var name="portletName" value="Roles" />
 		</execute>
 
-		<execute action="CPRoles#type" locator-key1="SEARCH_FIELD" value1="Regrole" />
+		<execute action="CPRoles#type" locator-key1="SEARCH_FIELD" value1="${roleName}" />
 		<execute action="CPRoles#click" locator-key1="SEARCH_BUTTON" />
 		<execute action="CPRoles#click" locator-key1="ROLE_TABLE_ACTIONS_1" />
 		<execute action="CPRoles#click" locator-key1="ROLE_MENULIST_ASSIGN_MEMBERS" />
@@ -97,6 +97,7 @@
 		<execute action="CPRolesAssignmembersUsers#click" locator-key1="STATUS_AVAILABLE" />
 		<execute action="CPRolesAssignmembersUsers#type" locator-key1="BASIC_SEARCH_FIELD" value1="${userScreenName}" />
 		<execute action="CPRolesAssignmembersUsers#click" locator-key1="BASIC_SEARCH_BUTTON" />
+		<execute action="CPRolesAssignmembersUsers#assertTextEquals" locator-key1="SEARCH_RESULTS" value1="Showing 1 result." />
 		<execute action="CPRolesAssignmembersUsers#assertTextEquals" locator-key1="USER_TABLE_SCREEN_NAME_1" value1="${userScreenName}" />
 		<execute action="CPRolesAssignmembersUsers#check" locator-key1="USER_TABLE_CHECKBOX_1" />
 		<execute action="CPRolesAssignmembersUsers#click" locator-key1="UPDATE_ASSOCIATIONS_BUTTON" />
