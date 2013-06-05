@@ -1346,7 +1346,7 @@
 				var title = obj.one('.portlet-title-text');
 
 				if (title && !title.hasClass('not-editable')) {
-					title.setData('portletTitleEditOptions', options);
+					title.addClass('portlet-title-editable');
 
 					title.on(
 						EVENT_CLICK,
@@ -1368,6 +1368,8 @@
 							editable._startEditing(event);
 						}
 					);
+
+					title.setData('portletTitleEditOptions', options);
 				}
 			}
 		},
