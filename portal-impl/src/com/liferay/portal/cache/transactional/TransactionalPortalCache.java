@@ -144,8 +144,7 @@ public class TransactionalPortalCache implements PortalCache {
 	@Override
 	public void remove(Serializable key) {
 		if (TransactionalPortalCacheHelper.isEnabled()) {
-			TransactionalPortalCacheHelper.put(
-				_portalCache, key, NULL_HOLDER);
+			TransactionalPortalCacheHelper.put(_portalCache, key, NULL_HOLDER);
 		}
 		else {
 			_portalCache.remove(key);

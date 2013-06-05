@@ -101,8 +101,7 @@ public class TransactionalPortalCacheHelper {
 		Map<PortalCache, UncommittedBuffer> portalCacheMap =
 			_peekPortalCacheMap();
 
-		UncommittedBuffer uncommittedBuffer = portalCacheMap.get(
-			portalCache);
+		UncommittedBuffer uncommittedBuffer = portalCacheMap.get(portalCache);
 
 		if (uncommittedBuffer == null) {
 			uncommittedBuffer = new UncommittedBuffer();
@@ -117,8 +116,7 @@ public class TransactionalPortalCacheHelper {
 		Map<PortalCache, UncommittedBuffer> portalCacheMap =
 			_peekPortalCacheMap();
 
-		UncommittedBuffer uncommittedBuffer = portalCacheMap.get(
-			portalCache);
+		UncommittedBuffer uncommittedBuffer = portalCacheMap.get(portalCache);
 
 		if (uncommittedBuffer == null) {
 			uncommittedBuffer = new UncommittedBuffer();
@@ -151,8 +149,7 @@ public class TransactionalPortalCacheHelper {
 		List<Map<PortalCache, UncommittedBuffer>> portalCacheList =
 			_portalCacheListThreadLocal.get();
 
-		portalCacheList.add(
-			new HashMap<PortalCache, UncommittedBuffer>());
+		portalCacheList.add(new HashMap<PortalCache, UncommittedBuffer>());
 	}
 
 	private static ThreadLocal<List<Map<PortalCache, UncommittedBuffer>>>
