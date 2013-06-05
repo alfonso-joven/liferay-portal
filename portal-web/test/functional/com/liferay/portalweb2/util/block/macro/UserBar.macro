@@ -1,0 +1,45 @@
+<definition>
+	<command name="pgDashboard">
+		<execute action="Home#open" locator-key1="HOME_URL" />
+
+		<execute action="UserBar#click" locator-key1="DASHBOARD" />
+
+		<execute action="Navigation#assertTextEquals" locator-key1="PROFILE_NAME" value1="${userName}" />
+	</command>
+
+	<command name="pgLogout">
+		<execute action="Home#open" locator-key1="HOME_URL" />
+
+		<if>
+			<condition action="UserBar#isElementPresent" locator-key1="USER_NAME" />
+			<then>
+				<execute action="UserBar#mouseOver" locator-key1="USER_NAME" />
+				<execute action="UserBar#click" locator-key1="USER_MENU_SIGN_OUT" />
+			</then>
+		</if>
+	</command>
+
+		<command name="pgMyAccount">
+		<execute action="Home#open" locator-key1="HOME_URL" />
+
+		<if>
+			<condition action="UserBar#isElementPresent" locator-key1="USER_NAME" />
+			<then>
+				<execute action="UserBar#mouseOver" locator-key1="USER_NAME" />
+				<execute action="UserBar#click" locator-key1="USER_MENU_MY_ACCOUNT" />
+			</then>
+		</if>
+	</command>
+
+	<command name="pgMyProfile">
+		<execute action="Home#open" locator-key1="HOME_URL" />
+
+		<if>
+			<condition action="UserBar#isElementPresent" locator-key1="USER_NAME" />
+			<then>
+				<execute action="UserBar#mouseOver" locator-key1="USER_NAME" />
+				<execute action="UserBar#click" locator-key1="USER_MENU_MY_PROFILE" />
+			</then>
+		</if>
+	</command>
+</definition>
