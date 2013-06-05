@@ -61,4 +61,40 @@
 			<var name="portletName" value="${portletName}" />
 		</execute>
 	</command>
+
+	<command name="pgRemove">
+		<if>
+			<equals arg1="${pageType}" arg2="Organization" />
+			<then>
+				<execute macro="Page#pgGotoOrganization">
+					<var name="pageName" value="${pageName}" />
+				</execute>
+			</then>
+			<elseif>
+				<equals arg1="${pageType}" arg2="Private" />
+				<then>
+					<execute macro="Page#pgGotoSitePrivate">
+						<var name="pageName" value="${pageName}" />
+					</execute>
+				</then>
+			</elseif>
+			<elseif>
+				<equals arg1="${pageType}" arg2="Public" />
+				<then>
+					<execute macro="Page#pgGotoSitePublic">
+						<var name="pageName" value="${pageName}" />
+					</execute>
+				</then>
+			</elseif>
+			<else>
+				<execute macro="Page#pgGoto">
+					<var name="pageName" value="${pageName}" />
+				</execute>
+			</else>
+		</if>
+
+		<execute action="Home#click" locator-key1="PORTLET_REMOVE_1" />
+		<execute action="Home#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to remove this component?" />
+		<execute action="Home#assertElementNotPresent" locator-key1="PORTLET_1" />
+	</command>
 </definition>
