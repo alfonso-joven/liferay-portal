@@ -1,17 +1,17 @@
 <html>
 <head>
-<title>Navigation</title>
+<title>SONavigation</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">Navigation</td></tr>
+<tr><td rowspan="1" colspan="3">SONavigation</td></tr>
 </thead>
 <tbody>
 <tr>
 	<td>PAGE_NAME</td>
 	<td></td>
-	<td>Navigation</td>
+	<td>SONavigation</td>
 </tr>
 <tr>
 	<td></td>

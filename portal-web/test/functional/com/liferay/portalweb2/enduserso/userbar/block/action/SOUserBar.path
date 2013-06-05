@@ -1,17 +1,17 @@
 <html>
 <head>
-<title>UserBar</title>
+<title>SOUserBar</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">UserBar</td></tr>
+<tr><td rowspan="1" colspan="3">SOUserBar</td></tr>
 </thead>
 <tbody>
 <tr>
 	<td>PAGE_NAME</td>
 	<td></td>
-	<td>UserBar</td>
+	<td>SOUserBar</td>
 </tr>
 <tr>
 	<td></td>
@@ -67,7 +67,7 @@
 </tr>
 <tr>
 	<td>USER_MENU_SIGN_OUT</td>
-	<td>//a[contains(@href, '/c/portal/logout')]</td>
+	<td>//div[@id='_145_userMenuContent']/ul/li/a[contains(.,'Sign Out')]</td>
 	<td></td>
 </tr>
 </tbody>
