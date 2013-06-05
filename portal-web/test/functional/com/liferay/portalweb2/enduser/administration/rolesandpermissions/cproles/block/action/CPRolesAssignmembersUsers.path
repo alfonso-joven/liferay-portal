@@ -29,6 +29,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>SEARCH_RESULTS</td>
+	<td>//div[@class='search-results']</td>
+	<td></td>
+</tr>
+<tr>
 	<td>UPDATE_ASSOCIATIONS_BUTTON</td>
 	<td>//input[@value='Update Associations']</td>
 	<td></td>
