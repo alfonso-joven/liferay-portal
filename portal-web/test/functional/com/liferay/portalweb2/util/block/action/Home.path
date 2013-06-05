@@ -54,6 +54,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>CONFIRMATION</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
 	<td></td>
 	<td></td>
 	<td></td>
@@ -160,6 +165,21 @@
 <tr>
 	<td>PORTLET_1</td>
 	<td>xpath=(//section)[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>PORTLET_MINIMIZE_1</td>
+	<td>//img[@title='Minimize']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>PORTLET_MAXIMIZE_1</td>
+	<td>//img[@title='Maximize']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>PORTLET_REMOVE_1</td>
+	<td>//img[@title='Remove']</td>
 	<td></td>
 </tr>
 <tr>

@@ -19,7 +19,12 @@
 	<td></td>
 </tr>
 <tr>
-	<td>MEDIA_GALLERY_CONFIGURATION_IFRAME</td>
+	<td>SUCCESS_MESSAGE</td>
+	<td>//div[@class='portlet-msg-success']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>MG_CONFIGURATION_IFRAME</td>
 	<td>//iframe[contains(@id,'_configurationIframeDialog')]</td>
 	<td></td>
 </tr>
@@ -38,24 +43,24 @@
 	<td></td>
 	<td></td>
 </tr>
-<!--SETUP_DISPLAY_SETTINGS-->
+<!--MG_DISPLAY_SETTINGS-->
 <tr>
-	<td>SETUP_DISPLAY_SETTINGS_SHOW_ACTIONS_CHECKBOX</td>
+	<td>MG_DISPLAY_SETTINGS_SHOW_ACTIONS_CHECKBOX</td>
 	<td>//input[@id='_86_showActionsCheckbox']</td>
 	<td>Show Actions</td>
 </tr>
 <tr>
-	<td>SETUP_DISPLAY_SETTINGS_SHOW_FOLDER_MENU_CHECKBOX</td>
+	<td>MG_DISPLAY_SETTINGS_SHOW_FOLDER_MENU_CHECKBOX</td>
 	<td>//input[@id='_86_showFolderMenuCheckbox']</td>
 	<td>Show Folder Menu</td>
 </tr>
 <tr>
-	<td>SETUP_DISPLAY_SETTINGS_SHOW_NAVIGATION_LINKS_CHECKBOX</td>
+	<td>MG_DISPLAY_SETTINGS_SHOW_NAVIGATION_LINKS_CHECKBOX</td>
 	<td>//input[@id='_86_showTabsCheckbox']</td>
 	<td>Show Navigation Links</td>
 </tr>
 <tr>
-	<td>SETUP_DISPLAY_SETTINGS_SHOW_SEARCH_CHECKBOX</td>
+	<td>MG_DISPLAY_SETTINGS_SHOW_SEARCH_CHECKBOX</td>
 	<td>//input[@id='_86_showFoldersSearchCheckbox']</td>
 	<td>Show Search</td>
 </tr>

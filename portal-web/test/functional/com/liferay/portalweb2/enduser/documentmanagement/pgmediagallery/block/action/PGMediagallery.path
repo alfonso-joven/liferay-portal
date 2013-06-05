@@ -19,8 +19,28 @@
 	<td></td>
 </tr>
 <tr>
+	<td>MG_PORTLET</td>
+	<td>//section[@class='portlet']</td>
+	<td></td>
+</tr>
+<tr>
 	<td>SUCCESS_MESSAGE</td>
 	<td>//div[contains(@class,'portlet-msg-success')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>OPTIONS</td>
+	<td>//span[@title='Options']/ul/li/strong/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>REMOVE</td>
+	<td>//img[@alt='Remove']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>CONFIRMATION</td>
+	<td></td>
 	<td></td>
 </tr>
 <tr>
@@ -38,6 +58,17 @@
 	<td>SEARCH_BUTTON</td>
 	<td>//input[@value='Search']</td>
 	<td>Search Button</td>
+</tr>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+<!--OPTIONS_MENULIST-->
+<tr>
+	<td>OPTIONS_MENULIST_CONFIGURATION</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Configuration')]</td>
+	<td></td>
 </tr>
 <tr>
 	<td></td>
