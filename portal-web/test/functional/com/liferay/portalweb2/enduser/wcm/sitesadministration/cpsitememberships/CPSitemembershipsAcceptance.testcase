@@ -30,17 +30,28 @@
 		</execute>
 	</command>
 
-	<command name="AddMembersSiteGuestUser">
+	<!--<command name="AddMembersSiteGuestUser">
 		<var name="siteName" value="Liferay" />
 		<var name="userEmailAddress" value="userea@liferay.com" />
 		<var name="userFirstName" value="userfn" />
 		<var name="userLastName" value="userln" />
 		<var name="userScreenName" value="usersn" />
 
-		<execute macro="Site#cpAddMember">
+		<execute macro="User#addCP">
+			<var name="userEmailAddress" value="${userEmailAddress}" />
+			<var name="userFirstName" value="${userFirstName}" />
+			<var name="userLastName" value="${userLastName}" />
+			<var name="userScreenName" value="${userScreenName}" />
+		</execute>
+
+		<execute macro="Site#addMemberCP">
+			<var name="siteName" value="${siteName}" />
+			<var name="siteScopeName" value="${siteName}" />
+			<var name="userFirstName" value="${userFirstName}" />
+			<var name="userLastName" value="${userLastName}" />
 			<var name="siteScopeName" value="${siteName}" />
 		</execute>
-	</command>
+	</command>-->
 
 	<command name="AddTeam">
 		<var name="siteName" value="Site Name" />

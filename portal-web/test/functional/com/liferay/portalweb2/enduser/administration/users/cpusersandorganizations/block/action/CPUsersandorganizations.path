@@ -45,7 +45,7 @@
 </tr>
 <tr>
 	<td>SEARCH_ALL_USERS</td>
-	<td>//a[@id='_125_allUsersLink']</td>
+	<td>//a[contains(.,'Search All Users')]</td>
 	<td></td>
 </tr>
 <tr>
