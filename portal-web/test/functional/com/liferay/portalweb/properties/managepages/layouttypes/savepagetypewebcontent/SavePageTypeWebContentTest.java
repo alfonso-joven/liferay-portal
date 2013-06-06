@@ -118,7 +118,8 @@ public class SavePageTypeWebContentTest extends BaseTestCase {
 					RuntimeVariables.replace("Manage Pages Test Page"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("WC WebContent Content"),
-					selenium.getText("//p"));
+					selenium.getText(
+						"//tr[contains(.,'WC WebContent Content')]/td[1]"));
 
 			case 100:
 				label = -1;
