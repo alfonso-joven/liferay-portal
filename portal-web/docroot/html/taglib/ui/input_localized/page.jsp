@@ -52,7 +52,7 @@ if (Validator.isNotNull(languageId)) {
 
 Locale mainLocale = LocaleUtil.fromLanguageId(mainLanguageId);
 
-String languageDir = LanguageUtil.get(mainLocale, "lang.dir");
+String mainLanguageDir = LanguageUtil.get(mainLocale, "lang.dir");
 
 String mainLanguageValue = LocalizationUtil.getLocalization(xml, mainLanguageId, false);
 
@@ -68,10 +68,10 @@ if (Validator.isNull(mainLanguageValue)) {
 <span class="taglib-input-localized">
 	<c:choose>
 		<c:when test='<%= type.equals("input") %>'>
-			<input class="language-value <%= cssClass %>" dir="<%= languageDir %>" <%= disabled ? "disabled=\"disabled\"" : "" %> id="<portlet:namespace /><%= HtmlUtil.escapeAttribute(id + StringPool.UNDERLINE + mainLanguageId) %>" name="<portlet:namespace /><%= HtmlUtil.escapeAttribute(name + StringPool.UNDERLINE + mainLanguageId) %>" type="text" value="<%= HtmlUtil.escapeAttribute(mainLanguageValue) %>" <%= InlineUtil.buildDynamicAttributes(dynamicAttributes) %> />
+			<input class="language-value <%= cssClass %>" dir="<%= mainLanguageDir %>" <%= disabled ? "disabled=\"disabled\"" : "" %> id="<portlet:namespace /><%= HtmlUtil.escapeAttribute(id + StringPool.UNDERLINE + mainLanguageId) %>" name="<portlet:namespace /><%= HtmlUtil.escapeAttribute(name + StringPool.UNDERLINE + mainLanguageId) %>" type="text" value="<%= HtmlUtil.escapeAttribute(mainLanguageValue) %>" <%= InlineUtil.buildDynamicAttributes(dynamicAttributes) %> />
 		</c:when>
 		<c:when test='<%= type.equals("textarea") %>'>
-			<textarea class="language-value <%= cssClass %>" dir="<%= languageDir %>" <%= disabled ? "disabled=\"disabled\"" : "" %> id="<portlet:namespace /><%= HtmlUtil.escapeAttribute(id + StringPool.UNDERLINE + mainLanguageId) %>" name="<portlet:namespace /><%= HtmlUtil.escapeAttribute(name + StringPool.UNDERLINE + mainLanguageId) %>" <%= InlineUtil.buildDynamicAttributes(dynamicAttributes) %>><%= HtmlUtil.escape(mainLanguageValue) %></textarea>
+			<textarea class="language-value <%= cssClass %>" dir="<%= mainLanguageDir %>" <%= disabled ? "disabled=\"disabled\"" : "" %> id="<portlet:namespace /><%= HtmlUtil.escapeAttribute(id + StringPool.UNDERLINE + mainLanguageId) %>" name="<portlet:namespace /><%= HtmlUtil.escapeAttribute(name + StringPool.UNDERLINE + mainLanguageId) %>" <%= InlineUtil.buildDynamicAttributes(dynamicAttributes) %>><%= HtmlUtil.escape(mainLanguageValue) %></textarea>
 		</c:when>
 	</c:choose>
 
@@ -131,8 +131,10 @@ if (Validator.isNull(mainLanguageValue)) {
 					<%
 					for (int i = 0; i < languageIds.size(); i++) {
 						String curLanguageId = languageIds.get(i);
-						Locale curContentLocale = LocaleUtil.fromLanguageId(curLanguageId);
-						String curContentLanguageDir = LanguageUtil.get(curContentLocale, "lang.dir");
+
+						Locale curLocale = LocaleUtil.fromLanguageId(curLanguageId);
+
+						String curLanguageDir = LanguageUtil.get(curLocale, "lang.dir");
 					%>
 
 						<div class="lfr-form-row">
@@ -180,10 +182,10 @@ if (Validator.isNull(mainLanguageValue)) {
 
 								<c:choose>
 									<c:when test='<%= type.equals("input") %>'>
-										<input class="language-value" dir="<%= curContentLanguageDir %>" <%= disabled ? "disabled=\"disabled\"" : "" %> id="<portlet:namespace /><%= HtmlUtil.escapeAttribute(id + StringPool.UNDERLINE + curLanguageId) %>" name="<portlet:namespace /><%= HtmlUtil.escapeAttribute(name + StringPool.UNDERLINE + curLanguageId) %>" type="text" value="<%= languageValue %>" />
+										<input class="language-value" dir="<%= curLanguageDir %>" <%= disabled ? "disabled=\"disabled\"" : "" %> id="<portlet:namespace /><%= HtmlUtil.escapeAttribute(id + StringPool.UNDERLINE + curLanguageId) %>" name="<portlet:namespace /><%= HtmlUtil.escapeAttribute(name + StringPool.UNDERLINE + curLanguageId) %>" type="text" value="<%= languageValue %>" />
 									</c:when>
 									<c:when test='<%= type.equals("textarea") %>'>
-										<textarea class="language-value" dir="<%= curContentLanguageDir %>" <%= disabled ? "disabled=\"disabled\"" : "" %> id="<portlet:namespace /><%= HtmlUtil.escapeAttribute(id + StringPool.UNDERLINE + curLanguageId) %>" name="<portlet:namespace /><%= HtmlUtil.escapeAttribute(name + StringPool.UNDERLINE + curLanguageId) %>"><%= languageValue %></textarea>
+										<textarea class="language-value" dir="<%= curLanguageDir %>" <%= disabled ? "disabled=\"disabled\"" : "" %> id="<portlet:namespace /><%= HtmlUtil.escapeAttribute(id + StringPool.UNDERLINE + curLanguageId) %>" name="<portlet:namespace /><%= HtmlUtil.escapeAttribute(name + StringPool.UNDERLINE + curLanguageId) %>"><%= languageValue %></textarea>
 									</c:when>
 								</c:choose>
 
