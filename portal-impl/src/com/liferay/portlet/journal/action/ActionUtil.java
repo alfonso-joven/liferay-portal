@@ -87,7 +87,8 @@ public class ActionUtil {
 			}
 
 			article = JournalArticleServiceUtil.getArticle(
-				groupId, JournalStructure.class.getName(), structure.getId());
+				structure.getGroupId(), JournalStructure.class.getName(),
+				structure.getId());
 
 			article.setNew(true);
 
