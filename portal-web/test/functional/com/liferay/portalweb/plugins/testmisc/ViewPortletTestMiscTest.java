@@ -56,9 +56,9 @@ public class ViewPortletTestMiscTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Attribute Sharing"),
 			selenium.getText("//p[5]/a"));
 		assertTrue(selenium.isPartialText("//p[6]",
-				"TestSchedulerMessageListener.isReceived=PASSED"));
+				"TestPortletConfigMessageListener.isReceived=PASSED "));
 		assertTrue(selenium.isPartialText("//p[6]",
-				"TestSchedulerUtil.isReceivedBeforeSpringInitialzed=PASSED"));
+				"TestSpringConfigMessageListener.isReceived=PASSED"));
 		assertEquals(RuntimeVariables.replace("Servlet Request"),
 			selenium.getText("//h3[7]"));
 		assertEquals(RuntimeVariables.replace("Remote User"),
