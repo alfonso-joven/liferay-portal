@@ -37,16 +37,17 @@ public class AddWikiFrontPageContentJavascriptTest extends BaseTestCase {
 			RuntimeVariables.replace(
 				"This page is empty. Edit it to add some text."));
 		selenium.waitForPageToLoad("30000");
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		assertTrue(selenium.isVisible("//select[@id='_36_format']"));
 		selenium.select("//select[@id='_36_format']",
 			RuntimeVariables.replace("HTML"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.getConfirmation()
-						   .matches("^You may lose some formatting when switching from Creole to HTML. Do you want to continue[\\s\\S]$"));
+		selenium.waitForConfirmation(
+			"You may lose some formatting when switching from Creole to HTML. Do you want to continue?");
+		selenium.waitForVisible("//span[@id='cke_46_label']");
 		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[@id='cke_48_label']"));
-		selenium.clickAt("//span[@id='cke_48_label']",
+			selenium.getText("//span[@id='cke_46_label']"));
+		selenium.clickAt("//span[@id='cke_46_label']",
 			RuntimeVariables.replace("Source"));
 		selenium.waitForVisible(
 			"//textarea[@class='cke_source cke_enable_context_menu']");
