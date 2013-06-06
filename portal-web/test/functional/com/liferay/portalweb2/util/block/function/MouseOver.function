@@ -8,7 +8,7 @@
 	<command name="mouseOverClickDockbar">
 		<execute selenium="clickAt" argument1="//div[@id='dockbar']" argument2="" />
 
-		<execute selenium="waitForElementPresent" argument1="//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]" />
+		<execute selenium="waitForElementPresent" argument1="//script[contains(@src,'/liferay/dockbar_underlay.js')]" />
 
 		<execute function="MouseOver#mouseOver" />
 	</command>
@@ -36,7 +36,7 @@
 	<command name="textMouseOverClickDockbar">
 		<execute selenium="clickAt" argument1="//div[@id='dockbar']" argument2="" />
 
-		<execute selenium="waitForElementPresent" argument1="//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]" />
+		<execute selenium="waitForElementPresent" argument1="//script[contains(@src,'/liferay/dockbar_underlay.js')]" />
 
 		<execute function="MouseOver#textMouseOver" />
 	</command>
