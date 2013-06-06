@@ -31,8 +31,7 @@ public class ViewMBPingbackNoTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Post New Thread']",
 			RuntimeVariables.replace("Post New Thread"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForElementPresent(
-			"//textarea[@id='_19_editor' and @style='display: none;']");
+		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
 		assertFalse(selenium.isTextPresent(
 				"To allow pingbacks, please also ensure the entry's guest view permission is enabled."));
 		assertFalse(selenium.isTextPresent("Allow Pingbacks"));
