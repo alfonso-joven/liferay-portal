@@ -63,6 +63,7 @@ public class AddFrontPageCreoleInternalLinksTest extends BaseTestCase {
 		selenium.clickAt("//div[@class='wiki-body']/p/a",
 			RuntimeVariables.replace("Link to a page"));
 		selenium.waitForPageToLoad("30000");
+		selenium.waitForVisible("//td[@id='cke_contents__36_editor']/iframe");
 		assertTrue(selenium.isVisible(
 				"//td[@id='cke_contents__36_editor']/iframe"));
 	}
