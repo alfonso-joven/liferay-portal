@@ -1,0 +1,134 @@
+<definition>
+	<command name="addCP">
+		<execute macro="Page#cpGoto">
+			<var name="portletName" value="Tags" />
+		</execute>
+
+		<execute action="CPTags#click" locator-key1="ADD_TAG" />>
+
+		<execute action="CPTags#type" locator-key1="ADD_TAG_NAME_FIELD" value1="${tagName}" />
+		<execute action="CPTags#click" locator-key1="ADD_TAG_SAVE" />
+
+		<execute action="CPTags#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPTags#assertTextEquals" locator-key1="TAG_DETAILS_HEADER" value1="${tagName}" />
+	</command>
+
+	<command name="addtag1CP">
+		<execute macro="Page#cpGoto">
+			<var name="portletName" value="Tags" />
+		</execute>
+
+		<execute action="CPTags#click" locator-key1="ADD_TAG" />>
+
+		<execute action="CPTags#type" locator-key1="ADD_TAG_NAME_FIELD" value1="${tagName1}" />
+		<execute action="CPTags#click" locator-key1="ADD_TAG_SAVE" />
+
+		<execute action="CPTags#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPTags#assertTextEquals" locator-key1="TAG_DETAILS_HEADER" value1="${tagName1}" />
+	</command>
+
+	<command name="addtag2CP">
+		<execute macro="Page#cpGoto">
+			<var name="portletName" value="Tags" />
+		</execute>
+
+		<execute action="CPTags#click" locator-key1="ADD_TAG" />>
+
+		<execute action="CPTags#type" locator-key1="ADD_TAG_NAME_FIELD" value1="${tagName2}" />
+		<execute action="CPTags#click" locator-key1="ADD_TAG_SAVE" />
+
+		<execute action="CPTags#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPTags#assertTextEquals" locator-key1="TAG_DETAILS_HEADER" value1="${tagName2}" />
+	</command>
+
+	<command name="addtag3CP">
+		<execute macro="Page#cpGoto">
+			<var name="portletName" value="Tags" />
+		</execute>
+
+		<execute action="CPTags#click" locator-key1="ADD_TAG" />>
+
+		<execute action="CPTags#type" locator-key1="ADD_TAG_NAME_FIELD" value1="${tagName3}" />
+		<execute action="CPTags#click" locator-key1="ADD_TAG_SAVE" />
+
+		<execute action="CPTags#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPTags#assertTextEquals" locator-key1="TAG_DETAILS_HEADER" value1="${tagName3}" />
+	</command>
+
+	<command name="deleteCP">
+		<execute macro="Page#cpGoto">
+			<var name="portletName" value="Tags" />
+		</execute>
+		
+		<execute action="CPTags#assertTextEquals" locator-key1="TAG_DETAILS_HEADER" value1="${tagName}" />
+		<execute action="CPTags#click" locator-key1="TAG_DETAILS_DELETE" />>
+		<execute action="CPTags#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this tag?" />
+		<execute action="CPTags#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPTags#assertTextEquals" locator-key1="INFO_MESSAGE" />
+		<execute action="CPTags#assertTextNotPresent" value1="${tagName}" />
+	</command>
+	
+	<command name="editCP">
+		<execute macro="Page#cpGoto">
+			<var name="portletName" value="Tags" />
+		</execute>
+		
+		<execute action="CPTags#assertTextEquals" locator-key1="TAG_DETAILS_HEADER" value1="${tagName}" />
+		<execute action="CPTags#click" locator-key1="TAG_DETAILS_EDIT" />>
+
+		<execute action="CPTags#type" locator-key1="EDIT_TAG_NAME" value1="${tagNameEdited}" />
+		<execute action="CPTags#click" locator-key1="EDIT_TAG_SAVE" />
+
+		<execute action="CPTags#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPTags#assertTextEquals" locator-key1="TAG_DETAILS_HEADER" value1="${tagNameEdited}" />
+	</command>
+
+	<command name="isPresent">
+		<execute macro="Page#cpGoto">
+			<var name="portletName" value="Tags" />
+		</execute>
+
+		<execute action="CPTags#isElementPresent" locator-key1="TAG_DETAILS_HEADER" />
+	</command>
+
+	<command name="tearDownCP">
+		<execute macro="Page#cpGoto">
+			<var name="portletName" value="Tags" />
+		</execute>
+
+		<if>
+			<condition macro="Tag#isPresent" />
+			<then>
+				<execute action="CPTags#click" locator-key1="CHECK_ALL_TAGS" />
+				<execute action="CPTags#click" locator-key1="ACTIONS" />
+				<execute action="CPTags#click" locator-key1="ACTION_DELETE" />
+				<execute action="CPTags#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete the selected tags?" />
+				<execute action="CPTags#assertTextEquals" locator-key1="INFO_MESSAGE" />
+			</then>
+		</if>
+	</command>
+
+	<command name="viewtag1CP">
+		<execute macro="Page#cpGoto">
+			<var name="portletName" value="Tags" />
+		</execute>
+
+		<execute action="CPTags#assertTextEquals" locator-key1="ENTRY_TAG_1" value1="${tagName1}" />
+	</command>
+
+	<command name="viewtag2CP">
+		<execute macro="Page#cpGoto">
+			<var name="portletName" value="Tags" />
+		</execute>
+
+		<execute action="CPTags#assertTextEquals" locator-key1="ENTRY_TAG_2" value1="${tagName2}" />
+	</command>
+
+	<command name="viewtag3CP">
+		<execute macro="Page#cpGoto">
+			<var name="portletName" value="Tags" />
+		</execute>
+
+		<execute action="CPTags#assertTextEquals" locator-key1="ENTRY_TAG_3" value1="${tagName3}" />
+	</command>
+</definition>

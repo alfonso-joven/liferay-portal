@@ -1,0 +1,72 @@
+<definition>
+	<set-up>
+		<execute macro="User#pgFirstLogin" />
+	</set-up>
+
+	<command name="AddTag">
+		<var name="tagName" value="blue" />
+
+		<execute macro="Tag#addCP">
+			<var name="tagName" value="${tagName}" />
+		</execute>
+	</command>
+
+	<command name="AddTags">
+		<var name="tagName1" value="blue" />
+		<var name="tagName2" value="red" />
+		<var name="tagName3" value="yellow" />
+
+		<execute macro="Tag#addtag1CP">
+			<var name="tagName1" value="${tagName1}" />
+		</execute>
+
+		<execute macro="Tag#addtag2CP">
+			<var name="tagName2" value="${tagName2}" />
+		</execute>
+
+		<execute macro="Tag#addtag3CP">
+			<var name="tagName3" value="${tagName3}" />
+		</execute>
+
+		<execute macro="Tag#viewtag1CP">
+			<var name="tagName1" value="${tagName1}" />
+		</execute>
+
+		<execute macro="Tag#viewtag2CP">
+			<var name="tagName2" value="${tagName2}" />
+		</execute>
+
+		<execute macro="Tag#viewtag3CP">
+			<var name="tagName3" value="${tagName3}" />
+		</execute>
+	</command>
+
+	<command name="EditTag">
+		<var name="tagName" value="blue" />
+		<var name="tagNameEdited" value="teal" />
+
+		<execute macro="Tag#addCP">
+			<var name="tagName" value="${tagName}" />
+		</execute>
+
+		<execute macro="Tag#editCP">
+			<var name="tagNameEdited" value="${tagNameEdited}" />
+		</execute>
+	</command>
+
+	<command name="DeleteTag">
+		<var name="tagName" value="blue" />
+
+		<execute macro="Tag#addCP">
+			<var name="tagName" value="${tagName}" />
+		</execute>
+
+		<execute macro="Tag#deleteCP">
+			<var name="tagName" value="${tagName}" />
+		</execute>
+	</command>
+
+	<tear-down>
+		<execute macro="Tag#tearDownCP" />
+	</tear-down>
+</definition>
