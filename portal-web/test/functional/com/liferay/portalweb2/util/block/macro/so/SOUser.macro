@@ -2,17 +2,68 @@
 	<var name="userEmailAddress" value="test@liferay.com" />
 	<var name="password" value="test" />
 
+	<command name="editPasswordCP">
+		<execute macro="Page#cpGoto">
+			<var name="portletName" value="Users and Organizations" />
+		</execute>
+
+		<execute action="CPUsersandorganizations#click" locator-key1="SEARCH_ALL_USERS" />
+
+		<execute macro="CPUsersandorganizationsViewusers#showBasicSearch" />
+		<execute action="CPUsersandorganizationsViewusers#type" locator-key1="BASIC_SEARCH_FIELD" value1="${userScreenName}" />
+		<execute action="CPUsersandorganizationsViewusers#click" locator-key1="BASIC_SEARCH_BUTTON" />
+		<execute action="CPUsersandorganizationsViewusers#assertTextEquals" locator-key1="USER_TABLE_SCREEN_NAME_1" value1="${userScreenName}" />
+		<execute action="CPUsersandorganizationsViewusers#click" locator-key1="USER_TABLE_SCREEN_NAME_1" value1="${userScreenName}" />
+
+		<execute action="CPUsersandorganizationsUser#click" locator-key1="PASSWORD" />
+		<execute action="CPUsersandorganizationsUser#type" locator-key1="PASSWORD_NEW_PASSWORD_FIELD" value1="password" />
+		<execute action="CPUsersandorganizationsUser#type" locator-key1="PASSWORD_ENTER_AGAIN_FIELD" value1="password" />
+		<execute action="CPUsersandorganizationsUser#click" locator-key1="SAVE_BUTTON" />
+		<execute action="CPUsersandorganizationsUser#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+
+		<execute macro="SOUser#logoutPG" />
+
+		<execute macro="SOUser#loginPG">
+			<var name="userEmailAddress" value="${userEmailAddress}" />
+			<var name="password" value="password" />
+		</execute>
+
+		<execute macro="SOUser#logoutPG" />
+
+		<execute macro="SOUser#loginPG">
+			<var name="userEmailAddress" value="test@liferay.com" />
+			<var name="password" value="test" />
+		</execute>
+	</command>
+
 	<command name="firstLoginPG">
 		<execute action="Home#open" locator-key1="HOME_URL" />
 
 		<if>
-			<condition action="Dockbar#isElementPresent" locator-key1="USER_NAME" />
+			<condition action="SOUserBar#isElementPresent" locator-key1="DASHBOARD" />
 			<then>
-				<execute macro="SOUser#logoutPG" />
-				<execute macro="SOUser#loginPG" />
+				<if>
+					<condition action="SOUserBar#isElementPresent" locator-key1="USER_NAME" />
+					<then>
+						<execute macro="SOUser#logoutPG" />
+						<execute macro="SOUser#loginPG" />
+					</then>
+					<else>
+						<execute macro="SOUser#loginPG" />
+					</else>
+				</if>
 			</then>
 			<else>
-				<execute macro="SOUser#loginPG" />
+				<if>
+					<condition action="Dockbar#isElementPresent" locator-key1="USER_NAME" />
+					<then>
+						<execute macro="User#pgLogout" />
+						<execute macro="SOUser#loginPG" />
+					</then>
+					<else>
+						<execute macro="SOUser#loginPG" />
+					</else>
+				</if>
 			</else>
 		</if>
 	</command>
@@ -53,5 +104,17 @@
 				<execute action="SOUserBar#click" locator-key1="USER_MENU_SIGN_OUT" />
 			</then>
 		</if>
+	</command>
+	
+	<command name="tearDownCP">
+		<var name="userFirstName" value="social*" />
+
+		<execute macro="User#deactivateCP">
+			<var name="userFirstName" value="${userFirstName}" />
+		</execute>
+
+		<execute macro="User#deleteCP">
+			<var name="userFirstName" value="${userFirstName}" />
+		</execute>
 	</command>
 </definition>
