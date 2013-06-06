@@ -98,4 +98,12 @@
 
 		<execute function="Click#valueClickAtAndWait" />
 	</command>
+
+	<command name="valueClickAtPause">
+		<execute function="AssertTextEquals#assertValue" />
+
+		<execute selenium="clickAt" />
+
+		<execute selenium="pause" argument1="1000" />
+	</command>
 </definition>
