@@ -695,6 +695,9 @@ public class EditUserAction extends PortletAction {
 					PortletSession.APPLICATION_SCOPE);
 			}
 		}
+		else {
+			oldLanguageId = StringPool.BLANK;
+		}
 
 		String portletId = serviceContext.getPortletId();
 
