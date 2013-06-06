@@ -15,6 +15,50 @@
 		</execute>
 	</command>
 
+	<command name="CannotJoinPrivateSiteAsUser">
+		<var name="membershipType" value="Private" />
+		<var name="siteName" value="Site Name" />
+		<var name="userEmailAddress" value="userea@liferay.com" />
+		<var name="userFirstName" value="userfn" />
+		<var name="userLastName" value="userln" />
+		<var name="userScreenName" value="usersn" />
+
+		<execute macro="Site#addBlankCP">
+			<var name="membershipType" value="${membershipType}" />
+			<var name="siteName" value="${siteName}" />
+		</execute>
+
+		<execute macro="User#addCP">
+			<var name="userEmailAddress" value="${userEmailAddress}" />
+			<var name="userFirstName" value="${userFirstName}" />
+			<var name="userLastName" value="${userLastName}" />
+			<var name="userScreenName" value="${userScreenName}" />
+		</execute>
+
+		<execute macro="User#editPasswordCP">
+			<var name="userEmailAddress" value="${userEmailAddress}" />
+			<var name="userScreenName" value="${userScreenName}" />
+		</execute>
+
+		<execute macro="User#pgLogout" />
+
+		<execute macro="User#pgLogin">
+			<var name="userEmailAddress" value="${userEmailAddress}" />
+			<var name="password" value="test" />
+		</execute>
+
+		<execute action="Home#open" locator1="/user/${userScreenName}/home" />
+
+		<execute action="PGPersonalsiteMysites#assertTextEquals" locator-key1="MY_SITES_INFO_MESSAGE" />
+		<execute action="PGPersonalsiteMysites#click" locator-key1="MY_SITES_AVAILABLE_SITES" />
+
+		<execute action="PGPersonalsiteAvailablesites#assertTextNotPresent" value1="${siteName}" />
+		<execute action="PGPersonalsiteAvailablesites#type" locator-key1="AVAILABLE_SITES_SEARCH_FIELD" value1="${siteName}" />
+		<execute action="PGPersonalsiteAvailablesites#click" locator-key1="AVAILABLE_SITES_SEARCH_BUTTON" />
+		<execute action="PGPersonalsiteAvailablesites#assertTextNotPresent" value1="${siteName}" />
+		<execute action="PGPersonalsiteAvailablesites#assertTextEquals" locator-key1="AVAILABLE_SITES_INFO_MESSAGE" />
+	</command>
+
 	<command name="DeleteSite">
 		<var name="siteName" value="Site Name" />
 
@@ -68,7 +112,7 @@
 			<var name="threadBody" value="${threadBody}" />
 		</execute>
 
-		<execute macro="MessageboardsThread#pgViewReply">
+		<execute macro="MessageboardsThread#viewReplyPG">
 			<var name="threadSubject" value="${threadSubject}" />
 			<var name="threadBody" value="${threadBody}" />
 			<var name="threadReplyBody" value="${threadReplyBody}" />
@@ -94,61 +138,15 @@
 			<var name="siteName" value="${siteName}" />
 		</execute>
 
-		<execute macro="MessageboardsThread#pgViewReply">
+		<execute macro="MessageboardsThread#viewReplyPG">
 			<var name="threadSubject" value="${threadSubject}" />
 			<var name="threadBody" value="${threadBody}" />
 			<var name="threadReplyBody" value="${threadReplyBody}" />
 		</execute>
 	</command>
 
-	<command name="JoinSitePrivate">
-		<var name="membershipType" value="Private" />
-		<var name="siteName" value="Site Name" />
-		<var name="userEmailAddress" value="userea@liferay.com" />
-		<var name="userFirstName" value="userfn" />
-		<var name="userLastName" value="userln" />
-		<var name="userScreenName" value="usersn" />
-
-		<execute macro="Site#addBlankCP">
-			<var name="membershipType" value="${membershipType}" />
-			<var name="siteName" value="${siteName}" />
-		</execute>
-
-		<execute macro="User#addCP">
-			<var name="userEmailAddress" value="${userEmailAddress}" />
-			<var name="userFirstName" value="${userFirstName}" />
-			<var name="userLastName" value="${userLastName}" />
-			<var name="userScreenName" value="${userScreenName}" />
-		</execute>
-
-		<execute macro="User#editPasswordCP">
-			<var name="userEmailAddress" value="${userEmailAddress}" />
-			<var name="userScreenName" value="${userScreenName}" />
-		</execute>
-
-		<execute macro="User#pgLogout" />
-
-		<execute macro="User#pgLogin">
-			<var name="userEmailAddress" value="${userEmailAddress}" />
-			<var name="password" value="test" />
-		</execute>
-
-		<execute action="Home#open" locator1="/user/${userScreenName}/home" />
-
-		<execute action="PGPersonalsiteMysites#assertTextEquals" locator-key1="MY_SITES_INFO_MESSAGE" />
-		<execute action="PGPersonalsiteMysites#click" locator-key1="MY_SITES_AVAILABLE_SITES" />
-
-		<execute action="PGPersonalsiteAvailablesites#assertTextNotPresent" value1="${siteName}" />
-		<execute action="PGPersonalsiteAvailablesites#type" locator-key1="AVAILABLE_SITES_SEARCH_FIELD" value1="${siteName}" />
-		<execute action="PGPersonalsiteAvailablesites#click" locator-key1="AVAILABLE_SITES_SEARCH_BUTTON" />
-		<execute action="PGPersonalsiteAvailablesites#assertTextNotPresent" value1="${siteName}" />
-		<execute action="PGPersonalsiteAvailablesites#assertTextEquals" locator-key1="AVAILABLE_SITES_INFO_MESSAGE" />
-	</command>
-
 	<tear-down>
-		<execute macro="User#pgLogout" />
-
-		<execute macro="User#pgLogin" />
+		<execute macro="User#pgFirstLogin" />
 
 		<execute macro="User#tearDownCP" />
 

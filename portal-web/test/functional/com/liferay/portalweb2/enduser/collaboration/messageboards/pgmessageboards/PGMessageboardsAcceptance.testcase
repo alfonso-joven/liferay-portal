@@ -118,7 +118,7 @@
 			<var name="threadSubject" value="${threadSubject}" />
 		</execute>
 
-		<execute macro="MessageboardsThread#pgViewReply">
+		<execute macro="MessageboardsThread#viewReplyPG">
 			<var name="pageName" value="${pageName}" />
 			<var name="threadBody" value="${threadBody}" />
 			<var name="threadReplyBody" value="${threadReplyBody}" />
