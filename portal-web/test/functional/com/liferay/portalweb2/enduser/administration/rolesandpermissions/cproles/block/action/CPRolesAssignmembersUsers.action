@@ -6,11 +6,17 @@
 	</command>
 
 	<command name="click">
-		<case locator-key1="UPDATE_ASSOCIATIONS_BUTTON">
-			<execute function="Click#valueClickAtAndWait" value1="Update Associations" />
+		<case locator-key1="BASIC_SEARCH_BUTTON">
+			<execute function="Click#valueClickAtPause" value1="Search" />
 		</case>
 		<case locator-key1="STATUS_AVAILABLE">
 			<execute function="Click#textClickAtAndWait" value1="Available" />
+		</case>
+		<case locator-key1="STATUS_CURRENT">
+			<execute function="Click#textClickAtAndWait" value1="Current" />
+		</case>
+		<case locator-key1="UPDATE_ASSOCIATIONS_BUTTON">
+			<execute function="Click#valueClickAtAndWait" value1="Update Associations" />
 		</case>
 	</command>
 </definition>
