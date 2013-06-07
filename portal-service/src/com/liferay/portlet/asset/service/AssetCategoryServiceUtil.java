@@ -68,6 +68,16 @@ public class AssetCategoryServiceUtil {
 			vocabularyId, categoryProperties, serviceContext);
 	}
 
+	/**
+	* @deprecated As of 6.2.0, Replaced by {@link #deleteCategories(long[],
+	ServiceContext)}
+	*/
+	public static void deleteCategories(long[] categoryIds)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		getService().deleteCategories(categoryIds);
+	}
+
 	public static java.util.List<com.liferay.portlet.asset.model.AssetCategory> deleteCategories(
 		long[] categoryIds,
 		com.liferay.portal.service.ServiceContext serviceContext)

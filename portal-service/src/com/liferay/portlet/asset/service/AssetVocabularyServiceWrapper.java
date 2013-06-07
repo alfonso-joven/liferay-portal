@@ -77,6 +77,16 @@ public class AssetVocabularyServiceWrapper implements AssetVocabularyService,
 			descriptionMap, settings, serviceContext);
 	}
 
+	/**
+	* @deprecated As of 6.2.0, Replaced by {@link #deleteVocabularies(long[],
+	ServiceContext)}
+	*/
+	public void deleteVocabularies(long[] vocabularyIds)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		_assetVocabularyService.deleteVocabularies(vocabularyIds);
+	}
+
 	public java.util.List<com.liferay.portlet.asset.model.AssetVocabulary> deleteVocabularies(
 		long[] vocabularyIds,
 		com.liferay.portal.service.ServiceContext serviceContext)
