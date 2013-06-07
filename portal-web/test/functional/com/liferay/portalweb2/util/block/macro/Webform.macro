@@ -1,0 +1,61 @@
+<definition>
+	<command name="pgConfigureWebform">
+		<execute macro="Page#pgGoto">
+			<var name="portletName" value="Web Form" />
+		</execute>
+
+		<execute action="PGWebform#assertTextEquals" locator-key1="PORTLET_TITLE" value1="Web Form" />
+		<execute action="PGWebform#assertTextEquals" locator-key1="DEFAULT_FORM_INFORMATION_TITLE" value1="${webFormInformationTitle}" />
+		<execute action="PGWebform#assertTextEquals" locator-key1="DEFAULT_FORM_INFORMATION_DESCRIPTION" value1="${webFormInformationDescription}" />
+		<execute action="PGWebform#assertTextEquals" locator-key1="DEFAULT_FORM_FIELDS_NAME_HEADER" value1="${webFormFieldsName}" />
+		<execute action="PGWebform#assertElementPresent" locator-key1="DEFAULT_FORM_FIELDS_NAME" />
+		<execute action="PGWebform#assertTextEquals" locator-key1="DEFAULT_FORM_FIELDS_RATING_HEADER" value1="${webFormFieldsRating}" />
+		<execute action="PGWebform#assertElementPresent" locator-key1="DEFAULT_FORM_FIELDS_RATING" />
+		<execute action="PGWebform#assertTextEquals" locator-key1="DEFAULT_FORM_FIELDS_COMMENTS_HEADER" value1="${webFormFieldsComments}" />
+		<execute action="PGWebform#assertElementPresent" locator-key1="DEFAULT_FORM_FIELDS_COMMENTS" />
+
+		<execute action="PGWebform#click" locator-key1="PORTLET_OPTIONS" />
+		<execute action="PGWebform#click" locator-key1="WEBFORM_OPTIONS_MENULIST_CONFIGURATION" />
+
+		<execute action="PGWebformConfiguration#selectFrame" locator-key1="CONFIGURATION_IFRAME" />
+		<execute action="PGWebformConfiguration#type" locator-key1="SETUP_FORM_INFORMATION_TITLE" value1="${setupWebFormInformationTitle}" />
+		<execute action="PGWebformConfiguration#type" locator-key1="SETUP_FORM_INFORMATION_DESCRIPTION" value1="${setupWebFormInformationDescription}" />
+		<execute action="PGWebformConfiguration#type" locator-key1="SETUP_FORM_FIELDS_NAME" value1="${setupWebFormFieldsName}" />
+		<execute action="PGWebformConfiguration#type" locator-key1="SETUP_FORM_FIELDS_RATING" value1="${setupWebFormFieldsRating}" />
+		<execute action="PGWebformConfiguration#type" locator-key1="SETUP_FORM_FIELDS_COMMENTS" value1="${setupWebFormFieldsComments}" />
+
+		<execute action="PGWebformConfiguration#click" locator-key1="SAVE_BUTTON" />
+		<execute action="PGWebformConfiguration#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+
+	</command>
+
+	<command name="pgViewConfigureWebform">
+		<execute macro="Page#pgGoto">
+			<var name="portletName" value="Web Form" />
+		</execute>
+
+		<execute action="PGWebform#assertTextNotEquals" locator-key1="DEFAULT_FORM_INFORMATION_TITLE" value1="${webFormInformationTitle}" />
+		<execute action="PGWebform#assertTextEquals" locator-key1="DEFAULT_FORM_INFORMATION_TITLE" value1="${setupWebFormInformationTitle}" />
+
+		<execute action="PGWebform#assertTextNotEquals" locator-key1="DEFAULT_FORM_INFORMATION_DESCRIPTION" value1="${webFormInformationDescription}" />
+		<execute action="PGWebform#assertTextEquals" locator-key1="DEFAULT_FORM_INFORMATION_DESCRIPTION" value1="${setupWebFormInformationDescription}" />
+		
+		<execute action="PGWebform#assertTextNotEquals" locator-key1="DEFAULT_FORM_FIELDS_NAME_HEADER" value1="${webFormFieldsName}" />
+		<execute action="PGWebform#assertTextEquals" locator-key1="DEFAULT_FORM_FIELDS_NAME_HEADER" value1="${setupWebFormFieldsName}" />
+		<execute action="PGWebform#assertElementPresent" locator-key1="DEFAULT_FORM_FIELDS_NAME" />
+
+		<execute action="PGWebform#assertTextNotEquals" locator-key1="DEFAULT_FORM_FIELDS_RATING_HEADER" value1="${webFormFieldsRating}" />
+		<execute action="PGWebform#assertTextEquals" locator-key1="DEFAULT_FORM_FIELDS_RATING_HEADER" value1="${setupWebFormFieldsRating}" />
+		<execute action="PGWebform#assertElementPresent" locator-key1="DEFAULT_FORM_FIELDS_RATING" />
+
+		<execute action="PGWebform#assertTextNotEquals" locator-key1="DEFAULT_FORM_FIELDS_COMMENTS_HEADER" value1="${webFormFieldsComments}" />
+		<execute action="PGWebform#assertTextEquals" locator-key1="DEFAULT_FORM_FIELDS_COMMENTS_HEADER" value1="${setupWebFormFieldsComments}" />
+		<execute action="PGWebform#assertElementPresent" locator-key1="DEFAULT_FORM_FIELDS_COMMENTS" />
+	</command>
+
+	<command name="pgTearDown">
+		<execute macro="Page#cpGoto">
+			<var name="portletName" value="Web Form" />
+		</execute>
+	</command>
+</definition>
