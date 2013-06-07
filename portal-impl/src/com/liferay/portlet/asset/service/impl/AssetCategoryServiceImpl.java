@@ -67,6 +67,16 @@ public class AssetCategoryServiceImpl extends AssetCategoryServiceBaseImpl {
 			vocabularyId, categoryProperties, serviceContext);
 	}
 
+	/**
+	 * @deprecated As of 6.2.0, Replaced by {@link #deleteCategories(long[],
+	 *             ServiceContext)}
+	 */
+	public void deleteCategories(long[] categoryIds)
+		throws PortalException, SystemException {
+
+		deleteCategories(categoryIds, null);
+	}
+
 	@Override
 	public List<AssetCategory> deleteCategories(
 			long[] categoryIds, ServiceContext serviceContext)
@@ -82,6 +92,10 @@ public class AssetCategoryServiceImpl extends AssetCategoryServiceBaseImpl {
 				assetCategoryLocalService.deleteCategory(categoryId);
 			}
 			catch (PortalException pe) {
+				if (serviceContext == null) {
+					return null;
+				}
+
 				if (serviceContext.isFailOnPortalException()) {
 					throw pe;
 				}

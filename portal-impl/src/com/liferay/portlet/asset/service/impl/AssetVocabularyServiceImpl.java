@@ -79,6 +79,16 @@ public class AssetVocabularyServiceImpl extends AssetVocabularyServiceBaseImpl {
 			serviceContext);
 	}
 
+	/**
+	 * @deprecated As of 6.2.0, Replaced by {@link #deleteVocabularies(long[],
+	 *             ServiceContext)}
+	 */
+	public void deleteVocabularies(long[] vocabularyIds)
+		throws PortalException, SystemException {
+
+		deleteVocabularies(vocabularyIds, null);
+	}
+
 	@Override
 	public List<AssetVocabulary> deleteVocabularies(
 			long[] vocabularyIds, ServiceContext serviceContext)
@@ -95,6 +105,10 @@ public class AssetVocabularyServiceImpl extends AssetVocabularyServiceBaseImpl {
 				assetVocabularyLocalService.deleteVocabulary(vocabularyId);
 			}
 			catch (PortalException pe) {
+				if (serviceContext == null) {
+					return null;
+				}
+
 				if (serviceContext.isFailOnPortalException()) {
 					throw pe;
 				}
