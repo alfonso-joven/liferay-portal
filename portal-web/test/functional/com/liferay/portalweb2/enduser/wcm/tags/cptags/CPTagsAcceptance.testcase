@@ -16,41 +16,37 @@
 		<var name="tagName2" value="red" />
 		<var name="tagName3" value="yellow" />
 
-		<execute macro="Tag#addtag1CP">
-			<var name="tagName1" value="${tagName1}" />
+		<execute macro="Tag#addCP">
+			<var name="tagName" value="${tagName1}" />
 		</execute>
 
-		<execute macro="Tag#addtag2CP">
-			<var name="tagName2" value="${tagName2}" />
+		<execute macro="Tag#addCP">
+			<var name="tagName" value="${tagName2}" />
 		</execute>
 
-		<execute macro="Tag#addtag3CP">
-			<var name="tagName3" value="${tagName3}" />
+		<execute macro="Tag#addCP">
+			<var name="tagName" value="${tagName3}" />
 		</execute>
 
-		<execute macro="Tag#viewtag1CP">
-			<var name="tagName1" value="${tagName1}" />
+		<execute macro="Page#cpGoto">
+			<var name="portletName" value="Tags" />
 		</execute>
 
-		<execute macro="Tag#viewtag2CP">
-			<var name="tagName2" value="${tagName2}" />
-		</execute>
-
-		<execute macro="Tag#viewtag3CP">
-			<var name="tagName3" value="${tagName3}" />
-		</execute>
+		<execute action="CPTags#assertTextEquals" locator-key1="ENTRY_TAG_1" value1="${tagName1}" />
+		<execute action="CPTags#assertTextEquals" locator-key1="ENTRY_TAG_2" value1="${tagName2}" />
+		<execute action="CPTags#assertTextEquals" locator-key1="ENTRY_TAG_3" value1="${tagName3}" />
 	</command>
 
 	<command name="EditTag">
 		<var name="tagName" value="blue" />
-		<var name="tagNameEdited" value="teal" />
+		<var name="tagNameNew" value="teal" />
 
 		<execute macro="Tag#addCP">
 			<var name="tagName" value="${tagName}" />
 		</execute>
 
 		<execute macro="Tag#editCP">
-			<var name="tagNameEdited" value="${tagNameEdited}" />
+			<var name="tagNameNew" value="${tagNameNew}" />
 		</execute>
 	</command>
 

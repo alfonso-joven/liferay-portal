@@ -7,6 +7,8 @@
 
 	<execute test-case="CPSitesAcceptance" />
 
+	<execute test-case="CPTagsAcceptance" />
+
 	<execute test-case="CPWebcontentAcceptance" />
 
 	<execute test-case="DockbarAcceptance" />
