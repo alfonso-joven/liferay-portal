@@ -2604,7 +2604,6 @@
 
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="tags-tags-admin" />
-			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="TagsTagsAdminTestSuite" />
 		</antcall>
 
