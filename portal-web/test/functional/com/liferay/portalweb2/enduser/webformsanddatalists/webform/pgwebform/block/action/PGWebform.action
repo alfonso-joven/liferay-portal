@@ -1,0 +1,16 @@
+<definition>
+	<command name="assertTextEquals">
+		<case locator-key1="SUCCESS_MESSAGE">
+			<execute function="AssertTextEquals#assertText" value1="Your request completed successfully." />
+		</case>
+	</command>
+
+	<command name="click">
+		<case locator-key1="PORTLET_OPTIONS">
+			<execute function="Click#pauseTextClickAt" value1="Options" />
+		</case>
+		<case locator-key1="WEBFORM_OPTIONS_MENULIST_CONFIGURATION">
+			<execute function="Click#textClickAtAndWait" value1="Configuration" />
+		</case>
+	</command>
+</definition>
