@@ -132,9 +132,7 @@ if (Validator.isNull(mainLanguageValue)) {
 					for (int i = 0; i < languageIds.size(); i++) {
 						String curLanguageId = languageIds.get(i);
 
-						Locale curLocale = LocaleUtil.fromLanguageId(curLanguageId);
-
-						String curLanguageDir = LanguageUtil.get(curLocale, "lang.dir");
+						String curLanguageDir = LanguageUtil.get(LocaleUtil.fromLanguageId(curLanguageId), "lang.dir");
 					%>
 
 						<div class="lfr-form-row">
