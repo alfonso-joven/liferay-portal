@@ -34,11 +34,6 @@
 	<td></td>
 </tr>
 <tr>
-	<td>CLOSE_ICON</td>
-	<td>//button[@title='Close dialog']</td>
-	<td></td>
-</tr>
-<tr>
 	<td></td>
 	<td></td>
 	<td></td>
