@@ -1,0 +1,41 @@
+<definition>
+	<var name="pageName" value="Web Form Test Page" />
+	<var name="portletName" value="Web Form" />
+
+	<set-up>
+		<execute macro="User#pgFirstLogin" />
+
+		<execute macro="Page#addPG">
+			<var name="pageName" value="${pageName}" />
+		</execute>
+
+		<execute macro="Portlet#addPG">
+			<var name="pageName" value="${pageName}" />
+			<var name="portletName" value="${portletName}" />
+		</execute>
+	</set-up>
+
+	<command name="ConfigureWebform">
+		<var name="pageName" value="${pageName}" />
+		<var name="webFormInformationTitle" value="Suggestions" />
+		<var name="webFormInformationDescription" value="Your input is valuable to us. Please send us your suggestions." />
+		<var name="webFormFieldsName" value="Name" />
+		<var name="webFormFieldsRating" value="Rating" />
+		<var name="webFormFieldsComments" value="Comments" />
+
+		<var name="pageName" value="${pageName}" />
+		<var name="setupWebFormInformationTitle" value="Feed Back" />
+		<var name="setupWebFormInformationDescription" value="Please let us know what you think!" />
+		<var name="setupWebFormFieldsName" value="Your Name" />
+		<var name="setupWebFormFieldsRating" value="Rate Us!" />
+		<var name="setupWebFormFieldsComments" value="Additional Comments" />
+
+		<execute macro="Webform#pgConfigureWebform" />
+
+		<execute macro="Webform#pgViewConfigureWebform" />
+	</command>
+
+	<tear-down>
+		<execute macro="Page#tearDownPG" />
+	</tear-down>
+</definition>

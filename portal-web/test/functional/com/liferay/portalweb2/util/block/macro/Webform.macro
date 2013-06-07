@@ -1,6 +1,6 @@
 <definition>
 	<command name="pgConfigureWebform">
-		<execute macro="Page#pgGoto">
+		<execute macro="Page#gotoPG">
 			<var name="portletName" value="Web Form" />
 		</execute>
 
@@ -30,7 +30,7 @@
 	</command>
 
 	<command name="pgViewConfigureWebform">
-		<execute macro="Page#pgGoto">
+		<execute macro="Page#gotoPG">
 			<var name="portletName" value="Web Form" />
 		</execute>
 
@@ -39,7 +39,7 @@
 
 		<execute action="PGWebform#assertTextNotEquals" locator-key1="DEFAULT_FORM_INFORMATION_DESCRIPTION" value1="${webFormInformationDescription}" />
 		<execute action="PGWebform#assertTextEquals" locator-key1="DEFAULT_FORM_INFORMATION_DESCRIPTION" value1="${setupWebFormInformationDescription}" />
-		
+
 		<execute action="PGWebform#assertTextNotEquals" locator-key1="DEFAULT_FORM_FIELDS_NAME_HEADER" value1="${webFormFieldsName}" />
 		<execute action="PGWebform#assertTextEquals" locator-key1="DEFAULT_FORM_FIELDS_NAME_HEADER" value1="${setupWebFormFieldsName}" />
 		<execute action="PGWebform#assertElementPresent" locator-key1="DEFAULT_FORM_FIELDS_NAME" />
@@ -54,7 +54,7 @@
 	</command>
 
 	<command name="pgTearDown">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Web Form" />
 		</execute>
 	</command>
