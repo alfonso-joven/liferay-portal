@@ -1,0 +1,84 @@
+<definition>
+	<var name="pageName" value="PGDocumentsandmedia" />
+	<var name="portletName" value="Documents and Media" />
+
+	<set-up>
+		<execute macro="User#pgFirstLogin" />
+
+		<execute macro="Page#pgAdd" />
+
+		<execute macro="Portlet#pgAdd" />
+	</set-up>
+
+	<command name="AddDocumentsandmediaEntry">
+		<var name="documentsandmediaEntryTitle" value="Documents and Media Entry Title" />
+		<var name="documentsandmediaEntryContent" value="Documents and Media Entry Content" />
+
+		<execute macro="DocumentsandmediaEntry#addPG" />
+		<execute macro="DocumentsandmediaEntry#viewCP" />
+			
+	</command>
+
+	<command name="AddDocumentsandMediaEntries">
+		<execute macro="DocumentsandmediaEntry#addPG">
+			<var name="documentsandmediaEntryTitle" value="Documents and Media Entry1 Title" />
+			<var name="documentsandmediaEntryContent" value="Documents and Media Entry1 Content" />
+		</execute>
+
+		<execute macro="DocumentsandmediaEntry#viewCP">
+			<var name="documentsandmediaEntryTitle" value="Documents and Media Entry1 Title" />
+		</execute>
+
+		<execute macro="DocumentsandmediaEntry#addPG">
+			<var name="documentsandmediaEntryTitle" value="Documents and Media Entry2 Title" />
+			<var name="documentsandmediaEntryContent" value="Documents and Media Entry2 Content" />
+		</execute>
+
+		<execute macro="DocumentsandmediaEntry#viewCP">
+			<var name="documentsandmediaEntryTitle" value="Documents and Media Entry2 Title" />
+		</execute>
+
+		<execute macro="DocumentsandmediaEntry#addPG">
+			<var name="documentsandmediaEntryTitle" value="Documents and Media Entry3 Title" />
+			<var name="documentsandmediaEntryContent" value="Documents and Media Entry3 Content" />
+		</execute>
+
+		<execute macro="DocumentsandmediaEntry#viewCP">
+			<var name="documentsandmediaEntryTitle" value="Documents and Media Entry3 Title" />
+		</execute>
+	</command>
+
+	<command name="EditDocumentsandMediaEntry">
+		<var name="documentsandmediaEntryTitle" value="Documents and Media Entry Title" />
+		<var name="documentsandmediaEntryContent" value="Documents and Media Entry Content" />
+		<var name="documentsandmediaEntryTitleEdit" value="Documents and Media Entry Title Edit" />
+		<var name="documentsandmediaEntryContentEdit" value="Documents and Media Entry Content Edit" />
+
+		<execute macro="DocumentsandmediaEntry#addPG" />
+		<execute macro="DocumentsandmediaEntry#pgEdit" />
+	</command>
+
+	<command name="AddDocumentsandmediaFolder">
+		<var name="documentsandmediaFolderTitle" value="Documents and Media Folder Title" />
+		<var name="documentsandmediaFolderContent" value="Documents and Media Folder Content" />
+
+		<execute macro="DocumentsandmediaFolder#pgAdd" />
+		<execute macro="DocumentsandmediaFolder#viewCP" />
+	</command>
+
+	<command name="EditDocumentsandMediaFolder">
+		<var name="documentsandmediaFolderTitle" value="Documents and Media Folder Title" />
+		<var name="documentsandmediaFolderContent" value="Documents and Media Folder Content" />
+		<var name="documentsandmediaFolderTitleEdit" value="Documents and Media Folder Title Edit" />
+		<var name="documentsandmediaFolderContentEdit" value="Documents and Media Folder Content Edit" />
+
+		<execute macro="DocumentsandmediaFolder#pgAdd" />
+		<execute macro="DocumentsandmediaFolder#pgEdit" />
+	</command>
+
+	<tear-down>
+		<execute macro="DocumentsandmediaEntry#tearDownCP" />
+
+		<execute macro="Page#pgTearDown" />
+	</tear-down>
+</definition>
