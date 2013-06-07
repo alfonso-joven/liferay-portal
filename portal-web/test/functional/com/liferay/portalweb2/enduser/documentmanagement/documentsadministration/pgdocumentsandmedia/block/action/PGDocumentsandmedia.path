@@ -24,6 +24,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>CONFIRMATION</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
 	<td></td>
 	<td></td>
 	<td></td>
@@ -295,8 +300,18 @@
 </tr>
 <tr>
 	<td>ENTRIES_DOCUMENT</td>
-	<td>//div[@id='_20_entriesContainer']/div/div/a[@data-folder='false']/div</td>
+	<td>//div[2]/a/span/img</td>
 	<td>Document Entry</td>
+</tr>
+<tr>
+	<td>ENTRIES_DOCUMENT_TITLE</td>
+	<td>//div[2]/a/span[2]</td>
+	<td>Document Title</td>
+</tr>
+<tr>
+	<td>ENTRIES_DOCUMENT_SEARCH_TITLE</td>
+	<td>//div[@id='_20_searchResults10180']/div/form/div/a/span[2]</td>
+	<td>Document Search Title</td>
 </tr>
 <tr>
 	<td>ENTRIES_DOCUMENT_SELECT</td>
@@ -309,8 +324,13 @@
 	<td>Document Entry Actions</td>
 </tr>
 <tr>
+	<td>ENTRIES_FOLDER_TITLE</td>
+	<td>//div[@id='_20_documentContainer']/div[2]/a/span[2]</td>
+	<td>Folder Title</td>
+</tr>
+<tr>
 	<td>ENTRIES_FOLDER</td>
-	<td>//div[@id='_20_entriesContainer']/div/div/a[@data-folder='true']/div</td>
+	<td>//div[@id='_20_documentContainer']/div[2]/a[@data-folder='true']/span</td>
 	<td>Folder Entry</td>
 </tr>
 <tr>
@@ -320,8 +340,8 @@
 </tr>
 <tr>
 	<td>ENTRIES_FOLDER_ACTIONS</td>
-	<td>//div[@id='_20_entriesContainer']/div/div/a[@data-folder='true']/../span/span/ul/li/strong/a</td>
-	<td>File Entry Actions</td>
+	<td>//div[@id='_20_documentContainer']/div[2]/span[2]/span/ul/li/strong/a</td>
+	<td>Folder Entry Actions</td>
 </tr>
 <tr>
 	<td></td>

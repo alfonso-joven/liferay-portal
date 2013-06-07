@@ -56,7 +56,7 @@
 <tr>
 	<td>PUBLISH_BUTTON</td>
 	<td>//input[@value='Publish']</td>
-	<td>Save</td>
+	<td>Publish</td>
 </tr>
 <tr>
 	<td>CANCEL_BUTTON</td>
