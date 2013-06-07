@@ -24,5 +24,8 @@
 		<case locator-key1="SITE_MENULIST_DELETE">
 			<execute function="Click#textClickAtAndWait" value1="Delete" />
 		</case>
+		<case locator-key1="SITE_TABLE_ACTIONS">
+			<execute function="Click#textClickAt" value1="Actions" />
+		</case>		
 	</command>
 </definition>
