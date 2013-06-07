@@ -1,17 +1,17 @@
 <html>
 <head>
-<title>PGDynamicdatalistsAddlistDatadefinitions</title>
+<title>PGDDLDisplayAddlistDatadefinitions</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">PGDynamicdatalistsAddlistDatadefinitions</td></tr>
+<tr><td rowspan="1" colspan="3">PGDDLDisplayAddlistDatadefinitions</td></tr>
 </thead>
 <tbody>
 <tr>
 	<td>PAGE_NAME</td>
 	<td></td>
-	<td>PGDynamicdatalistsAddlistDatadefinitions</td>
+	<td>PGDDLDisplayAddlistDatadefinitions</td>
 </tr>
 <tr>
 	<td></td>
@@ -77,12 +77,12 @@
 	<td></td>
 </tr>
 <tr>
-	<td>ADVANCED_SEARCH_MATCH_SELECT</td>
+	<td>ADVANCED_SEARCH_NAME</td>
 	<td>//input[@id='_166_name']</td>
 	<td></td>
 </tr>
 <tr>
-	<td>ADVANCED_SEARCH_MATCH_SELECT</td>
+	<td>ADVANCED_SEARCH_DESCRIPTION</td>
 	<td>//input[@id='_166_description']</td>
 	<td></td>
 </tr>
@@ -113,12 +113,12 @@
 	<td></td>
 </tr>
 <tr>
-	<td>DATA_DEFINITION_TABLE_DESCRIPTION_1</td>
+	<td>DATA_DEFINITION_TABLE_MODIFIED_DATE_1</td>
 	<td>xpath=(//div[@id='_166_ddmStructuresSearchContainer']//tr/td[3]/a)[1]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>DATA_DEFINITION_TABLE_CHOOSE_BUTTON_1</td>
+	<td>DATA_DEFINITION_TABLE_ACTIONS_1</td>
 	<td>xpath=(//div[@id='_166_ddmStructuresSearchContainer']//tr/td[4]/span[@title='Actions']/ul/li/strong/a/span)[1]</td>
 	<td></td>
 </tr>

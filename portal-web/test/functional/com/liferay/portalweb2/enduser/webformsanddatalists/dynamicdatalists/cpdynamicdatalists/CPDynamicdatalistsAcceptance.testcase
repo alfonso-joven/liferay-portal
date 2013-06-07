@@ -5,7 +5,7 @@
 
 	<command name="AddDataDefinition">
 		<var name="dataDefinitionDescription" value="Data Definition Description" />
-		<var name="dataDefinitionName" value="Data Definition" />
+		<var name="dataDefinitionName" value="Data Definition Name" />
 
 		<execute macro="DataDefinition#addCP">
 			<var name="dataDefinitionDescription" value="${dataDefinitionDescription}" />
@@ -20,7 +20,7 @@
 
 	<command name="AddList">
 		<var name="dataDefinitionDescription" value="Data Definition Description" />
-		<var name="dataDefinitionName" value="Data Definition" />
+		<var name="dataDefinitionName" value="Data Definition Name" />
 		<var name="listDescription" value="List Description" />
 		<var name="listName" value="List Name" />
 
@@ -43,7 +43,7 @@
 
 	<command name="AddRecord">
 		<var name="dataDefinitionDescription" value="Data Definition Description" />
-		<var name="dataDefinitionName" value="Data Definition" />
+		<var name="dataDefinitionName" value="Data Definition Name" />
 		<var name="listDescription" value="List Description" />
 		<var name="listName" value="List Name" />
 		<var name="recordText" value="Text Field" />
@@ -78,7 +78,7 @@
 	<command name="EditDataDefinition">
 		<var name="dataDefinitionDescription" value="Data Definition Description" />
 		<var name="dataDefinitionDescriptionNew" value="Data Definition Description Edit" />
-		<var name="dataDefinitionName" value="Data Definition" />
+		<var name="dataDefinitionName" value="Data Definition Name" />
 		<var name="dataDefinitionNameNew" value="Data Definition Edit" />
 
 		<execute macro="DataDefinition#addCP">
@@ -100,7 +100,7 @@
 
 	<command name="EditList">
 		<var name="dataDefinitionDescription" value="Data Definition Description" />
-		<var name="dataDefinitionName" value="Data Definition" />
+		<var name="dataDefinitionName" value="Data Definition Name" />
 		<var name="listDescription" value="List Description" />
 		<var name="listDescriptionNew" value="List Description Edit" />
 		<var name="listName" value="List Name" />
@@ -132,7 +132,7 @@
 
 	<command name="EditRecord">
 		<var name="dataDefinitionDescription" value="Data Definition Description" />
-		<var name="dataDefinitionName" value="Data Definition" />
+		<var name="dataDefinitionName" value="Data Definition Name" />
 		<var name="listDescription" value="List Description" />
 		<var name="listName" value="List Name" />
 		<var name="recordText" value="Text Field" />
@@ -167,7 +167,7 @@
 
 	<command name="DeleteDataDefinition">
 		<var name="dataDefinitionDescription" value="Data Definition Description" />
-		<var name="dataDefinitionName" value="Data Definition" />
+		<var name="dataDefinitionName" value="Data Definition Name" />
 
 		<execute macro="DataDefinition#addCP">
 			<var name="dataDefinitionDescription" value="${dataDefinitionDescription}" />
@@ -181,7 +181,7 @@
 
 	<command name="DeleteList">
 		<var name="dataDefinitionDescription" value="Data Definition Description" />
-		<var name="dataDefinitionName" value="Data Definition" />
+		<var name="dataDefinitionName" value="Data Definition Name" />
 		<var name="listDescription" value="List Description" />
 		<var name="listName" value="List Name" />
 
@@ -203,7 +203,7 @@
 
 	<command name="DeleteRecord">
 		<var name="dataDefinitionDescription" value="Data Definition Description" />
-		<var name="dataDefinitionName" value="Data Definition" />
+		<var name="dataDefinitionName" value="Data Definition Name" />
 		<var name="listDescription" value="List Description" />
 		<var name="listName" value="List Name" />
 		<var name="recordText" value="Text Field" />

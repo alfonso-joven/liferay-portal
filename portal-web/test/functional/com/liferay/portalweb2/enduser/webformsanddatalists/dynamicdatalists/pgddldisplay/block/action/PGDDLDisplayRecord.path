@@ -1,17 +1,17 @@
 <html>
 <head>
-<title>PGDynamicdatalistsRecord</title>
+<title>PGDDLDisplayRecord</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">PGDynamicdatalistsRecord</td></tr>
+<tr><td rowspan="1" colspan="3">PGDDLDisplayRecord</td></tr>
 </thead>
 <tbody>
 <tr>
 	<td>PAGE_NAME</td>
 	<td></td>
-	<td>PGDynamicdatalistsRecord</td>
+	<td>PGDDLDisplayRecord</td>
 </tr>
 <tr>
 	<td></td>

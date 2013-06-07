@@ -233,7 +233,7 @@
 		<execute action="CPDynamicdatalistsDatadefinitionsEdit#assertTextEquals" locator-key1="HEADER_TITLE" value1="${dataDefinitionName}" />
 		<execute action="CPDynamicdatalistsDatadefinitionsEdit#assertTextEquals" locator-key1="NAME_FIELD" value1="${dataDefinitionName}" />
 		<execute action="CPDynamicdatalistsDatadefinitionsEdit#assertTextEquals" locator-key1="DESCRIPTION_FIELD" value1="${dataDefinitionDescription}" />
-		<execute action="CPDynamicdatalistsDatadefinitionsEdit#assertTextEquals" locator-key1="FORM_FIELD_1" value1="Text*" />
+		<execute action="CPDynamicdatalistsDatadefinitionsEdit#assertTextEquals" locator-key1="FORM_FIELD_1" value1="Text" />
 
 		<execute action="CPDynamicdatalists#selectFrameTop" />
 	</command>

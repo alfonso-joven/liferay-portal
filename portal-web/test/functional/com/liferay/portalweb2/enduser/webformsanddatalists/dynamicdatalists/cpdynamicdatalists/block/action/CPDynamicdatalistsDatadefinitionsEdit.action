@@ -1,4 +1,10 @@
 <definition>
+	<command name="assertTextEquals">
+		<case locator-key1="FORM_FIELD_1">
+			<execute function="AssertTextEquals#assertPartialText" />
+		</case>
+	</command>
+
 	<command name="click">
 		<case locator-key1="SAVE_BUTTON">
 			<execute function="Click#valueClickAtAndWait" value1="Save" />

@@ -1,26 +1,21 @@
 <html>
 <head>
-<title>PGDynamicdatalistsEditrecord</title>
+<title>PGDDLDisplayAddrecord</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">PGDynamicdatalistsEditrecord</td></tr>
+<tr><td rowspan="1" colspan="3">PGDDLDisplayAddrecord</td></tr>
 </thead>
 <tbody>
 <tr>
 	<td>PAGE_NAME</td>
 	<td></td>
-	<td>PGDynamicdatalistsEditrecord</td>
+	<td>PGDDLDisplayAddrecord</td>
 </tr>
 <tr>
 	<td></td>
 	<td></td>
-	<td></td>
-</tr>
-<tr>
-	<td>VIEW_HISTORY_BUTTON</td>
-	<td>//button/span[.='View History']</td>
 	<td></td>
 </tr>
 <tr>
