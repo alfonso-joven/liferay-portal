@@ -141,6 +141,27 @@
 		<execute action="CPSites#assertTextNotPresent" value1="${siteName}" />
 	</command>
 
+	<command name="removeMemberCP">
+		<execute macro="Page#cpGoto">
+			<var name="portletName" value="Sites" />
+		</execute>
+
+		<execute action="CPSites#type" locator-key1="SEARCH_FIELD" value1="${siteName}" />
+		<execute action="CPSites#click" locator-key1="SEARCH_BUTTON" />
+		<execute action="CPSites#assertTextEquals" locator-key1="SITE_TABLE_NAME" value1="${siteName}" />
+		<execute action="CPSites#click" locator-key1="SITE_TABLE_ACTIONS" />
+		<execute action="CPSites#click" locator-key1="SITE_MENULIST_MANAGE_MEMBERSHIPS" />
+
+		<execute action="CPSitememberships#type" locator-key1="USER_SEARCH_FIELD" value1="${userScreenName}" />
+		<execute action="CPSitememberships#click" locator-key1="USER_SEARCH_BUTTON" />
+		<execute action="CPSitememberships#assertTextEquals" locator-key1="USER_TABLE_NAME_1" value1="${userFirstName} ${userLastName}" />
+		<execute action="CPSitememberships#assertTextEquals" locator-key1="USER_TABLE_SCREEN_NAME_1" value1="${userScreenName}" />
+		<execute action="CPSitememberships#click" locator-key1="USER_TABLE_ACTIONS_1" />
+		<execute action="CPSitememberships#click" locator-key1="USER_MENULIST_REMOVE_MEMBERSHIP" />
+
+		<execute action="CPSitemembershipsAddmembers#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+	</command>
+
 	<command name="tearDownCP">
 		<execute macro="Page#cpGoto">
 			<var name="portletName" value="Sites" />
