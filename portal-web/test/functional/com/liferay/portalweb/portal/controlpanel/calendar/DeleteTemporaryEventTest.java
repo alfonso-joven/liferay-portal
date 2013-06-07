@@ -52,8 +52,7 @@ public class DeleteTemporaryEventTest extends BaseTestCase {
 		selenium.click(RuntimeVariables.replace(
 				"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Delete')]/a"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.getConfirmation()
-						   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+		selenium.waitForConfirmation("Are you sure you want to delete this?");
 		selenium.waitForVisible("//div[@class='portlet-msg-success']");
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),

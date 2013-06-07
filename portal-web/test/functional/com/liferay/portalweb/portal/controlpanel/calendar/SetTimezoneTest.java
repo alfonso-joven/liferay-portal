@@ -39,7 +39,7 @@ public class SetTimezoneTest extends BaseTestCase {
 		selenium.clickAt("link=My Account",
 			RuntimeVariables.replace("My Account"));
 		selenium.waitForPageToLoad("30000");
-		Thread.sleep(5000);
+		Thread.sleep(1000);
 		assertTrue(selenium.isPartialText("//a[@id='_2_displaySettingsLink']",
 				"Display Settings"));
 		selenium.clickAt("//a[@id='_2_displaySettingsLink']",

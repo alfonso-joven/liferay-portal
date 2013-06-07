@@ -54,7 +54,7 @@ public class AddRepeatingEventTest extends BaseTestCase {
 		selenium.select("//select[@id='_8_startdateyear']",
 			RuntimeVariables.replace("label=2010"));
 		selenium.select("//select[@id='_8_type']",
-			RuntimeVariables.replace("event"));
+			RuntimeVariables.replace("Event"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");

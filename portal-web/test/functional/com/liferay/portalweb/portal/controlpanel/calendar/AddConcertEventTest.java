@@ -41,40 +41,22 @@ public class AddConcertEventTest extends BaseTestCase {
 		selenium.clickAt("//input[@value='Add Event']",
 			RuntimeVariables.replace("Add Event"));
 		selenium.waitForPageToLoad("30000");
+		Thread.sleep(5000);
 		selenium.type("//input[@id='_8_title']",
-			RuntimeVariables.replace("Caedmon's Call Concert!"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_8_editor' and @style='display: none;']");
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[.='Source']"));
-		selenium.clickAt("//span[.='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForVisible("//a[@class='cke_button_source cke_on']");
-		selenium.waitForVisible("//td[@id='cke_contents__8_editor']/textarea");
-		selenium.type("//td[@id='cke_contents__8_editor']/textarea",
-			RuntimeVariables.replace(
-				"I love this band guys! Everyone should see them! I've never seen them before. :("));
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[.='Source']"));
-		selenium.clickAt("//span[.='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForElementPresent(
-			"//textarea[@id='_8_editor' and @style='display: none;']");
-		selenium.waitForVisible("//td[@id='cke_contents__8_editor']/iframe");
-		selenium.selectFrame("//td[@id='cke_contents__8_editor']/iframe");
-		selenium.waitForText("//body",
-			"I love this band guys! Everyone should see them! I've never seen them before. :(");
-		selenium.selectFrame("relative=top");
+			RuntimeVariables.replace("Caedmon Call Concert!"));
+		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
+		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
+			RuntimeVariables.replace("I love this band guys!"));
 		selenium.clickAt("//input[@id='_8_timeZoneSensitiveCheckbox']",
 			RuntimeVariables.replace("Time Zone Sensitive Checkbox"));
 		selenium.select("//select[@id='_8_type']",
-			RuntimeVariables.replace("concert"));
+			RuntimeVariables.replace("Concert"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
-		assertTrue(selenium.isElementPresent("link=Caedmon's Call Concert!"));
+		assertTrue(selenium.isElementPresent("link=Caedmon Call Concert!"));
 	}
 }

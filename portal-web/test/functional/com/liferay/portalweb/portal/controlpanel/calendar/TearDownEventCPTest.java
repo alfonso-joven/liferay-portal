@@ -49,7 +49,7 @@ public class TearDownEventCPTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 
 				boolean event1Present = selenium.isElementPresent(
-						"//td[6]/span/ul/li/strong/a");
+						"//table/tbody/tr[3]/td[6]/span[@title='Actions']/ul/li/strong/a/span");
 
 				if (!event1Present) {
 					label = 2;
@@ -70,13 +70,13 @@ public class TearDownEventCPTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Delete')]/a"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete this?");
 
 			case 2:
 
 				boolean event2Present = selenium.isElementPresent(
-						"//td[6]/span/ul/li/strong/a");
+						"//table/tbody/tr[3]/td[6]/span[@title='Actions']/ul/li/strong/a/span");
 
 				if (!event2Present) {
 					label = 3;
@@ -97,13 +97,13 @@ public class TearDownEventCPTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Delete')]/a"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete this?");
 
 			case 3:
 
 				boolean event3Present = selenium.isElementPresent(
-						"//td[6]/span/ul/li/strong/a");
+						"//table/tbody/tr[3]/td[6]/span[@title='Actions']/ul/li/strong/a/span");
 
 				if (!event3Present) {
 					label = 4;
@@ -124,13 +124,13 @@ public class TearDownEventCPTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Delete')]/a"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete this?");
 
 			case 4:
 
 				boolean event4Present = selenium.isElementPresent(
-						"//td[6]/span/ul/li/strong/a");
+						"//table/tbody/tr[3]/td[6]/span[@title='Actions']/ul/li/strong/a/span");
 
 				if (!event4Present) {
 					label = 5;
@@ -151,13 +151,13 @@ public class TearDownEventCPTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Delete')]/a"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete this?");
 
 			case 5:
 
 				boolean event5Present = selenium.isElementPresent(
-						"//td[6]/span/ul/li/strong/a");
+						"//table/tbody/tr[3]/td[6]/span[@title='Actions']/ul/li/strong/a/span");
 
 				if (!event5Present) {
 					label = 6;
@@ -178,8 +178,8 @@ public class TearDownEventCPTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//div[@class='lfr-component lfr-menu-list']/ul/li[contains(.,'Delete')]/a"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete this?");
 
 			case 6:
 			case 100:

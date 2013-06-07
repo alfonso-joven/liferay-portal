@@ -41,7 +41,7 @@ public class AssertImportLARTest extends BaseTestCase {
 		selenium.waitForVisible("link=Events");
 		selenium.clickAt("link=Events", RuntimeVariables.replace("Events"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isElementPresent("link=Caedmon's Call Concert!"));
+		assertTrue(selenium.isElementPresent("link=Caedmon Call Concert!"));
 		assertTrue(selenium.isElementPresent("link=Edited Test Event"));
 		assertTrue(selenium.isElementPresent("link=Off to Yosemite!"));
 	}
