@@ -52,8 +52,7 @@ public class DeleteMessageTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.click(RuntimeVariables.replace("link=Delete"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.getConfirmation()
-						   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+		selenium.waitForConfirmation("Are you sure you want to delete this?");
 		selenium.waitForText("//div[@class='portlet-msg-success']",
 			"Your request completed successfully.");
 		assertEquals(RuntimeVariables.replace(
