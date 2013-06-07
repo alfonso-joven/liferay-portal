@@ -1,87 +1,142 @@
 <definition>
-	<var name="portletName" value="Documents and Media" />
-
 	<set-up>
 		<execute macro="User#pgFirstLogin" />
 	</set-up>
 
-	<command name="cpAdd">
-		<var name="file" value="Document_1.txt" />
-		<var name="title" value="Title1" />
-		<var name="description" value="Description1" />
-
-		<execute macro="DocumentsAndMedia#cpAdd" />
+	<command name="AddDocument">
+		<execute macro="DMDocument#addCP">
+			<var name="documentDescription" value="Description1" />
+			<var name="documentFile" value="Document_1.txt" />
+			<var name="documentTitle" value="Title1" />
+		</execute>
 	</command>
 
-	<command name="cpEdit">
-		<var name="file" value="Document_1.txt" />
-		<var name="title" value="Title1" />
-		<var name="description" value="Description1" />
-
-		<var name="titleEdited" value="Title1 Edited" />
-		<var name="descriptionEdited" value="Description1 Edited" />
-
-		<execute macro="DocumentsAndMedia#cpAdd" />
-		<execute macro="DocumentsAndMedia#cpEdit" />
+	<command name="AddFolder">
+		<execute macro="DMFolder#addCP">
+			<var name="folderDescription" value="Description1" />
+			<var name="folderTitle" value="Title1" />
+		</execute>
 	</command>
 
-	<command name="cpDelete">
-		<var name="file" value="Document_1.txt" />
-		<var name="title" value="Title1" />
-		<var name="description" value="Description1" />
+	<command name="DeleteDocument">
+		<var name="documentDescription" value="Description1" />
+		<var name="documentFile" value="Document_1.txt" />
+		<var name="documentTitle" value="Title1" />
 
-		<execute macro="DocumentsAndMedia#cpAdd" />
-		<execute macro="DocumentsAndMedia#cpDelete" />
+		<execute macro="DMDocument#addCP">
+			<var name="documentDescription" value="${documentDescription}" />
+			<var name="documentFile" value="${documentFile}" />
+			<var name="documentTitle" value="${documentTitle}" />
+		</execute>
+
+		<execute macro="DMDocument#deleteCP">
+			<var name="documentTitle" value="${documentTitle}" />
+		</execute>
 	</command>
 
-	<command name="cpAddFolder">
-		<var name="title" value="Title1" />
-		<var name="description" value="Description1" />
+	<command name="DeleteFolder">
+		<var name="folderDescription" value="Description1" />
+		<var name="folderTitle" value="Title1" />
 
-		<execute macro="DocumentsAndMedia#cpAddFolder" />
+		<execute macro="DMFolder#addCP">
+			<var name="folderDescription" value="${folderDescription}" />
+			<var name="folderTitle" value="${folderTitle}" />
+		</execute>
+
+		<execute macro="DMFolder#deleteCP">
+			<var name="folderDescription" value="${folderDescription}" />
+			<var name="folderTitle" value="${folderTitle}" />
+		</execute>
 	</command>
 
-	<command name="cpEditFolder">
-		<var name="title" value="Title1" />
-		<var name="description" value="Description1" />
-		<var name="titleEdited" value="Title1 Edited" />
-		<var name="descriptionEdited" value="Description1 Edited" />
+	<command name="EditDocument">
+		<var name="documentDescription" value="Description1" />
+		<var name="documentDescriptionNew" value="Description1 Edit" />
+		<var name="documentFile" value="Document_1.txt" />
+		<var name="documentTitle" value="Title1" />
+		<var name="documentTitleNew" value="Title1 Edit" />
 
-		<execute macro="DocumentsAndMedia#cpAddFolder" />
-		<execute macro="DocumentsAndMedia#cpEditFolder" />
+		<execute macro="DMDocument#addCP">
+			<var name="documentDescription" value="${documentDescription}" />
+			<var name="documentFile" value="${documentFile}" />
+			<var name="documentTitle" value="${documentTitle}" />
+		</execute>
+
+		<execute macro="DMDocument#editCP">
+			<var name="documentDescription" value="${documentDescription}" />
+			<var name="documentDescriptionNew" value="${documentDescriptionNew}" />
+			<var name="documentTitle" value="${documentTitle}" />
+			<var name="documentTitleNew" value="${documentTitleNew}" />
+		</execute>
 	</command>
 
-	<command name="cpDeleteFolder">
-		<var name="title" value="Title1" />
-		<var name="description" value="Description1" />
+	<command name="EditFolder">
+		<var name="folderDescription" value="Description1" />
+		<var name="folderTitle" value="Title1" />
 
-		<execute macro="DocumentsAndMedia#cpAddFolder" />
-		<execute macro="DocumentsAndMedia#cpDeleteFolder" />
+		<execute macro="DMFolder#addCP">
+			<var name="folderDescription" value="${folderDescription}" />
+			<var name="folderTitle" value="${folderTitle}" />
+		</execute>
+
+		<execute macro="DMFolder#editCP">
+			<var name="folderDescription" value="${folderDescription}" />
+			<var name="folderDescriptionNew" value="Description1 Edit" />
+			<var name="folderTitle" value="${folderTitle}" />
+			<var name="folderTitleNew" value="Title1 Edit" />
+		</execute>
 	</command>
 
-	<command name="cpMoveDocumentToFolder">
-		<var name="file" value="Document_1.txt" />
-		<var name="title1" value="Document1" />
-		<var name="description1" value="Document1 Description" />
+	<command name="MoveDocumentToFolder">
+		<var name="documentDescription" value="Description1" />
+		<var name="documentFile" value="Document_1.txt" />
+		<var name="documentTitle" value="Title1" />
+		<var name="folderDescription" value="Folder Description" />
+		<var name="folderTitle" value="Folder" />
 
-		<var name="title2" value="Folder2" />
-		<var name="description2" value="Folder2 Description" />
+		<execute macro="DMDocument#addCP">
+			<var name="documentFile" value="${documentFile}" />
+			<var name="documentTitle" value="${documentTitle}" />
+			<var name="documentDescription" value="${documentDescription}" />
+		</execute>
 
-		<execute macro="DocumentsAndMedia#cpMoveDocumentToFolder" />
+		<execute macro="DMFolder#addCP">
+			<var name="folderDescription" value="${folderDescription}" />
+			<var name="folderTitle" value="${folderTitle}" />
+		</execute>
+
+		<execute macro="DMDocument#moveToFolderCP">
+			<var name="documentTitle" value="${documentTitle}" />
+			<var name="folderTitle" value="${folderTitle}" />
+		</execute>
 	</command>
 
-	<command name="cpMoveFolderToFolder">
-		<var name="title1" value="Folder1" />
-		<var name="description1" value="Folder1 Description" />
+	<command name="MoveFolderToFolder">
+		<var name="folderDescription1" value="Folder1 Description" />
+		<var name="folderDescription2" value="Folder2 Description" />
+		<var name="folderTitle1" value="Folder1" />
+		<var name="folderTitle2" value="Folder2" />
 
-		<var name="title2" value="Folder2" />
-		<var name="description2" value="Folder2 Description" />
+		<execute macro="DMFolder#addCP">
+			<var name="folderDescription" value="${folderDescription1}" />
+			<var name="folderTitle" value="${folderTitle1}" />
+		</execute>
 
-		<execute macro="DocumentsAndMedia#cpMoveFolderToFolder" />
+		<execute macro="DMFolder#addCP">
+			<var name="folderDescription" value="${folderDescription2}" />
+			<var name="folderTitle" value="${folderTitle2}" />
+		</execute>
+
+		<execute macro="DMFolder#moveToFolderCP">
+			<var name="folderTitle2" value="${folderTitle2}" />
+		</execute>
 	</command>
 
 	<tear-down>
-	<execute macro="DocumentsAndMedia#cpTearDown" />
+		<execute macro="DMDocument#tearDownCP" />
+
+		<execute macro="DMFolder#tearDownCP" />
+
 		<execute macro="User#pgLogout" />
 	</tear-down>
 </definition>
