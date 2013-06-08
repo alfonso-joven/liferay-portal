@@ -25,12 +25,7 @@
 </tr>
 <tr>
 	<td>INVOKE</td>
-	<td>//button[@type='submit']</td>
-	<td></td>
-</tr>
-<tr>
-	<td></td>
-	<td></td>
+	<td>//input[@value='Invoke']</td>
 	<td></td>
 </tr>
 <tr>
