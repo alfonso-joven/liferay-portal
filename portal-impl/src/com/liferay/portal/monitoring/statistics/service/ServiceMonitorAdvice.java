@@ -198,5 +198,4 @@ public class ServiceMonitorAdvice extends ChainableMethodAdvice {
 				ServiceRequestDataSample.class +
 					"._serviceRequestDataSampleThreadLocal");
 
-
 }
