@@ -283,6 +283,31 @@ public class WorkflowDefinitionLinkLocalServiceWrapper
 			groupId, className, classPK, typePK);
 	}
 
+	public com.liferay.portal.model.WorkflowDefinitionLink fetchDefaultWorkflowDefinitionLink(
+		long companyId, java.lang.String className, long classPK, long typePK)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return _workflowDefinitionLinkLocalService.fetchDefaultWorkflowDefinitionLink(companyId,
+			className, classPK, typePK);
+	}
+
+	public com.liferay.portal.model.WorkflowDefinitionLink fetchWorkflowDefinitionLink(
+		long companyId, long groupId, java.lang.String className, long classPK,
+		long typePK)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _workflowDefinitionLinkLocalService.fetchWorkflowDefinitionLink(companyId,
+			groupId, className, classPK, typePK);
+	}
+
+	public com.liferay.portal.model.WorkflowDefinitionLink fetchWorkflowDefinitionLink(
+		long companyId, long groupId, java.lang.String className, long classPK,
+		long typePK, boolean strict)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return _workflowDefinitionLinkLocalService.fetchWorkflowDefinitionLink(companyId,
+			groupId, className, classPK, typePK, strict);
+	}
+
 	public com.liferay.portal.model.WorkflowDefinitionLink getDefaultWorkflowDefinitionLink(
 		long companyId, java.lang.String className, long classPK, long typePK)
 		throws com.liferay.portal.kernel.exception.PortalException,
