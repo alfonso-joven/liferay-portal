@@ -1448,12 +1448,12 @@ AUI.add(
 
 						Liferay.Service.Asset.AssetVocabulary.getJSONGroupVocabulariesDisplay(
 							{
-								addDefaultVocabulary: true,
-								end: end,
 								groupId: themeDisplay.getParentGroupId(),
 								name: query,
-								obc: null,
-								start: start
+								start: start,
+								end: end,
+								addDefaultVocabulary: true,
+								obc: null
 							},
 							function(result) {
 								instance._restartSearch = false;
