@@ -272,6 +272,7 @@
 		<execute action="CPRoles#click" locator-key1="SEARCH_BUTTON" />
 		<execute action="CPRoles#click" locator-key1="ROLE_TABLE_ACTIONS_1" />
 		<execute action="CPRoles#click" locator-key1="ROLE_MENULIST_ASSIGN_MEMBERS" />
+
 		<execute action="CPRolesAssignmembersUsers#click" locator-key1="STATUS_CURRENT" />
 		<execute action="CPRolesAssignmembersUsers#type" locator-key1="BASIC_SEARCH_FIELD" value1="${userScreenName}" />
 		<execute action="CPRolesAssignmembersUsers#click" locator-key1="BASIC_SEARCH_BUTTON" />
