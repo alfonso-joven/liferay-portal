@@ -1,3 +1,7 @@
 <definition>
-	<execute test-case="PGLoginAcceptance" />
+	<execute test-case="CPDocumentsandmediaAcceptance" />
+
+	<execute test-case="PGDocumentlibrarydisplayAcceptance" />
+
+	<execute test-case="PGMediaGalleryAcceptance" />
 </definition>
