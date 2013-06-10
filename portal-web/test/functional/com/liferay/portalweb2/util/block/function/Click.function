@@ -5,6 +5,14 @@
 		<execute selenium="clickAt" />
 	</command>
 
+	<command name="clickAtPause">
+		<execute selenium="waitForVisible" />
+
+		<execute selenium="clickAt" />
+
+		<execute selenium="pause" argument1="1000" />
+	</command>
+
 	<command name="clickAtAndWait">
 		<execute selenium="waitForVisible" />
 
