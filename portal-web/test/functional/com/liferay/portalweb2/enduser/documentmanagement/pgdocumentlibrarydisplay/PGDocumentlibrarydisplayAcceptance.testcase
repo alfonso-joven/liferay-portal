@@ -13,26 +13,17 @@
 			<var name="pageName" value="${pageName}" />
 			<var name="portletName" value="${portletName}" />
 		</execute>
+
+		<execute macro="DocumentsAndMediaDisplayPortlet#configurePGPortletShowAll">
+			<var name="pageName" value="${pageName}" />
+		</execute>
 	</set-up>
 
 	<command name="AddDocumentsAndMediaDisplayDocument">
 		<var name="documentFileName" value="Document_1.txt" />
 		<var name="documentName" value="DM Document Title"  />
 
-		<execute macro="DocumentsAndMediaDisplayPortlet#configurePGPortletShowActions">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-		<execute macro="DocumentsAndMediaDisplayPortlet#configurePGPortletShowFolderMenu">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-		<execute macro="DocumentsAndMediaDisplayPortlet#configurePGPortletShowNavigationLinks">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-		<execute macro="DocumentsAndMediaDisplayPortlet#configurePGPortletShowSearchMenu">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
-		<execute macro="DocumentsAndMedia#addPGviaDMD">
+		<execute macro="DMDocument#addPGviaDMD">
 			<var name="documentFileName" value="${documentFileName}" />
 			<var name="documentName" value="${documentName}" />
 			<var name="pageName" value="${pageName}" />
@@ -42,20 +33,7 @@
 	<command name="AddDocumentsAndMediaDisplayFolder">
 		<var name="documentFolderName" value="DM Folder Name" />
 
-		<execute macro="DocumentsAndMediaDisplayPortlet#configurePGPortletShowActions">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-		<execute macro="DocumentsAndMediaDisplayPortlet#configurePGPortletShowFolderMenu">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-		<execute macro="DocumentsAndMediaDisplayPortlet#configurePGPortletShowNavigationLinks">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-		<execute macro="DocumentsAndMediaDisplayPortlet#configurePGPortletShowSearchMenu">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
-		<execute macro="DocumentsFolder#addPGviaDMD">
+		<execute macro="DMFolder#addPGviaDMD">
 			<var name="documentFolderName" value="${documentFolderName}" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
@@ -69,42 +47,37 @@
 		<var name="documentName2" value="DM Document2 Title" />
 		<var name="documentName3" value="DM Document3 Title" />
 
-		<execute macro="DocumentsAndMediaDisplayPortlet#configurePGPortletShowActions">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-		<execute macro="DocumentsAndMediaDisplayPortlet#configurePGPortletShowFolderMenu">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-		<execute macro="DocumentsAndMediaDisplayPortlet#configurePGPortletShowNavigationLinks">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-		<execute macro="DocumentsAndMediaDisplayPortlet#configurePGPortletShowSearchMenu">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
-		<execute macro="DocumentsAndMedia#addPGviaDMD">
+		<execute macro="DMDocument#addPGviaDMD">
 			<var name="documentFileName" value="${documentFileName1}" />
 			<var name="documentName" value="${documentName1}" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
-		<execute macro="DocumentsAndMedia#addPGviaDMD">
+		<execute macro="DMDocument#addPGviaDMD">
 			<var name="documentFileName" value="${documentFileName2}" />
 			<var name="documentName" value="${documentName2}" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
-		<execute macro="DocumentsAndMedia#addPGviaDMD">
+		<execute macro="DMDocument#addPGviaDMD">
 			<var name="documentFileName" value="${documentFileName3}" />
 			<var name="documentName" value="${documentName3}" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
-		<execute macro="DocumentsAndMedia#deletePGviaDMD">
-			<var name="documentName1" value="${documentName1}" />
-			<var name="documentName2" value="${documentName2}" />
-			<var name="documentName3" value="${documentName3}" />
+		<execute macro="DMDocument#deletePGviaDMD">
+			<var name="documentName" value="${documentName1}" />
 		</execute>
+
+		<execute macro="DMDocument#deletePGviaDMD">
+			<var name="documentName" value="${documentName2}" />
+		</execute>
+
+		<execute macro="DMDocument#deletePGviaDMD">
+			<var name="documentName" value="${documentName3}" />
+		</execute>
+
+		<execute action="PGDocumentlibrarydisplay#assertTextEquals" locator-key1="INFO_MESSAGE" />
 	</command>
 
 	<command name="RemovePortlet">
@@ -118,62 +91,49 @@
 		<var name="documentFolderName" value="DM Folder Name" />
 		<var name="documentName" value="DM Folder Document Title" />
 
-		<execute macro="DocumentsAndMediaDisplayPortlet#configurePGPortletShowActions">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-		<execute macro="DocumentsAndMediaDisplayPortlet#configurePGPortletShowFolderMenu">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-		<execute macro="DocumentsAndMediaDisplayPortlet#configurePGPortletShowNavigationLinks">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-		<execute macro="DocumentsAndMediaDisplayPortlet#configurePGPortletShowSearchMenu">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
-		<execute macro="DocumentsFolder#addPGviaDMD">
+		<execute macro="DMFolder#addPGviaDMD">
 			<var name="documentFolderName" value="${documentFolderName}" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
-		<execute macro="DocumentsAndMedia#addFolderPGviaDMD">
+		<execute macro="DMFolderDocument#addPGviaDMD">
 			<var name="documentFileName" value="${documentFileName}" />
 			<var name="documentFolderName" value="${documentFolderName}" />
 			<var name="documentName" value="${documentName}" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
-		<execute macro="DocumentsAndMedia#searchDMFolderDocumentPGviaDMD">
+		<execute macro="DMFolderDocument#searchPGviaDMD">
 			<var name="documentFolderName" value="${documentFolderName}" />
 			<var name="documentName" value="${documentName}" />
 			<var name="documentNameSearch" value="${documentName}" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
-		<execute macro="DocumentsAndMedia#searchNoDMFolderDocumentPGviaDMD">
+		<execute macro="DMFolderDocument#searchNoPGviaDMD">
 			<var name="documentNameSearch" value="DM2 Folder2 Document2 Title2" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
-		<execute macro="DocumentsAndMedia#searchDMFolderDocumentPGviaDMD">
+		<execute macro="DMFolderDocument#searchPGviaDMD">
 			<var name="documentFolderName" value="${documentFolderName}" />
 			<var name="documentName" value="${documentName}" />
 			<var name="documentNameSearch" value="\&quot;${documentName}\&quot;" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
-		<execute macro="DocumentsAndMedia#searchNoDMFolderDocumentPGviaDMD">
+		<execute macro="DMFolderDocument#searchNoPGviaDMD">
 			<var name="documentNameSearch" value="\&quot;DM2 Folder2 Document2 Title2\&quot;" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 	</command>
 
 	<tear-down>
-		<execute macro="DocumentsAndMedia#tearDownPGviaDMD">
+		<execute macro="DMDocument#tearDownPGviaDMD">
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
-		<execute macro="DocumentsFolder#tearDownPGviaDMD">
+		<execute macro="DMFolder#tearDownPGviaDMD">
 			<var name="pageName" value="${pageName}" />
 		</execute>
 

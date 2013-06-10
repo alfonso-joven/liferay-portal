@@ -1,5 +1,5 @@
 <definition>
-	<command name="configurePGPortletShowActions">
+	<command name="configurePGPortletShowAll">
 		<execute macro="Page#pgGoto">
 			<var name="pageName" value="${pageName}" />
 		</execute>
@@ -9,57 +9,16 @@
 
 		<execute action="PGDocumentlibrarydisplayConfiguration#selectFrame" locator-key1="CONFIGURATION_IFRAME" />
 		<execute action="PGDocumentlibrarydisplayConfiguration#check" locator-key1="SETUP_DISPLAY_SETTINGS_SHOW_ACTIONS_CHECKBOX" />
-		<execute action="PGDocumentlibrarydisplayConfiguration#click" locator-key1="SAVE_BUTTON" />
-		<execute action="PGDocumentlibrarydisplayConfiguration#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
-		<execute action="PGDocumentlibrarydisplayConfiguration#assertChecked" locator-key1="SETUP_DISPLAY_SETTINGS_SHOW_ACTIONS_CHECKBOX" />
-		<execute action="PGDocumentlibrarydisplay#selectFrame" />
-	</command>
-
-	<command name="configurePGPortletShowFolderMenu">
-		<execute macro="Page#pgGoto">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
-		<execute action="PGDocumentlibrarydisplay#click" locator-key1="OPTIONS_WRENCH_ICON" />
-		<execute action="PGDocumentlibrarydisplay#click" locator-key1="OPTIONS_MENULIST_CONFIGURATION" />
-
-		<execute action="PGDocumentlibrarydisplayConfiguration#selectFrame" locator-key1="CONFIGURATION_IFRAME" />
 		<execute action="PGDocumentlibrarydisplayConfiguration#check" locator-key1="SETUP_DISPLAY_SETTINGS_SHOW_FOLDER_MENU_CHECKBOX" />
-		<execute action="PGDocumentlibrarydisplayConfiguration#click" locator-key1="SAVE_BUTTON" />
-		<execute action="PGDocumentlibrarydisplayConfiguration#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
-		<execute action="PGDocumentlibrarydisplayConfiguration#assertChecked" locator-key1="SETUP_DISPLAY_SETTINGS_SHOW_FOLDER_MENU_CHECKBOX" />
-		<execute action="PGDocumentlibrarydisplay#selectFrame" />
-	</command>
-
-	<command name="configurePGPortletShowNavigationLinks">
-		<execute macro="Page#pgGoto">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
-		<execute action="PGDocumentlibrarydisplay#click" locator-key1="OPTIONS_WRENCH_ICON" />
-		<execute action="PGDocumentlibrarydisplay#click" locator-key1="OPTIONS_MENULIST_CONFIGURATION" />
-
-		<execute action="PGDocumentlibrarydisplayConfiguration#selectFrame" locator-key1="CONFIGURATION_IFRAME" />
 		<execute action="PGDocumentlibrarydisplayConfiguration#check" locator-key1="SETUP_DISPLAY_SETTINGS_SHOW_NAVIGATION_LINKS_CHECKBOX" />
-		<execute action="PGDocumentlibrarydisplayConfiguration#click" locator-key1="SAVE_BUTTON" />
-		<execute action="PGDocumentlibrarydisplayConfiguration#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
-		<execute action="PGDocumentlibrarydisplayConfiguration#assertChecked" locator-key1="SETUP_DISPLAY_SETTINGS_SHOW_NAVIGATION_LINKS_CHECKBOX" />
-		<execute action="PGDocumentlibrarydisplay#selectFrame" />
-	</command>
-
-	<command name="configurePGPortletShowSearchMenu">
-		<execute macro="Page#pgGoto">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
-		<execute action="PGDocumentlibrarydisplay#click" locator-key1="OPTIONS_WRENCH_ICON" />
-		<execute action="PGDocumentlibrarydisplay#click" locator-key1="OPTIONS_MENULIST_CONFIGURATION" />
-
-		<execute action="PGDocumentlibrarydisplayConfiguration#selectFrame" locator-key1="CONFIGURATION_IFRAME" />
 		<execute action="PGDocumentlibrarydisplayConfiguration#check" locator-key1="SETUP_DISPLAY_SETTINGS_SHOW_SEARCH_CHECKBOX" />
 		<execute action="PGDocumentlibrarydisplayConfiguration#click" locator-key1="SAVE_BUTTON" />
 		<execute action="PGDocumentlibrarydisplayConfiguration#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="PGDocumentlibrarydisplayConfiguration#assertChecked" locator-key1="SETUP_DISPLAY_SETTINGS_SHOW_ACTIONS_CHECKBOX" />
+		<execute action="PGDocumentlibrarydisplayConfiguration#assertChecked" locator-key1="SETUP_DISPLAY_SETTINGS_SHOW_FOLDER_MENU_CHECKBOX" />
+		<execute action="PGDocumentlibrarydisplayConfiguration#assertChecked" locator-key1="SETUP_DISPLAY_SETTINGS_SHOW_NAVIGATION_LINKS_CHECKBOX" />
 		<execute action="PGDocumentlibrarydisplayConfiguration#assertChecked" locator-key1="SETUP_DISPLAY_SETTINGS_SHOW_SEARCH_CHECKBOX" />
+
 		<execute action="PGDocumentlibrarydisplay#selectFrame" />
 	</command>
 </definition>
