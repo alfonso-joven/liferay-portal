@@ -17,6 +17,9 @@ package com.liferay.portal.service.impl;
 import com.liferay.portal.LocaleException;
 import com.liferay.portal.NoSuchLayoutException;
 import com.liferay.portal.RequiredLayoutException;
+import com.liferay.portal.SitemapChangeFrequencyException;
+import com.liferay.portal.SitemapIncludeException;
+import com.liferay.portal.SitemapPagePriorityException;
 import com.liferay.portal.kernel.bean.BeanReference;
 import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.exception.PortalException;
@@ -1919,6 +1922,8 @@ public class LayoutLocalServiceImpl extends LayoutLocalServiceBaseImpl {
 
 		typeSettingsProperties.fastLoad(typeSettings);
 
+		validateTypeSettingsProperties(typeSettingsProperties);
+
 		Layout layout = layoutPersistence.findByG_P_L(
 			groupId, privateLayout, layoutId);
 
@@ -2319,6 +2324,51 @@ public class LayoutLocalServiceImpl extends LayoutLocalServiceBaseImpl {
 			long groupId, boolean privateLayout, long layoutId, String name,
 			String languageId)
 		throws PortalException, SystemException {
+	}
+
+	protected void validateTypeSettingsProperties(
+			UnicodeProperties typeSettingsProperties)
+		throws PortalException {
+
+		String sitemapChangeFrequency = typeSettingsProperties.getProperty(
+			"sitemap-changefreq");
+
+		if (Validator.isNotNull(sitemapChangeFrequency) &&
+			!sitemapChangeFrequency.equals("always") &&
+			!sitemapChangeFrequency.equals("hourly") &&
+			!sitemapChangeFrequency.equals("daily") &&
+			!sitemapChangeFrequency.equals("weekly") &&
+			!sitemapChangeFrequency.equals("monthly") &&
+			!sitemapChangeFrequency.equals("yearly") &&
+			!sitemapChangeFrequency.equals("never")) {
+
+			throw new SitemapChangeFrequencyException();
+		}
+
+		String sitemapInclude = typeSettingsProperties.getProperty(
+			"sitemap-include");
+
+		if (Validator.isNotNull(sitemapInclude) &&
+			!sitemapInclude.equals("0") && !sitemapInclude.equals("1")) {
+
+			throw new SitemapIncludeException();
+		}
+
+		String sitemapPriority = typeSettingsProperties.getProperty(
+			"sitemap-priority");
+
+		if (Validator.isNotNull(sitemapPriority)) {
+			try {
+				double priority = Double.parseDouble(sitemapPriority);
+
+				if ((priority < 0) || (priority > 1)) {
+					throw new SitemapPagePriorityException();
+				}
+			}
+			catch (NumberFormatException nfe) {
+				throw new SitemapPagePriorityException();
+			}
+		}
 	}
 
 	@BeanReference(type = LayoutLocalServiceHelper.class)
