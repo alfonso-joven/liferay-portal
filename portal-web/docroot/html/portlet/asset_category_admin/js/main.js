@@ -905,7 +905,7 @@ AUI.add(
 
 					_displayCategoriesTreeView: function(categories) {
 						var instance = this;
-
+						
 						if (categories.length) {
 							instance._createCategoryTreeView(categories);
 						}
@@ -988,7 +988,7 @@ AUI.add(
 						}
 
 						instance._checkAllCategoriesCheckbox.attr(STR_CHECKED, false);
-
+						
 						if (renderMode == MODE_RENDER_FLAT) {
 							instance._getVocabularyCategoriesFlat(
 								vocabularyId,
@@ -1101,7 +1101,7 @@ AUI.add(
 							json,
 							function(item, index, collection) {
 								var checked = false;
-
+								
 								return {
 									id: STR_CATEGORY_NODE + item.categoryId,
 									label: Liferay.Util.escapeHTML(item.titleCurrentValue),
@@ -1347,8 +1347,15 @@ AUI.add(
 						A.some(
 							vocabularies,
 							function(item, index, collection) {
-								if (item.vocabularyId === vocabularyId) {
-									categoriesCount = item.categoriesCount;
+								if (item.vocabularyId === vocabularyId) {									
+									
+									categoriesCount =										
+										Liferay.Service.Asset.AssetCategory.getVocabularyRootCategoriesCount(
+											{										
+												groupId: themeDisplay.getParentGroupId(),
+												vocabularyId: vocabularyId										
+											}
+										);
 
 									return true;
 								}
@@ -1504,7 +1511,7 @@ AUI.add(
 
 					_getVocabularyCategoriesTree: function(vocabularyId, callback) {
 						var instance = this;
-
+						
 						A.io.request(
 							themeDisplay.getPathMain() + '/asset/get_categories',
 							{
