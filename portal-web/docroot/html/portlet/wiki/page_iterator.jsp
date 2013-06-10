@@ -257,10 +257,12 @@ for (int i = 0; i < results.size(); i++) {
 			rowURL.setParameter("struts_action", "/wiki/view_page");
 		}
 
+		rowURL.setParameter("redirect", currentURL);
 		rowURL.setParameter("nodeName", curWikiPage.getNode().getName());
 	}
 	else {
 		rowURL.setParameter("struts_action", "/wiki/edit_page");
+		rowURL.setParameter("redirect", currentURL);
 		rowURL.setParameter("nodeId", String.valueOf(curWikiPage.getNodeId()));
 	}
 
