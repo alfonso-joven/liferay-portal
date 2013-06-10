@@ -17,7 +17,7 @@
 		<execute action="CPSitemembershipsViewteams#assertTextEquals" locator-key1="TEAM_TABLE_DESCRIPTION_1" value1="${teamDescription}" />
 	</command>
 
-	<command name="assignMembersSiteTeamUser">
+	<command name="assignMembersCP">
 		<execute macro="Page#cpGoto">
 			<var name="portletName" value="Site Memberships" />
 		</execute>
