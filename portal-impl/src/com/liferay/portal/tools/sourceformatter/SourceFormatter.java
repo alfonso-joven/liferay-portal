@@ -233,7 +233,6 @@ public class SourceFormatter {
 		_checkUnprocessedExceptions = GetterUtil.getBoolean(
 			System.getProperty(
 				"source.formatter.check.unprocessed.exceptions"));
-
 		_excludes = StringUtil.split(
 			GetterUtil.getString(
 				System.getProperty("source.formatter.excludes")));
