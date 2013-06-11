@@ -1099,14 +1099,16 @@ public class LayoutImporter {
 				return;
 			}
 
-			for (Layout curLayout : previousLayouts) {
-				if (friendlyURL.equals(curLayout.getFriendlyURL()) &&
-					(existingLayout == null)) {
+			Layout mergeFailFriendlyURLLayout = LayoutUtil.fetchByG_P_F(
+				groupId, privateLayout, friendlyURL);
 
-					SitesUtil.addMergeFailFriendlyURLLayout(curLayout);
+			if ((mergeFailFriendlyURLLayout != null) &&
+				(existingLayout == null)) {
 
-					return;
-				}
+				SitesUtil.addMergeFailFriendlyURLLayout(
+					mergeFailFriendlyURLLayout);
+
+				return;
 			}
 		}
 		else {
