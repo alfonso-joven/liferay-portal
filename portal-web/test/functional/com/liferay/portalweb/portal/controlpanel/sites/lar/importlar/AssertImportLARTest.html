@@ -15,98 +15,78 @@
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>link=Public Page</td>
-	<td>Public Page</td>
+	<td>link=Message Boards Test Page</td>
+	<td>Message Boards Test Page</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//span[@class='portlet-title-text']</td>
-	<td>Message Boards</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//tr[contains(.,'MB Category Name')]/td[1]</td>
+	<td>//tr[contains(.,'MB Category Name')]/td[1]/a/strong</td>
 	<td>MB Category Name</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//tr[contains(.,'MB Category Name')]/td[2]</td>
+	<td>//tr[contains(.,'MB Category Name')]/td[2]/a</td>
 	<td>0</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//tr[contains(.,'MB Category Name')]/td[3]</td>
+	<td>//tr[contains(.,'MB Category Name')]/td[3]/a</td>
 	<td>1</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//tr[contains(.,'MB Category Name')]/td[4]</td>
+	<td>//tr[contains(.,'MB Category Name')]/td[4]/a</td>
 	<td>2</td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>//div[@class='search-results']</td>
-	<td>Showing 1 result.</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//div[@class='portlet-msg-info']</td>
-	<td>There are no threads in this category.</td>
-</tr>
-<tr>
 	<td>clickAtAndWait</td>
-	<td>//tr[contains(.,'MB Category Name')]/td[1]/a</td>
+	<td>//tr[contains(.,'MB Category Name')]/td[1]/a/strong</td>
 	<td>MB Category Name</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//h1[@class='header-title']/span</td>
-	<td>MB Category Name</td>
+	<td>//tr[contains(.,'MB Category Thread Message Subject')]/td[1]/a</td>
+	<td>MB Category Thread Message Subject</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//a[@id='_19_TabsBack']</td>
-	<td>« Back to Message Boards Home</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//tr[contains(.,'MB Message Subject')]/td[1]</td>
-	<td>MB Message Subject</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//tr[contains(.,'MB Message Subject')]/td[2]</td>
+	<td>//tr[contains(.,'MB Category Thread Message Subject')]/td[2]/a</td>
 	<td></td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//tr[contains(.,'MB Message Subject')]/td[3]</td>
+	<td>//tr[contains(.,'MB Category Thread Message Subject')]/td[3]/a</td>
 	<td>Joe Bloggs</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//tr[contains(.,'MB Message Subject')]/td[4]</td>
+	<td>//tr[contains(.,'MB Category Thread Message Subject')]/td[4]/a</td>
 	<td>2</td>
 </tr>
 <tr>
-	<td>assertElementPresent</td>
-	<td>//tr[contains(.,'MB Message Subject')]/td[5]</td>
+	<td>assertVisible</td>
+	<td>//tr[contains(.,'MB Category Thread Message Subject')]/td[5]/a</td>
 	<td>Views</td>
 </tr>
 <tr>
-	<td>assertElementPresent</td>
-	<td>//tr[contains(.,'MB Message Subject')]/td[6]</td>
-	<td>Last Post</td>
-</tr>
-<tr>
-	<td>clickAtAndWait</td>
-	<td>//tr[contains(.,'MB Message Subject')]/td[1]/a</td>
-	<td>MB Message Subject</td>
+	<td>assertPartialText</td>
+	<td>//tr[contains(.,'MB Category Thread Message Subject')]/td[6]/a</td>
+	<td>By: Joe Bloggs</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//h1[@class='header-title']/span</td>
-	<td>MB Message Subject</td>
+	<td>//tr[contains(.,'MB Category Thread Message Subject')]/td[7]/span/ul/li/strong/a/span</td>
+	<td>Actions</td>
+</tr>
+<tr>
+	<td>clickAtAndWait</td>
+	<td>//tr[contains(.,'MB Category Thread Message Subject')]/td[1]/a</td>
+	<td>MB Category Thread Message Subject</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//h1[@class='header-title']</td>
+	<td>MB Category Thread Message Subject</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -115,33 +95,68 @@
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//tr[contains(.,'MB Message Subject')]/td[1]/a</td>
-	<td>MB Message Subject</td>
+	<td>//div[@class='thread-navigation']</td>
+	<td>Threads [ Previous | Next ]</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//tr[contains(.,'RE: MB Message Subject')]/td[1]/a</td>
-	<td>RE: MB Message Subject</td>
+	<td>//div[@id='toggle_id_message_boards_view_message_thread']/table/tbody/tr[1]/td[1]/a</td>
+	<td>MB Category Thread Message Subject</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='subject']/a/strong</td>
-	<td>MB Message Subject</td>
+	<td>//div[@id='toggle_id_message_boards_view_message_thread']/table/tbody/tr[1]/td[2]/a</td>
+	<td>Joe Bloggs</td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//div[@id='toggle_id_message_boards_view_message_thread']/table/tbody/tr[1]/td[3]/a</td>
+	<td>Date</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='thread-body']</td>
-	<td>MB Message Body</td>
+	<td>//div[@id='toggle_id_message_boards_view_message_thread']/table/tbody/tr[2]/td[1]/a</td>
+	<td>RE: MB Category Thread Message Subject</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[5]/table/tbody/tr[1]/td[2]/div[1]/div/a/strong</td>
-	<td>exact:RE: MB Message Subject</td>
+	<td>//div[@id='toggle_id_message_boards_view_message_thread']/table/tbody/tr[2]/td[2]/a</td>
+	<td>Joe Bloggs</td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>//div[@id='toggle_id_message_boards_view_message_thread']/table/tbody/tr[2]/td[3]/a</td>
+	<td>Date</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[5]/table/tbody/tr[1]/td[2]/div[2]</td>
-	<td>MB Reply Body</td>
+	<td>xPath=(//div[@class='subject']/a)[1]</td>
+	<td>MB Category Thread Message Subject</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xPath=(//div[@class='thread-body'])[1]</td>
+	<td>MB Category Thread Message Body</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xPath=(//div[contains(@id,'ratingThumbContent')]/div)[1]</td>
+	<td>0 (0 Votes)</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xPath=(//div[@class='subject']/a)[2]</td>
+	<td>RE: MB Category Thread Message Subject</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xPath=(//div[@class='thread-body'])[2]</td>
+	<td>MB Category Thread Message Reply Body</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xPath=(//div[contains(@id,'ratingThumbContent')]/div)[2]</td>
+	<td>0 (0 Votes)</td>
 </tr>
 </tbody></table>
 </body>

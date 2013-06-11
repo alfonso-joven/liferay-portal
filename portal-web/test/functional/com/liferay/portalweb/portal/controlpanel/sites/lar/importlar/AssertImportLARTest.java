@@ -25,64 +25,86 @@ public class AssertImportLARTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/site-name/");
-		selenium.clickAt("link=Public Page",
-			RuntimeVariables.replace("Public Page"));
+		selenium.clickAt("link=Message Boards Test Page",
+			RuntimeVariables.replace("Message Boards Test Page"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Message Boards"),
-			selenium.getText("//span[@class='portlet-title-text']"));
 		assertEquals(RuntimeVariables.replace("MB Category Name"),
-			selenium.getText("//tr[contains(.,'MB Category Name')]/td[1]"));
+			selenium.getText(
+				"//tr[contains(.,'MB Category Name')]/td[1]/a/strong"));
 		assertEquals(RuntimeVariables.replace("0"),
-			selenium.getText("//tr[contains(.,'MB Category Name')]/td[2]"));
+			selenium.getText("//tr[contains(.,'MB Category Name')]/td[2]/a"));
 		assertEquals(RuntimeVariables.replace("1"),
-			selenium.getText("//tr[contains(.,'MB Category Name')]/td[3]"));
+			selenium.getText("//tr[contains(.,'MB Category Name')]/td[3]/a"));
 		assertEquals(RuntimeVariables.replace("2"),
-			selenium.getText("//tr[contains(.,'MB Category Name')]/td[4]"));
-		assertEquals(RuntimeVariables.replace("Showing 1 result."),
-			selenium.getText("//div[@class='search-results']"));
-		assertEquals(RuntimeVariables.replace(
-				"There are no threads in this category."),
-			selenium.getText("//div[@class='portlet-msg-info']"));
-		selenium.clickAt("//tr[contains(.,'MB Category Name')]/td[1]/a",
+			selenium.getText("//tr[contains(.,'MB Category Name')]/td[4]/a"));
+		selenium.clickAt("//tr[contains(.,'MB Category Name')]/td[1]/a/strong",
 			RuntimeVariables.replace("MB Category Name"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("MB Category Name"),
-			selenium.getText("//h1[@class='header-title']/span"));
 		assertEquals(RuntimeVariables.replace(
-				"\u00ab Back to Message Boards Home"),
-			selenium.getText("//a[@id='_19_TabsBack']"));
-		assertEquals(RuntimeVariables.replace("MB Message Subject"),
-			selenium.getText("//tr[contains(.,'MB Message Subject')]/td[1]"));
+				"MB Category Thread Message Subject"),
+			selenium.getText(
+				"//tr[contains(.,'MB Category Thread Message Subject')]/td[1]/a"));
 		assertEquals(RuntimeVariables.replace(""),
-			selenium.getText("//tr[contains(.,'MB Message Subject')]/td[2]"));
+			selenium.getText(
+				"//tr[contains(.,'MB Category Thread Message Subject')]/td[2]/a"));
 		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
-			selenium.getText("//tr[contains(.,'MB Message Subject')]/td[3]"));
+			selenium.getText(
+				"//tr[contains(.,'MB Category Thread Message Subject')]/td[3]/a"));
 		assertEquals(RuntimeVariables.replace("2"),
-			selenium.getText("//tr[contains(.,'MB Message Subject')]/td[4]"));
-		assertTrue(selenium.isElementPresent(
-				"//tr[contains(.,'MB Message Subject')]/td[5]"));
-		assertTrue(selenium.isElementPresent(
-				"//tr[contains(.,'MB Message Subject')]/td[6]"));
-		selenium.clickAt("//tr[contains(.,'MB Message Subject')]/td[1]/a",
-			RuntimeVariables.replace("MB Message Subject"));
+			selenium.getText(
+				"//tr[contains(.,'MB Category Thread Message Subject')]/td[4]/a"));
+		assertTrue(selenium.isVisible(
+				"//tr[contains(.,'MB Category Thread Message Subject')]/td[5]/a"));
+		assertTrue(selenium.isPartialText(
+				"//tr[contains(.,'MB Category Thread Message Subject')]/td[6]/a",
+				"By: Joe Bloggs"));
+		assertEquals(RuntimeVariables.replace("Actions"),
+			selenium.getText(
+				"//tr[contains(.,'MB Category Thread Message Subject')]/td[7]/span/ul/li/strong/a/span"));
+		selenium.clickAt("//tr[contains(.,'MB Category Thread Message Subject')]/td[1]/a",
+			RuntimeVariables.replace("MB Category Thread Message Subject"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("MB Message Subject"),
-			selenium.getText("//h1[@class='header-title']/span"));
+		assertEquals(RuntimeVariables.replace(
+				"MB Category Thread Message Subject"),
+			selenium.getText("//h1[@class='header-title']"));
 		assertEquals(RuntimeVariables.replace("\u00ab Back to MB Category Name"),
 			selenium.getText("//a[@id='_19_TabsBack']"));
-		assertEquals(RuntimeVariables.replace("MB Message Subject"),
-			selenium.getText("//tr[contains(.,'MB Message Subject')]/td[1]/a"));
-		assertEquals(RuntimeVariables.replace("RE: MB Message Subject"),
+		assertEquals(RuntimeVariables.replace("Threads [ Previous | Next ]"),
+			selenium.getText("//div[@class='thread-navigation']"));
+		assertEquals(RuntimeVariables.replace(
+				"MB Category Thread Message Subject"),
 			selenium.getText(
-				"//tr[contains(.,'RE: MB Message Subject')]/td[1]/a"));
-		assertEquals(RuntimeVariables.replace("MB Message Subject"),
-			selenium.getText("//div[@class='subject']/a/strong"));
-		assertEquals(RuntimeVariables.replace("MB Message Body"),
-			selenium.getText("//div[@class='thread-body']"));
-		assertEquals(RuntimeVariables.replace("exact:RE: MB Message Subject"),
+				"//div[@id='toggle_id_message_boards_view_message_thread']/table/tbody/tr[1]/td[1]/a"));
+		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
 			selenium.getText(
-				"//div[5]/table/tbody/tr[1]/td[2]/div[1]/div/a/strong"));
-		assertEquals(RuntimeVariables.replace("MB Reply Body"),
-			selenium.getText("//div[5]/table/tbody/tr[1]/td[2]/div[2]"));
+				"//div[@id='toggle_id_message_boards_view_message_thread']/table/tbody/tr[1]/td[2]/a"));
+		assertTrue(selenium.isElementPresent(
+				"//div[@id='toggle_id_message_boards_view_message_thread']/table/tbody/tr[1]/td[3]/a"));
+		assertEquals(RuntimeVariables.replace(
+				"RE: MB Category Thread Message Subject"),
+			selenium.getText(
+				"//div[@id='toggle_id_message_boards_view_message_thread']/table/tbody/tr[2]/td[1]/a"));
+		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
+			selenium.getText(
+				"//div[@id='toggle_id_message_boards_view_message_thread']/table/tbody/tr[2]/td[2]/a"));
+		assertTrue(selenium.isElementPresent(
+				"//div[@id='toggle_id_message_boards_view_message_thread']/table/tbody/tr[2]/td[3]/a"));
+		assertEquals(RuntimeVariables.replace(
+				"MB Category Thread Message Subject"),
+			selenium.getText("xPath=(//div[@class='subject']/a)[1]"));
+		assertEquals(RuntimeVariables.replace("MB Category Thread Message Body"),
+			selenium.getText("xPath=(//div[@class='thread-body'])[1]"));
+		assertEquals(RuntimeVariables.replace("0 (0 Votes)"),
+			selenium.getText(
+				"xPath=(//div[contains(@id,'ratingThumbContent')]/div)[1]"));
+		assertEquals(RuntimeVariables.replace(
+				"RE: MB Category Thread Message Subject"),
+			selenium.getText("xPath=(//div[@class='subject']/a)[2]"));
+		assertEquals(RuntimeVariables.replace(
+				"MB Category Thread Message Reply Body"),
+			selenium.getText("xPath=(//div[@class='thread-body'])[2]"));
+		assertEquals(RuntimeVariables.replace("0 (0 Votes)"),
+			selenium.getText(
+				"xPath=(//div[contains(@id,'ratingThumbContent')]/div)[2]"));
 	}
 }
