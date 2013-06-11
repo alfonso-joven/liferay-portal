@@ -1109,7 +1109,7 @@
 			</license>
 		</licenses>
 		<comments>
-			See the Ant target "build-axis-java-jar" in portal-impl/build.xml.
+			See the Ant target "build-axis-jar" in portal-impl/build.xml.
 		</comments>
 	</library>
 	<library>
@@ -1738,6 +1738,9 @@
 				<license-name>BSD Style License</license-name>
 			</license>
 		</licenses>
+		<comments>
+			See the Ant target "build-freemarker-jar" in portal-impl/build.xml.
+		</comments>
 	</library>
 	<library>
 		<file-name>lib/portal/freshcookies-security.jar</file-name>
