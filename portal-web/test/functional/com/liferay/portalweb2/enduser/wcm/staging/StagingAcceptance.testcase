@@ -2,8 +2,6 @@
 	<var name="siteName" value="Site Name" />
 	<var name="sitePageName" value="Staging Test Page" />
 	<var name="sitePageType" value="Public" />
-	<var name="pageName" value="Staging Test Page 2" />
-	<var name="pageType" value="Staging" />
 
 	<set-up>
 		<execute macro="User#pgFirstLogin" />
@@ -11,9 +9,28 @@
 		<execute macro="Site#addBlankCP" />
 
 		<execute macro="SitePage#addCP" />
+			<var name="siteName" value="${siteName}" />
+			<var name="sitePageName" value="${sitePageName}" />
+			<var name="sitePageType" value="${sitePageType}" />
 	</set-up>
 
+	<command name="ActivateStaging">
+		<execute macro="Staging#cpActivateStaging">
+			<var name="siteName" value="${siteName}" />
+		</execute>
+	</command>
+
+	<command name="DeactivateStaging">
+		<execute macro="Staging#cpActivateStaging">
+			<var name="siteName" value="${siteName}" />
+		</execute>
+		<execute macro="Staging#cpDeactivateStaging">
+			<var name="siteName" value="${siteName}" />
+		</execute>
+	</command>
+
 	<command name="StagingPublishToLive">
+		<var name="pageName" value="Staging Test Page 2" />
 		<var name="pageStaging" value="true" />
 
 		<execute macro="Staging#cpActivateStaging" />
@@ -28,6 +45,30 @@
 		<execute action="Staging#click" locator-key1="LIVE_BUTTON" />
 
 		<execute action="Home#assertTextEquals" locator-key1="PAGE_2_STAGING" value1="${pageName}" />
+	</command>
+
+	<command name="EnableStagingSite">
+		<var name="stagingType" value="StagingSite" />
+
+		<execute macro="Staging#cpActivateStaging">
+			<var name="siteName" value="${siteName}" />
+			<var name="stagingType" value="${stagingType}" />
+		</execute>
+	</command>
+
+	<command name="StagingSiteAddPortlet">
+		<var name="pageName" value="Staging Test Page" />
+		<var name="portletName" value="Blogs" />
+		<var name="pageType" value="Staging" />
+
+		<execute macro="Staging#cpActivateStaging">
+			<var name="siteName" value="${siteName}" />
+		</execute>
+
+		<execute macro="Portlet#pgAddStaging">
+			<var name="pageName" value="${pageName}" />
+			<var name="portletName" value="${portletName}" />
+		</execute>
 	</command>
 
 	<tear-down>
