@@ -1395,7 +1395,7 @@ public class SourceFormatter {
 
 		Collection<String> fileNames = null;
 
-		Properties staticLogVariableExclustions = null;
+		Properties staticLogVariableExclusions = null;
 		Properties upgradeServiceUtilExclusions = null;
 
 		if (_portalSource) {
@@ -1405,7 +1405,7 @@ public class SourceFormatter {
 				"source_formatter_javaterm_sort_exclusions.properties");
 			_lineLengthExclusions = _getPortalExclusionsProperties(
 				"source_formatter_line_length_exclusions.properties");
-			staticLogVariableExclustions = _getPortalExclusionsProperties(
+			staticLogVariableExclusions = _getPortalExclusionsProperties(
 				"source_formatter_static_log_exclusions.properties");
 			upgradeServiceUtilExclusions = _getPortalExclusionsProperties(
 				"source_formatter_upgrade_service_util_exclusions.properties");
@@ -1553,8 +1553,8 @@ public class SourceFormatter {
 
 			String excluded = null;
 
-			if (staticLogVariableExclustions != null) {
-				excluded = staticLogVariableExclustions.getProperty(fileName);
+			if (staticLogVariableExclusions != null) {
+				excluded = staticLogVariableExclusions.getProperty(fileName);
 			}
 
 			if (excluded == null) {
