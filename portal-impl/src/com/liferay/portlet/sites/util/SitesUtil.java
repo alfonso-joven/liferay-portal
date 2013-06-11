@@ -14,7 +14,6 @@
 
 package com.liferay.portlet.sites.util;
 
-import com.liferay.portal.LayoutFriendlyURLException;
 import com.liferay.portal.RequiredLayoutException;
 import com.liferay.portal.events.EventsProcessorUtil;
 import com.liferay.portal.kernel.exception.PortalException;
@@ -29,6 +28,8 @@ import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.PropsKeys;
 import com.liferay.portal.kernel.util.StringBundler;
+import com.liferay.portal.kernel.util.StringPool;
+import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.SystemProperties;
 import com.liferay.portal.kernel.util.UnicodeProperties;
 import com.liferay.portal.kernel.util.Validator;
@@ -89,6 +90,7 @@ import com.liferay.portlet.PortletPreferencesImpl;
 import java.io.File;
 import java.io.InputStream;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -120,8 +122,32 @@ public class SitesUtil {
 
 	public static final String MERGE_FAIL_COUNT = "merge-fail-count";
 
-	public static final String MERGE_FAIL_FRIENDLY_URL =
-		"merge-fail-friendly-url";
+	public static final String MERGE_FAIL_FRIENDLY_URL_LAYOUTS =
+		"merge-fail-friendly-url-layouts";
+
+	public static void addMergeFailFriendlyURLLayout(Layout layout)
+		throws PortalException, SystemException {
+
+		LayoutSet layoutSet = layout.getLayoutSet();
+
+		layoutSet = LayoutSetLocalServiceUtil.getLayoutSet(
+			layoutSet.getGroupId(), layoutSet.isPrivateLayout());
+
+		UnicodeProperties layoutSetSettingsProperties =
+			layoutSet.getSettingsProperties();
+
+		String mergeFailFriendlyURLLayouts =
+			layoutSetSettingsProperties.getProperty(
+				MERGE_FAIL_FRIENDLY_URL_LAYOUTS, StringPool.BLANK);
+
+		mergeFailFriendlyURLLayouts = StringUtil.add(
+			mergeFailFriendlyURLLayouts, layout.getUuid());
+
+		layoutSetSettingsProperties.setProperty(
+			MERGE_FAIL_FRIENDLY_URL_LAYOUTS, mergeFailFriendlyURLLayouts);
+
+		LayoutSetLocalServiceUtil.updateLayoutSet(layoutSet, false);
+	}
 
 	public static void addPortletBreadcrumbEntries(
 			Group group, String pagesName, PortletURL redirectURL,
@@ -593,25 +619,32 @@ public class SitesUtil {
 		return parameterMap;
 	}
 
-	public static Layout getMergeFailFriendlyURLLayout(long layoutSetId)
+	public static List<Layout> getMergeFailFriendlyURLLayouts(
+			LayoutSet layoutSet)
 		throws PortalException, SystemException {
-
-		LayoutSet layoutSet = LayoutSetLocalServiceUtil.getLayoutSet(
-			layoutSetId);
 
 		UnicodeProperties layoutSetSettingsProperties =
 			layoutSet.getSettingsProperties();
 
-		String uuid = layoutSetSettingsProperties.getProperty(
-			MERGE_FAIL_FRIENDLY_URL);
+		String uuids = layoutSetSettingsProperties.getProperty(
+			MERGE_FAIL_FRIENDLY_URL_LAYOUTS);
 
-		if (Validator.isNull(uuid)) {
-			return null;
+		if (Validator.isNotNull(uuids)) {
+			List<Layout> layouts = new ArrayList<Layout>();
+
+			for (String uuid : StringUtil.split(uuids)) {
+				Layout layout =
+					LayoutLocalServiceUtil.getLayoutByUuidAndGroupId(
+						uuid, layoutSet.getGroupId(),
+						layoutSet.isPrivateLayout());
+
+				layouts.add(layout);
+			}
+
+			return layouts;
 		}
-		else {
-			return LayoutLocalServiceUtil.getLayoutByUuidAndGroupId(
-				uuid, layoutSet.getGroupId(), layoutSet.isPrivateLayout());
-		}
+
+		return null;
 	}
 
 	public static void importLayoutSetPrototype(
@@ -690,23 +723,14 @@ public class SitesUtil {
 	public static boolean isLayoutSetMergeable(Group group, LayoutSet layoutSet)
 		throws PortalException, SystemException {
 
-		return isLayoutSetMergeable(group, layoutSet, false);
-	}
-
-	public static boolean isLayoutSetMergeable(
-			Group group, LayoutSet layoutSet, boolean ignoreLastMergeTime)
-		throws PortalException, SystemException {
-
-		UnicodeProperties settingsProperties =
-			layoutSet.getSettingsProperties();
-
 		if (!layoutSet.isLayoutSetPrototypeLinkActive() ||
-			group.isLayoutPrototype() || group.isLayoutSetPrototype() ||
-			Validator.isNotNull(
-				settingsProperties.getProperty(MERGE_FAIL_FRIENDLY_URL))) {
+			group.isLayoutPrototype() || group.isLayoutSetPrototype()) {
 
 			return false;
 		}
+
+		UnicodeProperties settingsProperties =
+			layoutSet.getSettingsProperties();
 
 		long lastMergeTime = GetterUtil.getLong(
 			settingsProperties.getProperty(LAST_MERGE_TIME));
@@ -717,7 +741,7 @@ public class SitesUtil {
 
 		Date modifiedDate = layoutSetPrototype.getModifiedDate();
 
-		if (!ignoreLastMergeTime && (lastMergeTime >= modifiedDate.getTime())) {
+		if (lastMergeTime >= modifiedDate.getTime()) {
 			return false;
 		}
 
@@ -1002,14 +1026,11 @@ public class SitesUtil {
 			Map<String, String[]> parameterMap =
 				getLayoutSetPrototypesParameters(importData);
 
+			removeMergeFailFriendlyURLLayouts(layoutSet);
+
 			importLayoutSetPrototype(
 				layoutSetPrototype, layoutSet.getGroupId(),
 				layoutSet.isPrivateLayout(), parameterMap, importData);
-
-			removeMergeFailFriendlyURL(layoutSet.getLayoutSetId());
-		}
-		catch (LayoutFriendlyURLException lfue) {
-			SitesUtil.setMergeFailFriendlyURL(lfue.getLayout());
 		}
 		catch (Exception e) {
 			_log.error(e, e);
@@ -1038,20 +1059,15 @@ public class SitesUtil {
 		mergeLayoutSetPrototypeLayouts(group, layoutSet);
 	}
 
-	public static void removeMergeFailFriendlyURL(long layoutSetId)
+	public static void removeMergeFailFriendlyURLLayouts(LayoutSet layoutSet)
 		throws PortalException, SystemException {
-
-		LayoutSet layoutSet = LayoutSetLocalServiceUtil.getLayoutSet(
-			layoutSetId);
 
 		UnicodeProperties layoutSetSettingsProperties =
 			layoutSet.getSettingsProperties();
 
-		layoutSetSettingsProperties.remove(MERGE_FAIL_FRIENDLY_URL);
+		layoutSetSettingsProperties.remove(MERGE_FAIL_FRIENDLY_URL_LAYOUTS);
 
-		LayoutSetLocalServiceUtil.updateSettings(
-			layoutSet.getGroupId(), layoutSet.isPrivateLayout(),
-			layoutSetSettingsProperties.toString());
+		LayoutSetLocalServiceUtil.updateLayoutSet(layoutSet, false);
 	}
 
 	public static void resetPrototype(Layout layout)
@@ -1071,25 +1087,6 @@ public class SitesUtil {
 			LAST_RESET_TIME, String.valueOf(System.currentTimeMillis()));
 
 		LayoutSetLocalServiceUtil.updateLayoutSet(layoutSet, false);
-	}
-
-	public static void setMergeFailFriendlyURL(Layout layout)
-		throws PortalException, SystemException {
-
-		LayoutSet layoutSet = layout.getLayoutSet();
-
-		layoutSet = LayoutSetLocalServiceUtil.getLayoutSet(
-			layoutSet.getGroupId(), layoutSet.isPrivateLayout());
-
-		UnicodeProperties layoutSetSettingsProperties =
-			layoutSet.getSettingsProperties();
-
-		layoutSetSettingsProperties.setProperty(
-			MERGE_FAIL_FRIENDLY_URL, layout.getUuid());
-
-		LayoutSetLocalServiceUtil.updateSettings(
-			layoutSet.getGroupId(), layoutSet.isPrivateLayout(),
-			layoutSetSettingsProperties.toString());
 	}
 
 	public static void updateLayoutScopes(

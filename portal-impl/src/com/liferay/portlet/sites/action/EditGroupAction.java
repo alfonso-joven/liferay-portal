@@ -47,7 +47,6 @@ import com.liferay.portal.security.auth.PrincipalException;
 import com.liferay.portal.service.GroupLocalServiceUtil;
 import com.liferay.portal.service.GroupServiceUtil;
 import com.liferay.portal.service.LayoutLocalServiceUtil;
-import com.liferay.portal.service.LayoutSetLocalServiceUtil;
 import com.liferay.portal.service.LayoutSetServiceUtil;
 import com.liferay.portal.service.MembershipRequestLocalServiceUtil;
 import com.liferay.portal.service.MembershipRequestServiceUtil;
@@ -120,9 +119,6 @@ public class EditGroupAction extends PortletAction {
 			else if (cmd.equals(Constants.DELETE)) {
 				deleteGroup(actionRequest);
 			}
-			else if (cmd.equals("retry_merge")) {
-				retryMerge(actionRequest);
-			}
 
 			sendRedirect(
 				portletConfig, actionRequest, actionResponse, redirect,
@@ -184,26 +180,6 @@ public class EditGroupAction extends PortletAction {
 
 		return mapping.findForward(
 			getForward(renderRequest, "portlet.sites_admin.edit_site"));
-	}
-
-	public void retryMerge(ActionRequest actionRequest) throws Exception {
-		long groupId = ParamUtil.getLong(actionRequest, "groupId");
-
-		boolean privateLayoutSet = ParamUtil.getBoolean(
-			actionRequest, "privateLayoutSet");
-
-		LayoutSet layoutSet = LayoutSetLocalServiceUtil.getLayoutSet(
-			groupId, privateLayoutSet);
-
-		Group group = GroupLocalServiceUtil.getGroup(groupId);
-
-		SitesUtil.mergeLayoutSetPrototypeLayouts(group, layoutSet);
-
-		if (SitesUtil.getMergeFailFriendlyURLLayout(
-				layoutSet.getLayoutSetId()) != null) {
-
-			SessionErrors.add(actionRequest, "retryMerge");
-		}
 	}
 
 	protected void deleteGroup(ActionRequest actionRequest) throws Exception {

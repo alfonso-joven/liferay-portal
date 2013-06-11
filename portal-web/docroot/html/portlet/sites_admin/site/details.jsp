@@ -74,7 +74,6 @@ if (showPrototypes && (group != null)) {
 <liferay-ui:error exception="<%= DuplicateGroupException.class %>" message="please-enter-a-unique-name" />
 <liferay-ui:error exception="<%= GroupNameException.class %>" message="please-enter-a-valid-name" />
 <liferay-ui:error exception="<%= RequiredGroupException.class %>" message="old-group-name-is-a-required-system-group" />
-<liferay-ui:error key="retryMerge" message="unable-to-propagate-the-changes" />
 
 <aui:fieldset>
 	<c:choose>

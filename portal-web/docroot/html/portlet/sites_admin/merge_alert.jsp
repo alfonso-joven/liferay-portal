@@ -21,55 +21,40 @@ long groupId = GetterUtil.getLong((String)request.getAttribute("merge_alert.jsp-
 LayoutSet layoutSet = (LayoutSet)request.getAttribute("merge_alert.jsp-layoutSet");
 String redirect = (String)request.getAttribute("merge_alert.jsp-redirect");
 
-Layout mergeFailFriendlyURLLayout = SitesUtil.getMergeFailFriendlyURLLayout(layoutSet.getLayoutSetId());
+List<Layout> mergeFailFriendlyURLLayouts = SitesUtil.getMergeFailFriendlyURLLayouts(layoutSet);
 %>
 
-<c:if test="<%= mergeFailFriendlyURLLayout != null %>">
-
-	<%
-	String randomNamespace = PortalUtil.generateRandomKey(request, "portlet_sites_admin_merge_alert").concat(StringPool.UNDERLINE);
-
-	PortletURL retryMergeURL = liferayPortletResponse.createActionURL();
-
-	retryMergeURL.setParameter("redirect", redirect);
-	retryMergeURL.setParameter("struts_action", "/sites_admin/edit_site");
-	retryMergeURL.setParameter(Constants.CMD, "retry_merge");
-	retryMergeURL.setParameter("groupId", String.valueOf(groupId));
-	retryMergeURL.setParameter("privateLayoutSet", String.valueOf(layoutSet.isPrivateLayout()));
-	%>
-
+<c:if test="<%= Validator.isNotNull(mergeFailFriendlyURLLayouts) %>">
 	<span class="portlet-msg-alert">
-		<liferay-ui:message arguments='<%= new Object[] {"site-template", "friendly-url"} %>' key="the-propagation-of-changes-from-the-x-has-been-disabled-temporarily-because-of-a-colliding-x" />
+		<liferay-ui:message key="some-pages-from-the-site-template-cannot-be-propagated-because-their-friendly-urls-are-in-conflict-with-the-following-pages" />
 
-		<br>
+		<liferay-ui:message key="modify-the-friendly-url-of-the-pages-to-allow-the-propagation-of-the-pages-from-the-site-template" />
 
-		<liferay-portlet:renderURL portletName="<%= PortletKeys.GROUP_PAGES %>" var="editLayoutsURL">
-			<portlet:param name="struts_action" value="/group_pages/edit_layouts" />
-			<portlet:param name="backURL" value="<%= redirect %>" />
-			<portlet:param name="closeRedirect" value="<%= redirect %>" />
-			<portlet:param name="groupId" value="<%= String.valueOf(groupId) %>" />
-			<portlet:param name="redirect" value="<%= redirect %>" />
-			<portlet:param name="selPlid" value="<%= String.valueOf(mergeFailFriendlyURLLayout.getPlid()) %>" />
-			<portlet:param name="tabs1" value='<%= layoutSet.isPrivateLayout() ? "private-pages" : "public-pages" %>' />
-		</liferay-portlet:renderURL>
+		<ul>
+			<liferay-portlet:renderURL portletName="<%= PortletKeys.GROUP_PAGES %>" varImpl="editLayoutsURL">
+				<portlet:param name="struts_action" value="/group_pages/edit_layouts" />
+				<portlet:param name="backURL" value="<%= redirect %>" />
+				<portlet:param name="closeRedirect" value="<%= redirect %>" />
+				<portlet:param name="groupId" value="<%= String.valueOf(groupId) %>" />
+				<portlet:param name="redirect" value="<%= redirect %>" />
+				<portlet:param name="tabs1" value='<%= layoutSet.isPrivateLayout() ? "private-pages" : "public-pages" %>' />
+			</liferay-portlet:renderURL>
 
-		<liferay-ui:message arguments='<%= new Object[] {"page", "site-template-administrator"} %>' key="please-modify-the-following-x-or-contact-the-x" />&nbsp;<a href="<%= editLayoutsURL %>"><%= mergeFailFriendlyURLLayout.getName(themeDisplay.getLocale()) %></a>
+			<%
+			for (Layout mergeFailFriendlyURLLayout : mergeFailFriendlyURLLayouts) {
+				editLayoutsURL.setParameter("selPlid", String.valueOf(mergeFailFriendlyURLLayout.getPlid()));
+			%>
 
-		<liferay-ui:message arguments="site-template" key="then-click-propagate-to-propagate-changes-from-the-x" />
+				<li>
+					<aui:a href="<%= editLayoutsURL.toString() %>">
+						<%= mergeFailFriendlyURLLayout.getName(locale) %>
+					</aui:a>
+				</li>
 
-		<span class="aui-button-holder">
-			<aui:button id='<%= randomNamespace + "retryMergeButton" %>' value="propagate" />
-		</span>
-	</span>
-
-	<aui:script use="aui-base">
-		var retryMergeButton= A.one('#<%= randomNamespace %>retryMergeButton');
-
-		retryMergeButton.on(
-			'click',
-			function(event) {
-				submitForm(document.hrefFm, '<%= retryMergeURL.toString() %>');
+			<%
 			}
-		);
-	</aui:script>
+			%>
+
+		</ul>
+	</span>
 </c:if>

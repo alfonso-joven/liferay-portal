@@ -100,9 +100,7 @@ public class LayoutLocalServiceVirtualLayoutsAdvice
 				if (Validator.isNotNull(
 						layout.getSourcePrototypeLayoutUuid())) {
 
-					if (!SitesUtil.isLayoutModifiedSinceLastMerge(layout) &&
-						SitesUtil.isLayoutSetMergeable(group, layoutSet)) {
-
+					if (!SitesUtil.isLayoutModifiedSinceLastMerge(layout)) {
 						SitesUtil.mergeLayoutSetPrototypeLayouts(
 							group, layoutSet);
 					}
