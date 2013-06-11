@@ -1,6 +1,6 @@
 <definition>
 	<command name="dashboardPG">
-		<execute action="Home#open" locator-key1="HOME_URL" />
+		<execute macro="Page#openURL" />
 
 		<execute action="SOUserBar#click" locator-key1="DASHBOARD" />
 

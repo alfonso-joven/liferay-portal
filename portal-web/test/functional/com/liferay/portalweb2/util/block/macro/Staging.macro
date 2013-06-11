@@ -1,9 +1,9 @@
 <definition>
-
 	<command name="cpActivateStaging">
 		<execute macro="Page#cpGotoStaging">
 			<var name="portletName" value="Sites" />
 		</execute>
+
 		<execute action="CPSites#type" locator-key1="SEARCH_FIELD" value1="${siteName}" />
 		<execute action="CPSites#click" locator-key1="SEARCH_BUTTON" />
 		<execute action="CPSites#click" locator-key1="SITE_TABLE_ACTIONS" />
@@ -52,7 +52,9 @@
 	</command>
 
 	<command name="cpPublishToLiveNow">
-		<execute action="Home#open" locator-key1="SITE_URL_STAGING" />
+		<execute macro="Page#openURL">
+			<var name="pageStaging" value="true" />
+		</execute>
 
 		<execute action="Staging#click" locator-key1="STAGING_BUTTON" />
 		<execute action="Staging#click" locator-key1="STAGING_DROP_DOWN_BUTTON" />

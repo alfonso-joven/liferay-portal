@@ -19,8 +19,23 @@
 	<td></td>
 </tr>
 <tr>
-	<td>HOME_URL</td>
+	<td>GUEST_URL</td>
 	<td>/web/guest/home/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>GUEST_PRIVATE_URL</td>
+	<td>/group/guest/home/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>GUEST_PRIVATE_STAGING_URL</td>
+	<td>/group/guest-staging/home/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>GUEST_STAGING_URL</td>
+	<td>/web/guest-staging/home/</td>
 	<td></td>
 </tr>
 <tr>
@@ -29,28 +44,48 @@
 	<td></td>
 </tr>
 <tr>
-	<td>SCOPE_SELECTOR</td>
-	<td>//ul[@id='_160_groupSelector']/li/strong/a/span</td>
+	<td>ORGANIZATION_PRIVATE_URL</td>
+	<td>/group/organization-name/</td>
 	<td></td>
 </tr>
 <tr>
-	<td>SITE_URL_PRIVATE</td>
-	<td>/group/site-name/</td>
+	<td>ORGANIZATION_PRIVATE_STAGING_URL</td>
+	<td>/group/organization-name-staging/</td>
 	<td></td>
 </tr>
 <tr>
-	<td>SITE_URL_PUBLIC</td>
+	<td>ORGANIZATION_STAGING_URL</td>
+	<td>/web/organization-name-staging/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>SITE_URL</td>
 	<td>/web/site-name/</td>
 	<td></td>
 </tr>
 <tr>
-	<td>SITE_URL_STAGING</td>
-	<td>/web/site-name/staging-test-page</td>
+	<td>SITE_PRIVATE_URL</td>
+	<td>/group/site-name/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>SITE_PRIVATE_STAGING_URL</td>
+	<td>/group/site-name-staging/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>SITE_STAGING_URL</td>
+	<td>/web/site-name-staging/</td>
 	<td></td>
 </tr>
 <tr>
 	<td>SITE_NAME</td>
 	<td>//h1[@class='site-title']/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>SCOPE_SELECTOR</td>
+	<td>//ul[@id='_160_groupSelector']/li/strong/a/span</td>
 	<td></td>
 </tr>
 <tr>

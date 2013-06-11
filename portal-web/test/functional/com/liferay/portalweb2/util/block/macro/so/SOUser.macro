@@ -37,7 +37,7 @@
 	</command>
 
 	<command name="firstLoginPG">
-		<execute action="Home#open" locator-key1="HOME_URL" />
+		<execute macro="Page#openURL" />
 
 		<if>
 			<condition action="SOUserBar#isElementPresent" locator-key1="DASHBOARD" />
@@ -69,7 +69,7 @@
 	</command>
 
 	<command name="loginPG">
-		<execute action="Home#open" locator-key1="HOME_URL" />
+		<execute macro="Page#openURL" />
 
 		<execute action="PGLogin#type" locator-key1="EMAIL_ADDRESS_FIELD" value1="${userEmailAddress}" />
 		<execute action="PGLogin#type" locator-key1="PASSWORD_FIELD" value1="${password}" />
@@ -95,7 +95,7 @@
 	</command>
 
 	<command name="logoutPG">
-		<execute action="Home#open" locator-key1="HOME_URL" />
+		<execute macro="Page#openURL" />
 
 		<if>
 			<condition action="SOUserBar#isElementPresent" locator-key1="USER_NAME" />
