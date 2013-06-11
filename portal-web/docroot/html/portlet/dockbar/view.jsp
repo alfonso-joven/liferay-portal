@@ -40,7 +40,7 @@ boolean hasLayoutUpdatePermission = LayoutPermissionUtil.contains(permissionChec
 %>
 
 <div class="dockbar" data-namespace="<portlet:namespace />" id="dockbar">
-	<ul class="aui-toolbar admin-toolbar">
+	<ul class="admin-toolbar aui-toolbar">
 		<li class="pin-dockbar">
 			<a href="javascript:;"><img alt='<liferay-ui:message key="pin-the-dockbar" />' src="<%= HtmlUtil.escape(themeDisplay.getPathThemeImages()) %>/spacer.png" /></a>
 		</li>
