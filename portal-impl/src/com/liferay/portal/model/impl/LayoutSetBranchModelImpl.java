@@ -103,8 +103,9 @@ public class LayoutSetBranchModelImpl extends BaseModelImpl<LayoutSetBranch>
 				"value.object.column.bitmask.enabled.com.liferay.portal.model.LayoutSetBranch"),
 			true);
 	public static long GROUPID_COLUMN_BITMASK = 1L;
-	public static long NAME_COLUMN_BITMASK = 2L;
-	public static long PRIVATELAYOUT_COLUMN_BITMASK = 4L;
+	public static long MASTER_COLUMN_BITMASK = 2L;
+	public static long NAME_COLUMN_BITMASK = 4L;
+	public static long PRIVATELAYOUT_COLUMN_BITMASK = 8L;
 
 	/**
 	 * Converts the soap model instance into a normal model instance.
@@ -517,7 +518,19 @@ public class LayoutSetBranchModelImpl extends BaseModelImpl<LayoutSetBranch>
 	}
 
 	public void setMaster(boolean master) {
+		_columnBitmask |= MASTER_COLUMN_BITMASK;
+
+		if (!_setOriginalMaster) {
+			_setOriginalMaster = true;
+
+			_originalMaster = _master;
+		}
+
 		_master = master;
+	}
+
+	public boolean getOriginalMaster() {
+		return _originalMaster;
 	}
 
 	@JSON
@@ -768,6 +781,10 @@ public class LayoutSetBranchModelImpl extends BaseModelImpl<LayoutSetBranch>
 		layoutSetBranchModelImpl._setOriginalPrivateLayout = false;
 
 		layoutSetBranchModelImpl._originalName = layoutSetBranchModelImpl._name;
+
+		layoutSetBranchModelImpl._originalMaster = layoutSetBranchModelImpl._master;
+
+		layoutSetBranchModelImpl._setOriginalMaster = false;
 
 		layoutSetBranchModelImpl._columnBitmask = 0;
 	}
@@ -1065,6 +1082,8 @@ public class LayoutSetBranchModelImpl extends BaseModelImpl<LayoutSetBranch>
 	private String _originalName;
 	private String _description;
 	private boolean _master;
+	private boolean _originalMaster;
+	private boolean _setOriginalMaster;
 	private boolean _logo;
 	private long _logoId;
 	private String _themeId;
