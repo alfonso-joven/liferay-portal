@@ -11,6 +11,15 @@
 
 		<execute action="CPSitesEdit#click" locator-key1="MENU_STAGING" />
 		<execute action="CPSitesEdit#click" locator-key1="STAGING_LOCAL_LIVE" />
+
+		<if>
+			<equals arg1="${stagingType}" arg2="StagingSite" />
+			<then>
+				<execute action="CPSitesEdit#check" locator-key1="STAGING_ENABLED_ON_PUBLIC_PAGES_CHECKBOX" />
+				<execute action="CPSitesEdit#check" locator-key1="STAGING_ENABLED_ON_PRIVATE_PAGES_CHECKBOX" />
+			</then>
+		</if>
+		
 		<execute action="CPSitesEdit#check" locator-key1="STAGING_BLOGS_CHECKBOX" />
 		<execute action="CPSitesEdit#check" locator-key1="STAGING_BOOKMARKS_CHECKBOX" />
 		<execute action="CPSitesEdit#check" locator-key1="STAGING_DOCUMENTS_AND_MEDIA_CHECKBOX" />
