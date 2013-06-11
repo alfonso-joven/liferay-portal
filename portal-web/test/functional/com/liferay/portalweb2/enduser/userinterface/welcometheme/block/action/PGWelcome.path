@@ -1,0 +1,170 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>PGWelcome</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">PGWelcome</td></tr>
+</thead><tbody>
+<tr>
+	<td>PAGE_NAME</td>
+	<td></td>
+	<td>PGWelcome</td>
+</tr>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>GO_TO_LIFERAY</td>
+	<td>//a[@title='Go to Liferay']</td>
+	<td>Liferay Icon</td>
+</tr>
+<tr>
+	<td>WHAT_WE_DO</td>
+	<td>//span[contains(.,'What We Do')]</td>
+	<td>What We Do tab</td>
+</tr>
+<tr>
+	<td>WHO_IS_USING_LIFERAY</td>
+	<td>//span[contains(.,'Who Is Using Liferay')]</td>
+	<td>Who Is Using Liferay tab</td>
+</tr>
+<tr>
+	<td>LIFERAY_BENEFITS</td>
+	<td>//span[contains(.,'Liferay Benefits')]</td>
+	<td>Liferay Benefits tab</td>
+</tr>
+<tr>
+	<td>INFO_LINK</td>
+	<td>//a[@id='marketplace']</td>
+	<td>More Information</td>
+</tr>
+<tr>
+	<td>GET_SOCIAL_OFFICE</td>
+	<td>//div[@id='social-office']/div/div/a</td>
+	<td>Social Office Link</td>
+</tr>
+<tr>
+	<td>NEED_HELP_GETTING_STARTED_LINK</td>
+	<td>//div[@id='getting-started']/div/div/a</td>
+	<td>Starting Help Link</td>
+</tr>
+<tr>
+	<td>DEVELOP_FASTER</td>
+	<td>//div[@id='ide']/div/div/a</td>
+	<td>Develop Faster Link</td>
+</tr>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+<!--MENU-->
+<tr>
+	<td>MENU_TAGLINE</td>
+	<td>//header[@class='content-head content-head-liferay-portal']/hgroup/h1</td>
+	<td>Liferay Tagline</td>
+</tr>
+<tr>
+	<td>MENU_PAGE_1</td>
+	<td>//ul[@id='contentNav']/li/a[contains(.,'A Foundation for Apps')]</td>
+	<td>A Foundation for Apps</td>
+</tr>
+<tr>
+	<td>MENU_PAGE_2</td>
+	<td>//ul[@id='contentNav']/li/a[contains(.,'Centralized Document Management')]</td>
+	<td>Centralized Document Management</td>
+</tr>
+<tr>
+	<td>MENU_PAGE_3</td>
+	<td>//ul[@id='contentNav']/li/a[contains(.,'Intuitive Team Collaboration')]</td>
+	<td>Intuitive Team Collaboration</td>
+</tr>
+<tr>
+	<td>MENU_PAGE_4</td>
+	<td>//ul[@id='contentNav']/li/a[contains(.,'Tools for Business')]</td>
+	<td>Tools for Business</td>
+</tr>
+<tr>
+	<td>MENU_PAGE_5</td>
+	<td>//ul[@id='contentNav']/li/a[contains(.,'Liferay Marketplace')]</td>
+	<td>Liferay Marketplace</td>
+</tr>
+<!---->
+<!--TOOLS-->
+<tr>
+	<td>TOOLS_EDIT_WEB_CONTENT</td>
+	<td>//img[contains(@alt,'Edit Web Content')]</td>
+	<td>Edit Web Content</td>
+</tr>
+<tr>
+	<td>TOOLS_WEB_CONTENT_TEMPLATE</td>
+	<td>//img[contains(@alt,'Edit Template')]</td>
+	<td>Edit Template</td>
+</tr>
+<tr>
+	<td>TOOLS_SELECT_WEB_CONTENT</td>
+	<td>//img[contains(@alt,'Select Web Content')]</td>
+	<td>Select Web Content</td>
+</tr>
+<tr>
+	<td>TOOLS_ADD_WEB_CONTENT</td>
+	<td>//img[contains(@alt,'Add Web Content')]</td>
+	<td>Add Web Content</td>
+</tr>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+<!--FOOTER LEFT-->
+<tr>
+	<td>SOCIAL_OFFICE_ICON</td>
+	<td>//div[@id='social-office']/div/span[@class='footer-logo']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>WANT_EASY_SOCIAL_COLLABORATION</td>
+	<td>//div[@id='social-office']/div/div/h3</td>
+	<td></td>
+</tr>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+<!--FOOTER MIDDLE-->
+<tr>
+	<td>NEED_HELP_GETTING_STARTED_LOGO</td>
+	<td>//div[@id='getting-started']/div/span[@class='footer-logo']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>NEED_HELP_GETTING_STARTED_MESSAGE</td>
+	<td>//div[@id='getting-started']/div/div/h3</td>
+	<td></td>
+</tr>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+<!--FOOTER RIGHT-->
+<tr>
+	<td>IDE_DEVELOP_FASTER_ICON</td>
+	<td>//div[@id='ide']/div/span[@class='footer-logo']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>DEVELOP_FASTER</td>
+	<td>//div[@id='ide']/div/div/h3</td>
+	<td></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
