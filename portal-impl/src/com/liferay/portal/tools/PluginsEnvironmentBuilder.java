@@ -167,7 +167,7 @@ public class PluginsEnvironmentBuilder {
 		int x = content.indexOf("import.shared");
 
 		if (x == -1) {
-			return Collections.emptyList();
+			return new ArrayList<String>();
 		}
 
 		x = content.indexOf("value=\"", x);
@@ -176,13 +176,13 @@ public class PluginsEnvironmentBuilder {
 		int y = content.indexOf("\" />", x);
 
 		if ((x == -1) || (y == -1)) {
-			return Collections.emptyList();
+			return new ArrayList<String>();
 		}
 
 		String[] importShared = StringUtil.split(content.substring(x + 1, y));
 
 		if (importShared.length == 0) {
-			return Collections.emptyList();
+			return new ArrayList<String>();
 		}
 
 		List<String> jars = new ArrayList<String>();
