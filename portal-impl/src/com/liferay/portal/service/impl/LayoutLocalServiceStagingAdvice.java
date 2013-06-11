@@ -591,10 +591,6 @@ public class LayoutLocalServiceStagingAdvice implements MethodInterceptor {
 
 	private static Set<String> _layoutLocalServiceStagingAdviceMethodNames =
 		new HashSet<String>();
-	private static ThreadLocal<Map<Layout, Object>> _proxiedLayouts =
-		new AutoResetThreadLocal<Map<Layout, Object>>(
-			LayoutLocalServiceStagingAdvice.class + "._proxiedLayouts",
-			new HashMap<Layout, Object>());
 
 	static {
 		_layoutLocalServiceStagingAdviceMethodNames.add("deleteLayout");
@@ -603,5 +599,10 @@ public class LayoutLocalServiceStagingAdvice implements MethodInterceptor {
 		_layoutLocalServiceStagingAdviceMethodNames.add("updateLookAndFeel");
 		_layoutLocalServiceStagingAdviceMethodNames.add("updateName");
 	}
+
+	private static ThreadLocal<Map<Layout, Object>> _proxiedLayouts =
+		new AutoResetThreadLocal<Map<Layout, Object>>(
+			LayoutLocalServiceStagingAdvice.class + "._proxiedLayouts",
+			new HashMap<Layout, Object>());
 
 }
