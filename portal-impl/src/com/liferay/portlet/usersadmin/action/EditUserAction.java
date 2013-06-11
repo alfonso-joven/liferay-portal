@@ -128,7 +128,7 @@ public class EditUserAction extends PortletAction {
 		try {
 			User user = null;
 			String oldScreenName = StringPool.BLANK;
-			boolean updateLanguageIdRedirect = false;
+			boolean updateLanguageId = false;
 
 			if (cmd.equals(Constants.ADD)) {
 				user = addUser(actionRequest);
@@ -148,7 +148,7 @@ public class EditUserAction extends PortletAction {
 
 				user = (User)returnValue[0];
 				oldScreenName = ((String)returnValue[1]);
-				updateLanguageIdRedirect = ((Boolean)returnValue[2]);
+				updateLanguageId = ((Boolean)returnValue[2]);
 			}
 			else if (cmd.equals("unlock")) {
 				user = updateLockout(actionRequest);
@@ -190,7 +190,7 @@ public class EditUserAction extends PortletAction {
 					}
 				}
 
-				if (updateLanguageIdRedirect && themeDisplay.isI18n()) {
+				if (updateLanguageId && themeDisplay.isI18n()) {
 					String i18nLanguageId = user.getLanguageId();
 					int pos = i18nLanguageId.indexOf(CharPool.UNDERLINE);
 
@@ -584,7 +584,7 @@ public class EditUserAction extends PortletAction {
 			contact, actionRequest, "suffixId");
 		boolean male = BeanParamUtil.getBoolean(
 			user, actionRequest, "male", true);
-		boolean updateLanguageIdRedirect = false;
+		boolean updateLanguageId = false;
 
 		Calendar birthdayCal = CalendarFactoryUtil.getCalendar();
 
@@ -693,7 +693,7 @@ public class EditUserAction extends PortletAction {
 					PortletSession.APPLICATION_SCOPE);
 			}
 
-			updateLanguageIdRedirect = true;
+			updateLanguageId = true;
 		}
 
 		String portletId = serviceContext.getPortletId();
@@ -723,7 +723,7 @@ public class EditUserAction extends PortletAction {
 			SessionMessages.add(actionRequest, "verificationEmailSent");
 		}
 
-		return new Object[] {user, oldScreenName, updateLanguageIdRedirect};
+		return new Object[] {user, oldScreenName, updateLanguageId};
 	}
 
 }
