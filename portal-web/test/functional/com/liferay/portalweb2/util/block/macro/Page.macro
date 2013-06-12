@@ -24,7 +24,7 @@
 	<command name="isPresent">
 		<execute macro="Page#openURL" />
 
-		<execute action="Home#isElementPresent" locator1="//nav/ul/li/a/span[.=' ${pageName}']" />
+		<execute action="Home#isElementPresent" locator1="//nav/ul/li/a/span[contains(.,'${pageName}')]" />
 	</command>
 
 	<command name="openURL">
@@ -70,7 +70,7 @@
 	<command name="pgGoto">
 		<execute macro="Page#openURL" />
 
-		<execute action="Home#click" locator1="//nav/ul/li/a/span[.=' ${pageName}']" />
+		<execute action="Home#click" locator1="//nav/ul/li/a/span[contains(.,'${pageName}')]" />
 	</command>
 
 	<command name="pgGotoOrganization">
@@ -78,7 +78,7 @@
 			<var name="pageType" value="Organization" />
 		</execute>
 
-		<execute action="Home#click" locator1="//nav/ul/li/a/span[.=' ${pageName}']" />
+		<execute action="Home#click" locator1="//nav/ul/li/a/span[contains(.,'${pageName}')]" />
 	</command>
 
 	<command name="pgGotoSitePrivate">
@@ -87,7 +87,7 @@
 			<var name="pageType" value="Site" />
 		</execute>
 
-		<execute action="Home#click" locator1="//nav/ul/li/a/span[.=' ${pageName}']" />
+		<execute action="Home#click" locator1="//nav/ul/li/a/span[contains(.,'${pageName}')]" />
 	</command>
 
 	<command name="pgGotoSitePublic">
@@ -95,7 +95,7 @@
 			<var name="pageType" value="Site" />
 		</execute>
 
-		<execute action="Home#click" locator1="//nav/ul/li/a/span[.=' ${pageName}']" />
+		<execute action="Home#click" locator1="//nav/ul/li/a/span[contains(.,'${pageName}')]" />
 	</command>
 
 	<command name="pgAdd">
@@ -106,7 +106,7 @@
 
 		<execute action="Home#type" locator-key1="NEW_PAGE_FIELD" value1="${pageName}" />
 		<execute action="Home#click" locator-key1="NEW_PAGE_SAVE" />
-		<execute action="Home#click" locator1="//nav/ul/li/a/span[.=' ${pageName}']" />
+		<execute action="Home#click" locator1="//nav/ul/li/a/span[contains(.,'${pageName}')]" />
 	</command>
 
 	<command name="pgAddOrganization">
