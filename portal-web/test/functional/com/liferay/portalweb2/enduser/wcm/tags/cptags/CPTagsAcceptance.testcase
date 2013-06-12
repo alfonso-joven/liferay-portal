@@ -28,7 +28,7 @@
 			<var name="tagName" value="${tagName3}" />
 		</execute>
 
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Tags" />
 		</execute>
 

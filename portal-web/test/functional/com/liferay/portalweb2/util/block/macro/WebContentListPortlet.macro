@@ -1,6 +1,6 @@
 <definition>
 	<command name="configurePGPortletDisplayGuest">
-		<execute macro="Page#pgGoto">
+		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
@@ -15,7 +15,7 @@
 
 		<execute action="PGWebcontentlist#selectFrame" />
 
-		<execute macro="Page#pgGoto">
+		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
 		</execute>
 

@@ -1,6 +1,6 @@
 <definition>
 	<command name="addCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Dynamic Data Lists" />
 		</execute>
 
@@ -145,7 +145,7 @@
 	</command>
 
 	<command name="deleteCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Dynamic Data Lists" />
 		</execute>
 
@@ -159,7 +159,7 @@
 		<execute action="CPDynamicdatalistsDatadefinitions#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this?" />
 		<execute action="CPDynamicdatalistsDatadefinitions#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
 
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Dynamic Data Lists" />
 		</execute>
 
@@ -174,7 +174,7 @@
 	</command>
 
 	<command name="editCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Dynamic Data Lists" />
 		</execute>
 
@@ -196,7 +196,7 @@
 	</command>
 
 	<command name="tearDownCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Dynamic Data Lists" />
 		</execute>
 
@@ -218,7 +218,7 @@
 	</command>
 
 	<command name="viewCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Dynamic Data Lists" />
 		</execute>
 

@@ -2,7 +2,7 @@
 	<var name="orgName" value="Organization*" />
 
 	<command name="addCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Users and Organizations" />
 		</execute>
 
@@ -19,7 +19,7 @@
 	</command>
 
 	<command name="addMemberCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Users and Organizations" />
 		</execute>
 
@@ -45,7 +45,7 @@
 	</command>
 
 	<command name="addSiteCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Users and Organizations" />
 		</execute>
 
@@ -63,7 +63,7 @@
 	</command>
 
 	<command name="assignOrgRoleCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Users and Organizations" />
 		</execute>
 
@@ -91,7 +91,7 @@
 	</command>
 
 	<command name="deleteCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Users and Organizations" />
 		</execute>
 
@@ -105,7 +105,7 @@
 	</command>
 
 	<command name="isPresent">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Users and Organizations" />
 		</execute>
 
@@ -115,7 +115,7 @@
 	</command>
 
 	<command name="removeMemberCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Users and Organizations" />
 		</execute>
 
@@ -135,7 +135,7 @@
 		<execute action="CPUsersandorganizationsAssignmembers#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
 		<execute action="CPUsersandorganizationsAssignmembers#assertNotChecked" locator-key1="USER_TABLE_CHECKBOX_1" />
 
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Users and Organizations" />
 		</execute>
 
@@ -174,7 +174,7 @@
 	</command>
 
 	<command name="viewAssignMemberCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Users and Organizations" />
 		</execute>
 
@@ -189,7 +189,7 @@
 	</command>
 
 	<command name="viewCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Users and Organizations" />
 		</execute>
 

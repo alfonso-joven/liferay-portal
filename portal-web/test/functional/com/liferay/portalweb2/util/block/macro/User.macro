@@ -3,7 +3,7 @@
 	<var name="password" value="test" />
 
 	<command name="addCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Users and Organizations" />
 		</execute>
 
@@ -40,7 +40,7 @@
 	</command>
 
 	<command name="deactivateCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Users and Organizations" />
 		</execute>
 
@@ -67,7 +67,7 @@
 	</command>
 
 	<command name="deleteCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Users and Organizations" />
 		</execute>
 
@@ -94,7 +94,7 @@
 	</command>
 
 	<command name="editPasswordCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Users and Organizations" />
 		</execute>
 
@@ -199,7 +199,7 @@
 	</command>
 
 	<command name="viewCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Users and Organizations" />
 		</execute>
 

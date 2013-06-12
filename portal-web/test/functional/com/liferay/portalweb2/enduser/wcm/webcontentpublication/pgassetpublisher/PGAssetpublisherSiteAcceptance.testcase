@@ -1,13 +1,13 @@
 <definition>
 	<var name="pageName" value="Asset Publisher Page" />
 	<var name="portletName" value="Asset Publisher" />
-	<var name="siteName" value="Site Name" />
-
 	<set-up>
 		<execute macro="User#pgFirstLogin" />
 	</set-up>
 
 	<command name="AddPortletAssetPublisherSite">
+		<var name="siteName" value="Site Name" />
+
 		<execute macro="Site#addBlankCP">
 			<var name="siteName" value="${siteName}" />
 		</execute>
@@ -17,8 +17,9 @@
 			<var name="sitePageName" value="${pageName}" />
 		</execute>
 
-		<execute macro="Portlet#pgAddSitePublic">
+		<execute macro="Portlet#addPG">
 			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Site" />
 			<var name="portletName" value="${portletName}" />
 		</execute>
 	</command>

@@ -1,6 +1,6 @@
 <definition>
 	<command name="addCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Site Memberships" />
 		</execute>
 
@@ -18,7 +18,7 @@
 	</command>
 
 	<command name="assignMembersCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Site Memberships" />
 		</execute>
 

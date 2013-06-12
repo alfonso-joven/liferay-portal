@@ -14,9 +14,14 @@
 	</set-up>
 
 	<command name="StagingPublishToLive">
+		<var name="pageStaging" value="true" />
+
 		<execute macro="Staging#cpActivateStaging" />
 
-		<execute macro="Page#pgAddStaging" />
+		<execute macro="Page#addPG">
+			<var name="pageName" value="${pageName}" />
+			<var name="pageStaging" value="${pageStaging}" />
+		</execute>
 
 		<execute macro="Staging#cpPublishToLiveNow" />
 

@@ -5,11 +5,11 @@
 	<set-up>
 		<execute macro="User#pgFirstLogin" />
 
-		<execute macro="Page#pgAdd">
+		<execute macro="Page#addPG">
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
-		<execute macro="Portlet#pgAdd">
+		<execute macro="Portlet#addPG">
 			<var name="pageName" value="${pageName}" />
 			<var name="portletName" value="${portletName}" />
 		</execute>
@@ -81,7 +81,7 @@
 	</command>
 
 	<command name="RemovePortlet">
-		<execute macro="Portlet#pgRemove">
+		<execute macro="Portlet#removePG">
 			<var name="pageName" value="${pageName}" />
 		</execute>
 	</command>
@@ -137,6 +137,6 @@
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
-		<execute macro="Page#pgTearDown" />
+		<execute macro="Page#tearDownPG" />
 	</tear-down>
 </definition>

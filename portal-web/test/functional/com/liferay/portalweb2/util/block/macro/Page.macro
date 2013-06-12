@@ -1,20 +1,8 @@
 <definition>
-	<command name="cpGoto">
+	<command name="gotoCP">
 		<execute macro="Page#openURL" />
 
 		<execute action="Dockbar#mouseOver" locator-key1="GO_TO" />
-		<execute action="Dockbar#click" locator-key1="GO_TO" />
-		<execute action="Dockbar#click" locator-key1="GO_TO_CONTROL_PANEL" />
-
-		<execute action="Home#click" locator1="//ul[@class='category-portlets']/li/a[contains(.,'${portletName}')]" />
-	</command>
-
-	<command name="cpGotoStaging">
-		<execute macro="Page#openURL">
-			<var name="pageStaging" value="true" />
-		</execute>
-
-		<execute action="Dockbar#mouseOver" locator-key1="GO_TO_STAGING" />
 		<execute action="Dockbar#click" locator-key1="GO_TO" />
 		<execute action="Dockbar#click" locator-key1="GO_TO_CONTROL_PANEL" />
 
@@ -67,38 +55,13 @@
 		<execute action="Home#open" locator-key1="${pageTypeKey}${pageAccessKey}${pageStagingKey}_URL" />
 	</command>
 
-	<command name="pgGoto">
+	<command name="gotoPG">
 		<execute macro="Page#openURL" />
 
 		<execute action="Home#click" locator1="//nav/ul/li/a/span[contains(.,'${pageName}')]" />
 	</command>
 
-	<command name="pgGotoOrganization">
-		<execute macro="Page#openURL">
-			<var name="pageType" value="Organization" />
-		</execute>
-
-		<execute action="Home#click" locator1="//nav/ul/li/a/span[contains(.,'${pageName}')]" />
-	</command>
-
-	<command name="pgGotoSitePrivate">
-		<execute macro="Page#openURL">
-			<var name="pageAccess" value="Private" />
-			<var name="pageType" value="Site" />
-		</execute>
-
-		<execute action="Home#click" locator1="//nav/ul/li/a/span[contains(.,'${pageName}')]" />
-	</command>
-
-	<command name="pgGotoSitePublic">
-		<execute macro="Page#openURL">
-			<var name="pageType" value="Site" />
-		</execute>
-
-		<execute action="Home#click" locator1="//nav/ul/li/a/span[contains(.,'${pageName}')]" />
-	</command>
-
-	<command name="pgAdd">
+	<command name="addPG">
 		<execute macro="Page#openURL" />
 
 		<execute action="Dockbar#mouseOver" locator-key1="ADD" />
@@ -109,36 +72,7 @@
 		<execute action="Home#click" locator1="//nav/ul/li/a/span[contains(.,'${pageName}')]" />
 	</command>
 
-	<command name="pgAddOrganization">
-		<execute macro="Page#pgAdd">
-			<var name="pageName" value="${pageName}" />
-			<var name="pageType" value="Organization" />
-		</execute>
-	</command>
-
-	<command name="pgAddSitePrivate">
-		<execute macro="Page#pgAdd">
-			<var name="pageAccess" value="Private" />
-			<var name="pageName" value="${pageName}" />
-			<var name="pageType" value="Site" />
-		</execute>
-	</command>
-
-	<command name="pgAddSitePublic">
-		<execute macro="Page#pgAdd">
-			<var name="pageName" value="${pageName}" />
-			<var name="pageType" value="Site" />
-		</execute>
-	</command>
-
-	<command name="pgAddStaging">
-		<execute macro="Page#pgAdd">
-			<var name="pageName" value="${pageName}" />
-			<var name="pageStaging" value="true" />
-		</execute>
-	</command>
-
-	<command name="pgTearDown">
+	<command name="tearDownPG">
 		<execute macro="Page#openURL" />
 
 		<while>

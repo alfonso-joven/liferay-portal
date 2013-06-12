@@ -1,6 +1,6 @@
 <definition>
 	<command name="cpActivateStaging">
-		<execute macro="Page#cpGotoStaging">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Sites" />
 		</execute>
 
@@ -34,7 +34,8 @@
 	</command>
 
 	<command name="cpDeactivateStaging">
-		<execute macro="Page#cpGotoStaging">
+		<execute macro="Page#gotoCP">
+			<var name="pageStaging" value="true" />
 			<var name="portletName" value="Sites" />
 		</execute>
 
@@ -52,7 +53,7 @@
 	</command>
 
 	<command name="cpPublishToLiveNow">
-		<execute macro="Page#openURL">
+		<execute macro="Page#gotoPG">
 			<var name="pageStaging" value="true" />
 		</execute>
 

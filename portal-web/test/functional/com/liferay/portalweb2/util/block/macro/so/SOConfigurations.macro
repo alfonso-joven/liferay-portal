@@ -1,6 +1,6 @@
 <definition>
 	<command name="assignUserRoleCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Social Office Configurations" />
 		</execute>
 
@@ -20,7 +20,7 @@
 	</command>
 
 	<command name="unassignUserRoleCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Social Office Configurations" />
 		</execute>
 

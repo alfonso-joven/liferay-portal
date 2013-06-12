@@ -1,6 +1,6 @@
 <definition>
 	<command name="addCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Tags" />
 		</execute>
 
@@ -12,7 +12,7 @@
 	</command>
 
 	<command name="deleteCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Tags" />
 		</execute>
 
@@ -25,7 +25,7 @@
 	</command>
 
 	<command name="editCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Tags" />
 		</execute>
 
@@ -38,7 +38,7 @@
 	</command>
 
 	<command name="tearDownCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Tags" />
 		</execute>
 

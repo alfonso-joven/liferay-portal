@@ -1,6 +1,6 @@
 <definition>
 	<command name="addPGviaDMD">
-		<execute macro="Page#pgGoto">
+		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
@@ -25,7 +25,7 @@
 	</command>
 
 	<command name="addPGviaMG">
-		<execute macro="Page#pgGoto">
+		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
@@ -53,7 +53,7 @@
 	</command>
 
 	<command name="deletePGviaMG">
-		<execute macro="Page#pgGoto">
+		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
@@ -70,7 +70,7 @@
 	</command>
 
 	<command name="editPGviaMG">
-		<execute macro="Page#pgGoto">
+		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
@@ -91,7 +91,7 @@
 	</command>
 
 	<command name="searchPGviaDMD">
-		<execute macro="Page#pgGoto">
+		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
@@ -103,7 +103,7 @@
 	</command>
 
 	<command name="searchNoPGviaDMD">
-		<execute macro="Page#pgGoto">
+		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
 		</execute>
 

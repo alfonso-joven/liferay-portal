@@ -1,6 +1,6 @@
 <definition>
 	<command name="addCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Dynamic Data Lists" />
 		</execute>
 
@@ -24,7 +24,7 @@
 	</command>
 
 	<command name="addPG">
-		<execute macro="Page#pgGoto">
+		<execute macro="Page#gotoPG">
 			<var name="portletName" value="${pageName}" />
 		</execute>
 
@@ -45,7 +45,7 @@
 	</command>
 
 	<command name="deleteCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Dynamic Data Lists" />
 		</execute>
 
@@ -60,7 +60,7 @@
 	</command>
 
 	<command name="deletePG">
-		<execute macro="Page#pgGoto">
+		<execute macro="Page#gotoPG">
 			<var name="portletName" value="${pageName}" />
 		</execute>
 
@@ -79,7 +79,7 @@
 	</command>
 
 	<command name="editCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Dynamic Data Lists" />
 		</execute>
 
@@ -97,7 +97,7 @@
 	</command>
 
 	<command name="editPG">
-		<execute macro="Page#pgGoto">
+		<execute macro="Page#gotoPG">
 			<var name="portletName" value="${pageName}" />
 		</execute>
 
@@ -122,7 +122,7 @@
 	</command>
 
 	<command name="selectPG">
-		<execute macro="Page#pgGoto">
+		<execute macro="Page#gotoPG">
 			<var name="portletName" value="${pageName}" />
 		</execute>
 
@@ -140,7 +140,7 @@
 	</command>
 
 	<command name="tearDownCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Dynamic Data Lists" />
 		</execute>
 
@@ -156,7 +156,7 @@
 	</command>
 
 	<command name="viewCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Dynamic Data Lists" />
 		</execute>
 
@@ -171,7 +171,7 @@
 	</command>
 
 	<command name="viewPG">
-		<execute macro="Page#pgGoto">
+		<execute macro="Page#gotoPG">
 			<var name="portletName" value="${pageName}" />
 		</execute>
 

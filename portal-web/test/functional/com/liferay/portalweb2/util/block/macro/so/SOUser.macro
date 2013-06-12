@@ -3,7 +3,7 @@
 	<var name="password" value="test" />
 
 	<command name="editPasswordCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Users and Organizations" />
 		</execute>
 

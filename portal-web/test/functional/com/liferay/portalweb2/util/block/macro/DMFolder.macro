@@ -1,6 +1,6 @@
 <definition>
 	<command name="addCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Documents and Media" />
 		</execute>
 
@@ -27,7 +27,7 @@
 	</command>
 
 	<command name="addPGviaDMD">
-		<execute macro="Page#pgGoto">
+		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
@@ -47,7 +47,7 @@
 	</command>
 
 	<command name="addPGviaMG">
-		<execute macro="Page#pgGoto">
+		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
@@ -63,7 +63,7 @@
 	</command>
 
 	<command name="deleteCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Documents and Media" />
 		</execute>
 
@@ -90,7 +90,7 @@
 	</command>
 
 	<command name="editCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Documents and Media" />
 		</execute>
 
@@ -113,7 +113,7 @@
 	</command>
 
 	<command name="editPGviaMG">
-		<execute macro="Page#pgGoto">
+		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
@@ -129,7 +129,7 @@
 	</command>
 
 	<command name="moveToFolderCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Documents and Media" />
 		</execute>
 
@@ -155,7 +155,7 @@
 	</command>
 
 	<command name="tearDownPGviaDMD">
-		<execute macro="Page#pgGoto">
+		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
@@ -171,7 +171,7 @@
 	</command>
 
 	<command name="tearDownPGviaMG" >
-		<execute macro="Page#pgGoto">
+		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
@@ -188,7 +188,7 @@
 	</command>
 
 	<command name="tearDownCP">
-		<execute macro="Page#cpGoto">
+		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Documents and Media" />
 		</execute>
 
