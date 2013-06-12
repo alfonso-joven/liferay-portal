@@ -1,4 +1,15 @@
 <definition>
+	<command name="addPG">
+		<execute macro="Page#openURL" />
+
+		<execute action="Dockbar#mouseOver" locator-key1="ADD" />
+		<execute action="Dockbar#click" locator-key1="ADD_PAGE" />
+
+		<execute action="Home#type" locator-key1="NEW_PAGE_FIELD" value1="${pageName}" />
+		<execute action="Home#click" locator-key1="NEW_PAGE_SAVE" />
+		<execute action="Home#click" locator1="//nav/ul/li/a/span[contains(.,'${pageName}')]" />
+	</command>
+
 	<command name="gotoCP">
 		<execute macro="Page#openURL" />
 
@@ -7,6 +18,12 @@
 		<execute action="Dockbar#click" locator-key1="GO_TO_CONTROL_PANEL" />
 
 		<execute action="Home#click" locator1="//ul[@class='category-portlets']/li/a[contains(.,'${portletName}')]" />
+	</command>
+
+	<command name="gotoPG">
+		<execute macro="Page#openURL" />
+
+		<execute action="Home#click" locator1="//nav/ul/li/a/span[contains(.,'${pageName}')]" />
 	</command>
 
 	<command name="isPresent">
@@ -53,23 +70,6 @@
 		</if>
 
 		<execute action="Home#open" locator-key1="${pageTypeKey}${pageAccessKey}${pageStagingKey}_URL" />
-	</command>
-
-	<command name="gotoPG">
-		<execute macro="Page#openURL" />
-
-		<execute action="Home#click" locator1="//nav/ul/li/a/span[contains(.,'${pageName}')]" />
-	</command>
-
-	<command name="addPG">
-		<execute macro="Page#openURL" />
-
-		<execute action="Dockbar#mouseOver" locator-key1="ADD" />
-		<execute action="Dockbar#click" locator-key1="ADD_PAGE" />
-
-		<execute action="Home#type" locator-key1="NEW_PAGE_FIELD" value1="${pageName}" />
-		<execute action="Home#click" locator-key1="NEW_PAGE_SAVE" />
-		<execute action="Home#click" locator1="//nav/ul/li/a/span[contains(.,'${pageName}')]" />
 	</command>
 
 	<command name="tearDownPG">
