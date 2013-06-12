@@ -1,5 +1,5 @@
 <definition>
-	<command name="pgAdd">
+	<command name="addPG">
 		<execute action="PGDocumentsandmedia#click" locator-key1="TOOLBAR_ADD" />
 		<execute action="PGDocumentsandmedia#click" locator-key1="ADD_MENULIST_FOLDER" />
 
@@ -8,8 +8,19 @@
 		<execute action="PGDocumentsandmediaAddfolder#click" locator-key1="SAVE_BUTTON" />
 
 		<execute action="PGDocumentsandmedia#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
+	</command>
 
-		<execute action="PGDocumentsandmedia#assertTextEquals" locator-key1="ENTRIES_FOLDER_TITLE" value1="${documentsandmediaFolderTitle}" />
+	<command name="addDocumentPG">
+		<execute action="PGDocumentsandmedia#click" locator-key1="ENTRIES_FOLDER" />
+
+		<execute action="PGDocumentsandmediaFolder#click" locator-key1="TOOLBAR_ADD" />
+		<execute action="PGDocumentsandmediaFolder#click" locator-key1="ADD_MENULIST_BASIC_DOCUMENT" />
+		<execute action="PGDocumentsandmediaAdddocument#uploadCommonFile" locator-key1="FILE_FIELD" value1="Document_1.doc" />
+		<execute action="PGDocumentsandmediaAdddocument#type" locator-key1="TITLE_FIELD" value1="${documentsandmediaEntryTitle}" />
+		<execute action="PGDocumentsandmediaAdddocument#type" locator-key1="DESCRIPTION_FIELD" value1="${documentsandmediaEntryContent}" />
+		<execute action="PGDocumentsandmediaAdddocument#click" locator-key1="PUBLISH_BUTTON" />
+
+		<execute action="PGDocumentsandmediaFolder#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 	</command>
 
 	<command name="pgEdit">
@@ -23,6 +34,21 @@
 
 		<execute action="PGDocumentsandmedia#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 		<execute action="PGDocumentsandmedia#assertTextEquals" locator-key1="ENTRIES_FOLDER_TITLE" value1="${documentsandmediaFolderTitleEdit}" />
+	</command>
+
+	<command name="deletePG">
+		<execute macro="Page#pgGoto">
+			<var name="pageName" value="${pageName}" />
+		</execute>
+
+		<execute action="PGDocumentsandmedia#assertElementPresent" locator-key1="ENTRIES_FOLDER" />
+		<execute action="PGDocumentsandmedia#assertTextEquals" locator-key1="ENTRIES_FOLDER_TITLE" value1="${documentsandmediaFolderTitle}" />
+		<execute action="PGDocumentsandmedia#click" locator-key1="ENTRIES_FOLDER_SELECT" />
+		<execute action="PGDocumentsandmedia#click" locator-key1="TOOLBAR_ACTIONS" />
+		<execute action="PGDocumentsandmedia#click" locator-key1="ACTIONS_MENULIST_DELETE" />
+		<execute action="PGDocumentsandmedia#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete the selected entries?" />
+		<execute action="PGDocumentsandmediaFolder#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
+		<execute action="PGDocumentsandmedia#assertElementNotPresent" locator-key1="ENTRIES_FOLDER" />
 	</command>
 
 	<command name="tearDownCP">
