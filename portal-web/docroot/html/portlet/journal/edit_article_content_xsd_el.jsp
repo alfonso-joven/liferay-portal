@@ -175,10 +175,10 @@ Element contentEl = (Element)request.getAttribute(WebKeys.JOURNAL_ARTICLE_CONTEN
 					%>
 
 					<liferay-ui:input-editor
+						contentsLanguageId="<%= languageId %>"
 						editorImpl="<%= EDITOR_WYSIWYG_IMPL_KEY %>"
 						height="460"
 						initMethod='<%= "initEditor" + elInstanceId %>'
-						contentsLanguageId="<%= languageId %>"
 						name="<%= textAreaInputName %>"
 						toolbarSet="liferay-article"
 						width="500"
