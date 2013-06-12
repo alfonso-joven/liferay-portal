@@ -4,6 +4,7 @@
 	</set-up>
 
 	<command name="AddSitePrivateChildPage">
+		<var name="liferay" value="Liferay" />
 		<var name="siteName" value="Site Name" />
 		<var name="siteChildPageName" value="Site Child Page" />
 		<var name="sitePageName" value="Site Page" />
@@ -25,6 +26,7 @@
 		</execute>
 
 		<execute macro="SitePage#viewChildPrivatePG">
+			<var name="liferay" value="${liferay}" />
 			<var name="siteName" value="${siteName}" />
 			<var name="siteChildPageName" value="${siteChildPageName}" />
 			<var name="sitePageName" value="${sitePageName}" />
@@ -33,6 +35,7 @@
 	</command>
 
 	<command name="AddSitePrivatePage">
+		<var name="liferay" value="Liferay" />
 		<var name="siteName" value="Site Name" />
 		<var name="sitePageName" value="Site Page" />
 		<var name="sitePageURL" value="http://localhost:8080/group/site-name/site-page" />
@@ -47,6 +50,7 @@
 		</execute>
 
 		<execute macro="SitePage#viewPrivatePG">
+			<var name="liferay" value="${liferay}" />
 			<var name="siteName" value="${siteName}" />
 			<var name="sitePageName" value="${sitePageName}" />
 			<var name="sitePageURL" value="${sitePageURL}" />
@@ -83,6 +87,7 @@
 	</command>
 
 	<command name="AddSitePublicChildPage">
+		<var name="liferay" value="Liferay" />
 		<var name="siteName" value="Site Name" />
 		<var name="siteChildPageName" value="Site Child Page" />
 		<var name="sitePageName" value="Site Page" />
@@ -104,6 +109,7 @@
 		</execute>
 
 		<execute macro="SitePage#viewChildPublicPG">
+			<var name="liferay" value="${liferay}" />
 			<var name="siteName" value="${siteName}" />
 			<var name="siteChildPageName" value="${siteChildPageName}" />
 			<var name="sitePageName" value="${sitePageName}" />
@@ -112,6 +118,7 @@
 	</command>
 
 	<command name="AddSitePublicPage">
+		<var name="liferay" value="Liferay" />
 		<var name="siteName" value="Site Name" />
 		<var name="sitePageName" value="Site Page" />
 		<var name="sitePageURL" value="http://localhost:8080/web/site-name/site-page" />
@@ -126,6 +133,7 @@
 		</execute>
 
 		<execute macro="SitePage#viewPublicPG">
+			<var name="liferay" value="${liferay}" />
 			<var name="siteName" value="${siteName}" />
 			<var name="sitePageName" value="${sitePageName}" />
 			<var name="sitePageURL" value="${sitePageURL}" />

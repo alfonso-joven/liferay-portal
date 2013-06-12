@@ -186,6 +186,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>BREADCRUMB_4</td>
+	<td>xpath=(//nav[@id='breadcrumbs']/ul/li/span/a)[4]</td>
+	<td></td>
+</tr>
+<tr>
 	<td></td>
 	<td></td>
 	<td></td>
