@@ -1108,6 +1108,159 @@ public class SourceFormatter {
 		return StringUtil.replace(ifClause, line, newLine);
 	}
 
+	private static String _fixJavaTermsDivider(
+		String content, JavaTerm previousJavaTerm, JavaTerm javaTerm) {
+
+		String javaTermContent = javaTerm.getContent();
+
+		if (javaTermContent.startsWith(StringPool.TAB + "//") ||
+			javaTermContent.contains(StringPool.TAB + "static {")) {
+
+			return content;
+		}
+
+		String previousJavaTermContent = previousJavaTerm.getContent();
+
+		if (previousJavaTermContent.startsWith(StringPool.TAB + "//") ||
+			previousJavaTermContent.contains(StringPool.TAB + "static {")) {
+
+			return content;
+		}
+
+		String previousJavaTermName = previousJavaTerm.getName();
+
+		boolean requiresEmptyLine = false;
+
+		if (previousJavaTerm.getType() != javaTerm.getType()) {
+			requiresEmptyLine = true;
+		}
+		else if (!_isInJavaTermTypeGroup(
+					javaTerm.getType(), _TYPE_VARIABLE_NOT_FINAL)) {
+
+			requiresEmptyLine = true;
+		}
+		else if (_hasAnnotationCommentOrJavadoc(javaTermContent) ||
+				 _hasAnnotationCommentOrJavadoc(previousJavaTermContent)) {
+
+			requiresEmptyLine = true;
+		}
+		else if ((previousJavaTerm.getType() ==
+					_TYPE_VARIABLE_PRIVATE_STATIC) &&
+				 (previousJavaTermName.equals("_log") ||
+				  previousJavaTermName.equals("_instance"))) {
+
+			requiresEmptyLine = true;
+		}
+		else if (previousJavaTermContent.contains("\n\n\t") ||
+				 javaTermContent.contains("\n\n\t")) {
+
+			requiresEmptyLine = true;
+		}
+
+		if (requiresEmptyLine) {
+			if (!content.contains("\n\n" + javaTermContent)) {
+				return StringUtil.replace(
+					content, "\n" + javaTermContent,
+					"\n\n" + javaTermContent);
+			}
+		}
+		else if (content.contains("\n\n" + javaTermContent)) {
+			return StringUtil.replace(
+				content, "\n\n" + javaTermContent,
+				"\n" + javaTermContent);
+		}
+
+		return content;
+	}
+
+	private static String _fixSessionKey(
+		String fileName, String content, Pattern pattern) {
+
+		Matcher matcher = pattern.matcher(content);
+
+		if (!matcher.find()) {
+			return content;
+		}
+
+		String newContent = content;
+
+		do {
+			String match = matcher.group();
+
+			String s = null;
+
+			if (pattern.equals(_sessionKeyPattern)) {
+				s = StringPool.COMMA;
+			}
+			else if (pattern.equals(_taglibSessionKeyPattern)) {
+				s = "key=";
+			}
+
+			int x = match.indexOf(s);
+
+			if (x == -1) {
+				continue;
+			}
+
+			x = x + s.length();
+
+			String substring = match.substring(x).trim();
+
+			String quote = StringPool.BLANK;
+
+			if (substring.startsWith(StringPool.APOSTROPHE)) {
+				quote = StringPool.APOSTROPHE;
+			}
+			else if (substring.startsWith(StringPool.QUOTE)) {
+				quote = StringPool.QUOTE;
+			}
+			else {
+				continue;
+			}
+
+			int y = match.indexOf(quote, x);
+			int z = match.indexOf(quote, y + 1);
+
+			if ((y == -1) || (z == -1)) {
+				continue;
+			}
+
+			String prefix = match.substring(0, y + 1);
+			String suffix = match.substring(z);
+			String oldKey = match.substring(y + 1, z);
+
+			boolean alphaNumericKey = true;
+
+			for (char c : oldKey.toCharArray()) {
+				if (!Validator.isChar(c) && !Validator.isDigit(c) &&
+					(c != CharPool.DASH) && (c != CharPool.UNDERLINE)) {
+
+					alphaNumericKey = false;
+				}
+			}
+
+			if (!alphaNumericKey) {
+				continue;
+			}
+
+			String newKey = TextFormatter.format(oldKey, TextFormatter.O);
+
+			newKey = TextFormatter.format(newKey, TextFormatter.M);
+
+			if (newKey.equals(oldKey)) {
+				continue;
+			}
+
+			String oldSub = prefix.concat(oldKey).concat(suffix);
+			String newSub = prefix.concat(newKey).concat(suffix);
+
+			newContent = StringUtil.replaceFirst(newContent, oldSub, newSub);
+		}
+		while (matcher.find());
+
+		return newContent;
+	}
+
 	private static void _formatAntXML() throws DocumentException, IOException {
 		String basedir = "./";
 
@@ -1607,6 +1760,8 @@ public class SourceFormatter {
 			}
 
 			newContent = _fixDataAccessConnection(className, newContent);
+			//newContent = _fixSessionKey(
+			//	fileName, newContent, _sessionKeyPattern);
 
 			newContent = StringUtil.replace(
 				newContent,
@@ -1629,11 +1784,11 @@ public class SourceFormatter {
 				newContent,
 				new String[] {
 					";\n/**", "\t/*\n\t *", "catch(", "else{", "if(", "for(",
-					"while(", "List <", "){\n", "]{\n", "\n\n\n"
+					"while(", "List <", "){\n", "]{\n"
 				},
 				new String[] {
 					";\n\n/**", "\t/**\n\t *", "catch (", "else {", "if (",
-					"for (", "while (", "List<", ") {\n", "] {\n", "\n\n"
+					"for (", "while (", "List<", ") {\n", "] {\n"
 				});
 
 			Pattern pattern = Pattern.compile(
@@ -1781,6 +1936,8 @@ public class SourceFormatter {
 
 			for (;;) {
 				newContent = _formatJava(fileName, oldContent);
+
+				newContent = StringUtil.replace(newContent, "\n\n\n", "\n\n");
 
 				if (oldContent.equals(newContent)) {
 					break;
@@ -1959,7 +2116,7 @@ public class SourceFormatter {
 
 				lastCommentOrAnnotationPos = -1;
 			}
-			else if (_hasAnnotationOrJavadoc(line)) {
+			else if (_hasAnnotationCommentOrJavadoc(line)) {
 				if (lastCommentOrAnnotationPos == -1) {
 					lastCommentOrAnnotationPos = index;
 				}
@@ -2632,6 +2789,11 @@ public class SourceFormatter {
 					}
 				}
 			}
+
+			//newContent = _fixSessionKey(
+			//	fileName, newContent, _sessionKeyPattern);
+			//newContent = _fixSessionKey(
+			//	fileName, newContent, _taglibSessionKeyPattern);
 
 			_checkLanguageKeys(fileName, newContent, _languageKeyPattern);
 			_checkLanguageKeys(fileName, newContent, _taglibLanguageKeyPattern);
@@ -4540,9 +4702,10 @@ public class SourceFormatter {
 		return StringPool.BLANK;
 	}
 
-	private static boolean _hasAnnotationOrJavadoc(String s) {
+	private static boolean _hasAnnotationCommentOrJavadoc(String s) {
 		if (s.startsWith(StringPool.TAB + StringPool.AT) ||
-			s.startsWith(StringPool.TAB + "/**")) {
+			s.startsWith(StringPool.TAB + "/**") ||
+			s.startsWith(StringPool.TAB + "//")) {
 
 			return true;
 		}
@@ -4893,20 +5056,15 @@ public class SourceFormatter {
 	private static String _sortJavaTerms(
 		String fileName, String content, Set<JavaTerm> javaTerms) {
 
-		String previousJavaTermContent = StringPool.BLANK;
-		int previousJavaTermLineCount = -1;
-		String previousJavaTermName = StringPool.BLANK;
-		int previousJavaTermType = -1;
+		JavaTerm previousJavaTerm = null;
 
 		Iterator<JavaTerm> itr = javaTerms.iterator();
 
 		while (itr.hasNext()) {
 			JavaTerm javaTerm = itr.next();
 
-			String javaTermContent = javaTerm.getContent();
 			int javaTermLineCount = javaTerm.getLineCount();
 			String javaTermName = javaTerm.getName();
-			int javaTermType = javaTerm.getType();
 
 			String excluded = null;
 
@@ -4924,8 +5082,13 @@ public class SourceFormatter {
 				}
 			}
 
-			if (excluded == null) {
-				if (previousJavaTermLineCount > javaTermLineCount) {
+			if ((excluded == null) && (previousJavaTerm != null)) {
+				String javaTermContent = javaTerm.getContent();
+				String previousJavaTermContent = previousJavaTerm.getContent();
+
+				if (previousJavaTerm.getLineCount() > javaTermLineCount) {
+					String previousJavaTermName = previousJavaTerm.getName();
+
 					String javaTermNameLowerCase = javaTermName.toLowerCase();
 					String previousJavaTermNameLowerCase =
 						previousJavaTermName.toLowerCase();
@@ -4954,26 +5117,11 @@ public class SourceFormatter {
 					}
 				}
 
-				if ((previousJavaTermType == javaTermType) &&
-					((javaTermType == _TYPE_VARIABLE_PRIVATE_STATIC) ||
-					 (javaTermType == _TYPE_VARIABLE_PRIVATE) ||
-					 (javaTermType == _TYPE_VARIABLE_PROTECTED_STATIC) ||
-					 (javaTermType == _TYPE_VARIABLE_PROTECTED)) &&
-					(_hasAnnotationOrJavadoc(previousJavaTermContent) ||
-					 _hasAnnotationOrJavadoc(javaTermContent))) {
-
-					if (!content.contains("\n\n" + javaTermContent)) {
-						return StringUtil.replace(
-							content, "\n" + javaTermContent,
-							"\n\n" + javaTermContent);
-					}
-				}
+				content = _fixJavaTermsDivider(
+					content, previousJavaTerm, javaTerm);
 			}
 
-			previousJavaTermContent = javaTermContent;
-			previousJavaTermLineCount = javaTermLineCount;
-			previousJavaTermName = javaTermName;
-			previousJavaTermType = javaTermType;
+			previousJavaTerm = javaTerm;
 		}
 
 		return content;
@@ -5349,10 +5497,17 @@ public class SourceFormatter {
 	private static Properties _portalLanguageKeysProperties;
 	private static boolean _portalSource;
 	private static SAXReaderImpl _saxReaderUtil = SAXReaderImpl.getInstance();
+	private static Pattern _sessionKeyPattern = Pattern.compile(
+		"SessionErrors.(?:add|contains|get)\\([^;%&|!]+|".concat(
+			"SessionMessages.(?:add|contains|get)\\([^;%&|!]+"),
+		Pattern.MULTILINE);
 	private static SourceFormatterHelper _sourceFormatterHelper;
 	private static Pattern _taglibLanguageKeyPattern = Pattern.compile(
 		"(?:confirmation|label|(?:M|m)essage|message key|names|title)=\"[^A-Z" +
 			"<=%\\[\\s]+\"");
+	private static Pattern _taglibSessionKeyPattern = Pattern.compile(
+		"<liferay-ui:error [^>]+>|<liferay-ui:success [^>]+>",
+		Pattern.MULTILINE);
 	private static boolean _throwException;
 	private static Pattern _xssPattern = Pattern.compile(
 		"\\s+([^\\s]+)\\s*=\\s*(Bean)?ParamUtil\\.getString\\(");
