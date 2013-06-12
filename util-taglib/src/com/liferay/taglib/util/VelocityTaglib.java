@@ -137,6 +137,7 @@ public interface VelocityTaglib {
 	public void layoutIcon(Layout layout) throws Exception;
 
 	public void metaTags() throws Exception;
+
 	/**
 	 * @deprecated {@link #mySites}
 	 */

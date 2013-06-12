@@ -189,7 +189,6 @@ public class DDMXMLImplTest extends PowerMockito {
 	}
 
 	private DDMXMLImpl _ddmXML = new DDMXMLImpl();
-
 	private SAXReaderImpl _saxReader = new SAXReaderImpl();
 
 }

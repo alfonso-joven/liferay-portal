@@ -1854,7 +1854,6 @@ public class JavadocFormatter {
 	}
 
 	private static FileImpl _fileUtil = FileImpl.getInstance();
-
 	private static SAXReaderImpl _saxReaderUtil = SAXReaderImpl.getInstance();
 
 	private boolean _initializeMissingJavadocs;

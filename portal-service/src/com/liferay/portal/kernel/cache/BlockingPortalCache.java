@@ -224,6 +224,7 @@ public class BlockingPortalCache implements PortalCache {
 
 	private static ThreadLocal<CompeteLatch> _competeLatch =
 		new ThreadLocal<CompeteLatch>();
+
 	private final ConcurrentMap<Serializable, CompeteLatch> _competeLatchMap =
 		new ConcurrentHashMap<Serializable, CompeteLatch>();
 	private final PortalCache _portalCache;

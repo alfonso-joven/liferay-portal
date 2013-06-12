@@ -94,10 +94,8 @@ public class CMISRepositoryUtil {
 	private static MethodKey _checkRepository = new MethodKey(
 		_CLASS_NAME, "checkRepository", long.class, Map.class,
 		UnicodeProperties.class, String.class);
-
 	private static MethodKey _createSession = new MethodKey(
 		_CLASS_NAME, "createSession", Map.class);
-
 	private static MethodKey _getTypeSettingsValue = new MethodKey(
 		_CLASS_NAME, "getTypeSettingsValue", UnicodeProperties.class,
 		String.class);

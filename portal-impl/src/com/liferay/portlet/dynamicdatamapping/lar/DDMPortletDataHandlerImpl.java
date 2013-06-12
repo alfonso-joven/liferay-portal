@@ -402,7 +402,6 @@ public class DDMPortletDataHandlerImpl extends BasePortletDataHandler {
 
 	private static PortletDataHandlerBoolean _structures =
 		new PortletDataHandlerBoolean(_NAMESPACE, "structures", true, true);
-
 	private static PortletDataHandlerBoolean _templates =
 		new PortletDataHandlerBoolean(_NAMESPACE, "templates");
 
