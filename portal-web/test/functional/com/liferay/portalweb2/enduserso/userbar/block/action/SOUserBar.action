@@ -17,7 +17,7 @@
 			<execute function="Click#textClickAtAndWait" value1="Dashboard" />
 		</case>
 		<case locator-key1="USER_MENU_MY_ACCOUNT">
-			<execute function="Click#textClickAtAndWait" value1="My Account" />
+			<execute function="Click#textClickAt" value1="My Account" />
 		</case>
 		<case locator-key1="USER_MENU_MY_PROFILE">
 			<execute function="Click#textClickAtAndWait" value1="My Profile" />

@@ -1,0 +1,43 @@
+<definition>
+	<command name="assertTextEquals">
+		<case locator-key1="PROFILE_INFO_ADDRESS_TITLE">
+			<execute function="AssertTextEquals#assertText" value1="Addresses:" />
+		</case>
+
+		<case locator-key1="PROFILE_INFO_EMAIL_ADDRESS_TITLE">
+			<execute function="AssertTextEquals#assertText" value1="Additional Email Addresses:" />
+		</case>
+
+		<case locator-key1="PROFILE_INFO_INSTANT_MESSENGER_TITLE">
+			<execute function="AssertTextEquals#assertText" value1="Instant Messenger:" />
+		</case>
+
+		<case locator-key1="PROFILE_INFO_INTRODUCTION_TITLE">
+			<execute function="AssertTextEquals#assertText" value1="Introduction:" />
+		</case>
+
+		<case locator-key1="PROFILE_INFO_PHONE_NUMBERS_TITLE">
+			<execute function="AssertTextEquals#assertText" value1="Phones:" />
+		</case>
+
+		<case locator-key1="PROFILE_INFO_PROJECTS_TITLE">
+			<execute function="AssertTextEquals#assertText" value1="Expertise Title:" />
+		</case>
+
+		<case locator-key1="PROFILE_INFO_SMS_TITLE">
+			<execute function="AssertTextEquals#assertText" value1="SMS:" />
+		</case>
+
+		<case locator-key1="PROFILE_INFO_SOCIAL_NETWORK_TITLE">
+			<execute function="AssertTextEquals#assertText" value1="Social Network:" />
+		</case>
+
+		<case locator-key1="PROFILE_INFO_TAGS_TITLE">
+			<execute function="AssertTextEquals#assertText" value1="Tags" />
+		</case>
+
+		<case locator-key1="PROFILE_INFO_WEBSITES_TITLE">
+			<execute function="AssertTextEquals#assertText" value1="Websites:" />
+		</case>
+	</command>
+</definition>
