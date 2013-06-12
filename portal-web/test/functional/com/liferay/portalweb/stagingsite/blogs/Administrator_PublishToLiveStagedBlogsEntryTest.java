@@ -48,7 +48,7 @@ public class Administrator_PublishToLiveStagedBlogsEntryTest
 				assertEquals(RuntimeVariables.replace("Blogs Entry Title"),
 					selenium.getText("//div[@class='entry-title']/h2/a"));
 				assertEquals(RuntimeVariables.replace("Blogs Entry Content"),
-					selenium.getText("//div[@class='entry-body']/p"));
+					selenium.getText("//div[@class='entry-body']"));
 				Thread.sleep(5000);
 				selenium.clickAt("//span[contains(.,'Staging')]/span/span/ul",
 					RuntimeVariables.replace("Staging Drop Down"));
@@ -98,8 +98,8 @@ public class Administrator_PublishToLiveStagedBlogsEntryTest
 				selenium.waitForVisible("//input[@value='Publish']");
 				selenium.clickAt("//input[@value='Publish']",
 					RuntimeVariables.replace("Publish"));
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to publish these pages[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to publish these pages?");
 				selenium.waitForVisible("//div[@class='portlet-msg-success']");
 				assertEquals(RuntimeVariables.replace(
 						"Your request completed successfully."),

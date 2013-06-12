@@ -158,7 +158,7 @@ public class AddUserPortalContentReviewerTest extends BaseTestCase {
 					RuntimeVariables.replace("password"));
 
 				boolean rememberMeCheckboxChecked1 = selenium.isChecked(
-						"_58_rememberMeCheckbox");
+						"//input[@id='_58_rememberMeCheckbox']");
 
 				if (rememberMeCheckboxChecked1) {
 					label = 2;
@@ -175,7 +175,7 @@ public class AddUserPortalContentReviewerTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 
 				boolean iAgreeVisible1 = selenium.isElementPresent(
-						"//span/input");
+						"//input[@value='I Agree']");
 
 				if (!iAgreeVisible1) {
 					label = 3;
@@ -196,7 +196,7 @@ public class AddUserPortalContentReviewerTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 
 				boolean passwordReminderVisible1 = selenium.isElementPresent(
-						"reminderQueryAnswer");
+						"//input[@id='reminderQueryAnswer']");
 
 				if (!passwordReminderVisible1) {
 					label = 4;
@@ -207,7 +207,7 @@ public class AddUserPortalContentReviewerTest extends BaseTestCase {
 				assertEquals(RuntimeVariables.replace(
 						"Please choose a reminder query."),
 					selenium.getText("//form/div[1]"));
-				selenium.type("reminderQueryAnswer",
+				selenium.type("//input[@id='reminderQueryAnswer']",
 					RuntimeVariables.replace("test"));
 				selenium.clickAt("//input[@value='Save']",
 					RuntimeVariables.replace("Save"));
@@ -228,7 +228,7 @@ public class AddUserPortalContentReviewerTest extends BaseTestCase {
 					RuntimeVariables.replace("test"));
 
 				boolean rememberMeCheckboxChecked2 = selenium.isChecked(
-						"_58_rememberMeCheckbox");
+						"//input[@id='_58_rememberMeCheckbox']");
 
 				if (rememberMeCheckboxChecked2) {
 					label = 5;
