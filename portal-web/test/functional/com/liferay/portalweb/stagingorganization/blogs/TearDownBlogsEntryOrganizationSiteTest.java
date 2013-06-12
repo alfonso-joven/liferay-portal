@@ -46,8 +46,8 @@ public class TearDownBlogsEntryOrganizationSiteTest extends BaseTestCase {
 
 				selenium.click(RuntimeVariables.replace("link=Delete"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete this?");
 
 				boolean blogsEntry2Present = selenium.isElementPresent(
 						"link=Delete");
@@ -60,8 +60,8 @@ public class TearDownBlogsEntryOrganizationSiteTest extends BaseTestCase {
 
 				selenium.click(RuntimeVariables.replace("link=Delete"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete this?");
 
 				boolean blogsEntry3Present = selenium.isElementPresent(
 						"link=Delete");
@@ -74,8 +74,8 @@ public class TearDownBlogsEntryOrganizationSiteTest extends BaseTestCase {
 
 				selenium.click(RuntimeVariables.replace("link=Delete"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete this?");
 
 				boolean blogsEntry4Present = selenium.isElementPresent(
 						"link=Delete");
@@ -88,8 +88,8 @@ public class TearDownBlogsEntryOrganizationSiteTest extends BaseTestCase {
 
 				selenium.click(RuntimeVariables.replace("link=Delete"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete this?");
 
 				boolean blogsEntry5Present = selenium.isElementPresent(
 						"link=Delete");
@@ -102,8 +102,8 @@ public class TearDownBlogsEntryOrganizationSiteTest extends BaseTestCase {
 
 				selenium.click(RuntimeVariables.replace("link=Delete"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete this?");
 
 			case 2:
 			case 3:

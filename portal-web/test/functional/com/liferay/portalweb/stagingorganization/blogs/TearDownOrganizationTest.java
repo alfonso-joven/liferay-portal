@@ -111,8 +111,8 @@ public class TearDownOrganizationTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//input[@value='Delete']"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to permanently delete the selected users[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to permanently delete the selected users?");
 
 			case 3:
 				selenium.clickAt("link=Users and Organizations",
@@ -129,8 +129,8 @@ public class TearDownOrganizationTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//input[@value='Delete']"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete this?");
 				selenium.type("//input[@id='_125_keywords']",
 					RuntimeVariables.replace("Selenium"));
 				selenium.click(RuntimeVariables.replace(
@@ -198,8 +198,8 @@ public class TearDownOrganizationTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//input[@value='Delete']"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to permanently delete the selected users[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to permanently delete the selected users?");
 
 			case 5:
 				selenium.clickAt("link=Users and Organizations",
@@ -215,8 +215,8 @@ public class TearDownOrganizationTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//input[@value='Delete']"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete this?");
 				selenium.type("//input[@id='_125_keywords']",
 					RuntimeVariables.replace("Selenium"));
 				selenium.click(RuntimeVariables.replace(
@@ -284,8 +284,8 @@ public class TearDownOrganizationTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//input[@value='Delete']"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to permanently delete the selected users[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to permanently delete the selected users?");
 
 			case 7:
 				selenium.clickAt("link=Users and Organizations",
@@ -301,8 +301,8 @@ public class TearDownOrganizationTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//input[@value='Delete']"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete this?");
 				selenium.type("//input[@id='_125_keywords']",
 					RuntimeVariables.replace("Selenium"));
 				selenium.click(RuntimeVariables.replace(
@@ -370,8 +370,8 @@ public class TearDownOrganizationTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//input[@value='Delete']"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to permanently delete the selected users[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to permanently delete the selected users?");
 
 			case 9:
 				selenium.clickAt("link=Users and Organizations",
@@ -387,8 +387,8 @@ public class TearDownOrganizationTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//input[@value='Delete']"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete this?");
 				selenium.type("//input[@id='_125_keywords']",
 					RuntimeVariables.replace("Selenium"));
 				selenium.click(RuntimeVariables.replace(
@@ -456,8 +456,8 @@ public class TearDownOrganizationTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//input[@value='Delete']"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to permanently delete the selected users[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to permanently delete the selected users?");
 
 			case 11:
 				selenium.clickAt("link=Users and Organizations",
@@ -473,8 +473,8 @@ public class TearDownOrganizationTest extends BaseTestCase {
 				selenium.click(RuntimeVariables.replace(
 						"//input[@value='Delete']"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to delete this[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to delete this?");
 
 			case 12:
 			case 13:

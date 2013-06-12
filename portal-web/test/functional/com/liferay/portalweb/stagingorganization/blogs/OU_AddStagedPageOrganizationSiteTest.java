@@ -51,6 +51,7 @@ public class OU_AddStagedPageOrganizationSiteTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Page"),
 			selenium.getText("//a[@id='addPage']"));
 		selenium.clickAt("//a[@id='addPage']", RuntimeVariables.replace("Page"));
+		Thread.sleep(1000);
 		selenium.waitForVisible("//input[@type='text']");
 		selenium.type("//input[@type='text']",
 			RuntimeVariables.replace("Blogs Test Page"));

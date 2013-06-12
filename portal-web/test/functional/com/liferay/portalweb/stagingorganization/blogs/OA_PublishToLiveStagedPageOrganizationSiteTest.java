@@ -50,7 +50,7 @@ public class OA_PublishToLiveStagedPageOrganizationSiteTest extends BaseTestCase
 					RuntimeVariables.replace("Blogs Test Page"));
 				selenium.waitForPageToLoad("30000");
 				assertTrue(selenium.isVisible("//section"));
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				selenium.clickAt("//strong/a",
 					RuntimeVariables.replace("Staging"));
 				selenium.waitForVisible(
@@ -60,7 +60,7 @@ public class OA_PublishToLiveStagedPageOrganizationSiteTest extends BaseTestCase
 						"//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Publish to Live Now')]"));
 				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Publish to Live Now')]",
 					RuntimeVariables.replace("Publish to Live Now"));
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				selenium.waitForVisible("//div[2]/div[1]/a");
 
 				boolean blogsVisible = selenium.isVisible(

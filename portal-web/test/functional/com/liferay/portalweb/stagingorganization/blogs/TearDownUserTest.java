@@ -156,8 +156,8 @@ public class TearDownUserTest extends BaseTestCase {
 				selenium.clickAt("//input[@value='Delete']",
 					RuntimeVariables.replace("Delete"));
 				selenium.waitForPageToLoad("30000");
-				assertTrue(selenium.getConfirmation()
-								   .matches("^Are you sure you want to permanently delete the selected users[\\s\\S]$"));
+				selenium.waitForConfirmation(
+					"Are you sure you want to permanently delete the selected users?");
 				assertEquals(RuntimeVariables.replace(
 						"Your request completed successfully."),
 					selenium.getText("//div[@class='portlet-msg-success']"));

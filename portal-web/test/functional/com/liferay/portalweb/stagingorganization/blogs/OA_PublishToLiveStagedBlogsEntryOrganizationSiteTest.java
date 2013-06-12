@@ -48,11 +48,11 @@ public class OA_PublishToLiveStagedBlogsEntryOrganizationSiteTest
 					"Blogs Entry Title");
 				assertEquals(RuntimeVariables.replace("Blogs Entry Title"),
 					selenium.getText("//div[@class='entry-title']/h2/a"));
-				selenium.waitForText("//div[@class='entry-body']/p",
+				selenium.waitForText("//div[@class='entry-body']",
 					"Blogs Entry Content");
 				assertEquals(RuntimeVariables.replace("Blogs Entry Content"),
-					selenium.getText("//div[@class='entry-body']/p"));
-				Thread.sleep(5000);
+					selenium.getText("//div[@class='entry-body']"));
+				Thread.sleep(1000);
 				selenium.clickAt("//strong/a",
 					RuntimeVariables.replace("Staging"));
 				selenium.waitForVisible(
@@ -62,7 +62,7 @@ public class OA_PublishToLiveStagedBlogsEntryOrganizationSiteTest
 						"//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a"));
 				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[1]/a",
 					RuntimeVariables.replace("Publish to Live Now"));
-				Thread.sleep(5000);
+				Thread.sleep(1000);
 				selenium.waitForVisible("//div[2]/div[1]/a");
 
 				boolean blogsVisible = selenium.isVisible(

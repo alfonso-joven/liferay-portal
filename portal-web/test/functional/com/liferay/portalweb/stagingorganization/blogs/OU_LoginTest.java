@@ -36,7 +36,7 @@ public class OU_LoginTest extends BaseTestCase {
 					RuntimeVariables.replace("test"));
 
 				boolean rememberMeCheckboxChecked1 = selenium.isChecked(
-						"_58_rememberMeCheckbox");
+						"//input[@id='_58_rememberMeCheckbox']");
 
 				if (rememberMeCheckboxChecked1) {
 					label = 2;
