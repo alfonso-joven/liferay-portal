@@ -7,6 +7,11 @@ AUI.add(
 		var Portlet = Liferay.Portlet;
 		var Util = Liferay.Util;
 
+		var ALIGN_POINTS = {
+			ltr: ['tl', 'bl'],
+			rtl: ['tr', 'br']
+		};
+		
 		var BODY = A.getBody();
 
 		var BODY_CONTENT = 'bodyContent';
@@ -16,6 +21,10 @@ AUI.add(
 		var CONTENT_BOX = 'contentBox';
 
 		var EVENT_CLICK = 'click';
+
+		var STR_LTR = 'ltr';
+
+		var STR_RTL = 'rtl';
 
 		var Dockbar = {
 			init: function() {
@@ -137,6 +146,8 @@ AUI.add(
 				var menu;
 				var name = options.name;
 
+				var langDir = Liferay.Language.direction[themeDisplay.getLanguageId()] || STR_LTR;
+
 				if (name && A.one(options.trigger)) {
 
 					delete options.name;
@@ -146,6 +157,9 @@ AUI.add(
 					A.mix(
 						options,
 						{
+							align: {
+								points: ALIGN_POINTS[langDir]
+							},
 							hideDelay: 500,
 							hideOn: 'mouseleave',
 							showOn: 'mouseover'
@@ -850,6 +864,6 @@ AUI.add(
 	},
 	'',
 	{
-		requires: ['aui-node', 'event-touch']
+		requires: ['aui-node', 'event-touch', 'portal-available-languages']
 	}
 );
