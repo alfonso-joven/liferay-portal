@@ -1,0 +1,7 @@
+<definition>
+	<command name="click">
+		<case locator-key1="MOVE">
+			<execute function="Click#valueClickAtAndWait" value1="Move" />
+		</case>
+	</command>as
+</definition>

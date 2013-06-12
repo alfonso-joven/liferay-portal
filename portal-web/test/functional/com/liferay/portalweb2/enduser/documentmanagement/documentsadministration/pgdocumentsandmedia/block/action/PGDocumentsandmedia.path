@@ -330,12 +330,12 @@
 </tr>
 <tr>
 	<td>ENTRIES_FOLDER</td>
-	<td>//div[@id='_20_documentContainer']/div[2]/a[@data-folder='true']/span</td>
+	<td>//div[@id='_20_documentContainer']/div[2]/a/span/img</td>
 	<td>Folder Entry</td>
 </tr>
 <tr>
 	<td>ENTRIES_FOLDER_SELECT</td>
-	<td>//div[@id='_20_entriesContainer']/div/div/a[@data-folder='true']/../span/span/span/input[2]</td>
+	<td>//input[@id='_20_rowIdsFolderCheckbox']</td>
 	<td>Select Folder Entry</td>
 </tr>
 <tr>

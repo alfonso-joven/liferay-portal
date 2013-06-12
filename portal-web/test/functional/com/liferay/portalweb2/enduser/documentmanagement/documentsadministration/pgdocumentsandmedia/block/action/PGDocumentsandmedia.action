@@ -1,12 +1,11 @@
 <definition>
 	<command name="click">
 		<case locator-key1="ENTRIES_FOLDER_ACTIONS">
-			<execute function="Click#pauseTextClickAtAndWaitpause" />
+			<execute function="Click#textClickAtAndWait" />
 		</case>
 		<case locator-key1="FOLDER_MENULIST_EDIT">
 			<execute function="Click#textClickAt" value1="Edit" />
 		</case>
-	
 		<case locator-key1="ACTIONS_MENULIST_DELETE">
 			<execute function="Click#textClickAt" value1="Delete" />
 		</case>

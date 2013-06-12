@@ -51,12 +51,12 @@
 </tr>
 <tr>
 	<td>TOOLBAR_ADD</td>
-	<td>//div[@class='toolbar']/span[3]/span/ul/li/strong/a/span</td>
+	<td>//div[@class='toolbar']/span[3]/span/span/ul/li/strong/a/span</td>
 	<td>Add</td>
 </tr>
 <tr>
 	<td>TOOLBAR_SORT_BY</td>
-	<td>//div[@class='toolbar']/span[4]/span/ul/li/strong/a/span</td>
+	<td>//div[@class='toolbar']/span[4]/span/span/ul/li/strong/a/span</td>
 	<td>Sort By</td>
 </tr>
 <tr>
@@ -212,12 +212,12 @@
 <tr>
 	<td>BREADCRUMB_HOME</td>
 	<td>//div[@id='_20_breadcrumbContainer']/ul/li[1]/span/a</td>
-	<td></td>
+	<td>Home</td>
 </tr>
 <tr>
 	<td>BREADCRUMB_FOLDER</td>
 	<td>//div[@id='_20_breadcrumbContainer']/ul/li[2]/span/a</td>
-	<td></td>
+	<td>Folder Name</td>
 </tr>
 <tr>
 	<td></td>
@@ -229,6 +229,17 @@
 	<td>LIFERAY_SYNC_LINK</td>
 	<td>link=Access these files offline using Liferay Sync.</td>
 	<td></td>
+</tr>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+<!--FOLDER_ENTRIES-->
+<tr>
+	<td>FOLDER_ENTRIES_DOCUMENT_SELECT</td>
+	<td>//input[@id='_20_rowIdsFileEntryCheckbox']</td>
+	<td>Select Document</td>
 </tr>
 <tr>
 	<td></td>
