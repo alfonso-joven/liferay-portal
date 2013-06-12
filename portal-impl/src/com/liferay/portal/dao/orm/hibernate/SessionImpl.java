@@ -162,8 +162,8 @@ public class SessionImpl implements Session {
 	/**
 	 * @deprecated
 	 */
-	@Override
 	@NotPrivileged
+	@Override
 	public Object get(Class<?> clazz, Serializable id, LockMode lockMode)
 		throws ORMException {
 
