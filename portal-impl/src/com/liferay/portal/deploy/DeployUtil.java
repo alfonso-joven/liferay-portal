@@ -73,6 +73,12 @@ public class DeployUtil {
 			destDir = getAutoDeployServerDestDir();
 		}
 
+		File destDirFile = new File(destDir);
+
+		if (!destDirFile.exists()) {
+			destDirFile.mkdirs();
+		}
+
 		return destDir;
 	}
 
