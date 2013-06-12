@@ -26,6 +26,7 @@ import com.liferay.portal.kernel.util.PropsKeys;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
+import com.liferay.portal.kernel.util.TextFormatter;
 import com.liferay.portal.kernel.util.Tuple;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.kernel.xml.Document;
@@ -125,12 +126,6 @@ public class SourceFormatter {
 		SourceFormatter._TYPE_VARIABLE_PROTECTED_STATIC,
 		SourceFormatter._TYPE_VARIABLE_PUBLIC,
 		SourceFormatter._TYPE_VARIABLE_PUBLIC_STATIC
-	};
-
-	public static final int[] _TYPE_VARIABLE_NOT_STATIC = {
-		SourceFormatter._TYPE_VARIABLE_PRIVATE,
-		SourceFormatter._TYPE_VARIABLE_PROTECTED,
-		SourceFormatter._TYPE_VARIABLE_PUBLIC
 	};
 
 	public static final int _TYPE_VARIABLE_PRIVATE = 22;
