@@ -2347,14 +2347,7 @@ AUI.add(
 					_processVocabularyDeletion: function() {
 						var instance = this;
 
-						var exception;
-
-						var result = arguments[0];
-
-						if (arguments.length > 1) {
-							exception = arguments[0];
-							result = arguments[1];
-						}
+						var exception = result.exception;
 
 						if (!exception) {
 							instance._closeEditSection();
