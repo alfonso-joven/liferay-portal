@@ -7,7 +7,7 @@
 
 		<execute action="Home#type" locator-key1="NEW_PAGE_FIELD" value1="${pageName}" />
 		<execute action="Home#click" locator-key1="NEW_PAGE_SAVE" />
-		<execute action="Home#click" locator1="//nav/ul/li/a/span[contains(.,'${pageName}')]" />
+		<execute action="Home#click" locator1="//nav/ul/li/a[contains(.,'${pageName}')]" />
 	</command>
 
 	<command name="gotoCP">
@@ -23,13 +23,13 @@
 	<command name="gotoPG">
 		<execute macro="Page#openURL" />
 
-		<execute action="Home#click" locator1="//nav/ul/li/a/span[contains(.,'${pageName}')]" />
+		<execute action="Home#click" locator1="//nav/ul/li/a[contains(.,'${pageName}')]" />
 	</command>
 
 	<command name="isPresent">
 		<execute macro="Page#openURL" />
 
-		<execute action="Home#isElementPresent" locator1="//nav/ul/li/a/span[contains(.,'${pageName}')]" />
+		<execute action="Home#isElementPresent" locator1="//nav/ul/li/a[contains(.,'${pageName}')]" />
 	</command>
 
 	<command name="openURL">
