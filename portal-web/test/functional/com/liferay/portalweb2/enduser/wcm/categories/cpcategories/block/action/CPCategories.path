@@ -24,27 +24,27 @@
 	<td></td>
 </tr>
 <tr>
-	<td>ADD_VOCABULARY</td>
+	<td>ADD_VOCABULARY_BUTTON</td>
 	<td>//input[@value='Add Vocabulary']</td>
 	<td></td>
 </tr>
 <tr>
-	<td>ADD_CATEGORY</td>
+	<td>ADD_CATEGORY_BUTTON</td>
 	<td>//input[@value='Add Category']</td>
 	<td></td>
 </tr>
 <tr>
-	<td>ACTIONS</td>
+	<td>ACTIONS_BUTTON</td>
 	<td>//span[@title='Actions']/ul/li/strong/a</td>
 	<td></td>
 </tr>
 <tr>
-	<td>CHECK_ALL_VOCABULARIES</td>
+	<td>ALL_VOCABULARIES_CHECKBOX</td>
 	<td>//input[@id='_147_checkAllVocabulariesCheckbox']</td>
 	<td></td>
 </tr>
 <tr>
-	<td>CHECK_ALL_CATEGORIES</td>
+	<td>ALL_CATEGORIES_CHECKBOX</td>
 	<td>//input[@id='_147_checkAllCategoriesCheckbox']</td>
 	<td></td>
 </tr>
@@ -70,7 +70,7 @@
 	<td></td>
 </tr>
 <tr>
-	<td>ADD_CATEGORY_SAVE</td>
+	<td>ADD_CATEGORY_SAVE_BUTTON</td>
 	<td>//input[@value='Save']</td>
 	<td></td>
 </tr>
@@ -81,17 +81,12 @@
 </tr>
 <!--EDIT_CATEGORY-->
 <tr>
-	<td>EDIT_CATEGORY</td>
-	<td>//input[@id='editCategoryButton']</td>
-	<td></td>
-</tr>
-<tr>
-	<td>EDIT_CATEGORY_NAME</td>
+	<td>EDIT_CATEGORY_NAME_FIELD</td>
 	<td>//input[@id='_147_title_en_US']</td>
 	<td></td>
 </tr>
 <tr>
-	<td>EDIT_CATEGORY_SAVE</td>
+	<td>EDIT_CATEGORY_SAVE_BUTTON</td>
 	<td>//input[@value='Save']</td>
 	<td></td>
 </tr>
@@ -107,12 +102,12 @@
 	<td></td>
 </tr>
 <tr>
-	<td>CATEGORY_DETAILS_EDIT</td>
-	<td>//input[@value='Edit']</td>
+	<td>CATEGORY_DETAILS_EDIT_BUTTON</td>
+	<td>//input[@id='editCategoryButton']</td>
 	<td></td>
 </tr>
 <tr>
-	<td>CATEGORY_DETAILS_ADD_SUBCATEGORY</td>
+	<td>CATEGORY_DETAILS_ADD_SUBCATEGORY_BUTTON</td>
 	<td>//input[@value='Add Subcategory']</td>
 	<td></td>
 </tr>
@@ -123,12 +118,12 @@
 </tr>
 <!--ADD_SUBCATEGORY-->
 <tr>
-	<td>ADD_SUBCATEGORY_NAME</td>
+	<td>ADD_SUBCATEGORY_NAME_FIELD</td>
 	<td>//input[@id='_147_title_en_US']</td>
 	<td></td>
 </tr>
 <tr>
-	<td>ADD_SUBCATEGORY_SAVE</td>
+	<td>ADD_SUBCATEGORY_SAVE_BUTTON</td>
 	<td>//input[@value='Save']</td>
 	<td></td>
 </tr>
@@ -139,17 +134,12 @@
 </tr>
 <!--EDIT_SUBCATEGORY-->
 <tr>
-	<td>EDIT_SUBCATEGORY</td>
-	<td>//input[@id='editCategoryButton']</td>
-	<td></td>
-</tr>
-<tr>
-	<td>EDIT_SUBCATEGORY_NAME</td>
+	<td>EDIT_SUBCATEGORY_NAME_FIELD</td>
 	<td>//input[@id='_147_title_en_US']</td>
 	<td></td>
 </tr>
 <tr>
-	<td>EDIT_SUBCATEGORY_SAVE</td>
+	<td>EDIT_SUBCATEGORY_SAVE_BUTTON</td>
 	<td>//input[@value='Save']</td>
 	<td></td>
 </tr>
@@ -165,17 +155,17 @@
 	<td></td>
 </tr>
 <tr>
-	<td>SUBCATEGORY_DETAILS_EDIT</td>
-	<td>//input[@value='Edit']</td>
+	<td>SUBCATEGORY_DETAILS_EDIT_BUTTON</td>
+	<td>//input[@id='editCategoryButton']</td>
 	<td></td>
 </tr>
 <tr>
-	<td>SUBCATEGORY_DETAILS_DELETE</td>
+	<td>SUBCATEGORY_DETAILS_DELETE_BUTTON</td>
 	<td>//input[@value='Delete']</td>
 	<td></td>
 </tr>
 <tr>
-	<td>SUBCATEGORY_DETAILS_ADD_SUBCATEGORY</td>
+	<td>SUBCATEGORY_DETAILS_ADD_SUBCATEGORY_BUTTON</td>
 	<td>//input[@value='Add Subcategory']</td>
 	<td></td>
 </tr>
@@ -191,7 +181,7 @@
 	<td></td>
 </tr>
 <tr>
-	<td>ADD_VOCABULARY_SAVE</td>
+	<td>ADD_VOCABULARY_SAVE_BUTTON</td>
 	<td>//input[@value='Save']</td>
 	<td></td>
 </tr>
@@ -201,8 +191,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>ADD_VOCABULARY_ASSOCIATED_ASSET_TYPES_WIKI_PAGE</td>
-	<td>//select[@id='_147_classNameId2']</td>
+	<td>ADD_VOCABULARY_CHOOSE_ASSET_TYPE_SELECT</td>
+	<td>//select[contains(@id,'_147_classNameId')]</td>
 	<td></td>
 </tr>
 <tr>
@@ -212,17 +202,17 @@
 </tr>
 <!--EDIT_VOCABULARY-->
 <tr>
-	<td>EDIT_VOCABULARY</td>
+	<td>EDIT_VOCABULARY_ICON</td>
 	<td>//a[@class='vocabulary-item-actions-trigger']</td>
 	<td></td>
 </tr>
 <tr>
-	<td>EDIT_VOCABULARY_NAME</td>
+	<td>EDIT_VOCABULARY_NAME_FIELD</td>
 	<td>//input[@id='_147_title_en_US']</td>
 	<td></td>
 </tr>
 <tr>
-	<td>EDIT_VOCABULARY_SAVE</td>
+	<td>EDIT_VOCABULARY_SAVE_BUTTON</td>
 	<td>//input[@value='Save']</td>
 	<td></td>
 </tr>
@@ -231,19 +221,19 @@
 	<td></td>
 	<td></td>
 </tr>
-<!--ENTRY_CATEGORY-->
+<!--VOCABULARY_ENTRY-->
 <tr>
-	<td>ENTRY_CATEGORY_1</td>
-	<td>//li/div/span/a</td>
+	<td>VOCABULARY_ENTRY_1</td>
+	<td>//li[1]/div/span/a</td>
 	<td></td>
 </tr>
 <tr>
-	<td>ENTRY_CATEGORY_2</td>
+	<td>VOCABULARY_ENTRY_2</td>
 	<td>//li[2]/div/span/a</td>
 	<td></td>
 </tr>
 <tr>
-	<td>ENTRY_CATEGORY_3</td>
+	<td>VOCABULARY_ENTRY_3</td>
 	<td>//li[3]/div/span/a</td>
 	<td></td>
 </tr>
@@ -252,9 +242,9 @@
 	<td></td>
 	<td></td>
 </tr>
-<!--ACTION-->
+<!--ACTIONS_MENULIST-->
 <tr>
-	<td>ACTION_DELETE</td>
+	<td>ACTIONS_MENULIST_DELETE</td>
 	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]</td>
 	<td></td>
 </tr>
