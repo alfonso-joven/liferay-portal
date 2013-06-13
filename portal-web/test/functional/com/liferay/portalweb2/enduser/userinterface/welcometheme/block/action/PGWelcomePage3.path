@@ -24,6 +24,21 @@
 	<td></td>
 </tr>
 <tr>
+	<td>WHAT_WE_DO</td>
+	<td>//span[contains(.,'What We Do')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>WHO_IS_USING_LIFERAY</td>
+	<td>//span[contains(.,'Who Is Using Liferay')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>LIFERAY_BENEFITS</td>
+	<td>//span[contains(.,'Liferay Benefits')]</td>
+	<td></td>
+</tr>
+<tr>
 	<td>HEADER</td>
 	<td>//header/hgroup/h1</td>
 	<td></td>
@@ -42,27 +57,27 @@
 <tr>
 	<td>MENU_PAGE_1</td>
 	<td>//ul[@id='contentNav']/li[contains(.,'Open Source: A Better Way')]/a</td>
-	<td>Open Source: A Better Way</td>
+	<td></td>
 </tr>
 <tr>
 	<td>MENU_PAGE_2</td>
 	<td>//ul[@id='contentNav']/li[contains(.,'Ready to Go')]/a</td>
-	<td>Ready to Go</td>
+	<td></td>
 </tr>
 <tr>
 	<td>MENU_PAGE_3</td>
 	<td>//ul[@id='contentNav']/li[contains(.,'Ready to Grow')]/a</td>
-	<td>Ready to Grow</td>
+	<td></td>
 </tr>
 <tr>
 	<td>MENU_PAGE_4</td>
 	<td>//ul[@id='contentNav']/li[contains(.,'Approved by IT')]/a</td>
-	<td>Approved by IT</td>
+	<td></td>
 </tr>
 <tr>
 	<td>MENU_PAGE_5</td>
 	<td>//ul[@id='contentNav']/li[contains(.,'Open for Business')]/a</td>
-	<td>Open for Business</td>
+	<td></td>
 </tr>
 </tbody>
 </table>
