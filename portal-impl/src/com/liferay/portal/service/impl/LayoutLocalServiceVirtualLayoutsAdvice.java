@@ -238,15 +238,6 @@ public class LayoutLocalServiceVirtualLayoutsAdvice
 			MergeLayoutPrototypesThreadLocal.setInProgress(true);
 			WorkflowThreadLocal.setEnabled(false);
 
-			int count = LayoutLocalServiceUtil.getLayoutsCount(
-				group, privateLayout);
-
-			if (count == 0) {
-				SitesUtil.mergeLayoutSetPrototypeLayouts(group, layoutSet);
-
-				return;
-			}
-
 			SitesUtil.mergeLayoutSetPrototypeLayouts(group, layoutSet);
 		}
 		catch (Exception e) {
