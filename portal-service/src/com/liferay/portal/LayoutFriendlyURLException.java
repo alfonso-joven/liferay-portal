@@ -15,7 +15,6 @@
 package com.liferay.portal;
 
 import com.liferay.portal.kernel.exception.PortalException;
-import com.liferay.portal.model.Layout;
 
 /**
  * @author Brian Wing Shun Chan
@@ -43,20 +42,11 @@ public class LayoutFriendlyURLException extends PortalException {
 	public static final int TOO_SHORT = 3;
 
 	public LayoutFriendlyURLException(int type) {
-		this(null, type);
-	}
-
-	public LayoutFriendlyURLException(Layout layout, int type) {
-		_layout = layout;
 		_type = type;
 	}
 
 	public String getKeywordConflict() {
 		return _keywordConflict;
-	}
-
-	public Layout getLayout() {
-		return _layout;
 	}
 
 	public int getType() {
@@ -68,7 +58,6 @@ public class LayoutFriendlyURLException extends PortalException {
 	}
 
 	private String _keywordConflict;
-	private Layout _layout;
 	private int _type;
 
 }
