@@ -1126,7 +1126,8 @@ public class ResourcePermissionLocalServiceImpl
 
 	protected void doUpdateResourcePermission(
 			long companyId, String name, int scope, String primKey,
-			long ownerId, long roleId, String[] actionIds, int operator)
+			long ownerId, long roleId, String[] actionIds, int operator,
+			boolean fetch)
 		throws PortalException, SystemException {
 
 		ResourcePermission resourcePermission = null;
@@ -1137,7 +1138,7 @@ public class ResourcePermissionLocalServiceImpl
 		if (resourcePermissionsMap != null) {
 			resourcePermission = resourcePermissionsMap.get(roleId);
 		}
-		else {
+		else if (fetch) {
 			List<ResourcePermission> resourcePermissions =
 				resourcePermissionPersistence.findByC_N_S_P_R(
 					companyId, name, scope, primKey, roleId);
@@ -1233,7 +1234,7 @@ public class ResourcePermissionLocalServiceImpl
 
 				doUpdateResourcePermission(
 					companyId, name, scope, primKey, ownerId, roleId, actionIds,
-					operator);
+					ResourcePermissionConstants.OPERATOR_SET, true);
 			}
 
 			if (roleIdsToActionIds.isEmpty()) {
@@ -1248,7 +1249,7 @@ public class ResourcePermissionLocalServiceImpl
 
 				doUpdateResourcePermission(
 					companyId, name, scope, primKey, ownerId, roleId, actionIds,
-					ResourcePermissionConstants.OPERATOR_ADD);
+					ResourcePermissionConstants.OPERATOR_SET, false);
 			}
 		}
 		finally {
@@ -1300,7 +1301,7 @@ public class ResourcePermissionLocalServiceImpl
 		if (!dbType.equals(DB.TYPE_HYPERSONIC)) {
 			doUpdateResourcePermission(
 				companyId, name, scope, primKey, ownerId, roleId, actionIds,
-				operator);
+				operator, true);
 
 			return;
 		}
@@ -1330,7 +1331,7 @@ public class ResourcePermissionLocalServiceImpl
 		try {
 			doUpdateResourcePermission(
 				companyId, name, scope, primKey, ownerId, roleId, actionIds,
-				operator);
+				operator, true);
 		}
 		finally {
 			lock.unlock();
