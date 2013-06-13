@@ -310,7 +310,7 @@
 </tr>
 <tr>
 	<td>ENTRIES_DOCUMENT_SEARCH_TITLE</td>
-	<td>//div[@id='_20_searchResults10180']/div/form/div/a/span[2]</td>
+	<td>//div[contains(@id,'_20_searchResults')]/div/form/div/a/span[2]</td>
 	<td>Document Search Title</td>
 </tr>
 <tr>

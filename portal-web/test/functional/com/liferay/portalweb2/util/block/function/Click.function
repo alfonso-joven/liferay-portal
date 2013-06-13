@@ -43,14 +43,6 @@
 		<execute function="Click#textClickAt" />
 	</command>
 
-	<command name="pauseTextClickAtAndWaitpause">
-		<execute selenium="pause" argument1="5000" />
-
-		<execute function="Click#clickAt" />
-
-		<execute selenium="pause" argument1="5000" />
-	</command>
-
 	<command name="pauseTextClickAtAndWait">
 		<execute selenium="pause" argument1="1000" />
 

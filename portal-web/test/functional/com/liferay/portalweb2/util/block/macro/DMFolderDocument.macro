@@ -1,26 +1,40 @@
 <definition>
+	<command name="addPG">
+		<execute action="PGDocumentsandmedia#click" locator-key1="ENTRIES_FOLDER" />
+
+		<execute action="PGDocumentsandmediaFolder#click" locator-key1="TOOLBAR_ADD" />
+		<execute action="PGDocumentsandmediaFolder#click" locator-key1="ADD_MENULIST_BASIC_DOCUMENT" />
+
+		<execute action="PGDocumentsandmediaAdddocument#uploadCommonFile" locator-key1="FILE_FIELD" value1="${dmDocumentFile}" />
+		<execute action="PGDocumentsandmediaAdddocument#type" locator-key1="TITLE_FIELD" value1="${dmDocumentTitle}" />
+		<execute action="PGDocumentsandmediaAdddocument#type" locator-key1="DESCRIPTION_FIELD" value1="${dmDocumentDescription}" />
+		<execute action="PGDocumentsandmediaAdddocument#click" locator-key1="PUBLISH_BUTTON" />
+
+		<execute action="PGDocumentsandmediaFolder#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
+	</command>
+
 	<command name="addPGviaDMD">
 		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
-		<execute action="PGDocumentlibrarydisplay#click" locator-key1="FOLDERS_TABLE_NAME_1" value1="${documentFolderName}" />
+		<execute action="PGDocumentlibrarydisplay#click" locator-key1="FOLDERS_TABLE_NAME_1" value1="${dmdFolderName}" />
 
-		<execute action="PGDocumentlibrarydisplayFolder#click" locator-key1="SUBFOLDER_MENU_ADD_DOCUMENT" value1="${documentName}" />
+		<execute action="PGDocumentlibrarydisplayFolder#click" locator-key1="SUBFOLDER_MENU_ADD_DOCUMENT" value1="${dmdDocumentTitle}" />
 
 		<execute action="PGDocumentlibrarydisplayAdddocument#selectFrame" locator-key1="SELECT_DOCUMENT_TYPE_IFRAME" />
 		<execute action="PGDocumentlibrarydisplayAdddocument#click" locator-key1="SELECT_DOCUMENT_TYPE_BASIC_DOCUMENT" />
 		<execute action="PGDocumentlibrarydisplayAdddocument#selectFrame" />
-		<execute action="PGDocumentlibrarydisplayAdddocument#uploadCommonFile" locator-key1="DOCUMENT_FILE_FIELD" value1="${documentFileName}" />
-		<execute action="PGDocumentlibrarydisplayAdddocument#type" locator-key1="DOCUMENT_TITLE_FIELD" value1="${documentName}" />
+		<execute action="PGDocumentlibrarydisplayAdddocument#uploadCommonFile" locator-key1="DOCUMENT_FILE_FIELD" value1="${dmdDocumentFile}" />
+		<execute action="PGDocumentlibrarydisplayAdddocument#type" locator-key1="DOCUMENT_TITLE_FIELD" value1="${dmdDocumentTitle}" />
 		<execute action="PGDocumentlibrarydisplayAdddocument#click" locator-key1="PUBLISH_BUTTON" />
 
 		<execute action="PGDocumentlibrarydisplayFolder#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
-		<execute action="PGDocumentlibrarydisplayFolder#assertTextEquals" locator-key1="DOCUMENTS_TABLE_NAME_1" value1="${documentName}" />
-		<execute action="PGDocumentlibrarydisplayFolder#click" locator-key1="DOCUMENTS_TABLE_NAME_1" value1="${documentName}" />
+		<execute action="PGDocumentlibrarydisplayFolder#assertTextEquals" locator-key1="DOCUMENTS_TABLE_NAME_1" value1="${dmdDocumentTitle}" />
+		<execute action="PGDocumentlibrarydisplayFolder#click" locator-key1="DOCUMENTS_TABLE_NAME_1" value1="${dmdDocumentTitle}" />
 
-		<execute action="PGDocumentlibrarydisplayDocument#assertTextEquals" locator-key1="DOCUMENT_HEADER_TITLE" value1="${documentName}" />
-		<execute action="PGDocumentlibrarydisplayDocument#assertTextEquals" locator-key1="DOCUMENT_TITLE" value1="${documentName}" />
+		<execute action="PGDocumentlibrarydisplayDocument#assertTextEquals" locator-key1="DOCUMENT_HEADER_TITLE" value1="${dmdDocumentTitle}" />
+		<execute action="PGDocumentlibrarydisplayDocument#assertTextEquals" locator-key1="DOCUMENT_TITLE" value1="${dmdDocumentTitle}" />
 		<execute action="PGDocumentlibrarydisplayDocument#assertTextEquals" locator-key1="DOCUMENT_VERSION" value1="Version 1.0" />
 	</command>
 
@@ -29,8 +43,8 @@
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
-		<execute action="PGMediagallery#assertTextEquals" locator-key1="ENTRY_TITLE" value1="${folderName}" />
-		<execute action="PGMediagallery#click" locator-key1="ENTRY_TITLE" value1="${folderName}" />
+		<execute action="PGMediagallery#assertTextEquals" locator-key1="ENTRY_TITLE" value1="${mgFolderName}" />
+		<execute action="PGMediagallery#click" locator-key1="ENTRY_TITLE" value1="${mgFolderName}" />
 
 		<execute action="PGMediagalleryFolder#assertTextEquals" locator-key1="INFO_MESSAGE" value1="There are no media files in this folder." />
 		<execute action="PGMediagalleryFolder#click" locator-key1="FOLDER_MENU_ADD_MEDIA" />
@@ -39,17 +53,17 @@
 		<execute action="PGMediagallerySelectmediatype#click" locator-key1="MEDIA_TABLE_BASIC_DOCUMENT" />
 		<execute action="PGMediagallerySelectmediatype#selectFrame" />
 
-		<execute action="PGMediagalleryAddmedia#uploadCommonFile" locator-key1="FILE" value1="${mediaFile}" />
-		<execute action="PGMediagalleryAddmedia#type" locator-key1="TITLE_FIELD" value1="${mediaTitle}" />
-		<execute action="PGMediagalleryAddmedia#type" locator-key1="DESCRIPTION_FIELD" value1="${mediaDescription}" />
+		<execute action="PGMediagalleryAddmedia#uploadCommonFile" locator-key1="FILE" value1="${mgDocumentFile}" />
+		<execute action="PGMediagalleryAddmedia#type" locator-key1="TITLE_FIELD" value1="${mgDocumentTitle}" />
+		<execute action="PGMediagalleryAddmedia#type" locator-key1="DESCRIPTION_FIELD" value1="${mgDocumentDescription}" />
 		<execute action="PGMediagalleryAddmedia#click" locator-key1="PUBLISH_BUTTON" />
 		<execute action="PGMediagalleryAddmedia#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 
-		<execute action="PGMediagallery#assertTextEquals" locator-key1="ENTRY_TITLE" value1="${folderName}" />
-		<execute action="PGMediagallery#click" locator-key1="ENTRY_TITLE" value1="${folderName}" />
+		<execute action="PGMediagallery#assertTextEquals" locator-key1="ENTRY_TITLE" value1="${mgFolderName}" />
+		<execute action="PGMediagallery#click" locator-key1="ENTRY_TITLE" value1="${mgFolderName}" />
 
 		<execute action="PGMediagalleryFolder#assertElementPresent" locator-key1="MEDIA_THUMBNAIL" />
-		<execute action="PGMediagalleryFolder#assertElementPresent" locator-key1="MEDIA_TITLE" value1="${mediaTitle}" />
+		<execute action="PGMediagalleryFolder#assertElementPresent" locator-key1="MEDIA_TITLE" value1="${mgDocumentTitle}" />
 	</command>
 
 	<command name="deletePGviaMG">
@@ -57,10 +71,10 @@
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
-		<execute action="PGMediagallery#assertTextEquals" locator-key1="ENTRY_TITLE" value1="${folderName}" />
-		<execute action="PGMediagallery#click" locator-key1="ENTRY_TITLE" value1="${folderName}" />
+		<execute action="PGMediagallery#assertTextEquals" locator-key1="ENTRY_TITLE" value1="${mgFolderName}" />
+		<execute action="PGMediagallery#click" locator-key1="ENTRY_TITLE" value1="${mgFolderName}" />
 
-		<execute action="PGMediagalleryFolder#click" locator-key1="MEDIA_TITLE" value1="${mediaTitle}"/>
+		<execute action="PGMediagalleryFolder#click" locator-key1="MEDIA_TITLE" value1="${mgDocumentTitle}"/>
 
 		<execute action="PGMediagalleryMedia#click" locator-key1="DELETE" />
 		<execute action="PGMediagalleryMedia#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this?" />
@@ -74,32 +88,40 @@
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
-		<execute action="PGMediagallery#assertTextEquals" locator-key1="ENTRY_TITLE" value1="${folderName}" />
-		<execute action="PGMediagallery#click" locator-key1="ENTRY_TITLE" value1="${folderName}" />
+		<execute action="PGMediagallery#assertTextEquals" locator-key1="ENTRY_TITLE" value1="${mgFolderName}" />
+		<execute action="PGMediagallery#click" locator-key1="ENTRY_TITLE" value1="${mgFolderName}" />
 
-		<execute action="PGMediagalleryFolder#click" locator-key1="MEDIA_TITLE" value1="${mediaTitle}"/>
+		<execute action="PGMediagalleryFolder#click" locator-key1="MEDIA_TITLE" value1="${mgDocumentTitle}"/>
 
-		<execute action="PGMediagalleryMedia#assertTextEquals" locator-key1="MEDIA_CAPTION" value1="${mediaTitle} - ${mediaDescription}" />
+		<execute action="PGMediagalleryMedia#assertTextEquals" locator-key1="MEDIA_CAPTION" value1="${mgDocumentTitle} - ${mgDocumentDescription}" />
 		<execute action="PGMediagalleryMedia#click" locator-key1="EDIT" />
 
-		<execute action="PGMediagalleryEditmedia#type" locator-key1="TITLE_FIELD" value1="${mediaTitle} Edit" />
-		<execute action="PGMediagalleryEditmedia#type" locator-key1="DESCRIPTION_FIELD" value1="${mediaDescription} Edit" />
+		<execute action="PGMediagalleryEditmedia#type" locator-key1="TITLE_FIELD" value1="${mgDocumentTitleEdit}" />
+		<execute action="PGMediagalleryEditmedia#type" locator-key1="DESCRIPTION_FIELD" value1="${mgDocumentDescriptionEdit}" />
 		<execute action="PGMediagalleryEditmedia#click" locator-key1="PUBLISH_BUTTON" />
 		<execute action="PGMediagalleryEditmedia#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 
-		<execute action="PGMediagalleryFolder#assertTextEquals" locator-key1="MEDIA_TITLE" value1="${mediaTitle} Edit" />
+		<execute action="PGMediagalleryFolder#assertTextEquals" locator-key1="MEDIA_TITLE" value1="${mgDocumentTitleEdit}" />
 	</command>
 
-	<command name="searchPGviaDMD">
+	<command name="moveToFolderPG">
 		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
-		<execute action="PGDocumentlibrarydisplay#type" locator-key1="SEARCH_FIELD" value1="${documentNameSearch}" />
-		<execute action="PGDocumentlibrarydisplay#click" locator-key1="SEARCH_BUTTON" />
+		<execute action="PGDocumentsandmedia#click" locator-key1="ENTRIES_FOLDER" />
 
-		<execute action="PGDocumentlibrarydisplaySearch#assertTextEquals" locator-key1="SEARCH_RESULTS_FOLDER" value1="${documentFolderName}" />
-		<execute action="PGDocumentlibrarydisplaySearch#assertTextEquals" locator-key1="SEARCH_RESULTS_DOCUMENT" value1="${documentName}" />
+		<execute action="PGDocumentsandmediaFolder#check" locator-key1="FOLDER_ENTRIES_DOCUMENT_SELECT" />
+		<execute action="PGDocumentsandmediaFolder#click" locator-key1="TOOLBAR_ACTIONS" />
+		<execute action="PGDocumentsandmediaFolder#click" locator-key1="ACTIONS_MENULIST_MOVE" />
+
+		<execute action="PGDocumentsandmediaMovefiles#click" locator-key1="SELECT" />
+		<execute action="PGDocumentsandmediaMovefiles#selectWindow" locator-key1="SELECT_POP_UP" />
+		<execute action="PGDocumentsandmediaMovefiles#click" locator-key1="SELECT_POP_UP_CHOOSE_2" />
+		<execute action="PGDocumentsandmediaMovefiles#selectWindow" locator-key1="SELECT_NULL_WINDOW" />
+		<execute action="PGDocumentsandmediaMovefiles#click" locator-key1="MOVE" />
+
+		<execute action="PGDocumentsandmedia#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 	</command>
 
 	<command name="searchNoPGviaDMD">
@@ -107,8 +129,20 @@
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
-		<execute action="PGDocumentlibrarydisplaySearch#type" locator-key1="SEARCH_FIELD" value1="${documentNameSearch}" />
+		<execute action="PGDocumentlibrarydisplaySearch#type" locator-key1="SEARCH_FIELD" value1="${dmdDocumentTitleSearch}" />
 		<execute action="PGDocumentlibrarydisplaySearch#click" locator-key1="SEARCH_BUTTON" />
-		<execute action="PGDocumentlibrarydisplaySearch#assertTextEquals" locator-key1="INFO_MESSAGE" value1="No documents were found that matched the keywords: ${documentNameSearch}." />
+		<execute action="PGDocumentlibrarydisplaySearch#assertTextEquals" locator-key1="INFO_MESSAGE" value1="No documents were found that matched the keywords: ${dmdDocumentTitleSearch}." />
+	</command>
+
+	<command name="searchPGviaDMD">
+		<execute macro="Page#gotoPG">
+			<var name="pageName" value="${pageName}" />
+		</execute>
+
+		<execute action="PGDocumentlibrarydisplay#type" locator-key1="SEARCH_FIELD" value1="${dmdDocumentTitleSearch}" />
+		<execute action="PGDocumentlibrarydisplay#click" locator-key1="SEARCH_BUTTON" />
+
+		<execute action="PGDocumentlibrarydisplaySearch#assertTextEquals" locator-key1="SEARCH_RESULTS_FOLDER" value1="${dmdFolderName}" />
+		<execute action="PGDocumentlibrarydisplaySearch#assertTextEquals" locator-key1="SEARCH_RESULTS_DOCUMENT" value1="${dmdDocumentTitle}" />
 	</command>
 </definition>

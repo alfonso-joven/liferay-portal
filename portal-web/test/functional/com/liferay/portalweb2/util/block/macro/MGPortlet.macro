@@ -1,5 +1,5 @@
 <definition>
-	<command name="configurePG">
+	<command name="configureShowAllPG">
 		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
 		</execute>

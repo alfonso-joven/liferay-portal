@@ -14,67 +14,69 @@
 			<var name="portletName" value="${portletName}" />
 		</execute>
 
-		<execute macro="DocumentsAndMediaDisplayPortlet#configurePGPortletShowAll">
+		<execute macro="DMDPortlet#configureShowAllPG">
 			<var name="pageName" value="${pageName}" />
 		</execute>
 	</set-up>
 
-	<command name="AddDocumentsAndMediaDisplayDocument">
-		<var name="documentFileName" value="Document_1.txt" />
-		<var name="documentName" value="DM Document Title"  />
+	<command name="AddDocument">
+		<var name="dmdDocumentFile" value="Document_1.txt" />
+		<var name="dmdDocumentTitle" value="DM Document Title" />
 
 		<execute macro="DMDocument#addPGviaDMD">
-			<var name="documentFileName" value="${documentFileName}" />
-			<var name="documentName" value="${documentName}" />
 			<var name="pageName" value="${pageName}" />
+			<var name="dmdDocumentFile" value="${dmdDocumentFile}" />
+			<var name="dmdDocumentTitle" value="${dmdDocumentTitle}" />
 		</execute>
 	</command>
 
-	<command name="AddDocumentsAndMediaDisplayFolder">
-		<var name="documentFolderName" value="DM Folder Name" />
+	<command name="AddFolder">
+		<var name="dmdFolderName" value="DM Folder Name" />
 
 		<execute macro="DMFolder#addPGviaDMD">
-			<var name="documentFolderName" value="${documentFolderName}" />
 			<var name="pageName" value="${pageName}" />
+			<var name="dmdFolderName" value="${dmdFolderName}" />
 		</execute>
 	</command>
 
-	<command name="DeleteDocumentsAndMediaDisplayDocuments">
-		<var name="documentFileName1" value="Document_1.txt" />
-		<var name="documentFileName2" value="Document_2.txt" />
-		<var name="documentFileName3" value="Document_3.txt" />
-		<var name="documentName1" value="DM Document1 Title" />
-		<var name="documentName2" value="DM Document2 Title" />
-		<var name="documentName3" value="DM Document3 Title" />
+	<command name="DeleteDocuments">
+		<var name="dmdDocumentFile1" value="Document_1.txt" />
+		<var name="dmdDocumentTitle1" value="DM Document1 Title" />
+
+		<var name="dmdDocumentFile2" value="Document_2.txt" />
+		<var name="dmdDocumentTitle2" value="DM Document2 Title" />
+
+		<var name="dmdDocumentFile3" value="Document_3.txt" />
+		<var name="dmdDocumentTitle3" value="DM Document3 Title" />
 
 		<execute macro="DMDocument#addPGviaDMD">
-			<var name="documentFileName" value="${documentFileName1}" />
-			<var name="documentName" value="${documentName1}" />
 			<var name="pageName" value="${pageName}" />
-		</execute>
-
-		<execute macro="DMDocument#addPGviaDMD">
-			<var name="documentFileName" value="${documentFileName2}" />
-			<var name="documentName" value="${documentName2}" />
-			<var name="pageName" value="${pageName}" />
+			<var name="dmdDocumentFile" value="${dmdDocumentFile1}" />
+			<var name="dmdDocumentTitle" value="${dmdDocumentTitle1}" />
 		</execute>
 
 		<execute macro="DMDocument#addPGviaDMD">
-			<var name="documentFileName" value="${documentFileName3}" />
-			<var name="documentName" value="${documentName3}" />
 			<var name="pageName" value="${pageName}" />
+			<var name="dmdDocumentFile" value="${dmdDocumentFile2}" />
+			<var name="dmdDocumentTitle" value="${dmdDocumentTitle2}" />
+		</execute>
+
+		<execute macro="DMDocument#addPGviaDMD">
+			<var name="pageName" value="${pageName}" />
+			<var name="dmdDocumentFile" value="${dmdDocumentFile3}" />
+			<var name="dmdDocumentTitle" value="${dmdDocumentTitle3}" />
 		</execute>
 
 		<execute macro="DMDocument#deletePGviaDMD">
-			<var name="documentName" value="${documentName1}" />
+			<var name="dmdDocumentTitle" value="${dmdDocumentTitle1}" />
 		</execute>
 
 		<execute macro="DMDocument#deletePGviaDMD">
-			<var name="documentName" value="${documentName2}" />
+			<var name="dmdDocumentTitle" value="${dmdDocumentTitle2}" />
 		</execute>
 
 		<execute macro="DMDocument#deletePGviaDMD">
-			<var name="documentName" value="${documentName3}" />
+			<var name="dmdDocumentTitle" value="${dmdDocumentTitle3}" />
 		</execute>
 
 		<execute action="PGDocumentlibrarydisplay#assertTextEquals" locator-key1="INFO_MESSAGE" />
@@ -86,45 +88,46 @@
 		</execute>
 	</command>
 
-	<command name="SearchDocumentAndsMediaFolderDocument">
-		<var name="documentFileName" value="Document_1.txt" />
-		<var name="documentFolderName" value="DM Folder Name" />
-		<var name="documentName" value="DM Folder Document Title" />
+	<command name="SearchFolderDocument">
+		<var name="dmdFolderName" value="DM Folder Name" />
+
+		<var name="dmdDocumentFile" value="Document_1.txt" />
+		<var name="dmdDocumentTitle" value="DM Document Title" />
 
 		<execute macro="DMFolder#addPGviaDMD">
-			<var name="documentFolderName" value="${documentFolderName}" />
 			<var name="pageName" value="${pageName}" />
+			<var name="dmdFolderName" value="${dmdFolderName}" />
 		</execute>
 
 		<execute macro="DMFolderDocument#addPGviaDMD">
-			<var name="documentFileName" value="${documentFileName}" />
-			<var name="documentFolderName" value="${documentFolderName}" />
-			<var name="documentName" value="${documentName}" />
 			<var name="pageName" value="${pageName}" />
+			<var name="dmdFolderName" value="${dmdFolderName}" />
+			<var name="dmdDocumentFile" value="${dmdDocumentFile}" />
+			<var name="dmdDocumentTitle" value="${dmdDocumentTitle}" />
 		</execute>
 
 		<execute macro="DMFolderDocument#searchPGviaDMD">
-			<var name="documentFolderName" value="${documentFolderName}" />
-			<var name="documentName" value="${documentName}" />
-			<var name="documentNameSearch" value="${documentName}" />
 			<var name="pageName" value="${pageName}" />
+			<var name="dmdFolderName" value="${dmdFolderName}" />
+			<var name="dmdDocumentTitle" value="${dmdDocumentTitle}" />
+			<var name="dmdDocumentTitleSearch" value="${dmdDocumentTitle}" />
 		</execute>
 
 		<execute macro="DMFolderDocument#searchNoPGviaDMD">
-			<var name="documentNameSearch" value="DM2 Folder2 Document2 Title2" />
 			<var name="pageName" value="${pageName}" />
+			<var name="dmdDocumentTitleSearch" value="DM2 Document2 Title2" />
 		</execute>
 
 		<execute macro="DMFolderDocument#searchPGviaDMD">
-			<var name="documentFolderName" value="${documentFolderName}" />
-			<var name="documentName" value="${documentName}" />
-			<var name="documentNameSearch" value="\&quot;${documentName}\&quot;" />
 			<var name="pageName" value="${pageName}" />
+			<var name="dmdFolderName" value="${dmdFolderName}" />
+			<var name="dmdDocumentTitle" value="${dmdDocumentTitle}" />
+			<var name="dmdDocumentTitleSearch" value="\&quot;${dmdDocumentTitle}\&quot;" />
 		</execute>
 
 		<execute macro="DMFolderDocument#searchNoPGviaDMD">
-			<var name="documentNameSearch" value="\&quot;DM2 Folder2 Document2 Title2\&quot;" />
 			<var name="pageName" value="${pageName}" />
+			<var name="dmdDocumentTitleSearch" value="\&quot;DM Document Title2\&quot;" />
 		</execute>
 	</command>
 
