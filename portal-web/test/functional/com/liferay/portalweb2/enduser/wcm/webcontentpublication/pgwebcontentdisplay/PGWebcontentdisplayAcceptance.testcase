@@ -28,9 +28,9 @@
 
 	<command name="EditWebContent">
 		<var name="webContentContent" value="WC WebContent Content" />
-		<var name="webContentContentEdit" value="WC WebContent Content Edit" />
+		<var name="webContentContentNew" value="WC WebContent Content New" />
 		<var name="webContentTitle" value="WC WebContent Title" />
-		<var name="webContentTitleEdit" value="WC WebContent Title Edit" />
+		<var name="webContentTitleNew" value="WC WebContent Title New" />
 
 		<execute macro="WebContent#addPGviaWCD">
 			<var name="pageName" value="${pageName}" />
