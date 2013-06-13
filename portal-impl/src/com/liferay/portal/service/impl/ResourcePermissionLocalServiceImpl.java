@@ -1138,7 +1138,7 @@ public class ResourcePermissionLocalServiceImpl
 		if (resourcePermissionsMap != null) {
 			resourcePermission = resourcePermissionsMap.get(roleId);
 		}
-		else if (operator != ResourcePermissionConstants.OPERATOR_ADD) {
+		else {
 			List<ResourcePermission> resourcePermissions =
 				resourcePermissionPersistence.findByC_N_S_P_R(
 					companyId, name, scope, primKey, roleId);
@@ -1237,10 +1237,7 @@ public class ResourcePermissionLocalServiceImpl
 					operator);
 			}
 
-			if (roleIdsToActionIds.isEmpty() ||
-				((operator != ResourcePermissionConstants.OPERATOR_ADD) &&
-				 (operator != ResourcePermissionConstants.OPERATOR_SET))) {
-
+			if (roleIdsToActionIds.isEmpty()) {
 				return;
 			}
 
