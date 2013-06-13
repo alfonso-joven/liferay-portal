@@ -41,12 +41,12 @@
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=Control Panel</td>
-	<td></td>
+	<td>Control Panel</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=Blogs</td>
-	<td></td>
+	<td>Blogs</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
@@ -59,59 +59,19 @@
 	<td>Blogs Entry Title</td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>//span[@id='cke_48_label' and .='Source']</td>
-	<td>Source</td>
-</tr>
-<tr>
-	<td>clickAt</td>
-	<td>//span[@id='cke_48_label' and .='Source']</td>
-	<td>Source</td>
-</tr>
-<tr>
-	<td>waitForVisible</td>
-	<td>//td[@id='cke_contents__161_editor']/textarea</td>
-	<td>CK Editor</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>//td[@id='cke_contents__161_editor']/textarea</td>
+	<td>pause</td>
+	<td>1000</td>
 	<td></td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>//span[@id='cke_48_label' and .='Source']</td>
-	<td>Source</td>
-</tr>
-<tr>
-	<td>clickAt</td>
-	<td>//span[@id='cke_48_label' and .='Source']</td>
-	<td>Source</td>
-</tr>
-<tr>
 	<td>waitForVisible</td>
-	<td>//td[@id='cke_contents__161_editor']/iframe</td>
+	<td>//iframe[contains(@title,'Rich text editor')]</td>
 	<td>CK Editor</td>
-</tr>
-<tr>
-	<td>selectFrame</td>
-	<td>//td[@id='cke_contents__161_editor']/iframe</td>
-	<td>CK Editor</td>
-</tr>
-<tr>
-	<td>waitForText</td>
-	<td>//body</td>
-	<td></td>
-</tr>
-<tr>
-	<td>selectFrame</td>
-	<td>relative=top</td>
-	<td>top</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>//input[@value='Publish']</td>
-	<td></td>
+	<td>Publish</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -124,19 +84,39 @@
 	<td></td>
 </tr>
 <tr>
+	<td>clickAt</td>
+	<td>//div[@id='dockbar']</td>
+	<td>Dockbar</td>
+</tr>
+<tr>
 	<td>waitForElementPresent</td>
+	<td>//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]</td>
+	<td>AUI Editable Min</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//li[@id='_145_mySites']/a/span</td>
+	<td>Go to</td>
+</tr>
+<tr>
+	<td>mouseOver</td>
+	<td>//li[@id='_145_mySites']/a/span</td>
+	<td>Go to</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
 	<td>link=Control Panel</td>
-	<td></td>
+	<td>Control Panel</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=Control Panel</td>
-	<td></td>
+	<td>Control Panel</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
 	<td>link=Blogs</td>
-	<td></td>
+	<td>Blogs</td>
 </tr>
 <tr>
 	<td>assertTextNotPresent</td>

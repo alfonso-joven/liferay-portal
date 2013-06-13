@@ -25,10 +25,18 @@ public class EditBlogsEntryContentCPTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.waitForElementPresent("link=Control Panel");
-		selenium.clickAt("link=Control Panel", RuntimeVariables.replace(""));
+		selenium.clickAt("//div[@id='dockbar']",
+			RuntimeVariables.replace("Dockbar"));
+		selenium.waitForElementPresent(
+			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
+		assertEquals(RuntimeVariables.replace("Go to"),
+			selenium.getText("//li[@id='_145_mySites']/a/span"));
+		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+		selenium.waitForVisible("link=Control Panel");
+		selenium.clickAt("link=Control Panel",
+			RuntimeVariables.replace("Control Panel"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("link=Blogs", RuntimeVariables.replace(""));
+		selenium.clickAt("link=Blogs", RuntimeVariables.replace("Blogs"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Blogs Entry Title"),
 			selenium.getText("//td[2]/a"));
@@ -44,21 +52,10 @@ public class EditBlogsEntryContentCPTest extends BaseTestCase {
 		selenium.click(RuntimeVariables.replace(
 				"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[@id='cke_48_label' and .='Source']"));
-		selenium.clickAt("//span[@id='cke_48_label' and .='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForVisible("//td[@id='cke_contents__161_editor']/textarea");
-		selenium.type("//td[@id='cke_contents__161_editor']/textarea",
+		Thread.sleep(1000);
+		selenium.waitForVisible("//iframe[contains(@title,'Rich text editor')]");
+		selenium.typeFrame("//iframe[contains(@title,'Rich text editor')]",
 			RuntimeVariables.replace("Blogs Entry Content Edit"));
-		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[@id='cke_48_label' and .='Source']"));
-		selenium.clickAt("//span[@id='cke_48_label' and .='Source']",
-			RuntimeVariables.replace("Source"));
-		selenium.waitForVisible("//td[@id='cke_contents__161_editor']/iframe");
-		selenium.selectFrame("//td[@id='cke_contents__161_editor']/iframe");
-		selenium.waitForText("//body", "Blogs Entry Content Edit");
-		selenium.selectFrame("relative=top");
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));
 		selenium.waitForPageToLoad("30000");
@@ -73,6 +70,6 @@ public class EditBlogsEntryContentCPTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Blogs Entry Title"),
 			selenium.getText("//h1[@class='header-title']/span"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry Content Edit"),
-			selenium.getText("//div[@class='entry-body']/p"));
+			selenium.getText("//div[@class='entry-body']"));
 	}
 }

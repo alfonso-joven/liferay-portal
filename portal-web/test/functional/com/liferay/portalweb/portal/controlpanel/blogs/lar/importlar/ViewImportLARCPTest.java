@@ -38,17 +38,17 @@ public class ViewImportLARCPTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("link=Blogs", RuntimeVariables.replace("Blogs"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForVisible("//tr[contains(.,'Test Entry')]/td[2]/a");
-		assertEquals(RuntimeVariables.replace("Test Entry"),
-			selenium.getText("//tr[contains(.,'Test Entry')]/td[2]/a"));
-		selenium.clickAt("//tr[contains(.,'Test Entry')]/td[2]/a",
-			RuntimeVariables.replace("Test Entry"));
+		selenium.waitForVisible("//tr[contains(.,'Blogs Entry Title')]/td[2]/a");
+		assertEquals(RuntimeVariables.replace("Blogs Entry Title"),
+			selenium.getText("//tr[contains(.,'Blogs Entry Title')]/td[2]/a"));
+		selenium.clickAt("//tr[contains(.,'Blogs Entry Title')]/td[2]/a",
+			RuntimeVariables.replace("Blogs Entry Title"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Test Entry"),
+		assertEquals(RuntimeVariables.replace("Blogs Entry Title"),
 			selenium.getText("//h1[@class='header-title']"));
-		assertEquals(RuntimeVariables.replace("This is a test entry."),
-			selenium.getText("//div[@class='entry-body']/p"));
-		assertEquals(RuntimeVariables.replace("This is a test entry comment."),
+		assertEquals(RuntimeVariables.replace("Blogs Entry Content"),
+			selenium.getText("//div[@class='entry-body']"));
+		assertEquals(RuntimeVariables.replace("Blogs Entry Comment Body"),
 			selenium.getText("//div[@Class='lfr-discussion-message']"));
 	}
 }
