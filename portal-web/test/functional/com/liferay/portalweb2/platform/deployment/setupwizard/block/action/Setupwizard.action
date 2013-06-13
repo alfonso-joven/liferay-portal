@@ -16,13 +16,13 @@
 			<execute function="AssertTextEquals#assertValue" />
 		</case>
 		<case locator-key1="DATABASE_CHANGE_JDBC_DRIVER_CLASS_NAME_LABEL">
-			<execute function="AssertTextEquals#assertText" value1="JDBC Driver Class Name" />
+			<execute function="AssertTextEquals#assertText" value1="JDBC Driver Class Name (Required)" />
 		</case>
 		<case locator-key1="DATABASE_CHANGE_JDBC_URL_FIELD">
 			<execute function="AssertTextEquals#assertValue" />
 		</case>
 		<case locator-key1="DATABASE_CHANGE_JDBC_URL_LABEL">
-			<execute function="AssertTextEquals#assertText" value1="JDBC URL" />
+			<execute function="AssertTextEquals#assertText" value1="JDBC URL (Required)" />
 		</case>
 		<case locator-key1="DATABASE_CHANGE_PASSWORD_FIELD">
 			<execute function="AssertTextEquals#assertValue" />

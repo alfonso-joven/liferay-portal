@@ -10,7 +10,7 @@
 		<var name="portalName" value="Liferay" />
 		<var name="portletName" value="Blogs" />
 
-		<execute action="Home#open" locator-key1="HOME_URL" />
+		<execute macro="Page#openURL" />
 
 		<execute action="Setupwizard#assertTextEquals" locator-key1="PORTAL_PORTAL_NAME_FIELD" value1="${portalName}" />
 		<execute action="Setupwizard#assertSelectedLabel" locator-key1="PORTAL_DEFAULT_LANGUAGE_SELECT" value1="${portalDefaultLanguage}" />
@@ -43,7 +43,9 @@
 		<execute action="PGLoginPasswordreminder#type" locator-key1="ANSWER_FIELD" value1="${passwordReminder}" />
 		<execute action="PGLoginPasswordreminder#click" locator-key1="SAVE_BUTTON" />
 
-		<execute action="Home#assertTextEquals" locator-key1="BREADCRUMB_1" value1="Welcome" />
+		<execute macro="Page#openURL" />
+
+		<execute action="Home#assertTextEquals" locator-key1="BREADCRUMB_2" value1="Welcome" />
 
 		<execute action="PGSignin#assertTextEquals" locator-key1="PORTLET_TITLE" />
 		<execute action="PGSignin#assertTextEquals" locator-key1="PORTLET_CONTENT" />
@@ -52,11 +54,11 @@
 		<execute action="PGHelloworld#assertTextEquals" locator-key1="PORTLET_TITLE" />
 		<execute action="PGHelloworld#assertTextEquals" locator-key1="PORTLET_CONTENT" />
 
-		<execute macro="Page#pgAdd">
+		<execute macro="Page#addPG">
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
-		<execute macro="Portlet#pgAdd">
+		<execute macro="Portlet#addPG">
 			<var name="pageName" value="${pageName}" />
 			<var name="portletName" value="${portletName}" />
 		</execute>

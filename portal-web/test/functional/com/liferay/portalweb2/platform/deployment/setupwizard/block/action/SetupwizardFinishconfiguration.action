@@ -13,7 +13,7 @@
 
 	<command name="click">
 		<case locator-key1="GO_TO_MY_PORTAL_BUTTON">
-			<execute function="Click#valueclickAtAndWait" value1="Go to My Portal" />
+			<execute function="Click#valueClickAtAndWait" value1="Go to My Portal" />
 		</case>
 	</command>
 </definition>
