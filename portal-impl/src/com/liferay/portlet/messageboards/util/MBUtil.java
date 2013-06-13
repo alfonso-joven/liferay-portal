@@ -14,7 +14,7 @@
 
 package com.liferay.portlet.messageboards.util;
 
-import com.liferay.portal.kernel.concurrent.PortalCallable;
+import com.liferay.portal.kernel.dao.shard.ShardCallable;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
@@ -768,7 +768,7 @@ public class MBUtil {
 	public static void updateCategoryMessageCount(
 		long companyId, final long categoryId) {
 
-		Callable<Void> callable = new PortalCallable<Void>(companyId) {
+		Callable<Void> callable = new ShardCallable<Void>(companyId) {
 
 			@Override
 			protected Void doCall() throws Exception {
@@ -799,7 +799,7 @@ public class MBUtil {
 	public static void updateCategoryStatistics(
 		long companyId, final long categoryId) {
 
-		Callable<Void> callable = new PortalCallable<Void>(companyId) {
+		Callable<Void> callable = new ShardCallable<Void>(companyId) {
 
 			@Override
 			protected Void doCall() throws Exception {
@@ -836,7 +836,7 @@ public class MBUtil {
 	public static void updateCategoryThreadCount(
 		long companyId, final long categoryId) {
 
-		Callable<Void> callable = new PortalCallable<Void>(companyId) {
+		Callable<Void> callable = new ShardCallable<Void>(companyId) {
 
 			@Override
 			protected Void doCall() throws Exception {
@@ -867,7 +867,7 @@ public class MBUtil {
 	public static void updateThreadMessageCount(
 		long companyId, final long threadId) {
 
-		Callable<Void> callable = new PortalCallable<Void>(companyId) {
+		Callable<Void> callable = new ShardCallable<Void>(companyId) {
 
 			@Override
 			protected Void doCall() throws Exception {
