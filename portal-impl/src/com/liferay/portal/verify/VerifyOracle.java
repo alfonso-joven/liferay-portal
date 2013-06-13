@@ -34,6 +34,78 @@ import java.sql.SQLException;
  */
 public class VerifyOracle extends VerifyProcess {
 
+	@Override
+	protected void doVerify() throws Exception {
+		DB db = DBFactoryUtil.getDB();
+
+		String dbType = db.getType();
+
+		if (!dbType.equals(DB.TYPE_ORACLE)) {
+			return;
+		}
+
+		verifyClobColumns();
+		verifyVarcharColumns();
+	}
+
+	protected boolean isBetweenBuildNumbers(
+		int buildNumber, int startBuildNumber, int endBuildNumber) {
+
+		if ((buildNumber >= startBuildNumber) &&
+			(buildNumber < endBuildNumber)) {
+
+			return true;
+		}
+
+		return false;
+	}
+
+	protected void verifyClobColumns() throws Exception {
+		verifyClobColumns("Layout", "css");
+		verifyClobColumns("LayoutRevision", "css");
+	}
+
+	protected void verifyClobColumns(String tableName, String columnName)
+		throws Exception {
+
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		try {
+			con = DataAccess.getUpgradeOptimizedConnection();
+
+			StringBundler sb = new StringBundler(6);
+
+			sb.append("select count(*) from user_tab_columns ");
+			sb.append("where data_type = 'VARCHAR2' and column_name = '");
+			sb.append(columnName);
+			sb.append("' and table_name = '");
+			sb.append(tableName);
+			sb.append("'");
+
+			ps = con.prepareStatement(sb.toString());
+
+			rs = ps.executeQuery();
+
+			if (rs.next()) {
+				runSQL("alter table " + tableName + " add temp CLOB");
+
+				runSQL("update " + tableName + " set temp = " + columnName);
+
+				runSQL(
+					"alter table " + tableName + " drop column " + columnName);
+
+				runSQL(
+					"alter table " + tableName + " rename column temp to " +
+						columnName);
+			}
+		}
+		finally {
+			DataAccess.cleanUp(con, ps, rs);
+		}
+	}
+
 	protected void verifyVarcharColumns() throws Exception {
 		int buildNumber = getBuildNumber();
 
@@ -101,78 +173,6 @@ public class VerifyOracle extends VerifyProcess {
 						throw sqle;
 					}
 				}
-			}
-		}
-		finally {
-			DataAccess.cleanUp(con, ps, rs);
-		}
-	}
-
-	@Override
-	protected void doVerify() throws Exception {
-		DB db = DBFactoryUtil.getDB();
-
-		String dbType = db.getType();
-
-		if (!dbType.equals(DB.TYPE_ORACLE)) {
-			return;
-		}
-
-		verifyClobColumns();
-		verifyVarcharColumns();
-	}
-
-	protected boolean isBetweenBuildNumbers(
-		int buildNumber, int startBuildNumber, int endBuildNumber) {
-
-		if ((buildNumber >= startBuildNumber) &&
-			(buildNumber < endBuildNumber)) {
-
-			return true;
-		}
-
-		return false;
-	}
-
-	protected void verifyClobColumns() throws Exception {
-		verifyClobColumns("Layout", "css");
-		verifyClobColumns("LayoutRevision", "css");
-	}
-
-	protected void verifyClobColumns(String tableName, String columnName)
-		throws Exception {
-
-		Connection con = null;
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-
-		try {
-			con = DataAccess.getUpgradeOptimizedConnection();
-
-			StringBundler sb = new StringBundler(6);
-
-			sb.append("select count(*) from user_tab_columns ");
-			sb.append("where data_type = 'VARCHAR2' and column_name = '");
-			sb.append(columnName);
-			sb.append("' and table_name = '");
-			sb.append(tableName);
-			sb.append("'");
-
-			ps = con.prepareStatement(sb.toString());
-
-			rs = ps.executeQuery();
-
-			if (rs.next()) {
-				runSQL("alter table " + tableName + " add temp CLOB");
-
-				runSQL("update " + tableName + " set temp = " + columnName);
-
-				runSQL(
-					"alter table " + tableName + " drop column " + columnName);
-
-				runSQL(
-					"alter table " + tableName + " rename column temp to " +
-						columnName);
 			}
 		}
 		finally {
