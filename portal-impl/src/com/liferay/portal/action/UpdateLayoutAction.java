@@ -52,8 +52,10 @@ import com.liferay.portal.util.WebKeys;
 import com.liferay.portlet.PortletPreferencesFactoryUtil;
 
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
+import javax.portlet.MimeResponse;
 import javax.portlet.PortletPreferences;
 
 import javax.servlet.http.HttpServletRequest;
@@ -515,6 +517,19 @@ public class UpdateLayoutAction extends JSONAction {
 		jsonObject.put(
 			"headerJavaScriptPaths",
 			JSONFactoryUtil.createJSONArray(headerJavaScriptPaths));
+
+		List<String> markupHeadElements = (List<String>)
+			request.getAttribute(MimeResponse.MARKUP_HEAD_ELEMENT);
+
+		if (markupHeadElements != null) {
+			StringBundler sb = new StringBundler(markupHeadElements.size());
+
+			for (String markupHeadElement : markupHeadElements) {
+				sb.append(markupHeadElement);
+			}
+
+			jsonObject.put("markupHeadElements", sb.toString());
+		}
 	}
 
 }

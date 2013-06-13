@@ -45,6 +45,18 @@
 			);
 		},
 
+		_loadMarkupHeadElements: function(response, loadHTML) {
+			var markupHeadElements = response.markupHeadElements || [];
+
+			if (markupHeadElements.length) {
+				var head = A.one('head');
+
+				head.append(markupHeadElements);
+
+				loadHTML(markupHeadElements);
+			}
+		},
+
 		_loadPortletFiles: function(response, loadHTML) {
 			var headerCssPaths = response.headerCssPaths || [];
 			var footerCssPaths = response.footerCssPaths || [];
@@ -239,6 +251,14 @@
 				dataType = data.dataType;
 			}
 
+			var addPortletMarkupHeadElements = function(html) {
+				var container = A.Node.create(html);
+
+				container.plug(A.Plugin.ParseContent);
+
+				container.setContent(html);
+			};
+
 			var addPortletReturn = function(html) {
 				var container = placeHolder.get('parentNode');
 
@@ -324,6 +344,8 @@
 								addPortletReturn(response.portletHTML);
 							}
 							else {
+								Portlet._loadMarkupHeadElements(response, addPortletMarkupHeadElements);
+
 								Portlet._loadPortletFiles(response, addPortletReturn);
 							}
 						}
