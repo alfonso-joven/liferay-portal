@@ -24,20 +24,20 @@ String redirect = (String)request.getAttribute("merge_alert.jsp-redirect");
 List<Layout> mergeFailFriendlyURLLayouts = SitesUtil.getMergeFailFriendlyURLLayouts(layoutSet);
 %>
 
-<c:if test="<%= Validator.isNotNull(mergeFailFriendlyURLLayouts) %>">
+<c:if test="<%= !mergeFailFriendlyURLLayouts.isEmpty() %>">
 	<span class="portlet-msg-alert">
-		<liferay-ui:message key="some-pages-from-the-site-template-cannot-be-propagated-because-their-friendly-urls-are-in-conflict-with-the-following-pages" />
+		<liferay-ui:message key="some-pages-from-the-site-template-cannot-be-propagated-because-their-friendly-urls-conflict-with-the-following-pages" />
 
-		<liferay-ui:message key="modify-the-friendly-url-of-the-pages-to-allow-the-propagation-of-the-pages-from-the-site-template" />
+		<liferay-ui:message key="modify-the-friendly-url-of-the-pages-to-allow-their-propagation-from-the-site-template" />
 
 		<ul>
 			<liferay-portlet:renderURL portletName="<%= PortletKeys.GROUP_PAGES %>" varImpl="editLayoutsURL">
 				<portlet:param name="struts_action" value="/group_pages/edit_layouts" />
-				<portlet:param name="backURL" value="<%= redirect %>" />
-				<portlet:param name="closeRedirect" value="<%= redirect %>" />
-				<portlet:param name="groupId" value="<%= String.valueOf(groupId) %>" />
-				<portlet:param name="redirect" value="<%= redirect %>" />
 				<portlet:param name="tabs1" value='<%= layoutSet.isPrivateLayout() ? "private-pages" : "public-pages" %>' />
+				<portlet:param name="redirect" value="<%= redirect %>" />
+				<portlet:param name="closeRedirect" value="<%= redirect %>" />
+				<portlet:param name="backURL" value="<%= redirect %>" />
+				<portlet:param name="groupId" value="<%= String.valueOf(groupId) %>" />
 			</liferay-portlet:renderURL>
 
 			<%

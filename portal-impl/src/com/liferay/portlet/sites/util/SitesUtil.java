@@ -91,6 +91,7 @@ import java.io.File;
 import java.io.InputStream;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -133,17 +134,17 @@ public class SitesUtil {
 		layoutSet = LayoutSetLocalServiceUtil.getLayoutSet(
 			layoutSet.getGroupId(), layoutSet.isPrivateLayout());
 
-		UnicodeProperties layoutSetSettingsProperties =
+		UnicodeProperties settingsProperties =
 			layoutSet.getSettingsProperties();
 
 		String mergeFailFriendlyURLLayouts =
-			layoutSetSettingsProperties.getProperty(
+			settingsProperties.getProperty(
 				MERGE_FAIL_FRIENDLY_URL_LAYOUTS, StringPool.BLANK);
 
 		mergeFailFriendlyURLLayouts = StringUtil.add(
 			mergeFailFriendlyURLLayouts, layout.getUuid());
 
-		layoutSetSettingsProperties.setProperty(
+		settingsProperties.setProperty(
 			MERGE_FAIL_FRIENDLY_URL_LAYOUTS, mergeFailFriendlyURLLayouts);
 
 		LayoutSetLocalServiceUtil.updateLayoutSet(layoutSet, false);
@@ -623,10 +624,10 @@ public class SitesUtil {
 			LayoutSet layoutSet)
 		throws PortalException, SystemException {
 
-		UnicodeProperties layoutSetSettingsProperties =
+		UnicodeProperties settingsProperties =
 			layoutSet.getSettingsProperties();
 
-		String uuids = layoutSetSettingsProperties.getProperty(
+		String uuids = settingsProperties.getProperty(
 			MERGE_FAIL_FRIENDLY_URL_LAYOUTS);
 
 		if (Validator.isNotNull(uuids)) {
@@ -644,7 +645,7 @@ public class SitesUtil {
 			return layouts;
 		}
 
-		return null;
+		return Collections.emptyList();
 	}
 
 	public static void importLayoutSetPrototype(
@@ -1062,10 +1063,10 @@ public class SitesUtil {
 	public static void removeMergeFailFriendlyURLLayouts(LayoutSet layoutSet)
 		throws PortalException, SystemException {
 
-		UnicodeProperties layoutSetSettingsProperties =
+		UnicodeProperties settingsProperties =
 			layoutSet.getSettingsProperties();
 
-		layoutSetSettingsProperties.remove(MERGE_FAIL_FRIENDLY_URL_LAYOUTS);
+		settingsProperties.remove(MERGE_FAIL_FRIENDLY_URL_LAYOUTS);
 
 		LayoutSetLocalServiceUtil.updateLayoutSet(layoutSet, false);
 	}
