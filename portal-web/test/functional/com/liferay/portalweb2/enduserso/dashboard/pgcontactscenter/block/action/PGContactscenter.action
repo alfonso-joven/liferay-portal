@@ -1,0 +1,25 @@
+<definition>
+	<command name="assertElementNotPresent">
+		<case locator-key1="CONNECT_BUTTON">
+			<execute function="AssertElementNotPresent#assertNotVisible" />
+		</case>
+	</command>
+
+	<command name="assertTextEquals">
+		<case locator-key1="CONNECTION_REQUESTED_MESSAGE">
+			<execute function="AssertTextEquals#assertText" value1="Connection Requested" />
+		</case>
+		<case locator-key1="SUCCESS_MESSAGE">
+			<execute function="AssertTextEquals#assertText" value1="This user has received a connection request from you." />
+		</case>
+	</command>
+
+	<command name="click">
+		<case locator-key1="CONTACTS_LIST_NAME">
+			<execute function="Click#pauseTextClickAt" />
+		</case>
+		<case locator-key1="CONNECT_BUTTON">
+			<execute function="Click#textClickAt" />
+		</case>
+	</command>
+</definition>
