@@ -61,6 +61,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
 
 import javax.portlet.PortletURL;
@@ -241,6 +242,11 @@ public class JournalIndexer extends BaseIndexer {
 				Field.TITLE.concat(StringPool.UNDERLINE).concat(languageId),
 				title);
 		}
+
+		Map<Locale, String> titleMap = LocalizationUtil.getLocalizationMap(
+			article.getTitle());
+
+		document.addLocalizedKeyword("localized_title", titleMap);
 
 		document.addKeyword(Field.TYPE, article.getType());
 		document.addKeyword(Field.VERSION, article.getVersion());
