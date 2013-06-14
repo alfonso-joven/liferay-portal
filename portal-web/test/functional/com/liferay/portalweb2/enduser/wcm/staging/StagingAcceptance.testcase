@@ -6,41 +6,60 @@
 	<set-up>
 		<execute macro="User#pgFirstLogin" />
 
-		<execute macro="Site#addBlankCP" />
+		<execute macro="Site#addBlankCP">
+			<var name="siteName" value="${siteName}" />
+		</execute>
 
-		<execute macro="SitePage#addCP" />
+		<execute macro="SitePage#addCP">
 			<var name="siteName" value="${siteName}" />
 			<var name="sitePageName" value="${sitePageName}" />
 			<var name="sitePageType" value="${sitePageType}" />
+		</execute>
 	</set-up>
 
 	<command name="ActivateStaging">
-		<execute macro="Staging#cpActivateStaging">
+		<var name="pageType" value="Site" />
+
+		<execute macro="Staging#activateStagingCP">
+			<var name="pageType" value="${pageType}" />
 			<var name="siteName" value="${siteName}" />
 		</execute>
 	</command>
 
 	<command name="DeactivateStaging">
-		<execute macro="Staging#cpActivateStaging">
+		<var name="pageType" value="Site" />
+
+		<execute macro="Staging#activateStagingCP">
+			<var name="pageType" value="${pageType}" />
 			<var name="siteName" value="${siteName}" />
 		</execute>
-		<execute macro="Staging#cpDeactivateStaging">
+
+		<execute macro="Staging#deactivateStagingCP">
+			<var name="pageType" value="${pageType}" />
 			<var name="siteName" value="${siteName}" />
 		</execute>
 	</command>
 
 	<command name="StagingPublishToLive">
 		<var name="pageName" value="Staging Test Page 2" />
-		<var name="pageStaging" value="true" />
+		<var name="pageType" value="Site" />
 
-		<execute macro="Staging#cpActivateStaging" />
+		<execute macro="Staging#activateStagingCP">
+			<var name="pageType" value="${pageType}" />
+			<var name="siteName" value="${siteName}" />
+		</execute>
 
 		<execute macro="Page#addPG">
 			<var name="pageName" value="${pageName}" />
-			<var name="pageStaging" value="${pageStaging}" />
+			<var name="pageStaging" value="true" />
+			<var name="pageType" value="${pageType}" />
+			<var name="siteName" value="${siteName}" />
 		</execute>
 
-		<execute macro="Staging#cpPublishToLiveNow" />
+		<execute macro="Staging#publishToLiveNowPG">
+			<var name="pageType" value="${pageType}" />
+			<var name="siteName" value="${siteName}" />
+		</execute>
 
 		<execute action="Staging#click" locator-key1="LIVE_BUTTON" />
 
@@ -48,9 +67,11 @@
 	</command>
 
 	<command name="EnableStagingSite">
+		<var name="pageType" value="Site" />
 		<var name="stagingType" value="StagingSite" />
 
-		<execute macro="Staging#cpActivateStaging">
+		<execute macro="Staging#activateStagingCP">
+			<var name="pageType" value="${pageType}" />
 			<var name="siteName" value="${siteName}" />
 			<var name="stagingType" value="${stagingType}" />
 		</execute>
@@ -58,16 +79,20 @@
 
 	<command name="StagingSiteAddPortlet">
 		<var name="pageName" value="Staging Test Page" />
+		<var name="pageType" value="Site" />
 		<var name="portletName" value="Blogs" />
-		<var name="pageType" value="Staging" />
 
-		<execute macro="Staging#cpActivateStaging">
+		<execute macro="Staging#activateStagingCP">
+			<var name="pageType" value="${pageType}" />
 			<var name="siteName" value="${siteName}" />
 		</execute>
 
-		<execute macro="Portlet#pgAddStaging">
+		<execute macro="Portlet#addPG">
 			<var name="pageName" value="${pageName}" />
+			<var name="pageStaging" value="true" />
+			<var name="pageType" value="${pageType}" />
 			<var name="portletName" value="${portletName}" />
+			<var name="siteName" value="${siteName}" />
 		</execute>
 	</command>
 

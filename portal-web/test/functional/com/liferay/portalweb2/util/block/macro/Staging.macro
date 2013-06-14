@@ -1,5 +1,5 @@
 <definition>
-	<command name="cpActivateStaging">
+	<command name="activateStagingCP">
 		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Sites" />
 		</execute>
@@ -19,7 +19,7 @@
 				<execute action="CPSitesEdit#check" locator-key1="STAGING_ENABLED_ON_PRIVATE_PAGES_CHECKBOX" />
 			</then>
 		</if>
-		
+
 		<execute action="CPSitesEdit#check" locator-key1="STAGING_BLOGS_CHECKBOX" />
 		<execute action="CPSitesEdit#check" locator-key1="STAGING_BOOKMARKS_CHECKBOX" />
 		<execute action="CPSitesEdit#check" locator-key1="STAGING_DOCUMENTS_AND_MEDIA_CHECKBOX" />
@@ -42,7 +42,7 @@
 		<execute action="CPSitesEdit#assertTextEquals" locator-key1="HEADER" value1="${siteName} (Staging)" />
 	</command>
 
-	<command name="cpDeactivateStaging">
+	<command name="deactivateStagingCP">
 		<execute macro="Page#gotoCP">
 			<var name="pageStaging" value="true" />
 			<var name="portletName" value="Sites" />
@@ -61,12 +61,11 @@
 		<execute action="CPSitesEdit#assertTextEquals" locator-key1="HEADER" value1="${siteName}" />
 	</command>
 
-	<command name="cpPublishToLiveNow">
+	<command name="publishToLiveNowPG">
 		<execute macro="Page#gotoPG">
 			<var name="pageStaging" value="true" />
 		</execute>
 
-		<execute action="Staging#click" locator-key1="STAGING_BUTTON" />
 		<execute action="Staging#click" locator-key1="STAGING_DROP_DOWN_BUTTON" />
 		<execute action="Staging#click" locator-key1="STAGING_MENULIST_PUBLISH_TO_LIVE_NOW" />
 
