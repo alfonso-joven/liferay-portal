@@ -1138,6 +1138,36 @@
 		</antcall>
 
 		<antcall target="build-test-ant-script">
+			<param name="test.ant.script.command" value="end-user-so-administration-acceptance" />
+			<param name="test.ant.script.social.office" value="true" />
+			<param name="test.ant.script.suite" value="EndUserSOAdministrationAcceptanceTestSuite" />
+		</antcall>
+
+		<antcall target="build-test-ant-script">
+			<param name="test.ant.script.command" value="end-user-so-dashboard-acceptance" />
+			<param name="test.ant.script.social.office" value="true" />
+			<param name="test.ant.script.suite" value="EndUserSODashboardAcceptanceTestSuite" />
+		</antcall>
+
+		<antcall target="build-test-ant-script">
+			<param name="test.ant.script.command" value="end-user-so-profile-acceptance" />
+			<param name="test.ant.script.social.office" value="true" />
+			<param name="test.ant.script.suite" value="EndUserSOProfileAcceptanceTestSuite" />
+		</antcall>
+
+		<antcall target="build-test-ant-script">
+			<param name="test.ant.script.command" value="end-user-so-site-acceptance" />
+			<param name="test.ant.script.social.office" value="true" />
+			<param name="test.ant.script.suite" value="EndUserSOSiteAcceptanceTestSuite" />
+		</antcall>
+
+		<antcall target="build-test-ant-script">
+			<param name="test.ant.script.command" value="end-user-so-user-bar-acceptance" />
+			<param name="test.ant.script.social.office" value="true" />
+			<param name="test.ant.script.suite" value="EndUserSOUserBarAcceptanceTestSuite" />
+		</antcall>
+
+		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="end-user-social-networking-acceptance" />
 			<param name="test.ant.script.database.minimal" value="true" />
 			<param name="test.ant.script.selenium.implementation" value="webdriver" />
