@@ -131,18 +131,16 @@ public class VerifyOracle extends VerifyProcess {
 
 			rs = ps.executeQuery();
 
-			if (rs.next()) {
-				runSQL("alter table " + tableName + " add temp CLOB");
-
-				runSQL("update " + tableName + " set temp = " + columnName);
-
-				runSQL(
-					"alter table " + tableName + " drop column " + columnName);
-
-				runSQL(
-					"alter table " + tableName + " rename column temp to " +
-						columnName);
+			if (!rs.next()) {
+				return;
 			}
+
+			runSQL("alter table " + tableName + " add temp CLOB");
+			runSQL("update " + tableName + " set temp = " + columnName);
+			runSQL("alter table " + tableName + " drop column " + columnName);
+			runSQL(
+				"alter table " + tableName + " rename column temp to " +
+					columnName);
 		}
 		finally {
 			DataAccess.cleanUp(con, ps, rs);
