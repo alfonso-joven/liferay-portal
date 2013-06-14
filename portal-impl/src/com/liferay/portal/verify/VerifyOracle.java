@@ -79,9 +79,9 @@ public class VerifyOracle extends VerifyProcess {
 
 			sb.append("select count(*) from user_tab_columns ");
 			sb.append("where data_type = 'VARCHAR2' and column_name = '");
-			sb.append(columnName);
+			sb.append(columnName.toUpperCase());
 			sb.append("' and table_name = '");
-			sb.append(tableName);
+			sb.append(tableName.toUpperCase());
 			sb.append("'");
 
 			ps = con.prepareStatement(sb.toString());
