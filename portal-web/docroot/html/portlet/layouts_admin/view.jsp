@@ -207,7 +207,6 @@ SitesUtil.addPortletBreadcrumbEntries(group, pagesName, redirectURL, request, re
 		layoutsContainer.plug(
 			A.Plugin.IO,
 			{
-				autoLoad: false,
 				after: {
 					'success': function(event) {
 						var dialog = Liferay.Util.getWindow();
@@ -222,7 +221,8 @@ SitesUtil.addPortletBreadcrumbEntries(group, pagesName, redirectURL, request, re
 							);
 						}
 					}
-				}
+				},
+				autoLoad: false
 			}
 		);
 
