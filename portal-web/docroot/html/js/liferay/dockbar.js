@@ -11,7 +11,7 @@ AUI.add(
 			ltr: ['tl', 'bl'],
 			rtl: ['tr', 'br']
 		};
-		
+
 		var BODY = A.getBody();
 
 		var BODY_CONTENT = 'bodyContent';
