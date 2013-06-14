@@ -32,8 +32,8 @@ public class BaseAction {
 	}
 
 	protected String getLocator(
-		String locator, String locatorKey,
-		Map<String, String> commandScopeVariables) {
+		String locator, String locatorKey, Map<String, String> variables)
+			throws Exception {
 
 		if (locator != null) {
 			return locator;
@@ -45,36 +45,31 @@ public class BaseAction {
 			if (locatorValue.contains("${") && locatorValue.contains("}")) {
 				String regex = "\\$\\{[^}]*?\\}";
 
-				Pattern p = Pattern.compile(regex);
+				Pattern pattern = Pattern.compile(regex);
 
-				Matcher m = p.matcher(locatorValue);
+				Matcher matcher = pattern.matcher(locatorValue);
 
-				while (m.find()) {
-					String varKey = m.group();
+				while (matcher.find()) {
+					String variable = matcher.group();
 
-					int x = varKey.indexOf("{");
-					int y = varKey.indexOf("}");
+					int x = variable.indexOf("${");
+					int y = variable.indexOf("}");
 
-					varKey = varKey.substring(x + 1, y);
+					String variableKey = variable.substring(x + 2, y);
 
-					Set<String> varKeys = commandScopeVariables.keySet();
-
-					if (varKeys.contains(varKey)) {
-						String varValue = commandScopeVariables.get(varKey);
-
+					if (variables.containsKey(variableKey)) {
 						locatorValue = locatorValue.replaceFirst(
-							regex, varValue);
+							regex, variables.get(variableKey));
 					}
 					else {
-						return null;
+						throw new Exception(
+							"Variable \"" + variableKey + "\" found in \"" +
+								paths.get(locatorKey) + "\" is not set");
 					}
 				}
+			}
 
-				return locatorValue;
-			}
-			else {
-				return locatorValue;
-			}
+			return locatorValue;
 		}
 
 		return locatorKey;
