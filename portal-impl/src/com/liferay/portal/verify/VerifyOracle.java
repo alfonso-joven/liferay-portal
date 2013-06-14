@@ -44,8 +44,10 @@ public class VerifyOracle extends VerifyProcess {
 			return;
 		}
 
-		verifyClobColumns();
-		verifyVarcharColumns();
+		alterVarchar2Columns();
+
+		convertColumnToClob("Layout", "css");
+		convertColumnToClob("LayoutRevision", "css");
 	}
 
 	protected boolean isBetweenBuildNumbers(
@@ -60,12 +62,7 @@ public class VerifyOracle extends VerifyProcess {
 		return false;
 	}
 
-	protected void verifyClobColumns() throws Exception {
-		verifyClobColumns("Layout", "css");
-		verifyClobColumns("LayoutRevision", "css");
-	}
-
-	protected void verifyClobColumns(String tableName, String columnName)
+	protected void convertColumnToClob(String tableName, String columnName)
 		throws Exception {
 
 		Connection con = null;
@@ -106,7 +103,7 @@ public class VerifyOracle extends VerifyProcess {
 		}
 	}
 
-	protected void verifyVarcharColumns() throws Exception {
+	protected void alterVarchar2Columns() throws Exception {
 		int buildNumber = getBuildNumber();
 
 		Connection con = null;
