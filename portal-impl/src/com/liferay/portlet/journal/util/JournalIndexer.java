@@ -243,11 +243,6 @@ public class JournalIndexer extends BaseIndexer {
 				title);
 		}
 
-		Map<Locale, String> titleMap = LocalizationUtil.getLocalizationMap(
-			article.getTitle());
-
-		document.addLocalizedKeyword("localized_title", titleMap);
-
 		document.addKeyword(Field.TYPE, article.getType());
 		document.addKeyword(Field.VERSION, article.getVersion());
 
@@ -256,6 +251,11 @@ public class JournalIndexer extends BaseIndexer {
 		document.addKeyword("layoutUuid", article.getLayoutUuid());
 		document.addKeyword("structureId", article.getStructureId());
 		document.addKeyword("templateId", article.getTemplateId());
+
+		Map<Locale, String> titleMap = LocalizationUtil.getLocalizationMap(
+			article.getTitle());
+
+		document.addLocalizedKeyword("localized_title", titleMap);
 
 		JournalStructure structure = null;
 
