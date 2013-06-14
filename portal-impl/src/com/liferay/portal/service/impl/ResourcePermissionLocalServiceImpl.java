@@ -1225,10 +1225,6 @@ public class ResourcePermissionLocalServiceImpl
 					companyId, name, scope, primKey, roleIds);
 
 			for (ResourcePermission resourcePermission : resourcePermissions) {
-				if (resourcePermission.getOwnerId() != ownerId) {
-					continue;
-				}
-
 				long roleId = resourcePermission.getRoleId();
 				String[] actionIds = roleIdsToActionIds.remove(roleId);
 
