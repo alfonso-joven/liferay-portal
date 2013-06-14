@@ -61,7 +61,6 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Set;
 
 import javax.portlet.PortletURL;
@@ -249,13 +248,9 @@ public class JournalIndexer extends BaseIndexer {
 		document.addKeyword("articleId", article.getArticleId());
 		document.addDate("displayDate", article.getDisplayDate());
 		document.addKeyword("layoutUuid", article.getLayoutUuid());
+		document.addLocalizedKeyword("localized_title", article.getTitleMap());
 		document.addKeyword("structureId", article.getStructureId());
 		document.addKeyword("templateId", article.getTemplateId());
-
-		Map<Locale, String> titleMap = LocalizationUtil.getLocalizationMap(
-			article.getTitle());
-
-		document.addLocalizedKeyword("localized_title", titleMap);
 
 		JournalStructure structure = null;
 
