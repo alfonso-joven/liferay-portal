@@ -19,21 +19,6 @@
 	<td></td>
 </tr>
 <tr>
-	<td>WHAT_WE_DO</td>
-	<td>//span[contains(.,'What We Do')]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>WHO_IS_USING_LIFERAY</td>
-	<td>//span[contains(.,'Who Is Using Liferay')]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>LIFERAY_BENEFITS</td>
-	<td>//span[contains(.,'Liferay Benefits')]</td>
-	<td></td>
-</tr>
-<tr>
 	<td>HEADER</td>
 	<td>//header/hgroup/h1</td>
 	<td></td>

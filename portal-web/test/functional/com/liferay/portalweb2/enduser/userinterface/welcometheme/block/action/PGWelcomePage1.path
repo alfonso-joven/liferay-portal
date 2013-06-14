@@ -1,17 +1,17 @@
 <html>
 <head>
-<title>PGWelcome</title>
+<title>PGWelcomePage1</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">PGWelcome</td></tr>
+<tr><td rowspan="1" colspan="3">PGWelcomePage1</td></tr>
 </thead>
 <tbody>
 <tr>
 	<td>PAGE_NAME</td>
 	<td></td>
-	<td>PGWelcome</td>
+	<td>PGWelcomePage1</td>
 </tr>
 <tr>
 	<td></td>
@@ -19,8 +19,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>WHAT_WE_DO_URL</td>
-	<td>/web/guest/what-we-do</td>
+	<td>WELCOME_THEME_URL</td>
+	<td>/web/guest/</td>
 	<td></td>
 </tr>
 <tr>
@@ -39,17 +39,17 @@
 	<td></td>
 </tr>
 <tr>
-	<td>WHAT_WE_DO</td>
+	<td>PAGE_1</td>
 	<td>//span[contains(.,'What We Do')]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>WHO_IS_USING_LIFERAY</td>
+	<td>PAGE_2</td>
 	<td>//span[contains(.,'Who Is Using Liferay')]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>LIFERAY_BENEFITS</td>
+	<td>PAGE_3</td>
 	<td>//span[contains(.,'Liferay Benefits')]</td>
 	<td></td>
 </tr>
@@ -59,18 +59,18 @@
 	<td></td>
 </tr>
 <tr>
-	<td>GET_SOCIAL_OFFICE</td>
-	<td>//div[@id='social-office']/div/div/a</td>
+	<td>SOCIAL_OFFICE</td>
+	<td>//div[@id='social-office']/div/div/h3</td>
 	<td></td>
 </tr>
 <tr>
-	<td>NEED_HELP_GETTING_STARTED_LINK</td>
-	<td>//div[@id='getting-started']/div/div/a</td>
+	<td>GETTING_STARTED</td>
+	<td>//div[@id='getting-started']/div/div/h3</td>
 	<td></td>
 </tr>
 <tr>
-	<td>DEVELOP_FASTER_LINK</td>
-	<td>//div[@id='ide']/div/div/a</td>
+	<td>DEVELOP_FASTER</td>
+	<td>//div[@id='ide']/div/div/h3</td>
 	<td></td>
 </tr>
 <tr>
@@ -117,60 +117,6 @@
 <tr>
 	<td>MENU_PAGE_7</td>
 	<td>//ul[@id='contentNav']/li/a[contains(.,'Liferay Marketplace')]</td>
-	<td></td>
-</tr>
-<!---->
-<!--TOOLS-->
-<tr>
-	<td>TOOLS_EDIT_WEB_CONTENT</td>
-	<td>//img[contains(@alt,'Edit Web Content')]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>TOOLS_WEB_CONTENT_TEMPLATE</td>
-	<td>//img[contains(@alt,'Edit Template')]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>TOOLS_SELECT_WEB_CONTENT</td>
-	<td>//img[contains(@alt,'Select Web Content')]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>TOOLS_ADD_WEB_CONTENT</td>
-	<td>//img[contains(@alt,'Add Web Content')]</td>
-	<td></td>
-</tr>
-<!---->
-<!--FOOTER-->
-<tr>
-	<td>FOOTER_SOCIAL_OFFICE_LOGO</td>
-	<td>//div[@id='social-office']/div/span[@class='footer-logo']</td>
-	<td></td>
-</tr>
-<tr>
-	<td>FOOTER_SOCIAL_COLLABORATION_MESSAGE</td>
-	<td>//div[@id='social-office']/div/div/h3</td>
-	<td></td>
-</tr>
-<tr>
-	<td>FOOTER_GETTING_STARTED_LOGO</td>
-	<td>//div[@id='getting-started']/div/span[@class='footer-logo']</td>
-	<td></td>
-</tr>
-<tr>
-	<td>FOOTER_GETTING_STARTED_MESSAGE</td>
-	<td>//div[@id='getting-started']/div/div/h3</td>
-	<td></td>
-</tr>
-<tr>
-	<td>FOOTER_DEVELOP_FASTER_LOGO</td>
-	<td>//div[@id='ide']/div/span[@class='footer-logo']</td>
-	<td></td>
-</tr>
-<tr>
-	<td>FOOTER_DEVELOP_FASTER_MESSAGE</td>
-	<td>//div[@id='ide']/div/div/h3</td>
 	<td></td>
 </tr>
 </tbody>

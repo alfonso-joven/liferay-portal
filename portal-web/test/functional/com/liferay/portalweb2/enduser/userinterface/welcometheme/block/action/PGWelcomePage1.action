@@ -1,0 +1,23 @@
+<definition>
+	<command name="click">
+		<case locator-key1="PAGE_1">
+			<execute function="Click#clickAtAndWait" />
+		</case>
+		<case locator-key1="SIGN_IN">
+			<execute function="Click#clickAtAndWait" value1="Sign In" />
+		</case>
+		<case locator-key1="PAGE_2">
+			<execute function="Click#clickAtAndWait" />
+		</case>
+		<case locator-key1="PAGE_3">
+			<execute function="Click#clickAtAndWait" />
+		</case>
+		
+	</command>
+
+	<command name="AssertElementPresent">
+		<case locator-key1="GO_TO_LIFERAY">
+			<execute function="AssertElementPresent#assertVisible" />
+		</case>
+	</command>
+</definition>
