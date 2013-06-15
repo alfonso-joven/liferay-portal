@@ -14,6 +14,10 @@
 
 package com.liferay.portalweb.kaleo.mysubmissions.workflowtaskcomment.addwebcontenttaskcommentassignedtomyroles;
 
+import com.liferay.portalweb.kaleo.webcontent.wcwebcontent.addwebcontent.AddWebContentTest;
+import com.liferay.portalweb.kaleo.webcontent.wcwebcontent.addwebcontent.TearDownWebContentTest;
+import com.liferay.portalweb.kaleo.workflowconfiguration.resource.configureblogsentrydefaultnoworkflow.ConfigureBlogsEntryDefaultNoWorkflowTest;
+import com.liferay.portalweb.kaleo.workflowconfiguration.resource.configurewebcontentsingleapprover.ConfigureWebContentSingleApproverTest;
 import com.liferay.portalweb.portal.BaseTestSuite;
 
 import junit.framework.Test;
@@ -31,7 +35,7 @@ public class AddWebContentTaskCommentAssignedToMyRolesTests
 		testSuite.addTestSuite(AddWebContentTaskCommentAssignedToMyRolesTest.class);
 		testSuite.addTestSuite(ViewWebContentTaskCommentAssignedToMyRolesTest.class);
 		testSuite.addTestSuite(TearDownWebContentTest.class);
-		testSuite.addTestSuite(TearDownWorkflowConfigurationTest.class);
+		testSuite.addTestSuite(ConfigureBlogsEntryDefaultNoWorkflowTest.class);
 
 		return testSuite;
 	}

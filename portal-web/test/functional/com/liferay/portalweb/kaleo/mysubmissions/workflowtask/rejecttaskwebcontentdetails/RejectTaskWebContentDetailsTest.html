@@ -14,7 +14,27 @@
 	<td></td>
 </tr>
 <tr>
+	<td>clickAt</td>
+	<td>//div[@id='dockbar']</td>
+	<td>Dockbar</td>
+</tr>
+<tr>
 	<td>waitForElementPresent</td>
+	<td>//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]</td>
+	<td>AUI Editable Min</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//li[@id='_145_mySites']/a/span</td>
+	<td>Go to</td>
+</tr>
+<tr>
+	<td>mouseOver</td>
+	<td>//li[@id='_145_mySites']/a/span</td>
+	<td>Go to</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
 	<td>link=Control Panel</td>
 	<td>Control Panel</td>
 </tr>
@@ -147,6 +167,26 @@
 	<td>assertText</td>
 	<td>//tr[3]/td[3]</td>
 	<td>No</td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//a[@title='Expand']</td>
+	<td>expandButtonPresent</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>!${expandButtonPresent}</td>
+	<td>expandButtonNotPresent</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//a[@title='Expand']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>expandButtonNotPresent</td>
+	<td></td>
 </tr>
 <tr>
 	<td>assertText</td>

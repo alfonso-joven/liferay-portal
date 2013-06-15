@@ -14,6 +14,10 @@
 
 package com.liferay.portalweb.kaleo.mysubmissions.workflowtask.approvetaskwebcontentdetails;
 
+import com.liferay.portalweb.kaleo.webcontent.wcwebcontent.addwebcontent.AddWebContentTest;
+import com.liferay.portalweb.kaleo.webcontent.wcwebcontent.addwebcontent.TearDownWebContentTest;
+import com.liferay.portalweb.kaleo.workflowconfiguration.resource.configureblogsentrydefaultnoworkflow.TearDownWorkflowConfigurationTest;
+import com.liferay.portalweb.kaleo.workflowconfiguration.resource.configurewebcontentsingleapprover.ConfigureWebContentSingleApproverTest;
 import com.liferay.portalweb.portal.BaseTestSuite;
 
 import junit.framework.Test;
@@ -29,8 +33,8 @@ public class ApproveTaskWebContentDetailsTests extends BaseTestSuite {
 		testSuite.addTestSuite(AddWebContentTest.class);
 		testSuite.addTestSuite(AssignToMeTaskWebContentDetailsTest.class);
 		testSuite.addTestSuite(ApproveTaskWebContentDetailsTest.class);
-		testSuite.addTestSuite(TearDownWebContentTest.class);
 		testSuite.addTestSuite(TearDownWorkflowConfigurationTest.class);
+		testSuite.addTestSuite(TearDownWebContentTest.class);
 
 		return testSuite;
 	}
