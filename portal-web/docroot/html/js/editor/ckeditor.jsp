@@ -135,7 +135,7 @@ String toolbarSet = (String)request.getAttribute("liferay-ui:input-editor:toolba
 		if (Validator.isNotNull(onChangeMethod)) {
 		%>
 
-			onChangeCallback: function () {
+			onChangeCallback: function() {
 				var ckEditor = CKEDITOR.instances['<%= name %>'];
 				var dirty = ckEditor.checkDirty();
 
