@@ -30,6 +30,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Olaf Fricke
  * @author Brian Wing Shun Chan
  */
+@Deprecated
 public class DoubleClickController implements Serializable {
 
 	public void control(

@@ -32,6 +32,7 @@ import org.apache.commons.lang.time.StopWatch;
  * @author Brian Wing Shun Chan
  * @author Raymond Augé
  */
+@Deprecated
 public class DoubleClickFilter extends BasePortalFilter {
 
 	@Override
