@@ -3,6 +3,10 @@
 		<case locator-key1="CONNECT_BUTTON">
 			<execute function="AssertElementNotPresent#assertNotVisible" />
 		</case>
+		
+		<case locator-key1="DISCONNECT_BUTTON">
+			<execute function="AssertElementNotPresent#assertNotVisible" />
+		</case>
 	</command>
 
 	<command name="assertTextEquals">
@@ -10,7 +14,7 @@
 			<execute function="AssertTextEquals#assertText" value1="Connection Requested" />
 		</case>
 		<case locator-key1="SUCCESS_MESSAGE">
-			<execute function="AssertTextEquals#assertText" value1="This user has received a connection request from you." />
+			<execute function="AssertTextEquals#assertText" />
 		</case>
 	</command>
 
