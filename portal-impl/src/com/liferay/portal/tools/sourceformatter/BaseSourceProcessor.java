@@ -520,8 +520,8 @@ public abstract class BaseSourceProcessor implements SourceProcessor {
 			}
 
 			newContent = _fixDataAccessConnection(className, newContent);
-			newContent = _fixSessionKey(
-				fileName, newContent, _sessionKeyPattern);
+			/*newContent = _fixSessionKey(
+				fileName, newContent, _sessionKeyPattern);*/
 
 			newContent = StringUtil.replace(
 				newContent,
@@ -923,10 +923,10 @@ public abstract class BaseSourceProcessor implements SourceProcessor {
 				}
 			}
 
-			newContent = _fixSessionKey(
+			/*newContent = _fixSessionKey(
 				fileName, newContent, _sessionKeyPattern);
 			newContent = _fixSessionKey(
-				fileName, newContent, _taglibSessionKeyPattern);
+				fileName, newContent, _taglibSessionKeyPattern);*/
 
 			_checkLanguageKeys(fileName, newContent, _languageKeyPattern);
 			_checkLanguageKeys(fileName, newContent, _taglibLanguageKeyPattern);
@@ -2458,8 +2458,8 @@ public abstract class BaseSourceProcessor implements SourceProcessor {
 
 		sb.append("<?xml version=\"1.0\"?>\n");
 		sb.append("<!DOCTYPE routes PUBLIC \"-//Liferay//DTD Friendly URL ");
-		sb.append("Routes 6.2.0//EN\" \"http://www.liferay.com/dtd/");
-		sb.append("liferay-friendly-url-routes_6_2_0.dtd\">\n\n<routes>\n");
+		sb.append("Routes 6.1.0//EN\" \"http://www.liferay.com/dtd/");
+		sb.append("liferay-friendly-url-routes_6_1_0.dtd\">\n\n<routes>\n");
 
 		for (ComparableRoute comparableRoute : comparableRoutes) {
 			sb.append("\t<route>\n");
@@ -2652,7 +2652,7 @@ public abstract class BaseSourceProcessor implements SourceProcessor {
 
 			String trimmedLine = StringUtil.trimLeading(line);
 
-			if (trimmedLine.startsWith("* @deprecated")) {
+			/*if (trimmedLine.startsWith("* @deprecated")) {
 				if (!trimmedLine.startsWith("* @deprecated As of ")) {
 					line = StringUtil.replace(
 						line, "* @deprecated", "* @deprecated As of 6.2.0");
@@ -2670,7 +2670,7 @@ public abstract class BaseSourceProcessor implements SourceProcessor {
 							line, version, version + ".0");
 					}
 				}
-			}
+			}*/
 
 			if (trimmedLine.startsWith(StringPool.EQUAL)) {
 				_processErrorMessage(
