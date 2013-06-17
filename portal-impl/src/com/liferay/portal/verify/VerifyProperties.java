@@ -172,10 +172,6 @@ public class VerifyProperties extends VerifyProcess {
 			"com.liferay.portal.servlet.filters.gzip.GZipFilter"
 		},
 		new String[] {
-			"com.liferay.filters.doubleclick.DoubleClickFilter",
-			"com.liferay.portal.servlet.filters.doubleclick.DoubleClickFilter"
-		},
-		new String[] {
 			"com.liferay.filters.strip.StripFilter",
 			"com.liferay.portal.servlet.filters.strip.StripFilter"
 		},
@@ -237,8 +233,10 @@ public class VerifyProperties extends VerifyProcess {
 
 	private static final String[] _OBSOLETE_PORTAL_KEYS = new String[] {
 		"auth.max.failures.limit", "cas.validate.url",
-		"cluster.executor.heartbeat.interval", "commons.pool.enabled",
-		"jbi.workflow.url", "lucene.analyzer",
+		"cluster.executor.heartbeat.interval",
+		"com.liferay.filters.doubleclick.DoubleClickFilter",
+		"com.liferay.portal.servlet.filters.doubleclick.DoubleClickFilter",
+		"commons.pool.enabled", "jbi.workflow.url", "lucene.analyzer",
 		"lucene.store.jdbc.auto.clean.up",
 		"lucene.store.jdbc.auto.clean.up.enabled",
 		"lucene.store.jdbc.auto.clean.up.interval",
