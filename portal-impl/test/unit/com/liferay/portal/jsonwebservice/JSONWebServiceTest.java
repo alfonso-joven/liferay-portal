@@ -29,7 +29,7 @@ import org.springframework.mock.web.MockHttpServletRequest;
 public class JSONWebServiceTest extends BaseJSONWebServiceTestCase {
 
 	@BeforeClass
-	public static void init() throws Exception {
+	public static void setUpClass() throws Exception {
 		initPortalServices();
 
 		registerActionClass(CamelFooService.class);
