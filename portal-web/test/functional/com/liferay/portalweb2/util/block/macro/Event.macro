@@ -71,12 +71,12 @@
 		<execute action="CPCalendar#click" locator-key1="EVENT_TABLE_ACTIONS" />
 		<execute action="CPCalendar#click" locator-key1="EVENT_MENULIST_EDIT" />
 
-		<execute action="CPCalendarEditEvent#type" locator-key1="TITLE_FIELD" value1="${eventTitleNew}" />
+		<execute action="CPCalendarEditEvent#type" locator-key1="TITLE_FIELD" value1="${eventTitleEdit}" />
 		<execute action="CPCalendarEditEvent#click" locator-key1="SAVE_BUTTON" />
 
 		<execute action="CPCalendar#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
 		<execute action="CPCalendar#assertElementPresent" locator-key1="EVENT_TABLE_TIME" />
-		<execute action="CPCalendar#assertTextEquals" locator-key1="EVENT_TABLE_TITLE" value1="${eventTitleNew}" />
+		<execute action="CPCalendar#assertTextEquals" locator-key1="EVENT_TABLE_TITLE" value1="${eventTitleEdit}" />
 		<execute action="CPCalendar#assertTextEquals" locator-key1="EVENT_TABLE_TYPE" value1="Anniversary" />
 		<execute action="CPCalendar#assertElementPresent" locator-key1="EVENT_TABLE_ACTIONS" />
 	</command>
@@ -91,12 +91,12 @@
 		<execute action="PGCalendar#click" locator-key1="EVENT_TABLE_ACTIONS" />
 		<execute action="PGCalendar#click" locator-key1="EVENT_MENULIST_EDIT" />
 
-		<execute action="PGCalendarEditEvent#type" locator-key1="TITLE_FIELD" value1="${eventTitleNew}" />
+		<execute action="PGCalendarEditEvent#type" locator-key1="TITLE_FIELD" value1="${eventTitleEdit}" />
 		<execute action="PGCalendarEditEvent#click" locator-key1="SAVE_BUTTON" />
 
 		<execute action="PGCalendar#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
 		<execute action="PGCalendar#assertElementPresent" locator-key1="EVENT_TABLE_TIME" />
-		<execute action="PGCalendar#assertTextEquals" locator-key1="EVENT_TABLE_TITLE" value1="${eventTitleNew}" />
+		<execute action="PGCalendar#assertTextEquals" locator-key1="EVENT_TABLE_TITLE" value1="${eventTitleEdit}" />
 		<execute action="PGCalendar#assertTextEquals" locator-key1="EVENT_TABLE_TYPE" value1="Anniversary" />
 		<execute action="PGCalendar#assertElementPresent" locator-key1="EVENT_TABLE_ACTIONS" />
 	</command>

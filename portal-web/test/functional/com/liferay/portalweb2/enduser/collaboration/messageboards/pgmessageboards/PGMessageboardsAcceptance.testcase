@@ -67,7 +67,7 @@
 
 	<command name="EditMBCategory">
 		<var name="categoryName" value="MB Category Name" />
-		<var name="categoryNameNew" value="MB Category Name Edit" />
+		<var name="categoryNameEdit" value="MB Category Name Edit" />
 
 		<execute macro="MessageboardsCategory#addPG">
 			<var name="categoryName" value="${categoryName}" />
@@ -76,16 +76,16 @@
 
 		<execute macro="MessageboardsCategory#editPG">
 			<var name="categoryName" value="${categoryName}" />
-			<var name="categoryNameNew" value="${categoryNameNew}" />
+			<var name="categoryNameEdit" value="${categoryNameEdit}" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 	</command>
 
 	<command name="EditMBThreadBody">
 		<var name="threadBody" value="MB Thread Message Body" />
-		<var name="threadBodyNew" value="MB Thread Message Body Edit" />
+		<var name="threadBodyEdit" value="MB Thread Message Body Edit" />
 		<var name="threadSubject" value="MB Thread Message Subject" />
-		<var name="threadSubjectNew" value="MB Thread Message Subject Edit" />
+		<var name="threadSubjectEdit" value="MB Thread Message Subject Edit" />
 
 		<execute macro="MessageboardsThread#addPG">
 			<var name="pageName" value="${pageName}" />
@@ -96,9 +96,9 @@
 		<execute macro="MessageboardsThread#editPG">
 			<var name="pageName" value="${pageName}" />
 			<var name="threadBody" value="${threadBody}" />
-			<var name="threadBodyNew" value="${threadBodyNew}" />
+			<var name="threadBodyEdit" value="${threadBodyEdit}" />
 			<var name="threadSubject" value="${threadSubject}" />
-			<var name="threadSubjectNew" value="${threadSubjectNew}" />
+			<var name="threadSubjectEdit" value="${threadSubjectEdit}" />
 		</execute>
 	</command>
 

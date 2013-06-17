@@ -39,14 +39,14 @@
 
 	<command name="EditTag">
 		<var name="tagName" value="blue" />
-		<var name="tagNameNew" value="teal" />
+		<var name="tagNameEdit" value="teal" />
 
 		<execute macro="Tag#addCP">
 			<var name="tagName" value="${tagName}" />
 		</execute>
 
 		<execute macro="Tag#editCP">
-			<var name="tagNameNew" value="${tagNameNew}" />
+			<var name="tagNameEdit" value="${tagNameEdit}" />
 		</execute>
 	</command>
 

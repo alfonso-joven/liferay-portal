@@ -25,7 +25,7 @@
 
 	<command name="EditCalendarEvent">
 		<var name="eventTitle" value="Calendar Event Title" />
-		<var name="eventTitleNew" value="Calendar Event Title Edit" />
+		<var name="eventTitleEdit" value="Calendar Event Title Edit" />
 
 		<execute macro="Event#addCP">
 			<var name="eventTitle" value="${eventTitle}" />
@@ -33,7 +33,7 @@
 
 		<execute macro="Event#editCP">
 			<var name="eventTitle" value="${eventTitle}" />
-			<var name="eventTitleNew" value="${eventTitleNew}" />
+			<var name="eventTitleEdit" value="${eventTitleEdit}" />
 		</execute>
 	</command>
 
