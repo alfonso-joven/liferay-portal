@@ -1409,7 +1409,6 @@
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="platform-authentication-acceptance" />
 			<param name="test.ant.script.database.minimal" value="true" />
-			<param name="test.ant.script.plugin.hooks" value="antisamy-hook" />
 			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PlatformAuthenticationAcceptanceTestSuite" />
 		</antcall>
@@ -1439,6 +1438,7 @@
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="platform-security-acceptance" />
 			<param name="test.ant.script.database.minimal" value="true" />
+			<param name="test.ant.script.plugin.hooks" value="antisamy-hook" />
 			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="PlatformSecurityAcceptanceTestSuite" />
 		</antcall>
