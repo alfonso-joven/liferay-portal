@@ -102,6 +102,7 @@
 
 		<execute macro="MessageboardsThread#addPG">
 			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Site" />
 			<var name="siteName" value="${siteName}" />
 			<var name="threadSubject" value="${threadSubject}" />
 			<var name="threadBody" value="${threadBody}" />
@@ -109,12 +110,15 @@
 
 		<execute macro="MessageboardsThread#replyPG">
 			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Site" />
 			<var name="siteName" value="${siteName}" />
 			<var name="threadSubject" value="${threadSubject}" />
 			<var name="threadBody" value="${threadBody}" />
 		</execute>
 
 		<execute macro="MessageboardsThread#viewReplyPG">
+			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Site" />
 			<var name="threadSubject" value="${threadSubject}" />
 			<var name="threadBody" value="${threadBody}" />
 			<var name="threadReplyBody" value="${threadReplyBody}" />
@@ -136,11 +140,9 @@
 			<var name="siteName" value="${siteName}" />
 		</execute>
 
-		<execute macro="Page#gotoPG">
-			<var name="pageType" value="Site" />
-		</execute>
-
 		<execute macro="MessageboardsThread#viewReplyPG">
+			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Site" />
 			<var name="threadSubject" value="${threadSubject}" />
 			<var name="threadBody" value="${threadBody}" />
 			<var name="threadReplyBody" value="${threadReplyBody}" />

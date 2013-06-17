@@ -11,11 +11,21 @@
 	</command>
 
 	<command name="gotoCP">
-		<execute macro="Page#openURL" />
+		<execute action="Home#open" locator-key1="GUEST_URL" />
 
 		<execute action="Dockbar#mouseOver" locator-key1="GO_TO" />
-		<execute action="Dockbar#click" locator-key1="GO_TO" />
 		<execute action="Dockbar#click" locator-key1="GO_TO_CONTROL_PANEL" />
+
+		<if>
+			<isset var="siteScopeName" />
+			<then>
+				<execute action="Home#click" locator-key1="SCOPE_SELECTOR" />
+
+				<var name="key_siteScopeName" value="${siteScopeName}" />
+
+				<execute action="Home#click" locator-key1="SCOPE_SELECTOR_MENULIST_ITEM" />
+			</then>
+		</if>
 
 		<execute action="Home#click" locator1="//ul[@class='category-portlets']/li/a[contains(.,'${portletName}')]" />
 	</command>

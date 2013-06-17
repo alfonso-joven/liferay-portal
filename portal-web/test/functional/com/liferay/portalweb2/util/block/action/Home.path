@@ -108,6 +108,17 @@
 	<td></td>
 	<td></td>
 </tr>
+<!--SCOPE_SELECTOR_MENULIST-->
+<tr>
+	<td>SCOPE_SELECTOR_MENULIST_ITEM</td>
+	<td>//ul[@aria-labelledby='_160_groupSelectorButton']/li/a[contains(.,'${key_siteScopeName}')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
 <!--PAGE-->
 <tr>
 	<td>PAGE_1</td>
