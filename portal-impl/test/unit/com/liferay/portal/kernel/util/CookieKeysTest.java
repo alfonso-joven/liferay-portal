@@ -122,7 +122,7 @@ public class CookieKeysTest {
 	}
 
 	@Before
-	public void setup() {
+	public void setUp() {
 		PropsUtil.setProps(new PropsImpl());
 	}
 
