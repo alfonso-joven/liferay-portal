@@ -28,11 +28,11 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.lang.time.StopWatch;
 
 /**
- * @author Olaf Fricke
- * @author Brian Wing Shun Chan
- * @author Raymond Augé
+ * @author     Olaf Fricke
+ * @author     Brian Wing Shun Chan
+ * @author     Raymond Augé
+ * @deprecated As of 6.1.0, with no direct replacement
  */
-@Deprecated
 public class DoubleClickFilter extends BasePortalFilter {
 
 	@Override
