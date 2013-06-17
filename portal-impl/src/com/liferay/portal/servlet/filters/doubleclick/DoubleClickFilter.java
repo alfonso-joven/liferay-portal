@@ -36,6 +36,11 @@ import org.apache.commons.lang.time.StopWatch;
 public class DoubleClickFilter extends BasePortalFilter {
 
 	@Override
+	public boolean isFilterEnabled() {
+		return false;
+	}
+
+	@Override
 	protected void processFilter(
 			HttpServletRequest request, HttpServletResponse response,
 			FilterChain filterChain)
