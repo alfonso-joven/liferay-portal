@@ -40,17 +40,17 @@
 </tr>
 <tr>
 	<td>PAGE_1</td>
-	<td>//span[contains(.,'What We Do')]</td>
+	<td>xPath=(//nav[@id='navigation']/ul/li/a/span)[1]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>PAGE_2</td>
-	<td>//span[contains(.,'Who Is Using Liferay')]</td>
+	<td>xPath=(//nav[@id='navigation']/ul/li/a/span)[2]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>PAGE_3</td>
-	<td>//span[contains(.,'Liferay Benefits')]</td>
+	<td>xPath=(//nav[@id='navigation']/ul/li/a/span)[3]</td>
 	<td></td>
 </tr>
 <tr>
