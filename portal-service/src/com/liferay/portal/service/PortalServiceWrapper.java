@@ -84,11 +84,6 @@ public class PortalServiceWrapper implements PortalService,
 		_portalService.testAddClassNameAndTestTransactionPortletBar_Success(transactionPortletBarText);
 	}
 
-	public void testCounterIncrement_Rollback()
-		throws com.liferay.portal.kernel.exception.SystemException {
-		_portalService.testCounterIncrement_Rollback();
-	}
-
 	public void testDeleteClassName()
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {

@@ -96,11 +96,6 @@ public class PortalServiceUtil {
 			.testAddClassNameAndTestTransactionPortletBar_Success(transactionPortletBarText);
 	}
 
-	public static void testCounterIncrement_Rollback()
-		throws com.liferay.portal.kernel.exception.SystemException {
-		getService().testCounterIncrement_Rollback();
-	}
-
 	public static void testDeleteClassName()
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
