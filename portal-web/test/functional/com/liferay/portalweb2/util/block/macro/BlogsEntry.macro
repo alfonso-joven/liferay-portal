@@ -20,7 +20,7 @@
 
 		<execute action="CPBlogsAdd#type" locator-key1="TITLE_FIELD" value1="${entryTitle}" />
 		<execute action="CPBlogsAdd#type" locator-key1="CONTENT_FIELD" value1="${entryContent}" />
-		<execute action="CPBlogsAdd#click" locator-key1="PUBLISH_BUTTON" />
+		<execute action="CPBlogsAdd#assertClick" locator-key1="PUBLISH_BUTTON" />
 
 		<var name="key_entryTitle" value="${entryTitle}" />
 
@@ -29,6 +29,29 @@
 		<execute action="CPBlogs#click" locator-key1="ENTRY_TABLE_TITLE" value1="${entryTitle}" />
 
 		<execute action="CPBlogsEntry#assertTextEquals" locator-key1="ENTRY_TITLE_HEADER" value1="${entryTitle}" />
+		<execute action="CPBlogsEntry#assertTextEquals" locator-key1="ENTRY_CONTENT" value1="${entryContent}" />
+	</command>
+
+	<command name="addCPWithWorkflow">
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Blogs" />
+		</execute>
+
+		<execute action="CPBlogs#click" locator-key1="ADD_ENTRY" />
+
+		<execute action="CPBlogsAdd#type" locator-key1="TITLE_FIELD" value1="${entryTitle}" />
+		<execute action="CPBlogsAdd#type" locator-key1="CONTENT_FIELD" value1="${entryContent}" />
+		<execute action="CPBlogsAdd#assertClick" locator-key1="SUBMIT_FOR_PUBLICATION_BUTTON" value1="Submit for Publication" />
+
+		<var name="key_entryTitle" value="${entryTitle}" />
+
+		<execute action="CPBlogs#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPBlogs#assertTextEquals" locator-key1="ENTRY_TABLE_TITLE" value1="${entryTitle}" />
+		<execute action="CPBlogs#click" locator-key1="ENTRY_TABLE_TITLE" value1="${entryTitle}" />
+
+		<execute action="CPBlogsEntry#assertTextEquals" locator-key1="ENTRY_TITLE_HEADER" value1="${entryTitle}" />
+		<execute action="CPBlogsEntry#assertTextEquals" locator-key1="ENTRY_WORKFLOW_STATUS" value1="Pending Approval" />
+		<execute action="CPBlogsEntry#assertTextEquals" locator-key1="ENTRY_TITLE_LINK" value1="${entryTitle}" />
 		<execute action="CPBlogsEntry#assertTextEquals" locator-key1="ENTRY_CONTENT" value1="${entryContent}" />
 	</command>
 
@@ -213,5 +236,37 @@
 				<execute action="CPBlogs#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete the selected entries?" />
 			</then>
 		</if>
+	</command>
+
+	<command name="viewCP">
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Blogs" />
+		</execute>
+
+		<var name="key_entryTitle" value="${entryTitle}" />
+
+		<execute action="CPBlogs#assertTextEquals" locator-key1="ENTRY_TABLE_TITLE" value1="${entryTitle}" />
+		<execute action="CPBlogs#click" locator-key1="ENTRY_TABLE_TITLE" value1="${entryTitle}" />
+
+		<execute action="CPBlogsEntry#assertTextEquals" locator-key1="ENTRY_TITLE_HEADER" value1="${entryTitle}" />
+		<execute action="CPBlogsEntry#assertTextEquals" locator-key1="ENTRY_TITLE_LINK" value1="${entryTitle}" />
+		<execute action="CPBlogsEntry#assertTextEquals" locator-key1="ENTRY_CONTENT" value1="${entryContent}" />
+		<execute action="CPBlogsEntry#assertElementNotPresent" locator-key1="ENTRY_WORKFLOW_STATUS" />
+	</command>
+
+	<command name="viewCPWithWorkflow">
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Blogs" />
+		</execute>
+
+		<var name="key_entryTitle" value="${entryTitle}" />
+
+		<execute action="CPBlogs#assertTextEquals" locator-key1="ENTRY_TABLE_TITLE" value1="${entryTitle}" />
+		<execute action="CPBlogs#click" locator-key1="ENTRY_TABLE_TITLE" value1="${entryTitle}" />
+
+		<execute action="CPBlogsEntry#assertTextEquals" locator-key1="ENTRY_TITLE_HEADER" value1="${entryTitle}" />
+		<execute action="CPBlogsEntry#assertTextEquals" locator-key1="ENTRY_WORKFLOW_STATUS" value1="Pending Approval" />
+		<execute action="CPBlogsEntry#assertTextEquals" locator-key1="ENTRY_TITLE_LINK" value1="${entryTitle}" />
+		<execute action="CPBlogsEntry#assertTextEquals" locator-key1="ENTRY_CONTENT" value1="${entryContent}" />
 	</command>
 </definition>

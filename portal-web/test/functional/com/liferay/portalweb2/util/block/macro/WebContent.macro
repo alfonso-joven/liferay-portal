@@ -8,11 +8,13 @@
 
 		<execute action="CPWebcontentAddwebcontent#type" locator-key1="TITLE_FIELD" value1="${webContentTitle}" />
 		<execute action="CPWebcontentAddwebcontent#type" locator-key1="CONTENT_FIELD" value1="${webContentContent}" />
-		<execute action="CPWebcontentAddwebcontent#click" locator-key1="PUBLISH_BUTTON" />
+		<execute action="CPWebcontentAddwebcontent#assertClick" locator-key1="PUBLISH_BUTTON" />
+
+		<var name="key_webContentTitle" value="${webContentTitle}" />
 
 		<execute action="CPWebcontent#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
-		<execute action="CPWebcontent#assertTextEquals" locator-key1="WEB_CONTENT_TABLE_TITLE_1" value1="${webContentTitle}" />
-		<execute action="CPWebcontent#assertTextEquals" locator-key1="WEB_CONTENT_TABLE_STATUS_1" value1="Approved" />
+		<execute action="CPWebcontent#assertTextEquals" locator-key1="WEB_CONTENT_TABLE_TITLE" value1="${webContentTitle}" />
+		<execute action="CPWebcontent#assertTextEquals" locator-key1="WEB_CONTENT_TABLE_STATUS" value1="Approved" />
 	</command>
 
 	<command name="addCPwithStructure">
@@ -25,10 +27,30 @@
 
 		<execute action="CPWebcontentAddwebcontent#type" locator-key1="TITLE_FIELD" value1="${webContentTitle}" />
 		<execute action="CPWebcontentAddwebcontent#type" locator1="//input[@name='_15_text_text']" value1="${webContentText}" />
-		<execute action="CPWebcontentAddwebcontent#click" locator-key1="PUBLISH_BUTTON" />
+		<execute action="CPWebcontentAddwebcontent#assertClick" locator-key1="PUBLISH_BUTTON" />
+
+		<var name="key_webContentTitle" value="${webContentTitle}" />
 
 		<execute action="CPWebcontent#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
-		<execute action="CPWebcontent#assertTextEquals" locator-key1="WEB_CONTENT_TABLE_TITLE_1" value1="${webContentTitle}" />
+		<execute action="CPWebcontent#assertTextEquals" locator-key1="WEB_CONTENT_TABLE_TITLE" value1="${webContentTitle}" />
+	</command>
+
+	<command name="addCPWithWorkflow">
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Web Content" />
+		</execute>
+
+		<execute action="CPWebcontent#click" locator-key1="ADD_BUTTON" />
+
+		<execute action="CPWebcontentAddwebcontent#type" locator-key1="TITLE_FIELD" value1="${webContentTitle}" />
+		<execute action="CPWebcontentAddwebcontent#type" locator-key1="CONTENT_FIELD" value1="${webContentContent}" />
+		<execute action="CPWebcontentAddwebcontent#assertClick" locator-key1="SUBMIT_FOR_PUBLICATION_BUTTON" value1="Submit for Publication" />
+
+		<var name="key_webContentTitle" value="${webContentTitle}" />
+
+		<execute action="CPWebcontent#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPWebcontent#assertTextEquals" locator-key1="WEB_CONTENT_TABLE_TITLE" value1="${webContentTitle}" />
+		<execute action="CPWebcontent#assertTextEquals" locator-key1="WEB_CONTENT_TABLE_STATUS" value1="Pending" />
 	</command>
 
 	<command name="addPGviaAP">
@@ -94,5 +116,27 @@
 		</if>
 
 		<execute action="CPWebcontent#assertTextEquals" locator-key1="INFO_MESSAGE" />
+	</command>
+
+	<command name="viewCP">
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Web Content" />
+		</execute>
+
+		<var name="key_webContentTitle" value="${webContentTitle}" />
+
+		<execute action="CPWebcontent#assertTextEquals" locator-key1="WEB_CONTENT_TABLE_TITLE" value1="${webContentTitle}" />
+		<execute action="CPWebcontent#assertTextEquals" locator-key1="WEB_CONTENT_TABLE_STATUS" value1="Approved" />
+	</command>
+
+	<command name="viewCPWithWorkflow">
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Web Content" />
+		</execute>
+
+		<var name="key_webContentTitle" value="${webContentTitle}" />
+
+		<execute action="CPWebcontent#assertTextEquals" locator-key1="WEB_CONTENT_TABLE_TITLE" value1="${webContentTitle}" />
+		<execute action="CPWebcontent#assertTextEquals" locator-key1="WEB_CONTENT_TABLE_STATUS" value1="Pending" />
 	</command>
 </definition>
