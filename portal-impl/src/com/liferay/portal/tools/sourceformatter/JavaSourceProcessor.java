@@ -582,8 +582,8 @@ public class JavaSourceProcessor extends BaseSourceProcessor {
 			}
 
 			newContent = fixDataAccessConnection(className, newContent);
-			newContent = fixSessionKey(
-				fileName, newContent, getSessionKeyPattern());
+			/*newContent = fixSessionKey(
+				fileName, newContent, getSessionKeyPattern());*/
 
 			newContent = StringUtil.replace(
 				newContent,
@@ -979,7 +979,7 @@ public class JavaSourceProcessor extends BaseSourceProcessor {
 
 			String trimmedLine = StringUtil.trimLeading(line);
 
-			if (trimmedLine.startsWith("* @deprecated")) {
+			/*if (trimmedLine.startsWith("* @deprecated")) {
 				if (!trimmedLine.startsWith("* @deprecated As of ")) {
 					line = StringUtil.replace(
 						line, "* @deprecated", "* @deprecated As of 6.2.0");
@@ -997,7 +997,7 @@ public class JavaSourceProcessor extends BaseSourceProcessor {
 							line, version, version + ".0");
 					}
 				}
-			}
+			}*/
 
 			if (trimmedLine.startsWith(StringPool.EQUAL)) {
 				processErrorMessage(
