@@ -24,5 +24,8 @@
 		<case locator-key1="CONNECT_BUTTON">
 			<execute function="Click#textClickAt" />
 		</case>
+		<case locator-key1="USER_DETAILS_NAME">
+			<execute function="Click#textClickAtAndWait" />
+		</case>
 	</command>
 </definition>
