@@ -1,3 +1,5 @@
 <definition>
-	<execute test-case="PGLoginAcceptance" />
+	<execute test-case="WorkflowadminBlogsAcceptance" />
+
+	<execute test-case="WorkflowadminWebContentAcceptance" />
 </definition>
