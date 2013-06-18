@@ -28,6 +28,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+import org.junit.Test;
+
 /**
  * <p>
  * <table>
@@ -188,6 +190,7 @@ import java.util.Queue;
  */
 public class AnnotationLocatorTest extends TestCase {
 
+	@Test
 	public void testClassListLocate() {
 		_classListLocate(TestClass.class, Arrays.asList(_type(1), _mix(2)));
 
@@ -212,6 +215,7 @@ public class AnnotationLocatorTest extends TestCase {
 		_classListLocate(OriginInterface1.class, Arrays.asList(_type(9)));
 	}
 
+	@Test
 	public void testClassSingleLocate() {
 		_classSingleLocate(TestClass.class, 2, 1);
 
@@ -232,10 +236,12 @@ public class AnnotationLocatorTest extends TestCase {
 		_classSingleLocate(OriginInterface1.class, -1, 9);
 	}
 
+	@Test
 	public void testConstructor() {
 		new AnnotationLocator();
 	}
 
+	@Test
 	public void testInheritedHierarchyWalking() throws Exception {
 		List<Class<?>> expectedClassHierarchy = Arrays.asList(
 			TestClass.class, SuperClass.class, TestInterface2.class,
@@ -260,6 +266,7 @@ public class AnnotationLocatorTest extends TestCase {
 		assertEquals(expectedClassHierarchy, actualClassHierarchy);
 	}
 
+	@Test
 	public void testMethodListLocate() {
 		_methodListLocate(
 			TestClass.class,
@@ -337,6 +344,7 @@ public class AnnotationLocatorTest extends TestCase {
 				new Annotation[0], new Annotation[0]));
 	}
 
+	@Test
 	public void testMethodSingleLocate() {
 		_methodSingleLocate(
 			TestClass.class, new int[] {1, 2, 2, 1, 1, 3},

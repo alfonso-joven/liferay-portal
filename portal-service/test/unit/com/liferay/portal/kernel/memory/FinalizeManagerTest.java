@@ -16,11 +16,14 @@ package com.liferay.portal.kernel.memory;
 
 import com.liferay.portal.kernel.test.BaseTestCase;
 
+import org.junit.Test;
+
 /**
  * @author Shuyang Zhou
  */
 public class FinalizeManagerTest extends BaseTestCase {
 
+	@Test
 	public void testRegister() throws InterruptedException {
 		if (FinalizeManager.THREAD_ENABLED) {
 			registerWithThread();

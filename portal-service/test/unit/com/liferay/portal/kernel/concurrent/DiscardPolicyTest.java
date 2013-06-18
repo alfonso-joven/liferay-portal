@@ -19,11 +19,14 @@ import com.liferay.portal.kernel.test.TestCase;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Test;
+
 /**
  * @author Shuyang Zhou
  */
 public class DiscardPolicyTest extends TestCase {
 
+	@Test
 	public void testDiscardPolicy1() {
 		ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
 			1, 1, TestUtil.KEEPALIVE_TIME, TimeUnit.MILLISECONDS, true, 1,
@@ -39,6 +42,7 @@ public class DiscardPolicyTest extends TestCase {
 		assertFalse(markerBlockingJob.isEnded());
 	}
 
+	@Test
 	public void testDiscardPolicy2() throws InterruptedException {
 		ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
 			1, 1, TestUtil.KEEPALIVE_TIME, TimeUnit.MILLISECONDS, true, 1,

@@ -21,6 +21,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Test;
+
 /**
  * @author Shuyang Zhou
  */
@@ -58,6 +60,7 @@ public class CoalescedPipeTest extends TestCase {
 		scheduledExecutorService.awaitTermination(120, TimeUnit.SECONDS);
 	}
 
+	@Test
 	public void testNonBlockingTake() throws InterruptedException {
 		CoalescedPipe<String> coalescedPipe = new CoalescedPipe<String>();
 
@@ -163,6 +166,7 @@ public class CoalescedPipeTest extends TestCase {
 		assertEquals(2, coalescedPipe.coalescedCount());
 	}
 
+	@Test
 	public void testTakeSnapshot() throws InterruptedException {
 		CoalescedPipe<String> coalescedPipe = new CoalescedPipe<String>();
 

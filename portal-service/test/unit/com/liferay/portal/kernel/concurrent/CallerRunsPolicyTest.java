@@ -19,11 +19,14 @@ import com.liferay.portal.kernel.test.TestCase;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Test;
+
 /**
  * @author Shuyang Zhou
  */
 public class CallerRunsPolicyTest extends TestCase {
 
+	@Test
 	public void testCallerRunsPolicy1() {
 		MarkerThreadPoolHandler markerThreadPoolHandler =
 			new MarkerThreadPoolHandler();
@@ -44,6 +47,7 @@ public class CallerRunsPolicyTest extends TestCase {
 		assertFalse(markerThreadPoolHandler.isAfterExecuteRan());
 	}
 
+	@Test
 	public void testCallerRunsPolicy2() {
 		MarkerThreadPoolHandler markerThreadPoolHandler =
 			new MarkerThreadPoolHandler();
@@ -70,6 +74,7 @@ public class CallerRunsPolicyTest extends TestCase {
 		}
 	}
 
+	@Test
 	public void testCallerRunsPolicy3() {
 		MarkerThreadPoolHandler markerThreadPoolHandler =
 			new MarkerThreadPoolHandler();

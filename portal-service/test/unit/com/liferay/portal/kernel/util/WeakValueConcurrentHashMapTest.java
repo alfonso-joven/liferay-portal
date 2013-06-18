@@ -18,11 +18,14 @@ import com.liferay.portal.kernel.memory.DummyFinalizeAction;
 import com.liferay.portal.kernel.memory.FinalizeManager;
 import com.liferay.portal.kernel.test.BaseTestCase;
 
+import org.junit.Test;
+
 /**
  * @author Shuyang Zhou
  */
 public class WeakValueConcurrentHashMapTest extends BaseTestCase {
 
+	@Test
 	public void testAutoRemove() throws Exception {
 		WeakValueConcurrentHashMap<String, Object> weakValueConcurrentHashMap =
 			new WeakValueConcurrentHashMap<String, Object>();

@@ -28,11 +28,14 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicLong;
 
+import org.junit.Test;
+
 /**
  * @author Shuyang Zhou
  */
 public class CharPipeTest extends TestCase {
 
+	@Test
 	public void testCloseForce() {
 		CharPipe charPipe = new CharPipe();
 
@@ -179,6 +182,7 @@ public class CharPipeTest extends TestCase {
 		assertTrue(timestampAfterRead >= timestampBeforeClose.get());
 	}
 
+	@Test
 	public void testClosePeacefullyEmpty() throws IOException {
 		CharPipe charPipe = new CharPipe();
 
@@ -194,6 +198,7 @@ public class CharPipeTest extends TestCase {
 		assertEquals(-1, reader.read());
 	}
 
+	@Test
 	public void testClosePeacefullyNotEmpty() throws IOException {
 		CharPipe charPipe = new CharPipe();
 
@@ -221,6 +226,7 @@ public class CharPipeTest extends TestCase {
 		assertEquals(-1, reader.read());
 	}
 
+	@Test
 	public void testConstructor() {
 		CharPipe charPipe = new CharPipe();
 
@@ -247,6 +253,7 @@ public class CharPipeTest extends TestCase {
 		charPipe.close();
 	}
 
+	@Test
 	public void testGetReader() {
 		CharPipe charPipe = new CharPipe();
 
@@ -275,6 +282,7 @@ public class CharPipeTest extends TestCase {
 		charPipe.close();
 	}
 
+	@Test
 	public void testGetWriter() throws IOException {
 		CharPipe charPipe = new CharPipe();
 
@@ -288,6 +296,7 @@ public class CharPipeTest extends TestCase {
 		charPipe.close();
 	}
 
+	@Test
 	public void testPipingChar() throws IOException {
 		CharPipe charPipe = new CharPipe(4);
 
@@ -312,6 +321,7 @@ public class CharPipeTest extends TestCase {
 		charPipe.close();
 	}
 
+	@Test
 	public void testPipingCharArray() throws IOException {
 		CharPipe charPipe = new CharPipe(4);
 
@@ -340,6 +350,7 @@ public class CharPipeTest extends TestCase {
 		charPipe.close();
 	}
 
+	@Test
 	public void testPipingCharArrayWithOffset() throws IOException {
 		CharPipe charPipe = new CharPipe(4);
 
@@ -382,6 +393,7 @@ public class CharPipeTest extends TestCase {
 		charPipe.close();
 	}
 
+	@Test
 	public void testPipingCharArrayWithOffsetTwoStep() throws IOException {
 		CharPipe charPipe = new CharPipe(4);
 
@@ -425,6 +437,7 @@ public class CharPipeTest extends TestCase {
 		charPipe.close();
 	}
 
+	@Test
 	public void testPipingCharBuffer() throws IOException {
 		CharPipe charPipe = new CharPipe(4);
 
@@ -454,6 +467,7 @@ public class CharPipeTest extends TestCase {
 		charPipe.close();
 	}
 
+	@Test
 	public void testPipingString() throws IOException {
 		CharPipe charPipe = new CharPipe(4);
 
@@ -472,6 +486,7 @@ public class CharPipeTest extends TestCase {
 		charPipe.close();
 	}
 
+	@Test
 	public void testPipingStringWithOffset() throws IOException {
 		CharPipe charPipe = new CharPipe(4);
 
@@ -501,6 +516,7 @@ public class CharPipeTest extends TestCase {
 		charPipe.close();
 	}
 
+	@Test
 	public void testPipingStringWithOffsetTwoStep() throws IOException {
 		CharPipe charPipe = new CharPipe(4);
 
@@ -542,6 +558,7 @@ public class CharPipeTest extends TestCase {
 		charPipe.close();
 	}
 
+	@Test
 	public void testSkip() throws Exception {
 		CharPipe charPipe = new CharPipe(4);
 
@@ -585,6 +602,7 @@ public class CharPipeTest extends TestCase {
 		assertFalse(slowWriterJob.isFailed());
 	}
 
+	@Test
 	public void testSlowReader() throws Exception {
 		CharPipe charPipe = new CharPipe(4);
 
@@ -621,6 +639,7 @@ public class CharPipeTest extends TestCase {
 		assertFalse(slowReaderJob.isFailed());
 	}
 
+	@Test
 	public void testSlowReaderOnCloseForce() throws Exception {
 		CharPipe charPipe = new CharPipe(4);
 
@@ -649,6 +668,7 @@ public class CharPipeTest extends TestCase {
 		assertFalse(slowReaderJob.isFailed());
 	}
 
+	@Test
 	public void testSlowReaderOnClosePeacefully() throws Exception {
 		CharPipe charPipe = new CharPipe(4);
 
@@ -677,6 +697,7 @@ public class CharPipeTest extends TestCase {
 		assertFalse(slowReaderJob.isFailed());
 	}
 
+	@Test
 	public void testSlowWriter() throws Exception {
 		CharPipe charPipe = new CharPipe(4);
 
@@ -705,6 +726,7 @@ public class CharPipeTest extends TestCase {
 		assertFalse(slowWriterJob.isFailed());
 	}
 
+	@Test
 	public void testSlowWriterOnClose() throws Exception {
 		CharPipe charPipe = new CharPipe(4);
 

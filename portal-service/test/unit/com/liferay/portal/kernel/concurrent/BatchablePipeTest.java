@@ -24,11 +24,14 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
+import org.junit.Test;
+
 /**
  * @author Shuyang Zhou
  */
 public class BatchablePipeTest extends TestCase {
 
+	@Test
 	public void testBatchPutAndGet() {
 		BatchablePipe<String, Integer> batchablePipe =
 			new BatchablePipe<String, Integer>();
@@ -204,6 +207,7 @@ public class BatchablePipeTest extends TestCase {
 		assertLessThan(1000, resultBlockingQueue.size());
 	}
 
+	@Test
 	public void testCreation() {
 		BatchablePipe<String, Integer> batchablePipe =
 			new BatchablePipe<String, Integer>();
@@ -213,6 +217,7 @@ public class BatchablePipeTest extends TestCase {
 		assertNull(batchablePipe.take());
 	}
 
+	@Test
 	public void testSimplePutAndTake() {
 		BatchablePipe<String, Integer> batchablePipe =
 			new BatchablePipe<String, Integer>();
