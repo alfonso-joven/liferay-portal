@@ -135,33 +135,33 @@
 	<td></td>
 </tr>
 <tr>
-	<td>WEB_CONTENT_TABLE_CHECKBOX_1</td>
-	<td>xpath=(//td/input[@name='_15_rowIds'])[1]</td>
+	<td>WEB_CONTENT_TABLE_CHECKBOX</td>
+	<td>xpath=(//tbody/tr[contains(.,'${key_webContentTitle}')]/td/input[@name='_15_rowIds'])[1]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>WEB_CONTENT_TABLE_ID_1</td>
-	<td>xpath=(//tbody/tr[3]/td[2]/a)[1]</td>
+	<td>WEB_CONTENT_TABLE_ID</td>
+	<td>xpath=(//tbody/tr[contains(.,'${key_webContentTitle}')]/td[2]/a)[1]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>WEB_CONTENT_TABLE_TITLE_1</td>
-	<td>xpath=(//tbody/tr[3]/td[3]/a)[1]</td>
+	<td>WEB_CONTENT_TABLE_TITLE</td>
+	<td>xpath=(//tbody/tr[contains(.,'${key_webContentTitle}')]/td[3]/a)[1]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>WEB_CONTENT_TABLE_STATUS_1</td>
-	<td>xpath=(//tbody/tr[3]/td[4]/a)[1]</td>
+	<td>WEB_CONTENT_TABLE_STATUS</td>
+	<td>xpath=(//tbody/tr[contains(.,'${key_webContentTitle}')]/td[4]/a)[1]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>WEB_CONTENT_TABLE_VERSION_1</td>
-	<td>xpath=(//tbody/tr[3]/td[5]/a)[1]</td>
+	<td>WEB_CONTENT_TABLE_VERSION</td>
+	<td>xpath=(//tbody/tr[contains(.,'${key_webContentTitle}')]/td[5]/a)[1]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>WEB_CONTENT_TABLE_ACTIONS_1</td>
-	<td>xpath=(//span[@title='Actions']/ul/li/strong/a/span)[1]</td>
+	<td>WEB_CONTENT_TABLE_ACTIONS</td>
+	<td>xpath=(//tbody/tr[contains(.,'${key_webContentTitle}')]//span[@title='Actions']/ul/li/strong/a/span)[1]</td>
 	<td></td>
 </tr>
 <tr>

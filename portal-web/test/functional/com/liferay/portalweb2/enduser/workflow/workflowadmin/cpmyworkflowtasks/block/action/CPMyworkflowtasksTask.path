@@ -118,7 +118,7 @@
 </tr>
 <tr>
 	<td>PREVIEW_CONTENT</td>
-	<td>//span[contains(.,'Preview of Blogs Entry')]/../../..</td>
+	<td>//div[@class='lfr-panel-container task-panel-container']/div/div[2]</td>
 	<td></td>
 </tr>
 <tr>

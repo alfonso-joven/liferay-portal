@@ -18,6 +18,16 @@
 	<td></td>
 	<td></td>
 </tr>
+<tr>
+	<td>INFO_MESSAGE</td>
+	<td>//div[@class='portlet-msg-info']</td>
+	<td></td>
+</tr>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
 <!--NAVIGATION-->
 <tr>
 	<td>NAVIGATION_DEFINITIONS</td>
@@ -58,32 +68,32 @@
 <!--COMPLETED_TABLE-->
 <tr>
 	<td>COMPLETED_TABLE_TASK</td>
-	<td>//div[@id='_151_workflowInstancesSearchContainer']//tr/td[contains(@headers,'col-definition')]/a</td>
+	<td>//div[@id='_151_workflowInstancesSearchContainer']//tr[contains(.,'${key_workflowAssetTitle}')]/td[1]/a</td>
 	<td></td>
 </tr>
 <tr>
 	<td>COMPLETED_TABLE_ASSET_TITLE</td>
-	<td>//div[@id='_151_workflowInstancesSearchContainer']//tr/td[contains(@headers,'col-asset-title')]/a</td>
+	<td>//div[@id='_151_workflowInstancesSearchContainer']//tr[contains(.,'${key_workflowAssetTitle}')]/td[2]/a</td>
 	<td></td>
 </tr>
 <tr>
 	<td>COMPLETED_TABLE_ASSET_TYPE</td>
-	<td>//div[@id='_151_workflowInstancesSearchContainer']//tr/td[contains(@headers,'col-asset-type')]/a</td>
+	<td>//div[@id='_151_workflowInstancesSearchContainer']//tr[contains(.,'${key_workflowAssetTitle}')]/td[3]/a</td>
 	<td></td>
 </tr>
 <tr>
 	<td>COMPLETED_TABLE_STATUS</td>
-	<td>//div[@id='_151_workflowInstancesSearchContainer']//tr/td[contains(@headers,'col-status')]/a</td>
+	<td>//div[@id='_151_workflowInstancesSearchContainer']//tr[contains(.,'${key_workflowAssetTitle}')]/td[4]/a</td>
 	<td></td>
 </tr>
 <tr>
 	<td>COMPLETED_TABLE_LAST_ACTIVITY_DATE</td>
-	<td>//div[@id='_151_workflowInstancesSearchContainer']//tr/td[contains(@headers,'col-last-activity-date')]/a</td>
+	<td>//div[@id='_151_workflowInstancesSearchContainer']//tr[contains(.,'${key_workflowAssetTitle}')]/td[5]/a</td>
 	<td></td>
 </tr>
 <tr>
 	<td>COMPLETED_TABLE_END_DATE</td>
-	<td>//div[@id='_151_workflowInstancesSearchContainer']//tr/td[contains(@headers,'col-end-date')]/a</td>
+	<td>//div[@id='_151_workflowInstancesSearchContainer']//tr[contains(.,'${key_workflowAssetTitle}')]/td[6]/a</td>
 	<td></td>
 </tr>
 </tbody>
