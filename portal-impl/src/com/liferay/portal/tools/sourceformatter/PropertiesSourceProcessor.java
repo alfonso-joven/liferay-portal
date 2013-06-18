@@ -42,8 +42,7 @@ public class PropertiesSourceProcessor extends BaseSourceProcessor {
 			File portalPortalPropertiesFile = new File(
 				BASEDIR + "portal-impl/src/portal.properties");
 
-			portalPortalProperties = fileUtil.read(
-				portalPortalPropertiesFile);
+			portalPortalProperties = fileUtil.read(portalPortalPropertiesFile);
 		}
 		else {
 			portalPortalProperties = ContentUtil.get("portal.properties");
