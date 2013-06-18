@@ -2344,7 +2344,7 @@ AUI.add(
 						}
 					},
 
-					_processVocabularyDeletion: function() {
+					_processVocabularyDeletion: function(result) {
 						var instance = this;
 
 						var exception = result.exception;
