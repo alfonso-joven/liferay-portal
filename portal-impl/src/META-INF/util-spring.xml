@@ -40,10 +40,6 @@
 			<bean class="com.liferay.portal.bean.ConstantsBeanFactoryImpl" />
 		</property>
 	</bean>
-	<bean id="com.liferay.portal.kernel.bean.Renderer" class="com.liferay.portal.bean.RendererImpl" />
-	<bean id="com.liferay.portal.kernel.bean.RendererUtil" class="com.liferay.portal.kernel.bean.RendererUtil">
-		<property name="renderer" ref="com.liferay.portal.kernel.bean.Renderer" />
-	</bean>
 	<bean id="com.liferay.portal.kernel.cache.MultiVMKeyPoolUtil" class="com.liferay.portal.kernel.cache.MultiVMKeyPoolUtil">
 		<property name="multiVMPool" ref="com.liferay.portal.cache.keypool.MultiVMKeyPool" />
 	</bean>
