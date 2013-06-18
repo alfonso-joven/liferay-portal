@@ -100,10 +100,7 @@ public class LayoutLocalServiceVirtualLayoutsAdvice
 				if (Validator.isNotNull(
 						layout.getSourcePrototypeLayoutUuid())) {
 
-					if (!SitesUtil.isLayoutModifiedSinceLastMerge(layout)) {
-						SitesUtil.mergeLayoutSetPrototypeLayouts(
-							group, layoutSet);
-					}
+					SitesUtil.mergeLayoutSetPrototypeLayouts(group, layoutSet);
 				}
 			}
 			finally {
@@ -248,15 +245,6 @@ public class LayoutLocalServiceVirtualLayoutsAdvice
 				SitesUtil.mergeLayoutSetPrototypeLayouts(group, layoutSet);
 
 				return;
-			}
-
-			List<Layout> layouts = LayoutLocalServiceUtil.getLayouts(
-				group.getGroupId(), privateLayout);
-
-			for (Layout layout : layouts) {
-				if (SitesUtil.isLayoutModifiedSinceLastMerge(layout)) {
-					return;
-				}
 			}
 
 			SitesUtil.mergeLayoutSetPrototypeLayouts(group, layoutSet);
