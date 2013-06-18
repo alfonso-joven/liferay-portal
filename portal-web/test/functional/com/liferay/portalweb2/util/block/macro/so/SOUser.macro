@@ -40,28 +40,41 @@
 		<execute macro="Page#openURL" />
 
 		<if>
-			<condition action="SOUserBar#isElementPresent" locator-key1="DASHBOARD" />
+			<condition action="SOUserBar#isElementPresent" locator-key1="USER_NAME" />
 			<then>
 				<if>
-					<condition action="SOUserBar#isElementPresent" locator-key1="USER_NAME" />
+					<condition action="SOUserBar#isTextNotEqual" locator-key1="USER_NAME" value1="Joe Bloggs" />
 					<then>
 						<execute macro="SOUser#logoutPG" />
-						<execute macro="SOUser#loginPG" />
+
+						<execute macro="SOUser#loginPG">
+							<var name="userEmailAddress" value="test@liferay.com" />
+							<var name="password" value="test" />
+						</execute>
 					</then>
-					<else>
-						<execute macro="SOUser#loginPG" />
-					</else>
 				</if>
 			</then>
 			<else>
 				<if>
 					<condition action="Dockbar#isElementPresent" locator-key1="USER_NAME" />
 					<then>
-						<execute macro="User#pgLogout" />
-						<execute macro="SOUser#loginPG" />
+						<if>
+							<condition action="Dockbar#isTextNotEqual" locator-key1="USER_NAME" value1="Joe Bloggs" />
+							<then>
+								<execute macro="User#pgLogout" />
+
+								<execute macro="SOUser#loginPG">
+									<var name="userEmailAddress" value="test@liferay.com" />
+									<var name="password" value="test" />
+								</execute>
+							</then>
+						</if>
 					</then>
 					<else>
-						<execute macro="SOUser#loginPG" />
+						<execute macro="SOUser#loginPG">
+							<var name="userEmailAddress" value="test@liferay.com" />
+							<var name="password" value="test" />
+						</execute>
 					</else>
 				</if>
 			</else>
@@ -105,50 +118,11 @@
 			</then>
 		</if>
 	</command>
-	
+
 	<command name="tearDownCP">
 		<var name="userFirstName" value="social*" />
 
-		<if>
-			<condition action="SOUserBar#isElementPresent" locator-key1="USER_NAME" />
-			<then>
-				<if>
-					<condition action="SOUserBar#isTextNotEqual" locator-key1="USER_NAME" value1="Joe Bloggs" />
-					<then>
-						<execute macro="SOUser#logoutPG" />
-
-						<execute macro="SOUser#loginPG">
-							<var name="userEmailAddress" value="test@liferay.com" />
-							<var name="password" value="test" />
-						</execute>
-					</then>
-				</if>
-			</then>
-			<else>
-				<if>
-					<condition action="Dockbar#isElementPresent" locator-key1="USER_NAME" />
-					<then>
-						<if>
-							<condition action="Dockbar#isTextNotEqual" locator-key1="USER_NAME" value1="Joe Bloggs" />
-							<then>
-								<execute macro="User#pgLogout" />
-
-								<execute macro="SOUser#loginPG">
-									<var name="userEmailAddress" value="test@liferay.com" />
-									<var name="password" value="test" />
-								</execute>
-							</then>
-						</if>
-					</then>
-					<else>
-						<execute macro="SOUser#loginPG">
-							<var name="userEmailAddress" value="test@liferay.com" />
-							<var name="password" value="test" />
-						</execute>
-					</else>
-				</if>
-			</else>
-		</if>
+		<execute macro="User#firstLoginPG" />
 
 		<execute macro="User#deactivateCP">
 			<var name="userFirstName" value="${userFirstName}" />

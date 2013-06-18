@@ -1,11 +1,8 @@
 <definition>
-	<var name="userEmailAddress" value="test@liferay.com" />
-	<var name="password" value="test" />
-
 	<command name="addAdditionalEmailAddressMyAccount">
 		<execute action="SOUserBar#mouseOver" locator-key1="USER_NAME" />
 		<execute action="SOUserBar#click" locator-key1="USER_MENU_MY_ACCOUNT" />
-	
+
 		<execute action="SOMyAccount#selectFrame" locator-key1="MY_ACCOUNT_IFRAME" />
 
 		<execute action="CPMyAccount#click" locator-key1="ADDITIONAL_EMAIL_ADDRESSES" />
@@ -311,7 +308,7 @@
 		<execute action="SOProfileAddPhoneNumber#click" locator-key1="SAVE_BUTTON" />
 
 		<execute action="SOProfile#assertTextEquals" locator-key1="PROFILE_INFO_PHONE_NUMBERS_TITLE" />
-		
+
 		<if>
 			<isset var="userPhoneNumberExtension" />
 			<then>
@@ -320,7 +317,6 @@
 			<else>
 				<execute action="SOProfile#assertTextEquals" locator-key1="PROFILE_INFO_PHONE_NUMBERS_CONTENT" value1="${userPhoneNumberType} ${userPhoneNumberNumber}" />
 			</else>
-				
 		</if>
 	</command>
 
@@ -580,7 +576,7 @@
 		<execute action="SOUserBar#click" locator-key1="USER_MENU_MY_PROFILE" />
 
 		<execute action="SOProfile#assertTextEquals" locator-key1="PROFILE_INFO_PHONE_NUMBERS_TITLE" />
-		
+
 		<if>
 			<isset var="userPhoneNumberExtension" />
 			<then>
@@ -589,7 +585,6 @@
 			<else>
 				<execute action="SOProfile#assertTextEquals" locator-key1="PROFILE_INFO_PHONE_NUMBERS_CONTENT" value1="${userPhoneNumberType} ${userPhoneNumberNumber}" />
 			</else>
-				
 		</if>
 	</command>
 
