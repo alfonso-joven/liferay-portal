@@ -50,7 +50,7 @@ import org.junit.runner.RunWith;
 public class SocialActivitySettingLocalServiceTest {
 
 	@BeforeClass
-	public static void setUp() throws Exception {
+	public static void setUpClass() throws Exception {
 		Class<?> clazz = SocialActivitySettingLocalServiceTest.class;
 
 		InputStream inputStream = clazz.getResourceAsStream(
@@ -69,7 +69,7 @@ public class SocialActivitySettingLocalServiceTest {
 	}
 
 	@AfterClass
-	public static void tearDown() throws Exception {
+	public static void tearDownClass() throws Exception {
 		long classNameId = PortalUtil.getClassNameId(TEST_MODEL);
 
 		ClassNameLocalServiceUtil.deleteClassName(classNameId);
