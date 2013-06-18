@@ -133,7 +133,7 @@ if ((article != null) && article.isDraft()) {
 
 		toolbarChildren.push(
 			{
-				handler: function (event) {
+				handler: function(event) {
 					window.location = '<%= viewHistoryURL %>';
 				},
 				icon: 'history',

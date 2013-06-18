@@ -321,7 +321,7 @@ if (filterManageableOrganizations && organizations.isEmpty()) {
 							<%
 							String organizationsTitle = null;
 
-							if (Validator.isNotNull(keywords)){
+							if (Validator.isNotNull(keywords)) {
 								organizationsTitle = LanguageUtil.get(pageContext, "organizations");
 							}
 							else if (organization == null) {

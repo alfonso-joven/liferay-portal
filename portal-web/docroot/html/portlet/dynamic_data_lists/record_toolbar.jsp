@@ -37,7 +37,7 @@ long detailDDMTemplateId = ParamUtil.getLong(request, "detailDDMTemplateId");
 			</portlet:renderURL>
 
 			{
-				handler: function (event) {
+				handler: function(event) {
 					window.location = '<%= viewHistoryURL %>';
 				},
 				icon: 'clock',
