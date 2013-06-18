@@ -33,42 +33,6 @@
 		<execute action="SOSites#assertTextEquals" locator-key1="SITE_NAME_LINK" value1="${siteName}" />
 	</command>
 
-	<command name="addSOSites">
-		<execute macro="SOSites#addSOSite">
-			<var name="siteName" value="${siteName1}" />
-			<var name="siteDescription" value="${siteDescription1}" />
-			<var name="siteType" value="${siteType1}" />
-		</execute>
-
-		<execute macro="SOSites#addSOSite">
-			<var name="siteName" value="${siteName2}" />
-			<var name="siteDescription" value="${siteDescription2}" />
-			<var name="siteType" value="${siteType2}" />
-		</execute>
-
-		<if>
-			<isset var="siteName3" />
-			<then>
-				<execute macro="SOSites#addSOSite">
-					<var name="siteName" value="${siteName3}" />
-					<var name="siteDescription" value="${siteDescription3}" />
-					<var name="siteType" value="${siteType3}" />
-				</execute>
-			</then>			
-		</if>
-
-		<if>
-			<isset var="siteName4" />
-			<then>
-				<execute macro="SOSites#addSOSite">
-					<var name="siteName" value="${siteName4}" />
-					<var name="siteDescription" value="${siteDescription4}" />
-					<var name="siteType" value="${siteType4}" />
-				</execute>
-			</then>			
-		</if>
-	</command>
-
 	<command name="deleteSOSite">
 		<execute action="SOUserBar#click" locator-key1="DASHBOARD" />
 
@@ -82,7 +46,6 @@
 			<else>
 				<execute action="SOUserBarSitesDirectory#select" locator-key1="SITE_CATEGORY_SELECT" value1="All Sites" />
 			</else>
-				
 		</if>
 
 		<execute action="SOUserBarSitesDirectory#type" locator-key1="SITE_SEARCH_FIELD" value1="${siteName}" />
@@ -103,7 +66,6 @@
 			<else>
 				<execute action="SOSites#select" locator-key1="SITE_CATEGORY_SELECT" value1="All Sites" />
 			</else>
-				
 		</if>
 
 		<execute action="SOSites#type" locator-key1="SITE_SEARCH_FIELD" value1="${siteName}" />
@@ -131,7 +93,6 @@
 			<else>
 				<execute action="SOUserBarSitesDirectory#select" locator-key1="SITE_CATEGORY_SELECT" value1="All Sites" />
 			</else>
-				
 		</if>
 
 		<execute action="SOUserBarSitesDirectory#type" locator-key1="SITE_SEARCH_FIELD" value1="${siteName}" />

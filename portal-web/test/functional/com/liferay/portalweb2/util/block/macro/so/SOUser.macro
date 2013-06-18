@@ -122,7 +122,7 @@
 	<command name="tearDownCP">
 		<var name="userFirstName" value="social*" />
 
-		<execute macro="User#firstLoginPG" />
+		<execute macro="SOUser#firstLoginPG" />
 
 		<execute macro="User#deactivateCP">
 			<var name="userFirstName" value="${userFirstName}" />
