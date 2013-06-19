@@ -24,6 +24,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>BACK</td>
+	<td>//a[@id='_153_TabsBack']</td>
+	<td></td>
+</tr>
+<tr>
 	<td>ASSIGNED_TO</td>
 	<td>//div[@class='lfr-asset-assigned']/div/div</td>
 	<td></td>
@@ -71,7 +76,7 @@
 </tr>
 <tr>
 	<td>MENU_APPROVE</td>
-	<td>//a[@id='_153_taskAssignToMeLink']</td>
+	<td>//a[@id='_153_approvetaskChangeStatusLink']</td>
 	<td></td>
 </tr>
 <tr>
