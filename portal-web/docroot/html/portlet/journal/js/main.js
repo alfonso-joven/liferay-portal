@@ -3018,7 +3018,9 @@ AUI.add(
 						A.each(
 							instance.cloneableAttrs,
 							function(item, index, collection) {
-								instance.after(item + 'Change', propagateAttr);
+								if (item != 'localized') {
+									instance.after(item + 'Change', propagateAttr);
+								}
 							}
 						);
 					},
