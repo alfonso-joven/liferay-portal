@@ -39,12 +39,6 @@ page import="com.liferay.portlet.layoutconfiguration.util.RuntimePortletUtil" %>
 <%
 PortletPreferences preferences = renderRequest.getPreferences();
 
-String portletResource = ParamUtil.getString(request, "portletResource");
-
-if (Validator.isNotNull(portletResource)) {
-	preferences = PortletPreferencesFactoryUtil.getPortletSetup(request, portletResource);
-}
-
 long groupId = GetterUtil.getLong(preferences.getValue("groupId", String.valueOf(themeDisplay.getScopeGroupId())));
 String structureId = GetterUtil.getString(preferences.getValue("structureId", StringPool.BLANK));
 String type = preferences.getValue("type", StringPool.BLANK);
