@@ -1,0 +1,73 @@
+<definition>
+	<command name="addAssetTypeWikiPageCP">
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Categories" />
+		</execute>
+
+		<execute action="CPCategories#click" locator-key1="ADD_VOCABULARY_BUTTON" />
+		<execute action="CPCategories#type" locator-key1="ADD_VOCABULARY_NAME_FIELD" value1="${vocabularyName}" />
+		<execute action="CPCategories#click" locator-key1="ADD_VOCABULARY_ASSOCIATED_ASSET_TYPES" />
+		<execute action="CPCategories#select" locator-key1="ADD_VOCABULARY_CHOOSE_ASSET_TYPE_SELECT" value1="Wiki Page" />
+		<execute action="CPCategories#click" locator-key1="ADD_VOCABULARY_SAVE_BUTTON" />
+		<execute action="CPCategories#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPCategories#assertTextEquals" locator-key1="VOCABULARY_ENTRY_2" value1="${vocabularyName}" />
+	</command>
+
+	<command name="addCP">
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Categories" />
+		</execute>
+
+		<execute action="CPCategories#click" locator-key1="ADD_VOCABULARY_BUTTON" />
+		<execute action="CPCategories#type" locator-key1="ADD_VOCABULARY_NAME_FIELD" value1="${vocabularyName}" />
+		<execute action="CPCategories#click" locator-key1="ADD_VOCABULARY_SAVE_BUTTON" />
+		<execute action="CPCategories#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPCategories#assertTextEquals" locator-key1="VOCABULARY_ENTRY_2" value1="${vocabularyName}" />
+	</command>
+
+	<command name="deleteCPByActions">
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Categories" />
+		</execute>
+
+		<execute action="CPCategories#assertTextEquals" locator-key1="VOCABULARY_ENTRY_2" value1="${vocabularyName}" />
+		<execute action="CPCategories#click" locator-key1="ALL_VOCABULARIES_CHECKBOX" />
+		<execute action="CPCategories#click" locator-key1="ACTIONS_BUTTON" />
+		<execute action="CPCategories#click" locator-key1="ACTIONS_MENULIST_DELETE" />
+		<execute action="CPCategories#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete the selected vocabularies?" />
+		<execute action="CPCategories#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPCategories#assertTextEquals" locator-key1="INFO_MESSAGE" />
+		<execute action="CPCategories#assertTextNotPresent" value1="${vocabularyName}" />
+	</command>
+
+	<command name="editCP">
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Categories" />
+		</execute>
+
+		<execute action="CPCategories#assertTextEquals" locator-key1="VOCABULARY_ENTRY_2" value1="${vocabularyName}" />
+		<execute action="CPCategories#click" locator-key1="EDIT_VOCABULARY_ICON" />
+		<execute action="CPCategories#type" locator-key1="EDIT_VOCABULARY_NAME_FIELD" value1="${vocabularyNameEdit}" />
+		<execute action="CPCategories#click" locator-key1="EDIT_VOCABULARY_SAVE_BUTTON" />
+		<execute action="CPCategories#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPCategories#assertTextEquals" locator-key1="VOCABULARY_ENTRY_2" value1="${vocabularyNameEdit}" />
+	</command>
+
+	<command name="tearDownCP">
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Categories" />
+		</execute>
+
+		<if>
+			<condition action="CPCategories#isElementPresent" locator-key1="VOCABULARY_ENTRY_1" />
+			<then>
+				<execute action="CPCategories#click" locator-key1="ALL_VOCABULARIES_CHECKBOX" />
+				<execute action="CPCategories#click" locator-key1="ACTIONS_BUTTON" />
+				<execute action="CPCategories#click" locator-key1="ACTIONS_MENULIST_DELETE" />
+				<execute action="CPCategories#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete the selected vocabularies?" />
+				<execute action="CPCategories#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+				<execute action="CPCategories#assertTextEquals" locator-key1="INFO_MESSAGE" />
+			</then>
+		</if>
+	</command>
+</definition>
