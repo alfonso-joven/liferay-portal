@@ -4,6 +4,10 @@
 			<execute function="Click#textClickAtAndWait" value1="Contacts Center" />
 		</case>
 
+		<case locator-key1="NAVIGATION_MESSAGES">
+			<execute function="Click#textClickAtAndWait" value1="Messages" />
+		</case>
+
 		<case locator-key1="NAVIGATION_MICROBLOGS">
 			<execute function="Click#textClickAtAndWait" value1="Microblogs" />
 		</case>
