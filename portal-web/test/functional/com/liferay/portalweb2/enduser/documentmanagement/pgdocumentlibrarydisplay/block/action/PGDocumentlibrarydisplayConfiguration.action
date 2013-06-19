@@ -5,6 +5,21 @@
 		</case>
 	</command>
 
+	<command name="check">
+		<case locator-key1="SETUP_DISPLAY_SETTINGS_SHOW_ACTIONS_CHECKBOX">
+			<execute function="Check#clickAtConfiguration" />
+		</case>
+		<case locator-key1="SETUP_DISPLAY_SETTINGS_SHOW_FOLDER_MENU_CHECKBOX">
+			<execute function="Check#clickAtConfiguration" />
+		</case>
+		<case locator-key1="SETUP_DISPLAY_SETTINGS_SHOW_NAVIGATION_LINKS_CHECKBOX">
+			<execute function="Check#clickAtConfiguration" />
+		</case>
+		<case locator-key1="SETUP_DISPLAY_SETTINGS_SHOW_SEARCH_CHECKBOX">
+			<execute function="Check#clickAtConfiguration" />
+		</case>
+	</command>
+
 	<command name="click">
 		<case locator-key1="SAVE_BUTTON">
 			<execute function="Click#valueClickAtAndWait" value1="Save" />

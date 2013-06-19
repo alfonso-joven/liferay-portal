@@ -30,6 +30,9 @@
 		<case locator-key1="OPTIONS_MENULIST_CONFIGURATION">
 			<execute function="Click#textClickAtAndWait" value1="Configuration" />
 		</case>
+		<case locator-key1="OPTIONS_WRENCH_ICON">
+			<execute function="Click#pauseTextClickAt" value1="Options" />
+		</case>
 		<case locator-key1="SEARCH_BUTTON">
 			<execute function="Click#valueClickAtAndWait" value1="Search" />
 		</case>

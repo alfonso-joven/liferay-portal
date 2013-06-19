@@ -1,0 +1,7 @@
+<definition>
+	<command name="click">
+		<case locator-key1="OPTIONS">
+			<execute function="Click#pauseTextClickAt" value1="Options" />
+		</case>
+	</command>
+</definition>

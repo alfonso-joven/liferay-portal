@@ -11,4 +11,10 @@
 
 		<execute function="AssertChecked#assertChecked" />
 	</command>
+
+	<command name="clickAtConfiguration">
+		<execute selenium="waitForElementPresent" argument1="//script[contains(@src,'/liferay/navigation_interaction.js')]" />
+
+		<execute function="Check#clickAt" />
+	</command>
 </definition>
