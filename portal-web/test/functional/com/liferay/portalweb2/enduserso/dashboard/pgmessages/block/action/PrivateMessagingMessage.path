@@ -19,18 +19,18 @@
 	<td></td>
 </tr>
 <tr>
+	<td>PRIVATE_MESSAGE_SUBJECT</td>
+	<td>//h1[@class='header-title']/span</td>
+	<td></td>
+</tr>
+<tr>
 	<td>PRIVATE_MESSAGE_USERS</td>
 	<td>//div[@class='aui-layout-content thread-info-content ']</td>
 	<td></td>
 </tr>
 <tr>
 	<td>PRIVATE_MESSAGE_SENDER</td>
-	<td>xPath=(//span[@class='name'])[2]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>PRIVATE_MESSAGE_SUBJECT</td>
-	<td>//h1[@class='header-title']/span</td>
+	<td>//div[@class='message']/span/a</td>
 	<td></td>
 </tr>
 <tr>
@@ -46,11 +46,6 @@
 <tr>
 	<td>PRIVATE_MESSAGE_ATTACHMENT_LINK</td>
 	<td>//td[2]/a</td>
-	<td></td>
-</tr>
-<tr>
-	<td></td>
-	<td></td>
 	<td></td>
 </tr>
 </tbody>

@@ -53,6 +53,12 @@
 	<td></td>
 	<td></td>
 </tr>
+<!--TO_FIELD_DROPDOWN_LIST-->
+<tr>
+	<td>TO_FIELD_DROPDOWN_LIST</td>
+	<td>//li[contains(@data-text,'${key_recipientName}')]</td>
+	<td></td>
+</tr>
 </tbody>
 </table>
 </body>
