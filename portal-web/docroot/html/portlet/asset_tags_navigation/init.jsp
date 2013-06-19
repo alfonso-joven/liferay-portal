@@ -22,12 +22,6 @@ page import="com.liferay.portlet.asset.model.AssetRendererFactory" %>
 <%
 PortletPreferences preferences = renderRequest.getPreferences();
 
-String portletResource = ParamUtil.getString(request, "portletResource");
-
-if (Validator.isNotNull(portletResource)) {
-	preferences = PortletPreferencesFactoryUtil.getPortletSetup(request, portletResource);
-}
-
 long classNameId = PrefsParamUtil.getLong(preferences, request, "classNameId");
 String displayStyle = PrefsParamUtil.getString(preferences, request, "displayStyle", "cloud");
 int maxAssetTags = PrefsParamUtil.getInteger(preferences, request, "maxAssetTags", 10);
