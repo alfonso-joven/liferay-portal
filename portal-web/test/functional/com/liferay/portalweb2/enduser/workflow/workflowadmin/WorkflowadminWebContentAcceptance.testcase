@@ -8,7 +8,7 @@
 		</execute>
 	</set-up>
 
-	<command name="ApproveWebContentWorkflow">
+	<command name="ApproveWebContentCP">
 		<var name="webContentContent" value="WC WebContent Content" />
 		<var name="webContentTitle" value="WC WebContent Title" />
 
@@ -22,7 +22,7 @@
 			<var name="webContentTitle" value="${webContentTitle}" />
 		</execute>
 
-		<execute macro="Workflow#assignToMeWorkflowTask">
+		<execute macro="Workflow#assignToMeTaskByActions">
 			<var name="workflowAssetTitle" value="${webContentTitle}" />
 			<var name="workflowAssetType" value="Web Content" />
 			<var name="workflowTask" value="Review" />
@@ -33,7 +33,7 @@
 			<var name="webContentTitle" value="${webContentTitle}" />
 		</execute>
 
-		<execute macro="Workflow#approveWorkflowTask">
+		<execute macro="Workflow#approveTaskByActions">
 			<var name="workflowAssetTitle" value="${webContentTitle}" />
 			<var name="workflowAssetType" value="Web Content" />
 			<var name="workflowTask" value="Review" />
@@ -43,10 +43,9 @@
 			<var name="webContentContent" value="${webContentContent}" />
 			<var name="webContentTitle" value="${webContentTitle}" />
 		</execute>
-
 	</command>
 
-	<command name="RejectWebContentWorkflow">
+	<command name="RejectWebContentCP">
 		<var name="webContentContent" value="WC WebContent Content" />
 		<var name="webContentTitle" value="WC WebContent Title" />
 
@@ -55,19 +54,19 @@
 			<var name="webContentTitle" value="${webContentTitle}" />
 		</execute>
 
-		<execute macro="Workflow#assignToMeWorkflowTask">
+		<execute macro="Workflow#assignToMeTaskByActions">
 			<var name="workflowAssetTitle" value="${webContentTitle}" />
 			<var name="workflowAssetType" value="Web Content" />
 			<var name="workflowTask" value="Review" />
 		</execute>
 
-		<execute macro="Workflow#rejectWorkflowTask">
+		<execute macro="Workflow#rejectTaskByActions">
 			<var name="workflowAssetTitle" value="${webContentTitle}" />
 			<var name="workflowAssetType" value="Web Content" />
 			<var name="workflowTask" value="Review" />
 		</execute>
 
-		<execute macro="Workflow#viewRejectWorkflowTask">
+		<execute macro="Workflow#viewRejectTask">
 			<var name="workflowAssetTitle" value="${webContentTitle}" />
 			<var name="workflowAssetType" value="Web Content" />
 		</execute>
