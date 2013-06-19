@@ -16,7 +16,6 @@ package com.liferay.portal.service.impl;
 
 import com.liferay.portal.LayoutSetVirtualHostException;
 import com.liferay.portal.NoSuchImageException;
-import com.liferay.portal.NoSuchLayoutException;
 import com.liferay.portal.NoSuchVirtualHostException;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
@@ -28,8 +27,6 @@ import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.Group;
 import com.liferay.portal.model.Image;
-import com.liferay.portal.model.Layout;
-import com.liferay.portal.model.LayoutConstants;
 import com.liferay.portal.model.LayoutSet;
 import com.liferay.portal.model.VirtualHost;
 import com.liferay.portal.model.impl.ColorSchemeImpl;
@@ -138,18 +135,10 @@ public class LayoutSetLocalServiceImpl extends LayoutSetLocalServiceBaseImpl {
 
 		// Layouts
 
-		List<Layout> layouts = layoutPersistence.findByG_P_P(
-			groupId, privateLayout, LayoutConstants.DEFAULT_PARENT_LAYOUT_ID);
+		serviceContext.setAttribute("updatePageCount", Boolean.FALSE);
 
-		for (int i = layouts.size() - 1; i >= 0; i--) {
-			Layout layout = layouts.get(i);
-
-			try {
-				layoutLocalService.deleteLayout(layout, false, serviceContext);
-			}
-			catch (NoSuchLayoutException nsle) {
-			}
-		}
+		layoutLocalService.deleteLayouts(
+			groupId, privateLayout, serviceContext);
 
 		// Logo
 
@@ -181,11 +170,6 @@ public class LayoutSetLocalServiceImpl extends LayoutSetLocalServiceBaseImpl {
 
 			layoutSetPersistence.update(newLayoutSet, false);
 		}
-
-		// Counter
-
-		counterLocalService.reset(
-			LayoutLocalServiceImpl.getCounterName(groupId, privateLayout));
 
 		// Virtual host
 
