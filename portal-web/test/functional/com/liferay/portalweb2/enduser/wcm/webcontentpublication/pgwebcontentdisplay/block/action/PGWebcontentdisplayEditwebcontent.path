@@ -19,6 +19,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>WORKFLOW_STATUS</td>
+	<td>//span[@class='workflow-status']/strong</td>
+	<td></td>
+</tr>
+<tr>
 	<td>EDIT_STRUCTURE</td>
 	<td>//span/a[@id='_15_editStructureLink']</td>
 	<td></td>

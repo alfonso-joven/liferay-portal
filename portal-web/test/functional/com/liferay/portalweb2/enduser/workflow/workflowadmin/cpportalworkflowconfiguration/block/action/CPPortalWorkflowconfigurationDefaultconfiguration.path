@@ -106,12 +106,12 @@
 	<td></td>
 </tr>
 <tr>
-	<td>RESOURCE_TABLE_MB_MESSAGE</td>
+	<td>RESOURCE_TABLE_MESSAGE_BOARDS_MESSAGE</td>
 	<td>//td[contains(@id,'_col-resource_') and contains(.,'Message Boards Message')]</td>
 	<td></td>
 </tr>
 <tr>
-	<td>RESOURCE_TABLE_MB_MESSAGE_SELECT</td>
+	<td>RESOURCE_TABLE_MESSAGE_BOARDS_MESSAGE_SELECT</td>
 	<td>//select[@id='_151_workflowDefinitionName@com.liferay.portlet.messageboards.model.MBMessage']</td>
 	<td></td>
 </tr>

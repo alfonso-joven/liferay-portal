@@ -1,11 +1,11 @@
 <html>
 <head>
-<title>PGMessageboards</title>
+<title>PGMessageboardsMyposts</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">PGMessageboards</td></tr>
+<tr><td rowspan="1" colspan="3">PGMessageboardsMyposts</td></tr>
 </thead>
 <tbody>
 <tr>
@@ -26,16 +26,6 @@
 <tr>
 	<td>CONFIRMATION</td>
 	<td></td>
-	<td></td>
-</tr>
-<tr>
-	<td>ADD_CATEGORY_BUTTON</td>
-	<td>//input[@value='Add Category']</td>
-	<td></td>
-</tr>
-<tr>
-	<td>POST_NEW_THREAD_BUTTON</td>
-	<td>//input[@value='Post New Thread']</td>
 	<td></td>
 </tr>
 <tr>
@@ -79,107 +69,45 @@
 	<td></td>
 	<td></td>
 </tr>
-<!--CATEGORY_TABLE-->
-<tr>
-	<td>CATEGORY_TABLE_CATEGORY_1</td>
-	<td>xpath=(//div[contains(@id,'mbCategoriesSearchContainer')]//tr/td[1]/a)[1]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>CATEGORY_TABLE_CATEGORIES_1</td>
-	<td>xpath=(//div[contains(@id,'mbCategoriesSearchContainer')]//tr/td[2]/a)[1]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>CATEGORY_TABLE_THREADS_1</td>
-	<td>xpath=(//div[contains(@id,'mbCategoriesSearchContainer')]//tr/td[3]/a)[1]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>CATEGORY_TABLE_POSTS_1</td>
-	<td>xpath=(//div[contains(@id,'mbCategoriesSearchContainer')]//tr/td[4]/a)[1]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>CATEGORY_TABLE_ACTIONS_1</td>
-	<td>xpath=(//div[contains(@id,'mbCategoriesSearchContainer')]//tr/td[5]/span/ul/li/strong/a)[1]</td>
-	<td></td>
-</tr>
-<tr>
-	<td></td>
-	<td></td>
-	<td></td>
-</tr>
-<!--CATEGORY_MENULIST-->
-<tr>
-	<td>CATEGORY_MENULIST_EDIT</td>
-	<td>//a[@role='menuitem' and contains(.,'Edit')]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>CATEGORY_MENULIST_PERMISSIONS</td>
-	<td>//a[@role='menuitem' and contains(.,'Permissions')]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>CATEGORY_MENULIST_RSS</td>
-	<td>//a[@role='menuitem' and contains(.,'RSS')]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>CATEGORY_MENULIST_SUBSCRIBE</td>
-	<td>//a[@role='menuitem' and contains(.,'Subscribe')]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>CATEGORY_MENULIST_UNSUBSCRIBE</td>
-	<td>//a[@role='menuitem' and contains(.,'Unsubscribe')]</td>
-	<td></td>
-</tr>
-<tr>
-	<td>CATEGORY_MENULIST_DELETE</td>
-	<td>//a[@role='menuitem' and contains(.,'Delete')]</td>
-	<td></td>
-</tr>
-<tr>
-	<td></td>
-	<td></td>
-	<td></td>
-</tr>
 <!--THREAD_TABLE-->
 <tr>
 	<td>THREAD_TABLE_THREAD</td>
-	<td>//div[@id='messageBoardsThreadsPanel']//tr[contains(.,'${key_threadSubject}')]/td[1]/a</td>
+	<td>//tr[contains(.,'${key_threadSubject}')]/td[1]/a</td>
 	<td></td>
 </tr>
 <tr>
 	<td>THREAD_TABLE_STARTED_BY</td>
-	<td>//div[@id='messageBoardsThreadsPanel']//tr[contains(.,'${key_threadSubject}')]/td[3]/a</td>
+	<td>//tr[contains(.,'${key_threadSubject}')]/td[2]/a</td>
 	<td></td>
 </tr>
 <tr>
 	<td>THREAD_TABLE_POSTS</td>
-	<td>//div[@id='messageBoardsThreadsPanel']//tr[contains(.,'${key_threadSubject}')]/td[4]/a</td>
+	<td>//tr[contains(.,'${key_threadSubject}')]/td[3]/a</td>
 	<td></td>
 </tr>
 <tr>
 	<td>THREAD_TABLE_VIEWS</td>
-	<td>//div[@id='messageBoardsThreadsPanel']//tr[contains(.,'${key_threadSubject}')]/td[5]/a</td>
+	<td>//tr[contains(.,'${key_threadSubject}')]/td[4]/a</td>
 	<td></td>
 </tr>
 <tr>
 	<td>THREAD_TABLE_LAST_POST</td>
-	<td>//div[@id='messageBoardsThreadsPanel']//tr[contains(.,'${key_threadSubject}')]/td[6]/a</td>
+	<td>//tr[contains(.,'${key_threadSubject}')]/td[5]/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>THREAD_TABLE_STATUS</td>
+	<td>//tr[contains(.,'${key_threadSubject}')]/td[6]/a</td>
 	<td></td>
 </tr>
 <tr>
 	<td>THREAD_TABLE_ACTIONS</td>
-	<td>//div[@id='messageBoardsThreadsPanel']//tr[contains(.,'${key_threadSubject}')]//span[@title='Actions']/ul/li/strong/a/span</td>
+	<td>//tr[contains(.,'${key_threadSubject}')]//span/ul/li/strong/a</td>
 	<td></td>
 </tr>
 <tr>
 	<td>THREAD_TABLE_ACTIONS_GENERIC</td>
-	<td>//div[@id='messageBoardsThreadsPanel']//span[@title='Actions']/ul/li/strong/a/span</td>
+	<td>//tr[3]//span[@title='Actions']/ul/li/strong/a/span</td>
 	<td></td>
 </tr>
 <tr>
