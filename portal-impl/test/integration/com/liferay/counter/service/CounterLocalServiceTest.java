@@ -20,6 +20,7 @@ import com.liferay.portal.kernel.process.ProcessCallable;
 import com.liferay.portal.kernel.process.ProcessException;
 import com.liferay.portal.kernel.process.ProcessExecutor;
 import com.liferay.portal.kernel.test.ExecutionTestListeners;
+import com.liferay.portal.kernel.util.PropsKeys;
 import com.liferay.portal.test.EnvironmentExecutionTestListener;
 import com.liferay.portal.test.LiferayIntegrationJUnitTestRunner;
 import com.liferay.portal.util.InitUtil;
@@ -30,7 +31,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
 import org.junit.Before;
@@ -56,15 +61,15 @@ public class CounterLocalServiceTest {
 		List<String> jvmArguments = Arrays.asList(
 			"-Xmx1024m", "-XX:MaxPermSize=200m");
 
+		ExecutorService executorService = Executors.newFixedThreadPool(
+			_PROCESS_COUNT);
+
 		List<Future<Long[]>> futuresList = new ArrayList<Future<Long[]>>();
 
 		for (int i = 0; i < _PROCESS_COUNT; i++) {
-			ProcessCallable<Long[]> processCallable =
-				new IncrementProcessCallable(
-					"Increment Process-" + i, _COUNTER_NAME, _INCREMENT_COUNT);
-
-			Future<Long[]> futures = ProcessExecutor.execute(
-				classPath, jvmArguments, processCallable);
+			Future<Long[]> futures = executorService.submit(
+				new IncrementCallable(
+					"Increment Process-" + i, classPath, jvmArguments));
 
 			futuresList.add(futures);
 		}
@@ -76,6 +81,10 @@ public class CounterLocalServiceTest {
 		for (Future<Long[]> futures : futuresList) {
 			ids.addAll(Arrays.asList(futures.get()));
 		}
+
+		executorService.shutdown();
+
+		executorService.awaitTermination(120, TimeUnit.SECONDS);
 
 		Assert.assertEquals(total, ids.size());
 
@@ -94,6 +103,32 @@ public class CounterLocalServiceTest {
 
 	private static String _COUNTER_NAME = "COUNTER_NAME";
 
+	private static class IncrementCallable implements Callable<Long[]> {
+
+		public IncrementCallable(
+			String processName, String classPath, List<String> jvmArguments) {
+
+			_processName = processName;
+			_classPath = classPath;
+			_jvmArguments = jvmArguments;
+		}
+
+		@Override
+		public Long[] call() throws Exception {
+			ProcessCallable<Long[]> processCallable =
+				new IncrementProcessCallable(
+					_processName, _COUNTER_NAME, _INCREMENT_COUNT);
+
+			return ProcessExecutor.execute(
+				processCallable, _classPath, _jvmArguments);
+		}
+
+		private String _processName;
+		private String _classPath;
+		private List<String> _jvmArguments;
+
+	}
+
 	private static class IncrementProcessCallable
 		implements ProcessCallable<Long[]> {
 
@@ -109,9 +144,11 @@ public class CounterLocalServiceTest {
 		public Long[] call() throws ProcessException {
 			System.setProperty("catalina.base", ".");
 
-			InitUtil.initWithSpring();
-
+			PropsUtil.set(
+				PropsKeys.SCHEDULER_ENABLED, Boolean.FALSE.toString());
 			PropsUtil.set(PropsValues.COUNTER_INCREMENT + _COUNTER_NAME, "1");
+
+			InitUtil.initWithSpring();
 
 			List<Long> ids = new ArrayList<Long>();
 
