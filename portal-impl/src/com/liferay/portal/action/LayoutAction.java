@@ -148,8 +148,8 @@ public class LayoutAction extends Action {
 
 	@Override
 	public ActionForward execute(
-			ActionMapping mapping, ActionForm form, HttpServletRequest request,
-			HttpServletResponse response)
+			ActionMapping actionMapping, ActionForm actionForm,
+			HttpServletRequest request, HttpServletResponse response)
 		throws Exception {
 
 		HeaderCacheServletResponse headerCacheServletResponse =
@@ -241,7 +241,7 @@ public class LayoutAction extends Action {
 
 		if (plid > 0) {
 			ActionForward actionForward = processLayout(
-				mapping, request, headerCacheServletResponse, plid);
+				actionMapping, request, headerCacheServletResponse, plid);
 
 			String contentType = response.getContentType();
 
@@ -258,7 +258,8 @@ public class LayoutAction extends Action {
 		try {
 			forwardLayout(request);
 
-			return mapping.findForward(ActionConstants.COMMON_FORWARD_JSP);
+			return actionMapping.findForward(
+				ActionConstants.COMMON_FORWARD_JSP);
 		}
 		catch (Exception e) {
 			PortalUtil.sendError(e, request, headerCacheServletResponse);
@@ -624,7 +625,7 @@ public class LayoutAction extends Action {
 	}
 
 	protected ActionForward processLayout(
-			ActionMapping mapping, HttpServletRequest request,
+			ActionMapping actionMapping, HttpServletRequest request,
 			HttpServletResponse response, long plid)
 		throws Exception {
 
@@ -734,7 +735,7 @@ public class LayoutAction extends Action {
 					}
 				}
 
-				return mapping.findForward("portal.layout");
+				return actionMapping.findForward("portal.layout");
 			}
 		}
 		catch (Exception e) {

@@ -42,8 +42,8 @@ public class RSSAction extends Action {
 
 	@Override
 	public ActionForward execute(
-			ActionMapping mapping, ActionForm form, HttpServletRequest request,
-			HttpServletResponse response)
+			ActionMapping actionMapping, ActionForm actionForm,
+			HttpServletRequest request, HttpServletResponse response)
 		throws Exception {
 
 		try {
@@ -51,7 +51,7 @@ public class RSSAction extends Action {
 				request, response, null, getRSS(request),
 				ContentTypes.TEXT_XML_UTF8);
 
-			return mapping.findForward(ActionConstants.COMMON_NULL);
+			return actionMapping.findForward(ActionConstants.COMMON_NULL);
 		}
 		catch (Exception e) {
 			PortalUtil.sendError(e, request, response);

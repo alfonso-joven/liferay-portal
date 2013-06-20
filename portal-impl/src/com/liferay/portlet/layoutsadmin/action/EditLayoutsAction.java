@@ -131,8 +131,9 @@ public class EditLayoutsAction extends PortletAction {
 
 	@Override
 	public void processAction(
-			ActionMapping mapping, ActionForm form, PortletConfig portletConfig,
-			ActionRequest actionRequest, ActionResponse actionResponse)
+			ActionMapping actionMapping, ActionForm actionForm,
+			PortletConfig portletConfig, ActionRequest actionRequest,
+			ActionResponse actionResponse)
 		throws Exception {
 
 		try {
@@ -320,8 +321,9 @@ public class EditLayoutsAction extends PortletAction {
 
 	@Override
 	public ActionForward render(
-			ActionMapping mapping, ActionForm form, PortletConfig portletConfig,
-			RenderRequest renderRequest, RenderResponse renderResponse)
+			ActionMapping actionMapping, ActionForm actionForm,
+			PortletConfig portletConfig, RenderRequest renderRequest,
+			RenderResponse renderResponse)
 		throws Exception {
 
 		try {
@@ -331,7 +333,7 @@ public class EditLayoutsAction extends PortletAction {
 			SessionErrors.add(
 				renderRequest, PrincipalException.class.getName());
 
-			return mapping.findForward("portlet.layouts_admin.error");
+			return actionMapping.findForward("portlet.layouts_admin.error");
 		}
 
 		try {
@@ -343,21 +345,22 @@ public class EditLayoutsAction extends PortletAction {
 
 				SessionErrors.add(renderRequest, e.getClass());
 
-				return mapping.findForward("portlet.layouts_admin.error");
+				return actionMapping.findForward("portlet.layouts_admin.error");
 			}
 			else {
 				throw e;
 			}
 		}
 
-		return mapping.findForward(
+		return actionMapping.findForward(
 			getForward(renderRequest, "portlet.layouts_admin.edit_layouts"));
 	}
 
 	@Override
 	public void serveResource(
-			ActionMapping mapping, ActionForm form, PortletConfig portletConfig,
-			ResourceRequest resourceRequest, ResourceResponse resourceResponse)
+			ActionMapping actionMapping, ActionForm actionForm,
+			PortletConfig portletConfig, ResourceRequest resourceRequest,
+			ResourceResponse resourceResponse)
 		throws Exception {
 
 		String cmd = ParamUtil.getString(resourceRequest, Constants.CMD);

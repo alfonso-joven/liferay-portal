@@ -70,8 +70,8 @@ public class UpdateLayoutAction extends JSONAction {
 
 	@Override
 	public String getJSON(
-			ActionMapping mapping, ActionForm form, HttpServletRequest request,
-			HttpServletResponse response)
+			ActionMapping actionMapping, ActionForm actionForm,
+			HttpServletRequest request, HttpServletResponse response)
 		throws Exception {
 
 		ThemeDisplay themeDisplay = (ThemeDisplay)request.getAttribute(
@@ -260,15 +260,16 @@ public class UpdateLayoutAction extends JSONAction {
 		}
 
 		if (cmd.equals(Constants.ADD) && (portletId != null)) {
-			addPortlet(mapping, form, request, response, portletId);
+			addPortlet(actionMapping, actionForm, request, response, portletId);
 		}
 
 		return StringPool.BLANK;
 	}
 
 	protected void addPortlet(
-			ActionMapping mapping, ActionForm form, HttpServletRequest request,
-			HttpServletResponse response, String portletId)
+			ActionMapping actionMapping, ActionForm actionForm,
+			HttpServletRequest request, HttpServletResponse response,
+			String portletId)
 		throws Exception {
 
 		// Run the render portlet action to add a portlet without refreshing.
@@ -308,7 +309,7 @@ public class UpdateLayoutAction extends JSONAction {
 				response);
 
 			renderPortletAction.execute(
-				mapping, form, dynamicRequest, stringResponse);
+				actionMapping, actionForm, dynamicRequest, stringResponse);
 
 			populatePortletJSONObject(
 				request, stringResponse, portlet, jsonObject);
@@ -319,7 +320,7 @@ public class UpdateLayoutAction extends JSONAction {
 		}
 		else {
 			renderPortletAction.execute(
-				mapping, form, dynamicRequest, response);
+				actionMapping, actionForm, dynamicRequest, response);
 		}
 	}
 

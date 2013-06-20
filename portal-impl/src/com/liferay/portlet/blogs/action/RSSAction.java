@@ -51,8 +51,9 @@ public class RSSAction extends PortletAction {
 
 	@Override
 	public void serveResource(
-			ActionMapping mapping, ActionForm form, PortletConfig portletConfig,
-			ResourceRequest resourceRequest, ResourceResponse resourceResponse)
+			ActionMapping actionMapping, ActionForm actionForm,
+			PortletConfig portletConfig, ResourceRequest resourceRequest,
+			ResourceResponse resourceResponse)
 		throws Exception {
 
 		resourceResponse.setContentType(ContentTypes.TEXT_XML_UTF8);
@@ -71,8 +72,8 @@ public class RSSAction extends PortletAction {
 
 	@Override
 	public ActionForward strutsExecute(
-			ActionMapping mapping, ActionForm form, HttpServletRequest request,
-			HttpServletResponse response)
+			ActionMapping actionMapping, ActionForm actionForm,
+			HttpServletRequest request, HttpServletResponse response)
 		throws Exception {
 
 		try {
