@@ -44,7 +44,7 @@ request.setAttribute("view.jsp-portletURL", portletURL);
 <liferay-ui:error exception="<%= RequiredOrganizationException.class %>" message="you-cannot-delete-organizations-that-have-suborganizations-or-users" />
 <liferay-ui:error exception="<%= RequiredUserException.class %>" message="you-cannot-delete-or-deactivate-yourself" />
 
-<aui:form action="<%= portletURLString %>" method="get" name="fm">
+<aui:form action="<%= portletURLString %>" method="post" name="fm">
 	<liferay-portlet:renderURLParams varImpl="portletURL" />
 	<aui:input name="<%= Constants.CMD %>" type="hidden" />
 	<aui:input name="redirect" type="hidden" value="<%= portletURLString %>" />
@@ -181,7 +181,7 @@ request.setAttribute("view.jsp-portletURL", portletURL);
 	}
 
 	function <portlet:namespace />search() {
-		document.<portlet:namespace />fm.method = "get";
+		document.<portlet:namespace />fm.method = "post";
 		document.<portlet:namespace />fm.<portlet:namespace /><%= Constants.CMD %>.value = "";
 		submitForm(document.<portlet:namespace />fm, '<%= portletURLString %>');
 	}
