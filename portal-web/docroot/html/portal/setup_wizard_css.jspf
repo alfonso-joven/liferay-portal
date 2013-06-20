@@ -14,10 +14,6 @@
  */
 --%>
 
-<%
-String themeImagesPath = PortalUtil.getCDNHost(request.isSecure()) + theme.getStaticResourcePath() + theme.getImagesPath();
-%>
-
 body {
 	background: #EEF0F2 !important;
 	color: #363636;

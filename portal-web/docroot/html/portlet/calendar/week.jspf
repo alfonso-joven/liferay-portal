@@ -24,8 +24,6 @@ if (cal.getFirstDayOfWeek() == Calendar.MONDAY) {
 }
 
 cal.add(Calendar.DATE, 1 - dayOfWeek);
-
-Format dateFormatDayOfWeek = FastDateFormatFactoryUtil.getSimpleDateFormat("EEE", locale);
 %>
 
 <div>

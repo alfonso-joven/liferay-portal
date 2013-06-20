@@ -40,8 +40,6 @@ List<Group> mySites = user.getMySites(true, max);
 		for (Group mySite : mySites) {
 			String escapedSiteName = HtmlUtil.escape(mySite.getName());
 
-			Organization organization = null;
-
 			String publicAddPageHREF = null;
 			String privateAddPageHREF = null;
 
@@ -75,7 +73,6 @@ List<Group> mySites = user.getMySites(true, max);
 
 				publicAddPageHREF = publicAddPageURL.toString();
 
-				long privateAddPagePlid = mySite.getDefaultPrivatePlid();
 
 				PortletURL privateAddPageURL = new PortletURLImpl(request, PortletKeys.MY_ACCOUNT, plid, PortletRequest.RENDER_PHASE);
 

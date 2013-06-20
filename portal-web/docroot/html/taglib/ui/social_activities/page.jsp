@@ -26,7 +26,6 @@ String className = (String)request.getAttribute("liferay-ui:social-activities:cl
 long classPK = GetterUtil.getLong((String)request.getAttribute("liferay-ui:social-activities:classPK"));
 List<SocialActivity> activities = (List<SocialActivity>)request.getAttribute("liferay-ui:social-activities:activities");
 boolean feedEnabled = GetterUtil.getBoolean((String)request.getAttribute("liferay-ui:social-activities:feedEnabled"));
-String feedTitle = (String)request.getAttribute("liferay-ui:social-activities:feedTitle");
 String feedLink = (String)request.getAttribute("liferay-ui:social-activities:feedLink");
 String feedLinkMessage = (String)request.getAttribute("liferay-ui:social-activities:feedLinkMessage");
 
@@ -43,8 +42,6 @@ Format timeFormatDate = FastDateFormatFactoryUtil.getTime(locale, timeZone);
 
 	<%
 	boolean hasActivities = false;
-
-	boolean firstDaySeparator = true;
 
 	Date now = new Date();
 
@@ -128,7 +125,3 @@ Format timeFormatDate = FastDateFormatFactoryUtil.getTime(locale, timeZone);
 		url="<%= feedLink %>"
 	/>
 </c:if>
-
-<%!
-private static Log _log = LogFactoryUtil.getLog("portal-web.docroot.html.taglib.ui.social_activities.page_jsp");
-%>

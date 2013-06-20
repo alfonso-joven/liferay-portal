@@ -31,10 +31,6 @@ String panelSelectedPortlets = typeSettingsProperties.getProperty("panelSelected
 
 <aui:input id="panelSelectedPortlets" name="TypeSettingsProperties--panelSelectedPortlets--" type="hidden" value="<%= panelSelectedPortlets %>" />
 
-<%
-String panelTreeKey = "panelSelectedPortletsPanelTree";
-%>
-
 <div class="lfr-tree-loading" id="<portlet:namespace />selectPortletsTreeLoading">
 	<span class="aui-icon aui-icon-loading lfr-tree-loading-icon"></span>
 </div>

@@ -38,8 +38,6 @@ page import="com.liferay.portlet.calendar.util.comparator.EventTimeComparator" %
 <%
 PortletPreferences preferences = renderRequest.getPreferences();
 
-String portletResource = ParamUtil.getString(request, "portletResource");
-
 String tabs1Names = "summary,day,week,month,year,events";
 
 if (CalendarPermission.contains(permissionChecker, scopeGroupId, ActionKeys.EXPORT_ALL_EVENTS) || CalendarPermission.contains(permissionChecker, scopeGroupId, ActionKeys.ADD_EVENT)) {
@@ -103,13 +101,11 @@ int curMonth = curCal.get(Calendar.MONTH);
 int curDay = curCal.get(Calendar.DATE);
 int curYear = curCal.get(Calendar.YEAR);
 
-int[] monthIds = CalendarUtil.getMonthIds();
 String[] months = CalendarUtil.getMonths(locale);
 
 String[] days = CalendarUtil.getDays(locale);
 
 Format dateFormatDate = FastDateFormatFactoryUtil.getDate(locale);
-Format dateFormatDateTime = FastDateFormatFactoryUtil.getDateTime(locale);
 Format dateFormatTime = FastDateFormatFactoryUtil.getTime(locale);
 DateFormat dateFormatISO8601 = DateUtil.getISO8601Format();
 %>

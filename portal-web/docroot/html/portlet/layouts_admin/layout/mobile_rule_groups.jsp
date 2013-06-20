@@ -24,6 +24,8 @@ Layout selLayout = (Layout)request.getAttribute("edit_pages.jsp-selLayout");
 long groupId = selLayout.getGroupId();
 String className = Layout.class.getName();
 long classPK = selLayout.getPlid();
+
+String redirect = null;
 %>
 
 <%@ include file="/html/portlet/layouts_admin/layout/mobile_rule_groups_header.jspf" %>

@@ -131,7 +131,6 @@ request.setAttribute("record_set_action.jsp-selRecordSet", selRecordSet);
 		>
 
 			<%
-			RecordSetDisplayTerms displayTerms = (RecordSetDisplayTerms)searchContainer.getDisplayTerms();
 			RecordSetSearchTerms searchTerms = (RecordSetSearchTerms)searchContainer.getSearchTerms();
 			%>
 

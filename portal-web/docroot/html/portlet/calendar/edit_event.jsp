@@ -58,7 +58,6 @@ endDate.set(Calendar.SECOND, 59);
 
 int durationHour = BeanParamUtil.getInteger(event, request, "durationHour", 1);
 int durationMinute = BeanParamUtil.getInteger(event, request, "durationMinute");
-boolean repeating = BeanParamUtil.getBoolean(event, request, "repeating");
 
 Recurrence recurrence = null;
 
