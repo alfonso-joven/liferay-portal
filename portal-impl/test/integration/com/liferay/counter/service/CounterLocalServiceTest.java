@@ -51,46 +51,42 @@ public class CounterLocalServiceTest {
 
 	@Test
 	public void testConcurrentIncrement() throws Exception {
-		String classPath = ClassPathUtil.getJVMClassPath(true);
+		int processNumber = 4;
+		int incrementCount = 10000;
 
+		String classPath = ClassPathUtil.getJVMClassPath(true);
 		List<String> jvmArguments = Arrays.asList(
 			"-Xmx1024m", "-XX:MaxPermSize=200m");
 
-		List<Future<Long[]>> futuresList = new ArrayList<Future<Long[]>>();
+		List<Future<Long[]>> futureResults = new ArrayList<Future<Long[]>>();
 
-		for (int i = 0; i < _PROCESS_COUNT; i++) {
+		for (int i = 0; i < processNumber; i++) {
 			ProcessCallable<Long[]> processCallable =
 				new IncrementProcessCallable(
-					"Increment Process-" + i, _COUNTER_NAME, _INCREMENT_COUNT);
+					"Increment Process-" + i, _COUNTER_NAME, incrementCount);
 
-			Future<Long[]> futures = ProcessExecutor.execute(
+			Future<Long[]> result = ProcessExecutor.execute(
 				classPath, jvmArguments, processCallable);
 
-			futuresList.add(futures);
+			futureResults.add(result);
 		}
 
-		int total = _PROCESS_COUNT * _INCREMENT_COUNT;
+		int totalIdCount = processNumber * incrementCount;
 
-		List<Long> ids = new ArrayList<Long>(total);
+		List<Long> ids = new ArrayList<Long>(totalIdCount);
 
-		for (Future<Long[]> futures : futuresList) {
-			ids.addAll(Arrays.asList(futures.get()));
+		for (Future<Long[]> futureResult : futureResults) {
+			ids.addAll(Arrays.asList(futureResult.get()));
 		}
 
-		Assert.assertEquals(total, ids.size());
+		Assert.assertEquals(totalIdCount, ids.size());
 
 		Collections.sort(ids);
 
-		for (int i = 0; i < total; i++) {
-			Long id = ids.get(i);
-
-			Assert.assertEquals(i + 1, id.intValue());
+		for (int i = 0; i < totalIdCount; i++) {
+			Assert.assertEquals(i + 1, ids.get(i).intValue());
 		}
 	}
-
-	private static final int _INCREMENT_COUNT = 10000;
-
-	private static final int _PROCESS_COUNT = 4;
 
 	private static String _COUNTER_NAME = "COUNTER_NAME";
 
