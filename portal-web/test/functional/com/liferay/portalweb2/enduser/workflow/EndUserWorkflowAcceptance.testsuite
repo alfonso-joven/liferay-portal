@@ -1,7 +1,11 @@
 <definition>
-	<execute test-case="WorkflowadminBlogsAcceptance" />
+	<execute test-case="WorkflowadminCPBlogsAcceptance" />
+
+	<execute test-case="WorkflowadminCPWebContentAcceptance" />
 
 	<execute test-case="WorkflowadminMyworkflowtasksAcceptance" />
 
-	<execute test-case="WorkflowadminWebContentAcceptance" />
+	<execute test-case="WorkflowadminPGMessageboardsAcceptance" />
+
+	<execute test-case="WorkflowadminPGWebContentDisplayAcceptance" />
 </definition>
