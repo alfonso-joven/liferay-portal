@@ -222,7 +222,7 @@
 		<execute action="CPPortalWorkflowconfigurationDefaultconfiguration#select" locator-key1="RESOURCE_TABLE_BLOGS_ENTRY_SELECT" value1="No Workflow" />
 		<execute action="CPPortalWorkflowconfigurationDefaultconfiguration#select" locator-key1="RESOURCE_TABLE_WEB_CONTENT_SELECT" value1="No Workflow" />
 		<execute action="CPPortalWorkflowconfigurationDefaultconfiguration#select" locator-key1="RESOURCE_TABLE_COMMENTS_SELECT" value1="No Workflow" />
-		<execute action="CPPortalWorkflowconfigurationDefaultconfiguration#select" locator-key1="RESOURCE_TABLE_MB_MESSAGE_SELECT" value1="No Workflow" />
+		<execute action="CPPortalWorkflowconfigurationDefaultconfiguration#select" locator-key1="RESOURCE_TABLE_MESSAGE_BOARDS_MESSAGE_SELECT" value1="No Workflow" />
 		<execute action="CPPortalWorkflowconfigurationDefaultconfiguration#select" locator-key1="RESOURCE_TABLE_WIKI_PAGE_SELECT" value1="No Workflow" />
 		<execute action="CPPortalWorkflowconfigurationDefaultconfiguration#assertClick" locator-key1="SAVE_BUTTON" value1="Save" />
 	</command>
@@ -236,7 +236,7 @@
 		<execute action="CPSiteWorkflowconfiguration#select" locator-key1="RESOURCE_TABLE_BLOGS_ENTRY_SELECT" value1="Default: No Workflow" />
 		<execute action="CPSiteWorkflowconfiguration#select" locator-key1="RESOURCE_TABLE_WEB_CONTENT_SELECT" value1="Default: No Workflow" />
 		<execute action="CPSiteWorkflowconfiguration#select" locator-key1="RESOURCE_TABLE_COMMENTS_SELECT" value1="Default: No Workflow" />
-		<execute action="CPSiteWorkflowconfiguration#select" locator-key1="RESOURCE_TABLE_MB_MESSAGE_SELECT" value1="Default: No Workflow" />
+		<execute action="CPSiteWorkflowconfiguration#select" locator-key1="RESOURCE_TABLE_MESSAGE_BOARDS_MESSAGE_SELECT" value1="Default: No Workflow" />
 		<execute action="CPSiteWorkflowconfiguration#select" locator-key1="RESOURCE_TABLE_WIKI_PAGE_SELECT" value1="Default: No Workflow" />
 		<execute action="CPSiteWorkflowconfiguration#assertClick" locator-key1="SAVE_BUTTON" value1="Save" />
 	</command>

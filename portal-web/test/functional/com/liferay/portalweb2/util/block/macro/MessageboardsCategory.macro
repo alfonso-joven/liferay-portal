@@ -9,7 +9,7 @@
 		<execute action="PGMessageboardsAddcategory#type" locator-key1="NAME_FIELD" value1="${categoryName}" />
 		<execute action="PGMessageboardsAddcategory#click" locator-key1="SAVE_BUTTON" />
 
-		<execute action="PGMessageboards#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="PGMessageboards#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 
 		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
@@ -33,7 +33,7 @@
 		<execute action="PGMessageboards#click" locator-key1="CATEGORY_TABLE_ACTIONS_1" />
 		<execute action="PGMessageboards#click" locator-key1="CATEGORY_MENULIST_DELETE" />
 		<execute action="PGMessageboards#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this?" />
-		<execute action="PGMessageboards#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="PGMessageboards#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 		<execute action="PGMessageboards#assertTextNotPresent" value1="${categoryName}" />
 	</command>
 
@@ -49,7 +49,7 @@
 		<execute action="PGMessageboardsAddcategory#type" locator-key1="NAME_FIELD" value1="${categoryNameEdit}" />
 		<execute action="PGMessageboardsAddcategory#click" locator-key1="SAVE_BUTTON" value1="Save" />
 
-		<execute action="PGMessageboards#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="PGMessageboards#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 		<execute action="PGMessageboards#assertTextEquals" locator-key1="CATEGORY_TABLE_CATEGORY_1" value1="${categoryNameEdit}" />
 	</command>
 

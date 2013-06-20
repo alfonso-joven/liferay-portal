@@ -86,6 +86,20 @@
 		<execute action="PGWebcontentdisplay#assertTextEquals" locator-key1="WEB_CONTENT_CONTENT" value1="${webContentContent}" />
 	</command>
 
+	<command name="addPGWithWorkflowViaWCD">
+		<execute macro="Page#gotoPG">
+			<var name="pageName" value="${pageName}" />
+		</execute>
+
+		<execute action="PGWebcontentdisplay#click" locator-key1="ADD_WEB_CONTENT" />
+
+		<execute action="PGWebcontentdisplayAddwebcontent#type" locator-key1="TITLE_FIELD" value1="${webContentTitle}" />
+		<execute action="PGWebcontentdisplayAddwebcontent#type" locator-key1="CONTENT_FIELD" value1="${webContentContent}" />
+		<execute action="PGWebcontentdisplayAddwebcontent#click" locator-key1="SUBMIT_FOR_PUBLICATION_BUTTON" value1="Submit for Publication" />
+
+		<execute action="PGWebcontentdisplay#assertTextEquals" locator-key1="ALERT_MESSAGE" value1="${webContentTitle} is not approved." />
+	</command>
+
 	<command name="editPGviaWCD">
 		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
@@ -138,5 +152,28 @@
 
 		<execute action="CPWebcontent#assertTextEquals" locator-key1="WEB_CONTENT_TABLE_TITLE" value1="${webContentTitle}" />
 		<execute action="CPWebcontent#assertTextEquals" locator-key1="WEB_CONTENT_TABLE_STATUS" value1="Pending" />
+	</command>
+
+	<command name="viewPGViaWCD">
+		<execute macro="Page#gotoPG">
+			<var name="portletName" value="Web Content" />
+		</execute>
+
+		<execute action="PGWebcontentdisplay#assertTextEquals" locator-key1="WEB_CONTENT_CONTENT" value1="${webContentContent}" />
+	</command>
+
+	<command name="viewPGWithWorkflowViaWCD">
+		<execute macro="Page#gotoPG">
+			<var name="portletName" value="Web Content" />
+		</execute>
+
+		<execute action="PGWebcontentdisplay#assertTextEquals" locator-key1="ALERT_MESSAGE" value1="${webContentTitle} is not approved." />
+		<execute action="PGWebcontentdisplay#assertClick" locator-key1="ALERT_MESSAGE" value1="${webContentTitle} is not approved." />
+
+		<execute action="PGWebcontentdisplayEditwebcontent#assertTextEquals" locator-key1="WORKFLOW_STATUS" value1="Pending (${workflowTask})" />
+		<execute action="PGWebcontentdisplayEditwebcontent#assertTextEquals" locator-key1="TITLE_FIELD" value1="${webContentTitle}" />
+		<execute action="PGWebcontentdisplayEditwebcontent#selectFrame" locator-key1="CONTENT_FIELD" />
+		<execute action="PGWebcontentdisplayEditwebcontent#assertTextEquals" locator1="//body" value1="${webContentContent}" />
+		<execute action="PGWebcontentdisplayEditwebcontent#selectFrameTop" />
 	</command>
 </definition>
