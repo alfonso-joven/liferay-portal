@@ -1,4 +1,34 @@
 <definition>
+	<command name="assertClick">
+		<case locator-key1="ADD_PAGE_BUTTON">
+			<execute function="AssertClick#assertValueClickAtAndWait" />
+		</case>
+		<case locator-key1="NAVIGATION_PRIVATE_PAGES">
+			<execute function="AssertClick#assertTextClickAtAndWait" />
+		</case>
+		<case locator-key1="NAVIGATION_PUBLIC_PAGES">
+			<execute function="AssertClick#assertTextClickAtAndWait" />
+		</case>
+		<case locator-key1="SAVE_BUTTON">
+			<execute function="AssertClick#assertValueClickAtAndWait" value1="Save" />
+		</case>
+		<case locator-key1="TOOLBAR_ADD_CHILD_PAGE">
+			<execute function="AssertClick#assertTextClickAt" value1="Add Child Page" />
+		</case>
+		<case locator-key1="TOOLBAR_ADD_PAGE">
+			<execute function="AssertClick#assertTextClickAt" />
+		</case>
+		<case locator-key1="TOOLBAR_DELETE">
+			<execute function="AssertClick#assertTextClickAt" value1="Delete" />
+		</case>
+		<case locator-key1="TOOLBAR_EXPORT">
+			<execute function="AssertClick#assertTextClickAt" />
+		</case>
+		<case locator-key1="TOOLBAR_IMPORT">
+			<execute function="AssertClick#assertTextClickAt" />
+		</case>
+	</command>
+
 	<command name="assertElementPresent">
 		<case locator-key1="PAGE_TREE_PAGE_LINK_1">
 			<execute function="AssertElementPresent#assertElementPresent" />
@@ -14,36 +44,6 @@
 	<command name="assertTextEquals">
 		<case locator-key1="SUCCESS_MESSAGE">
 			<execute function="AssertTextEquals#assertText" value1="Your request completed successfully." />
-		</case>
-	</command>
-
-	<command name="click">
-		<case locator-key1="ADD_PAGE_BUTTON">
-			<execute function="Click#valueClickAtAndWait" value1="Add Page" />
-		</case>
-		<case locator-key1="NAVIGATION_PRIVATE_PAGES">
-			<execute function="Click#textClickAtAndWait" value1="Private Pages" />
-		</case>
-		<case locator-key1="NAVIGATION_PUBLIC_PAGES">
-			<execute function="Click#textClickAtAndWait" value1="Public Pages" />
-		</case>
-		<case locator-key1="SAVE_BUTTON">
-			<execute function="Click#valueClickAtAndWait" value1="Save" />
-		</case>
-		<case locator-key1="TOOLBAR_ADD_CHILD_PAGE">
-			<execute function="Click#textClickAt" value1="Add Child Page" />
-		</case>
-		<case locator-key1="TOOLBAR_ADD_PAGE">
-			<execute function="Click#textClickAt" value1="Add Page" />
-		</case>
-		<case locator-key1="TOOLBAR_DELETE">
-			<execute function="Click#textClickAt" value1="Delete" />
-		</case>
-		<case locator-key1="TOOLBAR_EXPORT">
-			<execute function="Click#textClickAt" value1="Export" />
-		</case>
-		<case locator-key1="TOOLBAR_IMPORT">
-			<execute function="Click#textClickAt" value1="Import" />
 		</case>
 	</command>
 

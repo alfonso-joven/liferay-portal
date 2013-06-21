@@ -1,40 +1,40 @@
 <definition>
-	<command name="assertTextEquals">
-		<case locator-key1="INFO_MESSAGE">
-			<execute function="AssertTextEquals#assertText" value1="There are no documents or media files in this folder." />
-		</case>
-		<case locator-key1="SUCCESS_MESSAGE">
-			<execute function="AssertTextEquals#assertText" value1="Your request completed successfully." />
-		</case>
-	</command>
-
-	<command name="click">
+	<command name="assertClick">
 		<case locator-key1="DOCUMENTS_TABLE_NAME_1">
-			<execute function="Click#textClickAtAndWait" />
+			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
 		<case locator-key1="DOCUMENTS_TABLE_NAME_2">
-			<execute function="Click#textClickAtAndWait" />
+			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
 		<case locator-key1="DOCUMENTS_TABLE_NAME_3">
-			<execute function="Click#textClickAtAndWait" />
+			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
 		<case locator-key1="FOLDER_MENU_ADD_FOLDER">
-			<execute function="Click#textClickAtAndWait" value1="Add Folder" />
+			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
 		<case locator-key1="FOLDER_MENULIST_DELETE">
-			<execute function="Click#textClickAtAndWait" value1="Delete" />
+			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
 		<case locator-key1="FOLDERS_TABLE_NAME_1">
-			<execute function="Click#textClickAtAndWait" />
+			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
 		<case locator-key1="OPTIONS_MENULIST_CONFIGURATION">
-			<execute function="Click#textClickAtAndWait" value1="Configuration" />
+			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
 		<case locator-key1="OPTIONS_WRENCH_ICON">
-			<execute function="Click#pauseTextClickAt" value1="Options" />
+			<execute function="AssertClick#pauseAssertTextClickAt" />
 		</case>
 		<case locator-key1="SEARCH_BUTTON">
-			<execute function="Click#valueClickAtAndWait" value1="Search" />
+			<execute function="AssertClick#assertValueClickAtAndWait" />
+		</case>
+	</command>
+	
+	<command name="assertTextEquals">
+		<case locator-key1="INFO_MESSAGE">
+			<execute function="AssertTextEquals#assertText" />
+		</case>
+		<case locator-key1="SUCCESS_MESSAGE">
+			<execute function="AssertTextEquals#assertText" />
 		</case>
 	</command>
 </definition>

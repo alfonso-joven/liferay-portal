@@ -7,8 +7,8 @@
 			<var name="portletName" value="Users and Organizations" />
 		</execute>
 
-		<execute action="CPUsersandorganizations#click" locator-key1="ADD" />
-		<execute action="CPUsersandorganizations#click" locator-key1="ADD_USER" />
+		<execute action="CPUsersandorganizations#assertClick" locator-key1="ADD" value1="Add" />
+		<execute action="CPUsersandorganizations#assertClick" locator-key1="ADD_USER" value1="User" />
 
 		<execute action="CPUsersandorganizationsAdduser#type" locator-key1="DETAILS_SCREEN_NAME_FIELD" value1="${userScreenName}" />
 		<execute action="CPUsersandorganizationsAdduser#type" locator-key1="DETAILS_EMAIL_ADDRESS_FIELD" value1="${userEmailAddress}" />
@@ -22,9 +22,9 @@
 		</if>
 		
 		<execute action="CPUsersandorganizationsAdduser#type" locator-key1="DETAILS_LAST_NAME_FIELD" value1="${userLastName}" />
-		<execute action="CPUsersandorganizationsAdduser#click" locator-key1="SAVE" />
+		<execute action="CPUsersandorganizationsAdduser#assertClick" locator-key1="SAVE" value1="Save" />
 
-		<execute action="CPUsersandorganizationsUser#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPUsersandorganizationsUser#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 		<execute action="CPUsersandorganizationsUser#assertTextEquals" locator-key1="DETAILS_SCREEN_NAME_FIELD" value1="${userScreenName}" />
 		<execute action="CPUsersandorganizationsUser#assertTextEquals" locator-key1="DETAILS_EMAIL_ADDRESS_FIELD" value1="${userEmailAddress}" />
 		<execute action="CPUsersandorganizationsUser#assertTextEquals" locator-key1="DETAILS_FIRST_NAME_FIELD" value1="${userFirstName}" />
@@ -44,24 +44,24 @@
 			<var name="portletName" value="Users and Organizations" />
 		</execute>
 
-		<execute action="CPUsersandorganizations#click" locator-key1="SEARCH_ALL_USERS" />
+		<execute action="CPUsersandorganizations#assertClick" locator-key1="SEARCH_ALL_USERS" value1="Search All Users" />
 
 		<execute macro="CPUsersandorganizationsViewusers#showAdvancedSearch" />
 		<execute action="CPUsersandorganizationsViewusers#type" locator-key1="ADVANCED_SEARCH_FIRST_NAME" value1="${userFirstName}" />
 		<execute action="CPUsersandorganizationsViewusers#select" locator-key1="ADVANCED_SEARCH_STATUS" value1="Active" />
-		<execute action="CPUsersandorganizationsViewusers#click" locator-key1="ADVANCED_SEARCH_BUTTON" />
+		<execute action="CPUsersandorganizationsViewusers#assertClick" locator-key1="ADVANCED_SEARCH_BUTTON" value1="Search" />
 
 		<if>
 			<condition action="CPUsersandorganizationsViewusers#isElementPresent" locator-key1="USER_TABLE_ALL_CHECKBOX" />
 			<then>
 				<execute action="CPUsersandorganizationsViewusers#click" locator-key1="USER_TABLE_ALL_CHECKBOX" value1="Check All" />
-				<execute action="CPUsersandorganizationsViewusers#click" locator-key1="DEACTIVATE" />
+				<execute action="CPUsersandorganizationsViewusers#assertClick" locator-key1="DEACTIVATE" value1="Deactivate" />
 				<execute action="CPUsersandorganizationsViewusers#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to deactivate the selected users?" />
-				<execute action="CPUsersandorganizationsViewusers#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+				<execute action="CPUsersandorganizationsViewusers#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 			</then>
 		</if>
 
-		<execute action="CPUsersandorganizationsViewusers#assertTextEquals" locator-key1="INFO_MESSAGE" />
+		<execute action="CPUsersandorganizationsViewusers#assertTextEquals" locator-key1="INFO_MESSAGE" value1="No users were found." />
 		<execute action="CPUsersandorganizationsViewusers#assertElementNotPresent" locator-key1="DEACTIVATE" value1="Deactivate" />
 		<execute macro="CPUsersandorganizationsViewusers#showBasicSearch" />
 	</command>
@@ -71,24 +71,24 @@
 			<var name="portletName" value="Users and Organizations" />
 		</execute>
 
-		<execute action="CPUsersandorganizations#click" locator-key1="SEARCH_ALL_USERS" />
+		<execute action="CPUsersandorganizations#assertClick" locator-key1="SEARCH_ALL_USERS" value1="Search All Users" />
 
 		<execute macro="CPUsersandorganizationsViewusers#showAdvancedSearch" />
 		<execute action="CPUsersandorganizationsViewusers#type" locator-key1="ADVANCED_SEARCH_FIRST_NAME" value1="${userFirstName}" />
 		<execute action="CPUsersandorganizationsViewusers#select" locator-key1="ADVANCED_SEARCH_STATUS" value1="Inactive" />
-		<execute action="CPUsersandorganizationsViewusers#click" locator-key1="ADVANCED_SEARCH_BUTTON" />
+		<execute action="CPUsersandorganizationsViewusers#assertClick" locator-key1="ADVANCED_SEARCH_BUTTON" value1="Search" />
 
 		<if>
 			<condition action="CPUsersandorganizationsViewusers#isElementPresent" locator-key1="USER_TABLE_ALL_CHECKBOX" />
 			<then>
 				<execute action="CPUsersandorganizationsViewusers#click" locator-key1="USER_TABLE_ALL_CHECKBOX" value1="Check All" />
-				<execute action="CPUsersandorganizationsViewusers#click" locator-key1="DELETE" />
+				<execute action="CPUsersandorganizationsViewusers#assertClick" locator-key1="DELETE" value1="Delete" />
 				<execute action="CPUsersandorganizationsViewusers#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to permanently delete the selected users?" />
-				<execute action="CPUsersandorganizationsViewusers#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+				<execute action="CPUsersandorganizationsViewusers#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 			</then>
 		</if>
 
-		<execute action="CPUsersandorganizationsViewusers#assertTextEquals" locator-key1="INFO_MESSAGE" />
+		<execute action="CPUsersandorganizationsViewusers#assertTextEquals" locator-key1="INFO_MESSAGE" value1="No users were found." />
 		<execute action="CPUsersandorganizationsViewusers#assertElementNotPresent" locator-key1="DELETE" value1="Delete" />
 		<execute macro="CPUsersandorganizationsViewusers#showBasicSearch" />
 	</command>
@@ -98,11 +98,11 @@
 			<var name="portletName" value="Users and Organizations" />
 		</execute>
 
-		<execute action="CPUsersandorganizations#click" locator-key1="SEARCH_ALL_USERS" />
+		<execute action="CPUsersandorganizations#assertClick" locator-key1="SEARCH_ALL_USERS" value1="Search All Users" />
 
 		<execute macro="CPUsersandorganizationsViewusers#showBasicSearch" />
 		<execute action="CPUsersandorganizationsViewusers#type" locator-key1="BASIC_SEARCH_FIELD" value1="${userScreenName}" />
-		<execute action="CPUsersandorganizationsViewusers#click" locator-key1="BASIC_SEARCH_BUTTON" />
+		<execute action="CPUsersandorganizationsViewusers#assertClick" locator-key1="BASIC_SEARCH_BUTTON" value1="Search" />
 		<execute action="CPUsersandorganizationsViewusers#assertTextEquals" locator-key1="USER_TABLE_SCREEN_NAME_1" value1="${userScreenName}" />
 		<execute action="CPUsersandorganizationsViewusers#click" locator-key1="USER_TABLE_SCREEN_NAME_1" value1="${userScreenName}" />
 
@@ -110,7 +110,7 @@
 		<execute action="CPUsersandorganizationsUser#type" locator-key1="PASSWORD_NEW_PASSWORD_FIELD" value1="password" />
 		<execute action="CPUsersandorganizationsUser#type" locator-key1="PASSWORD_ENTER_AGAIN_FIELD" value1="password" />
 		<execute action="CPUsersandorganizationsUser#click" locator-key1="SAVE_BUTTON" />
-		<execute action="CPUsersandorganizationsUser#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPUsersandorganizationsUser#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 
 		<execute macro="User#pgLogout" />
 
@@ -181,7 +181,7 @@
 		<if>
 			<condition action="Dockbar#isElementPresent" locator-key1="USER_NAME" />
 			<then>
-				<execute action="Dockbar#click" locator-key1="USER_SIGN_OUT" />
+				<execute action="Dockbar#assertClick" locator-key1="USER_SIGN_OUT" value1="Sign Out" />
 			</then>
 		</if>
 	</command>
@@ -203,11 +203,11 @@
 			<var name="portletName" value="Users and Organizations" />
 		</execute>
 
-		<execute action="CPUsersandorganizations#click" locator-key1="SEARCH_ALL_USERS" />
+		<execute action="CPUsersandorganizations#assertClick" locator-key1="SEARCH_ALL_USERS" value1="Search All Users" />
 
 		<execute macro="CPUsersandorganizationsViewusers#showBasicSearch" />
 		<execute action="CPUsersandorganizationsViewusers#type" locator-key1="BASIC_SEARCH_FIELD" value1="${userScreenName}" />
-		<execute action="CPUsersandorganizationsViewusers#click" locator-key1="BASIC_SEARCH_BUTTON" />
+		<execute action="CPUsersandorganizationsViewusers#assertClick" locator-key1="BASIC_SEARCH_BUTTON" value1="Search" />
 		<execute action="CPUsersandorganizationsViewusers#assertTextEquals" locator-key1="USER_TABLE_FIRST_NAME_1" value1="${userFirstName}" />
 		<execute action="CPUsersandorganizationsViewusers#assertTextEquals" locator-key1="USER_TABLE_LAST_NAME_1" value1="${userLastName}" />
 		<execute action="CPUsersandorganizationsViewusers#assertTextEquals" locator-key1="USER_TABLE_SCREEN_NAME_1" value1="${userScreenName}" />

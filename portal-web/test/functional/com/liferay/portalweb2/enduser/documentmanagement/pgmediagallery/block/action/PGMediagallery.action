@@ -1,7 +1,7 @@
 <definition>
-	<command name="click">
+	<command name="assertClick">
 		<case locator-key1="OPTIONS">
-			<execute function="Click#pauseTextClickAt" value1="Options" />
+			<execute function="AssertClick#pauseAssertTextClickAt" />
 		</case>
 	</command>
 </definition>

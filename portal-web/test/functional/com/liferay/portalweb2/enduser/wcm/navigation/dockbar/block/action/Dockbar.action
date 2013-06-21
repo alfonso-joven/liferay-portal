@@ -1,26 +1,29 @@
 <definition>
-	<command name="click">
+	<command name="assertClick">
 		<case locator-key1="ADD_APPLICATION">
-			<execute function="Click#partialTextClickAt" value1="More" />
+			<execute function="AssertClick#assertPartialTextClickAt" value1="More" />
 		</case>
 		<case locator-key1="ADD_PAGE">
-			<execute function="Click#textClickAt" value1="Page" />
+			<execute function="AssertClick#assertTextClickAt" />
 		</case>
 		<case locator-key1="GO_TO">
-			<execute function="Click#textClickAt" value1="Go to" />
+			<execute function="AssertClick#assertTextClickAt" value1="Go to" />
 		</case>
 		<case locator-key1="GO_TO_CONTROL_PANEL">
-			<execute function="Click#textClickAtAndWait" value1="Control Panel" />
+			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
 		<case locator-key1="MANAGE">
-			<execute function="Click#textClickAt" value1="Manage" />
+			<execute function="AssertClick#assertTextClickAt" value1="Manage" />
 		</case>
 		<case locator-key1="MANAGE_SITE">
-			<execute function="Click#textClickAtAndWait" value1="Site" />
+			<execute function="AssertClick#assertTextClickAtAndWait" value1="Site" />
 		</case>
 		<case locator-key1="USER_SIGN_OUT">
-			<execute function="Click#textClickAtAndWait" value1="Sign Out" />
+			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
+	</command>
+		
+	<command name="click">	
 		<case comparator="startsWith" locator1="//span[@data-title='">
 			<execute function="Click#makeVisibleClickAt" />
 		</case>

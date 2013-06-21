@@ -8,7 +8,7 @@
 		<execute action="PGDocumentsandmediaAdddocument#uploadCommonFile" locator-key1="FILE_FIELD" value1="${dmDocumentFile}" />
 		<execute action="PGDocumentsandmediaAdddocument#type" locator-key1="TITLE_FIELD" value1="${dmDocumentTitle}" />
 		<execute action="PGDocumentsandmediaAdddocument#type" locator-key1="DESCRIPTION_FIELD" value1="${dmDocumentDescription}" />
-		<execute action="PGDocumentsandmediaAdddocument#click" locator-key1="PUBLISH_BUTTON" />
+		<execute action="PGDocumentsandmediaAdddocument#assertClick" locator-key1="PUBLISH_BUTTON" value1="Publish" />
 
 		<execute action="PGDocumentsandmediaFolder#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 	</command>
@@ -23,13 +23,13 @@
 		<execute action="PGDocumentlibrarydisplayFolder#click" locator-key1="SUBFOLDER_MENU_ADD_DOCUMENT" value1="${dmdDocumentTitle}" />
 
 		<execute action="PGDocumentlibrarydisplayAdddocument#selectFrame" locator-key1="SELECT_DOCUMENT_TYPE_IFRAME" />
-		<execute action="PGDocumentlibrarydisplayAdddocument#click" locator-key1="SELECT_DOCUMENT_TYPE_BASIC_DOCUMENT" />
+		<execute action="PGDocumentlibrarydisplayAdddocument#assertClick" locator-key1="SELECT_DOCUMENT_TYPE_BASIC_DOCUMENT" value1="Basic Document" />
 		<execute action="PGDocumentlibrarydisplayAdddocument#selectFrame" />
 		<execute action="PGDocumentlibrarydisplayAdddocument#uploadCommonFile" locator-key1="DOCUMENT_FILE_FIELD" value1="${dmdDocumentFile}" />
 		<execute action="PGDocumentlibrarydisplayAdddocument#type" locator-key1="DOCUMENT_TITLE_FIELD" value1="${dmdDocumentTitle}" />
-		<execute action="PGDocumentlibrarydisplayAdddocument#click" locator-key1="PUBLISH_BUTTON" />
+		<execute action="PGDocumentlibrarydisplayAdddocument#assertClick" locator-key1="PUBLISH_BUTTON" value1="Publish" />
 
-		<execute action="PGDocumentlibrarydisplayFolder#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="PGDocumentlibrarydisplayFolder#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 		<execute action="PGDocumentlibrarydisplayFolder#assertTextEquals" locator-key1="DOCUMENTS_TABLE_NAME_1" value1="${dmdDocumentTitle}" />
 		<execute action="PGDocumentlibrarydisplayFolder#click" locator-key1="DOCUMENTS_TABLE_NAME_1" value1="${dmdDocumentTitle}" />
 
@@ -119,7 +119,7 @@
 		<execute action="PGDocumentsandmediaMovefiles#selectWindow" locator-key1="SELECT_POP_UP" />
 		<execute action="PGDocumentsandmediaMovefiles#click" locator-key1="SELECT_POP_UP_CHOOSE_2" />
 		<execute action="PGDocumentsandmediaMovefiles#selectWindow" locator-key1="SELECT_NULL_WINDOW" />
-		<execute action="PGDocumentsandmediaMovefiles#click" locator-key1="MOVE" />
+		<execute action="PGDocumentsandmediaMovefiles#assertClick" locator-key1="MOVE" value1="Move" />
 
 		<execute action="PGDocumentsandmedia#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 	</command>
@@ -130,7 +130,7 @@
 		</execute>
 
 		<execute action="PGDocumentlibrarydisplaySearch#type" locator-key1="SEARCH_FIELD" value1="${dmdDocumentTitleSearch}" />
-		<execute action="PGDocumentlibrarydisplaySearch#click" locator-key1="SEARCH_BUTTON" />
+		<execute action="PGDocumentlibrarydisplaySearch#assertClick" locator-key1="SEARCH_BUTTON" value1="Search" />
 		<execute action="PGDocumentlibrarydisplaySearch#assertTextEquals" locator-key1="INFO_MESSAGE" value1="No documents were found that matched the keywords: ${dmdDocumentTitleSearch}." />
 	</command>
 
@@ -140,7 +140,7 @@
 		</execute>
 
 		<execute action="PGDocumentlibrarydisplay#type" locator-key1="SEARCH_FIELD" value1="${dmdDocumentTitleSearch}" />
-		<execute action="PGDocumentlibrarydisplay#click" locator-key1="SEARCH_BUTTON" />
+		<execute action="PGDocumentlibrarydisplay#assertClick" locator-key1="SEARCH_BUTTON" value1="Search" />
 
 		<execute action="PGDocumentlibrarydisplaySearch#assertTextEquals" locator-key1="SEARCH_RESULTS_FOLDER" value1="${dmdFolderName}" />
 		<execute action="PGDocumentlibrarydisplaySearch#assertTextEquals" locator-key1="SEARCH_RESULTS_DOCUMENT" value1="${dmdDocumentTitle}" />

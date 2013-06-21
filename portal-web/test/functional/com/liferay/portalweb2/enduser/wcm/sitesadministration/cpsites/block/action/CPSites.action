@@ -1,7 +1,25 @@
 <definition>
+	<command name="assertClick">
+		<case locator-key1="ADD">
+			<execute function="AssertClick#assertTextClickAt" />
+		</case>
+		<case locator-key1="ADD_BLANK_SITE">
+			<execute function="AssertClick#assertTextClickAtAndWait" />
+		</case>
+		<case locator-key1="SEARCH_BUTTON">
+			<execute function="AssertClick#assertValueClickAtAndWait" />
+		</case>
+		<case locator-key1="SITE_MENULIST_DELETE">
+			<execute function="AssertClick#assertTextClickAtAndWait" />
+		</case>
+		<case locator-key1="SITE_TABLE_ACTIONS">
+			<execute function="AssertClick#assertTextClickAt" />
+		</case>		
+	</command>
+
 	<command name="assertTextEquals">
 		<case locator-key1="INFO_MESSAGE">
-			<execute function="AssertTextEquals#assertText" value1="No sites were found." />
+			<execute function="AssertTextEquals#assertText" />
 		</case>
 		<case locator-key1="SITE_TABLE_NAME">
 			<execute function="AssertTextEquals#assertPartialText" />
@@ -9,23 +27,5 @@
 		<case locator-key1="SUCCESS_MESSAGE">
 			<execute function="AssertTextEquals#assertText" value1="Your request completed successfully." />
 		</case>
-	</command>
-
-	<command name="click">
-		<case locator-key1="ADD">
-			<execute function="Click#textClickAt" value1="Add" />
-		</case>
-		<case locator-key1="ADD_BLANK_SITE">
-			<execute function="Click#textClickAtAndWait" value1="Blank Site" />
-		</case>
-		<case locator-key1="SEARCH_BUTTON">
-			<execute function="Click#valueClickAtAndWait" value1="Search" />
-		</case>
-		<case locator-key1="SITE_MENULIST_DELETE">
-			<execute function="Click#textClickAtAndWait" value1="Delete" />
-		</case>
-		<case locator-key1="SITE_TABLE_ACTIONS">
-			<execute function="Click#textClickAt" value1="Actions" />
-		</case>		
 	</command>
 </definition>

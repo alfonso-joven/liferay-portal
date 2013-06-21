@@ -42,12 +42,12 @@
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
-		<execute action="PGDocumentlibrarydisplay#click" locator-key1="FOLDER_MENU_ADD_FOLDER" />
+		<execute action="PGDocumentlibrarydisplay#assertClick" locator-key1="FOLDER_MENU_ADD_FOLDER" value1="Add Folder" />
 
 		<execute action="PGDocumentlibrarydisplayAddfolder#type" locator-key1="FOLDER_NAME" value1="${dmdFolderName}" />
-		<execute action="PGDocumentlibrarydisplayAddfolder#click" locator-key1="SAVE_BUTTON" />
+		<execute action="PGDocumentlibrarydisplayAddfolder#assertClick" locator-key1="SAVE_BUTTON" value1="Save" />
 
-		<execute action="PGDocumentlibrarydisplay#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="PGDocumentlibrarydisplay#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 		<execute action="PGDocumentlibrarydisplay#assertTextEquals" locator-key1="FOLDERS_TABLE_NAME_1" value1="${dmdFolderName}" />
 		<execute action="PGDocumentlibrarydisplay#click" locator-key1="FOLDERS_TABLE_NAME_1" value1="${dmdFolderName}" />
 
@@ -109,7 +109,7 @@
 		<execute action="PGDocumentsandmedia#assertTextEquals" locator-key1="ENTRIES_FOLDER_TITLE" value1="${dmFolderName}" />
 		<execute action="PGDocumentsandmedia#click" locator-key1="ENTRIES_FOLDER_SELECT" />
 		<execute action="PGDocumentsandmedia#click" locator-key1="TOOLBAR_ACTIONS" />
-		<execute action="PGDocumentsandmedia#click" locator-key1="ACTIONS_MENULIST_DELETE" />
+		<execute action="PGDocumentsandmedia#assertClick" locator-key1="ACTIONS_MENULIST_DELETE" value1="Delete" />
 		<execute action="PGDocumentsandmedia#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete the selected entries?" />
 		<execute action="PGDocumentsandmedia#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 		<execute action="PGDocumentsandmedia#assertElementNotPresent" locator-key1="ENTRIES_FOLDER" />
@@ -141,7 +141,7 @@
 	<command name="editPG">
 		<execute action="PGDocumentsandmedia#assertTextEquals" locator-key1="ENTRIES_FOLDER_TITLE" value1="${dmFolderName}" />
 		<execute action="PGDocumentsandmedia#click" locator-key1="ENTRIES_FOLDER_ACTIONS" />
-		<execute action="PGDocumentsandmedia#click" locator-key1="FOLDER_MENULIST_EDIT" />
+		<execute action="PGDocumentsandmedia#assertClick" locator-key1="FOLDER_MENULIST_EDIT" value1="Edit" />
 
 		<execute action="PGDocumentsandmediaEditfolder#type" locator-key1="NAME_FIELD" value1="${dmFolderNameEdit}" />
 		<execute action="PGDocumentsandmediaEditfolder#type" locator-key1="DESCRIPTION_FIELD" value1="${dmFolderDescriptionEdit}" />
@@ -190,7 +190,7 @@
 		<execute action="CPDocumentsandmedia#assertTextEquals" locator-key1="REQUEST" value1="Your request completed successfully."/>
 		<execute action="CPDocumentsandmedia#assertElementNotPresent" locator-key1="DOCUMENT_CONTAINER_FOLDER2" />
 		<execute action="CPDocumentsandmedia#click" locator-key1="DOCUMENT_CONTAINER_FOLDER1" />
-		<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="FOLDER_VIEW_FOLDER1" />
+		<!--<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="FOLDER_VIEW_FOLDER1" />-->
 	</command>
 
 	<command name="tearDownPG">
@@ -204,7 +204,7 @@
 				<execute action="PGDocumentsandmedia#check" locator-key1="TOOLBAR_SELECT_ALL_CHECKBOX" />
 				<execute action="PGDocumentsandmedia#click" locator-key1="TOOLBAR_ACTIONS" />
 				<execute action="PGDocumentsandmedia#assertElementPresent" locator-key1="ACTIONS_MENULIST_DELETE" />
-				<execute action="PGDocumentsandmedia#click" locator-key1="ACTIONS_MENULIST_DELETE" />
+				<execute action="PGDocumentsandmedia#assertClick" locator-key1="ACTIONS_MENULIST_DELETE" value1="Delete" />
 				<execute action="PGDocumentsandmedia#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete the selected entries?" />
 				<execute action="PGDocumentsandmedia#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 			</then>
@@ -220,9 +220,9 @@
 			<condition action="PGDocumentlibrarydisplay#isElementPresent" locator-key1="FOLDERS_TABLE_ACTIONS_BUTTON_1" />
 			<then>
 				<execute action="PGDocumentlibrarydisplay#click" locator-key1="FOLDERS_TABLE_ACTIONS_BUTTON_1" />
-				<execute action="PGDocumentlibrarydisplay#click" locator-key1="FOLDER_MENULIST_DELETE" />
+				<execute action="PGDocumentlibrarydisplay#assertClick" locator-key1="FOLDER_MENULIST_DELETE" value1="Delete" />
 				<execute action="PGDocumentlibrarydisplay#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this?" />
-				<execute action="PGDocumentlibrarydisplay#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+				<execute action="PGDocumentlibrarydisplay#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 			</then>
 		</while>
 	</command>

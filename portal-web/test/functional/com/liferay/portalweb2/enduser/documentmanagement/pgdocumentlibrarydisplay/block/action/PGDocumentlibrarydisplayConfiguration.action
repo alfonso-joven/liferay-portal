@@ -1,7 +1,13 @@
 <definition>
+	<command name="assertClick">
+		<case locator-key1="SAVE_BUTTON">
+			<execute function="AssertClick#assertValueClickAtAndWait" />
+		</case>
+	</command>
+
 	<command name="assertTextEquals">
 		<case locator-key1="SUCCESS_MESSAGE">
-			<execute function="AssertTextEquals#assertText" value1="You have successfully updated the setup." />
+			<execute function="AssertTextEquals#assertText" />
 		</case>
 	</command>
 
@@ -17,12 +23,6 @@
 		</case>
 		<case locator-key1="SETUP_DISPLAY_SETTINGS_SHOW_SEARCH_CHECKBOX">
 			<execute function="Check#clickAtConfiguration" />
-		</case>
-	</command>
-
-	<command name="click">
-		<case locator-key1="SAVE_BUTTON">
-			<execute function="Click#valueClickAtAndWait" value1="Save" />
 		</case>
 	</command>
 

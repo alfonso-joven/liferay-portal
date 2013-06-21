@@ -1,16 +1,16 @@
 <definition>
-	<command name="assertTextEquals">
-		<case locator-key1="SUCCESS_MESSAGE">
-			<execute function="AssertTextEquals#assertText" value1="Your request completed successfully." />
+	<command name="assertClick">
+		<case locator-key1="ADD_TEMPLATE">
+			<execute function="AssertClick#assertValueClickAtAndWait" />
+		</case>
+		<case locator-key1="DELETE_BUTTON">
+			<execute function="AssertClick#assertValueClickAtAndWait" />
 		</case>
 	</command>
 
-	<command name="click">
-		<case locator-key1="ADD_TEMPLATE">
-			<execute function="Click#valueClickAtAndWait" value1="Add Template" />
-		</case>
-		<case locator-key1="DELETE_BUTTON">
-			<execute function="Click#valueClickAtAndWait" value1="Delete" />
+	<command name="assertTextEquals">
+		<case locator-key1="SUCCESS_MESSAGE">
+			<execute function="AssertTextEquals#assertText" />
 		</case>
 	</command>
 

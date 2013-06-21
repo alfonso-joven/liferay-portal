@@ -1,32 +1,35 @@
 <definition>
+	<command name="assertClick">
+		<case locator-key1="ADVANCED_SEARCH_BASIC">
+			<execute function="AssertClick#assertPartialTextClickAt" value1="Basic" />
+		</case>
+		<case locator-key1="ADVANCED_SEARCH_BUTTON">
+			<execute function="AssertClick#assertValueClickAtAndWait" />
+		</case>
+		<case locator-key1="BASIC_SEARCH_ADVANCED">
+			<execute function="AssertClick#assertPartialTextClickAt" value1="Advanced" />
+		</case>
+		<case locator-key1="BASIC_SEARCH_BUTTON">
+			<execute function="AssertClick#assertValueClickAtAndWait" />
+		</case>
+		<case locator-key1="DEACTIVATE">
+			<execute function="AssertClick#assertValueClickAtAndWait" />
+		</case>
+		<case locator-key1="DELETE">
+			<execute function="AssertClick#assertValueClickAtAndWait" />
+		</case>
+	</command>
+
 	<command name="assertTextEquals">
 		<case locator-key1="INFO_MESSAGE">
-			<execute function="AssertTextEquals#assertText" value1="No users were found." />
+			<execute function="AssertTextEquals#assertText" />
 		</case>
 		<case locator-key1="SUCCESS_MESSAGE">
-			<execute function="AssertTextEquals#assertText" value1="Your request completed successfully." />
+			<execute function="AssertTextEquals#assertText" />
 		</case>
 	</command>
 
 	<command name="click">
-		<case locator-key1="ADVANCED_SEARCH_BASIC">
-			<execute function="Click#partialTextClickAt" value1="Basic" />
-		</case>
-		<case locator-key1="ADVANCED_SEARCH_BUTTON">
-			<execute function="Click#valueClickAtAndWait" value1="Search" />
-		</case>
-		<case locator-key1="BASIC_SEARCH_ADVANCED">
-			<execute function="Click#partialTextClickAt" value1="Advanced" />
-		</case>
-		<case locator-key1="BASIC_SEARCH_BUTTON">
-			<execute function="Click#valueClickAtAndWait" value1="Search" />
-		</case>
-		<case locator-key1="DEACTIVATE">
-			<execute function="Click#valueClickAtAndWait" value1="Deactivate" />
-		</case>
-		<case locator-key1="DELETE">
-			<execute function="Click#valueClickAtAndWait" value1="Delete" />
-		</case>
 		<case comparator="startsWith" locator-key1="USER_TABLE_FIRST_NAME_">
 			<execute function="Click#clickAtAndWait" />
 		</case>

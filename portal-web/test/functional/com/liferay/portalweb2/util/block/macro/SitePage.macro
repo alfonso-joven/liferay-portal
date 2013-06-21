@@ -5,19 +5,19 @@
 		</execute>
 
 		<execute action="CPSites#type" locator-key1="SEARCH_FIELD" value1="${siteName}" />
-		<execute action="CPSites#click" locator-key1="SEARCH_BUTTON" />
-		<execute action="CPSites#click" locator-key1="SITE_TABLE_ACTIONS" />
+		<execute action="CPSites#assertClick" locator-key1="SEARCH_BUTTON" value1="Search" />
+		<execute action="CPSites#assertClick" locator-key1="SITE_TABLE_ACTIONS" value1="Actions" />
 		<execute action="CPSites#click" locator-key1="SITE_MENULIST_MANAGE_PAGES" />
 
 		<if>
 			<equals arg1="${sitePageType}" arg2="Private" />
 			<then>
-				<execute action="CPSitepages#click" locator-key1="NAVIGATION_PRIVATE_PAGES" />
+				<execute action="CPSitepages#assertClick" locator-key1="NAVIGATION_PRIVATE_PAGES" value1="Private Pages" />
 			</then>
 			<elseif>
 				<equals arg1="${sitePageType}" arg2="Public" />
 				<then>
-					<execute action="CPSitepages#click" locator-key1="NAVIGATION_PUBLIC_PAGES" />
+					<execute action="CPSitepages#assertClick" locator-key1="NAVIGATION_PUBLIC_PAGES" value1="Public Pages" />
 				</then>
 			</elseif>
 			<else>
@@ -25,9 +25,9 @@
 			</else>
 		</if>
 
-		<execute action="CPSitepages#click" locator-key1="TOOLBAR_ADD_PAGE" />
+		<execute action="CPSitepages#assertClick" locator-key1="TOOLBAR_ADD_PAGE" value1="Add Page" />
 		<execute action="CPSitepages#type" locator-key1="ADD_PAGE_NAME_FIELD" value1="${sitePageName}" />
-		<execute action="CPSitepages#click" locator-key1="ADD_PAGE_BUTTON" />
+		<execute action="CPSitepages#assertClick" locator-key1="ADD_PAGE_BUTTON" value1="Add Page" />
 		<execute action="CPSitepages#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
 
 		<execute macro="SitePage#openRootCP" />
@@ -41,19 +41,19 @@
 		</execute>
 
 		<execute action="CPSites#type" locator-key1="SEARCH_FIELD" value1="${siteName}" />
-		<execute action="CPSites#click" locator-key1="SEARCH_BUTTON" />
-		<execute action="CPSites#click" locator-key1="SITE_TABLE_ACTIONS" />
+		<execute action="CPSites#assertClick" locator-key1="SEARCH_BUTTON" value1="Search" />
+		<execute action="CPSites#assertClick" locator-key1="SITE_TABLE_ACTIONS" value1="Actions" />
 		<execute action="CPSites#click" locator-key1="SITE_MENULIST_MANAGE_PAGES" />
 
 		<if>
 			<equals arg1="${sitePageType}" arg2="Private" />
 			<then>
-				<execute action="CPSitepages#click" locator-key1="NAVIGATION_PRIVATE_PAGES" />
+				<execute action="CPSitepages#assertClick" locator-key1="NAVIGATION_PRIVATE_PAGES" value1="Private Pages" />
 			</then>
 			<elseif>
 				<equals arg1="${sitePageType}" arg2="Public" />
 				<then>
-					<execute action="CPSitepages#click" locator-key1="NAVIGATION_PUBLIC_PAGES" />
+					<execute action="CPSitepages#assertClick" locator-key1="NAVIGATION_PUBLIC_PAGES" value1="Public Pages" />
 				</then>
 			</elseif>
 			<else>
@@ -65,9 +65,9 @@
 
 		<execute action="CPSitepages#click" locator-key1="PAGE_TREE_PAGE_LINK_1" />
 
-		<execute action="CPSitepages#click" locator-key1="TOOLBAR_ADD_CHILD_PAGE" />
+		<execute action="CPSitepages#assertClick" locator-key1="TOOLBAR_ADD_CHILD_PAGE" value1="Add Child Page" />
 		<execute action="CPSitepages#type" locator-key1="ADD_PAGE_NAME_FIELD" value1="${siteChildPageName}" />
-		<execute action="CPSitepages#click" locator-key1="ADD_PAGE_BUTTON" />
+		<execute action="CPSitepages#assertClick" locator-key1="ADD_PAGE_BUTTON" value1="Add Page" />
 		<execute action="CPSitepages#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
 
 		<execute macro="SitePage#openPageCP" />
@@ -114,7 +114,7 @@
 			<var name="siteScopeName" value="${siteName}" />
 		</execute>
 
-		<execute action="CPSitepages#click" locator-key1="TOOLBAR_EXPORT" />
+		<execute action="CPSitepages#assertClick" locator-key1="TOOLBAR_EXPORT" value1="Export" />
 
 		<execute action="CPSitepagesExport#selectFrame" locator-key1="EXPORT_IFRAME" />
 		<execute action="CPSitepagesExport#type" locator-key1="EXPORT_FILE_FIELD" value1="${file}" />
@@ -132,7 +132,7 @@
 			<var name="siteScopeName" value="${siteName}" />
 		</execute>
 
-		<execute action="CPSitepages#click" locator-key1="TOOLBAR_IMPORT" />
+		<execute action="CPSitepages#assertClick" locator-key1="TOOLBAR_IMPORT" value1="Import" />
 
 		<execute action="CPSitepagesImport#selectFrame" locator-key1="IMPORT_IFRAME" />
 		<execute action="CPSitepagesImport#uploadTempFile" locator-key1="FILE_UPLOAD_FIELD" value1="${file}" />
@@ -140,7 +140,7 @@
 		<execute action="CPSitepagesImport#check" locator-key1="APPLICATIONS_DELETE_PORTLET_DATA_CHECKBOX" />
 		<execute action="CPSitepagesImport#check" locator-key1="OTHER_PERMISSIONS_CHECKBOX" />
 		<execute action="CPSitepagesImport#check" locator-key1="OTHER_CATEGORIES_CHECKBOX" />
-		<execute action="CPSitepagesImport#click" locator-key1="IMPORT_BUTTON" />
+		<execute action="CPSitepagesImport#assertClick" locator-key1="IMPORT_BUTTON" value1="Import" />
 		<execute action="CPSitepagesImport#selectFrame" />
 
 		<execute action="CPSitepages#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />

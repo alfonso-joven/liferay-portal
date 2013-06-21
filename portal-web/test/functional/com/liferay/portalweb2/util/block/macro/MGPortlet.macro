@@ -5,7 +5,7 @@
 		</execute>
 
 		<execute action="PGMediagallery#assertElementPresent" locator-key1="OPTIONS" />
-		<execute action="PGMediagallery#click" locator-key1="OPTIONS" />
+		<execute action="PGMediagallery#assertClick" locator-key1="OPTIONS" value1="Options" />
 		<execute action="PGMediagallery#click" locator-key1="OPTIONS_MENULIST_CONFIGURATION" />
 
 		<execute action="PGMediagalleryConfiguration#selectFrame" locator-key1="MG_CONFIGURATION_IFRAME" />

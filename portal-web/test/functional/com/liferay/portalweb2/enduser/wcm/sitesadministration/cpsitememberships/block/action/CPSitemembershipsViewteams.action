@@ -1,25 +1,25 @@
 <definition>
+	<command name="assertClick">
+		<case locator-key1="ADD_TEAM_BUTTON">
+			<execute function="AssertClick#assertValueClickAtAndWait" />
+		</case>
+		<case locator-key1="SEARCH_BUTTON">
+			<execute function="AssertClick#assertValueClickAtAndWait" />
+		</case>
+		<case locator-key1="TEAM_TABLE_ACTIONS_1">
+			<execute function="AssertClick#assertTextClickAt" />
+		</case>		
+		<case locator-key1="TEAM_MENULIST_ASSIGN_MEMBERS">
+			<execute function="AssertClick#assertTextClickAtAndWait" />
+		</case>
+	</command>
+	
 	<command name="assertTextEquals">
 		<case locator-key1="SUCCESS_MESSAGE">
-			<execute function="AssertTextEquals#assertText" value1="Your request completed successfully." />
+			<execute function="AssertTextEquals#assertText" />
 		</case>
 		<case locator-key1="INFO_MESSAGE">
 			<execute function="AssertTextEquals#assertText" value1="No teams were found." />
-		</case>
-	</command>
-
-	<command name="click">
-		<case locator-key1="ADD_TEAM_BUTTON">
-			<execute function="Click#valueClickAtAndWait" value1="Add Team" />
-		</case>
-		<case locator-key1="SEARCH_BUTTON">
-			<execute function="Click#valueClickAtAndWait" value1="Search" />
-		</case>
-		<case locator-key1="TEAM_TABLE_ACTIONS_1">
-			<execute function="Click#textClickAt" value1="Actions" />
-		</case>		
-		<case locator-key1="TEAM_MENULIST_ASSIGN_MEMBERS">
-			<execute function="Click#textClickAtAndWait" value1="Assign Members" />
 		</case>
 	</command>
 </definition>

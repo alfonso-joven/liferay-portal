@@ -15,6 +15,12 @@
 		<execute selenium="assertText" />
 	</command>
 
+	<command name="assertTextNoWaitForText">
+		<execute selenium="waitForVisible" />
+
+		<execute selenium="assertText" />
+	</command>
+
 	<command name="assertValue">
 		<execute selenium="waitForVisible" />
 

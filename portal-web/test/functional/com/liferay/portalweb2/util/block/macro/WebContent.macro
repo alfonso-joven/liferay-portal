@@ -4,7 +4,7 @@
 			<var name="portletName" value="Web Content" />
 		</execute>
 
-		<execute action="CPWebcontent#click" locator-key1="ADD_BUTTON" />
+		<execute action="CPWebcontent#assertClick" locator-key1="ADD_BUTTON" value1="Add" />
 
 		<execute action="CPWebcontentAddwebcontent#type" locator-key1="TITLE_FIELD" value1="${webContentTitle}" />
 		<execute action="CPWebcontentAddwebcontent#type" locator-key1="CONTENT_FIELD" value1="${webContentContent}" />
@@ -12,7 +12,7 @@
 
 		<var name="key_webContentTitle" value="${webContentTitle}" />
 
-		<execute action="CPWebcontent#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPWebcontent#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 		<execute action="CPWebcontent#assertTextEquals" locator-key1="WEB_CONTENT_TABLE_TITLE" value1="${webContentTitle}" />
 		<execute action="CPWebcontent#assertTextEquals" locator-key1="WEB_CONTENT_TABLE_STATUS" value1="Approved" />
 	</command>
@@ -22,7 +22,7 @@
 			<var name="portletName" value="Web Content" />
 		</execute>
 
-		<execute action="CPWebcontent#click" locator-key1="ADD_DROPDOWN" />
+		<execute action="CPWebcontent#assertClick" locator-key1="ADD_DROPDOWN" value1="Add" />
 		<execute action="CPWebcontent#click" locator1="//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'${structureName}')]" />
 
 		<execute action="CPWebcontentAddwebcontent#type" locator-key1="TITLE_FIELD" value1="${webContentTitle}" />
@@ -31,7 +31,7 @@
 
 		<var name="key_webContentTitle" value="${webContentTitle}" />
 
-		<execute action="CPWebcontent#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPWebcontent#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 		<execute action="CPWebcontent#assertTextEquals" locator-key1="WEB_CONTENT_TABLE_TITLE" value1="${webContentTitle}" />
 	</command>
 
@@ -40,7 +40,7 @@
 			<var name="portletName" value="Web Content" />
 		</execute>
 
-		<execute action="CPWebcontent#click" locator-key1="ADD_BUTTON" />
+		<execute action="CPWebcontent#assertClick" locator-key1="ADD_BUTTON" value1="Add" />
 
 		<execute action="CPWebcontentAddwebcontent#type" locator-key1="TITLE_FIELD" value1="${webContentTitle}" />
 		<execute action="CPWebcontentAddwebcontent#type" locator-key1="CONTENT_FIELD" value1="${webContentContent}" />
@@ -48,7 +48,7 @@
 
 		<var name="key_webContentTitle" value="${webContentTitle}" />
 
-		<execute action="CPWebcontent#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPWebcontent#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 		<execute action="CPWebcontent#assertTextEquals" locator-key1="WEB_CONTENT_TABLE_TITLE" value1="${webContentTitle}" />
 		<execute action="CPWebcontent#assertTextEquals" locator-key1="WEB_CONTENT_TABLE_STATUS" value1="Pending" />
 	</command>
@@ -84,7 +84,7 @@
 		<execute action="PGAssetpublisherAddnewwebcontent#type" locator-key1="TITLE_FIELD" value1="${webContentTitle}" />
 		<execute action="PGAssetpublisherAddnewwebcontent#type" locator-key1="CONTENT_FIELD" value1="${webContentContent}" />
 		<execute action="PGAssetpublisherAddnewwebcontent#selectFrame" locator-key1="WEB_CONTENT_IFRAME" />
-		<execute action="PGAssetpublisherAddnewwebcontent#click" locator-key1="PUBLISH_BUTTON" />
+		<execute action="PGAssetpublisherAddnewwebcontent#assertClick" locator-key1="PUBLISH_BUTTON" value1="Publish" />
 
 		<execute action="PGAssetpublisher#selectFrame" />
 		<execute action="PGAssetpublisher#assertTextEquals" locator-key1="ASSET_TITLE_1" value1="${webContentTitle}" />
@@ -100,7 +100,7 @@
 
 		<execute action="PGWebcontentdisplayAddwebcontent#type" locator-key1="TITLE_FIELD" value1="${webContentTitle}" />
 		<execute action="PGWebcontentdisplayAddwebcontent#type" locator-key1="CONTENT_FIELD" value1="${webContentContent}" />
-		<execute action="PGWebcontentdisplayAddwebcontent#click" locator-key1="PUBLISH_BUTTON" />
+		<execute action="PGWebcontentdisplayAddwebcontent#assertClick" locator-key1="PUBLISH_BUTTON" value1="Publish" />
 
 		<execute action="PGWebcontentdisplay#assertTextEquals" locator-key1="WEB_CONTENT_CONTENT" value1="${webContentContent}" />
 	</command>
@@ -128,7 +128,7 @@
 
 		<execute action="PGWebcontentdisplayEditwebcontent#type" locator-key1="TITLE_FIELD" value1="${webContentTitleEdit}" />
 		<execute action="PGWebcontentdisplayEditwebcontent#type" locator-key1="CONTENT_FIELD" value1="${webContentContentEdit}" />
-		<execute action="PGWebcontentdisplayEditwebcontent#click" locator-key1="PUBLISH_BUTTON" />
+		<execute action="PGWebcontentdisplayEditwebcontent#assertClick" locator-key1="PUBLISH_BUTTON" value1="Publish" />
 
 		<execute action="PGWebcontentdisplay#assertTextEquals" locator-key1="WEB_CONTENT_CONTENT" value1="${webContentContentEdit}" />
 	</command>
@@ -142,13 +142,13 @@
 			<condition action="CPWebcontent#isElementPresent" locator-key1="WEB_CONTENT_TABLE_ALL_CHECKBOX" />
 			<then>
 				<execute action="CPWebcontent#check" locator-key1="WEB_CONTENT_TABLE_ALL_CHECKBOX" />
-				<execute action="CPWebcontent#click" locator-key1="DELETE_BUTTON" />
+				<execute action="CPWebcontent#assertClick" locator-key1="DELETE_BUTTON" value1="Delete" />
 				<execute action="CPWebcontent#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete the selected web content?" />
-				<execute action="CPWebcontent#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+				<execute action="CPWebcontent#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 			</then>
 		</if>
 
-		<execute action="CPWebcontent#assertTextEquals" locator-key1="INFO_MESSAGE" />
+		<execute action="CPWebcontent#assertTextEquals" locator-key1="INFO_MESSAGE" value1="No Web Content was found." />
 	</command>
 
 	<command name="viewCP">

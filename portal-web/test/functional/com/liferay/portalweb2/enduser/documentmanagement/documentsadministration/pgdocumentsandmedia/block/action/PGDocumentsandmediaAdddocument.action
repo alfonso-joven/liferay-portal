@@ -1,7 +1,7 @@
 <definition>
-	<command name="click">
+	<command name="assertClick">
 		<case locator-key1="PUBLISH_BUTTON">
-			<execute function="Click#valueClickAtAndWait" value1="Publish" />
+			<execute function="AssertClick#assertValueClickAtAndWait" />
 		</case>
 	</command>as
 </definition>

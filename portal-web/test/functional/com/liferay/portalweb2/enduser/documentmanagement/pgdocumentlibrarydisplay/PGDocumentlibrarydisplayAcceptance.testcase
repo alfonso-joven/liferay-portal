@@ -79,7 +79,7 @@
 			<var name="dmdDocumentTitle" value="${dmdDocumentTitle3}" />
 		</execute>
 
-		<execute action="PGDocumentlibrarydisplay#assertTextEquals" locator-key1="INFO_MESSAGE" />
+		<execute action="PGDocumentlibrarydisplay#assertTextEquals" locator-key1="INFO_MESSAGE" value1="There are no documents or media files in this folder." />
 	</command>
 
 	<command name="RemovePortlet">
