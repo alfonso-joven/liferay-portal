@@ -1,10 +1,10 @@
 <definition>
-	<command name="click">
+	<command name="assertClick">
 		<case locator-key1="CATEGORIES_DELETE_BUTTON">
-			<execute function="Click#valueClickAtAndWait" value1="Delete" />
+			<execute function="AssertClick#assertValueClickAtAndWait" />
 		</case>
 		<case locator-key1="THREADS_DELETE_BUTTON">
-			<execute function="Click#valueClickAtAndWait" value1="Delete" />
+			<execute function="AssertClick#assertValueClickAtAndWait" />
 		</case>
 	</command>
 

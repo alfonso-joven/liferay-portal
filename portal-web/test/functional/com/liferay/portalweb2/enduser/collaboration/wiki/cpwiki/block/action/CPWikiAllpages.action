@@ -1,10 +1,10 @@
 <definition>
-	<command name="click">
+	<command name="assertClick">
 		<case locator-key1="WIKI_PAGE_MENULIST_EDIT">
-			<execute function="Click#textClickAtAndWait" value1="Edit" />
+			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
 		<case locator-key1="WIKI_PAGE_MENULIST_DELETE">
-			<execute function="Click#textClickAtAndWait" value1="Delete" />
+			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
 	</command>
 </definition>

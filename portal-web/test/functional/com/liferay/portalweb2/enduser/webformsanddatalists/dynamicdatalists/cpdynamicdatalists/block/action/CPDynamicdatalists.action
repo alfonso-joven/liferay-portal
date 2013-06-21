@@ -1,34 +1,34 @@
 <definition>
 	<command name="assertTextEquals">
 		<case locator-key1="SUCCESS_MESSAGE">
-			<execute function="AssertTextEquals#assertText" value1="Your request completed successfully." />
+			<execute function="AssertTextEquals#assertText" />
 		</case>
 	</command>
 
-	<command name="click">
+	<command name="assertClick">
 		<case locator-key1="BASIC_SEARCH_BUTTON">
-			<execute function="Click#valueClickAtAndWait" value1="Search" />
+			<execute function="AssertClick#assertValueClickAtAndWait" />
 		</case>
 		<case locator-key1="LIST_MENULIST_DELETE">
-			<execute function="Click#textClickAt" value1="Delete" />
+			<execute function="AssertClick#assertTextClickAt" />
 		</case>
 		<case locator-key1="LIST_MENULIST_EDIT">
-			<execute function="Click#textClickAtAndWait" value1="Edit" />
+			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
 		<case locator-key1="LIST_MENULIST_SPREADSHEET_VIEW">
-			<execute function="Click#textClickAtAndWait" value1="Spreadsheet View" />
+			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
-		<case comparator="startsWith" locator-key1="LIST_TABLE_NAME_">
-			<execute function="Click#textClickAtAndWait" />
+		<case comparator="startsWith" locator-key1="LIST_TABLE_NAME">
+			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
-		<case comparator="startsWith" locator-key1="LIST_TABLE_ACTIONS_">
-			<execute function="Click#textClickAt" value1="Actions" />
+		<case comparator="startsWith" locator-key1="LIST_TABLE_ACTIONS">
+			<execute function="AssertClick#assertTextClickAt" />
 		</case>
 		<case locator-key1="TOOLBAR_ADD">
-			<execute function="Click#textClickAtAndWait" value1="Add" />
+			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
 		<case locator-key1="TOOLBAR_MANAGE_DATA_DEFINITIONS">
-			<execute function="Click#textClickAt" value1="Manage Data Definitions" />
+			<execute function="AssertClick#assertTextClickAt" />
 		</case>
 	</command>
 </definition>

@@ -10,22 +10,22 @@
 
 	<command name="assertTextEquals">
 		<case locator-key1="SUCCESS_MESSAGE">
-			<execute function="AssertTextEquals#assertText" value1="Your request completed successfully." />
+			<execute function="AssertTextEquals#assertText" />
 		</case>
 	</command>
 
-	<command name="click">
+	<command name="assertClick">
 		<case locator-key1="ADD_PAGE_BUTTON">
-			<execute function="Click#valueClickAtAndWait" value1="Add Page" />
+			<execute function="AssertClick#assertValueClickAtAndWait" />
 		</case>
 		<case locator-key1="WIKI_PAGE_MENULIST_DELETE">
-			<execute function="Click#textClickAtAndWait" value1="Delete" />
+			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
-		<case comparator="startsWith" locator-key1="WIKI_PAGE_TABLE_ACTIONS_">
-			<execute function="Click#pauseTextClickAt" value1="Actions" />
+		<case comparator="startsWith" locator-key1="WIKI_PAGE_TABLE_ACTIONS">
+			<execute function="AssertClick#pauseAssertTextClickAt" />
 		</case>
-		<case comparator="startsWith" locator-key1="WIKI_PAGE_TABLE_PAGE_">
-			<execute function="Click#clickAtAndWait" />
+		<case comparator="startsWith" locator-key1="WIKI_PAGE_TABLE_PAGE">
+			<execute function="AssertClick#assertValueClickAtAndWait" />
 		</case>
 	</command>
 </definition>

@@ -1,28 +1,28 @@
 <definition>
 	<command name="assertTextEquals">
 		<case locator-key1="INFO_MESSAGE">
-			<execute function="AssertTextEquals#assertText" value1="No records were found." />
+			<execute function="AssertTextEquals#assertText" />
 		</case>
 		<case locator-key1="SUCCESS_MESSAGE">
-			<execute function="AssertTextEquals#assertText" value1="Your request completed successfully." />
+			<execute function="AssertTextEquals#assertText" />
 		</case>
 	</command>
 
-	<command name="click">
+	<command name="assertClick">
 		<case locator-key1="ADD_RECORD_BUTTON">
-			<execute function="Click#valueClickAtAndWait" value1="Add Record" />
+			<execute function="AssertClick#assertValueClickAtAndWait" />
 		</case>
 		<case locator-key1="RECORD_MENULIST_DELETE">
-			<execute function="Click#textClickAtAndWait" value1="Delete" />
+			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
 		<case locator-key1="RECORD_MENULIST_EDIT">
-			<execute function="Click#textClickAtAndWait" value1="Edit" />
+			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
 		<case locator-key1="RECORD_MENULIST_VIEW">
-			<execute function="Click#textClickAtAndWait" value1="View" />
+			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
-		<case comparator="startsWith" locator-key1="RECORD_TABLE_ACTIONS_">
-			<execute function="Click#textClickAt" value1="Actions" />
+		<case comparator="startsWith" locator-key1="RECORD_TABLE_ACTIONS">
+			<execute function="AssertClick#assertTextClickAt" />
 		</case>
 	</command>
 </definition>
