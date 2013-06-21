@@ -4,13 +4,15 @@
 	</set-up>
 
 	<command name="AddDocument">
-		<var name="dmDocumentFile" value="Document_1.txt" />
-		<var name="dmDocumentTitle" value="DM Document Title" />
 		<var name="dmDocumentDescription" value="DM Document Description" />
+		<var name="dmDocumentFile" value="Document_1.txt" />
+		<var name="dmDocumentSize" value="0.3k" />
+		<var name="dmDocumentTitle" value="DM Document Title" />
 
 		<execute macro="DMDocument#addCP">
-			<var name="dmDocumentFile" value="${dmDocumentFile}" />
 			<var name="dmDocumentDescription" value="${dmDocumentDescription}" />
+			<var name="dmDocumentFile" value="${dmDocumentFile}" />
+			<var name="dmDocumentSize" value="${dmDocumentSize}" />
 			<var name="dmDocumentTitle" value="${dmDocumentTitle}" />
 		</execute>
 	</command>
@@ -27,12 +29,14 @@
 
 	<command name="DeleteDocument">
 		<var name="dmDocumentFile" value="Document_1.txt" />
+		<var name="dmDocumentSize" value="0.3k" />
 		<var name="dmDocumentTitle" value="DM Document Title" />
 		<var name="dmDocumentDescription" value="DM Document Description" />
 
 		<execute macro="DMDocument#addCP">
 			<var name="dmDocumentDescription" value="${dmDocumentDescription}" />
 			<var name="dmDocumentFile" value="${dmDocumentFile}" />
+			<var name="dmDocumentSize" value="${dmDocumentSize}" />
 			<var name="dmDocumentTitle" value="${dmDocumentTitle}" />
 		</execute>
 
@@ -57,11 +61,13 @@
 
 	<command name="EditDocument">
 		<var name="dmDocumentFile" value="Document_1.txt" />
+		<var name="dmDocumentSize" value="0.3k" />
 		<var name="dmDocumentTitle" value="DM Document Title" />
 		<var name="dmDocumentDescription" value="DM Document Description" />
 
 		<execute macro="DMDocument#addCP">
 			<var name="dmDocumentFile" value="${dmDocumentFile}" />
+			<var name="dmDocumentSize" value="${dmDocumentSize}" />
 			<var name="dmDocumentTitle" value="${dmDocumentTitle}" />
 			<var name="dmDocumentDescription" value="${dmDocumentDescription}" />
 		</execute>
@@ -93,6 +99,7 @@
 
 	<command name="MoveDocumentToFolder">
 		<var name="dmDocumentFile" value="Document_1.txt" />
+		<var name="dmDocumentSize" value="0.3k" />
 		<var name="dmDocumentTitle" value="DM Document Title" />
 		<var name="dmDocumentDescription" value="DM Document Description" />
 
@@ -101,6 +108,7 @@
 
 		<execute macro="DMDocument#addCP">
 			<var name="dmDocumentFile" value="${dmDocumentFile}" />
+			<var name="dmDocumentSize" value="${dmDocumentSize}" />
 			<var name="dmDocumentTitle" value="${dmDocumentTitle}" />
 			<var name="dmDocumentDescription" value="${dmDocumentDescription}" />
 		</execute>
