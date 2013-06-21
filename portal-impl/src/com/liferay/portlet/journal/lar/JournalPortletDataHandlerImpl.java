@@ -2473,11 +2473,12 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 							article.getVersion(),
 							WorkflowConstants.STATUS_APPROVED);
 				}
-				catch (Exception e) {
+				catch (NoSuchArticleException nsae) {
 				}
 
 				if (portletDataContext.getBooleanParameter(
-						_NAMESPACE, "version-history") || latestVersion) {
+						_NAMESPACE, "version-history") ||
+					latestVersion) {
 
 					exportArticle(
 						portletDataContext, articlesElement, structuresElement,
