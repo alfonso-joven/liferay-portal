@@ -47,7 +47,7 @@ if (!selectableTree) {
 	var LAYOUT_URL = '<%= portletURL + StringPool.AMPERSAND + portletDisplay.getNamespace() + "selPlid={selPlid}" + StringPool.AMPERSAND + portletDisplay.getNamespace() + "historyKey={historyKey}" %>';
 	var STR_CHILDREN = 'children';
 
-<%
+<	%
 	JSONArray checkedNodesJSONArray = JSONFactoryUtil.createJSONArray();
 
 	String checkedLayoutIds = SessionTreeJSClicks.getOpenNodes(request, treeId + "SelectedNode");
@@ -302,11 +302,13 @@ if (!selectableTree) {
 
 			var tree = node.get('ownerTree');
 
+			var treeNodeTaskSuperClass = A.TreeNodeTask.superclass;
+
 			if (AArray.indexOf(TreeUtil.CHECKED_NODES, plid) > -1) {
-				A.TreeNodeTask.superclass.check.call(node, tree);
+				treeNodeTaskSuperClass.check.call(node, tree);
 			}
 			else {
-				A.TreeNodeTask.superclass.uncheck.call(node, tree);
+				treeNodeTaskSuperClass.uncheck.call(node, tree);
 			}
 
 			AArray.each(node.get(STR_CHILDREN), TreeUtil.restoreCheckedNode);
