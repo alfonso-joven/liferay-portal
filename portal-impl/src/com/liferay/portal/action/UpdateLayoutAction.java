@@ -28,6 +28,7 @@ import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.PropertiesParamUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
+import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.UnicodeProperties;
 import com.liferay.portal.kernel.workflow.WorkflowConstants;
 import com.liferay.portal.model.Layout;
@@ -518,17 +519,13 @@ public class UpdateLayoutAction extends JSONAction {
 			"headerJavaScriptPaths",
 			JSONFactoryUtil.createJSONArray(headerJavaScriptPaths));
 
-		List<String> markupHeadElements = (List<String>)
-			request.getAttribute(MimeResponse.MARKUP_HEAD_ELEMENT);
+		List<String> markupHeadElements = (List<String>)request.getAttribute(
+			MimeResponse.MARKUP_HEAD_ELEMENT);
 
 		if (markupHeadElements != null) {
-			StringBundler sb = new StringBundler(markupHeadElements.size());
-
-			for (String markupHeadElement : markupHeadElements) {
-				sb.append(markupHeadElement);
-			}
-
-			jsonObject.put("markupHeadElements", sb.toString());
+			jsonObject.put(
+				"markupHeadElements",
+				StringUtil.merge(markupHeadElements, StringPool.BLANK));
 		}
 	}
 
