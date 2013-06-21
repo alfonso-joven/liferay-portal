@@ -13,6 +13,8 @@
 
 	<execute test-case="WorkflowadminPGPagecommentsAcceptance" />
 
+	<execute test-case="WorkflowadminPGPagerevisionAcceptance" />
+
 	<execute test-case="WorkflowadminPGWikiAcceptance" />
 
 	<execute test-case="WorkflowadminPGWebcontentdisplayAcceptance" />
