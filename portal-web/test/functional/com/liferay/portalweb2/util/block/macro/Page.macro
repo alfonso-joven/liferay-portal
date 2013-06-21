@@ -10,6 +10,20 @@
 		<execute action="Home#click" locator1="//nav/ul/li/a[contains(.,'${pageName}')]" />
 	</command>
 
+	<command name="addPGWithWorkflow">
+		<execute macro="Page#openURL" />
+
+		<execute action="Dockbar#mouseOver" locator-key1="ADD" />
+		<execute action="Dockbar#click" locator-key1="ADD_PAGE" />
+
+		<execute action="Home#type" locator-key1="NEW_PAGE_FIELD" value1="${pageName}" />
+		<execute action="Home#click" locator-key1="NEW_PAGE_SAVE" />
+		<execute action="Home#click" locator1="//nav/ul/li/a[contains(.,'${pageName}')]" />
+
+		<execute action="Staging#assertClick" locator-key1="LAYOUT_REVISION_SUBMIT_FOR_PUBLICATION_BUTTON" value1="Submit for Publication" />
+		<execute action="Staging#assertTextEquals" locator-key1="LAYOUT_REVISION_WORKFLOW_STATUS" value1="Pending (Review)" />
+	</command>
+
 	<command name="gotoCP">
 		<execute action="Home#open" locator-key1="GUEST_URL" />
 
@@ -102,5 +116,22 @@
 				<execute action="Home#assertElementNotPresent" locator-key1="PAGE_DELETE_2" />
 			</then>
 		</while>
+	</command>
+
+	<command name="viewPG">
+		<execute macro="Page#gotoPG" />
+
+		<execute action="Home#assertTextEquals" locator-key1="BREADCRUMB_3" value1="${pageName}" />
+	</command>
+
+	<command name="viewPGWithWorkflow">
+		<execute macro="Page#gotoPG" />
+
+		<execute action="Home#assertTextEquals" locator-key1="BREADCRUMB_3" value1="${pageName}" />
+
+		<execute action="Staging#assertTextEquals" locator-key1="LAYOUT_REVISION_WORKFLOW_STATUS" value1="${workflowStatus}" />
+		<execute action="Staging#assertClick" locator-key1="LIVE_BUTTON" value1="Live" />
+
+		<execute action="Home#assertElementNotPresent" locator1="//nav/ul/li/a[contains(.,'${pageName}')]" />
 	</command>
 </definition>
