@@ -54,6 +54,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>SUBMIT_FOR_PUBLICATION_BUTTON</td>
+	<td>//input[@value='Submit for Publication']</td>
+	<td></td>
+</tr>
+<tr>
 	<td>CANCEL_BUTTON</td>
 	<td>xpath=(//input[@value='Cancel'])[2]</td>
 	<td></td>

@@ -1,4 +1,10 @@
 <definition>
+	<command name="assertClick">
+		<case locator-key1="ASSET_READ_MORE">
+			<execute function="AssertClick#assertPartialTextClickAtAndWait" />
+		</case>
+	</command>
+
 	<command name="click">
 		<case locator-key1="ADD_NEW_MENULIST_WEB_CONTENT">
 			<execute function="Click#textClickAtAndWait" />
