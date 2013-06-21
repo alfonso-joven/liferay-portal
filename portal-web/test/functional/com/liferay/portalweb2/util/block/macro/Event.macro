@@ -14,7 +14,7 @@
 		<execute action="CPCalendar#assertElementPresent" locator-key1="EVENT_TABLE_TIME" />
 		<execute action="CPCalendar#assertTextEquals" locator-key1="EVENT_TABLE_TITLE" value1="${eventTitle}" />
 		<execute action="CPCalendar#assertTextEquals" locator-key1="EVENT_TABLE_TYPE" value1="Anniversary" />
-		<execute action="CPCalendar#assertElementPresent" locator-key1="EVENT_TABLE_ACTIONS" />
+		<execute action="CPCalendar#assertTextEquals" locator-key1="EVENT_TABLE_ACTIONS" value1="Actions" />
 	</command>
 
 	<command name="addPG">
@@ -32,7 +32,7 @@
 		<execute action="PGCalendar#assertElementPresent" locator-key1="EVENT_TABLE_TIME" />
 		<execute action="PGCalendar#assertTextEquals" locator-key1="EVENT_TABLE_TITLE" value1="${eventTitle}" />
 		<execute action="PGCalendar#assertTextEquals" locator-key1="EVENT_TABLE_TYPE" value1="Anniversary" />
-		<execute action="PGCalendar#assertElementPresent" locator-key1="EVENT_TABLE_ACTIONS" />
+		<execute action="PGCalendar#assertTextEquals" locator-key1="EVENT_TABLE_ACTIONS" value1="Actions" />
 	</command>
 
 	<command name="deleteCP">
@@ -78,7 +78,7 @@
 		<execute action="CPCalendar#assertElementPresent" locator-key1="EVENT_TABLE_TIME" />
 		<execute action="CPCalendar#assertTextEquals" locator-key1="EVENT_TABLE_TITLE" value1="${eventTitleEdit}" />
 		<execute action="CPCalendar#assertTextEquals" locator-key1="EVENT_TABLE_TYPE" value1="Anniversary" />
-		<execute action="CPCalendar#assertElementPresent" locator-key1="EVENT_TABLE_ACTIONS" />
+		<execute action="CPCalendar#assertTextEquals" locator-key1="EVENT_TABLE_ACTIONS" value1="Actions" />
 	</command>
 
 	<command name="editPG">
@@ -98,7 +98,7 @@
 		<execute action="PGCalendar#assertElementPresent" locator-key1="EVENT_TABLE_TIME" />
 		<execute action="PGCalendar#assertTextEquals" locator-key1="EVENT_TABLE_TITLE" value1="${eventTitleEdit}" />
 		<execute action="PGCalendar#assertTextEquals" locator-key1="EVENT_TABLE_TYPE" value1="Anniversary" />
-		<execute action="PGCalendar#assertElementPresent" locator-key1="EVENT_TABLE_ACTIONS" />
+		<execute action="PGCalendar#assertTextEquals" locator-key1="EVENT_TABLE_ACTIONS" value1="Actions" />
 	</command>
 
 	<command name="tearDownCP">
@@ -109,7 +109,7 @@
 		<execute action="PGCalendar#assertClick" locator-key1="VIEW_EVENTS" value1="Events" />
 
 		<while>
-			<condition action="CPCalendarEvents#isElementPresent" locator-key1="EVENT_TABLE_ACTIONS" />
+			<condition action="CPCalendarEvents#isElementPresent" locator-key1="EVENT_TABLE_ACTIONS" value1="Actions" />
 			<then>
 				<execute action="CPCalendarEvents#assertClick" locator-key1="EVENT_TABLE_ACTIONS"  value1="Actions" />
 				<execute action="CPCalendarEvents#assertClick" locator-key1="EVENT_MENULIST_DELETE" value1="Delete" />
@@ -118,6 +118,6 @@
 			</then>
 		</while>
 
-		<execute action="CPCalendarEvents#assertElementNotPresent" locator-key1="EVENT_TABLE_ACTIONS" />
+		<execute action="CPCalendarEvents#assertElementNotPresent" locator-key1="EVENT_TABLE_ACTIONS" value1="Actions" />
 	</command>
 </definition>

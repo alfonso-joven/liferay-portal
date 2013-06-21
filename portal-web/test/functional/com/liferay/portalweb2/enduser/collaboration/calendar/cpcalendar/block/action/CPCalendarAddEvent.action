@@ -4,10 +4,4 @@
 			<execute function="AssertClick#assertValueClickAtAndWait"  />
 		</case>
 	</command>
-	
-	<command name='type'>
-		<case locator-key1="TITLE_FIELD">
-			<execute function="Type#type" />
-		</case>
-	</command>
 </definition>

@@ -1,25 +1,4 @@
 <definition>
-	<command name="assertElementPresent">
-		<case locator-key1="EVENT_TABLE_ACTIONS">
-			<execute function="AssertElementPresent#assertVisible" />
-		</case>
-		<case locator-key1="EVENT_TABLE_TIME">
-			<execute function="AssertElementPresent#assertVisible" />
-		</case>
-	</command>
-
-	<command name="assertTextEquals">
-		<case locator-key1="EVENT_TABLE_TITLE">
-			<execute function="AssertTextEquals#assertText" />
-		</case>
-		<case locator-key1="EVENT_TABLE_TYPE">
-			<execute function="AssertTextEquals#assertText" />
-		</case>
-		<case locator-key1="SUCCESS_MESSAGE">
-			<execute function="AssertTextEquals#assertText" />
-		</case>
-	</command>
-
 	<command name="assertClick">
 		<case locator-key1="ADD_EVENT_BUTTON">
 			<execute function="AssertClick#assertValueClickAtAndWait" />
@@ -27,26 +6,11 @@
 		<case locator-key1="EVENT_MENULIST_DELETE">
 			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
-		<case locator-key1="EVENT_TABLE_ACTIONS">
-			<execute function="AssertClick#assertTextClickAt" />
-		</case>
 		<case locator-key1="VIEW_EVENTS">
 			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
 		<case locator-key1="VIEW_SUMMARY">
 			<execute function="AssertClick#assertTextClickAtAndWait" />
-		</case>
-	</command>
-
-	<command name="confirm">
-		<case locator-key1="CONFIRMATION">
-			<execute function="Confirm#waitForConfirmation" />
-		</case>
-	</command>
-
-	<command name="isElementNotPresent">
-		<case locator-key1="EVENT_TABLE_ACTIONS">
-			<execute function="IsElementNotPresent#isElementNotPresent" />
 		</case>
 	</command>
 </definition>
