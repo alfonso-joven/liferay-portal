@@ -449,7 +449,7 @@
 	</target>
 
 	<target name="build-test-ant-scripts">
-		<property name="build-test-ant-scripts.version" value="6" />
+		<property name="build-test-ant-scripts.version" value="7" />
 
 		<if>
 			<available file="portal-web/test-ant-scripts/version" />
@@ -1172,6 +1172,15 @@
 			<param name="test.ant.script.database.minimal" value="true" />
 			<param name="test.ant.script.selenium.implementation" value="webdriver" />
 			<param name="test.ant.script.suite" value="EndUserSocialNetworkingAcceptanceTestSuite" />
+		</antcall>
+
+		<antcall target="build-test-ant-script">
+			<param name="test.ant.script.command" value="end-user-user-interface-acceptance" />
+			<param name="test.ant.script.database.minimal" value="true" />
+			<param name="test.ant.script.selenium.implementation" value="webdriver" />
+			<param name="test.ant.script.plugin.themes" value="welcome-theme" />
+			<param name="test.ant.script.plugin.webs" value="resources-importer-web" />
+			<param name="test.ant.script.suite" value="EndUserUserinterfaceAcceptanceTestSuite" />
 		</antcall>
 
 		<antcall target="build-test-ant-script">
@@ -2663,15 +2672,6 @@
 		<antcall target="build-test-ant-script">
 			<param name="test.ant.script.command" value="unit-portal" />
 			<param name="test.ant.script.template" value="ant-script-unit.xml" />
-		</antcall>
-
-		<antcall target="build-test-ant-script">
-			<param name="test.ant.script.command" value="welcome-acceptance" />
-			<param name="test.ant.script.database.minimal" value="true" />
-			<param name="test.ant.script.selenium.implementation" value="webdriver" />
-			<param name="test.ant.script.plugin.themes" value="welcome-theme" />
-			<param name="test.ant.script.plugin.webs" value="resources-importer-web" />
-			<param name="test.ant.script.suite" value="EndUserUserinterfaceAcceptanceTestSuite" />
 		</antcall>
 
 		<echo file="portal-web/test-ant-scripts/version">${build-test-ant-scripts.version}</echo>

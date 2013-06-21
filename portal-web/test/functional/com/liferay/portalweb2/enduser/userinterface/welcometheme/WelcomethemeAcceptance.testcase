@@ -17,17 +17,17 @@
 	<command name="WelcomeThemeView">
 		<execute action="PGWelcomePage1#assertElementPresent" locator-key1="GO_TO_LIFERAY" />
 		<execute action="PGWelcomePage1#assertTextEquals" locator-key1="PAGE_1" value1="What We Do" />
-		<execute action="PGWelcomePage1#assertElementPresent" locator-key1="PAGE_2" />
-		<execute action="PGWelcomePage1#assertElementPresent" locator-key1="PAGE_3" />
-		<execute action="PGWelcomePage1#assertElementPresent" locator-key1="MENU_TAGLINE" />
+		<execute action="PGWelcomePage1#assertTextEquals" locator-key1="PAGE_2" value1="Who Is Using Liferay" />
+		<execute action="PGWelcomePage1#assertTextEquals" locator-key1="PAGE_3" value1="Liferay Benefits" />
+		<execute action="PGWelcomePage1#assertTextEquals" locator-key1="MENU_TAGLINE" value1="Liferay helps you build feature-rich, easy-to-use web applications quickly." />
 		<execute action="PGWelcomePage1#assertTextEquals" locator-key1="MENU_PAGE_1" value1="A Foundation for Apps" />
 		<execute action="PGWelcomePage1#assertTextEquals" locator-key1="MENU_PAGE_2" value1="Dynamic Websites" />
 		<execute action="PGWelcomePage1#assertTextEquals" locator-key1="MENU_PAGE_3" value1="Centralized Document Management" />
 		<execute action="PGWelcomePage1#assertTextEquals" locator-key1="MENU_PAGE_4" value1="Intuitive Team Collaboration" />
 		<execute action="PGWelcomePage1#assertTextEquals" locator-key1="MENU_PAGE_5" value1="Tools for Business" />
 		<execute action="PGWelcomePage1#assertTextEquals" locator-key1="MENU_PAGE_6" value1="Desktop &amp; Mobile Access" />
-		<execute action="PGWelcomePage1#assertElementPresent" locator-key1="MENU_PAGE_7" />
-		<execute action="PGWelcomePage1#assertElementPresent" locator-key1="INFO_LINK" />
+		<execute action="PGWelcomePage1#assertTextEquals" locator-key1="MENU_PAGE_7" value1="Liferay Marketplace" />
+		<execute action="PGWelcomePage1#assertElementPresent" locator-key1="INFO_LINK" value1="See how Liferay makes creating apps easier" />
 		<execute action="PGWelcomePage1#assertTextEquals" locator-key1="SOCIAL_OFFICE" value1="Want Easy Social Collaboration?" />
 		<execute action="PGWelcomePage1#assertTextEquals" locator-key1="GETTING_STARTED" value1="Need Help Getting Started?" />
 		<execute action="PGWelcomePage1#assertTextEquals" locator-key1="DEVELOP_FASTER" value1="Develop Faster." />
@@ -36,11 +36,11 @@
 
 		<execute action="PGWelcomePage2#assertElementPresent" locator-key1="CUSTOMERS_1" />
 		<execute action="PGWelcomePage2#assertElementPresent" locator-key1="CUSTOMERS_2" />
-		<execute action="PGWelcomePage2#assertElementPresent" locator-key1="HEADER" />
+		<execute action="PGWelcomePage2#assertTextEquals" locator-key1="HEADER" value1="Liferay helps you build feature-rich, easy-to-use web applications quickly." />
 
 		<execute action="PGWelcomePage1#click" locator-key1="PAGE_3" />
 
-		<execute action="PGWelcomePage3#assertElementPresent" locator-key1="HEADER" />
+		<execute action="PGWelcomePage3#assertTextEquals" locator-key1="HEADER" value1="See how Liferay can change the way you do business." />
 		<execute action="PGWelcomePage3#assertTextEquals" locator-key1="MENU_PAGE_1" value1="Open Source: A Better Way" />
 		<execute action="PGWelcomePage3#assertTextEquals" locator-key1="MENU_PAGE_2" value1="Ready to Go" />
 		<execute action="PGWelcomePage3#assertTextEquals" locator-key1="MENU_PAGE_3" value1="Ready to Grow" />
