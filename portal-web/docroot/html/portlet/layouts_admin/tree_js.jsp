@@ -47,7 +47,7 @@ if (!selectableTree) {
 	var LAYOUT_URL = '<%= portletURL + StringPool.AMPERSAND + portletDisplay.getNamespace() + "selPlid={selPlid}" + StringPool.AMPERSAND + portletDisplay.getNamespace() + "historyKey={historyKey}" %>';
 	var STR_CHILDREN = 'children';
 
-<	%
+	<%
 	JSONArray checkedNodesJSONArray = JSONFactoryUtil.createJSONArray();
 
 	String checkedLayoutIds = SessionTreeJSClicks.getOpenNodes(request, treeId + "SelectedNode");
@@ -155,7 +155,7 @@ if (!selectableTree) {
 					var expanded = (total > 0);
 
 					var newNode = {
-						<c:if test="<%= saveState && selectableTree %>">
+						<c:if test="<%= saveState %>">
 							after: {
 								<c:if test="<%= selectableTree %>">
 									checkedChange: function(event) {
