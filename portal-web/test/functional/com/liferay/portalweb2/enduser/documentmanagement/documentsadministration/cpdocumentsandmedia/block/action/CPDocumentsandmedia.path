@@ -411,6 +411,11 @@
 </tr>
 <!--DOCUMENT_MENULIST-->
 <tr>
+	<td>DOCUMENT_CONTAINER_DOCUMENT1_DROPDOWN</td>
+	<td>//div[@id='_20_documentContainer']/div[2]/span[2]/span/ul/li/strong/a</td>
+	<td></td>
+</tr>
+<tr>
 	<td>DOCUMENT_MENULIST_DOWNLOAD</td>
 	<td>//a[@role='menuitem' and contains(.,'Download')]</td>
 	<td>Download</td>

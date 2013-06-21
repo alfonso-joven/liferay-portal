@@ -300,12 +300,17 @@
 </tr>
 <tr>
 	<td>ENTRIES_DOCUMENT</td>
-	<td>//div[2]/a/span/img</td>
+	<td>//div[@data-title='${key_dmDocumentTitle}']//span/img</td>
+	<td>Document Entry</td>
+</tr>
+<tr>
+	<td>ENTRIES_DOCUMENT_GENERIC</td>
+	<td>//span[@class='document-thumbnail']/img</td>
 	<td>Document Entry</td>
 </tr>
 <tr>
 	<td>ENTRIES_DOCUMENT_TITLE</td>
-	<td>//div[2]/a/span[2]</td>
+	<td>//div[@data-title='${key_dmDocumentTitle}']//span[@class='entry-title']</td>
 	<td>Document Title</td>
 </tr>
 <tr>
@@ -320,7 +325,7 @@
 </tr>
 <tr>
 	<td>ENTRIES_DOCUMENT_ACTIONS</td>
-	<td>//div[@id='_20_entriesContainer']/div/div/a[@data-folder='false']/../span/span/ul/li/strong/a</td>
+	<td>//div[@data-title='${key_dmDocumentTitle}']//span/span/ul/li/strong/a[contains(@id,'menuButton')]</td>
 	<td>Document Entry Actions</td>
 </tr>
 <tr>

@@ -210,9 +210,19 @@
 	<td>Name</td>
 </tr>
 <tr>
+	<td>DOCUMENTS_TABLE_SIZE_2</td>
+	<td>xpath=(//div[contains(@id,'objectsSearchContainerSearchContainer')]/table/tbody/tr/td[3]/a)[2]</td>
+	<td>Size</td>
+</tr>
+<tr>
 	<td>DOCUMENTS_TABLE_NAME_3</td>
 	<td>xpath=(//div[contains(@id,'objectsSearchContainerSearchContainer')]/table/tbody/tr/td[2]/a/span[@class='entry-title'])[3]</td>
 	<td>Name</td>
+</tr>
+<tr>
+	<td>DOCUMENTS_TABLE_SIZE_3</td>
+	<td>xpath=(//div[contains(@id,'objectsSearchContainerSearchContainer')]/table/tbody/tr/td[3]/a)[3]</td>
+	<td>Size</td>
 </tr>
 <tr>
 	<td></td>
