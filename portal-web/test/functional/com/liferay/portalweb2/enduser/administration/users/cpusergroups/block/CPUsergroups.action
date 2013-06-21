@@ -12,18 +12,6 @@
 		<case locator-key1="USER_GROUP_MENULIST_DELETE">
 			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
-		<case locator-key1="USER_GROUP_TABLE_ACTIONS_1">
-			<execute function="AssertClick#assertTextClickAt" />
-		</case>
-	</command>
-	
-	<command name="assertTextEquals">
-		<case locator-key1="INFO_MESSAGE">
-			<execute function="AssertTextEquals#assertText" />
-		</case>
-		<case locator-key1="SUCCESS_MESSAGE">
-			<execute function="AssertTextEquals#assertText" />
-		</case>
 	</command>
 
 	<command name="isElementPresent">

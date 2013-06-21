@@ -10,7 +10,7 @@
 		<execute action="CPMyAccount#select" locator-key1="ADDITIONAL_EMAIL_ADDRESSES_TYPE_SELECT" value1="Email Address" />
 		<execute action="CPMyAccount#click" locator-key1="ADDITIONAL_EMAIL_ADDRESSES_PRIMARY_RADIO_BUTTON" />
 		<execute action="CPMyAccount#click" locator-key1="SAVE_BUTTON" />
-		<execute action="CPMyAccount#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPMyAccount#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 
 		<execute action="SOMyAccount#selectFrameTop" />
 	</command>
@@ -71,7 +71,7 @@
 		<execute action="CPMyAccount#click" locator-key1="ADDRESSES_PRIMARY_RADIO_BUTTON" />
 		<execute action="CPMyAccount#check" locator-key1="ADDRESSES_MAILING_CHECKBOX" />
 		<execute action="CPMyAccount#click" locator-key1="SAVE_BUTTON" />
-		<execute action="CPMyAccount#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPMyAccount#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 
 		<execute action="SOMyAccount#selectFrameTop" />
 	</command>
@@ -130,7 +130,7 @@
 		<execute action="CPMyAccount#click" locator-key1="COMMENTS" />
 		<execute action="CPMyAccount#type" locator-key1="COMMENTS_FIELD" value1="${userIntroduction}" />
 		<execute action="CPMyAccount#click" locator-key1="SAVE_BUTTON" />
-		<execute action="CPMyAccount#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPMyAccount#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 
 		<execute action="SOMyAccount#selectFrameTop" />
 	</command>
@@ -199,7 +199,7 @@
 		</if>
 
 		<execute action="CPMyAccount#click" locator-key1="SAVE_BUTTON" />
-		<execute action="CPMyAccount#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPMyAccount#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 
 		<execute action="SOMyAccount#selectFrameTop" />
 	</command>
@@ -283,7 +283,7 @@
 
 		<execute action="CPMyAccount#click" locator-key1="PHONE_NUMBERS_PRIMARY_RADIO_BUTTON" />
 		<execute action="CPMyAccount#click" locator-key1="SAVE_BUTTON" />
-		<execute action="CPMyAccount#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPMyAccount#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 
 		<execute action="SOMyAccount#selectFrameTop" />
 	</command>
@@ -340,7 +340,7 @@
 		</if>
 
 		<execute action="CPMyAccount#click" locator-key1="SAVE_BUTTON" />
-		<execute action="CPMyAccount#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPMyAccount#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 
 		<execute action="SOMyAccount#selectFrameTop" />
 	</command>
@@ -385,7 +385,7 @@
 		<execute action="CPMyAccount#click" locator-key1="SMS" />
 		<execute action="CPMyAccount#type" locator-key1="SMS_SMS_FIELD" value1="${userSMS}" />
 		<execute action="CPMyAccount#click" locator-key1="SAVE_BUTTON" />
-		<execute action="CPMyAccount#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPMyAccount#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 
 		<execute action="SOMyAccount#selectFrameTop" />
 	</command>
@@ -433,7 +433,7 @@
 		</if>
 
 		<execute action="CPMyAccount#click" locator-key1="SAVE_BUTTON" />
-		<execute action="CPMyAccount#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPMyAccount#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 
 		<execute action="SOMyAccount#selectFrameTop" />
 	</command>
@@ -483,7 +483,7 @@
 		<execute action="CPMyAccount#type" locator-key1="CATEGORIZATION_TAGS_FIELD" value1="${userTag}" />
 		<execute action="CPMyAccount#click" locator-key1="CATEGORIZATION_ADD_BUTTON" />
 		<execute action="CPMyAccount#click" locator-key1="SAVE_BUTTON" />
-		<execute action="CPMyAccount#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPMyAccount#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 
 		<execute action="SOMyAccount#selectFrameTop" />
 	</command>
@@ -513,7 +513,7 @@
 		<execute action="CPMyAccount#select" locator-key1="WEBSITES_TYPE_SELECT" value1="${userWebsiteType}" />
 		<execute action="CPMyAccount#click" locator-key1="WEBSITES_PRIMARY_RADIO_BUTTON" />
 		<execute action="CPMyAccount#click" locator-key1="SAVE_BUTTON" />
-		<execute action="CPMyAccount#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPMyAccount#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 
 		<execute action="SOMyAccount#selectFrameTop" />
 	</command>

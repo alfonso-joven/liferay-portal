@@ -1,9 +1,9 @@
 <definition>
 	<command name="showAdvancedSearch">
 		<if>
-			<condition action="CPUsersandorganizationsAssignmembers#isElementPresent" locator-key1="BASIC_SEARCH_ADVANCED" />
+			<condition action="CPUsersandorganizationsAssignmembers#isElementPresent" locator-key1="BASIC_SEARCH_ADVANCED" value1="Advanced" />
 			<then>
-				<execute action="CPUsersandorganizationsAssignmembers#click" locator-key1="BASIC_SEARCH_ADVANCED" />
+				<execute action="CPUsersandorganizationsAssignmembers#assertClick" locator-key1="BASIC_SEARCH_ADVANCED" value1="Advanced" />
 			</then>
 		</if>
 
@@ -12,9 +12,9 @@
 
 	<command name="showBasicSearch">
 		<if>
-			<condition action="CPUsersandorganizationsAssignmembers#isElementPresent" locator-key1="ADVANCED_SEARCH_BASIC" />
+			<condition action="CPUsersandorganizationsAssignmembers#isElementPresent" locator-key1="ADVANCED_SEARCH_BASIC" value1="Basic" />
 			<then>
-				<execute action="CPUsersandorganizationsAssignmembers#click" locator-key1="ADVANCED_SEARCH_BASIC" />
+				<execute action="CPUsersandorganizationsAssignmembers#assertClick" locator-key1="ADVANCED_SEARCH_BASIC" value1="Basic" />
 			</then>
 		</if>
 

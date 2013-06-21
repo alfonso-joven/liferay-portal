@@ -3,38 +3,17 @@
 		<case locator-key1="ADD">
 			<execute function="AssertClick#pauseAssertTextClickAt" />
 		</case>
-		<case locator-key1="ADD_MENULIST_ORGANIZATION_ROLE">
+		<case comparator="startsWith" locator-key1="ADD_MENULIST_">
 			<execute function="Click#textClickAtAndWait" />
 		</case>
-		<case locator-key1="ADD_MENULIST_REGULAR_ROLE">
-			<execute function="AssertClick#assertTextClickAtAndWait" />
-		</case>
-		<case locator-key1="ADD_MENULIST_SITE_ROLE">
-			<execute function="AssertClick#assertTextClickAtAndWait" />
-		</case>
-		<case locator-key1="ROLE_MENULIST_ASSIGN_MEMBERS">
-			<execute function="AssertClick#assertTextClickAtAndWait" />
-		</case>
-		<case locator-key1="ROLE_MENULIST_DEFINE_PERMISSIONS">
-			<execute function="AssertClick#assertTextClickAtAndWait" />
-		</case>
-		<case locator-key1="ROLE_MENULIST_DELETE">
-			<execute function="AssertClick#assertTextClickAtAndWait" />
-		</case>
-		<case locator-key1="ROLE_MENULIST_EDIT">
-			<execute function="AssertClick#assertTextClickAtAndWait" />
+		<case comparator="startsWith" locator-key1="ROLE_MENULIST_">
+			<execute function="Click#textClickAtAndWait" />
 		</case>
 		<case comparator="startsWith" locator-key1="ROLE_TABLE_ACTIONS_">
 			<execute function="AssertClick#pauseAssertTextClickAt" />
 		</case>
 		<case locator-key1="SEARCH_BUTTON">
 			<execute function="AssertClick#assertValueClickAtAndWait" />
-		</case>
-	</command>	
-	
-	<command name="assertTextEquals">
-		<case locator-key1="SUCCESS_MESSAGE">
-			<execute function="AssertTextEquals#assertText" />
 		</case>
 	</command>
 

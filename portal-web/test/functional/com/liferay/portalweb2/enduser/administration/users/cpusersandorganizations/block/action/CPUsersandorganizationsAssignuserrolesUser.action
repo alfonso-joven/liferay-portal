@@ -1,16 +1,16 @@
 <definition>
 	<command name="assertClick">
 		<case locator-key1="ADVANCED_SEARCH_BASIC">
-			<execute function="AssertClick#assertPartialTextClickAt" value1="Basic" />
+			<execute function="AssertClick#assertPartialTextClickAt" />
 		</case>
 		<case locator-key1="ADVANCED_SEARCH_BUTTON">
-			<execute function="AssertClick#assertValueClickAtAndWait" value1="Search" />
+			<execute function="AssertClick#assertValueClickAtAndWait" />
 		</case>
 		<case locator-key1="AVAILABLE">
 			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
 		<case locator-key1="BASIC_SEARCH_ADVANCED">
-			<execute function="AssertClick#assertPartialTextClickAt" value1="Advanced" />
+			<execute function="AssertClick#assertPartialTextClickAt" />
 		</case>
 		<case locator-key1="BASIC_SEARCH_BUTTON">
 			<execute function="AssertClick#assertValueClickAtAndWait" />
@@ -20,15 +20,6 @@
 		</case>
 		<case locator-key1="UPDATE_ASSOCIATIONS_BUTTON">
 			<execute function="AssertClick#assertValueClickAtAndWait" />
-		</case>
-	</command>
-	
-	<command name="assertTextEquals">
-		<case locator-key1="INFO_MESSAGE">
-			<execute function="AssertTextEquals#assertText" value1="No users were found." />
-		</case>
-		<case locator-key1="SUCCESS_MESSAGE">
-			<execute function="AssertTextEquals#assertText" value1="Your request completed successfully." />
 		</case>
 	</command>
 

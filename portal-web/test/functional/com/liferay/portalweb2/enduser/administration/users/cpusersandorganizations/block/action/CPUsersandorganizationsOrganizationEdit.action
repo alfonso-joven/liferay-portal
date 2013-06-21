@@ -1,10 +1,4 @@
 <definition>
-	<command name="assertTextEquals">
-		<case locator-key1="SUCCESS_MESSAGE">
-			<execute function="AssertTextEquals#assertText" />
-		</case>
-	</command>
-
 	<command name="assertClick">
 		<case locator-key1="ORGANIZATION_INFORMATION_ORGANIZATION_SITE">
 			<execute function="AssertClick#assertPartialTextClickAt" />

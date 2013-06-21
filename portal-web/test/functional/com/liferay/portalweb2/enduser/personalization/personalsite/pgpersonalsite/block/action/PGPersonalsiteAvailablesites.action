@@ -4,10 +4,4 @@
 			<execute function="AssertClick#assertValueClickAtAndWait" />
 		</case>
 	</command>
-
-	<command name="assertTextEquals">
-		<case locator-key1="AVAILABLE_SITES_INFO_MESSAGE">
-			<execute function="AssertTextEquals#assertText" />
-		</case>
-	</command>
 </definition>

@@ -27,7 +27,6 @@
 		<execute action="CPUsersandorganizations#assertClick" locator-key1="SEARCH_BUTTON" value1="Search" />
 		<execute action="CPUsersandorganizations#assertTextEquals" locator-key1="ORGANIZATION_TABLE_NAME_1" value1="${orgName}" />
 		<execute action="CPUsersandorganizations#assertClick" locator-key1="ORGANIZATION_TABLE_ACTIONS_1" value1="Actions" />
-
 		<execute action="CPUsersandorganizations#assertClick" locator-key1="ORGANIZATION_MENULIST_ASSIGN_USERS" value1="Assign Users" />
 
 		<execute action="CPUsersandorganizationsAssignmembers#assertClick" locator-key1="AVAILABLE" value1="Available" />
@@ -54,7 +53,6 @@
 		<execute action="CPUsersandorganizations#assertClick" locator-key1="SEARCH_BUTTON" value1="Search" />
 		<execute action="CPUsersandorganizations#assertTextEquals" locator-key1="ORGANIZATION_TABLE_NAME_1" value1="${orgName}" />
 		<execute action="CPUsersandorganizations#assertClick" locator-key1="ORGANIZATION_TABLE_ACTIONS_1" value1="Actions" />
-
 		<execute action="CPUsersandorganizations#assertClick" locator-key1="ORGANIZATION_MENULIST_EDIT" value1="Edit" />
 
 		<execute action="CPUsersandorganizationsOrganizationEdit#assertClick" locator-key1="ORGANIZATION_INFORMATION_ORGANIZATION_SITE" value1="Organization Site" />
@@ -73,8 +71,7 @@
 		<execute action="CPUsersandorganizations#assertClick" locator-key1="SEARCH_BUTTON" value1="Search" />
 		<execute action="CPUsersandorganizations#assertTextEquals" locator-key1="ORGANIZATION_TABLE_NAME_1" value1="${orgName}" />
 		<execute action="CPUsersandorganizations#assertClick" locator-key1="ORGANIZATION_TABLE_ACTIONS_1" value1="Actions" />
-
-		<execute action="CPUsersandorganizations#click" locator-key1="ORGANIZATION_MENULIST_ASSIGN_ORGANIZATION_ROLES" />
+		<execute action="CPUsersandorganizations#assertClick" locator-key1="ORGANIZATION_MENULIST_ASSIGN_ORGANIZATION_ROLES" value1="Assign Organization Roles" />
 
 		<execute action="CPUsersandorganizationsAssignuserroles#assertTextEquals" locator1="//tr[contains(.,'${roleName}')]/td[1]/a" value1="${roleName}" />
 		<execute action="CPUsersandorganizationsAssignuserroles#click" locator1="//tr[contains(.,'${roleName}')]/td[1]/a" value1="${roleName}" />
@@ -127,7 +124,6 @@
 		<execute action="CPUsersandorganizations#assertClick" locator-key1="SEARCH_BUTTON" value1="Search" />
 		<execute action="CPUsersandorganizations#assertTextEquals" locator-key1="ORGANIZATION_TABLE_NAME_1" value1="${orgName}" />
 		<execute action="CPUsersandorganizations#assertClick" locator-key1="ORGANIZATION_TABLE_ACTIONS_1" value1="Actions" />
-
 		<execute action="CPUsersandorganizations#assertClick" locator-key1="ORGANIZATION_MENULIST_ASSIGN_USERS" value1="Assign Users" />
 
 		<execute action="CPUsersandorganizationsAssignmembers#assertClick" locator-key1="AVAILABLE" value1="Available" />
@@ -147,7 +143,7 @@
 		<execute action="CPUsersandorganizations#type" locator-key1="SEARCH_FIELD" value1="${orgName}" />
 		<execute action="CPUsersandorganizations#assertClick" locator-key1="SEARCH_BUTTON" value1="Search" />
 		<execute action="CPUsersandorganizations#assertTextEquals" locator-key1="ORGANIZATION_TABLE_NAME_1" value1="${orgName}" />
-		<execute action="CPUsersandorganizations#click" locator-key1="ORGANIZATION_TABLE_NAME_1" value1="${orgName}" />
+		<execute action="CPUsersandorganizations#assertClick" locator-key1="ORGANIZATION_TABLE_NAME_1" value1="${orgName}" />
 		<execute action="CPUsersandorganizationsOrganization#assertTextNotPresent" value1="${userFirstName}" />
 	</command>
 
@@ -186,7 +182,7 @@
 		<execute action="CPUsersandorganizations#type" locator-key1="SEARCH_FIELD" value1="${searchToken}" />
 		<execute action="CPUsersandorganizations#assertClick" locator-key1="SEARCH_BUTTON" value1="Search" />
 		<execute action="CPUsersandorganizations#assertTextEquals" locator-key1="ORGANIZATION_TABLE_NAME_1" value1="${orgName}" />
-		<execute action="CPUsersandorganizations#click" locator-key1="ORGANIZATION_TABLE_NAME_1" value1="${orgName}" />
+		<execute action="CPUsersandorganizations#assertClick" locator-key1="ORGANIZATION_TABLE_NAME_1" value1="${orgName}" />
 
 		<execute action="CPUsersandorganizationsOrganization#assertTextEquals" locator-key1="USER_TABLE_FIRST_NAME_1" value1="${userFirstName}" />
 		<execute action="CPUsersandorganizationsOrganization#assertTextEquals" locator-key1="USER_TABLE_LAST_NAME_1" value1="${userLastName}" />
