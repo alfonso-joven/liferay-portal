@@ -2464,12 +2464,20 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 				QueryUtil.ALL_POS, new ArticleIDComparator(true));
 
 			for (JournalArticle article : articles) {
+				boolean latestVersion = false;
+
+				try {
+					latestVersion =
+						JournalArticleLocalServiceUtil.isLatestVersion(
+							article.getGroupId(), article.getArticleId(),
+							article.getVersion(),
+							WorkflowConstants.STATUS_APPROVED);
+				}
+				catch (Exception e) {
+				}
+
 				if (portletDataContext.getBooleanParameter(
-						_NAMESPACE, "version-history") ||
-					JournalArticleLocalServiceUtil.isLatestVersion(
-						article.getGroupId(), article.getArticleId(),
-						article.getVersion(),
-						WorkflowConstants.STATUS_APPROVED)) {
+						_NAMESPACE, "version-history") || latestVersion) {
 
 					exportArticle(
 						portletDataContext, articlesElement, structuresElement,
