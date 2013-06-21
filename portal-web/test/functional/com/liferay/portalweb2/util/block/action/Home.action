@@ -1,16 +1,16 @@
 <definition>
 	<command name="click">
 		<case locator-key1="PAGE_1_CHILD_PAGE_1">
-			<execute function="Click#textClickAtAndWait" />
+			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
 		<case locator-key1="PAGE_1_CHILD_PAGE_2">
-			<execute function="Click#textClickAtAndWait" />
+			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
 		<case locator-key1="PAGE_1_CHILD_PAGE_3">
-			<execute function="Click#textClickAtAndWait" />
+			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
 		<case comparator="startsWith" locator-key1="PAGE_DELETE">
-			<execute function="Click#textClick" value1="X" />
+			<execute function="AssertClick#assertTextClick" value1="X" />
 		</case>
 		<case comparator="startsWith" locator1="//li[contains(@class,'lfr-nav-updateable')]/a[.='">
 			<execute function="Click#clickAtAndWait" />
@@ -22,7 +22,7 @@
 			<execute function="Click#clickAtAndWait" />
 		</case>
 		<case comparator="startsWith" locator1="//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,">
-			<execute function="Click#textClickAtAndWait" />
+			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
 		<case comparator="startsWith" locator1="//ul[@class='category-portlets']/li/a[contains(.,">
 			<execute function="Click#clickAtAndWait" />
