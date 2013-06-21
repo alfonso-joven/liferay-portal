@@ -8,15 +8,20 @@
 		</case>
 	</command>
 
-	<command name="click">
+	<command name="assertClick">
 		<case locator-key1="ADD_ENTRY_BUTTON">
-			<execute function="Click#valueClickAtAndWait" value1="Add Blog Entry" />
+			<execute function="AssertClick#assertValueClickAtAndWait" />
 		</case>
 		<case comparator="startsWith" locator-key1="ENTRY_DELETE">
-			<execute function="Click#textClickAtAndWait" value1="Delete" />
+			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
 		<case comparator="startsWith" locator-key1="ENTRY_TITLE">
-			<execute function="Click#textClickAtAndWait" />
+			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
+		<case comparator="startsWith" locator-key1="ENTRY_EDIT">
+			<execute function="AssertClick#assertTextClickAtAndWait" />
+		</case>
+
+
 	</command>
 </definition>

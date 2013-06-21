@@ -8,9 +8,9 @@
 		</case>
 	</command>
 
-	<command name="click">
+	<command name="assertClick">
 		<case locator-key1="DELETE_BUTTON">
-			<execute function="Click#valueClickAtAndWait" value1="Delete" />
+			<execute function="AssertClick#assertValueClickAtAndWait" />
 		</case>
 	</command>
 
