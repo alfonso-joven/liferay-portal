@@ -56,16 +56,16 @@ if (!selectableTree) {
 		PREFIX_PLID: '_plid_',
 
 		<%
-		JSONArray selectedNodesJSONArray = JSONFactoryUtil.createJSONArray();
+		JSONArray checkedNodesJSONArray = JSONFactoryUtil.createJSONArray();
 
-		String selectedLayoutIds = SessionTreeJSClicks.getOpenNodes(request, treeId + "SelectedNode");
+		String checkedLayoutIds = SessionTreeJSClicks.getOpenNodes(request, treeId + "SelectedNode");
 
-		if (Validator.isNotNull(selectedLayoutIds)) {
-			for (long selectedLayoutId : StringUtil.split(selectedLayoutIds, 0L)) {
+		if (Validator.isNotNull(checkedLayoutIds)) {
+			for (long checkedLayoutId : StringUtil.split(checkedLayoutIds, 0L)) {
 				try {
-					Layout selectedLayout = LayoutLocalServiceUtil.getLayout(groupId, privateLayout, selectedLayoutId);
+					Layout checkedLayout = LayoutLocalServiceUtil.getLayout(groupId, privateLayout, checkedLayoutId);
 
-					selectedNodesJSONArray.put(String.valueOf(selectedLayout.getPlid()));
+					checkedNodesJSONArray.put(String.valueOf(checkedLayout.getPlid()));
 				}
 				catch (NoSuchLayoutException nsle) {
 				}
@@ -73,7 +73,7 @@ if (!selectableTree) {
 		}
 		%>
 
-		SELECTED_NODES: <%= selectedNodesJSONArray.toString() %>,
+		CHECKED_NODES: <%= checkedNodesJSONArray.toString() %>,
 
 		afterRenderTree: function(event) {
 			var treeInstance = event.target;
@@ -86,7 +86,7 @@ if (!selectableTree) {
 
 			<c:choose>
 				<c:when test="<%= saveState && selectableTree %>">
-					TreeUtil.restoreNodeState(rootNode);
+					TreeUtil.restoreCheckedNode(rootNode);
 				</c:when>
 				<c:when test="<%= expandFirstNode %>">
 					rootNode.expand();
@@ -167,7 +167,7 @@ if (!selectableTree) {
 
 											TreeUtil.updateSessionTreeCheckedState('<%= HtmlUtil.escape(treeId) %>SelectedNode', plid, event.newVal);
 
-											TreeUtil.updateSelectedNodes(target, event.newVal);
+											TreeUtil.updateCheckedNodes(target, event.newVal);
 										}
 									},
 								</c:if>
@@ -179,10 +179,10 @@ if (!selectableTree) {
 
 									<c:if test="<%= selectableTree %>">
 										if (target.get('checked')) {
-											TreeUtil.updateSelectedNodes(target, true);
+											TreeUtil.updateCheckedNodes(target, true);
 										}
 
-										TreeUtil.restoreNodeState(target);
+										TreeUtil.restoreCheckedNode(target);
 									</c:if>
 								},
 
@@ -296,21 +296,21 @@ if (!selectableTree) {
 			return output;
 		},
 
-		restoreNodeState: function(node) {
+		restoreCheckedNode: function(node) {
 			var instance = this;
 
 			var plid = TreeUtil.extractPlid(node);
 
 			var tree = node.get('ownerTree');
 
-			if (AArray.indexOf(TreeUtil.SELECTED_NODES, plid) > -1) {
+			if (AArray.indexOf(TreeUtil.CHECKED_NODES, plid) > -1) {
 				A.TreeNodeTask.superclass.check.call(node, tree);
 			}
 			else {
 				A.TreeNodeTask.superclass.uncheck.call(node, tree);
 			}
 
-			AArray.each(node.get(STR_CHILDREN), TreeUtil.restoreNodeState);
+			AArray.each(node.get(STR_CHILDREN), TreeUtil.restoreCheckedNode);
 		},
 
 		updateLayout: function(data) {
@@ -409,20 +409,20 @@ if (!selectableTree) {
 				);
 			},
 
-			updateSelectedNodes: function(node, state) {
+			updateCheckedNodes: function(node, state) {
 				var plid = TreeUtil.extractPlid(node);
 
-				var selectedNodes = TreeUtil.SELECTED_NODES;
+				var checkedNodes = TreeUtil.CHECKED_NODES;
 
-				var index = AArray.indexOf(selectedNodes, plid);
+				var index = AArray.indexOf(checkedNodes, plid);
 
 				if (state) {
 					if (index == -1) {
-						selectedNodes.push(plid);
+						checkedNodes.push(plid);
 					}
 				}
 				else if (index > -1) {
-					AArray.remove(selectedNodes, index);
+					AArray.remove(checkedNodes, index);
 				}
 			},
 
@@ -493,7 +493,7 @@ if (!selectableTree) {
 					checkedChange: function(event) {
 						TreeUtil.updateSessionTreeCheckedState('<%= HtmlUtil.escape(treeId) %>SelectedNode', <%= LayoutConstants.DEFAULT_PLID %>, event.newVal);
 
-						TreeUtil.updateSelectedNodes(event.target, event.newVal);
+						TreeUtil.updateCheckedNodes(event.target, event.newVal);
 					},
 				</c:if>
 
@@ -590,7 +590,7 @@ if (!selectableTree) {
 			on: {
 				<c:if test="<%= saveState && selectableTree %>">
 					append: function(event) {
-						TreeUtil.restoreNodeState(event.tree.node);
+						TreeUtil.restoreCheckedNode(event.tree.node);
 					},
 				</c:if>
 
