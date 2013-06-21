@@ -31,6 +31,7 @@
 
 		<execute action="PGDocumentlibrarydisplayFolder#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 		<execute action="PGDocumentlibrarydisplayFolder#assertTextEquals" locator-key1="DOCUMENTS_TABLE_NAME_1" value1="${dmdDocumentTitle}" />
+		<execute action="PGDocumentlibrarydisplayFolder#assertTextEquals" locator-key1="DOCUMENTS_TABLE_SIZE_1" value1="${dmdDocumentSize}" />
 		<execute action="PGDocumentlibrarydisplayFolder#click" locator-key1="DOCUMENTS_TABLE_NAME_1" value1="${dmdDocumentTitle}" />
 
 		<execute action="PGDocumentlibrarydisplayDocument#assertTextEquals" locator-key1="DOCUMENT_HEADER_TITLE" value1="${dmdDocumentTitle}" />

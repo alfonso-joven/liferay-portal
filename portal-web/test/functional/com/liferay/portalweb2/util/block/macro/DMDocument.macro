@@ -1,20 +1,4 @@
 <definition>
-	<command name="addPG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
-		<execute action="PGDocumentsandmedia#click" locator-key1="TOOLBAR_ADD" />
-		<execute action="PGDocumentsandmedia#click" locator-key1="ADD_MENULIST_BASIC_DOCUMENT" />
-
-		<execute action="PGDocumentsandmediaAdddocument#uploadCommonFile" locator-key1="FILE_FIELD" value1="${dmDocumentFile}" />
-		<execute action="PGDocumentsandmediaAdddocument#type" locator-key1="TITLE_FIELD" value1="${dmDocumentTitle}" />
-		<execute action="PGDocumentsandmediaAdddocument#type" locator-key1="DESCRIPTION_FIELD" value1="${dmDocumentDescription}" />
-		<execute action="PGDocumentsandmediaAdddocument#assertClick" locator-key1="PUBLISH_BUTTON" value1="Publish" />
-
-		<execute action="PGDocumentsandmedia#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
-	</command>
-
 	<command name="addCP">
 		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Documents and Media" />
@@ -35,11 +19,36 @@
 			<condition action="CPDocumentsandmedia#isElementNotPresent" locator-key1="DOCUMENT_CONTAINER_DOCUMENT2" />
 			<then>
 				<execute action="CPDocumentsandmedia#assertTextEquals" locator-key1="DOCUMENT_CONTAINER_DOCUMENT1_TITLE" value1="${dmDocumentTitle}"/>
+				<execute action="CPDocumentsandmedia#click" locator-key1="DOCUMENT_CONTAINER_DOCUMENT1_DROPDOWN" />
+				<execute action="CPDocumentsandmedia#assertTextEquals" locator-key1="DOCUMENT_MENULIST_DOWNLOAD" value1="Download (${dmDocumentSize})" />
 			</then>
 			<else>
 				<execute action="CPDocumentsandmedia#assertTextPresent" value1="${dmDocumentTitle}" />
 			</else>
 		</if>
+	</command>
+
+	<command name="addPG">
+		<execute macro="Page#gotoPG">
+			<var name="pageName" value="${pageName}" />
+		</execute>
+
+		<execute action="PGDocumentsandmedia#click" locator-key1="TOOLBAR_ADD" />
+		<execute action="PGDocumentsandmedia#click" locator-key1="ADD_MENULIST_BASIC_DOCUMENT" />
+
+		<execute action="PGDocumentsandmediaAdddocument#uploadCommonFile" locator-key1="FILE_FIELD" value1="${dmDocumentFile}" />
+		<execute action="PGDocumentsandmediaAdddocument#type" locator-key1="TITLE_FIELD" value1="${dmDocumentTitle}" />
+		<execute action="PGDocumentsandmediaAdddocument#type" locator-key1="DESCRIPTION_FIELD" value1="${dmDocumentDescription}" />
+		<execute action="PGDocumentsandmediaAdddocument#click" locator-key1="PUBLISH_BUTTON" />
+
+		<execute action="PGDocumentsandmedia#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
+
+		<var name="key_dmDocumentTitle" value="${dmDocumentTitle}" />
+
+		<execute action="PGDocumentsandmedia#assertElementPresent" locator-key1="ENTRIES_DOCUMENT" />
+		<execute action="PGDocumentsandmedia#assertTextEquals" locator-key1="ENTRIES_DOCUMENT_TITLE" value1="${dmDocumentTitle}" />
+		<execute action="PGDocumentsandmedia#click" locator-key1="ENTRIES_DOCUMENT_ACTIONS" />
+		<execute action="PGDocumentsandmedia#assertTextEquals" locator-key1="DOCUMENT_MENULIST_DOWNLOAD" value1="Download (${dmDocumentSize})" />
 	</command>
 
 	<command name="addPGviaDMD">
@@ -62,17 +71,20 @@
 			<condition action="PGDocumentlibrarydisplay#isElementPresent" locator-key1="DOCUMENTS_TABLE_NAME_3" />
 			<then>
 				<execute action="PGDocumentlibrarydisplay#assertTextEquals" locator-key1="DOCUMENTS_TABLE_NAME_3" value1="${dmdDocumentTitle}" />
+				<execute action="PGDocumentlibrarydisplay#assertTextEquals" locator-key1="DOCUMENTS_TABLE_SIZE_3" value1="${dmdDocumentSize}" />
 				<execute action="PGDocumentlibrarydisplay#click" locator-key1="DOCUMENTS_TABLE_NAME_3" value1="${dmdDocumentTitle}" />
 			</then>
 		<elseif>
 			<condition action="PGDocumentlibrarydisplay#isElementPresent" locator-key1="DOCUMENTS_TABLE_NAME_2" />
 			<then>
 				<execute action="PGDocumentlibrarydisplay#assertTextEquals" locator-key1="DOCUMENTS_TABLE_NAME_2" value1="${dmdDocumentTitle}" />
+				<execute action="PGDocumentlibrarydisplay#assertTextEquals" locator-key1="DOCUMENTS_TABLE_SIZE_2" value1="${dmdDocumentSize}" />
 				<execute action="PGDocumentlibrarydisplay#click" locator-key1="DOCUMENTS_TABLE_NAME_2" value1="${dmdDocumentTitle}" />
 			</then>
 		</elseif>
 		<else>
 			<execute action="PGDocumentlibrarydisplay#assertTextEquals" locator-key1="DOCUMENTS_TABLE_NAME_1" value1="${dmdDocumentTitle}" />
+			<execute action="PGDocumentlibrarydisplay#assertTextEquals" locator-key1="DOCUMENTS_TABLE_SIZE_1" value1="${dmdDocumentSize}" />
 			<execute action="PGDocumentlibrarydisplay#click" locator-key1="DOCUMENTS_TABLE_NAME_1" value1="${dmdDocumentTitle}" />
 		</else>
 		</if>
@@ -114,6 +126,8 @@
 		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
 		</execute>
+
+		<var name="key_dmDocumentTitle" value="${dmDocumentTitle}" />
 
 		<execute action="PGDocumentsandmedia#click" locator-key1="ENTRIES_DOCUMENT" />
 
@@ -164,6 +178,8 @@
 		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
 		</execute>
+
+		<var name="key_dmDocumentTitle" value="${dmDocumentTitle}" />
 
 		<execute action="PGDocumentsandmedia#click" locator-key1="ENTRIES_DOCUMENT" />
 
@@ -232,7 +248,7 @@
 		</execute>
 
 		<if>
-			<condition action="PGDocumentsandmedia#isElementPresent" locator-key1="ENTRIES_DOCUMENT" />
+			<condition action="PGDocumentsandmedia#isElementPresent" locator-key1="ENTRIES_DOCUMENT_GENERIC" />
 			<then>
 				<execute action="PGDocumentsandmedia#check" locator-key1="TOOLBAR_SELECT_ALL_CHECKBOX" />
 				<execute action="PGDocumentsandmedia#click" locator-key1="TOOLBAR_ACTIONS" />
