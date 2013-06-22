@@ -1339,8 +1339,6 @@ public class Validator {
 		'_', '`', '{', '|', '}', '~'
 	};
 
-	private static final String _LOCALHOST = "localhost";
-
 	private static final String _VARIABLE_TERM_BEGIN = "[$";
 
 	private static final String _VARIABLE_TERM_END = "$]";
