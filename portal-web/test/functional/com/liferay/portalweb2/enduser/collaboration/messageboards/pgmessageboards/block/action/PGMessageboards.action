@@ -30,9 +30,6 @@
 	</command>
 
 	<command name="assertTextEquals">
-		<case locator-key1="SUCCESS_MESSAGE">
-			<execute function="AssertTextEquals#assertText" value1="Your request completed successfully." />
-		</case>
 		<case comparator="startsWith" locator-key1="THREAD_TABLE_LAST_POST">
 			<execute function="AssertTextEquals#assertPartialText" />
 		</case>

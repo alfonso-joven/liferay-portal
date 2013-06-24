@@ -31,7 +31,7 @@
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="SETTINGS_CELL_EDITOR_SAVE_BUTTON" value1="Save" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertTextEquals" locator-key1="SETTINGS_NAME" value1="${booleanNameLabel}" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="FIELDS_LINK" value1="Fields" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="NAME_FIELD" />
+		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="NAME_FIELD" />
 	</command>
 
 	<command name="addDateCmdCP">
@@ -42,7 +42,7 @@
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="SETTINGS_CELL_EDITOR_SAVE_BUTTON" value1="Save" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertTextEquals" locator-key1="SETTINGS_NAME" value1="${dateNameLabel}" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="FIELDS_LINK" value1="Fields" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="NAME_FIELD" />
+		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="NAME_FIELD" />
 	</command>
 
 	<command name="addDecimalCmdCP">
@@ -53,7 +53,7 @@
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="SETTINGS_CELL_EDITOR_SAVE_BUTTON" value1="Save" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertTextEquals" locator-key1="SETTINGS_NAME" value1="${decimalNameLabel}" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="FIELDS_LINK" value1="Fields" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="NAME_FIELD" />
+		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="NAME_FIELD" />
 	</command>
 
 	<command name="addDocumentsAndMediaCmdCP">
@@ -64,7 +64,7 @@
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="SETTINGS_CELL_EDITOR_SAVE_BUTTON" value1="Save" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertTextEquals" locator-key1="SETTINGS_NAME" value1="${documentsAndMediaNameLabel}" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="FIELDS_LINK" value1="Fields" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="NAME_FIELD" />
+		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="NAME_FIELD" />
 	</command>
 
 	<command name="addFileUploadCmdCP">
@@ -75,7 +75,7 @@
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="SETTINGS_CELL_EDITOR_SAVE_BUTTON" value1="Save" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertTextEquals" locator-key1="SETTINGS_NAME" value1="${fileUploadNameLabel}" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="FIELDS_LINK" value1="Fields" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="NAME_FIELD" />
+		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="NAME_FIELD" />
 	</command>
 
 	<command name="addIntegerCmdCP">
@@ -86,7 +86,7 @@
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="SETTINGS_CELL_EDITOR_SAVE_BUTTON" value1="Save" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertTextEquals" locator-key1="SETTINGS_NAME" value1="${integerNameLabel}" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="FIELDS_LINK" value1="Fields" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="NAME_FIELD" />
+		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="NAME_FIELD" />
 	</command>
 
 	<command name="addNumberCmdCP">
@@ -97,7 +97,7 @@
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="SETTINGS_CELL_EDITOR_SAVE_BUTTON" value1="Save" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertTextEquals" locator-key1="SETTINGS_NAME" value1="${numberNameLabel}" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="FIELDS_LINK" value1="Fields" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="NAME_FIELD" />
+		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="NAME_FIELD" />
 	</command>
 
 	<command name="addRadioCmdCP">
@@ -108,7 +108,7 @@
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="SETTINGS_CELL_EDITOR_SAVE_BUTTON" value1="Save" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertTextEquals" locator-key1="SETTINGS_NAME" value1="${radioNameLabel}" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="FIELDS_LINK" value1="Fields" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="NAME_FIELD" />
+		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="NAME_FIELD" />
 	</command>
 
 	<command name="addSelectCmdCP">
@@ -119,7 +119,7 @@
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="SETTINGS_CELL_EDITOR_SAVE_BUTTON" value1="Save" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertTextEquals" locator-key1="SETTINGS_NAME" value1="${selectNameLabel}" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="FIELDS_LINK" value1="Fields" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="NAME_FIELD" />
+		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="NAME_FIELD" />
 	</command>
 
 	<command name="addTextCmdCP">
@@ -130,7 +130,7 @@
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="SETTINGS_CELL_EDITOR_SAVE_BUTTON" value1="Save" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertTextEquals" locator-key1="SETTINGS_NAME" value1="${textNameLabel}" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="FIELDS_LINK" value1="Fields" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="NAME_FIELD" />
+		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="NAME_FIELD" />
 	</command>
 
 	<command name="addTextBoxCmdCP">
@@ -141,7 +141,7 @@
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="SETTINGS_CELL_EDITOR_SAVE_BUTTON" value1="Save" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertTextEquals" locator-key1="SETTINGS_NAME" value1="${textBoxNameLabel}" />
 		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="FIELDS_LINK" value1="Fields" />
-		<execute action="CPDynamicdatalistsDatadefinitionsAdd#assertClick" locator-key1="NAME_FIELD" />
+		<execute action="CPDynamicdatalistsDatadefinitionsAdd#click" locator-key1="NAME_FIELD" />
 	</command>
 
 	<command name="deleteCP">

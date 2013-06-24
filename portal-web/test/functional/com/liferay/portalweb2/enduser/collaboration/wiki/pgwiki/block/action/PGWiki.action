@@ -1,20 +1,5 @@
 <definition>
 	<command name="assertClick">
-		<case locator-key1="NAVIGATION_ALL_PAGES">
-			<execute function="AssertClick#assertTextClickAtAndWait" />
-		</case>
-		<case locator-key1="NAVIGATION_DRAFT_PAGES">
-			<execute function="AssertClick#assertTextClickAtAndWait" />
-		</case>
-	</command>
-
-	<command name="assertTextEquals">
-		<case locator-key1="SUCCESS_MESSAGE">
-			<execute function="AssertTextEquals#assertText" />
-		</case>
-	</command>
-
-	<command name="assertClick">
 		<case locator-key1="ADD_CHILD_PAGE">
 			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
@@ -22,6 +7,9 @@
 			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
 		<case locator-key1="NAVIGATION_ALL_PAGES">
+			<execute function="AssertClick#assertTextClickAtAndWait" />
+		</case>
+		<case locator-key1="NAVIGATION_DRAFT_PAGES">
 			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
 	</command>

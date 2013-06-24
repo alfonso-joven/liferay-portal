@@ -51,7 +51,7 @@
 		</execute>
 
 		<while>
-			<condition action="CPWiki#isElementPresent" locator-key1="WIKI_NODE_TABLE_ACTIONS_2" />
+			<condition action="CPWiki#isElementPresent" locator-key1="WIKI_NODE_TABLE_ACTIONS_2" value1="Actions" />
 			<then>
 				<execute action="CPWiki#assertClick" locator-key1="WIKI_NODE_TABLE_ACTIONS_2" value1="Actions" />
 				<execute action="CPWiki#assertClick" locator-key1="WIKI_NODE_MENULIST_DELETE" value1="Delete" />

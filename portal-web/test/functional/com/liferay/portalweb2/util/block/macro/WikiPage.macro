@@ -63,7 +63,7 @@
 
 		<execute action="PGWikiAddpage#type" locator-key1="TITLE_FIELD" value1="${wikiPageTitle}" />
 		<execute action="PGWikiAddpage#type" locator-key1="BODY_FIELD" value1="${wikiPageContent}" />
-		<execute action="PGWikiAddpage#assertClick" locator-key1="PUBLISH_BUTTON" />
+		<execute action="PGWikiAddpage#assertClick" locator-key1="PUBLISH_BUTTON" value1="Publish" />
 
 		<execute action="PGWikiAllpages#assertTextEquals" locator-key1="SUCCESS_MESSAGE"  value1="Your request completed successfully." />
 		<execute action="PGWikiAllpages#assertTextEquals" locator-key1="WIKI_PAGE_TABLE_PAGE_2" value1="${wikiPageTitle}" />
@@ -78,15 +78,15 @@
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
-		<execute action="PGWiki#click" locator-key1="NAVIGATION_ALL_PAGES" />
-		<execute action="PGWikiAllpages#click" locator-key1="ADD_PAGE_BUTTON" />
+		<execute action="PGWiki#assertClick" locator-key1="NAVIGATION_ALL_PAGES" value1="All Pages" />
+
+		<execute action="PGWikiAllpages#assertClick" locator-key1="ADD_PAGE_BUTTON" value1="Add Page" />
 
 		<execute action="PGWikiAddpage#type" locator-key1="TITLE_FIELD" value1="${wikiPageTitle}" />
 		<execute action="PGWikiAddpage#type" locator-key1="BODY_FIELD" value1="${wikiPageContent}" />
 		<execute action="PGWikiAddpage#assertClick" locator-key1="SUBMIT_FOR_PUBLICATION_BUTTON" value1="Submit for Publication" />
 
 		<execute action="PGWikiAllpages#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed succesfully." />
-
 		<execute action="PGWikiAllpages#assertClick" locator-key1="NAVIGATION_DRAFT_PAGES" value1="Draft Pages" />
 
 		<var name="key_wikiPageTitle" value="${wikiPageTitle}" />
