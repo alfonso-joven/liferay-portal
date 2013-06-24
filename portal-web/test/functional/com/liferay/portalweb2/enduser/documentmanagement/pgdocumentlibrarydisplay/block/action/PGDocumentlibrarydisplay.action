@@ -28,13 +28,4 @@
 			<execute function="AssertClick#assertValueClickAtAndWait" />
 		</case>
 	</command>
-	
-	<command name="assertTextEquals">
-		<case locator-key1="INFO_MESSAGE">
-			<execute function="AssertTextEquals#assertText" />
-		</case>
-		<case locator-key1="SUCCESS_MESSAGE">
-			<execute function="AssertTextEquals#assertText" />
-		</case>
-	</command>
 </definition>

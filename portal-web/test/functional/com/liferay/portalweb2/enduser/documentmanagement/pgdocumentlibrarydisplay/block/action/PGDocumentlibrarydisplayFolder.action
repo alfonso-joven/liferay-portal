@@ -4,13 +4,4 @@
 			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
 	</command>
-
-	<command name="assertTextEquals">
-		<case locator-key1="INFO_MESSAGE">
-			<execute function="AssertTextEquals#assertText" value1="There are no documents or media files in this folder." />
-		</case>
-		<case locator-key1="SUCCESS_MESSAGE">
-			<execute function="AssertTextEquals#assertText" />
-		</case>
-	</command>
 </definition>

@@ -5,12 +5,6 @@
 		</case>
 	</command>
 
-	<command name="assertTextEquals">
-		<case locator-key1="SUCCESS_MESSAGE">
-			<execute function="AssertTextEquals#assertText" />
-		</case>
-	</command>
-
 	<command name="check">
 		<case locator-key1="SETUP_DISPLAY_SETTINGS_SHOW_ACTIONS_CHECKBOX">
 			<execute function="Check#clickAtConfiguration" />

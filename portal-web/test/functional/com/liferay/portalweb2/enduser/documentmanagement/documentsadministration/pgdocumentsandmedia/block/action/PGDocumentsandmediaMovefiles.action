@@ -3,5 +3,5 @@
 		<case locator-key1="MOVE">
 			<execute function="AssertClick#assertValueClickAtAndWait" />
 		</case>
-	</command>as
+	</command>
 </definition>

@@ -1,7 +1,0 @@
-<definition>
-	<command name="assertClick">
-		<case locator-key1="TOOLBAR_DELETE_BUTTON">
-			<execute function="AssertClick#assertTextClickAt" />
-		</case>
-	</command>
-</definition>
