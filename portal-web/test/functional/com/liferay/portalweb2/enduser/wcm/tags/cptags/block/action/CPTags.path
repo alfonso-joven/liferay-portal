@@ -34,7 +34,7 @@
 	<td></td>
 </tr>
 <tr>
-	<td>ADD_TAG</td>
+	<td>ADD_TAG_BUTTON</td>
 	<td>//input[@id='_99_addTagButton']</td>
 	<td></td>
 </tr>
@@ -53,6 +53,17 @@
 	<td></td>
 	<td></td>
 </tr>
+<!--ACTIONS_MENULIST-->
+<tr>
+	<td>ACTIONS_MENULIST_DELETE</td>
+	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
 <!--TAG_DETAILS-->
 <tr>
 	<td>TAG_DETAILS_HEADER</td>
@@ -60,12 +71,12 @@
 	<td></td>
 </tr>
 <tr>
-	<td>TAG_DETAILS_EDIT</td>
+	<td>TAG_DETAILS_EDIT_BUTTON</td>
 	<td>//input[@value='Edit']</td>
 	<td></td>
 </tr>
 <tr>
-	<td>TAG_DETAILS_DELETE</td>
+	<td>TAG_DETAILS_DELETE_BUTTON</td>
 	<td>//input[@value='Delete']</td>
 	<td></td>
 </tr>
@@ -81,7 +92,7 @@
 	<td></td>
 </tr>
 <tr>
-	<td>ADD_TAG_SAVE</td>
+	<td>ADD_TAG_SAVE_BUTTON</td>
 	<td>//input[@value='Save']</td>
 	<td></td>
 </tr>
@@ -97,7 +108,7 @@
 	<td></td>
 </tr>
 <tr>
-	<td>EDIT_TAG_SAVE</td>
+	<td>EDIT_TAG_SAVE_BUTTON</td>
 	<td>//input[@value='Save']</td>
 	<td></td>
 </tr>
@@ -120,17 +131,6 @@
 <tr>
 	<td>ENTRY_TAG_3</td>
 	<td>//li[3]/div/span/a</td>
-	<td></td>
-</tr>
-<tr>
-	<td></td>
-	<td></td>
-	<td></td>
-</tr>
-<!--ACTION-->
-<tr>
-	<td>ACTION_DELETE</td>
-	<td>//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains(.,'Delete')]</td>
 	<td></td>
 </tr>
 </tbody>

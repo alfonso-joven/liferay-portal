@@ -61,7 +61,7 @@
 			<var name="siteName" value="${siteName}" />
 		</execute>
 
-		<execute action="Staging#click" locator-key1="LIVE_BUTTON" />
+		<execute action="Staging#assertClick" locator-key1="LIVE_BUTTON" value1="Live" />
 
 		<execute action="Home#assertTextEquals" locator-key1="PAGE_2_STAGING" value1="${pageName}" />
 	</command>

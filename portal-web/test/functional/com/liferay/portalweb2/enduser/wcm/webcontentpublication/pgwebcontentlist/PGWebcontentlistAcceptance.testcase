@@ -34,7 +34,7 @@
 		</execute>
 
 		<execute action="PGWebcontentlist#assertTextEquals" locator-key1="WEB_CONTENT_TABLE_TITLE_1" value1="${webContentTitle}" />
-		<execute action="PGWebcontentlist#click" locator-key1="WEB_CONTENT_TABLE_TITLE_1" value1="${webContentTitle}"/>
+		<execute action="PGWebcontentlist#assertClick" locator-key1="WEB_CONTENT_TABLE_TITLE_1" value1="${webContentTitle}"/>
 
 		<execute action="PGWebcontentlistWebcontent#assertTextEquals" locator-key1="WEB_CONTENT_TITLE" value1="${webContentTitle}" />
 		<execute action="PGWebcontentlistWebcontent#assertTextEquals" locator-key1="WEB_CONTENT_CONTENT" value1="${webContentContent}" />

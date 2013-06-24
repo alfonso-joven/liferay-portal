@@ -4,7 +4,7 @@
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
-		<execute action="PGWebcontentlist#click" locator-key1="OPTIONS_WRENCH_ICON" />
+		<execute action="PGWebcontentlist#assertClick" locator-key1="OPTIONS_WRENCH_ICON" value1="Options" />
 		<execute action="PGWebcontentlist#assertClick" locator-key1="OPTIONS_MENULIST_CONFIGURATION" value1="Configuration" />
 
 		<execute action="PGWebcontentlistConfiguration#selectFrame" locator-key1="CONFIGURATION_IFRAME" />

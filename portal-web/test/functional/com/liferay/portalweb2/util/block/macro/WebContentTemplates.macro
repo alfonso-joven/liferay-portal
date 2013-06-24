@@ -20,7 +20,7 @@
 				<execute action="CPWebcontentTemplatesAddtemplateStructure#assertElementPresent" locator-key1="STRUCTURE_TABLE_ID_1" />
 				<execute action="CPWebcontentTemplatesAddtemplateStructure#assertTextPresent" locator-key1="STRUCTURE_TABLE_NAME_1" value1="${structureName}" />
 				<execute action="CPWebcontentTemplatesAddtemplateStructure#assertTextPresent" locator-key1="STRUCTURE_TABLE_DESCRIPTION_1" value1="${structureDescription}" />
-				<execute action="CPWebcontentTemplatesAddtemplateStructure#click" locator-key1="STRUCTURE_TABLE_NAME_1" />
+				<execute action="CPWebcontentTemplatesAddtemplateStructure#assertClick" locator-key1="STRUCTURE_TABLE_NAME_1" value1="${structureName}" />
 
 				<execute action="CPWebcontentTemplatesAddtemplate#selectFrame" />
 				<execute action="CPWebcontentTemplatesAddtemplate#assertTextEquals" locator-key1="STRUCTURE_NAME" value1="${structureName}" />

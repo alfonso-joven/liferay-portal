@@ -17,13 +17,13 @@
 			<elseif>
 				<equals arg1="${siteType}" arg2="Community" />
 				<then>
-					<execute action="CPSites#click" locator-key1="ADD_COMMUNITY_SITE" />
+					<execute action="CPSites#assertClick" locator-key1="ADD_COMMUNITY_SITE" value1="Community Site" />
 				</then>
 			</elseif>
 			<elseif>
 				<equals arg1="${siteType}" arg2="Intranet" />
 				<then>
-					<execute action="CPSites#click" locator-key1="ADD_INTRANET_SITE" />
+					<execute action="CPSites#assertClick" locator-key1="ADD_INTRANET_SITE" value1="Intranet Site" />
 				</then>
 			</elseif>
 			<else>
@@ -48,7 +48,7 @@
 
 		<execute action="CPSitesAdd#assertClick" locator-key1="MENU_SAVE" value1="Save" />
 
-		<execute action="CPSitesEdit#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPSitesEdit#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 		<execute action="CPSitesEdit#assertTextEquals" locator-key1="HEADER" value1="${siteName}" />
 	</command>
 
@@ -79,10 +79,10 @@
 		<execute action="CPSites#assertClick" locator-key1="SEARCH_BUTTON" value1="Search" />
 		<execute action="CPSites#assertTextEquals" locator-key1="SITE_TABLE_NAME" value1="${siteName}" />
 		<execute action="CPSites#assertClick" locator-key1="SITE_TABLE_ACTIONS" value1="Actions" />
-		<execute action="CPSites#click" locator-key1="SITE_MENULIST_MANAGE_MEMBERSHIPS" />
+		<execute action="CPSites#assertClick" locator-key1="SITE_MENULIST_MANAGE_MEMBERSHIPS" value1="Manage Memberships" />
 
-		<execute action="CPSitememberships#click" locator-key1="TOOLBAR_ADD_MEMBERS" />
-		<execute action="CPSitememberships#click" locator-key1="ADD_MEMBERS_MENULIST_USER" />
+		<execute action="CPSitememberships#assertClick" locator-key1="TOOLBAR_ADD_MEMBERS" value1="Add Members" />
+		<execute action="CPSitememberships#assertClick" locator-key1="ADD_MEMBERS_MENULIST_USER" value1="User" />
 
 		<execute action="CPSitemembershipsAddmembers#type" locator-key1="SEARCH_FIELD" value1="${userScreenName}" />
 		<execute action="CPSitemembershipsAddmembers#assertClick" locator-key1="SEARCH_BUTTON" value1="Search" />
@@ -102,7 +102,7 @@
 		<execute action="CPSites#assertClick" locator-key1="SEARCH_BUTTON" value1="Search" />
 		<execute action="CPSites#assertTextEquals" locator-key1="SITE_TABLE_NAME" value1="${siteName}" />
 		<execute action="CPSites#assertClick" locator-key1="SITE_TABLE_ACTIONS" value1="Actions" />
-		<execute action="CPSites#click" locator-key1="SITE_MENULIST_MANAGE_MEMBERSHIPS" />
+		<execute action="CPSites#assertClick" locator-key1="SITE_MENULIST_MANAGE_MEMBERSHIPS" value1="Manage Memberships" />
 
 		<execute action="CPSitememberships#assertClick" locator-key1="TOOLBAR_ADD_SITE_ROLES_TO" value1="Add Site Roles to" />
 		<execute action="CPSitememberships#assertClick" locator-key1="ADD_SITE_ROLES_TO_MENULIST_USERS" value1="Users" />
@@ -110,7 +110,7 @@
 		<execute action="CPSitemembershipsAssignuserroles#type" locator-key1="ROLES_SEARCH_FIELD" value1="Siterole" />
 		<execute action="CPSitemembershipsAssignuserroles#assertClick" locator-key1="ROLES_SEARCH_BUTTON" value1="Search" />
 		<execute action="CPSitemembershipsAssignuserroles#assertTextEquals" locator-key1="ROLE_TABLE_TITLE_1" value1="${roleName}" />
-		<execute action="CPSitemembershipsAssignuserroles#click" locator-key1="ROLE_TABLE_TITLE_1" value1="${roleName}" />
+		<execute action="CPSitemembershipsAssignuserroles#assertClick" locator-key1="ROLE_TABLE_TITLE_1" value1="${roleName}" />
 
 		<execute action="CPSitemembershipsAssignuserrolesUser#assertClick" locator-key1="AVAILABLE" value1="Available" />
 		<execute action="CPSitemembershipsAssignuserrolesUser#type" locator-key1="BASIC_SEARCH_FIELD" value1="${userScreenName}" />
@@ -150,14 +150,14 @@
 		<execute action="CPSites#assertClick" locator-key1="SEARCH_BUTTON" value1="Search" />
 		<execute action="CPSites#assertTextEquals" locator-key1="SITE_TABLE_NAME" value1="${siteName}" />
 		<execute action="CPSites#assertClick" locator-key1="SITE_TABLE_ACTIONS" value1="Actions" />
-		<execute action="CPSites#click" locator-key1="SITE_MENULIST_MANAGE_MEMBERSHIPS" />
+		<execute action="CPSites#assertClick" locator-key1="SITE_MENULIST_MANAGE_MEMBERSHIPS" value1="Manage Memberships" />
 
 		<execute action="CPSitememberships#type" locator-key1="USER_SEARCH_FIELD" value1="${userScreenName}" />
 		<execute action="CPSitememberships#assertClick" locator-key1="USER_SEARCH_BUTTON" value1="Search" />
 		<execute action="CPSitememberships#assertTextEquals" locator-key1="USER_TABLE_NAME_1" value1="${userFirstName} ${userLastName}" />
 		<execute action="CPSitememberships#assertTextEquals" locator-key1="USER_TABLE_SCREEN_NAME_1" value1="${userScreenName}" />
-		<execute action="CPSitememberships#click" locator-key1="USER_TABLE_ACTIONS_1" />
-		<execute action="CPSitememberships#click" locator-key1="USER_MENULIST_REMOVE_MEMBERSHIP" />
+		<execute action="CPSitememberships#assertClick" locator-key1="USER_TABLE_ACTIONS_1" value1="Actions" />
+		<execute action="CPSitememberships#assertClick" locator-key1="USER_MENULIST_REMOVE_MEMBERSHIP" value1="Remove Membership" />
 
 		<execute action="CPSitemembershipsAddmembers#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 	</command>

@@ -58,14 +58,14 @@
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
-		<execute action="PGAssetpublisher#click" locator-key1="ADD_NEW_DROPDOWN" />
-		<execute action="PGAssetpublisher#click" locator-key1="ADD_NEW_MENULIST_WEB_CONTENT" value1="Web Content" />
+		<execute action="PGAssetpublisher#assertClick" locator-key1="ADD_NEW_DROPDOWN" value1="Add New" />
+		<execute action="PGAssetpublisher#assertClick" locator-key1="ADD_NEW_MENULIST_WEB_CONTENT" value1="Web Content" />
 
 		<execute action="PGAssetpublisherAddnewwebcontent#selectFrame" locator-key1="WEB_CONTENT_IFRAME" />
 		<execute action="PGAssetpublisherAddnewwebcontent#type" locator-key1="TITLE_FIELD" value1="${webContentTitle}" />
 		<execute action="PGAssetpublisherAddnewwebcontent#type" locator-key1="CONTENT_FIELD" value1="${webContentContent}" />
 		<execute action="PGAssetpublisherAddnewwebcontent#selectFrame" locator-key1="WEB_CONTENT_IFRAME" />
-		<execute action="PGAssetpublisherAddnewwebcontent#click" locator-key1="SUBMIT_FOR_PUBLICATION_BUTTON" />
+		<execute action="PGAssetpublisherAddnewwebcontent#assertClick" locator-key1="SUBMIT_FOR_PUBLICATION_BUTTON" value1="Submit for Publication" />
 
 		<execute action="PGAssetpublisher#selectFrame" />
 		<execute action="PGAssetpublisher#assertTextNotPresent" value1="${webContentTitle}" />
@@ -77,8 +77,8 @@
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
-		<execute action="PGAssetpublisher#click" locator-key1="ADD_NEW_DROPDOWN" />
-		<execute action="PGAssetpublisher#click" locator-key1="ADD_NEW_MENULIST_WEB_CONTENT" value1="Web Content" />
+		<execute action="PGAssetpublisher#assertClick" locator-key1="ADD_NEW_DROPDOWN" value1="Add New" />
+		<execute action="PGAssetpublisher#assertClick" locator-key1="ADD_NEW_MENULIST_WEB_CONTENT" value1="Web Content" />
 
 		<execute action="PGAssetpublisherAddnewwebcontent#selectFrame" locator-key1="WEB_CONTENT_IFRAME" />
 		<execute action="PGAssetpublisherAddnewwebcontent#type" locator-key1="TITLE_FIELD" value1="${webContentTitle}" />
@@ -114,7 +114,7 @@
 
 		<execute action="PGWebcontentdisplayAddwebcontent#type" locator-key1="TITLE_FIELD" value1="${webContentTitle}" />
 		<execute action="PGWebcontentdisplayAddwebcontent#type" locator-key1="CONTENT_FIELD" value1="${webContentContent}" />
-		<execute action="PGWebcontentdisplayAddwebcontent#click" locator-key1="SUBMIT_FOR_PUBLICATION_BUTTON" value1="Submit for Publication" />
+		<execute action="PGWebcontentdisplayAddwebcontent#assertClick" locator-key1="SUBMIT_FOR_PUBLICATION_BUTTON" value1="Submit for Publication" />
 
 		<execute action="PGWebcontentdisplay#assertTextEquals" locator-key1="ALERT_MESSAGE" value1="${webContentTitle} is not approved." />
 	</command>

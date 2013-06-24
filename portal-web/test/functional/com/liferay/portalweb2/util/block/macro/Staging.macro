@@ -7,7 +7,7 @@
 		<execute action="CPSites#type" locator-key1="SEARCH_FIELD" value1="${siteName}" />
 		<execute action="CPSites#assertClick" locator-key1="SEARCH_BUTTON" value1="Search" />
 		<execute action="CPSites#assertClick" locator-key1="SITE_TABLE_ACTIONS" value1="Actions" />
-		<execute action="CPSites#click" locator-key1="SITE_MENULIST_EDIT_SETTINGS" />
+		<execute action="CPSites#assertClick" locator-key1="SITE_MENULIST_EDIT_SETTINGS" value1="Edit Settings" />
 
 		<execute action="CPSitesEdit#click" locator-key1="MENU_STAGING" />
 		<execute action="CPSitesEdit#click" locator-key1="STAGING_LOCAL_LIVE" />
@@ -38,7 +38,7 @@
 		<execute action="CPSitesEdit#check" locator-key1="STAGING_WIKI_CHECKBOX" />
 		<execute action="CPSitesEdit#check" locator-key1="STAGING_WIKI_DISPLAY_CHECKBOX" />
 		<execute action="CPSitesEdit#assertClick" locator-key1="MENU_SAVE" value1="Save" />
-		<execute action="CPSitesEdit#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPSitesEdit#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 		<execute action="CPSitesEdit#assertTextEquals" locator-key1="HEADER" value1="${siteName} (Staging)" />
 	</command>
 
@@ -51,13 +51,13 @@
 		<execute action="CPSites#type" locator-key1="SEARCH_FIELD" value1="${siteName}" />
 		<execute action="CPSites#assertClick" locator-key1="SEARCH_BUTTON" value1="Search" />
 		<execute action="CPSites#assertClick" locator-key1="SITE_TABLE_ACTIONS" value1="Actions" />
-		<execute action="CPSites#click" locator-key1="SITE_MENULIST_EDIT_SETTINGS" />
+		<execute action="CPSites#assertClick" locator-key1="SITE_MENULIST_EDIT_SETTINGS" value1="Edit Settings" />
 
 		<execute action="CPSitesEdit#assertTextEquals" locator-key1="HEADER" value1="${siteName} (Staging)" />
 		<execute action="CPSitesEdit#click" locator-key1="MENU_STAGING" />
 		<execute action="CPSitesEdit#click" locator-key1="STAGING_NONE" />
 		<execute action="CPSitesEdit#assertClick" locator-key1="MENU_SAVE" value1="Save" />
-		<execute action="CPSitesEdit#assertTextEquals" locator-key1="SUCCESS_MESSAGE" />
+		<execute action="CPSitesEdit#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 		<execute action="CPSitesEdit#assertTextEquals" locator-key1="HEADER" value1="${siteName}" />
 	</command>
 

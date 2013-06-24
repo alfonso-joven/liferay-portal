@@ -6,20 +6,8 @@
 		<case locator-key1="SEARCH_BUTTON">
 			<execute function="AssertClick#assertValueClickAtAndWait" />
 		</case>
-		<case locator-key1="TEAM_TABLE_ACTIONS_1">
-			<execute function="AssertClick#assertTextClickAt" />
-		</case>		
 		<case locator-key1="TEAM_MENULIST_ASSIGN_MEMBERS">
 			<execute function="AssertClick#assertTextClickAtAndWait" />
-		</case>
-	</command>
-	
-	<command name="assertTextEquals">
-		<case locator-key1="SUCCESS_MESSAGE">
-			<execute function="AssertTextEquals#assertText" />
-		</case>
-		<case locator-key1="INFO_MESSAGE">
-			<execute function="AssertTextEquals#assertText" value1="No teams were found." />
 		</case>
 	</command>
 </definition>

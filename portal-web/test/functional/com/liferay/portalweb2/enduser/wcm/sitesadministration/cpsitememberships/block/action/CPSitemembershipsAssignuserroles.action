@@ -3,11 +3,8 @@
 		<case locator-key1="ROLES_SEARCH_BUTTON">
 			<execute function="AssertClick#assertValueClickAtAndWait" />
 		</case>
-	</command>
-	
-	<command name="click">
-		<case comparator="startsWith" locator-key1="ROLE_TABLE_TITLE_1">
-			<execute function="Click#clickAtAndWait" />
+		<case comparator="startsWith" locator-key1="ROLE_TABLE_TITLE">
+			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
 	</command>
 </definition>

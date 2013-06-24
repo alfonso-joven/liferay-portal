@@ -3,9 +3,6 @@
 		<case locator-key1="ADD_BUTTON">
 			<execute function="AssertClick#assertValueClickAtAndWait" />
 		</case>
-		<case locator-key1="ADD_DROPDOWN">
-			<execute function="AssertClick#assertTextClickAt" />
-		</case>
 		<case locator-key1="DELETE_BUTTON">
 			<execute function="AssertClick#assertValueClickAtAndWait" />
 		</case>
@@ -17,24 +14,9 @@
 		</case>
 	</command>
 
-	<command name="assertTextEquals">
-		<case locator-key1="INFO_MESSAGE">
-			<execute function="AssertTextEquals#assertText" />
-		</case>
-		<case locator-key1="SUCCESS_MESSAGE">
-			<execute function="AssertTextEquals#assertText" />
-		</case>
-	</command>
-
 	<command name="click">
 		<case comparator="startsWith" locator1="//div[@class='lfr-component lfr-menu-list']/ul/li/a[contains.,'">
 			<execute function="Click#clickAtAndWait" />
-		</case>
-	</command>
-	
-	<command name="confirm">
-		<case locator-key1="CONFIRMATION">
-			<execute function="Confirm#waitForConfirmation" />
 		</case>
 	</command>
 

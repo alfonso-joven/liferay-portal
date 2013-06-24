@@ -1,16 +1,10 @@
 <definition>
 	<command name="assertClick">
 		<case locator-key1="SAVE_BUTTON">
-			<execute function="AssertClick#assertValueClickAtAndWait" value1="Save" />
+			<execute function="AssertClick#assertValueClickAtAndWait" />
 		</case>
 		<case locator-key1="SEARCH_BUTTON">
-			<execute function="AssertClick#assertValueClickAtAndWait" value1="Search" />
-		</case>
-	</command>
-
-	<command name="assertTextEquals">
-		<case locator-key1="SUCCESS_MESSAGE">
-			<execute function="AssertTextEquals#assertText" />
+			<execute function="AssertClick#assertValueClickAtAndWait" />
 		</case>
 	</command>
 </definition>
