@@ -43,7 +43,7 @@ page import="com.liferay.portlet.bookmarks.util.BookmarksUtil" %>
 <%
 PortalPreferences portalPreferences = PortletPreferencesFactoryUtil.getPortalPreferences(request);
 
-PortletPreferences preferences = renderRequest.getPreferences();
+PortletPreferences preferences = portletPreferences;
 
 String portletResource = ParamUtil.getString(request, "portletResource");
 

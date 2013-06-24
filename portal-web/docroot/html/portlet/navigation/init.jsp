@@ -17,7 +17,7 @@
 <%@ include file="/html/portlet/init.jsp" %>
 
 <%
-PortletPreferences preferences = renderRequest.getPreferences();
+PortletPreferences preferences = portletPreferences;
 
 String portletResource = ParamUtil.getString(request, "portletResource");
 

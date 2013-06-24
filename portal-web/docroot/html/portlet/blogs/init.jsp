@@ -46,7 +46,7 @@ page import="com.liferay.portlet.messageboards.service.MBMessageLocalServiceUtil
 page import="com.liferay.util.RSSUtil" %>
 
 <%
-PortletPreferences preferences = renderRequest.getPreferences();
+PortletPreferences preferences = portletPreferences;
 
 int pageDelta = GetterUtil.getInteger(preferences.getValue("pageDelta", StringPool.BLANK), SearchContainer.DEFAULT_DELTA);
 String pageDisplayStyle = preferences.getValue("pageDisplayStyle", RSSUtil.DISPLAY_STYLE_FULL_CONTENT);

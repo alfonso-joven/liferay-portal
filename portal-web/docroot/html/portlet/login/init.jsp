@@ -61,7 +61,7 @@ page import="org.openid4java.discovery.DiscoveryException" %><%@
 page import="org.openid4java.message.MessageException" %>
 
 <%
-PortletPreferences preferences = renderRequest.getPreferences();
+PortletPreferences preferences = portletPreferences;
 
 String authType = preferences.getValue("authType", StringPool.BLANK);
 %>

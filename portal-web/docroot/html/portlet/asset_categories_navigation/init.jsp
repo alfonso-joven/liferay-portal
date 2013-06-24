@@ -22,7 +22,7 @@ page import="com.liferay.portlet.asset.service.AssetVocabularyLocalServiceUtil" 
 page import="com.liferay.portlet.asset.service.AssetVocabularyServiceUtil" %>
 
 <%
-PortletPreferences preferences = renderRequest.getPreferences();
+PortletPreferences preferences = portletPreferences;
 
 List<AssetVocabulary> vocabularies = AssetVocabularyServiceUtil.getGroupsVocabularies(new long[] {scopeGroupId, themeDisplay.getCompanyGroupId()});
 

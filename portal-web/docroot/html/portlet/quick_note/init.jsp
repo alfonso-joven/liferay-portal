@@ -17,7 +17,7 @@
 <%@ include file="/html/portlet/init.jsp" %>
 
 <%
-PortletPreferences preferences = renderRequest.getPreferences();
+PortletPreferences preferences = portletPreferences;
 
 String color = preferences.getValue("color", "#FFFFCC");
 String data = preferences.getValue("data", LanguageUtil.get(pageContext, "click-to-edit-me"));

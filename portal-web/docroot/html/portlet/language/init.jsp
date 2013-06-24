@@ -19,7 +19,7 @@
 <%@ page import="com.liferay.taglib.ui.LanguageTag" %>
 
 <%
-PortletPreferences preferences = renderRequest.getPreferences();
+PortletPreferences preferences = portletPreferences;
 
 Locale[] availableLocales = LanguageUtil.getAvailableLocales();
 String[] availableLanguageIds = LocaleUtil.toLanguageIds(availableLocales);

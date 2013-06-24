@@ -17,7 +17,7 @@
 <%@ include file="/html/portlet/init.jsp" %>
 
 <%
-PortletPreferences preferences = renderRequest.getPreferences();
+PortletPreferences preferences = portletPreferences;
 
 String initUrl = preferences.getValue("initUrl", StringPool.BLANK);
 String scope = preferences.getValue("scope", StringPool.BLANK);

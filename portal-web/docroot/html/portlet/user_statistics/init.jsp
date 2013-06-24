@@ -24,7 +24,7 @@ page import="com.liferay.portlet.social.util.SocialConfigurationUtil" %><%@
 page import="com.liferay.portlet.social.util.comparator.SocialActivityCounterNameComparator" %>
 
 <%
-PortletPreferences preferences = renderRequest.getPreferences();
+PortletPreferences preferences = portletPreferences;
 
 boolean displayAdditionalActivityCounters = GetterUtil.getBoolean(PrefsParamUtil.getString(preferences, request, "displayAdditionalActivityCounters"), true);
 

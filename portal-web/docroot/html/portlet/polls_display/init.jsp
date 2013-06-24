@@ -29,7 +29,7 @@ page import="com.liferay.portlet.polls.service.permission.PollsQuestionPermissio
 page import="com.liferay.portlet.polls.util.PollsUtil" %>
 
 <%
-PortletPreferences preferences = renderRequest.getPreferences();
+PortletPreferences preferences = portletPreferences;
 
 long questionId = GetterUtil.getLong(preferences.getValue("questionId", StringPool.BLANK));
 

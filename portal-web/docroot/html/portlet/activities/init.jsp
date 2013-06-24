@@ -20,7 +20,7 @@
 page import="com.liferay.portlet.social.service.SocialActivityLocalServiceUtil" %>
 
 <%
-PortletPreferences preferences = renderRequest.getPreferences();
+PortletPreferences preferences = portletPreferences;
 
 int max = GetterUtil.getInteger(preferences.getValue("max", "10"));
 %>

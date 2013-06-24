@@ -22,7 +22,7 @@ page import="com.liferay.portlet.blogs.service.permission.BlogsEntryPermission" 
 page import="com.liferay.portlet.messageboards.service.MBMessageLocalServiceUtil" %>
 
 <%
-PortletPreferences preferences = renderRequest.getPreferences();
+PortletPreferences preferences = portletPreferences;
 
 String selectionMethod = preferences.getValue("selectionMethod", "users");
 long organizationId = GetterUtil.getLong(preferences.getValue("organizationId", "0"));

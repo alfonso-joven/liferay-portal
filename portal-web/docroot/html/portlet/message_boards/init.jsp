@@ -86,7 +86,7 @@ page import="com.liferay.portlet.ratings.service.RatingsStatsLocalServiceUtil" %
 page import="com.liferay.util.RSSUtil" %>
 
 <%
-PortletPreferences preferences = renderRequest.getPreferences();
+PortletPreferences preferences = portletPreferences;
 
 String currentLanguageId = LanguageUtil.getLanguageId(request);
 Locale currentLocale = LocaleUtil.fromLanguageId(currentLanguageId);

@@ -60,7 +60,7 @@ page import="com.liferay.util.RSSUtil" %><%@
 page import="com.liferay.util.xml.DocUtil" %>
 
 <%
-PortletPreferences preferences = renderRequest.getPreferences();
+PortletPreferences preferences = portletPreferences;
 
 String portletResource = ParamUtil.getString(request, "portletResource");
 

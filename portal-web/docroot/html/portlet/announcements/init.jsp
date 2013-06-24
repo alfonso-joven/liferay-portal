@@ -35,7 +35,7 @@ page import="com.liferay.portlet.announcements.service.permission.AnnouncementsE
 page import="com.liferay.portlet.announcements.util.AnnouncementsUtil" %>
 
 <%
-PortletPreferences preferences = renderRequest.getPreferences();
+PortletPreferences preferences = portletPreferences;
 
 int pageDelta = GetterUtil.getInteger(preferences.getValue("pageDelta", String.valueOf(SearchContainer.DEFAULT_DELTA)));
 

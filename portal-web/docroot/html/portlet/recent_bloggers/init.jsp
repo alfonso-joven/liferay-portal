@@ -23,7 +23,7 @@ page import="com.liferay.portlet.blogs.service.BlogsStatsUserLocalServiceUtil" %
 page import="com.liferay.portlet.blogs.util.comparator.StatsUserLastPostDateComparator" %>
 
 <%
-PortletPreferences preferences = renderRequest.getPreferences();
+PortletPreferences preferences = portletPreferences;
 
 String selectionMethod = preferences.getValue("selectionMethod", "users");
 long organizationId = GetterUtil.getLong(preferences.getValue("organizationId", "0"));

@@ -20,7 +20,7 @@
 page import="com.liferay.portlet.asset.model.AssetRendererFactory" %>
 
 <%
-PortletPreferences preferences = renderRequest.getPreferences();
+PortletPreferences preferences = portletPreferences;
 
 long classNameId = PrefsParamUtil.getLong(preferences, request, "classNameId");
 String displayStyle = PrefsParamUtil.getString(preferences, request, "displayStyle", "cloud");

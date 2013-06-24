@@ -20,7 +20,7 @@
 page import="com.liferay.portal.util.LayoutView" %>
 
 <%
-PortletPreferences preferences = renderRequest.getPreferences();
+PortletPreferences preferences = portletPreferences;
 
 String rootLayoutUuid = GetterUtil.getString(preferences.getValue("rootLayoutUuid", StringPool.BLANK));
 int displayDepth = GetterUtil.getInteger(preferences.getValue("displayDepth", StringPool.BLANK));

@@ -32,7 +32,7 @@ page import="com.liferay.portlet.dynamicdatamapping.service.permission.DDMPermis
 page import="com.liferay.portlet.dynamicdatamapping.service.permission.DDMTemplatePermission" %>
 
 <%
-PortletPreferences preferences = renderRequest.getPreferences();
+PortletPreferences preferences = portletPreferences;
 
 String portletResource = ParamUtil.getString(request, "portletResource");
 

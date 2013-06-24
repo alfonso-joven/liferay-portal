@@ -20,7 +20,7 @@
 String redirect = ParamUtil.getString(request, "redirect");
 String returnToFullPageURL = ParamUtil.getString(request, "returnToFullPageURL");
 
-PortletPreferences preferences = renderRequest.getPreferences();
+PortletPreferences preferences = portletPreferences;
 
 String scopeType = GetterUtil.getString(preferences.getValue("lfrScopeType", null));
 String scopeLayoutUuid = GetterUtil.getString(preferences.getValue("lfrScopeLayoutUuid", null));

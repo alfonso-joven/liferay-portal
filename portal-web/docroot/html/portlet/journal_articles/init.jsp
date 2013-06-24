@@ -37,7 +37,7 @@ page import="com.liferay.portlet.journalcontent.util.JournalContentUtil" %><%@
 page import="com.liferay.portlet.layoutconfiguration.util.RuntimePortletUtil" %>
 
 <%
-PortletPreferences preferences = renderRequest.getPreferences();
+PortletPreferences preferences = portletPreferences;
 
 long groupId = GetterUtil.getLong(preferences.getValue("groupId", String.valueOf(themeDisplay.getScopeGroupId())));
 String structureId = GetterUtil.getString(preferences.getValue("structureId", StringPool.BLANK));

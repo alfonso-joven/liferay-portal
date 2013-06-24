@@ -20,7 +20,7 @@
 page import="com.liferay.portlet.layoutconfiguration.util.RuntimePortletUtil" %>
 
 <%
-PortletPreferences preferences = renderRequest.getPreferences();
+PortletPreferences preferences = portletPreferences;
 %>
 
 <%@ include file="/html/portlet/nested_portlets/init-ext.jsp" %>

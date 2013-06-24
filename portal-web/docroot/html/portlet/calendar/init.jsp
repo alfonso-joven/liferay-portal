@@ -36,7 +36,7 @@ page import="com.liferay.portlet.calendar.util.CalUtil" %><%@
 page import="com.liferay.portlet.calendar.util.comparator.EventTimeComparator" %>
 
 <%
-PortletPreferences preferences = renderRequest.getPreferences();
+PortletPreferences preferences = portletPreferences;
 
 String tabs1Names = "summary,day,week,month,year,events";
 

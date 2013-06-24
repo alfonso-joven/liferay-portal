@@ -39,7 +39,7 @@ page import="com.liferay.portlet.layoutconfiguration.util.RuntimePortletUtil" %>
 page import="com.liferay.portlet.messageboards.service.MBMessageLocalServiceUtil" %>
 
 <%
-PortletPreferences preferences = renderRequest.getPreferences();
+PortletPreferences preferences = portletPreferences;
 
 String portletResource = ParamUtil.getString(request, "portletResource");
 

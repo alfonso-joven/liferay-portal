@@ -26,7 +26,7 @@ page import="com.liferay.portlet.social.util.SocialCounterPeriodUtil" %><%@
 page import="com.liferay.portlet.social.util.comparator.SocialActivityCounterNameComparator" %>
 
 <%
-PortletPreferences preferences = renderRequest.getPreferences();
+PortletPreferences preferences = portletPreferences;
 
 int[] displayActivityCounterNameIndexes = null;
 

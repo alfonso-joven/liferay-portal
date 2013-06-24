@@ -44,7 +44,7 @@ page import="com.liferay.portlet.documentlibrary.util.VideoProcessorUtil" %><%@
 page import="com.liferay.portlet.imagegallerydisplay.util.IGUtil" %>
 
 <%
-PortletPreferences preferences = renderRequest.getPreferences();
+PortletPreferences preferences = portletPreferences;
 
 String portletResource = ParamUtil.getString(request, "portletResource");
 

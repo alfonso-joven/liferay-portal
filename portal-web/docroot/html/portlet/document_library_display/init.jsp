@@ -47,7 +47,7 @@ page import="com.liferay.portlet.journal.search.FileEntrySearch" %><%@
 page import="com.liferay.portlet.journal.search.FileEntrySearchTerms" %>
 
 <%
-PortletPreferences preferences = renderRequest.getPreferences();
+PortletPreferences preferences = portletPreferences;
 
 String portletResource = ParamUtil.getString(request, "portletResource");
 

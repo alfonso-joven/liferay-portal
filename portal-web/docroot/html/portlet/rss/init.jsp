@@ -35,7 +35,7 @@ page import="com.sun.syndication.feed.synd.SyndFeed" %><%@
 page import="com.sun.syndication.feed.synd.SyndImage" %>
 
 <%
-PortletPreferences preferences = renderRequest.getPreferences();
+PortletPreferences preferences = portletPreferences;
 
 String portletResource = ParamUtil.getString(request, "portletResource");
 

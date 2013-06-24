@@ -28,7 +28,7 @@ page import="com.liferay.portlet.journal.service.JournalContentSearchLocalServic
 page import="com.liferay.portlet.journalcontentsearch.util.ContentHits" %>
 
 <%
-PortletPreferences preferences = renderRequest.getPreferences();
+PortletPreferences preferences = portletPreferences;
 
 boolean showListedDefault = true;
 

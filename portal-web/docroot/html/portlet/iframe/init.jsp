@@ -19,7 +19,7 @@
 <%@ page import="com.liferay.portlet.iframe.util.IFrameUtil" %>
 
 <%
-PortletPreferences preferences = renderRequest.getPreferences();
+PortletPreferences preferences = portletPreferences;
 
 String src = preferences.getValue("src", StringPool.BLANK);
 boolean relative = GetterUtil.getBoolean(preferences.getValue("relative", StringPool.BLANK));
