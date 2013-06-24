@@ -1016,6 +1016,9 @@ public class DLPortletDataHandlerImpl extends BasePortletDataHandler {
 		exportFileEntryType(
 			portletDataContext, fileEntryTypesElement, dlFileEntryType);
 
+		fileEntryElement.addAttribute(
+			"fileEntryTypeUuid", dlFileEntryType.getUuid());
+
 		List<DDMStructure> ddmStructures = dlFileEntryType.getDDMStructures();
 
 		for (DDMStructure ddmStructure : ddmStructures) {

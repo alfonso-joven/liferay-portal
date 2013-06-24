@@ -81,9 +81,11 @@ import com.liferay.portlet.asset.service.AssetVocabularyLocalServiceUtil;
 import com.liferay.portlet.asset.service.persistence.AssetCategoryUtil;
 import com.liferay.portlet.asset.service.persistence.AssetVocabularyUtil;
 import com.liferay.portlet.assetpublisher.util.AssetPublisherUtil;
+import com.liferay.portlet.documentlibrary.model.DLFileEntry;
 import com.liferay.portlet.documentlibrary.model.DLFileEntryType;
 import com.liferay.portlet.documentlibrary.service.DLFileEntryTypeLocalServiceUtil;
 import com.liferay.portlet.expando.model.ExpandoColumn;
+import com.liferay.portlet.journal.model.JournalArticle;
 import com.liferay.portlet.journal.model.JournalStructure;
 import com.liferay.portlet.journal.service.JournalStructureLocalServiceUtil;
 import com.liferay.portlet.messageboards.model.MBMessage;
@@ -1535,6 +1537,15 @@ public class PortletExporter {
 		javax.portlet.PortletPreferences jxPreferences =
 			PortletPreferencesFactoryUtil.fromDefaultXML(xml);
 
+		String anyAssetTypeClassName = StringPool.BLANK;
+
+		long anyAssetType = GetterUtil.getLong(
+			jxPreferences.getValue("anyAssetType", null));
+
+		if (anyAssetType > 0) {
+			anyAssetTypeClassName = PortalUtil.getClassName(anyAssetType);
+		}
+
 		Enumeration<String> enu = jxPreferences.getNames();
 
 		while (enu.hasMoreElements()) {
@@ -1548,6 +1559,9 @@ public class PortletExporter {
 			}
 			else if (name.equals(
 						"anyClassTypeDLFileEntryAssetRendererFactory") ||
+					 (name.equals("classTypeIds") &&
+					  anyAssetTypeClassName.equals(
+						  DLFileEntry.class.getName())) ||
 					 name.equals(
 						"classTypeIdsDLFileEntryAssetRendererFactory")) {
 
@@ -1556,9 +1570,11 @@ public class PortletExporter {
 			}
 			else if (name.equals(
 						"anyClassTypeJournalArticleAssetRendererFactory") ||
+					 (name.equals("classTypeIds") &&
+					  anyAssetTypeClassName.equals(
+						  JournalArticle.class.getName())) ||
 					 name.equals(
-						"classTypeIdsJournalArticleAssetRendererFactory") ||
-					 name.equals("classTypeIds")) {
+						"classTypeIdsJournalArticleAssetRendererFactory")) {
 
 				updatePreferencesClassPKs(
 					jxPreferences, name, JournalStructure.class.getName());
