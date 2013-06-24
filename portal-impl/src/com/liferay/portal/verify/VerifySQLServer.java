@@ -98,6 +98,51 @@ public class VerifySQLServer extends VerifyProcess {
 		}
 	}
 
+	protected void convertColumnToMax(String tableName, String columnName)
+		throws Exception {
+
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		try {
+			con = DataAccess.getUpgradeOptimizedConnection();
+
+			StringBundler sb = new StringBundler(7);
+
+			sb.append("select count(*) as numOfMaxColumns from ");
+			sb.append("information_schema.columns where table_name = '");
+			sb.append(tableName);
+			sb.append("' and column_name = '");
+			sb.append(columnName);
+			sb.append("' and data_type = 'nvarchar' and ");
+			sb.append("character_maximum_length = '-1'");
+
+			ps = con.prepareStatement(sb.toString());
+
+			rs = ps.executeQuery();
+
+			if (rs.next()) {
+				int numOfMaxColumns = rs.getInt("numOfMaxColumns");
+
+				if (numOfMaxColumns == 0) {
+					StringBundler sb2 = new StringBundler(5);
+
+					sb2.append("alter table ");
+					sb2.append(tableName);
+					sb2.append(" alter column ");
+					sb2.append(columnName);
+					sb2.append(" nvarchar (max) null");
+
+					runSQL(sb2.toString());
+				}
+			}
+		}
+		finally {
+			DataAccess.cleanUp(con, ps, rs);
+		}
+	}
+
 	protected void convertTextColumn(
 			String tableName, String columnName, boolean nullable)
 		throws Exception {
@@ -174,6 +219,9 @@ public class VerifySQLServer extends VerifyProcess {
 		}
 
 		convertColumnsToUnicode();
+
+		convertColumnToMax("Layout", "css");
+		convertColumnToMax("LayoutRevision", "css");
 	}
 
 	protected void dropNonunicodeTableIndexes() {
