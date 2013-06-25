@@ -1,6 +1,6 @@
 <definition>
 	<set-up>
-		<execute macro="User#pgFirstLogin" />
+		<execute macro="User#firstLoginPG" />
 	</set-up>
 
 	<command name="AddDocument">
@@ -151,7 +151,5 @@
 		<execute macro="DMDocument#tearDownCP" />
 
 		<execute macro="DMFolder#tearDownCP" />
-
-		<execute macro="User#pgLogout" />
 	</tear-down>
 </definition>

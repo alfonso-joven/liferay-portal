@@ -2,7 +2,7 @@
 	<var name="pageName" value="Asset Publisher Page" />
 	<var name="portletName" value="Asset Publisher" />
 	<set-up>
-		<execute macro="User#pgFirstLogin" />
+		<execute macro="User#firstLoginPG" />
 	</set-up>
 
 	<command name="AddPortletAssetPublisherSite">

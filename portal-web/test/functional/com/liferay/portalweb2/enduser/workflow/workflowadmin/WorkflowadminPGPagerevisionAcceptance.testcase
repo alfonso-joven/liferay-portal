@@ -3,7 +3,7 @@
 	<var name="workflowAssetType" value="Page Revision" />
 
 	<set-up>
-		<execute macro="User#pgFirstLogin" />
+		<execute macro="User#firstLoginPG" />
 
 		<execute macro="Site#addCP">
 			<var name="siteName" value="${siteName}" />

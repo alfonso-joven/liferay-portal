@@ -4,7 +4,7 @@
 	<var name="workflowAssetType" value="Message Boards Message" />
 
 	<set-up>
-		<execute macro="User#pgFirstLogin" />
+		<execute macro="User#firstLoginPG" />
 
 		<execute macro="Workflow#configureSiteWorkflow">
 			<var name="workflowDefinition" value="Single Approver (Version 1)" />

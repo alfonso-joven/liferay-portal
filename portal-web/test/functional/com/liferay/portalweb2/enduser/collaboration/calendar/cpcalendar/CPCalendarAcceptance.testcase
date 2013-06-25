@@ -1,6 +1,6 @@
 <definition>
 	<set-up>
-		<execute macro="User#pgFirstLogin" />
+		<execute macro="User#firstLoginPG" />
 	</set-up>
 
 	<command name="AddCalendarEvent">
@@ -39,7 +39,5 @@
 
 	<tear-down>
 		<execute macro="Event#tearDownCP" />
-
-		<execute macro="User#pgLogout" />
 	</tear-down>
 </definition>

@@ -2,7 +2,7 @@
 	<var name="siteName" value="Liferay" />
 
 	<set-up>
-		<execute macro="User#pgFirstLogin" />
+		<execute macro="User#firstLoginPG" />
 	</set-up>
 
 	<command name="ActivateStaging">

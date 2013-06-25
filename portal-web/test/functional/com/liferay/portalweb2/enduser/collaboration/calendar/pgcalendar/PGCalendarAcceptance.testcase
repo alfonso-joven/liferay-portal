@@ -3,7 +3,7 @@
 	<var name="portletName" value="Calendar" />
 
 	<set-up>
-		<execute macro="User#pgFirstLogin" />
+		<execute macro="User#firstLoginPG" />
 
 		<execute macro="Page#addPG">
 			<var name="pageName" value="${pageName}" />
@@ -53,7 +53,5 @@
 		<execute macro="Event#tearDownCP" />
 
 		<execute macro="Page#tearDownPG" />
-
-		<execute macro="User#pgLogout" />
 	</tear-down>
 </definition>

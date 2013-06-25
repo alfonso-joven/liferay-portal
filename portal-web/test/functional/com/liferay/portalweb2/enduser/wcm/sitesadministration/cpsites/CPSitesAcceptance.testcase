@@ -1,6 +1,6 @@
 <definition>
 	<set-up>
-		<execute macro="User#pgFirstLogin" />
+		<execute macro="User#firstLoginPG" />
 	</set-up>
 
 	<command name="AddSite">
@@ -40,9 +40,9 @@
 			<var name="userScreenName" value="${userScreenName}" />
 		</execute>
 
-		<execute macro="User#pgLogout" />
+		<execute macro="User#logoutPG" />
 
-		<execute macro="User#pgLogin">
+		<execute macro="User#loginPG">
 			<var name="userEmailAddress" value="${userEmailAddress}" />
 			<var name="password" value="test" />
 		</execute>
@@ -150,7 +150,7 @@
 	</command>
 
 	<tear-down>
-		<execute macro="User#pgFirstLogin" />
+		<execute macro="User#firstLoginPG" />
 
 		<execute macro="User#tearDownCP" />
 
