@@ -3,5 +3,7 @@
 
 	<execute test-case="PGMicroblogsAcceptance" />
 
+	<execute test-case="PGTasksAcceptance" />
+
 	<execute test-case="SOSitesAcceptance" />
 </definition>
