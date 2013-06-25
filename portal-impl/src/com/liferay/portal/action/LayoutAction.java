@@ -751,7 +751,8 @@ public class LayoutAction extends Action {
 
 				if (portletRequest != null) {
 					PortletRequestImpl portletRequestImpl =
-						(PortletRequestImpl)portletRequest;
+						PortletRequestImpl.getPortletRequestImpl(
+							portletRequest);
 
 					portletRequestImpl.cleanUp();
 				}

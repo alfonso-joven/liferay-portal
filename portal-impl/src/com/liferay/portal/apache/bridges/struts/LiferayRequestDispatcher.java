@@ -203,7 +203,7 @@ public class LiferayRequestDispatcher implements RequestDispatcher {
 		boolean named = false;
 
 		PortletRequestImpl portletRequestImpl =
-			(PortletRequestImpl)portletRequest;
+			PortletRequestImpl.getPortletRequestImpl(portletRequest);
 
 		return new PortletServletRequest(
 			request, portletRequestImpl, pathInfo, queryString, requestURI,
@@ -238,7 +238,7 @@ public class LiferayRequestDispatcher implements RequestDispatcher {
 		PortletResponse portletResponse) {
 
 		PortletRequestImpl portletRequestImpl =
-			(PortletRequestImpl)portletRequest;
+			PortletRequestImpl.getPortletRequestImpl(portletRequest);
 
 		Portlet portlet = portletRequestImpl.getPortlet();
 
