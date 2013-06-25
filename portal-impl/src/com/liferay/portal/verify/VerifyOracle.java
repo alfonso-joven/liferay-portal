@@ -120,8 +120,8 @@ public class VerifyOracle extends VerifyProcess {
 
 			StringBundler sb = new StringBundler(6);
 
-			sb.append("select count(*) as numOfClobColumns from ");
-			sb.append("user_tab_columns where table_name = '");
+			sb.append("select count(*) from user_tab_columns ");
+			sb.append("where table_name = '");
 			sb.append(tableName.toUpperCase());
 			sb.append("' and column_name = '");
 			sb.append(columnName.toUpperCase());
@@ -135,9 +135,9 @@ public class VerifyOracle extends VerifyProcess {
 				return;
 			}
 
-			int numOfClobColumns = rs.getInt("numOfClobColumns");
+			int count = rs.getInt(1);
 
-			if (numOfClobColumns != 0) {
+			if (count > 0) {
 				return;
 			}
 

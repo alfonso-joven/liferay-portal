@@ -98,7 +98,8 @@ public class VerifySQLServer extends VerifyProcess {
 		}
 	}
 
-	protected void convertColumnToMax(String tableName, String columnName)
+	protected void convertColumnToNvarcharMax(
+			String tableName, String columnName)
 		throws Exception {
 
 		Connection con = null;
@@ -110,8 +111,8 @@ public class VerifySQLServer extends VerifyProcess {
 
 			StringBundler sb = new StringBundler(7);
 
-			sb.append("select count(*) as numOfMaxColumns from ");
-			sb.append("information_schema.columns where table_name = '");
+			sb.append("select count(*) from information_schema.columns ");
+			sb.append("where table_name = '");
 			sb.append(tableName);
 			sb.append("' and column_name = '");
 			sb.append(columnName);
@@ -126,9 +127,9 @@ public class VerifySQLServer extends VerifyProcess {
 				return;
 			}
 
-			int numOfMaxColumns = rs.getInt("numOfMaxColumns");
+			int count = rs.getInt(1);
 
-			if (numOfMaxColumns == 0) {
+			if (count == 0) {
 				return;
 			}
 
@@ -224,8 +225,8 @@ public class VerifySQLServer extends VerifyProcess {
 
 		convertColumnsToUnicode();
 
-		convertColumnToMax("Layout", "css");
-		convertColumnToMax("LayoutRevision", "css");
+		convertColumnToNvarcharMax("Layout", "css");
+		convertColumnToNvarcharMax("LayoutRevision", "css");
 	}
 
 	protected void dropNonunicodeTableIndexes() {
