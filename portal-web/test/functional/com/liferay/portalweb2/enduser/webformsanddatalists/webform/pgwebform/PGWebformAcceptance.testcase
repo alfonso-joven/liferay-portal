@@ -16,23 +16,44 @@
 	</set-up>
 
 	<command name="ConfigureWebform">
-		<var name="pageName" value="${pageName}" />
 		<var name="webFormInformationTitle" value="Suggestions" />
+		<var name="webFormInformationTitleEdit" value="Feed Back" />
 		<var name="webFormInformationDescription" value="Your input is valuable to us. Please send us your suggestions." />
+		<var name="webFormInformationDescriptionEdit" value="Please let us know what you think!" />
 		<var name="webFormFieldsName" value="Name" />
+		<var name="webFormFieldsNameEdit" value="Your Name" />
 		<var name="webFormFieldsRating" value="Rating" />
+		<var name="webFormFieldsRatingEdit" value="Rate Us!" />
 		<var name="webFormFieldsComments" value="Comments" />
+		<var name="webFormFieldsCommentsEdit" value="Additional Comments" />
 
-		<var name="pageName" value="${pageName}" />
-		<var name="setupWebFormInformationTitle" value="Feed Back" />
-		<var name="setupWebFormInformationDescription" value="Please let us know what you think!" />
-		<var name="setupWebFormFieldsName" value="Your Name" />
-		<var name="setupWebFormFieldsRating" value="Rate Us!" />
-		<var name="setupWebFormFieldsComments" value="Additional Comments" />
+		<execute macro="WebformPortlet#configureWebformPG">
+			<var name="pageName" value="${pageName}" />
+			<var name="webFormInformationTitle" value="${webFormInformationTitle}" />
+			<var name="webFormInformationTitleEdit" value="${webFormInformationTitleEdit}" />
+			<var name="webFormInformationDescription" value="${webFormInformationDescription}" />
+			<var name="webFormInformationDescriptionEdit" value="${webFormInformationDescriptionEdit}" />
+			<var name="webFormFieldsName" value="${webFormFieldsName}" />
+			<var name="webFormFieldsNameEdit" value="${webFormFieldsNameEdit}" />
+			<var name="webFormFieldsRating" value="${webFormFieldsRating}" />
+			<var name="webFormFieldsRatingEdit" value="${webFormFieldsRatingEdit}" />
+			<var name="webFormFieldsComments" value="${webFormFieldsComments}" />
+			<var name="webFormFieldsCommentsEdit" value="${webFormFieldsCommentsEdit}" />
+		</execute>
 
-		<execute macro="Webform#pgConfigureWebform" />
-
-		<execute macro="Webform#pgViewConfigureWebform" />
+		<execute macro="WebformPortlet#viewConfigureWebformPG">
+			<var name="pageName" value="${pageName}" />
+			<var name="webFormInformationTitle" value="${webFormInformationTitle}" />
+			<var name="webFormInformationTitleEdit" value="${webFormInformationTitleEdit}" />
+			<var name="webFormInformationDescription" value="${webFormInformationDescription}" />
+			<var name="webFormInformationDescriptionEdit" value="${webFormInformationDescriptionEdit}" />
+			<var name="webFormFieldsName" value="${webFormFieldsName}" />
+			<var name="webFormFieldsNameEdit" value="${webFormFieldsNameEdit}" />
+			<var name="webFormFieldsRating" value="${webFormFieldsRating}" />
+			<var name="webFormFieldsRatingEdit" value="${webFormFieldsRatingEdit}" />
+			<var name="webFormFieldsComments" value="${webFormFieldsComments}" />
+			<var name="webFormFieldsCommentsEdit" value="${webFormFieldsCommentsEdit}" />
+		</execute>
 	</command>
 
 	<tear-down>

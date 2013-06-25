@@ -2,4 +2,6 @@
 	<execute test-case="CPDynamicdatalistsAcceptance" />
 
 	<execute test-case="PGDDLDisplayAcceptance" />
+
+	<execute test-case="PGWebformAcceptance" />
 </definition>
