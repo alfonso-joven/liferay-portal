@@ -75,9 +75,7 @@ if (!selectableTree) {
 		PREFIX_PLID: '_plid_',
 
 		afterRenderTree: function(event) {
-			var treeInstance = event.target;
-
-			var rootNode = treeInstance.item(0);
+			var rootNode = event.target.item(0);
 
 			var loadingEl = A.one('#<portlet:namespace />treeLoading<%= treeLoading %>');
 
@@ -91,6 +89,10 @@ if (!selectableTree) {
 					rootNode.expand();
 				</c:when>
 			</c:choose>
+
+			TreeUtil.restoreSelectedNode(rootNode);
+
+			rootNode.eachChildren(TreeUtil.restoreSelectedNode);
 		},
 
 		createListItemId: function(groupId, layoutId, plid) {
@@ -175,6 +177,8 @@ if (!selectableTree) {
 									var target = event.target;
 
 									target.set('alwaysShowHitArea', event.newVal.length > 0);
+
+									target.eachChildren(TreeUtil.restoreSelectedNode);
 
 									<c:if test="<%= selectableTree %>">
 										if (target.get('checked')) {
@@ -314,8 +318,18 @@ if (!selectableTree) {
 			AArray.each(node.get(STR_CHILDREN), TreeUtil.restoreCheckedNode);
 		},
 
-		updateLayout: function(data) {
+		restoreSelectedNode: function(node) {
+			var plid = TreeUtil.extractPlid(node);
 
+			if (plid == '<%= selPlid %>') {
+				node.select();
+			}
+			else {
+				node.unselect();
+			}
+		},
+
+		updateLayout: function(data) {
 			A.io.request(
 				themeDisplay.getPathMain() + '/layouts_admin/update_page',
 				{
@@ -637,11 +651,9 @@ if (!selectableTree) {
 			function(event) {
 				var node = event.tree.node;
 
-				var plid = TreeUtil.extractPlid(node);
+				TreeUtil.restoreSelectedNode(node);
 
-				if (plid == '<%= selPlid %>') {
-					node.select();
-				}
+				node.eachChildren(TreeUtil.restoreSelectedNode);
 			}
 		);
 	</c:if>
