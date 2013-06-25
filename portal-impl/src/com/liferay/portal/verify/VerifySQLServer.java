@@ -122,21 +122,25 @@ public class VerifySQLServer extends VerifyProcess {
 
 			rs = ps.executeQuery();
 
-			if (rs.next()) {
-				int numOfMaxColumns = rs.getInt("numOfMaxColumns");
-
-				if (numOfMaxColumns == 0) {
-					StringBundler sb2 = new StringBundler(5);
-
-					sb2.append("alter table ");
-					sb2.append(tableName);
-					sb2.append(" alter column ");
-					sb2.append(columnName);
-					sb2.append(" nvarchar (max) null");
-
-					runSQL(sb2.toString());
-				}
+			if (!rs.next()) {
+				return;
 			}
+
+			int numOfMaxColumns = rs.getInt("numOfMaxColumns");
+
+			if (numOfMaxColumns == 0) {
+				return;
+			}
+
+			sb = new StringBundler(5);
+
+			sb.append("alter table ");
+			sb.append(tableName);
+			sb.append(" alter column ");
+			sb.append(columnName);
+			sb.append(" nvarchar(max) null");
+
+			runSQL(sb.toString());
 		}
 		finally {
 			DataAccess.cleanUp(con, ps, rs);
