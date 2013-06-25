@@ -48,6 +48,11 @@
 	<td>//nav/ul/li[contains(.,'My Documents')]/a/span</td>
 	<td></td>
 </tr>
+<tr>
+	<td>NAVIGATION_TASKS</td>
+	<td>//nav/ul/li[contains(.,'Tasks')]/a/span</td>
+	<td></td>
+</tr>
 </tbody>
 </table>
 </body>
