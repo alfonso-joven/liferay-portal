@@ -95,7 +95,7 @@
 						<if>
 							<condition action="Dockbar#isTextNotEqual" locator-key1="USER_NAME" value1="Joe Bloggs" />
 							<then>
-								<execute macro="User#pgLogout" />
+								<execute macro="User#logoutPG" />
 
 								<execute macro="SOUser#loginPG">
 									<var name="userEmailAddress" value="test@liferay.com" />

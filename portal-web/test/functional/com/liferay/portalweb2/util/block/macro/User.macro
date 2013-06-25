@@ -112,37 +112,37 @@
 		<execute action="CPUsersandorganizationsUser#click" locator-key1="SAVE_BUTTON" />
 		<execute action="CPUsersandorganizationsUser#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 
-		<execute macro="User#pgLogout" />
+		<execute macro="User#logoutPG" />
 
-		<execute macro="User#pgLogin">
+		<execute macro="User#loginPG">
 			<var name="userEmailAddress" value="${userEmailAddress}" />
 			<var name="password" value="password" />
 		</execute>
 
-		<execute macro="User#pgLogout" />
+		<execute macro="User#logoutPG" />
 
-		<execute macro="User#pgLogin">
+		<execute macro="User#loginPG">
 			<var name="userEmailAddress" value="test@liferay.com" />
 			<var name="password" value="test" />
 		</execute>
 	</command>
 
-	<command name="pgFirstLogin">
+	<command name="firstLoginPG">
 		<execute macro="Page#openURL" />
 
 		<if>
 			<condition action="Dockbar#isElementPresent" locator-key1="USER_NAME" />
 			<then>
-				<execute macro="User#pgLogout" />
-				<execute macro="User#pgLogin" />
+				<execute macro="User#logoutPG" />
+				<execute macro="User#loginPG" />
 			</then>
 			<else>
-				<execute macro="User#pgLogin" />
+				<execute macro="User#loginPG" />
 			</else>
 		</if>
 	</command>
 
-	<command name="pgLogin">
+	<command name="loginPG">
 		<execute macro="Page#openURL" />
 
 		<execute action="PGLogin#type" locator-key1="EMAIL_ADDRESS_FIELD" value1="${userEmailAddress}" />
@@ -175,7 +175,7 @@
 		</if>
 	</command>
 
-	<command name="pgLogout">
+	<command name="logoutPG">
 		<execute macro="Page#openURL" />
 
 		<if>
