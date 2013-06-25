@@ -14,7 +14,6 @@
 
 package com.liferay.portal.kernel.workflow;
 
-import com.liferay.portal.NoSuchWorkflowDefinitionLinkException;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
@@ -98,6 +97,13 @@ public class WorkflowHandlerRegistryUtil {
 			return;
 		}
 
+		WorkflowHandler workflowHandler = getWorkflowHandler(className);
+
+		if (workflowHandler == null) {
+			throw new WorkflowException(
+				"No workflow handler found for " + className);
+		}
+
 		WorkflowInstanceLink workflowInstanceLink =
 			WorkflowInstanceLinkLocalServiceUtil.fetchWorkflowInstanceLink(
 				companyId, groupId, className, classPK);
@@ -113,25 +119,13 @@ public class WorkflowHandlerRegistryUtil {
 			return;
 		}
 
-		WorkflowHandler workflowHandler = getWorkflowHandler(className);
-
-		if (workflowHandler == null) {
-			throw new WorkflowException(
-				"No workflow handler found for " + className);
-		}
-
 		WorkflowDefinitionLink workflowDefinitionLink = null;
 
 		if (WorkflowThreadLocal.isEnabled() &&
 			WorkflowEngineManagerUtil.isDeployed()) {
 
-			try {
-				workflowDefinitionLink =
-					workflowHandler.getWorkflowDefinitionLink(
-						companyId, groupId, classPK);
-			}
-			catch (NoSuchWorkflowDefinitionLinkException nswdle) {
-			}
+			workflowDefinitionLink = workflowHandler.getWorkflowDefinitionLink(
+				companyId, groupId, classPK);
 		}
 
 		int status = WorkflowConstants.STATUS_PENDING;
