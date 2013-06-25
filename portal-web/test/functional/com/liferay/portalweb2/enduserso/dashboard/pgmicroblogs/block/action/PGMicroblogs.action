@@ -11,6 +11,15 @@
 		</case>
 	</command>
 
+	<command name="mouseOver">
+		<case locator-key1="MICROBLOGS_ENTRY_DELETE">
+			<execute function="MouseOver#makeVisible" />
+		</case>
+		<case locator-key1="MICROBLOGS_ENTRY_EDIT">
+			<execute function="MouseOver#makeVisible" />
+		</case>
+	</command>
+
 	<command name="type">
 		<case locator-key1="MICROBLOGS_CONTENT_INPUT_FIELD">
 			<execute function="Type#sendKeys" />

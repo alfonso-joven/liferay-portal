@@ -80,8 +80,18 @@
 	<td></td>
 </tr>
 <tr>
+	<td>MICROBLOGS_ENTRY_EDIT</td>
+	<td>//span[@class='action edit']</td>
+	<td></td>
+</tr>
+<tr>
 	<td>MICROBLOGS_ENTRY_EDIT_LINK</td>
 	<td>//span[@class='action edit']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>MICROBLOGS_ENTRY_DELETE</td>
+	<td>//span[@class='action delete']</td>
 	<td></td>
 </tr>
 <tr>
