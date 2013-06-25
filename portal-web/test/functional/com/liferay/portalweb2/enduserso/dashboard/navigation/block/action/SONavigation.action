@@ -11,5 +11,9 @@
 		<case locator-key1="NAVIGATION_MICROBLOGS">
 			<execute function="Click#textClickAtAndWait" value1="Microblogs" />
 		</case>
+
+		<case locator-key1="NAVIGATION_TASKS">
+			<execute function="AssertClick#assertTextClickAtAndWait" />
+		</case>
 	</command>
 </definition>
