@@ -248,7 +248,8 @@ public class JournalIndexer extends BaseIndexer {
 		document.addKeyword("articleId", article.getArticleId());
 		document.addDate("displayDate", article.getDisplayDate());
 		document.addKeyword("layoutUuid", article.getLayoutUuid());
-		document.addLocalizedKeyword("localized_title", article.getTitleMap());
+		document.addLocalizedKeyword(
+			"localized_title", article.getTitleMap(), true);
 		document.addKeyword("structureId", article.getStructureId());
 		document.addKeyword("templateId", article.getTemplateId());
 
