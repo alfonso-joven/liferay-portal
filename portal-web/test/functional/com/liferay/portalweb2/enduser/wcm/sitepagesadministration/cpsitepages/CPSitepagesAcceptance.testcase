@@ -8,24 +8,30 @@
 		<var name="siteName" value="Site Name" />
 		<var name="siteChildPageName" value="Site Child Page" />
 		<var name="sitePageName" value="Site Page" />
+		<var name="sitePageType" value="Private" />
 		<var name="sitePageURL" value="http://localhost:8080/group/site-name/site-child-page" />
 
 		<execute macro="Site#addBlankCP">
 			<var name="siteName" value="${siteName}" />
 		</execute>
 
-		<execute macro="SitePage#addPrivateCP">
+		<execute macro="SitePage#addCP">
 			<var name="siteName" value="${siteName}" />
 			<var name="sitePageName" value="${sitePageName}" />
+			<var name="sitePageType" value="${sitePageType}" />
 		</execute>
 
-		<execute macro="SitePage#addChildPrivateCP">
+		<execute macro="SitePage#addChildCP">
 			<var name="siteName" value="${siteName}" />
 			<var name="siteChildPageName" value="${siteChildPageName}" />
 			<var name="sitePageName" value="${sitePageName}" />
+			<var name="sitePageType" value="${sitePageType}" />
 		</execute>
 
-		<execute macro="SitePage#viewChildPrivatePG">
+		<execute macro="SitePage#viewChildPG">
+			<var name="pageAccess" value="Private" />
+			<var name="pageName" value="${sitePageName}" />
+			<var name="pageType" value="Site" />
 			<var name="siteGuestName" value="${siteGuestName}" />
 			<var name="siteName" value="${siteName}" />
 			<var name="siteChildPageName" value="${siteChildPageName}" />
@@ -38,18 +44,23 @@
 		<var name="siteGuestName" value="Liferay" />
 		<var name="siteName" value="Site Name" />
 		<var name="sitePageName" value="Site Page" />
+		<var name="sitePageType" value="Private" />
 		<var name="sitePageURL" value="http://localhost:8080/group/site-name/site-page" />
 
 		<execute macro="Site#addBlankCP">
 			<var name="siteName" value="${siteName}" />
 		</execute>
 
-		<execute macro="SitePage#addPrivateCP">
+		<execute macro="SitePage#addCP">
 			<var name="siteName" value="${siteName}" />
 			<var name="sitePageName" value="${sitePageName}" />
+			<var name="sitePageType" value="${sitePageType}" />
 		</execute>
 
-		<execute macro="SitePage#viewPrivatePG">
+		<execute macro="SitePage#viewPG">
+			<var name="pageAccess" value="Private" />
+			<var name="pageName" value="${sitePageName}" />
+			<var name="pageType" value="Site" />
 			<var name="siteGuestName" value="${siteGuestName}" />
 			<var name="siteName" value="${siteName}" />
 			<var name="sitePageName" value="${sitePageName}" />
@@ -62,14 +73,16 @@
 		<var name="portletName" value="Blogs" />
 		<var name="siteName" value="Site Name" />
 		<var name="sitePageName" value="Site Page" />
+		<var name="sitePageType" value="Private" />
 
 		<execute macro="Site#addBlankCP">
 			<var name="siteName" value="${siteName}" />
 		</execute>
 
-		<execute macro="SitePage#addPrivateCP">
+		<execute macro="SitePage#addCP">
 			<var name="siteName" value="${siteName}" />
 			<var name="sitePageName" value="${sitePageName}" />
+			<var name="sitePageType" value="${sitePageType}" />
 		</execute>
 
 		<execute macro="Page#addPG">
@@ -91,24 +104,29 @@
 		<var name="siteName" value="Site Name" />
 		<var name="siteChildPageName" value="Site Child Page" />
 		<var name="sitePageName" value="Site Page" />
+		<var name="sitePageType" value="Public" />
 		<var name="sitePageURL" value="http://localhost:8080/web/site-name/site-child-page" />
 
 		<execute macro="Site#addBlankCP">
 			<var name="siteName" value="${siteName}" />
 		</execute>
 
-		<execute macro="SitePage#addPublicCP">
+		<execute macro="SitePage#addCP">
 			<var name="siteName" value="${siteName}" />
 			<var name="sitePageName" value="${sitePageName}" />
+			<var name="sitePageType" value="${sitePageType}" />
 		</execute>
 
-		<execute macro="SitePage#addChildPublicCP">
+		<execute macro="SitePage#addChildCP">
 			<var name="siteName" value="${siteName}" />
 			<var name="siteChildPageName" value="${siteChildPageName}" />
 			<var name="sitePageName" value="${sitePageName}" />
+			<var name="sitePageType" value="${sitePageType}" />
 		</execute>
 
-		<execute macro="SitePage#viewChildPublicPG">
+		<execute macro="SitePage#viewChildPG">
+			<var name="pageName" value="${sitePageName}" />
+			<var name="pageType" value="Site" />
 			<var name="siteGuestName" value="${siteGuestName}" />
 			<var name="siteName" value="${siteName}" />
 			<var name="siteChildPageName" value="${siteChildPageName}" />
@@ -121,18 +139,22 @@
 		<var name="siteGuestName" value="Liferay" />
 		<var name="siteName" value="Site Name" />
 		<var name="sitePageName" value="Site Page" />
+		<var name="sitePageType" value="Public" />
 		<var name="sitePageURL" value="http://localhost:8080/web/site-name/site-page" />
 
 		<execute macro="Site#addBlankCP">
 			<var name="siteName" value="${siteName}" />
 		</execute>
 
-		<execute macro="SitePage#addPublicCP">
+		<execute macro="SitePage#addCP">
 			<var name="siteName" value="${siteName}" />
 			<var name="sitePageName" value="${sitePageName}" />
+			<var name="sitePageType" value="${sitePageType}" />
 		</execute>
 
-		<execute macro="SitePage#viewPublicPG">
+		<execute macro="SitePage#viewPG">
+			<var name="pageName" value="${sitePageName}" />
+			<var name="pageType" value="Site" />
 			<var name="siteGuestName" value="${siteGuestName}" />
 			<var name="siteName" value="${siteName}" />
 			<var name="sitePageName" value="${sitePageName}" />
@@ -145,14 +167,16 @@
 		<var name="portletName" value="Blogs" />
 		<var name="siteName" value="Site Name" />
 		<var name="sitePageName" value="Site Page" />
+		<var name="sitePageType" value="Public" />
 
 		<execute macro="Site#addBlankCP">
 			<var name="siteName" value="${siteName}" />
 		</execute>
 
-		<execute macro="SitePage#addPublicCP">
+		<execute macro="SitePage#addCP">
 			<var name="siteName" value="${siteName}" />
 			<var name="sitePageName" value="${sitePageName}" />
+			<var name="sitePageType" value="${sitePageType}" />
 		</execute>
 
 		<execute macro="Page#addPG">

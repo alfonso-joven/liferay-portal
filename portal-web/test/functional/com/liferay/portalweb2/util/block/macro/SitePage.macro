@@ -30,7 +30,7 @@
 		<execute action="CPSitepages#assertClick" locator-key1="ADD_PAGE_BUTTON" value1="Add Page" />
 		<execute action="CPSitepages#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 
-		<execute macro="SitePage#openRootCP" />
+		<execute macro="SitePage#expandRootCP" />
 
 		<execute action="CPSitepages#assertTextEquals" locator-key1="PAGE_TREE_PAGE_LINK_1" value1="${sitePageName}" />
 	</command>
@@ -61,7 +61,7 @@
 			</else>
 		</if>
 
-		<execute macro="SitePage#openRootCP" />
+		<execute macro="SitePage#expandRootCP" />
 
 		<execute action="CPSitepages#assertClick" locator-key1="PAGE_TREE_PAGE_LINK_1" value1="${sitePageName}" />
 
@@ -70,42 +70,10 @@
 		<execute action="CPSitepages#assertClick" locator-key1="ADD_PAGE_BUTTON" value1="Add Page" />
 		<execute action="CPSitepages#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 
-		<execute macro="SitePage#openPageCP" />
+		<execute macro="SitePage#expandTreeCP" />
 
 		<execute action="CPSitepages#assertTextEquals" locator-key1="PAGE_TREE_PAGE_LINK_1" value1="${sitePageName}" />
 		<execute action="CPSitepages#assertTextEquals" locator-key1="PAGE_TREE_PAGE_LINK_1_CHILD_PAGE_LINK_1" value1="${siteChildPageName}" />
-	</command>
-
-	<command name="addChildPrivateCP">
-		<execute macro="SitePage#addChildCP">
-			<var name="siteName" value="${siteName}" />
-			<var name="siteChildPageName" value="${siteChildPageName}" />
-			<var name="sitePageName" value="${sitePageName}" />
-			<var name="sitePageType" value="Private" />
-		</execute>
-	</command>
-
-	<command name="addChildPublicCP">
-		<execute macro="SitePage#addChildCP">
-			<var name="siteName" value="${siteName}" />
-			<var name="siteChildPageName" value="${siteChildPageName}" />
-			<var name="sitePageName" value="${sitePageName}" />
-			<var name="sitePageType" value="Public" />
-		</execute>
-	</command>
-
-	<command name="addPrivateCP">
-		<execute macro="SitePage#addCP">
-			<var name="sitePageName" value="${sitePageName}" />
-			<var name="sitePageType" value="Private" />
-		</execute>
-	</command>
-
-	<command name="addPublicCP">
-		<execute macro="SitePage#addCP">
-			<var name="sitePageName" value="${sitePageName}" />
-			<var name="sitePageType" value="Public" />
-		</execute>
 	</command>
 
 	<command name="cpExportLar">
@@ -146,7 +114,7 @@
 		<execute action="CPSitepages#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 	</command>
 
-	<command name="openPageCP">
+	<command name="expandTreeCP">
 		<execute action="CPSitepages#click" locator-key1="PAGE_TREE_PAGE_ARROW_1" />
 
 		<if>
@@ -159,7 +127,7 @@
 		<execute action="CPSitepages#assertElementPresent" locator-key1="PAGE_TREE_PAGE_LINK_1_CHILD_PAGE_LINK_1" />
 	</command>
 
-	<command name="openRootCP">
+	<command name="expandRootCP">
 		<execute action="CPSitepages#click" locator-key1="PAGE_TREE_ROOT_ARROW" />
 		<execute action="CPSitepages#assertElementPresent" locator-key1="PAGE_TREE_PAGE_LINK_1" />
 
@@ -171,11 +139,9 @@
 		</if>
 	</command>
 
-	<command name="viewChildPrivatePG">
+	<command name="viewChildPG">
 		<execute macro="Page#gotoPG">
-			<var name="pageAccess" value="Private" />
 			<var name="pageName" value="${sitePageName}" />
-			<var name="pageType" value="Site" />
 		</execute>
 
 		<execute action="Home#mouseOver" locator-key1="PAGE_1" value1="${sitePageName}" />
@@ -188,44 +154,14 @@
 		<execute action="Home#assertLocation" value1="${sitePageURL}"/>
 	</command>
 
-	<command name="viewChildPublicPG">
+	<command name="viewPG">
 		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${sitePageName}" />
-			<var name="pageType" value="Site" />
-		</execute>
-
-		<execute action="Home#mouseOver" locator-key1="PAGE_1" value1="${sitePageName}" />
-		<execute action="Home#click" locator-key1="PAGE_1_CHILD_PAGE_1" value1="${siteChildPageName}" />
-		<execute action="Home#assertTextEquals" locator-key1="BREADCRUMB_1" value1="${siteGuestName}" />
-		<execute action="Home#assertTextEquals" locator-key1="BREADCRUMB_2" value1="${siteName}" />
-		<execute action="Home#assertTextEquals" locator-key1="BREADCRUMB_3" value1="${sitePageName}" />
-		<execute action="Home#assertTextEquals" locator-key1="BREADCRUMB_4" value1="${siteChildPageName}" />
-		<execute action="Home#assertTextEquals" locator-key1="SITE_NAME" value1="${siteName}" />
-		<execute action="Home#assertLocation" value1="${sitePageURL}"/>
-	</command>
-
-	<command name="viewPrivatePG">
-		<execute macro="Page#gotoPG">
-			<var name="pageAccess" value="Private" />
-			<var name="pageName" value="${sitePageName}" />
-			<var name="pageType" value="Site" />
 		</execute>
 
 		<execute action="Home#assertTextEquals" locator-key1="BREADCRUMB_1" value1="${siteGuestName}" />
 		<execute action="Home#assertTextEquals" locator-key1="BREADCRUMB_2" value1="${siteName}" />
 		<execute action="Home#assertTextEquals" locator-key1="BREADCRUMB_3" value1="${sitePageName}" />
-		<execute action="Home#assertTextEquals" locator-key1="SITE_NAME" value1="${siteName}" />
-		<execute action="Home#assertLocation" value1="${sitePageURL}"/>
-	</command>
-
-	<command name="viewPublicPG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${sitePageName}" />
-			<var name="pageType" value="Site" />
-		</execute>
-
-		<execute action="Home#assertTextEquals" locator-key1="BREADCRUMB_1" value1="${siteGuestName}" />
-		<execute action="Home#assertTextEquals" locator-key1="BREADCRUMB_2" value1="${siteName}" />
 		<execute action="Home#assertTextEquals" locator-key1="SITE_NAME" value1="${siteName}" />
 		<execute action="Home#assertLocation" value1="${sitePageURL}"/>
 	</command>
