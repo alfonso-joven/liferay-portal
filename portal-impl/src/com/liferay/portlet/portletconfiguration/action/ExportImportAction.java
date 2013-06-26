@@ -83,6 +83,8 @@ public class ExportImportAction extends PortletAction {
 			ActionResponse actionResponse)
 		throws Exception {
 
+		actionRequest = ActionUtil.getWrappedActionRequest(actionRequest, null);
+
 		Portlet portlet = null;
 
 		try {
@@ -158,6 +160,8 @@ public class ExportImportAction extends PortletAction {
 		}
 
 		renderResponse.setTitle(ActionUtil.getTitle(portlet, renderRequest));
+
+		renderRequest = ActionUtil.getWrappedRenderRequest(renderRequest, null);
 
 		return actionMapping.findForward(
 			getForward(

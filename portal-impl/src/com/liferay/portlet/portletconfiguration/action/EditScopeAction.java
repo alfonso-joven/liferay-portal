@@ -35,7 +35,6 @@ import com.liferay.portal.theme.ThemeDisplay;
 import com.liferay.portal.util.PortalUtil;
 import com.liferay.portal.util.WebKeys;
 import com.liferay.portlet.PortletConfigFactoryUtil;
-import com.liferay.portlet.PortletPreferencesFactoryUtil;
 import com.liferay.portlet.portletconfiguration.util.PortletConfigurationUtil;
 
 import java.util.ResourceBundle;
@@ -79,6 +78,12 @@ public class EditScopeAction extends PortletAction {
 
 			setForward(actionRequest, "portlet.portlet_configuration.error");
 		}
+
+		PortletPreferences portletPreferences =
+			ActionUtil.getLayoutPortletSetup(actionRequest, portlet);
+
+		actionRequest = ActionUtil.getWrappedActionRequest(
+			actionRequest, portletPreferences);
 
 		String cmd = ParamUtil.getString(actionRequest, Constants.CMD);
 
@@ -132,6 +137,12 @@ public class EditScopeAction extends PortletAction {
 			return actionMapping.findForward(
 				"portlet.portlet_configuration.error");
 		}
+
+		PortletPreferences portletPreferences =
+			ActionUtil.getLayoutPortletSetup(renderRequest, portlet);
+
+		renderRequest = ActionUtil.getWrappedRenderRequest(
+			renderRequest, portletPreferences);
 
 		renderResponse.setTitle(ActionUtil.getTitle(portlet, renderRequest));
 
@@ -196,12 +207,10 @@ public class EditScopeAction extends PortletAction {
 
 		Layout layout = themeDisplay.getLayout();
 
-		PortletPreferences preferences =
-			PortletPreferencesFactoryUtil.getLayoutPortletSetup(
-				layout, portlet.getPortletId());
+		PortletPreferences portletPreferences = actionRequest.getPreferences();
 
 		String scopeType = GetterUtil.getString(
-			preferences.getValue("lfrScopeType", null));
+			portletPreferences.getValue("lfrScopeType", null));
 
 		if (Validator.isNull(scopeType)) {
 			return null;
@@ -214,7 +223,7 @@ public class EditScopeAction extends PortletAction {
 		}
 		else if (scopeType.equals("layout")) {
 			String scopeLayoutUuid = GetterUtil.getString(
-				preferences.getValue("lfrScopeLayoutUuid", null));
+				portletPreferences.getValue("lfrScopeLayoutUuid", null));
 
 			try {
 				Layout scopeLayout =
@@ -270,13 +279,11 @@ public class EditScopeAction extends PortletAction {
 
 		Layout layout = themeDisplay.getLayout();
 
-		PortletPreferences preferences =
-			PortletPreferencesFactoryUtil.getLayoutPortletSetup(
-				layout, portlet.getPortletId());
+		PortletPreferences portletPreferences = actionRequest.getPreferences();
 
 		String scopeType = ParamUtil.getString(actionRequest, "scopeType");
 
-		preferences.setValue("lfrScopeType", scopeType);
+		portletPreferences.setValue("lfrScopeType", scopeType);
 
 		String scopeLayoutUuid = ParamUtil.getString(
 			actionRequest, "scopeLayoutUuid");
@@ -285,16 +292,16 @@ public class EditScopeAction extends PortletAction {
 			scopeLayoutUuid = StringPool.BLANK;
 		}
 
-		preferences.setValue("lfrScopeLayoutUuid", scopeLayoutUuid);
+		portletPreferences.setValue("lfrScopeLayoutUuid", scopeLayoutUuid);
 
 		String portletTitle = getPortletTitle(
-			actionRequest, portlet, preferences);
+			actionRequest, portlet, portletPreferences);
 
 		Tuple newScopeTuple = getNewScope(actionRequest);
 
 		long newScopeGroupId = (Long)newScopeTuple.getObject(0);
 
-		preferences.setValue("groupId", String.valueOf(newScopeGroupId));
+		portletPreferences.setValue("groupId", String.valueOf(newScopeGroupId));
 
 		String oldScopeName = getOldScopeName(actionRequest, portlet);
 		String newScopeName = (String)newScopeTuple.getObject(1);
@@ -303,14 +310,14 @@ public class EditScopeAction extends PortletAction {
 			portletTitle, oldScopeName, newScopeName);
 
 		if (!newPortletTitle.equals(portletTitle)) {
-			preferences.setValue(
+			portletPreferences.setValue(
 				"portletSetupTitle_" + themeDisplay.getLanguageId(),
 				newPortletTitle);
-			preferences.setValue(
+			portletPreferences.setValue(
 				"portletSetupUseCustomTitle", Boolean.TRUE.toString());
 		}
 
-		preferences.store();
+		portletPreferences.store();
 	}
 
 }

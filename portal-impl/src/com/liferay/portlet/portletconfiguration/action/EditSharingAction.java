@@ -19,14 +19,10 @@ import com.liferay.portal.kernel.servlet.SessionErrors;
 import com.liferay.portal.kernel.servlet.SessionMessages;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.Validator;
-import com.liferay.portal.model.Layout;
 import com.liferay.portal.model.Portlet;
 import com.liferay.portal.security.auth.PrincipalException;
 import com.liferay.portal.struts.PortletAction;
-import com.liferay.portal.theme.ThemeDisplay;
 import com.liferay.portal.util.PortalUtil;
-import com.liferay.portal.util.WebKeys;
-import com.liferay.portlet.PortletPreferencesFactoryUtil;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.ActionResponse;
@@ -63,34 +59,31 @@ public class EditSharingAction extends PortletAction {
 			setForward(actionRequest, "portlet.portlet_configuration.error");
 		}
 
-		ThemeDisplay themeDisplay = (ThemeDisplay)actionRequest.getAttribute(
-			WebKeys.THEME_DISPLAY);
+		PortletPreferences portletPreferences =
+			ActionUtil.getLayoutPortletSetup(actionRequest, portlet);
 
-		Layout layout = themeDisplay.getLayout();
-
-		PortletPreferences preferences =
-			PortletPreferencesFactoryUtil.getLayoutPortletSetup(
-				layout, portlet.getPortletId());
+		actionRequest = ActionUtil.getWrappedActionRequest(
+			actionRequest, portletPreferences);
 
 		String tabs2 = ParamUtil.getString(actionRequest, "tabs2");
 
 		if (tabs2.equals("any-website")) {
-			updateAnyWebsite(actionRequest, preferences);
+			updateAnyWebsite(actionRequest, portletPreferences);
 		}
 		else if (tabs2.equals("facebook")) {
-			updateFacebook(actionRequest, preferences);
+			updateFacebook(actionRequest, portletPreferences);
 		}
 		else if (tabs2.equals("friends")) {
-			updateFriends(actionRequest, preferences);
+			updateFriends(actionRequest, portletPreferences);
 		}
 		else if (tabs2.equals("opensocial-gadget")) {
-			updateGoogleGadget(actionRequest, preferences);
+			updateGoogleGadget(actionRequest, portletPreferences);
 		}
 		else if (tabs2.equals("netvibes")) {
-			updateNetvibes(actionRequest, preferences);
+			updateNetvibes(actionRequest, portletPreferences);
 		}
 
-		preferences.store();
+		portletPreferences.store();
 
 		if (!SessionErrors.isEmpty(actionRequest)) {
 			return;
@@ -140,6 +133,12 @@ public class EditSharingAction extends PortletAction {
 			return actionMapping.findForward(
 				"portlet.portlet_configuration.error");
 		}
+
+		PortletPreferences portletPreferences =
+			ActionUtil.getLayoutPortletSetup(renderRequest, portlet);
+
+		renderRequest = ActionUtil.getWrappedRenderRequest(
+			renderRequest, portletPreferences);
 
 		renderResponse.setTitle(ActionUtil.getTitle(portlet, renderRequest));
 
