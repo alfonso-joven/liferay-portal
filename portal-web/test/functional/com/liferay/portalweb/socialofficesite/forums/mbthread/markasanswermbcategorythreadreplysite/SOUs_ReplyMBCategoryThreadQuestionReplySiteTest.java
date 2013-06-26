@@ -60,7 +60,7 @@ public class SOUs_ReplyMBCategoryThreadQuestionReplySiteTest
 		selenium.clickAt("//span[.='Reply']", RuntimeVariables.replace("Reply"));
 		selenium.waitForPageToLoad("30000");
 		selenium.waitForElementPresent(
-			"//textarea[@id='_19_editor' and @style='display: none;']");
+			"//textarea[@id='_19_editor' and contains(@style,'display: none;')]");
 		assertEquals(RuntimeVariables.replace("Source"),
 			selenium.getText("//span[.='Source']"));
 		selenium.clickAt("//span[.='Source']",
@@ -74,7 +74,7 @@ public class SOUs_ReplyMBCategoryThreadQuestionReplySiteTest
 		selenium.clickAt("//span[.='Source']",
 			RuntimeVariables.replace("Source"));
 		selenium.waitForElementPresent(
-			"//textarea[@id='_19_editor' and @style='display: none;']");
+			"//textarea[@id='_19_editor' and contains(@style,'display: none;')]");
 		selenium.waitForVisible("//td[@id='cke_contents__19_editor']/iframe");
 		selenium.selectFrame("//td[@id='cke_contents__19_editor']/iframe");
 		selenium.waitForText("//body", "MB Category Thread Message Reply Body");

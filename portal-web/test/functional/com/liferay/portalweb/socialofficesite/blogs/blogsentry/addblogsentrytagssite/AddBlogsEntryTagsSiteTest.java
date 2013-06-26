@@ -53,7 +53,7 @@ public class AddBlogsEntryTagsSiteTest extends BaseTestCase {
 				selenium.type("//input[@id='_33_title']",
 					RuntimeVariables.replace("Blogs Entry Title"));
 				selenium.waitForElementPresent(
-					"//textarea[@id='_33_editor' and @style='display: none;']");
+					"//textarea[@id='_33_editor' and contains(@style,'display: none;')]");
 				assertEquals(RuntimeVariables.replace("Source"),
 					selenium.getText("//span[.='Source']"));
 				selenium.clickAt("//span[.='Source']",
@@ -69,7 +69,7 @@ public class AddBlogsEntryTagsSiteTest extends BaseTestCase {
 				selenium.clickAt("//span[.='Source']",
 					RuntimeVariables.replace("Source"));
 				selenium.waitForElementPresent(
-					"//textarea[@id='_33_editor' and @style='display: none;']");
+					"//textarea[@id='_33_editor' and contains(@style,'display: none;')]");
 				selenium.waitForVisible(
 					"//td[@id='cke_contents__33_editor']/iframe");
 				selenium.selectFrame(

@@ -50,7 +50,7 @@ public class SOUs_EditAnnouncementsEntrySiteSiteTest extends BaseTestCase {
 		selenium.type("//input[@id='_84_url']",
 			RuntimeVariables.replace("http://www.liferay.com"));
 		selenium.waitForElementPresent(
-			"//textarea[@id='_84_editor' and @style='display: none;']");
+			"//textarea[@id='_84_editor' and contains(@style,'display: none;')]");
 		selenium.waitForVisible("//span[.='Source']");
 		assertEquals(RuntimeVariables.replace("Source"),
 			selenium.getText("//span[.='Source']"));
@@ -64,7 +64,7 @@ public class SOUs_EditAnnouncementsEntrySiteSiteTest extends BaseTestCase {
 		selenium.clickAt("//span[.='Source']",
 			RuntimeVariables.replace("Source"));
 		selenium.waitForElementPresent(
-			"//textarea[@id='_84_editor' and @style='display: none;']");
+			"//textarea[@id='_84_editor' and contains(@style,'display: none;')]");
 		selenium.waitForVisible("//td[@id='cke_contents__84_editor']/iframe");
 		selenium.selectFrame("//td[@id='cke_contents__84_editor']/iframe");
 		selenium.waitForText("//body", "Announcements Entry Content Edit");

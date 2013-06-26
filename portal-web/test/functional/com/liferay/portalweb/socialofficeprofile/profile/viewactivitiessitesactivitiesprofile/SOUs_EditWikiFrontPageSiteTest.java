@@ -50,7 +50,7 @@ public class SOUs_EditWikiFrontPageSiteTest extends BaseTestCase {
 			RuntimeVariables.replace("Edit"));
 		selenium.waitForPageToLoad("30000");
 		selenium.waitForElementPresent(
-			"//textarea[@id='_36_editor' and @style='display: none;']");
+			"//textarea[@id='_36_editor' and contains(@style,'display: none;')]");
 		assertEquals(RuntimeVariables.replace("Source"),
 			selenium.getText("//span[.='Source']"));
 		selenium.clickAt("//span[.='Source']",
@@ -64,7 +64,7 @@ public class SOUs_EditWikiFrontPageSiteTest extends BaseTestCase {
 		selenium.clickAt("//span[.='Source']",
 			RuntimeVariables.replace("Source"));
 		selenium.waitForElementPresent(
-			"//textarea[@id='_36_editor' and @style='display: none;']");
+			"//textarea[@id='_36_editor' and contains(@style,'display: none;')]");
 		selenium.waitForVisible("//td[@id='cke_contents__36_editor']/iframe");
 		selenium.selectFrame("//td[@id='cke_contents__36_editor']/iframe");
 		selenium.waitForText("//body", "Wiki FrontPage Content Edit2");
