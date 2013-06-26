@@ -358,3 +358,9 @@
 		}
 	}
 }
+
+.ie8 {
+	.question-details {
+		white-space: normal;
+	}
+}
