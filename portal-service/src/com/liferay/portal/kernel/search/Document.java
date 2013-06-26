@@ -101,7 +101,7 @@ public interface Document extends Serializable {
 	public void addLocalizedKeyword(String name, Map<Locale, String> values);
 
 	public void addLocalizedKeyword(
-		String name, Map<Locale, String> values,boolean lowerCase);
+		String name, Map<Locale, String> values, boolean lowerCase);
 
 	public void addLocalizedText(String name, Map<Locale, String> values);
 
