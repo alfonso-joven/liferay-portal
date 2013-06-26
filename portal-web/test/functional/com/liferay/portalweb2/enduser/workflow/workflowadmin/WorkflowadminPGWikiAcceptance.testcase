@@ -62,7 +62,7 @@
 		</execute>
 	</command>
 
-	<command name="RejectBlogsEntryCP">
+	<command name="RejectWikiPageCP">
 		<var name="wikiPageContent" value="Wiki Page Content" />
 		<var name="wikiPageTitle" value="Wiki Page Title" />
 
