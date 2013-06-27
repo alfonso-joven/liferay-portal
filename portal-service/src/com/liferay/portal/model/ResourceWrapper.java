@@ -14,6 +14,8 @@
 
 package com.liferay.portal.model;
 
+import com.liferay.portal.kernel.util.Validator;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -246,6 +248,25 @@ public class ResourceWrapper implements Resource, ModelWrapper<Resource> {
 
 	public void setScope(int scope) {
 		_resource.setScope(scope);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof ResourceWrapper)) {
+			return false;
+		}
+
+		ResourceWrapper resourceWrapper = (ResourceWrapper)obj;
+
+		if (Validator.equals(_resource, resourceWrapper._resource)) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**

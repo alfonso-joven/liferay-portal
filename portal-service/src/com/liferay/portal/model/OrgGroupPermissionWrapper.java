@@ -14,6 +14,8 @@
 
 package com.liferay.portal.model;
 
+import com.liferay.portal.kernel.util.Validator;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -224,6 +226,26 @@ public class OrgGroupPermissionWrapper implements OrgGroupPermission,
 	public boolean containsOrganization(
 		java.util.List<com.liferay.portal.model.Organization> organizations) {
 		return _orgGroupPermission.containsOrganization(organizations);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof OrgGroupPermissionWrapper)) {
+			return false;
+		}
+
+		OrgGroupPermissionWrapper orgGroupPermissionWrapper = (OrgGroupPermissionWrapper)obj;
+
+		if (Validator.equals(_orgGroupPermission,
+					orgGroupPermissionWrapper._orgGroupPermission)) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**

@@ -14,6 +14,7 @@
 
 package com.liferay.portlet.documentlibrary.model;
 
+import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.ModelWrapper;
 
 import java.util.Date;
@@ -421,6 +422,26 @@ public class DLFileEntryTypeWrapper implements DLFileEntryType,
 	public java.util.List<com.liferay.portlet.dynamicdatamapping.model.DDMStructure> getDDMStructures()
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return _dlFileEntryType.getDDMStructures();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof DLFileEntryTypeWrapper)) {
+			return false;
+		}
+
+		DLFileEntryTypeWrapper dlFileEntryTypeWrapper = (DLFileEntryTypeWrapper)obj;
+
+		if (Validator.equals(_dlFileEntryType,
+					dlFileEntryTypeWrapper._dlFileEntryType)) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**

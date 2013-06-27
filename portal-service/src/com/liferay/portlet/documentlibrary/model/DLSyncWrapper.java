@@ -14,6 +14,7 @@
 
 package com.liferay.portlet.documentlibrary.model;
 
+import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.ModelWrapper;
 
 import java.util.Date;
@@ -470,6 +471,25 @@ public class DLSyncWrapper implements DLSync, ModelWrapper<DLSync> {
 	public void persist()
 		throws com.liferay.portal.kernel.exception.SystemException {
 		_dlSync.persist();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof DLSyncWrapper)) {
+			return false;
+		}
+
+		DLSyncWrapper dlSyncWrapper = (DLSyncWrapper)obj;
+
+		if (Validator.equals(_dlSync, dlSyncWrapper._dlSync)) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**

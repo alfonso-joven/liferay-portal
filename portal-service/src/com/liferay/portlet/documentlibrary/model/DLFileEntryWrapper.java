@@ -14,6 +14,7 @@
 
 package com.liferay.portlet.documentlibrary.model;
 
+import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.ModelWrapper;
 
 import java.util.Date;
@@ -927,6 +928,25 @@ public class DLFileEntryWrapper implements DLFileEntry,
 	public void setFileVersion(
 		com.liferay.portlet.documentlibrary.model.DLFileVersion dlFileVersion) {
 		_dlFileEntry.setFileVersion(dlFileVersion);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof DLFileEntryWrapper)) {
+			return false;
+		}
+
+		DLFileEntryWrapper dlFileEntryWrapper = (DLFileEntryWrapper)obj;
+
+		if (Validator.equals(_dlFileEntry, dlFileEntryWrapper._dlFileEntry)) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**

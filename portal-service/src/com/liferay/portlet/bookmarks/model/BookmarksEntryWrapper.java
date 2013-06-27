@@ -14,6 +14,7 @@
 
 package com.liferay.portlet.bookmarks.model;
 
+import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.ModelWrapper;
 
 import java.util.Date;
@@ -545,6 +546,26 @@ public class BookmarksEntryWrapper implements BookmarksEntry,
 
 	public com.liferay.portlet.bookmarks.model.BookmarksFolder getFolder() {
 		return _bookmarksEntry.getFolder();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof BookmarksEntryWrapper)) {
+			return false;
+		}
+
+		BookmarksEntryWrapper bookmarksEntryWrapper = (BookmarksEntryWrapper)obj;
+
+		if (Validator.equals(_bookmarksEntry,
+					bookmarksEntryWrapper._bookmarksEntry)) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**

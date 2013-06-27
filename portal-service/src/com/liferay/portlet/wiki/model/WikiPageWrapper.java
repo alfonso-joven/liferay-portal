@@ -14,6 +14,7 @@
 
 package com.liferay.portlet.wiki.model;
 
+import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.ModelWrapper;
 
 import java.util.Date;
@@ -906,6 +907,25 @@ public class WikiPageWrapper implements WikiPage, ModelWrapper<WikiPage> {
 
 	public void setAttachmentsDir(java.lang.String attachmentsDir) {
 		_wikiPage.setAttachmentsDir(attachmentsDir);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof WikiPageWrapper)) {
+			return false;
+		}
+
+		WikiPageWrapper wikiPageWrapper = (WikiPageWrapper)obj;
+
+		if (Validator.equals(_wikiPage, wikiPageWrapper._wikiPage)) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**

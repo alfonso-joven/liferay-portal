@@ -14,6 +14,7 @@
 
 package com.liferay.portlet.wiki.model;
 
+import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.ModelWrapper;
 
 import java.util.Date;
@@ -439,6 +440,25 @@ public class WikiNodeWrapper implements WikiNode, ModelWrapper<WikiNode> {
 	public void persist()
 		throws com.liferay.portal.kernel.exception.SystemException {
 		_wikiNode.persist();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof WikiNodeWrapper)) {
+			return false;
+		}
+
+		WikiNodeWrapper wikiNodeWrapper = (WikiNodeWrapper)obj;
+
+		if (Validator.equals(_wikiNode, wikiNodeWrapper._wikiNode)) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**

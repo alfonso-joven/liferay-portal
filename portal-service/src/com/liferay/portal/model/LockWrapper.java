@@ -14,6 +14,8 @@
 
 package com.liferay.portal.model;
 
+import com.liferay.portal.kernel.util.Validator;
+
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -458,6 +460,25 @@ public class LockWrapper implements Lock, ModelWrapper<Lock> {
 
 	public boolean isNeverExpires() {
 		return _lock.isNeverExpires();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof LockWrapper)) {
+			return false;
+		}
+
+		LockWrapper lockWrapper = (LockWrapper)obj;
+
+		if (Validator.equals(_lock, lockWrapper._lock)) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**

@@ -14,6 +14,7 @@
 
 package com.liferay.portlet.journal.model;
 
+import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.ModelWrapper;
 
 import java.util.Date;
@@ -719,6 +720,26 @@ public class JournalStructureWrapper implements JournalStructure,
 
 	public java.lang.String getMergedXsd() {
 		return _journalStructure.getMergedXsd();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof JournalStructureWrapper)) {
+			return false;
+		}
+
+		JournalStructureWrapper journalStructureWrapper = (JournalStructureWrapper)obj;
+
+		if (Validator.equals(_journalStructure,
+					journalStructureWrapper._journalStructure)) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**

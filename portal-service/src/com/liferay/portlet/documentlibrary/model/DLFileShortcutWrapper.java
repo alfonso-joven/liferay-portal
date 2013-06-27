@@ -14,6 +14,7 @@
 
 package com.liferay.portlet.documentlibrary.model;
 
+import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.ModelWrapper;
 
 import java.util.Date;
@@ -648,6 +649,26 @@ public class DLFileShortcutWrapper implements DLFileShortcut,
 
 	public java.lang.String getToTitle() {
 		return _dlFileShortcut.getToTitle();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof DLFileShortcutWrapper)) {
+			return false;
+		}
+
+		DLFileShortcutWrapper dlFileShortcutWrapper = (DLFileShortcutWrapper)obj;
+
+		if (Validator.equals(_dlFileShortcut,
+					dlFileShortcutWrapper._dlFileShortcut)) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**

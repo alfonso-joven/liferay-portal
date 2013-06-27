@@ -14,6 +14,7 @@
 
 package com.liferay.portlet.shopping.model;
 
+import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.ModelWrapper;
 
 import java.util.Date;
@@ -637,6 +638,26 @@ public class ShoppingCouponWrapper implements ShoppingCoupon,
 
 	public boolean hasValidStartDate() {
 		return _shoppingCoupon.hasValidStartDate();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof ShoppingCouponWrapper)) {
+			return false;
+		}
+
+		ShoppingCouponWrapper shoppingCouponWrapper = (ShoppingCouponWrapper)obj;
+
+		if (Validator.equals(_shoppingCoupon,
+					shoppingCouponWrapper._shoppingCoupon)) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**

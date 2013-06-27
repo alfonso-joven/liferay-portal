@@ -14,6 +14,8 @@
 
 package com.liferay.portal.model;
 
+import com.liferay.portal.kernel.util.Validator;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -242,6 +244,25 @@ public class ResourceCodeWrapper implements ResourceCode,
 	public void persist()
 		throws com.liferay.portal.kernel.exception.SystemException {
 		_resourceCode.persist();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof ResourceCodeWrapper)) {
+			return false;
+		}
+
+		ResourceCodeWrapper resourceCodeWrapper = (ResourceCodeWrapper)obj;
+
+		if (Validator.equals(_resourceCode, resourceCodeWrapper._resourceCode)) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**

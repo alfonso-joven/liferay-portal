@@ -14,6 +14,8 @@
 
 package com.liferay.portal.model;
 
+import com.liferay.portal.kernel.util.Validator;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -532,6 +534,25 @@ public class CompanyWrapper implements Company, ModelWrapper<Company> {
 
 	public void setKeyObj(java.security.Key keyObj) {
 		_company.setKeyObj(keyObj);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof CompanyWrapper)) {
+			return false;
+		}
+
+		CompanyWrapper companyWrapper = (CompanyWrapper)obj;
+
+		if (Validator.equals(_company, companyWrapper._company)) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**

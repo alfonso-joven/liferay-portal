@@ -14,6 +14,7 @@
 
 package com.liferay.portlet.bookmarks.model;
 
+import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.ModelWrapper;
 
 import java.util.Date;
@@ -482,6 +483,26 @@ public class BookmarksFolderWrapper implements BookmarksFolder,
 
 	public boolean isRoot() {
 		return _bookmarksFolder.isRoot();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof BookmarksFolderWrapper)) {
+			return false;
+		}
+
+		BookmarksFolderWrapper bookmarksFolderWrapper = (BookmarksFolderWrapper)obj;
+
+		if (Validator.equals(_bookmarksFolder,
+					bookmarksFolderWrapper._bookmarksFolder)) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**

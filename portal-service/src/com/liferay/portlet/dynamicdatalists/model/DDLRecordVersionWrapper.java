@@ -14,6 +14,7 @@
 
 package com.liferay.portlet.dynamicdatalists.model;
 
+import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.ModelWrapper;
 
 import java.util.Date;
@@ -641,6 +642,26 @@ public class DDLRecordVersionWrapper implements DDLRecordVersion,
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return _ddlRecordVersion.getRecord();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof DDLRecordVersionWrapper)) {
+			return false;
+		}
+
+		DDLRecordVersionWrapper ddlRecordVersionWrapper = (DDLRecordVersionWrapper)obj;
+
+		if (Validator.equals(_ddlRecordVersion,
+					ddlRecordVersionWrapper._ddlRecordVersion)) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**

@@ -14,6 +14,8 @@
 
 package com.liferay.portal.model;
 
+import com.liferay.portal.kernel.util.Validator;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -459,6 +461,26 @@ public class LayoutPrototypeWrapper implements LayoutPrototype,
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		return _layoutPrototype.getLayout();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+
+		if (!(obj instanceof LayoutPrototypeWrapper)) {
+			return false;
+		}
+
+		LayoutPrototypeWrapper layoutPrototypeWrapper = (LayoutPrototypeWrapper)obj;
+
+		if (Validator.equals(_layoutPrototype,
+					layoutPrototypeWrapper._layoutPrototype)) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
