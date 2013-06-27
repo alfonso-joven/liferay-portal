@@ -37,11 +37,6 @@ public class FolderWrapper implements Folder, ModelWrapper<Folder> {
 	}
 
 	@Override
-	public Object clone() {
-		return new FolderWrapper((Folder)_folder.clone());
-	}
-
-	@Override
 	public boolean containsPermission(
 			PermissionChecker permissionChecker, String actionId)
 		throws PortalException, SystemException {
@@ -66,13 +61,6 @@ public class FolderWrapper implements Folder, ModelWrapper<Folder> {
 		}
 
 		return false;
-	}
-
-	@Override
-	public List<Long> getAncestorFolderIds()
-		throws PortalException, SystemException {
-
-		return _folder.getAncestorFolderIds();
 	}
 
 	@Override
@@ -261,11 +249,6 @@ public class FolderWrapper implements Folder, ModelWrapper<Folder> {
 	}
 
 	@Override
-	public boolean isSupportsSubscribing() {
-		return _folder.isSupportsSubscribing();
-	}
-
-	@Override
 	public void setCompanyId(long companyId) {
 		_folder.setCompanyId(companyId);
 	}
@@ -303,11 +286,6 @@ public class FolderWrapper implements Folder, ModelWrapper<Folder> {
 	@Override
 	public void setUserUuid(String userUuid) {
 		_folder.setUserUuid(userUuid);
-	}
-
-	@Override
-	public void setUuid(String uuid) {
-		_folder.setUuid(uuid);
 	}
 
 	@Override

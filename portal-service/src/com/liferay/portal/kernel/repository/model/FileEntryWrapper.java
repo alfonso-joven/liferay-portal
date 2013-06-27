@@ -39,11 +39,6 @@ public class FileEntryWrapper implements FileEntry, ModelWrapper<FileEntry> {
 	}
 
 	@Override
-	public Object clone() {
-		return new FileEntryWrapper((FileEntry)_fileEntry.clone());
-	}
-
-	@Override
 	public boolean containsPermission(
 			PermissionChecker permissionChecker, String actionId)
 		throws PortalException, SystemException {
@@ -303,11 +298,6 @@ public class FileEntryWrapper implements FileEntry, ModelWrapper<FileEntry> {
 	}
 
 	@Override
-	public boolean isManualCheckInRequired() {
-		return _fileEntry.isManualCheckInRequired();
-	}
-
-	@Override
 	public boolean isSupportsLocking() {
 		return _fileEntry.isSupportsLocking();
 	}
@@ -360,11 +350,6 @@ public class FileEntryWrapper implements FileEntry, ModelWrapper<FileEntry> {
 	@Override
 	public void setUserUuid(String userUuid) {
 		_fileEntry.setUserUuid(userUuid);
-	}
-
-	@Override
-	public void setUuid(String uuid) {
-		_fileEntry.setUuid(uuid);
 	}
 
 	@Override

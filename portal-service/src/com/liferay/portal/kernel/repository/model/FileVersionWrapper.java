@@ -37,11 +37,6 @@ public class FileVersionWrapper
 	}
 
 	@Override
-	public Object clone() {
-		return new FileVersionWrapper((FileVersion)_fileVersion.clone());
-	}
-
-	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
 			return true;
@@ -268,16 +263,6 @@ public class FileVersionWrapper
 	}
 
 	@Override
-	public boolean isInTrash() {
-		return _fileVersion.isInTrash();
-	}
-
-	@Override
-	public boolean isInTrashContainer() {
-		return _fileVersion.isInTrashContainer();
-	}
-
-	@Override
 	public boolean isPending() {
 		return _fileVersion.isPending();
 	}
@@ -320,11 +305,6 @@ public class FileVersionWrapper
 	@Override
 	public void setUserUuid(String userUuid) {
 		_fileVersion.setUserUuid(userUuid);
-	}
-
-	@Override
-	public void setUuid(String uuid) {
-		_fileVersion.setUuid(uuid);
 	}
 
 	@Override
