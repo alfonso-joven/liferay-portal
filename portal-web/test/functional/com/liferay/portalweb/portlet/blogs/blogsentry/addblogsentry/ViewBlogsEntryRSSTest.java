@@ -31,7 +31,7 @@ public class ViewBlogsEntryRSSTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Blogs Entry Title"),
 			selenium.getText("//div[@class='entry-title']/h2/a"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry Content"),
-			selenium.getText("//div[@class='entry-body']/p"));
+			selenium.getText("//div[@class='entry-body']"));
 		assertEquals(RuntimeVariables.replace("RSS (Opens New Window)"),
 			selenium.getText("//div[@class='subscribe']/span[1]/a"));
 
@@ -46,13 +46,13 @@ public class ViewBlogsEntryRSSTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Blogs Entry Title"),
 			selenium.getText("//x:div[@id='feedContent']/x:div[1]/x:h3/x:a"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry Content"),
-			selenium.getText("//x:div[@id='feedContent']/x:div[1]/x:div/x:p"));
+			selenium.getText("//x:div[@id='feedContent']/x:div[1]/x:div"));
 		selenium.clickAt("//x:div[@id='feedContent']/x:div[1]/x:h3/x:a",
 			RuntimeVariables.replace("Blogs Entry Title"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Blogs Entry Title"),
 			selenium.getText("//h1[@class='header-title']/span"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry Content"),
-			selenium.getText("//div[@class='entry-body']/p"));
+			selenium.getText("//div[@class='entry-body']"));
 	}
 }
