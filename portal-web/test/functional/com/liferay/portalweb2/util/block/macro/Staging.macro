@@ -1,13 +1,8 @@
 <definition>
-	<command name="activateStagingCP">
+	<command name="CPActivatestaging">
 		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Sites" />
+			<var name="portletName" value="Site Settings" />
 		</execute>
-
-		<execute action="CPSites#type" locator-key1="SEARCH_FIELD" value1="${siteName}" />
-		<execute action="CPSites#assertClick" locator-key1="SEARCH_BUTTON" value1="Search" />
-		<execute action="CPSites#assertClick" locator-key1="SITE_TABLE_ACTIONS" value1="Actions" />
-		<execute action="CPSites#assertClick" locator-key1="SITE_MENULIST_EDIT_SETTINGS" value1="Edit Settings" />
 
 		<execute action="CPSitesEdit#click" locator-key1="MENU_STAGING" />
 		<execute action="CPSitesEdit#click" locator-key1="STAGING_LOCAL_LIVE" />
@@ -42,26 +37,27 @@
 		<execute action="CPSitesEdit#assertTextEquals" locator-key1="HEADER" value1="${siteName} (Staging)" />
 	</command>
 
-	<command name="deactivateStagingCP">
+	<command name="CPDeactivatestaging">
 		<execute macro="Page#gotoCP">
-			<var name="pageStaging" value="true" />
-			<var name="portletName" value="Sites" />
+			<var name="portletName" value="Site Settings" />
 		</execute>
 
-		<execute action="CPSites#type" locator-key1="SEARCH_FIELD" value1="${siteName}" />
-		<execute action="CPSites#assertClick" locator-key1="SEARCH_BUTTON" value1="Search" />
-		<execute action="CPSites#assertClick" locator-key1="SITE_TABLE_ACTIONS" value1="Actions" />
-		<execute action="CPSites#assertClick" locator-key1="SITE_MENULIST_EDIT_SETTINGS" value1="Edit Settings" />
+		<if>
+			<condition action="CPSitesEdit#isTextEqual" locator-key1="HEADER" value1="${siteName} (Staging)" />
+			<then>
+				<execute action="CPSitesEdit#click" locator-key1="MENU_STAGING" />
+				<execute action="CPSitesEdit#click" locator-key1="STAGING_NONE" />
+				<execute action="CPSitesEdit#assertClick" locator-key1="MENU_SAVE" value1="Save" />
+				<execute action="CPSitesEdit#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
+			</then>
+		</if>
 
-		<execute action="CPSitesEdit#assertTextEquals" locator-key1="HEADER" value1="${siteName} (Staging)" />
-		<execute action="CPSitesEdit#click" locator-key1="MENU_STAGING" />
-		<execute action="CPSitesEdit#click" locator-key1="STAGING_NONE" />
-		<execute action="CPSitesEdit#assertClick" locator-key1="MENU_SAVE" value1="Save" />
-		<execute action="CPSitesEdit#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 		<execute action="CPSitesEdit#assertTextEquals" locator-key1="HEADER" value1="${siteName}" />
 	</command>
 
-	<command name="publishToLiveNowPG">
+	<command name="PGPublishtolivenow">
+		<execute macro="Staging#CPActivatestaging" />
+
 		<execute macro="Page#gotoPG">
 			<var name="pageStaging" value="true" />
 		</execute>
