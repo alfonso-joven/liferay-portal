@@ -15,7 +15,7 @@
 		</execute>
 	</set-up>
 
-	<command name="ViewWebContentViaWCL">
+	<command name="ViewWebContentViaWCLDisplayURLNormal">
 		<var name="webContentContent" value="WC WebContent Content" />
 		<var name="webContentTitle" value="WC WebContent Title" />
 
@@ -24,7 +24,7 @@
 			<var name="webContentTitle" value="${webContentTitle}" />
 		</execute>
 
-		<execute macro="WebContentListPortlet#configurePGPortletDisplayGuest">
+		<execute macro="WCLPortlet#configureSetupPG">
 			<var name="pageName" value="${pageName}" />
 			<var name="webContentTitle" value="${webContentTitle}" />
 		</execute>
