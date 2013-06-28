@@ -73,7 +73,6 @@ List<Group> mySites = user.getMySites(true, max);
 
 				publicAddPageHREF = publicAddPageURL.toString();
 
-
 				PortletURL privateAddPageURL = new PortletURLImpl(request, PortletKeys.MY_ACCOUNT, plid, PortletRequest.RENDER_PHASE);
 
 				privateAddPageURL.setWindowState(WindowState.MAXIMIZED);
