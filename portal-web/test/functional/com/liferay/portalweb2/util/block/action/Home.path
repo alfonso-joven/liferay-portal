@@ -121,6 +121,11 @@
 </tr>
 <!--PAGE-->
 <tr>
+	<td>PAGE</td>
+	<td>//nav/ul/li/a[contains(.,'${key_pageName}')]</td>
+	<td></td>
+</tr>
+<tr>
 	<td>PAGE_1</td>
 	<td>xpath=(//li[contains(@class,'lfr-nav-deletable')])[1]/a</td>
 	<td></td>

@@ -17,7 +17,8 @@
 
 		<execute macro="Staging#activateStagingCP">
 			<var name="siteName" value="${siteName}" />
-			<var name="stagingType" value="StagingSite" />
+			<var name="siteScopeName" value="${siteName}" />
+			<var name="pageVersioningEnabled" value="true" />
 		</execute>
 
 		<execute macro="Workflow#configureSiteWorkflow">

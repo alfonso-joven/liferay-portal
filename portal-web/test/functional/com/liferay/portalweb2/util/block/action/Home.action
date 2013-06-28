@@ -1,4 +1,10 @@
 <definition>
+	<command name="assertClick">
+		<case locator-key1="PAGE">
+			<execute function="AssertClick#assertTextClickAtAndWait" />
+		</case>
+	</command>
+
 	<command name="click">
 		<case locator-key1="PAGE_1_CHILD_PAGE_1">
 			<execute function="AssertClick#assertTextClickAtAndWait" />

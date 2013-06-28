@@ -1,14 +1,15 @@
 <definition>
-	<command name="CPActivatestaging">
+	<command name="activateStagingCP">
 		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Site Settings" />
+			<var name="siteScopeName" value="${siteScopeName}" />
 		</execute>
 
-		<execute action="CPSitesEdit#click" locator-key1="MENU_STAGING" />
-		<execute action="CPSitesEdit#click" locator-key1="STAGING_LOCAL_LIVE" />
+		<execute action="CPSitesEdit#assertClick" locator-key1="MENU_STAGING" value1="Staging" />
+		<execute action="CPSitesEdit#check" locator-key1="STAGING_LOCAL_LIVE" />
 
 		<if>
-			<equals arg1="${stagingType}" arg2="StagingSite" />
+			<equals arg1="${pageVersioningEnabled}" arg2="true" />
 			<then>
 				<execute action="CPSitesEdit#check" locator-key1="STAGING_ENABLED_ON_PUBLIC_PAGES_CHECKBOX" />
 				<execute action="CPSitesEdit#check" locator-key1="STAGING_ENABLED_ON_PRIVATE_PAGES_CHECKBOX" />
@@ -37,16 +38,17 @@
 		<execute action="CPSitesEdit#assertTextEquals" locator-key1="HEADER" value1="${siteName} (Staging)" />
 	</command>
 
-	<command name="CPDeactivatestaging">
+	<command name="deactivateStagingCP">
 		<execute macro="Page#gotoCP">
 			<var name="portletName" value="Site Settings" />
+			<var name="siteScopeName" value="${siteScopeName}" />
 		</execute>
 
 		<if>
 			<condition action="CPSitesEdit#isTextEqual" locator-key1="HEADER" value1="${siteName} (Staging)" />
 			<then>
-				<execute action="CPSitesEdit#click" locator-key1="MENU_STAGING" />
-				<execute action="CPSitesEdit#click" locator-key1="STAGING_NONE" />
+				<execute action="CPSitesEdit#assertClick" locator-key1="MENU_STAGING" value1="Staging" />
+				<execute action="CPSitesEdit#check" locator-key1="STAGING_NONE" />
 				<execute action="CPSitesEdit#assertClick" locator-key1="MENU_SAVE" value1="Save" />
 				<execute action="CPSitesEdit#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 			</then>
@@ -55,21 +57,25 @@
 		<execute action="CPSitesEdit#assertTextEquals" locator-key1="HEADER" value1="${siteName}" />
 	</command>
 
-	<command name="PGPublishtolivenow">
-		<execute macro="Staging#CPActivatestaging" />
-
+	<command name="publishToLiveNowPG">
 		<execute macro="Page#gotoPG">
 			<var name="pageStaging" value="true" />
 		</execute>
 
 		<execute action="Staging#click" locator-key1="STAGING_DROP_DOWN_BUTTON" />
-		<execute action="Staging#click" locator-key1="STAGING_MENULIST_PUBLISH_TO_LIVE_NOW" />
+		<execute action="Staging#assertClick" locator-key1="STAGING_MENULIST_PUBLISH_TO_LIVE_NOW" value1="Publish to Live Now" />
 
-		<execute action="PGStagingPublishToLiveNow#click" locator-key1="APPLICATIONS_EXPAND" />
-		<execute action="PGStagingPublishToLiveNow#click" locator-key1="PUBLISH_RANGE_ALL" />
-		<execute action="PGStagingPublishToLiveNow#click" locator-key1="PUBLISH_BUTTON" />
+		<if>
+			<condition action="PGStagingPublishToLiveNow#isElementPresent" locator-key1="APPLICATIONS_EXPAND" value1="+" />
+			<then>
+				<execute action="PGStagingPublishToLiveNow#click" locator-key1="APPLICATIONS_EXPAND" value1="+" />
+			</then>
+		</if>
+
+		<execute action="PGStagingPublishToLiveNow#check" locator-key1="PUBLISH_RANGE_ALL" />
+		<execute action="PGStagingPublishToLiveNow#assertClick" locator-key1="PUBLISH_BUTTON" value1="Publish" />
 		<execute action="PGStagingPublishToLiveNow#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to publish these pages?" />
 		<execute action="PGStagingPublishToLiveNow#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
-		<execute action="PGStagingPublishToLiveNow#click" locator-key1="CLOSE_BUTTON" />
+		<execute action="PGStagingPublishToLiveNow#click" locator-key1="CLOSE_BUTTON" value1="X" />
 	</command>
 </definition>
