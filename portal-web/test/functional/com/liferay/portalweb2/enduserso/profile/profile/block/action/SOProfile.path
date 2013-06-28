@@ -69,6 +69,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>WHATS_HAPPENING_ENTRY_CONTENT</td>
+	<td>//div[@class='entry-bubble']/div[@class='content']</td>
+	<td></td>
+</tr>
+<tr>
 	<td></td>
 	<td></td>
 	<td></td>
