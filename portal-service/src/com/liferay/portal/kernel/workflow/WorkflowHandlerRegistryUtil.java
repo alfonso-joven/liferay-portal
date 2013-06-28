@@ -100,8 +100,12 @@ public class WorkflowHandlerRegistryUtil {
 		WorkflowHandler workflowHandler = getWorkflowHandler(className);
 
 		if (workflowHandler == null) {
-			throw new WorkflowException(
-				"No workflow handler found for " + className);
+			if (WorkflowThreadLocal.isEnabled()) {
+				throw new WorkflowException(
+					"No workflow handler found for " + className);
+			}
+
+			return;
 		}
 
 		WorkflowInstanceLink workflowInstanceLink =
