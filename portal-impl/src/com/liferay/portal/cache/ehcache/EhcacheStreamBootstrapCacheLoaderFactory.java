@@ -12,30 +12,25 @@
  * details.
  */
 
-package com.liferay.portal.kernel.cluster;
+package com.liferay.portal.cache.ehcache;
 
-import com.liferay.portal.kernel.messaging.Message;
+import java.util.Properties;
 
-import java.net.InetAddress;
-
-import java.util.List;
+import net.sf.ehcache.bootstrap.BootstrapCacheLoader;
+import net.sf.ehcache.bootstrap.BootstrapCacheLoaderFactory;
 
 /**
  * @author Shuyang Zhou
+ * @author Sherry Yang
  */
-public interface ClusterLink {
+public class EhcacheStreamBootstrapCacheLoaderFactory
+	extends BootstrapCacheLoaderFactory {
 
-	public InetAddress getBindInetAddress();
+	@Override
+	public BootstrapCacheLoader createBootstrapCacheLoader(
+		Properties properties) {
 
-	public List<Address> getLocalTransportAddresses();
-
-	public List<Address> getTransportAddresses(Priority priority);
-
-	public boolean isEnabled();
-
-	public void sendMulticastMessage(Message message, Priority priority);
-
-	public void sendUnicastMessage(
-		Address address, Message message, Priority priority);
+		return new EhcacheStreamBootstrapCacheLoader(properties);
+	}
 
 }
