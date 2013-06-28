@@ -14,7 +14,7 @@
 		<if>
 			<condition action="CPUsersandorganizationsViewusers#isElementPresent" locator-key1="ADVANCED_SEARCH_BASIC" value1="Basic" />
 			<then>
-				<execute action="CPUsersandorganizationsViewusers#click" locator-key1="ADVANCED_SEARCH_BASIC" value1="Basic" />
+				<execute action="CPUsersandorganizationsViewusers#assertClick" locator-key1="ADVANCED_SEARCH_BASIC" value1="Basic" />
 			</then>
 		</if>
 
