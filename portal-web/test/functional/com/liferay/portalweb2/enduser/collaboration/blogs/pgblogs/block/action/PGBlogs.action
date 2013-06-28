@@ -1,4 +1,22 @@
 <definition>
+	<command name="assertTextEquals">
+		<case locator-key1="PORTLET_TITLE">
+			<execute function="AssertTextEquals#assertText" value1="Blogs" />
+		</case>
+		<case locator-key1="SUCCESS_MESSAGE">
+			<execute function="AssertTextEquals#assertText" value1="Your request completed successfully." />
+		</case>
+		<case locator-key1="ENTRY_YOUR_RATING_1">
+			<execute function="AssertTextEquals#assertPartialText" />
+		</case>
+		<case locator-key1="ENTRY_YOUR_RATING_2">
+			<execute function="AssertTextEquals#assertPartialText" />
+		</case>
+		<case locator-key1="ENTRY_YOUR_RATING_3">
+			<execute function="AssertTextEquals#assertPartialText" />
+		</case>
+	</command>
+
 	<command name="assertClick">
 		<case locator-key1="ADD_ENTRY_BUTTON">
 			<execute function="AssertClick#assertValueClickAtAndWait" />
