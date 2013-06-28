@@ -641,7 +641,7 @@ public class LayoutLocalServiceImpl extends LayoutLocalServiceBaseImpl {
 
 		// Layout set
 
-		if (!GetterUtil.getBoolean(
+		if (GetterUtil.getBoolean(
 				serviceContext.getAttribute("updatePageCount"), true)) {
 
 			layoutSetLocalService.updatePageCount(groupId, privateLayout);
