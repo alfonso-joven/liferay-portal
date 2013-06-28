@@ -76,6 +76,12 @@
 					<var name="pageTypeKey" value="ORGANIZATION" />
 				</then>
 			</elseif>
+			<elseif>
+				<equals arg1="${pageType}" arg2="Open Site" />
+				<then>
+					<var name="pageTypeKey" value="OPEN_SITE" />
+				</then>
+			</elseif>
 			<else>
 				<var name="pageTypeKey" value="GUEST" />
 			</else>

@@ -176,4 +176,65 @@
 		<execute action="CPBlogsEntry#assertTextEquals" locator-key1="ENTRY_TITLE_LINK" value1="${entryTitle}" />
 		<execute action="CPBlogsEntry#assertTextEquals" locator-key1="ENTRY_CONTENT" value1="${entryContent}" />
 	</command>
+
+	<command name="viewPG">
+		<execute macro="Page#gotoPG">
+			<var name="pageName" value="${pageName}" />
+		</execute>
+		
+		<execute action="PGBlogs#assertElementPresent" locator-key1="SEARCH_FIELD" />
+		<execute action="PGBlogs#assertElementPresent" locator-key1="SEARCH_BUTTON" />
+		<execute action="PGBlogs#assertElementPresent" locator-key1="ADD_ENTRY_BUTTON" />
+		<execute action="PGBlogs#assertElementPresent" locator-key1="PERMISSIONS_BUTTON" />
+		<execute action="PGBlogs#assertTextEquals" locator-key1="ENTRY_TITLE_1" value1="${entryTitle}" />
+		<execute action="PGBlogs#assertElementPresent" locator-key1="ENTRY_DATE_1" />
+		<execute action="PGBlogs#assertTextEquals" locator-key1="ENTRY_EDIT_1" value1="Edit" />
+		<execute action="PGBlogs#assertTextEquals" locator-key1="ENTRY_PERMISSIONS_1" value1="Permissions" />
+		<execute action="PGBlogs#assertTextEquals" locator-key1="ENTRY_DELETE_1" value1="Delete" />
+		<execute action="PGBlogs#assertTextEquals" locator-key1="ENTRY_CONTENT_1" value1="${entryContent}" />
+
+		<if>
+			<isset var="entryAuthorMiddleName" />
+			<then>
+				<execute action="PGBlogs#assertTextEquals" locator-key1="ENTRY_AUTHOR_1" value1="By ${entryAuthorFirstName} ${entryAuthorMiddleName} ${entryAuthorLastName}" />
+			</then>
+			<else>
+				<execute action="PGBlogs#assertTextEquals" locator-key1="ENTRY_AUTHOR_1" value1="By ${entryAuthorFirstName} ${entryAuthorLastName}" />
+			</else>
+		</if>
+
+		<execute action="PGBlogs#assertTextEquals" locator-key1="ENTRY_FLAG_1" value1="Flag" />
+		<execute action="PGBlogs#assertElementPresent" locator-key1="ENTRY_TWITTER_1" />
+		<execute action="PGBlogs#assertElementPresent" locator-key1="ENTRY_FACEBOOK_1" />
+		<execute action="PGBlogs#assertElementPresent" locator-key1="ENTRY_GOOGLE_1" />
+		<execute action="PGBlogs#assertTextEquals" locator-key1="ENTRY_YOUR_RATING_1" value1="Your Rating"  />
+		<execute action="PGBlogs#assertTextEquals" locator-key1="RSS_LINK" value1="RSS" />
+		<execute action="PGBlogs#assertTextEquals" locator-key1="SUBSCRIBE_LINK" value1="Subscribe" />
+	</command>
+
+	<command name="viewPGDetails">
+		<execute macro="Page#gotoPG">
+			<var name="pageName" value="${pageName}" />
+		</execute>
+		
+		<execute action="PGBlogs#click" locator-key1="ENTRY_TITLE_1" value1="${entryTitle}" />
+	
+		<execute action="PGBlogsEntry#assertTextEquals" locator-key1="ENTRY_TITLE" value1="${entryTitle}" />
+		<execute action="PGBlogsEntry#assertTextEquals" locator-key1="ENTRY_CONTENT" value1="${entryContent}" />
+
+		<if>
+			<isset var="entryAuthorMiddleName" />
+			<then>
+				<execute action="PGBlogsEntry#assertTextEquals" locator-key1="ENTRY_AUTHOR" value1="By ${entryAuthorFirstName} ${entryAuthorMiddleName} ${entryAuthorLastName}" />
+			</then>
+			<else>
+				<execute action="PGBlogsEntry#assertTextEquals" locator-key1="ENTRY_AUTHOR" value1="By ${entryAuthorFirstName} ${entryAuthorLastName}" />
+			</else>
+		</if>
+
+		<execute action="PGBlogsEntry#assertTextEquals" locator-key1="ENTRY_YOUR_RATING" value1="Your Rating" />
+		<execute action="PGBlogsEntry#assertTextEquals" locator-key1="PREVIOUS" value1="Previous" />
+		<execute action="PGBlogsEntry#assertTextEquals" locator-key1="NEXT" value1="Next" />
+		<execute action="PGBlogsEntry#assertTextEquals" locator-key1="COMMENTS" value1="Comments" />
+	</command>
 </definition>
