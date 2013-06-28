@@ -49,6 +49,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>OPEN_SITE_URL</td>
+	<td>/web/open-site-name/</td>
+	<td></td>
+</tr>
+<tr>
 	<td>ORGANIZATION_URL</td>
 	<td>/web/organization-name/</td>
 	<td></td>
