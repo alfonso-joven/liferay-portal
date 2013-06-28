@@ -67,6 +67,8 @@
 			</else>
 		</if>
 
+		<execute action="SOProfile#assertTextEquals" locator-key1="WHATS_HAPPENING_ENTRY_CONTENT" value1="${microblogsEntryContent}" />
+
 		<execute action="SOProfileNavigation#click" locator-key1="NAVIGATION_MICROBLOGS" />
 
 		<if>
@@ -88,6 +90,8 @@
 
 	<command name="viewOwnMicroblogsEntry">
 		<execute action="SOUserBar#click" locator-key1="DASHBOARD" />
+
+		<execute action="PGHome#assertTextEquals" locator-key1="WHATS_HAPPENING_ENTRY_CONTENT" value1="${microblogsEntryContent}" />
 
 		<execute action="SONavigation#click" locator-key1="NAVIGATION_MICROBLOGS" />
 
