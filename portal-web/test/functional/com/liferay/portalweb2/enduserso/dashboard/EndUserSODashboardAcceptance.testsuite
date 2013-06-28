@@ -1,6 +1,8 @@
 <definition>
 	<execute test-case="SocialOfficeSmoke" />
 
+	<execute test-case="PGHomeAcceptance" />
+
 	<execute test-case="PGMicroblogsAcceptance" />
 
 	<execute test-case="PGTasksAcceptance" />
