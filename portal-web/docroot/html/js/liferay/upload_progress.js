@@ -26,7 +26,7 @@ function UploadProgress_animateBar(percent) {
 	var progressBar = document.getElementById(this.uploadProgressId + "-bar");
 	var progressText = progressBar.getElementsByTagName("div")[1];
 
-	barContainer.style.display = "block";
+	barContainer.style.visibility = "visible";
 
 	if (percent < 100) {
 		progressBar.style.width = percent + "%";
@@ -43,7 +43,7 @@ function UploadProgress_animateBar(percent) {
 function UploadProgress_hideProgress() {
 	var barContainer = document.getElementById(this.uploadProgressId + "-bar-div");
 
-	barContainer.style.display = "none";
+	barContainer.style.visibility = "hidden";
 }
 
 function UploadProgress_sendRedirect() {
