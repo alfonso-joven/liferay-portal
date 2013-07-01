@@ -53,6 +53,7 @@ import javax.servlet.http.HttpSession;
 public class JSONWebServiceActionsManagerImpl
 	implements JSONWebServiceActionsManager {
 
+	@Override
 	public Set<String> getContextPaths() {
 		Set<String> contextPaths = new TreeSet<String>();
 
@@ -67,6 +68,7 @@ public class JSONWebServiceActionsManagerImpl
 		return contextPaths;
 	}
 
+	@Override
 	public JSONWebServiceAction getJSONWebServiceAction(
 		HttpServletRequest request) {
 

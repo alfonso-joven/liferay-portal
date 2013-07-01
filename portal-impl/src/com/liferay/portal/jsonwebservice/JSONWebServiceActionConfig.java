@@ -75,6 +75,7 @@ public class JSONWebServiceActionConfig
 		return _actionMethod;
 	}
 
+	@Override
 	public String getContextPath() {
 		return _contextPath;
 	}
@@ -98,6 +99,7 @@ public class JSONWebServiceActionConfig
 		return _path;
 	}
 
+	@Override
 	public String getSignature() {
 		return _signature;
 	}
