@@ -1127,10 +1127,18 @@ AUI.add(
 					fieldInstance.set('source', newSource);
 					fieldInstance.set('instanceId', instanceId);
 
-					var localizedCheckbox = newSource.one('.journal-article-localized-checkbox .aui-field-input');
+					var localizedCheckbox = newSource.one('.journal-article-localized-checkbox');
 
 					if (localizedCheckbox) {
-						localizedCheckbox.attr('checked', false);
+						var inputCheckbox = localizedCheckbox.one('.aui-field-input');
+						var inputLabel = localizedCheckbox.one('.aui-choice-label');
+
+						var newInputId = newId + inputCheckbox.attr('id');
+
+						inputCheckbox.attr('id', newInputId);
+						inputLabel.attr('for', newInputId);
+
+						inputCheckbox.attr('checked', false);
 					}
 
 					var fieldType = fieldInstance.get('fieldType');
