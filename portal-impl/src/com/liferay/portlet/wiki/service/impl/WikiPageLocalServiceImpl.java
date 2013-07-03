@@ -506,7 +506,7 @@ public class WikiPageLocalServiceImpl extends WikiPageLocalServiceBaseImpl {
 
 		// Expando
 
-		expandoRowLocalService.deleteRows(page.getResourcePrimKey());
+		expandoRowLocalService.deleteRows(page.getPrimaryKey());
 
 		// Asset
 
