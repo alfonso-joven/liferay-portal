@@ -300,6 +300,11 @@ public class ExpandoRowLocalServiceWrapper implements ExpandoRowLocalService,
 			classPK);
 	}
 
+	public void deleteRows(long classPK)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		_expandoRowLocalService.deleteRows(classPK);
+	}
+
 	public java.util.List<com.liferay.portlet.expando.model.ExpandoRow> getDefaultTableRows(
 		long companyId, long classNameId, int start, int end)
 		throws com.liferay.portal.kernel.exception.SystemException {

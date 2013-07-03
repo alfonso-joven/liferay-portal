@@ -259,6 +259,7 @@ create index IX_7B43CD8 on EmailAddress (userId);
 create index IX_A8C0CBE8 on ExpandoColumn (tableId);
 create unique index IX_FEFC8DA7 on ExpandoColumn (tableId, name);
 
+create index IX_49EB3118 on ExpandoRow (classPK);
 create index IX_D3F5D7AE on ExpandoRow (tableId);
 create unique index IX_81EFBFF5 on ExpandoRow (tableId, classPK);
 
