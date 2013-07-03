@@ -15,6 +15,9 @@
 		<case locator-key1="NAVIGATION_MY_POSTS">
 			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
+		<case locator-key1="NAVIGATION_RECENT_POSTS">
+			<execute function="AssertClick#assertTextClickAtAndWait" />
+		</case>
 		<case locator-key1="POST_NEW_THREAD_BUTTON">
 			<execute function="AssertClick#assertValueClickAtAndWait" />
 		</case>
