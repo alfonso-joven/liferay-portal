@@ -509,8 +509,7 @@ public class LayoutLocalServiceImpl extends LayoutLocalServiceBaseImpl {
 
 		// Expando
 
-		expandoValueLocalService.deleteValues(
-			Layout.class.getName(), layout.getPlid());
+		expandoRowLocalService.deleteRows(layout.getPlid());
 
 		// Icon
 

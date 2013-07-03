@@ -243,8 +243,7 @@ public class MBCategoryLocalServiceImpl extends MBCategoryLocalServiceBaseImpl {
 
 		// Expando
 
-		expandoValueLocalService.deleteValues(
-			MBCategory.class.getName(), category.getCategoryId());
+		expandoRowLocalService.deleteRows(category.getCategoryId());
 
 		// Resources
 

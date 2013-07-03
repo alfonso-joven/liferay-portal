@@ -695,9 +695,7 @@ public class DLFileEntryLocalServiceImpl
 
 			dlFileVersionPersistence.remove(dlFileVersion);
 
-			expandoValueLocalService.deleteValues(
-				DLFileVersion.class.getName(),
-				dlFileVersion.getFileVersionId());
+			expandoRowLocalService.deleteRows(dlFileVersion.getFileVersionId());
 
 			DLFileEntry dlFileEntry = dlFileEntryPersistence.findByPrimaryKey(
 				fileEntryId);
@@ -1521,9 +1519,7 @@ public class DLFileEntryLocalServiceImpl
 		for (DLFileVersion dlFileVersion : dlFileVersions) {
 			dlFileVersionPersistence.remove(dlFileVersion);
 
-			expandoValueLocalService.deleteValues(
-				DLFileVersion.class.getName(),
-				dlFileVersion.getFileVersionId());
+			expandoRowLocalService.deleteRows(dlFileVersion.getFileVersionId());
 
 			workflowInstanceLinkLocalService.deleteWorkflowInstanceLinks(
 				dlFileEntry.getCompanyId(), dlFileEntry.getGroupId(),
@@ -1532,8 +1528,7 @@ public class DLFileEntryLocalServiceImpl
 
 		// Expando
 
-		expandoValueLocalService.deleteValues(
-			DLFileEntry.class.getName(), dlFileEntry.getFileEntryId());
+		expandoRowLocalService.deleteRows(dlFileEntry.getFileEntryId());
 
 		// Lock
 
@@ -1918,8 +1913,7 @@ public class DLFileEntryLocalServiceImpl
 
 		dlFileVersionPersistence.remove(dlFileVersion);
 
-		expandoValueLocalService.deleteValues(
-			DLFileVersion.class.getName(), dlFileVersion.getFileVersionId());
+		expandoRowLocalService.deleteRows(dlFileVersion.getFileVersionId());
 
 		dlFileEntryMetadataLocalService.deleteFileVersionFileEntryMetadata(
 			dlFileVersion.getFileVersionId());

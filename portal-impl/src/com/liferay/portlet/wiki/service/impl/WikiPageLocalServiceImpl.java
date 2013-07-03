@@ -506,8 +506,7 @@ public class WikiPageLocalServiceImpl extends WikiPageLocalServiceBaseImpl {
 
 		// Expando
 
-		expandoValueLocalService.deleteValues(
-			WikiPage.class.getName(), page.getResourcePrimKey());
+		expandoRowLocalService.deleteRows(page.getResourcePrimKey());
 
 		// Asset
 

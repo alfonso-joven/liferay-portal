@@ -682,6 +682,10 @@ public class GroupLocalServiceImpl extends GroupLocalServiceBaseImpl {
 
 		assetVocabularyLocalService.deleteVocabularies(group.getGroupId());
 
+		// Expando
+
+		expandoRowLocalService.deleteRows(group.getGroupId());
+
 		// Shopping
 
 		shoppingCartLocalService.deleteGroupCarts(group.getGroupId());

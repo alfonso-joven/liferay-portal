@@ -108,8 +108,7 @@ public class BookmarksFolderLocalServiceImpl
 
 		// Expando
 
-		expandoValueLocalService.deleteValues(
-			BookmarksFolder.class.getName(), folder.getFolderId());
+		expandoRowLocalService.deleteRows(folder.getFolderId());
 	}
 
 	@Override

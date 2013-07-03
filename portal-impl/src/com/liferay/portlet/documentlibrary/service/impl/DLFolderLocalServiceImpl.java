@@ -639,8 +639,7 @@ public class DLFolderLocalServiceImpl extends DLFolderLocalServiceBaseImpl {
 
 		// Expando
 
-		expandoValueLocalService.deleteValues(
-			DLFolder.class.getName(), dlFolder.getFolderId());
+		expandoRowLocalService.deleteRows(dlFolder.getFolderId());
 
 		// App helper
 
