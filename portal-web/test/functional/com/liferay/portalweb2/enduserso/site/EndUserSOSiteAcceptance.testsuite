@@ -2,4 +2,6 @@
 	<execute test-case="SocialOfficeSmoke" />
 
 	<execute test-case="PGSOBlogsAcceptance" />
+
+	<execute test-case="PGSOMessageBoardsAcceptance" />
 </definition>
