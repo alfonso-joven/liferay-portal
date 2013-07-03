@@ -544,7 +544,7 @@ public class PortalSecurityManagerImpl extends SecurityManager
 		}
 
 		@Override
-		public <T> T wrap(T t, boolean checkActive) {
+		public <T> T wrapWhenActive(T t) {
 			if (!PACLPolicyManager.isActive()) {
 				return t;
 			}
