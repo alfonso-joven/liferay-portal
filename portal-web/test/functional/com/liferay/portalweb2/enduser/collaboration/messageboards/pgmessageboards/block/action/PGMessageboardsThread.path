@@ -35,6 +35,16 @@
 </tr>
 <!--THREAD_CONTROLS-->
 <tr>
+	<td>THREAD_CONTROLS_BACK</td>
+	<td>//a[@id='_19_TabsBack']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>THREAD_CONTROLS_NAVIGATION</td>
+	<td>//div[@class='thread-navigation']</td>
+	<td></td>
+</tr>
+<tr>
 	<td></td>
 	<td></td>
 	<td></td>
@@ -179,6 +189,21 @@
 <tr>
 	<td>MESSAGE_EDIT_3</td>
 	<td>xpath=(//td/ul/li[2]/span/a/span)[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>MESSAGE_RATING_1</td>
+	<td>xpath=(//div[contains(@id,'ratingThumbContent')]/div)[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>MESSAGE_RATING_2</td>
+	<td>xpath=(//div[contains(@id,'ratingThumbContent')]/div)[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>MESSAGE_RATING_3</td>
+	<td>xpath=(//div[contains(@id,'ratingThumbContent')]/div)[3]</td>
 	<td></td>
 </tr>
 </tbody>
