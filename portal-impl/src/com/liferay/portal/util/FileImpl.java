@@ -57,6 +57,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Properties;
 
+import org.apache.commons.compress.archivers.zip.UnsupportedZipFeatureException;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.pdfbox.exceptions.CryptographyException;
@@ -352,10 +353,13 @@ public class FileImpl implements com.liferay.portal.kernel.util.File {
 			Throwable throwable = ExceptionUtils.getRootCause(e);
 
 			if ((throwable instanceof CryptographyException) ||
-				(throwable instanceof EncryptedDocumentException)) {
+				(throwable instanceof EncryptedDocumentException) ||
+				(throwable instanceof UnsupportedZipFeatureException)) {
 
 				if (_log.isWarnEnabled()) {
-					_log.warn("Unable to extract text from an encrypted file");
+					_log.warn(
+						"Unable to extract text from an encrypted file: " +
+							fileName);
 				}
 			}
 			else {
