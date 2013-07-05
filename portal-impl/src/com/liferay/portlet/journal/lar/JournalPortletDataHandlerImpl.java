@@ -1708,29 +1708,15 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 
 		StringBuilder sb = new StringBuilder(content);
 
-		String privateGroupServletMapping =
-			PropsValues.LAYOUT_FRIENDLY_URL_PRIVATE_GROUP_SERVLET_MAPPING;
-		String privateUserServletMapping =
-			PropsValues.LAYOUT_FRIENDLY_URL_PRIVATE_USER_SERVLET_MAPPING;
-		String publicServletMapping =
-			PropsValues.LAYOUT_FRIENDLY_URL_PUBLIC_SERVLET_MAPPING;
-
-		String portalContextPath = PortalUtil.getPathContext();
-
-		if (Validator.isNotNull(portalContextPath)) {
-			privateGroupServletMapping = portalContextPath.concat(
-				privateGroupServletMapping);
-			privateUserServletMapping = portalContextPath.concat(
-				privateUserServletMapping);
-			publicServletMapping = portalContextPath.concat(
-				publicServletMapping);
-		}
-
 		String href = "href=";
 
 		int beginPos = content.length();
 
 		while (true) {
+			if (beginPos != content.length()) {
+				beginPos--;
+			}
+
 			int hrefLength = href.length();
 
 			beginPos = content.lastIndexOf(href, beginPos);
@@ -1793,75 +1779,95 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 			}
 
 			if (endPos == -1) {
-				beginPos--;
-
 				continue;
 			}
 
 			String url = content.substring(beginPos + hrefLength, endPos);
 
-			if (!url.startsWith(privateGroupServletMapping) &&
-				!url.startsWith(privateUserServletMapping) &&
-				!url.startsWith(publicServletMapping)) {
+			if (!url.startsWith(StringPool.SLASH)) {
+				continue;
+			}
 
-				beginPos--;
+			StringBundler urlSB = new StringBundler(5);
+
+			String pathContext = PortalUtil.getPathContext();
+
+			if (pathContext.length() > 1) {
+				if (!url.startsWith(pathContext)) {
+					continue;
+				}
+
+				urlSB.append("@data_handler_path_context@");
+
+				url = url.substring(pathContext.length());
+			}
+
+			int pos = url.indexOf(StringPool.SLASH, 1);
+
+			if (!url.startsWith(StringPool.SLASH) || (pos == -1)) {
+				if (urlSB.length() > 0) {
+					urlSB.append(url);
+
+					sb.replace(beginPos + hrefLength, endPos, urlSB.toString());
+				}
 
 				continue;
 			}
 
-			int contextLength = 0;
+			String localePath = url.substring(0, pos);
 
-			if (Validator.isNotNull(portalContextPath)) {
-				contextLength = portalContextPath.length();
+			Locale locale = LocaleUtil.fromLanguageId(
+				localePath.substring(1), true, false);
+
+			if (locale != null) {
+				String urlWithoutLocale = url.substring(localePath.length());
+
+				if (urlWithoutLocale.startsWith(
+						_PRIVATE_GROUP_SERVLET_MAPPING) ||
+					urlWithoutLocale.startsWith(
+						_PRIVATE_USER_SERVLET_MAPPING) ||
+					urlWithoutLocale.startsWith(
+						_PUBLIC_GROUP_SERVLET_MAPPING)) {
+
+					urlSB.append(localePath);
+
+					url = urlWithoutLocale;
+				}
 			}
 
-			int beginGroupPos = content.indexOf(
-				CharPool.SLASH, beginPos + hrefLength + contextLength + 1);
+			if (url.startsWith(_PRIVATE_GROUP_SERVLET_MAPPING)) {
+				urlSB.append("@data_handler_private_group_servlet_mapping@");
 
-			if (beginGroupPos == -1) {
-				beginPos--;
-
-				continue;
+				url = url.substring(
+					_PRIVATE_GROUP_SERVLET_MAPPING.length() - 1);
 			}
+			else if (url.startsWith(_PRIVATE_USER_SERVLET_MAPPING)) {
+				urlSB.append("@data_handler_private_user_servlet_mapping@");
 
-			int endGroupPos = content.indexOf(
-				CharPool.SLASH, beginGroupPos + 1);
-
-			if (endGroupPos == -1) {
-				beginPos--;
-
-				continue;
+				url = url.substring(_PRIVATE_USER_SERVLET_MAPPING.length() - 1);
 			}
+			else if (url.startsWith(_PUBLIC_GROUP_SERVLET_MAPPING)) {
+				urlSB.append("@data_handler_public_servlet_mapping@");
 
-			String groupFriendlyURL = content.substring(
-				beginGroupPos, endGroupPos);
-
-			if (groupFriendlyURL.equals(group.getFriendlyURL())) {
-				sb.replace(
-					beginGroupPos, endGroupPos,
-					"@data_handler_group_friendly_url@");
-			}
-
-			String dataHandlerServletMapping = StringPool.BLANK;
-
-			if (url.startsWith(privateGroupServletMapping)) {
-				dataHandlerServletMapping =
-					"@data_handler_private_group_servlet_mapping@";
-			}
-			else if (url.startsWith(privateUserServletMapping)) {
-				dataHandlerServletMapping =
-					"@data_handler_private_user_servlet_mapping@";
+				url = url.substring(_PUBLIC_GROUP_SERVLET_MAPPING.length() - 1);
 			}
 			else {
-				dataHandlerServletMapping =
-					"@data_handler_public_servlet_mapping@";
+				continue;
 			}
 
-			sb.replace(
-				beginPos + hrefLength, beginGroupPos,
-				dataHandlerServletMapping);
+			String groupFriendlyURL = group.getFriendlyURL();
 
-			beginPos--;
+			if (url.equals(groupFriendlyURL) ||
+				url.startsWith(groupFriendlyURL + StringPool.SLASH)) {
+
+				urlSB.append("@data_handler_group_friendly_url@");
+
+				url = url.substring(groupFriendlyURL.length());
+			}
+
+			urlSB.append(url);
+
+			sb.replace(beginPos + hrefLength, endPos, urlSB.toString());
 		}
 
 		return sb.toString();
@@ -2218,40 +2224,25 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 			PortletDataContext portletDataContext, String content)
 		throws Exception {
 
-		String privateGroupServletMapping =
-			PropsValues.LAYOUT_FRIENDLY_URL_PRIVATE_GROUP_SERVLET_MAPPING;
-		String privateUserServletMapping =
-			PropsValues.LAYOUT_FRIENDLY_URL_PRIVATE_USER_SERVLET_MAPPING;
-		String publicServletMapping =
-			PropsValues.LAYOUT_FRIENDLY_URL_PUBLIC_SERVLET_MAPPING;
-
-		String portalContextPath = PortalUtil.getPathContext();
-
-		if (Validator.isNotNull(portalContextPath)) {
-			privateGroupServletMapping = portalContextPath.concat(
-				privateGroupServletMapping);
-			privateUserServletMapping = portalContextPath.concat(
-				privateUserServletMapping);
-			publicServletMapping = portalContextPath.concat(
-				publicServletMapping);
-		}
-
-		content = StringUtil.replace(
-			content, "@data_handler_private_group_servlet_mapping@",
-			privateGroupServletMapping);
-		content = StringUtil.replace(
-			content, "@data_handler_private_user_servlet_mapping@",
-			privateUserServletMapping);
-		content = StringUtil.replace(
-			content, "@data_handler_public_servlet_mapping@",
-			publicServletMapping);
-
 		Group group = GroupLocalServiceUtil.getGroup(
 			portletDataContext.getScopeGroupId());
 
 		content = StringUtil.replace(
 			content, "@data_handler_group_friendly_url@",
 			group.getFriendlyURL());
+
+		content = StringUtil.replace(
+			content, "@data_handler_path_context@",
+			PortalUtil.getPathContext());
+		content = StringUtil.replace(
+			content, "@data_handler_private_group_servlet_mapping@",
+			PropsValues.LAYOUT_FRIENDLY_URL_PRIVATE_GROUP_SERVLET_MAPPING);
+		content = StringUtil.replace(
+			content, "@data_handler_private_user_servlet_mapping@",
+			PropsValues.LAYOUT_FRIENDLY_URL_PRIVATE_USER_SERVLET_MAPPING);
+		content = StringUtil.replace(
+			content, "@data_handler_public_servlet_mapping@",
+			PropsValues.LAYOUT_FRIENDLY_URL_PUBLIC_SERVLET_MAPPING);
 
 		return content;
 	}
@@ -2564,6 +2555,18 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 	private static final boolean _DATA_LOCALIZED = true;
 
 	private static final String _NAMESPACE = "journal";
+
+	private static final String _PRIVATE_GROUP_SERVLET_MAPPING =
+		PropsValues.LAYOUT_FRIENDLY_URL_PRIVATE_GROUP_SERVLET_MAPPING +
+			StringPool.SLASH;
+
+	private static final String _PRIVATE_USER_SERVLET_MAPPING =
+		PropsValues.LAYOUT_FRIENDLY_URL_PRIVATE_USER_SERVLET_MAPPING +
+			StringPool.SLASH;
+
+	private static final String _PUBLIC_GROUP_SERVLET_MAPPING =
+		PropsValues.LAYOUT_FRIENDLY_URL_PUBLIC_SERVLET_MAPPING +
+			StringPool.SLASH;
 
 	private static Log _log = LogFactoryUtil.getLog(
 		JournalPortletDataHandlerImpl.class);
