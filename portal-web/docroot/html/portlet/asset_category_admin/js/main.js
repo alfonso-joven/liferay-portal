@@ -1348,14 +1348,12 @@ AUI.add(
 							vocabularies,
 							function(item, index, collection) {
 								if (item.vocabularyId === vocabularyId) {
-
-									categoriesCount =
-										Liferay.Service.Asset.AssetCategory.getVocabularyRootCategoriesCount(
-											{
-												groupId: themeDisplay.getParentGroupId(),
-												vocabularyId: vocabularyId
-											}
-										);
+									categoriesCount = Liferay.Service.Asset.AssetCategory.getVocabularyRootCategoriesCount(
+										{
+											groupId: themeDisplay.getParentGroupId(),
+											vocabularyId: vocabularyId
+										}
+									);
 
 									return true;
 								}
