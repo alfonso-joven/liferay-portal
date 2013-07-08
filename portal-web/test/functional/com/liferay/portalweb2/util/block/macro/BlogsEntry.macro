@@ -181,7 +181,7 @@
 		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
 		</execute>
-		
+
 		<execute action="PGBlogs#assertElementPresent" locator-key1="SEARCH_FIELD" />
 		<execute action="PGBlogs#assertElementPresent" locator-key1="SEARCH_BUTTON" />
 		<execute action="PGBlogs#assertElementPresent" locator-key1="ADD_ENTRY_BUTTON" />
@@ -216,7 +216,7 @@
 		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
 		</execute>
-		
+
 		<execute action="PGBlogs#click" locator-key1="ENTRY_TITLE_1" value1="${entryTitle}" />
 	
 		<execute action="PGBlogsEntry#assertTextEquals" locator-key1="ENTRY_TITLE" value1="${entryTitle}" />
