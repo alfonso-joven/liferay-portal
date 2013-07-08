@@ -1719,7 +1719,7 @@ public class PortletImporter {
 	protected void setPortletScope(
 		PortletDataContext portletDataContext, Element portletElement) {
 
-		if (ExportImportThreadLocal.isPortletImportInProcess()) {
+		if (ImportExportThreadLocal.isPortletImportInProcess()) {
 			return;
 		}
 
