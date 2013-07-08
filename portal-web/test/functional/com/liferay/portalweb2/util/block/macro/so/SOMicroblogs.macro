@@ -31,7 +31,6 @@
 		<execute action="PGMicroblogs#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this post?" />
 	</command>
 
-
 	<command name="tearDownMicroblogsEntry">
 		<execute macro="SOUser#firstLoginPG" />
 
