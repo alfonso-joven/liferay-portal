@@ -649,14 +649,6 @@ AUI.add(
 
 						var treeId = 'vocabulary' + vocabularyId;
 
-						var vocabularyRootNode = {
-							alwaysShowHitArea: true,
-							id: treeId,
-							label: vocabularyTitle,
-							leaf: false,
-							type: 'io'
-						};
-
 						var paginatorConfig = {
 							offsetParam: 'start'
 						};
@@ -672,6 +664,15 @@ AUI.add(
 							paginatorConfig.end = -1;
 							paginatorConfig.start = -1;
 						}
+
+						var vocabularyRootNode = {
+							alwaysShowHitArea: true,
+							id: treeId,
+							label: vocabularyTitle,
+							leaf: false,
+							paginator: paginatorConfig,
+							type: 'io'
+						};
 
 						instance.TREEVIEWS[vocabularyId] = new A.TreeView(
 							{
@@ -697,8 +698,7 @@ AUI.add(
 									},
 									formatter: A.bind(instance._formatJSONResult, instance),
 									url: themeDisplay.getPathMain() + '/asset/get_categories'
-								},
-								paginator: paginatorConfig
+								}
 							}
 						).render(popup.entriesNode);
 					}
