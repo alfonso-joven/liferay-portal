@@ -358,7 +358,7 @@ public class FileImpl implements com.liferay.portal.kernel.util.File {
 
 				if (_log.isWarnEnabled()) {
 					_log.warn(
-						"Unable to extract text from an encrypted file: " +
+						"Unable to extract text from an encrypted file " +
 							fileName);
 				}
 			}
