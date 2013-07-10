@@ -6,9 +6,6 @@
 		<case locator-key1="ADD_PAGE">
 			<execute function="AssertClick#assertTextClickAt" />
 		</case>
-		<case locator-key1="EDIT_CONTROLS">
-			<execute function="AssertClick#assertTextClickAt" value1="Edit Controls" />
-		</case>
 		<case locator-key1="GO_TO">
 			<execute function="AssertClick#assertTextClickAt" value1="Go to" />
 		</case>
@@ -25,8 +22,8 @@
 			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
 	</command>
-		
-	<command name="click">	
+
+	<command name="click">
 		<case comparator="startsWith" locator1="//span[@data-title='">
 			<execute function="Click#makeVisibleClickAt" />
 		</case>
