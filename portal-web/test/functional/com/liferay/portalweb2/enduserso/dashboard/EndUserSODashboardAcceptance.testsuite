@@ -5,6 +5,8 @@
 
 	<execute test-case="PGContactsCenterAcceptance" />
 
+	<execute test-case="PGContactsCenterViewProfileAcceptance" />
+
 	<execute test-case="PGMicroblogsAcceptance" />
 
 	<execute test-case="PGMessagesAcceptance" />
@@ -12,8 +14,6 @@
 	<execute test-case="PGMyDocumentsAcceptance" />
 
 	<execute test-case="PGTasksAcceptance" />
-
-	<execute test-case="PGViewContactsCenterProfileAcceptance" />
 
 	<execute test-case="SOSitesAcceptance" />
 </definition>
