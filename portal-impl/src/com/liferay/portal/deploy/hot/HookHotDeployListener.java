@@ -1979,13 +1979,6 @@ public class HookHotDeployListener
 			ClassLoader portletClassLoader, Element parentElement)
 		throws Exception {
 
-		if (!checkPermission(
-				PACLConstants.PORTAL_HOOK_PERMISSION_SERVLET_FILTERS,
-				portletClassLoader, null, "Rejecting servlet filters")) {
-
-			return;
-		}
-
 		ServletFiltersContainer servletFiltersContainer =
 			_servletFiltersContainerMap.get(servletContextName);
 
@@ -1998,6 +1991,14 @@ public class HookHotDeployListener
 
 		List<Element> servletFilterElements = parentElement.elements(
 			"servlet-filter");
+
+		if (!servletFilterElements.isEmpty() &&
+			!checkPermission(
+				PACLConstants.PORTAL_HOOK_PERMISSION_SERVLET_FILTERS,
+				portletClassLoader, null, "Rejecting servlet filters")) {
+
+			return;
+		}
 
 		for (Element servletFilterElement : servletFilterElements) {
 			String servletFilterName = servletFilterElement.elementText(
