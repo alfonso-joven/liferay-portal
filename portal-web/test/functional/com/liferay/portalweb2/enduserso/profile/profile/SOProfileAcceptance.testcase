@@ -1,9 +1,11 @@
 <definition>
 	<var name="userEmailAddress" value="socialoffice01@liferay.com" />
 	<var name="userFirstName" value="Social01" />
-	<var name="userMiddleName" value="Office01" />
 	<var name="userLastName" value="User01" />
+	<var name="userMiddleName" value="Office01" />
+	<var name="userName" value="Social01 Office01 User01" />
 	<var name="userScreenName" value="socialoffice01" />
+	<var name="viewProfileLocation" value="myProfile" />
 
 	<set-up>
 		<execute macro="SOUser#firstLoginPG" />
@@ -41,6 +43,11 @@
 			<var name="userAdditionalEmailAddress" value="${userAdditionalEmailAddress}" />
 		</execute>
 
+		<execute macro="SOProfile#viewLocation">
+			<var name="viewProfileLocation" value="${viewProfileLocation}" />
+			<var name="userName" value="${userName}" />
+		</execute>
+
 		<execute macro="SOProfile#viewAdditionalEmailAddressProfile">
 			<var name="userAdditionalEmailAddress" value="${userAdditionalEmailAddress}" />
 		</execute>
@@ -63,6 +70,11 @@
 			<var name="userAddressType" value="${userAddressType}" />
 		</execute>
 
+		<execute macro="SOProfile#viewLocation">
+			<var name="viewProfileLocation" value="${viewProfileLocation}" />
+			<var name="userName" value="${userName}" />
+		</execute>
+
 		<execute macro="SOProfile#viewAddressProfile">
 			<var name="userAddressCity" value="${userAddressCity}" />
 			<var name="userAddressCountry" value="${userAddressCountry}" />
@@ -78,6 +90,11 @@
 
 		<execute macro="SOProfile#addIntroductionProfile">
 			<var name="userIntroduction" value="${userIntroduction}" />
+		</execute>
+
+		<execute macro="SOProfile#viewLocation">
+			<var name="viewProfileLocation" value="${viewProfileLocation}" />
+			<var name="userName" value="${userName}" />
 		</execute>
 
 		<execute macro="SOProfile#viewIntroductionProfile">
@@ -102,6 +119,11 @@
 			<var name="userInstantMessengerYM" value="${userInstantMessengerYM}" />
 		</execute>
 
+		<execute macro="SOProfile#viewLocation">
+			<var name="viewProfileLocation" value="${viewProfileLocation}" />
+			<var name="userName" value="${userName}" />
+		</execute>
+
 		<execute macro="SOProfile#viewInstantMessengerProfile">
 			<var name="userInstantMessengerAIM" value="${userInstantMessengerAIM}" />
 			<var name="userInstantMessengerICQ" value="${userInstantMessengerICQ}" />
@@ -112,7 +134,6 @@
 		</execute>
 	</command>
 
-
 	<command name="AddPhoneNumbers">
 		<var name="userPhoneNumberNumber" value="123-123-1234" />
 		<var name="userPhoneNumberExtension" value="123" />
@@ -122,6 +143,11 @@
 			<var name="userPhoneNumberNumber" value="${userPhoneNumberNumber}" />
 			<var name="userPhoneNumberExtension" value="${userPhoneNumberExtension}" />
 			<var name="userPhoneNumberType" value="${userPhoneNumberType}" />
+		</execute>
+
+		<execute macro="SOProfile#viewLocation">
+			<var name="viewProfileLocation" value="${viewProfileLocation}" />
+			<var name="userName" value="${userName}" />
 		</execute>
 
 		<execute macro="SOProfile#viewPhoneNumbersProfile">
@@ -140,6 +166,11 @@
 			<var name="userProjectDescription" value="${userProjectDescription}" />
 		</execute>
 
+		<execute macro="SOProfile#viewLocation">
+			<var name="viewProfileLocation" value="${viewProfileLocation}" />
+			<var name="userName" value="${userName}" />
+		</execute>
+
 		<execute macro="SOProfile#viewProjectsProfile">
 			<var name="userProjectTitle" value="${userProjectTitle}" />
 			<var name="userProjectDescription" value="${userProjectDescription}" />
@@ -151,6 +182,11 @@
 
 		<execute macro="SOProfile#addSMSProfile">
 			<var name="userSMS" value="${userSMS}" />
+		</execute>
+
+		<execute macro="SOProfile#viewLocation">
+			<var name="viewProfileLocation" value="${viewProfileLocation}" />
+			<var name="userName" value="${userName}" />
 		</execute>
 
 		<execute macro="SOProfile#viewSMSProfile">
@@ -169,6 +205,11 @@
 			<var name="userSocialNetworkTwitter" value="${userSocialNetworkTwitter}" />
 		</execute>
 
+		<execute macro="SOProfile#viewLocation">
+			<var name="viewProfileLocation" value="${viewProfileLocation}" />
+			<var name="userName" value="${userName}" />
+		</execute>
+
 		<execute macro="SOProfile#viewSocialNetworkProfile">
 			<var name="userSocialNetworkFacebook" value="${userSocialNetworkFacebook}" />
 			<var name="userSocialNetworkMyspace" value="${userSocialNetworkMyspace}" />
@@ -183,6 +224,11 @@
 			<var name="userTag" value="${userTag}" />
 		</execute>
 
+		<execute macro="SOProfile#viewLocation">
+			<var name="viewProfileLocation" value="${viewProfileLocation}" />
+			<var name="userName" value="${userName}" />
+		</execute>
+
 		<execute macro="SOProfile#viewTagProfile">
 			<var name="userTag" value="${userTag}" />
 		</execute>
@@ -195,6 +241,11 @@
 		<execute macro="SOProfile#addWebsiteProfile">
 			<var name="userWebsiteURL" value="${userWebsiteURL}" />
 			<var name="userWebsiteType" value="${userWebsiteType}" />
+		</execute>
+
+		<execute macro="SOProfile#viewLocation">
+			<var name="viewProfileLocation" value="${viewProfileLocation}" />
+			<var name="userName" value="${userName}" />
 		</execute>
 
 		<execute macro="SOProfile#viewWebsiteProfile">
