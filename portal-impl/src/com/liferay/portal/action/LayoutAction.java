@@ -788,8 +788,10 @@ public class LayoutAction extends Action {
 			WebKeys.THEME_DISPLAY);
 
 		long scopeGroupId = PortalUtil.getScopeGroupId(request, portletId);
+		long parentGroupId = PortalUtil.getParentGroupId(scopeGroupId);
 
 		themeDisplay.setScopeGroupId(scopeGroupId);
+		themeDisplay.setParentGroupId(parentGroupId);
 
 		ServletContext servletContext = (ServletContext)request.getAttribute(
 			WebKeys.CTX);
