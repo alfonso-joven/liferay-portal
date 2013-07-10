@@ -148,7 +148,7 @@
 			<condition action="SOUserBar#isElementPresent" locator-key1="USER_NAME" />
 			<then>
 				<execute action="SOUserBar#mouseOver" locator-key1="USER_NAME" />
-				<execute action="SOUserBar#click" locator-key1="USER_MENU_SIGN_OUT" />
+				<execute action="SOUserBar#click" locator-key1="USER_MENU_SIGN_OUT" value1="Sign Out" />
 			</then>
 		</if>
 	</command>
