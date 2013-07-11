@@ -787,11 +787,12 @@ public class LayoutAction extends Action {
 		ThemeDisplay themeDisplay = (ThemeDisplay)request.getAttribute(
 			WebKeys.THEME_DISPLAY);
 
-		long scopeGroupId = PortalUtil.getScopeGroupId(request, portletId);
-
 		long parentGroupId = PortalUtil.getParentGroupId(scopeGroupId);
 
 		themeDisplay.setParentGroupId(parentGroupId);
+
+		long scopeGroupId = PortalUtil.getScopeGroupId(request, portletId);
+
 		themeDisplay.setScopeGroupId(scopeGroupId);
 
 		ServletContext servletContext = (ServletContext)request.getAttribute(
