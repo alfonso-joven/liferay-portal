@@ -843,6 +843,10 @@
 			}
 		}
 	}
+
+	.upload-multiple-file-permissions {
+		overflow: auto;
+	}
 }
 
 .active-area-proxy {
