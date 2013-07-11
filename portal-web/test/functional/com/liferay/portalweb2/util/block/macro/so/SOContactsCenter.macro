@@ -1,5 +1,38 @@
 <definition>
 	<var name="password" value="test" />
+	<var name="adminName" value="Joe Bloggs" />
+	<var name="adminEmailAddress" value="test@liferay.com" />
+
+	<command name="addConnection">
+		<execute macro="SOUser#addUserWithSORole">
+			<var name="adminEmailAddress" value="test@liferay.com" />
+			<var name="password" value="test" />
+			<var name="userEmailAddress" value="${userEmailAddress}" />
+			<var name="userFirstName" value="${userFirstName}" />
+			<var name="userMiddleName" value="${userMiddleName}" />
+			<var name="userLastName" value="${userLastName}" />
+			<var name="userScreenName" value="${userScreenName}" />
+		</execute>
+
+		<execute macro="SOContactsCenter#requestToConnect">
+			<var name="userEmailAddress" value="${userEmailAddress}" />
+			<var name="userListName" value="${userListName}" />
+			<var name="userName" value="${userName}" />
+			<var name="userScreenName" value="${userScreenName}" />
+		</execute>
+
+		<execute macro="SOUser#logoutPG" />
+
+		<execute macro="SOUser#loginPG">
+			<var name="userEmailAddress" value="${userEmailAddress}" />
+			<var name="password" value="test" />
+		</execute>
+
+		<execute macro="SOContactsCenter#confirmRequestToConnect">
+			<var name="senderName" value="${adminName}" />
+			<var name="userName" value="${userName}" />
+		</execute>
+	</command>
 
 	<command name="confirmRequestToConnect">
 		<execute macro="SOUserBar#dashboardPG">
