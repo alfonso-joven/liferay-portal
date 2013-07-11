@@ -281,6 +281,8 @@ public class EditScopeAction extends PortletAction {
 
 		PortletPreferences portletPreferences = actionRequest.getPreferences();
 
+		String oldScopeName = getOldScopeName(actionRequest, portlet);
+
 		String scopeType = ParamUtil.getString(actionRequest, "scopeType");
 
 		portletPreferences.setValue("lfrScopeType", scopeType);
@@ -303,7 +305,6 @@ public class EditScopeAction extends PortletAction {
 
 		portletPreferences.setValue("groupId", String.valueOf(newScopeGroupId));
 
-		String oldScopeName = getOldScopeName(actionRequest, portlet);
 		String newScopeName = (String)newScopeTuple.getObject(1);
 
 		String newPortletTitle = PortalUtil.getNewPortletTitle(
