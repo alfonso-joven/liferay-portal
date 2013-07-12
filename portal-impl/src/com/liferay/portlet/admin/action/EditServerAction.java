@@ -72,6 +72,7 @@ import com.liferay.portal.search.lucene.LuceneHelperUtil;
 import com.liferay.portal.search.lucene.LuceneIndexer;
 import com.liferay.portal.search.lucene.cluster.LuceneClusterUtil;
 import com.liferay.portal.security.auth.PrincipalException;
+import com.liferay.portal.security.lang.DoPrivilegedBean;
 import com.liferay.portal.security.permission.PermissionChecker;
 import com.liferay.portal.service.PortletLocalServiceUtil;
 import com.liferay.portal.service.ServiceComponentLocalServiceUtil;
@@ -612,7 +613,19 @@ public class EditServerAction extends PortletAction {
 
 			preferences.store();
 
-			CaptchaImpl captchaImpl = (CaptchaImpl)CaptchaUtil.getCaptcha();
+			Captcha currentCaptcha = CaptchaUtil.getCaptcha();
+
+			CaptchaImpl captchaImpl;
+
+			if (currentCaptcha instanceof DoPrivilegedBean) {
+				DoPrivilegedBean doPrivilegedBean =
+					(DoPrivilegedBean)currentCaptcha;
+
+				captchaImpl = (CaptchaImpl)doPrivilegedBean.getActualBean();
+			}
+			else {
+				captchaImpl = (CaptchaImpl)currentCaptcha;
+			}
 
 			captchaImpl.setCaptcha(captcha);
 		}
