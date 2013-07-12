@@ -147,7 +147,12 @@ else if (langType.equals("xml") || langType.equals("xsl") || langType.equals("xs
 				dialog.close();
 
 				if (content != prevEditorContent) {
-					editorContentInputElement.val(encodedContent);
+					if (editorMode == 'xml') {
+						editorContentInputElement.val(content);
+					}
+					else {
+						editorContentInputElement.val(encodedContent);
+					}
 
 					dialog.fire('update');
 				}
