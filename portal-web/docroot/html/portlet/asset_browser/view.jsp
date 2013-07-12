@@ -18,7 +18,7 @@
 
 <%
 long groupId = ParamUtil.getLong(request, "groupId");
-
+long[] selectedGroupIds = StringUtil.split(ParamUtil.getString(request, "selectedGroupIds"), 0L);
 long refererAssetEntryId = ParamUtil.getLong(request, "refererAssetEntryId");
 String typeSelection = ParamUtil.getString(request, "typeSelection");
 String callback = ParamUtil.getString(request, "callback");
@@ -26,6 +26,7 @@ String callback = ParamUtil.getString(request, "callback");
 PortletURL portletURL = renderResponse.createRenderURL();
 
 portletURL.setParameter("struts_action", "/asset_browser/view");
+portletURL.setParameter("selectedGroupIds", StringUtil.merge(selectedGroupIds));
 portletURL.setParameter("refererAssetEntryId", String.valueOf(refererAssetEntryId));
 portletURL.setParameter("typeSelection", typeSelection);
 portletURL.setParameter("callback", callback);
@@ -36,12 +37,7 @@ portletURL.setParameter("callback", callback);
 />
 
 <div class="asset-search">
-	<liferay-portlet:renderURL varImpl="searchURL">
-		<portlet:param name="struts_action" value="/asset_browser/view" />
-		<portlet:param name="callback" value="<%= callback %>" />
-	</liferay-portlet:renderURL>
-
-	<aui:form action="<%= searchURL %>" method="post" name="searchFm">
+	<aui:form action="<%= portletURL %>" method="post" name="searchFm">
 		<aui:input name="typeSelection" type="hidden" value="<%= typeSelection %>" />
 
 		<%
@@ -56,7 +52,7 @@ portletURL.setParameter("callback", callback);
 		<%
 		AssetSearchTerms searchTerms = (AssetSearchTerms)searchContainer.getSearchTerms();
 
-		long[] groupIds = new long[] {groupId};
+		long[] groupIds = selectedGroupIds;
 		%>
 
 		<%@ include file="/html/portlet/asset_publisher/asset_search_results.jspf" %>
