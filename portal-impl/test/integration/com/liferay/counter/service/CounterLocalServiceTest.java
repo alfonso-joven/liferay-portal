@@ -53,6 +53,7 @@ public class CounterLocalServiceTest {
 	@Before
 	public void setUp() throws Exception {
 		CounterLocalServiceUtil.reset(_COUNTER_NAME);
+
 		CounterLocalServiceUtil.createCounter(_COUNTER_NAME);
 	}
 
