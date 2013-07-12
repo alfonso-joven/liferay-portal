@@ -25,7 +25,13 @@ long defaultFolderId = GetterUtil.getLong(preferences.getValue("rootFolderId", S
 
 long folderId = BeanParamUtil.getLong(folder, request, "folderId", defaultFolderId);
 
+boolean defaultFolderView = false;
+
 if ((folder == null) && (defaultFolderId != DLFolderConstants.DEFAULT_PARENT_FOLDER_ID)) {
+	defaultFolderView = true;
+}
+
+if (defaultFolderView) {
 	try {
 		folder = DLAppLocalServiceUtil.getFolder(folderId);
 	}
@@ -192,7 +198,7 @@ request.setAttribute("view.jsp-portletURL", portletURL);
 		if (folder != null) {
 			IGUtil.addPortletBreadcrumbEntries(folder, request, renderResponse);
 
-			if (portletName.equals(PortletKeys.MEDIA_GALLERY_DISPLAY)) {
+			if (!defaultFolderView && portletName.equals(PortletKeys.MEDIA_GALLERY_DISPLAY)) {
 				PortalUtil.setPageSubtitle(folder.getName(), request);
 				PortalUtil.setPageDescription(folder.getDescription(), request);
 			}
@@ -219,8 +225,6 @@ request.setAttribute("view.jsp-portletURL", portletURL);
 
 		List results = DLAppServiceUtil.getGroupFileEntries(repositoryId, groupImagesUserId, defaultFolderId, mediaGalleryMimeTypes, status, searchContainer.getStart(), searchContainer.getEnd(), searchContainer.getOrderByComparator());
 
-		searchContainer.setResults(results);
-		%>
 
 		<aui:layout>
 			<liferay-ui:header
