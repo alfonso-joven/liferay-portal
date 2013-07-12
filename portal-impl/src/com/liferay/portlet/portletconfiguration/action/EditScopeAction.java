@@ -279,9 +279,9 @@ public class EditScopeAction extends PortletAction {
 
 		Layout layout = themeDisplay.getLayout();
 
-		PortletPreferences portletPreferences = actionRequest.getPreferences();
-
 		String oldScopeName = getOldScopeName(actionRequest, portlet);
+
+		PortletPreferences portletPreferences = actionRequest.getPreferences();
 
 		String scopeType = ParamUtil.getString(actionRequest, "scopeType");
 
