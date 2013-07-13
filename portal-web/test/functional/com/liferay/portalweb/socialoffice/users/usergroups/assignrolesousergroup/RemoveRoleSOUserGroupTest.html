@@ -63,11 +63,48 @@
 	<td>//input[@value='Search']</td>
 	<td>Search</td>
 </tr>
+<!--Begin ee-6.1.20 Target Conditionals -Ken Duenwald-->
+<tr>
+	<td>storeElementPresent</td>
+	<td>//td[@id='_128_ocerSearchContainer_col-title_row-1']</td>
+	<td>roleTitlePresent</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>!${roleTitlePresent}</td>
+	<td>RoleTitleNotPresent</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//td[@id='_128_ocerSearchContainer_col-title_row-1']</td>
+	<td>Social Office User</td>
+</tr>
+<tr>
+	<td>label</td>
+	<td>RoleTitleNotPresent</td>
+	<td></td>
+</tr>
+<tr>
+	<td>storeElementPresent</td>
+	<td>//td[@id='_128_ocerSearchContainer_col-name_row-1']</td>
+	<td>roleNamePresent</td>
+</tr>
+<tr>
+	<td>gotoIf</td>
+	<td>!${roleNamePresent}</td>
+	<td>RoleNameNotPresent</td>
+</tr>
 <tr>
 	<td>assertText</td>
 	<td>//td[@id='_128_ocerSearchContainer_col-name_row-1']</td>
 	<td>Social Office User</td>
 </tr>
+<tr>
+	<td>label</td>
+	<td>RoleNameNotPresent</td>
+	<td></td>
+</tr>
+<!--End ee-6.1.20 Target Conditionals -Ken Duenwald-->
 <tr>
 	<td>assertText</td>
 	<td>//td[@id='_128_ocerSearchContainer_col-type_row-1']</td>
