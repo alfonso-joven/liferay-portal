@@ -58,16 +58,18 @@ public class AddEvent1SiteTest extends BaseTestCase {
 			RuntimeVariables.replace("Calendar Event1 Title"));
 		Thread.sleep(1000);
 		selenium.waitForVisible("//span[@id='cke_48_label' and .='Source']");
+		selenium.waitForVisible("//span[.='Source']");
 		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[@id='cke_48_label' and .='Source']"));
-		selenium.clickAt("//span[@id='cke_48_label' and .='Source']",
+			selenium.getText("//span[.='Source']"));
+		selenium.clickAt("//span[.='Source']",
 			RuntimeVariables.replace("Source"));
 		selenium.waitForVisible("//td[@id='cke_contents__8_editor']/textarea");
 		selenium.type("//td[@id='cke_contents__8_editor']/textarea",
 			RuntimeVariables.replace("Calendar Event1 Description"));
+		selenium.waitForVisible("//span[.='Source']");
 		assertEquals(RuntimeVariables.replace("Source"),
-			selenium.getText("//span[@id='cke_48_label' and .='Source']"));
-		selenium.clickAt("//span[@id='cke_48_label' and .='Source']",
+			selenium.getText("//span[.='Source']"));
+		selenium.clickAt("//span[.='Source']",
 			RuntimeVariables.replace("Source"));
 		selenium.waitForVisible("//td[@id='cke_contents__8_editor']/iframe");
 		selenium.selectFrame("//td[@id='cke_contents__8_editor']/iframe");

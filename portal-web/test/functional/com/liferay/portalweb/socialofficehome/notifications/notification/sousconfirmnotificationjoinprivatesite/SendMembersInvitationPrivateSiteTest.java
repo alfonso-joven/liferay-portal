@@ -51,7 +51,7 @@ public class SendMembersInvitationPrivateSiteTest extends BaseTestCase {
 				"//a[contains(text(),'Invite members to this site.')]"));
 		selenium.clickAt("//a[contains(text(),'Invite members to this site.')]",
 			RuntimeVariables.replace("Invite members to this site."));
-		selenium.waitForVisible("//div[@class='search']");
+		selenium.waitForVisible("//input[contains(@id,'contactsportlet_name')]");
 		assertEquals(RuntimeVariables.replace("Social01 Office01 User01"),
 			selenium.getText("//div[contains(@class, 'user')]/span"));
 		selenium.clickAt("//div[contains(@class, 'user')]/span",

@@ -63,9 +63,5 @@ public class SaveAsDraftDMFolderDocumentTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
-		assertEquals(RuntimeVariables.replace(
-				"DM Folder Document Title (Draft)"),
-			selenium.getText(
-				"//a[contains(@class,'document-link')]/span[@class='entry-title']"));
 	}
 }

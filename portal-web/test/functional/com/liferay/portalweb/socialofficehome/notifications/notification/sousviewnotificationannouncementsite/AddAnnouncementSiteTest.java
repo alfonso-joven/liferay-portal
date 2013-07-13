@@ -64,6 +64,7 @@ public class AddAnnouncementSiteTest extends BaseTestCase {
 			RuntimeVariables.replace("http://www.liferay.com"));
 		selenium.waitForElementPresent(
 			"//textarea[@id='_84_editor' and contains(@style,'display: none;')]");
+		selenium.waitForVisible("//span[.='Source']");
 		assertEquals(RuntimeVariables.replace("Source"),
 			selenium.getText("//span[.='Source']"));
 		selenium.clickAt("//span[.='Source']",
@@ -71,6 +72,7 @@ public class AddAnnouncementSiteTest extends BaseTestCase {
 		selenium.waitForVisible("//td[@id='cke_contents__84_editor']/textarea");
 		selenium.type("//td[@id='cke_contents__84_editor']/textarea",
 			RuntimeVariables.replace("Announcements Entry Content"));
+		selenium.waitForVisible("//span[.='Source']");
 		assertEquals(RuntimeVariables.replace("Source"),
 			selenium.getText("//span[.='Source']"));
 		selenium.clickAt("//span[.='Source']",

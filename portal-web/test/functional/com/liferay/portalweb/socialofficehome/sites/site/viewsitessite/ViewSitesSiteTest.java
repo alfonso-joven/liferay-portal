@@ -140,7 +140,7 @@ public class ViewSitesSiteTest extends BaseTestCase {
 		assertTrue(selenium.isChecked(
 				"//input[@id='_165_publicLayoutSetPrototypeLinkEnabledCheckbox']"));
 		assertTrue(selenium.isPartialText(
-				"//label[@for='customJspServletContextName']",
+				"//label[contains(@for,'customJspServletContextName')]",
 				"Application Adapter"));
 		assertEquals("Social Office EE Hook",
 			selenium.getSelectedLabel(
