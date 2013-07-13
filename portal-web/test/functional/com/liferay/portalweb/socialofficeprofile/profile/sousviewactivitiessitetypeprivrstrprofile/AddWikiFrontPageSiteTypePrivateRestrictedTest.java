@@ -52,6 +52,7 @@ public class AddWikiFrontPageSiteTypePrivateRestrictedTest extends BaseTestCase 
 		selenium.waitForPageToLoad("30000");
 		selenium.waitForElementPresent(
 			"//textarea[@id='_36_editor' and contains(@style,'display: none;')]");
+		selenium.waitForVisible("//span[.='Source']");
 		assertEquals(RuntimeVariables.replace("Source"),
 			selenium.getText("//span[.='Source']"));
 		selenium.clickAt("//span[.='Source']",
@@ -60,6 +61,7 @@ public class AddWikiFrontPageSiteTypePrivateRestrictedTest extends BaseTestCase 
 		selenium.waitForVisible("//td[@id='cke_contents__36_editor']/textarea");
 		selenium.type("//td[@id='cke_contents__36_editor']/textarea",
 			RuntimeVariables.replace("Wiki FrontPage Content"));
+		selenium.waitForVisible("//span[.='Source']");
 		assertEquals(RuntimeVariables.replace("Source"),
 			selenium.getText("//span[.='Source']"));
 		selenium.clickAt("//span[.='Source']",
