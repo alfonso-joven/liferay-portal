@@ -45,7 +45,7 @@ public class SOUs_EditBlogsEntrySiteTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Blogs Entry Title"),
 			selenium.getText("//div[@class='entry-title']/h2/a"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry Content"),
-			selenium.getText("//div[@class='entry-body']/p"));
+			selenium.getText("//div[@class='entry-body']"));
 		assertEquals(RuntimeVariables.replace("Edit"),
 			selenium.getText("//td[1]/span/a/span"));
 		selenium.click(RuntimeVariables.replace("//td[1]/span/a/span"));
@@ -54,6 +54,7 @@ public class SOUs_EditBlogsEntrySiteTest extends BaseTestCase {
 			RuntimeVariables.replace("Blogs Entry Title Edit"));
 		selenium.waitForElementPresent(
 			"//textarea[@id='_33_editor' and contains(@style,'display: none;')]");
+		selenium.waitForVisible("//span[.='Source']");
 		assertEquals(RuntimeVariables.replace("Source"),
 			selenium.getText("//span[.='Source']"));
 		selenium.clickAt("//span[.='Source']",
@@ -62,6 +63,7 @@ public class SOUs_EditBlogsEntrySiteTest extends BaseTestCase {
 		selenium.waitForVisible("//td[@id='cke_contents__33_editor']/textarea");
 		selenium.type("//td[@id='cke_contents__33_editor']/textarea",
 			RuntimeVariables.replace("Blogs Entry Content Edit"));
+		selenium.waitForVisible("//span[.='Source']");
 		assertEquals(RuntimeVariables.replace("Source"),
 			selenium.getText("//span[.='Source']"));
 		selenium.clickAt("//span[.='Source']",
@@ -83,9 +85,9 @@ public class SOUs_EditBlogsEntrySiteTest extends BaseTestCase {
 		assertNotEquals(RuntimeVariables.replace("Blogs Entry Title"),
 			selenium.getText("//div[@class='entry-title']/h2/a"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry Content Edit"),
-			selenium.getText("//div[@class='entry-body']/p"));
+			selenium.getText("//div[@class='entry-body']"));
 		assertNotEquals(RuntimeVariables.replace("Blogs Entry Content"),
-			selenium.getText("//div[@class='entry-body']/p"));
+			selenium.getText("//div[@class='entry-body']"));
 		assertEquals(RuntimeVariables.replace("Edit"),
 			selenium.getText("//td[contains(.,'Edit')]/span/a/span"));
 		assertEquals(RuntimeVariables.replace("Permissions"),

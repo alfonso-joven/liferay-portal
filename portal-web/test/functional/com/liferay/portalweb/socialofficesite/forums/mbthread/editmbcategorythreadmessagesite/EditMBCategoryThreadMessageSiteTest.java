@@ -70,6 +70,7 @@ public class EditMBCategoryThreadMessageSiteTest extends BaseTestCase {
 			RuntimeVariables.replace("MB Category Thread Message Subject Edit"));
 		selenium.waitForElementPresent(
 			"//textarea[@id='_19_editor' and contains(@style,'display: none;')]");
+		selenium.waitForVisible("//span[.='Source']");
 		assertEquals(RuntimeVariables.replace("Source"),
 			selenium.getText("//span[.='Source']"));
 		selenium.clickAt("//span[.='Source']",
@@ -78,6 +79,7 @@ public class EditMBCategoryThreadMessageSiteTest extends BaseTestCase {
 		selenium.waitForVisible("//td[@id='cke_contents__19_editor']/textarea");
 		selenium.type("//td[@id='cke_contents__19_editor']/textarea",
 			RuntimeVariables.replace("MB Category Thread Message Body Edit"));
+		selenium.waitForVisible("//span[.='Source']");
 		assertEquals(RuntimeVariables.replace("Source"),
 			selenium.getText("//span[.='Source']"));
 		selenium.clickAt("//span[.='Source']",

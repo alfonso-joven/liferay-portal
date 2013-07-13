@@ -75,8 +75,8 @@ public class AddCategoryToVocabularySiteTest extends BaseTestCase {
 				"xPath=(//span[@class='vocabulary-item']/a)[contains(.,'Vocabulary Name')]"));
 		selenium.clickAt("xPath=(//span[@class='vocabulary-item']/a)[contains(.,'Vocabulary Name')]",
 			RuntimeVariables.replace("Vocabulary Name"));
-		selenium.waitForVisible("//li/div/div[4]");
+		selenium.waitForVisible("//li/div/div[contains(.,'Category Name')]");
 		assertEquals(RuntimeVariables.replace("Category Name"),
-			selenium.getText("//li/div/div[4]"));
+			selenium.getText("//li/div/div[contains(.,'Category Name')]"));
 	}
 }

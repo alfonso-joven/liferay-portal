@@ -74,7 +74,7 @@ public class RateBlogsEntrySiteTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Blogs Entry Title"),
 			selenium.getText("//div[@class='entry-title']/h2/a"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry Content"),
-			selenium.getText("//div[@class='entry-body']/p"));
+			selenium.getText("//div[@class='entry-body']"));
 		assertTrue(selenium.isElementPresent(
 				"//img[@alt='The average rating is 5.0 stars out of 5.']"));
 	}

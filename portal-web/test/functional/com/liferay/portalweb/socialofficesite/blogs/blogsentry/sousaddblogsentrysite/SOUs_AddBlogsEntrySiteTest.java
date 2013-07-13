@@ -49,6 +49,7 @@ public class SOUs_AddBlogsEntrySiteTest extends BaseTestCase {
 			RuntimeVariables.replace("Blogs Entry Title"));
 		selenium.waitForElementPresent(
 			"//textarea[@id='_33_editor' and contains(@style,'display: none;')]");
+		selenium.waitForVisible("//span[.='Source']");
 		assertEquals(RuntimeVariables.replace("Source"),
 			selenium.getText("//span[.='Source']"));
 		selenium.clickAt("//span[.='Source']",
@@ -57,6 +58,7 @@ public class SOUs_AddBlogsEntrySiteTest extends BaseTestCase {
 		selenium.waitForVisible("//td[@id='cke_contents__33_editor']/textarea");
 		selenium.type("//td[@id='cke_contents__33_editor']/textarea",
 			RuntimeVariables.replace("Blogs Entry Content"));
+		selenium.waitForVisible("//span[.='Source']");
 		assertEquals(RuntimeVariables.replace("Source"),
 			selenium.getText("//span[.='Source']"));
 		selenium.clickAt("//span[.='Source']",
@@ -76,6 +78,6 @@ public class SOUs_AddBlogsEntrySiteTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Blogs Entry Title"),
 			selenium.getText("//div[@class='entry-title']/h2/a"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry Content"),
-			selenium.getText("//div[@class='entry-body']/p"));
+			selenium.getText("//div[@class='entry-body']"));
 	}
 }

@@ -51,6 +51,7 @@ public class AddWikiFrontPageChildPageSiteTest extends BaseTestCase {
 			RuntimeVariables.replace("Wiki Front Page Child Page Title"));
 		selenium.waitForElementPresent(
 			"//textarea[@id='_36_editor' and contains(@style,'display: none;')]");
+		selenium.waitForVisible("//span[.='Source']");
 		assertEquals(RuntimeVariables.replace("Source"),
 			selenium.getText("//span[.='Source']"));
 		selenium.clickAt("//span[.='Source']",
@@ -59,6 +60,7 @@ public class AddWikiFrontPageChildPageSiteTest extends BaseTestCase {
 		selenium.waitForVisible("//td[@id='cke_contents__36_editor']/textarea");
 		selenium.type("//td[@id='cke_contents__36_editor']/textarea",
 			RuntimeVariables.replace("Wiki Front Page Child Page Content"));
+		selenium.waitForVisible("//span[.='Source']");
 		assertEquals(RuntimeVariables.replace("Source"),
 			selenium.getText("//span[.='Source']"));
 		selenium.clickAt("//span[.='Source']",

@@ -28,6 +28,7 @@ import com.liferay.portalweb.socialofficehome.sites.site.addsitessite.AddSitesSi
 import com.liferay.portalweb.socialofficehome.sites.site.addsitessite.TearDownSOSitesTest;
 import com.liferay.portalweb.socialofficehome.sites.site.sousjoinsitessite.SOUs_JoinSitesSiteTest;
 import com.liferay.portalweb.socialofficesite.documents.dmdocument.viewdmdocumentlatestversionsite.AddSiteRoleDocumentEditorTest;
+import com.liferay.portalweb.socialofficesite.documents.dmdocument.viewdmdocumentlatestversionsite.DefinePermissionsDocumentEditorTest;
 import com.liferay.portalweb.socialofficesite.documents.dmdocument.viewdmdocumentlatestversionsite.SelectDocumentEditorRoleSOUserTest;
 
 import junit.framework.Test;
@@ -44,6 +45,7 @@ public class CancelCheckoutSOUserDMFolderDocumentSiteTests extends BaseTestSuite
 		testSuite.addTestSuite(EditSOUserPasswordTest.class);
 		testSuite.addTestSuite(AddSitesSiteTest.class);
 		testSuite.addTestSuite(AddSiteRoleDocumentEditorTest.class);
+		testSuite.addTestSuite(DefinePermissionsDocumentEditorTest.class);
 		testSuite.addTestSuite(SignOutSOTest.class);
 		testSuite.addTestSuite(SOUs_SignInSOTest.class);
 		testSuite.addTestSuite(SOUs_JoinSitesSiteTest.class);

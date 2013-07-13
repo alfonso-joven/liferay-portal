@@ -48,7 +48,7 @@ public class SOUs_ViewBlogsEntrySiteTest extends BaseTestCase {
 			selenium.getText("//div[@class='entry-title']/h2/a"));
 		assertTrue(selenium.isVisible("//div[@class='entry-date']"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry1 Content"),
-			selenium.getText("//div[@class='entry-body']/p"));
+			selenium.getText("//div[@class='entry-body']"));
 		assertEquals(RuntimeVariables.replace("By Joe Bloggs"),
 			selenium.getText("//div[@class='entry-author']"));
 		assertEquals(RuntimeVariables.replace("0 Comments"),

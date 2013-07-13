@@ -56,7 +56,7 @@ public class SOUs_ViewBlogsEntrySiteTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Delete"),
 			selenium.getText("//td[contains(.,'Delete')]/span/a/span"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry Content"),
-			selenium.getText("//div[@class='entry-body']/p"));
+			selenium.getText("//div[@class='entry-body']"));
 		assertEquals(RuntimeVariables.replace("By Social01 Office01 User01"),
 			selenium.getText("//div[@class='entry-author']"));
 		assertEquals(RuntimeVariables.replace("0 Comments"),

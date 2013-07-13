@@ -55,7 +55,7 @@ public class ViewSOUserDeleteBlogsEntrySiteTest extends BaseTestCase {
 				"//td[contains(.,'Permissions')]/span/a/span"));
 		assertTrue(selenium.isElementNotPresent(
 				"//td[contains(.,'Delete')]/span/a/span"));
-		assertTrue(selenium.isElementNotPresent("//div[@class='entry-body']/p"));
+		assertTrue(selenium.isElementNotPresent("//div[@class='entry-body']"));
 		assertTrue(selenium.isElementNotPresent("//div[@class='entry-author']"));
 		assertTrue(selenium.isElementNotPresent("//span[@class='comments']/a"));
 		assertTrue(selenium.isElementNotPresent(

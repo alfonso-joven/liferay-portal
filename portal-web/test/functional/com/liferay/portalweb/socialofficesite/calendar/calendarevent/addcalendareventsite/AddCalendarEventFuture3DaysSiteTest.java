@@ -59,6 +59,7 @@ public class AddCalendarEventFuture3DaysSiteTest extends BaseTestCase {
 		selenium.waitForElementPresent(
 			"//textarea[@id='_8_editor' and contains(@style,'display: none;')]");
 		selenium.waitForVisible("//span[.='Source']");
+		selenium.waitForVisible("//span[.='Source']");
 		assertEquals(RuntimeVariables.replace("Source"),
 			selenium.getText("//span[.='Source']"));
 		selenium.clickAt("//span[.='Source']",
@@ -67,6 +68,7 @@ public class AddCalendarEventFuture3DaysSiteTest extends BaseTestCase {
 		selenium.waitForVisible("//td[@id='cke_contents__8_editor']/textarea");
 		selenium.type("//td[@id='cke_contents__8_editor']/textarea",
 			RuntimeVariables.replace("Calendar Future Day3 Event Description"));
+		selenium.waitForVisible("//span[.='Source']");
 		assertEquals(RuntimeVariables.replace("Source"),
 			selenium.getText("//span[.='Source']"));
 		selenium.clickAt("//span[.='Source']",

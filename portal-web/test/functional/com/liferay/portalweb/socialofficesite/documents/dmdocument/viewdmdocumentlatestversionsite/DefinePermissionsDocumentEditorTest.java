@@ -59,6 +59,12 @@ public class DefinePermissionsDocumentEditorTest extends BaseTestCase {
 			selenium.getText(
 				"//form/h3[contains(.,'Documents and Media Document')]"));
 		assertFalse(selenium.isChecked(
+				"xPath=(//th[@class='col-1 col-rowChecker first']/input)[2]"));
+		selenium.clickAt("xPath=(//th[@class='col-1 col-rowChecker first']/input)[2]",
+			RuntimeVariables.replace("Documents and Media All Actions"));
+		assertTrue(selenium.isChecked(
+				"xPath=(//th[@class='col-1 col-rowChecker first']/input)[2]"));
+		assertFalse(selenium.isChecked(
 				"xPath=(//th[@class='col-1 col-rowChecker first']/input)[3]"));
 		selenium.clickAt("xPath=(//th[@class='col-1 col-rowChecker first']/input)[3]",
 			RuntimeVariables.replace("Documents and Media Document All Actions"));

@@ -58,7 +58,7 @@ public class ViewImportBlogsSiteLARTest extends BaseTestCase {
 			selenium.getText(
 				"xPath=(//td[contains(.,'Delete')]/span/a/span)[1]"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry2 Content Edit"),
-			selenium.getText("xPath=(//div[@class='entry-body']/p)[1]"));
+			selenium.getText("xPath=(//div[@class='entry-body'])[1]"));
 		assertEquals(RuntimeVariables.replace("By Joe Bloggs"),
 			selenium.getText("xPath=(//div[@class='entry-author'])[1]"));
 		assertEquals(RuntimeVariables.replace("0 Comments"),
@@ -96,7 +96,7 @@ public class ViewImportBlogsSiteLARTest extends BaseTestCase {
 			selenium.getText(
 				"xPath=(//td[contains(.,'Delete')]/span/a/span)[2]"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry1 Content"),
-			selenium.getText("xPath=(//div[@class='entry-body']/p)[2]"));
+			selenium.getText("xPath=(//div[@class='entry-body'])[2]"));
 		assertEquals(RuntimeVariables.replace("By Joe Bloggs"),
 			selenium.getText("xPath=(//div[@class='entry-author'])[2]"));
 		assertEquals(RuntimeVariables.replace("1 Comment"),
