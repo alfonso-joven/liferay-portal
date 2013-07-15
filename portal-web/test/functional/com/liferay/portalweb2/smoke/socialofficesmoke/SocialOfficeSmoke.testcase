@@ -8,6 +8,10 @@
 		<var name="userName" value="Joe Bloggs" />
 		<var name="userScreenName" value="joebloggs" />
 
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Roles" />
+		</execute>
+
 		<execute macro="Role#assignRegRoleCP">
 			<var name="roleName" value="${roleName}" />
 			<var name="userScreenName" value="${userScreenName}" />

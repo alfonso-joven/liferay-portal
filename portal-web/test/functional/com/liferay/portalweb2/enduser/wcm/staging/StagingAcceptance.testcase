@@ -6,36 +6,56 @@
 	</set-up>
 
 	<command name="ActivateStaging">
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Site Settings" />
+		</execute>
+
 		<execute macro="Staging#activateStagingCP">
 			<var name="siteName" value="${siteName}" />
-			<var name="siteScopeName" value="${siteName}" />
 		</execute>
 	</command>
 
 	<command name="DeactivateStaging">
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Site Settings" />
+		</execute>
+
 		<execute macro="Staging#activateStagingCP">
 			<var name="siteName" value="${siteName}" />
-			<var name="siteScopeName" value="${siteName}" />
+		</execute>
+
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Site Settings" />
 		</execute>
 
 		<execute macro="Staging#deactivateStagingCP">
 			<var name="siteName" value="${siteName}" />
-			<var name="siteScopeName" value="${siteName}" />
 		</execute>
 	</command>
 
 	<command name="EnablePageVersioning">
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Site Settings" />
+		</execute>
+
 		<execute macro="Staging#activateStagingCP">
 			<var name="siteName" value="${siteName}" />
-			<var name="siteScopeName" value="${siteName}" />
 			<var name="pageVersioningEnabled" value="true" />
 		</execute>
 	</command>
 
 	<command name="StagingPublishToLive">
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Site Settings" />
+		</execute>
+
 		<execute macro="Staging#activateStagingCP">
 			<var name="siteName" value="${siteName}" />
-			<var name="siteScopeName" value="${siteName}" />
+		</execute>
+
+		<execute macro="Page#gotoPG">
+			<var name="pageName" value="Welcome" />
+			<var name="pageStaging" value="true" />
 		</execute>
 
 		<execute macro="Staging#publishToLiveNowPG">
@@ -47,9 +67,12 @@
 		<var name="pageName" value="Blogs Page" />
 		<var name="portletName" value="Blogs" />
 
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Site Settings" />
+		</execute>
+
 		<execute macro="Staging#activateStagingCP">
 			<var name="siteName" value="${siteName}" />
-			<var name="siteScopeName" value="${siteName}" />
 		</execute>
 
 		<execute macro="Page#addPG">
@@ -63,6 +86,10 @@
 			<var name="portletName" value="${portletName}" />
 		</execute>
 
+		<execute macro="Page#gotoPG">
+			<var name="pageStaging" value="true" />
+		</execute>
+
 		<execute macro="Staging#publishToLiveNowPG" />
 
 		<execute action="Staging#assertClick" locator-key1="LIVE_BUTTON" value1="Live" />
@@ -74,9 +101,14 @@
 	</command>
 
 	<tear-down>
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Site Settings" />
+		</execute>
+
 		<execute macro="Staging#deactivateStagingCP">
 			<var name="siteName" value="${siteName}" />
-			<var name="siteScopeName" value="${siteName}" />
 		</execute>
+
+		<execute macro="Page#tearDownPG" />
 	</tear-down>
 </definition>

@@ -2,10 +2,6 @@
 	<var name="userName" value="Test Test" />
 
 	<command name="addPG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<execute action="PGMessageboards#assertClick" locator-key1="POST_NEW_THREAD_BUTTON" value1="Post New Thread" />
 
 		<execute action="PGMessageboardsPostthread#type" locator-key1="SUBJECT_FIELD" value1="${threadSubject}" />
@@ -13,30 +9,9 @@
 		<execute action="PGMessageboardsPostthread#assertClick" locator-key1="PUBLISH_BUTTON" value1="Publish" />
 
 		<execute action="PGMessageboards#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
-
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
-		<var name="key_threadSubject" value="${threadSubject}" />
-
-		<execute action="PGMessageboards#assertTextEquals" locator-key1="THREAD_TABLE_THREAD" value1="${threadSubject}" />
-		<execute action="PGMessageboards#assertTextEquals" locator-key1="THREAD_TABLE_STARTED_BY" value1="${userName}" />
-		<execute action="PGMessageboards#assertTextEquals" locator-key1="THREAD_TABLE_POSTS" value1="1" />
-		<execute action="PGMessageboards#assertTextEquals" locator-key1="THREAD_TABLE_LAST_POST" value1="By: ${userName}" />
-		<execute action="PGMessageboards#assertClick" locator-key1="THREAD_TABLE_THREAD" value1="${threadSubject}" />
-
-		<execute action="PGMessageboardsThread#assertTextEquals" locator-key1="TITLE_HEADER" value1="${threadSubject}" />
-		<execute action="PGMessageboardsThread#assertTextEquals" locator-key1="MESSAGE_USERNAME_1" value1="${userName}" />
-		<execute action="PGMessageboardsThread#assertTextEquals" locator-key1="MESSAGE_SUBJECT_1" value1="${threadSubject}" />
-		<execute action="PGMessageboardsThread#assertTextEquals" locator-key1="MESSAGE_BODY_1" value1="${threadBody}" />
 	</command>
 
 	<command name="addPGWithWorkflow">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<execute action="PGMessageboards#assertClick" locator-key1="POST_NEW_THREAD_BUTTON" value1="Post New Thread" />
 
 		<execute action="PGMessageboardsPostthread#type" locator-key1="SUBJECT_FIELD" value1="${threadSubject}" />
@@ -53,10 +28,6 @@
 	</command>
 
 	<command name="deletePG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<var name="key_threadSubject" value="${threadSubject}" />
 
 		<execute action="PGMessageboards#assertTextEquals" locator-key1="THREAD_TABLE_THREAD" value1="${threadSubject}" />
@@ -68,10 +39,6 @@
 	</command>
 
 	<command name="editPG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<var name="key_threadSubject" value="${threadSubject}" />
 
 		<execute action="PGMessageboards#assertTextEquals" locator-key1="THREAD_TABLE_THREAD" value1="${threadSubject}" />
@@ -90,10 +57,6 @@
 	</command>
 
 	<command name="replyPG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<var name="key_threadSubject" value="${threadSubject}" />
 
 		<execute action="PGMessageboards#assertTextEquals" locator-key1="THREAD_TABLE_THREAD" value1="${threadSubject}" />
@@ -149,10 +112,6 @@
 	</command>
 
 	<command name="viewPG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<var name="key_threadSubject" value="${threadSubject}" />
 
 		<execute action="PGMessageboards#assertTextEquals" locator-key1="THREAD_TABLE_THREAD" value1="${threadSubject}" />
@@ -169,10 +128,6 @@
 	</command>
 
 	<command name="viewPGWithWorkflow">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<var name="key_threadSubject" value="${threadSubject}" />
 
 		<execute action="PGMessageboards#assertElementNotPresent" locator-key1="THREAD_TABLE_THREAD" />
@@ -195,10 +150,6 @@
 	</command>
 
 	<command name="viewReplyPG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<var name="key_threadSubject" value="${threadSubject}" />
 
 		<execute action="PGMessageboards#assertTextEquals" locator-key1="THREAD_TABLE_THREAD" value1="${threadSubject}" />

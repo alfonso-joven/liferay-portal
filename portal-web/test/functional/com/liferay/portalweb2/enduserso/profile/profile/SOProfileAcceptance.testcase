@@ -10,12 +10,20 @@
 	<set-up>
 		<execute macro="SOUser#firstLoginPG" />
 
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Users and Organizations" />
+		</execute>
+
 		<execute macro="User#addCP">
 			<var name="userEmailAddress" value="${userEmailAddress}" />
 			<var name="userFirstName" value="${userFirstName}" />
 			<var name="userMiddleName" value="${userMiddleName}" />
 			<var name="userLastName" value="${userLastName}" />
 			<var name="userScreenName" value="${userScreenName}" />
+		</execute>
+
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Roles" />
 		</execute>
 
 		<execute macro="Role#assignRegRoleCP">

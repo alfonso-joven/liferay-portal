@@ -6,8 +6,16 @@
 	<command name="AddSite">
 		<var name="siteName" value="Site Name" />
 
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Sites" />
+		</execute>
+
 		<execute macro="Site#addBlankCP">
 			<var name="siteName" value="${siteName}" />
+		</execute>
+
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Sites" />
 		</execute>
 
 		<execute macro="Site#viewCP">
@@ -23,9 +31,17 @@
 		<var name="userLastName" value="userln" />
 		<var name="userScreenName" value="usersn" />
 
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Sites" />
+		</execute>
+
 		<execute macro="Site#addBlankCP">
 			<var name="membershipType" value="${membershipType}" />
 			<var name="siteName" value="${siteName}" />
+		</execute>
+
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Users and Organizations" />
 		</execute>
 
 		<execute macro="User#addCP">
@@ -33,6 +49,10 @@
 			<var name="userFirstName" value="${userFirstName}" />
 			<var name="userLastName" value="${userLastName}" />
 			<var name="userScreenName" value="${userScreenName}" />
+		</execute>
+
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Users and Organizations" />
 		</execute>
 
 		<execute macro="User#editPasswordCP">
@@ -62,8 +82,16 @@
 	<command name="DeleteSite">
 		<var name="siteName" value="Site Name" />
 
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Sites" />
+		</execute>
+
 		<execute macro="Site#addBlankCP">
 			<var name="siteName" value="${siteName}" />
+		</execute>
+
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Sites" />
 		</execute>
 
 		<execute macro="Site#deleteCP">
@@ -82,8 +110,16 @@
 		<var name="sitePageType" value="Public" />
 		<var name="sitePageName" value="Site Page" />
 
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Sites" />
+		</execute>
+
 		<execute macro="Site#addBlankCP">
 			<var name="siteName" value="${siteName}" />
+		</execute>
+
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Sites" />
 		</execute>
 
 		<execute macro="SitePage#addCP">
@@ -103,49 +139,75 @@
 			<var name="portletName" value="${portletName}" />
 		</execute>
 
-		<execute macro="MessageboardsThread#addPG">
+		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
 			<var name="pageType" value="Site" />
+		</execute>
+
+		<execute macro="MessageboardsThread#addPG">
 			<var name="siteName" value="${siteName}" />
 			<var name="threadSubject" value="${threadSubject}" />
 			<var name="threadBody" value="${threadBody}" />
+		</execute>
+
+		<execute macro="Page#gotoPG">
+			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Site" />
 		</execute>
 
 		<execute macro="MessageboardsThread#replyPG">
-			<var name="pageName" value="${pageName}" />
-			<var name="pageType" value="Site" />
 			<var name="siteName" value="${siteName}" />
 			<var name="threadSubject" value="${threadSubject}" />
 			<var name="threadBody" value="${threadBody}" />
 		</execute>
 
-		<execute macro="MessageboardsThread#viewReplyPG">
+		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
 			<var name="pageType" value="Site" />
+		</execute>
+
+		<execute macro="MessageboardsThread#viewReplyPG">
 			<var name="threadSubject" value="${threadSubject}" />
 			<var name="threadBody" value="${threadBody}" />
 			<var name="threadReplyBody" value="${threadReplyBody}" />
 		</execute>
 
-		<execute macro="SitePage#cpExportLar">
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Site Pages" />
+			<var name="siteScopeName" value="${siteName}" />
+		</execute>
+
+		<execute macro="SitePage#exportLarCP">
 			<var name="file" value="${file}" />
 			<var name="siteName" value="${siteName}" />
 		</execute>
 
 		<execute macro="Site#tearDownCP" />
 
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Sites" />
+		</execute>
+
 		<execute macro="Site#addBlankCP">
 			<var name="siteName" value="${siteName}" />
 		</execute>
 
-		<execute macro="SitePage#cpImportLar">
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Site Pages" />
+			<var name="siteScopeName" value="${siteName}" />
+		</execute>
+
+		<execute macro="SitePage#importLarCP">
 			<var name="file" value="${file}" />
 			<var name="siteName" value="${siteName}" />
 		</execute>
 
-		<execute macro="MessageboardsThread#viewReplyPG">
+		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
 			<var name="pageType" value="Site" />
+		</execute>
+
+		<execute macro="MessageboardsThread#viewReplyPG">
 			<var name="threadSubject" value="${threadSubject}" />
 			<var name="threadBody" value="${threadBody}" />
 			<var name="threadReplyBody" value="${threadReplyBody}" />

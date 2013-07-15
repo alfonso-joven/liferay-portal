@@ -1,9 +1,5 @@
 <definition>
 	<command name="addAssetTypeWikiPageCP">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Categories" />
-		</execute>
-
 		<execute action="CPCategories#assertClick" locator-key1="ADD_VOCABULARY_BUTTON" value1="Add Vocabulary" />
 		<execute action="CPCategories#type" locator-key1="ADD_VOCABULARY_NAME_FIELD" value1="${vocabularyName}" />
 		<execute action="CPCategories#assertClick" locator-key1="ADD_VOCABULARY_ASSOCIATED_ASSET_TYPES" value1="Associated Asset Types" />
@@ -14,10 +10,6 @@
 	</command>
 
 	<command name="addCP">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Categories" />
-		</execute>
-
 		<execute action="CPCategories#assertClick" locator-key1="ADD_VOCABULARY_BUTTON" value1="Add Vocabulary" />
 		<execute action="CPCategories#type" locator-key1="ADD_VOCABULARY_NAME_FIELD" value1="${vocabularyName}" />
 		<execute action="CPCategories#assertClick" locator-key1="ADD_VOCABULARY_SAVE_BUTTON" value1="Save" />
@@ -26,10 +18,6 @@
 	</command>
 
 	<command name="deleteCPByActions">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Categories" />
-		</execute>
-
 		<execute action="CPCategories#assertTextEquals" locator-key1="VOCABULARY_ENTRY_2" value1="${vocabularyName}" />
 		<execute action="CPCategories#click" locator-key1="ALL_VOCABULARIES_CHECKBOX" />
 		<execute action="CPCategories#assertClick" locator-key1="ACTIONS_BUTTON" value1="Actions" />
@@ -41,10 +29,6 @@
 	</command>
 
 	<command name="editCP">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Categories" />
-		</execute>
-
 		<execute action="CPCategories#assertTextEquals" locator-key1="VOCABULARY_ENTRY_2" value1="${vocabularyName}" />
 		<execute action="CPCategories#click" locator-key1="EDIT_VOCABULARY_ICON" />
 		<execute action="CPCategories#type" locator-key1="EDIT_VOCABULARY_NAME_FIELD" value1="${vocabularyNameEdit}" />

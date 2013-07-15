@@ -27,8 +27,11 @@
 		<var name="webFormFieldsComments" value="Comments" />
 		<var name="webFormFieldsCommentsEdit" value="Additional Comments" />
 
-		<execute macro="WebformPortlet#configureWebformPG">
+		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
+		</execute>
+
+		<execute macro="WebformPortlet#configureWebformPG">
 			<var name="webFormInformationTitle" value="${webFormInformationTitle}" />
 			<var name="webFormInformationTitleEdit" value="${webFormInformationTitleEdit}" />
 			<var name="webFormInformationDescription" value="${webFormInformationDescription}" />
@@ -41,8 +44,11 @@
 			<var name="webFormFieldsCommentsEdit" value="${webFormFieldsCommentsEdit}" />
 		</execute>
 
-		<execute macro="WebformPortlet#viewConfigureWebformPG">
+		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
+		</execute>
+
+		<execute macro="WebformPortlet#viewConfigureWebformPG">
 			<var name="webFormInformationTitle" value="${webFormInformationTitle}" />
 			<var name="webFormInformationTitleEdit" value="${webFormInformationTitleEdit}" />
 			<var name="webFormInformationDescription" value="${webFormInformationDescription}" />

@@ -6,6 +6,10 @@
 	<command name="AddTag">
 		<var name="tagName" value="blue" />
 
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Tags" />
+		</execute>
+
 		<execute macro="Tag#addCP">
 			<var name="tagName" value="${tagName}" />
 		</execute>
@@ -15,6 +19,10 @@
 		<var name="tagName1" value="blue" />
 		<var name="tagName2" value="red" />
 		<var name="tagName3" value="yellow" />
+
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Tags" />
+		</execute>
 
 		<execute macro="Tag#addCP">
 			<var name="tagName" value="${tagName1}" />
@@ -41,6 +49,10 @@
 		<var name="tagName" value="blue" />
 		<var name="tagNameEdit" value="teal" />
 
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Tags" />
+		</execute>
+
 		<execute macro="Tag#addCP">
 			<var name="tagName" value="${tagName}" />
 		</execute>
@@ -52,6 +64,10 @@
 
 	<command name="DeleteTag">
 		<var name="tagName" value="blue" />
+
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Tags" />
+		</execute>
 
 		<execute macro="Tag#addCP">
 			<var name="tagName" value="${tagName}" />

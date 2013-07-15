@@ -1,9 +1,5 @@
 <definition>
 	<command name="approveTaskByActions">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="My Workflow Tasks" />
-		</execute>
-
 		<var name="key_workflowAssetTitle" value="${workflowAssetTitle}" />
 
 		<execute action="CPMyworkflowtasks#assertTextEquals" locator-key1="ASSIGNED_TO_ME_TABLE_TASK" value1="${workflowTask}" />
@@ -27,10 +23,6 @@
 	</command>
 
 	<command name="approveTaskByDetails">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="My Workflow Tasks" />
-		</execute>
-
 		<var name="key_workflowAssetTitle" value="${workflowAssetTitle}" />
 
 		<execute action="CPMyworkflowtasks#assertTextEquals" locator-key1="ASSIGNED_TO_ME_TABLE_TASK" value1="${workflowTask}" />
@@ -61,10 +53,6 @@
 	</command>
 
 	<command name="assignToMeTaskByActions">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="My Workflow Tasks" />
-		</execute>
-
 		<var name="key_workflowAssetTitle" value="${workflowAssetTitle}" />
 
 		<execute action="CPMyworkflowtasks#assertTextEquals" locator-key1="ASSIGNED_TO_MY_ROLES_TABLE_TASK" value1="${workflowTask}" />
@@ -86,10 +74,6 @@
 	</command>
 
 	<command name="assignToMeTaskByDetails">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="My Workflow Tasks" />
-		</execute>
-
 		<var name="key_workflowAssetTitle" value="${workflowAssetTitle}" />
 
 		<execute action="CPMyworkflowtasks#assertTextEquals" locator-key1="ASSIGNED_TO_MY_ROLES_TABLE_TASK" value1="${workflowTask}" />
@@ -128,10 +112,6 @@
 	</command>
 
 	<command name="configurePortalWorkflow">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Workflow" />
-		</execute>
-
 		<execute action="CPPortalWorkflowconfiguration#click" locator-key1="NAVIGATION_DEFAULT_CONFIGURATION" />
 
 		<execute action="CPPortalWorkflowconfigurationDefaultconfiguration#select" locator-key1="${workflowResourceKey}" value1="${workflowDefinition}" />
@@ -140,20 +120,12 @@
 	</command>
 
 	<command name="configureSiteWorkflow">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Workflow Configuration" />
-		</execute>
-
 		<execute action="CPSiteWorkflowconfiguration#select" locator-key1="${workflowResourceKey}" value1="${workflowDefinition}" />
 		<execute action="CPSiteWorkflowconfiguration#assertClick" locator-key1="SAVE_BUTTON" value1="Save" />
 		<execute action="CPSiteWorkflowconfiguration#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 	</command>
 
 	<command name="rejectTaskByActions">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="My Workflow Tasks" />
-		</execute>
-
 		<var name="key_workflowAssetTitle" value="${workflowAssetTitle}" />
 
 		<execute action="CPMyworkflowtasks#assertTextEquals" locator-key1="ASSIGNED_TO_ME_TABLE_TASK" value1="${workflowTask}" />
@@ -177,10 +149,6 @@
 	</command>
 
 	<command name="rejectTaskByDetails">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="My Workflow Tasks" />
-		</execute>
-
 		<var name="key_workflowAssetTitle" value="${workflowAssetTitle}" />
 
 		<execute action="CPMyworkflowtasks#assertTextEquals" locator-key1="ASSIGNED_TO_ME_TABLE_TASK" value1="${workflowTask}" />
@@ -242,10 +210,6 @@
 	</command>
 
 	<command name="viewRejectTask">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="My Workflow Tasks" />
-		</execute>
-
 		<var name="key_workflowAssetTitle" value="${workflowAssetTitle}" />
 
 		<execute action="CPMyworkflowtasks#assertTextEquals" locator-key1="ASSIGNED_TO_ME_TABLE_TASK" value1="Update" />
@@ -256,10 +220,6 @@
 	</command>
 
 <command name="withdrawTaskByActions">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="My Submissions" />
-		</execute>
-
 		<var name="key_workflowAssetTitle" value="${workflowAssetTitle}" />
 
 		<execute action="CPMysubmissions#assertTextEquals" locator-key1="PENDING_TABLE_DEFINITION" value1="${workflowDefinition}" />
@@ -274,10 +234,6 @@
 	</command>
 
 	<command name="withdrawTaskByDetails">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="My Submissions" />
-		</execute>
-
 		<var name="key_workflowAssetContent" value="${workflowAssetContent}" />
 		<var name="key_workflowAssetTitle" value="${workflowAssetTitle}" />
 
@@ -300,10 +256,6 @@
 	</command>
 
 	<command name="withdrawTaskCompletedNoByActions">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="My Submissions" />
-		</execute>
-
 		<var name="key_workflowAssetTitle" value="${workflowAssetTitle}" />
 
 		<execute action="CPMysubmissions#assertClick"  locator-key1="NAVIGATION_COMPLETED" value1="Completed" />
@@ -319,10 +271,6 @@
 	</command>
 
 	<command name="withdrawTaskCompletedNoByDetails">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="My Submissions" />
-		</execute>
-
 		<var name="key_workflowAssetContent" value="${workflowAssetContent}" />
 		<var name="key_workflowAssetTitle" value="${workflowAssetTitle}" />
 

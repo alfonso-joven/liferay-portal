@@ -5,6 +5,10 @@
 	<set-up>
 		<execute macro="User#firstLoginPG" />
 
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Workflow Configuration" />
+		</execute>
+
 		<execute macro="Workflow#configureSiteWorkflow">
 			<var name="workflowDefinition" value="Single Approver (Version 1)" />
 			<var name="workflowResourceKey" value="RESOURCE_TABLE_COMMENTS_SELECT" />
@@ -24,6 +28,10 @@
 		<var name="commentBody" value="Page Comment Comment" />
 		<var name="commentUsername" value="Test Test" />
 
+		<execute macro="Page#gotoPG">
+			<var name="pageName" value="${pageName}" />
+		</execute>
+
 		<execute macro="PageComment#addPGWithWorkflow">
 			<var name="commentBody" value="${commentBody}" />
 			<var name="commentUsername" value="${commentUsername}" />
@@ -35,10 +43,18 @@
 			<var name="commentUsername" value="${commentUsername}" />
 		</execute>
 
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="My Workflow Tasks" />
+		</execute>
+
 		<execute macro="Workflow#assignToMeTaskByActions">
 			<var name="workflowAssetTitle" value="${commentBody}" />
 			<var name="workflowAssetType" value="Comments" />
 			<var name="workflowTask" value="Review" />
+		</execute>
+
+		<execute macro="Page#gotoPG">
+			<var name="pageName" value="${pageName}" />
 		</execute>
 
 		<execute macro="PageComment#viewPGWithWorkflow">
@@ -47,10 +63,18 @@
 			<var name="commentUsername" value="${commentUsername}" />
 		</execute>
 
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="My Workflow Tasks" />
+		</execute>
+
 		<execute macro="Workflow#approveTaskByActions">
 			<var name="workflowAssetTitle" value="${commentBody}" />
 			<var name="workflowAssetType" value="Comments" />
 			<var name="workflowTask" value="Review" />
+		</execute>
+
+		<execute macro="Page#gotoPG">
+			<var name="pageName" value="${pageName}" />
 		</execute>
 
 		<execute macro="PageComment#viewPG">
@@ -63,6 +87,10 @@
 		<var name="commentBody" value="Page Comment Comment" />
 		<var name="commentUsername" value="Test Test" />
 
+		<execute macro="Page#gotoPG">
+			<var name="pageName" value="${pageName}" />
+		</execute>
+
 		<execute macro="PageComment#addPGWithWorkflow">
 			<var name="commentBody" value="${commentBody}" />
 			<var name="commentUsername" value="${commentUsername}" />
@@ -74,8 +102,12 @@
 			<var name="commentUsername" value="${commentUsername}" />
 		</execute>
 
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="My Workflow Tasks" />
+		</execute>
+
 		<execute macro="Workflow#assignToMeTaskByActions">
-		<var name="workflowAssetTitle" value="${commentBody}" />
+			<var name="workflowAssetTitle" value="${commentBody}" />
 			<var name="workflowAssetType" value="Comments" />
 			<var name="workflowTask" value="Review" />
 		</execute>
@@ -86,9 +118,17 @@
 			<var name="workflowTask" value="Review" />
 		</execute>
 
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="My Workflow Tasks" />
+		</execute>
+
 		<execute macro="Workflow#viewRejectTask">
 			<var name="workflowAssetTitle" value="${commentBody}" />
 			<var name="workflowAssetType" value="Comments" />
+		</execute>
+
+		<execute macro="Page#gotoPG">
+			<var name="pageName" value="${pageName}" />
 		</execute>
 
 		<execute macro="PageComment#viewPGWithWorkflow">

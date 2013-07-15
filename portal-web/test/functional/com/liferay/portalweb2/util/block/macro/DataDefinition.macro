@@ -1,9 +1,5 @@
 <definition>
 	<command name="addCP">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Dynamic Data Lists" />
-		</execute>
-
 		<execute action="CPDynamicdatalists#assertClick" locator-key1="TOOLBAR_MANAGE_DATA_DEFINITIONS" value1="Manage Data Definitions" />
 
 		<execute action="CPDynamicdatalistsDatadefinitions#selectFrame" locator-key1="DATA_DEFINITIONS_IFRAME" />
@@ -145,10 +141,6 @@
 	</command>
 
 	<command name="deleteCP">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Dynamic Data Lists" />
-		</execute>
-
 		<execute action="CPDynamicdatalists#assertClick" locator-key1="TOOLBAR_MANAGE_DATA_DEFINITIONS" value1="Manage Data Definitions" />
 
 		<execute action="CPDynamicdatalistsDatadefinitions#selectFrame" locator-key1="DATA_DEFINITIONS_IFRAME" />
@@ -158,14 +150,6 @@
 		<execute action="CPDynamicdatalistsDatadefinitions#assertClick" locator-key1="DATA_DEFINITION_MENULIST_DELETE" value1="Delete" />
 		<execute action="CPDynamicdatalistsDatadefinitions#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this?" />
 		<execute action="CPDynamicdatalistsDatadefinitions#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
-
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Dynamic Data Lists" />
-		</execute>
-
-		<execute action="CPDynamicdatalists#assertClick" locator-key1="TOOLBAR_MANAGE_DATA_DEFINITIONS" value1="Manage Data Definitions" />
-
-		<execute action="CPDynamicdatalistsDatadefinitions#selectFrame" locator-key1="DATA_DEFINITIONS_IFRAME" />
 		<execute action="CPDynamicdatalistsDatadefinitions#type" locator-key1="BASIC_SEARCH_FIELD" value1="${dataDefinitionName}" />
 		<execute action="CPDynamicdatalistsDatadefinitions#assertClick" locator-key1="BASIC_SEARCH_BUTTON" value1="Search" />
 		<execute action="CPDynamicdatalistsDatadefinitions#assertTextNotPresent" value1="${dataDefinitionName}" />
@@ -174,10 +158,6 @@
 	</command>
 
 	<command name="editCP">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Dynamic Data Lists" />
-		</execute>
-
 		<execute action="CPDynamicdatalists#assertClick" locator-key1="TOOLBAR_MANAGE_DATA_DEFINITIONS" value1="Manage Data Definitions" />
 
 		<execute action="CPDynamicdatalistsDatadefinitions#selectFrame" locator-key1="DATA_DEFINITIONS_IFRAME" />
@@ -218,10 +198,6 @@
 	</command>
 
 	<command name="viewCP">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Dynamic Data Lists" />
-		</execute>
-
 		<execute action="CPDynamicdatalists#assertClick" locator-key1="TOOLBAR_MANAGE_DATA_DEFINITIONS" value1="Manage Data Definitions" />
 
 		<execute action="CPDynamicdatalistsDatadefinitions#selectFrame" locator-key1="DATA_DEFINITIONS_IFRAME" />

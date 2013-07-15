@@ -1,10 +1,5 @@
 <definition>
 	<command name="activateStagingCP">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Site Settings" />
-			<var name="siteScopeName" value="${siteScopeName}" />
-		</execute>
-
 		<execute action="CPSitesEdit#assertClick" locator-key1="MENU_STAGING" value1="Staging" />
 		<execute action="CPSitesEdit#check" locator-key1="STAGING_LOCAL_LIVE" />
 
@@ -39,11 +34,6 @@
 	</command>
 
 	<command name="deactivateStagingCP">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Site Settings" />
-			<var name="siteScopeName" value="${siteScopeName}" />
-		</execute>
-
 		<if>
 			<condition action="CPSitesEdit#isTextEqual" locator-key1="HEADER" value1="${siteName} (Staging)" />
 			<then>
@@ -58,10 +48,6 @@
 	</command>
 
 	<command name="publishToLiveNowPG">
-		<execute macro="Page#gotoPG">
-			<var name="pageStaging" value="true" />
-		</execute>
-
 		<execute action="Staging#click" locator-key1="STAGING_DROP_DOWN_BUTTON" />
 		<execute action="Staging#assertClick" locator-key1="STAGING_MENULIST_PUBLISH_TO_LIVE_NOW" value1="Publish to Live Now" />
 

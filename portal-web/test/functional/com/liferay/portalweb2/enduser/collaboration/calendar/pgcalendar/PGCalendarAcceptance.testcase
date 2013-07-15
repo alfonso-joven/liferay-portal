@@ -18,6 +18,10 @@
 	<command name="AddCalendarEvent">
 		<var name="eventTitle" value="Calendar Event Title" />
 
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Calendar" />
+		</execute>
+
 		<execute macro="Event#addPG">
 			<var name="eventTitle" value="${eventTitle}" />
 		</execute>
@@ -25,6 +29,10 @@
 
 	<command name="DeleteCalendarEvent">
 		<var name="eventTitle" value="Calendar Event Title" />
+
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Calendar" />
+		</execute>
 
 		<execute macro="Event#addPG">
 			<var name="eventTitle" value="${eventTitle}" />
@@ -38,6 +46,10 @@
 	<command name="EditCalendarEvent">
 		<var name="eventTitle" value="Calendar Event Title" />
 		<var name="eventTitleEdit" value="Calendar Event Title Edit" />
+
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Calendar" />
+		</execute>
 
 		<execute macro="Event#addPG">
 			<var name="eventTitle" value="${eventTitle}" />

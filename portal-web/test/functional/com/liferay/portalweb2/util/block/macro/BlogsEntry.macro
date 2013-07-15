@@ -1,9 +1,5 @@
 <definition>
 	<command name="addCP">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Blogs" />
-		</execute>
-
 		<execute action="CPBlogs#assertClick" locator-key1="ADD_ENTRY" value1="Add" />
 
 		<execute action="CPBlogsAdd#type" locator-key1="TITLE_FIELD" value1="${entryTitle}" />
@@ -21,10 +17,6 @@
 	</command>
 
 	<command name="addCPWithWorkflow">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Blogs" />
-		</execute>
-
 		<execute action="CPBlogs#assertClick" locator-key1="ADD_ENTRY" value1="Add" />
 
 		<execute action="CPBlogsAdd#type" locator-key1="TITLE_FIELD" value1="${entryTitle}" />
@@ -44,10 +36,6 @@
 	</command>
 
 	<command name="addPG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<execute action="PGBlogs#assertClick" locator-key1="ADD_ENTRY_BUTTON" value1="Add Blog Entry" />
 
 		<execute action="PGBlogsAdd#type" locator-key1="TITLE_FIELD" value1="${entryTitle}" />
@@ -60,26 +48,14 @@
 	</command>
 
 	<command name="addNoPermissionPG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<execute action="PGBlogs#assertElementNotPresent" locator-key1="ADD_ENTRY_BUTTON" value1="Add Blogs Entry" />
 	</command>
 
 	<command name="deleteNoPermissionPG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<execute action="PGBlogs#assertElementNotPresent" locator-key1="ENTRY_DELETE_1" />
 	</command>
 
 	<command name="deletePG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<execute action="PGBlogs#assertTextEquals" locator-key1="ENTRY_TITLE_1" value1="${entryTitle}" />
 		<execute action="PGBlogs#assertTextEquals" locator-key1="ENTRY_CONTENT_1" value1="${entryContent}" />
 		<execute action="PGBlogs#assertClick" locator-key1="ENTRY_DELETE_1" value1="Delete" />
@@ -90,10 +66,6 @@
 	</command>
 
 	<command name="editPG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<execute action="PGBlogs#assertTextEquals" locator-key1="ENTRY_TITLE_1" value1="${entryTitle}" />
 		<execute action="PGBlogs#assertTextEquals" locator-key1="ENTRY_CONTENT_1" value1="${entryContent}" />
 		<execute action="PGBlogs#assertClick" locator-key1="ENTRY_EDIT_1" value1="Edit" />
@@ -107,10 +79,6 @@
 	</command>
 
 	<command name="viewPortletPG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<execute action="PGBlogs#assertElementPresent" locator-key1="ADD_ENTRY_BUTTON" value1="Add Blog Entry" />
 		<execute action="PGBlogs#assertElementPresent" locator-key1="PERMISSIONS_BUTTON" value1="Permissions" />
 		<execute action="PGBlogs#assertTextEquals" locator-key1="PORTLET_TITLE" value1="Blogs" />
@@ -119,10 +87,6 @@
 	</command>
 
 	<command name="viewPortletPGasGuest">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<execute action="PGBlogs#assertElementNotPresent" locator-key1="ADD_ENTRY_BUTTON" value1="Add Blog Entry" />
 		<execute action="PGBlogs#assertElementNotPresent" locator-key1="PERMISSIONS_BUTTON" value1="Permissions" />
 		<execute action="PGBlogs#assertTextEquals" locator-key1="PORTLET_TITLE" value1="Blogs" />
@@ -146,10 +110,6 @@
 	</command>
 
 	<command name="viewCP">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Blogs" />
-		</execute>
-
 		<var name="key_entryTitle" value="${entryTitle}" />
 
 		<execute action="CPBlogs#assertTextEquals" locator-key1="ENTRY_TABLE_TITLE" value1="${entryTitle}" />
@@ -162,10 +122,6 @@
 	</command>
 
 	<command name="viewCPWithWorkflow">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Blogs" />
-		</execute>
-
 		<var name="key_entryTitle" value="${entryTitle}" />
 
 		<execute action="CPBlogs#assertTextEquals" locator-key1="ENTRY_TABLE_TITLE" value1="${entryTitle}" />
@@ -178,10 +134,6 @@
 	</command>
 
 	<command name="viewPG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<execute action="PGBlogs#assertElementPresent" locator-key1="SEARCH_FIELD" />
 		<execute action="PGBlogs#assertElementPresent" locator-key1="SEARCH_BUTTON" />
 		<execute action="PGBlogs#assertElementPresent" locator-key1="ADD_ENTRY_BUTTON" />
@@ -213,12 +165,8 @@
 	</command>
 
 	<command name="viewPGDetails">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<execute action="PGBlogs#click" locator-key1="ENTRY_TITLE_1" value1="${entryTitle}" />
-	
+
 		<execute action="PGBlogsEntry#assertTextEquals" locator-key1="ENTRY_TITLE" value1="${entryTitle}" />
 		<execute action="PGBlogsEntry#assertTextEquals" locator-key1="ENTRY_CONTENT" value1="${entryContent}" />
 

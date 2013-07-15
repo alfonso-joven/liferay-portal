@@ -26,44 +26,9 @@
 		<execute action="CPRolesAddrole#assertClick" locator-key1="SAVE_BUTTON" value1="Save" />
 
 		<execute action="CPRoles#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
-
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Roles" />
-		</execute>
-
-		<if>
-			<equals arg1="${roleType}" arg2="Organization" />
-			<then>
-				<execute action="CPRoles#type" locator-key1="SEARCH_FIELD" value1="Orgrole" />
-			</then>
-			<elseif>
-				<equals arg1="${roleType}" arg2="Site" />
-				<then>
-					<execute action="CPRoles#type" locator-key1="SEARCH_FIELD" value1="Siterole" />
-				</then>
-			</elseif>
-			<else>
-				<execute action="CPRoles#type" locator-key1="SEARCH_FIELD" value1="Regrole" />
-
-				<var name="roleType" value="Regular" />
-			</else>
-		</if>
-
-		<execute action="CPRoles#assertClick" locator-key1="SEARCH_BUTTON" value1="Search" />
-		<execute action="CPRoles#assertTextEquals" locator-key1="ROLE_TABLE_TITLE_1" value1="${roleName}" />
-		<execute action="CPRoles#assertTextEquals" locator-key1="ROLE_TABLE_TYPE_1" value1="${roleType}" />
-		<execute action="CPRoles#assertClick" locator-key1="ROLE_TABLE_ACTIONS_1" value1="Actions" />
-		<execute action="CPRoles#assertClick" locator-key1="ROLE_MENULIST_EDIT" value1="Edit" />
-
-		<execute action="CPRolesEdit#assertTextEquals" locator-key1="HEADER" value1="${roleName}" />
-		<execute action="CPRolesEdit#assertTextEquals" locator-key1="NAME_FIELD" value1="${roleName}" />
 	</command>
 
 	<command name="assignRegRoleCP">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Roles" />
-		</execute>
-
 		<execute action="CPRoles#type" locator-key1="SEARCH_FIELD" value1="${roleName}" />
 		<execute action="CPRoles#assertClick" locator-key1="SEARCH_BUTTON" value1="Search" />
 		<execute action="CPRoles#assertClick" locator-key1="ROLE_TABLE_ACTIONS_1" value1="Actions" />
@@ -81,10 +46,6 @@
 	</command>
 
 	<command name="definePermissionBlogsEntryCP">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Roles" />
-		</execute>
-
 		<if>
 			<equals arg1="${roleType}" arg2="Organization" />
 			<then>
@@ -236,5 +197,34 @@
 		<execute action="CPRolesAssignmembersUsers#uncheck" locator-key1="USER_TABLE_CHECKBOX_1" />
 		<execute action="CPRolesAssignmembersUsers#assertClick" locator-key1="UPDATE_ASSOCIATIONS_BUTTON" value1="Update Associations" />
 		<execute action="CPRolesAssignmembersUsers#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
+	</command>
+
+	<command name="viewCP">
+		<if>
+			<equals arg1="${roleType}" arg2="Organization" />
+			<then>
+				<execute action="CPRoles#type" locator-key1="SEARCH_FIELD" value1="Orgrole" />
+			</then>
+			<elseif>
+				<equals arg1="${roleType}" arg2="Site" />
+				<then>
+					<execute action="CPRoles#type" locator-key1="SEARCH_FIELD" value1="Siterole" />
+				</then>
+			</elseif>
+			<else>
+				<execute action="CPRoles#type" locator-key1="SEARCH_FIELD" value1="Regrole" />
+
+				<var name="roleType" value="Regular" />
+			</else>
+		</if>
+
+		<execute action="CPRoles#assertClick" locator-key1="SEARCH_BUTTON" value1="Search" />
+		<execute action="CPRoles#assertTextEquals" locator-key1="ROLE_TABLE_TITLE_1" value1="${roleName}" />
+		<execute action="CPRoles#assertTextEquals" locator-key1="ROLE_TABLE_TYPE_1" value1="${roleType}" />
+		<execute action="CPRoles#assertClick" locator-key1="ROLE_TABLE_ACTIONS_1" value1="Actions" />
+		<execute action="CPRoles#assertClick" locator-key1="ROLE_MENULIST_EDIT" value1="Edit" />
+
+		<execute action="CPRolesEdit#assertTextEquals" locator-key1="HEADER" value1="${roleName}" />
+		<execute action="CPRolesEdit#assertTextEquals" locator-key1="NAME_FIELD" value1="${roleName}" />
 	</command>
 </definition>

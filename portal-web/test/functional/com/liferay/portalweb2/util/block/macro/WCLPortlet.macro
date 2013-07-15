@@ -1,9 +1,5 @@
 <definition>
 	<command name="configureSetupPG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<execute action="PGWebcontentlist#assertClick" locator-key1="OPTIONS_ICON" value1="Options" />
 		<execute action="PGWebcontentlist#assertClick" locator-key1="OPTIONS_MENULIST_CONFIGURATION" value1="Configuration" />
 
@@ -14,10 +10,6 @@
 		<execute action="PGWebcontentlistConfiguration#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="You have successfully updated the setup." />
 
 		<execute action="PGWebcontentlist#selectFrame" />
-
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
 
 		<execute action="PGWebcontentlist#assertTextEquals" locator-key1="WEB_CONTENT_TABLE_TITLE_1" value1="${webContentTitle}" />
 	</command>

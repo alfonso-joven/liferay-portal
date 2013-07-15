@@ -14,10 +14,6 @@
 	</command>
 
 	<command name="addPGviaDMD">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<execute action="PGDocumentlibrarydisplay#assertClick" locator-key1="FOLDERS_TABLE_NAME_1" value1="${dmdFolderName}" />
 
 		<execute action="PGDocumentlibrarydisplayFolder#click" locator-key1="SUBFOLDER_MENU_ADD_DOCUMENT" value1="${dmdDocumentTitle}" />
@@ -40,10 +36,6 @@
 	</command>
 
 	<command name="addPGviaMG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<execute action="PGMediagallery#assertTextEquals" locator-key1="ENTRY_TITLE" value1="${mgFolderName}" />
 		<execute action="PGMediagallery#assertClick" locator-key1="ENTRY_TITLE" value1="${mgFolderName}" />
 
@@ -68,10 +60,6 @@
 	</command>
 
 	<command name="deletePGviaMG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<execute action="PGMediagallery#assertTextEquals" locator-key1="ENTRY_TITLE" value1="${mgFolderName}" />
 		<execute action="PGMediagallery#assertClick" locator-key1="ENTRY_TITLE" value1="${mgFolderName}" />
 
@@ -85,10 +73,6 @@
 	</command>
 
 	<command name="editPGviaMG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<execute action="PGMediagallery#assertTextEquals" locator-key1="ENTRY_TITLE" value1="${mgFolderName}" />
 		<execute action="PGMediagallery#assertClick" locator-key1="ENTRY_TITLE" value1="${mgFolderName}" />
 
@@ -106,10 +90,6 @@
 	</command>
 
 	<command name="moveToFolderPG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<execute action="PGDocumentsandmedia#click" locator-key1="ENTRIES_FOLDER" />
 
 		<execute action="PGDocumentsandmediaFolder#check" locator-key1="FOLDER_ENTRIES_DOCUMENT_SELECT" />
@@ -126,20 +106,12 @@
 	</command>
 
 	<command name="searchNoPGviaDMD">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<execute action="PGDocumentlibrarydisplaySearch#type" locator-key1="SEARCH_FIELD" value1="${dmdDocumentTitleSearch}" />
 		<execute action="PGDocumentlibrarydisplaySearch#assertClick" locator-key1="SEARCH_BUTTON" value1="Search" />
 		<execute action="PGDocumentlibrarydisplaySearch#assertTextEquals" locator-key1="INFO_MESSAGE" value1="No documents were found that matched the keywords: ${dmdDocumentTitleSearch}." />
 	</command>
 
 	<command name="searchPGviaDMD">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<execute action="PGDocumentlibrarydisplay#type" locator-key1="SEARCH_FIELD" value1="${dmdDocumentTitleSearch}" />
 		<execute action="PGDocumentlibrarydisplay#assertClick" locator-key1="SEARCH_BUTTON" value1="Search" />
 

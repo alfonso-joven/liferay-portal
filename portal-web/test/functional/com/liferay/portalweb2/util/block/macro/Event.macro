@@ -1,9 +1,5 @@
 <definition>
 	<command name="addCP">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Calendar" />
-		</execute>
-
 		<execute action="CPCalendar#assertClick" locator-key1="VIEW_SUMMARY" value1="Summary" />
 		<execute action="CPCalendar#assertClick" locator-key1="ADD_EVENT_BUTTON" value1="Add Event" />
 
@@ -18,10 +14,6 @@
 	</command>
 
 	<command name="addPG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<execute action="PGCalendar#assertClick" locator-key1="VIEW_SUMMARY" value1="Summary" />
 		<execute action="PGCalendar#assertClick" locator-key1="ADD_EVENT_BUTTON" value1="Add Event" />
 
@@ -36,10 +28,6 @@
 	</command>
 
 	<command name="deleteCP">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Calendar" />
-		</execute>
-
 		<execute action="CPCalendar#assertClick" locator-key1="VIEW_SUMMARY" value1="Summary" />
 		<execute action="CPCalendar#assertTextEquals" locator-key1="EVENT_TABLE_TITLE" value1="${eventTitle}" />
 		<execute action="CPCalendar#assertClick" locator-key1="EVENT_TABLE_ACTIONS" value1="Actions" />
@@ -49,10 +37,6 @@
 	</command>
 
 	<command name="deletePG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<execute action="PGCalendar#assertClick" locator-key1="VIEW_SUMMARY" value1="Summary" />
 		<execute action="PGCalendar#assertTextEquals" locator-key1="EVENT_TABLE_TITLE" value1="${eventTitle}" />
 		<execute action="PGCalendar#assertClick" locator-key1="EVENT_TABLE_ACTIONS"  value1="Actions" />
@@ -62,10 +46,6 @@
 	</command>
 
 	<command name="editCP">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Calendar" />
-		</execute>
-
 		<execute action="CPCalendar#assertClick" locator-key1="VIEW_SUMMARY" value1="Summary" />
 		<execute action="CPCalendar#assertTextEquals" locator-key1="EVENT_TABLE_TITLE" value1="${eventTitle}" />
 		<execute action="CPCalendar#assertClick" locator-key1="EVENT_TABLE_ACTIONS"  value1="Actions" />
@@ -82,10 +62,6 @@
 	</command>
 
 	<command name="editPG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<execute action="PGCalendar#assertClick" locator-key1="VIEW_SUMMARY" value1="Summary" />
 		<execute action="PGCalendar#assertTextEquals" locator-key1="EVENT_TABLE_TITLE" value1="${eventTitle}" />
 		<execute action="PGCalendar#assertClick" locator-key1="EVENT_TABLE_ACTIONS"  value1="Actions" />

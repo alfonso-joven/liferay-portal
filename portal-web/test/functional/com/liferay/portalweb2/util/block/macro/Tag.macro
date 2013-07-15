@@ -1,9 +1,5 @@
 <definition>
 	<command name="addCP">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Tags" />
-		</execute>
-
 		<execute action="CPTags#assertClick" locator-key1="ADD_TAG_BUTTON" value1="Add Tag" />
 		<execute action="CPTags#type" locator-key1="ADD_TAG_NAME_FIELD" value1="${tagName}" />
 		<execute action="CPTags#assertClick" locator-key1="ADD_TAG_SAVE_BUTTON" value1="Save" />
@@ -12,10 +8,6 @@
 	</command>
 
 	<command name="deleteCP">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Tags" />
-		</execute>
-
 		<execute action="CPTags#assertTextEquals" locator-key1="TAG_DETAILS_HEADER" value1="${tagName}" />
 		<execute action="CPTags#assertClick" locator-key1="TAG_DETAILS_DELETE_BUTTON" value1="Delete" />
 		<execute action="CPTags#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this tag?" />
@@ -25,10 +17,6 @@
 	</command>
 
 	<command name="editCP">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Tags" />
-		</execute>
-
 		<execute action="CPTags#assertTextEquals" locator-key1="TAG_DETAILS_HEADER" value1="${tagName}" />
 		<execute action="CPTags#assertClick" locator-key1="TAG_DETAILS_EDIT_BUTTON" value1="Edit" />
 		<execute action="CPTags#type" locator-key1="EDIT_TAG_NAME" value1="${tagNameEdit}" />

@@ -98,7 +98,7 @@
 </tr>
 <tr>
 	<td>TOOLBAR_ADD</td>
-	<td>//div[@class='toolbar']/span[3]/span/ul/li/strong/a/span</td>
+	<td>//div[@class='toolbar']/span[@id='_20_addButtonContainer']//strong/a/span</td>
 	<td>Add</td>
 </tr>
 <tr>

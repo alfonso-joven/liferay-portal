@@ -1,9 +1,5 @@
 <definition>
 	<command name="addCP">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Wiki" />
-		</execute>
-
 		<execute action="CPWiki#assertClick" locator-key1="ADD_WIKI_BUTTON" value1="Add Wiki" />
 
 		<execute action="CPWikiAddwiki#type" locator-key1="NAME_FIELD" value1="${wikiNodeName}" />
@@ -16,10 +12,6 @@
 	</command>
 
 	<command name="deleteCP">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Wiki" />
-		</execute>
-
 		<execute action="CPWiki#assertTextEquals" locator-key1="WIKI_NODE_TABLE_WIKI_2" value1="${wikiNodeName}" />
 		<execute action="CPWiki#assertClick" locator-key1="WIKI_NODE_TABLE_ACTIONS_2" value1="Actions" />
 		<execute action="CPWiki#assertClick" locator-key1="WIKI_NODE_MENULIST_DELETE" value1="Delete" />
@@ -28,10 +20,6 @@
 	</command>
 
 	<command name="editCP">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Wiki" />
-		</execute>
-
 		<execute action="CPWiki#assertTextEquals" locator-key1="WIKI_NODE_TABLE_WIKI_2" value1="${wikiNodeName}" />
 		<execute action="CPWiki#assertClick" locator-key1="WIKI_NODE_TABLE_ACTIONS_2" value1="Actions" />
 		<execute action="CPWiki#assertClick" locator-key1="WIKI_NODE_MENULIST_EDIT" value1="Edit" />

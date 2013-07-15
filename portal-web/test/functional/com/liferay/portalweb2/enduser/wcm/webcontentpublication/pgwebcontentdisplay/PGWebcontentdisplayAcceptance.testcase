@@ -19,8 +19,11 @@
 		<var name="webContentContent" value="WC WebContent Content" />
 		<var name="webContentTitle" value="WC WebContent Title" />
 
-		<execute macro="WebContent#addPGviaWCD">
+		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
+		</execute>
+
+		<execute macro="WebContent#addPGviaWCD">
 			<var name="webContentContent" value="${webContentContent}" />
 			<var name="webContentTitle" value="${webContentTitle}" />
 		</execute>
@@ -32,14 +35,20 @@
 		<var name="webContentTitle" value="WC WebContent Title" />
 		<var name="webContentTitleEdit" value="WC WebContent Title Edit" />
 
-		<execute macro="WebContent#addPGviaWCD">
+		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
+		</execute>
+
+		<execute macro="WebContent#addPGviaWCD">
 			<var name="webContentContent" value="${webContentContent}" />
 			<var name="webContentTitle" value="${webContentTitle}" />
 		</execute>
 
-		<execute macro="WebContent#editPGviaWCD">
+		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
+		</execute>
+
+		<execute macro="WebContent#editPGviaWCD">
 			<var name="webContentContentEdit" value="${webContentContentEdit}" />
 			<var name="webContentTitleEdit" value="${webContentTitleEdit}" />
 		</execute>

@@ -9,6 +9,10 @@
 		<var name="dmDocumentSize" value="0.3k" />
 		<var name="dmDocumentTitle" value="DM Document Title" />
 
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Documents and Media" />
+		</execute>
+
 		<execute macro="DMDocument#addCP">
 			<var name="dmDocumentDescription" value="${dmDocumentDescription}" />
 			<var name="dmDocumentFile" value="${dmDocumentFile}" />
@@ -21,6 +25,10 @@
 		<var name="dmFolderName" value="DM Folder Name" />
 		<var name="dmFolderDescription" value="DM Folder Description" />
 
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Documents and Media" />
+		</execute>
+
 		<execute macro="DMFolder#addCP">
 			<var name="dmFolderName" value="${dmFolderName}" />
 			<var name="dmFolderDescription" value="${dmFolderDescription}" />
@@ -32,6 +40,10 @@
 		<var name="dmDocumentSize" value="0.3k" />
 		<var name="dmDocumentTitle" value="DM Document Title" />
 		<var name="dmDocumentDescription" value="DM Document Description" />
+
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Documents and Media" />
+		</execute>
 
 		<execute macro="DMDocument#addCP">
 			<var name="dmDocumentDescription" value="${dmDocumentDescription}" />
@@ -49,6 +61,10 @@
 		<var name="dmFolderName" value="DM Folder Name" />
 		<var name="dmFolderDescription" value="DM Folder Description" />
 
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Documents and Media" />
+		</execute>
+
 		<execute macro="DMFolder#addCP">
 			<var name="dmFolderName" value="${dmFolderName}" />
 			<var name="dmFolderDescription" value="${dmFolderDescription}" />
@@ -64,6 +80,10 @@
 		<var name="dmDocumentSize" value="0.3k" />
 		<var name="dmDocumentTitle" value="DM Document Title" />
 		<var name="dmDocumentDescription" value="DM Document Description" />
+
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Documents and Media" />
+		</execute>
 
 		<execute macro="DMDocument#addCP">
 			<var name="dmDocumentFile" value="${dmDocumentFile}" />
@@ -84,6 +104,10 @@
 		<var name="dmFolderName" value="DM Folder Name" />
 		<var name="dmFolderDescription" value="DM Folder Description" />
 
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Documents and Media" />
+		</execute>
+
 		<execute macro="DMFolder#addCP">
 			<var name="dmFolderDescription" value="${dmFolderDescription}" />
 			<var name="dmFolderName" value="${dmFolderName}" />
@@ -102,9 +126,12 @@
 		<var name="dmDocumentSize" value="0.3k" />
 		<var name="dmDocumentTitle" value="DM Document Title" />
 		<var name="dmDocumentDescription" value="DM Document Description" />
-
 		<var name="dmFolderName" value="DM Folder Name" />
 		<var name="dmFolderDescription" value="DM Folder Description" />
+
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Documents and Media" />
+		</execute>
 
 		<execute macro="DMDocument#addCP">
 			<var name="dmDocumentFile" value="${dmDocumentFile}" />
@@ -127,9 +154,12 @@
 	<command name="MoveFolderToFolder">
 		<var name="dmFolderName1" value="DM Folder1 Title" />
 		<var name="dmFolderDescription1" value="DM Folder1 Description" />
-
 		<var name="dmFolderName2" value="DM Folder2 Title" />
 		<var name="dmFolderDescription2" value="DM Folder2 Description" />
+
+		<execute macro="Page#gotoCP">
+			<var name="portletName" value="Documents and Media" />
+		</execute>
 
 		<execute macro="DMFolder#addCP">
 			<var name="dmFolderName" value="${dmFolderName1}" />

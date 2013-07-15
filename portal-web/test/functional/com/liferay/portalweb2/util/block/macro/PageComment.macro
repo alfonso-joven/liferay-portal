@@ -1,9 +1,5 @@
 <definition>
 	<command name="addPG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<execute action="PGPageComments#assertClick" locator-key1="BE_THE_FIRST_LINK" value1="Be the first." />
 		<execute action="PGPageComments#type" locator-key1="COMMENT_FIELD" value1="${commentBody}" />
 		<execute action="PGPageComments#assertClick" locator-key1="REPLY_BUTTON" value1="Reply" />
@@ -16,10 +12,6 @@
 	</command>
 
 	<command name="addPGWithWorkflow">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<execute action="PGPageComments#assertClick" locator-key1="BE_THE_FIRST_LINK" value1="Be the first." />
 		<execute action="PGPageComments#type" locator-key1="COMMENT_FIELD" value1="${commentBody}" />
 		<execute action="PGPageComments#assertClick" locator-key1="SUBMIT_FOR_PUBLICATION_BUTTON" value1="Submit for Publication" />
@@ -49,10 +41,6 @@
 	</command>
 
 	<command name="viewPG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<var name="key_commentBody" value="${commentBody}" />
 
 		<execute action="PGPageComments#assertElementNotPresent" locator-key1="COMMENT_WORKFLOW_STATUS" />
@@ -61,10 +49,6 @@
 	</command>
 
 	<command name="viewPGWithWorkflow">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<var name="key_commentBody" value="${commentBody}" />
 
 		<execute action="PGPageComments#assertTextEquals" locator-key1="COMMENT_WORKFLOW_STATUS" value1="${commentStatus}" />

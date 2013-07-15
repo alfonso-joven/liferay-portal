@@ -1,9 +1,5 @@
 <definition>
 	<command name="addCP">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Documents and Media" />
-		</execute>
-
 		<execute action="CPDocumentsandmedia#assertClick" locator-key1="ADD" value1="Add" />
 		<execute action="CPDocumentsandmedia#assertClick" locator-key1="ADD_MENULIST_FOLDER" value1="Folder" />
 
@@ -38,10 +34,6 @@
 	</command>
 
 	<command name="addPGviaDMD">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<execute action="PGDocumentlibrarydisplay#assertClick" locator-key1="FOLDER_MENU_ADD_FOLDER" value1="Add Folder" />
 
 		<execute action="PGDocumentlibrarydisplayAddfolder#type" locator-key1="FOLDER_NAME" value1="${dmdFolderName}" />
@@ -58,10 +50,6 @@
 	</command>
 
 	<command name="addPGviaMG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<execute action="PGMediagallery#assertClick" locator-key1="FOLDER_MENU_ADD_FOLDER" value1="Add Folder" />
 
 		<execute action="PGMediagalleryAddfolder#type" locator-key1="NAME_FIELD" value1="${mgFolderName}" />
@@ -74,10 +62,6 @@
 	</command>
 
 	<command name="deleteCP">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Documents and Media" />
-		</execute>
-
 		<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="DOCUMENT_CONTAINER_FOLDER1" />
 		<execute action="CPDocumentsandmedia#assertTextEquals" locator-key1="DOCUMENT_CONTAINER_FOLDER1_TITLE" value1="${dmFolderName}"/>
 
@@ -101,10 +85,6 @@
 	</command>
 
 	<command name="deletePG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<execute action="PGDocumentsandmedia#assertElementPresent" locator-key1="ENTRIES_FOLDER" />
 		<execute action="PGDocumentsandmedia#assertTextEquals" locator-key1="ENTRIES_FOLDER_TITLE" value1="${dmFolderName}" />
 		<execute action="PGDocumentsandmedia#click" locator-key1="ENTRIES_FOLDER_SELECT" />
@@ -116,10 +96,6 @@
 	</command>
 
 	<command name="editCP">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Documents and Media" />
-		</execute>
-
 		<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="DOCUMENT_CONTAINER_FOLDER1" />
 		<execute action="CPDocumentsandmedia#assertTextEquals" locator-key1="DOCUMENT_CONTAINER_FOLDER1_TITLE" value1="${dmFolderName}" />
 
@@ -152,10 +128,6 @@
 	</command>
 
 	<command name="editPGviaMG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<execute action="PGMediagallery#assertTextEquals" locator-key1="ENTRY_TITLE" value1="${mgFolderName}" />
 		<execute action="PGMediagallery#assertClick" locator-key1="ENTRY_TITLE" value1="${mgFolderName}" />
 
@@ -167,11 +139,11 @@
 		<execute action="PGMediagalleryEditfolder#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
 	</command>
 
-	<command name="moveToFolderCP">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Documents and Media" />
-		</execute>
+	<command name="gotoPG">
+		<execute action="PGDocumentsandmedia#click" locator-key1="ENTRIES_FOLDER" />
+	</command>
 
+	<command name="moveToFolderCP">
 		<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="DOCUMENT_CONTAINER_FOLDER1" />
 		<execute action="CPDocumentsandmedia#assertElementPresent" locator-key1="DOCUMENT_CONTAINER_FOLDER2" />
 
@@ -264,10 +236,6 @@
 	</command>
 
 	<command name="viewPG">
-		<execute macro="Page#gotoPG">
-			<var name="folderName" value="${folderName}" />
-		</execute>
-
 		<execute action="PGDocumentsandmedia#click" locator-key1="ENTRIES_FOLDER" />
 
 		<execute action="PGDocumentsandmediaFolder#assertTextEquals" locator-key1="BREADCRUMB_FOLDER" value1="${dmFolderName}" />

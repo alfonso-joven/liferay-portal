@@ -1,9 +1,5 @@
 <definition>
 	<command name="addCP">
-		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Web Content" />
-		</execute>
-
 		<execute action="CPWebcontent#assertClick" locator-key1="NAVIGATION_TEMPLATES" value1="Templates" />
 
 		<execute action="CPWebcontentTemplates#assertClick" locator-key1="ADD_TEMPLATE" value1="Add Template" />

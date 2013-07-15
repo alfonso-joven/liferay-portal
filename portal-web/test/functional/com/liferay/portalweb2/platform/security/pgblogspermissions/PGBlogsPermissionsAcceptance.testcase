@@ -16,15 +16,19 @@
 	</set-up>
 
 	<command name="Guest_ViewPortletBlogsPermissionsNoTest">
-		<execute macro="BlogsEntry#viewPortletPG">
+		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
 		</execute>
+
+		<execute macro="BlogsEntry#viewPortletPG" />
 
 		<execute macro="User#logoutPG" />
 
-		<execute macro="BlogsEntry#viewPortletPGasGuest">
+		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
 		</execute>
+
+		<execute macro="BlogsEntry#viewPortletPGasGuest" />
 	</command>
 
 	<tear-down>

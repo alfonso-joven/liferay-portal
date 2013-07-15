@@ -28,6 +28,7 @@
 
 	<tear-down>
 		<execute macro="SOMicroblogs#tearDownMicroblogsEntry" />
+
 		<execute macro="SOUser#tearDownCP" />
 	</tear-down>
 </definition>

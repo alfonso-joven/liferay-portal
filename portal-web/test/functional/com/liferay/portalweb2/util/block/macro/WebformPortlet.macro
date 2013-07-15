@@ -1,9 +1,5 @@
 <definition>
 	<command name="configureWebformPG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<execute action="PGWebform#assertTextEquals" locator-key1="PORTLET_TITLE" value1="Web Form" />
 
 		<execute action="PGWebform#assertTextEquals" locator-key1="DEFAULT_FORM_INFORMATION_TITLE" value1="${webFormInformationTitle}" />
@@ -34,10 +30,6 @@
 	</command>
 
 	<command name="viewConfigureWebformPG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<execute action="PGWebform#assertTextEquals" locator-key1="PORTLET_TITLE" value1="Web Form" />
 
 		<execute action="PGWebform#assertTextNotEquals" locator-key1="DEFAULT_FORM_INFORMATION_TITLE" value1="${webFormInformationTitle}" />
