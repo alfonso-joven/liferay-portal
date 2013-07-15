@@ -180,6 +180,11 @@ public class JournalArticleAssetRenderer extends BaseAssetRenderer {
 
 		Layout layout = themeDisplay.getLayout();
 
+		if (Validator.isNotNull(_article.getLayoutUuid())) {
+			layout = LayoutLocalServiceUtil.getLayoutByUuidAndCompanyId(
+				_article.getLayoutUuid(), _article.getCompanyId());
+		}
+
 		String portletId = (String)liferayPortletRequest.getAttribute(
 			WebKeys.PORTLET_ID);
 
