@@ -40,6 +40,7 @@ import java.awt.image.WritableRaster;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 
 import java.util.Enumeration;
@@ -203,6 +204,11 @@ public class ImageToolImpl implements ImageTool {
 	@Override
 	public ImageBag read(File file) throws IOException {
 		return read(_fileUtil.getBytes(file));
+	}
+
+	@Override
+	public ImageBag read(InputStream inputStream) throws IOException {
+		return read(_fileUtil.getBytes(inputStream));
 	}
 
 	@Override

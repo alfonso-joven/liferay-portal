@@ -57,6 +57,7 @@ import com.liferay.portal.util.PortalUtil;
 import com.liferay.portal.util.PrefsPropsUtil;
 import com.liferay.portal.util.PropsUtil;
 import com.liferay.portal.util.PropsValues;
+import com.liferay.portal.webserver.DynamicResourceServlet;
 import com.liferay.util.ant.CopyTask;
 import com.liferay.util.ant.DeleteTask;
 import com.liferay.util.ant.ExpandTask;
@@ -1081,6 +1082,49 @@ public class BaseDeployer implements AutoDeployer, Deployer {
 		return displayName;
 	}
 
+	public String getDynamicResourceServletContent() {
+		StringBundler sb = new StringBundler();
+
+		sb.append("<servlet>");
+		sb.append("<servlet-name>");
+		sb.append("Dynamic Resource Servlet");
+		sb.append("</servlet-name>");
+		sb.append("<servlet-class>");
+		sb.append(PortalClassLoaderServlet.class.getName());
+		sb.append("</servlet-class>");
+		sb.append("<init-param>");
+		sb.append("<param-name>");
+		sb.append("servlet-class");
+		sb.append("</param-name>");
+		sb.append("<param-value>");
+		sb.append(DynamicResourceServlet.class.getName());
+		sb.append("</param-value>");
+		sb.append("</init-param>");
+		sb.append("<load-on-startup>1</load-on-startup>");
+		sb.append("</servlet>");
+
+		for (String allowedPath :
+				PropsValues.DYNAMIC_RESOURCE_SERVLET_ALLOWED_PATHS) {
+
+			sb.append("<servlet-mapping>");
+			sb.append("<servlet-name>");
+			sb.append("Dynamic Resource Servlet");
+			sb.append("</servlet-name>");
+			sb.append("<url-pattern>");
+			sb.append(allowedPath);
+
+			if (!allowedPath.endsWith(StringPool.SLASH)) {
+				sb.append(StringPool.SLASH);
+			}
+
+			sb.append(StringPool.STAR);
+			sb.append("</url-pattern>");
+			sb.append("</servlet-mapping>");
+		}
+
+		return sb.toString();
+	}
+
 	public String getExtraContent(
 			double webXmlVersion, File srcFile, String displayName)
 		throws Exception {
@@ -1103,6 +1147,8 @@ public class BaseDeployer implements AutoDeployer, Deployer {
 		sb.append(SerializableSessionAttributeListener.class.getName());
 		sb.append("</listener-class>");
 		sb.append("</listener>");
+
+		sb.append(getDynamicResourceServletContent());
 
 		File serverConfigWsdd = new File(
 			srcFile + "/WEB-INF/server-config.wsdd");
