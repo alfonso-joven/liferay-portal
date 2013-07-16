@@ -24,7 +24,7 @@ AUI.add(
 
 			instance._container = A.one(options.container);
 
-			instance._hash = null;
+			instance._id = null;
 			instance._modifiedSections = null;
 
 			instance._formName = options.formName;
@@ -51,7 +51,7 @@ AUI.add(
 				}
 			}
 
-			A.setInterval(instance._pollHash, 100, instance);
+			A.setInterval(instance._pollId, 100, instance);
 
 			A.on('formNavigator:revealSection', instance._revealSection, instance);
 			A.on('formNavigator:trackChanges', instance._trackChanges, instance);
@@ -166,25 +166,27 @@ AUI.add(
 				instance._revealSection(event.sectionId);
 			},
 
-			_pollHash: function() {
+			_pollId: function() {
 				var instance = this;
 
-				var hash = location.hash;
+				var href = location.href;
 
-				if (hash && hash != instance._hash) {
-					A.fire('formNavigator:revealSection', hash);
+				var id = instance._getId(href)
+
+				if (id && id != instance._id) {
+					A.fire('formNavigator:revealSection', href);
 
 					Liferay.Util.getTop().Liferay.fire(
-						'hashChange',
+						'idChange',
 						{
 							id: Liferay.Util.getWindowName() || A.guid(),
-							newVal: hash,
-							prevVal: instance._hash,
-							uri: location.href
+							newVal: id,
+							prevVal: instance._id,
+							uri: href
 						}
 					);
 
-					instance._hash = hash;
+					instance._id = id;
 				}
 			},
 
