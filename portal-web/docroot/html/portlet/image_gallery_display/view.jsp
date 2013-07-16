@@ -225,6 +225,8 @@ request.setAttribute("view.jsp-portletURL", portletURL);
 
 		List results = DLAppServiceUtil.getGroupFileEntries(repositoryId, groupImagesUserId, defaultFolderId, mediaGalleryMimeTypes, status, searchContainer.getStart(), searchContainer.getEnd(), searchContainer.getOrderByComparator());
 
+		searchContainer.setResults(results);
+		%>
 
 		<aui:layout>
 			<liferay-ui:header
