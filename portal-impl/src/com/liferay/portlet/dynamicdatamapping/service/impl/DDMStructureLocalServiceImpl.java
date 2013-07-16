@@ -23,6 +23,7 @@ import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.util.ArrayUtil;
 import com.liferay.portal.kernel.util.CharPool;
+import com.liferay.portal.kernel.util.GroupThreadLocal;
 import com.liferay.portal.kernel.util.HtmlUtil;
 import com.liferay.portal.kernel.util.LocaleUtil;
 import com.liferay.portal.kernel.util.OrderByComparator;
@@ -174,10 +175,12 @@ public class DDMStructureLocalServiceImpl
 	public void deleteStructure(DDMStructure structure)
 		throws PortalException, SystemException {
 
-		if (ddmStructureLinkPersistence.countByStructureId(
-				structure.getStructureId()) > 0) {
+		if (!GroupThreadLocal.isDeleteInProcess()) {
+			if (ddmStructureLinkPersistence.countByStructureId(
+					structure.getStructureId()) > 0) {
 
-			throw new RequiredStructureException();
+				throw new RequiredStructureException();
+			}
 		}
 
 		// Structure
