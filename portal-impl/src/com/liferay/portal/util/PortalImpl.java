@@ -137,7 +137,6 @@ import com.liferay.portal.service.GroupServiceUtil;
 import com.liferay.portal.service.LayoutLocalServiceUtil;
 import com.liferay.portal.service.LayoutSetLocalServiceUtil;
 import com.liferay.portal.service.PortletLocalServiceUtil;
-import com.liferay.portal.service.PortletPreferencesLocalServiceUtil;
 import com.liferay.portal.service.ResourceCodeLocalServiceUtil;
 import com.liferay.portal.service.ResourceLocalServiceUtil;
 import com.liferay.portal.service.ResourcePermissionLocalServiceUtil;
@@ -5121,14 +5120,10 @@ public class PortalImpl implements Portal {
 			return true;
 		}
 
-		if (layout.isTypePortlet()) {
-			if (layoutTypePortlet.hasPortletId(portletId)) {
-				return true;
-			}
+		if (layout.isTypePortlet() &&
+			layoutTypePortlet.hasPortletId(portletId)) {
 
-			if (hasPortletDefaultResource(themeDisplay, layout, portlet)) {
-				return true;
-			}
+			return true;
 		}
 
 		if (themeDisplay.isSignedIn() &&
@@ -6881,49 +6876,6 @@ public class PortalImpl implements Portal {
 		}
 
 		return sb.toString();
-	}
-
-	protected boolean hasPortletDefaultResource(
-			ThemeDisplay themeDisplay, Layout layout, Portlet portlet)
-		throws PortalException, SystemException {
-
-		String primaryKey = PortletPermissionUtil.getPrimaryKey(
-			layout.getPlid(), portlet.getPortletId());
-
-		try {
-			List<com.liferay.portal.model.PortletPreferences>
-				portletPreferencesList =
-					PortletPreferencesLocalServiceUtil.getPortletPreferences(
-						PortletKeys.PREFS_OWNER_TYPE_LAYOUT, layout.getPlid(),
-						portlet.getPortletId());
-
-			if (portletPreferencesList.isEmpty()) {
-				return false;
-			}
-
-			if (PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM == 6) {
-				int count =
-					ResourcePermissionLocalServiceUtil.
-						getResourcePermissionsCount(
-							themeDisplay.getCompanyId(),
-							portlet.getRootPortletId(),
-							ResourceConstants.SCOPE_INDIVIDUAL, primaryKey);
-
-				if (count == 0) {
-					return false;
-				}
-			}
-			else if (!portlet.isUndeployedPortlet()) {
-				ResourceLocalServiceUtil.getResource(
-					themeDisplay.getCompanyId(), portlet.getRootPortletId(),
-					ResourceConstants.SCOPE_INDIVIDUAL, primaryKey);
-			}
-		}
-		catch (NoSuchResourceException nsre) {
-			return false;
-		}
-
-		return true;
 	}
 
 	protected boolean isAlwaysAllowDoAsUser(HttpServletRequest request)
