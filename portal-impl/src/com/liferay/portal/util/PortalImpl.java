@@ -5193,10 +5193,6 @@ public class PortalImpl implements Portal {
 			}
 		}
 
-		if (!portlet.isAddDefaultResource()) {
-			return false;
-		}
-
 		if (!PropsValues.PORTLET_ADD_DEFAULT_RESOURCE_CHECK_ENABLED) {
 			return true;
 		}
