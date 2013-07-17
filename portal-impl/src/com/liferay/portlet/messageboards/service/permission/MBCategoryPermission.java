@@ -105,43 +105,27 @@ public class MBCategoryPermission {
 			return false;
 		}
 
-		long categoryId = category.getCategoryId();
+		if (actionId.equals(ActionKeys.VIEW) &&
+			PropsValues.PERMISSIONS_VIEW_DYNAMIC_INHERITANCE) {
 
-		if (PropsValues.PERMISSIONS_VIEW_DYNAMIC_INHERITANCE) {
-			long originalCategoryId = categoryId;
+			long categoryId = category.getCategoryId();
 
 			while (categoryId !=
 						MBCategoryConstants.DEFAULT_PARENT_CATEGORY_ID) {
 
 				category = MBCategoryLocalServiceUtil.getCategory(categoryId);
 
-				if (!_hasPermission(
-						permissionChecker, category, ActionKeys.VIEW)) {
-
+				if (!_hasPermission(permissionChecker, category, actionId)) {
 					return false;
 				}
 
 				categoryId = category.getParentCategoryId();
 			}
 
-			if (actionId.equals(ActionKeys.VIEW)) {
-				return true;
-			}
-
-			categoryId = originalCategoryId;
+			return true;
 		}
 
-		while (categoryId != MBCategoryConstants.DEFAULT_PARENT_CATEGORY_ID) {
-			category = MBCategoryLocalServiceUtil.getCategory(categoryId);
-
-			if (_hasPermission(permissionChecker, category, actionId)) {
-				return true;
-			}
-
-			categoryId = category.getParentCategoryId();
-		}
-
-		return false;
+		return _hasPermission(permissionChecker, category, actionId);
 	}
 
 	private static boolean _hasPermission(

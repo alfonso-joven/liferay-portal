@@ -87,30 +87,23 @@ public class MBMessagePermission {
 			return false;
 		}
 
-		long categoryId = message.getCategoryId();
+		if (actionId.equals(ActionKeys.VIEW) &&
+			PropsValues.PERMISSIONS_VIEW_DYNAMIC_INHERITANCE) {
 
-		if ((categoryId != MBCategoryConstants.DEFAULT_PARENT_CATEGORY_ID) &&
-			(categoryId != MBCategoryConstants.DISCUSSION_CATEGORY_ID)) {
+			long categoryId = message.getCategoryId();
 
-			MBCategory category = MBCategoryLocalServiceUtil.getCategory(
-				categoryId);
+			if ((categoryId !=
+					MBCategoryConstants.DEFAULT_PARENT_CATEGORY_ID) &&
+				(categoryId != MBCategoryConstants.DISCUSSION_CATEGORY_ID)) {
 
-			if (PropsValues.PERMISSIONS_VIEW_DYNAMIC_INHERITANCE) {
+				MBCategory category = MBCategoryLocalServiceUtil.getCategory(
+					categoryId);
+
 				if (!MBCategoryPermission.contains(
-						permissionChecker, category, ActionKeys.VIEW)) {
+						permissionChecker, category, actionId)) {
 
 					return false;
 				}
-
-				if (actionId.equals(ActionKeys.VIEW)) {
-					return true;
-				}
-			}
-
-			if (MBCategoryPermission.contains(
-					permissionChecker, category, actionId)) {
-
-				return true;
 			}
 		}
 

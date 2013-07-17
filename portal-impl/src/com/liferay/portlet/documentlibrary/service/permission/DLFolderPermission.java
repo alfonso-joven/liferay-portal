@@ -79,41 +79,25 @@ public class DLFolderPermission {
 			return hasPermission.booleanValue();
 		}
 
-		long folderId = dlFolder.getFolderId();
+		if (actionId.equals(ActionKeys.VIEW) &&
+			PropsValues.PERMISSIONS_VIEW_DYNAMIC_INHERITANCE) {
 
-		if (PropsValues.PERMISSIONS_VIEW_DYNAMIC_INHERITANCE) {
-			long originalFolderId = folderId;
+			long dlFolderId = dlFolder.getFolderId();
 
-			while (folderId != DLFolderConstants.DEFAULT_PARENT_FOLDER_ID) {
-				dlFolder = DLFolderLocalServiceUtil.getFolder(folderId);
+			while (dlFolderId != DLFolderConstants.DEFAULT_PARENT_FOLDER_ID) {
+				dlFolder = DLFolderLocalServiceUtil.getFolder(dlFolderId);
 
-				if (!_hasPermission(
-						permissionChecker, dlFolder, ActionKeys.VIEW)) {
-
+				if (!_hasPermission(permissionChecker, dlFolder, actionId)) {
 					return false;
 				}
 
-				folderId = dlFolder.getParentFolderId();
+				dlFolderId = dlFolder.getParentFolderId();
 			}
 
-			if (actionId.equals(ActionKeys.VIEW)) {
-				return true;
-			}
-
-			folderId = originalFolderId;
+			return true;
 		}
 
-		while (folderId != DLFolderConstants.DEFAULT_PARENT_FOLDER_ID) {
-			dlFolder = DLFolderLocalServiceUtil.getFolder(folderId);
-
-			if (_hasPermission(permissionChecker, dlFolder, actionId)) {
-				return true;
-			}
-
-			folderId = dlFolder.getParentFolderId();
-		}
-
-		return false;
+		return _hasPermission(permissionChecker, dlFolder, actionId);
 	}
 
 	public static boolean contains(
