@@ -28,6 +28,8 @@ import com.liferay.portalweb.socialofficehome.contactscenter.contacts.sousaddasc
 import com.liferay.portalweb.socialofficehome.sites.site.addsitessite.AddSitesSiteTest;
 import com.liferay.portalweb.socialofficehome.sites.site.addsitessite.TearDownSOSitesTest;
 import com.liferay.portalweb.socialofficehome.sites.site.sousjoinsitessite.SOUs_JoinSitesSiteTest;
+import com.liferay.portalweb.socialofficesite.home.announcement.addannouncementsentrygeneralsite.AddAnnouncementsEntryGeneralSiteTest;
+import com.liferay.portalweb.socialofficesite.home.announcement.addannouncementsentrygeneralsite.TearDownAnnouncementsEntrySiteTest;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -53,7 +55,7 @@ public class SOUs_ViewNotificationAnnouncementSiteTests extends BaseTestSuite {
 		testSuite.addTestSuite(SOUs_JoinSitesSiteTest.class);
 		testSuite.addTestSuite(SOUs_SignOutSOTest.class);
 		testSuite.addTestSuite(SignInSOTest.class);
-		testSuite.addTestSuite(AddAnnouncementSiteTest.class);
+		testSuite.addTestSuite(AddAnnouncementsEntryGeneralSiteTest.class);
 		testSuite.addTestSuite(SignOutSOTest.class);
 		testSuite.addTestSuite(SOUs_SignInSOTest.class);
 		testSuite.addTestSuite(SOUs_ViewNotificationAnnouncementSiteTest.class);
@@ -62,7 +64,7 @@ public class SOUs_ViewNotificationAnnouncementSiteTests extends BaseTestSuite {
 		testSuite.addTestSuite(SOUs_ViewMarkReadNotificationAnnouncementSiteTest.class);
 		testSuite.addTestSuite(SOUs_SignOutSOTest.class);
 		testSuite.addTestSuite(SignInSOTest.class);
-		testSuite.addTestSuite(TearDownAnnouncementsEntrySOTest.class);
+		testSuite.addTestSuite(TearDownAnnouncementsEntrySiteTest.class);
 		testSuite.addTestSuite(TearDownNotificationsTest.class);
 		testSuite.addTestSuite(TearDownSOSitesTest.class);
 		testSuite.addTestSuite(TearDownSOUserTest.class);

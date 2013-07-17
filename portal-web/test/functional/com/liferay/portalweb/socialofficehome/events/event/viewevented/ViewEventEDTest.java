@@ -39,6 +39,6 @@ public class ViewEventEDTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Calendar Event Title"),
 			selenium.getText("//h1[@class='header-title']"));
 		assertEquals(RuntimeVariables.replace("Calendar Event Description"),
-			selenium.getText("//p[2]"));
+			selenium.getText("//p[contains(.,'Calendar Event Description')]"));
 	}
 }

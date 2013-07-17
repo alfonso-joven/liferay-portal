@@ -39,7 +39,7 @@ public class ViewEventMultipleEDTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Calendar Event1 Title"),
 			selenium.getText("//h1[@class='header-title']"));
 		assertEquals(RuntimeVariables.replace("Calendar Event1 Description"),
-			selenium.getText("//p[2]"));
+			selenium.getText("//p[contains(.,'Calendar Event1 Description')]"));
 		selenium.open("/user/joebloggs/so/dashboard/");
 		selenium.waitForText("xPath=(//span[@class='portlet-title-text'])[contains(.,'Events')]",
 			"Events");
@@ -55,7 +55,7 @@ public class ViewEventMultipleEDTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Calendar Event2 Title"),
 			selenium.getText("//h1[@class='header-title']"));
 		assertEquals(RuntimeVariables.replace("Calendar Event2 Description"),
-			selenium.getText("//p[2]"));
+			selenium.getText("//p[contains(.,'Calendar Event2 Description')]"));
 		selenium.open("/user/joebloggs/so/dashboard/");
 		selenium.waitForText("xPath=(//span[@class='portlet-title-text'])[contains(.,'Events')]",
 			"Events");
@@ -71,6 +71,6 @@ public class ViewEventMultipleEDTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Calendar Event3 Title"),
 			selenium.getText("//h1[@class='header-title']"));
 		assertEquals(RuntimeVariables.replace("Calendar Event3 Description"),
-			selenium.getText("//p[2]"));
+			selenium.getText("//p[contains(.,'Calendar Event3 Description')]"));
 	}
 }

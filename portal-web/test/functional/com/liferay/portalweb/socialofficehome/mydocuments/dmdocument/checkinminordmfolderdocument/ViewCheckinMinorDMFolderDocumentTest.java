@@ -117,7 +117,7 @@ public class ViewCheckinMinorDMFolderDocumentTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Version History"),
 			selenium.getText(
 				"//div[@class='lfr-document-library-versions']/div/div/div"));
-		assertEquals(RuntimeVariables.replace("Version 1.1"),
+		assertEquals(RuntimeVariables.replace("Version 1.0"),
 			selenium.getText("xPath=(//span[@class='version-number'])[1]"));
 		assertEquals(RuntimeVariables.replace("By: Joe Bloggs"),
 			selenium.getText("xPath=(//span[@class='user-name'])[1]"));
@@ -125,8 +125,6 @@ public class ViewCheckinMinorDMFolderDocumentTest extends BaseTestCase {
 				"xPath=(//span[@class='modified-date'])[1]"));
 		assertEquals(RuntimeVariables.replace("Size: 21.5k"),
 			selenium.getText("xPath=(//span[@class='size'])[1]"));
-		assertEquals(RuntimeVariables.replace("Minor Revision"),
-			selenium.getText("//div[@class='changelog']"));
 		assertEquals(RuntimeVariables.replace(
 				"No comments yet. Be the first. Subscribe to Comments"),
 			selenium.getText(
@@ -138,24 +136,6 @@ public class ViewCheckinMinorDMFolderDocumentTest extends BaseTestCase {
 			selenium.getText(
 				"xPath=(//span[@class='subscribe-link']/a/span)[1]"));
 		assertEquals(RuntimeVariables.replace("Version 1.0"),
-			selenium.getText("xPath=(//span[@class='version-number'])[2]"));
-		assertEquals(RuntimeVariables.replace("By: Joe Bloggs"),
-			selenium.getText("xPath=(//span[@class='user-name'])[2]"));
-		assertTrue(selenium.isVisible(
-				"xPath=(//span[@class='modified-date'])[2]"));
-		assertEquals(RuntimeVariables.replace("Size: 21.5k"),
-			selenium.getText("xPath=(//span[@class='size'])[2]"));
-		assertEquals(RuntimeVariables.replace(
-				"No comments yet. Be the first. Subscribe to Comments"),
-			selenium.getText(
-				"xPath=(//fieldset[@class='aui-fieldset add-comment ']/div)[2]"));
-		assertEquals(RuntimeVariables.replace("Be the first."),
-			selenium.getText(
-				"xPath=(//fieldset[@class='aui-fieldset add-comment ']/div/a)[2]"));
-		assertEquals(RuntimeVariables.replace("Subscribe to Comments"),
-			selenium.getText(
-				"xPath=(//span[@class='subscribe-link']/a/span)[2]"));
-		assertEquals(RuntimeVariables.replace("Version 1.1"),
 			selenium.getText("//h3[contains(@class,'version')]"));
 		assertEquals(RuntimeVariables.replace("Last Updated by Joe Bloggs"),
 			selenium.getText("//div[@class='lfr-asset-icon lfr-asset-author']"));
