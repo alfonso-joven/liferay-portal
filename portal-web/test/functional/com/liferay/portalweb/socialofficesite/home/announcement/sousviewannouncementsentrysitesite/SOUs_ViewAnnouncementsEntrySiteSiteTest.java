@@ -42,9 +42,9 @@ public class SOUs_ViewAnnouncementsEntrySiteSiteTest extends BaseTestCase {
 			selenium.getText("//h3[@class='entry-title']/a"));
 		assertEquals(RuntimeVariables.replace("Open Site Name"),
 			selenium.getText("//span[@class='entry-scope']"));
-		assertEquals(RuntimeVariables.replace("Announcements Entry Content"),
-			selenium.getText(
-				"//div[contains(@class,'entry-content entry-type-general')]/p"));
+		assertTrue(selenium.isPartialText(
+				"//div[contains(@class,'entry-content entry-type-general')]",
+				"Announcements Entry Content"));
 		assertEquals(RuntimeVariables.replace("Edit"),
 			selenium.getText("//td[@class='edit-entry']"));
 		assertEquals(RuntimeVariables.replace("Delete"),

@@ -49,6 +49,6 @@ public class SOUs_MarkAsReadAnnouncementsEntrySiteSiteTest extends BaseTestCase 
 			selenium.getText("//h3[@class='entry-title']/a"));
 		assertFalse(selenium.isVisible("//span[@class='entry-scope']"));
 		assertFalse(selenium.isVisible(
-				"//div[contains(@class,'entry-content entry-type-general')]/p"));
+				"//div[contains(@class,'entry-content entry-type-general')]"));
 	}
 }

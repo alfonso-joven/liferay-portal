@@ -75,7 +75,8 @@ public class EditAnnouncementsEntryGeneralSiteTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Announcements Entry Title Edit"),
 			selenium.getText("//h3/a"));
-		assertEquals(RuntimeVariables.replace(
-				"Announcements Entry Content Edit"), selenium.getText("//p"));
+		assertTrue(selenium.isPartialText(
+				"//div[contains(@class,'entry-content')]",
+				"Announcements Entry Content Edit"));
 	}
 }

@@ -49,6 +49,6 @@ public class ShowAnnouncementsEntryGeneralSiteTest extends BaseTestCase {
 			selenium.getText("//h3[@class='entry-title']/a"));
 		assertTrue(selenium.isVisible("//span[@class='entry-scope']"));
 		assertTrue(selenium.isVisible(
-				"//div[contains(@class,'entry-content entry-type-general')]/p"));
+				"//div[contains(@class,'entry-content entry-type-general')]"));
 	}
 }

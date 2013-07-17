@@ -60,7 +60,7 @@ public class ViewBlogsEntryRSSSiteTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Blogs Entry Title"),
 			selenium.getText("//x:div[@id='feedContent']/x:div[1]/x:h3/x:a"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry Content"),
-			selenium.getText("//x:div[@id='feedContent']/x:div[1]/x:div/x:p"));
+			selenium.getText("//x:div[@id='feedContent']/x:div[1]/x:div"));
 		selenium.clickAt("//x:div[@id='feedContent']/x:div[1]/x:h3/x:a",
 			RuntimeVariables.replace("Blogs Entry Title"));
 		selenium.waitForPageToLoad("30000");

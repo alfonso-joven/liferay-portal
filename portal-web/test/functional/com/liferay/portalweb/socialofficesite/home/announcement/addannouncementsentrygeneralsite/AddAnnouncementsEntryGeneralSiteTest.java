@@ -41,6 +41,9 @@ public class AddAnnouncementsEntryGeneralSiteTest extends BaseTestCase {
 		selenium.clickAt("link=Manage Entries",
 			RuntimeVariables.replace("Manage Entries"));
 		selenium.waitForPageToLoad("30000");
+		selenium.select("//select[contains(@id,'distributionScope')]",
+			RuntimeVariables.replace("General"));
+		Thread.sleep(1000);
 		selenium.waitForVisible("//input[@value='Add Entry']");
 		selenium.clickAt("//input[@value='Add Entry']",
 			RuntimeVariables.replace("Add Entry"));

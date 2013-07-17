@@ -59,7 +59,7 @@ public class ViewCalendarEventDuration3HoursSiteTest extends BaseTestCase {
 			selenium.getText("//a[contains(.,'Calendar Event Title')]"));
 		selenium.clickAt("link=Month", RuntimeVariables.replace("Month"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isPartialText("//tr[2]/td[contains(.,'12')]",
+		assertTrue(selenium.isPartialText("//tr[2]/td[contains(.,'12:00')]",
 				"12:00 PM"));
 		assertEquals(RuntimeVariables.replace("Calendar Event Title"),
 			selenium.getText("//a[contains(.,'Calendar Event Title')]"));
