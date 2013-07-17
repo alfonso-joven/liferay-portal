@@ -69,13 +69,7 @@ public class BookmarksFolderPermission {
 
 				folderId = folder.getParentFolderId();
 
-				if (!permissionChecker.hasOwnerPermission(
-						folder.getCompanyId(), BookmarksFolder.class.getName(),
-						folder.getFolderId(), folder.getUserId(), actionId) &&
-					!permissionChecker.hasPermission(
-						folder.getGroupId(), BookmarksFolder.class.getName(),
-						folder.getFolderId(), actionId)) {
-
+				if (!_hasPermission(permissionChecker, folder, actionId)) {
 					return false;
 				}
 
@@ -94,17 +88,7 @@ public class BookmarksFolderPermission {
 
 				folderId = folder.getParentFolderId();
 
-				if (permissionChecker.hasOwnerPermission(
-						folder.getCompanyId(), BookmarksFolder.class.getName(),
-						folder.getFolderId(), folder.getUserId(), actionId)) {
-
-					return true;
-				}
-
-				if (permissionChecker.hasPermission(
-						folder.getGroupId(), BookmarksFolder.class.getName(),
-						folder.getFolderId(), actionId)) {
-
+				if (_hasPermission(permissionChecker, folder, actionId)) {
 					return true;
 				}
 
@@ -132,6 +116,23 @@ public class BookmarksFolderPermission {
 
 			return contains(permissionChecker, folder, actionId);
 		}
+	}
+
+	private static boolean _hasPermission(
+		PermissionChecker permissionChecker, BookmarksFolder folder,
+		String actionId) {
+
+		if (permissionChecker.hasOwnerPermission(
+				folder.getCompanyId(), BookmarksFolder.class.getName(),
+				folder.getFolderId(), folder.getUserId(), actionId) ||
+			permissionChecker.hasPermission(
+				folder.getGroupId(), BookmarksFolder.class.getName(),
+				folder.getFolderId(), actionId)) {
+
+			return true;
+		}
+
+		return false;
 	}
 
 }

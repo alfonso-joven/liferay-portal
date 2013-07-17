@@ -115,12 +115,8 @@ public class MBCategoryPermission {
 
 				category = MBCategoryLocalServiceUtil.getCategory(categoryId);
 
-				if (!permissionChecker.hasOwnerPermission(
-						category.getCompanyId(), MBCategory.class.getName(),
-						categoryId, category.getUserId(), ActionKeys.VIEW) &&
-					!permissionChecker.hasPermission(
-						category.getGroupId(), MBCategory.class.getName(),
-						categoryId, ActionKeys.VIEW)) {
+				if (!_hasPermission(
+						permissionChecker, category, ActionKeys.VIEW)) {
 
 					return false;
 				}
@@ -138,17 +134,28 @@ public class MBCategoryPermission {
 		while (categoryId != MBCategoryConstants.DEFAULT_PARENT_CATEGORY_ID) {
 			category = MBCategoryLocalServiceUtil.getCategory(categoryId);
 
-			if (permissionChecker.hasOwnerPermission(
-					category.getCompanyId(), MBCategory.class.getName(),
-					categoryId, category.getUserId(), actionId) ||
-				permissionChecker.hasPermission(
-					category.getGroupId(), MBCategory.class.getName(),
-					categoryId, actionId)) {
-
+			if (_hasPermission(permissionChecker, category, actionId)) {
 				return true;
 			}
 
 			categoryId = category.getParentCategoryId();
+		}
+
+		return false;
+	}
+
+	private static boolean _hasPermission(
+		PermissionChecker permissionChecker, MBCategory category,
+		String actionId) {
+
+		if (permissionChecker.hasOwnerPermission(
+				category.getCompanyId(), MBCategory.class.getName(),
+				category.getCategoryId(), category.getUserId(), actionId) ||
+			permissionChecker.hasPermission(
+				category.getGroupId(), MBCategory.class.getName(),
+				category.getCategoryId(), actionId)) {
+
+			return true;
 		}
 
 		return false;
