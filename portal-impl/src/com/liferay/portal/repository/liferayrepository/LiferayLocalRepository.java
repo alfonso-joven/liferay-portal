@@ -43,6 +43,7 @@ import com.liferay.portlet.documentlibrary.model.DLFolder;
 import com.liferay.portlet.documentlibrary.service.DLAppHelperLocalService;
 import com.liferay.portlet.documentlibrary.service.DLFileEntryLocalService;
 import com.liferay.portlet.documentlibrary.service.DLFileEntryService;
+import com.liferay.portlet.documentlibrary.service.DLFileEntryTypeLocalService;
 import com.liferay.portlet.documentlibrary.service.DLFileVersionLocalService;
 import com.liferay.portlet.documentlibrary.service.DLFileVersionService;
 import com.liferay.portlet.documentlibrary.service.DLFolderLocalService;
@@ -67,6 +68,7 @@ public class LiferayLocalRepository
 		DLAppHelperLocalService dlAppHelperLocalService,
 		DLFileEntryLocalService dlFileEntryLocalService,
 		DLFileEntryService dlFileEntryService,
+		DLFileEntryTypeLocalService dlFileEntryTypeLocalService,
 		DLFileVersionLocalService dlFileVersionLocalService,
 		DLFileVersionService dlFileVersionService,
 		DLFolderLocalService dlFolderLocalService,
@@ -76,9 +78,9 @@ public class LiferayLocalRepository
 		super(
 			repositoryLocalService, repositoryService, dlAppHelperLocalService,
 			dlFileEntryLocalService, dlFileEntryService,
-			dlFileVersionLocalService, dlFileVersionService,
-			dlFolderLocalService, dlFolderService, resourceLocalService,
-			repositoryId);
+			dlFileEntryTypeLocalService, dlFileVersionLocalService,
+			dlFileVersionService, dlFolderLocalService, dlFolderService,
+			resourceLocalService, repositoryId);
 	}
 
 	public LiferayLocalRepository(
@@ -87,6 +89,7 @@ public class LiferayLocalRepository
 		DLAppHelperLocalService dlAppHelperLocalService,
 		DLFileEntryLocalService dlFileEntryLocalService,
 		DLFileEntryService dlFileEntryService,
+		DLFileEntryTypeLocalService dlFileEntryTypeLocalService,
 		DLFileVersionLocalService dlFileVersionLocalService,
 		DLFileVersionService dlFileVersionService,
 		DLFolderLocalService dlFolderLocalService,
@@ -97,9 +100,9 @@ public class LiferayLocalRepository
 		super(
 			repositoryLocalService, repositoryService, dlAppHelperLocalService,
 			dlFileEntryLocalService, dlFileEntryService,
-			dlFileVersionLocalService, dlFileVersionService,
-			dlFolderLocalService, dlFolderService, resourceLocalService,
-			folderId, fileEntryId, fileVersionId);
+			dlFileEntryTypeLocalService, dlFileVersionLocalService,
+			dlFileVersionService, dlFolderLocalService, dlFolderService,
+			resourceLocalService, folderId, fileEntryId, fileVersionId);
 	}
 
 	@Override
@@ -110,9 +113,12 @@ public class LiferayLocalRepository
 		throws PortalException, SystemException {
 
 		long fileEntryTypeId = ParamUtil.getLong(
-			serviceContext, "fileEntryTypeId", -1L);
+			serviceContext, "fileEntryTypeId",
+			getDefaultFileEntryTypeId(serviceContext, folderId));
+
 		Map<String, Fields> fieldsMap = getFieldsMap(
 			serviceContext, fileEntryTypeId);
+
 		long size = 0;
 
 		if (file != null) {
@@ -137,7 +143,9 @@ public class LiferayLocalRepository
 		throws PortalException, SystemException {
 
 		long fileEntryTypeId = ParamUtil.getLong(
-			serviceContext, "fileEntryTypeId", -1L);
+			serviceContext, "fileEntryTypeId",
+			getDefaultFileEntryTypeId(serviceContext, folderId));
+
 		Map<String, Fields> fieldsMap = getFieldsMap(
 			serviceContext, fileEntryTypeId);
 
@@ -421,8 +429,10 @@ public class LiferayLocalRepository
 
 		long fileEntryTypeId = ParamUtil.getLong(
 			serviceContext, "fileEntryTypeId", -1L);
+
 		Map<String, Fields> fieldsMap = getFieldsMap(
 			serviceContext, fileEntryTypeId);
+
 		long size = 0;
 
 		if (file != null) {
@@ -447,6 +457,7 @@ public class LiferayLocalRepository
 
 		long fileEntryTypeId = ParamUtil.getLong(
 			serviceContext, "fileEntryTypeId", -1L);
+
 		Map<String, Fields> fieldsMap = getFieldsMap(
 			serviceContext, fileEntryTypeId);
 
