@@ -1495,8 +1495,8 @@ public class LayoutLocalServiceUtil {
 	*
 	* @param groupId the primary key of the group
 	* @param privateLayout whether the layout is private to the group
-	* @param layoutId the primary key of the layout whose universally unique
-	identifier to match
+	* @param layoutId the primary key of the layout whose universally
+	unique identifier to match
 	* @param name the new name for the portlets
 	* @param languageId the primary key of the language
 	* @throws PortalException if a matching layout could not be found
