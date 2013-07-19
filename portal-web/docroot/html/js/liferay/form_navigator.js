@@ -105,32 +105,34 @@ AUI.add(
 				}
 			},
 
-			_getId: function(id) {
-				var instance = this;
+			_getId: A.cached(
+				function(id) {
+					var instance = this;
 
-				var namespace = instance._namespace;
+					var namespace = instance._namespace;
 
-				id = id || '';
+					id = id || '';
 
-				if (id.indexOf('#') > -1) {
-					id = id.split('#')[1] || '';
+					if (id.indexOf('#') > -1) {
+						id = id.split('#')[1] || '';
 
-					id = id.replace(instance._hashKey, '');
+						id = id.replace(instance._hashKey, '');
+					}
+					else if (id.indexOf('historyKey=') > -1) {
+						id = id.match(/historyKey=([^&#]+)/);
+						id = id && id[1];
+					}
+					else {
+						id = '';
+					}
+
+					if (id && namespace && (id.indexOf(namespace) == -1)) {
+						id = namespace + id;
+					}
+
+					return id;
 				}
-				else if (id.indexOf('historyKey=') > -1) {
-					id = id.match(/historyKey=([^&#]+)/);
-					id = id && id[1];
-				}
-				else {
-					id = '';
-				}
-
-				if (id && namespace && (id.indexOf(namespace) == -1)) {
-					id = namespace + id;
-				}
-
-				return id;
-			},
+			),
 
 			_onClick: function(event) {
 				var instance = this;
@@ -171,13 +173,13 @@ AUI.add(
 
 				var href = location.href;
 
-				var id = instance._getId(href)
+				var id = instance._getId(href);
 
 				if (id && id != instance._id) {
 					A.fire('formNavigator:revealSection', href);
 
 					Liferay.Util.getTop().Liferay.fire(
-						'idChange',
+						'historyKeyChange',
 						{
 							id: Liferay.Util.getWindowName() || A.guid(),
 							newVal: id,

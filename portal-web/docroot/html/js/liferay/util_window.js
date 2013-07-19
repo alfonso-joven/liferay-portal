@@ -130,7 +130,7 @@ AUI.add(
 				);
 
 				Liferay.after(
-					'idChange',
+					'historyKeyChange',
 					function(event) {
 						if (event.id == id ) {
 							dialog.iframe.set('uri', event.uri);
