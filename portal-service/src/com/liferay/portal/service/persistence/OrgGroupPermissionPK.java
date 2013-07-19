@@ -62,7 +62,6 @@ public class OrgGroupPermissionPK implements Comparable<OrgGroupPermissionPK>,
 		this.permissionId = permissionId;
 	}
 
-	@Override
 	public int compareTo(OrgGroupPermissionPK pk) {
 		if (pk == null) {
 			return -1;

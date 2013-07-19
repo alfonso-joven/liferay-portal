@@ -61,7 +61,6 @@ public class UserGroupGroupRolePK implements Comparable<UserGroupGroupRolePK>,
 		this.roleId = roleId;
 	}
 
-	@Override
 	public int compareTo(UserGroupGroupRolePK pk) {
 		if (pk == null) {
 			return -1;
