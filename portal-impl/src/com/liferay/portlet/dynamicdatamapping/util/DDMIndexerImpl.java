@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2013 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2012 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -14,13 +14,9 @@
 
 package com.liferay.portlet.dynamicdatamapping.util;
 
-import com.liferay.portal.kernel.log.Log;
-import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.search.Document;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
-import com.liferay.portal.kernel.util.Validator;
-import com.liferay.portlet.dynamicdatamapping.StructureFieldException;
 import com.liferay.portlet.dynamicdatamapping.model.DDMStructure;
 import com.liferay.portlet.dynamicdatamapping.storage.Field;
 import com.liferay.portlet.dynamicdatamapping.storage.Fields;
@@ -44,46 +40,27 @@ public class DDMIndexerImpl implements DDMIndexer {
 		while (itr.hasNext()) {
 			Field field = itr.next();
 
-			try {
-				String indexType = ddmStructure.getFieldProperty(
-					field.getName(), "indexType");
+			String name = encodeName(
+				ddmStructure.getStructureId(), field.getName());
 
-				if (Validator.isNull(indexType)) {
-					continue;
-				}
+			Serializable value = field.getValue();
 
-				String name = encodeName(
-					ddmStructure.getStructureId(), field.getName());
-
-				Serializable value = field.getValue();
-
-				if (value instanceof Boolean) {
-					document.addKeyword(name, (Boolean)value);
-				}
-				else if (value instanceof Date) {
-					document.addDate(name, (Date)value);
-				}
-				else if (value instanceof Double) {
-					document.addKeyword(name, (Double)value);
-				}
-				else if (value instanceof Integer) {
-					document.addKeyword(name, (Integer)value);
-				}
-				else {
-					String valueString = String.valueOf(value);
-
-					if (indexType.equals("keyword")) {
-						document.addKeyword(name, valueString);
-					}
-					else {
-						document.addText(name, valueString);
-					}
-				}
+			if (value instanceof Boolean) {
+				document.addKeyword(name, (Boolean)value);
 			}
-			catch (StructureFieldException sfe) {
-				if (_log.isWarnEnabled()) {
-					_log.warn(sfe, sfe);
-				}
+			else if (value instanceof Date) {
+				document.addDate(name, (Date)value);
+			}
+			else if (value instanceof Double) {
+				document.addKeyword(name, (Double)value);
+			}
+			else if (value instanceof Integer) {
+				document.addKeyword(name, (Integer)value);
+			}
+			else {
+				String valueString = String.valueOf(value);
+
+				document.addText(name, valueString);
 			}
 		}
 	}
@@ -102,7 +79,5 @@ public class DDMIndexerImpl implements DDMIndexer {
 	}
 
 	private static final String _FIELD_NAMESPACE = "ddm";
-
-	private static Log _log = LogFactoryUtil.getLog(DDMIndexerImpl.class);
 
 }
