@@ -134,11 +134,11 @@
 		</execute>
 
 		<execute macro="Page#gotoCP">
-			<var name="portletName" value="Site Memberships" />
+			<var name="portletName" value="Sites" />
 		</execute>
 
 		<execute macro="Team#addCP">
-			<var name="siteScopeName" value="Organization Name" />
+			<var name="siteName" value="Organization Name" />
 			<var name="teamName" value="${teamName}" />
 			<var name="teamDescription" value="${teamDescription}" />
 		</execute>
