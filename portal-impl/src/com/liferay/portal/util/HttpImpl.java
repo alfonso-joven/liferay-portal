@@ -399,6 +399,10 @@ public class HttpImpl implements Http {
 
 	@Override
 	public String getDomain(String url) {
+		if (Validator.isNull(url)) {
+			return url;
+		}
+		
 		url = removeProtocol(url);
 
 		int pos = url.indexOf(CharPool.SLASH);
@@ -609,6 +613,9 @@ public class HttpImpl implements Http {
 
 	@Override
 	public boolean hasDomain(String url) {
+		if (Validator.isNull(url)) {
+			return false;
+		}
 		return Validator.isNotNull(getDomain(url));
 	}
 
@@ -869,6 +876,9 @@ public class HttpImpl implements Http {
 
 	@Override
 	public String removeProtocol(String url) {
+		if (Validator.isNull(url)) {
+			return url;
+		}
 		if (url.startsWith(Http.HTTP_WITH_SLASH)) {
 			return url.substring(Http.HTTP_WITH_SLASH.length());
 		}
