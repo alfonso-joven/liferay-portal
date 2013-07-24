@@ -36,6 +36,7 @@ import com.liferay.portal.service.ResourcePermissionLocalServiceUtil;
 import com.liferay.portal.service.ResourcePermissionServiceUtil;
 import com.liferay.portal.service.RoleLocalServiceUtil;
 import com.liferay.portal.service.ServiceTestUtil;
+import com.liferay.portal.service.permission.PortletPermissionUtil;
 import com.liferay.portal.test.LiferayIntegrationJUnitTestRunner;
 import com.liferay.portal.test.MainServletExecutionTestListener;
 import com.liferay.portal.test.TransactionalCallbackAwareExecutionTestListener;
@@ -92,9 +93,12 @@ public class UpgradePortletIdTest extends UpgradePortletId {
 		roleIdsToActionIds.put(
 			role.getRoleId(), new String[] {ActionKeys.CONFIGURATION});
 
+		String portletPrimaryKey = PortletPermissionUtil.getPrimaryKey(
+			layout.getPlid(), _OLD_PORTLET_ID);
+
 		ResourcePermissionServiceUtil.setIndividualResourcePermissions(
 			layout.getGroupId(), TestPropsValues.getCompanyId(),
-			_OLD_ROOT_PORTLET_ID, _OLD_PORTLET_ID, roleIdsToActionIds);
+			_OLD_ROOT_PORTLET_ID, portletPrimaryKey, roleIdsToActionIds);
 
 		Portlet portlet = PortletLocalServiceUtil.getPortletById(
 			_OLD_ROOT_PORTLET_ID);
@@ -123,10 +127,13 @@ public class UpgradePortletIdTest extends UpgradePortletId {
 
 		Assert.assertTrue(layoutTypePortlet.hasPortletId(_NEW_PORTLET_ID));
 
+		portletPrimaryKey = PortletPermissionUtil.getPrimaryKey(
+			layout.getPlid(), _NEW_PORTLET_ID);
+
 		boolean hasViewPermission =
 			ResourcePermissionLocalServiceUtil.hasResourcePermission(
 				TestPropsValues.getCompanyId(), _NEW_ROOT_PORTLET_ID,
-				ResourceConstants.SCOPE_INDIVIDUAL, _NEW_PORTLET_ID,
+				ResourceConstants.SCOPE_INDIVIDUAL, portletPrimaryKey,
 				role.getRoleId(), ActionKeys.VIEW);
 
 		Assert.assertFalse(hasViewPermission);
@@ -134,7 +141,7 @@ public class UpgradePortletIdTest extends UpgradePortletId {
 		boolean hasConfigurationPermission =
 			ResourcePermissionLocalServiceUtil.hasResourcePermission(
 				TestPropsValues.getCompanyId(), _NEW_ROOT_PORTLET_ID,
-				ResourceConstants.SCOPE_INDIVIDUAL, _NEW_PORTLET_ID,
+				ResourceConstants.SCOPE_INDIVIDUAL, portletPrimaryKey,
 				role.getRoleId(), ActionKeys.CONFIGURATION);
 
 		Assert.assertTrue(hasConfigurationPermission);
