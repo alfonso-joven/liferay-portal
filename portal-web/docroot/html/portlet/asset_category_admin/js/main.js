@@ -447,7 +447,7 @@ AUI.add(
 						var paginatorConfig = {
 							limit: 10,
 							moreResultsLabel: Liferay.Language.get('load-more-results'),
-							offsetParam: 'start'
+							offsetParam: 'start',
 							total: instance._getVocabularyCategoriesCount(instance._vocabularies, instance._selectedVocabularyId)
 						};
 
