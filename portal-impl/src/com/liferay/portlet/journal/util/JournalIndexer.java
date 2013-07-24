@@ -322,6 +322,7 @@ public class JournalIndexer extends BaseIndexer {
 
 		if (!article.isIndexable() ||
 			(!article.isApproved() &&
+			 !article.isExpired() &&
 			 (article.getVersion() !=
 				  JournalArticleConstants.VERSION_DEFAULT))) {
 
