@@ -1107,9 +1107,9 @@ AUI.add(
 								};
 
 								return {
+									alwaysShowHitArea: item.hasChildren,
 									id: STR_CATEGORY_NODE + item.categoryId,
 									label: Liferay.Util.escapeHTML(item.titleCurrentValue),
-									leaf: !item.hasChildren,
 									paginator: paginatorConfig,
 									type: 'check',
 									on: {
