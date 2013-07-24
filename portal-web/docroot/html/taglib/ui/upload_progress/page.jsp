@@ -29,7 +29,7 @@ String message = (String)request.getAttribute("liferay-ui:upload-progress:messag
 
 <div><iframe frameborder="0" id="<%= id %>-poller" src="" style="height: 0; width: 0;"></iframe></div>
 
-<div id="<%= id %>-bar-div" style="visibility: hidden; text-align: center;">
+<div id="<%= id %>-bar-div" style="text-align: center; visibility: hidden">
 	<br />
 
 	<c:if test="<%= Validator.isNotNull(message) %>">
