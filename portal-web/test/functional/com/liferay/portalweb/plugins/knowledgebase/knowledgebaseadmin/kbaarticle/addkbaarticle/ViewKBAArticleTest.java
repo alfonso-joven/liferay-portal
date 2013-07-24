@@ -87,9 +87,8 @@ public class ViewKBAArticleTest extends BaseTestCase {
 			selenium.getText("//td[contains(.,'Delete')]/span/a/span"));
 		assertEquals(RuntimeVariables.replace("Approved"),
 			selenium.getText("//strong[@class='workflow-status-approved']"));
-		assertEquals(RuntimeVariables.replace(
-				"Knowledge Base Admin Article Content"),
-			selenium.getText("//div[@class='kb-entity-body']/p"));
+		assertTrue(selenium.isPartialText("//div[@class='kb-entity-body']",
+				"Knowledge Base Admin Article Content"));
 		assertEquals(RuntimeVariables.replace("Your Rating"),
 			selenium.getText("//div[contains(@id,'ratingStarContent')]/div"));
 		assertEquals(RuntimeVariables.replace("Average (0 Votes)"),
