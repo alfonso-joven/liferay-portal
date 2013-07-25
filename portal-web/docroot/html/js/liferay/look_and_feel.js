@@ -80,10 +80,10 @@ AUI.add(
 											autoLoad: false,
 											showLoading: false,
 											data: {
+												doAsUserId: themeDisplay.getDoAsUserIdEncoded(),
 												p_l_id: themeDisplay.getPlid(),
 												p_p_id: 113,
-												p_p_state: 'exclusive',
-												doAsUserId: themeDisplay.getDoAsUserIdEncoded()
+												p_p_state: 'exclusive'
 											},
 											uri: themeDisplay.getPathMain() + '/portal/render_portlet'
 										}
