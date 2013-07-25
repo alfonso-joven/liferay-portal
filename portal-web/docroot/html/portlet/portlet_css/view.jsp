@@ -17,11 +17,11 @@
 <%@ include file="/html/portlet/portlet_css/init.jsp" %>
 
 <%
-String portletId = ParamUtil.getString(request, "portletId");
+String portletResource = ParamUtil.getString(request, "portletResource");
 %>
 
 <c:choose>
-	<c:when test="<%= Validator.isNotNull(portletId) && PortletPermissionUtil.contains(permissionChecker, themeDisplay.getLayout(), portletId, ActionKeys.CONFIGURATION) %>">
+	<c:when test="<%= Validator.isNotNull(portletResource) && PortletPermissionUtil.contains(permissionChecker, themeDisplay.getLayout(), portletResource, ActionKeys.CONFIGURATION) %>">
 
 		<liferay-portlet:renderURL var="portletURL" />
 
