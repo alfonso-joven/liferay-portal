@@ -23,9 +23,7 @@ String portletId = ParamUtil.getString(request, "portletId");
 <c:choose>
 	<c:when test="<%= Validator.isNotNull(portletId) && PortletPermissionUtil.contains(permissionChecker, themeDisplay.getLayout(), portletId, ActionKeys.CONFIGURATION) %>">
 
-		<%
-		PortletURL portletURL = renderResponse.createRenderURL();
-		%>
+		<liferay-portlet:renderURL var="portletURL" />
 
 		<div id="lfr-look-and-feel">
 			<div class="aui-tabview" id="portlet-set-properties">
