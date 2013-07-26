@@ -125,6 +125,7 @@ request.setAttribute("view.jsp-showIconLabel", true);
 
 	viewFullContentURL.setParameter("struts_action", "/asset_publisher/view_content");
 	viewFullContentURL.setParameter("type", assetRendererFactory.getType());
+	viewFullContentURL.setParameter("viewMode", print ? Constants.PRINT : Constants.VIEW);
 
 	if (Validator.isNotNull(assetRenderer.getUrlTitle())) {
 		if (assetRenderer.getGroupId() != scopeGroupId) {
