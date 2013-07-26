@@ -68,136 +68,61 @@ String selectScope = (String) request.getAttribute("configuration.jsp-selectScop
 			<%
 			}
 
-			List<String> deletedAssets = new ArrayList<String>();
-
-			List<String> headerNames = new ArrayList<String>();
-
-			headerNames.add("type");
-			headerNames.add("title");
-			headerNames.add(StringPool.BLANK);
-
-			SearchContainer searchContainer = new SearchContainer(renderRequest, new DisplayTerms(renderRequest), new DisplayTerms(renderRequest), SearchContainer.DEFAULT_CUR_PARAM, SearchContainer.DEFAULT_DELTA, configurationRenderURL, headerNames, LanguageUtil.get(pageContext, "no-assets-selected"));
-
-			int total = assetEntryXmls.length;
-
-			searchContainer.setTotal(total);
-
-			List results = ListUtil.fromArray(assetEntryXmls);
-
-			int end = (assetEntryXmls.length < searchContainer.getEnd()) ? assetEntryXmls.length : searchContainer.getEnd();
-
-			results = results.subList(searchContainer.getStart(), end);
-
-			searchContainer.setResults(results);
-
-			List resultRows = searchContainer.getResultRows();
-
-			for (int i = 0; i < results.size(); i++) {
-				String assetEntryXml = (String)results.get(i);
-
-				Document doc = SAXReaderUtil.read(assetEntryXml);
-
-				Element root = doc.getRootElement();
-
-				int assetEntryOrder = searchContainer.getStart() + i;
-
-				DocUtil.add(root, "asset-order", assetEntryOrder);
-
-				if (assetEntryOrder == (total - 1)) {
-					DocUtil.add(root, "last", true);
-				}
-				else {
-					DocUtil.add(root, "last", false);
-				}
-
-				String assetEntryClassName = root.element("asset-entry-type").getText();
-				String assetEntryUuid = root.element("asset-entry-uuid").getText();
-
-				AssetEntry assetEntry = null;
-
-				boolean deleteAssetEntry = true;
-
-				for (long groupId : groupIds) {
-					try {
-						assetEntry = AssetEntryLocalServiceUtil.getEntry(groupId, assetEntryUuid);
-
-						assetEntry = assetEntry.toEscapedModel();
-
-						deleteAssetEntry = false;
-					}
-					catch (NoSuchEntryException nsee) {
-					}
-				}
-
-				if (deleteAssetEntry) {
-					deletedAssets.add(assetEntryUuid);
-
-					continue;
-				}
-
-				ResultRow row = new ResultRow(doc, null, assetEntryOrder);
-
-				PortletURL rowURL = renderResponse.createRenderURL();
-
-				rowURL.setParameter("struts_action", "/portlet_configuration/edit_configuration");
-				rowURL.setParameter("redirect", redirect);
-				rowURL.setParameter("backURL", redirect);
-				rowURL.setParameter("portletResource", portletResource);
-				rowURL.setParameter("typeSelection", assetEntryClassName);
-				rowURL.setParameter("assetEntryId", String.valueOf(assetEntry.getEntryId()));
-				rowURL.setParameter("assetEntryOrder", String.valueOf(assetEntryOrder));
-
-				// Type
-
-				row.addText(ResourceActionsUtil.getModelResource(locale, assetEntryClassName), rowURL);
-
-				// Title
-
-				AssetRendererFactory assetRendererFactory = AssetRendererFactoryRegistryUtil.getAssetRendererFactoryByClassName(assetEntry.getClassName());
-
-				AssetRenderer assetRenderer = assetRendererFactory.getAssetRenderer(assetEntry.getClassPK());
-
-				String title = HtmlUtil.escape(assetRenderer.getTitle(locale));
-
-				if (assetEntryClassName.equals(DLFileEntryConstants.getClassName())) {
-					FileEntry fileEntry = DLAppLocalServiceUtil.getFileEntry(assetEntry.getClassPK());
-
-					fileEntry = fileEntry.toEscapedModel();
-
-					StringBundler sb = new StringBundler(6);
-
-					sb.append("<img alt=\"\" class=\"dl-file-icon\" src=\"");
-					sb.append(themeDisplay.getPathThemeImages());
-					sb.append("/file_system/small/");
-					sb.append(fileEntry.getIcon());
-					sb.append(".png\" />");
-					sb.append(title);
-
-					row.addText(sb.toString(), rowURL);
-				}
-				else {
-					row.addText(title, rowURL);
-				}
-
-				// Action
-
-				row.addJSP("right", SearchEntry.DEFAULT_VALIGN, "/html/portlet/asset_publisher/asset_selection_action.jsp");
-
-				// Add result row
-
-				resultRows.add(row);
-			}
-
-			AssetPublisherUtil.removeAndStoreSelection(deletedAssets, preferences);
+			List<AssetEntry> assetEntries = AssetPublisherUtil.getAssetEntries(renderRequest, portletPreferences, permissionChecker, groupIds, assetEntryXmls, true, enablePermissions);
 			%>
 
-			<c:if test="<%= !deletedAssets.isEmpty() %>">
+			<liferay-ui:search-container
+				emptyResultsMessage="no-assets-selected"
+				iteratorURL="<%= configurationRenderURL %>"
+			>
+				<liferay-ui:search-container-results>
+
+					<%
+					int end = (assetEntries.size() < searchContainer.getEnd()) ? assetEntries.size() : searchContainer.getEnd();
+
+					pageContext.setAttribute("total", assetEntries.size());
+					pageContext.setAttribute("results", assetEntries.subList(searchContainer.getStart(), end));
+					%>
+
+				</liferay-ui:search-container-results>
+
+				<liferay-ui:search-container-row
+					className="com.liferay.portlet.asset.model.AssetEntry"
+					escapedModel="<%= true %>"
+					keyProperty="entryId"
+					modelVar="assetEntry"
+				>
+
+					<%
+					AssetRendererFactory assetRendererFactory = AssetRendererFactoryRegistryUtil.getAssetRendererFactoryByClassName(assetEntry.getClassName());
+
+					AssetRenderer assetRenderer = assetRendererFactory.getAssetRenderer(assetEntry.getClassPK());
+					%>
+
+					<liferay-ui:search-container-column-text name="title">
+						<img alt="" src="<%= assetRenderer.getIconPath(renderRequest) %>" /><%= assetRenderer.getTitle(locale) %>
+					</liferay-ui:search-container-column-text>
+
+					<liferay-ui:search-container-column-text
+						name="type"
+						value="<%= ResourceActionsUtil.getModelResource(locale, assetRendererFactory.getClassName()) %>"
+					/>
+
+					<liferay-ui:search-container-column-jsp
+						align="right"
+						path="/html/portlet/asset_publisher/asset_selection_action.jsp"
+					/>
+				</liferay-ui:search-container-row>
+
+				<liferay-ui:search-iterator paginate="<%= total > SearchContainer.DEFAULT_DELTA %>" />
+			</liferay-ui:search-container>
+
+			<c:if test='<%= SessionMessages.contains(renderRequest, "deletedMissingAssetEntries") %>'>
 				<div class="portlet-msg-info">
 					<liferay-ui:message key="the-selected-assets-have-been-removed-from-the-list-because-they-do-not-belong-in-the-scope-of-this-portlet" />
 				</div>
 			</c:if>
 
-			<liferay-ui:search-iterator searchContainer="<%= searchContainer %>" />
 		</aui:fieldset>
 	</liferay-ui:panel>
 	<liferay-ui:panel collapsible="<%= true %>" extended="<%= true %>" id="assetPublisherSelectionDisplaySettingsPanel" persistState="<%= true %>" title="display-settings">
