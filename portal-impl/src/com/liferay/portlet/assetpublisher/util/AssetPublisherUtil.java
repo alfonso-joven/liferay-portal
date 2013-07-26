@@ -207,7 +207,7 @@ public class AssetPublisherUtil {
 		assetEntryQuery.setAllCategoryIds(allCategoryIdsList.getArray());
 	}
 
-	public List<AssetEntry> getAssetEntries(
+	public static List<AssetEntry> getAssetEntries(
 			PortletRequest portletRequest,
 			PortletPreferences portletPreferences,
 			PermissionChecker permissionChecker, long[] groupIds,
@@ -256,16 +256,6 @@ public class AssetPublisherUtil {
 
 			AssetRenderer assetRenderer = assetRendererFactory.getAssetRenderer(
 				assetEntry.getClassPK());
-
-			if (!assetRendererFactory.isActive(
-					permissionChecker.getCompanyId())) {
-
-				if (deleteMissingAssetEntries) {
-					missingAssetEntryUuids.add(assetEntryUuid);
-				}
-
-				continue;
-			}
 
 			if (checkPermission &&
 				(!assetRenderer.isDisplayable() ||
