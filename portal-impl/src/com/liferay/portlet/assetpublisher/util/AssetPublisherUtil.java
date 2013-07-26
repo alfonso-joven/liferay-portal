@@ -17,6 +17,7 @@ package com.liferay.portlet.assetpublisher.util;
 import com.liferay.portal.kernel.dao.orm.QueryUtil;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.servlet.SessionMessages;
 import com.liferay.portal.kernel.util.ArrayUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ListUtil;
@@ -32,14 +33,17 @@ import com.liferay.portal.model.Group;
 import com.liferay.portal.model.GroupConstants;
 import com.liferay.portal.model.Layout;
 import com.liferay.portal.model.User;
+import com.liferay.portal.security.permission.PermissionChecker;
 import com.liferay.portal.service.GroupLocalServiceUtil;
 import com.liferay.portal.service.LayoutLocalServiceUtil;
 import com.liferay.portal.theme.ThemeDisplay;
 import com.liferay.portal.util.PortalUtil;
 import com.liferay.portal.util.WebKeys;
 import com.liferay.portlet.PortletPreferencesFactoryUtil;
+import com.liferay.portlet.asset.AssetRendererFactoryRegistryUtil;
 import com.liferay.portlet.asset.model.AssetCategory;
 import com.liferay.portlet.asset.model.AssetEntry;
+import com.liferay.portlet.asset.model.AssetRenderer;
 import com.liferay.portlet.asset.model.AssetRendererFactory;
 import com.liferay.portlet.asset.service.AssetCategoryLocalServiceUtil;
 import com.liferay.portlet.asset.service.AssetEntryLocalServiceUtil;
@@ -50,6 +54,7 @@ import com.liferay.portlet.expando.model.ExpandoBridge;
 import java.io.IOException;
 import java.io.Serializable;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -200,6 +205,90 @@ public class AssetPublisherUtil {
 		}
 
 		assetEntryQuery.setAllCategoryIds(allCategoryIdsList.getArray());
+	}
+
+	public List<AssetEntry> getAssetEntries(
+			PortletRequest portletRequest,
+			PortletPreferences portletPreferences,
+			PermissionChecker permissionChecker, long[] groupIds,
+			String[] assetEntryXmls, boolean deleteMissingAssetEntries,
+			boolean checkPermission)
+		throws Exception {
+
+		List<AssetEntry> aassetEntries = new ArrayList<AssetEntry>();
+
+		List<String> missingAssetEntryUuids = new ArrayList<String>();
+
+		for (String assetEntryXml : assetEntryXmls) {
+			Document document = SAXReaderUtil.read(assetEntryXml);
+
+			Element rootElement = document.getRootElement();
+
+			String assetEntryUuid = rootElement.elementText("asset-entry-uuid");
+
+			AssetEntry assetEntry = null;
+
+			for (long groupId : groupIds) {
+				assetEntry = AssetEntryLocalServiceUtil.fetchEntry(
+					groupId, assetEntryUuid);
+
+				if (assetEntry != null) {
+					break;
+				}
+			}
+
+			if (assetEntry == null) {
+				if (deleteMissingAssetEntries) {
+					missingAssetEntryUuids.add(assetEntryUuid);
+				}
+
+				continue;
+			}
+
+			if (!assetEntry.isVisible()) {
+				continue;
+			}
+
+			AssetRendererFactory assetRendererFactory =
+				AssetRendererFactoryRegistryUtil.
+					getAssetRendererFactoryByClassName(
+						assetEntry.getClassName());
+
+			AssetRenderer assetRenderer = assetRendererFactory.getAssetRenderer(
+				assetEntry.getClassPK());
+
+			if (!assetRendererFactory.isActive(
+					permissionChecker.getCompanyId())) {
+
+				if (deleteMissingAssetEntries) {
+					missingAssetEntryUuids.add(assetEntryUuid);
+				}
+
+				continue;
+			}
+
+			if (checkPermission &&
+				(!assetRenderer.isDisplayable() ||
+				 !assetRenderer.hasViewPermission(permissionChecker))) {
+
+				continue;
+			}
+
+			aassetEntries.add(assetEntry);
+		}
+
+		if (deleteMissingAssetEntries) {
+			AssetPublisherUtil.removeAndStoreSelection(
+				missingAssetEntryUuids, portletPreferences);
+
+			if (!missingAssetEntryUuids.isEmpty()) {
+				SessionMessages.add(
+					portletRequest, "deletedMissingAssetEntries",
+					missingAssetEntryUuids);
+			}
+		}
+
+		return aassetEntries;
 	}
 
 	public static AssetEntryQuery getAssetEntryQuery(
