@@ -32,6 +32,7 @@ import com.liferay.portal.kernel.util.FriendlyURLNormalizerUtil;
 import com.liferay.portal.kernel.util.LocaleUtil;
 import com.liferay.portal.kernel.util.PropsKeys;
 import com.liferay.portal.kernel.util.StringPool;
+import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.kernel.velocity.VelocityEngineUtil;
 import com.liferay.portal.kernel.workflow.WorkflowHandlerRegistryUtil;
@@ -74,7 +75,6 @@ import com.liferay.portlet.messageboards.workflow.MBDiscussionWorkflowHandler;
 import com.liferay.portlet.messageboards.workflow.MBMessageWorkflowHandler;
 import com.liferay.portlet.usersadmin.util.OrganizationIndexer;
 import com.liferay.portlet.usersadmin.util.UserIndexer;
-import com.liferay.util.PwdGenerator;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -523,7 +523,7 @@ public class ServiceTestUtil {
 	}
 
 	public static String randomString() throws Exception {
-		return PwdGenerator.getPassword();
+		return StringUtil.randomString();
 	}
 
 	public static void setUser(User user) throws Exception {
