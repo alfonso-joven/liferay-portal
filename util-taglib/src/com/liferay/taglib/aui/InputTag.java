@@ -18,12 +18,12 @@ import com.liferay.portal.kernel.servlet.taglib.aui.ValidatorTag;
 import com.liferay.portal.kernel.util.ListUtil;
 import com.liferay.portal.kernel.util.LocaleUtil;
 import com.liferay.portal.kernel.util.StringPool;
+import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.TextFormatter;
 import com.liferay.portal.kernel.util.Tuple;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.ModelHintsUtil;
 import com.liferay.taglib.aui.base.BaseInputTag;
-import com.liferay.util.PwdGenerator;
 
 import java.util.HashMap;
 import java.util.List;
@@ -202,7 +202,7 @@ public class InputTag extends BaseInputTag {
 				id = name;
 			}
 			else {
-				id = PwdGenerator.getPassword(PwdGenerator.KEY3, 4);
+				id = StringUtil.randomId();
 			}
 		}
 
