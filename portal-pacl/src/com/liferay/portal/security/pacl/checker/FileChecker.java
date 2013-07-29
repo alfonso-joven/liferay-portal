@@ -53,8 +53,6 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 
-
-
 /**
  * @author Brian Wing Shun Chan
  * @author Raymond Augé
