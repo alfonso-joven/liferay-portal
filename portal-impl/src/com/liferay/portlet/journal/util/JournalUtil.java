@@ -86,6 +86,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Stack;
+import java.util.regex.Pattern;
 
 import javax.portlet.PortletPreferences;
 import javax.portlet.PortletRequest;
@@ -849,7 +850,7 @@ public class JournalUtil {
 		}
 		else {
 			title = FriendlyURLNormalizerUtil.normalize(
-				title, _URL_TITLE_REPLACE_CHARS);
+				title, _friendlyURLPattern);
 		}
 
 		return ModelHintsUtil.trimString(
@@ -1542,13 +1543,10 @@ public class JournalUtil {
 		path.pop();
 	}
 
-	private static final char[] _URL_TITLE_REPLACE_CHARS = new char[] {
-		'.', '/'
-	};
-
 	private static Log _log = LogFactoryUtil.getLog(JournalUtil.class);
 
 	private static Map<String, String> _customTokens;
+	private static Pattern _friendlyURLPattern = Pattern.compile("[^a-z0-9_-]");
 	private static Transformer _transformer = new JournalTransformer();
 
 }

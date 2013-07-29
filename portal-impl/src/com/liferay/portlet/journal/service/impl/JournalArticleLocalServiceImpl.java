@@ -1659,6 +1659,40 @@ public class JournalArticleLocalServiceImpl
 	}
 
 	@Override
+	public String getUniqueUrlTitle(
+			long groupId, String articleId, String urlTitle)
+		throws PortalException, SystemException {
+
+		for (int i = 1;; i++) {
+			JournalArticle article = null;
+
+			try {
+				article = getArticleByUrlTitle(groupId, urlTitle);
+			}
+			catch (NoSuchArticleException nsae) {
+			}
+
+			if ((article == null) || articleId.equals(article.getArticleId())) {
+				break;
+			}
+			else {
+				String suffix = StringPool.DASH + i;
+
+				String prefix = urlTitle;
+
+				if (urlTitle.length() > suffix.length()) {
+					prefix = urlTitle.substring(
+						0, urlTitle.length() - suffix.length());
+				}
+
+				urlTitle = prefix + suffix;
+			}
+		}
+
+		return urlTitle;
+	}
+
+	@Override
 	public boolean hasArticle(long groupId, String articleId)
 		throws SystemException {
 
@@ -3221,33 +3255,7 @@ public class JournalArticleLocalServiceImpl
 
 		String urlTitle = JournalUtil.getUrlTitle(id, title);
 
-		for (int i = 1;; i++) {
-			JournalArticle article = null;
-
-			try {
-				article = getArticleByUrlTitle(groupId, urlTitle);
-			}
-			catch (NoSuchArticleException nsae) {
-			}
-
-			if ((article == null) || articleId.equals(article.getArticleId())) {
-				break;
-			}
-			else {
-				String suffix = StringPool.DASH + i;
-
-				String prefix = urlTitle;
-
-				if (urlTitle.length() > suffix.length()) {
-					prefix = urlTitle.substring(
-						0, urlTitle.length() - suffix.length());
-				}
-
-				urlTitle = prefix + suffix;
-			}
-		}
-
-		return urlTitle;
+		return getUniqueUrlTitle(groupId, articleId, urlTitle);
 	}
 
 	protected String getUniqueUrlTitle(

@@ -31,6 +31,7 @@ import com.liferay.util.ContentUtil;
 
 import java.util.Locale;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 import javax.portlet.PortletPreferences;
 
@@ -188,15 +189,13 @@ public class BlogsUtil {
 		}
 		else {
 			title = FriendlyURLNormalizerUtil.normalize(
-				title, _URL_TITLE_REPLACE_CHARS);
+				title, _friendlyURLPattern);
 		}
 
 		return ModelHintsUtil.trimString(
 			BlogsEntry.class.getName(), "urlTitle", title);
 	}
 
-	private static final char[] _URL_TITLE_REPLACE_CHARS = new char[] {
-		'.', '/'
-	};
+	private static Pattern _friendlyURLPattern = Pattern.compile("[^a-z0-9_-]");
 
 }
