@@ -83,9 +83,9 @@ public class SessionMessages {
 	public static void add(HttpSession session, String key) {
 		Map<String, Object> map = _getMap(session, true);
 
-        if (map == null) {
-            return;
-        }
+		if (map == null) {
+			return;
+		}
 
 		map.put(key, key);
 	}
@@ -93,9 +93,9 @@ public class SessionMessages {
 	public static void add(HttpSession session, String key, Object value) {
 		Map<String, Object> map = _getMap(session, true);
 
-        if (map == null) {
-            return;
-        }
+		if (map == null) {
+			return;
+		}
 
 		map.put(key, value);
 	}
@@ -133,9 +133,9 @@ public class SessionMessages {
 	public static void add(PortletSession portletSession, String key) {
 		Map<String, Object> map = _getMap(portletSession, true);
 
-        if (map == null) {
-            return;
-        }
+		if (map == null) {
+			return;
+		}
 
 		map.put(key, key);
 	}
@@ -145,9 +145,9 @@ public class SessionMessages {
 
 		Map<String, Object> map = _getMap(portletSession, true);
 
-        if (map == null) {
-            return;
-        }
+		if (map == null) {
+			return;
+		}
 
 		map.put(key, value);
 	}
@@ -415,9 +415,9 @@ public class SessionMessages {
 	private static Map<String, Object> _getMap(
 		HttpSession session, boolean createIfAbsent) {
 
-        if (session == null) {
-            return null;
-        }
+		if (session == null) {
+			return null;
+		}
 
 		Map<String, Object> map = null;
 
@@ -442,9 +442,9 @@ public class SessionMessages {
 	private static Map<String, Object> _getMap(
 		PortletSession portletSession, boolean createIfAbsent) {
 
-        if (portletSession == null) {
-            return null;
-        }
+		if (portletSession == null) {
+			return null;
+		}
 
 		Map<String, Object> map = null;
 
