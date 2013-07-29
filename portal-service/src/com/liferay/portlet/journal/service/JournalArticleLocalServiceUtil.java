@@ -808,6 +808,13 @@ public class JournalArticleLocalServiceUtil {
 		return getService().getTemplateArticlesCount(groupId, templateId);
 	}
 
+	public static java.lang.String getUniqueUrlTitle(long groupId,
+		java.lang.String articleId, java.lang.String urlTitle)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getService().getUniqueUrlTitle(groupId, articleId, urlTitle);
+	}
+
 	public static boolean hasArticle(long groupId, java.lang.String articleId)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return getService().hasArticle(groupId, articleId);
