@@ -32,6 +32,7 @@ import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.UniqueList;
 import com.liferay.portal.kernel.util.Validator;
+import com.liferay.portal.security.pacl.Reflection;
 import com.liferay.portal.util.PropsUtil;
 import com.liferay.portal.util.PropsValues;
 
@@ -52,7 +53,7 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 
-import sun.reflect.Reflection;
+
 
 /**
  * @author Brian Wing Shun Chan
