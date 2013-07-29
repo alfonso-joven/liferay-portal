@@ -56,7 +56,7 @@ if (percent.floatValue() >= 100) {
 
 		<c:if test="<%= percent.intValue() < 100 %>">
 			setTimeout(
-				function(){
+				function() {
 					window.location.reload();
 				},
 				1000
