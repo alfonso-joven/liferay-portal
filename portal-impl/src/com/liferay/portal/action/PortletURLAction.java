@@ -19,7 +19,9 @@ import com.liferay.portal.kernel.portlet.PortletModeFactory;
 import com.liferay.portal.kernel.portlet.WindowStateFactory;
 import com.liferay.portal.kernel.servlet.ServletResponseUtil;
 import com.liferay.portal.kernel.util.ParamUtil;
+import com.liferay.portal.kernel.util.SetUtil;
 import com.liferay.portal.kernel.util.Validator;
+import com.liferay.portal.model.PortletConstants;
 import com.liferay.portal.theme.ThemeDisplay;
 import com.liferay.portal.util.PortalUtil;
 import com.liferay.portal.util.PropsValues;
@@ -27,9 +29,11 @@ import com.liferay.portal.util.WebKeys;
 import com.liferay.portlet.PortletURLImpl;
 
 import java.util.Map;
+import java.util.Set;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.PortletRequest;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -50,7 +54,16 @@ public class PortletURLAction extends Action {
 			HttpServletRequest request, HttpServletResponse response)
 		throws Exception {
 
-		if (!PropsValues.PORTLET_URL_GENERATE_BY_PATH_ENABLED) {
+		String portletId = ParamUtil.getString(request, "portletId");
+
+		portletId = PortletConstants.getRootPortletId(portletId);
+
+		Set<String> portletUrlGenerateByPathWhitelist = SetUtil.fromArray(
+			PropsValues.PORTLET_URL_GENERATE_BY_PATH_WHITELIST);
+
+		if (!PropsValues.PORTLET_URL_GENERATE_BY_PATH_ENABLED &&
+				!portletUrlGenerateByPathWhitelist.contains(portletId)) {
+
 			response.sendError(HttpServletResponse.SC_FORBIDDEN);
 
 			return null;
