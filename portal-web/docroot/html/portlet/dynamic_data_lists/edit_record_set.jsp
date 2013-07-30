@@ -159,6 +159,7 @@ if (Validator.isNotNull(ddmStructureId)) {
 				},
 				groupId: <%= groupId %>,
 				saveCallback: '<portlet:namespace />selectDDMStructure',
+				showGlobalScope: 'true',
 				storageType: '<%= PropsValues.DYNAMIC_DATA_LISTS_STORAGE_TYPE %>',
 				structureId: ddmStructureId,
 				structureName: 'data-definition',

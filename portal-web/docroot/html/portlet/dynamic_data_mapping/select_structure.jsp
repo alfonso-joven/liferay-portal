@@ -23,6 +23,7 @@ long groupId = ParamUtil.getLong(request, "groupId", scopeGroupId);
 <c:if test="<%= showToolbar %>">
 	<liferay-util:include page="/html/portlet/dynamic_data_mapping/structure_toolbar.jsp">
 		<liferay-util:param name="toolbarItem" value="view-all" />
+		<liferay-util:param name="groupId" value="<%= String.valueOf(groupId) %>" />
 	</liferay-util:include>
 </c:if>
 

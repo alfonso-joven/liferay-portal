@@ -20,7 +20,7 @@ StructureSearchTerms searchTerms = (StructureSearchTerms)searchContainer.getSear
 long[] groupIds = new long[] {groupId};
 
 if (showGlobalScope) {
-	groupIds = DLUtil.getGroupIds(themeDisplay);
+	groupIds = DLUtil.getGroupIds(groupId);
 }
 
 if (searchTerms.isAdvancedSearch()) {
