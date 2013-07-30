@@ -89,7 +89,7 @@ public class ScriptingPortlet extends GenericPortlet {
 	@Override
 	public void doHelp(
 			RenderRequest renderRequest, RenderResponse renderResponse)
-		throws IOException, PortletException {
+		throws IOException {
 
 		include(helpFile, renderRequest, renderResponse);
 	}
@@ -97,15 +97,13 @@ public class ScriptingPortlet extends GenericPortlet {
 	@Override
 	public void doView(
 			RenderRequest renderRequest, RenderResponse renderResponse)
-		throws IOException, PortletException {
+		throws IOException {
 
 		include(viewFile, renderRequest, renderResponse);
 	}
 
 	@Override
-	public void init() throws PortletException {
-		super.init();
-
+	public void init() {
 		filePath = getInitParameter("file-path");
 
 		if (Validator.isNull(filePath)) {
@@ -116,13 +114,13 @@ public class ScriptingPortlet extends GenericPortlet {
 				 filePath.contains(StringPool.PERIOD) ||
 				 filePath.contains(StringPool.SPACE)) {
 
-			throw new PortletException(
+			throw new RuntimeException(
 				"template-path " + filePath + " has invalid characters");
 		}
 		else if (!filePath.startsWith(StringPool.SLASH) ||
 				 !filePath.endsWith(StringPool.SLASH)) {
 
-			throw new PortletException(
+			throw new RuntimeException(
 				"template-path " + filePath +
 					" must start and end with a /");
 		}
@@ -140,7 +138,7 @@ public class ScriptingPortlet extends GenericPortlet {
 	@Override
 	public void processAction(
 			ActionRequest actionRequest, ActionResponse actionResponse)
-		throws IOException, PortletException {
+		throws IOException {
 
 		include(actionFile, actionRequest, actionResponse);
 	}
@@ -167,17 +165,17 @@ public class ScriptingPortlet extends GenericPortlet {
 	@Override
 	public void serveResource(
 			ResourceRequest resourceRequest, ResourceResponse resourceResponse)
-		throws IOException, PortletException {
+		throws IOException {
 
 		include(resourceFile, resourceRequest, resourceResponse);
 	}
 
-	protected void checkPath(String path) throws PortletException {
+	protected void checkPath(String path) {
 		if (Validator.isNotNull(path) &&
 			(!path.startsWith(filePath) ||
 			 !Validator.isFilePath(path, false))) {
 
-			throw new PortletException(
+			throw new RuntimeException(
 				"Path " + path + " is not accessible by this portlet");
 		}
 	}
@@ -276,7 +274,7 @@ public class ScriptingPortlet extends GenericPortlet {
 	protected void include(
 			String path, PortletRequest portletRequest,
 			PortletResponse portletResponse)
-		throws IOException, PortletException {
+		throws IOException {
 
 		checkPath(path);
 
