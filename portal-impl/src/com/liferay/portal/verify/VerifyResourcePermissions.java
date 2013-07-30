@@ -20,6 +20,7 @@ import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.model.Contact;
+import com.liferay.portal.model.Layout;
 import com.liferay.portal.model.LayoutSetBranch;
 import com.liferay.portal.model.PasswordPolicy;
 import com.liferay.portal.model.ResourceConstants;
