@@ -25,6 +25,7 @@ import com.liferay.portal.kernel.dao.orm.SessionFactory;
 import com.liferay.portal.kernel.security.pacl.DoPrivileged;
 import com.liferay.portal.kernel.util.AutoResetThreadLocal;
 import com.liferay.portal.kernel.util.StringPool;
+import com.liferay.portal.kernel.util.UnmodifiableList;
 import com.liferay.portal.model.BaseModel;
 import com.liferay.portal.util.PropsValues;
 
@@ -244,6 +245,8 @@ public class FinderCacheImpl implements CacheRegistryItem, FinderCache {
 
 				list.add(result);
 			}
+
+			list = new UnmodifiableList<Serializable>(list);
 
 			return list;
 		}
