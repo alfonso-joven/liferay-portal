@@ -188,10 +188,18 @@ public class VerifyResourcePermissions extends VerifyProcess {
 		try {
 			con = DataAccess.getUpgradeOptimizedConnection();
 
-			ps = con.prepareStatement(
-				"select " + pkColumnName + ", userId AS ownerId " +
-					"from " + modelName + " where companyId = " +
-						role.getCompanyId());
+			if (modelName.equals("Layout")) {
+				ps = con.prepareStatement(
+					"select " + pkColumnName + ", 0 AS ownerId " +
+						"from " + modelName + " where companyId = " +
+							role.getCompanyId());
+			}
+			else {
+				ps = con.prepareStatement(
+					"select " + pkColumnName + ", userId AS ownerId " +
+						"from " + modelName + " where companyId = " +
+							role.getCompanyId());
+			}
 
 			rs = ps.executeQuery();
 
