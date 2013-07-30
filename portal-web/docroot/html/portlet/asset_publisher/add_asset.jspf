@@ -139,6 +139,7 @@ public PortletURL getAddPortletURL(LiferayPortletRequest liferayPortletRequest, 
 	PortletURL redirectURL = liferayPortletResponse.createLiferayPortletURL(themeDisplay.getPlid(), portletDisplay.getId(), PortletRequest.RENDER_PHASE, false);
 
 	redirectURL.setParameter("struts_action", "/asset_publisher/add_asset_redirect");
+	redirectURL.setParameter("redirect", themeDisplay.getURLCurrent());
 	redirectURL.setWindowState(LiferayWindowState.POP_UP);
 
 	addPortletURL.setParameter("redirect", redirectURL.toString());
