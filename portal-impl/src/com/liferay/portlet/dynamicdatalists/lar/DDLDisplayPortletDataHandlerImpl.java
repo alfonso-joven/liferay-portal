@@ -98,8 +98,12 @@ public class DDLDisplayPortletDataHandlerImpl extends BasePortletDataHandler {
 
 		Element rootElement = document.addElement("record-set-data");
 
-		DDLRecordSet recordSet = DDLRecordSetLocalServiceUtil.getRecordSet(
+		DDLRecordSet recordSet = DDLRecordSetLocalServiceUtil.fetchRecordSet(
 			recordSetId);
+
+		if (recordSet == null) {
+			return document.formattedString();
+		}
 
 		DDLPortletDataHandler ddlPortletDataHandler =
 			DDLPortletDataHandlerUtil.getDDLPortletDataHandler();
