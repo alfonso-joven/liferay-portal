@@ -246,7 +246,7 @@ public class FinderCacheImpl implements CacheRegistryItem, FinderCache {
 				list.add(result);
 			}
 
-			list = new UnmodifiableList<Serializable>(list);
+			list = new UnmodifiableList<Object>(list);
 
 			return list;
 		}
