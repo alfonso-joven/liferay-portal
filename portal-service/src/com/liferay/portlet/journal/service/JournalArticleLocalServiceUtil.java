@@ -451,6 +451,13 @@ public class JournalArticleLocalServiceUtil {
 			serviceContext);
 	}
 
+	public static com.liferay.portlet.journal.model.JournalArticle fetchLatestArticle(
+		long resourcePrimKey, int status, boolean preferApproved)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .fetchLatestArticle(resourcePrimKey, status, preferApproved);
+	}
+
 	public static com.liferay.portlet.journal.model.JournalArticle getArticle(
 		long id)
 		throws com.liferay.portal.kernel.exception.PortalException,
