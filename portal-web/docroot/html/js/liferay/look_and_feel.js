@@ -1243,6 +1243,7 @@ AUI.add(
 							}
 
 							portletData.title = value;
+
 							instance._portletTitles(portletLanguage, value);
 						}
 					}
@@ -1364,10 +1365,12 @@ AUI.add(
 				instance._setSelect(instance._portletLinksTarget, portletData.portletLinksTarget);
 
 				var portletTitles = portletData.titles;
+
 				var portletTitle = instance._portletTitles(portletData.language);
 
 				if (!portletTitle) {
 					instance._portletTitles('');
+
 					portletData.title = '';
 				}
 
