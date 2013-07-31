@@ -34,6 +34,8 @@ import com.liferay.portal.service.ResourceLocalService;
 import com.liferay.portal.service.ResourceService;
 import com.liferay.portal.service.RoleLocalService;
 import com.liferay.portal.service.RoleService;
+import com.liferay.portal.service.TeamLocalService;
+import com.liferay.portal.service.TeamService;
 import com.liferay.portal.service.UserGroupLocalService;
 import com.liferay.portal.service.UserGroupService;
 import com.liferay.portal.service.UserLocalService;
@@ -47,6 +49,8 @@ import com.liferay.portal.service.persistence.ResourceFinder;
 import com.liferay.portal.service.persistence.ResourcePersistence;
 import com.liferay.portal.service.persistence.RoleFinder;
 import com.liferay.portal.service.persistence.RolePersistence;
+import com.liferay.portal.service.persistence.TeamFinder;
+import com.liferay.portal.service.persistence.TeamPersistence;
 import com.liferay.portal.service.persistence.UserFinder;
 import com.liferay.portal.service.persistence.UserGroupFinder;
 import com.liferay.portal.service.persistence.UserGroupPersistence;
@@ -658,6 +662,78 @@ public abstract class AnnouncementsEntryServiceBaseImpl extends BaseServiceImpl
 	}
 
 	/**
+	 * Returns the team local service.
+	 *
+	 * @return the team local service
+	 */
+	public TeamLocalService getTeamLocalService() {
+		return teamLocalService;
+	}
+
+	/**
+	 * Sets the team local service.
+	 *
+	 * @param teamLocalService the team local service
+	 */
+	public void setTeamLocalService(TeamLocalService teamLocalService) {
+		this.teamLocalService = teamLocalService;
+	}
+
+	/**
+	 * Returns the team remote service.
+	 *
+	 * @return the team remote service
+	 */
+	public TeamService getTeamService() {
+		return teamService;
+	}
+
+	/**
+	 * Sets the team remote service.
+	 *
+	 * @param teamService the team remote service
+	 */
+	public void setTeamService(TeamService teamService) {
+		this.teamService = teamService;
+	}
+
+	/**
+	 * Returns the team persistence.
+	 *
+	 * @return the team persistence
+	 */
+	public TeamPersistence getTeamPersistence() {
+		return teamPersistence;
+	}
+
+	/**
+	 * Sets the team persistence.
+	 *
+	 * @param teamPersistence the team persistence
+	 */
+	public void setTeamPersistence(TeamPersistence teamPersistence) {
+		this.teamPersistence = teamPersistence;
+	}
+
+	/**
+	 * Returns the team finder.
+	 *
+	 * @return the team finder
+	 */
+	public TeamFinder getTeamFinder() {
+		return teamFinder;
+	}
+
+	/**
+	 * Sets the team finder.
+	 *
+	 * @param teamFinder the team finder
+	 */
+	public void setTeamFinder(TeamFinder teamFinder) {
+		this.teamFinder = teamFinder;
+	}
+
+	/**
 	 * Returns the user local service.
 	 *
 	 * @return the user local service
@@ -916,6 +992,14 @@ public abstract class AnnouncementsEntryServiceBaseImpl extends BaseServiceImpl
 	protected RolePersistence rolePersistence;
 	@BeanReference(type = RoleFinder.class)
 	protected RoleFinder roleFinder;
+	@BeanReference(type = TeamLocalService.class)
+	protected TeamLocalService teamLocalService;
+	@BeanReference(type = TeamService.class)
+	protected TeamService teamService;
+	@BeanReference(type = TeamPersistence.class)
+	protected TeamPersistence teamPersistence;
+	@BeanReference(type = TeamFinder.class)
+	protected TeamFinder teamFinder;
 	@BeanReference(type = UserLocalService.class)
 	protected UserLocalService userLocalService;
 	@BeanReference(type = UserService.class)
