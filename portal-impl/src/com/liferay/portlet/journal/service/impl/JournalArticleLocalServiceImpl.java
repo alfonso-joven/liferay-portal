@@ -339,7 +339,7 @@ public class JournalArticleLocalServiceImpl
 				serviceContext);
 		}
 
-		return article;
+		return journalArticlePersistence.findByPrimaryKey(article.getId());
 	}
 
 	@Override
@@ -845,6 +845,36 @@ public class JournalArticleLocalServiceImpl
 				userId, groupId, article.getArticleId(), article.getVersion(),
 				articleURL, serviceContext);
 		}
+	}
+
+	@Override
+	public JournalArticle fetchLatestArticle(
+			long resourcePrimKey, int status, boolean preferApproved)
+		throws SystemException {
+
+		JournalArticle article = null;
+
+		OrderByComparator orderByComparator = new ArticleVersionComparator();
+
+		if (status == WorkflowConstants.STATUS_ANY) {
+			if (preferApproved) {
+				article = journalArticlePersistence.fetchByR_ST_First(
+					resourcePrimKey, WorkflowConstants.STATUS_APPROVED,
+					orderByComparator);
+			}
+
+			if (article == null) {
+				article =
+					journalArticlePersistence.fetchByResourcePrimKey_First(
+						resourcePrimKey, orderByComparator);
+			}
+		}
+		else {
+			article = journalArticlePersistence.fetchByR_ST_First(
+				resourcePrimKey, status, orderByComparator);
+		}
+
+		return article;
 	}
 
 	@Override
@@ -2318,7 +2348,7 @@ public class JournalArticleLocalServiceImpl
 			reindex(article);
 		}
 
-		return article;
+		return journalArticlePersistence.findByPrimaryKey(article.getId());
 	}
 
 	@Override
