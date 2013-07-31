@@ -22,7 +22,6 @@ String portletResource = ParamUtil.getString(request, "portletResource");
 
 <c:choose>
 	<c:when test="<%= Validator.isNotNull(portletResource) && PortletPermissionUtil.contains(permissionChecker, themeDisplay.getLayout(), portletResource, ActionKeys.CONFIGURATION) %>">
-
 		<liferay-portlet:renderURL var="portletURL" />
 
 		<div id="lfr-look-and-feel">
