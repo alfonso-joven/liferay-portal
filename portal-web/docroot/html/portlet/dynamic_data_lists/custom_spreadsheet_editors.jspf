@@ -105,10 +105,10 @@
 					portletURL.setParameter('ddmStructureId', <%= ddmStructure.getStructureId() %>);
 					portletURL.setParameter('fieldName', elementName);
 					portletURL.setParameter('groupId', themeDisplay.getScopeGroupId());
-					portletURL.setParameter('recordId', recordData.classPK);
-					portletURL.setParameter('struts_action', '/dynamic_data_list_display/edit_record_file');
+					portletURL.setParameter('recordId', recordData.recordId);
+					portletURL.setParameter('struts_action', '<%= portletName.equals(PortletKeys.DYNAMIC_DATA_LISTS) ? "/dynamic_data_lists/edit_record_file" : "/dynamic_data_list_display/edit_record_file" %>');
 
-					portletURL.setPortletId('<%= PortletKeys.DYNAMIC_DATA_LIST_DISPLAY %>');
+					portletURL.setPortletId('<%= portletDisplay.getId() %>');
 
 					portletURL.setWindowState('pop_up');
 
@@ -208,7 +208,7 @@
 						validator.formEvent.halt();
 					}
 
-					if (!recordData.classPK) {
+					if (!recordData.recordId) {
 						SpreadSheet.addRecord(
 							recordsetId,
 							displayIndex,
@@ -221,7 +221,7 @@
 								}
 								else {
 									if (response.recordId > 0) {
-										recordData.classPK = response.recordId;
+										recordData.recordId = response.recordId;
 
 										instance.uploadFile(instance._handleSaveEvent);
 									}
