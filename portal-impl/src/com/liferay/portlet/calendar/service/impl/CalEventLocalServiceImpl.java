@@ -1161,8 +1161,8 @@ public class CalEventLocalServiceImpl extends CalEventLocalServiceBaseImpl {
 
 			Calendar until = (Calendar)recStartCal.clone();
 
-			until.setTimeInMillis(until.getTimeInMillis() + (diffMillis -
-				Time.DAY));
+			until.setTimeInMillis(
+				until.getTimeInMillis() + diffMillis - Time.DAY);
 
 			recurrence.setUntil(until);
 		}
