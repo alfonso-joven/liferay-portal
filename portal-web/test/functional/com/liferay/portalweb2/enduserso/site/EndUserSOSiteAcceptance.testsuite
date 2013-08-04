@@ -3,5 +3,7 @@
 
 	<execute test-case="PGSOBlogsAcceptance" />
 
+	<execute test-case="PGSODocumentsandmediaAcceptance" />
+
 	<execute test-case="PGSOMessageBoardsAcceptance" />
 </definition>
