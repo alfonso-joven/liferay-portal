@@ -62,7 +62,7 @@ public class PortletURLAction extends Action {
 			PropsValues.PORTLET_URL_GENERATE_BY_PATH_WHITELIST);
 
 		if (!PropsValues.PORTLET_URL_GENERATE_BY_PATH_ENABLED &&
-				!portletUrlGenerateByPathWhitelist.contains(portletId)) {
+			!portletUrlGenerateByPathWhitelist.contains(portletId)) {
 
 			response.sendError(HttpServletResponse.SC_FORBIDDEN);
 
