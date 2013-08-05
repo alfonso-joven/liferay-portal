@@ -791,22 +791,31 @@ public class PortletURLImpl
 			return;
 		}
 
+		Portlet portlet = (Portlet)_request.getAttribute(
+			WebKeys.RENDER_PORTLET);
+
 		Boolean renderPortletResource = (Boolean)_request.getAttribute(
 			WebKeys.RENDER_PORTLET_RESOURCE);
 
-		boolean runtimePortlet = false;
+		boolean addTokenForRuntimePortlet = false;
 
-		if (renderPortletResource != null) {
-			runtimePortlet = renderPortletResource.booleanValue();
+		if ((renderPortletResource != null) && renderPortletResource) {
+			ThemeDisplay themeDisplay = (ThemeDisplay)_request.getAttribute(
+				WebKeys.THEME_DISPLAY);
+
+			if ((portlet != null) &&
+				portlet.getPortletId().equals(_portletId) &&
+				(themeDisplay.getPlid() == _plid) &&
+				!themeDisplay.getLayout().isTypeControlPanel()) {
+
+				addTokenForRuntimePortlet = true;
+			}
 		}
 
-		if (!runtimePortlet) {
+		if (!addTokenForRuntimePortlet) {
 			if (!_portlet.isAddDefaultResource()) {
 				return;
 			}
-
-			Portlet portlet = (Portlet)_request.getAttribute(
-				WebKeys.RENDER_PORTLET);
 
 			if (portlet != null) {
 				String portletId = portlet.getPortletId();
