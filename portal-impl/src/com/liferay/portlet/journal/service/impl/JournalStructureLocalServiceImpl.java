@@ -610,7 +610,7 @@ public class JournalStructureLocalServiceImpl
 			String elName = element.attributeValue("name", StringPool.BLANK);
 			String elType = element.attributeValue("type", StringPool.BLANK);
 
-			if (Validator.isNull(elName) ||
+			if (Validator.isNull(elName) || !Validator.isVariableName(elName) ||
 				elName.startsWith(JournalStructureConstants.RESERVED)) {
 
 				throw new StructureXsdException();
