@@ -508,6 +508,8 @@ public class PropsValues {
 
 	public static final int DL_FILE_ENTRY_PREVIEW_VIDEO_WIDTH = GetterUtil.getInteger(PropsUtil.get(PropsKeys.DL_FILE_ENTRY_PREVIEW_VIDEO_WIDTH));
 
+	public static final long DL_FILE_ENTRY_PREVIEWABLE_PROCESSOR_MAX_SIZE = GetterUtil.getLong(PropsUtil.get(PropsKeys.DL_FILE_ENTRY_PREVIEWABLE_PROCESSOR_MAX_SIZE));
+
 	public static final boolean DL_FILE_ENTRY_PROCESSORS_TRIGGER_SYNCHRONOUSLY = GetterUtil.getBoolean(PropsUtil.get(PropsKeys.DL_FILE_ENTRY_PROCESSORS_TRIGGER_SYNCHRONOUSLY));
 
 	public static final boolean DL_FILE_ENTRY_READ_COUNT_ENABLED = GetterUtil.getBoolean(PropsUtil.get(PropsKeys.DL_FILE_ENTRY_READ_COUNT_ENABLED));
