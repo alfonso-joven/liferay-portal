@@ -269,17 +269,12 @@
 				return <%= themeDisplay.isThemeJsFastLoad() %>;
 			},
 			getComboPath: function() {
-				return '<%= alloyComboPath %>&p=<%= javaScriptRootPath %>&';
+				return '<%= alloyComboPath %>&';
 			},
 			getFilter: function() {
 				<c:choose>
 					<c:when test="<%= themeDisplay.isThemeJsFastLoad() %>">
-						return {
-							replaceStr: function(match, fragment, string) {
-								return fragment + 'm=' + (match.split('<%= javaScriptRootPath %>')[1] || '');
-							},
-							searchExp: '(\\?|&)/([^&]+)'
-						};
+						return 'min';
 					</c:when>
 					<c:when test="<%= PropsValues.JAVASCRIPT_LOG_ENABLED %>">
 						return 'debug';

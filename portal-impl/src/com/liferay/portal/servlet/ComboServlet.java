@@ -40,8 +40,11 @@ import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Enumeration;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.ServletContext;
@@ -80,22 +83,28 @@ public class ComboServlet extends HttpServlet {
 
 		String contextPath = PortalUtil.getPathContext();
 
-		String[] modulePaths = request.getParameterValues("m");
+		Enumeration<String> enu = request.getParameterNames();
 
-		if ((modulePaths == null) || (modulePaths.length == 0)) {
+		Set<String> modulePathsSet = new LinkedHashSet<String>();
+
+		while (enu.hasMoreElements()) {
+			String name = enu.nextElement();
+
+			if (_PROTECTED_PARAMETERS.contains(name)) {
+				continue;
+			}
+
+			modulePathsSet.add(name);
+		}
+
+		if (modulePathsSet.size() == 0) {
 			response.sendError(HttpServletResponse.SC_BAD_REQUEST);
 
 			return;
 		}
 
-		Set<String> modulePathsSet = new LinkedHashSet<String>(
-			modulePaths.length);
-
-		for (String path : modulePaths) {
-			modulePathsSet.add(path);
-		}
-
-		modulePaths = modulePathsSet.toArray(new String[modulePathsSet.size()]);
+		String[] modulePaths = modulePathsSet.toArray(
+			new String[modulePathsSet.size()]);;
 
 		String modulePathsString = null;
 
@@ -113,8 +122,6 @@ public class ComboServlet extends HttpServlet {
 		String extension = FileUtil.getExtension(firstModulePath);
 
 		if (bytesArray == null) {
-			String p = ParamUtil.getString(request, "p");
-
 			String minifierType = ParamUtil.getString(request, "minifierType");
 
 			if (Validator.isNull(minifierType)) {
@@ -147,7 +154,7 @@ public class ComboServlet extends HttpServlet {
 
 				if (Validator.isNotNull(modulePath)) {
 					modulePath = StringUtil.replaceFirst(
-						p.concat(modulePath), contextPath, StringPool.BLANK);
+						modulePath, contextPath, StringPool.BLANK);
 
 					if (getFile(modulePath) == null) {
 						response.setHeader(
@@ -344,6 +351,10 @@ public class ComboServlet extends HttpServlet {
 	private static final String _JAVASCRIPT_DIR = "html/js";
 
 	private static final String _JAVASCRIPT_MINIFIED_SUFFIX = "-min.js";
+
+	private static final List<String> _PROTECTED_PARAMETERS =
+		new ArrayList<String>(
+			Arrays.asList("b", "browserId", "minifierType", "languageId", "t"));
 
 	private static Log _log = LogFactoryUtil.getLog(ComboServlet.class);
 
