@@ -74,7 +74,7 @@ public class StringResourceRepositoryImpl implements StringResourceRepository {
 		_stringResourceMapThreadLocal =
 			new AutoResetThreadLocal<Map<String, StringResource>>(
 				StringResourceRepositoryImpl.class.getName() +
-					"._templateMapThreadLocal",
+					"._stringResourceMapThreadLocal",
 				new HashMap<String, StringResource>());
 
 	private String _encoding = StringPool.UTF8;

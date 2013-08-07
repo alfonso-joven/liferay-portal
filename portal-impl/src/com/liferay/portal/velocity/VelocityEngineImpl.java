@@ -384,9 +384,9 @@ public class VelocityEngineImpl implements VelocityEngine {
 		}
 
 		private String _encoding;
+		private StringResourceRepository _stringResourceRepository;
 		private String _velocityTemplateContent;
 		private String _velocityTemplateId;
-		private StringResourceRepository _stringResourceRepository;
 
 	}
 
