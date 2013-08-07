@@ -14,9 +14,11 @@
 
 package com.liferay.portal.velocity;
 
-import com.liferay.portal.kernel.cache.MultiVMPoolUtil;
-import com.liferay.portal.kernel.cache.PortalCache;
+import com.liferay.portal.kernel.util.AutoResetThreadLocal;
 import com.liferay.portal.kernel.util.StringPool;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.velocity.runtime.resource.util.StringResource;
 import org.apache.velocity.runtime.resource.util.StringResourceRepository;
@@ -33,34 +35,42 @@ public class StringResourceRepositoryImpl implements StringResourceRepository {
 
 	@Override
 	public StringResource getStringResource(String key) {
-		Object resource = _portalCache.get(key);
+		Map<String, SerializableStringResource> _templateMap =
+			_templateMapThreadLocal.get();
 
-		if ((resource != null) &&
-			(resource instanceof SerializableStringResource)) {
+		SerializableStringResource serializableStringResource =
+			_templateMap.get(key);
 
-			SerializableStringResource serializableStringResource =
-				(SerializableStringResource)resource;
-
-			return serializableStringResource.toStringResource();
+		if (serializableStringResource == null) {
+			return null;
 		}
 
-		return null;
+		return serializableStringResource.toStringResource();
 	}
 
 	@Override
 	public void putStringResource(String key, String body) {
-		_portalCache.put(
+		Map<String, SerializableStringResource> _templateMap =
+			_templateMapThreadLocal.get();
+
+		_templateMap.put(
 			key, new SerializableStringResource(body, getEncoding()));
 	}
 
 	@Override
 	public void putStringResource(String key, String body, String encoding) {
-		_portalCache.put(key, new SerializableStringResource(body, encoding));
+		Map<String, SerializableStringResource> _templateMap =
+			_templateMapThreadLocal.get();
+
+		_templateMap.put(key, new SerializableStringResource(body, encoding));
 	}
 
 	@Override
 	public void removeStringResource(String key) {
-		_portalCache.remove(key);
+		Map<String, SerializableStringResource> _templateMap =
+			_templateMapThreadLocal.get();
+
+		_templateMap.remove(key);
 	}
 
 	@Override
@@ -68,11 +78,12 @@ public class StringResourceRepositoryImpl implements StringResourceRepository {
 		_encoding = encoding;
 	}
 
-	private static final String _CACHE_NAME =
-		StringResourceRepository.class.getName();
-
-	private static PortalCache _portalCache = MultiVMPoolUtil.getCache(
-		_CACHE_NAME);
+	private static ThreadLocal<Map<String, SerializableStringResource>>
+		_templateMapThreadLocal =
+			new AutoResetThreadLocal<Map<String, SerializableStringResource>>(
+				StringResourceRepositoryImpl.class.getName() +
+					"._templateMapThreadLocal",
+				new HashMap<String, SerializableStringResource>());
 
 	private String _encoding = StringPool.UTF8;
 

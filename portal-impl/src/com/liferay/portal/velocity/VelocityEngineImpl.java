@@ -218,14 +218,20 @@ public class VelocityEngineImpl implements VelocityEngine {
 			VelocityContext velocityContext, Writer writer)
 		throws Exception {
 
+		StringResourceRepository stringResourceRepository =
+			StringResourceLoader.getRepository();
+
 		Template template = AccessController.doPrivileged(
 			new DoGetTemplatePrivilegedAction(
-				velocityTemplateId, velocityTemplateContent, StringPool.UTF8));
+				stringResourceRepository, velocityTemplateId,
+				velocityTemplateContent, StringPool.UTF8));
 
 		VelocityContextImpl velocityContextImpl =
 			(VelocityContextImpl)velocityContext;
 
 		template.merge(velocityContextImpl.getWrappedVelocityContext(), writer);
+
+		stringResourceRepository.removeStringResource(velocityTemplateId);
 
 		return true;
 	}
@@ -347,9 +353,11 @@ public class VelocityEngineImpl implements VelocityEngine {
 		implements PrivilegedExceptionAction<Template> {
 
 		public DoGetTemplatePrivilegedAction(
+			StringResourceRepository stringResourceRepository,
 			String velocityTemplateId, String velocityTemplateContent,
 			String encoding) {
 
+			_stringResourceRepository = stringResourceRepository;
 			_velocityTemplateId = velocityTemplateId;
 			_velocityTemplateContent = velocityTemplateContent;
 			_encoding = encoding;
@@ -360,10 +368,7 @@ public class VelocityEngineImpl implements VelocityEngine {
 				LiferayResourceCacheUtil.remove(
 					_getResourceCacheKey(_velocityTemplateId));
 
-				StringResourceRepository stringResourceRepository =
-					StringResourceLoader.getRepository();
-
-				stringResourceRepository.putStringResource(
+				_stringResourceRepository.putStringResource(
 					_velocityTemplateId, _velocityTemplateContent);
 
 				if (_log.isDebugEnabled()) {
@@ -379,6 +384,7 @@ public class VelocityEngineImpl implements VelocityEngine {
 		private String _encoding;
 		private String _velocityTemplateContent;
 		private String _velocityTemplateId;
+		private StringResourceRepository _stringResourceRepository;
 
 	}
 
