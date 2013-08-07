@@ -65,10 +65,7 @@ public class MethodKey implements Serializable {
 		}
 	}
 
-	/**
-	 * @deprecated As of 6.2.0, replaced by {@link #MethodKey(Class, String,
-	 *             Class...)}
-	 */
+	@Deprecated
 	public MethodKey(
 		String declaringClassName, String methodName,
 		Class<?>... parameterTypes) {
