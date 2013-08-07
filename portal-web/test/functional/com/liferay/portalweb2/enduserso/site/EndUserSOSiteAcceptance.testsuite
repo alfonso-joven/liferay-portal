@@ -5,5 +5,7 @@
 
 	<execute test-case="PGSODocumentsandmediaAcceptance" />
 
+	<execute test-case="PGSOMembersAcceptance" />
+
 	<execute test-case="PGSOMessageBoardsAcceptance" />
 </definition>
