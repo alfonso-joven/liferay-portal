@@ -63,6 +63,7 @@ import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.pdfbox.exceptions.CryptographyException;
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.tika.Tika;
+import org.apache.tika.exception.TikaException;
 import org.apache.tools.ant.DirectoryScanner;
 
 import org.mozilla.intl.chardet.nsDetector;
@@ -360,6 +361,11 @@ public class FileImpl implements com.liferay.portal.kernel.util.File {
 					_log.warn(
 						"Unable to extract text from an encrypted file " +
 							fileName);
+				}
+			}
+			else if (e instanceof TikaException) {
+				if (_log.isWarnEnabled()) {
+					_log.warn("Unable to extract text from " + fileName);
 				}
 			}
 			else {
