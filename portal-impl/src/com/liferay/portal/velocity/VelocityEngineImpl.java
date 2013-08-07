@@ -231,7 +231,9 @@ public class VelocityEngineImpl implements VelocityEngine {
 
 		template.merge(velocityContextImpl.getWrappedVelocityContext(), writer);
 
-		stringResourceRepository.removeStringResource(velocityTemplateId);
+		if (Validator.isNotNull(velocityTemplateContent)) {
+			stringResourceRepository.removeStringResource(velocityTemplateId);
+		}
 
 		return true;
 	}

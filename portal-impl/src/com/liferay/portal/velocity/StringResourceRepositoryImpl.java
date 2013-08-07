@@ -35,42 +35,34 @@ public class StringResourceRepositoryImpl implements StringResourceRepository {
 
 	@Override
 	public StringResource getStringResource(String key) {
-		Map<String, SerializableStringResource> _templateMap =
-			_templateMapThreadLocal.get();
+		Map<String, StringResource> stringResourceMap =
+			_stringResourceMapThreadLocal.get();
 
-		SerializableStringResource serializableStringResource =
-			_templateMap.get(key);
-
-		if (serializableStringResource == null) {
-			return null;
-		}
-
-		return serializableStringResource.toStringResource();
+		return stringResourceMap.get(key);
 	}
 
 	@Override
 	public void putStringResource(String key, String body) {
-		Map<String, SerializableStringResource> _templateMap =
-			_templateMapThreadLocal.get();
+		Map<String, StringResource> stringResourceMap =
+			_stringResourceMapThreadLocal.get();
 
-		_templateMap.put(
-			key, new SerializableStringResource(body, getEncoding()));
+		stringResourceMap.put(key, new StringResource(body, getEncoding()));
 	}
 
 	@Override
 	public void putStringResource(String key, String body, String encoding) {
-		Map<String, SerializableStringResource> _templateMap =
-			_templateMapThreadLocal.get();
+		Map<String, StringResource> stringResourceMap =
+			_stringResourceMapThreadLocal.get();
 
-		_templateMap.put(key, new SerializableStringResource(body, encoding));
+		stringResourceMap.put(key, new StringResource(body, encoding));
 	}
 
 	@Override
 	public void removeStringResource(String key) {
-		Map<String, SerializableStringResource> _templateMap =
-			_templateMapThreadLocal.get();
+		Map<String, StringResource> stringResourceMap =
+			_stringResourceMapThreadLocal.get();
 
-		_templateMap.remove(key);
+		stringResourceMap.remove(key);
 	}
 
 	@Override
@@ -78,12 +70,12 @@ public class StringResourceRepositoryImpl implements StringResourceRepository {
 		_encoding = encoding;
 	}
 
-	private static ThreadLocal<Map<String, SerializableStringResource>>
-		_templateMapThreadLocal =
-			new AutoResetThreadLocal<Map<String, SerializableStringResource>>(
+	private static ThreadLocal<Map<String, StringResource>>
+		_stringResourceMapThreadLocal =
+			new AutoResetThreadLocal<Map<String, StringResource>>(
 				StringResourceRepositoryImpl.class.getName() +
 					"._templateMapThreadLocal",
-				new HashMap<String, SerializableStringResource>());
+				new HashMap<String, StringResource>());
 
 	private String _encoding = StringPool.UTF8;
 
