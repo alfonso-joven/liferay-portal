@@ -65,26 +65,6 @@ public class MethodKey implements Serializable {
 		}
 	}
 
-	@Deprecated
-	public MethodKey(
-		String declaringClassName, String methodName,
-		Class<?>... parameterTypes) {
-
-		Thread currentThread = Thread.currentThread();
-
-		ClassLoader classLoader = currentThread.getContextClassLoader();
-
-		try {
-			_declaringClass = classLoader.loadClass(declaringClassName);
-		}
-		catch (ClassNotFoundException cnfe) {
-			throw new RuntimeException(cnfe);
-		}
-
-		_methodName = methodName;
-		_parameterTypes = parameterTypes;
-	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (obj == null) {
