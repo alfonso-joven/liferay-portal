@@ -14,6 +14,12 @@
  */
 --%>
 
+<%
+Calendar localeCal = CalendarFactoryUtil.getCalendar(timeZone, locale);
+
+int firstDayOfWeek = localeCal.getFirstDayOfWeek() - 1;
+%>
+
 <aui:script use="aui-datepicker,json,liferay-portlet-dynamic-data-lists,liferay-portlet-dynamic-data-mapping">
 	var FormBuilderTextField = A.FormBuilderTextField;
 	var FormBuilderTypes = A.FormBuilder.types;
@@ -109,6 +115,8 @@
 						{
 							trigger: instance.get('templateNode'),
 							calendar: {
+								firstDayOfWeek: <%= firstDayOfWeek %>,
+								locale: '<%= locale %>',
 								strings: {
 									next: '<liferay-ui:message key="next" />',
 									none: '<liferay-ui:message key="none" />',

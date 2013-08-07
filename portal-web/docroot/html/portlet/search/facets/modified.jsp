@@ -30,6 +30,10 @@ int index = 0;
 if (fieldParamSelection.equals("0")) {
 	modifiedLabel = LanguageUtil.get(pageContext, "any-time");
 }
+
+Calendar localeCal = CalendarFactoryUtil.getCalendar(timeZone, locale);
+
+int firstDayOfWeek = localeCal.getFirstDayOfWeek() - 1;
 %>
 
 <div class="<%= cssClass %>" data-facetFieldName="<%= facet.getFieldId() %>" id="<%= randomNamespace %>facet">
@@ -214,6 +218,8 @@ if (fieldParamSelection.equals("0")) {
 						new Date(<%= fieldParamFromParts[0] %>,<%= GetterUtil.getInteger(fieldParamFromParts[1]) - 1 %>,<%= fieldParamFromParts[2] %>)
 					</c:if>
 				],
+				firstDayOfWeek: <%= firstDayOfWeek %>,
+				locale: '<%= locale %>',
 				selectMultipleDates: false,
 				strings: {
 					next: '<liferay-ui:message key="next" />',
@@ -240,6 +246,8 @@ if (fieldParamSelection.equals("0")) {
 						new Date(<%= fieldParamToParts[0] %>,<%= GetterUtil.getInteger(fieldParamToParts[1]) - 1 %>,<%= fieldParamToParts[2] %>)
 					</c:if>
 				],
+				firstDayOfWeek: <%= firstDayOfWeek %>,
+				locale: '<%= locale %>',
 				selectMultipleDates: false,
 				strings: {
 					next: '<liferay-ui:message key="next" />',
