@@ -1,7 +1,7 @@
 <definition>
 	<command name="click">
 		<case locator-key1="NAVIGATION_MEMBERS">
-			<execute function="Click#textClickAtAndWait" value1="Members" />
+			<execute function="Click#textClickAtAndWait" />
 		</case>
 	</command>
 </definition>

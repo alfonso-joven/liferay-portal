@@ -7,7 +7,7 @@
 
 	<command name="assertTextNotEquals">
 		<case locator-key1="SITE_LIST">
-			<execute function="AssertTextNotEquals#assertNotPartialText" value1="Liferay" />
+			<execute function="AssertTextNotEquals#assertNotPartialText" />
 		</case>
 	</command>
 </definition>
