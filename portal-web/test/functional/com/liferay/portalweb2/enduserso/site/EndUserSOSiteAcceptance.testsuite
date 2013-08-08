@@ -8,4 +8,6 @@
 	<execute test-case="PGSOMembersAcceptance" />
 
 	<execute test-case="PGSOMessageBoardsAcceptance" />
+
+	<execute test-case="PGSOWikiAcceptance" />
 </definition>
