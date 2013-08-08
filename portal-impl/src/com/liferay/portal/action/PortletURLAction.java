@@ -18,8 +18,8 @@ import com.liferay.portal.kernel.json.JSONFactoryUtil;
 import com.liferay.portal.kernel.portlet.PortletModeFactory;
 import com.liferay.portal.kernel.portlet.WindowStateFactory;
 import com.liferay.portal.kernel.servlet.ServletResponseUtil;
+import com.liferay.portal.kernel.util.ArrayUtil;
 import com.liferay.portal.kernel.util.ParamUtil;
-import com.liferay.portal.kernel.util.SetUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.model.PortletConstants;
 import com.liferay.portal.theme.ThemeDisplay;
@@ -29,7 +29,6 @@ import com.liferay.portal.util.WebKeys;
 import com.liferay.portlet.PortletURLImpl;
 
 import java.util.Map;
-import java.util.Set;
 
 import javax.portlet.ActionRequest;
 import javax.portlet.PortletRequest;
@@ -56,13 +55,14 @@ public class PortletURLAction extends Action {
 
 		String portletId = ParamUtil.getString(request, "portletId");
 
-		portletId = PortletConstants.getRootPortletId(portletId);
+		String rootPortletId = PortletConstants.getRootPortletId(portletId);
 
-		Set<String> portletUrlGenerateByPathWhitelist = SetUtil.fromArray(
-			PropsValues.PORTLET_URL_GENERATE_BY_PATH_WHITELIST);
+		String[] portletUrlGenerateByPathWhitelist =
+			PropsValues.PORTLET_URL_GENERATE_BY_PATH_WHITELIST;
 
 		if (!PropsValues.PORTLET_URL_GENERATE_BY_PATH_ENABLED &&
-			!portletUrlGenerateByPathWhitelist.contains(portletId)) {
+			!ArrayUtil.contains(
+				portletUrlGenerateByPathWhitelist, rootPortletId)) {
 
 			response.sendError(HttpServletResponse.SC_FORBIDDEN);
 
