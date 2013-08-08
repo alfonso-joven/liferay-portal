@@ -181,8 +181,13 @@ public class JournalArticleAssetRenderer extends BaseAssetRenderer {
 		Layout layout = themeDisplay.getLayout();
 
 		if (Validator.isNotNull(_article.getLayoutUuid())) {
-			layout = LayoutLocalServiceUtil.getLayoutByUuidAndCompanyId(
-				_article.getLayoutUuid(), _article.getCompanyId());
+			layout = LayoutLocalServiceUtil.fetchLayoutByUuidAndGroupId(
+				_article.getLayoutUuid(), _article.getCompanyId(), false);
+
+			if (layout == null) {
+				layout = LayoutLocalServiceUtil.fetchLayoutByUuidAndGroupId(
+					_article.getLayoutUuid(), _article.getCompanyId(), true);
+			}
 		}
 
 		String portletId = (String)liferayPortletRequest.getAttribute(
