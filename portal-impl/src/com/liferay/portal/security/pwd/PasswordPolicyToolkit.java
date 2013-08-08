@@ -211,7 +211,7 @@ public class PasswordPolicyToolkit extends BasicToolkit {
 				passwordMinLength -
 					(alphanumericMinLength + passwordPolicy.getMinSymbols());
 
-			sb.append(PwdGenerator.getSecurePassword(_completeCharset, count));
+			sb.append(PwdGenerator.getPassword(_completeCharset, count));
 		}
 
 		if (sb.index() == 0) {
