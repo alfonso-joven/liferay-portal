@@ -140,6 +140,8 @@ public interface Http {
 
 	public String removeProtocol(String url);
 
+	public String sanitizeHeader(String header);
+
 	public String setParameter(String url, String name, boolean value);
 
 	public String setParameter(String url, String name, double value);
