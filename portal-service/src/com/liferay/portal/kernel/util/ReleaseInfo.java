@@ -79,6 +79,8 @@ public class ReleaseInfo {
 
 	public static final int RELEASE_6_1_1_BUILD_NUMBER = 6101;
 
+	public static final int RELEASE_6_1_2_BUILD_NUMBER = 6102;
+
 	public static final int RELEASE_6_1_10_BUILD_NUMBER = 6110;
 
 	public static final int RELEASE_6_1_20_BUILD_NUMBER = 6120;
@@ -140,7 +142,7 @@ public class ReleaseInfo {
 
 	private static final String _CODE_NAME = "Paton";
 
-	private static final String _DATE = "August 2, 2013";
+	private static final String _DATE = "August 9, 2013";
 
 	private static final String _NAME = "Liferay Portal Community Edition";
 
