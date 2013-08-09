@@ -18,6 +18,7 @@ import com.liferay.portal.kernel.portlet.LiferayPortletRequest;
 import com.liferay.portal.kernel.portlet.LiferayPortletResponse;
 import com.liferay.portal.kernel.portlet.LiferayPortletURL;
 import com.liferay.portal.kernel.portlet.LiferayWindowState;
+import com.liferay.portal.kernel.util.CharPool;
 import com.liferay.portal.kernel.util.HttpUtil;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.PropsKeys;
@@ -152,15 +153,21 @@ public class PortletURLUtil {
 		long plid = themeDisplay.getPlid();
 
 		sb.append(plid);
+		sb.append(StringPool.AMPERSAND);
 
 		Portlet portlet = (Portlet)request.getAttribute(WebKeys.RENDER_PORTLET);
 
 		String portletId = portlet.getPortletId();
 
-		sb.append("&p_p_id=");
-		sb.append(portletId);
+		LiferayPortletURL liferayPortletURL = PortletURLFactoryUtil.create(
+			request, portletId, plid, PortletRequest.RENDER_PHASE);
 
-		sb.append("&p_p_lifecycle=0&p_t_lifecycle=");
+		String urlQueryString = liferayPortletURL.toString();
+		urlQueryString = urlQueryString.substring(
+			urlQueryString.indexOf(CharPool.QUESTION) + 1);
+		sb.append(urlQueryString);
+
+		sb.append("&p_t_lifecycle=");
 		sb.append(themeDisplay.getLifecycle());
 
 		WindowState windowState = WindowState.NORMAL;
