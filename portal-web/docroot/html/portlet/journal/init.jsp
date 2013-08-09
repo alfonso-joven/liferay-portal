@@ -80,6 +80,7 @@ page import="com.liferay.portlet.journal.model.impl.JournalArticleImpl" %><%@
 page import="com.liferay.portlet.journal.search.ArticleDisplayTerms" %><%@
 page import="com.liferay.portlet.journal.search.ArticleSearch" %><%@
 page import="com.liferay.portlet.journal.search.ArticleSearchTerms" %><%@
+page import="com.liferay.portlet.journal.search.EntriesChecker" %><%@
 page import="com.liferay.portlet.journal.search.FeedDisplayTerms" %><%@
 page import="com.liferay.portlet.journal.search.FeedSearch" %><%@
 page import="com.liferay.portlet.journal.search.FeedSearchTerms" %><%@

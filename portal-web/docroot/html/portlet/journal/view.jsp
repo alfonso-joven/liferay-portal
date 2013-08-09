@@ -47,7 +47,9 @@ portletURL.setParameter("tabs1", tabs1);
 			headerNames.add(3, "version");
 			headerNames.add(StringPool.BLANK);
 
-			searchContainer.setRowChecker(new RowChecker(renderResponse));
+			EntriesChecker entriesChecker = new EntriesChecker(liferayPortletRequest, liferayPortletResponse);
+
+			searchContainer.setRowChecker(entriesChecker);
 
 			ArticleDisplayTerms displayTerms = (ArticleDisplayTerms)searchContainer.getDisplayTerms();
 			%>
