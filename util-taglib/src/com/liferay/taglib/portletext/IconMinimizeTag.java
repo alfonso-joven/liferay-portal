@@ -108,12 +108,14 @@ public class IconMinimizeTag extends IconTag {
 		}
 
 		StringBundler sb = new StringBundler(5);
+
 		sb.append(themeDisplay.getPathMain());
 		sb.append("/portal/render_portlet?p_l_id=");
 		sb.append(themeDisplay.getPlid());
 		sb.append(StringPool.AMPERSAND);
 
 		String urlQueryString = liferayPortletURL.toString();
+
 		urlQueryString = urlQueryString.substring(
 			urlQueryString.indexOf(CharPool.QUESTION) + 1);
 
