@@ -100,6 +100,7 @@ portletURL.setParameter("includeUserPersonalSite", String.valueOf(includeUserPer
 
 			results.addAll(sites);
 
+
 			pageContext.setAttribute("results", results);
 			pageContext.setAttribute("total", total);
 			%>
