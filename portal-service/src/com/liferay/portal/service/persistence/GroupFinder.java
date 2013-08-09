@@ -18,6 +18,15 @@ package com.liferay.portal.service.persistence;
  * @author Brian Wing Shun Chan
  */
 public interface GroupFinder {
+	public int countByKeywords(long companyId, long[] classNameIds,
+		java.lang.String keywords,
+		java.util.LinkedHashMap<java.lang.String, java.lang.Object> params)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public int countByKeywords(long companyId, java.lang.String keywords,
+		java.util.LinkedHashMap<java.lang.String, java.lang.Object> params)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
 	public int countByG_U(long groupId, long userId, boolean inherit)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
@@ -30,6 +39,44 @@ public interface GroupFinder {
 		java.lang.String name, java.lang.String realName,
 		java.lang.String description,
 		java.util.LinkedHashMap<java.lang.String, java.lang.Object> params)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public int countByC_N_D(long companyId, java.lang.String name,
+		java.lang.String realName, java.lang.String description,
+		java.util.LinkedHashMap<java.lang.String, java.lang.Object> params,
+		boolean andOperator)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public int countByC_C_N_D(long companyId, java.lang.String[] names,
+		java.lang.String[] realNames, java.lang.String[] descriptions,
+		java.util.LinkedHashMap<java.lang.String, java.lang.Object> params,
+		boolean andOperator)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public int countByC_C_N_D(long companyId, long[] classNameIds,
+		java.lang.String name, java.lang.String realName,
+		java.lang.String description,
+		java.util.LinkedHashMap<java.lang.String, java.lang.Object> params,
+		boolean andOperator)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public int countByC_C_N_D(long companyId, long[] classNameIds,
+		java.lang.String[] names, java.lang.String[] realNames,
+		java.lang.String[] descriptions,
+		java.util.LinkedHashMap<java.lang.String, java.lang.Object> params,
+		boolean andOperator)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<com.liferay.portal.model.Group> findByKeywords(
+		long companyId, long[] classNameIds, java.lang.String keywords,
+		java.util.LinkedHashMap<java.lang.String, java.lang.Object> params,
+		int start, int end, com.liferay.portal.kernel.util.OrderByComparator obc)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<com.liferay.portal.model.Group> findByKeywords(
+		long companyId, java.lang.String keywords,
+		java.util.LinkedHashMap<java.lang.String, java.lang.Object> params,
+		int start, int end, com.liferay.portal.kernel.util.OrderByComparator obc)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
 	public java.util.List<com.liferay.portal.model.Group> findByLiveGroups()
@@ -69,5 +116,37 @@ public interface GroupFinder {
 		java.lang.String realName, java.lang.String description,
 		java.util.LinkedHashMap<java.lang.String, java.lang.Object> params,
 		int start, int end, com.liferay.portal.kernel.util.OrderByComparator obc)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<com.liferay.portal.model.Group> findByC_N_D(
+		long companyId, java.lang.String name, java.lang.String realName,
+		java.lang.String description,
+		java.util.LinkedHashMap<java.lang.String, java.lang.Object> params,
+		boolean andOperator, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator obc)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<com.liferay.portal.model.Group> findByC_N_D(
+		long companyId, java.lang.String[] names, java.lang.String[] realNames,
+		java.lang.String[] descriptions,
+		java.util.LinkedHashMap<java.lang.String, java.lang.Object> params,
+		boolean andOperator, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator obc)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<com.liferay.portal.model.Group> findByC_C_N_D(
+		long companyId, long[] classNameIds, java.lang.String name,
+		java.lang.String realName, java.lang.String description,
+		java.util.LinkedHashMap<java.lang.String, java.lang.Object> params,
+		boolean andOperator, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator obc)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
+	public java.util.List<com.liferay.portal.model.Group> findByC_C_N_D(
+		long companyId, long[] classNameIds, java.lang.String[] names,
+		java.lang.String[] realNames, java.lang.String[] descriptions,
+		java.util.LinkedHashMap<java.lang.String, java.lang.Object> params,
+		boolean andOperator, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator obc)
 		throws com.liferay.portal.kernel.exception.SystemException;
 }
