@@ -450,14 +450,8 @@
 							A.Plugin.IO,
 							{
 								autoLoad: false,
-								data: {
-									doAsUserId: doAsUserId,
-									p_l_id: plid,
-									p_p_id: portlet.portletId,
-									p_p_state: 'exclusive'
-								},
 								showLoading: false,
-								uri: themeDisplay.getPathMain() + '/portal/render_portlet'
+								uri: options.minimizeURL
 							}
 						);
 					}

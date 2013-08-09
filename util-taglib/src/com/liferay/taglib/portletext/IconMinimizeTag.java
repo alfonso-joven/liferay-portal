@@ -14,9 +14,25 @@
 
 package com.liferay.taglib.portletext;
 
+import com.liferay.portal.kernel.log.Log;
+import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.portlet.LiferayPortletURL;
+import com.liferay.portal.kernel.portlet.LiferayWindowState;
 import com.liferay.portal.kernel.servlet.taglib.FileAvailabilityUtil;
+import com.liferay.portal.kernel.util.CharPool;
+import com.liferay.portal.kernel.util.HtmlUtil;
+import com.liferay.portal.kernel.util.StringBundler;
+import com.liferay.portal.kernel.util.StringPool;
+import com.liferay.portal.kernel.util.WebKeys;
 import com.liferay.portal.theme.PortletDisplay;
+import com.liferay.portal.theme.ThemeDisplay;
+import com.liferay.portlet.PortletURLFactoryUtil;
 import com.liferay.taglib.ui.IconTag;
+
+import javax.portlet.PortletRequest;
+import javax.portlet.WindowStateException;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author Brian Wing Shun Chan
@@ -51,11 +67,19 @@ public class IconMinimizeTag extends IconTag {
 		setImage("../portlet/".concat(image));
 		setMessage(image);
 
-		String onClick =
-			"Liferay.Portlet.minimize('#p_p_id_".concat(
-				portletDisplay.getId()).concat("_', this); return false;");
+		StringBundler sb = new StringBundler(5);
 
-		setOnClick(onClick);
+		sb.append("Liferay.Portlet.minimize('#p_p_id_");
+		sb.append(HtmlUtil.escapeJS(portletDisplay.getId()));
+		sb.append("_', this, {'minimizeURL':'");
+
+		String minimizeURL = _getMinimizeURL(portletDisplay.getId());
+
+		sb.append(HtmlUtil.escapeJS(minimizeURL));
+
+		sb.append("'}); return false;");
+
+		setOnClick(sb.toString());
 
 		setToolTip(false);
 		setUrl(portletDisplay.getURLMin());
@@ -63,7 +87,44 @@ public class IconMinimizeTag extends IconTag {
 		return super.getPage();
 	}
 
+	private String _getMinimizeURL(String portletId) {
+		HttpServletRequest request =
+			(HttpServletRequest)pageContext.getRequest();
+
+		ThemeDisplay themeDisplay = (ThemeDisplay)request.getAttribute(
+			WebKeys.THEME_DISPLAY);
+
+		LiferayPortletURL liferayPortletURL = PortletURLFactoryUtil.create(
+			request, portletId, themeDisplay.getPlid(),
+			PortletRequest.RENDER_PHASE);
+
+		try {
+			liferayPortletURL.setWindowState(LiferayWindowState.EXCLUSIVE);
+		}
+		catch (WindowStateException e) {
+			if (_log.isDebugEnabled()) {
+				_log.debug("Unable to set EXCLUSIVE state", e);
+			}
+		}
+
+		StringBundler sb = new StringBundler(5);
+		sb.append(themeDisplay.getPathMain());
+		sb.append("/portal/render_portlet?p_l_id=");
+		sb.append(themeDisplay.getPlid());
+		sb.append(StringPool.AMPERSAND);
+
+		String urlQueryString = liferayPortletURL.toString();
+		urlQueryString = urlQueryString.substring(
+			urlQueryString.indexOf(CharPool.QUESTION) + 1);
+
+		sb.append(urlQueryString);
+
+		return sb.toString();
+	}
+
 	private static final String _PAGE =
 		"/html/taglib/portlet/icon_minimize/page.jsp";
+
+	private static Log _log = LogFactoryUtil.getLog(IconMinimizeTag.class);
 
 }
