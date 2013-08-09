@@ -163,8 +163,10 @@ public class PortletURLUtil {
 			request, portletId, plid, PortletRequest.RENDER_PHASE);
 
 		String urlQueryString = liferayPortletURL.toString();
+
 		urlQueryString = urlQueryString.substring(
 			urlQueryString.indexOf(CharPool.QUESTION) + 1);
+
 		sb.append(urlQueryString);
 
 		sb.append("&p_t_lifecycle=");
