@@ -1,0 +1,90 @@
+<html>
+<head>
+<title>PGHomeManageAnnouncementsEntry</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">PGHomeManageAnnouncementsEntry</td></tr>
+</thead>
+<tbody>
+<tr>
+	<td>PAGE_NAME</td>
+	<td></td>
+	<td>PGHomeManageAnnouncementsEntry</td>
+</tr>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>MANAGE_ENTRY_IFRAME</td>
+	<td>//iframe[contains(@id,'soannouncementsportlet_Dialog')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>DISTRIBUTION_SCOPE_SELECT</td>
+	<td>//select[contains(@id,'distributionScope')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>ADD_ENTRY_BUTTON</td>
+	<td>//input[@value='Add Entry']</td>
+	<td></td>
+</tr>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+<!--ANNOUNCEMENTS_ENTRY-->
+<tr>
+	<td>ANNOUNCEMENTS_ENTRY_TITLE</td>
+	<td>//td[@id='_1_WAR_soannouncementsportlet_ocerSearchContainer_col-title_row-1']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>ANNOUNCEMENTS_ENTRY_AUTHOR</td>
+	<td>//td[@id='_1_WAR_soannouncementsportlet_ocerSearchContainer_col-author_row-1']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>ANNOUNCEMENTS_ENTRY_TYPE</td>
+	<td>//td[@id='_1_WAR_soannouncementsportlet_ocerSearchContainer_col-type_row-1']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>ANNOUNCEMENTS_ENTRY_MODIFIED_DATE</td>
+	<td>//td[@id='_1_WAR_soannouncementsportlet_ocerSearchContainer_col-modified-date_row-1']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>ANNOUNCEMENTS_ENTRY_DISPLAY_DATE</td>
+	<td>//td[@id='_1_WAR_soannouncementsportlet_ocerSearchContainer_col-display-date_row-1']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>ANNOUNCEMENTS_ENTRY_EXPIRATION_DATE</td>
+	<td>//td[@id='_1_WAR_soannouncementsportlet_ocerSearchContainer_col-expiration-date_row-1']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>ANNOUNCEMENTS_ENTRY_EDIT_LINK</td>
+	<td>//span[@class='action edit-entry']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>ANNOUNCEMENTS_ENTRY_DELETE_LINK</td>
+	<td>//span[@class='action delete-entry']/span/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

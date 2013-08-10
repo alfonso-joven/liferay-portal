@@ -1,4 +1,13 @@
 <definition>
+	<command name="assertTextEquals">
+		<case locator-key1="ANNOUNCEMENTS_ENTRY_ACTION">
+			<execute function="AssertTextEquals#assertPartialText" />
+		</case>
+		<case locator-key1="ANNOUNCEMENTS_ENTRY_CONTENT">
+			<execute function="AssertTextEquals#assertPartialText" />
+		</case>
+	</command>
+
 	<command name="type">
 		<case locator-key1="WHATS_HAPPENING_CONTENT_INPUT_FIELD">
 			<execute function="Type#sendKeys" />
