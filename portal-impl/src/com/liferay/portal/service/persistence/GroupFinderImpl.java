@@ -1763,8 +1763,8 @@ public int countByC_PG_N_D(
 	}
 
 	protected List<Long> countByC_C_N_D(
-			Session session, long companyId, long[] classNameIds, String[] names,
-			String[] realNames, String[] descriptions,
+			Session session, long companyId, long[] classNameIds,
+			String[] names, String[] realNames, String[] descriptions,
 			LinkedHashMap<String, Object> params, boolean andOperator)
 		throws Exception {
 
@@ -2292,9 +2292,9 @@ public int countByC_PG_N_D(
 
 	private LinkedHashMap<String, Object> _emptyLinkedHashMap =
 		new LinkedHashMap<String, Object>(0);
-	private Map<String, String> _findByC_C_PG_N_DSQLCache =
-		new ConcurrentHashMap<String, String>();
 	private Map<String, String> _findByC_C_N_DSQLCache =
+		new ConcurrentHashMap<String, String>();
+	private Map<String, String> _findByC_C_PG_N_DSQLCache =
 		new ConcurrentHashMap<String, String>();
 	private Map<String, String> _findByCompanyIdSQLCache =
 		new ConcurrentHashMap<String, String>();
