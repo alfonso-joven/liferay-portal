@@ -39,6 +39,7 @@ import com.liferay.portal.kernel.search.IndexerRegistryUtil;
 import com.liferay.portal.kernel.staging.StagingUtil;
 import com.liferay.portal.kernel.util.ArrayUtil;
 import com.liferay.portal.kernel.util.CharPool;
+import com.liferay.portal.kernel.util.Constants;
 import com.liferay.portal.kernel.util.FileUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.LocaleUtil;
@@ -117,7 +118,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
 
 import org.apache.commons.lang.time.StopWatch;
 
@@ -178,42 +178,16 @@ public class LayoutImporter {
 	}
 
 	protected void deleteMissingLayouts(
-			long groupId, boolean privateLayout, List<Layout> newLayouts,
-			List<Layout> previousLayouts, ServiceContext serviceContext)
+			List<String> sourceLayoutUuids, List<Layout> previousLayouts,
+			ServiceContext serviceContext)
 		throws Exception {
 
-		// Layouts
-
-		Set<String> existingLayoutUuids = new HashSet<String>();
-
-		Group group = GroupLocalServiceUtil.getGroup(groupId);
-
-		if (group.hasStagingGroup()) {
-			Group stagingGroup = group.getStagingGroup();
-
-			if (stagingGroup.hasPrivateLayouts() ||
-				stagingGroup.hasPublicLayouts()) {
-
-				List<Layout> layouts = LayoutLocalServiceUtil.getLayouts(
-					stagingGroup.getGroupId(), privateLayout);
-
-				for (Layout layout : layouts) {
-					existingLayoutUuids.add(layout.getUuid());
-				}
-			}
-		}
-		else {
-			for (Layout layout : newLayouts) {
-				existingLayoutUuids.add(layout.getUuid());
-			}
-		}
-
-		if (_log.isDebugEnabled() && !existingLayoutUuids.isEmpty()) {
+		if (_log.isDebugEnabled() && !sourceLayoutUuids.isEmpty()) {
 			_log.debug("Delete missing layouts");
 		}
 
 		for (Layout layout : previousLayouts) {
-			if (!existingLayoutUuids.contains(layout.getUuid())) {
+			if (!sourceLayoutUuids.contains(layout.getUuid())) {
 				try {
 					LayoutLocalServiceUtil.deleteLayout(
 						layout, false, serviceContext);
@@ -643,6 +617,7 @@ public class LayoutImporter {
 			}
 		}
 
+		List<String> sourceLayoutsUuids = new ArrayList<String>();
 		List<Layout> newLayouts = new ArrayList<Layout>();
 
 		Map<Long, Layout> newLayoutsMap =
@@ -656,13 +631,22 @@ public class LayoutImporter {
 		}
 
 		for (Element layoutElement : layoutElements) {
-			importLayout(
-				portletDataContext, user, layoutCache, previousLayouts,
-				newLayouts, newLayoutsMap, portletsMergeMode, themeId,
-				colorSchemeId, layoutsImportMode, privateLayout,
-				importPermissions, importPublicLayoutPermissions,
-				importUserPermissions, importThemeSettings, rootElement,
-				layoutElement);
+			String action = layoutElement.attributeValue("action");
+
+			if(!action.equals(Constants.SKIP)){
+				importLayout(
+					portletDataContext, user, layoutCache, previousLayouts,
+					newLayouts, newLayoutsMap, portletsMergeMode, themeId,
+					colorSchemeId, layoutsImportMode, privateLayout,
+					importPermissions, importPublicLayoutPermissions,
+					importUserPermissions, importThemeSettings, rootElement,
+					layoutElement);
+			}
+
+			if(!action.equals(Constants.DELETE)){
+				sourceLayoutsUuids.add(
+					layoutElement.attributeValue("layout-uuid"));
+			}
 		}
 
 		Element portletsElement = rootElement.element("portlets");
@@ -814,8 +798,7 @@ public class LayoutImporter {
 
 		if (deleteMissingLayouts) {
 			deleteMissingLayouts(
-				groupId, privateLayout, newLayouts, previousLayouts,
-				serviceContext);
+				sourceLayoutsUuids, previousLayouts, serviceContext);
 		}
 
 		// Page count
@@ -1033,10 +1016,9 @@ public class LayoutImporter {
 
 		long oldLayoutId = layoutId;
 
-		boolean deleteLayout = GetterUtil.getBoolean(
-			layoutElement.attributeValue("delete"));
+		String action = layoutElement.attributeValue("action");
 
-		if (deleteLayout) {
+		if (action.equals(Constants.DELETE)) {
 			Layout layout = LayoutLocalServiceUtil.fetchLayoutByUuidAndGroupId(
 				layoutUuid, groupId, privateLayout);
 
@@ -1702,6 +1684,12 @@ public class LayoutImporter {
 		}
 
 		for (Element layoutElement : layoutElements) {
+			String action = layoutElement.attributeValue("action");
+
+			if (action.equals(Constants.SKIP)) {
+				continue;
+			}
+
 			String layoutPrototypeUuid = GetterUtil.getString(
 				layoutElement.attributeValue("layout-prototype-uuid"));
 

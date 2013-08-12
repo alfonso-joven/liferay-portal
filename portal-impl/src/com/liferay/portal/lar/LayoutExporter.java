@@ -25,6 +25,8 @@ import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.servlet.ServletContextPool;
 import com.liferay.portal.kernel.staging.LayoutStagingUtil;
 import com.liferay.portal.kernel.util.CharPool;
+import com.liferay.portal.kernel.util.ArrayUtil;
+import com.liferay.portal.kernel.util.Constants;
 import com.liferay.portal.kernel.util.FileUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.LocaleUtil;
@@ -388,15 +390,8 @@ public class LayoutExporter {
 		Map<String, Object[]> portletIds =
 			new LinkedHashMap<String, Object[]>();
 
-		List<Layout> layouts = null;
-
-		if ((layoutIds == null) || (layoutIds.length == 0)) {
-			layouts = LayoutLocalServiceUtil.getLayouts(groupId, privateLayout);
-		}
-		else {
-			layouts = LayoutLocalServiceUtil.getLayouts(
-				groupId, privateLayout, layoutIds);
-		}
+		List<Layout> layouts = LayoutLocalServiceUtil.getLayouts(
+			groupId, privateLayout);
 
 		List<Portlet> portlets = getAlwaysExportablePortlets(companyId);
 
@@ -452,7 +447,7 @@ public class LayoutExporter {
 			exportLayout(
 				portletDataContext, layoutConfigurationPortlet, layoutCache,
 				portlets, portletIds, exportPermissions, exportUserPermissions,
-				layout, layoutsElement);
+				layout, layoutsElement, layoutIds);
 		}
 
 		if (PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM < 5) {
@@ -681,7 +676,7 @@ public class LayoutExporter {
 			Portlet layoutConfigurationPortlet, LayoutCache layoutCache,
 			List<Portlet> portlets, Map<String, Object[]> portletIds,
 			boolean exportPermissions, boolean exportUserPermissions,
-			Layout layout, Element layoutsElement)
+			Layout layout, Element layoutsElement, long[] layoutIds)
 		throws Exception {
 
 		String path = portletDataContext.getLayoutPath(
@@ -722,6 +717,15 @@ public class LayoutExporter {
 		}
 
 		Element layoutElement = layoutsElement.addElement("layout");
+
+		if (!ArrayUtil.contains(layoutIds, layout.getLayoutId()) &&
+			(layoutIds != null) && (layoutIds.length > 0)) {
+
+			layoutElement.addAttribute("action", Constants.SKIP);
+			layoutElement.addAttribute("layout-uuid", layout.getUuid());
+
+			return;
+		}
 
 		if (layoutRevision != null) {
 			layoutElement.addAttribute(
@@ -769,9 +773,12 @@ public class LayoutExporter {
 			portletDataContext.getParameterMap(), "delete_" + layout.getPlid());
 
 		if (deleteLayout) {
-			layoutElement.addAttribute("delete", String.valueOf(true));
+			layoutElement.addAttribute("action", Constants.DELETE);
 
 			return;
+		}
+		else {
+			layoutElement.addAttribute("action", Constants.ADD);
 		}
 
 		portletDataContext.setPlid(layout.getPlid());
@@ -824,7 +831,8 @@ public class LayoutExporter {
 					exportLayout(
 						portletDataContext, layoutConfigurationPortlet,
 						layoutCache, portlets, portletIds, exportPermissions,
-						exportUserPermissions, linkedToLayout, layoutsElement);
+						exportUserPermissions, linkedToLayout, layoutsElement,
+						layoutIds);
 				}
 				catch (NoSuchLayoutException nsle) {
 				}
