@@ -732,7 +732,7 @@ Portal: ${lp.source.dir}
 Plugins: ${lp.plugins.dir}</echo>
 	</target>
 
-	<target name="sort-attributes-xml">
+	<target name="sort-xml-attributes">
 		<java
 			classname="com.liferay.portal.tools.XMLAttributesSorter"
 			classpathref="project.classpath"
