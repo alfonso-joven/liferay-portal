@@ -315,7 +315,7 @@ public abstract class BaseCommandReceiver implements CommandReceiver {
 
 		groups.addAll(
 			GroupLocalServiceUtil.search(
-				commandArgument.getCompanyId(), null, null, groupParams,
+				commandArgument.getCompanyId(), (String)null, null, groupParams,
 				QueryUtil.ALL_POS, QueryUtil.ALL_POS));
 
 		List<Organization> userOrgs =

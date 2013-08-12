@@ -23,7 +23,7 @@ LinkedHashMap<String, Object> groupParams = new LinkedHashMap<String, Object>();
 
 groupParams.put("active", Boolean.FALSE);
 
-int inactiveGroupsCount = GroupLocalServiceUtil.searchCount(themeDisplay.getCompanyId(), null, null, groupParams);
+int inactiveGroupsCount = GroupLocalServiceUtil.searchCount(themeDisplay.getCompanyId(), (String)null, null, groupParams);
 
 List<Portlet> portlets = PortletLocalServiceUtil.getPortlets(company.getCompanyId(), includeSystemPortlets, false);
 

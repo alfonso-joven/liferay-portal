@@ -517,7 +517,7 @@ public class LiveUsers {
 		groupParams.put("usersGroups", userId);
 
 		List<Group> groups = GroupLocalServiceUtil.search(
-			companyId, null, null, groupParams, QueryUtil.ALL_POS,
+			companyId, (String)null, null, groupParams, QueryUtil.ALL_POS,
 			QueryUtil.ALL_POS);
 
 		for (Group group : groups) {

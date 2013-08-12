@@ -202,8 +202,8 @@ public class WebDAVUtil {
 
 		groups.addAll(
 			GroupLocalServiceUtil.search(
-				user.getCompanyId(), null, null, params, QueryUtil.ALL_POS,
-				QueryUtil.ALL_POS, orderByComparator));
+				user.getCompanyId(), (String)null, null, params,
+				QueryUtil.ALL_POS, QueryUtil.ALL_POS, orderByComparator));
 
 		// Organizations
 

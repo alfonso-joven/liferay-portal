@@ -1559,7 +1559,7 @@ public class ServicePreAction extends Action {
 				groupParams.put("usersGroups", new Long(user.getUserId()));
 
 				List<Group> groups = GroupLocalServiceUtil.search(
-					user.getCompanyId(), null, null, groupParams,
+					user.getCompanyId(), (String)null, null, groupParams,
 					QueryUtil.ALL_POS, QueryUtil.ALL_POS);
 
 				for (Group group : groups) {
