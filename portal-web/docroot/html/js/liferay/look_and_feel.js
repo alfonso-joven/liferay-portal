@@ -900,6 +900,7 @@ AUI.add(
 						customTitle: '',
 						language: 'en_US',
 						portletLinksTarget: '',
+						showBorders: '',
 						title: '',
 						titles: {},
 						useCustomTitle: false
