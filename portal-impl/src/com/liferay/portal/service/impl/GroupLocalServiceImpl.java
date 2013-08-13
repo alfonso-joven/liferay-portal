@@ -1366,8 +1366,7 @@ public class GroupLocalServiceImpl extends GroupLocalServiceBaseImpl {
 			groupParams.put("usersGroups", new Long(userId));
 
 			return search(
-				user.getCompanyId(), (String)null, null, groupParams, start,
-				end);
+				user.getCompanyId(), null, null, groupParams, start, end);
 		}
 		else {
 			return userPersistence.getGroups(userId, start, end);

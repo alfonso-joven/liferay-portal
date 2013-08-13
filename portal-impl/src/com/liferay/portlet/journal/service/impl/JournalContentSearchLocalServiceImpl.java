@@ -52,8 +52,7 @@ public class JournalContentSearchLocalServiceImpl
 		List<Layout> layouts = new ArrayList<Layout>();
 
 		List<Group> groups = groupLocalService.search(
-			companyId, (String)null, null, null, QueryUtil.ALL_POS,
-			QueryUtil.ALL_POS);
+			companyId, null, null, null, QueryUtil.ALL_POS, QueryUtil.ALL_POS);
 
 		for (Group group : groups) {
 
