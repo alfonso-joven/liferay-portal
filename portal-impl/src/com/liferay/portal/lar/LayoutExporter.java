@@ -718,15 +718,6 @@ public class LayoutExporter {
 
 		Element layoutElement = layoutsElement.addElement("layout");
 
-		if (!ArrayUtil.contains(layoutIds, layout.getLayoutId()) &&
-			(layoutIds != null) && (layoutIds.length > 0)) {
-
-			layoutElement.addAttribute("action", Constants.SKIP);
-			layoutElement.addAttribute("layout-uuid", layout.getUuid());
-
-			return;
-		}
-
 		if (layoutRevision != null) {
 			layoutElement.addAttribute(
 				"layout-revision-id",
@@ -742,6 +733,14 @@ public class LayoutExporter {
 		layoutElement.addAttribute("layout-uuid", layout.getUuid());
 		layoutElement.addAttribute(
 			"layout-id", String.valueOf(layout.getLayoutId()));
+
+		if (!ArrayUtil.contains(layoutIds, layout.getLayoutId()) &&
+			(layoutIds != null) && (layoutIds.length > 0)) {
+
+			layoutElement.addAttribute("action", Constants.SKIP);
+
+			return;
+		}
 
 		long parentLayoutId = layout.getParentLayoutId();
 
