@@ -446,8 +446,8 @@ public class LayoutExporter {
 		for (Layout layout : layouts) {
 			exportLayout(
 				portletDataContext, layoutConfigurationPortlet, layoutCache,
-				portlets, portletIds, exportPermissions, exportUserPermissions,
-				layout, layoutsElement, layoutIds);
+				portlets, layoutIds, portletIds, exportPermissions,
+				exportUserPermissions, layout, layoutsElement);
 		}
 
 		if (PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM < 5) {
@@ -674,9 +674,10 @@ public class LayoutExporter {
 	protected void exportLayout(
 			PortletDataContext portletDataContext,
 			Portlet layoutConfigurationPortlet, LayoutCache layoutCache,
-			List<Portlet> portlets, Map<String, Object[]> portletIds,
-			boolean exportPermissions, boolean exportUserPermissions,
-			Layout layout, Element layoutsElement, long[] layoutIds)
+			List<Portlet> portlets, long[] layoutIds,
+			Map<String, Object[]> portletIds, boolean exportPermissions,
+			boolean exportUserPermissions, Layout layout,
+			Element layoutsElement)
 		throws Exception {
 
 		String path = portletDataContext.getLayoutPath(
@@ -829,9 +830,9 @@ public class LayoutExporter {
 
 					exportLayout(
 						portletDataContext, layoutConfigurationPortlet,
-						layoutCache, portlets, portletIds, exportPermissions,
-						exportUserPermissions, linkedToLayout, layoutsElement,
-						layoutIds);
+						layoutCache, portlets, layoutIds, portletIds,
+						exportPermissions, exportUserPermissions,
+						linkedToLayout, layoutsElement);
 				}
 				catch (NoSuchLayoutException nsle) {
 				}
