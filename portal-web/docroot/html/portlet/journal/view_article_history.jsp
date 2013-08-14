@@ -60,15 +60,34 @@ JournalArticle article = (JournalArticle)request.getAttribute(WebKeys.JOURNAL_AR
 			<%
 			ArticleSearch searchContainer = new ArticleSearch(renderRequest, portletURL);
 
-			List headerNames = searchContainer.getHeaderNames();
+			List<String> headerNames = new ArrayList<String>();
 
-			headerNames.add(2, "version");
-			headerNames.add(3, "status");
+			headerNames.add("id");
+			headerNames.add("title");
+			headerNames.add("version");
+			headerNames.add("status");
+			headerNames.add("modified-date");
+
+			if (article.getDisplayDate() != null) {
+				headerNames.add("display-date");
+			}
+
+			headerNames.add("author");
 			headerNames.add(StringPool.BLANK);
 
-			Map<String, String> orderableHeaders = searchContainer.getOrderableHeaders();
+			searchContainer.setHeaderNames(headerNames);
+
+			Map<String, String> orderableHeaders = new HashMap<String, String>();
+
+			orderableHeaders.put("modified-date", "modified-date");
+
+			if (article.getDisplayDate() != null) {
+				orderableHeaders.put("display-date", "display-date");
+			}
 
 			orderableHeaders.put("version", "version");
+
+			searchContainer.setOrderableHeaders(orderableHeaders);
 
 			if (Validator.isNull(orderByCol)) {
 				searchContainer.setOrderByCol("version");
@@ -138,7 +157,9 @@ JournalArticle article = (JournalArticle)request.getAttribute(WebKeys.JOURNAL_AR
 
 				// Display date
 
-				row.addText(dateFormatDateTime.format(articleVersion.getDisplayDate()), rowURL);
+				if (articleVersion.getDisplayDate() != null) {
+					row.addText(dateFormatDateTime.format(articleVersion.getDisplayDate()), rowURL);
+				}
 
 				// Author
 
