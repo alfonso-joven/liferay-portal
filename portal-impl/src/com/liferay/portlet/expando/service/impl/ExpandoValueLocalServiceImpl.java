@@ -2241,6 +2241,10 @@ public class ExpandoValueLocalServiceImpl
 	}
 
 	protected <T> T convertType(int type, Object data) {
+		if (data == null) {
+			return (T)data;
+		}
+
 		data = handleCollections(type, data);
 		data = handleStrings(type, data);
 
