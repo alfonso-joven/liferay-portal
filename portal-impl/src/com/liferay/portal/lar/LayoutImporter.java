@@ -633,7 +633,7 @@ public class LayoutImporter {
 		for (Element layoutElement : layoutElements) {
 			String action = layoutElement.attributeValue("action");
 
-			if(!action.equals(Constants.SKIP)){
+			if (!action.equals(Constants.SKIP)) {
 				importLayout(
 					portletDataContext, user, layoutCache, previousLayouts,
 					newLayouts, newLayoutsMap, portletsMergeMode, themeId,
@@ -643,7 +643,7 @@ public class LayoutImporter {
 					layoutElement);
 			}
 
-			if(!action.equals(Constants.DELETE)){
+			if (!action.equals(Constants.DELETE)) {
 				sourceLayoutsUuids.add(
 					layoutElement.attributeValue("layout-uuid"));
 			}
