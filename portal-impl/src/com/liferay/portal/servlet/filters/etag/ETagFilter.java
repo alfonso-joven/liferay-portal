@@ -29,6 +29,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Brian Wing Shun Chan
  * @author Raymond Augé
  * @author Shuyang Zhou
+ * @author Igor Spasic
  */
 public class ETagFilter extends BasePortalFilter {
 
@@ -37,6 +38,17 @@ public class ETagFilter extends BasePortalFilter {
 		HttpServletRequest request, HttpServletResponse response) {
 
 		if (ParamUtil.getBoolean(request, _ETAG, true)) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	protected boolean isEligibleForEtag(int status) {
+		if ((status >= HttpServletResponse.SC_OK) &&
+			(status < HttpServletResponse.SC_MULTIPLE_CHOICES)) {
+
 			return true;
 		}
 		else {
@@ -56,7 +68,9 @@ public class ETagFilter extends BasePortalFilter {
 		processFilter(
 			ETagFilter.class, request, byteBufferResponse, filterChain);
 
-		if (!ETagUtil.processETag(request, response, byteBufferResponse)) {
+		if (!isEligibleForEtag(byteBufferResponse.getStatus()) ||
+			!ETagUtil.processETag(request, response, byteBufferResponse)) {
+
 			CacheResponseUtil.setHeaders(
 				response, byteBufferResponse.getHeaders());
 
