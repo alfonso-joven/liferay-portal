@@ -34,6 +34,7 @@ import com.liferay.portal.service.LayoutLocalServiceUtil;
 import com.liferay.portal.service.LayoutSetLocalServiceUtil;
 import com.liferay.portal.service.ServiceContext;
 import com.liferay.portal.util.PortletKeys;
+import com.liferay.portal.util.PropsValues;
 import com.liferay.portlet.mobiledevicerules.model.MDRAction;
 import com.liferay.portlet.mobiledevicerules.model.MDRRule;
 import com.liferay.portlet.mobiledevicerules.model.MDRRuleGroup;
@@ -735,7 +736,8 @@ public class MDRPortletDataHandlerImpl extends BasePortletDataHandler {
 
 	private static final String _NAMESPACE = "mobile_device_rules";
 
-	private static final boolean _PUBLISH_TO_LIVE_BY_DEFAULT = true;
+	private static final boolean _PUBLISH_TO_LIVE_BY_DEFAULT =
+		PropsValues.MOBILE_DEVICE_RULES_PUBLISH_TO_LIVE_BY_DEFAULT;
 
 	private static Log _log = LogFactoryUtil.getLog(
 		MDRPortletDataHandlerImpl.class);

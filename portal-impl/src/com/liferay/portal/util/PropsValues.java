@@ -204,6 +204,8 @@ public class PropsValues {
 
 	public static final boolean BLOGS_TRACKBACK_ENABLED = GetterUtil.getBoolean(PropsUtil.get(PropsKeys.BLOGS_TRACKBACK_ENABLED));
 
+	public static final boolean BOOKMARKS_PUBLISH_TO_LIVE_BY_DEFAULT = GetterUtil.getBoolean(PropsUtil.get(PropsKeys.BOOKMARKS_PUBLISH_TO_LIVE_BY_DEFAULT));
+
 	public static final String BREADCRUMB_DISPLAY_STYLE_DEFAULT = PropsUtil.get(PropsKeys.BREADCRUMB_DISPLAY_STYLE_DEFAULT);
 
 	public static final String[] BREADCRUMB_DISPLAY_STYLE_OPTIONS = PropsUtil.getArray(PropsKeys.BREADCRUMB_DISPLAY_STYLE_OPTIONS);
@@ -235,6 +237,8 @@ public class PropsValues {
 	public static final boolean CALENDAR_EVENT_COMMENTS_ENABLED = GetterUtil.getBoolean(PropsUtil.get(PropsKeys.CALENDAR_EVENT_COMMENTS_ENABLED));
 
 	public static final boolean CALENDAR_EVENT_RATINGS_ENABLED = GetterUtil.getBoolean(PropsUtil.get(PropsKeys.CALENDAR_EVENT_RATINGS_ENABLED));
+
+	public static final boolean CALENDAR_PUBLISH_TO_LIVE_BY_DEFAULT = GetterUtil.getBoolean(PropsUtil.get(PropsKeys.CALENDAR_PUBLISH_TO_LIVE_BY_DEFAULT));
 
 	public static boolean CAPTCHA_CHECK_PORTAL_CREATE_ACCOUNT = GetterUtil.getBoolean(PropsUtil.get(PropsKeys.CAPTCHA_CHECK_PORTAL_CREATE_ACCOUNT));
 
@@ -764,6 +768,8 @@ public class PropsValues {
 
 	public static final boolean JOURNAL_ARTICLES_SEARCH_WITH_INDEX = GetterUtil.getBoolean(PropsUtil.get(PropsKeys.JOURNAL_ARTICLES_SEARCH_WITH_INDEX));
 
+	public static final boolean JOURNAL_CONTENT_PUBLISH_TO_LIVE_BY_DEFAULT = GetterUtil.getBoolean(PropsUtil.get(PropsKeys.JOURNAL_CONTENT_PUBLISH_TO_LIVE_BY_DEFAULT));
+
 	public static final boolean JOURNAL_CONTENT_SEARCH_SHOW_LISTED = GetterUtil.getBoolean(PropsUtil.get(PropsKeys.JOURNAL_CONTENT_SEARCH_SHOW_LISTED));
 
 	public static final String JOURNAL_EMAIL_FROM_ADDRESS = PropsUtil.get(PropsKeys.JOURNAL_EMAIL_FROM_ADDRESS);
@@ -1072,6 +1078,8 @@ public class PropsValues {
 
 	public static final String[] MINIFIER_INLINE_CONTENT_CACHE_SKIP_JAVASCRIPT = PropsUtil.getArray(PropsKeys.MINIFIER_INLINE_CONTENT_CACHE_SKIP_JAVASCRIPT);
 
+	public static final boolean MOBILE_DEVICE_RULES_PUBLISH_TO_LIVE_BY_DEFAULT = GetterUtil.getBoolean(PropsUtil.get(PropsKeys.MOBILE_DEVICE_RULES_PUBLISH_TO_LIVE_BY_DEFAULT));
+
 	public static final String MOBILE_DEVICE_RULES_RULE_GROUP_COPY_POSTFIX = PropsUtil.get(PropsKeys.MOBILE_DEVICE_RULES_RULE_GROUP_COPY_POSTFIX);
 
 	public static final boolean MOBILE_DEVICE_SESSION_CACHE_ENABLED = GetterUtil.getBoolean(PropsUtil.get(PropsKeys.MOBILE_DEVICE_SESSION_CACHE_ENABLED));
@@ -1256,6 +1264,8 @@ public class PropsValues {
 
 	public static final String[] PLUGIN_TYPES = PropsUtil.getArray(PropsKeys.PLUGIN_TYPES);
 
+	public static final boolean POLLS_PUBLISH_TO_LIVE_BY_DEFAULT = GetterUtil.getBoolean(PropsUtil.get(PropsKeys.POLLS_PUBLISH_TO_LIVE_BY_DEFAULT));
+
 	public static final long POLLER_NOTIFICATIONS_TIMEOUT = GetterUtil.getInteger(PropsUtil.get(PropsKeys.POLLER_NOTIFICATIONS_TIMEOUT));
 
 	public static final long POLLER_REQUEST_TIMEOUT = GetterUtil.getLong(PropsUtil.get(PropsKeys.POLLER_REQUEST_TIMEOUT));
@@ -1365,6 +1375,8 @@ public class PropsValues {
 	public static final String[] ROLES_SITE_SUBTYPES = PropsUtil.getArray(PropsKeys.ROLES_SITE_SUBTYPES);
 
 	public static final int RSS_CONNECTION_TIMEOUT = GetterUtil.getInteger(PropsUtil.get(PropsKeys.RSS_CONNECTION_TIMEOUT));
+
+	public static final boolean RSS_PUBLISH_TO_LIVE_BY_DEFAULT = GetterUtil.getBoolean(PropsUtil.get(PropsKeys.RSS_PUBLISH_TO_LIVE_BY_DEFAULT));
 
 	public static final String SANDBOX_DEPLOY_DIR = PropsUtil.get(PropsKeys.SANDBOX_DEPLOY_DIR);
 

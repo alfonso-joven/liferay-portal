@@ -31,6 +31,7 @@ import com.liferay.portal.model.User;
 import com.liferay.portal.service.ServiceContext;
 import com.liferay.portal.service.UserLocalServiceUtil;
 import com.liferay.portal.util.PortletKeys;
+import com.liferay.portal.util.PropsValues;
 import com.liferay.portlet.calendar.model.CalEvent;
 import com.liferay.portlet.calendar.service.CalEventLocalServiceUtil;
 import com.liferay.portlet.calendar.service.persistence.CalEventUtil;
@@ -298,7 +299,8 @@ public class CalendarPortletDataHandlerImpl extends BasePortletDataHandler {
 
 	private static final String _NAMESPACE = "calendar";
 
-	private static final boolean _PUBLISH_TO_LIVE_BY_DEFAULT = true;
+	private static final boolean _PUBLISH_TO_LIVE_BY_DEFAULT =
+		PropsValues.CALENDAR_PUBLISH_TO_LIVE_BY_DEFAULT;
 
 	private static PortletDataHandlerBoolean _events =
 		new PortletDataHandlerBoolean(_NAMESPACE, "events", true, true);

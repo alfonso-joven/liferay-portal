@@ -27,6 +27,7 @@ import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.kernel.xml.Document;
 import com.liferay.portal.kernel.xml.Element;
 import com.liferay.portal.kernel.xml.SAXReaderUtil;
+import com.liferay.portal.util.PropsValues;
 import com.liferay.portlet.polls.NoSuchQuestionException;
 import com.liferay.portlet.polls.model.PollsChoice;
 import com.liferay.portlet.polls.model.PollsQuestion;
@@ -224,7 +225,8 @@ public class PollsDisplayPortletDataHandlerImpl extends BasePortletDataHandler {
 
 	private static final String _NAMESPACE = "polls";
 
-	private static final boolean _PUBLISH_TO_LIVE_BY_DEFAULT = true;
+	private static final boolean _PUBLISH_TO_LIVE_BY_DEFAULT =
+		PropsValues.POLLS_PUBLISH_TO_LIVE_BY_DEFAULT;
 
 	private static Log _log = LogFactoryUtil.getLog(
 		PollsDisplayPortletDataHandlerImpl.class);

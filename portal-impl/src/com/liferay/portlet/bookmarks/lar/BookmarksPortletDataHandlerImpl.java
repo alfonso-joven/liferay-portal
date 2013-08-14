@@ -25,6 +25,7 @@ import com.liferay.portal.kernel.xml.Element;
 import com.liferay.portal.kernel.xml.SAXReaderUtil;
 import com.liferay.portal.service.ServiceContext;
 import com.liferay.portal.util.PortletKeys;
+import com.liferay.portal.util.PropsValues;
 import com.liferay.portlet.bookmarks.model.BookmarksEntry;
 import com.liferay.portlet.bookmarks.model.BookmarksFolder;
 import com.liferay.portlet.bookmarks.model.BookmarksFolderConstants;
@@ -440,7 +441,8 @@ public class BookmarksPortletDataHandlerImpl extends BasePortletDataHandler {
 
 	private static final String _NAMESPACE = "bookmarks";
 
-	private static final boolean _PUBLISH_TO_LIVE_BY_DEFAULT = true;
+	private static final boolean _PUBLISH_TO_LIVE_BY_DEFAULT =
+		PropsValues.BOOKMARKS_PUBLISH_TO_LIVE_BY_DEFAULT;
 
 	private static PortletDataHandlerBoolean _foldersAndEntries =
 		new PortletDataHandlerBoolean(

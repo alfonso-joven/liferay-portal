@@ -30,6 +30,7 @@ import com.liferay.portal.kernel.xml.Element;
 import com.liferay.portal.kernel.xml.SAXReaderUtil;
 import com.liferay.portal.model.Layout;
 import com.liferay.portal.service.LayoutLocalServiceUtil;
+import com.liferay.portal.util.PropsValues;
 import com.liferay.portlet.documentlibrary.lar.DLPortletDataHandlerImpl;
 import com.liferay.portlet.journal.NoSuchArticleException;
 import com.liferay.portlet.journal.model.JournalArticle;
@@ -384,7 +385,8 @@ public class JournalContentPortletDataHandlerImpl
 
 	private static final String _NAMESPACE = "journal";
 
-	private static final boolean _PUBLISH_TO_LIVE_BY_DEFAULT = true;
+	private static final boolean _PUBLISH_TO_LIVE_BY_DEFAULT =
+		PropsValues.JOURNAL_CONTENT_PUBLISH_TO_LIVE_BY_DEFAULT;
 
 	private static Log _log = LogFactoryUtil.getLog(
 		JournalContentPortletDataHandlerImpl.class);
