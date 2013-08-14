@@ -24,7 +24,7 @@
 			-
 
 			<a href="
-				<@liferay_portlet.actionURL>
+				<@liferay_portlet.actionURL portletName="167">
 					<@liferay_portlet.param name="struts_action" value="/dynamic_data_lists/edit_record_file" />
 					<@liferay_portlet.param name="cmd" value="delete" />
 					<@liferay_portlet.param name="redirect" value=portalUtil.getCurrentURL(request) />
