@@ -84,7 +84,7 @@ public class BookmarksPortletDataHandlerImpl extends BasePortletDataHandler {
 
 	@Override
 	public boolean isPublishToLiveByDefault() {
-		return _PUBLISH_TO_LIVE_BY_DEFAULT;
+		return PropsValues.BOOKMARKS_PUBLISH_TO_LIVE_BY_DEFAULT;
 	}
 
 	@Override
@@ -440,9 +440,6 @@ public class BookmarksPortletDataHandlerImpl extends BasePortletDataHandler {
 	private static final boolean _ALWAYS_EXPORTABLE = true;
 
 	private static final String _NAMESPACE = "bookmarks";
-
-	private static final boolean _PUBLISH_TO_LIVE_BY_DEFAULT =
-		PropsValues.BOOKMARKS_PUBLISH_TO_LIVE_BY_DEFAULT;
 
 	private static PortletDataHandlerBoolean _foldersAndEntries =
 		new PortletDataHandlerBoolean(

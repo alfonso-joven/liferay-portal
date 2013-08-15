@@ -87,7 +87,7 @@ public class CalendarPortletDataHandlerImpl extends BasePortletDataHandler {
 
 	@Override
 	public boolean isPublishToLiveByDefault() {
-		return _PUBLISH_TO_LIVE_BY_DEFAULT;
+		return PropsValues.CALENDAR_PUBLISH_TO_LIVE_BY_DEFAULT;
 	}
 
 	@Override
@@ -298,9 +298,6 @@ public class CalendarPortletDataHandlerImpl extends BasePortletDataHandler {
 	private static final boolean _ALWAYS_EXPORTABLE = true;
 
 	private static final String _NAMESPACE = "calendar";
-
-	private static final boolean _PUBLISH_TO_LIVE_BY_DEFAULT =
-		PropsValues.CALENDAR_PUBLISH_TO_LIVE_BY_DEFAULT;
 
 	private static PortletDataHandlerBoolean _events =
 		new PortletDataHandlerBoolean(_NAMESPACE, "events", true, true);

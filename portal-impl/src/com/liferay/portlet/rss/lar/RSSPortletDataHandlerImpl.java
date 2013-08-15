@@ -102,7 +102,7 @@ public class RSSPortletDataHandlerImpl extends JournalPortletDataHandlerImpl {
 
 	@Override
 	public boolean isPublishToLiveByDefault() {
-		return _PUBLISH_TO_LIVE_BY_DEFAULT;
+		return PropsValues.RSS_PUBLISH_TO_LIVE_BY_DEFAULT;
 	}
 
 	@Override
@@ -360,9 +360,6 @@ public class RSSPortletDataHandlerImpl extends JournalPortletDataHandlerImpl {
 	private static final boolean _ALWAYS_EXPORTABLE = false;
 
 	private static final String _NAMESPACE = "rss";
-
-	private static final boolean _PUBLISH_TO_LIVE_BY_DEFAULT =
-		PropsValues.RSS_PUBLISH_TO_LIVE_BY_DEFAULT;
 
 	private static Log _log = LogFactoryUtil.getLog(
 		RSSPortletDataHandlerImpl.class);

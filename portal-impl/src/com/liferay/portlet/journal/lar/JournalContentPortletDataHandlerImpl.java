@@ -135,7 +135,7 @@ public class JournalContentPortletDataHandlerImpl
 
 	@Override
 	public boolean isPublishToLiveByDefault() {
-		return _PUBLISH_TO_LIVE_BY_DEFAULT;
+		return PropsValues.JOURNAL_CONTENT_PUBLISH_TO_LIVE_BY_DEFAULT;
 	}
 
 	@Override
@@ -384,9 +384,6 @@ public class JournalContentPortletDataHandlerImpl
 	private static final boolean _DATA_LOCALIZED = true;
 
 	private static final String _NAMESPACE = "journal";
-
-	private static final boolean _PUBLISH_TO_LIVE_BY_DEFAULT =
-		PropsValues.JOURNAL_CONTENT_PUBLISH_TO_LIVE_BY_DEFAULT;
 
 	private static Log _log = LogFactoryUtil.getLog(
 		JournalContentPortletDataHandlerImpl.class);
