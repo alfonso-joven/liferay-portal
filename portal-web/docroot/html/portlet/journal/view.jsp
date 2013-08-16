@@ -611,15 +611,19 @@ portletURL.setParameter("tabs1", tabs1);
 		var resultsGrid = A.one('.results-grid');
 
 		if (resultsGrid) {
-			resultsGrid.delegate(
-				'click',
-				function(event) {
-					var disabled = (resultsGrid.one(':checked') == null);
+			var checkBoxes = resultsGrid.all('input[type=checkbox]');
 
-					toggleDisabled(disabled);
-				},
-				':checkbox'
-			);
+			if (checkBoxes && (checkBoxes.size() > 1)) {
+				resultsGrid.delegate(
+					'click',
+					function(event) {
+						var disabled = (resultsGrid.one(':checked') == null);
+
+						toggleDisabled(disabled);
+					},
+					':checkbox'
+				);
+			}
 		}
 
 		toggleDisabled(true);
