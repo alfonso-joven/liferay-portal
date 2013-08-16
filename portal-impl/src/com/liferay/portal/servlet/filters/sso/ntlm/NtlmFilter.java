@@ -158,6 +158,16 @@ public class NtlmFilter extends BasePortalFilter {
 		return ntlmManager;
 	}
 
+	protected String getPortalCacheKey(HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+
+		if (session == null) {
+			return request.getRemoteAddr();
+		}
+
+		return session.getId();
+	}
+
 	@Override
 	protected void processFilter(
 			HttpServletRequest request, HttpServletResponse response,
@@ -178,6 +188,8 @@ public class NtlmFilter extends BasePortalFilter {
 		if (authorization.startsWith("NTLM")) {
 			NtlmManager ntlmManager = getNtlmManager(companyId);
 
+			String portalCacheKey = getPortalCacheKey(request);
+
 			byte[] src = Base64.decode(authorization.substring(5));
 
 			if (src[8] == 1) {
@@ -197,7 +209,7 @@ public class NtlmFilter extends BasePortalFilter {
 
 				response.flushBuffer();
 
-				_portalCache.put(request.getRemoteAddr(), serverChallenge);
+				_portalCache.put(portalCacheKey, serverChallenge);
 
 				// Interrupt filter chain, send response. Browser will
 				// immediately post a new request.
@@ -205,8 +217,7 @@ public class NtlmFilter extends BasePortalFilter {
 				return;
 			}
 
-			byte[] serverChallenge = (byte[])_portalCache.get(
-				request.getRemoteAddr());
+			byte[] serverChallenge = (byte[])_portalCache.get(portalCacheKey);
 
 			if (serverChallenge == null) {
 				response.setContentLength(0);
@@ -230,7 +241,7 @@ public class NtlmFilter extends BasePortalFilter {
 				}
 			}
 			finally {
-				_portalCache.remove(request.getRemoteAddr());
+				_portalCache.remove(portalCacheKey);
 			}
 
 			if (ntlmUserAccount == null) {
