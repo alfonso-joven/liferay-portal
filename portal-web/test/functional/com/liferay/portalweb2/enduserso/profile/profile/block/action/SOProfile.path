@@ -20,12 +20,17 @@
 </tr>
 <tr>
 	<td>USER_NAME</td>
-	<td>//div[@class='lfr-contact-name']/a</td>
+	<td>//div[@class='no-icon lfr-contact-info']/div/a</td>
 	<td></td>
 </tr>
 <tr>
 	<td>USER_EMAIL</td>
 	<td>//div[@class='lfr-contact-extra']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>CONNECTION_REQUESTED_MESSAGE</td>
+	<td>//span[@class='disabled']/span</td>
 	<td></td>
 </tr>
 <tr>
