@@ -21,6 +21,7 @@ import com.liferay.portal.kernel.util.DigesterUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.PropsKeys;
 import com.liferay.portal.kernel.util.StringPool;
+import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.util.PropsUtil;
 
@@ -275,7 +276,10 @@ public class PwdEncryptor {
 			// Extract salt from encrypted password
 
 			try {
-				byte[] digestPlusSalt = Base64.decode(sshaString);
+				byte[] digestPlusSalt = Base64.decode(StringUtil.replace(
+					sshaString, StringPool.OPEN_CURLY_BRACE + TYPE_SSHA +
+					StringPool.CLOSE_CURLY_BRACE, StringPool.BLANK));
+
 				byte[] digestBytes = new byte[digestPlusSalt.length - 8];
 
 				System.arraycopy(
