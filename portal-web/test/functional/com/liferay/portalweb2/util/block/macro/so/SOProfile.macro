@@ -131,6 +131,43 @@
 		<execute action="SOMyAccount#selectFrameTop" />
 	</command>
 
+	<command name="addConnection">
+		<var name="filterTypeCount" value="${filterTypeCount}" />
+		<var name="userEmailAddress" value="${userEmailAddress}" />
+		<var name="userListName" value="${userListName}" />
+		<var name="userName" value="${userName}" />
+		<var name="userScreenName" value="${userScreenName}" />
+
+		<execute macro="SOUser#addUserWithSORole">
+			<var name="adminEmailAddress" value="test@liferay.com" />
+			<var name="password" value="test" />
+			<var name="userEmailAddress" value="${userEmailAddress}" />
+			<var name="userFirstName" value="${userFirstName}" />
+			<var name="userMiddleName" value="${userMiddleName}" />
+			<var name="userLastName" value="${userLastName}" />
+			<var name="userScreenName" value="${userScreenName}" />
+		</execute>
+
+		<execute macro="SOContactsCenterProfile#requestToConnect">
+			<var name="userEmailAddress" value="${userEmailAddress}" />
+			<var name="userListName" value="${userListName}" />
+			<var name="userName" value="${userName}" />
+			<var name="userScreenName" value="${userScreenName}" />
+		</execute>
+
+		<execute macro="SOUser#logoutPG" />
+
+		<execute macro="SOUser#loginPG">
+			<var name="userEmailAddress" value="${userEmailAddress}" />
+			<var name="password" value="test" />
+		</execute>
+
+		<execute macro="SOContactsCenter#confirmRequestToConnect">
+			<var name="senderName" value="${adminName}" />
+			<var name="userName" value="${userName}" />
+		</execute>
+	</command>
+
 	<command name="addIntroductionProfile">
 		<execute action="SOUserBar#click" locator-key1="USER_NAME" />
 		<execute action="SOUserBar#click" locator-key1="USER_MENU_MY_PROFILE" value1="My Profile" />
@@ -515,6 +552,27 @@
 		<execute action="SOProfile#assertTextEquals" locator-key1="PROFILE_INFO_WEBSITES_CONTENT" value1="${userWebsiteType} ${userWebsiteURL}" />
 	</command>
 
+	<command name="requestToConnect">
+		<execute macro="SOUserBar#dashboardPG">
+			<var name="userName" value="Joe Bloggs" />
+		</execute>
+
+		<execute action="SONavigation#click" locator-key1="NAVIGATION_CONTACTS_CENTER" />
+
+		<execute action="PGContactscenter#type" locator-key1="CONTACTS_LIST_SEARCH" value1="${userScreenName}" />
+		<execute action="PGContactscenter#assertClick" locator-key1="CONTACTS_LIST_NAME" value1="${userListName}" />
+
+		<execute action="PGContactscenter#assertClick" locator-key1="CONTACTS_LIST_NAME" value1="${userListName}" />
+		<execute action="PGContactscenter#assertClick" locator-key1="USER_DETAILS_NAME" value1="${userName}" />
+		<execute action="SOProfile#assertTextEquals" locator-key1="USER_NAME" value1="${userName}" />
+		<execute action="SOProfile#assertTextEquals" locator-key1="USER_EMAIL" value1="${userEmailAddress}" />
+
+		<execute action="SOProfile#assertClick" locator-key1="CONNECT_BUTTON" value1="Connect" />
+
+		<execute action="SOProfile#assertTextEquals" locator-key1="CONNECTION_REQUESTED_MESSAGE" value1="Connection Requested" />
+		<execute action="SOProfile#assertElementNotPresent" locator-key1="CONNECT_BUTTON" />
+	</command>
+
 	<command name="viewAdditionalEmailAddressProfile">
 		<execute action="SOProfile#assertTextEquals" locator-key1="PROFILE_INFO_EMAIL_ADDRESS_TITLE" value1="Additional Email Addresses:" />
 		<execute action="SOProfile#assertTextEquals" locator-key1="PROFILE_INFO_EMAIL_ADDRESS_CONTENT" value1="Email Address ${userAdditionalEmailAddress}" />
@@ -523,6 +581,27 @@
 	<command name="viewAddressProfile">
 		<execute action="SOProfile#assertTextEquals" locator-key1="PROFILE_INFO_ADDRESS_TITLE" value1="Addresses:" />
 		<execute action="SOProfile#assertTextEquals" locator-key1="PROFILE_INFO_ADDRESS_CONTENT" value1="${userAddressType} ${userAddressStreet1}, ${userAddressCity}, ${userAddressPostalCode}, ${userAddressRegion}, ${userAddressCountry} (Mailing)" />
+	</command>
+
+	<command name="viewConnectionProfile">
+		<var name="filterType" value="${filterType}" />
+		<var name="filterTypeCount" value="${filterTypeCount}" />
+		<var name="userEmailAddress" value="${userEmailAddress}" />
+		<var name="userName" value="${userName}" />
+		<var name="userListName" value="${userListName}" />
+
+		<execute action="PGContactscenter#assertClick" locator-key1="CONTACTS_LINK_CONNECTIONS" value1="You have ${filterTypeCount} connections." />
+		<execute action="PGContactscenter#assertSelectedLabel" locator-key1="CONTACTS_LIST_FILTER" value1="Connections"/>
+
+		<execute action="PGContactscenter#assertTextEquals" locator-key1="CONTACTS_LIST_EMAIL" value1="${userEmailAddress}" />
+		<execute action="PGContactscenter#assertClick" locator-key1="CONTACTS_LIST_NAME" value1="${userListName}" />
+		<execute action="PGContactscenter#assertClick" locator-key1="USER_DETAILS_NAME" value1="${userName}" />
+		<execute action="SOProfile#assertTextEquals" locator-key1="USER_NAME" value1="${userName}" />
+		<execute action="SOProfile#assertTextEquals" locator-key1="USER_EMAIL" value1="${userEmailAddress}" />
+		<execute action="SOProfile#assertElementPresent" locator-key1="DISCONNECT_BUTTON" />
+		<execute action="SOProfile#assertElementPresent" locator-key1="FOLLOW_BUTTON" />
+		<execute action="SOProfile#assertElementPresent" locator-key1="BLOCK_BUTTON" />
+		<execute action="SOProfile#assertElementNotPresent" locator-key1="CONNECT_BUTTON" />
 	</command>
 
 	<command name="viewInstantMessengerProfile">
