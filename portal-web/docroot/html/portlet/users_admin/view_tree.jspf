@@ -178,7 +178,7 @@ if (filterManageableOrganizations && organizations.isEmpty()) {
 				</c:if>
 			</liferay-util:buffer>
 
-			<liferay-util:buffer var="organizationsTree">
+			<liferay-util:buffer var="organizationsTreeBuffer">
 
 				<%
 				SearchContainer organizationSearch = new OrganizationSearch(renderRequest, "cur1", currentURLObj);
@@ -350,7 +350,7 @@ if (filterManageableOrganizations && organizations.isEmpty()) {
 						</liferay-util:buffer>
 
 						<liferay-ui:panel collapsible="<%= true %>" extended="<%= true %>" id="usersAdminOrganizationsPanel" persistState="<%= true %>" title="<%= organizationsPanelTitle %>">
-							<%= organizationsTree %>
+							<%= organizationsTreeBuffer %>
 						</liferay-ui:panel>
 					</c:if>
 
