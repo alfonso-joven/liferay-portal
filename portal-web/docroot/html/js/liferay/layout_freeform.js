@@ -130,7 +130,7 @@ AUI.add(
 					_setupNodeResize: function(node) {
 						var instance = this;
 
-						var resizable = node.hasClass('aui-resize');
+						var resizable = node.hasClass('yui3-resize');
 
 						if (!resizable) {
 							var resize = new A.Resize(
@@ -167,10 +167,9 @@ AUI.add(
 										}
 									},
 									handles: 'r,br,b',
-									node: node,
-									proxy: true
+									node: node
 								}
-							);
+							).plug(A.Plugin.ResizeProxy);
 						}
 					},
 
