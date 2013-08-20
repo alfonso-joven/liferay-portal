@@ -3581,13 +3581,9 @@ public class ServiceBuilder {
 
 		StringBundler sb = new StringBundler();
 
-		Iterator<String> itr = indexSQLs.values().iterator();
-
 		String prevEntityName = null;
 
-		while (itr.hasNext()) {
-			String indexSQL = itr.next();
-
+		for (String indexSQL : indexSQLs.values()) {
 			int pos = indexSQL.indexOf(" on ");
 
 			String indexSQLSuffix = indexSQL.substring(pos + 4);
@@ -3601,12 +3597,13 @@ public class ServiceBuilder {
 			}
 
 			sb.append(indexSQL);
-
-			if (itr.hasNext()) {
-				sb.append("\n");
-			}
+			sb.append("\n");
 
 			prevEntityName = entityName;
+		}
+
+		if (!indexSQLs.isEmpty()) {
+			sb.setIndex(sb.index() - 1);
 		}
 
 		FileUtil.write(sqlFile, sb.toString(), true);
@@ -3615,13 +3612,9 @@ public class ServiceBuilder {
 
 		sb.setIndex(0);
 
-		itr = indexProps.keySet().iterator();
-
 		prevEntityName = null;
 
-		while (itr.hasNext()) {
-			String finderName = itr.next();
-
+		for (String finderName : indexProps.keySet()) {
 			String indexName = indexProps.get(finderName);
 
 			String entityName = finderName.split("\\.")[0];
@@ -3632,13 +3625,16 @@ public class ServiceBuilder {
 				sb.append("\n");
 			}
 
-			sb.append(indexName + StringPool.EQUAL + finderName);
-
-			if (itr.hasNext()) {
-				sb.append("\n");
-			}
+			sb.append(indexName);
+			sb.append(StringPool.EQUAL);
+			sb.append(finderName);
+			sb.append("\n");
 
 			prevEntityName = entityName;
+		}
+
+		if (!indexProps.isEmpty()) {
+			sb.setIndex(sb.index() - 1);
 		}
 
 		FileUtil.write(propsFile, sb.toString(), true);
@@ -3687,7 +3683,8 @@ public class ServiceBuilder {
 					String tableName = line.substring(x, y);
 
 					if (tableName.compareTo(entityMapping.getTable()) > 0) {
-						sb.append(newCreateTableString + "\n\n");
+						sb.append(newCreateTableString);
+						sb.append("\n\n");
 
 						appendNewTable = false;
 					}
@@ -3698,7 +3695,8 @@ public class ServiceBuilder {
 			}
 
 			if (appendNewTable) {
-				sb.append("\n" + newCreateTableString);
+				sb.append("\n");
+				sb.append(newCreateTableString);
 			}
 
 			unsyncBufferedReader.close();
@@ -3762,7 +3760,9 @@ public class ServiceBuilder {
 						sequenceName = sequenceName.substring(0, 30);
 					}
 
-					sb.append("create sequence " + sequenceName + ";");
+					sb.append("create sequence ");
+					sb.append(sequenceName);
+					sb.append(";");
 
 					String sequenceSQL = sb.toString();
 
@@ -3883,7 +3883,8 @@ public class ServiceBuilder {
 					String tableName = line.substring(x, y);
 
 					if (tableName.compareTo(entity.getTable()) > 0) {
-						sb.append(newCreateTableString + "\n\n");
+						sb.append(newCreateTableString);
+						sb.append("\n\n");
 
 						appendNewTable = false;
 					}
@@ -3894,7 +3895,8 @@ public class ServiceBuilder {
 			}
 
 			if (appendNewTable) {
-				sb.append("\n" + newCreateTableString);
+				sb.append("\n");
+				sb.append(newCreateTableString);
 			}
 
 			unsyncBufferedReader.close();
@@ -4179,7 +4181,8 @@ public class ServiceBuilder {
 				String colName = col.getName();
 				String colType = col.getType();
 
-				sb.append("\t" + col.getDBName());
+				sb.append("\t");
+				sb.append(col.getDBName());
 				sb.append(" ");
 
 				if (colType.equalsIgnoreCase("boolean")) {
@@ -4215,7 +4218,9 @@ public class ServiceBuilder {
 					}
 
 					if (maxLength < 4000) {
-						sb.append("VARCHAR(" + maxLength + ")");
+						sb.append("VARCHAR(");
+						sb.append(maxLength);
+						sb.append(")");
 					}
 					else if (maxLength == 4000) {
 						sb.append("STRING");
@@ -4289,7 +4294,8 @@ public class ServiceBuilder {
 			String colType = col.getType();
 			String colIdType = col.getIdType();
 
-			sb.append("\t" + col.getDBName());
+			sb.append("\t");
+			sb.append(col.getDBName());
 			sb.append(" ");
 
 			if (colType.equalsIgnoreCase("boolean")) {
@@ -4331,7 +4337,9 @@ public class ServiceBuilder {
 				}
 
 				if (maxLength < 4000) {
-					sb.append("VARCHAR(" + maxLength + ")");
+					sb.append("VARCHAR(");
+					sb.append(maxLength);
+					sb.append(")");
 				}
 				else if (maxLength == 4000) {
 					sb.append("STRING");

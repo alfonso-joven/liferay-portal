@@ -141,13 +141,15 @@ public class AUIUtil {
 		String inlineLabel, boolean showForLabel, String forLabel,
 		boolean choiceField) {
 
-		StringBundler sb = new StringBundler(4);
+		StringBundler sb = new StringBundler(7);
 
 		if (choiceField) {
-			sb.append("class=\"" + LABEL_CHOICE_PREFIX);
+			sb.append("class=\"");
+			sb.append(LABEL_CHOICE_PREFIX);
 		}
 		else {
-			sb.append("class=\"" + LABEL_FIELD_PREFIX);
+			sb.append("class=\"");
+			sb.append(LABEL_FIELD_PREFIX);
 
 			if (Validator.isNotNull(inlineLabel)) {
 				sb.append("-inline-label");
@@ -157,7 +159,9 @@ public class AUIUtil {
 		sb.append("\"");
 
 		if (showForLabel) {
-			sb.append(" for=\"" + forLabel + "\"");
+			sb.append(" for=\"");
+			sb.append(forLabel);
+			sb.append("\"");
 		}
 
 		return sb.toString();

@@ -1881,7 +1881,8 @@ public class JavadocFormatter {
 			}
 
 			if (line.startsWith(linePrefix)) {
-				sb.append(linePrefix + value);
+				sb.append(linePrefix);
+				sb.append(value);
 			}
 			else {
 				sb.append(line);
