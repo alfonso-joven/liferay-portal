@@ -276,11 +276,13 @@ public class PwdEncryptor {
 			// Extract salt from encrypted password
 
 			try {
-				byte[] digestPlusSalt = Base64.decode(
-					StringUtil.replace(
-						sshaString, StringPool.OPEN_CURLY_BRACE + TYPE_SSHA +
-						StringPool.CLOSE_CURLY_BRACE, StringPool.BLANK));
+				sshaString = StringUtil.replace(
+					sshaString,
+					StringPool.OPEN_CURLY_BRACE + TYPE_SSHA +
+						StringPool.CLOSE_CURLY_BRACE,
+					StringPool.BLANK);
 
+				byte[] digestPlusSalt = Base64.decode(sshaString);
 				byte[] digestBytes = new byte[digestPlusSalt.length - 8];
 
 				System.arraycopy(
