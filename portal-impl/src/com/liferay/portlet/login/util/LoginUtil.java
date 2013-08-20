@@ -282,7 +282,7 @@ public class LoginUtil {
 		}
 
 		if (PropsValues.SESSION_ENABLE_PHISHING_PROTECTION) {
-			protectFishing(request, session);
+			renewSession(request, session);
 		}
 
 		// Set cookies
@@ -423,7 +423,7 @@ public class LoginUtil {
 		AuthenticatedUserUUIDStoreUtil.register(userUUID);
 	}
 
-	public static void protectFishing(
+	public static void renewSession(
 			HttpServletRequest request, HttpSession session)
 		throws Exception {
 
