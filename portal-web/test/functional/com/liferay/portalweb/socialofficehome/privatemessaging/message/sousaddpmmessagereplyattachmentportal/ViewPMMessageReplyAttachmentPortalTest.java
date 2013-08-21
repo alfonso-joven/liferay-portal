@@ -30,10 +30,12 @@ public class ViewPMMessageReplyAttachmentPortalTest extends BaseTestCase {
 			RuntimeVariables.replace("Dockbar"));
 		selenium.waitForElementPresent(
 			"//script[contains(@src,'/liferay/dockbar_underlay.js')]");
-		selenium.waitForElementPresent("//li[@id='_145_notificationsMenu']");
+		selenium.waitForElementPresent(
+			"//a[contains(@class,'user-notification')]");
 		assertEquals(RuntimeVariables.replace("1"),
 			selenium.getText("//span[@class='notification-count']"));
-		selenium.mouseOver("//li[@id='_145_notificationsMenu']");
+		selenium.clickAt("//a[contains(@class,'user-notification')]",
+			RuntimeVariables.replace("Notifications"));
 		selenium.waitForVisible("//div[@class='title']");
 		assertEquals(RuntimeVariables.replace(
 				"Social01 Office01 User01 sent you a message."),
@@ -43,10 +45,12 @@ public class ViewPMMessageReplyAttachmentPortalTest extends BaseTestCase {
 		selenium.clickAt("//span[@class='dismiss-notifications']/a",
 			RuntimeVariables.replace("Mark All as Read"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForElementPresent("//li[@id='_145_notificationsMenu']");
+		selenium.waitForElementPresent(
+			"//a[contains(@class,'user-notification')]");
 		assertEquals(RuntimeVariables.replace("0"),
 			selenium.getText("//span[@class='notification-count']"));
-		selenium.mouseOver("//li[@id='_145_notificationsMenu']");
+		selenium.clickAt("//a[contains(@class,'user-notification')]",
+			RuntimeVariables.replace("Notifications"));
 		assertFalse(selenium.isTextPresent(
 				"Social01 Office01 User01 sent you a message."));
 		selenium.clickAt("link=Private Messaging Test Page",

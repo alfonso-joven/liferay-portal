@@ -29,6 +29,8 @@ public class SOUs_SendMemberRequestSite1PublicRestrictTest extends BaseTestCase 
 		selenium.waitForVisible("//li[contains(@class, 'selected')]/a/span");
 		assertEquals(RuntimeVariables.replace("Dashboard"),
 			selenium.getText("//li[contains(@class, 'selected')]/a/span"));
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
 		selenium.waitForVisible(
 			"//button[contains(.,'Sites Directory')]/span[2]");
 		assertEquals(RuntimeVariables.replace("Sites Directory"),

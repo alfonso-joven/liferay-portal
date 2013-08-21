@@ -34,7 +34,8 @@ public class SOUs_ViewMarkReadNotificationAnnouncementSiteTest
 		selenium.waitForVisible("//span[@class='notification-count']");
 		assertEquals(RuntimeVariables.replace("0"),
 			selenium.getText("//span[@class='notification-count']"));
-		selenium.mouseOver("//span[@class='notification-count']");
+		selenium.clickAt("//span[@class='notification-count']",
+			RuntimeVariables.replace("0"));
 		selenium.waitForElementPresent(
 			"//div[contains(@class, 'user-notification-events-container')]");
 		assertTrue(selenium.isVisible(

@@ -25,18 +25,10 @@ public class AddEvent2SiteTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/joebloggs/so/dashboard/");
-		selenium.waitForVisible("//li[contains(@class, 'selected')]/a/span");
-		assertEquals(RuntimeVariables.replace("Dashboard"),
-			selenium.getText("//li[contains(@class, 'selected')]/a/span"));
-		assertEquals(RuntimeVariables.replace("Sites"),
-			selenium.getText("//div[@id='so-sidebar']/h3"));
-		selenium.waitForVisible("//select[@id='_5_WAR_soportlet_tabs1']");
-		assertTrue(selenium.isPartialText(
-				"//select[@id='_5_WAR_soportlet_tabs1']", "All Sites"));
-		selenium.select("//select[@id='_5_WAR_soportlet_tabs1']",
-			RuntimeVariables.replace("All Sites"));
-		assertTrue(selenium.isVisible("//input[@class='search-input']"));
-		selenium.type("//input[@class='search-input']",
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
+		selenium.waitForVisible("//input[@class='search-input focus']");
+		selenium.type("//input[@class='search-input focus']",
 			RuntimeVariables.replace("Open"));
 		selenium.waitForText("//li[contains(@class, 'social-office-enabled')]/span[2]/a",
 			"Open Site Name");

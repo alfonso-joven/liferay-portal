@@ -28,6 +28,10 @@ public class AddPortletSearchSOTest extends BaseTestCase {
 		selenium.clickAt("link=Search Test Page",
 			RuntimeVariables.replace("Search Test Page"));
 		selenium.waitForPageToLoad("30000");
+		selenium.clickAt("//a[contains(@id,'toggleDockbar')]",
+			RuntimeVariables.replace("Toggle Dockbar"));
+		selenium.waitForElementPresent(
+			"//body[contains(@class,'show-dockbar')]");
 		selenium.clickAt("//div[@id='dockbar']",
 			RuntimeVariables.replace("Dockbar"));
 		selenium.waitForElementPresent(

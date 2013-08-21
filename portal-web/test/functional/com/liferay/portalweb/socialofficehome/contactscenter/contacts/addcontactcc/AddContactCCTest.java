@@ -30,9 +30,9 @@ public class AddContactCCTest extends BaseTestCase {
 		selenium.clickAt("//nav/ul/li[contains(.,'Contacts Center')]/a/span",
 			RuntimeVariables.replace("Contacts Center"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals("Add Contact",
-			selenium.getValue("//input[@value='Add Contact']"));
-		selenium.clickAt("//input[@value='Add Contact']",
+		assertEquals(RuntimeVariables.replace("Add Contact"),
+			selenium.getText("//button[contains(@id,'add-contact')]"));
+		selenium.clickAt("//button[contains(@id,'add-contact')]",
 			RuntimeVariables.replace("Add Contact"));
 		selenium.waitForVisible(
 			"//input[@id='_1_WAR_contactsportlet_fullName']");

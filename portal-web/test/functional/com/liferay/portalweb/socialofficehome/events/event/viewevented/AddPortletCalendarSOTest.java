@@ -28,6 +28,9 @@ public class AddPortletCalendarSOTest extends BaseTestCase {
 		selenium.clickAt("link=Calendar Test Page",
 			RuntimeVariables.replace("Calendar Test Page"));
 		selenium.waitForPageToLoad("30000");
+		selenium.clickAt("//a[contains(@id,'toggleDockbar')]",
+			RuntimeVariables.replace("Toggle Dockbar"));
+		selenium.waitForVisible("//div[@id='dockbar']");
 		selenium.clickAt("//div[@id='dockbar']",
 			RuntimeVariables.replace("Dockbar"));
 		selenium.waitForElementPresent(

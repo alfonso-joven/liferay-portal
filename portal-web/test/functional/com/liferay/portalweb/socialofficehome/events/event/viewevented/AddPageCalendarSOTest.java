@@ -30,6 +30,10 @@ public class AddPageCalendarSOTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/user/joebloggs/so/dashboard/");
+				selenium.clickAt("//a[contains(@id,'toggleDockbar')]",
+					RuntimeVariables.replace("Toggle Dockbar"));
+				selenium.waitForElementPresent(
+					"//body[contains(@class,'show-dockbar')]");
 				selenium.clickAt("//div[@id='dockbar']",
 					RuntimeVariables.replace("Dockbar"));
 				selenium.waitForElementPresent(

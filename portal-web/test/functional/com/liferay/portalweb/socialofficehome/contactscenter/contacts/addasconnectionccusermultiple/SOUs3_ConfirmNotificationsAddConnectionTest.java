@@ -31,10 +31,11 @@ public class SOUs3_ConfirmNotificationsAddConnectionTest extends BaseTestCase {
 		selenium.waitForElementPresent(
 			"//script[contains(@src,'/liferay/dockbar_underlay.js')]");
 		assertTrue(selenium.isElementPresent(
-				"//li[@id='_145_notificationsMenu']"));
+				"//a[contains(@class,'user-notification')]"));
 		assertEquals(RuntimeVariables.replace("1"),
 			selenium.getText("//span[@class='notification-count']"));
-		selenium.mouseOver("//li[@id='_145_notificationsMenu']");
+		selenium.clickAt("//a[contains(@class,'user-notification')]",
+			RuntimeVariables.replace("Notifications"));
 		selenium.waitForVisible("//div[@class='notification-entry']");
 		assertEquals(RuntimeVariables.replace(
 				"Joe Bloggs would like to add you as a connection."),

@@ -14,7 +14,17 @@
 	<td></td>
 </tr>
 <tr>
-	<td>click</td>
+	<td>clickAt</td>
+	<td>//a[contains(@id,'toggleDockbar')]</td>
+	<td>Toggle Dockbar</td>
+</tr>
+<tr>
+	<td>waitForElementPresent</td>
+	<td>//body[contains(@class,'show-dockbar')]</td>
+	<td>Dockbar</td>
+</tr>
+<tr>
+	<td>clickAt</td>
 	<td>//div[@id='dockbar']</td>
 	<td>Dockbar</td>
 </tr>
@@ -24,13 +34,8 @@
 	<td>Edit Controls</td>
 </tr>
 <tr>
-	<td>clickAt</td>
-	<td>//li[@id='_145_toggleControls']</td>
-	<td>Edit Controls</td>
-</tr>
-<tr>
 	<td>storeElementPresent</td>
-	<td>//body[@class='normal yui3-skin-sam signed-in private-page user-site user-group dockbar-ready controls-hidden']</td>
+	<td>//body[contains(@class,'controls-hidden')]</td>
 	<td>EditControlOff</td>
 </tr>
 <tr>

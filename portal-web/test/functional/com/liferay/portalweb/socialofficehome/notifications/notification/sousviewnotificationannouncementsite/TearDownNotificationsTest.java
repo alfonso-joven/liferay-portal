@@ -31,7 +31,8 @@ public class TearDownNotificationsTest extends BaseTestCase {
 				selenium.selectFrame("relative=top");
 				selenium.open("/user/joebloggs/so/dashboard/");
 				selenium.waitForVisible("//span[@class='notification-count']");
-				selenium.mouseOver("//span[@class='notification-count']");
+				selenium.clickAt("//span[@class='notification-count']",
+					RuntimeVariables.replace("Notification Count"));
 				assertEquals(RuntimeVariables.replace("View All\u00bb"),
 					selenium.getText("link=View All\u00bb"));
 				selenium.waitForElementPresent(

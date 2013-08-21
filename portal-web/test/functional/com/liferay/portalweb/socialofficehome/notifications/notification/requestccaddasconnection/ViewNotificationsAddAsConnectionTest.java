@@ -27,10 +27,11 @@ public class ViewNotificationsAddAsConnectionTest extends BaseTestCase {
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/joebloggs/so/dashboard/");
 		assertTrue(selenium.isElementPresent(
-				"//li[@id='_145_notificationsMenu']"));
+				"//a[contains(@class,'user-notification')]"));
 		assertEquals(RuntimeVariables.replace("1"),
 			selenium.getText("//span[@class='notification-count']"));
-		selenium.mouseOver("//li[@id='_145_notificationsMenu']");
+		selenium.clickAt("//a[contains(@class,'user-notification')]",
+			RuntimeVariables.replace("Notifications"));
 		selenium.waitForVisible("//div[@class='title']");
 		assertEquals(RuntimeVariables.replace(
 				"Social01 Office01 User01 would like to add you as a connection."),

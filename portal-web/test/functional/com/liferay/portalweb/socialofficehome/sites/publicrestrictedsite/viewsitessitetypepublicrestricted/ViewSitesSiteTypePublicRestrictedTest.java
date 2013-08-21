@@ -29,15 +29,16 @@ public class ViewSitesSiteTypePublicRestrictedTest extends BaseTestCase {
 		selenium.waitForVisible("//li[contains(@class, 'selected')]/a/span");
 		assertEquals(RuntimeVariables.replace("Dashboard"),
 			selenium.getText("//li[contains(@class, 'selected')]/a/span"));
-		assertEquals(RuntimeVariables.replace("Sites"),
-			selenium.getText("//div[@id='so-sidebar']/h3"));
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
 		selenium.waitForVisible("//select[@id='_5_WAR_soportlet_tabs1']");
 		assertTrue(selenium.isPartialText(
 				"//select[@id='_5_WAR_soportlet_tabs1']", "All Sites"));
 		selenium.select("//select[@id='_5_WAR_soportlet_tabs1']",
 			RuntimeVariables.replace("All Sites"));
-		assertTrue(selenium.isVisible("//input[@class='search-input']"));
-		selenium.type("//input[@class='search-input']",
+		assertTrue(selenium.isVisible(
+				"//input[contains(@class,'search-input')]"));
+		selenium.type("//input[contains(@class,'search-input')]",
 			RuntimeVariables.replace("Public Restricted"));
 		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Public Restricted Site Name"),
@@ -66,6 +67,8 @@ public class ViewSitesSiteTypePublicRestrictedTest extends BaseTestCase {
 		selenium.waitForVisible("//li[contains(@class, 'selected')]/a/span");
 		assertEquals(RuntimeVariables.replace("Dashboard"),
 			selenium.getText("//li[contains(@class, 'selected')]/a/span"));
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
 		selenium.waitForVisible(
 			"//button[contains(.,'Sites Directory')]/span[2]");
 		assertEquals(RuntimeVariables.replace("Sites Directory"),

@@ -27,14 +27,12 @@ public class ViewDeleteReplyMicroblogsContentNotificationsTest
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/joebloggs/so/dashboard/");
-		selenium.clickAt("//div[@id='dockbar']",
-			RuntimeVariables.replace("Dockbar"));
 		selenium.waitForElementPresent(
-			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
-		selenium.waitForElementPresent("//li[@id='_145_notificationsMenu']");
+			"//a[contains(@class,'user-notification')]");
 		assertEquals(RuntimeVariables.replace("1"),
 			selenium.getText("//span[@class='notification-count']"));
-		selenium.mouseOver("//li[@id='_145_notificationsMenu']");
+		selenium.clickAt("//a[contains(@class,'user-notification')]",
+			RuntimeVariables.replace("Notifications"));
 		selenium.waitForVisible("//div[@class='title']");
 		assertEquals(RuntimeVariables.replace(
 				"Social01 Office01 User01 commented on your post."),
@@ -58,14 +56,12 @@ public class ViewDeleteReplyMicroblogsContentNotificationsTest
 				"xPath=(//div[@class='content'])[2]"));
 		assertFalse(selenium.isTextPresent("1 Comment"));
 		selenium.open("/user/joebloggs/so/dashboard/");
-		selenium.clickAt("//div[@id='dockbar']",
-			RuntimeVariables.replace("Dockbar"));
 		selenium.waitForElementPresent(
-			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
-		selenium.waitForElementPresent("//li[@id='_145_notificationsMenu']");
+			"//a[contains(@class,'user-notification')]");
 		assertEquals(RuntimeVariables.replace("1"),
 			selenium.getText("//span[@class='notification-count']"));
-		selenium.mouseOver("//li[@id='_145_notificationsMenu']");
+		selenium.clickAt("//a[contains(@class,'user-notification')]",
+			RuntimeVariables.replace("Notifications"));
 		selenium.waitForVisible("//div[@class='title']");
 		assertEquals(RuntimeVariables.replace(
 				"Social01 Office01 User01 commented on your post."),
@@ -77,14 +73,12 @@ public class ViewDeleteReplyMicroblogsContentNotificationsTest
 		selenium.clickAt("//span[@class='dismiss-notifications']/a",
 			RuntimeVariables.replace("Mark All as Read"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//div[@id='dockbar']",
-			RuntimeVariables.replace("Dockbar"));
 		selenium.waitForElementPresent(
-			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
-		selenium.waitForElementPresent("//li[@id='_145_notificationsMenu']");
+			"//a[contains(@class,'user-notification')]");
 		assertEquals(RuntimeVariables.replace("0"),
 			selenium.getText("//span[@class='notification-count']"));
-		selenium.mouseOver("//li[@id='_145_notificationsMenu']");
+		selenium.clickAt("//a[contains(@class,'user-notification')]",
+			RuntimeVariables.replace("Notifications"));
 		assertFalse(selenium.isTextPresent(
 				"Social01 Office01 User01 commented on your post."));
 	}

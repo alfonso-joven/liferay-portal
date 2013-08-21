@@ -25,10 +25,12 @@ public class SOUs_AddPMMessageReplyTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/socialoffice01/so/dashboard");
-		selenium.waitForElementPresent("//li[@id='_145_notificationsMenu']");
+		selenium.waitForElementPresent(
+			"//a[contains(@class,'user-notification')]");
 		assertEquals(RuntimeVariables.replace("1"),
 			selenium.getText("//span[@class='notification-count']"));
-		selenium.mouseOver("//li[@id='_145_notificationsMenu']");
+		selenium.clickAt("//a[contains(@class,'user-notification')]",
+			RuntimeVariables.replace("Notifications"));
 		selenium.waitForVisible("//div[@class='title']");
 		assertEquals(RuntimeVariables.replace("Joe Bloggs sent you a message."),
 			selenium.getText("//div[@class='title']"));
@@ -37,10 +39,12 @@ public class SOUs_AddPMMessageReplyTest extends BaseTestCase {
 		selenium.clickAt("//span[@class='dismiss-notifications']/a",
 			RuntimeVariables.replace("Mark All as Read"));
 		selenium.waitForPageToLoad("30000");
-		selenium.waitForElementPresent("//li[@id='_145_notificationsMenu']");
+		selenium.waitForElementPresent(
+			"//a[contains(@class,'user-notification')]");
 		assertEquals(RuntimeVariables.replace("0"),
 			selenium.getText("//span[@class='notification-count']"));
-		selenium.mouseOver("//li[@id='_145_notificationsMenu']");
+		selenium.clickAt("//a[contains(@class,'user-notification')]",
+			RuntimeVariables.replace("Notifications"));
 		assertFalse(selenium.isTextPresent("Joe Bloggs sent you a message."));
 		selenium.waitForVisible("//nav/ul/li[contains(.,'Messages')]/a/span");
 		selenium.clickAt("//nav/ul/li[contains(.,'Messages')]/a/span",

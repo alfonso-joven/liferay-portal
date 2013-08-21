@@ -27,10 +27,10 @@ public class AcceptMemberRequestSite1TypePrivateRestrictTest
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/joebloggs/so/dashboard/");
-		assertEquals(RuntimeVariables.replace("Sites"),
-			selenium.getText("//div[@id='so-sidebar']/h3"));
-		assertTrue(selenium.isVisible("//input[@class='search-input']"));
-		selenium.type("//input[@class='search-input']",
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
+		selenium.waitForVisible("//input[@class='search-input focus']");
+		selenium.type("//input[@class='search-input focus']",
 			RuntimeVariables.replace("Private Restricted"));
 		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Private Restricted Site1 Name"),
@@ -39,6 +39,10 @@ public class AcceptMemberRequestSite1TypePrivateRestrictTest
 		selenium.clickAt("//li[contains(@class, 'social-office-enabled')]/span[2]/a",
 			RuntimeVariables.replace("Private Restricted Site1 Name"));
 		selenium.waitForPageToLoad("30000");
+		selenium.clickAt("//a[contains(@id,'toggleDockbar')]",
+			RuntimeVariables.replace("Toggle Dockbar"));
+		selenium.waitForElementPresent(
+			"//body[contains(@class,'show-dockbar')]");
 		selenium.clickAt("//div[@id='dockbar']",
 			RuntimeVariables.replace("Dockbar"));
 		selenium.waitForElementPresent(

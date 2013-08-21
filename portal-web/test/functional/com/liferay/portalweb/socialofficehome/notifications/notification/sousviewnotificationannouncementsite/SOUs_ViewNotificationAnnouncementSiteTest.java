@@ -33,7 +33,8 @@ public class SOUs_ViewNotificationAnnouncementSiteTest extends BaseTestCase {
 		selenium.waitForVisible("//span[@class='notification-count']");
 		assertEquals(RuntimeVariables.replace("1"),
 			selenium.getText("//span[@class='notification-count']"));
-		selenium.mouseOver("//span[@class='notification-count']");
+		selenium.clickAt("//span[@class='notification-count']",
+			RuntimeVariables.replace("1"));
 		selenium.waitForElementPresent(
 			"//div[contains(@class, 'user-notification-events-container')]");
 		assertTrue(selenium.isVisible(

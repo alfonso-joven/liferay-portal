@@ -50,15 +50,12 @@ public class ViewMBContentViewableByFollowersCommentTest extends BaseTestCase {
 			RuntimeVariables.replace("Dockbar"));
 		selenium.waitForElementPresent(
 			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
-		selenium.clickAt("//div[@id='dockbar']",
-			RuntimeVariables.replace("Dockbar"));
-		selenium.waitForElementPresent(
-			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
 		assertTrue(selenium.isElementPresent(
-				"//li[@id='_145_notificationsMenu']"));
+				"//a[contains(@class,'user-notification')]"));
 		assertEquals(RuntimeVariables.replace("1"),
 			selenium.getText("//span[@class='notification-count']"));
-		selenium.mouseOver("//li[@id='_145_notificationsMenu']");
+		selenium.clickAt("//a[contains(@class,'user-notification')]",
+			RuntimeVariables.replace("Notifications"));
 		selenium.waitForVisible("//div[@class='notification-entry']");
 		assertEquals(RuntimeVariables.replace(
 				"Social01 Office01 User01 commented on your post."),

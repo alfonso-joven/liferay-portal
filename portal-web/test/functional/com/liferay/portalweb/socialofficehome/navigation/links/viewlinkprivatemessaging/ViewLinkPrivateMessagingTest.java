@@ -41,8 +41,8 @@ public class ViewLinkPrivateMessagingTest extends BaseTestCase {
 		assertEquals("Delete", selenium.getValue("//input[@value='Delete']"));
 		assertEquals("New Message",
 			selenium.getValue("//input[@value='New Message']"));
-		assertEquals(RuntimeVariables.replace("Sites"),
-			selenium.getText("//div[@id='so-sidebar']/h3"));
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
 		assertTrue(selenium.isVisible("//div/input[1]"));
 		assertEquals(RuntimeVariables.replace("Liferay, Inc."),
 			selenium.getText("//li/span[2]/a"));

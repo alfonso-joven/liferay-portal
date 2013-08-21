@@ -28,8 +28,8 @@ public class InviteSOUserSite1Test extends BaseTestCase {
 		selenium.waitForVisible("//li[contains(@class, 'selected')]/a/span");
 		assertEquals(RuntimeVariables.replace("Dashboard"),
 			selenium.getText("//li[contains(@class, 'selected')]/a/span"));
-		assertEquals(RuntimeVariables.replace("Sites"),
-			selenium.getText("//div[@id='so-sidebar']/h3"));
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
 		selenium.waitForVisible(
 			"//li[contains(@class, 'social-office-enabled')]");
 		assertEquals(RuntimeVariables.replace("Open Site1 Name"),
@@ -50,7 +50,8 @@ public class InviteSOUserSite1Test extends BaseTestCase {
 				"//a[contains(text(),'Invite members to this site.')]"));
 		selenium.clickAt("//a[contains(text(),'Invite members to this site.')]",
 			RuntimeVariables.replace("Invite members to this site."));
-		selenium.waitForVisible("//div[@class='search']");
+		selenium.waitForVisible(
+			"//div[contains(@class,'user-search')]/div[@class='search']");
 		assertEquals(RuntimeVariables.replace("Social01 Office01 User01"),
 			selenium.getText("//div[contains(@class, 'user')]/span"));
 		selenium.clickAt("//div[contains(@class, 'user')]/span",

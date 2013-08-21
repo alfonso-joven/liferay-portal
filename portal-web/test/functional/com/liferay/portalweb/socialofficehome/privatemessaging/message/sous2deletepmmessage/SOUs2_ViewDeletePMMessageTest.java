@@ -36,10 +36,12 @@ public class SOUs2_ViewDeletePMMessageTest extends BaseTestCase {
 			selenium.getText("//div[@class='portlet-msg-info']"));
 		assertFalse(selenium.isTextPresent("Message Subject"));
 		assertFalse(selenium.isTextPresent("Message Body"));
-		selenium.waitForElementPresent("//li[@id='_145_notificationsMenu']");
+		selenium.waitForElementPresent(
+			"//a[contains(@class,'user-notification')]");
 		assertEquals(RuntimeVariables.replace("0"),
 			selenium.getText("//span[@class='notification-count']"));
-		selenium.mouseOver("//li[@id='_145_notificationsMenu']");
+		selenium.clickAt("//a[contains(@class,'user-notification')]",
+			RuntimeVariables.replace("Notifications"));
 		assertFalse(selenium.isTextPresent(
 				"Social01 Office01 User01 sent you a message."));
 	}

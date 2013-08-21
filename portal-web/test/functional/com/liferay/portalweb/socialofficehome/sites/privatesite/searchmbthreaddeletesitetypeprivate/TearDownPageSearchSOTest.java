@@ -30,13 +30,16 @@ public class TearDownPageSearchSOTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/user/joebloggs/so/dashboard/");
-				selenium.click("//div[@id='dockbar']");
+				selenium.clickAt("//a[contains(@id,'toggleDockbar')]",
+					RuntimeVariables.replace("Toggle Dockbar"));
+				selenium.waitForElementPresent(
+					"//body[contains(@class,'show-dockbar')]");
+				selenium.clickAt("//div[@id='dockbar']",
+					RuntimeVariables.replace("Dockbar"));
 				selenium.waitForVisible("//li[@id='_145_toggleControls']");
-				selenium.clickAt("//li[@id='_145_toggleControls']",
-					RuntimeVariables.replace("Edit Controls"));
 
 				boolean EditControlOff = selenium.isElementPresent(
-						"//body[@class='normal yui3-skin-sam signed-in private-page user-site user-group dockbar-ready controls-hidden']");
+						"//body[contains(@class,'controls-hidden')]");
 
 				if (!EditControlOff) {
 					label = 2;

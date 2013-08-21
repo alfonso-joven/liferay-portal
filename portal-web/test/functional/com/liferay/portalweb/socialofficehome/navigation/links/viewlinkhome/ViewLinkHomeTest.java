@@ -59,8 +59,8 @@ public class ViewLinkHomeTest extends BaseTestCase {
 				"xPath=(//h1[@class='portlet-title'])[contains(.,'Events')]"));
 		assertEquals(RuntimeVariables.replace("There are no more events today."),
 			selenium.getText("//div[2]/div/div[2]/div/section/div/div/div"));
-		assertEquals(RuntimeVariables.replace("Sites"),
-			selenium.getText("//div[@id='so-sidebar']/h3"));
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
 		assertTrue(selenium.isVisible("//div/input[1]"));
 		assertEquals(RuntimeVariables.replace("Liferay, Inc."),
 			selenium.getText("//li/span[2]/a"));

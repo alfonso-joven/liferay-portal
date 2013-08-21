@@ -52,8 +52,8 @@ public class AddSiteViewCCUserTest extends BaseTestCase {
 				"//div[contains(@class, 'contacts-profile')]/div/div[2]/div[3]"));
 		assertTrue(selenium.isElementNotPresent(
 				"//div[contains(@class, 'contacts-center-home-content')]"));
-		assertEquals(RuntimeVariables.replace("Sites"),
-			selenium.getText("//div[@id='so-sidebar']/h3"));
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
 		selenium.waitForVisible("//button[contains(.,'Add Site')]/span[2]");
 		assertEquals(RuntimeVariables.replace("Add Site"),
 			selenium.getText("//button[contains(.,'Add Site')]/span[2]"));

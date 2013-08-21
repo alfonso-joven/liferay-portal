@@ -41,8 +41,8 @@ public class ViewLinkContactsCenterTest extends BaseTestCase {
 			selenium.getText("//a[contains(.,'You are following 0 people.')]"));
 		assertTrue(selenium.isPartialText("//a[contains(.,'View all')]",
 				"View all"));
-		assertEquals(RuntimeVariables.replace("Sites"),
-			selenium.getText("//div[@id='so-sidebar']/h3"));
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
 		assertTrue(selenium.isVisible("//div/input[1]"));
 		assertEquals(RuntimeVariables.replace("Liferay, Inc."),
 			selenium.getText("//li/span[2]/a"));

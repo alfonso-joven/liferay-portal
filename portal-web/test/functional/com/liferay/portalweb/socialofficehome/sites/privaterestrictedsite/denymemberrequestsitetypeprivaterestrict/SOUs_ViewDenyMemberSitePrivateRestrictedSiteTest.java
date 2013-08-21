@@ -30,12 +30,12 @@ public class SOUs_ViewDenyMemberSitePrivateRestrictedSiteTest
 		selenium.waitForVisible("//li[contains(@class, 'selected')]/a/span");
 		assertEquals(RuntimeVariables.replace("Dashboard"),
 			selenium.getText("//li[contains(@class, 'selected')]/a/span"));
-		assertEquals(RuntimeVariables.replace("Sites"),
-			selenium.getText("//div[@id='so-sidebar']/h3"));
-		assertTrue(selenium.isVisible("//input[@class='search-input']"));
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
+		selenium.waitForVisible("//input[contains(@class,'search-input')]");
 		selenium.select("//div[@class='sites-tabs']/span/span/span/select",
 			RuntimeVariables.replace("All Sites"));
-		selenium.type("//input[@class='search-input']",
+		selenium.type("//input[contains(@class,'search-input')]",
 			RuntimeVariables.replace("Private Restricted"));
 		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Private Restricted Site Name"),

@@ -23,42 +23,78 @@ import com.liferay.portalweb.portal.util.RuntimeVariables;
 public class TearDownConfigurePortletDisplayDaysTest extends BaseTestCase {
 	public void testTearDownConfigurePortletDisplayDays()
 		throws Exception {
-		selenium.selectWindow("null");
-		selenium.selectFrame("relative=top");
-		selenium.open("/user/joebloggs/so/dashboard/");
-		selenium.waitForText("xPath=(//span[@class='portlet-title-text'])[contains(.,'Events')]",
-			"Events");
-		assertEquals(RuntimeVariables.replace("Events"),
-			selenium.getText(
-				"xPath=(//span[@class='portlet-title-text'])[contains(.,'Events')]"));
-		Thread.sleep(1000);
-		assertEquals(RuntimeVariables.replace("Options"),
-			selenium.getText(
-				"//div[2]/div/div[2]/div/section/header/menu/span/ul/li/strong/a"));
-		selenium.clickAt("//div[2]/div/div[2]/div/section/header/menu/span/ul/li/strong/a",
-			RuntimeVariables.replace("Options"));
-		selenium.waitForVisible(
-			"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a");
-		assertEquals(RuntimeVariables.replace("Configuration"),
-			selenium.getText(
-				"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a"));
-		selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a",
-			RuntimeVariables.replace("Configuration"));
-		selenium.waitForVisible(
-			"//div[@class='yui3-widget-bd aui-panel-bd aui-dialog-bd aui-dialog-iframe-bd']/iframe");
-		selenium.selectFrame(
-			"//div[@class='yui3-widget-bd aui-panel-bd aui-dialog-bd aui-dialog-iframe-bd']/iframe");
-		selenium.waitForVisible("//label[contains(@for,'maxDaysDisplayed')]");
-		assertEquals(RuntimeVariables.replace("How many days to display?"),
-			selenium.getText("//label[contains(@for,'maxDaysDisplayed')]"));
-		selenium.select("//select[@id='_86_maxDaysDisplayed']",
-			RuntimeVariables.replace("1"));
-		selenium.clickAt("//input[@value='Save']",
-			RuntimeVariables.replace("Save"));
-		selenium.waitForVisible("//div[@class='portlet-msg-success']");
-		assertEquals(RuntimeVariables.replace(
-				"You have successfully updated the setup."),
-			selenium.getText("//div[@class='portlet-msg-success']"));
-		selenium.selectFrame("relative=top");
+		int label = 1;
+
+		while (label >= 1) {
+			switch (label) {
+			case 1:
+				selenium.selectWindow("null");
+				selenium.selectFrame("relative=top");
+				selenium.open("/user/joebloggs/so/dashboard/");
+				selenium.waitForText("xPath=(//span[@class='portlet-title-text'])[contains(.,'Events')]",
+					"Events");
+				assertEquals(RuntimeVariables.replace("Events"),
+					selenium.getText(
+						"xPath=(//span[@class='portlet-title-text'])[contains(.,'Events')]"));
+				Thread.sleep(1000);
+				selenium.clickAt("//a[contains(@id,'toggleDockbar')]",
+					RuntimeVariables.replace("Toggle Dockbar"));
+				selenium.waitForElementPresent(
+					"//body[contains(@class,'show-dockbar')]");
+				selenium.clickAt("//div[@id='dockbar']",
+					RuntimeVariables.replace("Dockbar"));
+				selenium.waitForVisible("//li[@id='_145_toggleControls']");
+
+				boolean EditControlOff = selenium.isElementPresent(
+						"//body[contains(@class,'controls-hidden')]");
+
+				if (!EditControlOff) {
+					label = 2;
+
+					continue;
+				}
+
+				assertEquals(RuntimeVariables.replace("Edit Controls"),
+					selenium.getText("//li[@id='_145_toggleControls']"));
+				selenium.clickAt("//li[@id='_145_toggleControls']",
+					RuntimeVariables.replace("Edit Controls"));
+
+			case 2:
+				assertEquals(RuntimeVariables.replace("Options"),
+					selenium.getText(
+						"//div[2]/div/div[2]/div/section/header/menu/span/ul/li/strong/a"));
+				selenium.clickAt("//div[2]/div/div[2]/div/section/header/menu/span/ul/li/strong/a",
+					RuntimeVariables.replace("Options"));
+				selenium.waitForVisible(
+					"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a");
+				assertEquals(RuntimeVariables.replace("Configuration"),
+					selenium.getText(
+						"//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a"));
+				selenium.clickAt("//div[@class='lfr-component lfr-menu-list']/ul/li[2]/a",
+					RuntimeVariables.replace("Configuration"));
+				selenium.waitForVisible(
+					"//div[@class='yui3-widget-bd aui-panel-bd aui-dialog-bd aui-dialog-iframe-bd']/iframe");
+				selenium.selectFrame(
+					"//div[@class='yui3-widget-bd aui-panel-bd aui-dialog-bd aui-dialog-iframe-bd']/iframe");
+				selenium.waitForVisible(
+					"//label[contains(@for,'maxDaysDisplayed')]");
+				assertEquals(RuntimeVariables.replace(
+						"How many days to display?"),
+					selenium.getText(
+						"//label[contains(@for,'maxDaysDisplayed')]"));
+				selenium.select("//select[@id='_86_maxDaysDisplayed']",
+					RuntimeVariables.replace("1"));
+				selenium.clickAt("//input[@value='Save']",
+					RuntimeVariables.replace("Save"));
+				selenium.waitForVisible("//div[@class='portlet-msg-success']");
+				assertEquals(RuntimeVariables.replace(
+						"You have successfully updated the setup."),
+					selenium.getText("//div[@class='portlet-msg-success']"));
+				selenium.selectFrame("relative=top");
+
+			case 100:
+				label = -1;
+			}
+		}
 	}
 }

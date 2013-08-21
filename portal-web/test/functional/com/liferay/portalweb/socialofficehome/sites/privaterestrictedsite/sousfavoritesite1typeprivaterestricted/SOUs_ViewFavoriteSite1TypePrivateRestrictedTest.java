@@ -27,12 +27,12 @@ public class SOUs_ViewFavoriteSite1TypePrivateRestrictedTest
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/socialoffice01/so/dashboard/");
-		assertEquals(RuntimeVariables.replace("Sites"),
-			selenium.getText("//div[@id='so-sidebar']/h3"));
-		assertTrue(selenium.isVisible("//input[@class='search-input']"));
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
+		selenium.waitForVisible("//input[contains(@class,'search-input')]");
 		selenium.select("//select[@id='_5_WAR_soportlet_tabs1']",
 			RuntimeVariables.replace("My Favorites"));
-		selenium.type("//input[@class='search-input']",
+		selenium.type("//input[contains(@class,'search-input')]",
 			RuntimeVariables.replace("Private Restricted Site1"));
 		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Private Restricted Site1 Name"),
@@ -66,13 +66,8 @@ public class SOUs_ViewFavoriteSite1TypePrivateRestrictedTest
 		assertTrue(selenium.isElementNotPresent(
 				"//li[contains(@class, 'social-office-enabled')]/span[@class='action favorite']/a"));
 		selenium.open("/user/socialoffice01/so/dashboard/");
-		selenium.clickAt("//div[@id='dockbar']",
-			RuntimeVariables.replace("Dockbar"));
-		selenium.waitForElementPresent(
-			"//script[contains(@src,'/liferay/dockbar_underlay.js')]");
-		assertEquals(RuntimeVariables.replace("Go to"),
-			selenium.getText("//li[@id='_145_mySites']/a/span"));
-		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+		selenium.clickAt("//li[contains(@class,'user-menu has-submenu')]/a/span[@class='full-name']",
+			RuntimeVariables.replace("User Name"));
 		selenium.waitForVisible("link=Private Restricted Site1 Name");
 		selenium.clickAt("link=Private Restricted Site1 Name",
 			RuntimeVariables.replace("Private Restricted Site1 Name"));
@@ -105,10 +100,10 @@ public class SOUs_ViewFavoriteSite1TypePrivateRestrictedTest
 		assertEquals(RuntimeVariables.replace("socialoffice01@liferay.com"),
 			selenium.getText("xPath=(//div[@class='lfr-contact-extra'])[2]"));
 		selenium.open("/user/socialoffice01/so/dashboard/");
-		assertEquals(RuntimeVariables.replace("Sites"),
-			selenium.getText("//div[@id='so-sidebar']/h3"));
-		assertTrue(selenium.isVisible("//input[@class='search-input']"));
-		selenium.type("//input[@class='search-input']",
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
+		selenium.waitForVisible("//input[@class='search-input focus']");
+		selenium.type("//input[@class='search-input focus']",
 			RuntimeVariables.replace("Private Restricted Site2"));
 		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Private Restricted Site2 Name"),
@@ -117,13 +112,8 @@ public class SOUs_ViewFavoriteSite1TypePrivateRestrictedTest
 		selenium.clickAt("//li[contains(@class, 'social-office-enabled')]/span[2]/a",
 			RuntimeVariables.replace("Private Restricted Site2 Name"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//div[@id='dockbar']",
-			RuntimeVariables.replace("Dockbar"));
-		selenium.waitForElementPresent(
-			"//script[contains(@src,'/liferay/dockbar_underlay.js')]");
-		assertEquals(RuntimeVariables.replace("Go to"),
-			selenium.getText("//li[@id='_145_mySites']/a/span"));
-		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+		selenium.clickAt("//li[contains(@class,'user-menu has-submenu')]/a/span[@class='full-name']",
+			RuntimeVariables.replace("User Name"));
 		selenium.waitForVisible("link=Private Restricted Site1 Name");
 		selenium.clickAt("link=Private Restricted Site1 Name",
 			RuntimeVariables.replace("Private Restricted Site1 Name"));
@@ -156,13 +146,8 @@ public class SOUs_ViewFavoriteSite1TypePrivateRestrictedTest
 		assertEquals(RuntimeVariables.replace("socialoffice01@liferay.com"),
 			selenium.getText("xPath=(//div[@class='lfr-contact-extra'])[2]"));
 		selenium.open("/web/guest/home");
-		selenium.clickAt("//div[@id='dockbar']",
-			RuntimeVariables.replace("Dockbar"));
-		selenium.waitForElementPresent(
-			"//script[contains(@src,'/liferay/dockbar_underlay.js')]");
-		assertEquals(RuntimeVariables.replace("Go to"),
-			selenium.getText("//li[@id='_145_mySites']/a/span"));
-		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+		selenium.clickAt("//li[contains(@class,'user-menu has-submenu')]/a/span[@class='full-name']",
+			RuntimeVariables.replace("User Name"));
 		selenium.waitForVisible("link=Private Restricted Site1 Name");
 		selenium.clickAt("link=Private Restricted Site1 Name",
 			RuntimeVariables.replace("Private Restricted Site1 Name"));

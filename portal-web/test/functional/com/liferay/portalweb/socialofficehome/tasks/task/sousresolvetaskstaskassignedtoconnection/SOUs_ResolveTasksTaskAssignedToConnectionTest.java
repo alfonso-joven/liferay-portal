@@ -26,15 +26,12 @@ public class SOUs_ResolveTasksTaskAssignedToConnectionTest extends BaseTestCase 
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/socialoffice01/so/dashboard/");
-		selenium.clickAt("//div[@id='dockbar']",
-			RuntimeVariables.replace("Dockbar"));
-		selenium.waitForElementPresent(
-			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
 		assertTrue(selenium.isElementPresent(
-				"//li[@id='_145_notificationsMenu']"));
+				"//a[contains(@class,'user-notification')]"));
 		assertEquals(RuntimeVariables.replace("1"),
 			selenium.getText("//span[@class='notification-count']"));
-		selenium.mouseOver("//li[@id='_145_notificationsMenu']");
+		selenium.clickAt("//a[contains(@class,'user-notification')]",
+			RuntimeVariables.replace("Notifications"));
 		selenium.waitForVisible("//div[@class='notification-entry']");
 		assertEquals(RuntimeVariables.replace("Joe Bloggs assigned you a task."),
 			selenium.getText(

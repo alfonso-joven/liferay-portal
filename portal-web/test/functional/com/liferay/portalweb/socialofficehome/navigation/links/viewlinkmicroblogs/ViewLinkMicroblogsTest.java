@@ -37,8 +37,8 @@ public class ViewLinkMicroblogsTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace(
 				"You do not have any microblog entries."),
 			selenium.getText("//div[@class='portlet-msg-info']"));
-		assertEquals(RuntimeVariables.replace("Sites"),
-			selenium.getText("//div[@id='so-sidebar']/h3"));
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
 		assertTrue(selenium.isVisible("//div/input[1]"));
 		assertEquals(RuntimeVariables.replace("Liferay, Inc."),
 			selenium.getText("//li/span[2]/a"));
