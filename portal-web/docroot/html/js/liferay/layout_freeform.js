@@ -201,6 +201,6 @@ AUI.add(
 	},
 	'',
 	{
-		requires: ['aui-resize', 'liferay-layout-column']
+		requires: ['liferay-layout-column', 'resize']
 	}
 );
