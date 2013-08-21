@@ -61,7 +61,7 @@
 			'layout': [],
 			'layout-column': ['aui-portal-layout', 'dd'],
 			'layout-configuration': ['aui-live-search', 'dd', 'liferay-layout'],
-			'layout-freeform': ['resize', 'liferay-layout-column'],
+			'layout-freeform': ['liferay-layout-column', 'resize'],
 			'list-view': ['aui-base', 'transition'],
 			'logo-selector': ['aui-base'],
 			'look-and-feel': ['aui-color-picker', 'aui-dialog', 'aui-io-request', 'aui-tabs-base'],
