@@ -14,6 +14,7 @@
 
 package com.liferay.portlet.documentlibrary.service.impl;
 
+import com.liferay.portal.NoSuchWorkflowDefinitionLinkException;
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.log.Log;
@@ -26,6 +27,7 @@ import com.liferay.portal.kernel.workflow.WorkflowConstants;
 import com.liferay.portal.model.Group;
 import com.liferay.portal.model.ResourceConstants;
 import com.liferay.portal.model.User;
+import com.liferay.portal.model.WorkflowDefinitionLink;
 import com.liferay.portal.repository.liferayrepository.model.LiferayFolder;
 import com.liferay.portal.service.ServiceContext;
 import com.liferay.portal.util.PropsValues;
@@ -35,6 +37,7 @@ import com.liferay.portlet.documentlibrary.DuplicateFolderNameException;
 import com.liferay.portlet.documentlibrary.FolderNameException;
 import com.liferay.portlet.documentlibrary.NoSuchDirectoryException;
 import com.liferay.portlet.documentlibrary.NoSuchFileEntryException;
+import com.liferay.portlet.documentlibrary.model.DLFileEntryType;
 import com.liferay.portlet.documentlibrary.model.DLFileEntryTypeConstants;
 import com.liferay.portlet.documentlibrary.model.DLFolder;
 import com.liferay.portlet.documentlibrary.model.DLFolderConstants;
@@ -634,6 +637,20 @@ public class DLFolderLocalServiceImpl extends DLFolderLocalServiceBaseImpl {
 
 		// File entry types
 
+		List<Long> fileEntryTypeIds = new ArrayList<Long>();
+
+		for (DLFileEntryType dlFileEntryType :
+				dlFileEntryTypeLocalService.getDLFolderDLFileEntryTypes(
+					dlFolder.getFolderId())) {
+
+			fileEntryTypeIds.add(dlFileEntryType.getFileEntryTypeId());
+		}
+
+		if (fileEntryTypeIds.isEmpty()) {
+			fileEntryTypeIds.add(
+				DLFileEntryTypeConstants.FILE_ENTRY_TYPE_ID_ALL);
+		}
+
 		dlFileEntryTypeLocalService.unsetFolderFileEntryTypes(
 			dlFolder.getFolderId());
 
@@ -660,6 +677,27 @@ public class DLFolderLocalServiceImpl extends DLFolderLocalServiceBaseImpl {
 			if (_log.isDebugEnabled()) {
 				_log.debug(nsde.getMessage());
 			}
+		}
+
+		// Workflow
+
+		for (long fileEntryTypeId : fileEntryTypeIds) {
+			WorkflowDefinitionLink workflowDefinitionLink = null;
+
+			try {
+				workflowDefinitionLink =
+					workflowDefinitionLinkLocalService.
+						getWorkflowDefinitionLink(
+							dlFolder.getCompanyId(), dlFolder.getGroupId(),
+							DLFolder.class.getName(), dlFolder.getFolderId(),
+							fileEntryTypeId);
+			}
+			catch (NoSuchWorkflowDefinitionLinkException nswdle) {
+				continue;
+			}
+
+			workflowDefinitionLinkLocalService.deleteWorkflowDefinitionLink(
+				workflowDefinitionLink);
 		}
 	}
 
