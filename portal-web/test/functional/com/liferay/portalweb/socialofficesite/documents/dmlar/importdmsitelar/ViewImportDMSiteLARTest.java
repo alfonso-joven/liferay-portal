@@ -25,10 +25,10 @@ public class ViewImportDMSiteLARTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/joebloggs/so/dashboard/");
-		assertEquals(RuntimeVariables.replace("Sites"),
-			selenium.getText("//div[@id='so-sidebar']/h3"));
-		assertTrue(selenium.isVisible("//input[@class='search-input']"));
-		selenium.type("//input[@class='search-input']",
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
+		selenium.waitForVisible("//input[@class='search-input focus']");
+		selenium.type("//input[@class='search-input focus']",
 			RuntimeVariables.replace("Open"));
 		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Open Site Name"),
@@ -76,10 +76,10 @@ public class ViewImportDMSiteLARTest extends BaseTestCase {
 		assertFalse(selenium.isChecked("//input[@id='guest_ACTION_VIEW']"));
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/joebloggs/so/dashboard/");
-		assertEquals(RuntimeVariables.replace("Sites"),
-			selenium.getText("//div[@id='so-sidebar']/h3"));
-		assertTrue(selenium.isVisible("//input[@class='search-input']"));
-		selenium.type("//input[@class='search-input']",
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
+		selenium.waitForVisible("//input[@class='search-input focus']");
+		selenium.type("//input[@class='search-input focus']",
 			RuntimeVariables.replace("Open"));
 		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Open Site Name"),
@@ -109,10 +109,10 @@ public class ViewImportDMSiteLARTest extends BaseTestCase {
 		assertFalse(selenium.isTextPresent("DM Folder1 Document Title"));
 		assertFalse(selenium.isTextPresent("DM Folder2 Image Title"));
 		selenium.open("/user/joebloggs/so/dashboard/");
-		assertEquals(RuntimeVariables.replace("Sites"),
-			selenium.getText("//div[@id='so-sidebar']/h3"));
-		assertTrue(selenium.isVisible("//input[@class='search-input']"));
-		selenium.type("//input[@class='search-input']",
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
+		selenium.waitForVisible("//input[@class='search-input focus']");
+		selenium.type("//input[@class='search-input focus']",
 			RuntimeVariables.replace("Open"));
 		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Open Site Name"),
@@ -148,10 +148,10 @@ public class ViewImportDMSiteLARTest extends BaseTestCase {
 		selenium.waitForVisible("//input[@id='guest_ACTION_VIEW']");
 		assertFalse(selenium.isChecked("//input[@id='guest_ACTION_VIEW']"));
 		selenium.open("/user/joebloggs/so/dashboard/");
-		assertEquals(RuntimeVariables.replace("Sites"),
-			selenium.getText("//div[@id='so-sidebar']/h3"));
-		assertTrue(selenium.isVisible("//input[@class='search-input']"));
-		selenium.type("//input[@class='search-input']",
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
+		selenium.waitForVisible("//input[@class='search-input focus']");
+		selenium.type("//input[@class='search-input focus']",
 			RuntimeVariables.replace("Open"));
 		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Open Site Name"),

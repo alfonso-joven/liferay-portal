@@ -25,10 +25,10 @@ public class SOUs_ViewDMFolderDocumentSiteTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/socialoffice01/so/dashboard/");
-		assertEquals(RuntimeVariables.replace("Sites"),
-			selenium.getText("//div[@id='so-sidebar']/h3"));
-		assertTrue(selenium.isVisible("//input[@class='search-input']"));
-		selenium.type("//input[@class='search-input']",
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
+		selenium.waitForVisible("//input[@class='search-input focus']");
+		selenium.type("//input[@class='search-input focus']",
 			RuntimeVariables.replace("Open"));
 		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Open Site Name"),
@@ -71,7 +71,7 @@ public class SOUs_ViewDMFolderDocumentSiteTest extends BaseTestCase {
 			selenium.getText("//span[@class='header-back-to']/a"));
 		assertEquals(RuntimeVariables.replace("Download"),
 			selenium.getText(
-				"//span[@class='aui-toolbar-content']/button[1]/span[2]"));
+				"//span[@class='aui-toolbar-content']/button[contains(.,'Download')]/span[2]"));
 		assertFalse(selenium.isTextPresent("Checkout"));
 		assertFalse(selenium.isTextPresent("Edit"));
 		assertFalse(selenium.isTextPresent("Move"));

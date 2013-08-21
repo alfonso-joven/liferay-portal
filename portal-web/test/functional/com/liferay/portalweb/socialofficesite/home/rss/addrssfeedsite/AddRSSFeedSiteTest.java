@@ -30,10 +30,10 @@ public class AddRSSFeedSiteTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/user/joebloggs/so/dashboard/");
-				assertEquals(RuntimeVariables.replace("Sites"),
-					selenium.getText("//div[@id='so-sidebar']/h3"));
-				assertTrue(selenium.isVisible("//input[@class='search-input']"));
-				selenium.type("//input[@class='search-input']",
+				selenium.clickAt("//input[contains(@class,'search-input')]",
+					RuntimeVariables.replace("Go to"));
+				selenium.waitForVisible("//input[@class='search-input focus']");
+				selenium.type("//input[@class='search-input focus']",
 					RuntimeVariables.replace("Open"));
 				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Open Site Name"),
@@ -52,6 +52,10 @@ public class AddRSSFeedSiteTest extends BaseTestCase {
 					continue;
 				}
 
+				selenium.clickAt("//a[contains(@id,'toggleDockbar')]",
+					RuntimeVariables.replace("Toggle Dockbar"));
+				selenium.waitForElementPresent(
+					"//body[contains(@class,'show-dockbar')]");
 				selenium.clickAt("//div[@id='dockbar']",
 					RuntimeVariables.replace("Dockbar"));
 				selenium.waitForElementPresent(

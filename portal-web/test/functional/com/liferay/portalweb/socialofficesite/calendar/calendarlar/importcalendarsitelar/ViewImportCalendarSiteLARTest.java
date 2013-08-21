@@ -25,10 +25,10 @@ public class ViewImportCalendarSiteLARTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/joebloggs/so/dashboard/");
-		assertEquals(RuntimeVariables.replace("Sites"),
-			selenium.getText("//div[@id='so-sidebar']/h3"));
-		assertTrue(selenium.isVisible("//input[@class='search-input']"));
-		selenium.type("//input[@class='search-input']",
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
+		selenium.waitForVisible("//input[@class='search-input focus']");
+		selenium.type("//input[@class='search-input focus']",
 			RuntimeVariables.replace("Open"));
 		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Open Site Name"),
@@ -91,10 +91,10 @@ public class ViewImportCalendarSiteLARTest extends BaseTestCase {
 			selenium.getText(
 				"xPath=(//div[@class='lfr-discussion-message'])[2]"));
 		selenium.open("/user/joebloggs/so/dashboard/");
-		assertEquals(RuntimeVariables.replace("Sites"),
-			selenium.getText("//div[@id='so-sidebar']/h3"));
-		assertTrue(selenium.isVisible("//input[@class='search-input']"));
-		selenium.type("//input[@class='search-input']",
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
+		selenium.waitForVisible("//input[@class='search-input focus']");
+		selenium.type("//input[@class='search-input focus']",
 			RuntimeVariables.replace("Open"));
 		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Open Site Name"),
@@ -153,10 +153,10 @@ public class ViewImportCalendarSiteLARTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Subscribe to Comments"),
 			selenium.getText("//span[@class='subscribe-link']/a/span"));
 		selenium.open("/user/joebloggs/so/dashboard/");
-		assertEquals(RuntimeVariables.replace("Sites"),
-			selenium.getText("//div[@id='so-sidebar']/h3"));
-		assertTrue(selenium.isVisible("//input[@class='search-input']"));
-		selenium.type("//input[@class='search-input']",
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
+		selenium.waitForVisible("//input[@class='search-input focus']");
+		selenium.type("//input[@class='search-input focus']",
 			RuntimeVariables.replace("Open"));
 		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Open Site Name"),

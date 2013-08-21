@@ -30,8 +30,8 @@ public class SOUs1_ViewConfirmMemberInviteSiteOwnerRoleSiteTest
 		selenium.waitForVisible("//li[contains(@class, 'selected')]/a/span");
 		assertEquals(RuntimeVariables.replace("Dashboard"),
 			selenium.getText("//li[contains(@class, 'selected')]/a/span"));
-		assertEquals(RuntimeVariables.replace("Sites"),
-			selenium.getText("//div[@id='so-sidebar']/h3"));
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
 		assertTrue(selenium.isPartialText(
 				"//select[@id='_5_WAR_soportlet_tabs1']", "My Sites"));
 		selenium.select("//select[@id='_5_WAR_soportlet_tabs1']",
@@ -74,6 +74,10 @@ public class SOUs1_ViewConfirmMemberInviteSiteOwnerRoleSiteTest
 		assertTrue(selenium.isElementNotPresent(
 				"//span[@class='action request']"));
 		Thread.sleep(1000);
+		selenium.clickAt("//a[contains(@id,'toggleDockbar')]",
+			RuntimeVariables.replace("Toggle Dockbar"));
+		selenium.waitForElementPresent(
+			"//body[contains(@class,'show-dockbar')]");
 		selenium.clickAt("//div[@id='dockbar']",
 			RuntimeVariables.replace("Dockbar"));
 		selenium.waitForElementPresent(
@@ -146,6 +150,10 @@ public class SOUs1_ViewConfirmMemberInviteSiteOwnerRoleSiteTest
 		assertEquals(RuntimeVariables.replace("Social01 Office01 User01"),
 			selenium.getText(
 				"//div[contains(@class, 'contacts-profile')]/div/div[2]/div/a"));
+		selenium.clickAt("//a[contains(@id,'toggleDockbar')]",
+			RuntimeVariables.replace("Toggle Dockbar"));
+		selenium.waitForElementPresent(
+			"//body[contains(@class,'show-dockbar')]");
 		selenium.clickAt("//div[@id='dockbar']",
 			RuntimeVariables.replace("Dockbar"));
 		selenium.waitForElementPresent(

@@ -26,14 +26,11 @@ public class ViewAnnouncementsEntryNotificationsTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/joebloggs/so/dashboard/");
-		selenium.clickAt("//div[@id='dockbar']",
-			RuntimeVariables.replace("Dockbar"));
-		selenium.waitForElementPresent(
-			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
 		selenium.waitForVisible("//span[@class='notification-count']");
 		assertEquals(RuntimeVariables.replace("1"),
 			selenium.getText("//span[@class='notification-count']"));
-		selenium.mouseOver("//span[@class='notification-count']");
+		selenium.clickAt("//span[@class='notification-count']",
+			RuntimeVariables.replace("1"));
 		selenium.waitForElementPresent(
 			"//div[contains(@class, 'user-notification-events-container')]");
 		assertTrue(selenium.isVisible(

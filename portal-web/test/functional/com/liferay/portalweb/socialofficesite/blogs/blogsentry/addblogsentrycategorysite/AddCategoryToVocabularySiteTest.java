@@ -25,10 +25,10 @@ public class AddCategoryToVocabularySiteTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/joebloggs/so/dashboard/");
-		assertEquals(RuntimeVariables.replace("Sites"),
-			selenium.getText("//div[@id='so-sidebar']/h3"));
-		assertTrue(selenium.isVisible("//input[@class='search-input']"));
-		selenium.type("//input[@class='search-input']",
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
+		selenium.waitForVisible("//input[@class='search-input focus']");
+		selenium.type("//input[@class='search-input focus']",
 			RuntimeVariables.replace("Open"));
 		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Open Site Name"),
@@ -37,13 +37,8 @@ public class AddCategoryToVocabularySiteTest extends BaseTestCase {
 		selenium.clickAt("//li[contains(@class, 'social-office-enabled')]/span[2]/a",
 			RuntimeVariables.replace("Open Site Name"));
 		selenium.waitForPageToLoad("30000");
-		selenium.clickAt("//div[@id='dockbar']",
-			RuntimeVariables.replace("Dockbar"));
-		selenium.waitForElementPresent(
-			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
-		assertEquals(RuntimeVariables.replace("Go to"),
-			selenium.getText("//li[@id='_145_mySites']/a/span"));
-		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+		selenium.clickAt("//li[contains(@class,'user-menu has-submenu')]/a/span[@class='full-name']",
+			RuntimeVariables.replace("User Name"));
 		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
@@ -55,10 +50,10 @@ public class AddCategoryToVocabularySiteTest extends BaseTestCase {
 			RuntimeVariables.replace("Add Category"));
 		selenium.waitForElementPresent(
 			"//script[contains(@src,'/liferay/panel_floating.js')]");
-		selenium.waitForVisible("//input[@id='_147_title_en_US']");
-		selenium.type("//input[@id='_147_title_en_US']",
+		selenium.waitForVisible("//input[@id='_147_categoryName_en_US']");
+		selenium.type("//input[@id='_147_categoryName_en_US']",
 			RuntimeVariables.replace("Category Name"));
-		selenium.type("//textarea[@id='_147_description_en_US']",
+		selenium.type("//textarea[@id='_147_categoryDescription_en_US']",
 			RuntimeVariables.replace("Category Description"));
 		selenium.select("//select[@id='_147_vocabularyId']",
 			RuntimeVariables.replace("Vocabulary Name"));

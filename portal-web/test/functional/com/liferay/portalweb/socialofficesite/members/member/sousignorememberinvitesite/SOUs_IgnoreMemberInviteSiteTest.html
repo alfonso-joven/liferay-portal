@@ -14,18 +14,8 @@
 	<td></td>
 </tr>
 <tr>
-	<td>clickAt</td>
-	<td>//div[@id='dockbar']</td>
-	<td>Dockbar</td>
-</tr>
-<tr>
-	<td>waitForElementPresent</td>
-	<td>//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]</td>
-	<td>AUI Editable Min</td>
-</tr>
-<tr>
 	<td>assertElementPresent</td>
-	<td>//li[@id='_145_notificationsMenu']</td>
+	<td>//a[contains(@class,'user-notification')]</td>
 	<td>Notifications</td>
 </tr>
 <tr>
@@ -39,7 +29,7 @@
 	<td>1</td>
 </tr>
 <tr>
-	<td>mouseOver</td>
+	<td>clickAt</td>
 	<td>//span[@class='notification-count']</td>
 	<td>1</td>
 </tr>
@@ -99,9 +89,9 @@
 	<td>Dashboard</td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>//div[@id='so-sidebar']/h3</td>
-	<td>Sites</td>
+	<td>clickAt</td>
+	<td>//input[contains(@class,'search-input')]</td>
+	<td>Go to</td>
 </tr>
 <tr>
 	<td>assertPartialText</td>

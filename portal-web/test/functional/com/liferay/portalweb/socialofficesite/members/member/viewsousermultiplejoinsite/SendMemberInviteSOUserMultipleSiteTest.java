@@ -26,10 +26,10 @@ public class SendMemberInviteSOUserMultipleSiteTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/joebloggs/so/dashboard/");
-		assertEquals(RuntimeVariables.replace("Sites"),
-			selenium.getText("//div[@id='so-sidebar']/h3"));
-		assertTrue(selenium.isVisible("//input[@class='search-input']"));
-		selenium.type("//input[@class='search-input']",
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
+		selenium.waitForVisible("//input[@class='search-input focus']");
+		selenium.type("//input[@class='search-input focus']",
 			RuntimeVariables.replace("Open"));
 		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Open Site Name"),
@@ -50,7 +50,8 @@ public class SendMemberInviteSOUserMultipleSiteTest extends BaseTestCase {
 				"//a[contains(text(),'Invite members to this site.')]"));
 		selenium.clickAt("//a[contains(text(),'Invite members to this site.')]",
 			RuntimeVariables.replace("Invite members to this site."));
-		selenium.waitForVisible("//div[@class='search']");
+		selenium.waitForVisible(
+			"//div[contains(@class,'user-search')]/div[@class='search']");
 		assertEquals(RuntimeVariables.replace("Social01 Office01 User01"),
 			selenium.getText(
 				"xPath=(//div[contains(@class, 'user')]/span)[contains(.,'Social01 Office01 User01')]"));

@@ -25,10 +25,10 @@ public class SOUs_ViewBlogsEntrySiteTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/socialoffice01/so/dashboard/");
-		assertEquals(RuntimeVariables.replace("Sites"),
-			selenium.getText("//div[@id='so-sidebar']/h3"));
-		assertTrue(selenium.isVisible("//input[@class='search-input']"));
-		selenium.type("//input[@class='search-input']",
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
+		selenium.waitForVisible("//input[@class='search-input focus']");
+		selenium.type("//input[@class='search-input focus']",
 			RuntimeVariables.replace("Open"));
 		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Open Site Name"),
@@ -43,7 +43,7 @@ public class SOUs_ViewBlogsEntrySiteTest extends BaseTestCase {
 			RuntimeVariables.replace("Blogs"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isVisible("//input[@id='_33_keywords']"));
-		assertTrue(selenium.isVisible("//input[@value='Search']"));
+		assertTrue(selenium.isVisible("xPath=(//input[@value='Search'])[2]"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry1 Title"),
 			selenium.getText("//div[@class='entry-title']/h2/a"));
 		assertTrue(selenium.isVisible("//div[@class='entry-date']"));

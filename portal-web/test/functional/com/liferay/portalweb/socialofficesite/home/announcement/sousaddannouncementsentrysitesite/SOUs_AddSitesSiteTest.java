@@ -30,8 +30,8 @@ public class SOUs_AddSitesSiteTest extends BaseTestCase {
 		selenium.waitForVisible("//li[contains(@class, 'selected')]/a/span");
 		assertEquals(RuntimeVariables.replace("Dashboard"),
 			selenium.getText("//li[contains(@class, 'selected')]/a/span"));
-		assertEquals(RuntimeVariables.replace("Sites"),
-			selenium.getText("//div[@id='so-sidebar']/h3"));
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
 		selenium.waitForVisible("//button[contains(.,'Add Site')]/span[2]");
 		assertEquals(RuntimeVariables.replace("Add Site"),
 			selenium.getText("//button[contains(.,'Add Site')]/span[2]"));

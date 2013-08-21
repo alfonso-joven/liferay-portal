@@ -26,12 +26,12 @@ public class SOUs_ViewBlogsEntryMultipleRBSite1Test extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/socialoffice01/so/dashboard/");
-		assertEquals(RuntimeVariables.replace("Sites"),
-			selenium.getText("//div[@id='so-sidebar']/h3"));
-		assertTrue(selenium.isVisible("//input[@class='search-input']"));
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
+		selenium.waitForVisible("//input[contains(@class,'search-input')]");
 		selenium.select("//div[@class='sites-tabs']/span/span/span/select",
 			RuntimeVariables.replace("All Sites"));
-		selenium.type("//input[@class='search-input']",
+		selenium.type("//input[contains(@class,'search-input')]",
 			RuntimeVariables.replace("Open Site1"));
 		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Open Site1 Name"),
@@ -73,12 +73,12 @@ public class SOUs_ViewBlogsEntryMultipleRBSite1Test extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Comments"),
 			selenium.getText("//div[@class='lfr-panel-title']/span"));
 		selenium.open("/user/socialoffice01/so/dashboard/");
-		assertEquals(RuntimeVariables.replace("Sites"),
-			selenium.getText("//div[@id='so-sidebar']/h3"));
-		assertTrue(selenium.isVisible("//input[@class='search-input']"));
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
+		selenium.waitForVisible("//input[contains(@class,'search-input')]");
 		selenium.select("//div[@class='sites-tabs']/span/span/span/select",
 			RuntimeVariables.replace("All Sites"));
-		selenium.type("//input[@class='search-input']",
+		selenium.type("//input[contains(@class,'search-input')]",
 			RuntimeVariables.replace("Open Site1"));
 		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Open Site1 Name"),

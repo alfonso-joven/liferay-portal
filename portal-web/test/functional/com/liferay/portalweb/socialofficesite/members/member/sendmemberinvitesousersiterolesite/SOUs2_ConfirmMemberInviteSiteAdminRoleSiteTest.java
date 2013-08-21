@@ -33,7 +33,8 @@ public class SOUs2_ConfirmMemberInviteSiteAdminRoleSiteTest extends BaseTestCase
 		selenium.waitForVisible("//span[@class='notification-count']");
 		assertEquals(RuntimeVariables.replace("1"),
 			selenium.getText("//span[@class='notification-count']"));
-		selenium.mouseOver("//span[@class='notification-count']");
+		selenium.clickAt("//span[@class='notification-count']",
+			RuntimeVariables.replace("1"));
 		selenium.waitForElementPresent(
 			"//div[contains(@class, 'user-notification-events-container')]");
 		assertTrue(selenium.isVisible(
@@ -55,8 +56,8 @@ public class SOUs2_ConfirmMemberInviteSiteAdminRoleSiteTest extends BaseTestCase
 		selenium.waitForVisible("//li[contains(@class, 'selected')]/a/span");
 		assertEquals(RuntimeVariables.replace("Dashboard"),
 			selenium.getText("//li[contains(@class, 'selected')]/a/span"));
-		assertEquals(RuntimeVariables.replace("Sites"),
-			selenium.getText("//div[@id='so-sidebar']/h3"));
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
 		assertTrue(selenium.isPartialText(
 				"//select[@id='_5_WAR_soportlet_tabs1']", "My Sites"));
 		selenium.select("//select[@id='_5_WAR_soportlet_tabs1']",
