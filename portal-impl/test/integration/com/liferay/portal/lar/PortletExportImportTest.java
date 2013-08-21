@@ -298,14 +298,15 @@ public class PortletExportImportTest extends BaseExportImportTestCase {
 	protected String getArticleContent(String content, String localeId) {
 		StringBundler sb = new StringBundler();
 
-		sb.append("<?xml version=\"1.0\"?><root available-locales=");
-		sb.append("\"" + localeId + "\" ");
-		sb.append("default-locale=\"" + localeId + "\">");
-		sb.append("<static-content language-id=\"" + localeId + "\">");
-		sb.append("<![CDATA[<p>");
+		sb.append("<?xml version=\"1.0\"?><root available-locales=\"");
+		sb.append(localeId);
+		sb.append("\" default-locale=\""");
+		sb.append(localeId)
+		sb.append("\"><static-content language-id=\"");
+		sb.append(localeId);
+		sb.append("\"><![CDATA[<p>");
 		sb.append(content);
-		sb.append("</p>]]>");
-		sb.append("</static-content></root>");
+		sb.append("</p>]]></static-content></root>");
 
 		return sb.toString();
 	}

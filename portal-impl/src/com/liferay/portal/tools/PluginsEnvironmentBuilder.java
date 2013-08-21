@@ -426,7 +426,9 @@ public class PluginsEnvironmentBuilder {
 		for (String sourceDirName : _SOURCE_DIR_NAMES) {
 			if (_fileUtil.exists(projectDirName + "/" + sourceDirName)) {
 				sb.append("\t<classpathentry excluding=\"**/.svn/**|.svn/\" ");
-				sb.append("kind=\"src\" path=\"" + sourceDirName + "\" />\n");
+				sb.append("kind=\"src\" path=\"");
+				sb.append(sourceDirName);
+				sb.append("\" />\n");
 			}
 		}
 
@@ -443,7 +445,9 @@ public class PluginsEnvironmentBuilder {
 				addJunitJars = true;
 
 				sb.append("\t<classpathentry excluding=\"**/.svn/**|.svn/\" ");
-				sb.append("kind=\"src\" path=\""+ testFolder + "\" />\n");
+				sb.append("kind=\"src\" path=\"");
+				sb.append(testFolder);
+				sb.append("\" />\n");
 			}
 		}
 
