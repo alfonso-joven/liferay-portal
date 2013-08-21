@@ -178,8 +178,18 @@ public class LuceneIndexSearcherImpl implements IndexSearcher {
 				for (int i = 0; i < sorts.length; i++) {
 					Sort sort = sorts[i];
 
-					sortFields[i] = new SortField(
-						sort.getFieldName(), sort.getType(), sort.isReverse());
+					if ((sort.getType() == Sort.STRING_TYPE) &&
+						(searchContext.getLocale() != null)) {
+
+						sortFields[i] = new SortField(
+							sort.getFieldName(), searchContext.getLocale(),
+							sort.isReverse());
+					}
+					else {
+						sortFields[i] = new SortField(
+							sort.getFieldName(), sort.getType(),
+							sort.isReverse());
+					}
 				}
 			}
 
