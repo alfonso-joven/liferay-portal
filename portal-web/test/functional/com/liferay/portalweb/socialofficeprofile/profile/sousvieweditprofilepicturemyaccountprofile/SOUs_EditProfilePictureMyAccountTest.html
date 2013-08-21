@@ -14,39 +14,9 @@
 	<td></td>
 </tr>
 <tr>
-	<td>storeElementPresent</td>
-	<td>//li[@id='_145_userMenu']</td>
-	<td>socialOfficeSignOutPresent</td>
-</tr>
-<tr>
-	<td>gotoIf</td>
-	<td>!${socialOfficeSignOutPresent}</td>
-	<td>SocialOfficeSignOutPresent</td>
-</tr>
-<tr>
 	<td>clickAt</td>
-	<td>//div[@id='dockbar']</td>
-	<td>Dockbar</td>
-</tr>
-<tr>
-	<td>waitForElementPresent</td>
-	<td>//script[contains(@src,'/liferay/dockbar_underlay.js')]</td>
-	<td>Dockbar Underlay</td>
-</tr>
-<tr>
-	<td>assertVisible</td>
-	<td>//li[@id='_145_userMenu']</td>
+	<td>//li[contains(@class,'user-menu has-submenu')]/a/span[@class='full-name']</td>
 	<td>User Name</td>
-</tr>
-<tr>
-	<td>mouseOver</td>
-	<td>//li[@id='_145_userMenu']</td>
-	<td>User Name</td>
-</tr>
-<tr>
-	<td>label</td>
-	<td>SocialOfficeSignOutPresent</td>
-	<td></td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
@@ -54,24 +24,9 @@
 	<td>My Account</td>
 </tr>
 <tr>
-	<td>clickAt</td>
+	<td>clickAtAndWait</td>
 	<td>link=My Account</td>
 	<td>My Account</td>
-</tr>
-<tr>
-	<td>waitForVisible</td>
-	<td>//iframe[contains(@class,'aui-dialog-iframe-node')]</td>
-	<td>Iframe</td>
-</tr>
-<tr>
-	<td>selectFrame</td>
-	<td>//iframe[contains(@class,'aui-dialog-iframe-node')]</td>
-	<td>Iframe</td>
-</tr>
-<tr>
-	<td>pause</td>
-	<td>5000</td>
-	<td></td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
@@ -124,21 +79,6 @@
 	<td></td>
 </tr>
 <tr>
-	<td>selectFrame</td>
-	<td>relative=top</td>
-	<td></td>
-</tr>
-<tr>
-	<td>waitForVisible</td>
-	<td>//iframe[contains(@class,'aui-dialog-iframe-node')]</td>
-	<td>Iframe</td>
-</tr>
-<tr>
-	<td>selectFrame</td>
-	<td>//iframe[contains(@class,'aui-dialog-iframe-node')]</td>
-	<td>Iframe</td>
-</tr>
-<tr>
 	<td>pause</td>
 	<td>1000</td>
 	<td></td>
@@ -157,11 +97,6 @@
 	<td>assertText</td>
 	<td>//div[@class='portlet-msg-success']</td>
 	<td>Your request completed successfully.</td>
-</tr>
-<tr>
-	<td>selectFrame</td>
-	<td>relative=top</td>
-	<td></td>
 </tr>
 </tbody></table>
 </body>
