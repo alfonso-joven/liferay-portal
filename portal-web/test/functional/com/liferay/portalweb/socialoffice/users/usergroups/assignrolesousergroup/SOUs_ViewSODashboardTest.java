@@ -25,9 +25,8 @@ public class SOUs_ViewSODashboardTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.clickAt("//div[@id='dockbar']",
-			RuntimeVariables.replace("Dockbar"));
-		selenium.clickAt("//li[3]/a", RuntimeVariables.replace("Dashboard"));
+		selenium.clickAt("//a[contains(.,'Dashboard')]",
+			RuntimeVariables.replace("Dashboard"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Social01 Office01 User01"),
 			selenium.getText("//a[@class='profile-name']"));

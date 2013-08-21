@@ -25,9 +25,8 @@ public class AssignSOUser1TeamSiteTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		assertEquals(RuntimeVariables.replace("Go to"),
-			selenium.getText("//li[@id='_145_mySites']/a/span"));
-		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+		selenium.clickAt("//li[contains(@class,'user-menu has-submenu')]/a/span[@class='full-name']",
+			RuntimeVariables.replace("User Name"));
 		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
@@ -36,7 +35,7 @@ public class AssignSOUser1TeamSiteTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_134_name']",
 			RuntimeVariables.replace("Open Site "));
-		selenium.clickAt("//input[@value='Search']",
+		selenium.clickAt("//form[contains(@id,'_134_')]/span/span[2]/span/input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Open Site Name"),
@@ -60,7 +59,7 @@ public class AssignSOUser1TeamSiteTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_174_name']",
 			RuntimeVariables.replace("Open Site "));
-		selenium.clickAt("//input[@value='Search']",
+		selenium.clickAt("//form[contains(@id,'_174_')]/span/span[2]/span/input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Open Site Team Name"),
@@ -89,7 +88,7 @@ public class AssignSOUser1TeamSiteTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@name='_174_keywords']",
 			RuntimeVariables.replace("socialoffice01"));
-		selenium.clickAt("//input[@value='Search']",
+		selenium.clickAt("//div[contains(@id,'user_searchbasic')]/span/span[2]/span/input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Social01 Office01 User01"),

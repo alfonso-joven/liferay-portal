@@ -15,37 +15,22 @@
 </tr>
 <tr>
 	<td>storeElementPresent</td>
-	<td>//li[@id='_145_userMenu']</td>
-	<td>socialOfficeSignOutPresent</td>
+	<td>//div[@class='so-portlet-user-bar']</td>
+	<td>socialOfficeUserBarPresent</td>
 </tr>
 <tr>
 	<td>gotoIf</td>
-	<td>!${socialOfficeSignOutPresent}</td>
-	<td>SocialOfficeSignOutPresent</td>
+	<td>!${socialOfficeUserBarPresent}</td>
+	<td>SocialOfficeUserBarPresent</td>
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>//div[@id='dockbar']</td>
-	<td>Dockbar</td>
-</tr>
-<tr>
-	<td>waitForElementPresent</td>
-	<td>//script[contains(@src,'/liferay/dockbar_underlay.js')]</td>
-	<td>AUI Editable Min</td>
-</tr>
-<tr>
-	<td>assertVisible</td>
-	<td>//li[@id='_145_userMenu']</td>
-	<td>User Name</td>
-</tr>
-<tr>
-	<td>mouseOver</td>
-	<td>//li[@id='_145_userMenu']</td>
+	<td>//li[contains(@class,'user-menu has-submenu')]/a/span[@class='full-name']</td>
 	<td>User Name</td>
 </tr>
 <tr>
 	<td>label</td>
-	<td>SocialOfficeSignOutPresent</td>
+	<td>SocialOfficeUserBarPresent</td>
 	<td></td>
 </tr>
 <tr>

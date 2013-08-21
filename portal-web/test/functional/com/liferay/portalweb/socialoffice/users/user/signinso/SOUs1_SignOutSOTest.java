@@ -31,21 +31,17 @@ public class SOUs1_SignOutSOTest extends BaseTestCase {
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
 
-				boolean socialOfficeSignOutPresent = selenium.isElementPresent(
-						"//li[@id='_145_userMenu']");
+				boolean socialOfficeUserBarPresent = selenium.isElementPresent(
+						"//div[@class='so-portlet-user-bar']");
 
-				if (!socialOfficeSignOutPresent) {
+				if (!socialOfficeUserBarPresent) {
 					label = 2;
 
 					continue;
 				}
 
-				selenium.clickAt("//div[@id='dockbar']",
-					RuntimeVariables.replace("Dockbar"));
-				selenium.waitForElementPresent(
-					"//script[contains(@src,'/liferay/dockbar_underlay.js')]");
-				assertTrue(selenium.isVisible("//li[@id='_145_userMenu']"));
-				selenium.mouseOver("//li[@id='_145_userMenu']");
+				selenium.clickAt("//li[contains(@class,'user-menu has-submenu')]/a/span[@class='full-name']",
+					RuntimeVariables.replace("User Name"));
 
 			case 2:
 				selenium.waitForVisible("link=Sign Out");

@@ -30,8 +30,10 @@ public class SOUs_ViewFooterTextTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/user/socialoffice01/so/dashboard");
-				assertTrue(selenium.isVisible("//input[@class='search-input']"));
-				selenium.type("//input[@class='search-input']",
+				selenium.clickAt("//input[contains(@class,'search-input')]",
+					RuntimeVariables.replace("Go to"));
+				selenium.waitForVisible("//input[@class='search-input focus']");
+				selenium.type("//input[@class='search-input focus']",
 					RuntimeVariables.replace("Open"));
 				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Open Site Name"),
@@ -100,10 +102,10 @@ public class SOUs_ViewFooterTextTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("Powered By Liferay"),
 					selenium.getText("//p[@class='powered-by']"));
-				assertEquals(RuntimeVariables.replace("Sites"),
-					selenium.getText("//div[@id='so-sidebar']/h3"));
-				assertTrue(selenium.isVisible("//input[@class='search-input']"));
-				selenium.type("//input[@class='search-input']",
+				selenium.clickAt("//input[contains(@class,'search-input')]",
+					RuntimeVariables.replace("Go to"));
+				selenium.waitForVisible("//input[@class='search-input focus']");
+				selenium.type("//input[@class='search-input focus']",
 					RuntimeVariables.replace("Open"));
 				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Open Site Name"),
@@ -168,8 +170,9 @@ public class SOUs_ViewFooterTextTest extends BaseTestCase {
 
 			case 2:
 				selenium.open("/user/socialoffice01/so/dashboard");
-				assertTrue(selenium.isVisible("//input[@class='search-input']"));
-				selenium.type("//input[@class='search-input']",
+				assertTrue(selenium.isVisible(
+						"//input[contains(@class,'search-input')]"));
+				selenium.type("//input[contains(@class,'search-input')]",
 					RuntimeVariables.replace("Open"));
 				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Open Site Name"),
@@ -245,10 +248,10 @@ public class SOUs_ViewFooterTextTest extends BaseTestCase {
 				assertTrue(selenium.isElementNotPresent(
 						"//p[@class='powered-by']"));
 				assertFalse(selenium.isTextPresent("Powered By Liferay"));
-				assertEquals(RuntimeVariables.replace("Sites"),
-					selenium.getText("//div[@id='so-sidebar']/h3"));
-				assertTrue(selenium.isVisible("//input[@class='search-input']"));
-				selenium.type("//input[@class='search-input']",
+				selenium.clickAt("//input[contains(@class,'search-input')]",
+					RuntimeVariables.replace("Go to"));
+				selenium.waitForVisible("//input[@class='search-input focus']");
+				selenium.type("//input[@class='search-input focus']",
 					RuntimeVariables.replace("Open"));
 				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Open Site Name"),

@@ -25,10 +25,8 @@ public class ViewRemoveRoleSOSOSitesTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.clickAt("//div[@id='dockbar']",
-			RuntimeVariables.replace("Dockbar"));
-		selenium.waitForElementPresent(
-			"//script[contains(@src,'/liferay/dockbar_underlay.js')]");
+		selenium.clickAt("//li[contains(@class,'user-menu has-submenu')]/a/span[@class='full-name']",
+			RuntimeVariables.replace("User Name"));
 		assertEquals(RuntimeVariables.replace("Dashboard"),
 			selenium.getText("//li/a[contains(.,'Dashboard')]"));
 		selenium.mouseOver("//li/a[contains(.,'Dashboard')]");
@@ -64,13 +62,8 @@ public class ViewRemoveRoleSOSOSitesTest extends BaseTestCase {
 			selenium.getText("//nav/ul/li[5]/a"));
 		assertEquals(RuntimeVariables.replace("Tasks"),
 			selenium.getText("//li[6]/a/span"));
-		selenium.clickAt("//div[@id='dockbar']",
-			RuntimeVariables.replace("Dockbar"));
-		selenium.waitForElementPresent(
-			"//script[contains(@src,'/liferay/dockbar_underlay.js')]");
-		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
-			selenium.getText("//li[@id='_145_userMenu']"));
-		selenium.mouseOver("//li[@id='_145_userMenu']");
+		selenium.clickAt("//li[contains(@class,'user-menu has-submenu')]/a/span[@class='full-name']",
+			RuntimeVariables.replace("User Name"));
 		selenium.waitForVisible("link=My Profile");
 		assertEquals(RuntimeVariables.replace("My Profile"),
 			selenium.getText("link=My Profile"));
@@ -128,14 +121,9 @@ public class ViewRemoveRoleSOSOSitesTest extends BaseTestCase {
 			selenium.getText("link=Microblogs"));
 		assertEquals(RuntimeVariables.replace("Welcome"),
 			selenium.getText("link=Welcome"));
-		selenium.clickAt("//div[@id='dockbar']",
-			RuntimeVariables.replace("Dockbar"));
-		selenium.waitForElementPresent(
-			"//script[contains(@src,'/liferay/dockbar_underlay.js')]");
-		assertEquals(RuntimeVariables.replace("Go to"),
-			selenium.getText("//li[@id='_145_mySites']/a/span"));
-		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
-		selenium.waitForVisible("link=Control Panel");
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
+		selenium.waitForVisible("link=Liferay");
 		assertFalse(selenium.isTextPresent("My Public Pages"));
 		assertFalse(selenium.isTextPresent("My Private Pages"));
 		assertTrue(selenium.isVisible("link=Sites Directory"));

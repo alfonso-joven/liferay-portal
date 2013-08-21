@@ -15,8 +15,6 @@
 package com.liferay.portalweb.socialoffice.users.organizations.assignmemberssouserorganization;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
-import com.liferay.portalweb.portal.controlpanel.organizations.organization.addorganization.AddOrganizationTest;
-import com.liferay.portalweb.portal.controlpanel.organizations.organization.addorganization.TearDownOrganizationTest;
 import com.liferay.portalweb.socialoffice.users.organizations.assignorganizationsosites.AssignOrganizationSOSitesTest;
 import com.liferay.portalweb.socialoffice.users.organizations.assignorganizationsosites.RemoveOrganizationSOSitesTest;
 import com.liferay.portalweb.socialoffice.users.user.addsouser.AddSOUserTest;

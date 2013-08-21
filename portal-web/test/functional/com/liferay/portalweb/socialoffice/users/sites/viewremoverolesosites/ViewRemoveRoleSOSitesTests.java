@@ -15,9 +15,9 @@
 package com.liferay.portalweb.socialoffice.users.sites.viewremoverolesosites;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
-import com.liferay.portalweb.portal.controlpanel.sites.site.addsite.AddSiteTest;
-import com.liferay.portalweb.portal.controlpanel.sites.site.addsite.TearDownSiteTest;
+import com.liferay.portalweb.socialoffice.users.sites.assignmembersousersites.AddSiteTest;
 import com.liferay.portalweb.socialoffice.users.sites.assignmembersousersites.AssignMemberSOUserSitesTest;
+import com.liferay.portalweb.socialoffice.users.sites.assignmembersousersites.TearDownSiteTest;
 import com.liferay.portalweb.socialoffice.users.sites.assignrolesosites.AssignRoleSOSitesTest;
 import com.liferay.portalweb.socialoffice.users.sites.assignrolesosites.RemoveRoleSOSitesTest;
 import com.liferay.portalweb.socialoffice.users.user.addsouser.AddSOUserTest;

@@ -30,13 +30,8 @@ public class EditSOUser2PasswordTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				selenium.clickAt("//div[@id='dockbar']",
-					RuntimeVariables.replace("Dockbar"));
-				selenium.waitForElementPresent(
-					"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
-				assertEquals(RuntimeVariables.replace("Go to"),
-					selenium.getText("//li[@id='_145_mySites']/a/span"));
-				selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+				selenium.clickAt("//li[contains(@class,'user-menu has-submenu')]/a/span[@class='full-name']",
+					RuntimeVariables.replace("User Name"));
 				selenium.waitForVisible("link=Control Panel");
 				selenium.clickAt("link=Control Panel",
 					RuntimeVariables.replace("Control Panel"));
@@ -65,7 +60,7 @@ public class EditSOUser2PasswordTest extends BaseTestCase {
 					"//input[@id='_125_toggle_id_users_admin_user_searchkeywords']");
 				selenium.type("//input[@id='_125_toggle_id_users_admin_user_searchkeywords']",
 					RuntimeVariables.replace("socialoffice02"));
-				selenium.clickAt("//input[@value='Search']",
+				selenium.clickAt("//div[contains(@id,'user_searchbasic')]/span/span[2]/span/input[@value='Search']",
 					RuntimeVariables.replace("Search"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("Social02"),
@@ -90,21 +85,17 @@ public class EditSOUser2PasswordTest extends BaseTestCase {
 					selenium.getText("//div[@class='portlet-msg-success']"));
 				selenium.open("/web/guest/home/");
 
-				boolean socialOfficeSignOut1Present = selenium.isElementPresent(
-						"//li[@id='_145_userMenu']");
+				boolean socialOfficeUserBar1Present = selenium.isElementPresent(
+						"//div[@class='so-portlet-user-bar']");
 
-				if (!socialOfficeSignOut1Present) {
+				if (!socialOfficeUserBar1Present) {
 					label = 3;
 
 					continue;
 				}
 
-				selenium.clickAt("//div[@id='dockbar']",
-					RuntimeVariables.replace("Dockbar"));
-				selenium.waitForElementPresent(
-					"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
-				assertTrue(selenium.isVisible("//li[@id='_145_userMenu']"));
-				selenium.mouseOver("//li[@id='_145_userMenu']");
+				selenium.clickAt("//li[contains(@class,'user-menu has-submenu')]/a/span[@class='full-name']",
+					RuntimeVariables.replace("User Name"));
 
 			case 3:
 				selenium.waitForVisible("link=Sign Out");
@@ -143,21 +134,17 @@ public class EditSOUser2PasswordTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				selenium.open("/web/guest/home/");
 
-				boolean socialOfficeSignOut2Present = selenium.isElementPresent(
-						"//li[@id='_145_userMenu']");
+				boolean socialOfficeUserBar2Present = selenium.isElementPresent(
+						"//div[@class='so-portlet-user-bar']");
 
-				if (!socialOfficeSignOut2Present) {
+				if (!socialOfficeUserBar2Present) {
 					label = 4;
 
 					continue;
 				}
 
-				selenium.clickAt("//div[@id='dockbar']",
-					RuntimeVariables.replace("Dockbar"));
-				selenium.waitForElementPresent(
-					"//script[contains(@src,'/liferay/dockbar_underlay.js')]");
-				assertTrue(selenium.isVisible("//li[@id='_145_userMenu']"));
-				selenium.mouseOver("//li[@id='_145_userMenu']");
+				selenium.clickAt("//li[contains(@class,'user-menu has-submenu')]/a/span[@class='full-name']",
+					RuntimeVariables.replace("User Name"));
 
 			case 4:
 				selenium.waitForVisible("link=Sign Out");

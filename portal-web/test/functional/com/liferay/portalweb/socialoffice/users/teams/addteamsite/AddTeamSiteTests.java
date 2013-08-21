@@ -15,7 +15,6 @@
 package com.liferay.portalweb.socialoffice.users.teams.addteamsite;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
-import com.liferay.portalweb.portal.controlpanel.sites.site.addsite.AddSite2Test;
 import com.liferay.portalweb.socialoffice.users.user.addsouser.AddSOUser1Test;
 import com.liferay.portalweb.socialoffice.users.user.addsouser.AddSOUser2Test;
 import com.liferay.portalweb.socialoffice.users.user.addsouser.TearDownSOUserTest;

@@ -15,13 +15,8 @@
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>//div[@id='dockbar']</td>
-	<td>Dockbar</td>
-</tr>
-<tr>
-	<td>waitForElementPresent</td>
-	<td>//script[contains(@src,'/liferay/dockbar_underlay.js')]</td>
-	<td>AUI Editable Min</td>
+	<td>//li[contains(@class,'user-menu has-submenu')]/a/span[@class='full-name']</td>
+	<td>User Name</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -115,23 +110,8 @@
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>//div[@id='dockbar']</td>
-	<td>Dockbar</td>
-</tr>
-<tr>
-	<td>waitForElementPresent</td>
-	<td>//script[contains(@src,'/liferay/dockbar_underlay.js')]</td>
-	<td>AUI Editable Min</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//li[@id='_145_userMenu']</td>
-	<td>Joe Bloggs</td>
-</tr>
-<tr>
-	<td>mouseOver</td>
-	<td>//li[@id='_145_userMenu']</td>
-	<td>Joe Bloggs</td>
+	<td>//li[contains(@class,'user-menu has-submenu')]/a/span[@class='full-name']</td>
+	<td>User Name</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
@@ -265,28 +245,13 @@
 </tr>
 <tr>
 	<td>clickAt</td>
-	<td>//div[@id='dockbar']</td>
-	<td>Dockbar</td>
-</tr>
-<tr>
-	<td>waitForElementPresent</td>
-	<td>//script[contains(@src,'/liferay/dockbar_underlay.js')]</td>
-	<td>AUI Editable Min</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//li[@id='_145_mySites']/a/span</td>
-	<td>Go to</td>
-</tr>
-<tr>
-	<td>mouseOver</td>
-	<td>//li[@id='_145_mySites']/a/span</td>
+	<td>//input[contains(@class,'search-input')]</td>
 	<td>Go to</td>
 </tr>
 <tr>
 	<td>waitForVisible</td>
-	<td>link=Control Panel</td>
-	<td>Control Panel</td>
+	<td>link=Liferay</td>
+	<td>Liferay</td>
 </tr>
 <tr>
 	<td>assertTextNotPresent</td>

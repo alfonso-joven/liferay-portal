@@ -15,8 +15,6 @@
 package com.liferay.portalweb.socialoffice.users.usergroups.assignrolesousergroup;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
-import com.liferay.portalweb.portal.controlpanel.usergroups.ugusergroup.addugusergroup.AddUGUserGroupTest;
-import com.liferay.portalweb.portal.controlpanel.usergroups.ugusergroup.addugusergroup.TearDownUGUserGroupTest;
 import com.liferay.portalweb.socialoffice.users.user.addsouser.AddSOUserTest;
 import com.liferay.portalweb.socialoffice.users.user.addsouser.TearDownSOUserTest;
 import com.liferay.portalweb.socialoffice.users.user.editsouserpassword.EditSOUserPasswordTest;
@@ -24,7 +22,9 @@ import com.liferay.portalweb.socialoffice.users.user.signinso.SOUs_SignInSOTest;
 import com.liferay.portalweb.socialoffice.users.user.signinso.SOUs_SignOutSOTest;
 import com.liferay.portalweb.socialoffice.users.user.signinso.SignInSOTest;
 import com.liferay.portalweb.socialoffice.users.user.signinso.SignOutSOTest;
+import com.liferay.portalweb.socialoffice.users.usergroups.assignmemberugsousergroupuser.AddUGUserGroupTest;
 import com.liferay.portalweb.socialoffice.users.usergroups.assignmemberugsousergroupuser.AssignMemberUGSOUserGroupUserTest;
+import com.liferay.portalweb.socialoffice.users.usergroups.assignmemberugsousergroupuser.TearDownUGUserGroupTest;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;

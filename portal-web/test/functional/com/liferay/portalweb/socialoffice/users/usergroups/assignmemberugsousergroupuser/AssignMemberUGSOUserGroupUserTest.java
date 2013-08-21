@@ -25,13 +25,8 @@ public class AssignMemberUGSOUserGroupUserTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home/");
-		selenium.clickAt("//div[@id='dockbar']",
-			RuntimeVariables.replace("Dockbar"));
-		selenium.waitForElementPresent(
-			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
-		assertEquals(RuntimeVariables.replace("Go to"),
-			selenium.getText("//li[@id='_145_mySites']/a/span"));
-		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+		selenium.clickAt("//li[contains(@class,'user-menu has-submenu')]/a/span[@class='full-name']",
+			RuntimeVariables.replace("User Name"));
 		selenium.waitForVisible("link=Control Panel");
 		selenium.clickAt("link=Control Panel",
 			RuntimeVariables.replace("Control Panel"));
@@ -43,7 +38,7 @@ public class AssignMemberUGSOUserGroupUserTest extends BaseTestCase {
 			selenium.getText("//h1[@id='cpPortletTitle']/span"));
 		selenium.type("//input[@id='_127_keywords']",
 			RuntimeVariables.replace("UG UserGroup Name"));
-		selenium.clickAt("//input[@value='Search']",
+		selenium.clickAt("//form[contains(@id,'_127_')]/span/span[2]/span/input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("UG UserGroup Name"),
@@ -71,7 +66,7 @@ public class AssignMemberUGSOUserGroupUserTest extends BaseTestCase {
 			"//input[@id='_127_toggle_id_users_admin_user_searchkeywords']");
 		selenium.type("//input[@id='_127_toggle_id_users_admin_user_searchkeywords']",
 			RuntimeVariables.replace("socialoffice01@liferay.com"));
-		selenium.clickAt("//input[@value='Search']",
+		selenium.clickAt("//div[contains(@id,'user_searchbasic')]/span/span[2]/span/input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Social01 Office01 User01"),

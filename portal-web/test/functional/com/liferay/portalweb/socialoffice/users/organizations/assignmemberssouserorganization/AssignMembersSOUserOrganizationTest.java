@@ -30,9 +30,8 @@ public class AssignMembersSOUserOrganizationTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				assertEquals(RuntimeVariables.replace("Go to"),
-					selenium.getText("//li[@id='_145_mySites']/a/span"));
-				selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+				selenium.clickAt("//li[contains(@class,'user-menu has-submenu')]/a/span[@class='full-name']",
+					RuntimeVariables.replace("User Name"));
 				selenium.waitForVisible("link=Control Panel");
 				selenium.clickAt("link=Control Panel",
 					RuntimeVariables.replace("Control Panel"));
@@ -42,7 +41,7 @@ public class AssignMembersSOUserOrganizationTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				selenium.type("//input[@name='_125_keywords']",
 					RuntimeVariables.replace("Organization"));
-				selenium.clickAt("//input[@value='Search']",
+				selenium.clickAt("xPath=(//input[@value='Search'])[2]",
 					RuntimeVariables.replace("Search"));
 				selenium.waitForPageToLoad("30000");
 				Thread.sleep(1000);
@@ -78,7 +77,7 @@ public class AssignMembersSOUserOrganizationTest extends BaseTestCase {
 				selenium.waitForVisible("//input[@name='_125_keywords']");
 				selenium.type("//input[@name='_125_keywords']",
 					RuntimeVariables.replace("socialoffice01"));
-				selenium.clickAt("//input[@value='Search']",
+				selenium.clickAt("//div[contains(@id,'user_searchbasic')]/span/span[2]/span/input[@value='Search']",
 					RuntimeVariables.replace("Search"));
 				selenium.waitForPageToLoad("30000");
 				assertFalse(selenium.isChecked("//input[@name='_125_rowIds']"));

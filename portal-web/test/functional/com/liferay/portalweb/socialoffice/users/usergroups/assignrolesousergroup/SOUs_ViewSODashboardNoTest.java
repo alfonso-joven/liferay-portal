@@ -28,6 +28,6 @@ public class SOUs_ViewSODashboardNoTest extends BaseTestCase {
 		selenium.clickAt("//div[@id='dockbar']",
 			RuntimeVariables.replace("Dockbar"));
 		assertFalse(selenium.isTextPresent("Dashboard"));
-		assertFalse(selenium.isTextPresent("//li[3]/a"));
+		assertTrue(selenium.isElementNotPresent("//a[contains(.,'Dashboard')]"));
 	}
 }

@@ -25,13 +25,8 @@ public class SOUs_ViewMyProfileTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home");
-		selenium.clickAt("//div[@id='dockbar']",
-			RuntimeVariables.replace("Dockbar"));
-		selenium.waitForElementPresent(
-			"//script[contains(@src,'/liferay/dockbar_underlay.js')]");
-		assertEquals(RuntimeVariables.replace("Social01 Office01 User01"),
-			selenium.getText("//li[@id='_145_userMenu']"));
-		selenium.mouseOver("//li[@id='_145_userMenu']");
+		selenium.clickAt("//li[contains(@class,'user-menu has-submenu')]/a/span[@class='full-name']",
+			RuntimeVariables.replace("User Name"));
 		selenium.waitForVisible("link=My Profile");
 		assertEquals(RuntimeVariables.replace("My Profile"),
 			selenium.getText("link=My Profile"));

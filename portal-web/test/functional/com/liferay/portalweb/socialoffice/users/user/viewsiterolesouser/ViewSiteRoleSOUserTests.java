@@ -15,8 +15,6 @@
 package com.liferay.portalweb.socialoffice.users.user.viewsiterolesouser;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
-import com.liferay.portalweb.portal.controlpanel.roles.role.addregrole.TearDownRoleTest;
-import com.liferay.portalweb.portal.controlpanel.roles.role.addsiterole.AddSiteRoleTest;
 import com.liferay.portalweb.socialoffice.users.user.addsouser.AddSOUserTest;
 import com.liferay.portalweb.socialoffice.users.user.addsouser.TearDownSOUserTest;
 import com.liferay.portalweb.socialoffice.users.user.editsouserpassword.EditSOUserPasswordTest;

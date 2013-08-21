@@ -30,13 +30,8 @@ public class ViewFooterTextTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
-				selenium.clickAt("//div[@id='dockbar']",
-					RuntimeVariables.replace("Dockbar"));
-				selenium.waitForElementPresent(
-					"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
-				assertEquals(RuntimeVariables.replace("Go to"),
-					selenium.getText("//li[@id='_145_mySites']/a/span"));
-				selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+				selenium.clickAt("//li[contains(@class,'user-menu has-submenu')]/a/span[@class='full-name']",
+					RuntimeVariables.replace("User Name"));
 				selenium.waitForVisible("link=Control Panel");
 				selenium.clickAt("link=Control Panel",
 					RuntimeVariables.replace("Control Panel"));
@@ -102,10 +97,10 @@ public class ViewFooterTextTest extends BaseTestCase {
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("Powered By Liferay"),
 					selenium.getText("//p[@class='powered-by']"));
-				assertEquals(RuntimeVariables.replace("Sites"),
-					selenium.getText("//div[@id='so-sidebar']/h3"));
-				assertTrue(selenium.isVisible("//input[@class='search-input']"));
-				selenium.type("//input[@class='search-input']",
+				selenium.clickAt("//input[contains(@class,'search-input')]",
+					RuntimeVariables.replace("Go to"));
+				selenium.waitForVisible("//input[@class='search-input focus']");
+				selenium.type("//input[@class='search-input focus']",
 					RuntimeVariables.replace("Open"));
 				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Open Site Name"),
@@ -175,13 +170,8 @@ public class ViewFooterTextTest extends BaseTestCase {
 
 			case 2:
 				selenium.open("/web/guest/home/");
-				selenium.clickAt("//div[@id='dockbar']",
-					RuntimeVariables.replace("Dockbar"));
-				selenium.waitForElementPresent(
-					"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
-				assertEquals(RuntimeVariables.replace("Go to"),
-					selenium.getText("//li[@id='_145_mySites']/a/span"));
-				selenium.mouseOver("//li[@id='_145_mySites']/a/span");
+				selenium.clickAt("//li[contains(@class,'user-menu has-submenu')]/a/span[@class='full-name']",
+					RuntimeVariables.replace("User Name"));
 				selenium.waitForVisible("link=Control Panel");
 				selenium.clickAt("link=Control Panel",
 					RuntimeVariables.replace("Control Panel"));
@@ -256,10 +246,10 @@ public class ViewFooterTextTest extends BaseTestCase {
 				assertTrue(selenium.isElementNotPresent(
 						"//p[@class='powered-by']"));
 				assertFalse(selenium.isTextPresent("Powered By Liferay"));
-				assertEquals(RuntimeVariables.replace("Sites"),
-					selenium.getText("//div[@id='so-sidebar']/h3"));
-				assertTrue(selenium.isVisible("//input[@class='search-input']"));
-				selenium.type("//input[@class='search-input']",
+				selenium.clickAt("//input[contains(@class,'search-input')]",
+					RuntimeVariables.replace("Go to"));
+				selenium.waitForVisible("//input[@class='search-input focus']");
+				selenium.type("//input[@class='search-input focus']",
 					RuntimeVariables.replace("Open"));
 				Thread.sleep(1000);
 				assertEquals(RuntimeVariables.replace("Open Site Name"),

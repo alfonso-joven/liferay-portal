@@ -25,16 +25,12 @@ public class SOUs_ViewWelcomePageTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/web/guest/home");
-		selenium.clickAt("//div[@id='dockbar']",
-			RuntimeVariables.replace("Dockbar"));
-		selenium.waitForElementPresent(
-			"//script[contains(@src,'/liferay/dockbar_underlay.js')]");
 		assertEquals(RuntimeVariables.replace("Dashboard"),
 			selenium.getText("//a[contains(.,'Dashboard')]"));
 		selenium.clickAt("//a[contains(.,'Dashboard')]",
 			RuntimeVariables.replace("Dashboard"));
 		selenium.waitForPageToLoad("30000");
-		assertTrue(selenium.isVisible("//a[@title='Go to Dashboard']"));
+		assertTrue(selenium.isVisible("//a[@class='logo default-logo']"));
 		assertEquals(RuntimeVariables.replace("Dashboard"),
 			selenium.getText("link=Dashboard"));
 		assertEquals(RuntimeVariables.replace("Contacts Center"),
