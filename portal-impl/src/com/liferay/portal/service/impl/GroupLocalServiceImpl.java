@@ -711,9 +711,12 @@ public class GroupLocalServiceImpl extends GroupLocalServiceBaseImpl {
 			if (PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM == 6) {
 				List<ResourcePermission> resourcePermissions =
 					resourcePermissionPersistence.findByC_P(
-						group.getCompanyId(), String.valueOf(group.getGroupId()));
+						group.getCompanyId(),
+						String.valueOf(group.getGroupId()));
 
-				for (ResourcePermission resourcePermission : resourcePermissions) {
+				for (ResourcePermission resourcePermission :
+						resourcePermissions) {
+
 					resourcePermissionLocalService.deleteResourcePermission(
 						resourcePermission);
 				}

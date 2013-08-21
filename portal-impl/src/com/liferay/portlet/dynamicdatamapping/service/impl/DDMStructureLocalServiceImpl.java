@@ -175,12 +175,11 @@ public class DDMStructureLocalServiceImpl
 	public void deleteStructure(DDMStructure structure)
 		throws PortalException, SystemException {
 
-		if (!GroupThreadLocal.isDeleteInProcess()) {
-			if (ddmStructureLinkPersistence.countByStructureId(
-					structure.getStructureId()) > 0) {
+		if (!GroupThreadLocal.isDeleteInProcess() &&
+			(ddmStructureLinkPersistence.countByStructureId(
+				structure.getStructureId()) > 0)) {
 
-				throw new RequiredStructureException();
-			}
+			throw new RequiredStructureException();
 		}
 
 		// Structure
