@@ -300,8 +300,8 @@ public class PortletExportImportTest extends BaseExportImportTestCase {
 
 		sb.append("<?xml version=\"1.0\"?><root available-locales=\"");
 		sb.append(localeId);
-		sb.append("\" default-locale=\""");
-		sb.append(localeId)
+		sb.append("\" default-locale=\"");
+		sb.append(localeId);
 		sb.append("\"><static-content language-id=\"");
 		sb.append(localeId);
 		sb.append("\"><![CDATA[<p>");
