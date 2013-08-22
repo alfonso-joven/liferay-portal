@@ -193,7 +193,6 @@ public class HeaderCacheServletResponse extends HttpServletResponseWrapper {
 
 		super.sendRedirect(location);
 
-		setStatus(SC_MOVED_PERMANENTLY);
 	}
 
 	@Override
