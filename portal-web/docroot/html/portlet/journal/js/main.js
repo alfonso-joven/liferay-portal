@@ -1076,7 +1076,7 @@ AUI.add(
 					var structureIdInput = instance.getByName(form, 'structureId');
 					var templateIdInput = instance.getByName(form, 'templateId');
 
-					var previewURL = themeDisplay.getPathMain() + '/journal/view_article_content?cmd=preview&groupId=' + instance.getGroupId() + '&articleId=' + instance.articleId + '&version=' + versionInput.val() + '&languageId=' + defaultLocale + '&type=' + typeInput.val() + '&structureId=' + structureIdInput.val() + '&templateId=' + templateIdInput.val();
+					var previewURL = themeDisplay.getPathMain() + '/journal/view_article_content?cmd=preview&groupId=' + instance.getGroupId() + '&articleId=' + instance.articleId + '&version=' + versionInput.val() + '&languageId=' + themeDisplay.getLanguageId() + '&type=' + typeInput.val() + '&structureId=' + structureIdInput.val() + '&templateId=' + templateIdInput.val();
 
 					auxForm.attr('action', previewURL);
 					auxForm.attr('target', '_blank');
