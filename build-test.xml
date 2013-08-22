@@ -3484,7 +3484,6 @@ svn --username ${svn.username} --password ${svn.password} update -r ${svn.info.r
 			</else>
 		</if>
 
-
 		<if>
 			<isset property="email.address.1" />
 			<then>
@@ -3528,7 +3527,6 @@ svn --username ${svn.username} --password ${svn.password} update -r ${svn.info.r
 				/>
 			</then>
 		</if>
-
 
 		<if>
 			<not>
