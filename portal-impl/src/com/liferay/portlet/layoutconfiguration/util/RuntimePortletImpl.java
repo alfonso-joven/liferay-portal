@@ -14,9 +14,12 @@
 
 package com.liferay.portlet.layoutconfiguration.util;
 
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.exception.SystemException;
 import com.liferay.portal.kernel.io.unsync.UnsyncStringWriter;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
+import com.liferay.portal.kernel.portlet.PortletModeFactory;
 import com.liferay.portal.kernel.security.pacl.DoPrivileged;
 import com.liferay.portal.kernel.servlet.PipingPageContext;
 import com.liferay.portal.kernel.servlet.PipingServletResponse;
@@ -24,6 +27,7 @@ import com.liferay.portal.kernel.servlet.PluginContextListener;
 import com.liferay.portal.kernel.servlet.ServletContextPool;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.JavaConstants;
+import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
@@ -31,12 +35,16 @@ import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.kernel.velocity.VelocityContext;
 import com.liferay.portal.kernel.velocity.VelocityEngineUtil;
 import com.liferay.portal.kernel.velocity.VelocityVariablesUtil;
+import com.liferay.portal.model.Layout;
 import com.liferay.portal.model.LayoutTemplate;
 import com.liferay.portal.model.LayoutTemplateConstants;
 import com.liferay.portal.model.Portlet;
 import com.liferay.portal.model.PortletConstants;
+import com.liferay.portal.security.permission.PermissionChecker;
+import com.liferay.portal.security.permission.PermissionThreadLocal;
 import com.liferay.portal.service.LayoutTemplateLocalServiceUtil;
 import com.liferay.portal.service.PortletLocalServiceUtil;
+import com.liferay.portal.service.permission.PortletPermissionUtil;
 import com.liferay.portal.theme.PortletDisplay;
 import com.liferay.portal.theme.PortletDisplayFactory;
 import com.liferay.portal.theme.ThemeDisplay;
@@ -56,6 +64,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.portlet.PortletConfig;
+import javax.portlet.PortletMode;
 import javax.portlet.PortletRequest;
 import javax.portlet.RenderRequest;
 import javax.portlet.RenderResponse;
@@ -176,6 +185,12 @@ public class RuntimePortletImpl implements RuntimePortlet {
 
 		String lifecycle = (String)request.getAttribute(
 			PortletRequest.LIFECYCLE_PHASE);
+
+		if (!hasAccessPermission(request, portlet) &&
+			!portlet.isShowPortletAccessDenied()) {
+
+			return StringPool.BLANK;
+		}
 
 		try {
 			return PortalUtil.renderPortlet(
@@ -585,6 +600,26 @@ public class RuntimePortletImpl implements RuntimePortlet {
 
 		return LayoutTemplateLocalServiceUtil.getLayoutTemplate(
 			layoutTemplateId, standard, themeId);
+	}
+
+	protected boolean hasAccessPermission(
+			HttpServletRequest request, Portlet portlet)
+		throws PortalException, SystemException {
+
+		PermissionChecker permissionChecker =
+			PermissionThreadLocal.getPermissionChecker();
+
+		ThemeDisplay themeDisplay = (ThemeDisplay)request.getAttribute(
+			WebKeys.THEME_DISPLAY);
+
+		Layout layout = (Layout)request.getAttribute(WebKeys.LAYOUT);
+
+		PortletMode portletMode = PortletModeFactory.getPortletMode(
+			ParamUtil.getString(request, "p_p_mode"));
+
+		return PortletPermissionUtil.hasAccessPermission(
+			permissionChecker, themeDisplay.getScopeGroupId(), layout, portlet,
+			portletMode);
 	}
 
 	private static void _defineObjects(
