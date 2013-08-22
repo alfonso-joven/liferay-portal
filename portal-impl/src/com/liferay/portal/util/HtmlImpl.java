@@ -556,7 +556,7 @@ public class HtmlImpl implements Html {
 
 		// Search for the ending </abc> tag
 
-		for (;;) {
+		while (true) {
 			x = text.indexOf("</", x);
 
 			if (x >= 0) {

@@ -2862,7 +2862,7 @@ public class JournalArticleLocalServiceImpl
 
 		Element elParent = el.getParent();
 
-		for (;;) {
+		while (true) {
 			if ((elParent == null) || elParent.getName().equals("root")) {
 				break;
 			}
