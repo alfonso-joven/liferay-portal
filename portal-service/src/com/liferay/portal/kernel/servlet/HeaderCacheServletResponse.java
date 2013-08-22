@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletResponse;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
@@ -168,19 +169,25 @@ public class HeaderCacheServletResponse extends HttpServletResponseWrapper {
 
 	@Override
 	public boolean isCommitted() {
-		return _committed;
+		ServletResponse servletResponse = getResponse();
+
+		return _committed || servletResponse.isCommitted();
 	}
 
 	@Override
 	public void sendError(int status) throws IOException {
-		_status = status;
-
-		super.sendError(status);
+		sendError(status, null);
 	}
 
 	@Override
 	public void sendError(int status, String msg) throws IOException {
+		if (isCommitted()) {
+			throw new IllegalStateException("Send error after commit");
+		}
+
 		_status = status;
+
+		_committed = true;
 
 		super.sendError(status, msg);
 	}
@@ -191,8 +198,9 @@ public class HeaderCacheServletResponse extends HttpServletResponseWrapper {
 			throw new IllegalStateException("Response is already committed");
 		}
 
-		super.sendRedirect(location);
+		_committed = true;
 
+		super.sendRedirect(location);
 	}
 
 	@Override
@@ -201,6 +209,10 @@ public class HeaderCacheServletResponse extends HttpServletResponseWrapper {
 
 	@Override
 	public void setContentType(String contentType) {
+		if (isCommitted()) {
+			return;
+		}
+
 		if (contentType != null) {
 			_contentType = contentType;
 
@@ -262,6 +274,10 @@ public class HeaderCacheServletResponse extends HttpServletResponseWrapper {
 
 	@Override
 	public void setStatus(int status) {
+		if (isCommitted()) {
+			return;
+		}
+
 		_status = status;
 
 		super.setStatus(status);
