@@ -82,7 +82,7 @@ if (categoryId > 0) {
 					</portlet:renderURL>
 
 					<li class="top-link-node <%= (i == (nodes.size() - 1)) ? "last" : StringPool.BLANK %>">
-						<aui:a cssClass="<%= cssClass %>" href="<%= viewPageURL %>" label="<%= curNode.getName() %>" />
+						<aui:a cssClass="<%= cssClass %>" href="<%= viewPageURL %>" label="<%= HtmlUtil.escape(curNode.getName()) %>" />
 					</li>
 
 				<%
