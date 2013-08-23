@@ -32,7 +32,7 @@ public class CacheResponseUtil {
 
 	public static void setHeaders(
 		HttpServletResponse response, Map<String, List<Header>> headers) {
-		
+
 		if (response.isCommitted()) {
 			return;
 		}
