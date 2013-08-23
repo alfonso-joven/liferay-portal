@@ -57,6 +57,7 @@ import com.liferay.portal.service.persistence.LayoutUtil;
 import com.liferay.portal.util.PortalUtil;
 import com.liferay.portal.util.PortletKeys;
 import com.liferay.portal.util.PropsValues;
+import com.liferay.portlet.documentlibrary.NoSuchFileEntryException;
 import com.liferay.portlet.documentlibrary.lar.DLPortletDataHandlerImpl;
 import com.liferay.portlet.documentlibrary.model.DLFileEntry;
 import com.liferay.portlet.documentlibrary.service.DLAppLocalServiceUtil;
@@ -2147,6 +2148,7 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 		for (Element dlReferenceElement : dlReferenceElements) {
 			String dlReferencePath = dlReferenceElement.attributeValue("path");
 
+			long fileEntryId = 0;
 			String fileEntryUUID = null;
 			long fileEntryGroupId = 0;
 
@@ -2168,6 +2170,7 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 				if (defaultRepository) {
 					FileEntry fileEntry = (FileEntry)zipEntryObject;
 
+					fileEntryId = fileEntry.getFileEntryId();
 					fileEntryUUID = fileEntry.getUuid();
 					fileEntryGroupId = fileEntry.getGroupId();
 				}
@@ -2175,6 +2178,7 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 					RepositoryEntry repositoryEntry =
 						(RepositoryEntry)zipEntryObject;
 
+					fileEntryId = repositoryEntry.getRepositoryEntryId();
 					fileEntryUUID = repositoryEntry.getUuid();
 					fileEntryGroupId = repositoryEntry.getGroupId();
 				}
@@ -2200,9 +2204,21 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 				groupId = portletDataContext.getSourceCompanyGroupId();
 			}
 
-			FileEntry fileEntry =
-				DLAppLocalServiceUtil.getFileEntryByUuidAndGroupId(
-					fileEntryUUID, groupId);
+			FileEntry fileEntry = null;
+
+			try {
+				fileEntry = DLAppLocalServiceUtil.getFileEntryByUuidAndGroupId(
+					fileEntryUUID, portletDataContext.getGroupId());
+			}
+			catch (NoSuchFileEntryException nsfee) {
+				Map<Long, Long> map =
+					(Map<Long, Long>)portletDataContext.getNewPrimaryKeysMap(
+						DLFileEntry.class);
+
+				long newFileEntryId = map.get(fileEntryId);
+
+				fileEntry = DLAppLocalServiceUtil.getFileEntry(newFileEntryId);
+			}
 
 			if (fileEntry == null) {
 				continue;
