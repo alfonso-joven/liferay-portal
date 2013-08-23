@@ -95,6 +95,12 @@ public class RowChecker {
 	}
 
 	public String getRowCheckBox(
+		boolean checked, boolean disabled, String primaryKey) {
+
+		return getRowCheckBox(null, checked, disabled, primaryKey);
+	}
+
+	public String getRowCheckBox(
 		HttpServletRequest request, boolean checked, boolean disabled,
 		String primaryKey) {
 
