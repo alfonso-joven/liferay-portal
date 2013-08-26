@@ -171,7 +171,11 @@ public class HeaderCacheServletResponse extends HttpServletResponseWrapper {
 	public boolean isCommitted() {
 		ServletResponse servletResponse = getResponse();
 
-		return _committed || servletResponse.isCommitted();
+		if (servletResponse.isCommitted()) {
+			_committed = true;
+		}
+
+		return _committed;
 	}
 
 	@Override
@@ -182,12 +186,10 @@ public class HeaderCacheServletResponse extends HttpServletResponseWrapper {
 	@Override
 	public void sendError(int status, String msg) throws IOException {
 		if (isCommitted()) {
-			throw new IllegalStateException("Send error after commit");
+			throw new IllegalStateException("Response is already committed");
 		}
 
 		_status = status;
-
-		_committed = true;
 
 		super.sendError(status, msg);
 	}
@@ -197,8 +199,6 @@ public class HeaderCacheServletResponse extends HttpServletResponseWrapper {
 		if (isCommitted()) {
 			throw new IllegalStateException("Response is already committed");
 		}
-
-		_committed = true;
 
 		super.sendRedirect(location);
 	}
