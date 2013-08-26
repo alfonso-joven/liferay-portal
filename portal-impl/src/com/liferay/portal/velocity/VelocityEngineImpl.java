@@ -46,6 +46,7 @@ import org.apache.velocity.runtime.RuntimeConstants;
 import org.apache.velocity.runtime.resource.ResourceManager;
 import org.apache.velocity.runtime.resource.loader.StringResourceLoader;
 import org.apache.velocity.runtime.resource.util.StringResourceRepository;
+import org.apache.velocity.util.introspection.SecureUberspector;
 
 /**
  * @author Raymond Augé
@@ -194,6 +195,10 @@ public class VelocityEngineImpl implements VelocityEngine {
 			org.apache.velocity.app.VelocityEngine.RUNTIME_LOG_LOGSYSTEM +
 				".log4j.category",
 			PropsUtil.get(PropsKeys.VELOCITY_ENGINE_LOGGER_CATEGORY));
+
+		extendedProperties.setProperty(
+			org.apache.velocity.app.VelocityEngine.UBERSPECT_CLASSNAME,
+			SecureUberspector.class.getName());
 
 		_velocityEngine.setExtendedProperties(extendedProperties);
 
