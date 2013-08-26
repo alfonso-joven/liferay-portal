@@ -94,6 +94,11 @@ public class RowChecker {
 		return _formName;
 	}
 
+	/**
+	 * @deprecated As of 6.2.0, replaced by  {@link
+	 *             #getRowCheckBox(HttpServletRequest, boolean, boolean,
+	 *             String)}
+	 */
 	public String getRowCheckBox(
 		boolean checked, boolean disabled, String primaryKey) {
 
