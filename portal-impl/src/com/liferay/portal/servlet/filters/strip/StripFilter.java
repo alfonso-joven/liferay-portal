@@ -50,6 +50,7 @@ import java.util.regex.Pattern;
 
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -77,6 +78,8 @@ public class StripFilter extends BasePortalFilter {
 		for (String ignorePath : PropsValues.STRIP_IGNORE_PATHS) {
 			_ignorePaths.add(ignorePath);
 		}
+
+		_servletContext = filterConfig.getServletContext();
 	}
 
 	@Override
@@ -291,7 +294,7 @@ public class StripFilter extends BasePortalFilter {
 				if (PropsValues.STRIP_CSS_SASS_ENABLED) {
 					try {
 						content = DynamicCSSUtil.parseSass(
-							request, key, content);
+							_servletContext, request, null, content);
 					}
 					catch (ScriptingException se) {
 						_log.error("Unable to parse SASS on CSS " + key, se);
@@ -739,5 +742,6 @@ public class StripFilter extends BasePortalFilter {
 
 	private Set<String> _ignorePaths = new HashSet<String>();
 	private ConcurrentLFUCache<String, String> _minifierCache;
+	private ServletContext _servletContext;
 
 }

@@ -26,7 +26,6 @@ import com.liferay.portal.kernel.util.ContextPathUtil;
 import com.liferay.portal.kernel.util.GetterUtil;
 import com.liferay.portal.kernel.util.ListUtil;
 import com.liferay.portal.kernel.util.ReleaseInfo;
-import com.liferay.portal.kernel.util.ServerDetector;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.Validator;
@@ -762,19 +761,12 @@ public class ThemeLocalServiceImpl extends ThemeLocalServiceBaseImpl {
 			else if (curResourcePath.endsWith(".png")) {
 				URL imageURL = servletContext.getResource(curResourcePath);
 
-				if (imageURL != null) {
+				if ((imageURL != null) || resourcePaths.isEmpty()) {
 					imageURLs.add(imageURL);
 				}
 				else {
-					if (ServerDetector.isTomcat()) {
-						if (_log.isInfoEnabled()) {
-							_log.info(ServletContextUtil.LOG_INFO_SPRITES);
-						}
-					}
-					else {
-						_log.error(
-							"Real path for " + curResourcePath + " is null");
-					}
+					_log.error(
+						"Resource URL for " + curResourcePath + " is null");
 				}
 			}
 		}
@@ -783,12 +775,11 @@ public class ThemeLocalServiceImpl extends ThemeLocalServiceBaseImpl {
 			PropsValues.SPRITE_FILE_NAME);
 		String spritePropertiesFileName = resourcePath.concat(
 			PropsValues.SPRITE_PROPERTIES_FILE_NAME);
-		URL spritePropertiesRootURL = servletContext.getResource(
-			StringPool.SLASH);
+		String rootPath = ServletContextUtil.getRootPath(servletContext);
 
 		Properties spriteProperties = SpriteProcessorUtil.generate(
 			servletContext, imageURLs, spriteFileName, spritePropertiesFileName,
-			spritePropertiesRootURL, 16, 16, 10240);
+			rootPath, 16, 16, 10240);
 
 		if (spriteProperties == null) {
 			return;

@@ -33,7 +33,6 @@ import com.liferay.portal.kernel.scheduler.StorageType;
 import com.liferay.portal.kernel.search.Indexer;
 import com.liferay.portal.kernel.search.IndexerRegistryUtil;
 import com.liferay.portal.kernel.servlet.DirectServletRegistryUtil;
-import com.liferay.portal.kernel.servlet.FileTimestampUtil;
 import com.liferay.portal.kernel.servlet.PortletServlet;
 import com.liferay.portal.kernel.servlet.ServletContextPool;
 import com.liferay.portal.kernel.servlet.ServletContextProvider;
@@ -442,7 +441,6 @@ public class PortletHotDeployListener extends BaseHotDeployListener {
 		JavadocManagerUtil.load(servletContextName, classLoader);
 
 		DirectServletRegistryUtil.clearServlets();
-		FileTimestampUtil.reset();
 
 		_portlets.put(
 			servletContextName,
@@ -517,7 +515,6 @@ public class PortletHotDeployListener extends BaseHotDeployListener {
 		JavadocManagerUtil.unload(servletContextName);
 
 		DirectServletRegistryUtil.clearServlets();
-		FileTimestampUtil.reset();
 
 		if (_log.isInfoEnabled()) {
 			if (portlets.size() == 1) {

@@ -21,20 +21,18 @@ import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.servlet.BrowserSniffer;
 import com.liferay.portal.kernel.servlet.HttpHeaders;
-import com.liferay.portal.kernel.servlet.ServletContextUtil;
 import com.liferay.portal.kernel.servlet.ServletResponseUtil;
 import com.liferay.portal.kernel.servlet.StringServletResponse;
 import com.liferay.portal.kernel.util.ArrayUtil;
 import com.liferay.portal.kernel.util.CharPool;
 import com.liferay.portal.kernel.util.ContentTypes;
 import com.liferay.portal.kernel.util.FileUtil;
-import com.liferay.portal.kernel.util.GetterUtil;
+import com.liferay.portal.kernel.util.JavaConstants;
 import com.liferay.portal.kernel.util.ParamUtil;
 import com.liferay.portal.kernel.util.PropsKeys;
 import com.liferay.portal.kernel.util.StringBundler;
 import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
-import com.liferay.portal.kernel.util.SystemProperties;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.servlet.filters.BasePortalFilter;
 import com.liferay.portal.servlet.filters.dynamiccss.DynamicCSSUtil;
@@ -62,13 +60,15 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * @author Brian Wing Shun Chan
+ * @author Raymond Augé
  */
 public class MinifierFilter extends BasePortalFilter {
 
 	/**
 	 * @see {@link DynamicCSSUtil#_propagateQueryString(String, String)}
 	 */
-	public static String aggregateCss(String dir, String content)
+	public static String aggregateCss(
+			MinifierContext minifierContext, String content)
 		throws IOException {
 
 		StringBundler sb = new StringBundler();
@@ -124,10 +124,8 @@ public class MinifierFilter extends BasePortalFilter {
 						importX + _CSS_IMPORT_BEGIN.length(), importY);
 				}
 
-				String importFullFileName = dir.concat(StringPool.SLASH).concat(
+				String importContent = minifierContext.getContent(
 					importFileName);
-
-				String importContent = null;
 
 				if (Validator.isUrl(importFileName)) {
 					URL resourceURL = new URL(importFileName);
@@ -137,14 +135,13 @@ public class MinifierFilter extends BasePortalFilter {
 					importContent = StringUtil.read(
 						urlConnection.getInputStream());
 				}
-				else {
-					importContent = FileUtil.read(importFullFileName);
-				}
 
 				if (importContent == null) {
 					if (_log.isWarnEnabled()) {
 						_log.warn(
-							"File " + importFullFileName + " does not exist");
+							"File " +
+								minifierContext.getFullPath(importFileName) +
+									" does not exist");
 					}
 
 					importContent = StringPool.BLANK;
@@ -159,7 +156,11 @@ public class MinifierFilter extends BasePortalFilter {
 						importFileName.substring(0, slashPos + 1));
 				}
 
-				importContent = aggregateCss(dir + importDir, importContent);
+				minifierContext.pushPath(importDir);
+
+				importContent = aggregateCss(minifierContext, importContent);
+
+				minifierContext.popPath(importDir);
 
 				int importDepth = StringUtil.count(
 					importFileName, StringPool.SLASH);
@@ -208,17 +209,37 @@ public class MinifierFilter extends BasePortalFilter {
 		return sb.toString();
 	}
 
+	public static String minifierJavaScript(
+		MinifierContext minifierContext, String[] fileNames) {
+
+		StringBundler sb = new StringBundler(fileNames.length * 2);
+
+		for (String fileName : fileNames) {
+			String content = minifierContext.getContent(fileName);
+
+			if (Validator.isNull(content)) {
+				continue;
+			}
+
+			sb.append(content);
+			sb.append(StringPool.NEW_LINE);
+		}
+
+		return getJavaScriptContent(sb.toString());
+	}
+
 	@Override
 	public void init(FilterConfig filterConfig) {
 		super.init(filterConfig);
 
 		_servletContext = filterConfig.getServletContext();
-		_servletContextName = GetterUtil.getString(
-			_servletContext.getServletContextName());
 
-		if (Validator.isNull(_servletContextName)) {
-			_tempDir += "/portal";
-		}
+		File tempDir = (File)_servletContext.getAttribute(
+			JavaConstants.JAVAX_SERVLET_CONTEXT_TEMPDIR);
+
+		_tempDir = new File(tempDir, _TEMP_DIR);
+
+		_tempDir.mkdirs();
 
 		if (PropsValues.MINIFIER_FILES_LIMIT > 0) {
 			_limitedFilesCache = new LimitedFilesCache<String>(
@@ -229,6 +250,99 @@ public class MinifierFilter extends BasePortalFilter {
 					"Minifier files limit " + PropsValues.MINIFIER_FILES_LIMIT);
 			}
 		}
+	}
+
+	protected static String getJavaScriptContent(String content) {
+		return MinifierUtil.minifyJavaScript(content);
+	}
+
+	protected Object getBundleContent(
+			HttpServletRequest request, HttpServletResponse response)
+		throws IOException {
+
+		String minifierType = ParamUtil.getString(request, "minifierType");
+		String bundleId = ParamUtil.getString(
+			request, "bundleId",
+			ParamUtil.getString(request, "minifierBundleId"));
+
+		if (Validator.isNull(minifierType) ||
+			Validator.isNull(bundleId) ||
+			!ArrayUtil.contains(PropsValues.JAVASCRIPT_BUNDLE_IDS, bundleId)) {
+
+			return null;
+		}
+
+		String bundleDir = PropsUtil.get(
+			PropsKeys.JAVASCRIPT_BUNDLE_DIR, new Filter(bundleId));
+
+		URL bundleDirURL = _servletContext.getResource(bundleDir);
+
+		if (bundleDirURL == null) {
+			return null;
+		}
+
+		String cacheFileName = getCacheFileName(request);
+
+		String[] fileNames = JavaScriptBundleUtil.getFileNames(bundleId);
+
+		File cacheFile = new File(_tempDir, cacheFileName);
+
+		if (_limitedFilesCache != null) {
+			_limitedFilesCache.put(cacheFileName);
+		}
+
+		if (cacheFile.exists()) {
+			boolean staleCache = false;
+
+			for (String fileName : fileNames) {
+				URL resourceURL = _servletContext.getResource(
+					bundleDir.concat(StringPool.SLASH).concat(fileName));
+
+				if (resourceURL == null) {
+					continue;
+				}
+
+				URLConnection urlConnection = resourceURL.openConnection();
+
+				if (urlConnection.getLastModified() >
+						cacheFile.lastModified()) {
+
+					staleCache = true;
+
+					break;
+				}
+			}
+
+			if (!staleCache) {
+				response.setContentType(ContentTypes.TEXT_JAVASCRIPT);
+
+				return cacheFile;
+			}
+		}
+
+		if (_log.isInfoEnabled()) {
+			_log.info("Aggregating JavaScript bundle " + bundleId);
+		}
+
+		String content = null;
+
+		if (fileNames.length == 0) {
+			content = StringPool.BLANK;
+		}
+		else {
+			MinifierContext minifierContext = new ServletMinifierContext(
+				_servletContext, StringPool.SLASH);
+
+			minifierContext.pushPath(bundleDir);
+
+			content = minifierJavaScript(minifierContext, fileNames);
+		}
+
+		response.setContentType(ContentTypes.TEXT_JAVASCRIPT);
+
+		FileUtil.write(cacheFile, content);
+
+		return content;
 	}
 
 	protected String getCacheFileName(HttpServletRequest request) {
@@ -244,100 +358,10 @@ public class MinifierFilter extends BasePortalFilter {
 			cacheKeyGenerator.append(sterilizeQueryString(queryString));
 		}
 
-		String cacheKey = String.valueOf(cacheKeyGenerator.finish());
-
-		return _tempDir.concat(StringPool.SLASH).concat(cacheKey);
+		return String.valueOf(cacheKeyGenerator.finish());
 	}
 
-	protected Object getMinifiedBundleContent(
-			HttpServletRequest request, HttpServletResponse response)
-		throws IOException {
-
-		String minifierType = ParamUtil.getString(request, "minifierType");
-		String minifierBundleId = ParamUtil.getString(
-			request, "minifierBundleId");
-
-		if (Validator.isNull(minifierType) ||
-			Validator.isNull(minifierBundleId) ||
-			!ArrayUtil.contains(
-				PropsValues.JAVASCRIPT_BUNDLE_IDS, minifierBundleId)) {
-
-			return null;
-		}
-
-		String minifierBundleDir = PropsUtil.get(
-			PropsKeys.JAVASCRIPT_BUNDLE_DIR, new Filter(minifierBundleId));
-
-		String bundleDirRealPath = ServletContextUtil.getRealPath(
-			_servletContext, minifierBundleDir);
-
-		if (bundleDirRealPath == null) {
-			return null;
-		}
-
-		String cacheFileName = getCacheFileName(request);
-
-		String[] fileNames = JavaScriptBundleUtil.getFileNames(
-			minifierBundleId);
-
-		File cacheFile = new File(cacheFileName);
-
-		if (_limitedFilesCache != null) {
-			_limitedFilesCache.put(cacheFileName);
-		}
-
-		if (cacheFile.exists()) {
-			boolean staleCache = false;
-
-			for (String fileName : fileNames) {
-				File file = new File(
-					bundleDirRealPath + StringPool.SLASH + fileName);
-
-				if (file.lastModified() > cacheFile.lastModified()) {
-					staleCache = true;
-
-					break;
-				}
-			}
-
-			if (!staleCache) {
-				response.setContentType(ContentTypes.TEXT_JAVASCRIPT);
-
-				return cacheFile;
-			}
-		}
-
-		if (_log.isInfoEnabled()) {
-			_log.info("Minifying JavaScript bundle " + minifierBundleId);
-		}
-
-		String minifiedContent = null;
-
-		if (fileNames.length == 0) {
-			minifiedContent = StringPool.BLANK;
-		}
-		else {
-			StringBundler sb = new StringBundler(fileNames.length * 2);
-
-			for (String fileName : fileNames) {
-				String content = FileUtil.read(
-					bundleDirRealPath + StringPool.SLASH + fileName);
-
-				sb.append(content);
-				sb.append(StringPool.NEW_LINE);
-			}
-
-			minifiedContent = minifyJavaScript(sb.toString());
-		}
-
-		response.setContentType(ContentTypes.TEXT_JAVASCRIPT);
-
-		FileUtil.write(cacheFile, minifiedContent);
-
-		return minifiedContent;
-	}
-
-	protected Object getMinifiedContent(
+	protected Object getContent(
 			HttpServletRequest request, HttpServletResponse response,
 			FilterChain filterChain)
 		throws Exception {
@@ -357,38 +381,31 @@ public class MinifierFilter extends BasePortalFilter {
 
 		String requestURI = request.getRequestURI();
 
-		String requestPath = requestURI;
+		String resourcePath = requestURI;
 
 		String contextPath = request.getContextPath();
 
 		if (!contextPath.equals(StringPool.SLASH)) {
-			requestPath = requestPath.substring(contextPath.length());
+			resourcePath = resourcePath.substring(contextPath.length());
 		}
 
-		String realPath = ServletContextUtil.getRealPath(
-			_servletContext, requestPath);
+		URL resourceURL = _servletContext.getResource(resourcePath);
 
-		if (realPath == null) {
+		if (resourceURL == null) {
 			return null;
 		}
 
-		realPath = StringUtil.replace(
-			realPath, CharPool.BACK_SLASH, CharPool.SLASH);
-
-		File file = new File(realPath);
-
-		if (!file.exists()) {
-			return null;
-		}
+		URLConnection urlConnection = resourceURL.openConnection();
 
 		String cacheCommonFileName = getCacheFileName(request);
 
 		File cacheContentTypeFile = new File(
-			cacheCommonFileName + "_E_CONTENT_TYPE");
-		File cacheDataFile = new File(cacheCommonFileName + "_E_DATA");
+			_tempDir, cacheCommonFileName + "_E_CONTENT_TYPE");
+		File cacheDataFile = new File(
+			_tempDir, cacheCommonFileName + "_E_DATA");
 
 		if (cacheDataFile.exists() &&
-			(cacheDataFile.lastModified() >= file.lastModified())) {
+			(cacheDataFile.lastModified() >= urlConnection.getLastModified())) {
 
 			if (cacheContentTypeFile.exists()) {
 				String contentType = FileUtil.read(cacheContentTypeFile);
@@ -399,33 +416,34 @@ public class MinifierFilter extends BasePortalFilter {
 			return cacheDataFile;
 		}
 
-		String minifiedContent = null;
+		String content = null;
 
-		if (realPath.endsWith(_CSS_EXTENSION)) {
+		if (resourcePath.endsWith(_CSS_EXTENSION)) {
 			if (_log.isInfoEnabled()) {
-				_log.info("Minifying CSS " + file);
+				_log.info("Minifying CSS " + resourcePath);
 			}
 
-			minifiedContent = minifyCss(request, response, file);
+			content = getCssContent(
+				request, response, resourceURL, resourcePath);
 
 			response.setContentType(ContentTypes.TEXT_CSS);
 
 			FileUtil.write(cacheContentTypeFile, ContentTypes.TEXT_CSS);
 		}
-		else if (realPath.endsWith(_JAVASCRIPT_EXTENSION)) {
+		else if (resourcePath.endsWith(_JAVASCRIPT_EXTENSION)) {
 			if (_log.isInfoEnabled()) {
-				_log.info("Minifying JavaScript " + file);
+				_log.info("Minifying JavaScript " + resourcePath);
 			}
 
-			minifiedContent = minifyJavaScript(file);
+			content = getJavaScriptContent(resourceURL);
 
 			response.setContentType(ContentTypes.TEXT_JAVASCRIPT);
 
 			FileUtil.write(cacheContentTypeFile, ContentTypes.TEXT_JAVASCRIPT);
 		}
-		else if (realPath.endsWith(_JSP_EXTENSION)) {
+		else if (resourcePath.endsWith(_JSP_EXTENSION)) {
 			if (_log.isInfoEnabled()) {
-				_log.info("Minifying JSP " + file);
+				_log.info("Minifying JSP " + resourcePath);
 			}
 
 			StringServletResponse stringResponse = new StringServletResponse(
@@ -438,14 +456,14 @@ public class MinifierFilter extends BasePortalFilter {
 
 			response.setContentType(stringResponse.getContentType());
 
-			minifiedContent = stringResponse.getString();
+			content = stringResponse.getString();
 
 			if (minifierType.equals("css")) {
-				minifiedContent = minifyCss(
-					request, response, realPath, minifiedContent);
+				content = getCssContent(
+					request, response, resourcePath, content);
 			}
 			else if (minifierType.equals("js")) {
-				minifiedContent = minifyJavaScript(minifiedContent);
+				content = getJavaScriptContent(content);
 			}
 
 			FileUtil.write(
@@ -455,31 +473,21 @@ public class MinifierFilter extends BasePortalFilter {
 			return null;
 		}
 
-		FileUtil.write(cacheDataFile, minifiedContent);
+		FileUtil.write(cacheDataFile, content);
 
-		return minifiedContent;
+		return content;
 	}
 
-	protected String minifyCss(
-			HttpServletRequest request, HttpServletResponse response, File file)
-		throws IOException {
-
-		String content = FileUtil.read(file);
-
-		content = aggregateCss(file.getParent(), content);
-
-		return minifyCss(request, response, file.getAbsolutePath(), content);
-	}
-
-	protected String minifyCss(
+	protected String getCssContent(
 		HttpServletRequest request, HttpServletResponse response,
-		String cssRealPath, String content) {
+		String resourcePath, String content) {
 
 		try {
-			content = DynamicCSSUtil.parseSass(request, cssRealPath, content);
+			content = DynamicCSSUtil.parseSass(
+				_servletContext, request, resourcePath, content);
 		}
 		catch (Exception e) {
-			_log.error("Unable to parse SASS on CSS " + cssRealPath, e);
+			_log.error("Unable to parse SASS on CSS " + resourcePath, e);
 
 			if (_log.isDebugEnabled()) {
 				_log.debug(content);
@@ -501,14 +509,27 @@ public class MinifierFilter extends BasePortalFilter {
 		return MinifierUtil.minifyCss(content);
 	}
 
-	protected String minifyJavaScript(File file) throws IOException {
-		String content = FileUtil.read(file);
+	protected String getCssContent(
+			HttpServletRequest request, HttpServletResponse response,
+			URL resourceURL, String resourcePath)
+		throws IOException {
 
-		return minifyJavaScript(content);
+		URLConnection urlConnection = resourceURL.openConnection();
+
+		String content = StringUtil.read(urlConnection.getInputStream());
+
+		content = aggregateCss(
+			new ServletMinifierContext(_servletContext, resourcePath), content);
+
+		return getCssContent(request, response, resourcePath, content);
 	}
 
-	protected String minifyJavaScript(String content) {
-		return MinifierUtil.minifyJavaScript(content);
+	protected String getJavaScriptContent(URL resourceURL) throws IOException {
+		URLConnection urlConnection = resourceURL.openConnection();
+
+		String content = StringUtil.read(urlConnection.getInputStream());
+
+		return getJavaScriptContent(content);
 	}
 
 	@Override
@@ -517,11 +538,10 @@ public class MinifierFilter extends BasePortalFilter {
 			FilterChain filterChain)
 		throws Exception {
 
-		Object minifiedContent = getMinifiedContent(
-			request, response, filterChain);
+		Object minifiedContent = getContent(request, response, filterChain);
 
 		if (minifiedContent == null) {
-			minifiedContent = getMinifiedBundleContent(request, response);
+			minifiedContent = getBundleContent(request, response);
 		}
 
 		if (minifiedContent == null) {
@@ -559,8 +579,7 @@ public class MinifierFilter extends BasePortalFilter {
 
 	private static final String _JSP_EXTENSION = ".jsp";
 
-	private static final String _TEMP_DIR =
-		SystemProperties.get(SystemProperties.TMP_DIR) + "/liferay/minifier";
+	private static final String _TEMP_DIR = "minifier";
 
 	private static Log _log = LogFactoryUtil.getLog(MinifierFilter.class);
 
@@ -569,7 +588,6 @@ public class MinifierFilter extends BasePortalFilter {
 
 	private LimitedFilesCache<String> _limitedFilesCache;
 	private ServletContext _servletContext;
-	private String _servletContextName;
-	private String _tempDir = _TEMP_DIR;
+	private File _tempDir;
 
 }

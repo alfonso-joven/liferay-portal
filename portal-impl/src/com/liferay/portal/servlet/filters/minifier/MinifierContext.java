@@ -12,28 +12,19 @@
  * details.
  */
 
-package com.liferay.portal.kernel.image;
-
-import java.io.IOException;
-
-import java.net.URL;
-
-import java.util.List;
-import java.util.Properties;
-
-import javax.servlet.ServletContext;
+package com.liferay.portal.servlet.filters.minifier;
 
 /**
- * @author Brian Wing Shun Chan
+ * @author Raymond Augé
  */
-public interface SpriteProcessor {
+public interface MinifierContext {
 
-	public static final String PATH = "/sprite";
+	public String getContent(String path);
 
-	public Properties generate(
-			ServletContext servletContext, List<URL> imageURLs,
-			String spriteFileName, String spritePropertiesFileName,
-			String rootPath, int maxHeight, int maxWidth, int maxSize)
-		throws IOException;
+	public String getFullPath(String path);
+
+	public void popPath(String path);
+
+	public void pushPath(String path);
 
 }

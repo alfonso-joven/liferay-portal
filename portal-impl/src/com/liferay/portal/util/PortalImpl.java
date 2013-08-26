@@ -47,13 +47,13 @@ import com.liferay.portal.kernel.security.pacl.DoPrivileged;
 import com.liferay.portal.kernel.servlet.BrowserSnifferUtil;
 import com.liferay.portal.kernel.servlet.DirectRequestDispatcherFactoryUtil;
 import com.liferay.portal.kernel.servlet.DynamicServletRequest;
-import com.liferay.portal.kernel.servlet.FileTimestampUtil;
 import com.liferay.portal.kernel.servlet.HttpHeaders;
 import com.liferay.portal.kernel.servlet.HttpMethods;
 import com.liferay.portal.kernel.servlet.NonSerializableObjectRequestWrapper;
 import com.liferay.portal.kernel.servlet.PersistentHttpServletRequestWrapper;
 import com.liferay.portal.kernel.servlet.PipingServletResponse;
 import com.liferay.portal.kernel.servlet.PortalSessionThreadLocal;
+import com.liferay.portal.kernel.servlet.ServletContextUtil;
 import com.liferay.portal.kernel.servlet.SessionErrors;
 import com.liferay.portal.kernel.servlet.StringServletResponse;
 import com.liferay.portal.kernel.servlet.taglib.ui.BreadcrumbEntry;
@@ -4403,7 +4403,8 @@ public class PortalImpl implements Portal {
 				ServletContext servletContext =
 					(ServletContext)request.getAttribute(WebKeys.CTX);
 
-				timestamp = FileTimestampUtil.getTimestamp(servletContext, uri);
+				timestamp = ServletContextUtil.getLastModified(
+					servletContext, uri, true);
 			}
 
 			if (timestamp == 0) {
