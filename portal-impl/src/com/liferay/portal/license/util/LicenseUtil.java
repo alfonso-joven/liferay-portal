@@ -303,7 +303,7 @@ public class LicenseUtil {
 	public static Map<String, String> getServerInfo() {
 		Map<String, String> serverInfo = new HashMap<String, String>();
 
-		serverInfo.put("hostName", getHostName());
+		serverInfo.put("hostName", PortalUtil.getComputerName());
 		serverInfo.put("ipAddresses", StringUtil.merge(getIpAddresses()));
 		serverInfo.put("macAddresses", StringUtil.merge(getMacAddresses()));
 
@@ -543,7 +543,7 @@ public class LicenseUtil {
 				jsonObject.put("productEntryName", productEntryName);
 			}
 
-			jsonObject.put("hostName", getHostName());
+			jsonObject.put("hostName", PortalUtil.getComputerName());
 			jsonObject.put("ipAddresses", StringUtil.merge(getIpAddresses()));
 			jsonObject.put("macAddresses", StringUtil.merge(getMacAddresses()));
 			jsonObject.put("serverId", Arrays.toString(getServerIdBytes()));
