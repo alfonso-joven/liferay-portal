@@ -6,4 +6,32 @@
 
 		<execute action="SONavigation#assertTextEquals" locator-key1="PROFILE_NAME" value1="${userName}" />
 	</command>
+
+	<command name="gotoCP">
+		<execute macro="Page#openURL" />
+
+		<execute action="SOUserBar#click" locator-key1="USER_NAME" />
+		<execute action="SOUserBar#click" locator-key1="USER_MENU_CONTROL_PANEL" value1="Control Panel"/>
+
+		<if>
+			<isset var="siteScopeName" />
+			<then>
+				<execute action="Home#click" locator-key1="SCOPE_SELECTOR" />
+
+				<var name="key_siteScopeName" value="${siteScopeName}" />
+
+				<execute action="Home#click" locator-key1="SCOPE_SELECTOR_MENULIST_ITEM" />
+			</then>
+		</if>
+
+		<if>
+			<equals arg1="${portletName}" arg2="Workflow" />
+			<then>
+				<execute action="Home#click" locator1="xPath=(//ul[@class='category-portlets']/li/a[contains(.,'${portletName}')])[3]" />
+			</then>
+			<else>
+				<execute action="Home#click" locator1="//ul[@class='category-portlets']/li/a[contains(.,'${portletName}')]" />
+			</else>
+		</if>
+	</command>
 </definition>

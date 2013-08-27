@@ -3,7 +3,7 @@
 	<var name="password" value="test" />
 
 	<command name="addUserWithSORole">
-		<execute macro="Page#gotoCP">
+		<execute macro="SOUserBar#gotoCP">
 			<var name="portletName" value="Users and Organizations" />
 		</execute>
 
@@ -15,7 +15,7 @@
 			<var name="userScreenName" value="${userScreenName}" />
 		</execute>
 
-		<execute macro="Page#gotoCP">
+		<execute macro="SOUserBar#gotoCP">
 			<var name="portletName" value="Roles" />
 		</execute>
 
@@ -45,7 +45,7 @@
 	</command>
 
 	<command name="editPasswordCP">
-		<execute macro="Page#gotoCP">
+		<execute macro="SOUserBar#gotoCP">
 			<var name="portletName" value="Users and Organizations" />
 		</execute>
 
@@ -155,7 +155,7 @@
 		<if>
 			<condition action="SOUserBar#isElementPresent" locator-key1="USER_NAME" />
 			<then>
-				<execute action="SOUserBar#mouseOver" locator-key1="USER_NAME" />
+				<execute action="SOUserBar#click" locator-key1="USER_NAME" />
 				<execute action="SOUserBar#click" locator-key1="USER_MENU_SIGN_OUT" value1="Sign Out" />
 			</then>
 		</if>
@@ -166,7 +166,7 @@
 
 		<execute macro="SOUser#firstLoginPG" />
 
-		<execute macro="Page#gotoCP">
+		<execute macro="SOUserBar#gotoCP">
 			<var name="portletName" value="Users and Organizations" />
 		</execute>
 
@@ -174,7 +174,7 @@
 			<var name="userFirstName" value="${userFirstName}" />
 		</execute>
 
-		<execute macro="Page#gotoCP">
+		<execute macro="SOUserBar#gotoCP">
 			<var name="portletName" value="Users and Organizations" />
 		</execute>
 

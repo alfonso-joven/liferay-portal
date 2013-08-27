@@ -1,6 +1,6 @@
 <definition>
 	<command name="addAdditionalEmailAddressMyAccount">
-		<execute action="SOUserBar#mouseOver" locator-key1="USER_NAME" />
+		<execute action="SOUserBar#click" locator-key1="USER_NAME" />
 		<execute action="SOUserBar#click" locator-key1="USER_MENU_MY_ACCOUNT" value1="My Account" />
 
 		<execute action="CPMyAccount#click" locator-key1="ADDITIONAL_EMAIL_ADDRESSES" />
@@ -14,7 +14,7 @@
 	</command>
 
 	<command name="addAdditionalEmailAddressProfile">
-		<execute action="SOUserBar#mouseOver" locator-key1="USER_NAME" />
+		<execute action="SOUserBar#click" locator-key1="USER_NAME" />
 		<execute action="SOUserBar#click" locator-key1="USER_MENU_MY_PROFILE" value1="My Profile" />
 
 		<execute action="SOProfile#click" locator-key1="ADD_EMAIL_ADDRESS" />
@@ -29,7 +29,7 @@
 	</command>
 
 	<command name="addAddressMyAccount">
-		<execute action="SOUserBar#mouseOver" locator-key1="USER_NAME" />
+		<execute action="SOUserBar#click" locator-key1="USER_NAME" />
 		<execute action="SOUserBar#click" locator-key1="USER_MENU_MY_ACCOUNT" value1="My Account" />
 
 		<execute action="CPMyAccount#click" locator-key1="ADDRESSES" />
@@ -73,7 +73,7 @@
 	</command>
 
 	<command name="addAddressProfile">
-		<execute action="SOUserBar#mouseOver" locator-key1="USER_NAME" />
+		<execute action="SOUserBar#click" locator-key1="USER_NAME" />
 		<execute action="SOUserBar#click" locator-key1="USER_MENU_MY_PROFILE" value1="My Profile" />
 
 		<execute action="SOProfile#click" locator-key1="ADD_ADDRESSES" />
@@ -120,7 +120,7 @@
 	</command>
 
 	<command name="addCommentsMyAccount">
-		<execute action="SOUserBar#mouseOver" locator-key1="USER_NAME" />
+		<execute action="SOUserBar#click" locator-key1="USER_NAME" />
 		<execute action="SOUserBar#click" locator-key1="USER_MENU_MY_ACCOUNT" value1="My Account" />
 
 		<execute action="CPMyAccount#click" locator-key1="COMMENTS" />
@@ -132,7 +132,7 @@
 	</command>
 
 	<command name="addIntroductionProfile">
-		<execute action="SOUserBar#mouseOver" locator-key1="USER_NAME" />
+		<execute action="SOUserBar#click" locator-key1="USER_NAME" />
 		<execute action="SOUserBar#click" locator-key1="USER_MENU_MY_PROFILE" value1="My Profile" />
 
 		<execute action="SOProfile#click" locator-key1="ADD_INTRODUCTION" />
@@ -145,7 +145,7 @@
 	</command>
 
 	<command name="addInstantMessengerMyAccount">
-		<execute action="SOUserBar#mouseOver" locator-key1="USER_NAME" />
+		<execute action="SOUserBar#click" locator-key1="USER_NAME" />
 		<execute action="SOUserBar#click" locator-key1="USER_MENU_MY_ACCOUNT" value1="My Account" />
 
 		<execute action="CPMyAccount#click" locator-key1="INSTANT_MESSENGER" />
@@ -199,7 +199,7 @@
 	</command>
 
 	<command name="addInstantMessengerProfile">
-		<execute action="SOUserBar#mouseOver" locator-key1="USER_NAME" />
+		<execute action="SOUserBar#click" locator-key1="USER_NAME" />
 		<execute action="SOUserBar#click" locator-key1="USER_MENU_MY_PROFILE" value1="My Profile" />
 
 		<execute action="SOProfile#click" locator-key1="ADD_INSTANT_MESSENGER" />
@@ -258,7 +258,7 @@
 	</command>
 
 	<command name="addPhoneNumbersMyAccount">
-		<execute action="SOUserBar#mouseOver" locator-key1="USER_NAME" />
+		<execute action="SOUserBar#click" locator-key1="USER_NAME" />
 		<execute action="SOUserBar#click" locator-key1="USER_MENU_MY_ACCOUNT" value1="My Account" />
 
 		<execute action="CPMyAccount#click" locator-key1="PHONE_NUMBERS" />
@@ -281,7 +281,7 @@
 	</command>
 
 	<command name="addPhoneNumbersProfile">
-		<execute action="SOUserBar#mouseOver" locator-key1="USER_NAME" />
+		<execute action="SOUserBar#click" locator-key1="USER_NAME" />
 		<execute action="SOUserBar#click" locator-key1="USER_MENU_MY_PROFILE" value1="My Profile" />
 
 		<execute action="SOProfile#click" locator-key1="ADD_PHONES" />
@@ -313,7 +313,7 @@
 	</command>
 
 	<command name="addProjectsMyAccount">
-		<execute action="SOUserBar#mouseOver" locator-key1="USER_NAME" />
+		<execute action="SOUserBar#click" locator-key1="USER_NAME" />
 		<execute action="SOUserBar#click" locator-key1="USER_MENU_MY_ACCOUNT" value1="My Account" />
 
 		<execute action="CPMyAccount#click" locator-key1="PROJECTS" />
@@ -336,7 +336,7 @@
 	</command>
 
 	<command name="addProjectsProfile">
-		<execute action="SOUserBar#mouseOver" locator-key1="USER_NAME" />
+		<execute action="SOUserBar#click" locator-key1="USER_NAME" />
 		<execute action="SOUserBar#click" locator-key1="USER_MENU_MY_PROFILE" value1="My Profile" />
 
 		<execute action="SOProfile#click" locator-key1="ADD_PROJECTS" />
@@ -367,7 +367,7 @@
 	</command>
 
 	<command name="addSMSMyAccount">
-		<execute action="SOUserBar#mouseOver" locator-key1="USER_NAME" />
+		<execute action="SOUserBar#click" locator-key1="USER_NAME" />
 		<execute action="SOUserBar#click" locator-key1="USER_MENU_MY_ACCOUNT" value1="My Account" />
 
 		<execute action="CPMyAccount#click" locator-key1="SMS" />
@@ -379,7 +379,7 @@
 	</command>
 
 	<command name="addSMSProfile">
-		<execute action="SOUserBar#mouseOver" locator-key1="USER_NAME" />
+		<execute action="SOUserBar#click" locator-key1="USER_NAME" />
 		<execute action="SOUserBar#click" locator-key1="USER_MENU_MY_PROFILE" value1="My Profile" />
 
 		<execute action="SOProfile#click" locator-key1="ADD_SMS" />
@@ -392,7 +392,7 @@
 	</command>
 
 	<command name="addSocialNetworkMyAccount">
-		<execute action="SOUserBar#mouseOver" locator-key1="USER_NAME" />
+		<execute action="SOUserBar#click" locator-key1="USER_NAME" />
 		<execute action="SOUserBar#click" locator-key1="USER_MENU_MY_ACCOUNT" value1="My Account" />
 
 		<execute action="CPMyAccount#click" locator-key1="SOCIAL_NETWORK" />
@@ -425,7 +425,7 @@
 	</command>
 
 	<command name="addSocialNetworkProfile">
-		<execute action="SOUserBar#mouseOver" locator-key1="USER_NAME" />
+		<execute action="SOUserBar#click" locator-key1="USER_NAME" />
 		<execute action="SOUserBar#click" locator-key1="USER_MENU_MY_PROFILE" value1="My Profile" />
 
 		<execute action="SOProfile#click" locator-key1="ADD_SOCIAL_NETWORK" />
@@ -460,7 +460,7 @@
 	</command>
 
 	<command name="addTagMyAccount">
-		<execute action="SOUserBar#mouseOver" locator-key1="USER_NAME" />
+		<execute action="SOUserBar#click" locator-key1="USER_NAME" />
 		<execute action="SOUserBar#click" locator-key1="USER_MENU_MY_ACCOUNT" value1="My Account" />
 
 		<execute action="CPMyAccount#click" locator-key1="CATEGORIZATION" />
@@ -473,7 +473,7 @@
 	</command>
 
 	<command name="addTagProfile">
-		<execute action="SOUserBar#mouseOver" locator-key1="USER_NAME" />
+		<execute action="SOUserBar#click" locator-key1="USER_NAME" />
 		<execute action="SOUserBar#click" locator-key1="USER_MENU_MY_PROFILE" value1="My Profile" />
 
 		<execute action="SOProfile#click" locator-key1="ADD_TAGS" />
@@ -487,7 +487,7 @@
 	</command>
 
 	<command name="addWebsiteMyAccount">
-		<execute action="SOUserBar#mouseOver" locator-key1="USER_NAME" />
+		<execute action="SOUserBar#click" locator-key1="USER_NAME" />
 		<execute action="SOUserBar#click" locator-key1="USER_MENU_MY_ACCOUNT" value1="My Account" />
 
 		<execute action="CPMyAccount#click" locator-key1="WEBSITES" />
@@ -501,7 +501,7 @@
 	</command>
 
 	<command name="addWebsiteProfile">
-		<execute action="SOUserBar#mouseOver" locator-key1="USER_NAME" />
+		<execute action="SOUserBar#click" locator-key1="USER_NAME" />
 		<execute action="SOUserBar#click" locator-key1="USER_MENU_MY_PROFILE" value1="My Profile" />
 
 		<execute action="SOProfile#click" locator-key1="ADD_WEBSITES" />
@@ -547,7 +547,7 @@
 				<execute macro="SOUserBar#dashboardPG">
 					<var name="userName" value="${userName}" />
 				</execute>
-				<execute action="SOUserBar#mouseOver" locator-key1="USER_NAME" />
+				<execute action="SOUserBar#click" locator-key1="USER_NAME" />
 				<execute action="SOUserBar#click" locator-key1="USER_MENU_MY_PROFILE" value1="My Profile" />
 			</then>
 			<elseif>
