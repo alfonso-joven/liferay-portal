@@ -22,6 +22,9 @@
 		<case locator-key1="USER_MENU_MY_PROFILE">
 			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>
+		<case locator-key1="USER_MENU_CONTROL_PANEL">
+			<execute function="AssertClick#assertTextClickAtAndWait" />
+		</case>
 		<case locator-key1="USER_MENU_SIGN_OUT">
 			<execute function="AssertClick#assertTextClickAtAndWait" />
 		</case>

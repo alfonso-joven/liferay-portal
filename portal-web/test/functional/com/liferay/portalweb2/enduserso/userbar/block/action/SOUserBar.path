@@ -24,18 +24,53 @@
 	<td></td>
 </tr>
 <tr>
+	<td>CONTACT_CENTER</td>
+	<td>//a[contains(text(),'Contacts Center')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>MICROBLOGS</td>
+	<td>//a[contains(text(),'Microblogs')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>MESSAGES</td>
+	<td>//a[contains(text(),'Messages')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>MY_DOCUMENTS</td>
+	<td>//a[contains(text(),'My Documents')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>TASKS</td>
+	<td>//a[contains(text(),'Tasks')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>HOME</td>
+	<td>//a[contains(text(),'Home')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>PLUGINS</td>
+	<td>//a[contains(text(),'Plugins')]</td>
+	<td></td>
+</tr>
+<tr>
 	<td>GO_TO</td>
-	<td>//li[@id='_145_mySites']/a</td>
+	<td>//input[@class='search-input']</td>
 	<td></td>
 </tr>
 <tr>
 	<td>NOTIFICATION</td>
-	<td>//li[@id='_145_notificationsMenu']</td>
+	<td>//li[@id='_8_WAR_soportlet_notificationsMenu']</td>
 	<td></td>
 </tr>
 <tr>
 	<td>USER_NAME</td>
-	<td>//li[@id='_145_userMenu']/a</td>
+	<td>//li[@class='user-menu has-submenu']/a</td>
 	<td></td>
 </tr>
 <tr>
@@ -45,20 +80,51 @@
 </tr>
 <!--GO_TO-->
 <tr>
-	<td>GO_TO_CONTROL_PANEL</td>
-	<td>//li[contains(@class,'control-panel')]/a</td>
+	<td>GO_TO_SEARCH</td>
+	<td>//input[@class='search-input focus']</td>
 	<td></td>
 </tr>
 <tr>
-	<td>GO_TO_SITES_DIRECTORY</td>
-	<td>//span[@class='site-name' and contains(.,'Sites Directory')]</td>
+	<td>GO_TO__SITE_CATEGORY_SELECT</td>
+	<td>//select [@id='_5_WAR_soportlet_tabs1']</td>
 	<td></td>
 </tr>
 <tr>
-	<td></td>
-	<td></td>
+	<td>GO_TO_SITE_LIST</td>
+	<td>//ul[contains(@class, 'site-list')]</td>
 	<td></td>
 </tr>
+<tr>
+	<td>GO_TO_SITE_NAME</td>
+	<td>//li[contains(@class, 'social-office-enabled')]/span[contains(.,'${siteName}')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>GO_TO_SITE_NAME_LINK</td>
+	<td>//li[contains(@class, 'social-office-enabled')]/span[contains(.,'${siteName}')]/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>GO_TO_FAVORITE_SITE_ICON</td>
+	<td>//li[contains(@class, 'social-office-enabled')]/span[@class='action favorite']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>GO_TO_UNFAVORITE_SITE_ICON</td>
+	<td>//li[contains(@class, 'social-office-enabled')]/span[@class='action unfavorite']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>GO_TO_ADD_SITE_BUTTON</td>
+	<td>//button[contains(.,'Add Site')]/span[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>GO_TO_SITES_DIRECTORY_BUTTON</td>
+	<td>//button[contains(.,'Sites Directory')]/span[2]</td>
+	<td></td>
+</tr>
+<!---->
 <!--NOTIFICATION_MENU-->
 <tr>
 	<td>NOTIFICATION_MENU_COUNT</td>
@@ -77,13 +143,13 @@
 </tr>
 <tr>
 	<td>NOTIFICATION_MENU_CONFIRM</td>
-	<td>//span[contains(@class,'user-action-confirm')]/a</td>
+	<td>//div/span/a[contains(text(),'Confirm')]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>NOTIFICATION_MENU_IGNORE</td>
-	<td>//span[contains(@class,'user-action-ignore')]/a</td>
-	<td>Ignore</td>
+	<td>//div/span/a[contains(text(),'Ignore')]</td>
+	<td></td>
 </tr>
 <tr>
 	<td></td>
@@ -93,17 +159,22 @@
 <!--USER_MENU-->
 <tr>
 	<td>USER_MENU_MY_PROFILE</td>
-	<td>//div[@id='_145_userMenuContent']/ul/li/a</td>
+	<td>//a[contains(text(),'My Profile')]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>USER_MENU_MY_ACCOUNT</td>
-	<td>//div[@id='_145_userMenuContent']/ul/li[2]/span/a</td>
+	<td>//a[contains(text(),'My Account')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>USER_MENU_CONTROL_PANEL</td>
+	<td>//a[contains(text(),'Control Panel')]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>USER_MENU_SIGN_OUT</td>
-	<td>//div[@id='_145_userMenuContent']/ul/li/a[contains(.,'Sign Out')]</td>
+	<td>//a[contains(text(),'Sign Out')]</td>
 	<td></td>
 </tr>
 </tbody>

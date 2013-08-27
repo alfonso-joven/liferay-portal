@@ -109,7 +109,7 @@
 </tr>
 <tr>
 	<td>BASIC_SEARCH_BUTTON</td>
-	<td>xpath=(//input[@value='Search'])[1]</td>
+	<td>//span/span/input[@value='Search']</td>
 	<td></td>
 </tr>
 <tr>
@@ -160,7 +160,7 @@
 </tr>
 <tr>
 	<td>ADVANCED_SEARCH_BUTTON</td>
-	<td>xpath=(//input[@value='Search'])[2]</td>
+	<td>//span[2]/span/input[@value='Search']</td>
 	<td></td>
 </tr>
 <tr>
