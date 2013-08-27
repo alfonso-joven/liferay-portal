@@ -754,17 +754,14 @@ public class GroupLocalServiceImpl extends GroupLocalServiceBaseImpl {
 					continue;
 				}
 
-				WorkflowDefinitionLink workflowDefinitionLink = null;
+				WorkflowDefinitionLink workflowDefinitionLink =
+					workflowDefinitionLinkLocalService.
+						fetchWorkflowDefinitionLink(
+							group.getCompanyId(), group.getGroupId(),
+							scopeableWorkflowHandler.getClassName(), 0, 0,
+							true);
 
-				try {
-					workflowDefinitionLink =
-						workflowDefinitionLinkLocalService.
-							getWorkflowDefinitionLink(
-								group.getCompanyId(), group.getGroupId(),
-								scopeableWorkflowHandler.getClassName(), 0, 0,
-								true);
-				}
-				catch (NoSuchWorkflowDefinitionLinkException nswdle) {
+				if (workflowDefinitionLink == null) {
 					continue;
 				}
 
