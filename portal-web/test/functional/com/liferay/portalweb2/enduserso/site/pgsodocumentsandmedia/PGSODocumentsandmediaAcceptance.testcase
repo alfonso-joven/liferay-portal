@@ -1,7 +1,6 @@
 <definition>
 	<var name="key_siteName" value="${siteName}" />
 	<var name="pageName" value="Documents" />
-	<var name="pageType" value="Open Site" />
 	<var name="siteName" value="Open Site Name" />
 	<var name="siteDescription" value="Open Site Description" />
 	<var name="siteType" value="Open" />
@@ -42,18 +41,21 @@
 		<var name="siteName" value="${siteName}" />
 
 		<execute macro="Page#gotoPG">
+			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
 		<execute macro="DMFolder#addPG" />
 
 		<execute macro="Page#gotoPG">
+			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
 		<execute macro="DMFolderDocument#addPG" />
 
 		<execute macro="Page#gotoPG">
+			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
@@ -76,18 +78,21 @@
 		<var name="siteName" value="${siteName}" />
 
 		<execute macro="Page#gotoPG">
+			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
 		<execute macro="DMFolder#addPG" />
 
 		<execute macro="Page#gotoPG">
+			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
 		<execute macro="DMFolderDocument#addPG" />
 
 		<execute macro="Page#gotoPG">
+			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
@@ -112,24 +117,28 @@
 		<var name="siteName" value="${siteName}" />
 
 		<execute macro="Page#gotoPG">
+			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
 		<execute macro="DMFolder#addPG" />
 
 		<execute macro="Page#gotoPG">
+			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
 		<execute macro="DMFolderDocument#addPG" />
 
 		<execute macro="Page#gotoPG">
+			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
 		<execute macro="DMFolderDocument#editPG" />
 
 		<execute macro="Page#gotoPG">
+			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
@@ -143,6 +152,6 @@
 	</command>
 
 	<tear-down>
-		<execute macro="Site#tearDownCP" />
+		<execute macro="SOSites#tearDownCP" />
 	</tear-down>
 </definition>

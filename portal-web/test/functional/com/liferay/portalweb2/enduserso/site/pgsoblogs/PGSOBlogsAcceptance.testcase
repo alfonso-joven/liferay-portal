@@ -1,7 +1,6 @@
 <definition>
 	<var name="key_siteName" value="${siteName}" />
 	<var name="pageName" value="Blogs" />
-	<var name="pageType" value="Open Site" />
 	<var name="siteName" value="Open Site Name" />
 	<var name="siteDescription" value="Open Site Description" />
 	<var name="siteType" value="Open" />
@@ -33,6 +32,7 @@
 		<var name="pageType" value="${pageType}" />
 
 		<execute macro="Page#gotoPG">
+			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
@@ -50,6 +50,7 @@
 		<execute action="PGBlogsEntry#assertTextEquals" locator-key1="ENTRY_AVERAGE_RATING" value1="Average (0 Votes)" />
 
 		<execute macro="Page#gotoPG">
+			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
@@ -58,6 +59,7 @@
 		<execute action="PGBlogsEntry#assertTextEquals" locator-key1="ENTRY_VIEW_COUNT" value1="1 View" />
 
 		<execute macro="Page#gotoPG">
+			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
@@ -85,6 +87,7 @@
 		<var name="key_siteName" value="${key_siteName}" />
 
 		<execute macro="Page#gotoPG">
+			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
@@ -100,6 +103,7 @@
 		<var name="key_siteName" value="${key_siteName}" />
 
 		<execute macro="Page#gotoPG">
+			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
@@ -109,6 +113,6 @@
 	</command>
 
 	<tear-down>
-		<execute macro="Site#tearDownCP" />
+		<execute macro="SOSites#tearDownCP" />
 	</tear-down>
 </definition>

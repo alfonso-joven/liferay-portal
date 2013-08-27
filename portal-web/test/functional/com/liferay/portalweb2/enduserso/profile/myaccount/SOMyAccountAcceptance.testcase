@@ -10,7 +10,7 @@
 	<set-up>
 		<execute macro="SOUser#firstLoginPG" />
 
-		<execute macro="Page#gotoCP">
+		<execute macro="SOUserBar#gotoCP">
 			<var name="portletName" value="Users and Organizations" />
 		</execute>
 
@@ -22,7 +22,7 @@
 			<var name="userScreenName" value="${userScreenName}" />
 		</execute>
 
-		<execute macro="Page#gotoCP">
+		<execute macro="SOUserBar#gotoCP">
 			<var name="portletName" value="Roles" />
 		</execute>
 
@@ -61,7 +61,7 @@
 		</execute>
 	</command>
 
-	<command name="AddAddress">
+<!-- 	<command name="AddAddress">
 		<var name="userAddressCity" value="Ray of Light" />
 		<var name="userAddressCountry" value="United States" />
 		<var name="userAddressPostalCode" value="91234" />
@@ -260,7 +260,7 @@
 			<var name="userWebsiteURL" value="${userWebsiteURL}" />
 			<var name="userWebsiteType" value="${userWebsiteType}" />
 		</execute>
-	</command>
+	</command> -->
 
 	<tear-down>
 		<execute macro="SOUser#tearDownCP" />

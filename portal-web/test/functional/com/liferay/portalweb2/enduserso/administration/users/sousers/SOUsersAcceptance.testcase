@@ -10,7 +10,7 @@
 		<var name="userLastName" value="User01" />
 		<var name="userScreenName" value="socialoffice01" />
 
-		<execute macro="Page#gotoCP">
+		<execute macro="SOUserBar#gotoCP">
 			<var name="portletName" value="Users and Organizations" />
 		</execute>
 
@@ -22,7 +22,7 @@
 			<var name="userScreenName" value="${userScreenName}" />
 		</execute>
 
-		<execute macro="Page#gotoCP">
+		<execute macro="SOUserBar#gotoCP">
 			<var name="portletName" value="Roles" />
 		</execute>
 

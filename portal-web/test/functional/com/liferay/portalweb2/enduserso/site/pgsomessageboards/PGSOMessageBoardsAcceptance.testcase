@@ -1,7 +1,6 @@
 <definition>
 	<var name="key_siteName" value="${siteName}" />
 	<var name="pageName" value="Forums" />
-	<var name="pageType" value="Open Site" />
 	<var name="siteName" value="Open Site Name" />
 	<var name="siteDescription" value="Open Site Description" />
 	<var name="siteType" value="Open" />
@@ -33,12 +32,14 @@
 		<var name="threadSubject" value="${threadSubject}" />
 
 		<execute macro="Page#gotoPG">
+			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
 		<execute macro="MessageboardsCategory#addPG" />
 
 		<execute macro="Page#gotoPG">
+			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
@@ -65,12 +66,14 @@
 		<var name="threadSubject" value="${threadSubject}" />
 
 		<execute macro="Page#gotoPG">
+			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
 		<execute macro="MessageboardsCategory#addPG" />
 
 		<execute macro="Page#gotoPG">
+			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
@@ -81,6 +84,7 @@
 		<execute macro="MessageboardsThread#addPG" />
 
 		<execute macro="Page#gotoPG">
+			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
@@ -91,6 +95,7 @@
 		<execute macro="MessageboardsThread#deletePG" />
 
 		<execute macro="Page#gotoPG">
+			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
@@ -116,12 +121,14 @@
 		<var name="threadSubjectEdit" value="${threadSubjectEdit}" />
 
 		<execute macro="Page#gotoPG">
+			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
 		<execute macro="MessageboardsCategory#addPG" />
 
 		<execute macro="Page#gotoPG">
+			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
@@ -132,6 +139,7 @@
 		<execute macro="MessageboardsThread#addPG" />
 
 		<execute macro="Page#gotoPG">
+			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
@@ -148,6 +156,6 @@
 	</command>
 
 	<tear-down>
-		<execute macro="Site#tearDownCP" />
+		<execute macro="SOSites#tearDownCP" />
 	</tear-down>
 </definition>

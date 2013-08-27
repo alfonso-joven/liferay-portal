@@ -10,7 +10,7 @@
 	<set-up>
 		<execute macro="SOUser#firstLoginPG" />
 
-		<execute macro="Page#gotoCP">
+		<execute macro="SOUserBar#gotoCP">
 			<var name="portletName" value="Users and Organizations" />
 		</execute>
 
@@ -22,7 +22,7 @@
 			<var name="userScreenName" value="${userScreenName}" />
 		</execute>
 
-		<execute macro="Page#gotoCP">
+		<execute macro="SOUserBar#gotoCP">
 			<var name="portletName" value="Roles" />
 		</execute>
 

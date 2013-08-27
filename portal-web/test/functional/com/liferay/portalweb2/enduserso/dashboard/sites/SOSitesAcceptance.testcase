@@ -186,8 +186,8 @@
 		</execute>
 
 		<execute action="SOUserBar#click" locator-key1="DASHBOARD" />
-
-		<execute action="SOSites#click" locator-key1="SITES_DIRECTORY_BUTTON" />
+		<execute action="SOUserBar#click" locator-key1="GO_TO" />
+		<execute action="SOUserBar#click" locator-key1="GO_TO_SITES_DIRECTORY_BUTTON" />
 
 		<execute action="SOUserBarSitesDirectory#select" locator-key1="SITE_CATEGORY_SELECT" value1="All Sites" />
 		<execute action="SOUserBarSitesDirectory#assertTextEquals" locator-key1="SITE_NAME_LINK_1" value1="${siteName1}" />
@@ -210,6 +210,6 @@
 	</command>
 
 	<tear-down>
-		<execute macro="Site#tearDownCP" />
+		<execute macro="SOSites#tearDownCP" />
 	</tear-down>
 </definition>

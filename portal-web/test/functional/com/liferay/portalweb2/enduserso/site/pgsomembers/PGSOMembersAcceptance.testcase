@@ -3,7 +3,6 @@
 	<var name="adminEmailAddress" value="test@liferay.com" />
 	<var name="key_siteName" value="${siteName}" />
 	<var name="pageName" value="Members" />
-	<var name="pageType" value="Open Site" />
 	<var name="password" value="test" />
 	<var name="siteName" value="Open Site Name" />
 	<var name="siteDescription" value="Open Site Description" />
@@ -38,6 +37,7 @@
 
 	<command name="ConfirmMemberInviteSiteTest">
 		<execute macro="Page#gotoPG">
+			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
@@ -69,6 +69,7 @@
 		</execute>
 
 		<execute macro="Page#gotoPG">
+			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
 		</execute>
 
@@ -78,6 +79,6 @@
 	<tear-down>
 		<execute macro="SOUser#tearDownCP" />
 
-		<execute macro="Site#tearDownCP" />
+		<execute macro="SOSites#tearDownCP" />
 	</tear-down>
 </definition>
