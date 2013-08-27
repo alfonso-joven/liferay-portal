@@ -382,7 +382,7 @@ public class DynamicCSSUtil {
 	}
 
 	/**
-	 * @see {@link MinifierFilter#agregateCss(String, String)}
+	 * @see {@link MinifierFilter#aggregateCss(String, String)}
 	 */
 	private static String propagateQueryString(
 		String content, String queryString) {
