@@ -66,7 +66,7 @@ import javax.servlet.http.HttpServletResponse;
 public class MinifierFilter extends BasePortalFilter {
 
 	/**
-	 * @see {@link DynamicCSSUtil#_propagateQueryString(String, String)}
+	 * @see {@link DynamicCSSUtil#propagateQueryString(String, String)}
 	 */
 	public static String aggregateCss(
 			MinifierContext minifierContext, String content)
