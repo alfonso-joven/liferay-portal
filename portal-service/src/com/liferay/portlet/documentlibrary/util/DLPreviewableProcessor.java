@@ -367,6 +367,12 @@ public abstract class DLPreviewableProcessor implements DLProcessor {
 			return;
 		}
 
+		FileVersion fileVersion = fileEntry.getFileVersion();
+
+		if (!hasPreview(fileVersion, previewType)) {
+			return;
+		}
+
 		String binPathSegment = null;
 
 		if (fileIndex < 0) {
@@ -389,8 +395,6 @@ public abstract class DLPreviewableProcessor implements DLProcessor {
 		String binPathName = sb.toString();
 
 		fileEntryElement.addAttribute(binPathName, binPath);
-
-		FileVersion fileVersion = fileEntry.getFileVersion();
 
 		InputStream is = null;
 
