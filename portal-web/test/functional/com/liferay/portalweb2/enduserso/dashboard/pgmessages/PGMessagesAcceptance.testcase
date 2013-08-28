@@ -102,6 +102,31 @@
 		</execute>
 	</command>
 
+	<command name="DeleteMessageBySOUser">
+		<execute macro="SOPrivateMessages#sendMessage">
+			<var name="key_recipientName" value="${userName}" />
+			<var name="messageBody" value="Message Body" />
+			<var name="messageSubject" value="Message Subject" />
+			<var name="recipientName" value="${userName}" />
+			<var name="recipientScreenName" value="${userScreenName}" />
+			<var name="userName" value="${adminName}" />
+		</execute>
+
+		<execute macro="SOUser#logoutPG" />
+
+		<execute macro="SOUser#loginPG">
+			<var name="userEmailAddress" value="${userEmailAddress}" />
+			<var name="password" value="test" />
+		</execute>
+
+		<execute macro="SOPrivateMessages#deleteMessageFromMessageView">
+			<var name="connectionName" value="${adminName}" />
+			<var name="messageBody" value="Message Body" />
+			<var name="messageSubject" value="Message Subject" />
+			<var name="userName" value="${userName}" />
+		</execute>
+	</command>
+
 	<tear-down>
 		<var name="adminName" value="Joe Bloggs" />
 		<var name="adminEmailAddress" value="test@liferay.com" />
