@@ -56,6 +56,9 @@ public interface LayoutRevision extends LayoutRevisionModel, PersistedModel {
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
+	public java.lang.String getThemeSetting(java.lang.String key,
+		java.lang.String device);
+
 	public java.lang.String getTypeSettings();
 
 	public com.liferay.portal.kernel.util.UnicodeProperties getTypeSettingsProperties();
