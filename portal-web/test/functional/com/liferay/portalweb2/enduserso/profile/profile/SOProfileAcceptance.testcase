@@ -10,37 +10,14 @@
 	<set-up>
 		<execute macro="SOUser#firstLoginPG" />
 
-		<execute macro="SOUserBar#gotoCP">
-			<var name="portletName" value="Users and Organizations" />
-		</execute>
-
-		<execute macro="User#addCP">
+		<execute macro="SOUser#addUserWithSORole">
+			<var name="adminEmailAddress" value="test@liferay.com" />
+			<var name="password" value="test" />
 			<var name="userEmailAddress" value="${userEmailAddress}" />
 			<var name="userFirstName" value="${userFirstName}" />
 			<var name="userMiddleName" value="${userMiddleName}" />
 			<var name="userLastName" value="${userLastName}" />
 			<var name="userScreenName" value="${userScreenName}" />
-		</execute>
-
-		<execute macro="SOUserBar#gotoCP">
-			<var name="portletName" value="Roles" />
-		</execute>
-
-		<execute macro="Role#assignRegRoleCP">
-			<var name="roleName" value="Social Office" />
-			<var name="userScreenName" value="${userScreenName}" />
-		</execute>
-
-		<execute macro="SOUser#editPasswordCP">
-			<var name="userEmailAddress" value="${userEmailAddress}" />
-			<var name="userScreenName" value="${userScreenName}" />
-		</execute>
-
-		<execute macro="SOUser#logoutPG" />
-
-		<execute macro="SOUser#loginPG">
-			<var name="userEmailAddress" value="${userEmailAddress}" />
-			<var name="password" value="test" />
 		</execute>
 	</set-up>
 
@@ -90,6 +67,70 @@
 			<var name="userAddressRegion" value="${userAddressRegion}" />
 			<var name="userAddressStreet1" value="${userAddressStreet1}" />
 			<var name="userAddressType" value="${userAddressType}" />
+		</execute>
+	</command>
+
+	<command name="AddCCConnectionProfile">
+		<var name="adminName" value="Joe Bloggs" />
+		<var name="adminEmailAddress" value="test@liferay.com" />
+		<var name="adminListName" value="Bloggs, Joe" />
+		<var name="filterTypeCount" value="1" />
+		<var name="password" value="test" />
+		<var name="roleName" value="Social Office" />
+
+		<execute macro="SOProfile#addConnection">
+			<var name="adminEmailAddress" value="${adminEmailAddress}" />
+			<var name="adminListName" value="${adminListName}" />
+			<var name="senderName" value="${adminName}" />
+			<var name="userEmailAddress" value="${userEmailAddress}" />
+			<var name="userName" value="${userName}" />
+			<var name="userFirstName" value="${userFirstName}" />
+			<var name="userListName" value="${userListName}" />
+			<var name="userLastName" value="${userLastName}" />
+			<var name="userMiddleName" value="${userMiddleName}" />
+			<var name="userScreenName" value="${userScreenName}" />
+		</execute>
+
+		<execute macro="SOUser#logoutPG" />
+
+		<execute macro="SOUser#loginPG">
+			<var name="userEmailAddress" value="${userEmailAddress}" />
+			<var name="password" value="test" />
+		</execute>
+
+		<execute macro="SOUserBar#dashboardPG">
+			<var name="userName" value="${userName}" />
+		</execute>
+
+		<execute action="SONavigation#click" locator-key1="NAVIGATION_CONTACTS_CENTER" />
+
+		<execute macro="SOProfile#viewConnectionProfile">
+			<var name="filterType" value="Connections" />
+			<var name="filterTypeCount" value="${filterTypeCount}" />
+			<var name="userEmailAddress" value="${adminEmailAddress}" />
+			<var name="userName" value="${adminName}" />
+			<var name="userListName" value="${adminListName}" />
+		</execute>
+
+		<execute macro="SOUser#logoutPG" />
+
+		<execute macro="SOUser#loginPG">
+			<var name="userEmailAddress" value="${adminEmailAddress}" />
+			<var name="password" value="test" />
+		</execute>
+
+		<execute macro="SOUserBar#dashboardPG">
+			<var name="userName" value="${adminName}" />
+		</execute>
+
+		<execute action="SONavigation#click" locator-key1="NAVIGATION_CONTACTS_CENTER" />
+
+		<execute macro="SOProfile#viewConnectionProfile">
+			<var name="filterType" value="Connections" />
+			<var name="filterTypeCount" value="${filterTypeCount}" />
+			<var name="userEmailAddress" value="${userEmailAddress}" />
+			<var name="userName" value="${userName}" />
+			<var name="userListName" value="${userListName}" />
 		</execute>
 	</command>
 
