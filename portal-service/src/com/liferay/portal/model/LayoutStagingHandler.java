@@ -319,6 +319,7 @@ public class LayoutStagingHandler implements InvocationHandler, Serializable {
 		_layoutRevisionMethodNames.add("setRobots");
 		_layoutRevisionMethodNames.add("setRobotsMap");
 		_layoutRevisionMethodNames.add("setThemeId");
+		_layoutRevisionMethodNames.add("getThemeSetting");
 		_layoutRevisionMethodNames.add("setTitle");
 		_layoutRevisionMethodNames.add("setTitleMap");
 		_layoutRevisionMethodNames.add("setTypeSettings");
