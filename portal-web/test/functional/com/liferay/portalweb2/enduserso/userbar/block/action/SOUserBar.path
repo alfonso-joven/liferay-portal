@@ -60,17 +60,17 @@
 </tr>
 <tr>
 	<td>GO_TO</td>
-	<td>//input[@class='search-input']</td>
+	<td>//input[contains(@class,'search-input')]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>NOTIFICATION</td>
-	<td>//li[@id='_8_WAR_soportlet_notificationsMenu']</td>
+	<td>//li[@class='notifications-menu']</td>
 	<td></td>
 </tr>
 <tr>
 	<td>USER_NAME</td>
-	<td>//li[@class='user-menu has-submenu']/a</td>
+	<td>//li[contains(@class,'user-menu has-submenu')]/a</td>
 	<td></td>
 </tr>
 <tr>
@@ -80,38 +80,38 @@
 </tr>
 <!--GO_TO-->
 <tr>
-	<td>GO_TO_SEARCH</td>
+	<td>GO_TO_SEARCH_FIELD</td>
 	<td>//input[@class='search-input focus']</td>
 	<td></td>
 </tr>
 <tr>
-	<td>GO_TO__SITE_CATEGORY_SELECT</td>
+	<td>GO_TO_SITE_CATEGORY_SELECT</td>
 	<td>//select [@id='_5_WAR_soportlet_tabs1']</td>
 	<td></td>
 </tr>
 <tr>
 	<td>GO_TO_SITE_LIST</td>
-	<td>//ul[contains(@class, 'site-list')]</td>
+	<td>//ul[contains(@class,'site-list')]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>GO_TO_SITE_NAME</td>
-	<td>//li[contains(@class, 'social-office-enabled')]/span[contains(.,'${siteName}')]</td>
+	<td>//li[contains(@class,'social-office-enabled')]/span[contains(.,'${siteName}')]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>GO_TO_SITE_NAME_LINK</td>
-	<td>//li[contains(@class, 'social-office-enabled')]/span[contains(.,'${siteName}')]/a</td>
+	<td>//li[contains(@class,'social-office-enabled')]/span[contains(.,'${siteName}')]/a</td>
 	<td></td>
 </tr>
 <tr>
 	<td>GO_TO_FAVORITE_SITE_ICON</td>
-	<td>//li[contains(@class, 'social-office-enabled')]/span[@class='action favorite']/a</td>
+	<td>//li[contains(@class,'social-office-enabled')]/span[@class='action favorite']/a</td>
 	<td></td>
 </tr>
 <tr>
 	<td>GO_TO_UNFAVORITE_SITE_ICON</td>
-	<td>//li[contains(@class, 'social-office-enabled')]/span[@class='action unfavorite']/a</td>
+	<td>//li[contains(@class,'social-office-enabled')]/span[@class='action unfavorite']/a</td>
 	<td></td>
 </tr>
 <tr>

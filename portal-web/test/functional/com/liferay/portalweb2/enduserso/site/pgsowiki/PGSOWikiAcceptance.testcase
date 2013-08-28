@@ -20,8 +20,8 @@
 
 	<command name="AddSOWikiFrontPage">
 		<execute macro="Page#gotoPG">
-			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Open Site" />
 		</execute>
 
 		<execute macro="WikiPage#addFrontPagePG">
@@ -32,8 +32,8 @@
 
 	<command name="EditSOWikiFrontPage">
 		<execute macro="Page#gotoPG">
-			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Open Site" />
 		</execute>
 
 		<execute macro="WikiPage#addFrontPagePG">
@@ -42,8 +42,8 @@
 		</execute>
 
 		<execute macro="Page#gotoPG">
-			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Open Site" />
 		</execute>
 
 		<execute macro="WikiPage#editFrontPagePG">

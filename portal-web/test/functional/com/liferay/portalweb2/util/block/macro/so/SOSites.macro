@@ -30,7 +30,7 @@
 		<execute action="SOSitesAdd#check" locator-key1="MEMBERS_CHECKBOX" />
 		<execute action="SOSitesAdd#click" locator-key1="SAVE_BUTTON" />
 
-		<execute macro="SOSites#searchSOSiteInGoto" />
+		<execute macro="SOSites#searchSOSite" />
 	</command>
 
 	<command name="deleteSOSite">
@@ -43,11 +43,11 @@
 			<equals arg1="${siteType}" arg2="Private" />
 			<then>
 				<execute action="SOUserBar#click" locator-key1="GO_TO" />
-				<execute action="SOUserBar#select" locator-key1="GO_TO__SITE_CATEGORY_SELECT" value1="My Sites" />
+				<execute action="SOUserBar#select" locator-key1="GO_TO_SITE_CATEGORY_SELECT" value1="My Sites" />
 			</then>
 			<else>
 				<execute action="SOUserBar#click" locator-key1="GO_TO" />
-				<execute action="SOUserBar#select" locator-key1="GO_TO__SITE_CATEGORY_SELECT" value1="All Sites" />
+				<execute action="SOUserBar#select" locator-key1="GO_TO_SITE_CATEGORY_SELECT" value1="All Sites" />
 			</else>
 		</if>
 
@@ -58,21 +58,21 @@
 		<execute action="SOUserBarSitesDirectory#assertTextNotPresent" value1="${siteName}" />
 	</command>
 
-	<command name="searchSOSiteInGoto">
+	<command name="searchSOSite">
 		<execute action="SOUserBar#click" locator-key1="GO_TO" />
 
 		<if>
 			<equals arg1="${siteType}" arg2="Private" />
 			<then>
-				<execute action="SOUserBar#select" locator-key1="GO_TO__SITE_CATEGORY_SELECT" value1="My Sites" />
+				<execute action="SOUserBar#select" locator-key1="GO_TO_SITE_CATEGORY_SELECT" value1="My Sites" />
 			</then>
 			<else>
-				<execute action="SOUserBar#select" locator-key1="GO_TO__SITE_CATEGORY_SELECT" value1="All Sites" />
+				<execute action="SOUserBar#select" locator-key1="GO_TO_SITE_CATEGORY_SELECT" value1="All Sites" />
 			</else>
 		</if>
 
 		<execute action="SOUserBar#click" locator-key1="GO_TO" />
-		<execute action="SOUserBar#type" locator-key1="GO_TO_SEARCH" value1="${siteName}" />
+		<execute action="SOUserBar#type" locator-key1="GO_TO_SEARCH_FIELD" value1="${siteName}" />
 		<execute action="SOUserBar#assertTextEquals" locator-key1="GO_TO_SITE_NAME_LINK" value1="${siteName}" />
 	</command>
 
@@ -96,7 +96,8 @@
 
 	<command name="viewSOSite">
 		<execute action="SOUserBar#click" locator-key1="DASHBOARD" />
-		<execute macro="SOSites#searchSOSiteInGoto" />
+
+		<execute macro="SOSites#searchSOSite" />
 
 		<execute action="SOUserBar#click" locator-key1="GO_TO_SITE_NAME_LINK" />
 
@@ -110,17 +111,16 @@
 		<execute action="SOSiteNavigation#assertTextEquals" locator-key1="NAVIGATION_MEMBERS" value1="Members" />
 
 		<execute action="SOUserBar#click" locator-key1="DASHBOARD" />
-
 		<execute action="SOUserBar#click" locator-key1="GO_TO" />
 		<execute action="SOUserBar#click" locator-key1="GO_TO_SITES_DIRECTORY_BUTTON" />
 
 		<if>
 			<equals arg1="${siteType}" arg2="Private" />
 			<then>
-				<execute action="SOUserBar#select" locator-key1="GO_TO__SITE_CATEGORY_SELECT" value1="My Sites" />
+				<execute action="SOUserBar#select" locator-key1="GO_TO_SITE_CATEGORY_SELECT" value1="My Sites" />
 			</then>
 			<else>
-				<execute action="SOUserBar#select" locator-key1="GO_TO__SITE_CATEGORY_SELECT" value1="All Sites" />
+				<execute action="SOUserBar#select" locator-key1="GO_TO_SITE_CATEGORY_SELECT" value1="All Sites" />
 			</else>
 		</if>
 

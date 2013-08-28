@@ -32,15 +32,15 @@
 		<var name="threadSubject" value="${threadSubject}" />
 
 		<execute macro="Page#gotoPG">
-			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Open Site" />
 		</execute>
 
 		<execute macro="MessageboardsCategory#addPG" />
 
 		<execute macro="Page#gotoPG">
-			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Open Site" />
 		</execute>
 
 		<execute macro="MessageboardsCategory#gotoPG">
@@ -66,15 +66,15 @@
 		<var name="threadSubject" value="${threadSubject}" />
 
 		<execute macro="Page#gotoPG">
-			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Open Site" />
 		</execute>
 
 		<execute macro="MessageboardsCategory#addPG" />
 
 		<execute macro="Page#gotoPG">
-			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Open Site" />
 		</execute>
 
 		<execute macro="MessageboardsCategory#gotoPG">
@@ -84,8 +84,8 @@
 		<execute macro="MessageboardsThread#addPG" />
 
 		<execute macro="Page#gotoPG">
-			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Open Site" />
 		</execute>
 
 		<execute macro="MessageboardsCategory#gotoPG">
@@ -95,8 +95,8 @@
 		<execute macro="MessageboardsThread#deletePG" />
 
 		<execute macro="Page#gotoPG">
-			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Open Site" />
 		</execute>
 
 		<execute action="PGMessageboards#assertTextEquals" locator-key1="CATEGORY_TABLE_CATEGORY_1" value1="${categoryName}" />
@@ -121,15 +121,15 @@
 		<var name="threadSubjectEdit" value="${threadSubjectEdit}" />
 
 		<execute macro="Page#gotoPG">
-			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Open Site" />
 		</execute>
 
 		<execute macro="MessageboardsCategory#addPG" />
 
 		<execute macro="Page#gotoPG">
-			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Open Site" />
 		</execute>
 
 		<execute macro="MessageboardsCategory#gotoPG">
@@ -139,8 +139,8 @@
 		<execute macro="MessageboardsThread#addPG" />
 
 		<execute macro="Page#gotoPG">
-			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Open Site" />
 		</execute>
 
 		<execute macro="MessageboardsCategory#gotoPG">

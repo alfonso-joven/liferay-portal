@@ -61,7 +61,7 @@
 		</execute>
 	</command>
 
-<!-- 	<command name="AddAddress">
+ 	<command name="AddAddress">
 		<var name="userAddressCity" value="Ray of Light" />
 		<var name="userAddressCountry" value="United States" />
 		<var name="userAddressPostalCode" value="91234" />
@@ -260,7 +260,7 @@
 			<var name="userWebsiteURL" value="${userWebsiteURL}" />
 			<var name="userWebsiteType" value="${userWebsiteType}" />
 		</execute>
-	</command> -->
+	</command>
 
 	<tear-down>
 		<execute macro="SOUser#tearDownCP" />

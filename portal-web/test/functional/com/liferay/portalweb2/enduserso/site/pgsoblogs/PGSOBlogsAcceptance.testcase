@@ -32,8 +32,8 @@
 		<var name="pageType" value="${pageType}" />
 
 		<execute macro="Page#gotoPG">
-			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Open Site" />
 		</execute>
 
 		<execute macro="BlogsEntry#addPG" />
@@ -50,8 +50,8 @@
 		<execute action="PGBlogsEntry#assertTextEquals" locator-key1="ENTRY_AVERAGE_RATING" value1="Average (0 Votes)" />
 
 		<execute macro="Page#gotoPG">
-			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Open Site" />
 		</execute>
 
 		<execute macro="BlogsEntry#viewPGDetails" />
@@ -59,8 +59,8 @@
 		<execute action="PGBlogsEntry#assertTextEquals" locator-key1="ENTRY_VIEW_COUNT" value1="1 View" />
 
 		<execute macro="Page#gotoPG">
-			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Open Site" />
 		</execute>
 
 		<execute macro="BlogsEntry#viewPGDetails" />
@@ -87,8 +87,8 @@
 		<var name="key_siteName" value="${key_siteName}" />
 
 		<execute macro="Page#gotoPG">
-			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Open Site" />
 		</execute>
 
 		<execute macro="BlogsEntry#addPG" />
@@ -103,8 +103,8 @@
 		<var name="key_siteName" value="${key_siteName}" />
 
 		<execute macro="Page#gotoPG">
-			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Open Site" />
 		</execute>
 
 		<execute macro="BlogsEntry#addPG" />

@@ -136,7 +136,7 @@
 			<then>
 				<execute action="PGLoginNewpassword#type" locator-key1="PASSWORD_FIELD" value1="test" />
 				<execute action="PGLoginNewpassword#type" locator-key1="ENTER_AGAIN_FIELD" value1="test" />
-				<execute action="PGLoginNewpassword#click" locator-key1="SAVE_BUTTON" />
+				<execute action="PGLoginNewpassword#assertClick" locator-key1="SAVE_BUTTON" value1="Save" />
 			</then>
 		</if>
 
@@ -144,7 +144,7 @@
 			<condition action="PGLoginPasswordreminder#isElementPresent" locator-key1="ANSWER_FIELD" />
 			<then>
 				<execute action="PGLoginPasswordreminder#type" locator-key1="ANSWER_FIELD" value1="test" />
-				<execute action="PGLoginPasswordreminder#click" locator-key1="SAVE_BUTTON" />
+				<execute action="PGLoginPasswordreminder#assertClick" locator-key1="SAVE_BUTTON" value1="Save" />
 			</then>
 		</if>
 	</command>

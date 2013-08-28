@@ -40,23 +40,19 @@
 		<var name="pageType" value="${pageType}" />
 		<var name="siteName" value="${siteName}" />
 
-		<execute macro="Page#gotoPG">
+		<execute macro="SONavigation#gotoSiteDocuments">
 			<var name="pageType" value="Open Site" />
-			<var name="pageName" value="${pageName}" />
 		</execute>
 
 		<execute macro="DMFolder#addPG" />
 
-		<execute macro="Page#gotoPG">
+		<execute macro="SONavigation#gotoSiteDocuments">
 			<var name="pageType" value="Open Site" />
-			<var name="pageName" value="${pageName}" />
 		</execute>
-
 		<execute macro="DMFolderDocument#addPG" />
 
-		<execute macro="Page#gotoPG">
+		<execute macro="SONavigation#gotoSiteDocuments">
 			<var name="pageType" value="Open Site" />
-			<var name="pageName" value="${pageName}" />
 		</execute>
 
 		<execute action="PGDocumentsandmedia#click" locator-key1="ENTRIES_FOLDER" />
@@ -77,23 +73,20 @@
 		<var name="pageType" value="${pageType}" />
 		<var name="siteName" value="${siteName}" />
 
-		<execute macro="Page#gotoPG">
+		<execute macro="SONavigation#gotoSiteDocuments">
 			<var name="pageType" value="Open Site" />
-			<var name="pageName" value="${pageName}" />
 		</execute>
 
 		<execute macro="DMFolder#addPG" />
 
-		<execute macro="Page#gotoPG">
+		<execute macro="SONavigation#gotoSiteDocuments">
 			<var name="pageType" value="Open Site" />
-			<var name="pageName" value="${pageName}" />
 		</execute>
 
 		<execute macro="DMFolderDocument#addPG" />
 
-		<execute macro="Page#gotoPG">
+		<execute macro="SONavigation#gotoSiteDocuments">
 			<var name="pageType" value="Open Site" />
-			<var name="pageName" value="${pageName}" />
 		</execute>
 
 		<execute macro="DMFolderDocument#deletePG" />
@@ -116,32 +109,27 @@
 		<var name="pageType" value="${pageType}" />
 		<var name="siteName" value="${siteName}" />
 
-		<execute macro="Page#gotoPG">
+		<execute macro="SONavigation#gotoSiteDocuments">
 			<var name="pageType" value="Open Site" />
-			<var name="pageName" value="${pageName}" />
 		</execute>
 
 		<execute macro="DMFolder#addPG" />
 
-		<execute macro="Page#gotoPG">
+		<execute macro="SONavigation#gotoSiteDocuments">
 			<var name="pageType" value="Open Site" />
-			<var name="pageName" value="${pageName}" />
 		</execute>
 
 		<execute macro="DMFolderDocument#addPG" />
 
-		<execute macro="Page#gotoPG">
+		<execute macro="SONavigation#gotoSiteDocuments">
 			<var name="pageType" value="Open Site" />
-			<var name="pageName" value="${pageName}" />
 		</execute>
 
 		<execute macro="DMFolderDocument#editPG" />
 
-		<execute macro="Page#gotoPG">
+		<execute macro="SONavigation#gotoSiteDocuments">
 			<var name="pageType" value="Open Site" />
-			<var name="pageName" value="${pageName}" />
 		</execute>
-
 		<execute action="PGDocumentsandmedia#click" locator-key1="ENTRIES_FOLDER" />
 
 		<execute macro="DMFolderDocument#viewPG">

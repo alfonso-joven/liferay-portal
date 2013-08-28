@@ -37,8 +37,8 @@
 
 	<command name="ConfirmMemberInviteSiteTest">
 		<execute macro="Page#gotoPG">
-			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Open Site" />
 		</execute>
 
 		<execute macro="SOMembers#inviteMember">
@@ -69,8 +69,8 @@
 		</execute>
 
 		<execute macro="Page#gotoPG">
-			<var name="pageType" value="Open Site" />
 			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Open Site" />
 		</execute>
 
 		<execute macro="SOMembers#viewMember" />

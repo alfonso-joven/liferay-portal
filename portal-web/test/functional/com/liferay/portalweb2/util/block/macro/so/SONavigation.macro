@@ -4,4 +4,10 @@
 
 		<execute action="SONavigation#assertClick" locator-key1="NAVIGATION_TASKS" value1="Tasks" />
 	</command>
+
+	<command name="gotoSiteDocuments">
+		<execute macro="Page#openURL" />
+
+		<execute action="SOSiteNavigation#click" locator-key1="NAVIGATION_DOCUMENTS" value1="Documents" />
+	</command>
 </definition>
