@@ -171,6 +171,12 @@ public class RuntimePortletImpl implements RuntimePortlet {
 			return StringPool.BLANK;
 		}
 
+		if (!hasAccessPermission(request, portlet) &&
+			!portlet.isShowPortletAccessDenied()) {
+
+			return StringPool.BLANK;
+		}
+
 		// Capture the current portlet's settings to reset them once the child
 		// portlet is rendered
 
@@ -185,12 +191,6 @@ public class RuntimePortletImpl implements RuntimePortlet {
 
 		String lifecycle = (String)request.getAttribute(
 			PortletRequest.LIFECYCLE_PHASE);
-
-		if (!hasAccessPermission(request, portlet) &&
-			!portlet.isShowPortletAccessDenied()) {
-
-			return StringPool.BLANK;
-		}
 
 		try {
 			return PortalUtil.renderPortlet(
