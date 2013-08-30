@@ -360,6 +360,12 @@ public class DLPortletDataHandlerImpl extends BasePortletDataHandler {
 			FileEntry existingFileEntry = FileEntryUtil.fetchByUUID_R(
 				fileEntry.getUuid(), portletDataContext.getScopeGroupId());
 
+			if (existingFileEntry == null) {
+				existingFileEntry = FileEntryUtil.fetchByUUID_R(
+					fileEntry.getUuid(),
+					portletDataContext.getCompanyGroupId());
+			}
+
 			FileVersion fileVersion = fileEntry.getFileVersion();
 
 			if (existingFileEntry == null) {
@@ -1478,6 +1484,11 @@ public class DLPortletDataHandlerImpl extends BasePortletDataHandler {
 			fileEntryUuid, groupId);
 
 		if (fileEntry == null) {
+			fileEntry = FileEntryUtil.fetchByUUID_R(
+				fileEntryUuid, portletDataContext.getCompanyGroupId());
+		}
+
+		if (fileEntry == null) {
 			if (_log.isWarnEnabled()) {
 				_log.warn(
 					"Unable to retrieve file " + fileEntryUuid +
@@ -1626,6 +1637,11 @@ public class DLPortletDataHandlerImpl extends BasePortletDataHandler {
 		if (portletDataContext.isDataStrategyMirror()) {
 			Folder existingFolder = FolderUtil.fetchByUUID_R(
 				folder.getUuid(), portletDataContext.getScopeGroupId());
+
+			if (existingFolder == null) {
+				existingFolder = FolderUtil.fetchByUUID_R(
+					folder.getUuid(), portletDataContext.getCompanyGroupId());
+			}
 
 			if (existingFolder == null) {
 				String name = getFolderName(
