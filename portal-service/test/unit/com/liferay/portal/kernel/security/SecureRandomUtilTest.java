@@ -15,7 +15,6 @@
 package com.liferay.portal.kernel.security;
 
 import com.liferay.portal.kernel.io.BigEndianCodec;
-import com.liferay.portal.kernel.test.CodeCoverageAssertor;
 import com.liferay.portal.kernel.test.NewClassLoaderJUnitTestRunner;
 import com.liferay.portal.kernel.util.ReflectionUtil;
 
@@ -31,7 +30,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -40,10 +38,6 @@ import org.junit.runner.RunWith;
  */
 @RunWith(NewClassLoaderJUnitTestRunner.class)
 public class SecureRandomUtilTest {
-
-	@ClassRule
-	public static CodeCoverageAssertor codeCoverageAssertor =
-		new CodeCoverageAssertor();
 
 	@Before
 	public void setUp() {
