@@ -49,7 +49,6 @@ public class ClassLoaderPoolTest {
 		_contextNames = (Map<ClassLoader, String>)contextNamesField.get(null);
 
 		_contextNames.clear();
-
 	}
 
 	@Test

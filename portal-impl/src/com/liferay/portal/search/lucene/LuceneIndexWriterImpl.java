@@ -223,7 +223,6 @@ public class LuceneIndexWriterImpl implements IndexWriter {
 						tokenized, boost, value);
 				}
 			}
-
 		}
 
 		return luceneDocument;

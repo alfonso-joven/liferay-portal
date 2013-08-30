@@ -124,7 +124,6 @@ public class SocialActivityCounterLocalServiceImpl
 									ownerType, currentValue, totalValue,
 									startPeriod, endPeriod,
 									previousActivityCounterId, periodLength);
-
 					}
 				}
 				finally {

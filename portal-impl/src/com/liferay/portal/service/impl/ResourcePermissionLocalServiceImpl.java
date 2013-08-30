@@ -764,7 +764,6 @@ public class ResourcePermissionLocalServiceImpl
 					return true;
 				}
 			}
-
 		}
 
 		return false;

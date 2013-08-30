@@ -58,7 +58,6 @@ public class ThemeLoaderTemplateLoader extends URLTemplateLoader {
 				File fileStorage = themeLoader.getFileStorage();
 
 				return new File(fileStorage.getPath() + name).toURI().toURL();
-
 			}
 			else {
 				_log.error(

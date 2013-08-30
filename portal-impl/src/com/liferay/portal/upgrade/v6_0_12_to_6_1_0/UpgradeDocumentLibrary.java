@@ -111,7 +111,6 @@ public class UpgradeDocumentLibrary extends UpgradeProcess {
 
 				runSQL(sb.toString());
 			}
-
 		}
 		finally {
 			DataAccess.cleanUp(con, ps, rs);

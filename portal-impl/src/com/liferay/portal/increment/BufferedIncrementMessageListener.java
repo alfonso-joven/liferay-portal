@@ -53,7 +53,6 @@ public class BufferedIncrementMessageListener extends BaseMessageListener {
 					"Cannot write buffered increment value to the database", t);
 			}
 		}
-
 	}
 
 	private static Log _log = LogFactoryUtil.getLog(

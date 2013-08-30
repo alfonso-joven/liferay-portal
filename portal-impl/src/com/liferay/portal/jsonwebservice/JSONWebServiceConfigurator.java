@@ -292,7 +292,6 @@ public class JSONWebServiceConfigurator extends ClassFinder {
 		if (utilClassName.endsWith("Impl")) {
 			utilClassName = utilClassName.substring(
 				0, utilClassName.length() - 4);
-
 		}
 
 		utilClassName += "Util";

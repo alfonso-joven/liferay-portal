@@ -550,7 +550,6 @@ public class PortletDataContextImpl implements PortletDataContext {
 
 				permissions.add(permission);
 			}
-
 		}
 		else if (PropsValues.PERMISSIONS_USER_CHECK_ALGORITHM == 6) {
 			Map<Long, Set<String>> roleIdsToActionIds = getActionIds_6(

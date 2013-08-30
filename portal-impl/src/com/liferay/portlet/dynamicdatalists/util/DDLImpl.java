@@ -409,7 +409,6 @@ public class DDLImpl implements DDL {
 					DDLRecordConstants.DISPLAY_INDEX_DEFAULT, fields,
 					serviceContext);
 			}
-
 		}
 
 		uploadRecordFieldFiles(record, serviceContext);

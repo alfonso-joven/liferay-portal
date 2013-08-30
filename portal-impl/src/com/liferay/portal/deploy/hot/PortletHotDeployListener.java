@@ -340,7 +340,6 @@ public class PortletHotDeployListener extends BaseHotDeployListener {
 						PHPPortlet.class.getName())) {
 
 					phpPortlet = true;
-
 				}
 
 				if (ClassUtil.isSubclass(

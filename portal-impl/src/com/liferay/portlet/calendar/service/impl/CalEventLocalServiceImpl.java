@@ -1510,7 +1510,6 @@ public class CalEventLocalServiceImpl extends CalEventLocalServiceBaseImpl {
 					recur.getDayList().add(weekDay);
 				}
 			}
-
 		}
 		else if (recurrenceType == Recurrence.WEEKLY) {
 			recur = new Recur(Recur.WEEKLY, -1);

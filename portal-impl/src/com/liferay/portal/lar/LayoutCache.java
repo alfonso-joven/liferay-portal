@@ -271,7 +271,6 @@ public class LayoutCache {
 					companyId, null, null, null, user.getScreenName(), null,
 					WorkflowConstants.STATUS_APPROVED, params, true, 0, 1,
 					(OrderByComparator)null);
-
 			}
 			catch (PortalException pe) {
 			}

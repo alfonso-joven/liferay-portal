@@ -431,7 +431,6 @@ public class BlogsPortletDataHandlerImpl extends BasePortletDataHandler {
 		finally {
 			StreamUtil.cleanUp(smallImageInputStream);
 		}
-
 	}
 
 	private static final boolean _ALWAYS_EXPORTABLE = true;

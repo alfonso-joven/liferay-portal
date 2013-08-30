@@ -260,7 +260,6 @@ public class MediaWikiImporter implements WikiImporter {
 					WikiPageLocalServiceUtil.movePage(
 						userId, node.getNodeId(), frontPageTitle,
 						WikiPageConstants.FRONT_PAGE, false, serviceContext);
-
 				}
 			}
 			catch (Exception e) {
@@ -275,9 +274,7 @@ public class MediaWikiImporter implements WikiImporter {
 					_log.warn(sb.toString(), e);
 				}
 			}
-
 		}
-
 	}
 
 	protected String normalize(String categoryName, int length) {

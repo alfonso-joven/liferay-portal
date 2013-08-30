@@ -1327,7 +1327,6 @@ public class PluginPackageUtil {
 					"Unable to load repository " + repositoryURL + " " +
 						ppe.toString());
 			}
-
 		}
 
 		Indexer indexer = IndexerRegistryUtil.getIndexer(PluginPackage.class);

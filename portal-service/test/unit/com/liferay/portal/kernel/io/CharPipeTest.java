@@ -900,7 +900,6 @@ public class CharPipeTest extends TestCase {
 					_failed = true;
 				}
 			}
-
 		}
 
 		private int _dataSize;

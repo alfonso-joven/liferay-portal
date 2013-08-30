@@ -284,7 +284,6 @@ public class DefaultFriendlyURLMapper extends BaseFriendlyURLMapper {
 
 					routeParameters.put("instanceId", instanceId);
 				}
-
 			}
 		}
 

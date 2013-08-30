@@ -244,7 +244,6 @@ public class EhcachePortalCacheManager implements PortalCacheManager {
 			else {
 				ehcachePortalCache.setEhcache(ehcache);
 			}
-
 		}
 
 		return ehcachePortalCache;

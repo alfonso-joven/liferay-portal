@@ -256,7 +256,6 @@ public class UpgradeTags extends UpgradeProcess {
 			ps.setBoolean(10, true);
 
 			ps.executeUpdate();
-
 		}
 		finally {
 			DataAccess.cleanUp(con, ps, rs);

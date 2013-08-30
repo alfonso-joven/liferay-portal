@@ -279,7 +279,6 @@ public class DLFolderServiceImpl extends DLFolderServiceBaseImpl {
 			return dlFolderPersistence.filterCountByG_P_M(
 				groupId, parentFolderId, false);
 		}
-
 	}
 
 	@Override

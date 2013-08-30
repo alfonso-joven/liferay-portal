@@ -2142,7 +2142,6 @@ public class GroupLocalServiceImpl extends GroupLocalServiceBaseImpl {
 
 		try {
 			user = userPersistence.findByPrimaryKey(group.getCreatorUserId());
-
 		}
 		catch (NoSuchUserException nsue1) {
 			try {

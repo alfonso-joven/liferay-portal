@@ -2864,7 +2864,6 @@ public class DLAppServiceImpl extends DLAppServiceBaseImpl {
 					moveFolders(
 						currentFolder.getFolderId(), newFolder.getFolderId(),
 						fromRepository, toRepository, serviceContext);
-
 				}
 				else if (folderAndFileEntryAndFileShortcut
 							instanceof DLFileShortcut) {
