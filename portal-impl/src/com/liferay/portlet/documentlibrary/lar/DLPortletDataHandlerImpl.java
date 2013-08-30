@@ -2046,7 +2046,7 @@ public class DLPortletDataHandlerImpl extends BasePortletDataHandler {
 		new PortletDataHandlerBoolean(_NAMESPACE, "previews-and-thumbnails");
 	private static PortletDataHandlerBoolean _ranks =
 		new PortletDataHandlerBoolean(_NAMESPACE, "ranks");
-	private static PortletDataHandlerBoolean _shortcuts=
+	private static PortletDataHandlerBoolean _shortcuts =
 		new PortletDataHandlerBoolean(_NAMESPACE, "shortcuts");
 
 }

@@ -77,7 +77,7 @@ public class SearchContainerTest {
 	}
 
 	protected void buildSearchContainer(int cur) {
-		PortletRequest portletRequest= PowerMockito.mock(PortletRequest.class);
+		PortletRequest portletRequest = PowerMockito.mock(PortletRequest.class);
 
 		PortletURL portletURL = PowerMockito.mock(PortletURL.class);
 

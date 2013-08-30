@@ -433,7 +433,7 @@ public class LayoutTypePortletImpl
 
 	@Override
 	public String getLayoutSetPrototypeLayoutProperty(String key) {
-		if (_layoutSetPrototypeLayout== null) {
+		if (_layoutSetPrototypeLayout == null) {
 			return StringPool.BLANK;
 		}
 
