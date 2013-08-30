@@ -252,7 +252,7 @@ public class InvokerFilter extends BasePortalLifecycle implements Filter {
 		return new SecureHttpServletResponseWrapper(response);
 	}
 
-private static Log _log = LogFactoryUtil.getLog(InvokerFilter.class);
+	private static Log _log = LogFactoryUtil.getLog(InvokerFilter.class);
 
 	private String _contextPath;
 	private Dispatcher _dispatcher;
