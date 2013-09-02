@@ -363,6 +363,7 @@ if (!access) {
 	showMoveIcon = false;
 	showPortletCssIcon = false;
 	showPrintIcon = false;
+	showRefreshIcon = false;
 }
 
 long previousScopeGroupId = themeDisplay.getScopeGroupId();
