@@ -103,6 +103,12 @@ public class BeanLocatorImpl implements BeanLocator {
 		_paclServletContextName = paclServletContextName;
 	}
 
+	public static interface PACL {
+
+		public Object getBean(Object bean, ClassLoader classLoader);
+
+	}
+
 	/**
 	 * This method ensures the calls stack is the proper length.
 	 */
@@ -177,12 +183,6 @@ public class BeanLocatorImpl implements BeanLocator {
 		public Object getBean(Object bean, ClassLoader classLoader) {
 			return bean;
 		}
-
-	}
-
-	public static interface PACL {
-
-		public Object getBean(Object bean, ClassLoader classLoader);
 
 	}
 

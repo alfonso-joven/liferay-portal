@@ -224,6 +224,13 @@ public class ServiceBeanAopProxy implements AopProxy, InvocationHandler {
 		}
 	}
 
+	public static interface PACL {
+
+		public InvocationHandler getInvocationHandler(
+			InvocationHandler invocationHandler, AdvisedSupport advisedSupport);
+
+	}
+
 	private List<MethodInterceptor> _getMethodInterceptors(
 		ServiceBeanMethodInvocation serviceBeanMethodInvocation) {
 
@@ -326,13 +333,6 @@ public class ServiceBeanAopProxy implements AopProxy, InvocationHandler {
 
 			return invocationHandler;
 		}
-
-	}
-
-	public static interface PACL {
-
-		public InvocationHandler getInvocationHandler(
-			InvocationHandler invocationHandler, AdvisedSupport advisedSupport);
 
 	}
 
