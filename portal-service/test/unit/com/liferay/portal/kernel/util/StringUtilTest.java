@@ -61,6 +61,24 @@ public class StringUtilTest extends TestCase {
 	}
 
 	@Test
+	public void testIsLowerCase() throws Exception {
+		assertTrue(StringUtil.isLowerCase("hello world"));
+		assertFalse(StringUtil.isLowerCase("Hello World"));
+		assertFalse(StringUtil.isLowerCase("HELLO WORLD"));
+		assertTrue(StringUtil.isLowerCase("hello-world-1"));
+		assertFalse(StringUtil.isLowerCase("HELLO-WORLD-1"));
+	}
+
+	@Test
+	public void testIsUpperCase() throws Exception {
+		assertFalse(StringUtil.isUpperCase("hello world"));
+		assertFalse(StringUtil.isUpperCase("Hello World"));
+		assertTrue(StringUtil.isUpperCase("HELLO WORLD"));
+		assertFalse(StringUtil.isUpperCase("hello-world-1"));
+		assertTrue(StringUtil.isUpperCase("HELLO-WORLD-1"));
+	}
+
+	@Test
 	public void testReplaceChar() throws Exception {
 		assertEquals("127_0_0_1", StringUtil.replace("127.0.0.1", '.', '_'));
 	}
