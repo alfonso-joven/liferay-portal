@@ -2305,84 +2305,67 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 			PortletDataContext portletDataContext, String content)
 		throws Exception {
 
+		String companyPortalURL = StringPool.BLANK;
+		String privateLayoutSetPortalURL = StringPool.BLANK;
+		String publicLayoutSetPortalURL = StringPool.BLANK;
+
 		Group group = GroupLocalServiceUtil.getGroup(
 			portletDataContext.getScopeGroupId());
-
-		LayoutSet publicLayoutSet = group.getPublicLayoutSet();
-		LayoutSet privateLayoutSet = group.getPrivateLayoutSet();
-
-		String publicLayoutSetVirtualHostname =
-			publicLayoutSet.getVirtualHostname();
-		String privateLayoutSetVirtualHostname =
-			privateLayoutSet.getVirtualHostname();
-
-		int portalPort = PortalUtil.getPortalPort(false);
-
-		String publicLayoutSetPortalUrl = StringPool.BLANK;
-		String privateLayoutSetPortalUrl = StringPool.BLANK;
-		String companyPortalUrl = StringPool.BLANK;
 
 		Company company = CompanyLocalServiceUtil.getCompany(
 			group.getCompanyId());
 
-		String companyVirtualHostname = company.getVirtualHostname();
+		LayoutSet privateLayoutSet = group.getPrivateLayoutSet();
+		LayoutSet publicLayoutSet = group.getPublicLayoutSet();
+
+		int portalPort = PortalUtil.getPortalPort(false);
 
 		if (portalPort != -1) {
-			if (Validator.isNotNull(publicLayoutSetVirtualHostname)) {
-				publicLayoutSetPortalUrl = PortalUtil.getPortalURL(
-					publicLayoutSetVirtualHostname, portalPort, false);
+			if (Validator.isNotNull(company.getVirtualHostname())) {
+				companyPortalURL = PortalUtil.getPortalURL(
+					company.getVirtualHostname(), portalPort, false);
 			}
 
-			if (Validator.isNotNull(privateLayoutSetVirtualHostname)) {
-				privateLayoutSetPortalUrl = PortalUtil.getPortalURL(
-					privateLayoutSetVirtualHostname, portalPort, false);
+			if (Validator.isNotNull(privateLayoutSet.getVirtualHostname())) {
+				privateLayoutSetPortalURL = PortalUtil.getPortalURL(
+					privateLayoutSet.getVirtualHostname(), portalPort, false);
 			}
 
-			if (Validator.isNotNull(companyVirtualHostname)) {
-				companyPortalUrl = PortalUtil.getPortalURL(
-					companyVirtualHostname, portalPort, false);
+			if (Validator.isNotNull(publicLayoutSet.getVirtualHostname())) {
+				publicLayoutSetPortalURL = PortalUtil.getPortalURL(
+					publicLayoutSet.getVirtualHostname(), portalPort, false);
 			}
 		}
 
 		int securePortalPort = PortalUtil.getPortalPort(true);
 
-		String publicLayoutSetSecurePortalUrl = StringPool.BLANK;
-		String privateLayoutSetSecurePortalUrl = StringPool.BLANK;
-		String companySecurePortalUrl = StringPool.BLANK;
+		String companySecurePortalURL = StringPool.BLANK;
+		String privateLayoutSetSecurePortalURL = StringPool.BLANK;
+		String publicLayoutSetSecurePortalURL = StringPool.BLANK;
 
 		if (securePortalPort != -1) {
-			if (Validator.isNotNull(publicLayoutSetVirtualHostname)) {
-				publicLayoutSetSecurePortalUrl = PortalUtil.getPortalURL(
-					publicLayoutSetVirtualHostname, securePortalPort, true);
+			if (Validator.isNotNull(company.getVirtualHostname())) {
+				companySecurePortalURL = PortalUtil.getPortalURL(
+					company.getVirtualHostname(), securePortalPort, true);
 			}
 
-			if (Validator.isNotNull(privateLayoutSetVirtualHostname)) {
-				privateLayoutSetSecurePortalUrl = PortalUtil.getPortalURL(
-					privateLayoutSetVirtualHostname, securePortalPort, true);
+			if (Validator.isNotNull(privateLayoutSet.getVirtualHostname())) {
+				privateLayoutSetSecurePortalURL = PortalUtil.getPortalURL(
+					privateLayoutSet.getVirtualHostname(), securePortalPort,
+					true);
 			}
 
-			if (Validator.isNotNull(companyVirtualHostname)) {
-				companySecurePortalUrl = PortalUtil.getPortalURL(
-					companyVirtualHostname, securePortalPort, true);
+			if (Validator.isNotNull(publicLayoutSet.getVirtualHostname())) {
+				publicLayoutSetSecurePortalURL = PortalUtil.getPortalURL(
+					publicLayoutSet.getVirtualHostname(), securePortalPort,
+					true);
 			}
 		}
 
 		content = StringUtil.replace(
-			content, _DATA_HANDLER_PUBLIC_LAYOUT_SET_SECURE_URL,
-			publicLayoutSetSecurePortalUrl);
+			content, _DATA_HANDLER_COMPANY_SECURE_URL, companySecurePortalURL);
 		content = StringUtil.replace(
-			content, _DATA_HANDLER_PUBLIC_LAYOUT_SET_URL,
-			publicLayoutSetPortalUrl);
-		content = StringUtil.replace(
-			content, _DATA_HANDLER_PRIVATE_LAYOUT_SET_SECURE_URL,
-			privateLayoutSetSecurePortalUrl);
-		content = StringUtil.replace(
-			content, _DATA_HANDLER_PRIVATE_LAYOUT_SET_URL,
-			privateLayoutSetPortalUrl);
-		content = StringUtil.replace(
-			content, _DATA_HANDLER_COMPANY_SECURE_URL, companySecurePortalUrl);
-		content = StringUtil.replace(
-			content, _DATA_HANDLER_COMPANY_URL, companyPortalUrl);
+			content, _DATA_HANDLER_COMPANY_URL, companyPortalURL);
 		content = StringUtil.replace(
 			content, _DATA_HANDLER_GROUP_FRIENDLY_URL, group.getFriendlyURL());
 		content = StringUtil.replace(
@@ -2391,8 +2374,20 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 			content, _DATA_HANDLER_PRIVATE_GROUP_SERVLET_MAPPING,
 			PropsValues.LAYOUT_FRIENDLY_URL_PRIVATE_GROUP_SERVLET_MAPPING);
 		content = StringUtil.replace(
+			content, _DATA_HANDLER_PRIVATE_LAYOUT_SET_SECURE_URL,
+			privateLayoutSetSecurePortalURL);
+		content = StringUtil.replace(
+			content, _DATA_HANDLER_PRIVATE_LAYOUT_SET_URL,
+			privateLayoutSetPortalURL);
+		content = StringUtil.replace(
 			content, _DATA_HANDLER_PRIVATE_USER_SERVLET_MAPPING,
 			PropsValues.LAYOUT_FRIENDLY_URL_PRIVATE_USER_SERVLET_MAPPING);
+		content = StringUtil.replace(
+			content, _DATA_HANDLER_PUBLIC_LAYOUT_SET_SECURE_URL,
+			publicLayoutSetSecurePortalURL);
+		content = StringUtil.replace(
+			content, _DATA_HANDLER_PUBLIC_LAYOUT_SET_URL,
+			publicLayoutSetPortalURL);
 		content = StringUtil.replace(
 			content, _DATA_HANDLER_PUBLIC_SERVLET_MAPPING,
 			PropsValues.LAYOUT_FRIENDLY_URL_PUBLIC_SERVLET_MAPPING);
@@ -2521,9 +2516,9 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 			return url;
 		}
 
-		boolean secureUrl = HttpUtil.isSecure(url);
+		boolean secure = HttpUtil.isSecure(url);
 
-		int portalPort = PortalUtil.getPortalPort(secureUrl);
+		int portalPort = PortalUtil.getPortalPort(secure);
 
 		if (portalPort == -1) {
 			return url;
@@ -2538,10 +2533,10 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 
 		if (Validator.isNotNull(publicLayoutSetVirtualHostname)) {
 			portalUrl = PortalUtil.getPortalURL(
-				publicLayoutSetVirtualHostname, portalPort, secureUrl);
+				publicLayoutSetVirtualHostname, portalPort, secure);
 
 			if (url.startsWith(portalUrl)) {
-				if (secureUrl) {
+				if (secure) {
 					urlSB.append(_DATA_HANDLER_PUBLIC_LAYOUT_SET_SECURE_URL);
 				}
 				else {
@@ -2559,10 +2554,10 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 
 		if (Validator.isNotNull(privateLayoutSetVirtualHostname)) {
 			portalUrl = PortalUtil.getPortalURL(
-				privateLayoutSetVirtualHostname, portalPort, secureUrl);
+				privateLayoutSetVirtualHostname, portalPort, secure);
 
 			if (url.startsWith(portalUrl)) {
-				if (secureUrl) {
+				if (secure) {
 					urlSB.append(_DATA_HANDLER_PRIVATE_LAYOUT_SET_SECURE_URL);
 				}
 				else {
@@ -2580,10 +2575,10 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 
 		if (Validator.isNotNull(companyVirtualHostname)) {
 			portalUrl = PortalUtil.getPortalURL(
-				companyVirtualHostname, portalPort, secureUrl);
+				companyVirtualHostname, portalPort, secure);
 
 			if (url.startsWith(portalUrl)) {
-				if (secureUrl) {
+				if (secure) {
 					urlSB.append(_DATA_HANDLER_COMPANY_SECURE_URL);
 				}
 				else {
@@ -2594,7 +2589,7 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 			}
 		}
 
-		portalUrl = PortalUtil.getPortalURL("localhost", portalPort, secureUrl);
+		portalUrl = PortalUtil.getPortalURL("localhost", portalPort, secure);
 
 		if (url.startsWith(portalUrl)) {
 			return url.substring(portalUrl.length());
