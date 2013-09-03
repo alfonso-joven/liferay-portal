@@ -225,6 +225,12 @@ public class FreeMarkerEngineImpl implements FreeMarkerEngine {
 		}
 	}
 
+	public static interface PACL {
+
+		public TemplateControlContext getTemplateControlContext();
+
+	}
+
 	private FreeMarkerContextImpl _doGetToolsContext(
 		String templateContextType) {
 
@@ -306,12 +312,6 @@ public class FreeMarkerEngineImpl implements FreeMarkerEngine {
 
 			return new TemplateControlContext(null, contextClassLoader);
 		}
-
-	}
-
-	public static interface PACL {
-
-		public TemplateControlContext getTemplateControlContext();
 
 	}
 

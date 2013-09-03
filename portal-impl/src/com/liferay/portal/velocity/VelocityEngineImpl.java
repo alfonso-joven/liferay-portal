@@ -254,6 +254,12 @@ public class VelocityEngineImpl implements VelocityEngine {
 		return _velocityEngine.resourceExists(resource);
 	}
 
+	public static interface PACL {
+
+		public TemplateControlContext getTemplateControlContext();
+
+	}
+
 	private VelocityContextImpl _doGetToolsContext(
 		ClassLoader classLoader, String templateContextType) {
 
@@ -342,12 +348,6 @@ public class VelocityEngineImpl implements VelocityEngine {
 
 			return new TemplateControlContext(null, contextClassLoader);
 		}
-
-	}
-
-	public static interface PACL {
-
-		public TemplateControlContext getTemplateControlContext();
 
 	}
 

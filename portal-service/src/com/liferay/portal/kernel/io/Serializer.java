@@ -287,16 +287,6 @@ public class Serializer {
 		return buffer;
 	}
 
-	protected static final ThreadLocal<BufferQueue> bufferQueueThreadLocal =
-		new SoftReferenceThreadLocal<BufferQueue>() {
-
-		@Override
-		protected BufferQueue initialValue() {
-			return new BufferQueue();
-		}
-
-	};
-
 	protected static final int THREADLOCAL_BUFFER_COUNT_LIMIT;
 
 	protected static final int THREADLOCAL_BUFFER_COUNT_MIN = 8;
@@ -328,6 +318,16 @@ public class Serializer {
 
 		THREADLOCAL_BUFFER_SIZE_LIMIT = threadLocalBufferSizeLimit;
 	}
+
+	protected static final ThreadLocal<BufferQueue> bufferQueueThreadLocal =
+		new SoftReferenceThreadLocal<BufferQueue>() {
+
+		@Override
+		protected BufferQueue initialValue() {
+			return new BufferQueue();
+		}
+
+	};
 
 	protected byte[] buffer;
 	protected int index;
