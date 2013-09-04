@@ -42,6 +42,7 @@
 		</execute>
 
 		<execute action="SOUserBar#click" locator-key1="TOGGLE_DOCKBAR" />
+
 		<if>
 			<condition action="SOUserBar#isElementPresent" locator-key1="EDIT_CONTROLS_NOT_FLAGGED" />
 			<then>
@@ -55,7 +56,7 @@
 			<then>
 				<execute action="SONavigation#mouseOver" locator-key1="NAVIGATION_PAGE" />
 				<execute action="SONavigation#click" locator-key1="NAVIGATION_PAGE_DELETE" />
-				<execute action="SONavigation#confirm" locator-key1="CONFIRM" value1="Are you sure you want to delete this page?" />
+				<execute action="SONavigation#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this page?" />
 				<execute action="SONavigation#assertElementNotPresent" locator-key1="NAVIGATION_PAGE" />
 			</then>
 		</while>
