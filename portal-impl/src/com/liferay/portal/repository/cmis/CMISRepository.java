@@ -749,12 +749,10 @@ public class CMISRepository extends BaseCmisRepository {
 
 			return folders.size() + documentIds.size();
 		}
-		else {
-			List<Object> foldersAndFileEntries = getFoldersAndFileEntries(
-				folderId);
 
-			return foldersAndFileEntries.size();
-		}
+		List<Object> foldersAndFileEntries = getFoldersAndFileEntries(folderId);
+
+		return foldersAndFileEntries.size();
 	}
 
 	@Override

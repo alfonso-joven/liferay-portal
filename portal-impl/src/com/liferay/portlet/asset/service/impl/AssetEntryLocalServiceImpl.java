@@ -909,20 +909,19 @@ public class AssetEntryLocalServiceImpl extends AssetEntryLocalServiceBaseImpl {
 		if (Validator.isNotNull(className)) {
 			return new String[] {className};
 		}
-		else {
-			List<AssetRendererFactory> rendererFactories =
-				AssetRendererFactoryRegistryUtil.getAssetRendererFactories();
 
-			String[] classNames = new String[rendererFactories.size()];
+		List<AssetRendererFactory> rendererFactories =
+			AssetRendererFactoryRegistryUtil.getAssetRendererFactories();
 
-			for (int i = 0; i < rendererFactories.size(); i++) {
-				AssetRendererFactory rendererFactory = rendererFactories.get(i);
+		String[] classNames = new String[rendererFactories.size()];
 
-				classNames[i] = rendererFactory.getClassName();
-			}
+		for (int i = 0; i < rendererFactories.size(); i++) {
+			AssetRendererFactory rendererFactory = rendererFactories.get(i);
 
-			return classNames;
+			classNames[i] = rendererFactory.getClassName();
 		}
+
+		return classNames;
 	}
 
 	protected AssetEntry getEntry(Document document)

@@ -167,28 +167,28 @@ public class ThemeHelper {
 		if (extension.equals(TEMPLATE_EXTENSION_FTL)) {
 			return FreeMarkerEngineUtil.resourceExists(resourcePath);
 		}
-		else if (extension.equals(TEMPLATE_EXTENSION_VM)) {
+
+		if (extension.equals(TEMPLATE_EXTENSION_VM)) {
 			return VelocityEngineUtil.resourceExists(resourcePath);
 		}
+
+		URL url = null;
+
+		if (theme.isWARFile()) {
+			ServletContext themeServletContext = servletContext.getContext(
+				theme.getContextPath());
+
+			url = themeServletContext.getResource(resourcePath);
+		}
 		else {
-			URL url = null;
+			url = servletContext.getResource(resourcePath);
+		}
 
-			if (theme.isWARFile()) {
-				ServletContext themeServletContext = servletContext.getContext(
-					theme.getContextPath());
-
-				url = themeServletContext.getResource(resourcePath);
-			}
-			else {
-				url = servletContext.getResource(resourcePath);
-			}
-
-			if (url == null) {
-				return false;
-			}
-			else {
-				return true;
-			}
+		if (url == null) {
+			return false;
+		}
+		else {
+			return true;
 		}
 	}
 

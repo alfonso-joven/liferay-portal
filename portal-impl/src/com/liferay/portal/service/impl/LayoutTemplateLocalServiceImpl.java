@@ -91,13 +91,12 @@ public class LayoutTemplateLocalServiceImpl
 		if (PropsValues.LAYOUT_TEMPLATE_CACHE_ENABLED) {
 			return layoutTemplate.getContent();
 		}
-		else {
-			try {
-				return layoutTemplate.getUncachedContent();
-			}
-			catch (IOException ioe) {
-				throw new SystemException(ioe);
-			}
+
+		try {
+			return layoutTemplate.getUncachedContent();
+		}
+		catch (IOException ioe) {
+			throw new SystemException(ioe);
 		}
 	}
 
@@ -255,13 +254,12 @@ public class LayoutTemplateLocalServiceImpl
 		if (PropsValues.LAYOUT_TEMPLATE_CACHE_ENABLED) {
 			return layoutTemplate.getWapContent();
 		}
-		else {
-			try {
-				return layoutTemplate.getUncachedWapContent();
-			}
-			catch (IOException ioe) {
-				throw new SystemException(ioe);
-			}
+
+		try {
+			return layoutTemplate.getUncachedWapContent();
+		}
+		catch (IOException ioe) {
+			throw new SystemException(ioe);
 		}
 	}
 

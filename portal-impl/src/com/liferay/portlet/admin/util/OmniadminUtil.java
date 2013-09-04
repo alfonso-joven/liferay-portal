@@ -69,19 +69,17 @@ public class OmniadminUtil {
 
 				return false;
 			}
-			else {
-				User user = UserLocalServiceUtil.getUserById(userId);
 
-				if (user.getCompanyId() !=
-						PortalInstances.getDefaultCompanyId()) {
+			User user = UserLocalServiceUtil.getUserById(userId);
 
-					return false;
-				}
+			if (user.getCompanyId() !=
+					PortalInstances.getDefaultCompanyId()) {
 
-				return RoleLocalServiceUtil.hasUserRole(
-					userId, user.getCompanyId(), RoleConstants.ADMINISTRATOR,
-					true);
+				return false;
 			}
+
+			return RoleLocalServiceUtil.hasUserRole(
+				userId, user.getCompanyId(), RoleConstants.ADMINISTRATOR, true);
 		}
 		catch (Exception e) {
 			_log.error(e);

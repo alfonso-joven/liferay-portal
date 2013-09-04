@@ -59,11 +59,10 @@ public class ThemeLoaderTemplateLoader extends URLTemplateLoader {
 
 				return new File(fileStorage.getPath() + name).toURI().toURL();
 			}
-			else {
-				_log.error(
-					name + " is not valid because " + ctxName +
-						" does not map to a theme loader");
-			}
+
+			_log.error(
+				name + " is not valid because " + ctxName +
+					" does not map to a theme loader");
 		}
 
 		return null;

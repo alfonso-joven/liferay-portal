@@ -322,15 +322,14 @@ public class EntityCacheImpl implements CacheRegistryItem, EntityCache {
 		if (result == StringPool.BLANK) {
 			return null;
 		}
-		else {
-			CacheModel<?> cacheModel = (CacheModel<?>)result;
 
-			BaseModel<?> entityModel = (BaseModel<?>)cacheModel.toEntityModel();
+		CacheModel<?> cacheModel = (CacheModel<?>)result;
 
-			entityModel.setCachedModel(true);
+		BaseModel<?> entityModel = (BaseModel<?>)cacheModel.toEntityModel();
 
-			return entityModel;
-		}
+		entityModel.setCachedModel(true);
+
+		return entityModel;
 	}
 
 	private static final String _GROUP_KEY_PREFIX = CACHE_NAME.concat(

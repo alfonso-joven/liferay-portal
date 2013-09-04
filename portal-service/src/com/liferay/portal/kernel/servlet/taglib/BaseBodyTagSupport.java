@@ -71,21 +71,20 @@ public class BaseBodyTagSupport extends TagSupport {
 
 			return bodyContentWrapper.getStringBundler();
 		}
-		else {
-			if (ServerDetector.isTomcat() && _log.isWarnEnabled()) {
-				_log.warn(
-					"BodyContent is not BodyContentWrapper. Check " +
-						"JspFactorySwapper.");
-			}
 
-			String bodyContentString = bodyContent.getString();
-
-			if (bodyContentString == null) {
-				bodyContentString = StringPool.BLANK;
-			}
-
-			return new StringBundler(bodyContentString);
+		if (ServerDetector.isTomcat() && _log.isWarnEnabled()) {
+			_log.warn(
+				"BodyContent is not BodyContentWrapper. Check " +
+					"JspFactorySwapper.");
 		}
+
+		String bodyContentString = bodyContent.getString();
+
+		if (bodyContentString == null) {
+			bodyContentString = StringPool.BLANK;
+		}
+
+		return new StringBundler(bodyContentString);
 	}
 
 	@Override

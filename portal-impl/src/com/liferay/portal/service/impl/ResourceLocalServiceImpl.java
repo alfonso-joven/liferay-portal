@@ -486,11 +486,10 @@ public class ResourceLocalServiceImpl extends ResourceLocalServiceBaseImpl {
 		if (resources.size() == 0) {
 			return 0;
 		}
-		else {
-			Resource resource = resources.get(0);
 
-			return resource.getResourceId();
-		}
+		Resource resource = resources.get(0);
+
+		return resource.getResourceId();
 	}
 
 	/**

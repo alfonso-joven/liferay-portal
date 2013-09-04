@@ -58,11 +58,10 @@ public class ProgressTracker {
 
 			return (Integer)session.getAttribute(PERCENT + _progressId);
 		}
-		else {
-			PortletSession portletSession = _portletRequest.getPortletSession();
 
-			return (Integer)portletSession.getAttribute(PERCENT + _progressId);
-		}
+		PortletSession portletSession = _portletRequest.getPortletSession();
+
+		return (Integer)portletSession.getAttribute(PERCENT + _progressId);
 	}
 
 	public void start() {

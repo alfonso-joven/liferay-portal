@@ -61,11 +61,10 @@ public class MessagingProxyAdvice {
 
 			return doInvokeSynchronous(message, baseProxyBean);
 		}
-		else {
-			doInvokeAsynchronous(message, baseProxyBean);
 
-			return null;
-		}
+		doInvokeAsynchronous(message, baseProxyBean);
+
+		return null;
 	}
 
 	protected ProxyRequest createProxyRequest(

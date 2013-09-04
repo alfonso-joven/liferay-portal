@@ -34,12 +34,11 @@ public class ResourceImpl extends ResourceBaseImpl {
 		if (_companyId != 0) {
 			return _companyId;
 		}
-		else {
-			ResourceCode resourceCode =
-				ResourceCodeLocalServiceUtil.getResourceCode(getCodeId());
 
-			return resourceCode.getCompanyId();
-		}
+		ResourceCode resourceCode =
+			ResourceCodeLocalServiceUtil.getResourceCode(getCodeId());
+
+		return resourceCode.getCompanyId();
 	}
 
 	@Override
@@ -47,12 +46,11 @@ public class ResourceImpl extends ResourceBaseImpl {
 		if (_name != null) {
 			return _name;
 		}
-		else {
-			ResourceCode resourceCode =
-				ResourceCodeLocalServiceUtil.getResourceCode(getCodeId());
 
-			return resourceCode.getName();
-		}
+		ResourceCode resourceCode =
+			ResourceCodeLocalServiceUtil.getResourceCode(getCodeId());
+
+		return resourceCode.getName();
 	}
 
 	@Override
@@ -60,12 +58,11 @@ public class ResourceImpl extends ResourceBaseImpl {
 		if (_scope != 0) {
 			return _scope;
 		}
-		else {
-			ResourceCode resourceCode =
-				ResourceCodeLocalServiceUtil.getResourceCode(getCodeId());
 
-			return resourceCode.getScope();
-		}
+		ResourceCode resourceCode =
+			ResourceCodeLocalServiceUtil.getResourceCode(getCodeId());
+
+		return resourceCode.getScope();
 	}
 
 	@Override

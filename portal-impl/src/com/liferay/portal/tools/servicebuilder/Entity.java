@@ -292,22 +292,20 @@ public class Entity {
 		if (hasCompoundPK()) {
 			return _name + "PK";
 		}
-		else {
-			EntityColumn col = _getPKColumn();
 
-			return col.getType();
-		}
+		EntityColumn col = _getPKColumn();
+
+		return col.getType();
 	}
 
 	public String getPKDBName() {
 		if (hasCompoundPK()) {
 			return getVarName() + "PK";
 		}
-		else {
-			EntityColumn col = _getPKColumn();
 
-			return col.getDBName();
-		}
+		EntityColumn col = _getPKColumn();
+
+		return col.getDBName();
 	}
 
 	public List<EntityColumn> getPKList() {
@@ -318,22 +316,20 @@ public class Entity {
 		if (hasCompoundPK()) {
 			return getVarName() + "PK";
 		}
-		else {
-			EntityColumn col = _getPKColumn();
 
-			return col.getName();
-		}
+		EntityColumn col = _getPKColumn();
+
+		return col.getName();
 	}
 
 	public String getPKVarNames() {
 		if (hasCompoundPK()) {
 			return getVarName() + "PKs";
 		}
-		else {
-			EntityColumn col = _getPKColumn();
 
-			return col.getNames();
-		}
+		EntityColumn col = _getPKColumn();
+
+		return col.getNames();
 	}
 
 	public String getPortletName() {
@@ -524,15 +520,14 @@ public class Entity {
 		if (hasCompoundPK()) {
 			return false;
 		}
-		else {
-			EntityColumn col = _getPKColumn();
 
-			if (col.isPrimitiveType(includeWrappers)) {
-				return true;
-			}
-			else {
-				return false;
-			}
+		EntityColumn col = _getPKColumn();
+
+		if (col.isPrimitiveType(includeWrappers)) {
+			return true;
+		}
+		else {
+			return false;
 		}
 	}
 

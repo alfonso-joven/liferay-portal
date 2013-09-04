@@ -405,15 +405,14 @@ public abstract class BasePropMethodImpl implements Method {
 
 			return status;
 		}
-		else {
-			if (_log.isDebugEnabled()) {
-				_log.debug(
-					"No resource found for " + storage.getRootPath() +
-						webDavRequest.getPath());
-			}
 
-			return HttpServletResponse.SC_NOT_FOUND;
+		if (_log.isDebugEnabled()) {
+			_log.debug(
+				"No resource found for " + storage.getRootPath() +
+					webDavRequest.getPath());
 		}
+
+		return HttpServletResponse.SC_NOT_FOUND;
 	}
 
 	private static final List<QName> _ALL_COLLECTION_PROPS = Arrays.asList(

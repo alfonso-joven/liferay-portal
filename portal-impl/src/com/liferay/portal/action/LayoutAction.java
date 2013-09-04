@@ -714,29 +714,26 @@ public class LayoutAction extends Action {
 
 				return null;
 			}
-			else {
-				if (response.isCommitted()) {
+
+			if (response.isCommitted()) {
+				return null;
+			}
+
+			if (layout != null) {
+
+				// Include layout content before the page loads because portlets
+				// on the page can set the page title and page subtitle
+
+				includeLayoutContent(request, response, themeDisplay, layout);
+
+				if (themeDisplay.isStateExclusive()) {
+					renderExclusive(request, response, themeDisplay);
+
 					return null;
 				}
-
-				if (layout != null) {
-
-					// Include layout content before the page loads because
-					// portlets on the page can set the page title and page
-					// subtitle
-
-					includeLayoutContent(
-						request, response, themeDisplay, layout);
-
-					if (themeDisplay.isStateExclusive()) {
-						renderExclusive(request, response, themeDisplay);
-
-						return null;
-					}
-				}
-
-				return actionMapping.findForward("portal.layout");
 			}
+
+			return actionMapping.findForward("portal.layout");
 		}
 		catch (Exception e) {
 			PortalUtil.sendError(e, request, response);

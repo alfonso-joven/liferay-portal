@@ -152,11 +152,10 @@ public class ClusterableAdvice
 			if (Validator.isNull(beanIdentifier)) {
 				return methodHandler.invoke(true);
 			}
-			else {
-				Object bean = PortalBeanLocatorUtil.locate(beanIdentifier);
 
-				return methodHandler.invoke(bean);
-			}
+			Object bean = PortalBeanLocatorUtil.locate(beanIdentifier);
+
+			return methodHandler.invoke(bean);
 		}
 
 		ClassLoader contextClassLoader =
@@ -172,12 +171,11 @@ public class ClusterableAdvice
 			if (Validator.isNull(beanIdentifier)) {
 				return methodHandler.invoke(true);
 			}
-			else {
-				Object bean = PortletBeanLocatorUtil.locate(
-					servletContextName, beanIdentifier);
 
-				return methodHandler.invoke(bean);
-			}
+			Object bean = PortletBeanLocatorUtil.locate(
+				servletContextName, beanIdentifier);
+
+			return methodHandler.invoke(bean);
 		}
 		finally {
 			ClassLoaderUtil.setContextClassLoader(contextClassLoader);

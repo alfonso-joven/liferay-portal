@@ -354,27 +354,26 @@ public class JournalFeedLocalServiceImpl
 
 			return true;
 		}
-		else {
-			try {
-				JournalStructure structure =
-					journalStructurePersistence.findByG_S(groupId, structureId);
 
-				Document document = SAXReaderUtil.read(structure.getXsd());
+		try {
+			JournalStructure structure = journalStructurePersistence.findByG_S(
+				groupId, structureId);
 
-				contentField = HtmlUtil.escapeXPathAttribute(contentField);
+			Document document = SAXReaderUtil.read(structure.getXsd());
 
-				XPath xPathSelector = SAXReaderUtil.createXPath(
-					"//dynamic-element[@name="+ contentField + "]");
+			contentField = HtmlUtil.escapeXPathAttribute(contentField);
 
-				Node node = xPathSelector.selectSingleNode(document);
+			XPath xPathSelector = SAXReaderUtil.createXPath(
+				"//dynamic-element[@name="+ contentField + "]");
 
-				if (node != null) {
-					return true;
-				}
+			Node node = xPathSelector.selectSingleNode(document);
+
+			if (node != null) {
+				return true;
 			}
-			catch (Exception e) {
-				_log.error(e, e);
-			}
+		}
+		catch (Exception e) {
+			_log.error(e, e);
 		}
 
 		return false;

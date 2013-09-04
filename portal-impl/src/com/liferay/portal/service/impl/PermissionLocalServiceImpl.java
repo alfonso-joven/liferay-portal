@@ -397,11 +397,10 @@ public class PermissionLocalServiceImpl extends PermissionLocalServiceBaseImpl {
 		if (permissions.size() == 0) {
 			return 0;
 		}
-		else {
-			Permission permission = permissions.get(0);
 
-			return permission.getPermissionId();
-		}
+		Permission permission = permissions.get(0);
+
+		return permission.getPermissionId();
 	}
 
 	/**

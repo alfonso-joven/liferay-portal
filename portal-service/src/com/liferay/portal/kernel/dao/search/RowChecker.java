@@ -61,21 +61,20 @@ public class RowChecker {
 		if (Validator.isNull(_allRowIds)) {
 			return StringPool.BLANK;
 		}
-		else {
-			StringBuilder sb = new StringBuilder();
 
-			sb.append("<input name=\"");
-			sb.append(_allRowIds);
-			sb.append("\" type=\"checkbox\" ");
-			sb.append("onClick=\"Liferay.Util.checkAll(");
-			sb.append("AUI().one(this).ancestor('");
-			sb.append("table.taglib-search-iterator'), '");
-			sb.append(_rowIds);
-			sb.append("', this, '.results-row'");
-			sb.append(");\">");
+		StringBuilder sb = new StringBuilder();
 
-			return sb.toString();
-		}
+		sb.append("<input name=\"");
+		sb.append(_allRowIds);
+		sb.append("\" type=\"checkbox\" ");
+		sb.append("onClick=\"Liferay.Util.checkAll(");
+		sb.append("AUI().one(this).ancestor('");
+		sb.append("table.taglib-search-iterator'), '");
+		sb.append(_rowIds);
+		sb.append("', this, '.results-row'");
+		sb.append(");\">");
+
+		return sb.toString();
 	}
 
 	public String getAllRowsId() {
@@ -166,13 +165,12 @@ public class RowChecker {
 		if (Validator.isNull(value)) {
 			return StringPool.BLANK;
 		}
-		else {
-			if (!value.startsWith(_portletResponse.getNamespace())) {
-				value = _portletResponse.getNamespace() + value;
-			}
 
-			return value;
+		if (!value.startsWith(_portletResponse.getNamespace())) {
+			value = _portletResponse.getNamespace() + value;
 		}
+
+		return value;
 	}
 
 	protected String getRowCheckBox(

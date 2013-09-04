@@ -261,9 +261,8 @@ public class ComboServlet extends HttpServlet {
 
 				return fileContentBag._fileContent;
 			}
-			else {
-				_fileContentBagPortalCache.remove(fileContentKey);
-			}
+
+			_fileContentBagPortalCache.remove(fileContentKey);
 		}
 
 		if (file == null) {

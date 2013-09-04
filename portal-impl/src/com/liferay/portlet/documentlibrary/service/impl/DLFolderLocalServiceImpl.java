@@ -360,20 +360,18 @@ public class DLFolderLocalServiceImpl extends DLFolderLocalServiceBaseImpl {
 		if (folderIds.size() <= PropsValues.SQL_DATA_MAX_PARAMETERS) {
 			return dlFileEntryFinder.countByG_F_S(groupId, folderIds, status);
 		}
-		else {
-			int start = 0;
-			int end = PropsValues.SQL_DATA_MAX_PARAMETERS;
 
-			int filesCount = dlFileEntryFinder.countByG_F_S(
-				groupId, folderIds.subList(start, end), status);
+		int start = 0;
+		int end = PropsValues.SQL_DATA_MAX_PARAMETERS;
 
-			folderIds.subList(start, end).clear();
+		int filesCount = dlFileEntryFinder.countByG_F_S(
+			groupId, folderIds.subList(start, end), status);
 
-			filesCount += getFoldersFileEntriesCount(
-				groupId, folderIds, status);
+		folderIds.subList(start, end).clear();
 
-			return filesCount;
-		}
+		filesCount += getFoldersFileEntriesCount(groupId, folderIds, status);
+
+		return filesCount;
 	}
 
 	@Override
@@ -711,27 +709,26 @@ public class DLFolderLocalServiceImpl extends DLFolderLocalServiceBaseImpl {
 		if (dlFolder.getFolderId() == parentFolderId) {
 			return dlFolder.getParentFolderId();
 		}
-		else {
-			DLFolder parentDLFolder = dlFolderPersistence.fetchByPrimaryKey(
-				parentFolderId);
 
-			if ((parentDLFolder == null) ||
-				(dlFolder.getGroupId() != parentDLFolder.getGroupId())) {
+		DLFolder parentDLFolder = dlFolderPersistence.fetchByPrimaryKey(
+			parentFolderId);
 
-				return dlFolder.getParentFolderId();
-			}
+		if ((parentDLFolder == null) ||
+			(dlFolder.getGroupId() != parentDLFolder.getGroupId())) {
 
-			List<Long> subfolderIds = new ArrayList<Long>();
-
-			getSubfolderIds(
-				subfolderIds, dlFolder.getGroupId(), dlFolder.getFolderId());
-
-			if (subfolderIds.contains(parentFolderId)) {
-				return dlFolder.getParentFolderId();
-			}
-
-			return parentFolderId;
+			return dlFolder.getParentFolderId();
 		}
+
+		List<Long> subfolderIds = new ArrayList<Long>();
+
+		getSubfolderIds(
+			subfolderIds, dlFolder.getGroupId(), dlFolder.getFolderId());
+
+		if (subfolderIds.contains(parentFolderId)) {
+			return dlFolder.getParentFolderId();
+		}
+
+		return parentFolderId;
 	}
 
 	protected long getParentFolderId(long groupId, long parentFolderId)

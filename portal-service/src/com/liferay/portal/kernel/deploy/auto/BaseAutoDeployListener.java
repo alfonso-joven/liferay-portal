@@ -112,14 +112,12 @@ public abstract class BaseAutoDeployListener implements AutoDeployListener {
 
 			return true;
 		}
-		else {
-			if (_log.isDebugEnabled()) {
-				_log.debug(
-					file.getPath() + " does not have a matching extension");
-			}
 
-			return false;
+		if (_log.isDebugEnabled()) {
+			_log.debug(file.getPath() + " does not have a matching extension");
 		}
+
+		return false;
 	}
 
 	public boolean isThemePlugin(File file) throws AutoDeployException {
