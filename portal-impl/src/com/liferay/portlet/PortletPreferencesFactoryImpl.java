@@ -80,9 +80,6 @@ import javax.xml.stream.events.XMLEvent;
 public class PortletPreferencesFactoryImpl
 	implements PortletPreferencesFactory {
 
-	public static final String PREFERENCES_MAP_CACHE_NAME =
-		PortletPreferencesFactoryImpl.class + "_PREFERENCES_MAP";
-
 	@Override
 	public PortletPreferences fromDefaultXML(String xml)
 		throws SystemException {
@@ -727,6 +724,6 @@ public class PortletPreferencesFactoryImpl
 
 	private PortalCache<String, Map<String, Preference>>
 		_preferencesMapPortalCache = SingleVMPoolUtil.getCache(
-			PREFERENCES_MAP_CACHE_NAME);
+			PortletPreferencesFactoryImpl.class.getName());
 
 }
