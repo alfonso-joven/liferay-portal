@@ -537,16 +537,10 @@
 	</command>
 
 	<command name="disconnectFromConnection">
-		<var name="filterType" value="Connections" />
-		<var name="filterTypeCount" value="${filterTypeCount}" />
-		<var name="userEmailAddress" value="${userEmailAddress}" />
-		<var name="userName" value="${userName}" />
-		<var name="userListName" value="${userListName}" />
-
 		<execute action="PGContactscenter#select" locator-key1="CONTACTS_LIST_FILTER" value1="${filterType}"/>
 		<execute action="PGContactscenter#assertClick" locator-key1="CONTACTS_LIST_EMAIL" value1="${userEmailAddress}" />
-
 		<execute action="PGContactscenter#assertClick" locator-key1="USER_DETAILS_NAME" value1="${userName}" />
+
 		<execute action="SOProfile#assertTextEquals" locator-key1="USER_NAME" value1="${userName}" />
 		<execute action="SOProfile#assertTextEquals" locator-key1="USER_EMAIL" value1="${userEmailAddress}" />
 		<execute action="SOProfile#assertClick" locator-key1="DISCONNECT_BUTTON" value1="Disconnect" />
@@ -666,26 +660,16 @@
 	</command>
 
 	<command name="viewNoConnection">
-		<var name="adminEmailAddress" value="${adminEmailAddress}" />
-		<var name="adminName" value="${adminName}" />
-		<var name="adminListName" value="${adminListName}" />
-		<var name="filterTypeCount" value="${filterTypeCount}" />
-		<var name="userEmailAddress" value="${userEmailAddress}" />
-		<var name="userName" value="${userName}" />
-		<var name="userListName" value="${userListName}" />
-
 		<execute action="PGContactscenter#assertClick" locator-key1="CONTACTS_LINK_CONNECTIONS" value1="You have ${filterTypeCount} connections." />
 		<execute action="PGContactscenter#assertSelectedLabel" locator-key1="CONTACTS_LIST_FILTER" value1="Connections"/>
-
 		<execute action="PGContactscenter#assertTextNotPresent" locator-key1="CONTACTS_LIST_EMAIL" value1="${adminEmailAddress}" />
 		<execute action="PGContactscenter#select" locator-key1="CONTACTS_LIST_FILTER" value1="All"/>
-
 		<execute action="PGContactscenter#type" locator-key1="CONTACTS_LIST_SEARCH" value1="${adminName}" />
 		<execute action="PGContactscenter#assertClick" locator-key1="CONTACTS_LIST_NAME" value1="${adminListName}" />
 		<execute action="PGContactscenter#assertClick" locator-key1="USER_DETAILS_NAME" value1="${adminName}" />
+
 		<execute action="SOProfile#assertTextEquals" locator-key1="USER_NAME" value1="${adminName}" />
 		<execute action="SOProfile#assertTextEquals" locator-key1="USER_EMAIL" value1="${adminEmailAddress}" />
-
 		<execute action="SOProfile#assertElementPresent" locator-key1="CONNECT_BUTTON" />
 		<execute action="SOProfile#assertElementNotPresent" locator-key1="DISCONNECT_BUTTON" />
 	</command>

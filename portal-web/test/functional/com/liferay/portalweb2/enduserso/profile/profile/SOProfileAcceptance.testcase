@@ -77,7 +77,6 @@
 
 	<command name="AddCCConnectionProfile">
 		<var name="filterTypeCount" value="1" />
-
 		<var name="userScreenName" value="socialoffice01" />
 		<var name="roleName" value="Social Office" />
 
@@ -297,7 +296,7 @@
 		</execute>
 	</command>
 
-	<command name="DisconnectCCConectionProfile">
+	<command name="DisconnectCCConnectionProfile">
 		<var name="filterTypeCount" value="1" />
 
 		<execute macro="SOProfile#addConnection">
