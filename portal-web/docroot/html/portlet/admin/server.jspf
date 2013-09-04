@@ -231,6 +231,7 @@ serverURL.setParameter("tabs3", tabs3);
 
 						headerNames.add("property");
 						headerNames.add("value");
+						headerNames.add("source");
 
 						SearchContainer searchContainer = new SearchContainer(renderRequest, null, null, SearchContainer.DEFAULT_CUR_PARAM, SearchContainer.DEFAULT_DELTA, serverURL, headerNames, null);
 
@@ -248,11 +249,33 @@ serverURL.setParameter("tabs3", tabs3);
 
 						List resultRows = searchContainer.getResultRows();
 
+						PortletPreferences serverPortletPreferences = PrefsPropsUtil.getPreferences();
+
+						Map<String, String[]> serverPortletPreferencesMap = serverPortletPreferences.getMap();
+
+						PortletPreferences companyPortletPreferences = PrefsPropsUtil.getPreferences(company.getCompanyId());
+
+						Map<String, String[]> companyPortletPreferencesMap = companyPortletPreferences.getMap();
+
 						for (int i = 0; i < results.size(); i++) {
 							Map.Entry entry = (Map.Entry)results.get(i);
 
 							String property = (String)entry.getKey();
 							String value = (String)entry.getValue();
+
+							boolean overriddenPropertyValue = false;
+
+							if (serverPortletPreferencesMap.containsKey(property)) {
+								value = serverPortletPreferences.getValue(property, StringPool.BLANK);
+
+								overriddenPropertyValue = true;
+							}
+
+							if (companyPortletPreferencesMap.containsKey(property)) {
+								value = companyPortletPreferences.getValue(property, StringPool.BLANK);
+
+								overriddenPropertyValue = true;
+							}
 
 							ResultRow row = new ResultRow(entry, property, i);
 
@@ -262,7 +285,61 @@ serverURL.setParameter("tabs3", tabs3);
 
 							// Value
 
-							row.addText(HtmlUtil.escape(StringUtil.shorten(value, 80)));
+							if (Validator.isNotNull(value)) {
+								if (value.length() > 80) {
+									StringBundler sb = new StringBundler(5);
+
+									sb.append("<span onmouseover=\"Liferay.Portal.ToolTip.show(this, '");
+									sb.append(HtmlUtil.escape(value));
+									sb.append("')\">");
+									sb.append(HtmlUtil.escape(StringUtil.shorten(value, 80)));
+									sb.append("</span>");
+
+									row.addText(sb.toString());
+								}
+								else {
+									row.addText(HtmlUtil.escape(StringUtil.shorten(value, 80)));
+								}
+							}
+							else {
+								row.addText(StringPool.BLANK);
+							}
+
+							// Source
+
+							StringBundler sb = new StringBundler(5);
+
+							sb.append("<span onmouseover=\"Liferay.Portal.ToolTip.show(this, '");
+
+							if (overriddenPropertyValue) {
+								sb.append(LanguageUtil.get(pageContext, "the-value-of-this-property-was-overridden-using-the-control-panel-and-is-stored-in-the-database"));
+							}
+							else {
+								sb.append(LanguageUtil.get(pageContext, "the-value-of-this-property-is-read-from-a-portal.properties-file-or-one-of-its-extension-files"));
+							}
+
+							sb.append("')\"><img alt=\"");
+
+							if (overriddenPropertyValue) {
+								sb.append(LanguageUtil.get(pageContext, "the-value-of-this-property-was-overridden-using-the-control-panel-and-is-stored-in-the-database"));
+							}
+							else {
+								sb.append(LanguageUtil.get(pageContext, "the-value-of-this-property-is-read-from-a-portal.properties-file-or-one-of-its-extension-files"));
+							}
+
+							sb.append("\" src=\"");
+							sb.append(themeDisplay.getPathThemeImages());
+
+							if (overriddenPropertyValue) {
+								sb.append("/common/saved_in_database.png");
+							}
+							else {
+								sb.append("/common/page.png");
+							}
+
+							sb.append("\" /></span>");
+
+							row.addText(sb.toString());
 
 							// Add result row
 
