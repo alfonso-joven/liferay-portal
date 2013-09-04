@@ -3496,7 +3496,8 @@ public class PortalImpl implements Portal {
 		StringBundler sb = new StringBundler();
 
 		boolean https =
-			secure || Http.HTTPS.equals(PropsValues.WEB_SERVER_PROTOCOL);
+			(secure ||
+			 Http.HTTPS.equalsIgnoreCase(PropsValues.WEB_SERVER_PROTOCOL));
 
 		if (https) {
 			sb.append(Http.HTTPS_WITH_SLASH);
