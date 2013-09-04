@@ -9,7 +9,11 @@
 	<var name="entryTitle" value="Announcements Entry Title" />
 	<var name="entryTitleEdit" value="Announcements Entry Title Edit" />
 	<var name="entryURL" value="http://www.liferay.com" />
+	<var name="eventTitle" value="Calendar Event Title" />
+	<var name="pageName" value="Calendar Page" />
+	<var name="portletName" value="Calendar" />
 	<var name="userName" value="Joe Bloggs" />
+
 
 	<command name="AddWhatsHappeningEntryViewableByEveryone">
 		<var name="whatsHappeningEntryAuthorFirstName" value="Joe" />
@@ -139,6 +143,31 @@
 		</execute>
 	</command>
 
+	<command name="ViewEventEventsDisplay">
+		<execute macro="SOUserBar#dashboardPG">
+			<var name="userName" value="${userName}" />
+		</execute>
+
+		<execute action="SOUserBar#click" locator-key1="TOGGLE_DOCKBAR" />
+		<execute macro="SOHome#addPage">
+			<var name="pageName" value="${pageName}" />
+		</execute>
+
+		<execute action="SOUserBar#click" locator-key1="TOGGLE_DOCKBAR" />
+		<execute macro="SOHome#addPortlet">
+			<var name="pageName" value="${pageName}" />
+		</execute>
+
+		<execute macro="Event#addPG">
+			<var name="eventTitle" value="${eventTitle}" />
+		</execute>
+
+		<execute macro="SOHome#viewTodaysEvent">
+			<var name="eventTitle" value="${eventTitle}" />
+			<var name="userName" value="${userName}" />
+		</execute>
+	</command>
+
 	<tear-down>
 		<execute macro="SOUser#firstLoginPG" />
 
@@ -147,5 +176,9 @@
 		<execute macro="SOAnnouncementsEntry#tearDownPG" />
 
 		<execute macro="SOUser#tearDownCP" />
+
+		<execute macro="SOCalendar#tearDownCP" />
+
+		<execute macro="SOHome#tearDownPG" />
 	</tear-down>
 </definition>
