@@ -19,6 +19,16 @@
 	<td></td>
 </tr>
 <tr>
+	<td>CONFIRM</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
 	<td>PROFILE_NAME</td>
 	<td>//div[@id='so-sidebar']/div/a</td>
 	<td></td>
@@ -51,6 +61,16 @@
 <tr>
 	<td>NAVIGATION_TASKS</td>
 	<td>//nav/ul/li[contains(.,'Tasks')]/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>NAVIGATION_PAGE</td>
+	<td>//nav/ul/li[contains(.,'${pageName}')]/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>NAVIGATION_PAGE_DELETE</td>
+	<td>//li[9]/span[contains(@class,'delete-tab')]</td>
 	<td></td>
 </tr>
 </tbody>

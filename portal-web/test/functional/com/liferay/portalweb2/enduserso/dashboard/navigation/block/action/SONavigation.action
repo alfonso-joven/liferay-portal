@@ -8,16 +8,42 @@
 			<execute function="Click#textClickAtAndWait" value1="Messages" />
 		</case>
 
-		<case locator-key1="NAVIGATION_MY_DOCUMENTS">
-			<execute function="Click#textClickAtAndWait" />
-		</case>
-
 		<case locator-key1="NAVIGATION_MICROBLOGS">
 			<execute function="Click#textClickAtAndWait" value1="Microblogs" />
 		</case>
 
+		<case locator-key1="NAVIGATION_MY_DOCUMENTS">
+			<execute function="Click#textClickAtAndWait" />
+		</case>
+
+		<case locator-key1="NAVIGATION_PAGE">
+			<execute function="AssertClick#assertTextClickAtAndWait" />
+		</case>
+
+		<case locator-key1="NAVIGATION_PAGE_DELETE">
+			<execute function="AssertClick#assertTextClick" value1="X" />
+		</case>
+
 		<case locator-key1="NAVIGATION_TASKS">
 			<execute function="AssertClick#assertTextClickAtAndWait" />
+		</case>
+	</command>
+
+	<command name="confirm">
+		<case locator-key1="CONFIRM">
+			<execute function="Confirm#waitForConfirmation" />
+		</case>
+	</command>
+	
+	<command name="isElementPresent">
+		<case locator-key1="NAVIGATION_PAGE">
+			<execute function="IsElementPresent#isElementPresentClickNavigation" />
+		</case>
+	</command>
+
+	<command name="mouseOver">
+		<case locator-key1="NAVIGATION_PAGE">
+			<execute function="MouseOver#mouseOverClickNavigation" />
 		</case>
 	</command>
 </definition>

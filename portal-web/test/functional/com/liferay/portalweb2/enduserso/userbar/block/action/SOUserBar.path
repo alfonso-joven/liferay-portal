@@ -74,6 +74,16 @@
 	<td></td>
 </tr>
 <tr>
+	<td>TOGGLE_DOCKBAR</td>
+	<td>//a[contains(@id,'toggleDockbar')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>EDIT_CONTROLS_NOT_FLAGGED</td>
+	<td>//body[@class='normal yui3-skin-sam controls-hidden signed-in private-page user-site user-group dockbar-ready show-dockbar'] 	</td>
+	<td></td>
+</tr>
+<tr>
 	<td></td>
 	<td></td>
 	<td></td>
