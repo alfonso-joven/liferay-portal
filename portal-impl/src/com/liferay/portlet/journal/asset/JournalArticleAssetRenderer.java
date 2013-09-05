@@ -182,11 +182,11 @@ public class JournalArticleAssetRenderer extends BaseAssetRenderer {
 
 		if (Validator.isNotNull(_article.getLayoutUuid())) {
 			layout = LayoutLocalServiceUtil.fetchLayoutByUuidAndGroupId(
-				_article.getLayoutUuid(), _article.getCompanyId(), false);
+				_article.getLayoutUuid(), _article.getGroupId(), false);
 
 			if (layout == null) {
 				layout = LayoutLocalServiceUtil.fetchLayoutByUuidAndGroupId(
-					_article.getLayoutUuid(), _article.getCompanyId(), true);
+					_article.getLayoutUuid(), _article.getGroupId(), true);
 			}
 		}
 
