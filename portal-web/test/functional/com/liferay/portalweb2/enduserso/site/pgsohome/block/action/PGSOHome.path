@@ -121,6 +121,27 @@
 	<td></td>
 	<td></td>
 </tr>
+<!--EVENTS_DISPLAY-->
+<tr>
+	<td>EVENTS_DISPLAY_TODAYS_EVENTS_EVENT_TITLE</td>
+	<td>//div[@class='today-events']/div/div/div/table/tbody/tr[3]/td/div/span[@class='event-name']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>EVENTS_DISPLAY_TODAYS_EVENTS_EVENT_TIME</td>
+	<td>//div[@class='today-events']/div/div/div/table/tbody/tr[3]/td/div/span[@class='event-time']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>EVENTS_DISPLAY_UPCOMING_EVENTS_EVENT_TITLE</td>
+	<td>//div[@class='upcoming-events']/div/div/div/table/tbody/tr[3]/td/div/span[@class='event-name']/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>EVENTS_DISPLAY_UPCOMING_EVENTS_EVENT_TIME</td>
+	<td>//div[@class='upcoming-events']/div/div/div/table/tbody/tr[3]/td/div/span[@class='event-time']</td>
+	<td></td>
+</tr>
 </tbody>
 </table>
 </body>

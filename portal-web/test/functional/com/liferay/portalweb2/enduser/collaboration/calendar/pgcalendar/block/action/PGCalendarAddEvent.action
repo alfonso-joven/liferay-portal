@@ -4,4 +4,10 @@
 			<execute function="AssertClick#assertValueClickAtAndWait"  />
 		</case>
 	</command>
+
+	<command name="type">
+		<case locator-key1="DESCRIPTION_FIELD">
+			<execute function="Type#typeFrameWaitForCKEditor" />
+		</case>
+	</command>
 </definition>

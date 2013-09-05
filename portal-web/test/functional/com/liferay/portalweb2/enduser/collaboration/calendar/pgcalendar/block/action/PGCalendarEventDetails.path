@@ -1,0 +1,84 @@
+<html>
+<head>
+<title>PGCalendarEventDetails</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">PGCalendarEventDetails</td></tr>
+</thead>
+<tbody>
+<tr>
+	<td>PAGE_NAME</td>
+	<td></td>
+	<td>PGCalendarEventDetails</td>
+</tr>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+<tr>
+	<td>EVENT_TITLE</td>
+	<td>//h1[@class='header-title']/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>START_DATE</td>
+	<td>//dl[@class='property-list']/dt[1]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>END_DATE</td>
+	<td>//dl[@class='property-list']/dt[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>DURATION</td>
+	<td>//dl[@class='property-list']/dt[3]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>TYPE</td>
+	<td>//dl[@class='property-list']/dt[4]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>EVENT_DESCRIPTION</td>
+	<td>//p[contains(.,'${eventDescription}')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>YOUR_RATING</td>
+	<td>//div[contains(@class,'liferay-rating-vote')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>AVERAGE</td>
+	<td>//div[contains(@class,'liferay-rating-score')]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>NO_COMMENTS_YET</td>
+	<td>//fieldset[@class='aui-fieldset add-comment ']/div</td>
+	<td></td>
+</tr>
+<tr>
+	<td>BE_THE_FIRST</td>
+	<td>//fieldset[@class='aui-fieldset add-comment ']/div/a</td>
+	<td></td>
+</tr>
+<tr>
+	<td>SUBSCRIBE_TO_COMMENTS</td>
+	<td>//span[@class='subscribe-link']/a/span</td>
+	<td></td>
+</tr>
+<tr>
+	<td>SUBSCRIBE _TO_ COMMENTS</td>
+	<td></td>
+	<td></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
