@@ -813,11 +813,11 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 
 		String oldGroupFriendlyURL = friendlyUrlParts[2];
 
-		if (oldGroupFriendlyURL.equals("@data_handler_group_friendly_url@")) {
+		if (oldGroupFriendlyURL.equals(_DATA_HANDLER_GROUP_FRIENDLY_URL)) {
 			feed.setTargetLayoutFriendlyUrl(
 				StringUtil.replace(
 					feed.getTargetLayoutFriendlyUrl(),
-					"@data_handler_group_friendly_url@", newGroupFriendlyURL));
+					_DATA_HANDLER_GROUP_FRIENDLY_URL, newGroupFriendlyURL));
 		}
 
 		String feedId = feed.getFeedId();
@@ -1685,7 +1685,7 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 			String targetLayoutFriendlyUrl = StringUtil.replaceFirst(
 				feed.getTargetLayoutFriendlyUrl(),
 				StringPool.SLASH + newGroupFriendlyURL + StringPool.SLASH,
-				"/@data_handler_group_friendly_url@/");
+				"/" + _DATA_HANDLER_GROUP_FRIENDLY_URL + "/");
 
 			feed.setTargetLayoutFriendlyUrl(targetLayoutFriendlyUrl);
 		}
