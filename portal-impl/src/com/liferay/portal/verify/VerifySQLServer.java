@@ -225,6 +225,7 @@ public class VerifySQLServer extends VerifyProcess {
 
 		convertColumnsToUnicode();
 
+		convertColumnToNvarcharMax("AnnouncementsEntry", "content");
 		convertColumnToNvarcharMax("Layout", "css");
 		convertColumnToNvarcharMax("LayoutRevision", "css");
 	}
