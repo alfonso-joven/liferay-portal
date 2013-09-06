@@ -664,8 +664,8 @@ public class PortletPreferencesFactoryImpl
 			return Collections.emptyMap();
 		}
 
-		Map<String, Preference> preferencesMap = _preferencesMapPortalCache.get(
-			xml);
+		Map<String, Preference> preferencesMap =
+			(Map<String, Preference>) _preferencesMapPortalCache.get(xml);
 
 		if (preferencesMap != null) {
 			return preferencesMap;
@@ -722,8 +722,7 @@ public class PortletPreferencesFactoryImpl
 		return preferencesMap;
 	}
 
-	private PortalCache<String, Map<String, Preference>>
-		_preferencesMapPortalCache = SingleVMPoolUtil.getCache(
-			PortletPreferencesFactoryImpl.class.getName());
+	private PortalCache _preferencesMapPortalCache = SingleVMPoolUtil.getCache(
+		PortletPreferencesFactoryImpl.class.getName());
 
 }
