@@ -1167,9 +1167,9 @@ public class HookHotDeployListener
 		throws Exception {
 
 		if (eventName.equals(APPLICATION_STARTUP_EVENTS)) {
-			SimpleAction simpleAction =
-				(SimpleAction)portletClassLoader.loadClass(
-					eventClassName).newInstance();
+			Class<?> clazz = portletClassLoader.loadClass(eventClassName);
+
+			SimpleAction simpleAction = (SimpleAction)clazz.newInstance();
 
 			simpleAction = new InvokerSimpleAction(
 				simpleAction, portletClassLoader);
@@ -1194,8 +1194,9 @@ public class HookHotDeployListener
 		}
 
 		if (_propsKeysEvents.contains(eventName)) {
-			Action action = (Action)portletClassLoader.loadClass(
-				eventClassName).newInstance();
+			Class<?> clazz = portletClassLoader.loadClass(eventClassName);
+
+			Action action = (Action)clazz.newInstance();
 
 			action = new InvokerAction(action, portletClassLoader);
 
@@ -1205,9 +1206,9 @@ public class HookHotDeployListener
 		}
 
 		if (_propsKeysSessionEvents.contains(eventName)) {
-			SessionAction sessionAction =
-				(SessionAction)portletClassLoader.loadClass(
-					eventClassName).newInstance();
+			Class<?> clazz = portletClassLoader.loadClass(eventClassName);
+
+			SessionAction sessionAction = (SessionAction)clazz.newInstance();
 
 			sessionAction = new InvokerSessionAction(
 				sessionAction, portletClassLoader);
