@@ -30,4 +30,21 @@
 			</else>
 		</if>
 	</command>
+
+	<command name="tearDownNotifications">
+		<execute macro="SOUserBar#dashboardPG">
+			<var name="userName" value="${userName}" />
+		</execute>
+
+		<execute action="SOUserBar#mouseOver" locator-key1="NOTIFICATION" />
+		<execute action="SOUserBar#click" locator-key1="NOTIFICATION_MENU_VIEW_ALL" value1="View All" />
+
+		<while>
+			<condition action="SONotifications#isElementPresent" locator-key1="NOTIFICATIONS_CHECKBOX" />
+			<then>
+				<execute action="SONotifications#check" locator-key1="NOTIFICATIONS_CHECKBOX" />
+				<execute action="SONotifications#click" locator-key1="DELETE_BUTTON" />
+			</then>
+		</while>
+	</command>
 </definition>

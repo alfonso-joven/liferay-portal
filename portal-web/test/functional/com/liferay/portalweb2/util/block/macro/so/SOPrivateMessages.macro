@@ -50,7 +50,7 @@
 		<execute action="PrivateMessaging#click" locator-key1="MESSAGE_SUBJECT" />
 
 		<execute action="PrivateMessagingMessage#assertTextEquals" locator-key1="PRIVATE_MESSAGE_SUBJECT" value1="${messageSubject}" />
-		<execute action="PrivateMessagingMessage#assertTextEquals" locator-key1="PRIVATE_MESSAGE_USERS" value1="Between ${connectionName} And you" />
+		<execute action="PrivateMessagingMessage#assertTextEquals" locator-key1="PRIVATE_MESSAGE_USERS" value1="Between ${connectionName} And You" />
 		<execute action="PrivateMessagingMessage#assertTextEquals" locator-key1="PRIVATE_MESSAGE_SENDER" value1="${senderName}" />
 		<execute action="PrivateMessagingMessage#assertTextEquals" locator-key1="PRIVATE_MESSAGE_BODY" value1="${messageBody}" />
 	</command>

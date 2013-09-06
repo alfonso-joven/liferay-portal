@@ -10,17 +10,6 @@
 		<execute action="SOSitesAdd#click" locator-key1="NEXT_BUTTON" />
 		<execute action="SOSitesAdd#select" locator-key1="DEFAULT_PAGES_SELECT" value1="Default Social Office Site" />
 
-		<if>
-			<equals arg1="${siteType}" arg2="Private" />
-			<then>
-				<execute action="SOSitesAdd#select" locator-key1="TYPE_SELECT" value1="index=3" />
-				<execute action="SOSitesAdd#assertSelectedLabel" locator-key1="TYPE_SELECT" value1="Private" />
-			</then>
-			<else>
-				<execute action="SOSitesAdd#select" locator-key1="TYPE_SELECT" value1="${siteType}" />
-			</else>
-		</if>
-
 		<execute action="SOSitesAdd#check" locator-key1="HOME_CHECKBOX" />
 		<execute action="SOSitesAdd#check" locator-key1="CALENDAR_CHECKBOX" />
 		<execute action="SOSitesAdd#check" locator-key1="DOCUMENTS_CHECKBOX" />
@@ -28,7 +17,20 @@
 		<execute action="SOSitesAdd#check" locator-key1="BLOGS_CHECKBOX" />
 		<execute action="SOSitesAdd#check" locator-key1="WIKI_CHECKBOX" />
 		<execute action="SOSitesAdd#check" locator-key1="MEMBERS_CHECKBOX" />
+
+		<if>
+			<equals arg1="${siteType}" arg2="Private" />
+			<then>
+				<execute action="SOSitesAdd#select" locator-key1="TYPE_SELECT" value1="value=3" />
+				<execute action="SOSitesAdd#assertSelectedLabel" locator-key1="TYPE_SELECT" value1="Private" />
+			</then>
+			<else>
+				<execute action="SOSitesAdd#select" locator-key1="TYPE_SELECT" value1="${siteType}" />
+			</else>
+		</if>
+
 		<execute action="SOSitesAdd#click" locator-key1="SAVE_BUTTON" />
+		<execute action="SOSitesAdd#assertElementNotPresent" locator-key1="SAVE_BUTTON" />
 
 		<execute macro="SOSites#searchSOSite" />
 	</command>
@@ -53,12 +55,14 @@
 
 		<execute action="SOUserBarSitesDirectory#type" locator-key1="SITE_SEARCH_FIELD" value1="${siteName}" />
 		<execute action="SOUserBarSitesDirectory#assertTextEquals" locator-key1="SITE_NAME_LINK" value1="${siteName}" />
-		<execute action="SOUserBarSitesDirectory#click" locator-key1="DELETE_SITE_ICON" />
+		<execute action="SOUserBarSitesDirectory#click" locator-key1="DELETE_SITE_ICON" value1="Delete" />
 		<execute action="SOUserBarSitesDirectory#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete ${siteName}?" />
 		<execute action="SOUserBarSitesDirectory#assertTextNotPresent" value1="${siteName}" />
 	</command>
 
 	<command name="searchSOSite">
+		<execute action="SOUserBar#click" locator-key1="DASHBOARD" />
+
 		<execute action="SOUserBar#click" locator-key1="GO_TO" />
 
 		<if>

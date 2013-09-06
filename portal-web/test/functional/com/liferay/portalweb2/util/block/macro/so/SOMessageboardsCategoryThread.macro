@@ -1,10 +1,19 @@
 <definition>
-	<command name="viewPG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
+	<command name="deletePG">
 		<var name="key_threadSubject" value="${threadSubject}" />
+
+		<execute action="PGMessageboards#assertTextEquals" locator-key1="THREAD_TABLE_THREAD" value1="${threadSubject}" />
+		<execute action="PGMessageboards#click" locator-key1="THREAD_TABLE_ACTIONS" />
+		<execute action="PGMessageboards#assertClick" locator-key1="THREAD_MENULIST_DELETE" value1="Delete" />
+		<execute action="PGMessageboards#confirm" locator-key1="CONFIRMATION" value1="Are you sure you want to delete this?" />
+		<execute action="PGMessageboards#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
+		<execute action="PGMessageboards#assertTextNotPresent" value1="${threadSubject}" />
+	</command>
+
+	<command name="viewPG">
+		<var name="key_threadSubject" value="${threadSubject}" />
+
+		<execute action="SOUserBar#click" locator-key1="TOGGLE_DOCKBAR" />
 
 		<if>
 			<condition action="PGSOMessageboards#isElementNotPresent" locator-key1="BREADCRUMB_PORTLET_TITLE" />
@@ -14,8 +23,8 @@
 			</then>
 		</if>
 
-		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_PORTLET_TITLE" value1="Breadcrumb" />
-		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="MESSAGE_BOARDS_PORTLET_TITLE" value1="Message Boards" />
+		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_PORTLET_TITLE" value1="BREADCRUMB" />
+		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="MESSAGE_BOARDS_PORTLET_TITLE" value1="MESSAGE BOARDS" />
 		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_1" value1="Liferay" />
 		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_2" value1="${siteName}" />
 		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_3" value1="${pageName}" />
@@ -26,8 +35,8 @@
 		<execute action="PGMessageboards#assertTextEquals" locator-key1="CATEGORY_TABLE_POSTS_1" value1="1" />
 		<execute action="PGMessageboards#assertClick" locator-key1="CATEGORY_TABLE_CATEGORY_1" value1="${categoryName}" />
 
-		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_PORTLET_TITLE" value1="Breadcrumb" />
-		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="MESSAGE_BOARDS_PORTLET_TITLE" value1="Message Boards" />
+		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_PORTLET_TITLE" value1="BREADCRUMB" />
+		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="MESSAGE_BOARDS_PORTLET_TITLE" value1="MESSAGE BOARDS" />
 		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_1" value1="Liferay" />
 		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_2" value1="${siteName}" />
 		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_3" value1="${pageName}" />
@@ -37,11 +46,11 @@
 		<execute action="PGMessageboards#assertTextEquals" locator-key1="THREAD_TABLE_STARTED_BY" value1="${userName}" />
 		<execute action="PGMessageboards#assertTextEquals" locator-key1="THREAD_TABLE_POSTS" value1="1" />
 		<execute action="PGMessageboards#assertTextEquals" locator-key1="THREAD_TABLE_LAST_POST" value1="By: ${userName}" />
-		<execute action="PGMessageboards#assertTextEquals" locator-key1="THREAD_TABLE_ACTIONS" value1="Actions" />
+		<execute action="PGMessageboards#assertElementPresent" locator-key1="THREAD_TABLE_ACTIONS" />
 		<execute action="PGMessageboards#assertClick" locator-key1="THREAD_TABLE_THREAD" value1="${threadSubject}" />
 
-		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_PORTLET_TITLE" value1="Breadcrumb" />
-		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="MESSAGE_BOARDS_PORTLET_TITLE" value1="Message Boards" />
+		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_PORTLET_TITLE" value1="BREADCRUMB" />
+		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="MESSAGE_BOARDS_PORTLET_TITLE" value1="MESSAGE BOARDS" />
 		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_1" value1="Liferay" />
 		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_2" value1="${siteName}" />
 		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_3" value1="${pageName}" />
@@ -59,13 +68,11 @@
 	</command>
 
 	<command name="viewMyPostsPG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<var name="key_threadSubject" value="${threadSubject}" />
 
 		<execute action="PGMessageboards#assertClick" locator-key1="NAVIGATION_MY_POSTS" value1="My Posts" />
+
+		<execute action="SOUserBar#click" locator-key1="TOGGLE_DOCKBAR" />
 
 		<if>
 			<condition action="PGSOMessageboards#isElementNotPresent" locator-key1="BREADCRUMB_PORTLET_TITLE" />
@@ -75,8 +82,8 @@
 			</then>
 		</if>
 
-		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_PORTLET_TITLE" value1="Breadcrumb" />
-		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="MESSAGE_BOARDS_PORTLET_TITLE" value1="Message Boards" />
+		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_PORTLET_TITLE" value1="BREADCRUMB" />
+		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="MESSAGE_BOARDS_PORTLET_TITLE" value1="MESSAGE BOARDS" />
 		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_1" value1="Liferay" />
 		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_2" value1="${siteName}" />
 		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_3" value1="${pageName}" />
@@ -86,11 +93,11 @@
 		<execute action="PGMessageboardsMyposts#assertTextEquals" locator-key1="THREAD_TABLE_STARTED_BY" value1="${userName}" />
 		<execute action="PGMessageboardsMyposts#assertTextEquals" locator-key1="THREAD_TABLE_POSTS" value1="1" />
 		<execute action="PGMessageboardsMyposts#assertTextEquals" locator-key1="THREAD_TABLE_LAST_POST" value1="By: ${userName}" />
-		<execute action="PGMessageboardsMyposts#assertTextEquals" locator-key1="THREAD_TABLE_ACTIONS" value1="Actions" />
+		<execute action="PGMessageboardsMyposts#assertElementPresent" locator-key1="THREAD_TABLE_ACTIONS" />
 		<execute action="PGMessageboardsMyposts#assertClick" locator-key1="THREAD_TABLE_THREAD" value1="${threadSubject}" />
 
-		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_PORTLET_TITLE" value1="Breadcrumb" />
-		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="MESSAGE_BOARDS_PORTLET_TITLE" value1="Message Boards" />
+		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_PORTLET_TITLE" value1="BREADCRUMB" />
+		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="MESSAGE_BOARDS_PORTLET_TITLE" value1="MESSAGE BOARDS" />
 		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_1" value1="Liferay" />
 		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_2" value1="${siteName}" />
 		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_3" value1="${pageName}" />
@@ -108,13 +115,11 @@
 	</command>
 
 	<command name="viewRecentPostsPG">
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-		</execute>
-
 		<var name="key_threadSubject" value="${threadSubject}" />
 
 		<execute action="PGMessageboards#assertClick" locator-key1="NAVIGATION_RECENT_POSTS" value1="Recent Posts" />
+
+		<execute action="SOUserBar#click" locator-key1="TOGGLE_DOCKBAR" />
 
 		<if>
 			<condition action="PGSOMessageboards#isElementNotPresent" locator-key1="BREADCRUMB_PORTLET_TITLE" />
@@ -124,8 +129,8 @@
 			</then>
 		</if>
 
-		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_PORTLET_TITLE" value1="Breadcrumb" />
-		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="MESSAGE_BOARDS_PORTLET_TITLE" value1="Message Boards" />
+		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_PORTLET_TITLE" value1="BREADCRUMB" />
+		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="MESSAGE_BOARDS_PORTLET_TITLE" value1="MESSAGE BOARDS" />
 		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_1" value1="Liferay" />
 		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_2" value1="${siteName}" />
 		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_3" value1="${pageName}" />
@@ -135,8 +140,10 @@
 		<execute action="PGMessageboardsMyposts#assertTextEquals" locator-key1="THREAD_TABLE_STARTED_BY" value1="${userName}" />
 		<execute action="PGMessageboardsMyposts#assertTextEquals" locator-key1="THREAD_TABLE_POSTS" value1="1" />
 		<execute action="PGMessageboardsMyposts#assertTextEquals" locator-key1="THREAD_TABLE_LAST_POST" value1="By: ${userName}" />
-		<execute action="PGMessageboardsMyposts#assertTextEquals" locator-key1="THREAD_TABLE_ACTIONS" value1="Actions" />
+		<execute action="PGMessageboardsMyposts#assertElementPresent" locator-key1="THREAD_TABLE_ACTIONS" />
 		<execute action="PGMessageboardsMyposts#assertClick" locator-key1="THREAD_TABLE_THREAD" value1="${threadSubject}" />
+
+		<execute action="SOUserBar#click" locator-key1="TOGGLE_DOCKBAR" />
 
 		<if>
 			<condition action="PGSOMessageboards#isElementNotPresent" locator-key1="BREADCRUMB_PORTLET_TITLE" />
@@ -146,8 +153,8 @@
 			</then>
 		</if>
 
-		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_PORTLET_TITLE" value1="Breadcrumb" />
-		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="MESSAGE_BOARDS_PORTLET_TITLE" value1="Message Boards" />
+		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_PORTLET_TITLE" value1="BREADCRUMB" />
+		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="MESSAGE_BOARDS_PORTLET_TITLE" value1="MESSAGE BOARDS" />
 		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_1" value1="Liferay" />
 		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_2" value1="${siteName}" />
 		<execute action="PGSOMessageboards#assertTextEquals" locator-key1="BREADCRUMB_3" value1="${pageName}" />
