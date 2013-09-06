@@ -162,6 +162,11 @@
 	<td></td>
 </tr>
 <tr>
+	<td>NOTIFICATION_MENU_VIEW_ALL</td>
+	<td>//span[@class='view-all']/a</td>
+	<td></td>
+</tr>
+<tr>
 	<td></td>
 	<td></td>
 	<td></td>

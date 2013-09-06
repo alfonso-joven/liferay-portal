@@ -98,12 +98,12 @@
 </tr>
 <tr>
 	<td>BOOKMARKS_POP_UP_IMAGE_GOOGLE</td>
-	<td>//img[@alt='Google']</td>
+	<td>xPath=(//button[@aria-label='Google Search'])[2]</td>
 	<td>Google</td>
 </tr>
 <tr>
 	<td>BOOKMARKS_POP_UP_IMAGE_YAHOO</td>
-	<td>//a[contains(.,'Yahoo')]</td>
+	<td>//button[@id='search-submit']</td>
 	<td>Yahoo</td>
 </tr>
 <tr>

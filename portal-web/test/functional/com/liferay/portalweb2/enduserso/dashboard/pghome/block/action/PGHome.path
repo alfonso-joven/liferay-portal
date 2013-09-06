@@ -92,7 +92,7 @@
 </tr>
 <tr>
 	<td>ANNOUNCEMENTS_ENTRY_TITLE</td>
-	<td>//div[@class='title']/a</td>
+	<td>//div[@class='entry-body']/div[@class='title']/a</td>
 	<td></td>
 </tr>
 <tr>

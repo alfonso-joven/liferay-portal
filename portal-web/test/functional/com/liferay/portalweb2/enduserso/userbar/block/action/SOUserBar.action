@@ -16,6 +16,9 @@
 		<case locator-key1="DASHBOARD">
 			<execute function="Click#textClickAtAndWait" value1="Dashboard" />
 		</case>
+		<case locator-key1="NOTIFICATION_MENU_VIEW_ALL">
+			<execute function="AssertClick#assertPartialTextClickAtAndWait" />
+		</case>
 		<case locator-key1="USER_MENU_MY_ACCOUNT">
 			<execute function="AssertClick#assertTextClickAt" />
 		</case>
