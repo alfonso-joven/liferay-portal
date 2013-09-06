@@ -684,6 +684,10 @@ public class JournalArticleLocalServiceImpl
 				article, articleURL, preferences, "denied", serviceContext);
 		}
 
+		// Expando
+
+		expandoRowLocalService.deleteRows(article.getId());
+
 		// Images
 
 		journalArticleImageLocalService.deleteImages(
@@ -731,10 +735,6 @@ public class JournalArticleLocalServiceImpl
 			// Small image
 
 			imageLocalService.deleteImage(article.getSmallImageId());
-
-			// Expando
-
-			expandoRowLocalService.deleteRows(article.getId());
 
 			// Resources
 
