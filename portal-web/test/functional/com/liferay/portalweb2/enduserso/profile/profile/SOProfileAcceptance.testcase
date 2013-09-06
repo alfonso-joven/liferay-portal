@@ -24,6 +24,13 @@
 			<var name="userLastName" value="${userLastName}" />
 			<var name="userScreenName" value="${userScreenName}" />
 		</execute>
+
+		<execute macro="SOUser#logoutPG" />
+
+		<execute macro="SOUser#loginPG">
+			<var name="userEmailAddress" value="${userEmailAddress}" />
+			<var name="password" value="test" />
+		</execute>
 	</set-up>
 
 	<command name="AddAdditionalEmailAddress">
@@ -79,6 +86,14 @@
 		<var name="filterTypeCount" value="1" />
 		<var name="userScreenName" value="socialoffice01" />
 		<var name="roleName" value="Social Office" />
+		<var name="userListName" value="${userListName}" />
+
+		<execute macro="SOUser#logoutPG" />
+
+		<execute macro="SOUser#loginPG">
+			<var name="userEmailAddress" value="${adminEmailAddress}" />
+			<var name="password" value="test" />
+		</execute>
 
 		<execute macro="SOProfile#addConnection">
 			<var name="senderName" value="${adminName}" />
@@ -298,6 +313,16 @@
 
 	<command name="DisconnectCCConnectionProfile">
 		<var name="filterTypeCount" value="1" />
+		<var name="userScreenName" value="socialoffice01" />
+		<var name="roleName" value="Social Office" />
+		<var name="userListName" value="${userListName}" />
+
+		<execute macro="SOUser#logoutPG" />
+
+		<execute macro="SOUser#loginPG">
+			<var name="userEmailAddress" value="${adminEmailAddress}" />
+			<var name="password" value="test" />
+		</execute>
 
 		<execute macro="SOProfile#addConnection">
 			<var name="senderName" value="${adminName}" />

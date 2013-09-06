@@ -181,5 +181,7 @@
 		<execute macro="SOCalendar#tearDownCP" />
 
 		<execute macro="SOHome#tearDownPG" />
+
+		<execute macro="SOUserBar#tearDownNotifications" />
 	</tear-down>
 </definition>

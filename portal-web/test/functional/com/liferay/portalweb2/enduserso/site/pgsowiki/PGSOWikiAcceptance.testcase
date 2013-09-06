@@ -1,6 +1,7 @@
 <definition>
 	<var name="key_siteName" value="${siteName}" />
 	<var name="pageName" value="Wiki" />
+	<var name="pageType" value="Open Site" />
 	<var name="siteName" value="Open Site Name" />
 	<var name="siteDescription" value="Open Site Description" />
 	<var name="siteType" value="Open" />
@@ -39,11 +40,6 @@
 		<execute macro="WikiPage#addFrontPagePG">
 			<var name="pageName" value="${pageName}" />
 			<var name="wikiPageContent" value="${wikiPageContent}" />
-		</execute>
-
-		<execute macro="Page#gotoPG">
-			<var name="pageName" value="${pageName}" />
-			<var name="pageType" value="Open Site" />
 		</execute>
 
 		<execute macro="WikiPage#editFrontPagePG">

@@ -49,9 +49,24 @@
 
 		<execute macro="MessageboardsThread#addPG" />
 
+		<execute macro="Page#gotoPG">
+			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Open Site" />
+		</execute>
+
 		<execute macro="SOMessageboardsCategoryThread#viewPG" />
 
+		<execute macro="Page#gotoPG">
+			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Open Site" />
+		</execute>
+
 		<execute macro="SOMessageboardsCategoryThread#viewMyPostsPG" />
+
+		<execute macro="Page#gotoPG">
+			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Open Site" />
+		</execute>
 
 		<execute macro="SOMessageboardsCategoryThread#viewRecentPostsPG" />
 	</command>
@@ -92,7 +107,7 @@
 			<var name="categoryName" value="${categoryName}" />
 		</execute>
 
-		<execute macro="MessageboardsThread#deletePG" />
+		<execute macro="SOMessageboardsCategoryThread#deletePG" />
 
 		<execute macro="Page#gotoPG">
 			<var name="pageName" value="${pageName}" />
@@ -148,6 +163,11 @@
 		</execute>
 
 		<execute macro="MessageboardsThread#editPG" />
+
+		<execute macro="Page#gotoPG">
+			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Open Site" />
+		</execute>
 
 		<execute macro="SOMessageboardsCategoryThread#viewPG">
 			<var name="threadBody" value="${threadBodyEdit}" />

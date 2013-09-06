@@ -1,11 +1,6 @@
 <definition>
 	<set-up>
 		<execute macro="SOUser#firstLoginPG" />
-
-		<execute macro="Role#assignRegRoleCP">
-			<var name="roleName" value="Social Office" />
-			<var name="userScreenName" value="joebloggs" />
-		</execute>
 	</set-up>
 
 	<command name="ViewContactsCenterUserDetails">
