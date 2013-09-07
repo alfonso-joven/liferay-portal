@@ -38,7 +38,6 @@
 		</case>
 	</command>
 
-
 	<command name="click">
 		<case comparator="startsWith" locator-key1="THREAD_TABLE_ACTIONS">
 			<execute function="Click#pauseTextClickAt" />
