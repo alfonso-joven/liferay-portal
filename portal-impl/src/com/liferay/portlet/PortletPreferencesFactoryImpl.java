@@ -665,7 +665,7 @@ public class PortletPreferencesFactoryImpl
 		}
 
 		Map<String, Preference> preferencesMap =
-			(Map<String, Preference>) _preferencesMapPortalCache.get(xml);
+			(Map<String, Preference>)_preferencesMapPortalCache.get(xml);
 
 		if (preferencesMap != null) {
 			return preferencesMap;
