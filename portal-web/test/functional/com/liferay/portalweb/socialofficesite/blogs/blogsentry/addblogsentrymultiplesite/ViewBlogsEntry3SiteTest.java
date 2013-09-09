@@ -43,7 +43,8 @@ public class ViewBlogsEntry3SiteTest extends BaseTestCase {
 			RuntimeVariables.replace("Blogs"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isVisible("//input[@id='_33_keywords']"));
-		assertTrue(selenium.isVisible("//input[@value='Search']"));
+		assertTrue(selenium.isVisible(
+				"//div[contains(@class,'search-form')]/div/span[2]/span/input[@value='Search']"));
 		assertTrue(selenium.isVisible("//input[@value='Add Blog Entry']"));
 		assertTrue(selenium.isVisible("//input[@value='Permissions']"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry3 Title"),

@@ -35,8 +35,8 @@ public class ViewBlogsEntry2RBSite2Test extends BaseTestCase {
 		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Open Site2 Name"),
 			selenium.getText(
-				"//li[contains(@class, 'social-office-enabled')]/span[2]/a"));
-		selenium.clickAt("//li[contains(@class, 'social-office-enabled')]/span[2]/a",
+				"//li[contains(@class, 'social-office-enabled')]/span[contains(.,'Open Site2 Name')]/a"));
+		selenium.clickAt("//li[contains(@class, 'social-office-enabled')]/span[contains(.,'Open Site2 Name')]/a",
 			RuntimeVariables.replace("Open Site2 Name"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Blogs"),

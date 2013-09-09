@@ -43,7 +43,8 @@ public class ViewSOUserDeleteBlogsEntrySiteTest extends BaseTestCase {
 			RuntimeVariables.replace("Blogs"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isElementNotPresent("//input[@id='_33_keywords']"));
-		assertTrue(selenium.isElementNotPresent("//input[@value='Search']"));
+		assertTrue(selenium.isElementNotPresent(
+				"//div[contains(@class,'search-form')]/div/span[2]/span/input[@value='Search']"));
 		assertTrue(selenium.isVisible("//input[@value='Add Blog Entry']"));
 		assertTrue(selenium.isVisible("//input[@value='Permissions']"));
 		assertTrue(selenium.isElementNotPresent(

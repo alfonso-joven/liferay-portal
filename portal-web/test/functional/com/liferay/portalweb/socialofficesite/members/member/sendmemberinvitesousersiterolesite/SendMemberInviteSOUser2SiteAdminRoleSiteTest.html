@@ -74,6 +74,11 @@
 	<td>Find Members</td>
 </tr>
 <tr>
+	<td>waitForText</td>
+	<td>xPath=(//div[contains(@class, 'user')]/span)[contains(.,'Social02 Office02 User02')]</td>
+	<td>Social02 Office02 User02</td>
+</tr>
+<tr>
 	<td>assertText</td>
 	<td>xPath=(//div[contains(@class, 'user')]/span)[contains(.,'Social02 Office02 User02')]</td>
 	<td>Social02 Office02 User02</td>
@@ -86,12 +91,17 @@
 <tr>
 	<td>waitForVisible</td>
 	<td>//div[@class='user-invited']/div/div</td>
-	<td>Social02 Office02 User02 socialoffice02@liferay.com</td>
+	<td>Social01 Office01 User01 socialoffice01@liferay.com</td>
 </tr>
 <tr>
-	<td>assertText</td>
+	<td>assertPartialText</td>
 	<td>//div[@class='user-invited']/div/div</td>
-	<td>Social02 Office02 User02 socialoffice02@liferay.com</td>
+	<td>Social02 Office02 User02</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>//div[@class='user-invited']/div/div</td>
+	<td>socialoffice02@liferay.com</td>
 </tr>
 <tr>
 	<td>select</td>

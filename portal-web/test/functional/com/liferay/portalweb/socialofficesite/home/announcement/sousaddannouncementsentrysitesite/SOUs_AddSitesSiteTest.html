@@ -164,14 +164,19 @@
 	<td>Save</td>
 </tr>
 <tr>
-	<td>waitForVisible</td>
-	<td>//span[@class='portlet-msg-success']</td>
-	<td>Your request completed successfully.</td>
+	<td>waitForNotVisible</td>
+	<td>//input[@value='Save']</td>
+	<td>Save</td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>//span[@class='portlet-msg-success']</td>
-	<td>Your request completed successfully.</td>
+	<td>clickAt</td>
+	<td>//input[contains(@class,'search-input')]</td>
+	<td>Go to</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//button[contains(.,'Add Site')]/span[2]</td>
+	<td>Add Site</td>
 </tr>
 <tr>
 	<td>pause</td>
