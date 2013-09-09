@@ -141,7 +141,7 @@ request.setAttribute("view.jsp-showIconLabel", true);
 	%>
 
 	<div class="asset-content">
-		<c:if test='<%= enableSocialBookmarks && socialBookmarksDisplayPosition.equals("top") %>'>
+		<c:if test='<%= enableSocialBookmarks && socialBookmarksDisplayPosition.equals("top") && !print %>'>
 			<liferay-ui:social-bookmarks
 				displayStyle="<%= socialBookmarksDisplayStyle %>"
 				target="_blank"
@@ -170,7 +170,7 @@ request.setAttribute("view.jsp-showIconLabel", true);
 			</div>
 		</c:if>
 
-		<c:if test='<%= enableSocialBookmarks && socialBookmarksDisplayPosition.equals("bottom") %>'>
+		<c:if test='<%= enableSocialBookmarks && socialBookmarksDisplayPosition.equals("bottom") && !print %>'>
 			<liferay-ui:social-bookmarks
 				displayStyle="<%= socialBookmarksDisplayStyle %>"
 				target="_blank"
