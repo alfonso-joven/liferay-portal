@@ -1,0 +1,69 @@
+<definition>
+	<var name="key_siteName" value="${siteName}" />
+	<var name="pageName" value="Calendar" />
+	<var name="siteName" value="Open Site Name" />
+	<var name="siteDescription" value="Open Site Description" />
+	<var name="siteType" value="Open" />
+	<var name="userName" value="Joe Bloggs" />
+
+	<set-up>
+		<execute macro="SOUser#firstLoginPG" />
+
+		<execute macro="SOSites#addSOSite">
+			<var name="siteName" value="${siteName}" />
+			<var name="siteDescription" value="${siteDescription}" />
+			<var name="siteType" value="${siteType}" />
+		</execute>
+	</set-up>
+
+	<command name="AddCalendarEvent">
+		<var name="eventDescription" value="Calendar Event Description" />
+		<var name="eventTitle" value="Calendar Event Title" />
+
+		<execute macro="SOCalendar#AddCalendarEvent" />
+	</command>
+
+	<command name="DeleteCalendarEvent">
+		<var name="eventDescription" value="Calendar Event Description" />
+		<var name="eventTitle" value="Calendar Event Title" />
+
+		<execute macro="SOCalendar#AddCalendarEvent" />
+
+		<execute macro="SOCalendar#DeleteCalendarEvent" />
+	</command>
+
+	<command name="EditCalendarEvent">
+		<var name="eventDescription" value="Calendar Event Description" />
+		<var name="eventDescriptionEdit" value="Calendar Event Description Edit" />
+		<var name="eventTitle" value="Calendar Event Title" />
+		<var name="eventTitleEdit" value="Calendar Event Title Edit" />
+
+		<execute macro="SOCalendar#AddCalendarEvent" />
+
+		<execute macro="SOCalendar#EditCalendarEvent" />
+	</command>
+
+	<command name="ViewEventED">
+		<var name="eventDescription" value="Calendar Event Description" />
+		<var name="eventTitle" value="Calendar Event Title" />
+		<var name="userName" value="Joe Bloggs" />
+
+		<execute macro="SOCalendar#AddCalendarEvent" />
+
+		<execute macro="Page#openURL">
+			<var name="pageType" value="Open Site" />
+		</execute>
+
+		<execute action="PGSOHome#assertTextEquals" locator-key1="EVENTS_DISPLAY_TODAYS_EVENTS_EVENT_TITLE" value1="${eventTitle}" />
+		<execute action="PGHome#assertElementPresent" locator-key1="EVENTS_DISPLAY_TODAYS_EVENTS_EVENT_TIME" />
+		<execute action="PGSOHome#click" locator-key1="EVENTS_DISPLAY_TODAYS_EVENTS_EVENT_TITLE" value1="${eventTitle}" />
+
+		<execute macro="Event#ViewPG" />
+	</command>
+
+	<tear-down>
+		<execute macro="SOCalendar#tearDownCP" />
+
+		<execute macro="SOSites#tearDownCP" />
+	</tear-down>
+</definition>

@@ -3,6 +3,8 @@
 
 	<execute test-case="PGSOBlogsAcceptance" />
 
+	<execute test-case="PGSOCalendarAcceptance" />
+
 	<execute test-case="PGSODocumentsandmediaAcceptance" />
 
 	<execute test-case="PGSOHomeAcceptance" />
