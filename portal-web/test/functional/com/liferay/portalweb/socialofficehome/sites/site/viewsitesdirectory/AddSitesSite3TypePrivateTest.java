@@ -78,10 +78,10 @@ public class AddSitesSite3TypePrivateTest extends BaseTestCase {
 		assertEquals("Save", selenium.getValue("//input[@value='Save']"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
-		selenium.waitForVisible("//span[@class='portlet-msg-success']");
-		assertEquals(RuntimeVariables.replace(
-				"Your request completed successfully."),
-			selenium.getText("//span[@class='portlet-msg-success']"));
+		selenium.waitForNotVisible("//input[@value='Save']");
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
+		selenium.waitForVisible("//button[contains(.,'Add Site')]/span[2]");
 		Thread.sleep(1000);
 		assertEquals(RuntimeVariables.replace("Private Site3 Name"),
 			selenium.getText(

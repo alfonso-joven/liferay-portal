@@ -46,7 +46,7 @@ public class SOUs2_ViewPMMessageTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Message Subject"),
 			selenium.getText("//h1[@class='header-title']/span"));
 		assertEquals(RuntimeVariables.replace(
-				"Between Social01 Office01 User01 And you"),
+				"Between Social01 Office01 User01 And You"),
 			selenium.getText(
 				"//div[@class='aui-layout-content thread-info-content ']"));
 		assertEquals(RuntimeVariables.replace("Social01 Office01 User01"),

@@ -30,6 +30,8 @@ public class AddPageTasksTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home/");
+				selenium.clickAt("//a[contains(@id,'toggleDockbar')]",
+					RuntimeVariables.replace("Toggle Dockbar"));
 				selenium.clickAt("//div[@id='dockbar']",
 					RuntimeVariables.replace("Dockbar"));
 				selenium.waitForElementPresent(
@@ -42,8 +44,9 @@ public class AddPageTasksTest extends BaseTestCase {
 					selenium.getText("//a[@id='addPage']"));
 				selenium.clickAt("//a[@id='addPage']",
 					RuntimeVariables.replace("Page"));
-				selenium.waitForVisible("//input[@type='text']");
-				selenium.type("//input[@type='text']",
+				selenium.waitForVisible(
+					"//li[@class='add-page']/div/div/span/span/input[@type='text']");
+				selenium.type("//li[@class='add-page']/div/div/span/span/input[@type='text']",
 					RuntimeVariables.replace("Tasks Test Page"));
 
 				boolean newSaveButtonPresent = selenium.isElementPresent(

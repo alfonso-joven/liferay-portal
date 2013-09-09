@@ -46,7 +46,7 @@ public class SOUs1_ViewDeletePMMessageTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Message Subject"),
 			selenium.getText("//h1[@class='header-title']/span"));
 		assertEquals(RuntimeVariables.replace(
-				"Between Social02 Office02 User02 And you"),
+				"Between Social02 Office02 User02 And You"),
 			selenium.getText(
 				"//div[@class='aui-layout-content thread-info-content ']"));
 		assertEquals(RuntimeVariables.replace("Social01 Office01 User01"),

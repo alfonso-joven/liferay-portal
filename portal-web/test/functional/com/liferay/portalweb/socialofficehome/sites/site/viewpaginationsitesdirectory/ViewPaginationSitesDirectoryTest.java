@@ -25,9 +25,8 @@ public class ViewPaginationSitesDirectoryTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/joebloggs/so/dashboard/");
-		selenium.waitForVisible("//li[contains(@class, 'selected')]/a/span");
-		assertEquals(RuntimeVariables.replace("Dashboard"),
-			selenium.getText("//li[contains(@class, 'selected')]/a/span"));
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
 		selenium.waitForVisible("//li[@class='more']/a");
 		assertEquals(RuntimeVariables.replace("View All (12)"),
 			selenium.getText("//li[@class='more']/a"));

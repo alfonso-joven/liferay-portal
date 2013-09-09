@@ -30,17 +30,11 @@ public class TearDownProjectsTest extends BaseTestCase {
 				selenium.selectWindow("null");
 				selenium.selectFrame("relative=top");
 				selenium.open("/web/guest/home");
-				selenium.clickAt("//div[@id='dockbar']",
-					RuntimeVariables.replace("Dockbar"));
-				selenium.waitForElementPresent(
-					"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
-				assertTrue(selenium.isVisible("//li[@id='_145_userMenu']"));
-				selenium.mouseOver("//li[@id='_145_userMenu']");
+				selenium.clickAt("//li[contains(@class,'user-menu has-submenu')]/a/span[@class='full-name']",
+					RuntimeVariables.replace("User Name"));
 				selenium.waitForVisible("link=My Account");
 				selenium.clickAt("link=My Account",
 					RuntimeVariables.replace("My Account"));
-				selenium.waitForVisible("//iframe[contains(@src,'my_account')]");
-				selenium.selectFrame("//iframe[contains(@src,'my_account')]");
 				selenium.waitForPartialText("//a[@id='_2_projectsLink']",
 					"Projects");
 				assertTrue(selenium.isPartialText(

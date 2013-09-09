@@ -66,7 +66,7 @@ public class SOUs_AddPMMessageReplyTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Message Subject"),
 			selenium.getText("//h1[@class='header-title']/span"));
-		assertEquals(RuntimeVariables.replace("Between Joe Bloggs And you"),
+		assertEquals(RuntimeVariables.replace("Between Joe Bloggs And You"),
 			selenium.getText(
 				"//div[@class='aui-layout-content thread-info-content ']"));
 		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
@@ -84,7 +84,7 @@ public class SOUs_AddPMMessageReplyTest extends BaseTestCase {
 			selenium.getText("//div[@class='portlet-msg-success']"));
 		assertEquals(RuntimeVariables.replace("Message Subject"),
 			selenium.getText("//h1[@class='header-title']/span"));
-		assertEquals(RuntimeVariables.replace("Between Joe Bloggs And you"),
+		assertEquals(RuntimeVariables.replace("Between Joe Bloggs And You"),
 			selenium.getText(
 				"//div[@class='aui-layout-content thread-info-content ']"));
 		assertEquals(RuntimeVariables.replace("Joe Bloggs"),

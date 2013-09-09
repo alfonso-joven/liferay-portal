@@ -36,7 +36,7 @@ public class DefinePermissionsDocumentUploaderTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.type("//input[@id='_128_keywords']",
 			RuntimeVariables.replace("Uploader"));
-		selenium.clickAt("//input[@value='Search']",
+		selenium.clickAt("//form[contains(@id,'_128_')]/span/span[2]/span/input[@value='Search']",
 			RuntimeVariables.replace("Search"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Document Uploader Name"),

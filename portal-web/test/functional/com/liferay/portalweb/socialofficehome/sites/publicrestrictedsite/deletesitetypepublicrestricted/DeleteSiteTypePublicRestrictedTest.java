@@ -56,6 +56,5 @@ public class DeleteSiteTypePublicRestrictedTest extends BaseTestCase {
 						   .matches("^Are you sure you want to delete Public Restricted Site Name[\\s\\S]$"));
 		selenium.waitForElementNotPresent(
 			"xPath=(//span[@class='name']/a)[contains(.,'Public Restricted Site Name')]");
-		assertFalse(selenium.isTextPresent("Public Restricted Site Name"));
 	}
 }

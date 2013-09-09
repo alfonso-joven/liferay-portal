@@ -15,7 +15,6 @@
 package com.liferay.portalweb.socialofficehome.tasks.task.filtertasksfilterbytags;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
-import com.liferay.portalweb.portal.util.TearDownPageTest;
 import com.liferay.portalweb.socialofficehome.tasks.task.addtaskstaskassignedtome.TearDownTasksTaskTest;
 import com.liferay.portalweb.socialofficehome.tasks.task.addtaskstaskassignedtometag.AddTasksTaskAssignedToMeTagTest;
 

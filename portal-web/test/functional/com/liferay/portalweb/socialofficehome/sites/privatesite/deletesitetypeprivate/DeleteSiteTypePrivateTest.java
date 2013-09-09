@@ -57,6 +57,5 @@ public class DeleteSiteTypePrivateTest extends BaseTestCase {
 						   .matches("^Are you sure you want to delete Private Site Name[\\s\\S]$"));
 		selenium.waitForElementNotPresent(
 			"xPath=(//span[@class='name']/a)[contains(.,'Private Site Name')]");
-		assertFalse(selenium.isTextPresent("Private Site Name"));
 	}
 }

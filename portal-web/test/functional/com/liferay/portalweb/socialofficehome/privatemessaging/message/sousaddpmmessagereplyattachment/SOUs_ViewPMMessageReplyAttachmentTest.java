@@ -46,7 +46,7 @@ public class SOUs_ViewPMMessageReplyAttachmentTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Message Subject"),
 			selenium.getText("//h1[@class='header-title']/span"));
-		assertEquals(RuntimeVariables.replace("Between Joe Bloggs And you"),
+		assertEquals(RuntimeVariables.replace("Between Joe Bloggs And You"),
 			selenium.getText(
 				"//div[@class='aui-layout-content thread-info-content ']"));
 		assertEquals(RuntimeVariables.replace("Joe Bloggs"),

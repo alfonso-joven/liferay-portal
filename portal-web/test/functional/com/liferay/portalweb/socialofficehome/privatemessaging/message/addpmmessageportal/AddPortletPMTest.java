@@ -28,6 +28,8 @@ public class AddPortletPMTest extends BaseTestCase {
 		selenium.clickAt("link=Private Messaging Test Page",
 			RuntimeVariables.replace("Private Messaging Test Page"));
 		selenium.waitForPageToLoad("30000");
+		selenium.clickAt("//a[contains(@id,'toggleDockbar')]",
+			RuntimeVariables.replace("Toggle Dockbar"));
 		selenium.clickAt("//div[@id='dockbar']",
 			RuntimeVariables.replace("Dockbar"));
 		selenium.waitForElementPresent(

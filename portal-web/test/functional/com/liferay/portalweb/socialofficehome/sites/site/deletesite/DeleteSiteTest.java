@@ -55,6 +55,5 @@ public class DeleteSiteTest extends BaseTestCase {
 						   .matches("^Are you sure you want to delete Open Site Name[\\s\\S]$"));
 		selenium.waitForElementNotPresent(
 			"xPath=(//span[@class='name']/a)[contains(.,'Open Site Name')]");
-		assertFalse(selenium.isTextPresent("Open Site Name"));
 	}
 }
