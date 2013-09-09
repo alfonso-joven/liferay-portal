@@ -684,14 +684,14 @@ public class JournalArticleLocalServiceImpl
 				article, articleURL, preferences, "denied", serviceContext);
 		}
 
-		// Expando
-
-		expandoRowLocalService.deleteRows(article.getId());
-
 		// Images
 
 		journalArticleImageLocalService.deleteImages(
 			article.getGroupId(), article.getArticleId(), article.getVersion());
+
+		// Expando
+
+		expandoRowLocalService.deleteRows(article.getId());
 
 		// Workflow
 
