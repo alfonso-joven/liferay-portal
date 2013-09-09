@@ -102,9 +102,7 @@ AUI.add(
 						value: -1
 					},
 					moreResultsLabel: {
-						validator: function(value) {
-							return A.Lang.isString(value) && value.length;
-						},
+						validator: '_isValidString',
 						value: Liferay.Language.get('load-more-results')
 					},
 					singleSelect: {
@@ -112,9 +110,7 @@ AUI.add(
 						value: false
 					},
 					title: {
-						validator: function(value) {
-							return A.Lang.isString(value) && value.length;
-						},
+						validator: '_isValidString',
 						value: Liferay.Language.get('select-categories')
 					},
 					vocabularyIds: {
@@ -414,6 +410,12 @@ AUI.add(
 								}
 							}
 						);
+					},
+
+					_isValidString: function(value) {
+						var instance = this;
+
+						return Lang.isString(value) && value.length;
 					},
 
 					_onBoundingBoxClick: EMPTY_FN,
