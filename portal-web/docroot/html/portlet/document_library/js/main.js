@@ -21,6 +21,8 @@ AUI.add(
 
 		var CSS_ACTIVE_AREA_PROXY = 'active-area-proxy';
 
+		var CSS_CONTAINER_HIDDEN = 'container-hidden';
+
 		var CSS_DOCUMENT_DISPLAY_STYLE = '.document-display-style';
 
 		var CSS_DOCUMENT_DISPLAY_STYLE_SELECTABLE = '.document-display-style.selectable';
@@ -317,6 +319,8 @@ AUI.add(
 						eventHandles.push(Liferay.on(config.portletId + ':portletRefreshed', A.bind(instance.destructor, instance)));
 
 						instance._restoreState();
+
+						documentLibraryContainer.removeClass(CSS_CONTAINER_HIDDEN);
 					},
 
 					destructor: function() {
