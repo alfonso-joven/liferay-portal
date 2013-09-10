@@ -6,6 +6,8 @@
 	</command>
 
 	<command name="gotoCP">
+		<execute action="Home#open" locator-key1="GUEST_URL" />
+
 		<execute action="SOUserBar#click" locator-key1="USER_NAME" />
 		<execute action="SOUserBar#click" locator-key1="USER_MENU_CONTROL_PANEL" value1="Control Panel"/>
 
