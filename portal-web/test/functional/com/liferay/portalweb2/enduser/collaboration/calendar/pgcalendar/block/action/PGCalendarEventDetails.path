@@ -64,18 +64,13 @@
 	<td></td>
 </tr>
 <tr>
-	<td>BE_THE_FIRST</td>
+	<td>BE_THE_FIRST_LINK</td>
 	<td>//fieldset[@class='aui-fieldset add-comment ']/div/a</td>
 	<td></td>
 </tr>
 <tr>
-	<td>SUBSCRIBE_TO_COMMENTS</td>
+	<td>SUBSCRIBE_TO_COMMENTS_LINK</td>
 	<td>//span[@class='subscribe-link']/a/span</td>
-	<td></td>
-</tr>
-<tr>
-	<td>SUBSCRIBE _TO_ COMMENTS</td>
-	<td></td>
 	<td></td>
 </tr>
 </tbody>

@@ -1,4 +1,8 @@
 <definition>
+	<var name="eventDescription" value="Calendar Event Description" />
+	<var name="eventDescriptionEdit" value="Calendar Event Description Edit" />
+	<var name="eventTitle" value="Calendar Event Title" />
+	<var name="eventTitleEdit" value="Calendar Event Title Edit" />
 	<var name="key_siteName" value="${siteName}" />
 	<var name="pageName" value="Calendar" />
 	<var name="siteName" value="Open Site Name" />
@@ -17,38 +21,15 @@
 	</set-up>
 
 	<command name="AddCalendarEvent">
-		<var name="eventDescription" value="Calendar Event Description" />
-		<var name="eventTitle" value="Calendar Event Title" />
+		<var name="eventDescription" value="${eventDescription}" />
+		<var name="eventTitle" value="${eventTitle}" />
 
-		<execute macro="SOCalendar#AddCalendarEvent" />
-	</command>
+		<execute macro="Page#gotoPG">
+			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Open Site" />
+		</execute>
 
-	<command name="DeleteCalendarEvent">
-		<var name="eventDescription" value="Calendar Event Description" />
-		<var name="eventTitle" value="Calendar Event Title" />
-
-		<execute macro="SOCalendar#AddCalendarEvent" />
-
-		<execute macro="SOCalendar#DeleteCalendarEvent" />
-	</command>
-
-	<command name="EditCalendarEvent">
-		<var name="eventDescription" value="Calendar Event Description" />
-		<var name="eventDescriptionEdit" value="Calendar Event Description Edit" />
-		<var name="eventTitle" value="Calendar Event Title" />
-		<var name="eventTitleEdit" value="Calendar Event Title Edit" />
-
-		<execute macro="SOCalendar#AddCalendarEvent" />
-
-		<execute macro="SOCalendar#EditCalendarEvent" />
-	</command>
-
-	<command name="ViewEventED">
-		<var name="eventDescription" value="Calendar Event Description" />
-		<var name="eventTitle" value="Calendar Event Title" />
-		<var name="userName" value="Joe Bloggs" />
-
-		<execute macro="SOCalendar#AddCalendarEvent" />
+		<execute macro="Event#addPG" />
 
 		<execute macro="Page#openURL">
 			<var name="pageType" value="Open Site" />
@@ -58,12 +39,80 @@
 		<execute action="PGHome#assertElementPresent" locator-key1="EVENTS_DISPLAY_TODAYS_EVENTS_EVENT_TIME" />
 		<execute action="PGSOHome#click" locator-key1="EVENTS_DISPLAY_TODAYS_EVENTS_EVENT_TITLE" value1="${eventTitle}" />
 
-		<execute macro="Event#ViewPG" />
+		<execute macro="Event#viewDetailsPG" />
+ 
+		<execute macro="Page#gotoPG">
+			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Open Site" />
+		</execute>
+
+		<execute macro="Event#viewPG" />
+	</command>
+
+	<command name="DeleteCalendarEvent">
+		<var name="eventDescription" value="${eventDescription}" />
+		<var name="eventTitle" value="${eventTitle}" />
+
+		<execute macro="Page#gotoPG">
+			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Open Site" />
+		</execute>
+
+		<execute macro="Event#addPG" />
+
+		<execute macro="Page#gotoPG">
+			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Open Site" />
+		</execute>
+
+		<execute macro="Event#deletePG" />
+	</command>
+
+	<command name="EditCalendarEvent">
+		<var name="eventDescription" value="${eventDescription}" />
+		<var name="eventDescriptionEdit" value="${eventDescriptionEdit}" />
+		<var name="eventTitle" value="${eventTitle}" />
+		<var name="eventTitleEdit" value="${eventTitleEdit}" />
+
+		<execute macro="Page#gotoPG">
+			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Open Site" />
+		</execute>
+
+		<execute macro="Event#addPG" />
+
+		<execute macro="Page#gotoPG">
+			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Open Site" />
+		</execute>
+
+		<execute macro="Event#editPG" />
+
+		<execute macro="Page#openURL">
+			<var name="pageType" value="Open Site" />
+		</execute>
+
+		<execute action="PGSOHome#assertTextEquals" locator-key1="EVENTS_DISPLAY_TODAYS_EVENTS_EVENT_TITLE" value1="${eventTitleEdit}" />
+		<execute action="PGHome#assertElementPresent" locator-key1="EVENTS_DISPLAY_TODAYS_EVENTS_EVENT_TIME" />
+		<execute action="PGSOHome#click" locator-key1="EVENTS_DISPLAY_TODAYS_EVENTS_EVENT_TITLE" />
+
+		<execute macro="Event#viewDetailsPG">
+			<var name="eventDescription" value="${eventDescriptionEdit}" />
+			<var name="eventTitle" value="${eventTitleEdit}" />
+		</execute>
+
+		<execute macro="Page#gotoPG">
+			<var name="pageName" value="${pageName}" />
+			<var name="pageType" value="Open Site" />
+		</execute>
+
+		<execute macro="Event#viewPG">
+			<var name="eventDescription" value="${eventDescriptionEdit}" />
+			<var name="eventTitle" value="${eventTitleEdit}" />
+		</execute>
 	</command>
 
 	<tear-down>
-		<execute macro="SOCalendar#tearDownCP" />
-
 		<execute macro="SOSites#tearDownCP" />
 	</tear-down>
 </definition>

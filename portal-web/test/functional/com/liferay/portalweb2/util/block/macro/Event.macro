@@ -69,7 +69,7 @@
 		<execute action="PGCalendar#assertClick" locator-key1="EVENT_MENULIST_EDIT" value1="Edit" />
 
 		<execute action="PGCalendarEditEvent#type" locator-key1="TITLE_FIELD" value1="${eventTitleEdit}" />
-		<execute action="PGCalendarAddEvent#type" locator-key1="DESCRIPTION_FIELD" value1="${eventDescriptionEdit}" />
+		<execute action="PGCalendarEditEvent#type" locator-key1="DESCRIPTION_FIELD" value1="${eventDescriptionEdit}" />
 		<execute action="PGCalendarEditEvent#assertClick" locator-key1="SAVE_BUTTON" value1="Save" />
 
 		<execute action="PGCalendar#assertTextEquals" locator-key1="SUCCESS_MESSAGE" value1="Your request completed successfully." />
@@ -99,7 +99,13 @@
 		<execute action="CPCalendarEvents#assertElementNotPresent" locator-key1="EVENT_TABLE_ACTIONS" value1="Actions" />
 	</command>
 
-	<command name="ViewPG">
+	<command name="viewPG">
+		<execute action="PGCalendar#assertClick" locator-key1="EVENT_TABLE_TITLE" value1="${eventTitle}" />
+
+		<execute macro="Event#viewDetailsPG" />
+	</command>
+
+	<command name="viewDetailsPG">
 		<execute action="PGCalendarEventDetails#assertTextEquals" locator-key1="EVENT_TITLE" value1="${eventTitle}" />
 		<execute action="PGCalendarEventDetails#assertTextEquals" locator-key1="START_DATE" value1="Start Date:" />
 		<execute action="PGCalendarEventDetails#assertTextEquals" locator-key1="END_DATE" value1="End Date:" />
@@ -109,7 +115,7 @@
 		<execute action="PGCalendarEventDetails#assertTextEquals" locator-key1="YOUR_RATING" value1="Your Rating" />
 		<execute action="PGCalendarEventDetails#assertTextEquals" locator-key1="AVERAGE" value1="Average (0 Votes)" />
 		<execute action="PGCalendarEventDetails#assertTextEquals" locator-key1="NO_COMMENTS_YET" value1="No comments yet. Be the first. Subscribe to Comments" />
-		<execute action="PGCalendarEventDetails#assertTextEquals" locator-key1="BE_THE_FIRST" value1="Be the first." />
-		<execute action="PGCalendarEventDetails#assertTextEquals" locator-key1="SUBSCRIBE_TO_COMMENTS" value1="Subscribe to Comments" />
+		<execute action="PGCalendarEventDetails#assertTextEquals" locator-key1="BE_THE_FIRST_LINK" value1="Be the first." />
+		<execute action="PGCalendarEventDetails#assertTextEquals" locator-key1="SUBSCRIBE_TO_COMMENTS_LINK" value1="Subscribe to Comments" />
 	</command>
 </definition>
