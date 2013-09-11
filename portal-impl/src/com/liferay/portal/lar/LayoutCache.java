@@ -37,7 +37,6 @@ import com.liferay.portal.service.GroupLocalServiceUtil;
 import com.liferay.portal.service.OrganizationLocalServiceUtil;
 import com.liferay.portal.service.ResourceLocalServiceUtil;
 import com.liferay.portal.service.RoleLocalServiceUtil;
-import com.liferay.portal.service.TeamLocalServiceUtil;
 import com.liferay.portal.service.UserGroupLocalServiceUtil;
 import com.liferay.portal.service.UserLocalServiceUtil;
 
@@ -170,11 +169,12 @@ public class LayoutCache {
 			ResourceActionsUtil.getRoles(
 				group.getCompanyId(), group, resourceName, null));
 
-		List<Team> teams = TeamLocalServiceUtil.getGroupTeams(groupId);
+		Map<Team, Role> teamRoleMap = RoleLocalServiceUtil.getTeamRoleMap(
+			groupId);
 
-		for (Team team : teams) {
-			Role teamRole = RoleLocalServiceUtil.getTeamRole(
-				group.getCompanyId(), team.getTeamId());
+		for (Map.Entry<Team, Role> entry : teamRoleMap.entrySet()) {
+			Team team = entry.getKey();
+			Role teamRole = entry.getValue();
 
 			teamRole.setName(
 				PermissionExporter.ROLE_TEAM_PREFIX + team.getName());
