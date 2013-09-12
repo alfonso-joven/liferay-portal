@@ -570,6 +570,11 @@ public interface LayoutLocalService extends BaseLocalService,
 		boolean privateLayout, long parentLayoutId)
 		throws com.liferay.portal.kernel.exception.SystemException;
 
+	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+	public com.liferay.portal.model.Layout fetchLayout(long groupId,
+		boolean privateLayout, long layoutId)
+		throws com.liferay.portal.kernel.exception.SystemException;
+
 	/**
 	* @param uuid the universally unique identifier of the scope layout
 	* @param groupId the primary key of the group

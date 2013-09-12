@@ -639,6 +639,12 @@ public class LayoutLocalServiceUtil {
 				   .fetchFirstLayout(groupId, privateLayout, parentLayoutId);
 	}
 
+	public static com.liferay.portal.model.Layout fetchLayout(long groupId,
+		boolean privateLayout, long layoutId)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService().fetchLayout(groupId, privateLayout, layoutId);
+	}
+
 	/**
 	* @param uuid the universally unique identifier of the scope layout
 	* @param groupId the primary key of the group
