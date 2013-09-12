@@ -185,13 +185,9 @@ public class SanitizedServletResponse extends HttpServletResponseWrapper {
 			String[] propertyValueParts = StringUtil.split(
 				propertyValue, CharPool.PIPE);
 
-			// Illegal formatting
-
 			if (propertyValueParts.length > 2) {
 				continue;
 			}
-
-			// Empty URL
 
 			String url = StringUtil.trim(propertyValueParts[0]);
 
@@ -199,15 +195,11 @@ public class SanitizedServletResponse extends HttpServletResponseWrapper {
 				continue;
 			}
 
-			// Empty value
-
 			if (propertyValueParts.length == 1) {
 				xFrameOptionKVPs.add(new KeyValuePair(url, null));
 
 				continue;
 			}
-
-			// Normal setting
 
 			String value = StringUtil.trim(propertyValueParts[1]);
 
