@@ -943,6 +943,30 @@ public class LayoutImporter {
 		return sb.toString();
 	}
 
+	protected String getUniqueFriendlyURL(
+			PortletDataContext portletDataContext, Layout existingLayout,
+			String friendlyURL)
+		throws SystemException {
+
+		for (int i = 1;; i++) {
+			Layout duplicateFriendlyURLLayout =
+				LayoutLocalServiceUtil.fetchLayoutByFriendlyURL(
+					portletDataContext.getGroupId(),
+					portletDataContext.isPrivateLayout(), friendlyURL);
+
+			if ((duplicateFriendlyURLLayout == null) ||
+				(duplicateFriendlyURLLayout.getPlid() ==
+					existingLayout.getPlid())) {
+
+				break;
+			}
+
+			friendlyURL = friendlyURL + i;
+		}
+
+		return friendlyURL;
+	}
+
 	protected void importJournalArticle(
 			PortletDataContext portletDataContext, Layout layout,
 			Element layoutElement)
@@ -1310,7 +1334,9 @@ public class LayoutImporter {
 		}
 
 		importedLayout.setHidden(layout.isHidden());
-		importedLayout.setFriendlyURL(friendlyURL);
+		importedLayout.setFriendlyURL(
+			getUniqueFriendlyURL(
+				portletDataContext, importedLayout, friendlyURL));
 
 		if (importThemeSettings) {
 			importedLayout.setThemeId(layout.getThemeId());
