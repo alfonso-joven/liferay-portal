@@ -412,8 +412,6 @@ public class FileChecker extends BaseChecker {
 			Enumeration<URL> enumeration = classLoader.getResources(
 				"META-INF/MANIFEST.MF");
 
-			String jbossHomeDir = System.getProperty("jboss.home.dir");
-
 			while (enumeration.hasMoreElements()) {
 				URL url = enumeration.nextElement();
 
@@ -433,10 +431,13 @@ public class FileChecker extends BaseChecker {
 						fileName = fileName.substring(0, pos + 1);
 					}
 
-					if (ServerDetector.isJBoss7() &&
-						fileName.startsWith(jbossHomeDir)) {
+					if (ServerDetector.isJBoss7()) {
+						String jBossHomeDir = System.getProperty(
+							"jboss.home.dir");
 
-						continue;
+						if (fileName.startsWith(jBossHomeDir)) {
+							continue;
+						}
 					}
 
 					addCanonicalPath(paths, fileName);
