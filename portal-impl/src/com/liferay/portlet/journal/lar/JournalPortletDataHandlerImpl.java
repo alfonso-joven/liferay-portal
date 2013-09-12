@@ -57,7 +57,6 @@ import com.liferay.portal.service.LayoutLocalServiceUtil;
 import com.liferay.portal.service.ServiceContext;
 import com.liferay.portal.service.UserLocalServiceUtil;
 import com.liferay.portal.service.persistence.ImageUtil;
-import com.liferay.portal.service.persistence.LayoutUtil;
 import com.liferay.portal.util.PortalUtil;
 import com.liferay.portal.util.PortletKeys;
 import com.liferay.portal.util.PropsValues;
@@ -2418,18 +2417,19 @@ public class JournalPortletDataHandlerImpl extends BasePortletDataHandler {
 			String friendlyURL = matcher.group(4);
 
 			try {
-				Layout layout = LayoutUtil.fetchByUUID_G_P(
-					layoutUuid, portletDataContext.getScopeGroupId(),
-					privateLayout);
+				Layout layout =
+					LayoutLocalServiceUtil.fetchLayoutByUuidAndGroupId(
+						layoutUuid, portletDataContext.getScopeGroupId(),
+						privateLayout);
 
 				if (layout == null) {
-					layout = LayoutUtil.fetchByG_P_F(
+					layout = LayoutLocalServiceUtil.fetchLayoutByFriendlyURL(
 						portletDataContext.getScopeGroupId(), privateLayout,
 						friendlyURL);
 				}
 
 				if (layout == null) {
-					layout = LayoutUtil.fetchByG_P_L(
+					layout = LayoutLocalServiceUtil.fetchLayout(
 						portletDataContext.getScopeGroupId(), privateLayout,
 						oldLayoutId);
 				}
