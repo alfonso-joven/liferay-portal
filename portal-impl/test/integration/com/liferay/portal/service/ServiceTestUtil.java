@@ -49,6 +49,7 @@ import com.liferay.portal.model.impl.PortletImpl;
 import com.liferay.portal.repository.liferayrepository.LiferayRepository;
 import com.liferay.portal.search.lucene.LuceneHelperUtil;
 import com.liferay.portal.security.auth.PrincipalThreadLocal;
+import com.liferay.portal.security.lang.DoPrivilegedUtil;
 import com.liferay.portal.security.permission.PermissionChecker;
 import com.liferay.portal.security.permission.PermissionCheckerFactoryUtil;
 import com.liferay.portal.security.permission.PermissionThreadLocal;
@@ -427,7 +428,9 @@ public class ServiceTestUtil {
 				SynchronousMessageSender.class.getName());
 
 		MessageBusUtil.init(
-			messageBus, messageSender, synchronousMessageSender);
+			DoPrivilegedUtil.wrap(messageBus),
+			DoPrivilegedUtil.wrap(messageSender),
+			DoPrivilegedUtil.wrap(synchronousMessageSender));
 
 		// Scheduler
 

@@ -33,6 +33,7 @@ import com.liferay.portal.kernel.servlet.JspFactorySwapper;
 import com.liferay.portal.kernel.util.ReleaseInfo;
 import com.liferay.portal.kernel.velocity.VelocityEngineUtil;
 import com.liferay.portal.plugin.PluginPackageIndexer;
+import com.liferay.portal.security.lang.DoPrivilegedUtil;
 import com.liferay.portal.service.LockLocalServiceUtil;
 import com.liferay.portal.tools.DBUpgrader;
 import com.liferay.portlet.messageboards.util.MBIndexer;
@@ -134,7 +135,9 @@ public class StartupAction extends SimpleAction {
 				SynchronousMessageSender.class.getName());
 
 		MessageBusUtil.init(
-			messageBus, messageSender, synchronousMessageSender);
+			DoPrivilegedUtil.wrap(messageBus),
+			DoPrivilegedUtil.wrap(messageSender),
+			DoPrivilegedUtil.wrap(synchronousMessageSender));
 
 		// Cluster executor
 
