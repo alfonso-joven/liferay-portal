@@ -51,6 +51,7 @@ import com.liferay.portal.kernel.xml.Document;
 import com.liferay.portal.kernel.xml.Element;
 import com.liferay.portal.kernel.xml.SAXReaderUtil;
 import com.liferay.portal.plugin.PluginPackageUtil;
+import com.liferay.portal.security.lang.SecurityManagerUtil;
 import com.liferay.portal.tools.WebXMLBuilder;
 import com.liferay.portal.util.ExtRegistry;
 import com.liferay.portal.util.InitUtil;
@@ -510,7 +511,9 @@ public class BaseDeployer implements AutoDeployer, Deployer {
 	}
 
 	public void copyTomcatContextXml(File targetDir) throws Exception {
-		if (!appServerType.equals(ServerDetector.TOMCAT_ID)) {
+		if (!appServerType.equals(ServerDetector.TOMCAT_ID) ||
+			!SecurityManagerUtil.isPACLDisabled()) {
+
 			return;
 		}
 
