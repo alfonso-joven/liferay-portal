@@ -846,6 +846,13 @@ public class LayoutLocalServiceImpl extends LayoutLocalServiceBaseImpl {
 			new LayoutPriorityComparator());
 	}
 
+	public Layout fetchLayout(
+			long groupId, boolean privateLayout, long layoutId)
+		throws SystemException {
+
+		return layoutPersistence.fetchByG_P_L(groupId, privateLayout, layoutId);
+	}
+
 	/**
 	 * @param  uuid the universally unique identifier of the scope layout
 	 * @param  groupId the primary key of the group
