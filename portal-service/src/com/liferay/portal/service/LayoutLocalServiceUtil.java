@@ -645,6 +645,13 @@ public class LayoutLocalServiceUtil {
 		return getService().fetchLayout(groupId, privateLayout, layoutId);
 	}
 
+	public static com.liferay.portal.model.Layout fetchLayoutByFriendlyURL(
+		long groupId, boolean privateLayout, java.lang.String friendlyURL)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getService()
+				   .fetchLayoutByFriendlyURL(groupId, privateLayout, friendlyURL);
+	}
+
 	/**
 	* @param uuid the universally unique identifier of the scope layout
 	* @param groupId the primary key of the group
