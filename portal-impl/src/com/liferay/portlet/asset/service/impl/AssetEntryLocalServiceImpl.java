@@ -36,6 +36,7 @@ import com.liferay.portal.kernel.util.StringPool;
 import com.liferay.portal.kernel.util.StringUtil;
 import com.liferay.portal.kernel.util.Validator;
 import com.liferay.portal.kernel.workflow.WorkflowConstants;
+import com.liferay.portal.model.Group;
 import com.liferay.portal.model.User;
 import com.liferay.portal.util.PortalUtil;
 import com.liferay.portal.util.PortletKeys;
@@ -647,8 +648,10 @@ public class AssetEntryLocalServiceImpl extends AssetEntryLocalServiceBaseImpl {
 		if (tagNames != null) {
 			long parentGroupId = PortalUtil.getParentGroupId(groupId);
 
+			Group parentGroup = groupLocalService.getGroup(parentGroupId);
+
 			List<AssetTag> tags = assetTagLocalService.checkTags(
-				userId, parentGroupId, tagNames);
+				userId, parentGroup, tagNames);
 
 			List<AssetTag> oldTags = assetEntryPersistence.getAssetTags(
 				entry.getEntryId());
