@@ -1233,7 +1233,18 @@ public class ServicePreAction extends Action {
 
 		themeDisplay.setURLPortal(portalURL.concat(contextPath));
 
-		String urlSignIn = mainPath.concat(_PATH_PORTAL_LOGIN);
+		boolean secure = false;
+
+		if (PropsValues.COMPANY_SECURITY_AUTH_REQUIRES_HTTPS ||
+			request.isSecure()) {
+
+			secure = true;
+		}
+
+		String securePortalURL = PortalUtil.getPortalURL(request, secure);
+
+		String urlSignIn = securePortalURL.concat(mainPath).concat(
+			_PATH_PORTAL_LOGIN);
 
 		if (layout != null) {
 			urlSignIn = HttpUtil.addParameter(
@@ -2155,7 +2166,9 @@ public class ServicePreAction extends Action {
 		"portlet_";
 
 	private static final String _PATH_PORTAL_LAYOUT = "/portal/layout";
+
 	private static final String _PATH_PORTAL_LOGIN = "/portal/login";
+
 	private static final String _PATH_PORTAL_LOGOUT = "/portal/logout";
 
 	private static Log _log = LogFactoryUtil.getLog(ServicePreAction.class);
