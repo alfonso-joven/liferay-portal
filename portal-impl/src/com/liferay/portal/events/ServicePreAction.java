@@ -1233,7 +1233,7 @@ public class ServicePreAction extends Action {
 
 		themeDisplay.setURLPortal(portalURL.concat(contextPath));
 
-		String urlSignIn = mainPath.concat("/portal/login");
+		String urlSignIn = mainPath.concat(_PATH_PORTAL_LOGIN);
 
 		if (layout != null) {
 			urlSignIn = HttpUtil.addParameter(
@@ -1242,7 +1242,7 @@ public class ServicePreAction extends Action {
 
 		themeDisplay.setURLSignIn(urlSignIn);
 
-		themeDisplay.setURLSignOut(mainPath.concat("/portal/logout"));
+		themeDisplay.setURLSignOut(mainPath.concat(_PATH_PORTAL_LOGOUT));
 
 		PortletURL updateManagerURL = new PortletURLImpl(
 			request, PortletKeys.UPDATE_MANAGER, plid,
@@ -1636,7 +1636,19 @@ public class ServicePreAction extends Action {
 			}
 		}
 
-		if (layout == null) {
+		boolean hasOnlyPrivateLayouts = true;
+
+		if (layouts != null) {
+			for (Layout _layout : layouts) {
+				if (_layout.isPublicLayout()) {
+					hasOnlyPrivateLayouts = false;
+
+					break;
+				}
+			}
+		}
+
+		if ((layout == null) || hasOnlyPrivateLayouts) {
 
 			// Check the Guest site
 
@@ -1784,7 +1796,7 @@ public class ServicePreAction extends Action {
 
 		String mainPath = PortalUtil.getPathMain();
 
-		if (requestURI.startsWith(mainPath.concat("/portal/login"))) {
+		if (requestURI.startsWith(mainPath.concat(_PATH_PORTAL_LOGIN))) {
 			return true;
 		}
 		else {
@@ -1829,8 +1841,8 @@ public class ServicePreAction extends Action {
 
 		long layoutGroupId = layout.getGroupId();
 
-		Group guestGroup = GroupLocalServiceUtil.getGroup(
-			user.getCompanyId(), GroupConstants.GUEST);
+		Group guestGroup = GroupLocalServiceUtil.getGuestGroup(
+			user.getCompanyId());
 
 		if (layoutGroupId != guestGroup.getGroupId()) {
 			Group layoutGroup = GroupLocalServiceUtil.getGroup(layoutGroupId);
@@ -2155,6 +2167,8 @@ public class ServicePreAction extends Action {
 		"portlet_";
 
 	private static final String _PATH_PORTAL_LAYOUT = "/portal/layout";
+	private static final String _PATH_PORTAL_LOGIN = "/portal/login";
+	private static final String _PATH_PORTAL_LOGOUT = "/portal/logout";
 
 	private static Log _log = LogFactoryUtil.getLog(ServicePreAction.class);
 
