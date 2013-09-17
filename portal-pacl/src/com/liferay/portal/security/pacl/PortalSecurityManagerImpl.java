@@ -676,12 +676,14 @@ public class PortalSecurityManagerImpl extends SecurityManager
 	private static class DoPortalBeanLocatorUtilPACL
 		implements PortalBeanLocatorUtil.PACL {
 
+		@Override
 		public ClassLoader getBeanLocatorClassLoader(
 			final BeanLocator beanLocator) {
 
 			return AccessController.doPrivileged(
 				new PrivilegedAction<ClassLoader>() {
 
+					@Override
 					public ClassLoader run() {
 						return beanLocator.getClassLoader();
 					}
@@ -690,10 +692,12 @@ public class PortalSecurityManagerImpl extends SecurityManager
 			);
 		}
 
+		@Override
 		public ClassLoader getContextClassLoader(final Thread currentThread) {
 			return AccessController.doPrivileged(
 				new PrivilegedAction<ClassLoader>() {
 
+					@Override
 					public ClassLoader run() {
 						return currentThread.getContextClassLoader();
 					}
@@ -709,6 +713,7 @@ public class PortalSecurityManagerImpl extends SecurityManager
 			AccessController.doPrivileged(
 				new PrivilegedAction<Void>() {
 
+					@Override
 					public Void run() {
 						currentThread.setContextClassLoader(classLoader);
 
