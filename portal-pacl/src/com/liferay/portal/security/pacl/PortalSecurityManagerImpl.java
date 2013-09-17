@@ -20,6 +20,8 @@ import com.liferay.portal.dao.orm.hibernate.DynamicQueryFactoryImpl;
 import com.liferay.portal.deploy.hot.HotDeployImpl;
 import com.liferay.portal.freemarker.FreeMarkerEngineImpl;
 import com.liferay.portal.freemarker.LiferayTemplateCache;
+import com.liferay.portal.kernel.bean.BeanLocator;
+import com.liferay.portal.kernel.bean.PortalBeanLocatorUtil;
 import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 import com.liferay.portal.kernel.portlet.PortletClassLoaderUtil;
@@ -402,6 +404,8 @@ public class PortalSecurityManagerImpl extends SecurityManager
 			FreeMarkerEngineImpl.class, new DoTemplateContextHelperPACL());
 		initPACLImpl(HotDeployImpl.class, new DoHotDeployImplPACL());
 		initPACLImpl(
+			PortalBeanLocatorUtil.class, new DoPortalBeanLocatorUtilPACL());
+		initPACLImpl(
 			PortalFilePermission.class, new DoPortalFilePermissionPACL());
 		initPACLImpl(
 			PortalHookPermission.class, new DoPortalHookPermissionPACL());
@@ -611,6 +615,54 @@ public class PortalSecurityManagerImpl extends SecurityManager
 		@Override
 		public void unregister(ClassLoader classLoader) {
 			PACLPolicyManager.unregister(classLoader);
+		}
+
+	}
+
+	private static class DoPortalBeanLocatorUtilPACL
+		implements PortalBeanLocatorUtil.PACL {
+
+		public ClassLoader getBeanLocatorClassLoader(
+			final BeanLocator beanLocator) {
+
+			return AccessController.doPrivileged(
+				new PrivilegedAction<ClassLoader>() {
+
+					public ClassLoader run() {
+						return beanLocator.getClassLoader();
+					}
+
+				}
+			);
+		}
+
+		public ClassLoader getContextClassLoader(final Thread currentThread) {
+			return AccessController.doPrivileged(
+				new PrivilegedAction<ClassLoader>() {
+
+					public ClassLoader run() {
+						return currentThread.getContextClassLoader();
+					}
+
+				}
+			);
+		}
+
+		@Override
+		public void setContextClassLoader(
+			final Thread currentThread, final ClassLoader classLoader) {
+
+			AccessController.doPrivileged(
+				new PrivilegedAction<Void>() {
+
+					public Void run() {
+						currentThread.setContextClassLoader(classLoader);
+
+						return null;
+					}
+
+				}
+			);
 		}
 
 	}
