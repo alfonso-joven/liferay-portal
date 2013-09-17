@@ -573,7 +573,7 @@ public class PortalSecurityManagerImpl extends SecurityManager
 					}
 				);
 			}
-			catch (PrivilegedActionException e) {
+			catch (PrivilegedActionException pe) {
 				throw (NamingException)e.getException();
 			}
 		}
