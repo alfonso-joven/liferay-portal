@@ -1110,6 +1110,13 @@ AUI.add(
 									alwaysShowHitArea: item.hasChildren,
 									id: STR_CATEGORY_NODE + item.categoryId,
 									label: Liferay.Util.escapeHTML(item.titleCurrentValue),
+									io: {
+										cfg: {
+											data: A.bind(instance._formatRequestData, instance)
+										},
+										formatter: A.bind(instance._formatJSONResult, instance),
+										url: themeDisplay.getPathMain() + '/asset/get_categories'
+									},
 									paginator: paginatorConfig,
 									type: 'check',
 									on: {
