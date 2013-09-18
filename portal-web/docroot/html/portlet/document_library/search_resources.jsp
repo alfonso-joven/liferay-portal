@@ -334,7 +334,7 @@ int total = 0;
 
 					</liferay-ui:tabs>
 				</div>
-				
+
 				<span id="<portlet:namespace />displayStyleButtons" />
 			</c:when>
 			<c:when test="<%= (searchRepositoryId != scopeGroupId) %>">
