@@ -777,27 +777,30 @@ AUI.add(
 			function(node) {
 				var instance = this;
 
-				var navItems = instance.get('navBlock').all('li');
+				var nextLayoutId = -1;
 
-				var priority = -1;
+				var nextNode = node.next();
 
-				navItems.some(
-					function(item, index, collection) {
-						if (!item.ancestor().hasClass('child-menu')) {
-							priority++;
-						}
+				if (nextNode) {
+					nextLayoutId = nextNode._LFR_layoutId;
+				}
 
-						return item == node;
-					}
-				);
+				var previousLayoutId = -1;
+
+				var previousNode = node.previous();
+
+				if (previousNode) {
+					previousLayoutId = previousNode._LFR_layoutId;
+				}
 
 				var data = {
 					cmd: 'priority',
 					doAsUserId: themeDisplay.getDoAsUserIdEncoded(),
 					groupId: themeDisplay.getParentGroupId(),
 					layoutId: node._LFR_layoutId,
+					nextLayoutId: nextLayoutId,
 					p_auth: Liferay.authToken,
-					priority: priority,
+					previousLayoutId: previousLayoutId,
 					privateLayout: themeDisplay.isPrivateLayout()
 				};
 
