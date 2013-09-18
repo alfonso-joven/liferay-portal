@@ -606,6 +606,7 @@ create index IX_2D4CC782 on ResourceBlock (companyId, name);
 
 create index IX_4AB3756 on ResourceBlockPermission (resourceBlockId);
 create unique index IX_D63D20BB on ResourceBlockPermission (resourceBlockId, roleId);
+create index IX_20A2E3D9 on ResourceBlockPermission (roleId);
 
 create index IX_717FDD47 on ResourceCode (companyId);
 create unique index IX_A32C097E on ResourceCode (companyId, name, scope);
