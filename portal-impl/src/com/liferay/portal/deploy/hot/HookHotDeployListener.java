@@ -275,7 +275,10 @@ public class HookHotDeployListener
 		}
 		catch (Throwable t) {
 			throwHotDeployException(
-				hotDeployEvent, "Error registering hook for ", t);
+				hotDeployEvent,
+				"Error registering hook for " +
+					hotDeployEvent.getServletContextName(),
+				t);
 		}
 	}
 
@@ -288,7 +291,10 @@ public class HookHotDeployListener
 		}
 		catch (Throwable t) {
 			throwHotDeployException(
-				hotDeployEvent, "Error unregistering hook for ", t);
+				hotDeployEvent,
+				"Error unregistering hook for " +
+					hotDeployEvent.getServletContextName(),
+				t);
 		}
 	}
 

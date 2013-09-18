@@ -120,7 +120,10 @@ public class PortletHotDeployListener extends BaseHotDeployListener {
 		}
 		catch (Throwable t) {
 			throwHotDeployException(
-				hotDeployEvent, "Error registering portlets for ", t);
+				hotDeployEvent,
+				"Error registering portlets for " +
+					hotDeployEvent.getServletContextName(),
+				t);
 		}
 	}
 
@@ -133,7 +136,10 @@ public class PortletHotDeployListener extends BaseHotDeployListener {
 		}
 		catch (Throwable t) {
 			throwHotDeployException(
-				hotDeployEvent, "Error unregistering portlets for ", t);
+				hotDeployEvent,
+				"Error unregistering portlets for " +
+					hotDeployEvent.getServletContextName(),
+				t);
 		}
 	}
 
