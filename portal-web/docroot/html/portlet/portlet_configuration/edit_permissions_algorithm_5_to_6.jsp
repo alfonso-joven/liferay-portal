@@ -208,7 +208,7 @@ definePermissionsURL.setParameter(Constants.CMD, Constants.VIEW);
 			}
 		}
 
-		List<Role> roles = ResourceActionsUtil.getRoles(company.getCompanyId(), group, modelResource, roleTypes);
+		List<Role> roles = ListUtil.copy(ResourceActionsUtil.getRoles(company.getCompanyId(), group, modelResource, roleTypes));
 
 		Role administratorRole = RoleLocalServiceUtil.getRole(company.getCompanyId(), RoleConstants.ADMINISTRATOR);
 
