@@ -27,7 +27,7 @@
 </#if>
 
 <@aui["field-wrapper"]>
-	<@aui.input inlineField=true label=escape(label) name="${namespacedFieldName}Title" readonly="readonly" type="text" url=fileEntryURL value=escape(fileEntryTitle)>
+	<@aui.input inlineField=true label=escape(label) name="${namespacedFieldName}Title" readonly="readonly" type="text" url=fileEntryURL value=fileEntryTitle>
 		<#if required>
 			<@aui.validator name="required" />
 		</#if>
