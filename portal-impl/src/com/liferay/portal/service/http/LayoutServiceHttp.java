@@ -1416,12 +1416,50 @@ public class LayoutServiceHttp {
 	}
 
 	public static com.liferay.portal.model.Layout updatePriority(
-		HttpPrincipal httpPrincipal, long plid, int priority)
+		HttpPrincipal httpPrincipal, long groupId, boolean privateLayout,
+		long layoutId, long nextLayoutId, long previousLayoutId)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
 		try {
 			MethodKey methodKey = new MethodKey(LayoutServiceUtil.class.getName(),
 					"updatePriority", _updatePriorityParameterTypes36);
+
+			MethodHandler methodHandler = new MethodHandler(methodKey, groupId,
+					privateLayout, layoutId, nextLayoutId, previousLayoutId);
+
+			Object returnObj = null;
+
+			try {
+				returnObj = TunnelUtil.invoke(httpPrincipal, methodHandler);
+			}
+			catch (Exception e) {
+				if (e instanceof com.liferay.portal.kernel.exception.PortalException) {
+					throw (com.liferay.portal.kernel.exception.PortalException)e;
+				}
+
+				if (e instanceof com.liferay.portal.kernel.exception.SystemException) {
+					throw (com.liferay.portal.kernel.exception.SystemException)e;
+				}
+
+				throw new com.liferay.portal.kernel.exception.SystemException(e);
+			}
+
+			return (com.liferay.portal.model.Layout)returnObj;
+		}
+		catch (com.liferay.portal.kernel.exception.SystemException se) {
+			_log.error(se, se);
+
+			throw se;
+		}
+	}
+
+	public static com.liferay.portal.model.Layout updatePriority(
+		HttpPrincipal httpPrincipal, long plid, int priority)
+		throws com.liferay.portal.kernel.exception.PortalException,
+			com.liferay.portal.kernel.exception.SystemException {
+		try {
+			MethodKey methodKey = new MethodKey(LayoutServiceUtil.class.getName(),
+					"updatePriority", _updatePriorityParameterTypes37);
 
 			MethodHandler methodHandler = new MethodHandler(methodKey, plid,
 					priority);
@@ -1594,6 +1632,9 @@ public class LayoutServiceHttp {
 			long.class, boolean.class, long.class, int.class
 		};
 	private static final Class<?>[] _updatePriorityParameterTypes36 = new Class[] {
+			long.class, boolean.class, long.class, long.class, long.class
+		};
+	private static final Class<?>[] _updatePriorityParameterTypes37 = new Class[] {
 			long.class, int.class
 		};
 }
