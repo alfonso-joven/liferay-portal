@@ -32,9 +32,9 @@ public class SOUs_ViewMyPublicPagesNoSORoleTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Go to"),
 			selenium.getText("//li[@id='_145_mySites']/a/span"));
 		selenium.mouseOver("//li[@id='_145_mySites']/a/span");
-		selenium.waitForVisible("//span[contains(.,'My Public Pages')]");
-		selenium.clickAt("//span[contains(.,'My Public Pages')]",
-			RuntimeVariables.replace("My Public Pages"));
+		selenium.waitForVisible("//span[contains(.,'My Profile')]");
+		selenium.clickAt("//span[contains(.,'My Profile')]",
+			RuntimeVariables.replace("My Profile"));
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isVisible(
 				"//a[@title='Go to Social01 Office01 User01']"));
@@ -57,6 +57,5 @@ public class SOUs_ViewMyPublicPagesNoSORoleTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Search"),
 			selenium.getText(
 				"xPath=(//h1[@class='portlet-title'])[contains(.,'Search')]"));
-		assertFalse(selenium.isTextPresent("Dashboard"));
 	}
 }

@@ -67,6 +67,8 @@ public class SOUs_ViewRemoveRoleSOSitesTest extends BaseTestCase {
 			selenium.getText("link=My Profile"));
 		assertEquals(RuntimeVariables.replace("My Account"),
 			selenium.getText("link=My Account"));
+		assertEquals(RuntimeVariables.replace("Control Panel"),
+			selenium.getText("link=Control Panel"));
 		assertEquals(RuntimeVariables.replace("Sign Out"),
 			selenium.getText("link=Sign Out"));
 		selenium.clickAt("link=My Profile",
@@ -109,8 +111,9 @@ public class SOUs_ViewRemoveRoleSOSitesTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Activities"),
 			selenium.getText(
 				"xPath=(//span[@class='portlet-title-text'])[contains(.,'Activities')]"));
-		assertEquals(RuntimeVariables.replace("There are no recent activities."),
-			selenium.getText("//div[@class='portrait-social-activities']"));
+		selenium.waitForVisible("//div[@class='no-activities']");
+		assertEquals(RuntimeVariables.replace("There are no activities."),
+			selenium.getText("//div[@class='no-activities']"));
 		assertEquals(RuntimeVariables.replace("Profile"),
 			selenium.getText("link=Profile"));
 		assertEquals(RuntimeVariables.replace("Contacts"),
@@ -120,13 +123,10 @@ public class SOUs_ViewRemoveRoleSOSitesTest extends BaseTestCase {
 		selenium.clickAt("//input[contains(@class,'search-input')]",
 			RuntimeVariables.replace("User Name"));
 		selenium.waitForVisible("link=Liferay");
-		assertFalse(selenium.isTextPresent("My Public Pages"));
-		assertFalse(selenium.isTextPresent("My Private Pages"));
-		assertTrue(selenium.isVisible("link=Sites Directory"));
-		selenium.clickAt("link=Sites Directory",
+		assertTrue(selenium.isVisible(
+				"//button[contains(.,'Sites Directory')]/span[2]"));
+		selenium.clickAt("//button[contains(.,'Sites Directory')]/span[2]",
 			RuntimeVariables.replace("Sites Directory"));
 		selenium.waitForVisible("//ul[@class='directory-list']");
-		assertFalse(selenium.isTextPresent("My Public Pages"));
-		assertFalse(selenium.isTextPresent("My Private Pages"));
 	}
 }

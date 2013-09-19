@@ -28,13 +28,10 @@ public class SOUs_ViewSitesDirectoryTest extends BaseTestCase {
 		selenium.clickAt("//input[contains(@class,'search-input')]",
 			RuntimeVariables.replace("Go to"));
 		selenium.waitForVisible("link=Liferay");
-		assertFalse(selenium.isTextPresent("My Public Pages"));
-		assertFalse(selenium.isTextPresent("My Private Pages"));
-		assertTrue(selenium.isVisible("link=Sites Directory"));
-		selenium.clickAt("link=Sites Directory",
+		assertTrue(selenium.isVisible(
+				"//button[contains(.,'Sites Directory')]/span[2]"));
+		selenium.clickAt("//button[contains(.,'Sites Directory')]/span[2]",
 			RuntimeVariables.replace("Sites Directory"));
 		selenium.waitForVisible("//ul[@class='directory-list']");
-		assertFalse(selenium.isTextPresent("My Public Pages"));
-		assertFalse(selenium.isTextPresent("My Private Pages"));
 	}
 }

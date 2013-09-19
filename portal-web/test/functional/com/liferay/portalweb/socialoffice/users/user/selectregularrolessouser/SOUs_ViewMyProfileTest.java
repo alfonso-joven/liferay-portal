@@ -32,6 +32,8 @@ public class SOUs_ViewMyProfileTest extends BaseTestCase {
 			selenium.getText("link=My Profile"));
 		assertEquals(RuntimeVariables.replace("My Account"),
 			selenium.getText("link=My Account"));
+		assertEquals(RuntimeVariables.replace("Control Panel"),
+			selenium.getText("link=Control Panel"));
 		assertEquals(RuntimeVariables.replace("Sign Out"),
 			selenium.getText("link=Sign Out"));
 		selenium.clickAt("link=My Profile",
@@ -74,8 +76,9 @@ public class SOUs_ViewMyProfileTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Activities"),
 			selenium.getText(
 				"xPath=(//span[@class='portlet-title-text'])[contains(.,'Activities')]"));
-		assertEquals(RuntimeVariables.replace("There are no recent activities."),
-			selenium.getText("//div[@class='portrait-social-activities']"));
+		selenium.waitForVisible("//div[@class='no-activities']");
+		assertEquals(RuntimeVariables.replace("There are no activities."),
+			selenium.getText("//div[@class='no-activities']"));
 		assertEquals(RuntimeVariables.replace("Profile"),
 			selenium.getText("link=Profile"));
 		assertEquals(RuntimeVariables.replace("Contacts"),
