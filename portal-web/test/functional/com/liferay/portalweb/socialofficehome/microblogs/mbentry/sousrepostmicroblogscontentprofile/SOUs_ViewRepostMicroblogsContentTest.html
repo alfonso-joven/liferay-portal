@@ -24,9 +24,24 @@
 	<td>Me</td>
 </tr>
 <tr>
+	<td>waitForVisible</td>
+	<td>//div[@class='activity-user-name']</td>
+	<td>Social01</td>
+</tr>
+<tr>
 	<td>assertText</td>
-	<td>xPath=(//div[@class='activity-title'])[1]</td>
-	<td>Reposted From Joe Bloggs: Microblogs Post</td>
+	<td>//div[@class='activity-user-name']</td>
+	<td>Social01</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='activity-action']</td>
+	<td>Reposted a microblog entry from Joe Bloggs.</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='activity-body']</td>
+	<td>Microblogs Post</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>

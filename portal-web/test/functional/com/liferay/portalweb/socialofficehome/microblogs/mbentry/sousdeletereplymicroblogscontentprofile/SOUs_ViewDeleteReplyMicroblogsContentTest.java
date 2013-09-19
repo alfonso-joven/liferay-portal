@@ -26,8 +26,8 @@ public class SOUs_ViewDeleteReplyMicroblogsContentTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/socialoffice01/so/dashboard");
-		assertEquals(RuntimeVariables.replace("There are no recent activities."),
-			selenium.getText("xPath=(//div[@class='portlet-msg-info'])[2]"));
+		assertEquals(RuntimeVariables.replace("There are no activities."),
+			selenium.getText("//div[@class='no-activities']"));
 		assertFalse(selenium.isTextPresent("Microblogs Post Comment"));
 	}
 }

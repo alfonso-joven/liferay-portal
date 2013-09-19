@@ -29,19 +29,34 @@
 	<td>Me</td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>xPath=(//div[@class='activity-title'])[1]</td>
-	<td>Joe wrote a new message board post, MB Category2 Thread Message Subject, in Open Site Name.</td>
+	<td>waitForVisible</td>
+	<td>xpath=(//div[@class='activity-user-name'])[1]</td>
+	<td>Joe in Open Site Name</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//div[@class='activity-body']/a[contains(.,'Go to Category')])[1]</td>
-	<td>Go to Category</td>
+	<td>xpath=(//div[@class='activity-user-name'])[1]</td>
+	<td>Joe in Open Site Name</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(//div[@class='activity-action'])[1]</td>
+	<td>Wrote a new forum post in MB Category2 Name.</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>xpath=(//div[@class='activity-body'])[1]</td>
+	<td>MB Category2 Thread Message Subject</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>xpath=(//div[@class='activity-body'])[1]</td>
+	<td>MB Category2 Thread Message Body</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>xPath=(//div[@class='activity-body']/a[contains(.,'Go to Category')])[1]</td>
-	<td>Go to Category</td>
+	<td>xpath=(//div[@class='activity-action']/a)[1]</td>
+	<td>MB Category2 Name</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -139,19 +154,34 @@
 	<td>Me</td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>xPath=(//div[@class='activity-title'])[2]</td>
-	<td>Joe wrote a new message board post, MB Category1 Thread Message Subject, in Open Site Name.</td>
+	<td>waitForVisible</td>
+	<td>xpath=(//div[@class='activity-user-name'])[2]</td>
+	<td>Joe in Open Site Name</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//div[@class='activity-body']/a[contains(.,'Go to Category')])[2]</td>
-	<td>Go to Category</td>
+	<td>xpath=(//div[@class='activity-user-name'])[2]</td>
+	<td>Joe in Open Site Name</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(//div[@class='activity-action'])[2]</td>
+	<td>Wrote a new forum post in MB Category1 Name.</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>xpath=(//div[@class='activity-body'])[2]</td>
+	<td>MB Category1 Thread Message Subject</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>xpath=(//div[@class='activity-body'])[2]</td>
+	<td>MB Category1 Thread Message Body</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>xPath=(//div[@class='activity-body']/a[contains(.,'Go to Category')])[2]</td>
-	<td>Go to Category</td>
+	<td>xpath=(//div[@class='activity-action']/a)[2]</td>
+	<td>MB Category1 Name</td>
 </tr>
 <tr>
 	<td>assertText</td>

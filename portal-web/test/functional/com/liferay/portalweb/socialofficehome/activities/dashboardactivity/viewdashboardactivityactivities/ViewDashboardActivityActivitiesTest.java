@@ -31,30 +31,15 @@ public class ViewDashboardActivityActivitiesTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Me"), selenium.getText("link=Me"));
 		selenium.clickAt("link=Me", RuntimeVariables.replace("Me"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace(
-				"Joe added a new task for Social01 Office01 User01."),
-			selenium.getText("xPath=(//div[@class='activity-title'])[1]"));
+		selenium.waitForVisible("xPath=(//div[@class='activity-user-name'])[1]");
+		assertEquals(RuntimeVariables.replace("Joe"),
+			selenium.getText("xPath=(//div[@class='activity-user-name'])[1]"));
 		assertTrue(selenium.isPartialText(
-				"xPath=(//div[@class='activity-body'])[1]",
-				"Connection Task Description"));
-		assertEquals(RuntimeVariables.replace("Joe added a new task."),
-			selenium.getText("xPath=(//div[@class='activity-title'])[2]"));
+				"xPath=(//div[@class='activity-action'])[1]", "Microblogs Post"));
+		assertEquals(RuntimeVariables.replace("Joe"),
+			selenium.getText("xPath=(//div[@class='activity-user-name'])[2]"));
 		assertTrue(selenium.isPartialText(
-				"xPath=(//div[@class='activity-body'])[2]", "Task Description"));
-		assertEquals(RuntimeVariables.replace(
-				"Joe uploaded a new document, DM Folder Document Title."),
-			selenium.getText("xPath=(//div[@class='activity-title'])[3]"));
-		assertTrue(selenium.isPartialText(
-				"xPath=(//div[@class='activity-body'])[3]", "View Document"));
-		assertTrue(selenium.isPartialText(
-				"xPath=(//div[@class='activity-body'])[3]", "Go to Folder"));
-		assertEquals(RuntimeVariables.replace("#Microblogs Post"),
-			selenium.getText("xPath=(//div[@class='activity-title'])[4]"));
-		assertTrue(selenium.isPartialText(
-				"xPath=(//div[@class='activity-body'])[4]", "Joe"));
-		assertEquals(RuntimeVariables.replace("[@socialoffice01]"),
-			selenium.getText("xPath=(//div[@class='activity-title'])[5]"));
-		assertTrue(selenium.isPartialText(
-				"xPath=(//div[@class='activity-body'])[5]", "Joe"));
+				"xPath=(//div[@class='activity-action'])[2]",
+				"Social01 Office01 User01"));
 	}
 }

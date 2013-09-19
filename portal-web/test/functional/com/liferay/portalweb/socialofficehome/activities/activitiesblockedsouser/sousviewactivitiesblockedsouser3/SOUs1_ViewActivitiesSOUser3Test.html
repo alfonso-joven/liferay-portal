@@ -29,24 +29,39 @@
 	<td>Connections</td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>xPath=(//div[@class='activity-title'])[1]</td>
-	<td>Social03 Office03 User03 wrote a new message board post, Forums Thread1 Message Subject, in Open Site Name.</td>
+	<td>waitForVisible</td>
+	<td>xPath=(//div[@class='activity-user-name'])[1]</td>
+	<td>Social03 Office03 User03 in Open Site Name</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//a[@class='user'])[1]</td>
+	<td>xPath=(//div[@class='activity-user-name'])[1]</td>
+	<td>Social03 Office03 User03 in Open Site Name</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xPath=(//div[@class='activity-action'])[1]</td>
+	<td>Wrote a new forum post.</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>xPath=(//div[@class='activity-body'])[1]</td>
+	<td>Forums Thread1 Message Subject</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>xPath=(//div[@class='activity-body'])[1]</td>
+	<td>Forums Thread1 Message Body</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xPath=(//div[@class='activity-user-name'])[2]</td>
 	<td>Social03 Office03 User03</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//div[@class='activity-title'])[2]</td>
+	<td>xPath=(//div[@class='activity-action'])[2]</td>
 	<td>Microblogs Post1</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>xPath=(//a[@class='user'])[2]</td>
-	<td>Social03 Office03 User03</td>
 </tr>
 </tbody></table>
 </body>

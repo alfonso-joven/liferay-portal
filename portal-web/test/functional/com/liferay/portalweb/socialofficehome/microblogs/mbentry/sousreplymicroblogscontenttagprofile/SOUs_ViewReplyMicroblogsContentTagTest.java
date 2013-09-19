@@ -71,12 +71,24 @@ public class SOUs_ViewReplyMicroblogsContentTagTest extends BaseTestCase {
 					selenium.getText("//div[@class='lfr-contact-extra']"));
 				assertEquals(RuntimeVariables.replace("Activities"),
 					selenium.getText("//span[@class='portlet-title-text']"));
-				assertTrue(selenium.isPartialText(
-						"xPath=(//div[@class='activity-title'])[1]",
-						"Microblogs Post Comment"));
+				selenium.waitForVisible(
+					"xPath=(//div[@class='activity-action'])[1]");
 				assertEquals(RuntimeVariables.replace("Microblogs Post"),
 					selenium.getText(
-						"xPath=(//div[@class='activity-title'])[2]"));
+						"xPath=(//div[@class='activity-action'])[1]"));
+				assertEquals(RuntimeVariables.replace("1 Comment"),
+					selenium.getText("//span[@class='view-comments action']/a"));
+				selenium.clickAt("//span[@class='view-comments action']/a",
+					RuntimeVariables.replace("1 Comment"));
+				selenium.waitForVisible("//div[@class='comment-body']");
+				assertTrue(selenium.isPartialText(
+						"//div[@class='comment-body']",
+						"Social01 Office01 User01"));
+				assertTrue(selenium.isPartialText(
+						"//div[@class='comment-body']",
+						"Microblogs Post Comment"));
+				assertTrue(selenium.isPartialText(
+						"//div[@class='comment-body']", "[@joebloggs]"));
 
 			case 100:
 				label = -1;

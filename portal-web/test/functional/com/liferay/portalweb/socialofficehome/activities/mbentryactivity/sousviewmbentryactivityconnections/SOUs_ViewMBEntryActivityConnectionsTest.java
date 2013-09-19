@@ -34,9 +34,10 @@ public class SOUs_ViewMBEntryActivityConnectionsTest extends BaseTestCase {
 		selenium.clickAt("link=Connections",
 			RuntimeVariables.replace("Connections"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Microblogs Post"),
-			selenium.getText("//div[@class='activity-title']"));
+		selenium.waitForVisible("//div[@class='activity-user-name']");
 		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
-			selenium.getText("//a[@class='user']"));
+			selenium.getText("//div[@class='activity-user-name']"));
+		assertTrue(selenium.isPartialText("//div[@class='activity-action']",
+				"Microblogs Post"));
 	}
 }

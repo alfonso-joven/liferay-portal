@@ -31,8 +31,10 @@ public class ViewMBEntryActivityMeTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Me"), selenium.getText("link=Me"));
 		selenium.clickAt("link=Me", RuntimeVariables.replace("Me"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Microblogs Post"),
-			selenium.getText("//div[@class='activity-title']"));
-		assertTrue(selenium.isPartialText("//div[@class='activity-body']", "Joe"));
+		selenium.waitForVisible("//div[@class='activity-user-name']");
+		assertEquals(RuntimeVariables.replace("Joe"),
+			selenium.getText("//div[@class='activity-user-name']"));
+		assertTrue(selenium.isPartialText("//div[@class='activity-action']",
+				"Microblogs Post"));
 	}
 }

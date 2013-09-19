@@ -25,11 +25,21 @@ public class SOUs_ViewReplyMicroblogsContentTest extends BaseTestCase {
 		selenium.selectWindow("null");
 		selenium.selectFrame("relative=top");
 		selenium.open("/user/socialoffice01/so/dashboard");
-		selenium.waitForVisible("link=Me");
-		selenium.clickAt("link=Me", RuntimeVariables.replace("Me"));
-		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace(
-				"@Joe Bloggs: Microblogs Post Comment"),
-			selenium.getText("xPath=(//div[@class='activity-title'])[1]"));
+		selenium.waitForVisible("xPath=(//div[@class='activity-user-name'])[1]");
+		assertEquals(RuntimeVariables.replace("Social01"),
+			selenium.getText("xPath=(//div[@class='activity-user-name'])[1]"));
+		assertEquals(RuntimeVariables.replace("Commented on a microblog entry."),
+			selenium.getText("xPath=(//div[@class='activity-action'])[1]"));
+		assertEquals(RuntimeVariables.replace("Microblogs Post"),
+			selenium.getText("xPath=(//div[@class='activity-body'])[1]"));
+		assertEquals(RuntimeVariables.replace("1 Comment"),
+			selenium.getText("//span[@class='view-comments action']/a"));
+		selenium.clickAt("//span[@class='view-comments action']/a",
+			RuntimeVariables.replace("1 Comment"));
+		selenium.waitForVisible("//div[@class='comment-body']");
+		assertTrue(selenium.isPartialText("//div[@class='comment-body']",
+				"Social01 Office01 User01"));
+		assertTrue(selenium.isPartialText("//div[@class='comment-body']",
+				"Microblogs Post Comment"));
 	}
 }

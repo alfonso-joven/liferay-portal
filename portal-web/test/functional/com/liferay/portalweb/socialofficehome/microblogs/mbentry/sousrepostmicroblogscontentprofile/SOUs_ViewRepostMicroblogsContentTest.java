@@ -29,9 +29,14 @@ public class SOUs_ViewRepostMicroblogsContentTest extends BaseTestCase {
 		selenium.waitForVisible("link=Me");
 		selenium.clickAt("link=Me", RuntimeVariables.replace("Me"));
 		selenium.waitForPageToLoad("30000");
+		selenium.waitForVisible("//div[@class='activity-user-name']");
+		assertEquals(RuntimeVariables.replace("Social01"),
+			selenium.getText("//div[@class='activity-user-name']"));
 		assertEquals(RuntimeVariables.replace(
-				"Reposted From Joe Bloggs: Microblogs Post"),
-			selenium.getText("xPath=(//div[@class='activity-title'])[1]"));
+				"Reposted a microblog entry from Joe Bloggs."),
+			selenium.getText("//div[@class='activity-action']"));
+		assertEquals(RuntimeVariables.replace("Microblogs Post"),
+			selenium.getText("//div[@class='activity-body']"));
 		selenium.clickAt("//nav/ul/li[contains(.,'Microblogs')]/a/span",
 			RuntimeVariables.replace("Microblogs"));
 		selenium.waitForPageToLoad("30000");

@@ -28,12 +28,10 @@ public class ViewRepostActivitiesProfileTest extends BaseTestCase {
 		selenium.waitForVisible("//div[@class='lfr-contact-name']/a");
 		assertEquals(RuntimeVariables.replace("Joe Bloggs"),
 			selenium.getText("//div[@class='lfr-contact-name']/a"));
-		assertEquals(RuntimeVariables.replace(
-				"Reposted From Joe: Microblogs Post"),
-			selenium.getText("//div[@class='activity-title']"));
-		assertEquals(RuntimeVariables.replace("Social01 Office01 User01"),
-			selenium.getText("//div[@class='activity-body']/a"));
+		selenium.waitForVisible("//div[@class='activity-action']");
+		assertEquals(RuntimeVariables.replace("Joe"),
+			selenium.getText("//div[@class='activity-user-name']"));
 		assertEquals(RuntimeVariables.replace("Microblogs Post"),
-			selenium.getText("xpath=(//div[@class='activity-title'])[2]"));
+			selenium.getText("//div[@class='activity-action']"));
 	}
 }

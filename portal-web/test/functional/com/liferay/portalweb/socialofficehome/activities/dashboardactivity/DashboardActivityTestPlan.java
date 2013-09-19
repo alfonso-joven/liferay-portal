@@ -16,9 +16,6 @@ package com.liferay.portalweb.socialofficehome.activities.dashboardactivity;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
 import com.liferay.portalweb.socialofficehome.activities.dashboardactivity.viewdashboardactivityactivities.ViewDashboardActivityActivitiesTests;
-import com.liferay.portalweb.socialofficehome.activities.dashboardactivity.viewdmfolderdocumentactivities.ViewDMFolderDocumentActivitiesTests;
-import com.liferay.portalweb.socialofficehome.activities.dashboardactivity.viewresolvetaskassignedtomeactivitiesme.ViewResolveTaskAssignedToMeActivitiesMeTests;
-import com.liferay.portalweb.socialofficehome.activities.dashboardactivity.viewresolvetaskstaskactivitiesconnections.ViewResolveTasksTaskActivitiesConnectionsTests;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -32,10 +29,10 @@ public class DashboardActivityTestPlan extends BaseTestSuite {
 		TestSuite testSuite = new TestSuite();
 
 		testSuite.addTest(ViewDashboardActivityActivitiesTests.suite());
-		testSuite.addTest(ViewDMFolderDocumentActivitiesTests.suite());
+		/*testSuite.addTest(ViewDMFolderDocumentActivitiesTests.suite());
 		testSuite.addTest(ViewResolveTaskAssignedToMeActivitiesMeTests.suite());
 		testSuite.addTest(
-			ViewResolveTasksTaskActivitiesConnectionsTests.suite());
+			ViewResolveTasksTaskActivitiesConnectionsTests.suite());*/
 
 		return testSuite;
 	}

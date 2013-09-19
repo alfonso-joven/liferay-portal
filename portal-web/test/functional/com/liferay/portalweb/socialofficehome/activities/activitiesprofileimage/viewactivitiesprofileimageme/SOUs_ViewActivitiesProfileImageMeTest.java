@@ -32,20 +32,31 @@ public class SOUs_ViewActivitiesProfileImageMeTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Me"), selenium.getText("link=Me"));
 		selenium.clickAt("link=Me", RuntimeVariables.replace("Me"));
 		selenium.waitForPageToLoad("30000");
+		selenium.waitForVisible(
+			"xpath=(//span[@class='avatar']/a/img[@alt='Social01 Office01 User01'])[1]");
 		assertTrue(selenium.isElementPresent(
-				"xpath=(//span[@class='avatar']/img[@alt='Social01 Office01 User01'])[1]"));
-		assertEquals(RuntimeVariables.replace(
-				"Social01 commented on Joe Bloggs's blog entry, Blogs Entry Comment Body..., in Open Site Name."),
-			selenium.getText("xpath=(//div[@class='activity-title'])[1]"));
+				"xpath=(//span[@class='avatar']/a/img[@alt='Social01 Office01 User01'])[1]"));
+		assertEquals(RuntimeVariables.replace("Social01 in Open Site Name"),
+			selenium.getText("xpath=(//div[@class='activity-user-name'])[1]"));
+		assertEquals(RuntimeVariables.replace("Commented on a blog entry."),
+			selenium.getText("xpath=(//div[@class='activity-action'])[1]"));
+		assertTrue(selenium.isPartialText(
+				"xpath=(//div[@class='activity-body'])[1]", "Blogs Entry Title"));
+		assertTrue(selenium.isPartialText(
+				"xpath=(//div[@class='activity-body'])[1]",
+				"Blogs Entry Content"));
 		assertTrue(selenium.isElementPresent(
-				"xpath=(//span[@class='avatar']/img[@alt='Social01 Office01 User01'])[2]"));
+				"xpath=(//span[@class='avatar']/a/img[@alt='Social01 Office01 User01'])[2]"));
+		assertEquals(RuntimeVariables.replace("Social01 in Open Site Name"),
+			selenium.getText("xpath=(//div[@class='activity-user-name'])[2]"));
 		assertEquals(RuntimeVariables.replace(
-				"Social01 replied to Joe Bloggs's message board post, RE: MB Category Thread Message Subject, in Open Site Name."),
-			selenium.getText("xpath=(//div[@class='activity-title'])[2]"));
-		assertTrue(selenium.isElementPresent(
-				"xpath=(//span[@class='avatar']/img[@alt='Social01 Office01 User01'])[3]"));
-		assertEquals(RuntimeVariables.replace(
-				"@Joe Bloggs: Microblogs Post Comment"),
-			selenium.getText("xpath=(//div[@class='activity-title'])[3]"));
+				"Replied to Joe Bloggs's forum post in MB Category Name."),
+			selenium.getText("xpath=(//div[@class='activity-action'])[2]"));
+		assertTrue(selenium.isPartialText(
+				"xpath=(//div[@class='activity-body'])[2]",
+				"RE: MB Category Thread Message Subject"));
+		assertTrue(selenium.isPartialText(
+				"xpath=(//div[@class='activity-body'])[2]",
+				"MB Category Thread Message Reply Body"));
 	}
 }

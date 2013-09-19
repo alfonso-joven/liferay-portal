@@ -37,8 +37,8 @@ public class SOUs_ViewMicroblogsContentViewableByConnectionsTest
 		selenium.clickAt("link=Connections",
 			RuntimeVariables.replace("Connections"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("There are no recent activities."),
-			selenium.getText("xPath=(//div[@class='portlet-msg-info'])[2]"));
+		assertEquals(RuntimeVariables.replace("There are no activities."),
+			selenium.getText("//div[@class='no-activities']"));
 		assertFalse(selenium.isTextPresent("Microblogs Post"));
 		selenium.clickAt("//nav/ul/li[contains(.,'Microblogs')]/a/span",
 			RuntimeVariables.replace("Microblogs"));

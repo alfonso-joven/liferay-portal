@@ -29,9 +29,10 @@ public class SOUs_DeleteRepostMicroblogsContentTest extends BaseTestCase {
 		selenium.waitForVisible("link=Me");
 		selenium.clickAt("link=Me", RuntimeVariables.replace("Me"));
 		selenium.waitForPageToLoad("30000");
+		selenium.waitForVisible("//div[@class='activity-action']");
 		assertEquals(RuntimeVariables.replace(
 				"Reposted From Joe Bloggs: Microblogs Post"),
-			selenium.getText("//div[@class='activity-title']"));
+			selenium.getText("//div[@class='activity-action']"));
 		selenium.clickAt("//nav/ul/li[contains(.,'Microblogs')]/a/span",
 			RuntimeVariables.replace("Microblogs"));
 		selenium.waitForPageToLoad("30000");

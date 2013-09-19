@@ -29,16 +29,20 @@
 	<td>Following</td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>//div[@class='activity-title']</td>
-	<td>Microblogs Post</td>
+	<td>waitForVisible</td>
+	<td>//div[@class='activity-user-name']</td>
+	<td>Joe Bloggs</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//a[@class='user']</td>
+	<td>//div[@class='activity-user-name']</td>
 	<td>Joe Bloggs</td>
 </tr>
-
+<tr>
+	<td>assertPartialText</td>
+	<td>//div[@class='activity-action']</td>
+	<td>Microblogs Post</td>
+</tr>
 </tbody></table>
 </body>
 </html>

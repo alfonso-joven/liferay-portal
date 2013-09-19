@@ -57,8 +57,9 @@ public class SOUs_SearchSitesSiteTypePublicRestrictedTest extends BaseTestCase {
 		assertFalse(selenium.isTextPresent("Open Site Name"));
 		selenium.clickAt("//input[contains(@class,'search-input')]",
 			RuntimeVariables.replace("User Name"));
-		selenium.waitForVisible("link=Sites Directory");
-		selenium.clickAt("link=Sites Directory",
+		selenium.waitForVisible(
+			"//button[contains(.,'Sites Directory')]/span[2]");
+		selenium.clickAt("//button[contains(.,'Sites Directory')]/span[2]",
 			RuntimeVariables.replace("Sites Directory"));
 		Thread.sleep(5000);
 		selenium.waitForVisible("xPath=(//h1[@class='header-title']/span)[1]");

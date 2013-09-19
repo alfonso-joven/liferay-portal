@@ -29,9 +29,10 @@ public class SOUs_ViewMBContentSpecialCharactersProfileTest extends BaseTestCase
 		assertEquals(RuntimeVariables.replace(
 				"Today is Joe Blogg's fake \"birthday\". <script>alert(\"this is an xss test\");</script>."),
 			selenium.getText("//div[@class='content']"));
+		selenium.waitForVisible("//div[@class='activity-action']");
 		assertEquals(RuntimeVariables.replace(
-				"Today is Joe Blogg's #fake \"birthday\". <script>alert(\"this is an xss test\");</script>."),
-			selenium.getText("//div[@class='activity-title']"));
+				"Today is Joe Blogg's fake \"birthday\". <script>alert(\"this is an xss test\");</script>."),
+			selenium.getText("//div[@class='activity-action']"));
 		selenium.clickAt("//nav/ul/li[contains(.,'Microblogs')]/a/span",
 			RuntimeVariables.replace("Microblogs"));
 		selenium.waitForPageToLoad("30000");

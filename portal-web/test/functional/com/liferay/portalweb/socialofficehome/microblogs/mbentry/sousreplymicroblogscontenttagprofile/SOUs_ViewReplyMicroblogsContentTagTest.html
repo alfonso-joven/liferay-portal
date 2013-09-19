@@ -89,14 +89,44 @@
 	<td>Activities</td>
 </tr>
 <tr>
-	<td>assertPartialText</td>
-	<td>xPath=(//div[@class='activity-title'])[1]</td>
-	<td>Microblogs Post Comment</td>
+	<td>waitForVisible</td>
+	<td>xPath=(//div[@class='activity-action'])[1]</td>
+	<td>Activity Action</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//div[@class='activity-title'])[2]</td>
+	<td>xPath=(//div[@class='activity-action'])[1]</td>
 	<td>Microblogs Post</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//span[@class='view-comments action']/a</td>
+	<td>1 Comment</td>
+</tr>
+<tr>
+	<td>clickAt</td>
+	<td>//span[@class='view-comments action']/a</td>
+	<td>1 Comment</td>
+</tr>
+<tr>
+	<td>waitForVisible</td>
+	<td>//div[@class='comment-body']</td>
+	<td>Social01 Social01 Office01 User01Microblogs Post Comment [@joebloggs]</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>//div[@class='comment-body']</td>
+	<td>Social01 Office01 User01</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>//div[@class='comment-body']</td>
+	<td>Microblogs Post Comment</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>//div[@class='comment-body']</td>
+	<td>[@joebloggs]</td>
 </tr>
 </tbody></table>
 </body>

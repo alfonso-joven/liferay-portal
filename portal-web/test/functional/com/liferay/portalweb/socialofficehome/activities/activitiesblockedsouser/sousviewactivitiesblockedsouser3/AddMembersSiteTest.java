@@ -89,7 +89,7 @@ public class AddMembersSiteTest extends BaseTestCase {
 			case 2:
 				selenium.type("//input[@name='_174_keywords']",
 					RuntimeVariables.replace("social"));
-				selenium.clickAt("//input[@value='Search']",
+				selenium.clickAt("//form[contains(@id,'_174_')]/div/div/span/span[2]/span/input[@value='Search']",
 					RuntimeVariables.replace("Search"));
 				selenium.waitForPageToLoad("30000");
 				assertFalse(selenium.isChecked(

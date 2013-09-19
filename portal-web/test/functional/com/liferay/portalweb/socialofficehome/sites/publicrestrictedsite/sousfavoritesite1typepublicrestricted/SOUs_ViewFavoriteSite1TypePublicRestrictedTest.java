@@ -65,8 +65,8 @@ public class SOUs_ViewFavoriteSite1TypePublicRestrictedTest extends BaseTestCase
 		assertTrue(selenium.isElementNotPresent(
 				"//li[contains(@class, 'social-office-enabled')]/span[@class='action favorite']/a"));
 		selenium.open("/user/socialoffice01/so/dashboard/");
-		selenium.clickAt("//li[contains(@class,'user-menu has-submenu')]/a/span[@class='full-name']",
-			RuntimeVariables.replace("User Name"));
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
 		selenium.waitForVisible("link=Public Restricted Site1 Name");
 		selenium.clickAt("link=Public Restricted Site1 Name",
 			RuntimeVariables.replace("Public Restricted Site1 Name"));

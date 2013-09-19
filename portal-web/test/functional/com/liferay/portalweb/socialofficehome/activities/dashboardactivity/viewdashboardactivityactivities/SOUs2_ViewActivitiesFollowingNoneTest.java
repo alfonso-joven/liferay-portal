@@ -33,17 +33,12 @@ public class SOUs2_ViewActivitiesFollowingNoneTest extends BaseTestCase {
 			selenium.getText("link=Following"));
 		selenium.clickAt("link=Following", RuntimeVariables.replace("Following"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("There are no recent activities."),
-			selenium.getText("xPath=(//div[@class='portlet-msg-info'])[2]"));
+		selenium.waitForVisible("//div[@class='no-activities']");
+		assertEquals(RuntimeVariables.replace("There are no activities."),
+			selenium.getText("//div[@class='no-activities']"));
 		assertTrue(selenium.isElementNotPresent(
-				"//div[@class='activity-title']"));
-		assertTrue(selenium.isElementNotPresent("//div[@class='activity-body']"));
-		assertFalse(selenium.isTextPresent(
-				"Joe Bloggs added a new task for Social01 Office01 User01."));
-		assertFalse(selenium.isTextPresent("Joe Bloggs added a new task."));
-		assertFalse(selenium.isTextPresent(
-				"Joe Bloggs uploaded a new document, DM Folder Document Title, in Joe Bloggs."));
-		assertFalse(selenium.isTextPresent("#Microblogs Post"));
-		assertFalse(selenium.isTextPresent("[@socialoffice01]"));
+				"//div[@class='activity-user-name']"));
+		assertTrue(selenium.isElementNotPresent(
+				"//div[@class='activity-action']"));
 	}
 }

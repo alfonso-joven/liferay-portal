@@ -144,8 +144,8 @@ public class SOUs_ViewFavoriteSite1TypePrivateTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("socialoffice01@liferay.com"),
 			selenium.getText("xPath=(//div[@class='lfr-contact-extra'])[2]"));
 		selenium.open("/web/guest/home");
-		selenium.clickAt("//li[contains(@class,'user-menu has-submenu')]/a/span[@class='full-name']",
-			RuntimeVariables.replace("User Name"));
+		selenium.clickAt("//input[contains(@class,'search-input')]",
+			RuntimeVariables.replace("Go to"));
 		selenium.waitForVisible("link=Private Site1 Name");
 		selenium.clickAt("link=Private Site1 Name",
 			RuntimeVariables.replace("Private Site1 Name"));

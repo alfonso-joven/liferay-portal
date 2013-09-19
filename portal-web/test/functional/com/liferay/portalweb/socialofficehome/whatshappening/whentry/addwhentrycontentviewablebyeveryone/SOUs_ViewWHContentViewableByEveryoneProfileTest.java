@@ -29,8 +29,9 @@ public class SOUs_ViewWHContentViewableByEveryoneProfileTest
 		selenium.open("/web/joebloggs/so/profile");
 		assertEquals(RuntimeVariables.replace("Microblogs Post"),
 			selenium.getText("//div[@class='content']"));
+		selenium.waitForVisible("//div[@class='activity-action']");
 		assertEquals(RuntimeVariables.replace("Microblogs Post"),
-			selenium.getText("//div[@class='activity-title']"));
+			selenium.getText("//div[@class='activity-action']"));
 		selenium.waitForVisible("//nav/ul/li[contains(.,'Microblogs')]/a/span");
 		selenium.clickAt("//nav/ul/li[contains(.,'Microblogs')]/a/span",
 			RuntimeVariables.replace("Microblogs"));

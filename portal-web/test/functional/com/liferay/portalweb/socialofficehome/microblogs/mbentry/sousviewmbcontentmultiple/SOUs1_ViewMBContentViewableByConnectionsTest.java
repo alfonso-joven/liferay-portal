@@ -36,17 +36,18 @@ public class SOUs1_ViewMBContentViewableByConnectionsTest extends BaseTestCase {
 		selenium.clickAt("link=Connections",
 			RuntimeVariables.replace("Connections"));
 		selenium.waitForPageToLoad("30000");
+		selenium.waitForVisible("xPath=(//div[@class='activity-action'])[1]");
 		assertEquals(RuntimeVariables.replace("Connections Microblogs Post"),
-			selenium.getText("xPath=(//div[@class='activity-title'])[1]"));
+			selenium.getText("xPath=(//div[@class='activity-action'])[1]"));
 		assertEquals(RuntimeVariables.replace("Everyone Microblogs Post"),
-			selenium.getText("xPath=(//div[@class='activity-title'])[2]"));
+			selenium.getText("xPath=(//div[@class='activity-action'])[2]"));
 		assertFalse(selenium.isTextPresent("Followers Microblogs Post"));
 		assertEquals(RuntimeVariables.replace("Following"),
 			selenium.getText("link=Following"));
 		selenium.clickAt("link=Following", RuntimeVariables.replace("Following"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("There are no recent activities."),
-			selenium.getText("//div[@class='portrait-social-activities']"));
+		assertEquals(RuntimeVariables.replace("There are no activities."),
+			selenium.getText("//div[@class='no-activities']"));
 		assertFalse(selenium.isTextPresent("Followers Microblogs Post"));
 		selenium.clickAt("//nav/ul/li[contains(.,'Microblogs')]/a/span",
 			RuntimeVariables.replace("Microblogs"));

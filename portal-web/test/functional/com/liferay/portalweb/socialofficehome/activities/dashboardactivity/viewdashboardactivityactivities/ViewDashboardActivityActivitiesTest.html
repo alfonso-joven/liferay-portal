@@ -29,59 +29,29 @@
 	<td>Me</td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>xPath=(//div[@class='activity-title'])[1]</td>
-	<td>Joe added a new task for Social01 Office01 User01.</td>
-</tr>
-<tr>
-	<td>assertPartialText</td>
-	<td>xPath=(//div[@class='activity-body'])[1]</td>
-	<td>Connection Task Description</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>xPath=(//div[@class='activity-title'])[2]</td>
-	<td>Joe added a new task.</td>
-</tr>
-<tr>
-	<td>assertPartialText</td>
-	<td>xPath=(//div[@class='activity-body'])[2]</td>
-	<td>Task Description</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>xPath=(//div[@class='activity-title'])[3]</td>
-	<td>Joe uploaded a new document, DM Folder Document Title.</td>
-</tr>
-<tr>
-	<td>assertPartialText</td>
-	<td>xPath=(//div[@class='activity-body'])[3]</td>
-	<td>View Document</td>
-</tr>
-<tr>
-	<td>assertPartialText</td>
-	<td>xPath=(//div[@class='activity-body'])[3]</td>
-	<td>Go to Folder</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>xPath=(//div[@class='activity-title'])[4]</td>
-	<td>#Microblogs Post</td>
-</tr>
-<tr>
-	<td>assertPartialText</td>
-	<td>xPath=(//div[@class='activity-body'])[4]</td>
+	<td>waitForVisible</td>
+	<td>xPath=(//div[@class='activity-user-name'])[1]</td>
 	<td>Joe</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//div[@class='activity-title'])[5]</td>
-	<td>[@socialoffice01]</td>
+	<td>xPath=(//div[@class='activity-user-name'])[1]</td>
+	<td>Joe</td>
 </tr>
 <tr>
 	<td>assertPartialText</td>
-	<td>xPath=(//div[@class='activity-body'])[5]</td>
+	<td>xPath=(//div[@class='activity-action'])[1]</td>
+	<td>Microblogs Post</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xPath=(//div[@class='activity-user-name'])[2]</td>
 	<td>Joe</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>xPath=(//div[@class='activity-action'])[2]</td>
+	<td>Social01 Office01 User01</td>
 </tr>
 </tbody></table>
 </body>

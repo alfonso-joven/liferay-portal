@@ -34,16 +34,20 @@ public class SOUs1_ViewActivitiesBlockedSOUser3Test extends BaseTestCase {
 		selenium.clickAt("link=Connections",
 			RuntimeVariables.replace("Connections"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("There are no recent activities."),
-			selenium.getText("//div[@class='portrait-social-activities']"));
+		selenium.waitForVisible("//div[@class='no-activities']");
+		assertEquals(RuntimeVariables.replace("There are no activities."),
+			selenium.getText("//div[@class='no-activities']"));
 		assertTrue(selenium.isElementNotPresent(
-				"//div[@class='activity-title']"));
-		assertTrue(selenium.isElementNotPresent("//a[@class='user']"));
+				"//div[@class='activity-user-name']"));
+		assertTrue(selenium.isElementNotPresent(
+				"//div[@class='activity-action']"));
+		assertTrue(selenium.isElementNotPresent("//div[@class='activity-body']"));
 		assertFalse(selenium.isTextPresent(
-				"Social03 Office03 User03 wrote a new message board post, Forums Thread2 Message Subject, in Open Site Name."));
-		assertFalse(selenium.isTextPresent("Microblogs Post2"));
-		assertFalse(selenium.isTextPresent(
-				"Social03 Office03 User03 wrote a new message board post, Forums Thread1 Message Subject, in Open Site Name."));
+				"Social03 Office03 User03 in Open Site Name"));
+		assertFalse(selenium.isTextPresent("Wrote a new forum post."));
+		assertFalse(selenium.isTextPresent("Forums Thread1 Message Subject"));
+		assertFalse(selenium.isTextPresent("Forums Thread1 Message Body"));
+		assertFalse(selenium.isTextPresent("Social03 Office03 User03"));
 		assertFalse(selenium.isTextPresent("Microblogs Post1"));
 	}
 }

@@ -29,8 +29,9 @@ public class SOUs_ViewEditMBContentViewableByEveryoneProfileTest
 		selenium.open("/web/joebloggs/so/profile");
 		assertEquals(RuntimeVariables.replace("Microblogs PostEdit"),
 			selenium.getText("//div[@class='content']"));
+		selenium.waitForVisible("//div[@class='activity-action']");
 		assertEquals(RuntimeVariables.replace("Microblogs PostEdit"),
-			selenium.getText("//div[@class='activity-title']"));
+			selenium.getText("//div[@class='activity-action']"));
 		selenium.clickAt("//nav/ul/li[contains(.,'Microblogs')]/a/span",
 			RuntimeVariables.replace("Microblogs"));
 		selenium.waitForPageToLoad("30000");

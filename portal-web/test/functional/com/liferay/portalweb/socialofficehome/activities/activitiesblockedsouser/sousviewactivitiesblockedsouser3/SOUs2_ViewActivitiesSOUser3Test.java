@@ -32,14 +32,21 @@ public class SOUs2_ViewActivitiesSOUser3Test extends BaseTestCase {
 			selenium.getText("link=Following"));
 		selenium.clickAt("link=Following", RuntimeVariables.replace("Following"));
 		selenium.waitForPageToLoad("30000");
+		selenium.waitForVisible("xPath=(//div[@class='activity-user-name'])[1]");
 		assertEquals(RuntimeVariables.replace(
-				"Social03 Office03 User03 wrote a new message board post, Forums Thread1 Message Subject, in Open Site Name."),
-			selenium.getText("xPath=(//div[@class='activity-title'])[1]"));
+				"Social03 Office03 User03 in Open Site Name"),
+			selenium.getText("xPath=(//div[@class='activity-user-name'])[1]"));
+		assertEquals(RuntimeVariables.replace("Wrote a new forum post."),
+			selenium.getText("xPath=(//div[@class='activity-action'])[1]"));
+		assertTrue(selenium.isPartialText(
+				"xPath=(//div[@class='activity-body'])[1]",
+				"Forums Thread1 Message Subject"));
+		assertTrue(selenium.isPartialText(
+				"xPath=(//div[@class='activity-body'])[1]",
+				"Forums Thread1 Message Body"));
 		assertEquals(RuntimeVariables.replace("Social03 Office03 User03"),
-			selenium.getText("xPath=(//a[@class='user'])[1]"));
+			selenium.getText("xPath=(//div[@class='activity-user-name'])[2]"));
 		assertEquals(RuntimeVariables.replace("Microblogs Post1"),
-			selenium.getText("xPath=(//div[@class='activity-title'])[2]"));
-		assertEquals(RuntimeVariables.replace("Social03 Office03 User03"),
-			selenium.getText("xPath=(//a[@class='user'])[2]"));
+			selenium.getText("xPath=(//div[@class='activity-action'])[2]"));
 	}
 }

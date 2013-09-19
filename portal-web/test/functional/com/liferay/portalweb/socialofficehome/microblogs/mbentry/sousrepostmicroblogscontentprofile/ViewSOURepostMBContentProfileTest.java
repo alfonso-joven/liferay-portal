@@ -28,10 +28,15 @@ public class ViewSOURepostMBContentProfileTest extends BaseTestCase {
 		selenium.waitForVisible("//div[@class='lfr-contact-name']/a");
 		assertEquals(RuntimeVariables.replace("Social01 Office01 User01"),
 			selenium.getText("//div[@class='lfr-contact-name']/a"));
-		selenium.waitForVisible("//div[@class='activity-title']");
+		selenium.waitForVisible("//div[@class='activity-action']");
+		selenium.waitForVisible("//div[@class='activity-user-name']");
+		assertEquals(RuntimeVariables.replace("Social01 Office01 User01"),
+			selenium.getText("//div[@class='activity-user-name']"));
 		assertEquals(RuntimeVariables.replace(
-				"Reposted From Joe: Microblogs Post"),
-			selenium.getText("//div[@class='activity-title']"));
+				"Reposted a microblog entry from Joe."),
+			selenium.getText("//div[@class='activity-action']"));
+		assertEquals(RuntimeVariables.replace("Microblogs Post"),
+			selenium.getText("//div[@class='activity-body']"));
 		selenium.open("/web/socialoffice01/so/microblogs");
 		selenium.waitForVisible("//div[@class='user-name']");
 		assertEquals(RuntimeVariables.replace(

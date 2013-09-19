@@ -46,10 +46,6 @@ public class ViewMBContentViewableByFollowersCommentTest extends BaseTestCase {
 			selenium.getText("xPath=(//div[@class='user-name'])[2]"));
 		assertEquals(RuntimeVariables.replace("Microblogs Post Comment"),
 			selenium.getText("xPath=(//div[@class='content'])[2]"));
-		selenium.clickAt("//div[@id='dockbar']",
-			RuntimeVariables.replace("Dockbar"));
-		selenium.waitForElementPresent(
-			"//script[contains(@src,'/aui/aui-editable/aui-editable-min.js')]");
 		assertTrue(selenium.isElementPresent(
 				"//a[contains(@class,'user-notification')]"));
 		assertEquals(RuntimeVariables.replace("1"),

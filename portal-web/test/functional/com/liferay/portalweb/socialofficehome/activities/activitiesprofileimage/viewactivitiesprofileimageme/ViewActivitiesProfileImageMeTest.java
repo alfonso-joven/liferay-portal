@@ -31,36 +31,37 @@ public class ViewActivitiesProfileImageMeTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Me"), selenium.getText("link=Me"));
 		selenium.clickAt("link=Me", RuntimeVariables.replace("Me"));
 		selenium.waitForPageToLoad("30000");
+		selenium.waitForVisible(
+			"xpath=(//span[@class='avatar']/a/img[@alt='Joe Bloggs'])[1]");
 		assertTrue(selenium.isElementPresent(
-				"xpath=(//span[@class='avatar']/img[@alt='Social01 Office01 User01'])[1]"));
+				"xpath=(//span[@class='avatar']/a/img[@alt='Joe Bloggs'])[1]"));
+		assertEquals(RuntimeVariables.replace("Joe in Open Site Name"),
+			selenium.getText("xpath=(//div[@class='activity-user-name'])[1]"));
+		assertEquals(RuntimeVariables.replace("Wrote a new blog entry."),
+			selenium.getText("xpath=(//div[@class='activity-action'])[1]"));
+		assertTrue(selenium.isPartialText(
+				"xpath=(//div[@class='activity-body'])[1]", "Blogs Entry Title"));
+		assertTrue(selenium.isPartialText(
+				"xpath=(//div[@class='activity-body'])[1]",
+				"Blogs Entry Content"));
+		assertTrue(selenium.isElementPresent(
+				"xpath=(//span[@class='avatar']/a/img[@alt='Joe Bloggs'])[2]"));
+		assertEquals(RuntimeVariables.replace("Joe in Open Site Name"),
+			selenium.getText("xpath=(//div[@class='activity-user-name'])[2]"));
 		assertEquals(RuntimeVariables.replace(
-				"Social01 Office01 User01 commented on Joe's blog entry, Blogs Entry Comment Body..., in Open Site Name."),
-			selenium.getText("xpath=(//div[@class='activity-title'])[1]"));
-		assertTrue(selenium.isElementPresent(
-				"xpath=(//span[@class='avatar']/img[@alt='Social01 Office01 User01'])[2]"));
-		assertEquals(RuntimeVariables.replace(
-				"Social01 Office01 User01 replied to Joe's message board post, RE: MB Category Thread Message Subject, in Open Site Name."),
-			selenium.getText("xpath=(//div[@class='activity-title'])[2]"));
-		assertTrue(selenium.isElementPresent(
-				"xpath=(//span[@class='avatar']/img[@alt='Social01 Office01 User01'])[3]"));
-		assertEquals(RuntimeVariables.replace("@Joe: Microblogs Post Comment"),
-			selenium.getText("xpath=(//div[@class='activity-title'])[3]"));
+				"Wrote a new forum post in MB Category Name."),
+			selenium.getText("xpath=(//div[@class='activity-action'])[2]"));
 		assertTrue(selenium.isPartialText(
-				"xpath=(//div[@class='activity-body'])[3]",
-				"Social01 Office01 User01"));
-		assertTrue(selenium.isElementPresent(
-				"xpath=(//span[@class='avatar']/img[@alt='Joe Bloggs'])[1]"));
+				"xpath=(//div[@class='activity-body'])[2]",
+				"MB Category Thread Message Subject"));
 		assertTrue(selenium.isPartialText(
-				"xpath=(//div[@class='activity-title'])[4]",
-				"Joe wrote a new blog entry"));
+				"xpath=(//div[@class='activity-body'])[2]",
+				"MB Category Thread Message Body"));
 		assertTrue(selenium.isElementPresent(
-				"xpath=(//span[@class='avatar']/img[@alt='Joe Bloggs'])[2]"));
-		assertTrue(selenium.isPartialText(
-				"xpath=(//div[@class='activity-title'])[5]",
-				"Joe wrote a new message board post"));
-		assertTrue(selenium.isElementPresent(
-				"xpath=(//span[@class='avatar']/img[@alt='Joe Bloggs'])[3]"));
+				"xpath=(//span[@class='avatar']/a/img[@alt='Joe Bloggs'])[3]"));
+		assertEquals(RuntimeVariables.replace("Joe"),
+			selenium.getText("xpath=(//div[@class='activity-user-name'])[3]"));
 		assertEquals(RuntimeVariables.replace("Microblogs Post"),
-			selenium.getText("xpath=(//div[@class='activity-title'])[6]"));
+			selenium.getText("xpath=(//div[@class='activity-action'])[3]"));
 	}
 }

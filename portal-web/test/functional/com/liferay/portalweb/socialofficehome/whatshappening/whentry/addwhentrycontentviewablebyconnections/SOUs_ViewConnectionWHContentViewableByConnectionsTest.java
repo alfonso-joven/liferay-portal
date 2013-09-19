@@ -42,8 +42,9 @@ public class SOUs_ViewConnectionWHContentViewableByConnectionsTest
 		selenium.clickAt("link=Connections",
 			RuntimeVariables.replace("Connections"));
 		selenium.waitForPageToLoad("30000");
+		selenium.waitForVisible("//div[@class='activity-action']");
 		assertEquals(RuntimeVariables.replace("Microblogs Post"),
-			selenium.getText("//div[@class='activity-title']"));
+			selenium.getText("//div[@class='activity-action']"));
 		selenium.waitForVisible("//nav/ul/li[contains(.,'Microblogs')]/a/span");
 		selenium.clickAt("//nav/ul/li[contains(.,'Microblogs')]/a/span",
 			RuntimeVariables.replace("Microblogs"));

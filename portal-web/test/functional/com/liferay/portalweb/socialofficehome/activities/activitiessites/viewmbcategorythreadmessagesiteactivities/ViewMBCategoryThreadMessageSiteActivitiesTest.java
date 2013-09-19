@@ -32,14 +32,20 @@ public class ViewMBCategoryThreadMessageSiteActivitiesTest extends BaseTestCase 
 		assertEquals(RuntimeVariables.replace("Me"), selenium.getText("link=Me"));
 		selenium.clickAt("link=Me", RuntimeVariables.replace("Me"));
 		selenium.waitForPageToLoad("30000");
+		selenium.waitForVisible("xpath=(//div[@class='activity-user-name'])[1]");
+		assertEquals(RuntimeVariables.replace("Joe in Open Site Name"),
+			selenium.getText("xpath=(//div[@class='activity-user-name'])[1]"));
 		assertEquals(RuntimeVariables.replace(
-				"Joe wrote a new message board post, MB Category2 Thread Message Subject, in Open Site Name."),
-			selenium.getText("xPath=(//div[@class='activity-title'])[1]"));
-		assertEquals(RuntimeVariables.replace("Go to Category"),
-			selenium.getText(
-				"xPath=(//div[@class='activity-body']/a[contains(.,'Go to Category')])[1]"));
-		selenium.clickAt("xPath=(//div[@class='activity-body']/a[contains(.,'Go to Category')])[1]",
-			RuntimeVariables.replace("Go to Category"));
+				"Wrote a new forum post in MB Category2 Name."),
+			selenium.getText("xpath=(//div[@class='activity-action'])[1]"));
+		assertTrue(selenium.isPartialText(
+				"xpath=(//div[@class='activity-body'])[1]",
+				"MB Category2 Thread Message Subject"));
+		assertTrue(selenium.isPartialText(
+				"xpath=(//div[@class='activity-body'])[1]",
+				"MB Category2 Thread Message Body"));
+		selenium.clickAt("xpath=(//div[@class='activity-action']/a)[1]",
+			RuntimeVariables.replace("MB Category2 Name"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"MB Category2 Thread Message Subject"),
@@ -81,14 +87,20 @@ public class ViewMBCategoryThreadMessageSiteActivitiesTest extends BaseTestCase 
 		assertEquals(RuntimeVariables.replace("Me"), selenium.getText("link=Me"));
 		selenium.clickAt("link=Me", RuntimeVariables.replace("Me"));
 		selenium.waitForPageToLoad("30000");
+		selenium.waitForVisible("xpath=(//div[@class='activity-user-name'])[2]");
+		assertEquals(RuntimeVariables.replace("Joe in Open Site Name"),
+			selenium.getText("xpath=(//div[@class='activity-user-name'])[2]"));
 		assertEquals(RuntimeVariables.replace(
-				"Joe wrote a new message board post, MB Category1 Thread Message Subject, in Open Site Name."),
-			selenium.getText("xPath=(//div[@class='activity-title'])[2]"));
-		assertEquals(RuntimeVariables.replace("Go to Category"),
-			selenium.getText(
-				"xPath=(//div[@class='activity-body']/a[contains(.,'Go to Category')])[2]"));
-		selenium.clickAt("xPath=(//div[@class='activity-body']/a[contains(.,'Go to Category')])[2]",
-			RuntimeVariables.replace("Go to Category"));
+				"Wrote a new forum post in MB Category1 Name."),
+			selenium.getText("xpath=(//div[@class='activity-action'])[2]"));
+		assertTrue(selenium.isPartialText(
+				"xpath=(//div[@class='activity-body'])[2]",
+				"MB Category1 Thread Message Subject"));
+		assertTrue(selenium.isPartialText(
+				"xpath=(//div[@class='activity-body'])[2]",
+				"MB Category1 Thread Message Body"));
+		selenium.clickAt("xpath=(//div[@class='activity-action']/a)[2]",
+			RuntimeVariables.replace("MB Category1 Name"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"MB Category1 Thread Message Subject"),

@@ -54,6 +54,7 @@ public class DefinePermissionsDocumentUploaderTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Documents and Media Document"),
 			selenium.getText(
 				"//form/h3[contains(.,'Documents and Media Document')]"));
+		Thread.sleep(1000);
 		assertFalse(selenium.isChecked(
 				"xPath=(//th[@class='col-1 col-rowChecker first']/input)[2]"));
 		selenium.clickAt("xPath=(//th[@class='col-1 col-rowChecker first']/input)[2]",

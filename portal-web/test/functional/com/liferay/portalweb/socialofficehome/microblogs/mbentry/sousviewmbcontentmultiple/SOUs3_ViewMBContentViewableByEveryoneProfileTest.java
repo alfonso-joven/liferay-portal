@@ -37,8 +37,9 @@ public class SOUs3_ViewMBContentViewableByEveryoneProfileTest
 		selenium.clickAt("link=Connections",
 			RuntimeVariables.replace("Connections"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("There are no recent activities."),
-			selenium.getText("//div[@class='portrait-social-activities']"));
+		selenium.waitForVisible("//div[@class='no-activities']");
+		assertEquals(RuntimeVariables.replace("There are no activities."),
+			selenium.getText("//div[@class='no-activities']"));
 		assertFalse(selenium.isTextPresent("Connections Microblogs Post"));
 		assertFalse(selenium.isTextPresent("Followers Microblogs Post"));
 		assertFalse(selenium.isTextPresent("Everyone Microblogs Post"));
@@ -46,8 +47,9 @@ public class SOUs3_ViewMBContentViewableByEveryoneProfileTest
 			selenium.getText("link=Following"));
 		selenium.clickAt("link=Following", RuntimeVariables.replace("Following"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("There are no recent activities."),
-			selenium.getText("//div[@class='portrait-social-activities']"));
+		selenium.waitForVisible("//div[@class='no-activities']");
+		assertEquals(RuntimeVariables.replace("There are no activities."),
+			selenium.getText("//div[@class='no-activities']"));
 		assertFalse(selenium.isTextPresent("Connections Microblogs Post"));
 		assertFalse(selenium.isTextPresent("Followers Microblogs Post"));
 		assertFalse(selenium.isTextPresent("Everyone Microblogs Post"));
@@ -63,8 +65,9 @@ public class SOUs3_ViewMBContentViewableByEveryoneProfileTest
 		selenium.open("/web/joebloggs/so/profile");
 		assertEquals(RuntimeVariables.replace("Everyone Microblogs Post"),
 			selenium.getText("//div[@class='content']"));
+		selenium.waitForVisible("//div[@class='activity-action']");
 		assertEquals(RuntimeVariables.replace("Everyone Microblogs Post"),
-			selenium.getText("//div[@class='activity-title']"));
+			selenium.getText("//div[@class='activity-action']"));
 		selenium.clickAt("//nav/ul/li[contains(.,'Microblogs')]/a/span",
 			RuntimeVariables.replace("Microblogs"));
 		selenium.waitForPageToLoad("30000");

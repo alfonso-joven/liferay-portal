@@ -60,7 +60,7 @@ public class SelectAdministratorSOUser2Test extends BaseTestCase {
 					"//input[@id='_125_toggle_id_users_admin_user_searchkeywords']");
 				selenium.type("//input[@id='_125_toggle_id_users_admin_user_searchkeywords']",
 					RuntimeVariables.replace("socialoffice02"));
-				selenium.clickAt("//input[@value='Search']",
+				selenium.clickAt("//div[contains(@id,'user_searchbasic')]/span/span[2]/span/input[@value='Search']",
 					RuntimeVariables.replace("Search"));
 				selenium.waitForPageToLoad("30000");
 				assertEquals(RuntimeVariables.replace("Social02"),
