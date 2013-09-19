@@ -483,12 +483,12 @@ public class DLFolderLocalServiceImpl extends DLFolderLocalServiceBaseImpl {
 				workflowDefinitions.add(
 					new ObjectValuePair<Long, String>(
 						fileEntryTypeId, workflowDefinition));
-				}
-				else {
-					workflowDefinitions.add(
-						new ObjectValuePair<Long, String>(
-							fileEntryTypeId, StringPool.BLANK));
-				}
+			}
+			else {
+				workflowDefinitions.add(
+					new ObjectValuePair<Long, String>(
+						fileEntryTypeId, StringPool.BLANK));
+			}
 		}
 
 		workflowDefinitionLinkLocalService.updateWorkflowDefinitionLinks(
