@@ -44,19 +44,34 @@
 	<td>Open Site Name</td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>xPath=(//div[@class='activity-title'])[1]</td>
-	<td>Joe uploaded a new document, DM Document Title.</td>
+	<td>waitForVisible</td>
+	<td>//div[@class='activity-user-name']</td>
+	<td>Joe</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//div[@class='activity-body']/a[contains(.,'View Document')])[1]</td>
-	<td>View Document</td>
+	<td>//div[@class='activity-user-name']</td>
+	<td>Joe</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@class='activity-action']</td>
+	<td>Uploaded 2 new documents.</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xPath=(//div[@class='activity-subentry']/span/a)[1]</td>
+	<td>DM Folder Document Title</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xPath=(//div[@class='activity-subentry']/span/a)[2]</td>
+	<td>DM Document Title</td>
 </tr>
 <tr>
 	<td>clickAtAndWait</td>
-	<td>xPath=(//div[@class='activity-body']/a[contains(.,'View Document')])[1]</td>
-	<td>View Document</td>
+	<td>xPath=(//div[@class='activity-subentry']/span/a)[2]</td>
+	<td>DM Document Title</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -214,94 +229,34 @@
 	<td>Open Site Name</td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>xPath=(//div[@class='activity-title'])[1]</td>
-	<td>Joe uploaded a new document, DM Document Title.</td>
+	<td>waitForVisible</td>
+	<td>//div[@class='activity-user-name']</td>
+	<td>Joe</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//div[@class='activity-body']/a[contains(.,'Go to Folder')])[1]</td>
-	<td>Go to Folder</td>
-</tr>
-<tr>
-	<td>clickAtAndWait</td>
-	<td>xPath=(//div[@class='activity-body']/a[contains(.,'Go to Folder')])[1]</td>
-	<td>Go to Folder</td>
+	<td>//div[@class='activity-user-name']</td>
+	<td>Joe</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@class='document-library-breadcrumb']/ul/li/span/a</td>
-	<td>Home</td>
+	<td>//div[@class='activity-action']</td>
+	<td>Uploaded 2 new documents.</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>//div[@id='_20_syncNotificationContent']/a</td>
-	<td>Access these files offline using Liferay Sync.</td>
-</tr>
-<tr>
-	<td>assertVisible</td>
-	<td>//span[@class='document-thumbnail']/img</td>
-	<td>DM Document Title Thumbnail</td>
+	<td>xPath=(//div[@class='activity-subentry']/span/a)[1]</td>
+	<td>DM Folder Document Title</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//a[contains(@class,'document-link')]/span[@class='entry-title'])[1]</td>
+	<td>xPath=(//div[@class='activity-subentry']/span/a)[2]</td>
 	<td>DM Document Title</td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>xPath=(//a[contains(@class,'document-link')]/span[@class='entry-title'])[2]</td>
-	<td>DM Folder Name</td>
-</tr>
-<tr>
-	<td>open</td>
-	<td>/user/joebloggs/so/dashboard/</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAt</td>
-	<td>//input[contains(@class,'search-input')]</td>
-	<td>Go to</td>
-</tr>
-<tr>
-	<td>waitForVisible</td>
-	<td>//input[@class='search-input focus']</td>
-	<td>Site Search</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>//input[@class='search-input focus']</td>
-	<td>Open</td>
-</tr>
-<tr>
-	<td>pause</td>
-	<td>1000</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//li[contains(@class, 'social-office-enabled')]/span[2]/a</td>
-	<td>Open Site Name</td>
-</tr>
-<tr>
 	<td>clickAtAndWait</td>
-	<td>//li[contains(@class, 'social-office-enabled')]/span[2]/a</td>
-	<td>Open Site Name</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>xPath=(//div[@class='activity-title'])[2]</td>
-	<td>Joe uploaded a new document, DM Folder Document Title.</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>xPath=(//div[@class='activity-body']/a[contains(.,'View Document')])[2]</td>
-	<td>View Document</td>
-</tr>
-<tr>
-	<td>clickAtAndWait</td>
-	<td>xPath=(//div[@class='activity-body']/a[contains(.,'View Document')])[2]</td>
-	<td>View Document</td>
+	<td>xPath=(//div[@class='activity-subentry']/span/a)[1]</td>
+	<td>DM Folder Document Title</td>
 </tr>
 <tr>
 	<td>assertText</td>
@@ -422,81 +377,6 @@
 	<td>assertText</td>
 	<td>//span[@class='webdav-url']</td>
 	<td>Get URL or WebDAV URL.</td>
-</tr>
-<tr>
-	<td>open</td>
-	<td>/user/joebloggs/so/dashboard/</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAt</td>
-	<td>//input[contains(@class,'search-input')]</td>
-	<td>Go to</td>
-</tr>
-<tr>
-	<td>waitForVisible</td>
-	<td>//input[@class='search-input focus']</td>
-	<td>Site Search</td>
-</tr>
-<tr>
-	<td>type</td>
-	<td>//input[@class='search-input focus']</td>
-	<td>Open</td>
-</tr>
-<tr>
-	<td>pause</td>
-	<td>1000</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//li[contains(@class, 'social-office-enabled')]/span[2]/a</td>
-	<td>Open Site Name</td>
-</tr>
-<tr>
-	<td>clickAtAndWait</td>
-	<td>//li[contains(@class, 'social-office-enabled')]/span[2]/a</td>
-	<td>Open Site Name</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>xPath=(//div[@class='activity-title'])[2]</td>
-	<td>Joe uploaded a new document, DM Folder Document Title.</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>xPath=(//div[@class='activity-body']/a[contains(.,'Go to Folder')])[2]</td>
-	<td>Go to Folder</td>
-</tr>
-<tr>
-	<td>clickAtAndWait</td>
-	<td>xPath=(//div[@class='activity-body']/a[contains(.,'Go to Folder')])[2]</td>
-	<td>Go to Folder</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>xPath=(//div[@class='document-library-breadcrumb']/ul/li/span/a)[1]</td>
-	<td>Home</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>xPath=(//div[@class='document-library-breadcrumb']/ul/li/span/a)[2]</td>
-	<td>DM Folder Name</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//div[@id='_20_syncNotificationContent']/a</td>
-	<td>Access these files offline using Liferay Sync.</td>
-</tr>
-<tr>
-	<td>assertVisible</td>
-	<td>//span[@class='document-thumbnail']/img</td>
-	<td>DM Folder Document Title Thumbnail</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>//a[contains(@class,'document-link')]/span[@class='entry-title']</td>
-	<td>DM Folder Document Title</td>
 </tr>
 </tbody></table>
 </body>

@@ -44,7 +44,7 @@ public class SOUs_ViewBlogsEntrySiteTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isVisible("//input[@id='_33_keywords']"));
 		assertTrue(selenium.isVisible(
-				"xPath=(//div[contains(@class,'search-form')]/div/span[2]/span/input[@value='Search'])[2]"));
+				"//form[contains(@id,'_33_')]/div/div/span[2]/span/input[@value='Search']"));
 		assertEquals(RuntimeVariables.replace("Blogs Entry1 Title"),
 			selenium.getText("//div[@class='entry-title']/h2/a"));
 		assertTrue(selenium.isVisible("//div[@class='entry-date']"));

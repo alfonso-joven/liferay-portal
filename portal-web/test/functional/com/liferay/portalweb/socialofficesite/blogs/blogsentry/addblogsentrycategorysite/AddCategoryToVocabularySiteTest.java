@@ -51,10 +51,10 @@ public class AddCategoryToVocabularySiteTest extends BaseTestCase {
 		selenium.waitForElementPresent(
 			"//script[contains(@src,'/liferay/panel_floating.js')]");
 		Thread.sleep(1000);
-		selenium.waitForVisible("//input[@id='_147_categoryName_en_US']");
-		selenium.type("//input[@id='_147_categoryName_en_US']",
+		selenium.waitForVisible("//span[contains(.,'Name')]/span/span/input");
+		selenium.type("//span[contains(.,'Name')]/span/span/input",
 			RuntimeVariables.replace("Category Name"));
-		selenium.type("//textarea[@id='_147_categoryDescription_en_US']",
+		selenium.type("//span[contains(.,'Description')]/span/span/textarea",
 			RuntimeVariables.replace("Category Description"));
 		selenium.select("//select[@id='_147_vocabularyId']",
 			RuntimeVariables.replace("Vocabulary Name"));

@@ -51,6 +51,7 @@ public class DefinePermissionsSiteMemberTest extends BaseTestCase {
 		selenium.waitForText("//form/h3[contains(.,'Blogs')]", "Blogs");
 		assertEquals(RuntimeVariables.replace("Blogs"),
 			selenium.getText("//form/h3[contains(.,'Blogs')]"));
+		Thread.sleep(1000);
 		assertFalse(selenium.isChecked(
 				"xPath=(//th[@class='col-1 col-rowChecker first']/input)[1]"));
 		selenium.clickAt("xPath=(//th[@class='col-1 col-rowChecker first']/input)[1]",

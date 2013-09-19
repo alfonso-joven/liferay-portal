@@ -43,9 +43,9 @@ public class ViewEditBookmarksEntrySiteTest extends BaseTestCase {
 		selenium.clickAt("//td[@id='_28_bookmarksEntriesSearchContainer_col-name_row-1']/a",
 			RuntimeVariables.replace("Bookmarks Entry Name Edit"));
 		Thread.sleep(5000);
-		selenium.selectWindow("title=Yahoo!");
-		selenium.waitForVisible("//a[contains(.,'Yahoo')]");
-		assertTrue(selenium.isVisible("//a[contains(.,'Yahoo')]"));
+		selenium.selectWindow("title=Yahoo");
+		selenium.waitForVisible("//h1/a[contains(.,'Yahoo')]/span");
+		assertTrue(selenium.isVisible("//h1/a[contains(.,'Yahoo')]/span"));
 		selenium.close();
 		selenium.selectWindow("null");
 		Thread.sleep(1000);

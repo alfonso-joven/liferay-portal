@@ -38,14 +38,19 @@ public class ViewDMFolderDocumentSiteActivitiesSiteTest extends BaseTestCase {
 		selenium.clickAt("//li[contains(@class, 'social-office-enabled')]/span[2]/a",
 			RuntimeVariables.replace("Open Site Name"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace(
-				"Joe uploaded a new document, DM Document Title."),
-			selenium.getText("xPath=(//div[@class='activity-title'])[1]"));
-		assertEquals(RuntimeVariables.replace("View Document"),
+		selenium.waitForVisible("//div[@class='activity-user-name']");
+		assertEquals(RuntimeVariables.replace("Joe"),
+			selenium.getText("//div[@class='activity-user-name']"));
+		assertEquals(RuntimeVariables.replace("Uploaded 2 new documents."),
+			selenium.getText("//div[@class='activity-action']"));
+		assertEquals(RuntimeVariables.replace("DM Folder Document Title"),
 			selenium.getText(
-				"xPath=(//div[@class='activity-body']/a[contains(.,'View Document')])[1]"));
-		selenium.clickAt("xPath=(//div[@class='activity-body']/a[contains(.,'View Document')])[1]",
-			RuntimeVariables.replace("View Document"));
+				"xPath=(//div[@class='activity-subentry']/span/a)[1]"));
+		assertEquals(RuntimeVariables.replace("DM Document Title"),
+			selenium.getText(
+				"xPath=(//div[@class='activity-subentry']/span/a)[2]"));
+		selenium.clickAt("xPath=(//div[@class='activity-subentry']/span/a)[2]",
+			RuntimeVariables.replace("DM Document Title"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Download"),
 			selenium.getText(
@@ -115,49 +120,19 @@ public class ViewDMFolderDocumentSiteActivitiesSiteTest extends BaseTestCase {
 		selenium.clickAt("//li[contains(@class, 'social-office-enabled')]/span[2]/a",
 			RuntimeVariables.replace("Open Site Name"));
 		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace(
-				"Joe uploaded a new document, DM Document Title."),
-			selenium.getText("xPath=(//div[@class='activity-title'])[1]"));
-		assertEquals(RuntimeVariables.replace("Go to Folder"),
+		selenium.waitForVisible("//div[@class='activity-user-name']");
+		assertEquals(RuntimeVariables.replace("Joe"),
+			selenium.getText("//div[@class='activity-user-name']"));
+		assertEquals(RuntimeVariables.replace("Uploaded 2 new documents."),
+			selenium.getText("//div[@class='activity-action']"));
+		assertEquals(RuntimeVariables.replace("DM Folder Document Title"),
 			selenium.getText(
-				"xPath=(//div[@class='activity-body']/a[contains(.,'Go to Folder')])[1]"));
-		selenium.clickAt("xPath=(//div[@class='activity-body']/a[contains(.,'Go to Folder')])[1]",
-			RuntimeVariables.replace("Go to Folder"));
-		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Home"),
-			selenium.getText(
-				"//div[@class='document-library-breadcrumb']/ul/li/span/a"));
-		assertEquals(RuntimeVariables.replace(
-				"Access these files offline using Liferay Sync."),
-			selenium.getText("//div[@id='_20_syncNotificationContent']/a"));
-		assertTrue(selenium.isVisible("//span[@class='document-thumbnail']/img"));
+				"xPath=(//div[@class='activity-subentry']/span/a)[1]"));
 		assertEquals(RuntimeVariables.replace("DM Document Title"),
 			selenium.getText(
-				"xPath=(//a[contains(@class,'document-link')]/span[@class='entry-title'])[1]"));
-		assertEquals(RuntimeVariables.replace("DM Folder Name"),
-			selenium.getText(
-				"xPath=(//a[contains(@class,'document-link')]/span[@class='entry-title'])[2]"));
-		selenium.open("/user/joebloggs/so/dashboard/");
-		selenium.clickAt("//input[contains(@class,'search-input')]",
-			RuntimeVariables.replace("Go to"));
-		selenium.waitForVisible("//input[@class='search-input focus']");
-		selenium.type("//input[@class='search-input focus']",
-			RuntimeVariables.replace("Open"));
-		Thread.sleep(1000);
-		assertEquals(RuntimeVariables.replace("Open Site Name"),
-			selenium.getText(
-				"//li[contains(@class, 'social-office-enabled')]/span[2]/a"));
-		selenium.clickAt("//li[contains(@class, 'social-office-enabled')]/span[2]/a",
-			RuntimeVariables.replace("Open Site Name"));
-		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace(
-				"Joe uploaded a new document, DM Folder Document Title."),
-			selenium.getText("xPath=(//div[@class='activity-title'])[2]"));
-		assertEquals(RuntimeVariables.replace("View Document"),
-			selenium.getText(
-				"xPath=(//div[@class='activity-body']/a[contains(.,'View Document')])[2]"));
-		selenium.clickAt("xPath=(//div[@class='activity-body']/a[contains(.,'View Document')])[2]",
-			RuntimeVariables.replace("View Document"));
+				"xPath=(//div[@class='activity-subentry']/span/a)[2]"));
+		selenium.clickAt("xPath=(//div[@class='activity-subentry']/span/a)[1]",
+			RuntimeVariables.replace("DM Folder Document Title"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace("Download"),
 			selenium.getText(
@@ -214,40 +189,5 @@ public class ViewDMFolderDocumentSiteActivitiesSiteTest extends BaseTestCase {
 			selenium.getText("//span[@class='download-document']/span/a/span"));
 		assertEquals(RuntimeVariables.replace("Get URL or WebDAV URL."),
 			selenium.getText("//span[@class='webdav-url']"));
-		selenium.open("/user/joebloggs/so/dashboard/");
-		selenium.clickAt("//input[contains(@class,'search-input')]",
-			RuntimeVariables.replace("Go to"));
-		selenium.waitForVisible("//input[@class='search-input focus']");
-		selenium.type("//input[@class='search-input focus']",
-			RuntimeVariables.replace("Open"));
-		Thread.sleep(1000);
-		assertEquals(RuntimeVariables.replace("Open Site Name"),
-			selenium.getText(
-				"//li[contains(@class, 'social-office-enabled')]/span[2]/a"));
-		selenium.clickAt("//li[contains(@class, 'social-office-enabled')]/span[2]/a",
-			RuntimeVariables.replace("Open Site Name"));
-		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace(
-				"Joe uploaded a new document, DM Folder Document Title."),
-			selenium.getText("xPath=(//div[@class='activity-title'])[2]"));
-		assertEquals(RuntimeVariables.replace("Go to Folder"),
-			selenium.getText(
-				"xPath=(//div[@class='activity-body']/a[contains(.,'Go to Folder')])[2]"));
-		selenium.clickAt("xPath=(//div[@class='activity-body']/a[contains(.,'Go to Folder')])[2]",
-			RuntimeVariables.replace("Go to Folder"));
-		selenium.waitForPageToLoad("30000");
-		assertEquals(RuntimeVariables.replace("Home"),
-			selenium.getText(
-				"xPath=(//div[@class='document-library-breadcrumb']/ul/li/span/a)[1]"));
-		assertEquals(RuntimeVariables.replace("DM Folder Name"),
-			selenium.getText(
-				"xPath=(//div[@class='document-library-breadcrumb']/ul/li/span/a)[2]"));
-		assertEquals(RuntimeVariables.replace(
-				"Access these files offline using Liferay Sync."),
-			selenium.getText("//div[@id='_20_syncNotificationContent']/a"));
-		assertTrue(selenium.isVisible("//span[@class='document-thumbnail']/img"));
-		assertEquals(RuntimeVariables.replace("DM Folder Document Title"),
-			selenium.getText(
-				"//a[contains(@class,'document-link')]/span[@class='entry-title']"));
 	}
 }
