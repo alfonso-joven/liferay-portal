@@ -866,6 +866,354 @@ public class RoleUtil {
 	}
 
 	/**
+	* Returns all the roles where companyId = &#63; and type = &#63;.
+	*
+	* @param companyId the company ID
+	* @param type the type
+	* @return the matching roles
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<com.liferay.portal.model.Role> findByC_T(
+		long companyId, int type)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().findByC_T(companyId, type);
+	}
+
+	/**
+	* Returns a range of all the roles where companyId = &#63; and type = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param companyId the company ID
+	* @param type the type
+	* @param start the lower bound of the range of roles
+	* @param end the upper bound of the range of roles (not inclusive)
+	* @return the range of matching roles
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<com.liferay.portal.model.Role> findByC_T(
+		long companyId, int type, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().findByC_T(companyId, type, start, end);
+	}
+
+	/**
+	* Returns an ordered range of all the roles where companyId = &#63; and type = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param companyId the company ID
+	* @param type the type
+	* @param start the lower bound of the range of roles
+	* @param end the upper bound of the range of roles (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching roles
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<com.liferay.portal.model.Role> findByC_T(
+		long companyId, int type, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .findByC_T(companyId, type, start, end, orderByComparator);
+	}
+
+	/**
+	* Returns the first role in the ordered set where companyId = &#63; and type = &#63;.
+	*
+	* @param companyId the company ID
+	* @param type the type
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching role
+	* @throws com.liferay.portal.NoSuchRoleException if a matching role could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static com.liferay.portal.model.Role findByC_T_First(
+		long companyId, int type,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.NoSuchRoleException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .findByC_T_First(companyId, type, orderByComparator);
+	}
+
+	/**
+	* Returns the first role in the ordered set where companyId = &#63; and type = &#63;.
+	*
+	* @param companyId the company ID
+	* @param type the type
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the first matching role, or <code>null</code> if a matching role could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static com.liferay.portal.model.Role fetchByC_T_First(
+		long companyId, int type,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .fetchByC_T_First(companyId, type, orderByComparator);
+	}
+
+	/**
+	* Returns the last role in the ordered set where companyId = &#63; and type = &#63;.
+	*
+	* @param companyId the company ID
+	* @param type the type
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching role
+	* @throws com.liferay.portal.NoSuchRoleException if a matching role could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static com.liferay.portal.model.Role findByC_T_Last(long companyId,
+		int type,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.NoSuchRoleException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .findByC_T_Last(companyId, type, orderByComparator);
+	}
+
+	/**
+	* Returns the last role in the ordered set where companyId = &#63; and type = &#63;.
+	*
+	* @param companyId the company ID
+	* @param type the type
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the last matching role, or <code>null</code> if a matching role could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static com.liferay.portal.model.Role fetchByC_T_Last(
+		long companyId, int type,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .fetchByC_T_Last(companyId, type, orderByComparator);
+	}
+
+	/**
+	* Returns the roles before and after the current role in the ordered set where companyId = &#63; and type = &#63;.
+	*
+	* @param roleId the primary key of the current role
+	* @param companyId the company ID
+	* @param type the type
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next role
+	* @throws com.liferay.portal.NoSuchRoleException if a role with the primary key could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static com.liferay.portal.model.Role[] findByC_T_PrevAndNext(
+		long roleId, long companyId, int type,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.NoSuchRoleException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .findByC_T_PrevAndNext(roleId, companyId, type,
+			orderByComparator);
+	}
+
+	/**
+	* Returns all the roles where companyId = &#63; and type = any &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param companyId the company ID
+	* @param types the types
+	* @return the matching roles
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<com.liferay.portal.model.Role> findByC_T(
+		long companyId, int[] types)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().findByC_T(companyId, types);
+	}
+
+	/**
+	* Returns a range of all the roles where companyId = &#63; and type = any &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param companyId the company ID
+	* @param types the types
+	* @param start the lower bound of the range of roles
+	* @param end the upper bound of the range of roles (not inclusive)
+	* @return the range of matching roles
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<com.liferay.portal.model.Role> findByC_T(
+		long companyId, int[] types, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().findByC_T(companyId, types, start, end);
+	}
+
+	/**
+	* Returns an ordered range of all the roles where companyId = &#63; and type = any &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param companyId the company ID
+	* @param types the types
+	* @param start the lower bound of the range of roles
+	* @param end the upper bound of the range of roles (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching roles
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<com.liferay.portal.model.Role> findByC_T(
+		long companyId, int[] types, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .findByC_T(companyId, types, start, end, orderByComparator);
+	}
+
+	/**
+	* Returns all the roles that the user has permission to view where companyId = &#63; and type = &#63;.
+	*
+	* @param companyId the company ID
+	* @param type the type
+	* @return the matching roles that the user has permission to view
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<com.liferay.portal.model.Role> filterFindByC_T(
+		long companyId, int type)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().filterFindByC_T(companyId, type);
+	}
+
+	/**
+	* Returns a range of all the roles that the user has permission to view where companyId = &#63; and type = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param companyId the company ID
+	* @param type the type
+	* @param start the lower bound of the range of roles
+	* @param end the upper bound of the range of roles (not inclusive)
+	* @return the range of matching roles that the user has permission to view
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<com.liferay.portal.model.Role> filterFindByC_T(
+		long companyId, int type, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().filterFindByC_T(companyId, type, start, end);
+	}
+
+	/**
+	* Returns an ordered range of all the roles that the user has permissions to view where companyId = &#63; and type = &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param companyId the company ID
+	* @param type the type
+	* @param start the lower bound of the range of roles
+	* @param end the upper bound of the range of roles (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching roles that the user has permission to view
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<com.liferay.portal.model.Role> filterFindByC_T(
+		long companyId, int type, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .filterFindByC_T(companyId, type, start, end,
+			orderByComparator);
+	}
+
+	/**
+	* Returns the roles before and after the current role in the ordered set of roles that the user has permission to view where companyId = &#63; and type = &#63;.
+	*
+	* @param roleId the primary key of the current role
+	* @param companyId the company ID
+	* @param type the type
+	* @param orderByComparator the comparator to order the set by (optionally <code>null</code>)
+	* @return the previous, current, and next role
+	* @throws com.liferay.portal.NoSuchRoleException if a role with the primary key could not be found
+	* @throws SystemException if a system exception occurred
+	*/
+	public static com.liferay.portal.model.Role[] filterFindByC_T_PrevAndNext(
+		long roleId, long companyId, int type,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.NoSuchRoleException,
+			com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .filterFindByC_T_PrevAndNext(roleId, companyId, type,
+			orderByComparator);
+	}
+
+	/**
+	* Returns all the roles that the user has permission to view where companyId = &#63; and type = any &#63;.
+	*
+	* @param companyId the company ID
+	* @param types the types
+	* @return the matching roles that the user has permission to view
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<com.liferay.portal.model.Role> filterFindByC_T(
+		long companyId, int[] types)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().filterFindByC_T(companyId, types);
+	}
+
+	/**
+	* Returns a range of all the roles that the user has permission to view where companyId = &#63; and type = any &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param companyId the company ID
+	* @param types the types
+	* @param start the lower bound of the range of roles
+	* @param end the upper bound of the range of roles (not inclusive)
+	* @return the range of matching roles that the user has permission to view
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<com.liferay.portal.model.Role> filterFindByC_T(
+		long companyId, int[] types, int start, int end)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().filterFindByC_T(companyId, types, start, end);
+	}
+
+	/**
+	* Returns an ordered range of all the roles that the user has permission to view where companyId = &#63; and type = any &#63;.
+	*
+	* <p>
+	* Useful when paginating results. Returns a maximum of <code>end - start</code> instances. <code>start</code> and <code>end</code> are not primary keys, they are indexes in the result set. Thus, <code>0</code> refers to the first result in the set. Setting both <code>start</code> and <code>end</code> to {@link com.liferay.portal.kernel.dao.orm.QueryUtil#ALL_POS} will return the full result set.
+	* </p>
+	*
+	* @param companyId the company ID
+	* @param types the types
+	* @param start the lower bound of the range of roles
+	* @param end the upper bound of the range of roles (not inclusive)
+	* @param orderByComparator the comparator to order the results by (optionally <code>null</code>)
+	* @return the ordered range of matching roles that the user has permission to view
+	* @throws SystemException if a system exception occurred
+	*/
+	public static java.util.List<com.liferay.portal.model.Role> filterFindByC_T(
+		long companyId, int[] types, int start, int end,
+		com.liferay.portal.kernel.util.OrderByComparator orderByComparator)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence()
+				   .filterFindByC_T(companyId, types, start, end,
+			orderByComparator);
+	}
+
+	/**
 	* Returns all the roles where type = &#63; and subtype = &#63;.
 	*
 	* @param type the type
@@ -1238,6 +1586,18 @@ public class RoleUtil {
 	}
 
 	/**
+	* Removes all the roles where companyId = &#63; and type = &#63; from the database.
+	*
+	* @param companyId the company ID
+	* @param type the type
+	* @throws SystemException if a system exception occurred
+	*/
+	public static void removeByC_T(long companyId, int type)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		getPersistence().removeByC_T(companyId, type);
+	}
+
+	/**
 	* Removes all the roles where type = &#63; and subtype = &#63; from the database.
 	*
 	* @param type the type
@@ -1358,6 +1718,58 @@ public class RoleUtil {
 	public static int countByC_N(long companyId, java.lang.String name)
 		throws com.liferay.portal.kernel.exception.SystemException {
 		return getPersistence().countByC_N(companyId, name);
+	}
+
+	/**
+	* Returns the number of roles where companyId = &#63; and type = &#63;.
+	*
+	* @param companyId the company ID
+	* @param type the type
+	* @return the number of matching roles
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByC_T(long companyId, int type)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().countByC_T(companyId, type);
+	}
+
+	/**
+	* Returns the number of roles where companyId = &#63; and type = any &#63;.
+	*
+	* @param companyId the company ID
+	* @param types the types
+	* @return the number of matching roles
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int countByC_T(long companyId, int[] types)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().countByC_T(companyId, types);
+	}
+
+	/**
+	* Returns the number of roles that the user has permission to view where companyId = &#63; and type = &#63;.
+	*
+	* @param companyId the company ID
+	* @param type the type
+	* @return the number of matching roles that the user has permission to view
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int filterCountByC_T(long companyId, int type)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().filterCountByC_T(companyId, type);
+	}
+
+	/**
+	* Returns the number of roles that the user has permission to view where companyId = &#63; and type = any &#63;.
+	*
+	* @param companyId the company ID
+	* @param types the types
+	* @return the number of matching roles that the user has permission to view
+	* @throws SystemException if a system exception occurred
+	*/
+	public static int filterCountByC_T(long companyId, int[] types)
+		throws com.liferay.portal.kernel.exception.SystemException {
+		return getPersistence().filterCountByC_T(companyId, types);
 	}
 
 	/**

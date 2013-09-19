@@ -635,6 +635,7 @@ create index IX_5F076332 on Resource_ (primKey);
 create index IX_449A10B9 on Role_ (companyId);
 create unique index IX_A88E424E on Role_ (companyId, classNameId, classPK);
 create unique index IX_EBC931B8 on Role_ (companyId, name);
+create index IX_F3E1C6FC on Role_ (companyId, type_);
 create index IX_F436EC8E on Role_ (name);
 create index IX_5EB4E2FB on Role_ (subtype);
 create index IX_CBE204 on Role_ (type_, subtype);
