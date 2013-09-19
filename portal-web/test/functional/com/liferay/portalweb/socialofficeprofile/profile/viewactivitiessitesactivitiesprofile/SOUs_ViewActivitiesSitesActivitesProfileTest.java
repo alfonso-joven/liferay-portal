@@ -33,30 +33,65 @@ public class SOUs_ViewActivitiesSitesActivitesProfileTest extends BaseTestCase {
 			selenium.getText("//div[@class='lfr-contact-name']/a"));
 		assertEquals(RuntimeVariables.replace("socialoffice01@liferay.com"),
 			selenium.getText("//div[@class='lfr-contact-extra']"));
-		assertEquals(RuntimeVariables.replace(
-				"Social01 added a new bookmarks entry, Bookmarks Entry2 Name, in Open Site Name."),
-			selenium.getText("xPath=(//div[@class='activity-title'])[1]"));
-		assertEquals(RuntimeVariables.replace(
-				"Social01 updated a wiki page, FrontPage, in Open Site Name."),
-			selenium.getText("xPath=(//div[@class='activity-title'])[2]"));
-		assertEquals(RuntimeVariables.replace(
-				"Social01 wrote a new blog entry, Blogs Entry2 Title, in Open Site Name."),
-			selenium.getText("xPath=(//div[@class='activity-title'])[3]"));
-		assertEquals(RuntimeVariables.replace(
-				"Social01 wrote a new message board post, MB Category Thread2 Message Subject, in Open Site Name."),
-			selenium.getText("xPath=(//div[@class='activity-title'])[4]"));
+		selenium.waitForVisible("xpath=(//div[@class='activity-user-name'])[1]");
+		assertEquals(RuntimeVariables.replace("Social01 in Open Site Name"),
+			selenium.getText("xpath=(//div[@class='activity-user-name'])[1]"));
+		assertEquals(RuntimeVariables.replace("Added a new bookmark."),
+			selenium.getText("xpath=(//div[@class='activity-action'])[1]"));
 		assertTrue(selenium.isPartialText(
-				"xPath=(//div[@class='activity-body'])[4]", "Go to Category"));
-		assertEquals(RuntimeVariables.replace(
-				"Social01 uploaded a new document, DM Folder Document2 Title, in Open Site Name."),
-			selenium.getText("xPath=(//div[@class='activity-title'])[5]"));
+				"xpath=(//div[@class='activity-body'])[1]",
+				"Bookmarks Entry2 Name"));
 		assertTrue(selenium.isPartialText(
-				"xPath=(//div[@class='activity-body'])[5]", "View Document"));
-		assertTrue(selenium.isPartialText(
-				"xPath=(//div[@class='activity-body'])[5]", "Go to Folder"));
+				"xpath=(//div[@class='activity-body'])[1]",
+				"Bookmarks Entry2 Description"));
+		assertEquals(RuntimeVariables.replace("Social01 in Open Site Name"),
+			selenium.getText("xpath=(//div[@class='activity-user-name'])[2]"));
 		assertEquals(RuntimeVariables.replace(
-				"Social01 added a new calendar event, Calendar Event2 Title, in Open Site Name."),
-			selenium.getText("xPath=(//div[@class='activity-title'])[6]"));
+				"Updated a wiki page in the Main wiki."),
+			selenium.getText("xpath=(//div[@class='activity-action'])[2]"));
+		assertTrue(selenium.isPartialText(
+				"xpath=(//div[@class='activity-body'])[2]", "FrontPage"));
+		assertTrue(selenium.isPartialText(
+				"xpath=(//div[@class='activity-body'])[2]",
+				"Wiki FrontPage Content Edit2"));
+		assertEquals(RuntimeVariables.replace("Social01 in Open Site Name"),
+			selenium.getText("xpath=(//div[@class='activity-user-name'])[3]"));
+		assertEquals(RuntimeVariables.replace("Wrote a new blog entry."),
+			selenium.getText("xpath=(//div[@class='activity-action'])[3]"));
+		assertTrue(selenium.isPartialText(
+				"xpath=(//div[@class='activity-body'])[3]", "Blogs Entry2 Title"));
+		assertTrue(selenium.isPartialText(
+				"xpath=(//div[@class='activity-body'])[3]",
+				"Blogs Entry2 Content"));
+		assertEquals(RuntimeVariables.replace("Social01 in Open Site Name"),
+			selenium.getText("xpath=(//div[@class='activity-user-name'])[4]"));
+		assertEquals(RuntimeVariables.replace(
+				"Wrote a new forum post in MB Category Name."),
+			selenium.getText("xpath=(//div[@class='activity-action'])[4]"));
+		assertTrue(selenium.isPartialText(
+				"xpath=(//div[@class='activity-body'])[4]",
+				"MB Category Thread2 Message Subject"));
+		assertTrue(selenium.isPartialText(
+				"xpath=(//div[@class='activity-body'])[4]",
+				"MB Category Thread2 Message Body"));
+		assertEquals(RuntimeVariables.replace("Social01 in Open Site Name"),
+			selenium.getText("xpath=(//div[@class='activity-user-name'])[5]"));
+		assertEquals(RuntimeVariables.replace(
+				"Uploaded a new document in the DM Folder Name folder."),
+			selenium.getText("xpath=(//div[@class='activity-action'])[5]"));
+		assertTrue(selenium.isPartialText(
+				"//div[@class='document-container']",
+				"DM Folder Document2 Title"));
+		assertEquals(RuntimeVariables.replace("Social01 in Open Site Name"),
+			selenium.getText("xpath=(//div[@class='activity-user-name'])[6]"));
+		assertEquals(RuntimeVariables.replace("Added a new calendar event."),
+			selenium.getText("xpath=(//div[@class='activity-action'])[6]"));
+		assertTrue(selenium.isPartialText(
+				"xpath=(//div[@class='activity-body'])[5]",
+				"Calendar Event2 Title"));
+		assertTrue(selenium.isPartialText(
+				"xpath=(//div[@class='activity-body'])[5]",
+				"Calendar Event2 Description"));
 		assertFalse(selenium.isTextPresent("Bookmarks Entry1 Name"));
 		assertFalse(selenium.isTextPresent("Blogs Entry1 Title"));
 		assertFalse(selenium.isTextPresent(

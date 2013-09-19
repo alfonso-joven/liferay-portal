@@ -32,13 +32,9 @@ public class SOUs_ViewActivitiesProfileTest extends BaseTestCase {
 			selenium.getText("xPath=(//div[@class='lfr-contact-name']/a)[2]"));
 		assertEquals(RuntimeVariables.replace("socialoffice01@liferay.com"),
 			selenium.getText("//div[@class='lfr-contact-extra']"));
-		assertEquals(RuntimeVariables.replace(
-				"Joe Bloggs added a new task for Social01."),
-			selenium.getText("xPath=(//div[@class='activity-title'])[1]"));
-		assertTrue(selenium.isPartialText(
-				"xPath=(//div[@class='activity-body'])[1]", "Task2 Description"));
-		assertTrue(selenium.isElementNotPresent(
-				"xPath=(//div[@class='activity-title'])[2]"));
+		selenium.waitForVisible("//div[@class='no-activities']");
+		assertEquals(RuntimeVariables.replace("There are no activities."),
+			selenium.getText("//div[@class='no-activities']"));
 		assertFalse(selenium.isTextPresent("Microblogs Post1"));
 		assertFalse(selenium.isTextPresent("Microblogs Post2"));
 		assertFalse(selenium.isTextPresent("DM Folder Document1 Title"));

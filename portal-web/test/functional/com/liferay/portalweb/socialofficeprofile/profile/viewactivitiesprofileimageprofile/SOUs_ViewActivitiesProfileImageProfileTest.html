@@ -34,34 +34,59 @@
 	<td>socialoffice01@liferay.com</td>
 </tr>
 <tr>
+	<td>waitForVisible</td>
+	<td>xpath=(//span[@class='avatar']/a/img[@alt='Social01 Office01 User01'])[1]</td>
+	<td>Profile Image</td>
+</tr>
+<tr>
 	<td>assertElementPresent</td>
-	<td>xpath=(//span[@class='avatar']/img[@alt='Social01 Office01 User01'])[1]</td>
+	<td>xpath=(//span[@class='avatar']/a/img[@alt='Social01 Office01 User01'])[1]</td>
 	<td>Profile Image</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xpath=(//div[@class='activity-title'])[1]</td>
-	<td>Social01 commented on Joe Bloggs's blog entry, Blogs Entry Comment Body..., in Open Site Name.</td>
+	<td>xpath=(//div[@class='activity-user-name'])[1]</td>
+	<td>Social01 in Open Site Name</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(//div[@class='activity-action'])[1]</td>
+	<td>Commented on a blog entry.</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>xpath=(//div[@class='activity-body'])[1]</td>
+	<td>Blogs Entry Title</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>xpath=(//div[@class='activity-body'])[1]</td>
+	<td>Blogs Entry Content</td>
 </tr>
 <tr>
 	<td>assertElementPresent</td>
-	<td>xpath=(//span[@class='avatar']/img[@alt='Social01 Office01 User01'])[2]</td>
+	<td>xpath=(//span[@class='avatar']/a/img[@alt='Social01 Office01 User01'])[2]</td>
 	<td>Profile Image</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xpath=(//div[@class='activity-title'])[2]</td>
-	<td>Social01 replied to Joe Bloggs's message board post, RE: MB Category Thread Message Subject, in Open Site Name.</td>
-</tr>
-<tr>
-	<td>assertElementPresent</td>
-	<td>xpath=(//span[@class='avatar']/img[@alt='Social01 Office01 User01'])[3]</td>
-	<td>Profile Image</td>
+	<td>xpath=(//div[@class='activity-user-name'])[2]</td>
+	<td>Social01 in Open Site Name</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xpath=(//div[@class='activity-title'])[3]</td>
-	<td>@Joe Bloggs: Microblogs Post Comment</td>
+	<td>xpath=(//div[@class='activity-action'])[2]</td>
+	<td>Replied to Joe Bloggs's forum post in MB Category Name.</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>xpath=(//div[@class='activity-body'])[2]</td>
+	<td>RE: MB Category Thread Message Subject</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>xpath=(//div[@class='activity-body'])[2]</td>
+	<td>MB Category Thread Message Reply Body</td>
 </tr>
 </tbody></table>
 </body>

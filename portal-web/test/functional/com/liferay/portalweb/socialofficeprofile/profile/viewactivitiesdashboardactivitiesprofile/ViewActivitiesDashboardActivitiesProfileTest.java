@@ -33,35 +33,17 @@ public class ViewActivitiesDashboardActivitiesProfileTest extends BaseTestCase {
 			selenium.getText("xPath=(//div[@class='lfr-contact-name']/a)[2]"));
 		assertEquals(RuntimeVariables.replace("test@liferay.com"),
 			selenium.getText("//div[@class='lfr-contact-extra']"));
-		assertEquals(RuntimeVariables.replace(
-				"Social01 Office01 User01 added a new task for Joe."),
-			selenium.getText("xPath=(//div[@class='activity-title'])[1]"));
+		selenium.waitForVisible("xPath=(//div[@class='activity-user-name'])[1]");
+		assertEquals(RuntimeVariables.replace("Joe"),
+			selenium.getText("xPath=(//div[@class='activity-user-name'])[1]"));
 		assertTrue(selenium.isPartialText(
-				"xPath=(//div[@class='activity-body'])[1]", "Task4 Description"));
-		assertEquals(RuntimeVariables.replace(
-				"Joe added a new task for Social01 Office01 User01."),
-			selenium.getText("xPath=(//div[@class='activity-title'])[2]"));
+				"xPath=(//div[@class='activity-action'])[1]", "Microblogs Post2"));
 		assertTrue(selenium.isPartialText(
-				"xPath=(//div[@class='activity-body'])[2]", "Task2 Description"));
-		assertEquals(RuntimeVariables.replace("Joe added a new task."),
-			selenium.getText("xPath=(//div[@class='activity-title'])[3]"));
+				"xPath=(//div[@class='activity-action']/a)[1]", "Microblogs"));
+		assertEquals(RuntimeVariables.replace("Joe"),
+			selenium.getText("xPath=(//div[@class='activity-user-name'])[2]"));
 		assertTrue(selenium.isPartialText(
-				"xPath=(//div[@class='activity-body'])[3]", "Task1 Description"));
-		assertEquals(RuntimeVariables.replace(
-				"Joe uploaded a new document, DM Folder Document1 Title."),
-			selenium.getText("xPath=(//div[@class='activity-title'])[4]"));
-		assertTrue(selenium.isPartialText(
-				"xPath=(//div[@class='activity-body'])[4]", "View Document"));
-		assertTrue(selenium.isPartialText(
-				"xPath=(//div[@class='activity-body'])[4]", "Go to Folder"));
-		assertEquals(RuntimeVariables.replace("#Microblogs Post2"),
-			selenium.getText("xPath=(//div[@class='activity-title'])[5]"));
-		assertTrue(selenium.isPartialText(
-				"xPath=(//div[@class='activity-body'])[5]", "Joe"));
-		assertEquals(RuntimeVariables.replace("Microblogs Post1"),
-			selenium.getText("xPath=(//div[@class='activity-title'])[6]"));
-		assertTrue(selenium.isPartialText(
-				"xPath=(//div[@class='activity-body'])[6]", "Joe"));
+				"xPath=(//div[@class='activity-action'])[2]", "Microblogs Post1"));
 		assertFalse(selenium.isTextPresent("Microblogs Post3"));
 		assertFalse(selenium.isTextPresent("Microblogs Post4"));
 		assertFalse(selenium.isTextPresent("DM Folder Document2 Title"));

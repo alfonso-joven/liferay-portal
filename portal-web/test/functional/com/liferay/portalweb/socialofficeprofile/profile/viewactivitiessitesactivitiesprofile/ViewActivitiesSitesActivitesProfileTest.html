@@ -34,54 +34,124 @@
 	<td>test@liferay.com</td>
 </tr>
 <tr>
-	<td>assertText</td>
-	<td>xPath=(//div[@class='activity-title'])[1]</td>
-	<td>Joe added a new bookmarks entry, Bookmarks Entry1 Name, in Open Site Name.</td>
+	<td>waitForVisible</td>
+	<td>xpath=(//div[@class='activity-user-name'])[1]</td>
+	<td>Joe in Open Site Name</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//div[@class='activity-title'])[2]</td>
-	<td>Joe updated a wiki page, FrontPage, in Open Site Name.</td>
+	<td>xpath=(//div[@class='activity-user-name'])[1]</td>
+	<td>Joe in Open Site Name</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//div[@class='activity-title'])[3]</td>
-	<td>Joe updated a wiki page, FrontPage, in Open Site Name.</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>xPath=(//div[@class='activity-title'])[4]</td>
-	<td>Joe wrote a new blog entry, Blogs Entry1 Title, in Open Site Name.</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>xPath=(//div[@class='activity-title'])[5]</td>
-	<td>Joe wrote a new message board post, MB Category Thread1 Message Subject, in Open Site Name.</td>
+	<td>xpath=(//div[@class='activity-action'])[1]</td>
+	<td>Added a new bookmark.</td>
 </tr>
 <tr>
 	<td>assertPartialText</td>
-	<td>xPath=(//div[@class='activity-body'])[5]</td>
-	<td>Go to Category</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>xPath=(//div[@class='activity-title'])[6]</td>
-	<td>Joe uploaded a new document, DM Folder Document1 Title, in Open Site Name.</td>
+	<td>xpath=(//div[@class='activity-body'])[1]</td>
+	<td>Bookmarks Entry1 Name</td>
 </tr>
 <tr>
 	<td>assertPartialText</td>
-	<td>xPath=(//div[@class='activity-body'])[6]</td>
-	<td>View Document</td>
-</tr>
-<tr>
-	<td>assertPartialText</td>
-	<td>xPath=(//div[@class='activity-body'])[6]</td>
-	<td>Go to Folder</td>
+	<td>xpath=(//div[@class='activity-body'])[1]</td>
+	<td>Bookmarks Entry1 Description</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xPath=(//div[@class='activity-title'])[7]</td>
-	<td>Joe added a new calendar event, Calendar Event1 Title, in Open Site Name.</td>
+	<td>xpath=(//div[@class='activity-user-name'])[2]</td>
+	<td>Joe in Open Site Name</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(//div[@class='activity-action'])[2]</td>
+	<td>Made 2 updates to a wiki page in the Main wiki.</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>xpath=(//div[@class='activity-body'])[2]</td>
+	<td>FrontPage</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>xpath=(//div[@class='activity-body'])[2]</td>
+	<td>Wiki FrontPage Content Edit2</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(//div[@class='activity-user-name'])[3]</td>
+	<td>Joe in Open Site Name</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(//div[@class='activity-action'])[3]</td>
+	<td>Wrote a new blog entry.</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>xpath=(//div[@class='activity-body'])[3]</td>
+	<td>Blogs Entry1 Title</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>xpath=(//div[@class='activity-body'])[3]</td>
+	<td>Blogs Entry1 Content</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(//div[@class='activity-user-name'])[4]</td>
+	<td>Joe in Open Site Name</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(//div[@class='activity-action'])[4]</td>
+	<td>Wrote a new forum post in MB Category Name.</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>xpath=(//div[@class='activity-body'])[4]</td>
+	<td>MB Category Thread1 Message Subject</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>xpath=(//div[@class='activity-body'])[4]</td>
+	<td>MB Category Thread1 Message Body</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(//div[@class='activity-user-name'])[5]</td>
+	<td>Joe in Open Site Name</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(//div[@class='activity-action'])[5]</td>
+	<td>Uploaded a new document in the DM Folder Name folder.</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>//div[@class='document-container']</td>
+	<td>DM Folder Document1 Title</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(//div[@class='activity-user-name'])[6]</td>
+	<td>Joe in Open Site Name</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(//div[@class='activity-action'])[6]</td>
+	<td>Added a new calendar event.</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>xpath=(//div[@class='activity-body'])[5]</td>
+	<td>Calendar Event1 Title</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>xpath=(//div[@class='activity-body'])[5]</td>
+	<td>Calendar Event1 Description</td>
 </tr>
 <tr>
 	<td>assertTextNotPresent</td>

@@ -34,68 +34,73 @@
 	<td>test@liferay.com</td>
 </tr>
 <tr>
+	<td>waitForVisible</td>
+	<td>xpath=(//span[@class='avatar']/a/img[@alt='Joe Bloggs'])[1]</td>
+	<td>Profile Image</td>
+</tr>
+<tr>
 	<td>assertElementPresent</td>
-	<td>xpath=(//span[@class='avatar']/img[@alt='Social01 Office01 User01'])[1]</td>
+	<td>xpath=(//span[@class='avatar']/a/img[@alt='Joe Bloggs'])[1]</td>
 	<td>Profile Image</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xpath=(//div[@class='activity-title'])[1]</td>
-	<td>Social01 Office01 User01 commented on Joe's blog entry, Blogs Entry Comment Body..., in Open Site Name.</td>
-</tr>
-<tr>
-	<td>assertElementPresent</td>
-	<td>xpath=(//span[@class='avatar']/img[@alt='Social01 Office01 User01'])[2]</td>
-	<td>Profile Image</td>
+	<td>xpath=(//div[@class='activity-user-name'])[1]</td>
+	<td>Joe in Open Site Name</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xpath=(//div[@class='activity-title'])[2]</td>
-	<td>Social01 Office01 User01 replied to Joe's message board post, RE: MB Category Thread Message Subject, in Open Site Name.</td>
-</tr>
-<tr>
-	<td>assertElementPresent</td>
-	<td>xpath=(//span[@class='avatar']/img[@alt='Social01 Office01 User01'])[3]</td>
-	<td>Profile Image</td>
-</tr>
-<tr>
-	<td>assertText</td>
-	<td>xpath=(//div[@class='activity-title'])[3]</td>
-	<td>@Joe: Microblogs Post Comment</td>
+	<td>xpath=(//div[@class='activity-action'])[1]</td>
+	<td>Wrote a new blog entry.</td>
 </tr>
 <tr>
 	<td>assertPartialText</td>
-	<td>xpath=(//div[@class='activity-body'])[3]</td>
-	<td>Social01 Office01 User01</td>
-</tr>
-<tr>
-	<td>assertElementPresent</td>
-	<td>xpath=(//span[@class='avatar']/img[@alt='Joe Bloggs'])[1]</td>
-	<td>Profile Image</td>
+	<td>xpath=(//div[@class='activity-body'])[1]</td>
+	<td>Blogs Entry Title</td>
 </tr>
 <tr>
 	<td>assertPartialText</td>
-	<td>xpath=(//div[@class='activity-title'])[4]</td>
-	<td>Joe wrote a new blog entry</td>
+	<td>xpath=(//div[@class='activity-body'])[1]</td>
+	<td>Blogs Entry Content</td>
 </tr>
 <tr>
 	<td>assertElementPresent</td>
-	<td>xpath=(//span[@class='avatar']/img[@alt='Joe Bloggs'])[2]</td>
-	<td>Profile Image</td>
-</tr>
-<tr>
-	<td>assertPartialText</td>
-	<td>xpath=(//div[@class='activity-title'])[5]</td>
-	<td>Joe wrote a new message board post</td>
-</tr>
-<tr>
-	<td>assertElementPresent</td>
-	<td>xpath=(//span[@class='avatar']/img[@alt='Joe Bloggs'])[3]</td>
+	<td>xpath=(//span[@class='avatar']/a/img[@alt='Joe Bloggs'])[2]</td>
 	<td>Profile Image</td>
 </tr>
 <tr>
 	<td>assertText</td>
-	<td>xpath=(//div[@class='activity-title'])[6]</td>
+	<td>xpath=(//div[@class='activity-user-name'])[2]</td>
+	<td>Joe in Open Site Name</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(//div[@class='activity-action'])[2]</td>
+	<td>Wrote a new forum post in MB Category Name.</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>xpath=(//div[@class='activity-body'])[2]</td>
+	<td>MB Category Thread Message Subject</td>
+</tr>
+<tr>
+	<td>assertPartialText</td>
+	<td>xpath=(//div[@class='activity-body'])[2]</td>
+	<td>MB Category Thread Message Body</td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>xpath=(//span[@class='avatar']/a/img[@alt='Joe Bloggs'])[3]</td>
+	<td>Profile Image</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(//div[@class='activity-user-name'])[3]</td>
+	<td>Joe</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>xpath=(//div[@class='activity-action'])[3]</td>
 	<td>Microblogs Post</td>
 </tr>
 </tbody></table>
