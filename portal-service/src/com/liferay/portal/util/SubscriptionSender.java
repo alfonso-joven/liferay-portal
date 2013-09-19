@@ -391,7 +391,7 @@ public class SubscriptionSender implements Serializable {
 	protected boolean hasPermission(Subscription subscription, User user)
 		throws Exception {
 
-		return hasPermission(subscription, null, 0, user);
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -453,19 +453,35 @@ public class SubscriptionSender implements Serializable {
 			return;
 		}
 
+		boolean hasPermission = false;
+
 		try {
-			if (!hasPermission(
-					subscription, inferredClassName, inferredClassPK, user)) {
-
-				if (_log.isDebugEnabled()) {
-					_log.debug("Skip unauthorized user " + user.getUserId());
+			if (_subclassOverridesDeprecatedHasPermissionMethod) {
+				try {
+					hasPermission = hasPermission(subscription, user);
 				}
+				catch (UnsupportedOperationException uoe) {
+					_subclassOverridesDeprecatedHasPermissionMethod = false;
 
-				return;
+					hasPermission = hasPermission(
+						subscription, inferredClassName, inferredClassPK, user);
+				}
+			}
+			else {
+				hasPermission = hasPermission(
+					subscription, inferredClassName, inferredClassPK, user);
 			}
 		}
 		catch (Exception e) {
 			_log.error(e, e);
+
+			return;
+		}
+
+		if (!hasPermission) {
+			if (_log.isDebugEnabled()) {
+				_log.debug("Skip unauthorized user " + user.getUserId());
+			}
 
 			return;
 		}
@@ -706,5 +722,6 @@ public class SubscriptionSender implements Serializable {
 	private List<ObjectValuePair<String, String>> _runtimeSubscribersOVPs =
 		new ArrayList<ObjectValuePair<String, String>>();
 	private Set<String> _sentEmailAddresses = new HashSet<String>();
+	private boolean _subclassOverridesDeprecatedHasPermissionMethod = true;
 
 }
