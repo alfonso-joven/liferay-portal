@@ -1653,10 +1653,18 @@ public class DLFileEntryLocalServiceImpl
 		List<DDMStructure> ddmStructures = dlFileEntryType.getDDMStructures();
 
 		for (DDMStructure ddmStructure : ddmStructures) {
-			DLFileEntryMetadata lastFileEntryMetadata =
-				dlFileEntryMetadataLocalService.getFileEntryMetadata(
-					ddmStructure.getStructureId(),
-					lastDLFileVersion.getFileVersionId());
+			DLFileEntryMetadata lastFileEntryMetadata = null;
+
+			try {
+				lastFileEntryMetadata =
+					dlFileEntryMetadataLocalService.getFileEntryMetadata(
+						ddmStructure.getStructureId(),
+						lastDLFileVersion.getFileVersionId());
+			}
+			catch (NoSuchFileEntryMetadataException nsfem) {
+				return false;
+			}
+
 			DLFileEntryMetadata latestFileEntryMetadata =
 				dlFileEntryMetadataLocalService.getFileEntryMetadata(
 					ddmStructure.getStructureId(),
@@ -1667,9 +1675,14 @@ public class DLFileEntryLocalServiceImpl
 			Fields latestFields = StorageEngineUtil.getFields(
 				latestFileEntryMetadata.getDDMStorageId());
 
-			Set<String> fieldNames = lastFields.getNames();
+			Set<String> lastFieldNames = lastFields.getNames();
+			Set<String> latestFieldNames = latestFields.getNames();
 
-			for (String fieldName : fieldNames) {
+			if (lastFieldNames.size() != latestFieldNames.size()) {
+				return false;
+			}
+
+			for (String fieldName : lastFieldNames) {
 				com.liferay.portlet.dynamicdatamapping.storage.Field
 					lastField = lastFields.get(fieldName);
 				com.liferay.portlet.dynamicdatamapping.storage.Field
@@ -1678,8 +1691,9 @@ public class DLFileEntryLocalServiceImpl
 				String privateField = ddmStructure.getFieldProperty(
 					lastField.getName(), "private");
 
-				if (!lastField.equals(latestField) &&
-					!GetterUtil.getBoolean(privateField)) {
+				if ((lastField == null) ||
+					(!lastField.equals(latestField) &&
+					 !GetterUtil.getBoolean(privateField))) {
 
 					return false;
 				}
