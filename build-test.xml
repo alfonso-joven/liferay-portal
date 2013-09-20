@@ -2886,6 +2886,29 @@
 	</target>
 
 	<target name="generate-test-properties" depends="check-config">
+		<if>
+			<contains string="${test.class}" substring="#" />
+			<then>
+				<script classpathref="project.classpath" language="beanshell">
+					String testClass = project.getProperty("test.class");
+
+					int x = testClass.indexOf("#");
+
+					String testMethodName = testClass.substring(x + 1);
+
+					project.setProperty("test.method.name", testMethodName);
+
+					String testSimpleClassName =  testClass.substring(0, x);
+
+					project.setProperty("test.simple.class.name", testSimpleClassName);
+				</script>
+			</then>
+			<else>
+				<property name="test.simple.class.name" value="${test.class}" />
+				<property name="test.method.name" value="[A-Za-z]*" />
+			</else>
+		</if>
+
 		<xmlproperty
 			file="portal-web/test-config/database.xml"
 			keeproot="true"
@@ -2894,6 +2917,7 @@
 		<echoproperties destfile="${basedir}/test.run.properties">
 			<propertyset>
 				<propertyref prefix="database.${database}" />
+				<propertyref prefix="${test.simple.class.name}." />
 			</propertyset>
 		</echoproperties>
 
@@ -2903,6 +2927,25 @@
 			match="database\.${database}"
 			replace="database"
 		/>
+
+		<if>
+			<isset property="test.simple.class.name" />
+			<then>
+				<replaceregexp
+					file="${basedir}/test.run.properties"
+					flags="g"
+					match="${test.simple.class.name}\.(${test.method.name}|all)\."
+					replace=""
+				/>
+
+				<replaceregexp
+					file="${basedir}/test.run.properties"
+					flags="g"
+					match="${test.simple.class.name}.*"
+					replace=""
+				/>
+			</then>
+		</if>
 
 		<property file="${basedir}/test.run.properties" />
 
@@ -4277,7 +4320,7 @@ custom.sql.function.isnotnull=CONVERT(VARCHAR,?) IS NOT NULL</echo>
 		</if>
 	</target>
 
-	<target name="run-simple-server">
+	<target name="run-simple-server" depends="generate-test-properties">
 		<antcall target="rebuild-database" inheritAll="false" />
 
 		<antcall target="copy-optional-jars" inheritAll="false">
