@@ -2903,10 +2903,13 @@
 					project.setProperty("test.simple.class.name", testSimpleClassName);
 				</script>
 			</then>
-			<else>
-				<property name="test.simple.class.name" value="${test.class}" />
-				<property name="test.method.name" value="[A-Za-z]*" />
-			</else>
+			<elseif>
+				<isset property="test.class" />
+				<then>
+					<property name="test.simple.class.name" value="${test.class}" />
+					<property name="test.method.name" value="[A-Za-z]*" />
+				</then>
+			</elseif>
 		</if>
 
 		<xmlproperty
@@ -2929,7 +2932,7 @@
 		/>
 
 		<if>
-			<isset property="test.simple.class.name" />
+			<isset property="test.class" />
 			<then>
 				<replaceregexp
 					file="${basedir}/test.run.properties"
