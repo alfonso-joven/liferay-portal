@@ -33,9 +33,9 @@
 			border-color: #ccc;
 		}
 
-        &.error:hover {
-            background-color: #FDD;
-        }
+		&.error:hover {
+			background-color: #FDD;
+		}
 	}
 
 	.taglib-webdav {

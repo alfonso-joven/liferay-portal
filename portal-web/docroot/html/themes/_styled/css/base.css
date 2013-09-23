@@ -152,7 +152,7 @@ h1, h2, h3, h4, h5, h6, strong {
 	vertical-align: middle;
 }
 
-/* ---------- HTML Editor ---------- */
+/* ---------- HTML editor ---------- */
 
 body.html-editor {
 	background: #FFF;
@@ -262,7 +262,7 @@ hr, .separator {
 	border-top: 1px dotted #BFBFBF;
 }
 
-/* ---------- Update Manager ---------- */
+/* ---------- Update manager ---------- */
 
 .update-available {
 	margin-top: 10px;

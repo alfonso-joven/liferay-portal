@@ -103,7 +103,7 @@ h4, h5, h6 {
 h1, h2, h3, h4, h5, h6, strong {
 }
 
-/* ---------- HTML Editor ---------- */
+/* ---------- HTML editor ---------- */
 
 body.html-editor {
 }
@@ -168,7 +168,7 @@ code, pre {
 hr, .separator {
 }
 
-/* ---------- Update Manager ---------- */
+/* ---------- Update manager ---------- */
 
 .update-available {
 }

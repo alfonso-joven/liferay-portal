@@ -154,7 +154,7 @@ body.portlet {
 	}
 }
 
-/* ---------- Panel Page ---------- */
+/* ---------- Panel page ---------- */
 
 .lfr-panel-page {
 	width: 100%;
@@ -284,7 +284,7 @@ body.portlet {
 	color: #384F34;
 }
 
-/* ---------- Liferay Messages ---------- */
+/* ---------- Liferay messages ---------- */
 
 .lfr-message-content, .lfr-message-info, .lfr-message-help, .lfr-message-error, .lfr-message-alert, .lfr-message-success {
 	border-left-width: 0;
@@ -438,7 +438,7 @@ body.portlet {
 .portlet-icon-label {
 }
 
-/* ---------- Text that appears beside a 'standard' icon (e.g. Ok, or Cancel) ---------- */
+/* ---------- Text that appears beside a 'standard' icon (e.g. Ok, or cancel) ---------- */
 
 .portlet-dlg-icon-label {
 }
@@ -779,7 +779,7 @@ body.portlet {
 
 /* ---------- RTL ---------- */
 
-.rtl { 
+.rtl {
 	.breadcrumbs-horizontal li {
 		float: right;
 	}
@@ -808,7 +808,7 @@ body.portlet {
 			.lfr-trigger strong a {
 				padding: 0;
 			}
-		}	
+		}
 	}
 
 	.lfr-message {
@@ -826,6 +826,6 @@ body.portlet {
 		&.lfr-role .col-1 {
 			background-position: right;
 			padding-right: 30px;
-		}		
+		}
 	}
 }

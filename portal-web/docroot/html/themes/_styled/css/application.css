@@ -91,7 +91,7 @@
 		}
 	}
 
- 	&.selected td, &.selected.hover td {
+	&.selected td, &.selected.hover td {
 		background-color: #00A2EA;
 		border-color: #00A2EA #00A2EA #D7D7D7;
 		color: #FFF;
@@ -515,7 +515,7 @@
 	width: 4px;
 }
 
-/* ---------- Loading Mask ---------- */
+/* ---------- Loading mask ---------- */
 
 .aui-loadingmask-content {
 	background: #CCC;
@@ -525,14 +525,14 @@
 	background: #D4D4D4 url(../images/portlet/header_bg.png) repeat-x 0 0;
 }
 
-/* ---------- Tree View ---------- */
+/* ---------- Tree view ---------- */
 
 .aui-tree-node-selected .aui-tree-label {
 	background-color: transparent;
 	font-weight: bold;
 }
 
-/* ---------- Page Customization ---------- */
+/* ---------- Page customization ---------- */
 
 .aui-dragging .portlet-column.customizable {
 	background-color: #CFFCCF;
@@ -617,7 +617,7 @@
 	padding: 0;
 }
 
-/* ---------- Application Column View ---------- */
+/* ---------- Application column view ---------- */
 
 .lfr-app-column-view {
 	border: 1px solid #C9C9C9;

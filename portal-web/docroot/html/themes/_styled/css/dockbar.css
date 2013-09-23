@@ -139,7 +139,7 @@ html > .lfr-dockbar-pinned {
 	color: #999;
 }
 
-/* ---------- Staging Dockbar ---------- */
+/* ---------- Staging dockbar ---------- */
 
 .variation-selector {
 	display: block;
@@ -469,7 +469,7 @@ html > .lfr-dockbar-pinned {
 	background-image: url(../images/common/configuration.png);
 }
 
-/* ---------- Customization Bar ---------- */
+/* ---------- Customization bar ---------- */
 
 .page-customization-bar {
 	background-color: #999;
@@ -520,7 +520,7 @@ html > .lfr-dockbar-pinned {
 			background-position: 7%;
 			padding-left: 0;
 			padding-right: 5px;
-			
+
 			span {
 				background-position: right;
 				padding-right: 20px;
