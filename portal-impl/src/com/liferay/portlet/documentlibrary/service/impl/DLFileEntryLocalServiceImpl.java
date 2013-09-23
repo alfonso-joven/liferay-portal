@@ -1661,7 +1661,7 @@ public class DLFileEntryLocalServiceImpl
 						ddmStructure.getStructureId(),
 						lastDLFileVersion.getFileVersionId());
 			}
-			catch (NoSuchFileEntryMetadataException nsfem) {
+			catch (NoSuchFileEntryMetadataException nsfeme) {
 				return false;
 			}
 
