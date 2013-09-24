@@ -240,7 +240,6 @@
 		<atom-collection-adapter>com.liferay.portlet.documentlibrary.atom.FolderAtomCollectionAdapter</atom-collection-adapter>
 		<custom-attributes-display>com.liferay.portlet.documentlibrary.DLFileEntryCustomAttributesDisplay</custom-attributes-display>
 		<custom-attributes-display>com.liferay.portlet.documentlibrary.DLFolderCustomAttributesDisplay</custom-attributes-display>
-		<permission-propagator>com.liferay.portlet.documentlibrary.security.permission.DLPermissionPropagatorImpl</permission-propagator>
 		<workflow-handler>com.liferay.portlet.documentlibrary.workflow.DLFileEntryWorkflowHandler</workflow-handler>
 		<preferences-owned-by-group>true</preferences-owned-by-group>
 		<use-default-template>false</use-default-template>
@@ -999,7 +998,6 @@
 		<portlet-data-handler-class>com.liferay.portlet.documentlibrary.lar.DLDisplayPortletDataHandlerImpl</portlet-data-handler-class>
 		<webdav-storage-token>document_library</webdav-storage-token>
 		<webdav-storage-class>com.liferay.portlet.documentlibrary.webdav.DLWebDAVStorageImpl</webdav-storage-class>
-		<permission-propagator>com.liferay.portlet.documentlibrary.security.permission.DLPermissionPropagatorImpl</permission-propagator>
 		<preferences-owned-by-group>true</preferences-owned-by-group>
 		<use-default-template>false</use-default-template>
 		<instanceable>true</instanceable>
