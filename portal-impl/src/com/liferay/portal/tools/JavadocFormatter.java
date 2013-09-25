@@ -560,9 +560,7 @@ public class JavadocFormatter {
 		for (DocletTag paramDocletTag : paramDocletTags) {
 			String curValue = paramDocletTag.getValue();
 
-			if (curValue.equals(name) ||
-				curValue.startsWith(name + StringPool.SPACE)) {
-
+			if (curValue.equals(name) || curValue.startsWith(name + " ")) {
 				value = curValue;
 
 				break;
@@ -1815,7 +1813,12 @@ public class JavadocFormatter {
 			char c = className.charAt(i);
 
 			if (Character.isUpperCase(c)) {
-				sb.append(CharPool.DASH);
+				if (((i + 1) < index) &&
+					Character.isLowerCase(className.charAt(i + 1))) {
+
+					sb.append(CharPool.DASH);
+				}
+
 				sb.append(Character.toLowerCase(c));
 			}
 			else {
