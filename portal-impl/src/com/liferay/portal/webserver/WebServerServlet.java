@@ -90,6 +90,7 @@ import com.liferay.portlet.documentlibrary.util.VideoProcessor;
 import com.liferay.portlet.documentlibrary.util.VideoProcessorUtil;
 import com.liferay.portlet.dynamicdatalists.model.DDLRecord;
 import com.liferay.portlet.dynamicdatalists.service.DDLRecordLocalServiceUtil;
+import com.liferay.portlet.dynamicdatalists.service.DDLRecordServiceUtil;
 import com.liferay.portlet.dynamicdatamapping.storage.Field;
 import com.liferay.portlet.dynamicdatamapping.storage.Fields;
 import com.liferay.portlet.dynamicdatamapping.storage.StorageEngineUtil;
@@ -679,8 +680,7 @@ public class WebServerServlet extends HttpServlet {
 			Field field = null;
 
 			if (className.equals(DDLRecord.class.getName())) {
-				DDLRecord ddlRecord = DDLRecordLocalServiceUtil.getRecord(
-					classPK);
+				DDLRecord ddlRecord = DDLRecordServiceUtil.getRecord(classPK);
 
 				field = ddlRecord.getField(fieldName);
 			}
