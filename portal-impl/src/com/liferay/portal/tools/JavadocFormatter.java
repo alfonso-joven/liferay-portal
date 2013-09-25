@@ -560,7 +560,9 @@ public class JavadocFormatter {
 		for (DocletTag paramDocletTag : paramDocletTags) {
 			String curValue = paramDocletTag.getValue();
 
-			if (curValue.equals(name) || curValue.startsWith(name + " ")) {
+			if (curValue.equals(name) ||
+				curValue.startsWith(name + StringPool.SPACE)) {
+
 				value = curValue;
 
 				break;
