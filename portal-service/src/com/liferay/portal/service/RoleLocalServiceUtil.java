@@ -1041,10 +1041,10 @@ public class RoleLocalServiceUtil {
 	}
 
 	public static java.util.List<com.liferay.portal.model.Role> getTeamRoles(
-		long groupId, long[] excludedRoleIds)
+		long groupId, long[] skipRoleIds)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException {
-		return getService().getTeamRoles(groupId, excludedRoleIds);
+		return getService().getTeamRoles(groupId, skipRoleIds);
 	}
 
 	/**

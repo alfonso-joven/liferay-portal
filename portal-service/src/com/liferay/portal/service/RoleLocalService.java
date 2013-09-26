@@ -895,7 +895,7 @@ public interface RoleLocalService extends BaseLocalService,
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public java.util.List<com.liferay.portal.model.Role> getTeamRoles(
-		long groupId, long[] excludedRoleIds)
+		long groupId, long[] skipRoleIds)
 		throws com.liferay.portal.kernel.exception.PortalException,
 			com.liferay.portal.kernel.exception.SystemException;
 
