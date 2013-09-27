@@ -112,8 +112,9 @@ public abstract class BaseDB implements DB {
 	public void buildCreateFile(String sqlDir, String databaseName)
 		throws IOException {
 
-		buildCreateFile(sqlDir, databaseName, POPULATED);
+		buildCreateFile(sqlDir, databaseName, BARE);
 		buildCreateFile(sqlDir, databaseName, MINIMAL);
+		buildCreateFile(sqlDir, databaseName, POPULATED);
 		buildCreateFile(sqlDir, databaseName, SHARDED);
 	}
 
@@ -798,7 +799,10 @@ public abstract class BaseDB implements DB {
 	protected abstract String getServerName();
 
 	protected String getSuffix(int type) {
-		if (type == MINIMAL) {
+		if (type == BARE) {
+			return "-bare";
+		}
+		else if (type == MINIMAL) {
 			return "-minimal";
 		}
 		else if (type == SHARDED) {
