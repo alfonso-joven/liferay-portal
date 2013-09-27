@@ -54,6 +54,7 @@ Group liveGroup = null;
 Group stagingGroup = null;
 
 if (group.isCompany()) {
+	liveGroup = group;
 	stagingGroup = group;
 }
 else if (group.isStagingGroup()) {
