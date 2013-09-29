@@ -21,13 +21,13 @@ AUI.add(
 
 		var CSS_ACTIVE_AREA_PROXY = 'active-area-proxy';
 
-		var CSS_CONTAINER_HIDDEN = 'container-hidden';
-
 		var CSS_DOCUMENT_DISPLAY_STYLE = '.document-display-style';
 
 		var CSS_DOCUMENT_DISPLAY_STYLE_SELECTABLE = '.document-display-style.selectable';
 
 		var CSS_DOCUMENT_DISPLAY_STYLE_SELECTED = '.document-display-style.selected';
+
+		var CSS_DOCUMENT_LIBRARY_LOADED = 'document-library-loaded';
 
 		var CSS_HIDDEN = 'aui-helper-hidden';
 
@@ -320,7 +320,7 @@ AUI.add(
 
 						instance._restoreState();
 
-						documentLibraryContainer.removeClass(CSS_CONTAINER_HIDDEN);
+						documentLibraryContainer.addClass(CSS_DOCUMENT_LIBRARY_LOADED);
 					},
 
 					destructor: function() {

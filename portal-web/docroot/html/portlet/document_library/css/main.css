@@ -1,4 +1,12 @@
 .portlet-document-library, .portlet-document-library-display {
+	.document-library-container {
+		visibility: hidden;
+
+		&.document-library-loaded {
+			visibility: visible;
+		}
+	}
+
 	.file-entry-list-description {
 		font-style: italic;
 		margin-left: 10px;
@@ -854,10 +862,6 @@
 	background: #FFFFE0 url(@theme_image_path@/portlet/pop_up.png) no-repeat 10px 50%;
 	font-size: 1.2em;
 	padding: 0.3em 0.3em 0.3em 2em;
-}
-
-.container-hidden {
-	visibility: hidden;
 }
 
 .ie6, .ie7 {
