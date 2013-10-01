@@ -4167,7 +4167,7 @@ custom.sql.function.isnotnull=CONVERT(VARCHAR,?) IS NOT NULL</echo>
 			DirectoryScanner directoryScanner = new DirectoryScanner();
 
 			directoryScanner.setBasedir(project.getBaseDir());
-			directoryScanner.setIncludes(new String[] {"**/test/unit/**/*Test.java"});
+			directoryScanner.setIncludes(new String[] {"**/test/integration/**/*Test.java", "**/test/unit/**/*Test.java"});
 
 			directoryScanner.scan();
 
@@ -4180,6 +4180,10 @@ custom.sql.function.isnotnull=CONVERT(VARCHAR,?) IS NOT NULL</echo>
 			for (String fileName : fileNames) {
 				int x = fileName.indexOf("com/");
 				int y = fileName.lastIndexOf("/");
+
+				if (fileName.endsWith("ServiceHttpTest.java") || fileName.endsWith("ServiceJsonTest.java") || fileName.endsWith("ServiceSoapTest.java")) {
+					continue;
+				}
 
 				String packageName = fileName.substring(x, y);
 
