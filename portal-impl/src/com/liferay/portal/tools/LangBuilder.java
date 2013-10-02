@@ -269,7 +269,7 @@ public class LangBuilder {
 							baseKey);
 
 						if (Validator.isNotNull(translatedBaseKey)) {
-							translatedText = translatedBaseKey + AUTOMATIC_COPY;
+							translatedText = translatedBaseKey;
 						}
 						else {
 							translatedText = value + AUTOMATIC_COPY;
