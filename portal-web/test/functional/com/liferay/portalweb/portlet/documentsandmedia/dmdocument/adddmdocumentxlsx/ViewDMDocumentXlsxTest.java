@@ -94,23 +94,22 @@ public class ViewDMDocumentXlsxTest extends BaseTestCase {
 				"Automatically Extracted Metadata"),
 			selenium.getText(
 				"//div[@id='documentLibraryAssetMetadataPanel']/div/div/span"));
-		assertEquals(RuntimeVariables.replace("Date 2006-09-16T00:00:00Z"),
+		assertEquals(RuntimeVariables.replace("Modified 2012-08-13T22:35:33Z"),
 			selenium.getText(
 				"//div[@id='documentLibraryAssetMetadataPanel']/div[2]/div[1]"));
-		assertEquals(RuntimeVariables.replace(
-				"Content Type application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"),
+		assertEquals(RuntimeVariables.replace("Created 2006-09-16T00:00:00Z"),
 			selenium.getText(
 				"//div[@id='documentLibraryAssetMetadataPanel']/div[2]/div[2]"));
 		assertEquals(RuntimeVariables.replace(
-				"Last Modification 2012-08-13T22:35:33Z"),
+				"Content Type application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"),
 			selenium.getText(
 				"//div[@id='documentLibraryAssetMetadataPanel']/div[2]/div[3]"));
 		assertEquals(RuntimeVariables.replace(
-				"Application Name Microsoft Excel"),
+				"Last Modification 2012-08-13T22:35:33Z"),
 			selenium.getText(
 				"//div[@id='documentLibraryAssetMetadataPanel']/div[2]/div[4]"));
 		assertEquals(RuntimeVariables.replace(
-				"Last Printed 2006-09-16T00:00:00Z"),
+				"Application Name Microsoft Excel"),
 			selenium.getText(
 				"//div[@id='documentLibraryAssetMetadataPanel']/div[2]/div[5]"));
 		assertEquals(RuntimeVariables.replace("Application Version 14.0300"),
@@ -120,7 +119,7 @@ public class ViewDMDocumentXlsxTest extends BaseTestCase {
 				"Creation Date 2006-09-16T00:00:00Z"),
 			selenium.getText(
 				"//div[@id='documentLibraryAssetMetadataPanel']/div[2]/div[7]"));
-		assertEquals(RuntimeVariables.replace("Protected false"),
+		assertEquals(RuntimeVariables.replace("Last Saved 2012-08-13T22:35:33Z"),
 			selenium.getText(
 				"//div[@id='documentLibraryAssetMetadataPanel']/div[2]/div[8]"));
 		assertEquals(RuntimeVariables.replace("Version History"),

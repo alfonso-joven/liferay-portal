@@ -15,11 +15,6 @@
 package com.liferay.portalweb.portlet.documentsandmedia;
 
 import com.liferay.portalweb.portal.BaseTestSuite;
-import com.liferay.portalweb.portlet.documentsandmedia.dmcomment.DMCommentTestPlan;
-import com.liferay.portalweb.portlet.documentsandmedia.dmdocument.DMDocumentTestPlan;
-import com.liferay.portalweb.portlet.documentsandmedia.dmdocumenttype.DMDocumentTypeTestPlan;
-import com.liferay.portalweb.portlet.documentsandmedia.dmfolder.DMFolderTestPlan;
-import com.liferay.portalweb.portlet.documentsandmedia.dmimage.DMImageTestPlan;
 import com.liferay.portalweb.portlet.documentsandmedia.dmlar.DMLARTestPlan;
 import com.liferay.portalweb.portlet.documentsandmedia.portlet.PortletTestPlan;
 
@@ -34,11 +29,11 @@ public class DocumentsAndMediaTestPlan extends BaseTestSuite {
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
 
-		testSuite.addTest(DMCommentTestPlan.suite());
-		testSuite.addTest(DMDocumentTestPlan.suite());
-		testSuite.addTest(DMDocumentTypeTestPlan.suite());
-		testSuite.addTest(DMFolderTestPlan.suite());
-		testSuite.addTest(DMImageTestPlan.suite());
+		//testSuite.addTest(DMCommentTestPlan.suite());
+		//testSuite.addTest(DMDocumentTestPlan.suite());
+		//testSuite.addTest(DMDocumentTypeTestPlan.suite());
+		//testSuite.addTest(DMFolderTestPlan.suite());
+		//testSuite.addTest(DMImageTestPlan.suite());
 		testSuite.addTest(DMLARTestPlan.suite());
 		testSuite.addTest(PortletTestPlan.suite());
 

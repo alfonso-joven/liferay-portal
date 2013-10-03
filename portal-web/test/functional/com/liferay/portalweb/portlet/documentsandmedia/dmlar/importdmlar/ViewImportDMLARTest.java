@@ -64,9 +64,9 @@ public class ViewImportDMLARTest extends BaseTestCase {
 				"DL Folder1 Subfolder Document Title Edit"),
 			selenium.getText("//h2[@class='document-title']"));
 		assertEquals(RuntimeVariables.replace(
-				"DL Folder1 Subfolder Document Description Edit"),
+				"DL Folder1 SubFolder Document Description Edit"),
 			selenium.getText("//span[@class='document-description']"));
-		assertEquals(RuntimeVariables.replace("Download (0.5k)"),
+		assertEquals(RuntimeVariables.replace("Download (0.3k)"),
 			selenium.getText("//span[@class='download-document']/span/a/span"));
 		selenium.open("/web/guest/home/");
 		selenium.clickAt("link=Documents and Media Test Page",

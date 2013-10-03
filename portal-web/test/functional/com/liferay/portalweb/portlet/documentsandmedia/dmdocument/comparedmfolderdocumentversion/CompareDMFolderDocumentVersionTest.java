@@ -50,6 +50,8 @@ public class CompareDMFolderDocumentVersionTest extends BaseTestCase {
 		selenium.waitForPageToLoad("30000");
 		selenium.uploadCommonFile("//input[@id='_20_file']",
 			RuntimeVariables.replace("Document_1.txt"));
+		selenium.sendKeys("//textarea[@name=\"_20_description\"]",
+			RuntimeVariables.replace("Testing Version"));
 		Thread.sleep(5000);
 		selenium.clickAt("//input[@value='Publish']",
 			RuntimeVariables.replace("Publish"));

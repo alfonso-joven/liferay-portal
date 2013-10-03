@@ -44,16 +44,16 @@ public class PermissionsDMDocumentGuestViewOffTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("Guest"),
 			selenium.getText("//tr[3]/td[1]"));
 		assertEquals(RuntimeVariables.replace("View"),
-			selenium.getText("//th[8]"));
-		assertTrue(selenium.isChecked("//tr[3]/td[8]/input"));
-		selenium.uncheck("//tr[3]/td[8]/input");
-		assertFalse(selenium.isChecked("//tr[3]/td[8]/input"));
+			selenium.getText("//th[9]"));
+		assertTrue(selenium.isChecked("//tr[3]/td[9]/input"));
+		selenium.uncheck("//tr[3]/td[9]/input");
+		assertFalse(selenium.isChecked("//tr[3]/td[9]/input"));
 		selenium.clickAt("//input[@value='Save']",
 			RuntimeVariables.replace("Save"));
 		selenium.waitForPageToLoad("30000");
 		assertEquals(RuntimeVariables.replace(
 				"Your request completed successfully."),
 			selenium.getText("//div[@class='portlet-msg-success']"));
-		assertFalse(selenium.isChecked("//tr[3]/td[8]/input"));
+		assertFalse(selenium.isChecked("//tr[3]/td[9]/input"));
 	}
 }

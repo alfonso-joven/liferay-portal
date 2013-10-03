@@ -73,7 +73,6 @@ public class DMDocumentTestPlan extends BaseTestSuite {
 
 	public static Test suite() {
 		TestSuite testSuite = new TestSuite();
-
 		testSuite.addTest(AddDMDocumentTests.suite());
 		testSuite.addTest(AddDMDocumentDocTests.suite());
 		testSuite.addTest(AddDMDocumentDocxTests.suite());
@@ -122,7 +121,6 @@ public class DMDocumentTestPlan extends BaseTestSuite {
 		testSuite.addTest(RevertVersionDMFolderDocumentTitle10Tests.suite());
 		testSuite.addTest(SearchDMFolderDocumentTests.suite());
 		testSuite.addTest(UnlockDMFolderDocumentTests.suite());
-
 		return testSuite;
 	}
 

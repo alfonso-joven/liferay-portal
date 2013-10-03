@@ -94,18 +94,18 @@ public class ViewDMDocumentOdtTest extends BaseTestCase {
 				"Automatically Extracted Metadata"),
 			selenium.getText(
 				"//div[@id='documentLibraryAssetMetadataPanel']/div/div/span"));
-		assertEquals(RuntimeVariables.replace("Date 2012-05-09T16:29:14.53"),
+		assertEquals(RuntimeVariables.replace("Modified 2012-05-09T16:29:14.53"),
 			selenium.getText(
 				"//div[@id='documentLibraryAssetMetadataPanel']/div[2]/div[1]"));
+		assertEquals(RuntimeVariables.replace("Created 2012-05-09T16:22:55.33"),
+			selenium.getText(
+				"//div[@id='documentLibraryAssetMetadataPanel']/div[2]/div[2]"));
 		assertEquals(RuntimeVariables.replace(
 				"Content Type application/vnd.oasis.opendocument.text"),
 			selenium.getText(
-				"//div[@id='documentLibraryAssetMetadataPanel']/div[2]/div[2]"));
-		assertEquals(RuntimeVariables.replace("Edit Time PT2M5S"),
-			selenium.getText(
 				"//div[@id='documentLibraryAssetMetadataPanel']/div[2]/div[3]"));
 		assertEquals(RuntimeVariables.replace(
-				"Creation Date 2012-05-09T16:22:55.33"),
+				"Last Modification 2012-05-09T16:29:14.53"),
 			selenium.getText(
 				"//div[@id='documentLibraryAssetMetadataPanel']/div[2]/div[4]"));
 		assertEquals(RuntimeVariables.replace("Version History"),

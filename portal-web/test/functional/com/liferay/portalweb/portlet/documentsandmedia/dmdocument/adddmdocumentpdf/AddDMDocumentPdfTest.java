@@ -55,5 +55,6 @@ public class AddDMDocumentPdfTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("DM Document Title"),
 			selenium.getText(
 				"//a[contains(@class,'document-link')]/span[@class='entry-title']"));
+		Thread.sleep(5000);
 	}
 }

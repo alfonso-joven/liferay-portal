@@ -38,6 +38,9 @@ public class ViewDMDocumentPdfTest extends BaseTestCase {
 		assertEquals(RuntimeVariables.replace("DM Document Title"),
 			selenium.getText(
 				"//a[contains(@class,'document-link')]/span[@class='entry-title']"));
+		selenium.clickAt("link=Documents and Media Test Page",
+			RuntimeVariables.replace("Documents and Media Test Page"));
+		selenium.waitForPageToLoad("30000");
 		selenium.clickAt("//a[contains(@class,'document-link')]/span[@class='entry-title']",
 			RuntimeVariables.replace("DM Document Title"));
 		selenium.waitForPageToLoad("30000");
@@ -69,6 +72,12 @@ public class ViewDMDocumentPdfTest extends BaseTestCase {
 		assertTrue(selenium.isPartialText(
 				"//span[@class='user-date']/span/span", "Uploaded by Joe Bloggs"));
 		assertTrue(selenium.isVisible("//span[@class='lfr-asset-ratings']"));
+		selenium.clickAt("link=Documents and Media Test Page",
+			RuntimeVariables.replace("Documents and Media Test Page"));
+		selenium.waitForPageToLoad("30000");
+		selenium.clickAt("//a[contains(@class,'document-link')]/span[@class='entry-title']",
+			RuntimeVariables.replace("DM Document Title"));
+		selenium.waitForPageToLoad("30000");
 		assertTrue(selenium.isVisible(
 				"//div[@class='lfr-preview-file-images']/a/img"));
 		assertTrue(selenium.isVisible(
@@ -98,17 +107,16 @@ public class ViewDMDocumentPdfTest extends BaseTestCase {
 				"Automatically Extracted Metadata"),
 			selenium.getText(
 				"//div[@id='documentLibraryAssetMetadataPanel']/div/div/span"));
-		assertEquals(RuntimeVariables.replace("Creator Writer"),
+		assertEquals(RuntimeVariables.replace("Creator Liferay"),
 			selenium.getText(
 				"//div[@id='documentLibraryAssetMetadataPanel']/div[2]/div[1]"));
-		assertEquals(RuntimeVariables.replace("Content Type application/pdf"),
+		assertEquals(RuntimeVariables.replace("Created 2012-05-08T17:38:02Z"),
 			selenium.getText(
 				"//div[@id='documentLibraryAssetMetadataPanel']/div[2]/div[2]"));
-		assertEquals(RuntimeVariables.replace("Author Liferay"),
+		assertEquals(RuntimeVariables.replace("Content Type application/pdf"),
 			selenium.getText(
 				"//div[@id='documentLibraryAssetMetadataPanel']/div[2]/div[3]"));
-		assertEquals(RuntimeVariables.replace(
-				"Creation Date 2012-05-08T17:38:02Z"),
+		assertEquals(RuntimeVariables.replace("Author Liferay"),
 			selenium.getText(
 				"//div[@id='documentLibraryAssetMetadataPanel']/div[2]/div[4]"));
 		assertEquals(RuntimeVariables.replace("Version History"),

@@ -94,25 +94,25 @@ public class ViewDMDocumentMp3Test extends BaseTestCase {
 				"Automatically Extracted Metadata"),
 			selenium.getText(
 				"//div[@id='documentLibraryAssetMetadataPanel']/div/div/span"));
-		assertEquals(RuntimeVariables.replace("Content Type audio/mpeg"),
+		assertEquals(RuntimeVariables.replace("Creator John Piper"),
 			selenium.getText(
 				"//div[@id='documentLibraryAssetMetadataPanel']/div[2]/div[1]"));
-		assertEquals(RuntimeVariables.replace("Author John Piper"),
+		assertEquals(RuntimeVariables.replace("Content Type audio/mpeg"),
 			selenium.getText(
 				"//div[@id='documentLibraryAssetMetadataPanel']/div[2]/div[2]"));
-		assertEquals(RuntimeVariables.replace("Artist John Piper"),
+		assertEquals(RuntimeVariables.replace("Author John Piper"),
 			selenium.getText(
 				"//div[@id='documentLibraryAssetMetadataPanel']/div[2]/div[3]"));
-		assertEquals(RuntimeVariables.replace("Audio Sample Rate 22050"),
+		assertEquals(RuntimeVariables.replace("Artist John Piper"),
 			selenium.getText(
 				"//div[@id='documentLibraryAssetMetadataPanel']/div[2]/div[4]"));
-		assertEquals(RuntimeVariables.replace("Audio Channel Type Stereo"),
+		assertEquals(RuntimeVariables.replace("Audio Sample Rate 22050"),
 			selenium.getText(
 				"//div[@id='documentLibraryAssetMetadataPanel']/div[2]/div[5]"));
-		assertEquals(RuntimeVariables.replace("Audio Compressor MP3"),
+		assertEquals(RuntimeVariables.replace("Audio Channel Type Mono"),
 			selenium.getText(
 				"//div[@id='documentLibraryAssetMetadataPanel']/div[2]/div[6]"));
-		assertEquals(RuntimeVariables.replace("Release Date 2000"),
+		assertEquals(RuntimeVariables.replace("Audio Compressor MP3"),
 			selenium.getText(
 				"//div[@id='documentLibraryAssetMetadataPanel']/div[2]/div[7]"));
 		assertEquals(RuntimeVariables.replace("Version History"),
